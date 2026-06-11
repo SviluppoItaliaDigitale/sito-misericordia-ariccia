@@ -17,7 +17,7 @@
   {{ else }}
   <div class="row g-4">
     {{ range .Pages }}
-    <div class="col-md-4">
+    <div class="col-md-6 col-lg-3">
       <div class="card-servizio p-4">
         <h3>{{ .Title }}</h3>
         <p>{{ .Summary | plainify | truncate 140 }}</p>

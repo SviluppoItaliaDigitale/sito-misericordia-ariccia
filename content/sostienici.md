@@ -12,9 +12,15 @@ Nel riquadro *"Sostegno del volontariato e degli enti del Terzo Settore"* firma 
 
 I fondi raccolti sostengono i servizi alla persona sul territorio di Ariccia e dei Castelli Romani.
 
-## Altri modi per aiutarci
+## Dona con un bonifico
 
-- **Diventa volontario** — il dono più grande è il tempo: [scopri come](/chi-siamo/)
-- **Donazioni** — *[da compilare: IBAN intestato all'associazione]*
+È possibile fare una donazione — o pagare la quota associativa — anche con un bonifico bancario:
+
+**Misericordia di Ariccia**
+IBAN: **IT31 X070 9238 9000 0000 0106 493**
+
+## Diventa volontario
+
+Il dono più grande è il tempo: [scopri come entrare nella Misericordia](/chi-siamo/).
 
 «Che Dio te ne renda merito»
