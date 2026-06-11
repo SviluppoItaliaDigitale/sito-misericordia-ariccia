@@ -1,0 +1,22 @@
+# Sistema
+.DS_Store
+Thumbs.db
+*~
+*.bak
+
+# Editor
+.vscode/
+.idea/
+
+# Dipendenze e build (quando sarà scelta la tecnologia)
+node_modules/
+public/
+dist/
+resources/_gen/
+.hugo_build.lock
+
+# Ambiente e segreti — MAI nel repo
+.env
+.env.*
+*.key
+*credenziali*
