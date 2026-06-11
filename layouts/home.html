@@ -2,46 +2,49 @@
 <section class="hero">
   <div class="container">
     <p class="occhiello mb-2">Ariccia · Castelli Romani · dal 1994</p>
-    <h1>Vicini a chi ha bisogno, ogni giorno.</h1>
+    <h1>Vicini a chi ha bisogno, <span class="evidenzia">ogni giorno</span>.</h1>
     <p class="lead mt-3">{{ site.Params.descrizione }}</p>
     <div class="d-flex flex-wrap gap-2 mt-4">
-      <a class="btn btn-oro btn-lg" href="{{ "/sostienici/" | relURL }}">Dona il tuo 5x1000</a>
-      <a class="btn btn-contorno btn-lg" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
+      <a class="btn btn-giallo btn-lg" href="{{ "/sostienici/" | relURL }}">Dona il tuo 5x1000</a>
+      <a class="btn btn-ciano btn-lg" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
     </div>
   </div>
 </section>
 
-<section class="container py-5">
-  <h2 class="mb-4">Cosa facciamo</h2>
-  <div class="row g-4">
-    {{ range (site.GetPage "/servizi").Pages }}
-    <div class="col-md-4">
-      <div class="card-servizio p-4">
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | truncate 140 }}</p>
-        <a href="{{ .RelPermalink }}">Scopri di più →</a>
+<section class="sezione-ciano py-5">
+  <div class="container">
+    <h2 class="mb-4">Cosa facciamo</h2>
+    <div class="row g-4">
+      {{ range (site.GetPage "/servizi").Pages }}
+      <div class="col-md-4">
+        <div class="card-servizio p-4">
+          <span class="chip" aria-hidden="true">↗</span>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | plainify | truncate 140 }}</p>
+          <a href="{{ .RelPermalink }}" class="stretched-link">Scopri di più</a>
+        </div>
       </div>
+      {{ end }}
     </div>
-    {{ end }}
   </div>
 </section>
 
-<section class="container my-4">
+<section class="container my-5">
   <div class="fascia-5x1000 rounded p-4 p-md-5">
     <div class="row align-items-center g-3">
       <div class="col-md-8">
-        <h2 class="text-white mb-2">Il tuo 5x1000 resta ad Ariccia</h2>
+        <h2 class="mb-2">Il tuo <span class="evidenzia">5x1000</span> resta ad Ariccia</h2>
         <p class="mb-0">Una firma nella dichiarazione dei redditi, nessun costo per te: i fondi sostengono i servizi alla persona sul nostro territorio.</p>
       </div>
       <div class="col-md-4 text-md-end">
-        <div class="occhiello hero">C.F.</div>
+        <div class="occhiello-cf">Codice fiscale</div>
         <div class="cf">{{ site.Params.codiceFiscale }}</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="container py-5">
+<section class="container pb-5">
   <div class="d-flex justify-content-between align-items-baseline mb-3">
     <h2 class="mb-0">Ultime notizie</h2>
     <a href="{{ "/news/" | relURL }}">Tutte le news →</a>

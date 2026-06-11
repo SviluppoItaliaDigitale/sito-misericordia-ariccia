@@ -1,6 +1,7 @@
 /* ============================================================
    Misericordia di Ariccia ODV — foglio di stile del sito
-   Brand: navy #07193F · titoli Jost · corpo Inter · solenne Playfair
+   Riferimenti: sito attuale (testata ciano + triangolo giallo)
+   e misericordie.it (titoli serif, pillole gialle, fasce ciano)
    ============================================================ */
 
 /* ---- Font auto-ospitati (GDPR: nessuna chiamata a server terzi) ---- */
@@ -25,174 +26,234 @@
 
 /* ---- Variabili di brand ---- */
 :root {
-  --mise-navy: #07193f;
-  --mise-navy-2: #0d2a5e;       /* navy più chiaro per superfici */
-  --mise-oro: #c8a24b;          /* accento caldo: 5x1000, dettagli */
-  --mise-oro-chiaro: #e3c98a;
-  --mise-carta: #f7f5f0;        /* fondo caldo, non bianco ottico */
-  --mise-inchiostro: #1a2233;
+  --mise-giallo: #f2e433;        /* giallo del logo triangolare */
+  --mise-giallo-soft: #fdf9d4;
+  --mise-ciano: #00a5dc;         /* ciano Misericordie (testata sito attuale) */
+  --mise-ciano-scuro: #0084b8;   /* ciano profondo per gradienti */
+  --mise-ciano-testo: #006d96;   /* ciano per testo/link su bianco (AA) */
+  --mise-ciano-velo: #eaf6fb;    /* velo ciano per le sezioni */
+  --mise-carta: #f6f8f9;         /* fondo carta */
+  --mise-navy: #1b223f;          /* navy del logo: testi e footer */
+  --mise-inchiostro: #232a40;
   --bs-body-font-family: "Inter", system-ui, sans-serif;
 }
 
 body {
   font-family: "Inter", system-ui, sans-serif;
   color: var(--mise-inchiostro);
-  background: var(--mise-carta);
+  background: #ffffff;
 }
-h1, h2, h3, h4, h5, .navbar-brand, .btn {
+
+/* Titoli grandi in serif (stile Confederazione), UI in Jost */
+h1, h2 { font-family: "Playfair Display", serif; font-weight: 600; color: var(--mise-navy); }
+h3, h4, h5, .navbar-brand, .btn, .occhiello {
   font-family: "Jost", sans-serif;
 }
-h1, h2 { font-weight: 700; letter-spacing: -0.01em; color: var(--mise-navy); }
-.solenne { font-family: "Playfair Display", serif; font-weight: 600; }
 
-a { color: var(--mise-navy-2); }
+a { color: var(--mise-ciano-testo); }
 a:hover { color: var(--mise-navy); }
 
-/* ---- Barra di navigazione ---- */
+/* ---- Barra di navigazione: CIANO come il sito storico ---- */
 .navbar-mise {
-  background: var(--mise-navy);
-  padding-block: .65rem;
+  background: linear-gradient(180deg, var(--mise-ciano), var(--mise-ciano-scuro));
+  padding-block: .6rem;
 }
 .navbar-mise .navbar-brand {
   color: #fff;
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.18rem;
+  letter-spacing: .01em;
   display: flex; align-items: center; gap: .6rem;
 }
-.navbar-mise .brand-mark {
-  width: 2.1rem; height: 2.1rem; flex: none;
-}
+.navbar-mise .brand-mark { width: 2.3rem; height: 2.3rem; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
 .navbar-mise .nav-link {
-  color: rgba(255,255,255,.85);
+  color: #fff;
   font-family: "Jost", sans-serif;
   font-weight: 500;
-  letter-spacing: .01em;
+  border-bottom: 2px solid transparent;
 }
-.navbar-mise .nav-link:hover,
-.navbar-mise .nav-link.active { color: var(--mise-oro-chiaro); }
-.navbar-mise .navbar-toggler { border-color: rgba(255,255,255,.4); }
+.navbar-mise .nav-link:hover { color: var(--mise-giallo); }
+.navbar-mise .nav-link.active { border-bottom-color: var(--mise-giallo); font-weight: 600; }
+.navbar-mise .navbar-toggler { border-color: rgba(255,255,255,.55); }
 .navbar-mise .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ---- Hero ---- */
+/* ---- Hero: fondo carta, titolone serif, triangolo in filigrana ---- */
 .hero {
   background:
-    radial-gradient(ellipse 80% 60% at 85% -10%, rgba(200,162,75,.18), transparent 60%),
-    linear-gradient(160deg, var(--mise-navy) 55%, var(--mise-navy-2) 100%);
-  color: #fff;
-  padding: 5rem 0 4.5rem;
+    radial-gradient(ellipse 55% 75% at 108% 15%, rgba(0,165,220,.14), transparent 65%),
+    linear-gradient(180deg, var(--mise-carta), #ffffff 80%);
+  padding: 4.5rem 0 4rem;
   position: relative;
   overflow: hidden;
 }
-.hero::after {              /* filo d'oro alla base */
+.hero::before {                 /* triangolo Misericordie in filigrana */
   content: "";
-  position: absolute; inset: auto 0 0 0; height: 4px;
-  background: linear-gradient(90deg, var(--mise-oro), transparent 70%);
+  position: absolute; right: -3rem; bottom: -5rem;
+  width: 24rem; height: 24rem;
+  background: linear-gradient(160deg, var(--mise-giallo) 0%, #f9f28e 100%);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  opacity: .5;
 }
-.hero .occhiello {
-  font-family: "Jost", sans-serif;
+.hero .container { position: relative; z-index: 1; }
+.occhiello {
   text-transform: uppercase;
   letter-spacing: .22em;
   font-size: .8rem;
-  color: var(--mise-oro-chiaro);
+  font-weight: 600;
+  color: var(--mise-ciano-testo);
 }
 .hero h1 {
-  color: #fff;
-  font-size: clamp(2.1rem, 4.5vw, 3.4rem);
-  max-width: 18ch;
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  max-width: 20ch;
+  line-height: 1.12;
 }
-.hero p.lead { color: rgba(255,255,255,.88); max-width: 52ch; }
+.hero h1 .evidenzia {
+  background: linear-gradient(transparent 60%, var(--mise-giallo) 60%);
+  padding-inline: .08em;
+}
+.hero p.lead { color: var(--mise-inchiostro); max-width: 52ch; }
 
-/* ---- Pulsanti ---- */
-.btn-oro {
-  background: var(--mise-oro);
-  border: none;
-  color: var(--mise-navy);
+/* ---- Pulsanti a pillola (stile Confederazione) ---- */
+.btn-giallo, .btn-ciano {
+  border-radius: 50rem;
+  padding: .65rem 1.5rem;
   font-weight: 600;
+  border: none;
 }
-.btn-oro:hover { background: var(--mise-oro-chiaro); color: var(--mise-navy); }
-.btn-contorno {
-  border: 1.5px solid rgba(255,255,255,.7);
+.btn-giallo {
+  background: var(--mise-giallo);
+  color: var(--mise-navy);
+  box-shadow: 0 3px 10px rgba(180,160,20,.30);
+}
+.btn-giallo:hover { background: #f8ee68; color: var(--mise-navy); transform: translateY(-1px); }
+.btn-giallo::after, .btn-ciano::after { content: " ↗"; font-weight: 700; }
+.btn-ciano {
+  background: var(--mise-ciano-scuro);
   color: #fff;
 }
-.btn-contorno:hover { background: rgba(255,255,255,.12); color: #fff; border-color: #fff; }
+.btn-ciano:hover { background: var(--mise-ciano-testo); color: #fff; transform: translateY(-1px); }
 
-/* ---- Card servizi ---- */
+/* ---- Card servizi: angoli morbidi, chip freccia navy ---- */
 .card-servizio {
   border: none;
-  border-top: 3px solid var(--mise-navy);
-  border-radius: .4rem;
+  border-radius: 1rem;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(7,25,63,.08);
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  box-shadow: 0 2px 10px rgba(27,34,63,.08);
+  transition: transform .18s ease, box-shadow .18s ease;
   height: 100%;
+  position: relative;
 }
 .card-servizio:hover {
   transform: translateY(-4px);
-  border-top-color: var(--mise-oro);
-  box-shadow: 0 10px 24px rgba(7,25,63,.14);
+  box-shadow: 0 12px 28px rgba(0,132,184,.20);
 }
-.card-servizio h3 { font-size: 1.2rem; }
+.card-servizio h3 { font-size: 1.2rem; font-weight: 600; padding-right: 2.6rem; }
 .card-servizio a { text-decoration: none; font-weight: 600; }
+.card-servizio .chip {
+  position: absolute; top: 1.1rem; right: 1.1rem;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  background: var(--mise-navy); color: var(--mise-giallo);
+  display: grid; place-items: center; font-weight: 700;
+  transition: background .18s ease;
+}
+.card-servizio:hover .chip { background: var(--mise-ciano-scuro); color: #fff; }
 
-/* ---- Fascia 5x1000 ---- */
+/* ---- Sezione su velo ciano ---- */
+.sezione-ciano { background: var(--mise-ciano-velo); }
+
+/* ---- Fascia 5x1000: ciano sfumato, "5x1000" evidenziato giallo ---- */
 .fascia-5x1000 {
-  background: var(--mise-navy);
+  background: linear-gradient(120deg, var(--mise-ciano) 0%, var(--mise-ciano-scuro) 100%);
   color: #fff;
-  border-left: 6px solid var(--mise-oro);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.fascia-5x1000::after {
+  content: "";
+  position: absolute; right: -2rem; top: -3rem;
+  width: 12rem; height: 12rem;
+  background: rgba(255,255,255,.10);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform: rotate(14deg);
+}
+.fascia-5x1000 h2 { color: #fff; }
+.fascia-5x1000 h2 .evidenzia {
+  background: var(--mise-giallo);
+  color: var(--mise-navy);
+  padding: 0 .25em;
+  border-radius: .15em;
+}
+.fascia-5x1000 .occhiello-cf {
+  font-family: "Jost", sans-serif;
+  text-transform: uppercase; letter-spacing: .22em; font-size: .75rem;
+  font-weight: 600; color: var(--mise-giallo);
 }
 .fascia-5x1000 .cf {
   font-family: "Jost", sans-serif;
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 700;
   letter-spacing: .12em;
-  color: var(--mise-oro-chiaro);
+  color: #fff;
 }
 
-/* ---- Contenuti interni ---- */
+/* ---- Testata pagine interne: fascia ciano sfumata ---- */
 .pagina-testata {
-  background: var(--mise-navy);
+  background: linear-gradient(120deg, var(--mise-ciano) 0%, var(--mise-ciano-scuro) 85%);
   color: #fff;
   padding: 2.8rem 0 2.4rem;
-  border-bottom: 4px solid var(--mise-oro);
+  border-bottom: 5px solid var(--mise-giallo);
 }
 .pagina-testata h1 { color: #fff; margin: 0; }
-.pagina-testata .occhiello {
-  font-family: "Jost", sans-serif;
-  text-transform: uppercase; letter-spacing: .22em; font-size: .75rem;
-  color: var(--mise-oro-chiaro);
-}
+.pagina-testata .occhiello { color: var(--mise-giallo); }
+.pagina-testata .data-news { color: #eaf6fb; }
+
 .contenuto { max-width: 46rem; }
-.contenuto h2 { margin-top: 2rem; font-size: 1.5rem; }
-.contenuto img { max-width: 100%; height: auto; border-radius: .3rem; }
+.contenuto h2 {
+  margin-top: 2rem; font-size: 1.55rem;
+  padding-left: .6rem; border-left: 4px solid var(--mise-giallo);
+}
+.contenuto h1 {                /* il CF gigante in /sostienici/ */
+  font-family: "Jost", sans-serif;
+  color: var(--mise-navy);
+  background: var(--mise-giallo);
+  border-radius: .5rem;
+  padding: .5rem 1.2rem;
+  letter-spacing: .1em;
+  display: inline-block;
+  box-shadow: 0 3px 10px rgba(180,160,20,.3);
+}
+.contenuto img { max-width: 100%; height: auto; border-radius: .5rem; }
 
 /* ---- Lista news ---- */
-.news-item { border-bottom: 1px solid rgba(7,25,63,.12); padding-block: 1.2rem; }
+.news-item { border-bottom: 1px solid rgba(0,165,220,.30); padding-block: 1.2rem; }
 .news-item .data {
-  font-family: "Jost", sans-serif; font-weight: 500;
-  color: var(--mise-oro); text-transform: uppercase;
+  font-family: "Jost", sans-serif; font-weight: 600;
+  color: var(--mise-ciano-testo); text-transform: uppercase;
   font-size: .8rem; letter-spacing: .08em;
 }
-.news-item h2 { font-size: 1.25rem; margin: .15rem 0 .3rem; }
+.news-item h2 { font-size: 1.3rem; margin: .15rem 0 .3rem; }
 .news-item a { text-decoration: none; }
 
-/* ---- Piè di pagina ---- */
+/* ---- Piè di pagina: navy con accenti giallo/ciano ---- */
 .footer-mise {
   background: var(--mise-navy);
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.88);
   padding: 3rem 0 2rem;
   margin-top: 4rem;
+  border-top: 6px solid var(--mise-ciano);
 }
-.footer-mise a { color: var(--mise-oro-chiaro); text-decoration: none; }
+.footer-mise a { color: #7fd6f3; text-decoration: none; }
 .footer-mise a:hover { text-decoration: underline; color: #fff; }
 .footer-mise h2 {
-  color: #fff; font-size: 1rem; text-transform: uppercase;
+  color: var(--mise-giallo); font-size: 1rem; text-transform: uppercase;
   letter-spacing: .15em; font-family: "Jost", sans-serif; font-weight: 600;
 }
 .footer-mise .motto {
   font-family: "Playfair Display", serif;
-  color: var(--mise-oro-chiaro);
+  color: var(--mise-giallo);
   font-size: 1.25rem;
 }
 .footer-mise .legale { font-size: .85rem; color: rgba(255,255,255,.6); }
@@ -200,11 +261,11 @@ a:hover { color: var(--mise-navy); }
 /* ---- Accessibilità ---- */
 .skip-link {
   position: absolute; left: -9999px; top: 0;
-  background: var(--mise-oro); color: var(--mise-navy);
+  background: var(--mise-giallo); color: var(--mise-navy);
   padding: .6rem 1rem; z-index: 2000; font-weight: 600;
 }
 .skip-link:focus { left: 0; }
-:focus-visible { outline: 3px solid var(--mise-oro); outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--mise-navy); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-  .card-servizio { transition: none; }
+  .card-servizio, .btn-giallo, .btn-ciano { transition: none; }
 }

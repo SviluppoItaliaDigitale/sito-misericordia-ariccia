@@ -3,7 +3,7 @@
   <div class="container">
     {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1">{{ .Title }}</p>{{ end }}{{ end }}
     <h1>{{ .Title }}</h1>
-    {{ if eq .Section "news" }}<p class="mt-2 mb-0" style="color:var(--mise-oro-chiaro)">{{ .Date.Format "2 January 2006" }}</p>{{ end }}
+    {{ if eq .Section "news" }}<p class="data-news mt-2 mb-0">{{ .Date.Format "2 January 2006" }}</p>{{ end }}
   </div>
 </div>
 <div class="container py-5">
