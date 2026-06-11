@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-mise" aria-label="Navigazione principale">
+  <div class="container">
+    <a class="navbar-brand" href="{{ "/" | relURL }}">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <path d="M20 3 37 34 H3 Z" fill="none" stroke="#c8a24b" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 14 v12 M14 20 h12" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>Misericordia di Ariccia</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipale"
+            aria-controls="menuPrincipale" aria-expanded="false" aria-label="Apri il menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuPrincipale">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        {{ $pagina := . }}
+        {{ range site.Menus.main }}
+        <li class="nav-item">
+          <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a class="btn btn-oro btn-sm px-3" href="{{ "/sostienici/" | relURL }}">Sostienici</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

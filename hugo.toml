@@ -1,0 +1,49 @@
+baseURL = "https://www.misericordia-ariccia.it/"
+languageCode = "it-IT"
+title = "Misericordia di Ariccia ODV"
+# URL relativi: il sito funziona identico in /anteprima/ e nella radice
+relativeURLs = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  descrizione = "Confraternita di Misericordia di Ariccia ODV — volontariato, servizi alla persona, telesoccorso, formazione e Servizio Civile Universale ai Castelli Romani dal 1994."
+  telefono = "348 4068657"
+  email = "sede@misericordia-ariccia.it"
+  pec = "misericordia-ariccia@pec.misericordia-ariccia.it"
+  indirizzo = "Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)"
+  codiceFiscale = "90031910582"
+  facebook = "https://www.facebook.com/MiseAriccia"
+  instagram = "https://www.instagram.com/confraternitamisericordia"
+
+[menus]
+  [[menus.main]]
+    name = "Chi siamo"
+    pageRef = "/chi-siamo"
+    weight = 10
+  [[menus.main]]
+    name = "Servizi"
+    pageRef = "/servizi"
+    weight = 20
+  [[menus.main]]
+    name = "Servizio Civile"
+    pageRef = "/servizio-civile"
+    weight = 30
+  [[menus.main]]
+    name = "Progetti"
+    pageRef = "/progetti"
+    weight = 40
+  [[menus.main]]
+    name = "News"
+    pageRef = "/news"
+    weight = 50
+  [[menus.main]]
+    name = "Trasparenza"
+    pageRef = "/trasparenza"
+    weight = 60
+  [[menus.main]]
+    name = "Contatti"
+    pageRef = "/contatti"
+    weight = 70
+
+[markup.goldmark.renderer]
+  unsafe = true

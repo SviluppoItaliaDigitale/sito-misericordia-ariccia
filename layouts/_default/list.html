@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="contenuto mb-4">{{ .Content }}</div>
+  {{ if eq .Section "news" }}
+    {{ range .Pages }}
+    <article class="news-item">
+      <p class="data mb-0">{{ .Date.Format "2 January 2006" }}</p>
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
+    </article>
+    {{ end }}
+  {{ else }}
+  <div class="row g-4">
+    {{ range .Pages }}
+    <div class="col-md-4">
+      <div class="card-servizio p-4">
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | truncate 140 }}</p>
+        <a href="{{ .RelPermalink }}">Scopri di più →</a>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}

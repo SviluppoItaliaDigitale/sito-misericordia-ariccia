@@ -20,3 +20,6 @@ resources/_gen/
 .env.*
 *.key
 *credenziali*
+
+# Playwright (prove locali)
+.playwright-mcp/

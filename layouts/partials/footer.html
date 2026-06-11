@@ -1,0 +1,31 @@
+<footer class="footer-mise">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h2>Misericordia di Ariccia</h2>
+        <p class="mb-1">Confraternita di Misericordia di Ariccia ODV</p>
+        <p class="mb-1">{{ site.Params.indirizzo }}</p>
+        <p class="mb-1">Tel. <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ site.Params.telefono }}</a></p>
+        <p class="mb-1"><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+        <p class="mb-0">PEC: <a href="mailto:{{ site.Params.pec }}">{{ site.Params.pec }}</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Collegamenti</h2>
+        <ul class="list-unstyled">
+          {{ range site.Menus.main }}
+          <li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+          <li class="mb-1"><a href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a></li>
+        </ul>
+        <p class="mb-1"><a href="{{ site.Params.facebook }}" rel="noopener">Facebook</a> · <a href="{{ site.Params.instagram }}" rel="noopener">Instagram</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>5x1000</h2>
+        <p>Sostieni la Misericordia con la tua firma: codice fiscale <strong>{{ site.Params.codiceFiscale }}</strong>.</p>
+        <p class="motto">«Che Dio te ne renda merito»</p>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994.</p>
+  </div>
+</footer>
