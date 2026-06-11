@@ -1,4 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-mise" aria-label="Navigazione principale">
+<!-- Barra annunci (stile Confederazione): messaggi a rotazione -->
+<div class="barra-annunci" aria-label="Annunci in evidenza">
+  <div id="annunci" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner container text-center">
+      <div class="carousel-item active">
+        <span aria-hidden="true">➜</span> <strong>Sabato 13 giugno, ore 17</strong>: inaugurazione del nuovo veicolo a Piazza di Corte — <a href="{{ "/news/inaugurazione-veicolo-trasporto-fragilita/" | relURL }}">siete tutti invitati</a>
+      </div>
+      <div class="carousel-item">
+        <span aria-hidden="true">➜</span> Servizio Civile 2025/26: <strong>selezioni in corso</strong> — <a href="{{ "/servizio-civile/" | relURL }}">scopri il progetto</a>
+      </div>
+      <div class="carousel-item">
+        <span aria-hidden="true">➜</span> Dona il tuo <strong>5x1000</strong>: C.F. {{ site.Params.codiceFiscale }} — <a href="{{ "/sostienici/" | relURL }}">come fare</a>
+      </div>
+      <div class="carousel-item">
+        <span aria-hidden="true">➜</span> Serve un trasporto o un aiuto? <a href="tel:+39{{ replace site.Params.telefono " " "" }}"><strong>{{ site.Params.telefono }}</strong></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-mise sticky-top" aria-label="Navigazione principale">
   <div class="container">
     <a class="navbar-brand" href="{{ "/" | relURL }}">
       <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
@@ -7,11 +27,13 @@
       </svg>
       <span>Misericordia di Ariccia</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipale"
-            aria-controls="menuPrincipale" aria-expanded="false" aria-label="Apri il menu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile"
+            aria-controls="menuMobile" aria-label="Apri il menu">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="menuPrincipale">
+
+    <!-- Menu desktop -->
+    <div class="collapse navbar-collapse d-none d-lg-block">
       <ul class="navbar-nav ms-auto align-items-lg-center">
         {{ $pagina := . }}
         {{ range site.Menus.main }}
@@ -19,10 +41,34 @@
           <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
         </li>
         {{ end }}
-        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+        <li class="nav-item ms-lg-2">
           <a class="btn btn-giallo btn-sm px-3" href="{{ "/sostienici/" | relURL }}">Sostienici</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Menu mobile: pannello offcanvas -->
+<div class="offcanvas offcanvas-end offcanvas-mise" tabindex="-1" id="menuMobile" aria-labelledby="menuMobileTitolo">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="menuMobileTitolo">Misericordia di Ariccia</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Chiudi il menu"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      {{ $pagina := . }}
+      <li class="nav-item"><a class="nav-link{{ if $pagina.IsHome }} active{{ end }}" href="{{ "/" | relURL }}">Home</a></li>
+      {{ range site.Menus.main }}
+      <li class="nav-item">
+        <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    <a class="btn btn-giallo w-100 mt-3" href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a>
+    <div class="mt-4 piccoli-contatti">
+      <p class="mb-1"><a href="tel:+39{{ replace site.Params.telefono " " "" }}">📞 {{ site.Params.telefono }}</a></p>
+      <p class="mb-0"><a href="mailto:{{ site.Params.email }}">✉️ {{ site.Params.email }}</a></p>
+    </div>
+  </div>
+</div>

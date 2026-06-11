@@ -1,3 +1,14 @@
+<!-- Fascia di appartenenza alla rete -->
+<section class="fascia-rete">
+  <div class="container d-flex flex-wrap align-items-center justify-content-center gap-3 py-3">
+    <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+      <path d="M20 3 37 34 H3 Z" fill="#f2e433" stroke="#1b223f" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M20 15 v12 M14 21 h12" stroke="#00a5dc" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>
+    <p class="mb-0">Aderiamo alla <a href="https://www.misericordie.it/" rel="noopener"><strong>Confederazione Nazionale delle Misericordie d'Italia</strong></a> — al fianco del prossimo dal 1244.</p>
+  </div>
+</section>
+
 <footer class="footer-mise">
   <div class="container">
     <div class="row g-4">
@@ -17,7 +28,10 @@
           {{ end }}
           <li class="mb-1"><a href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a></li>
         </ul>
-        <p class="mb-1"><a href="{{ site.Params.facebook }}" rel="noopener">Facebook</a> · <a href="{{ site.Params.instagram }}" rel="noopener">Instagram</a></p>
+        <p class="mb-1">
+          <a href="{{ site.Params.facebook }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="Seguici su Facebook">Facebook</a> ·
+          <a href="{{ site.Params.instagram }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="Seguici su Instagram">Instagram</a>
+        </p>
       </div>
       <div class="col-md-4">
         <h2>5x1000</h2>
@@ -26,6 +40,9 @@
       </div>
     </div>
     <hr class="border-secondary my-4">
-    <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994.</p>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994.</p>
+      <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="Niente tracciamenti, niente banner: navighi libero.">🍃 Sito senza cookie e senza tracker</span>
+    </div>
   </div>
 </footer>

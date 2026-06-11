@@ -16,6 +16,24 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+
+  <!-- Torna su -->
+  <button id="torna-su" type="button" aria-label="Torna all'inizio della pagina">↑</button>
+
+  <!-- Lightbox per le immagini dei contenuti -->
+  <div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-transparent border-0 shadow-none">
+        <div class="modal-body p-0 text-center">
+          <img src="" alt="" class="img-fluid rounded">
+          <p class="modal-didascalia text-white mt-2 mb-0"></p>
+        </div>
+        <button type="button" class="btn-close btn-close-white lightbox-chiudi" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+    </div>
+  </div>
+
   <script src="{{ "vendor/bootstrap/bootstrap.bundle.min.js" | relURL }}"></script>
+  <script src="{{ "js/sito.js" | relURL }}"></script>
 </body>
 </html>

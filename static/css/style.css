@@ -269,3 +269,119 @@ a:hover { color: var(--mise-navy); }
 @media (prefers-reduced-motion: reduce) {
   .card-servizio, .btn-giallo, .btn-ciano { transition: none; }
 }
+
+/* ============================================================
+   Componenti aggiunti — barra annunci, numeri, galleria,
+   offcanvas, emergenza, rete, torna-su, briciole, lightbox
+   ============================================================ */
+
+/* ---- Barra annunci a rotazione ---- */
+.barra-annunci {
+  background: var(--mise-navy);
+  color: #fff;
+  font-size: .9rem;
+  font-family: "Jost", sans-serif;
+}
+.barra-annunci .carousel-item { padding: .45rem 1rem; }
+.barra-annunci a { color: var(--mise-giallo); text-decoration: none; }
+.barra-annunci a:hover { text-decoration: underline; color: var(--mise-giallo); }
+.barra-annunci span[aria-hidden] { color: var(--mise-giallo); margin-right: .3rem; }
+
+/* ---- Navbar sticky: ombra in scorrimento ---- */
+.navbar-mise { transition: box-shadow .25s ease; }
+.navbar-mise.scrolled { box-shadow: 0 4px 18px rgba(0,80,120,.35); }
+
+/* ---- Offcanvas mobile ---- */
+.offcanvas-mise { background: var(--mise-navy); color: #fff; }
+.offcanvas-mise .offcanvas-title { font-family: "Jost", sans-serif; color: var(--mise-giallo); }
+.offcanvas-mise .nav-link { color: #fff; font-family: "Jost", sans-serif; font-size: 1.15rem; padding-block: .55rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+.offcanvas-mise .nav-link.active { color: var(--mise-giallo); }
+.offcanvas-mise .piccoli-contatti a { color: #7fd6f3; text-decoration: none; }
+
+/* ---- Fascia dei numeri ---- */
+.fascia-numeri {
+  background: linear-gradient(120deg, var(--mise-ciano) 0%, var(--mise-ciano-scuro) 100%);
+  color: #fff;
+  padding: 2.2rem 0;
+  border-bottom: 4px solid var(--mise-giallo);
+}
+.fascia-numeri .numero {
+  font-family: "Jost", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+.fascia-numeri .etichetta {
+  font-family: "Jost", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .85rem;
+  opacity: .95;
+}
+
+/* ---- Avviso emergenze ---- */
+.avviso-emergenza {
+  background: #fff;
+  border: 2px solid #d23b3b;
+  border-left-width: 10px;
+  color: var(--mise-inchiostro);
+}
+.avviso-emergenza a { color: #b22222; font-weight: 700; }
+
+/* ---- Galleria (carosello) ---- */
+.carousel-galleria .carousel-item img { aspect-ratio: 16 / 7; object-fit: cover; }
+.carousel-galleria .carousel-caption {
+  background: rgba(11,30,60,.65);
+  border-radius: .5rem;
+  padding: .4rem 1rem;
+  bottom: 1rem;
+  font-family: "Jost", sans-serif;
+}
+.carousel-galleria .carousel-caption p { margin: 0; }
+.carousel-galleria .carousel-indicators button { background-color: var(--mise-giallo); }
+
+/* ---- Fascia rete Confederazione ---- */
+.fascia-rete { background: var(--mise-giallo); color: var(--mise-navy); font-family: "Jost", sans-serif; }
+.fascia-rete a { color: var(--mise-navy); }
+
+/* ---- Badge senza cookie ---- */
+.badge-no-cookie {
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #cfe9d6;
+  border-radius: 50rem;
+  padding: .35rem .9rem;
+  font-size: .8rem;
+  font-family: "Jost", sans-serif;
+  cursor: help;
+}
+
+/* ---- Torna su ---- */
+#torna-su {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 1050;
+  width: 2.9rem; height: 2.9rem; border-radius: 50%;
+  border: none; background: var(--mise-ciano-scuro); color: #fff;
+  font-size: 1.3rem; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,80,120,.4);
+  opacity: 0; pointer-events: none; transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+#torna-su.mostra { opacity: 1; pointer-events: auto; transform: none; }
+#torna-su:hover { background: var(--mise-navy); }
+
+/* ---- Briciole di pane ---- */
+.briciole { font-family: "Jost", sans-serif; font-size: .88rem; --bs-breadcrumb-divider: "›"; margin-bottom: 0; }
+.briciole a { text-decoration: none; }
+.briciole .breadcrumb-item.active { color: var(--mise-ciano-testo); font-weight: 600; }
+
+/* ---- Lightbox ---- */
+#lightbox .lightbox-chiudi { position: absolute; top: -2.2rem; right: 0; }
+#lightbox .modal-content { position: relative; }
+
+/* ---- Apparizione allo scroll ---- */
+.rivela { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.rivela.visibile { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .rivela { opacity: 1; transform: none; transition: none; }
+  .navbar-mise, #torna-su { transition: none; }
+}
