@@ -1,20 +1,20 @@
 {{ define "main" }}
 <div class="pagina-testata">
   <div class="container">
-    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1">{{ .Title }}</p>{{ end }}{{ end }}
-    <h1>{{ .Title }}</h1>
-    {{ if eq .Section "news" }}<p class="data-news mt-2 mb-0">{{ .Date.Format "2 January 2006" }}</p>{{ end }}
+    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}
+    <h1 data-split="words">{{ .Title }}</h1>
+    {{ if eq .Section "news" }}<p class="data-news mt-2 mb-0" data-anim="fade-up" data-anim-delay="0.2">{{ .Date.Format "2 January 2006" }}</p>{{ end }}
   </div>
 </div>
 <div class="container py-5">
-  <nav aria-label="Percorso" class="mb-4">
+  <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
     <ol class="breadcrumb briciole">
       <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
       {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
       <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
     </ol>
   </nav>
-  <div class="contenuto">
+  <div class="contenuto" data-anim="fade-up" data-anim-delay="0.1">
     {{ .Content }}
   </div>
 </div>

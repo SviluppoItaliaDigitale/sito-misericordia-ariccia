@@ -7,7 +7,21 @@
   <meta name="description" content="{{ .Description | default site.Params.descrizione }}">
   <link rel="stylesheet" href="{{ "vendor/bootstrap/bootstrap.min.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/animazioni.css" | relURL }}">
   <link rel="icon" href="{{ "img/favicon.svg" | relURL }}" type="image/svg+xml">
+  <script>
+    /* Abilita le animazioni solo se il JS gira e l'utente non chiede moto ridotto.
+       Rete di sicurezza: se l'orchestratore non parte entro 4s, mostra tutto. */
+    (function () {
+      var r = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!r) {
+        document.documentElement.className += " anim-pronto";
+        setTimeout(function () {
+          if (!window.__animOK) document.documentElement.classList.remove("anim-pronto");
+        }, 4000);
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -35,5 +49,12 @@
 
   <script src="{{ "vendor/bootstrap/bootstrap.bundle.min.js" | relURL }}"></script>
   <script src="{{ "js/sito.js" | relURL }}"></script>
+
+  <!-- Motore animazioni: GSAP + ScrollTrigger + SplitText + particelle (auto-ospitati) -->
+  <script src="{{ "vendor/gsap/gsap.min.js" | relURL }}" defer></script>
+  <script src="{{ "vendor/gsap/ScrollTrigger.min.js" | relURL }}" defer></script>
+  <script src="{{ "vendor/gsap/SplitText.min.js" | relURL }}" defer></script>
+  <script src="{{ "vendor/particles/particles.min.js" | relURL }}" defer></script>
+  <script src="{{ "js/animazioni.js" | relURL }}" defer></script>
 </body>
 </html>

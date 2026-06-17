@@ -11,47 +11,7 @@
     }, { passive: true });
   }
 
-  /* Apparizione dolce degli elementi allo scroll */
-  var rivelabili = document.querySelectorAll(".rivela");
-  if ("IntersectionObserver" in window && !riduciMotion && rivelabili.length) {
-    var oss = new IntersectionObserver(function (voci) {
-      voci.forEach(function (v) {
-        if (v.isIntersecting) { v.target.classList.add("visibile"); oss.unobserve(v.target); }
-      });
-    }, { threshold: 0.15 });
-    rivelabili.forEach(function (el) { oss.observe(el); });
-  } else {
-    rivelabili.forEach(function (el) { el.classList.add("visibile"); });
-  }
-  /* Rete di sicurezza: dopo 2,5s tutto visibile comunque */
-  setTimeout(function () {
-    rivelabili.forEach(function (el) { el.classList.add("visibile"); });
-  }, 2500);
-
-  /* Contatori animati nella fascia dei numeri */
-  function animaContatore(el) {
-    var fine = parseInt(el.dataset.conta, 10) || 0;
-    if (riduciMotion) { el.textContent = fine; return; }
-    var durata = 1400, t0 = null;
-    function passo(t) {
-      if (!t0) t0 = t;
-      var quota = Math.min((t - t0) / durata, 1);
-      el.textContent = Math.floor(quota * quota * fine); /* ease-in */
-      if (quota < 1) requestAnimationFrame(passo); else el.textContent = fine;
-    }
-    requestAnimationFrame(passo);
-  }
-  var contatori = document.querySelectorAll("[data-conta]");
-  if ("IntersectionObserver" in window && contatori.length) {
-    var ossC = new IntersectionObserver(function (voci) {
-      voci.forEach(function (v) {
-        if (v.isIntersecting) { animaContatore(v.target); ossC.unobserve(v.target); }
-      });
-    }, { threshold: 0.6 });
-    contatori.forEach(function (el) { ossC.observe(el); });
-  } else {
-    contatori.forEach(animaContatore);
-  }
+  /* Le apparizioni allo scroll e i contatori sono gestiti da animazioni.js (GSAP). */
 
   /* Pulsante torna-su */
   var tornaSu = document.getElementById("torna-su");

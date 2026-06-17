@@ -1,33 +1,67 @@
 {{ define "main" }}
+<!-- ============ HERO: foto con Ken Burns + parallasse + particelle ============ -->
 <section class="hero">
+  <div class="hero-foto" data-parallax="0.16" aria-hidden="true"></div>
+  <div class="hero-velo" aria-hidden="true"></div>
+  <div id="hero-particelle" class="hero-particelle" aria-hidden="true"></div>
   <div class="container">
-    <p class="occhiello mb-2">Ariccia · Castelli Romani · dal 1994</p>
-    <h1>Vicini a chi ha bisogno, <span class="evidenzia">ogni giorno</span>.</h1>
-    <p class="lead mt-3">{{ site.Params.descrizione }}</p>
-    <div class="d-flex flex-wrap gap-2 mt-4">
+    <p class="occhiello mb-2" data-anim="fade-up">Ariccia · Castelli Romani · dal 1994</p>
+    <h1>
+      <span class="d-block" data-anim="fade-up" data-anim-delay="0.12">Vicini a chi ha bisogno,</span>
+      <span class="tratto-mano d-inline-block" data-anim="fade-up" data-anim-delay="0.34">
+        <span class="parole-rotanti">
+          <span>ogni giorno</span>
+          <span>in ogni emergenza</span>
+          <span>con il cuore</span>
+        </span>
+        <svg viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true">
+          <path pathLength="1" d="M5,15 C70,4 150,5 205,12 C275,20 330,21 395,9"></path>
+        </svg>
+      </span>
+    </h1>
+    <p class="lead mt-3" data-anim="fade-up" data-anim-delay="0.5">{{ site.Params.descrizione }}</p>
+    <div class="d-flex flex-wrap gap-2 mt-4" data-anim="fade-up" data-anim-delay="0.66">
       <a class="btn btn-giallo btn-lg" href="{{ "/sostienici/" | relURL }}">Dona il tuo 5x1000</a>
       <a class="btn btn-ciano btn-lg" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
     </div>
   </div>
 </section>
 
-<!-- Fascia dei numeri -->
+<!-- ============ Striscia scorrevole (marquee) ============ -->
+<div class="fascia-marquee marquee" aria-hidden="true">
+  <div class="marquee__pista">
+    <span class="marquee__voce">Soccorso e trasporti sanitari</span>
+    <span class="marquee__voce">Telesoccorso</span>
+    <span class="marquee__voce">Servizio Civile Universale</span>
+    <span class="marquee__voce">Formazione</span>
+    <span class="marquee__voce">Servizi alla persona</span>
+    <span class="marquee__voce">30+ anni al fianco della comunità</span>
+    <span class="marquee__voce">Soccorso e trasporti sanitari</span>
+    <span class="marquee__voce">Telesoccorso</span>
+    <span class="marquee__voce">Servizio Civile Universale</span>
+    <span class="marquee__voce">Formazione</span>
+    <span class="marquee__voce">Servizi alla persona</span>
+    <span class="marquee__voce">30+ anni al fianco della comunità</span>
+  </div>
+</div>
+
+<!-- ============ Fascia dei numeri: salgono mentre contano ============ -->
 <section class="fascia-numeri" aria-label="La Misericordia in numeri">
   <div class="container">
-    <div class="row text-center g-3">
-      <div class="col-6 col-md-3 rivela">
+    <div class="row text-center g-3" data-anim-group>
+      <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="30">0</span><span aria-hidden="true">+</span></div>
         <div class="etichetta">anni di servizio</div>
       </div>
-      <div class="col-6 col-md-3 rivela">
+      <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="2">0</span></div>
         <div class="etichetta">ambulanze di tipo A</div>
       </div>
-      <div class="col-6 col-md-3 rivela">
+      <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="25">0</span></div>
         <div class="etichetta">volontari in ospedale</div>
       </div>
-      <div class="col-6 col-md-3 rivela">
+      <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="2">0</span></div>
         <div class="etichetta">giovani SCU 2025/26</div>
       </div>
@@ -35,13 +69,14 @@
   </div>
 </section>
 
+<!-- ============ Cosa facciamo: titolo split + card con tilt ============ -->
 <section class="sezione-ciano py-5">
   <div class="container">
-    <h2 class="mb-4">Cosa facciamo</h2>
-    <div class="row g-4">
+    <h2 class="mb-4" data-split="words">Cosa facciamo</h2>
+    <div class="row g-4" data-anim-group>
       {{ range (site.GetPage "/servizi").Pages }}
-      <div class="col-md-6 col-lg-3 rivela">
-        <div class="card-servizio p-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card-servizio p-4 h-100" data-tilt>
           <span class="chip" aria-hidden="true">↗</span>
           <h3>{{ .Title }}</h3>
           <p>{{ .Summary | plainify | truncate 140 }}</p>
@@ -53,18 +88,23 @@
   </div>
 </section>
 
-<!-- Avviso emergenze -->
+<!-- onda di passaggio verso il bianco -->
+<div class="divisore" aria-hidden="true">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,28 C300,66 900,-6 1200,30 L1200,60 L0,60 Z" fill="#ffffff"></path></svg>
+</div>
+
+<!-- ============ Avviso emergenze ============ -->
 <section class="container my-4">
-  <div class="avviso-emergenza rounded p-3 px-4 rivela" role="note">
+  <div class="avviso-emergenza rounded p-3 px-4" role="note" data-anim="fade-up">
     <strong>In caso di emergenza chiama sempre il <a href="tel:112">112</a></strong> (Numero Unico di Emergenza).
     La Misericordia svolge trasporti programmati e servizi sociali: non sostituisce il soccorso pubblico.
   </div>
 </section>
 
-<!-- Galleria fotografica -->
+<!-- ============ Galleria fotografica ============ -->
 <section class="container py-4">
-  <h2 class="mb-4">La Misericordia in immagini</h2>
-  <div id="galleria" class="carousel slide carousel-galleria rivela" data-bs-ride="carousel" data-bs-interval="4500">
+  <h2 class="mb-4" data-split="words">La Misericordia in immagini</h2>
+  <div id="galleria" class="carousel slide carousel-galleria" data-bs-ride="carousel" data-bs-interval="4500" data-anim="zoom">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#galleria" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1"></button>
       <button type="button" data-bs-target="#galleria" data-bs-slide-to="1" aria-label="Foto 2"></button>
@@ -100,8 +140,9 @@
   </div>
 </section>
 
+<!-- ============ 5x1000: gradiente vivo ============ -->
 <section class="container my-5">
-  <div class="fascia-5x1000 rounded p-4 p-md-5 rivela">
+  <div class="fascia-5x1000 gradiente-vivo rounded p-4 p-md-5" data-anim="fade-up">
     <div class="row align-items-center g-3">
       <div class="col-md-8">
         <h2 class="mb-2">Il tuo <span class="evidenzia">5x1000</span> resta ad Ariccia</h2>
@@ -115,20 +156,23 @@
   </div>
 </section>
 
+<!-- ============ Ultime notizie ============ -->
 <section class="container pb-5">
   <div class="d-flex justify-content-between align-items-baseline mb-3">
-    <h2 class="mb-0">Ultime notizie</h2>
-    <a href="{{ "/news/" | relURL }}">Tutte le news →</a>
+    <h2 class="mb-0" data-split="words">Ultime notizie</h2>
+    <a href="{{ "/news/" | relURL }}" data-anim="fade-left">Tutte le news →</a>
   </div>
   {{ $news := (site.GetPage "/news").Pages | first 3 }}
   {{ if $news }}
-    {{ range $news }}
-    <article class="news-item rivela">
-      <p class="data mb-0">{{ .Date.Format "2 January 2006" }}</p>
-      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-      <p class="mb-0">{{ .Summary | plainify | truncate 160 }}</p>
-    </article>
-    {{ end }}
+    <div data-anim-group>
+      {{ range $news }}
+      <article class="news-item">
+        <p class="data mb-0">{{ .Date.Format "2 January 2006" }}</p>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="mb-0">{{ .Summary | plainify | truncate 160 }}</p>
+      </article>
+      {{ end }}
+    </div>
   {{ else }}
   <p>Le notizie arriveranno presto.</p>
   {{ end }}

@@ -1,0 +1,217 @@
+/* ============================================================
+   Misericordia di Ariccia ODV — Sistema di animazioni
+   Motore: GSAP + ScrollTrigger + SplitText (auto-ospitati).
+   Ispirato ai temi Salient e Hub, riscritto da zero nei colori
+   del brand (ciano/giallo/navy). Tutto rispetta prefers-reduced-motion.
+   ------------------------------------------------------------
+   Regola d'oro anti-FOUC: gli elementi sono nascosti SOLO quando
+   <html> ha la classe .anim-pronto, aggiunta dal JS prima del
+   rendering e MAI con reduced-motion o JS disattivato. Così se
+   qualcosa va storto, il contenuto resta sempre visibile.
+   ============================================================ */
+
+/* ---- Stato iniziale degli elementi che entrano allo scroll ---- */
+.anim-pronto [data-anim] { opacity: 0; will-change: transform, opacity; }
+.anim-pronto [data-anim="fade-up"]    { transform: translateY(36px); }
+.anim-pronto [data-anim="fade-down"]  { transform: translateY(-36px); }
+.anim-pronto [data-anim="fade-left"]  { transform: translateX(-44px); }
+.anim-pronto [data-anim="fade-right"] { transform: translateX(44px); }
+.anim-pronto [data-anim="zoom"]       { transform: scale(.88); }
+.anim-pronto [data-anim="blur"]       { filter: blur(12px); transform: translateY(20px); }
+.anim-pronto [data-anim="flip"]       { transform: perspective(900px) rotateX(-24deg); transform-origin: 50% 0; }
+
+/* Gruppi con stagger: i figli partono nascosti e salgono uno dopo l'altro */
+.anim-pronto [data-anim-group] > * {
+  opacity: 0; transform: translateY(30px); will-change: transform, opacity;
+}
+
+/* I titoli "split" li gestisce interamente il JS (SplitText) */
+.anim-pronto [data-split] { opacity: 0; }
+.riga-maschera { overflow: hidden; }
+
+/* ============================================================
+   HERO — foto con Ken Burns, particelle, velo che respira
+   ============================================================ */
+.hero { position: relative; overflow: hidden; }
+
+/* La foto vive in un suo livello: così la posso scalare (Ken Burns)
+   e farle fare parallasse senza muovere il testo. */
+.hero-foto {
+  position: absolute; inset: -8% -4%;
+  background: url("../img/hero-piazza.jpg") center 38% / cover no-repeat;
+  z-index: 0;
+  transform: scale(1.06);
+  animation: kenburns 26s ease-in-out infinite alternate;
+}
+.hero-velo {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(100deg, rgba(10,30,60,.90) 0%, rgba(0,90,130,.62) 55%, rgba(0,90,130,.28) 100%);
+}
+.hero-particelle { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.hero .container { position: relative; z-index: 3; }
+
+@keyframes kenburns {
+  from { transform: scale(1.04) translate(0, 0); }
+  to   { transform: scale(1.14) translate(-1.5%, -1.5%); }
+}
+
+/* La foto vera è ora nel livello .hero-foto: tolgo lo sfondo dal box .hero
+   (la regola del file principale viene così neutralizzata qui sotto in JS-on) */
+.hero { background: var(--mise-navy); }
+
+/* ---- Sottolineatura disegnata a mano sotto la parola chiave ---- */
+.tratto-mano { position: relative; display: inline-block; }
+.tratto-mano svg {
+  position: absolute; left: -4%; bottom: -.34em;
+  width: 108%; height: .5em; overflow: visible;
+}
+.tratto-mano svg path {
+  fill: none; stroke: var(--mise-giallo); stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;   /* path con pathLength="1" */
+}
+.tratto-mano.disegnato svg path {
+  animation: disegna-tratto 1.1s .35s ease forwards;
+}
+@keyframes disegna-tratto { to { stroke-dashoffset: 0; } }
+
+/* ============================================================
+   PAROLE CHE RUOTANO (rotating words)
+   ============================================================ */
+.parole-rotanti {
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  padding-bottom: .08em;
+}
+.parole-rotanti > span {
+  grid-area: 1 / 1;
+  color: var(--mise-giallo);
+}
+
+/* ============================================================
+   SFONDO A GRADIENTE VIVO (animated gradient)
+   ============================================================ */
+.gradiente-vivo {
+  background: linear-gradient(125deg,
+              var(--mise-ciano) 0%, var(--mise-ciano-scuro) 28%,
+              #0a6f9e 52%, var(--mise-ciano-scuro) 74%, var(--mise-ciano) 100%);
+  background-size: 320% 320%;
+  animation: gradiente-scorri 16s ease infinite;
+}
+@keyframes gradiente-scorri {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   IMMAGINI — zoom morbido all'hover, cornice che si svela
+   ============================================================ */
+.foto-zoom { overflow: hidden; border-radius: 1rem; position: relative; }
+.foto-zoom img { transition: transform .9s cubic-bezier(.16,.84,.34,1); display: block; width: 100%; }
+.foto-zoom:hover img { transform: scale(1.07); }
+.foto-zoom::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(11,30,60,.45));
+  opacity: 0; transition: opacity .5s ease;
+}
+.foto-zoom:hover::after { opacity: 1; }
+
+/* Tilt 3D leggero sulle card (gestito via JS con [data-tilt]) */
+[data-tilt] { transform-style: preserve-3d; transition: transform .25s ease; }
+
+/* ============================================================
+   PULSANTI — riflesso che scorre + testo che "scatta"
+   ============================================================ */
+.btn-giallo, .btn-ciano { position: relative; overflow: hidden; }
+.btn-giallo::before, .btn-ciano::before {
+  content: ""; position: absolute; top: 0; left: -120%;
+  width: 60%; height: 100%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-18deg);
+  transition: left .65s ease;
+}
+.btn-giallo:hover::before, .btn-ciano:hover::before { left: 130%; }
+
+/* ============================================================
+   MARQUEE — striscia di testo che scorre all'infinito
+   ============================================================ */
+.marquee {
+  overflow: hidden; white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__pista {
+  display: inline-flex; gap: 2.6rem; align-items: center;
+  will-change: transform;
+  animation: scorri-marquee 30s linear infinite;
+}
+.marquee:hover .marquee__pista { animation-play-state: paused; }
+.marquee__voce {
+  font-family: "Jost", sans-serif; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .12em;
+  display: inline-flex; align-items: center; gap: 2.6rem;
+}
+.marquee__voce::after {
+  content: "✦"; color: var(--mise-giallo); font-size: .8em;
+}
+.fascia-marquee {
+  background: var(--mise-navy); color: #fff;
+  padding-block: .85rem; font-size: .92rem;
+}
+@keyframes scorri-marquee { to { transform: translateX(-50%); } }
+
+/* ============================================================
+   DIVISORI A ONDA tra le sezioni (shape dividers)
+   ============================================================ */
+.divisore { position: relative; line-height: 0; }
+.divisore svg { display: block; width: 100%; height: 52px; }
+.divisore--alto svg { height: 78px; }
+
+/* ============================================================
+   FASCIA NUMERI — i numeri "salgono" mentre contano
+   ============================================================ */
+.fascia-numeri .numero { display: inline-block; }
+
+/* ============================================================
+   PROGRESS / barra che cresce (per le sezioni dati)
+   ============================================================ */
+.barra-cresce { height: 6px; border-radius: 50rem; background: rgba(0,0,0,.12); overflow: hidden; }
+.barra-cresce > span {
+  display: block; height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--mise-ciano), var(--mise-giallo));
+  border-radius: inherit;
+}
+
+/* ============================================================
+   NAVBAR — sottolineatura gialla che cresce all'hover
+   ============================================================ */
+.navbar-mise .nav-link { position: relative; }
+.navbar-mise .nav-link::after {
+  content: ""; position: absolute; left: .5rem; right: .5rem; bottom: 2px; height: 2px;
+  background: var(--mise-giallo); transform: scaleX(0); transform-origin: left;
+  transition: transform .3s cubic-bezier(.16,.84,.34,1);
+}
+.navbar-mise .nav-link:hover::after,
+.navbar-mise .nav-link.active::after { transform: scaleX(1); }
+
+/* ============================================================
+   TESTATE PAGINE INTERNE — la fascia ciano "respira"
+   ============================================================ */
+.pagina-testata {
+  background-size: 220% 220%;
+  animation: gradiente-scorri 20s ease infinite;
+}
+
+/* ============================================================
+   ACCESSIBILITÀ — niente moto per chi lo chiede
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-foto { animation: none; transform: none; inset: 0; }
+  .gradiente-vivo, .pagina-testata { animation: none; }
+  .marquee__pista { animation: none; }
+  .tratto-mano svg path { stroke-dashoffset: 0; animation: none; }
+  .foto-zoom img { transition: none; }
+  [data-anim], [data-split] { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
