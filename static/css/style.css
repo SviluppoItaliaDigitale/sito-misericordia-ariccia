@@ -409,6 +409,14 @@ a:hover { color: var(--mise-navy); }
 .tr-promo-box h2 { color: var(--mise-giallo); margin: 0 0 .3rem; }
 .tr-promo-box p { margin: 0; color: rgba(255,255,255,.92); }
 .tr-promo-azioni { display: flex; flex-wrap: wrap; gap: .6rem; }
+.tr-personale {
+  display: flex; align-items: center; gap: 1rem; margin: 1.3rem 0;
+  background: var(--mise-ciano-velo); border-left: 5px solid var(--mise-giallo);
+  border-radius: .8rem; padding: 1.1rem 1.3rem;
+}
+.tr-personale-icona { font-size: 2rem; line-height: 1; flex: none; }
+.tr-personale p { margin: 0; }
+.tr-personale strong { color: var(--mise-navy); }
 
 /* ---- Briciole di pane ---- */
 .briciole { font-family: "Jost", sans-serif; font-size: .88rem; --bs-breadcrumb-divider: "›"; margin-bottom: 0; }
