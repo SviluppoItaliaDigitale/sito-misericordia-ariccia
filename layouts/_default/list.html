@@ -10,7 +10,7 @@
     <div data-anim-group>
       {{ range .Pages }}
       <article class="news-item">
-        <p class="data mb-0">{{ .Date.Format "2 January 2006" }}</p>
+        <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
         <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
       </article>

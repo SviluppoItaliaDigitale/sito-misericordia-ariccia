@@ -1,5 +1,6 @@
 baseURL = "https://www.misericordia-ariccia.it/"
 languageCode = "it-IT"
+defaultContentLanguage = "it"
 title = "Misericordia di Ariccia ODV"
 # URL relativi: il sito funziona identico in /anteprima/ e nella radice
 relativeURLs = true

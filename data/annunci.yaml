@@ -1,0 +1,23 @@
+# Annunci della fascia scura in alto (a rotazione).
+# Campo "al" = ultimo giorno di validità (AAAA-MM-GG): dal giorno dopo l'annuncio
+# non viene più mostrato (gli annunci SCADUTI spariscono al successivo rebuild del sito).
+# Senza "al" l'annuncio è permanente.
+# Campi: testo (HTML ammesso) · link + linkTesto (facoltativi) · cf:true (aggiunge il C.F.) · tel:true (aggiunge il telefono)
+voci:
+  - testo: "Servizio Civile 2025/26: <strong>selezioni in corso</strong>"
+    link: "/servizio-civile/"
+    linkTesto: "scopri il progetto"
+    al: "2026-12-31"
+
+  - testo: "Dona il tuo <strong>5x1000</strong>:"
+    cf: true
+    link: "/sostienici/"
+    linkTesto: "come fare"
+
+  - testo: "Serve un trasporto o un aiuto?"
+    tel: true
+
+  - testo: "<strong>Sabato 13 giugno, ore 17</strong>: inaugurazione del nuovo veicolo a Piazza di Corte"
+    link: "/news/inaugurazione-veicolo-trasporto-fragilita/"
+    linkTesto: "siete tutti invitati"
+    al: "2026-06-13"

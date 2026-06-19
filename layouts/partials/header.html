@@ -1,22 +1,23 @@
-<!-- Barra annunci (stile Confederazione): messaggi a rotazione -->
+<!-- Barra annunci (stile Confederazione): messaggi a rotazione.
+     Le voci vengono da data/annunci.yaml; quelle SCADUTE (campo "al" passato) non si mostrano. -->
+{{ $oggi := now }}
+{{ $voci := slice }}
+{{ range site.Data.annunci.voci }}
+  {{ if or (not .al) (gt (time.AsTime .al) $oggi) }}{{ $voci = $voci | append . }}{{ end }}
+{{ end }}
+{{ if $voci }}
 <div class="barra-annunci" aria-label="Annunci in evidenza">
   <div id="annunci" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-inner container text-center">
-      <div class="carousel-item active">
-        <span aria-hidden="true">➜</span> <strong>Sabato 13 giugno, ore 17</strong>: inaugurazione del nuovo veicolo a Piazza di Corte — <a href="{{ "/news/inaugurazione-veicolo-trasporto-fragilita/" | relURL }}">siete tutti invitati</a>
+      {{ range $i, $v := $voci }}
+      <div class="carousel-item{{ if eq $i 0 }} active{{ end }}">
+        <span aria-hidden="true">➜</span> {{ $v.testo | safeHTML }}{{ if $v.cf }} C.F. {{ site.Params.codiceFiscale }}{{ end }}{{ if $v.tel }} <a href="tel:+39{{ replace site.Params.telefono " " "" }}"><strong>{{ site.Params.telefono }}</strong></a>{{ end }}{{ if $v.link }} — <a href="{{ $v.link | relURL }}">{{ $v.linkTesto }}</a>{{ end }}
       </div>
-      <div class="carousel-item">
-        <span aria-hidden="true">➜</span> Servizio Civile 2025/26: <strong>selezioni in corso</strong> — <a href="{{ "/servizio-civile/" | relURL }}">scopri il progetto</a>
-      </div>
-      <div class="carousel-item">
-        <span aria-hidden="true">➜</span> Dona il tuo <strong>5x1000</strong>: C.F. {{ site.Params.codiceFiscale }} — <a href="{{ "/sostienici/" | relURL }}">come fare</a>
-      </div>
-      <div class="carousel-item">
-        <span aria-hidden="true">➜</span> Serve un trasporto o un aiuto? <a href="tel:+39{{ replace site.Params.telefono " " "" }}"><strong>{{ site.Params.telefono }}</strong></a>
-      </div>
+      {{ end }}
     </div>
   </div>
 </div>
+{{ end }}
 
 <nav class="navbar navbar-expand-lg navbar-mise sticky-top" aria-label="Navigazione principale">
   <div class="container">
