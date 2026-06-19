@@ -847,3 +847,15 @@ a:hover { color: var(--mise-navy); }
 .messale { line-height: 1.85; margin-top: 1.2rem; }
 .messale font { color: var(--mise-ciano-testo); font-weight: 600; font-style: normal; }
 .lit-credit { margin-top: 1.2rem; font-size: .85rem; color: #8a98a6; }
+.lit-vaticannews { background: var(--mise-navy); color: #fff; border-radius: 1rem; padding: 1.4rem 1.5rem; margin: 1.4rem 0; box-shadow: 0 12px 30px rgba(27,34,63,.18); }
+.lit-vn-titolo { margin: 0 0 .8rem; font-family: "Jost", sans-serif; }
+.lit-vn-titolo strong { color: var(--mise-giallo); }
+.lit-vn-link { display: grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap: .6rem; }
+.lit-vn-link a {
+  display: flex; align-items: center; gap: .5rem; text-decoration: none;
+  font-family: "Jost", sans-serif; font-weight: 600; color: #fff;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: .6rem; padding: .55rem .9rem;
+}
+.lit-vn-link a:hover { background: var(--mise-giallo); color: var(--mise-navy); border-color: var(--mise-giallo); }
+.lit-letture-titolo { margin-top: 2rem; font-size: 1.4rem; color: var(--mise-navy); }
+@media (max-width: 575.98px) { .lit-vn-link { grid-template-columns: 1fr; } }

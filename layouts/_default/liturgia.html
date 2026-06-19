@@ -33,15 +33,24 @@
       </ol>
     </nav>
     <article class="contenuto" data-anim="fade-up">
-      <p class="lit-data">{{ time.Format ":date_full" $oggi }}{{ with $cel }} · <strong>{{ . }}</strong>{{ end }}{{ with $colore }} <span class="lit-colore lit-colore--{{ . }}">colore liturgico: {{ . }}</span>{{ end }}</p>
+      <p class="lit-data">{{ time.Format ":date_full" $oggi }}{{ with $cel }} · <strong>{{ . }}</strong>{{ end }}{{ with $colore }} <span class="lit-colore">colore liturgico: {{ . }}</span>{{ end }}</p>
+
+      <!-- Fonte primaria, sempre disponibile: Vatican News -->
+      <div class="lit-vaticannews">
+        <p class="lit-vn-titolo">Vangelo, letture, omelia, santo e preghiere del giorno — fonte ufficiale <strong>Vatican News</strong>:</p>
+        <div class="lit-vn-link">
+          <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank"><span aria-hidden="true">📖</span> Vangelo e Parola del giorno</a>
+          <a href="https://www.vaticannews.va/it/santo-del-giorno.html" rel="noopener" target="_blank"><span aria-hidden="true">✝️</span> Santo del giorno</a>
+          <a href="https://www.vaticannews.va/it/festivita-liturgiche.html" rel="noopener" target="_blank"><span aria-hidden="true">📅</span> Festività liturgiche</a>
+          <a href="https://www.vaticannews.va/it/preghiere.html" rel="noopener" target="_blank"><span aria-hidden="true">🙏</span> Preghiere</a>
+        </div>
+      </div>
+
       {{ with $letture }}
+      <h2 class="lit-letture-titolo">Le letture di oggi</h2>
       <div class="messale">{{ . | safeHTML }}</div>
-      <p class="lit-credit">Letture, salmo e Vangelo del giorno per gentile concessione di <a href="https://www.evangelizo.org" rel="noopener" target="_blank">Evangelizo.org</a>.</p>
-      {{ else }}
-      <p>Le letture di oggi non sono momentaneamente disponibili: puoi consultarle su <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vatican News</a>.</p>
+      <p class="lit-credit">Testo delle letture per gentile concessione di <a href="https://www.evangelizo.org" rel="noopener" target="_blank">Evangelizo.org</a>. Per la versione ufficiale e l'omelia fa fede <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vatican News</a>.</p>
       {{ end }}
-      <hr class="my-4">
-      <p>Approfondisci su Vatican News: <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vangelo e Parola del giorno</a> · <a href="https://www.vaticannews.va/it/santo-del-giorno.html" rel="noopener" target="_blank">Santo del giorno</a> · <a href="https://www.vaticannews.va/it/preghiere.html" rel="noopener" target="_blank">Preghiere</a>.</p>
     </article>
   </div>
 </div>
