@@ -834,3 +834,16 @@ a:hover { color: var(--mise-navy); }
 }
 .pg-link a:hover { background: var(--mise-ciano-velo); transform: translateY(-2px); color: var(--mise-ciano-testo); }
 @media (max-width: 575.98px) { .pg-link { grid-template-columns: 1fr; } }
+.pg-cta {
+  display: inline-block; margin-top: .9rem; font-family: "Jost", sans-serif; font-weight: 600;
+  text-decoration: none; background: var(--mise-giallo); color: var(--mise-navy);
+  padding: .5rem 1rem; border-radius: 50rem; box-shadow: 0 3px 10px rgba(180,160,20,.3);
+}
+.pg-cta:hover { background: #f8ee68; color: var(--mise-navy); }
+
+/* Liturgia del giorno — letture complete */
+.lit-data { font-family: "Jost", sans-serif; color: var(--mise-navy); background: var(--mise-ciano-velo); padding: .7rem 1rem; border-radius: .6rem; border-left: 4px solid var(--mise-giallo); }
+.lit-colore { font-size: .82rem; color: var(--mise-ciano-testo); }
+.messale { line-height: 1.85; margin-top: 1.2rem; }
+.messale font { color: var(--mise-ciano-testo); font-weight: 600; font-style: normal; }
+.lit-credit { margin-top: 1.2rem; font-size: .85rem; color: #8a98a6; }

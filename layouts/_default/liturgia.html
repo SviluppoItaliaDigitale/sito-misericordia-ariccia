@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $oggi := now }}
+{{/* Celebrazione/santo del giorno dal calendario liturgico italiano */}}
+{{ $cel := "" }}{{ $colore := "" }}{{ $grado := -1 }}
+{{ with try (resources.GetRemote (printf "https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/%d?year_type=CIVIL" $oggi.Year)) }}
+  {{ with .Value }}
+    {{ $j := .Content | transform.Unmarshal }}
+    {{ range $j.litcal }}
+      {{ if and (not (strings.Contains .event_key "vigil")) (eq (.year | int) $oggi.Year) (eq (.month | int) (int $oggi.Month)) (eq (.day | int) $oggi.Day) }}
+        {{ if gt (.grade | int) $grado }}{{ $grado = (.grade | int) }}{{ $cel = .name }}{{ $colore = (index .color_lcl 0) }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{/* Letture e Vangelo del giorno (Evangelizo, feed gratuito per siti cattolici) */}}
+{{ $letture := "" }}
+{{ $evurl := printf "https://feed.evangelizo.org/v2/reader.php?date=%d%02d%02d&type=all&lang=IT" $oggi.Year (int $oggi.Month) $oggi.Day }}
+{{ with try (resources.GetRemote $evurl) }}
+  {{ with .Value }}{{ $letture = .Content }}{{ end }}
+{{ end }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Per celebrare e pregare</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    <article class="contenuto" data-anim="fade-up">
+      <p class="lit-data">{{ time.Format ":date_full" $oggi }}{{ with $cel }} · <strong>{{ . }}</strong>{{ end }}{{ with $colore }} <span class="lit-colore lit-colore--{{ . }}">colore liturgico: {{ . }}</span>{{ end }}</p>
+      {{ with $letture }}
+      <div class="messale">{{ . | safeHTML }}</div>
+      <p class="lit-credit">Letture, salmo e Vangelo del giorno per gentile concessione di <a href="https://www.evangelizo.org" rel="noopener" target="_blank">Evangelizo.org</a>.</p>
+      {{ else }}
+      <p>Le letture di oggi non sono momentaneamente disponibili: puoi consultarle su <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vatican News</a>.</p>
+      {{ end }}
+      <hr class="my-4">
+      <p>Approfondisci su Vatican News: <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vangelo e Parola del giorno</a> · <a href="https://www.vaticannews.va/it/santo-del-giorno.html" rel="noopener" target="_blank">Santo del giorno</a> · <a href="https://www.vaticannews.va/it/preghiere.html" rel="noopener" target="_blank">Preghiere</a>.</p>
+    </article>
+  </div>
+</div>
+{{ end }}

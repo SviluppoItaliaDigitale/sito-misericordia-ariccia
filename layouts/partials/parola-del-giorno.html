@@ -22,6 +22,7 @@
         <span class="pg-kicker">La Parola del giorno</span>
         <p class="pg-data">{{ time.Format ":date_full" $oggi }}</p>
         {{ with $cel }}<p class="pg-celebrazione">Oggi la Chiesa celebra<strong>{{ . }}</strong></p>{{ end }}
+        <a class="pg-cta" href="{{ "/liturgia-del-giorno/" | relURL }}">📖 Letture della Messa di oggi →</a>
       </div>
       <div class="pg-link" data-anim-group>
         <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank"><span aria-hidden="true">📖</span> Vangelo e Parola del giorno</a>
