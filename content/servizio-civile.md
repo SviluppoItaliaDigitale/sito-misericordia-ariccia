@@ -10,9 +10,7 @@ I nostri progetti nascono dalla volontà di contrastare la solitudine e l'emargi
 
 ## Bando 2025/26
 
-La Misericordia di Ariccia partecipa al bando SCU 2025/26 con il progetto **"Misericordie del Lazio unite per la rete 2025"** (settore Assistenza): nella nostra sede sono disponibili **2 posti** — uno ordinario e uno riservato ai giovani con minori opportunità (difficoltà economica) — per **25 ore settimanali su 5 giorni**.
-
-Le candidature si sono chiuse l'**8 aprile 2026** e le selezioni si sono concluse.
+Con il progetto **"Misericordie del Lazio unite per la rete 2025"** (settore Assistenza) hanno prestato servizio nella nostra sede **3 giovani**, per **25 ore settimanali su 5 giorni**, impegnati nel sostegno alle persone fragili. Il servizio si è concluso.
 
 ## I nostri bandi
 
@@ -22,7 +20,7 @@ Le candidature si sono chiuse l'**8 aprile 2026** e le selezioni si sono conclus
 | 2016-2017 | 8 |
 | 2017-2018 | 10 |
 | 2019-2020 | 10 |
-| 2025-2026 | 2 posti a bando *(concluso)* |
+| 2025-2026 | 3 *(concluso)* |
 
 Schede progetto storiche: [Scheda 2015](/documenti/scheda-servizio-civile-2015.pdf) · [Scheda 2016](/documenti/scheda-servizio-civile-2016.pdf) · [Scheda 2017](/documenti/scheda-servizio-civile-2017.pdf).
 
