@@ -12,6 +12,7 @@ title: "Contatti"
 
 - **Telefono fisso:** [06 933 3717](tel:+39069333717)
 - **Cellulari:** [348 4068657](tel:+393484068657) · [328 8105399](tel:+393288105399)
+- **WhatsApp:** [scrivici su WhatsApp](https://wa.me/393484068657) (348 4068657)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 - **PEC:** [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
 
