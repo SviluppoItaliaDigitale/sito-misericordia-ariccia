@@ -1,0 +1,34 @@
+{{/* La Parola del giorno: data odierna + celebrazione liturgica (build-time, dal
+     calendario liturgico italiano) + link alle pagine quotidiane di Vatican News.
+     Si aggiorna ogni notte grazie al rebuild giornaliero (cron). Se l'API non
+     risponde, il box mostra comunque data e link (degrado sicuro). */}}
+{{ $oggi := now }}
+{{ $cel := "" }}{{ $grado := -1 }}
+{{ $url := printf "https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/%d?year_type=CIVIL" $oggi.Year }}
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Value }}
+    {{ $j := .Content | transform.Unmarshal }}
+    {{ range $j.litcal }}
+      {{ if and (not (strings.Contains .event_key "vigil")) (eq (.year | int) $oggi.Year) (eq (.month | int) (int $oggi.Month)) (eq (.day | int) $oggi.Day) }}
+        {{ if gt (.grade | int) $grado }}{{ $grado = (.grade | int) }}{{ $cel = .name }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<section class="parola-giorno" aria-label="La Parola del giorno">
+  <div class="container">
+    <div class="pg-box" data-anim="fade-up">
+      <div class="pg-intro">
+        <span class="pg-kicker">La Parola del giorno</span>
+        <p class="pg-data">{{ time.Format ":date_full" $oggi }}</p>
+        {{ with $cel }}<p class="pg-celebrazione">Oggi la Chiesa celebra<strong>{{ . }}</strong></p>{{ end }}
+      </div>
+      <div class="pg-link" data-anim-group>
+        <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank"><span aria-hidden="true">📖</span> Vangelo e Parola del giorno</a>
+        <a href="https://www.vaticannews.va/it/santo-del-giorno.html" rel="noopener" target="_blank"><span aria-hidden="true">✝️</span> Santo del giorno</a>
+        <a href="https://www.vaticannews.va/it/festivita-liturgiche.html" rel="noopener" target="_blank"><span aria-hidden="true">📅</span> Festività liturgiche</a>
+        <a href="https://www.vaticannews.va/it/preghiere.html" rel="noopener" target="_blank"><span aria-hidden="true">🙏</span> Preghiere del giorno</a>
+      </div>
+    </div>
+  </div>
+</section>

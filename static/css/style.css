@@ -810,3 +810,27 @@ a:hover { color: var(--mise-navy); }
 .opera-spiega { padding: 0 1.3rem 1.3rem; color: var(--mise-inchiostro); }
 .opera-spiega p { margin: 0; }
 .opera-spiega strong { color: var(--mise-navy); }
+
+/* ============================================================
+   La Parola del giorno (liturgia + link Vatican News)
+   ============================================================ */
+.parola-giorno { padding: 2.6rem 0; background: var(--mise-ciano-velo); }
+.pg-box {
+  display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: center;
+  background: #fff; border-radius: 1.2rem; padding: 1.8rem 2rem;
+  box-shadow: 0 12px 30px rgba(27,34,63,.12); border-left: 6px solid var(--mise-giallo);
+}
+.pg-intro { flex: 1; min-width: 240px; }
+.pg-kicker { font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 600; color: var(--mise-ciano-testo); }
+.pg-data { font-family: "Playfair Display", serif; font-size: 1.4rem; color: var(--mise-navy); margin: .2rem 0 .4rem; text-transform: capitalize; }
+.pg-celebrazione { margin: 0; color: var(--mise-inchiostro); }
+.pg-celebrazione strong { display: block; font-size: 1.1rem; color: var(--mise-navy); margin-top: .15rem; }
+.pg-link { display: grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap: .6rem; flex: 1.3; min-width: 280px; }
+.pg-link a {
+  display: flex; align-items: center; gap: .5rem; text-decoration: none;
+  font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy);
+  background: var(--mise-carta); border: 1px solid rgba(0,165,220,.2);
+  border-radius: .6rem; padding: .6rem .9rem; transition: background .15s ease, transform .15s ease;
+}
+.pg-link a:hover { background: var(--mise-ciano-velo); transform: translateY(-2px); color: var(--mise-ciano-testo); }
+@media (max-width: 575.98px) { .pg-link { grid-template-columns: 1fr; } }
