@@ -24,6 +24,16 @@ Nel **1244** giunse a Firenze il frate domenicano **Pietro da Verona**, che comp
 
 Il primo documento conosciuto che cita la Misericordia risale al **1321**, quando la Compagnia disponeva già dei capitali per acquistare una casa davanti al Battistero.
 
+## Confratelli e protettori illustri
+
+Nei secoli la Misericordia di Firenze ha avuto il sostegno di figure di primo piano:
+
+- **Papa Clemente VII** — nel **1525** concesse alla Compagnia l'uso della chiesa di San Cristoforo degli Adimari.
+- **Granduca Francesco I de' Medici** — nel **1576** le concesse la sede di fronte al campanile di Giotto, tuttora utilizzata.
+- **Granduca Pietro Leopoldo** — egli stesso **confratello**, protesse la Misericordia durante la soppressione delle associazioni religiose del **1784**.
+
+Eppure, sotto la veste anonima della **«buffa»**, ogni confratello era uguale agli altri: principi e popolani prestavano lo stesso servizio, senza distinzione di rango. È questo lo spirito che ancora oggi anima le Misericordie.
+
 ## La leggenda
 
 Secondo la tradizione popolare, l'iniziatore sarebbe stato **Piero Borsi**, facchino dell'Arte della Lana. Insieme ai compagni, che si riunivano presso la *Buca degli Adimari* — una mescita di vino vicino alla cattedrale —, propose di istituire una multa per chi bestemmiava. Con le offerte raccolte comprarono sei *zane* (ceste) per trasportare i malati agli ospedali: così, secondo il sentimento popolare, ebbe inizio la Compagnia.
