@@ -1,0 +1,6 @@
+{{- /* Inserisce un logo ufficiale dentro un contenuto markdown, usando relURL
+       così il percorso resta corretto anche nella sottocartella di anteprima.
+       Uso: {{< logo src="img/loghi/scu-universale.jpg" alt="…" class="logo-scu" width="160" height="160" >}} */ -}}
+<img src="{{ (.Get "src") | relURL }}" alt="{{ .Get "alt" }}"
+     class="{{ .Get "class" }}"{{ with .Get "width" }} width="{{ . }}"{{ end }}{{ with .Get "height" }} height="{{ . }}"{{ end }}
+     loading="lazy" decoding="async">

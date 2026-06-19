@@ -65,7 +65,7 @@ a:hover { color: var(--mise-navy); }
   letter-spacing: .01em;
   display: flex; align-items: center; gap: .6rem;
 }
-.navbar-mise .brand-mark { width: 2.3rem; height: 2.3rem; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+.navbar-mise .brand-mark { width: auto; height: 2.7rem; flex: none; display: block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.3)); }
 .navbar-mise .nav-link {
   color: #fff;
   font-family: "Jost", sans-serif;
@@ -384,4 +384,21 @@ a:hover { color: var(--mise-navy); }
 @media (prefers-reduced-motion: reduce) {
   .rivela { opacity: 1; transform: none; transition: none; }
   .navbar-mise, #torna-su { transition: none; }
+}
+
+/* ---- Loghi dentro i contenuti (SCU, progetti…) affiancati al testo ---- */
+.logo-scu, .logo-progetto {
+  float: right; width: 170px; max-width: 38%; height: auto;
+  margin: 0 0 1rem 1.6rem;
+}
+.logo-progetto { width: 160px; }
+@media (max-width: 575.98px) {
+  .logo-scu, .logo-progetto { float: none; display: block; margin: 0 auto 1.25rem; }
+}
+
+/* ---- Payoff ufficiale "Gente al servizio della gente" nell'hero ---- */
+.hero-payoff {
+  display: block; width: 248px; max-width: 70%; height: auto;
+  margin-top: 1.6rem;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
 }

@@ -4,6 +4,8 @@ title: "I nostri progetti"
 
 ## MIT Link (in corso)
 
+{{< logo src="img/loghi/mit-link.png" alt="Logo del progetto MIT Link" class="logo-progetto" width="160" height="160" >}}
+
 Il progetto mira a migliorare l'inclusione sociale di **100 persone con disabilità e non autosufficienti** nel territorio di Roma Città Metropolitana (area socio-sanitaria ASL RM6), creando un modello territoriale di gestione delle fragilità e promuovendo lo **sport come strumento di aggregazione e crescita sociale**.
 
 - Co-finanziato dalla **Regione Lazio** nell'ambito dell'avviso *Comunità Solidali 2022*

@@ -23,6 +23,10 @@
   var hover = !window.matchMedia || window.matchMedia("(hover: hover)").matches;
   var haGSAP = window.gsap && window.ScrollTrigger;
 
+  // Questi due non hanno bisogno di GSAP e devono girare anche se GSAP manca:
+  if (!riduci) avviaBarraLettura();  // barra di avanzamento lettura in cima
+  avviaSkeletonImg();                // immagini che sfumano quando caricate
+
   // Niente moto: assicura tutto visibile, scrivi i numeri finali ed esci con grazia.
   if (riduci || !haGSAP) {
     document.documentElement.classList.remove("anim-pronto");
@@ -191,6 +195,44 @@
         modes: { grab: { distance: 160, line_linked: { opacity: .4 } } }
       },
       retina_detect: true
+    });
+  }
+
+  /* ---- 10. Barra di avanzamento lettura (scroll indicator) ----
+     Animata via scaleX (solo transform). Si auto-inserisce se manca. */
+  function avviaBarraLettura() {
+    var barra = document.querySelector(".barra-lettura");
+    if (!barra) {
+      barra = document.createElement("div");
+      barra.className = "barra-lettura";
+      barra.setAttribute("aria-hidden", "true");
+      document.body.insertBefore(barra, document.body.firstChild);
+    }
+    var inCoda = false;
+    function aggiorna() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var y = h.scrollTop || window.pageYOffset || 0;
+      var p = max > 0 ? y / max : 0;
+      if (p < 0) p = 0; else if (p > 1) p = 1;
+      barra.style.transform = "scaleX(" + p + ")";
+      inCoda = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!inCoda) { inCoda = true; requestAnimationFrame(aggiorna); }
+    }, { passive: true });
+    window.addEventListener("resize", aggiorna, { passive: true });
+    aggiorna();
+  }
+
+  /* ---- 11. Immagini con skeleton: sfumano quando sono caricate ----
+     <img data-skeleton ...> resta a opacità 0 finché non è pronta. */
+  function avviaSkeletonImg() {
+    var imgs = document.querySelectorAll("img[data-skeleton]");
+    Array.prototype.forEach.call(imgs, function (img) {
+      if (img.complete && img.naturalWidth > 0) { img.classList.add("caricata"); return; }
+      img.addEventListener("load", function () { img.classList.add("caricata"); });
+      img.addEventListener("error", function () { img.classList.add("caricata"); });
     });
   }
 })();

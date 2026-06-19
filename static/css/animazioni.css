@@ -205,6 +205,97 @@
 }
 
 /* ============================================================
+   BARRA DI AVANZAMENTO LETTURA (scroll indicator)
+   La inserisce il JS in cima al <body>. Animata via scaleX
+   (solo transform → GPU, niente reflow).
+   ============================================================ */
+.barra-lettura {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 2000;                 /* sopra navbar sticky-top */
+  background: linear-gradient(90deg, var(--mise-ciano), var(--mise-giallo));
+  transform: scaleX(0); transform-origin: left center;
+  will-change: transform; pointer-events: none;
+}
+
+/* ============================================================
+   SKELETON — segnaposto di caricamento con riflesso (HyperFrames)
+   .skeleton  → blocco segnaposto puro CSS (testo/box)
+   img[data-skeleton] → l'immagine sfuma quando è caricata (gestito da JS)
+   ============================================================ */
+.skeleton {
+  position: relative; overflow: hidden;
+  background: rgba(0,0,0,.08); border-radius: .6rem;
+  color: transparent !important;
+}
+.skeleton::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
+  transform: translateX(-100%);
+  animation: skeleton-onda 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-onda { to { transform: translateX(100%); } }
+
+img[data-skeleton] {
+  background: rgba(0,0,0,.06);
+  opacity: 0; transition: opacity .6s ease;
+}
+img[data-skeleton].caricata { opacity: 1; }
+
+/* ============================================================
+   MICRO-INTERAZIONI — feedback "premuto" sui pulsanti
+   (transform/opacity, durate brevi 120–240ms)
+   ============================================================ */
+.btn-giallo, .btn-ciano { transition: transform .16s ease, background-color .2s ease, color .2s ease; }
+.btn-giallo:active, .btn-ciano:active { transform: translateY(0) scale(.97); }
+
+/* ============================================================
+   EMBLEMA NELL'HERO — usa il LOGO UFFICIALE, non simboli inventati
+   Due modi (entrambi decorativi, nascosti su mobile e con moto ridotto):
+   · .emblema-logo  → il logo reale come immagine, galleggia con dolcezza
+                       (consigliato per enti: nitido e dignitoso).
+   · .emblema-3d    → contenitore 3D opt-in (Three.js): vi si applica come
+                       texture il logo indicato in data-logo (vedi animazioni-3d.js).
+   ============================================================ */
+.emblema-logo {
+  position: absolute; z-index: 2; pointer-events: none;
+  width: min(32vw, 320px); right: 3%; top: 50%; transform: translateY(-50%);
+}
+.emblema-logo img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 16px 36px rgba(0,0,0,.5));
+  animation: emblema-galleggia 6.5s ease-in-out infinite;
+}
+@keyframes emblema-galleggia {
+  0%, 100% { transform: translateY(0)     rotate(-1.1deg); }
+  50%      { transform: translateY(-10px) rotate(1.1deg); }
+}
+
+.emblema-3d {
+  position: absolute; z-index: 2; pointer-events: none;
+  width: min(34vw, 340px); aspect-ratio: 1 / 1;
+  right: 3%; top: 50%; transform: translateY(-50%);
+  opacity: .96; filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
+}
+.emblema-3d canvas { display: block; width: 100% !important; height: 100% !important; }
+@media (max-width: 991.98px) { .emblema-logo, .emblema-3d { display: none; } }
+
+/* ============================================================
+   TRANSIZIONI DI PAGINA (View Transitions API, multi-pagina)
+   Cross-fade morbido tra una pagina e l'altra dove il browser
+   lo supporta (Chrome/Edge). Degrado pulito: navigazione normale.
+   La navbar ha un nome proprio → resta ferma, non sfuma col resto.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-esci .26s ease both; }
+  ::view-transition-new(root) { animation: vt-entra .34s ease both; }
+  .navbar-mise { view-transition-name: navbar; }
+  ::view-transition-group(navbar) { animation: none; }
+}
+@keyframes vt-esci  { to   { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-entra { from { opacity: 0; transform: translateY(10px); } }
+
+/* ============================================================
    ACCESSIBILITÀ — niente moto per chi lo chiede
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -213,5 +304,10 @@
   .marquee__pista { animation: none; }
   .tratto-mano svg path { stroke-dashoffset: 0; animation: none; }
   .foto-zoom img { transition: none; }
+  .skeleton::after { animation: none; }
+  img[data-skeleton] { opacity: 1; transition: none; }
+  .barra-lettura { display: none; }
+  .emblema-3d { display: none; }
+  .emblema-logo img { animation: none; transform: none; }
   [data-anim], [data-split] { opacity: 1 !important; transform: none !important; filter: none !important; }
 }

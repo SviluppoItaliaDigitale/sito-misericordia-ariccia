@@ -2,6 +2,8 @@
 title: "Servizio Civile Universale"
 ---
 
+{{< logo src="img/loghi/scu-universale.jpg" alt="Logo ufficiale del Servizio Civile Universale" class="logo-scu" width="170" height="170" >}}
+
 Dal **2015** la Misericordia di Ariccia partecipa ai bandi del **Servizio Civile Universale**, offrendo ai giovani **tra i 18 e i 29 anni** la possibilità di vivere un anno di servizio alla comunità in un contesto di fraternità e amicizia.
 
 I nostri progetti nascono dalla volontà di contrastare la solitudine e l'emarginazione delle persone fragili — in particolare anziani e persone con disabilità — potenziando l'area di intervento del **Telesoccorso**.
