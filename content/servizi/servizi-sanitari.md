@@ -18,6 +18,10 @@ sezioni:
   - icona: "🤝"
     titolo: "Volontari ospedalieri"
     testo: "Dopo un'apposita formazione, i nostri volontari operano all'ospedale di Velletri: aiutano i ricoverati nella loro quotidianità e offrono conforto, anche materiale — una delle Opere di Misericordia corporali, «visitare i malati»."
+nota:
+  icona: "📞"
+  titolo: "Come richiedere un trasporto:"
+  testo: "contattaci con un po' di anticipo indicando **data, orario, luogo di partenza e destinazione**; ti spiegheremo come procedere. Per i servizi in convenzione l'accesso avviene tramite gli enti locali."
 contatto:
   label: "Per richiedere un servizio"
   tel: "348 4068657"

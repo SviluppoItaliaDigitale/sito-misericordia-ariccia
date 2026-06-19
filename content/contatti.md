@@ -4,9 +4,9 @@ title: "Contatti"
 
 ## Dove siamo
 
-- **Sede legale:** Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)
-- **Sede operativa:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM)
-- **Sede amministrativa:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)
+- **Sede legale:** Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Via%20Beata%20Rosa%20Venerini%206%20Ariccia)
+- **Sede operativa:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Piazzale%20Aldo%20Moro%206%20Ariccia)
+- **Sede amministrativa:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Viale%20Antonietta%20Chigi%2046%20Ariccia)
 
 ## Come contattarci
 
