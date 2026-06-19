@@ -24,7 +24,7 @@ Le candidature si sono chiuse l'**8 aprile 2026**; sono in corso le selezioni.
 | 2019-2020 | 10 |
 | 2025-2026 | 2 posti a bando *(selezioni in corso)* |
 
-Schede progetto storiche: 📄 [2015](/documenti/scheda-servizio-civile-2015.pdf) · [2016](/documenti/scheda-servizio-civile-2016.pdf) · [2017](/documenti/scheda-servizio-civile-2017.pdf).
+Schede progetto storiche: [Scheda 2015](/documenti/scheda-servizio-civile-2015.pdf) · [Scheda 2016](/documenti/scheda-servizio-civile-2016.pdf) · [Scheda 2017](/documenti/scheda-servizio-civile-2017.pdf).
 
 ## Come candidarsi
 

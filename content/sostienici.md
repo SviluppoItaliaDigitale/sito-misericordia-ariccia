@@ -21,6 +21,6 @@ IBAN: **IT31 X070 9238 9000 0000 0106 493**
 
 ## Diventa volontario
 
-Il dono più grande è il tempo: [scopri come entrare nella Misericordia](/chi-siamo/). Puoi anche scaricare e compilare il 📄 [modulo di iscrizione come socio](/documenti/modulo-iscrizione-socio.pdf).
+Il dono più grande è il tempo: [scopri come entrare nella Misericordia](/chi-siamo/). Puoi anche scaricare e compilare il [modulo di iscrizione come socio](/documenti/modulo-iscrizione-socio.pdf).
 
 «Che Dio te ne renda merito»

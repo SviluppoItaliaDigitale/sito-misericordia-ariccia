@@ -44,7 +44,7 @@ magistrato:
 
 La nostra missione è dare soccorso a chi si trova in situazioni di bisogno e di sofferenza, con un aiuto materiale e morale. Ispirati dai principi evangelici e dalle Opere di Misericordia, lavoriamo per restituire dignità alle persone attraverso l'assistenza e l'aiuto.
 
-📄 [Scarica «La Misericordia in breve»](/documenti/misericordia-in-breve.pdf)
+[Scarica «La Misericordia in breve»](/documenti/misericordia-in-breve.pdf)
 
 ## La nostra storia
 

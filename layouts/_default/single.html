@@ -6,16 +6,18 @@
     {{ if eq .Section "news" }}<p class="data-news mt-2 mb-0" data-anim="fade-up" data-anim-delay="0.2">{{ time.Format ":date_long" .Date }}</p>{{ end }}
   </div>
 </div>
-<div class="container py-5">
-  <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
-    <ol class="breadcrumb briciole">
-      <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
-      {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
-      <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-    </ol>
-  </nav>
-  <div class="contenuto" data-anim="fade-up" data-anim-delay="0.1">
-    {{ .Content }}
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    <article class="contenuto" data-anim="fade-up" data-anim-delay="0.1">
+      {{ .Content }}
+    </article>
   </div>
 </div>
 {{ end }}

@@ -19,5 +19,3 @@ title: "Contatti"
 
 - [Facebook](https://www.facebook.com/MiseAriccia)
 - [Instagram](https://www.instagram.com/confraternitamisericordia)
-
-*[da compilare: orari di apertura della sede e del Centro d'ascolto]*

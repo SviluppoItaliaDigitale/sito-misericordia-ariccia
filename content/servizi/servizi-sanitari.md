@@ -24,6 +24,6 @@ Tramite la convenzione con la ASL ci occupiamo anche dei trasporti di detenuti, 
 
 ## Volontari ospedalieri
 
-Dal 2013, dopo un'apposita formazione, circa 25 volontari operano all'ospedale di Velletri: aiutano i ricoverati nella loro quotidianità e offrono conforto, anche materiale — una delle Opere di Misericordia corporali, "visitare i malati".
+Dopo un'apposita formazione, i nostri volontari operano all'ospedale di Velletri: aiutano i ricoverati nella loro quotidianità e offrono conforto, anche materiale — una delle Opere di Misericordia corporali, "visitare i malati".
 
 **Per richiedere un servizio:** [348 4068657](tel:+393484068657) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)

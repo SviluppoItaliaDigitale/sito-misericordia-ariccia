@@ -4,31 +4,34 @@
     <h1 data-split="words">{{ .Title }}</h1>
   </div>
 </div>
-<div class="container py-5">
-  <div class="contenuto mb-4" data-anim="fade-up">{{ .Content }}</div>
-  {{ if eq .Section "news" }}
-    <div data-anim-group>
-      {{ range .Pages }}
-      <article class="news-item">
-        <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
-      </article>
-      {{ end }}
-    </div>
-  {{ else }}
-  <div class="row g-4" data-anim-group>
-    {{ range .Pages }}
-    <div class="col-md-6 col-lg-3">
-      <div class="card-servizio p-4 h-100" data-tilt>
-        <span class="chip" aria-hidden="true">↗</span>
-        <h3>{{ .Title }}</h3>
-        <p>{{ .Summary | plainify | truncate 140 }}</p>
-        <a href="{{ .RelPermalink }}" class="stretched-link">Scopri di più</a>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    {{ with .Content }}<div class="contenuto mb-4" data-anim="fade-up">{{ . }}</div>{{ end }}
+    {{ if eq .Section "news" }}
+      <div class="griglia-news" data-anim-group>
+        {{ range .Pages }}
+        <article class="news-item">
+          <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
+          <a href="{{ .RelPermalink }}" class="news-leggi">Leggi →</a>
+        </article>
+        {{ end }}
       </div>
+    {{ else }}
+    <div class="row g-4" data-anim-group>
+      {{ range .Pages }}
+      <div class="col-md-6 col-lg-3">
+        <div class="card-servizio p-4 h-100" data-tilt>
+          <span class="chip" aria-hidden="true">↗</span>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | plainify | truncate 140 }}</p>
+          <a href="{{ .RelPermalink }}" class="stretched-link">Scopri di più</a>
+        </div>
+      </div>
+      {{ end }}
     </div>
     {{ end }}
   </div>
-  {{ end }}
 </div>
 {{ end }}

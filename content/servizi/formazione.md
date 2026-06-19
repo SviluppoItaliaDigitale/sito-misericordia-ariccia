@@ -14,6 +14,6 @@ Con la collaborazione di medici, infermieri e avvocati, i nostri istruttori form
 - **Sicurezza (D.lgs. 81/08)** — la formazione del responsabile per la sicurezza;
 - **Supporto degenti in ospedale** — l'abilitazione per i volontari ospedalieri.
 
-**Materiale didattico:** 📄 [Manuale del soccorritore](/documenti/manuale-del-soccorritore.pdf)
+**Materiale didattico:** [Manuale del soccorritore](/documenti/manuale-del-soccorritore.pdf)
 
 **Per iscriverti al prossimo corso:** [348 4068657](tel:+393484068657) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
