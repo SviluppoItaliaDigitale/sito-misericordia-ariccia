@@ -1,0 +1,104 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">La Confraternita</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+
+<!-- ============ Intro: fregio + sommario + infobox dei fatti ============ -->
+<section class="cs-band">
+  <div class="container">
+    <div class="cs-hero">
+      <img class="cs-fregio" src="{{ "img/loghi/mise-fregio.png" | relURL }}"
+           alt="Stemma della Confederazione Nazionale delle Misericordie d'Italia"
+           width="160" height="160" loading="eager">
+      <div class="cs-hero-testo">
+        <p class="cs-sommario" data-anim="fade-up">{{ .Params.sommario }}</p>
+        {{ with .Params.fatti }}
+        <ul class="cs-fatti" data-anim-group>
+          {{ range . }}
+          <li><span class="cs-fatto-icona" aria-hidden="true">{{ .icona }}</span><span>{{ .testo | markdownify }}</span></li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Foto ============ -->
+<section class="cs-band cs-band--velo">
+  <div class="container">
+    <figure class="cs-foto-grande" data-anim="zoom">
+      <img src="{{ "img/trenta-anni.jpg" | relURL }}" alt="Trent'anni della Misericordia di Ariccia (1994-2024)" loading="lazy">
+      <figcaption>Trent'anni al fianco della comunità</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Racconto + attività ============ -->
+<section class="cs-band">
+  <div class="container">
+    <div class="cs-racconto" data-anim="fade-up">
+      {{ .Content }}
+    </div>
+    {{ with .Params.attivita }}
+    <h2 class="cs-titolo-sezione" data-split="words">Le attività che ci hanno accompagnato</h2>
+    <div class="cs-griglia-attivita" data-anim-group>
+      {{ range . }}
+      <article class="cs-card">
+        <h3>{{ .titolo }}{{ with .periodo }} <span class="cs-periodo">{{ . }}</span>{{ end }}</h3>
+        <p>{{ .testo | markdownify }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ============ Filosofia (citazione in evidenza) ============ -->
+{{ with .Params.filosofia }}
+<section class="cs-band cs-band--cita">
+  <div class="container">
+    <blockquote class="cs-citazione" data-anim="fade-up">{{ . }}</blockquote>
+  </div>
+</section>
+{{ end }}
+
+<!-- ============ Il Magistrato (organigramma) ============ -->
+{{ with .Params.magistrato }}
+<section class="cs-band cs-band--velo">
+  <div class="container">
+    <h2 class="cs-titolo-sezione cs-centro" data-split="words">Il Magistrato</h2>
+    <p class="cs-sottotitolo">Gli organi che guidano la Confraternita</p>
+    <div class="cs-organigramma" data-anim-group>
+      {{ range . }}
+      {{ $n := split .nome " " }}
+      <div class="cs-persona{{ if .guida }} cs-persona--guida{{ end }}">
+        <span class="cs-avatar" aria-hidden="true">{{ substr (index $n 0) 0 1 }}{{ substr (index $n (sub (len $n) 1)) 0 1 }}</span>
+        <span class="cs-ruolo">{{ .ruolo }}</span>
+        <span class="cs-nome">{{ .nome }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<!-- ============ Diventa volontario (CTA) ============ -->
+<section class="cs-band">
+  <div class="container">
+    <div class="cs-cta" data-anim="fade-up">
+      <h2>Diventa volontario</h2>
+      <p>C'è posto per chiunque voglia donare un po' del proprio tempo: non servono competenze particolari per iniziare, la formazione la facciamo insieme.</p>
+      <p class="cs-cta-sedi">Passa a trovarci nella <strong>sede amministrativa</strong> di Viale Antonietta Chigi, 46 o nella <strong>sede operativa</strong> di Piazzale Aldo Moro, 6 ad Ariccia.</p>
+      <div class="cs-cta-azioni">
+        <a class="btn btn-giallo" href="mailto:sede@misericordia-ariccia.it">Scrivici</a>
+        <a class="btn btn-giallo" href="tel:+393484068657">Chiama il 348 4068657</a>
+        <a class="btn btn-ciano" href="{{ "documenti/modulo-iscrizione-socio.pdf" | relURL }}">Modulo di iscrizione</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
