@@ -395,6 +395,21 @@ a:hover { color: var(--mise-navy); }
 /* Richiedi un trasporto — pulsanti azione */
 .rt-azioni { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.3rem 0; }
 
+/* Landing Trasporto infermi */
+.pagina-sottotitolo { color: rgba(255,255,255,.93); font-size: 1.1rem; max-width: 56ch; margin: .6rem 0 0; }
+.tr-box { background: #fff; border-radius: 1rem; padding: 1.4rem 1.5rem; height: 100%; box-shadow: 0 8px 22px rgba(27,34,63,.1); border-left: 4px solid var(--mise-ciano); }
+.tr-box h3 { margin: 0 0 .5rem; color: var(--mise-navy); }
+.tr-box p { margin: 0; }
+/* Banner promo trasporto in home */
+.tr-promo-box {
+  display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; justify-content: space-between;
+  background: linear-gradient(120deg, var(--mise-navy), #2a3566); color: #fff;
+  border-radius: 1.2rem; padding: 1.6rem 2rem; box-shadow: 0 14px 34px rgba(27,34,63,.22);
+}
+.tr-promo-box h2 { color: var(--mise-giallo); margin: 0 0 .3rem; }
+.tr-promo-box p { margin: 0; color: rgba(255,255,255,.92); }
+.tr-promo-azioni { display: flex; flex-wrap: wrap; gap: .6rem; }
+
 /* ---- Briciole di pane ---- */
 .briciole { font-family: "Jost", sans-serif; font-size: .88rem; --bs-breadcrumb-divider: "›"; margin-bottom: 0; }
 .briciole a { text-decoration: none; }

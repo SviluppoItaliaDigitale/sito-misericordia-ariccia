@@ -1,0 +1,78 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Il servizio storico della Misericordia</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+    <p class="pagina-sottotitolo" data-anim="fade-up" data-anim-delay="0.2">Con <strong>ambulanza</strong>, <strong>auto</strong> e <strong>mezzi con pedana</strong> per la carrozzina — nei Castelli Romani e in tutta Italia.</p>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    <article class="contenuto" data-anim="fade-up">
+      <p>Quando spostarsi diventa difficile, noi ci siamo. Da oltre trent'anni accompagniamo <strong>malati, anziani e persone con disabilità</strong> con mezzi adeguati, volontari formati e pieno rispetto della persona. Effettuiamo <strong>trasporto sanitario</strong> nei <strong>Castelli Romani</strong> e <strong>trasferimenti a lunga percorrenza in tutta Italia</strong>.</p>
+    </article>
+
+    <h2 class="cs-titolo-sezione mt-4" data-split="words">I nostri mezzi</h2>
+    <div class="sv-griglia" data-anim-group>
+      {{ range .Params.mezzi }}
+      <article class="sv-card">
+        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+        <h3>{{ .titolo }}</h3>
+        <p>{{ .testo | markdownify }}</p>
+      </article>
+      {{ end }}
+    </div>
+
+    <div class="row g-4 mt-1" data-anim-group>
+      <div class="col-md-6">
+        <div class="tr-box">
+          <h3>📍 Dove operiamo</h3>
+          <p>Nei <strong>Castelli Romani</strong> — Ariccia, Albano Laziale, Genzano, Velletri, Marino, Castel Gandolfo, Lanuvio, Lariano e dintorni — e in <strong>tutta Italia</strong> per trasferimenti, rientri a domicilio e trasporti verso centri specializzati.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tr-box">
+          <h3>🩺 Per quali necessità</h3>
+          <p>Visite ed esami, dimissioni e ricoveri programmati, cicli di <strong>dialisi</strong> e terapie, trasferimenti tra strutture, rientri a casa, accompagnamenti.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="cs-titolo-sezione mt-4" data-split="words">Perché scegliere la Misericordia</h2>
+    <div class="sv-griglia" data-anim-group>
+      <article class="sv-card"><span class="sv-icona" aria-hidden="true">🤝</span><h3>Volontari formati</h3><p>Personale preparato e attento, per un viaggio sicuro e sereno.</p></article>
+      <article class="sv-card"><span class="sv-icona" aria-hidden="true">🚐</span><h3>Il mezzo giusto</h3><p>Scegliamo insieme la soluzione più adatta: ambulanza, auto o veicolo con pedana.</p></article>
+      <article class="sv-card"><span class="sv-icona" aria-hidden="true">❤️</span><h3>Sostieni il bene</h3><p>Ogni trasporto sostiene il volontariato e i servizi gratuiti alle persone fragili del territorio.</p></article>
+    </div>
+
+    <div class="cs-cta mt-4" data-anim="fade-up">
+      <h2>Prenota il tuo trasporto</h2>
+      <p>Chiamaci o scrivici: troveremo insieme la soluzione migliore. In caso di emergenza chiama sempre il <a href="tel:112" style="color:#fff;text-decoration:underline">112</a>.</p>
+      <div class="cs-cta-azioni">
+        <a class="btn btn-giallo" href="{{ "/richiedi-trasporto/" | relURL }}">Richiedi un trasporto</a>
+        <a class="btn btn-giallo" href="tel:+393484068657">Chiama 348 4068657</a>
+        <a class="btn btn-ciano" href="https://wa.me/393484068657" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Trasporto sanitario di infermi e persone con disabilità",
+  "name": "Trasporto infermi e disabili — Misericordia di Ariccia",
+  "description": {{ .Description | jsonify }},
+  "provider": {"@type": "NGO", "name": "Confraternita di Misericordia di Ariccia ODV", "telephone": "+393484068657", "url": {{ site.BaseURL | jsonify }}},
+  "areaServed": [{"@type": "Place", "name": "Castelli Romani"}, {"@type": "Country", "name": "Italia"}],
+  "availableChannel": {"@type": "ServiceChannel", "servicePhone": "+393484068657", "serviceUrl": {{ (absURL "richiedi-trasporto/") | jsonify }}}
+}
+</script>
+{{ end }}

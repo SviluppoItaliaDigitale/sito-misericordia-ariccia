@@ -50,6 +50,10 @@ disableKinds = ["taxonomy", "term"]
     pageRef = "/liturgia-del-giorno"
     weight = 16
   [[menus.main]]
+    name = "Trasporto infermi"
+    pageRef = "/trasporto-infermi"
+    weight = 18
+  [[menus.main]]
     name = "Servizi"
     pageRef = "/servizi"
     weight = 20
