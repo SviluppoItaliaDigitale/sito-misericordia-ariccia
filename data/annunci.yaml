@@ -8,6 +8,10 @@ voci:
     link: "/chi-siamo/"
     linkTesto: "diventa volontario"
 
+  - testo: "Il nostro <strong>Centro di Ascolto</strong> è sempre attivo"
+    link: "/servizi/servizi-sociali/"
+    linkTesto: "scopri come"
+
   - testo: "Dona il tuo <strong>5x1000</strong>:"
     cf: true
     link: "/sostienici/"
