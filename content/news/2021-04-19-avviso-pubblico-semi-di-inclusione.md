@@ -8,13 +8,10 @@ Il progetto SEMI di Inclusione – Servizi Mirati di Inclusione sociale mira a 
 
 Il modello sarà basato su 4 pilastri fondamentali integrati tra loro:
 
--Realizzazione di un Orto Sociale
-
--Attività laboratoriali inclusive e di formazione professionale
-
--Sostegno socio-assistenziale
-
--Sensibilizzazione della comunità
+- Realizzazione di un Orto Sociale
+- Attività laboratoriali inclusive e di formazione professionale
+- Sostegno socio-assistenziale
+- Sensibilizzazione della comunità
 
 Il Partenariato è attualmente composto da:
 
