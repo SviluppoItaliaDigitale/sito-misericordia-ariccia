@@ -622,7 +622,7 @@ a:hover { color: var(--mise-navy); }
   border-radius: .9rem; font-size: 1.6rem; margin-bottom: .8rem; background: var(--mise-ciano-velo);
 }
 .sv-card:nth-child(3n+2) .sv-icona { background: var(--mise-giallo-soft); }
-.sv-card h2 { font-size: 1.2rem; margin: 0 0 .5rem; color: var(--mise-navy); border: none; padding: 0; }
+.sv-card h2, .sv-card h3 { font-size: 1.15rem; margin: 0 0 .5rem; color: var(--mise-navy); border: none; padding: 0; }
 .sv-card p { margin: 0; color: var(--mise-inchiostro); }
 
 .sv-nota {
@@ -751,3 +751,25 @@ a:hover { color: var(--mise-navy); }
 .storia-foto--lato { float: right; width: min(46%, 320px); margin: .3rem 0 1rem 1.6rem; }
 .storia-foto--lato figcaption { text-align: left; }
 @media (max-width: 575.98px) { .storia-foto--lato { float: none; width: 100%; margin: 1.4rem 0; } }
+
+/* ============================================================
+   Menu a tendina (Chi siamo) — desktop e mobile
+   ============================================================ */
+.navbar-mise .dropdown-menu-mise {
+  background: var(--mise-navy); border: none; border-radius: .7rem;
+  box-shadow: 0 12px 30px rgba(0,60,100,.4); padding: .4rem; margin-top: .4rem;
+}
+.navbar-mise .dropdown-menu-mise .dropdown-item {
+  color: #fff; font-family: "Jost", sans-serif; border-radius: .45rem; padding: .5rem .85rem;
+}
+.navbar-mise .dropdown-menu-mise .dropdown-item:hover,
+.navbar-mise .dropdown-menu-mise .dropdown-item:focus,
+.navbar-mise .dropdown-menu-mise .dropdown-item.active {
+  background: var(--mise-ciano-scuro); color: var(--mise-giallo);
+}
+.navbar-mise .nav-link.dropdown-toggle.active { border-bottom-color: var(--mise-giallo); }
+/* Sottomenu nel pannello mobile */
+.offcanvas-mise .sottomenu-titolo { color: var(--mise-giallo); font-weight: 600; opacity: .92; display: block; }
+.offcanvas-mise .sottomenu { padding-left: .9rem; border-left: 2px solid rgba(255,255,255,.15); margin: .2rem 0 .4rem .4rem; }
+.offcanvas-mise .sottomenu .nav-link { font-size: 1.02rem; padding-block: .4rem; }
+.mappa-data { color: var(--mise-ciano-testo); font-size: .82rem; font-family: "Jost", sans-serif; }

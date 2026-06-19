@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    <div class="contenuto" data-anim-group>
+      <h2>Sezioni principali</h2>
+      <ul>
+        <li><a href="{{ "/" | relURL }}">Home</a></li>
+        {{ range site.Menus.main }}
+          {{ if .HasChildren }}
+            {{ range .Children }}<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}
+          {{ else }}
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        {{ end }}
+        <li><a href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a></li>
+        <li><a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a></li>
+      </ul>
+
+      {{ with (site.GetPage "/servizi") }}
+      <h2>I nostri servizi</h2>
+      <ul>
+        {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+      </ul>
+      {{ end }}
+
+      {{ with (site.GetPage "/news") }}
+      <h2>News</h2>
+      <ul>
+        {{ range (.Pages | first 25) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mappa-data">{{ time.Format ":date_long" .Date }}</span></li>{{ end }}
+      </ul>
+      {{ end }}
+
+      <p>Per i motori di ricerca è disponibile anche la <a href="{{ "/sitemap.xml" | relURL }}">sitemap.xml</a>.</p>
+    </div>
+  </div>
+</div>
+{{ end }}

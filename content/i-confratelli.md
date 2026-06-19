@@ -7,6 +7,11 @@ title: "I confratelli"
 
 Le consorelle e i confratelli sono il cuore della Misericordia: donne e uomini che mettono a disposizione tempo e capacità per la **costante affermazione della carità e della fraternità cristiana**, attraverso la testimonianza delle Opere di Misericordia spirituali e corporali.
 
+<figure class="storia-foto">
+  <img src="/img/storia/costume-misericordia-sommer.jpg" alt="Confratelli della Misericordia con la veste storica (la «buffa»)" loading="lazy">
+  <figcaption>I confratelli nella veste storica, la «buffa» — fotografia di Giorgio Sommer (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
+</figure>
+
 ## Le qualifiche
 
 <div class="mov-card-griglia">

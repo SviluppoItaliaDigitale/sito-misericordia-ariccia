@@ -20,3 +20,6 @@ contatto:
   tel: "348 4068657"
   email: "sede@misericordia-ariccia.it"
 ---
+
+![I mezzi dei servizi sociali della Misericordia di Ariccia](/img/mezzi-servizi-sociali.jpg)
+

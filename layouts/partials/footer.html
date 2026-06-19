@@ -24,7 +24,11 @@
         <h2>Collegamenti</h2>
         <ul class="list-unstyled">
           {{ range site.Menus.main }}
-          <li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ if .HasChildren }}
+              {{ range .Children }}<li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}
+            {{ else }}
+              <li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ end }}
           {{ end }}
           <li class="mb-1"><a href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a></li>
         </ul>
@@ -41,7 +45,7 @@
     </div>
     <hr class="border-secondary my-4">
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a></p>
+      <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a> · <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></p>
       <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="Niente tracciamenti, niente banner: navighi libero.">🍃 Sito senza cookie e senza tracker</span>
     </div>
   </div>

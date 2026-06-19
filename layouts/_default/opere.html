@@ -1,0 +1,58 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Il senso del nostro nome</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    {{ with .Content }}<div class="contenuto mb-4" data-anim-group>{{ . }}</div>{{ end }}
+
+    <figure class="storia-foto" data-anim="zoom">
+      <img src="{{ "img/opere/caravaggio-sette-opere.jpg" | relURL }}" alt="Le Sette opere di Misericordia, dipinto di Caravaggio (1607)" loading="lazy">
+      <figcaption>«Le Sette opere di Misericordia», Caravaggio (1607), Pio Monte della Misericordia, Napoli.<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
+    </figure>
+
+    {{ with .Params.corporali }}
+    <h2 class="cs-titolo-sezione" data-split="words">Le sette opere corporali</h2>
+    <div class="sv-griglia" data-anim-group>
+      {{ range . }}
+      <article class="sv-card">
+        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+        <h3>{{ .titolo }}</h3>
+        <p>{{ .testo }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <figure class="storia-foto" data-anim="zoom">
+      <img src="{{ "img/opere/alkmaar-sette-opere.jpg" | relURL }}" alt="Polittico delle Sette opere di Misericordia del Maestro di Alkmaar, 1504" loading="lazy">
+      <figcaption>«Le sette opere di Misericordia», Maestro di Alkmaar (1504), Rijksmuseum.<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
+    </figure>
+
+    {{ with .Params.spirituali }}
+    <h2 class="cs-titolo-sezione" data-split="words">Le sette opere spirituali</h2>
+    <div class="sv-griglia" data-anim-group>
+      {{ range . }}
+      <article class="sv-card">
+        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+        <h3>{{ .titolo }}</h3>
+        <p>{{ .testo }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <p class="prog-news-nota" data-anim="fade-up">È in questo spirito che la Misericordia di Ariccia opera ogni giorno nei Castelli Romani.</p>
+  </div>
+</div>
+{{ end }}

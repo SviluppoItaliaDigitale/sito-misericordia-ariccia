@@ -36,9 +36,20 @@
       <ul class="navbar-nav ms-auto align-items-lg-center">
         {{ $pagina := . }}
         {{ range site.Menus.main }}
+        {{ if .HasChildren }}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle{{ if $pagina.HasMenuCurrent "main" . }} active{{ end }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
+          <ul class="dropdown-menu dropdown-menu-mise">
+            {{ range .Children }}
+            <li><a class="dropdown-item{{ if $pagina.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ end }}
+          </ul>
+        </li>
+        {{ else }}
         <li class="nav-item">
           <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
         </li>
+        {{ end }}
         {{ end }}
         <li class="nav-item ms-lg-2">
           <a class="btn btn-giallo btn-sm px-3" href="{{ "/sostienici/" | relURL }}">Sostienici</a>
@@ -59,9 +70,20 @@
       {{ $pagina := . }}
       <li class="nav-item"><a class="nav-link{{ if $pagina.IsHome }} active{{ end }}" href="{{ "/" | relURL }}">Home</a></li>
       {{ range site.Menus.main }}
+      {{ if .HasChildren }}
+      <li class="nav-item">
+        <span class="nav-link sottomenu-titolo">{{ .Name }}</span>
+        <ul class="navbar-nav sottomenu">
+          {{ range .Children }}
+          <li class="nav-item"><a class="nav-link{{ if $pagina.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </li>
+      {{ else }}
       <li class="nav-item">
         <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
       </li>
+      {{ end }}
       {{ end }}
     </ul>
     <a class="btn btn-giallo w-100 mt-3" href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a>

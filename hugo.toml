@@ -21,17 +21,29 @@ disableKinds = ["taxonomy", "term"]
 
 [menus]
   [[menus.main]]
+    identifier = "chisiamo"
     name = "Chi siamo"
-    pageRef = "/chi-siamo"
     weight = 10
   [[menus.main]]
-    name = "Storia"
-    pageRef = "/storia-e-tradizione"
-    weight = 12
+    name = "La Confraternita"
+    pageRef = "/chi-siamo"
+    parent = "chisiamo"
+    weight = 1
   [[menus.main]]
-    name = "Confratelli"
+    name = "Storia e tradizione"
+    pageRef = "/storia-e-tradizione"
+    parent = "chisiamo"
+    weight = 2
+  [[menus.main]]
+    name = "I confratelli"
     pageRef = "/i-confratelli"
-    weight = 14
+    parent = "chisiamo"
+    weight = 3
+  [[menus.main]]
+    name = "Le Opere di Misericordia"
+    pageRef = "/opere-di-misericordia"
+    parent = "chisiamo"
+    weight = 4
   [[menus.main]]
     name = "Servizi"
     pageRef = "/servizi"
