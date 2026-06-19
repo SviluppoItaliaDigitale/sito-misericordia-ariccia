@@ -8,7 +8,17 @@ Le Misericordie sono tra le più antiche associazioni di volontariato al mondo: 
 
 Le radici del Movimento affondano nel pieno Medioevo, nella città di Firenze. Durante il periodo dei Comuni, fra le lotte tra Impero e Papato, nacquero numerose Compagnie e Fraternite: in questo contesto sorse una delle prime Compagnie dedicate all'esercizio concreto della carità.
 
+<figure class="storia-foto">
+  <img src="/img/storia/origine-compagnia-misericordia.jpg" alt="Dipinto ottocentesco che raffigura l'origine della Compagnia della Misericordia di Firenze" loading="lazy">
+  <figcaption>«Origine della Compagnia della Misericordia in Firenze», dipinto di Eleuterio Pagliano (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
+</figure>
+
 ## La storia
+
+<figure class="storia-foto storia-foto--lato">
+  <img src="/img/storia/misericordia-firenze-sede.jpg" alt="La sede storica dell'Arciconfraternita della Misericordia di Firenze" loading="lazy">
+  <figcaption>La sede storica della Misericordia di Firenze.<span class="storia-credit">Foto: Sailko · CC BY 2.5 · Wikimedia Commons</span></figcaption>
+</figure>
 
 Nel **1244** giunse a Firenze il frate domenicano **Pietro da Verona**, che comprese il valore dell'associazionismo spontaneo dei fedeli e stabilì le prime *Costituzioni* della Misericordia di Firenze, per garantirne la conformità ai principi della Chiesa. È lui ad aver dato alla prima Misericordia la solidità dell'istituzione; fu proclamato santo nel **1253** con il titolo di San Pietro Martire.
 
@@ -24,9 +34,19 @@ Fin dalla nascita i Confratelli indossavano una *veste di servizio*, per apparir
 
 La veste era in origine rossa, a significare l'ispirazione dello Spirito Santo; nel **1495** assunse il colore nero, in segno di penitenza, ancora oggi usato nella veste storica consegnata ai nuovi confratelli durante la cerimonia di **Vestizione**.
 
+<figure class="storia-foto">
+  <img src="/img/storia/costume-misericordia-sommer.jpg" alt="Confratelli della Misericordia con la «buffa» portano la lettiga davanti al Battistero di Firenze" loading="lazy">
+  <figcaption>I confratelli con la «buffa» portano la lettiga, Firenze — fotografia di Giorgio Sommer (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
+</figure>
+
 ## La diffusione in Italia
 
 Sull'esempio fiorentino nacquero confraternite analoghe in molte città toscane e poi in altri Stati italiani, tutte unite dall'ispirazione evangelica, dal legame con la Chiesa e dalla missione di servizio ai malati e ai poveri. Le Misericordie *«si governano a popolo»*, con organi liberamente eletti.
+
+<figure class="storia-foto storia-foto--lato">
+  <img src="/img/storia/san-sebastiano-misericordia.jpg" alt="Statua di San Sebastiano, patrono delle Misericordie, opera di Benedetto da Maiano" loading="lazy">
+  <figcaption>San Sebastiano, patrono delle Misericordie — Benedetto da Maiano, sede di Firenze.<span class="storia-credit">Foto: Sailko · CC BY 3.0 · Wikimedia Commons</span></figcaption>
+</figure>
 
 I servizi crebbero nel tempo: trasporto dei malati, sepoltura dei defunti, igiene pubblica durante le pestilenze, assistenza ai carcerati, aiuto a donne e famiglie in difficoltà, gestione di ospizi, accompagnamento alle celebrazioni religiose.
 
