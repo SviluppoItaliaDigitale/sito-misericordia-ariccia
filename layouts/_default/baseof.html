@@ -5,6 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
   <meta name="description" content="{{ .Description | default site.Params.descrizione }}">
+  <meta name="theme-color" content="#00a5dc">
+  {{ $titolo := printf "%s%s" (cond .IsHome "" (printf "%s — " .Title)) site.Title }}
+  {{ $descr := .Description | default site.Params.descrizione }}
+  {{ $img := absURL "img/loghi/mise-fregio.png" }}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.Title }}">
+  <meta property="og:title" content="{{ $titolo }}">
+  <meta property="og:description" content="{{ $descr }}">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ $img }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ $titolo }}">
+  <meta name="twitter:description" content="{{ $descr }}">
+  <meta name="twitter:image" content="{{ $img }}">
+  {{ if .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Confraternita di Misericordia di Ariccia ODV",
+    "url": {{ site.BaseURL | jsonify }},
+    "logo": {{ $img | jsonify }},
+    "description": {{ site.Params.descrizione | jsonify }},
+    "email": {{ site.Params.email | jsonify }},
+    "telephone": "+393484068657",
+    "taxID": {{ site.Params.codiceFiscale | jsonify }},
+    "foundingDate": "1994",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Viale Antonietta Chigi, 46",
+      "postalCode": "00072",
+      "addressLocality": "Ariccia",
+      "addressRegion": "RM",
+      "addressCountry": "IT"
+    },
+    "sameAs": [{{ site.Params.facebook | jsonify }}, {{ site.Params.instagram | jsonify }}]
+  }
+  </script>
+  {{ end }}
   <link rel="stylesheet" href="{{ "vendor/bootstrap/bootstrap.min.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/animazioni.css" | relURL }}">
