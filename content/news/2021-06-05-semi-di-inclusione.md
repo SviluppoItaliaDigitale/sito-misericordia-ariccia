@@ -4,9 +4,9 @@ date: 2021-06-05
 slug: "semi-di-inclusione"
 ---
 
-Questa mattina, in Via Perucca, presso Fontana di Papa, si è svolta l'inaugurazione dell'orto sociale dove, co n il progetto SEMI di Inclusione – Servizi Mirati di Inclusione sociale, che mira a favorire l’inclusione sociale e lavorativa delle persone in condizione di svantaggio economico e povertà, a 4 famiglie sono state destinate dei lotti dell'orto. Il progetto prevede anche corsi di formazione per il reinserimento nel mondo del lavoro e servizi per anziani quali teleassistenza ed iniziative di socializzazione grazie anche al partenariato con la Croce Rossa Italiana-Comitato dei comuni dell'Appia e l'associazione Maendeleo for children.
+Questa mattina, in Via Perucca, presso Fontana di Papa, si è svolta l'inaugurazione dell'orto sociale dove, con il progetto SEMI di Inclusione – Servizi Mirati di Inclusione sociale, che mira a favorire l’inclusione sociale e lavorativa delle persone in condizione di svantaggio economico e povertà, a 4 famiglie sono state destinate dei lotti dell'orto. Il progetto prevede anche corsi di formazione per il reinserimento nel mondo del lavoro e servizi per anziani quali teleassistenza ed iniziative di socializzazione grazie anche al partenariato con la Croce Rossa Italiana-Comitato dei comuni dell'Appia e l'associazione Maendeleo for children.
 
-Ringraziamo l'intervento dell'amministrazione comunale, e della Gruppo Comunale volontari di protezione civile la quale ha provveduto ha dotare l'orto di una piccola cisterna per irrigare.
+Ringraziamo l'intervento dell'amministrazione comunale, e della Gruppo Comunale volontari di protezione civile la quale ha provveduto a dotare l'orto di una piccola cisterna per irrigare.
 
 Anche per questo progetto finalizzato all'aiuto verso il prossimo, le associazioni del territorio collaborano attivamente.
 
