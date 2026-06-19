@@ -31,4 +31,4 @@ Crediamo nella sinergia con le altre organizzazioni del Terzo Settore: la coprog
 
 ## Diventa volontario
 
-C'è posto per chiunque voglia donare un po' del proprio tempo: non servono competenze particolari per iniziare, la formazione la facciamo insieme. **Passa in sede** in Via Beata Rosa Venerini, 6 ad Ariccia, scrivi a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) o chiama il 348 4068657.
+C'è posto per chiunque voglia donare un po' del proprio tempo: non servono competenze particolari per iniziare, la formazione la facciamo insieme. **Passa a trovarci** nella sede amministrativa di Viale Antonietta Chigi, 46 o nella sede operativa di Piazzale Aldo Moro, 6 ad Ariccia, scrivi a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) o chiama il 348 4068657.

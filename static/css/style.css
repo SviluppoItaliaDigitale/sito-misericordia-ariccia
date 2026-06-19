@@ -402,3 +402,34 @@ a:hover { color: var(--mise-navy); }
   margin-top: 1.6rem;
   filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
 }
+
+/* ============================================================
+   Profondità — ombre morbide per un leggero senso di 3D
+   (banner, fasce e foto). Tutte tenui, nella tinta navy del brand.
+   ============================================================ */
+:root {
+  --ombra-foto:   0 12px 30px rgba(27,34,63,.18);  /* foto/riquadri: elevazione su tutti i lati */
+  --ombra-riq:    0 8px 22px  rgba(27,34,63,.14);  /* riquadri più leggeri */
+  --ombra-fascia: 0 12px 22px -12px rgba(27,34,63,.50); /* fasce a tutta larghezza: solo discendente */
+}
+
+/* Fasce/banner a tutta larghezza: ombra discendente → "galleggiano" sopra ciò che sta sotto */
+.barra-annunci,
+.fascia-numeri,
+.fascia-marquee,
+.pagina-testata,
+.fascia-rete {
+  box-shadow: var(--ombra-fascia);
+  position: relative; z-index: 1;
+}
+
+/* Riquadri contenuti: elevazione morbida su tutti i lati */
+.fascia-5x1000 { box-shadow: var(--ombra-foto); }
+.avviso-emergenza { box-shadow: 0 8px 22px rgba(210,59,59,.16); }
+
+/* Card servizi: rendo un filo più presente l'ombra a riposo (più profondità) */
+.card-servizio { box-shadow: 0 6px 18px rgba(27,34,63,.10); }
+
+/* Foto: galleria e immagini/loghi nei contenuti */
+.carousel-galleria .carousel-inner { box-shadow: var(--ombra-foto); }
+.contenuto img { box-shadow: var(--ombra-riq); }
