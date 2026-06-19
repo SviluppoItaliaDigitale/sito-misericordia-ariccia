@@ -25,11 +25,13 @@
     <h2 class="cs-titolo-sezione" data-split="words">Le sette opere corporali</h2>
     <div class="sv-griglia" data-anim-group>
       {{ range . }}
-      <article class="sv-card">
-        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
-        <h3>{{ .titolo }}</h3>
-        <p>{{ .testo }}</p>
-      </article>
+      <details class="opera-card">
+        <summary>
+          <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+          <span class="opera-titolo">{{ .titolo }}</span>
+        </summary>
+        <div class="opera-spiega">{{ .spiegazione | markdownify }}</div>
+      </details>
       {{ end }}
     </div>
     {{ end }}
@@ -43,11 +45,13 @@
     <h2 class="cs-titolo-sezione" data-split="words">Le sette opere spirituali</h2>
     <div class="sv-griglia" data-anim-group>
       {{ range . }}
-      <article class="sv-card">
-        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
-        <h3>{{ .titolo }}</h3>
-        <p>{{ .testo }}</p>
-      </article>
+      <details class="opera-card">
+        <summary>
+          <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+          <span class="opera-titolo">{{ .titolo }}</span>
+        </summary>
+        <div class="opera-spiega">{{ .spiegazione | markdownify }}</div>
+      </details>
       {{ end }}
     </div>
     {{ end }}

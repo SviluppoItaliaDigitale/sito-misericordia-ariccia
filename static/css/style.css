@@ -757,7 +757,15 @@ a:hover { color: var(--mise-navy); }
    ============================================================ */
 .navbar-mise .dropdown-menu-mise {
   background: var(--mise-navy); border: none; border-radius: .7rem;
-  box-shadow: 0 12px 30px rgba(0,60,100,.4); padding: .4rem; margin-top: .4rem;
+  box-shadow: 0 12px 30px rgba(0,60,100,.4); padding: .4rem; margin-top: 0;
+}
+/* Apertura al passaggio del mouse (desktop) — niente clic obbligatorio.
+   Nessuno stacco tra voce e menu, così il mouse non "perde" l'hover. */
+@media (min-width: 992px) {
+  .navbar-mise .nav-item.dropdown:hover > .dropdown-menu,
+  .navbar-mise .nav-item.dropdown:focus-within > .dropdown-menu {
+    display: block; top: 100%; left: 0;
+  }
 }
 .navbar-mise .dropdown-menu-mise .dropdown-item {
   color: #fff; font-family: "Jost", sans-serif; border-radius: .45rem; padding: .5rem .85rem;
@@ -773,3 +781,32 @@ a:hover { color: var(--mise-navy); }
 .offcanvas-mise .sottomenu { padding-left: .9rem; border-left: 2px solid rgba(255,255,255,.15); margin: .2rem 0 .4rem .4rem; }
 .offcanvas-mise .sottomenu .nav-link { font-size: 1.02rem; padding-block: .4rem; }
 .mappa-data { color: var(--mise-ciano-testo); font-size: .82rem; font-family: "Jost", sans-serif; }
+
+/* ============================================================
+   Opere di Misericordia — schede cliccabili/espandibili
+   ============================================================ */
+.opera-card {
+  background: #fff; border-radius: 1rem; overflow: hidden;
+  box-shadow: 0 8px 22px rgba(27,34,63,.10); border-top: 4px solid var(--mise-ciano);
+  transition: box-shadow .18s ease;
+}
+.opera-card:nth-child(3n+2) { border-top-color: var(--mise-giallo); }
+.opera-card:nth-child(3n+3) { border-top-color: var(--mise-ciano-scuro); }
+.opera-card[open] { box-shadow: 0 14px 30px rgba(0,132,184,.18); }
+.opera-card summary {
+  list-style: none; cursor: pointer; padding: 1.2rem 1.3rem;
+  display: flex; align-items: center; gap: .8rem;
+  font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy);
+}
+.opera-card summary::-webkit-details-marker { display: none; }
+.opera-card summary .sv-icona { margin: 0; width: 2.7rem; height: 2.7rem; font-size: 1.3rem; flex: none; }
+.opera-titolo { flex: 1; }
+.opera-card summary::after {
+  content: "+"; margin-left: .4rem; font-size: 1.5rem; line-height: 1;
+  color: var(--mise-ciano-testo); font-weight: 700;
+}
+.opera-card[open] summary::after { content: "–"; }
+.opera-card summary:hover { background: var(--mise-ciano-velo); }
+.opera-spiega { padding: 0 1.3rem 1.3rem; color: var(--mise-inchiostro); }
+.opera-spiega p { margin: 0; }
+.opera-spiega strong { color: var(--mise-navy); }
