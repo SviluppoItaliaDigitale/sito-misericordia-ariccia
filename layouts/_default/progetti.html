@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Solidarietà sul territorio</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    {{ with .Content }}<div class="prog-intro" data-anim="fade-up">{{ . }}</div>{{ end }}
+
+    {{ with .Params.inCorso }}
+    <article class="prog-incorso" data-anim="zoom">
+      {{ with .logo }}<img class="prog-incorso-logo" src="{{ . | relURL }}" alt="Logo del progetto {{ $.Params.inCorso.titolo }}" loading="lazy">{{ end }}
+      <div class="prog-incorso-testo">
+        <span class="prog-badge-corso">● In corso</span>
+        <h2>{{ .titolo }}</h2>
+        <p>{{ .testo | markdownify }}</p>
+        {{ with .dettagli }}
+        <ul class="prog-dettagli">
+          {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+
+    {{ with .Params.passati }}
+    <h2 class="prog-titolo" data-split="words">I progetti che ci hanno accompagnato</h2>
+    <div class="prog-griglia" data-anim-group>
+      {{ range . }}
+      <article class="prog-card">
+        <div class="prog-card-top">
+          <span class="prog-icona" aria-hidden="true">{{ .icona | default "🤝" }}</span>
+          {{ with .anno }}<span class="prog-anno">{{ . }}</span>{{ end }}
+        </div>
+        <h3>{{ .titolo }}</h3>
+        <p>{{ .testo | markdownify }}</p>
+        {{ with .documenti }}
+        <div class="prog-doc">
+          {{ range . }}<a href="{{ .url | relURL }}">📄 {{ .testo }}</a>{{ end }}
+        </div>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <p class="prog-news-nota" data-anim="fade-up">Nelle <a href="{{ "/news/" | relURL }}">news</a> trovi gli articoli originali dedicati a ciascun progetto.</p>
+  </div>
+</div>
+{{ end }}

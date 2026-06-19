@@ -668,3 +668,54 @@ a:hover { color: var(--mise-navy); }
 }
 .mov-card h3 { margin: 0 0 .5rem; color: var(--mise-navy); }
 .mov-card p { margin: 0; }
+
+/* ============================================================
+   Pagina Progetti — progetto in corso + schede dei progetti passati
+   ============================================================ */
+.prog-intro { font-size: 1.13rem; color: var(--mise-navy); max-width: 50rem; margin-bottom: 1.7rem; line-height: 1.7; }
+.prog-incorso {
+  display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap;
+  background: linear-gradient(120deg, var(--mise-ciano) 0%, var(--mise-ciano-scuro) 100%);
+  color: #fff; border-radius: 1.2rem; padding: 1.8rem 2rem;
+  box-shadow: 0 16px 36px rgba(27,34,63,.22); margin-bottom: 2.4rem;
+}
+.prog-incorso-logo { flex: none; width: 120px; height: auto; background: #fff; border-radius: 1rem; padding: .5rem; }
+.prog-incorso-testo { flex: 1; min-width: 260px; }
+.prog-incorso h2 { color: #fff; border: none; padding: 0; margin: .3rem 0 .6rem; }
+.prog-incorso p { color: rgba(255,255,255,.95); }
+.prog-badge-corso {
+  display: inline-block; font-family: "Jost", sans-serif; font-weight: 600; font-size: .76rem;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--mise-navy);
+  background: var(--mise-giallo); padding: .2rem .7rem; border-radius: 50rem;
+}
+.prog-dettagli { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .4rem; }
+.prog-dettagli li { padding-left: 1.4rem; position: relative; }
+.prog-dettagli li::before { content: "✦"; position: absolute; left: 0; color: var(--mise-giallo); }
+
+.prog-titolo { font-size: 1.7rem; margin: 0 0 1.2rem; color: var(--mise-navy); }
+.prog-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+.prog-card {
+  background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 22px rgba(27,34,63,.10);
+  border-top: 4px solid var(--mise-ciano); display: flex; flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.prog-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,132,184,.18); }
+.prog-card:nth-child(3n+2) { border-top-color: var(--mise-giallo); }
+.prog-card:nth-child(3n+3) { border-top-color: var(--mise-ciano-scuro); }
+.prog-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+.prog-icona { font-size: 2rem; line-height: 1; }
+.prog-anno {
+  font-family: "Jost", sans-serif; font-weight: 700; font-size: .8rem; color: #fff;
+  background: var(--mise-ciano-scuro); padding: .15rem .65rem; border-radius: 50rem;
+}
+.prog-card h3 { margin: 0 0 .5rem; color: var(--mise-navy); }
+.prog-card p { margin: 0 0 .8rem; color: var(--mise-inchiostro); }
+.prog-doc { margin-top: auto; display: flex; flex-wrap: wrap; gap: .5rem; }
+.prog-doc a {
+  display: inline-flex; align-items: center; gap: .3rem; font-size: .85rem; font-weight: 600;
+  text-decoration: none; color: var(--mise-ciano-testo); background: var(--mise-ciano-velo);
+  border: 1px solid rgba(0,165,220,.3); padding: .2rem .65rem; border-radius: 50rem;
+}
+.prog-doc a:hover { background: #fff; }
+.prog-news-nota { margin-top: 2rem; text-align: center; color: var(--mise-inchiostro); }
+@media (prefers-reduced-motion: reduce) { .prog-card { transition: none; } }
