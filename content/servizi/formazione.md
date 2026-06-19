@@ -9,9 +9,11 @@ Con la collaborazione di medici, infermieri e avvocati, i nostri istruttori form
 ## I corsi
 
 - **Primo Soccorso** — le manovre e le buone pratiche che tutti dovrebbero conoscere per intervenire al meglio nei piccoli infortuni;
-- **BLS-D** (Basic Life Support – Defibrillation) — tenuto da formatori abilitati **ARES 118**, abilita all'uso del defibrillatore nei casi di emergenza;
+- **BLS-D** (Basic Life Support – Defibrillation, *supporto vitale di base e defibrillazione*) — tenuto da formatori abilitati **ARES 118**, abilita all'uso del defibrillatore nei casi di emergenza;
 - **Autisti dei mezzi di emergenza** — riservato ai volontari della Misericordia;
 - **Sicurezza (D.lgs. 81/08)** — la formazione del responsabile per la sicurezza;
 - **Supporto degenti in ospedale** — l'abilitazione per i volontari ospedalieri.
+
+**Materiale didattico:** 📄 [Manuale del soccorritore](/documenti/manuale-del-soccorritore.pdf)
 
 **Per iscriverti al prossimo corso:** [348 4068657](tel:+393484068657) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)

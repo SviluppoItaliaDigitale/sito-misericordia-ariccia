@@ -24,6 +24,8 @@ Le candidature si sono chiuse l'**8 aprile 2026**; sono in corso le selezioni.
 | 2019-2020 | 10 |
 | 2025-2026 | 2 posti a bando *(selezioni in corso)* |
 
+Schede progetto storiche: 📄 [2015](/documenti/scheda-servizio-civile-2015.pdf) · [2016](/documenti/scheda-servizio-civile-2016.pdf) · [2017](/documenti/scheda-servizio-civile-2017.pdf).
+
 ## Come candidarsi
 
 Le candidature si presentano attraverso il portale istituzionale [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/) nei periodi di apertura dei bandi: possono partecipare i giovani **tra i 18 e i 29 anni non compiuti**.

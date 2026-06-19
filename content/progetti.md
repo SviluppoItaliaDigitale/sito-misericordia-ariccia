@@ -16,8 +16,8 @@ Il progetto mira a migliorare l'inclusione sociale di **100 persone con disabili
 
 - **Dona un respiro** (2020) — raccolta fondi, insieme a Comune di Ariccia e Croce Rossa Italiana, per donare un ventilatore polmonare al reparto di rianimazione del Nuovo Ospedale dei Castelli;
 - **Attivi Insieme** e **Al Tuo Servizio** (2020) — teleassistenza e consegna di viveri e farmaci alle persone fragili durante la pandemia, con la Protezione Civile di Ariccia e Velletri;
-- **SEMI di Inclusione** (2021) — orti sociali a favore delle categorie fragili, avviso *Comunità Solidali* della Regione Lazio;
-- **Coltivare Inclusione** (2022) — contrasto alla povertà e all'emarginazione, inclusione sociale e lavorativa delle persone svantaggiate;
-- **Progetto Castle** (2022).
+- **SEMI di Inclusione** (2021) — orti sociali a favore delle categorie fragili, avviso *Comunità Solidali* della Regione Lazio; documenti: [regolamento orti sociali](/documenti/regolamento-orti-sociali-semi-di-inclusione.pdf), [avviso pubblico](/documenti/avviso-pubblico-semi-di-inclusione-2021.pdf);
+- **Coltivare Inclusione** (2022) — contrasto alla povertà e all'emarginazione, inclusione sociale e lavorativa delle persone svantaggiate; [avviso pubblico](/documenti/avviso-pubblico-coltivare-inclusione-2022.pdf);
+- **Progetto Castle** (2022) — [piano operativo del progetto](/documenti/progetto-castle.pdf).
 
 Nelle [news](/news/) trovi gli articoli originali dedicati a ciascun progetto.
