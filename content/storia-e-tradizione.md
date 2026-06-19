@@ -26,13 +26,27 @@ Il primo documento conosciuto che cita la Misericordia risale al **1321**, quand
 
 ## Confratelli e protettori illustri
 
-Nei secoli la Misericordia di Firenze ha avuto il sostegno di figure di primo piano:
+In quasi otto secoli, accanto al popolo, hanno servito o protetto la Misericordia di Firenze molte figure di primo piano.
 
-- **Papa Clemente VII** — nel **1525** concesse alla Compagnia l'uso della chiesa di San Cristoforo degli Adimari.
-- **Granduca Francesco I de' Medici** — nel **1576** le concesse la sede di fronte al campanile di Giotto, tuttora utilizzata.
-- **Granduca Pietro Leopoldo** — egli stesso **confratello**, protesse la Misericordia durante la soppressione delle associazioni religiose del **1784**.
+**Pontefici**
+- **Papa Clemente VII** (1525) — concesse alla Compagnia la chiesa di San Cristoforo degli Adimari.
+- **Lorenzo Corsini**, poi **Papa Clemente XII** (1726).
 
-Eppure, sotto la veste anonima della **«buffa»**, ogni confratello era uguale agli altri: principi e popolani prestavano lo stesso servizio, senza distinzione di rango. È questo lo spirito che ancora oggi anima le Misericordie.
+**Granduchi di Toscana** — spesso «Capi di Guardia» della Confraternita
+- **Francesco I de' Medici** (1576) — concesse la sede di fronte al campanile di Giotto, tuttora utilizzata.
+- **Ferdinando II de' Medici** (1640).
+- **Cosimo III de' Medici** (1670) — donò la statua di **San Sebastiano**, patrono della Misericordia.
+- **Pietro Leopoldo di Lorena** (1775) — protesse la Misericordia dalla soppressione delle associazioni religiose del 1784.
+
+**Casa Savoia**
+- **Re Vittorio Emanuele III** e la **Regina Elena** — in visita (1903).
+- **Umberto di Savoia** — «Capo di Guardia» (1924).
+
+**Cultura e Chiesa**
+- **Giovanni Boccaccio**, che nel *Decameron* descrisse Firenze durante la peste del 1348, quando la Misericordia era all'opera.
+- Il **Cardinale Elia Dalla Costa**, arcivescovo di Firenze (1949).
+
+Eppure, sotto la veste anonima della **«buffa»**, ogni confratello era uguale agli altri: papi, principi e popolani prestavano lo stesso servizio, senza distinzione di rango. È questo lo spirito che ancora oggi anima le Misericordie.
 
 ## La leggenda
 
