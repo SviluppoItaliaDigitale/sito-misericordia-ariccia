@@ -392,6 +392,9 @@ a:hover { color: var(--mise-navy); }
 .faq-item[open] summary { color: var(--mise-ciano-testo); }
 .faq-item p { padding: 0 1.1rem 1rem; margin: 0; }
 
+/* Richiedi un trasporto — pulsanti azione */
+.rt-azioni { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.3rem 0; }
+
 /* ---- Briciole di pane ---- */
 .briciole { font-family: "Jost", sans-serif; font-size: .88rem; --bs-breadcrumb-divider: "›"; margin-bottom: 0; }
 .briciole a { text-decoration: none; }
@@ -623,8 +626,8 @@ a:hover { color: var(--mise-navy); }
 }
 .griglia-news .news-item { margin-bottom: 0; }
 .news-item:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,132,184,.18); }
-.news-item h2 { font-size: 1.2rem; margin: .2rem 0 .5rem; }
-.news-item h2 a { color: var(--mise-navy); }
+.news-item h2, .news-item h3 { font-size: 1.2rem; margin: .2rem 0 .5rem; }
+.news-item h2 a, .news-item h3 a { color: var(--mise-navy); }
 .news-leggi { margin-top: auto; padding-top: .7rem; font-family: "Jost", sans-serif; font-weight: 600; text-decoration: none; color: var(--mise-ciano-testo); }
 @media (prefers-reduced-motion: reduce) { .news-item { transition: none; } }
 

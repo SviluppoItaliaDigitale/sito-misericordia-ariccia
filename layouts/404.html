@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1">Errore 404</p>
+    <h1>Pagina non trovata</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <article class="contenuto">
+      <p>La pagina che cerchi non esiste, è stata spostata o l'indirizzo non è corretto.</p>
+      <p>Puoi tornare alla <a href="{{ "/" | relURL }}">Home</a>, consultare la <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a> oppure scriverci dalla pagina <a href="{{ "/contatti/" | relURL }}">Contatti</a>.</p>
+      <p>In caso di <strong>emergenza</strong> chiama sempre il <a href="tel:112">112</a>.</p>
+    </article>
+  </div>
+</div>
+{{ end }}

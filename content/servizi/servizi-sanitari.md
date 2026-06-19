@@ -21,7 +21,7 @@ sezioni:
 nota:
   icona: "📞"
   titolo: "Come richiedere un trasporto:"
-  testo: "contattaci con un po' di anticipo indicando **data, orario, luogo di partenza e destinazione**; ti spiegheremo come procedere. Per i servizi in convenzione l'accesso avviene tramite gli enti locali."
+  testo: "contattaci con un po' di anticipo indicando **data, orario, luogo di partenza e destinazione**. Tutti i dettagli e i contatti nella pagina [**Richiedi un trasporto**](/richiedi-trasporto/). Per i servizi in convenzione l'accesso avviene tramite gli enti locali."
 contatto:
   label: "Per richiedere un servizio"
   tel: "348 4068657"

@@ -57,19 +57,19 @@
   <div class="container">
     <div class="row text-center g-3" data-anim-group>
       <div class="col-6 col-md-3">
-        <div class="numero"><span data-conta="30">0</span><span aria-hidden="true">+</span></div>
+        <div class="numero"><span data-conta="30">30</span><span aria-hidden="true">+</span></div>
         <div class="etichetta">anni di servizio</div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="numero"><span data-conta="2">0</span></div>
+        <div class="numero"><span data-conta="2">2</span></div>
         <div class="etichetta">ambulanze a disposizione</div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="numero"><span data-conta="10">0</span><span aria-hidden="true">+</span></div>
+        <div class="numero"><span data-conta="10">10</span><span aria-hidden="true">+</span></div>
         <div class="etichetta">anni di Servizio Civile</div>
       </div>
       <div class="col-6 col-md-3">
-        <div class="numero"><span data-conta="2">0</span></div>
+        <div class="numero"><span data-conta="2">2</span></div>
         <div class="etichetta">giovani SCU 2025/26</div>
       </div>
     </div>
@@ -178,7 +178,7 @@
       {{ range $news }}
       <article class="news-item">
         <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         <p class="mb-0">{{ .Summary | plainify | truncate 160 }}</p>
       </article>
       {{ end }}
