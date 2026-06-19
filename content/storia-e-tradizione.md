@@ -79,3 +79,7 @@ Verso la metà dell'Ottocento esistevano quasi cento Misericordie, soprattutto i
 </div>
 
 Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce queste realtà diffuse in tutta la penisola. La Misericordia di Ariccia ne è parte, portando nei Castelli Romani la stessa, antica vocazione: stare accanto a chi soffre.
+
+## Il Museo della Misericordia
+
+A Firenze, nella sede storica di Piazza del Duomo, il **Museo della Misericordia** racconta quasi otto secoli di storia in **14 sale**: manoscritti, dipinti, stemmi, arredi e oggetti della tradizione della Confraternita. Per chi desidera approfondire le radici del nostro movimento, è una tappa preziosa — [museo.misericordia.firenze.it](https://museo.misericordia.firenze.it/).
