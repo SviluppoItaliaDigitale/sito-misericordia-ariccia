@@ -63,6 +63,11 @@ La veste era in origine rossa, a significare l'ispirazione dello Spirito Santo; 
   <figcaption>I confratelli con la «buffa» portano la lettiga, Firenze — fotografia di Giorgio Sommer (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
 </figure>
 
+<figure class="storia-foto">
+  <img src="/img/storia/buffa-museo.jpg" alt="La veste della Misericordia: la «buffa» nera e quella rossa esposte al Museo della Misericordia di Firenze" loading="lazy">
+  <figcaption>La «buffa» nera e la storica veste rossa, al Museo della Misericordia di Firenze.<span class="storia-credit">Foto: Sailko · CC BY 3.0 · Wikimedia Commons</span></figcaption>
+</figure>
+
 ## La diffusione in Italia
 
 Sull'esempio fiorentino nacquero confraternite analoghe in molte città toscane e poi in altri Stati italiani, tutte unite dall'ispirazione evangelica, dal legame con la Chiesa e dalla missione di servizio ai malati e ai poveri. Le Misericordie *«si governano a popolo»*, con organi liberamente eletti.

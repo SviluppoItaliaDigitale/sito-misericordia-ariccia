@@ -21,7 +21,7 @@
       <div class="pg-intro">
         <span class="pg-kicker">La Parola del giorno</span>
         <p class="pg-data">{{ time.Format ":date_full" $oggi }}</p>
-        {{ with $cel }}<p class="pg-celebrazione">Oggi la Chiesa celebra<strong>{{ . }}</strong></p>{{ end }}
+        {{ with $cel }}<p class="pg-celebrazione">Oggi la Chiesa celebra <strong>{{ . }}</strong></p>{{ end }}
         <a class="pg-cta" href="{{ "/liturgia-del-giorno/" | relURL }}">📖 Letture della Messa di oggi →</a>
       </div>
       <div class="pg-link" data-anim-group>
