@@ -4,10 +4,9 @@
 # Senza "al" l'annuncio è permanente.
 # Campi: testo (HTML ammesso) · link + linkTesto (facoltativi) · cf:true (aggiunge il C.F.) · tel:true (aggiunge il telefono)
 voci:
-  - testo: "Servizio Civile 2025/26: <strong>selezioni in corso</strong>"
-    link: "/servizio-civile/"
-    linkTesto: "scopri il progetto"
-    al: "2026-12-31"
+  - testo: "<strong>Campagna Adesioni 2026</strong>: entra a far parte della nostra squadra"
+    link: "/chi-siamo/"
+    linkTesto: "diventa volontario"
 
   - testo: "Dona il tuo <strong>5x1000</strong>:"
     cf: true
