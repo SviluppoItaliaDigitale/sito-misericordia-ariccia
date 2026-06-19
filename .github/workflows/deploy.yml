@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Ricostruzione giornaliera (04:00 UTC ≈ 05:00/06:00 in Italia):
+    # gli annunci scaduti (data/annunci.yaml, campo "al") spariscono da soli.
+    - cron: "0 4 * * *"
 
 concurrency:
   group: deploy-aruba
