@@ -25,6 +25,14 @@ disableKinds = ["taxonomy", "term"]
     pageRef = "/chi-siamo"
     weight = 10
   [[menus.main]]
+    name = "Storia"
+    pageRef = "/storia-e-tradizione"
+    weight = 12
+  [[menus.main]]
+    name = "Confratelli"
+    pageRef = "/i-confratelli"
+    weight = 14
+  [[menus.main]]
     name = "Servizi"
     pageRef = "/servizi"
     weight = 20

@@ -649,3 +649,22 @@ a:hover { color: var(--mise-navy); }
 }
 .sv-contatto-righe a:hover { background: var(--mise-giallo); color: var(--mise-navy); border-color: var(--mise-giallo); }
 @media (prefers-reduced-motion: reduce) { .sv-card { transition: none; } }
+
+/* ============================================================
+   Pagine "movimento" (Storia e tradizione, I confratelli)
+   blocchi che risaltano dentro la card di contenuto
+   ============================================================ */
+.mov-dati { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .9rem; margin: 1.4rem 0; }
+.mov-dati > div {
+  background: linear-gradient(135deg, var(--mise-ciano), var(--mise-ciano-scuro)); color: #fff;
+  border-radius: .9rem; padding: 1.1rem .8rem; text-align: center;
+  box-shadow: 0 8px 22px rgba(27,34,63,.14); font-family: "Jost", sans-serif; font-size: .9rem;
+}
+.mov-dati .num { display: block; font-weight: 700; font-size: 1.7rem; line-height: 1.1; margin-bottom: .15rem; }
+.mov-card-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.3rem 0; }
+.mov-card {
+  background: var(--mise-ciano-velo); border-radius: .9rem; padding: 1.3rem 1.4rem;
+  border-top: 4px solid var(--mise-ciano); box-shadow: 0 6px 18px rgba(27,34,63,.08);
+}
+.mov-card h3 { margin: 0 0 .5rem; color: var(--mise-navy); }
+.mov-card p { margin: 0; }
