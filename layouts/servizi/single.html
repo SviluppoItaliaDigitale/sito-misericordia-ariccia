@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    {{ with .Content }}<div class="contenuto mb-4" data-anim="fade-up">{{ . }}</div>{{ end }}
+
+    {{ with .Params.sezioni }}
+    <div class="sv-griglia" data-anim-group>
+      {{ range . }}
+      <article class="sv-card">
+        <span class="sv-icona" aria-hidden="true">{{ .icona }}</span>
+        <h2>{{ .titolo }}</h2>
+        <p>{{ .testo | markdownify }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Params.nota }}
+    <div class="sv-nota" data-anim="fade-up"><span class="sv-nota-icona" aria-hidden="true">{{ .icona | default "ℹ️" }}</span><span><strong>{{ .titolo }}</strong> {{ .testo | markdownify }}</span></div>
+    {{ end }}
+
+    {{ with .Params.contatto }}
+    <div class="sv-contatto" data-anim="fade-up">
+      <p class="sv-contatto-label">{{ .label | default "Per informazioni" }}</p>
+      <div class="sv-contatto-righe">
+        {{ with .tel }}<a href="tel:+39{{ replace . " " "" }}">📞 {{ . }}</a>{{ end }}
+        {{ with .email }}<a href="mailto:{{ . }}">✉️ {{ . }}</a>{{ end }}
+        {{ range .documenti }}<a href="{{ .url | relURL }}">📄 {{ .testo }}</a>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

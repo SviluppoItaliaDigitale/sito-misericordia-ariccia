@@ -604,3 +604,48 @@ a:hover { color: var(--mise-navy); }
 .news-item h2 a { color: var(--mise-navy); }
 .news-leggi { margin-top: auto; padding-top: .7rem; font-family: "Jost", sans-serif; font-weight: 600; text-decoration: none; color: var(--mise-ciano-testo); }
 @media (prefers-reduced-motion: reduce) { .news-item { transition: none; } }
+
+/* ============================================================
+   Pagine Servizi — sezioni come schede colorate
+   ============================================================ */
+.sv-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.2rem; }
+.sv-card {
+  background: #fff; border-radius: 1rem; padding: 1.6rem 1.5rem;
+  box-shadow: 0 8px 22px rgba(27,34,63,.10); border-top: 4px solid var(--mise-ciano);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.sv-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,132,184,.18); }
+.sv-card:nth-child(3n+2) { border-top-color: var(--mise-giallo); }
+.sv-card:nth-child(3n+3) { border-top-color: var(--mise-ciano-scuro); }
+.sv-icona {
+  display: inline-grid; place-items: center; width: 3.2rem; height: 3.2rem;
+  border-radius: .9rem; font-size: 1.6rem; margin-bottom: .8rem; background: var(--mise-ciano-velo);
+}
+.sv-card:nth-child(3n+2) .sv-icona { background: var(--mise-giallo-soft); }
+.sv-card h2 { font-size: 1.2rem; margin: 0 0 .5rem; color: var(--mise-navy); border: none; padding: 0; }
+.sv-card p { margin: 0; color: var(--mise-inchiostro); }
+
+.sv-nota {
+  display: flex; gap: .7rem; align-items: flex-start;
+  background: var(--mise-giallo-soft); border-left: 4px solid var(--mise-giallo);
+  border-radius: .7rem; padding: 1rem 1.2rem; margin-top: 1.5rem;
+}
+.sv-nota-icona { font-size: 1.4rem; line-height: 1; }
+
+.sv-contatto {
+  margin-top: 1.6rem; padding: 1.4rem 1.6rem; border-radius: 1rem;
+  background: linear-gradient(120deg, var(--mise-navy) 0%, #2a3566 100%); color: #fff;
+  box-shadow: 0 12px 30px rgba(27,34,63,.18);
+}
+.sv-contatto-label {
+  font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-giallo);
+  margin: 0 0 .7rem; text-transform: uppercase; letter-spacing: .08em; font-size: .82rem;
+}
+.sv-contatto-righe { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
+.sv-contatto-righe a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(255,255,255,.12); color: #fff; text-decoration: none;
+  padding: .45rem .95rem; border-radius: 50rem; font-weight: 600; border: 1px solid rgba(255,255,255,.25);
+}
+.sv-contatto-righe a:hover { background: var(--mise-giallo); color: var(--mise-navy); border-color: var(--mise-giallo); }
+@media (prefers-reduced-motion: reduce) { .sv-card { transition: none; } }

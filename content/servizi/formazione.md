@@ -2,18 +2,29 @@
 title: "Formazione"
 summary: "Corsi di primo soccorso, BLS-D, autisti dei mezzi di emergenza e volontari ospedalieri."
 weight: 40
+sezioni:
+  - icona: "⛑️"
+    titolo: "Primo Soccorso"
+    testo: "Le manovre e le buone pratiche che tutti dovrebbero conoscere per intervenire al meglio nei piccoli infortuni."
+  - icona: "❤️"
+    titolo: "BLS-D"
+    testo: "*Basic Life Support – Defibrillation* (supporto vitale di base e defibrillazione): tenuto da formatori abilitati ARES 118, abilita all'uso del defibrillatore nei casi di emergenza."
+  - icona: "🚑"
+    titolo: "Autisti dei mezzi di emergenza"
+    testo: "Riservato ai volontari della Misericordia."
+  - icona: "🦺"
+    titolo: "Sicurezza (D.lgs. 81/08)"
+    testo: "La formazione del responsabile per la sicurezza."
+  - icona: "🛏️"
+    titolo: "Supporto degenti in ospedale"
+    testo: "L'abilitazione per i volontari ospedalieri."
+contatto:
+  label: "Per iscriverti al prossimo corso"
+  tel: "348 4068657"
+  email: "sede@misericordia-ariccia.it"
+  documenti:
+    - testo: "Manuale del soccorritore"
+      url: "documenti/manuale-del-soccorritore.pdf"
 ---
 
 Con la collaborazione di medici, infermieri e avvocati, i nostri istruttori formano i futuri soccorritori della Misericordia.
-
-## I corsi
-
-- **Primo Soccorso** — le manovre e le buone pratiche che tutti dovrebbero conoscere per intervenire al meglio nei piccoli infortuni;
-- **BLS-D** (Basic Life Support – Defibrillation, *supporto vitale di base e defibrillazione*) — tenuto da formatori abilitati **ARES 118**, abilita all'uso del defibrillatore nei casi di emergenza;
-- **Autisti dei mezzi di emergenza** — riservato ai volontari della Misericordia;
-- **Sicurezza (D.lgs. 81/08)** — la formazione del responsabile per la sicurezza;
-- **Supporto degenti in ospedale** — l'abilitazione per i volontari ospedalieri.
-
-**Materiale didattico:** [Manuale del soccorritore](/documenti/manuale-del-soccorritore.pdf)
-
-**Per iscriverti al prossimo corso:** [348 4068657](tel:+393484068657) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
