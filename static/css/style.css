@@ -379,6 +379,19 @@ a:hover { color: var(--mise-navy); }
 #whatsapp-flot:hover { transform: scale(1.08); }
 @media (prefers-reduced-motion: reduce) { #whatsapp-flot { transition: none; } }
 
+/* FAQ — accordion */
+.faq-item { background: var(--mise-carta); border-radius: .7rem; margin-bottom: .7rem; border-left: 4px solid var(--mise-ciano); overflow: hidden; }
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: .9rem 1.1rem;
+  font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy);
+  display: flex; justify-content: space-between; align-items: center; gap: .6rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; color: var(--mise-ciano-testo); font-size: 1.4rem; line-height: 1; }
+.faq-item[open] summary::after { content: "–"; }
+.faq-item[open] summary { color: var(--mise-ciano-testo); }
+.faq-item p { padding: 0 1.1rem 1rem; margin: 0; }
+
 /* ---- Briciole di pane ---- */
 .briciole { font-family: "Jost", sans-serif; font-size: .88rem; --bs-breadcrumb-divider: "›"; margin-bottom: 0; }
 .briciole a { text-decoration: none; }
