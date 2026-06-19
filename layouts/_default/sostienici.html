@@ -1,0 +1,63 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Dai una mano</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    <!-- Fascia 5x1000 (stile home) -->
+    <section class="fascia-5x1000 gradiente-vivo rounded p-4 p-md-5 mb-4" data-anim="zoom" aria-label="Dona il 5x1000">
+      <div class="row align-items-center g-3">
+        <div class="col-md-8">
+          <h2 class="mb-2">Il tuo <span class="evidenzia">5x1000</span> resta ad Ariccia</h2>
+          <p class="mb-0">Destinare il 5x1000 alla Misericordia <strong>non costa nulla</strong>: è una quota delle imposte che pagheresti comunque. Basta una firma nella dichiarazione dei redditi.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <div class="occhiello-cf">Codice fiscale</div>
+          <div class="cf">{{ site.Params.codiceFiscale }}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Come si fa -->
+    <div class="contenuto mb-4" data-anim-group>
+      <h2>Come destinare il 5x1000</h2>
+      <p>Nel riquadro <em>«Sostegno del volontariato e degli enti del Terzo Settore»</em> apponi la tua firma e scrivi il nostro codice fiscale <strong>{{ site.Params.codiceFiscale }}</strong>. I fondi raccolti sostengono i servizi alla persona sul territorio di Ariccia e dei Castelli Romani.</p>
+    </div>
+
+    <!-- Bonifico + volontariato -->
+    <div class="row g-4" data-anim-group>
+      <div class="col-md-6">
+        <div class="sost-card h-100">
+          <span class="sost-icona" aria-hidden="true">🏦</span>
+          <h3>Dona con un bonifico</h3>
+          <p>Puoi fare una donazione — o pagare la quota associativa — anche con un bonifico bancario.</p>
+          <p class="sost-iban"><strong>Misericordia di Ariccia</strong><br>IBAN <span>IT31 X070 9238 9000 0000 0106 493</span></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="sost-card sost-card--giallo h-100">
+          <span class="sost-icona" aria-hidden="true">🤝</span>
+          <h3>Dona il tuo tempo</h3>
+          <p>Il dono più grande è il tempo: entra a far parte della nostra squadra. La formazione la facciamo insieme.</p>
+          <div class="sost-azioni">
+            <a class="btn btn-ciano btn-sm px-3" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
+            <a class="btn btn-giallo btn-sm px-3" href="{{ "documenti/modulo-iscrizione-socio.pdf" | relURL }}">Modulo di iscrizione</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="motto-sost text-center" data-anim="fade-up">«Che Dio te ne renda merito»</p>
+  </div>
+</div>
+{{ end }}

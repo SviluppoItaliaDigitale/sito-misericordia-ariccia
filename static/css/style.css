@@ -719,3 +719,21 @@ a:hover { color: var(--mise-navy); }
 .prog-doc a:hover { background: #fff; }
 .prog-news-nota { margin-top: 2rem; text-align: center; color: var(--mise-inchiostro); }
 @media (prefers-reduced-motion: reduce) { .prog-card { transition: none; } }
+
+/* ============================================================
+   Pagina Sostienici — schede bonifico/volontariato + motto
+   ============================================================ */
+.sost-card {
+  background: #fff; border-radius: 1rem; padding: 1.7rem 1.8rem;
+  box-shadow: 0 8px 22px rgba(27,34,63,.10); border-top: 4px solid var(--mise-ciano);
+}
+.sost-card--giallo { border-top-color: var(--mise-giallo); }
+.sost-icona { font-size: 2rem; display: block; margin-bottom: .5rem; }
+.sost-card h3 { margin: 0 0 .5rem; color: var(--mise-navy); }
+.sost-iban { margin: .7rem 0 0; }
+.sost-iban span {
+  font-family: "Jost", sans-serif; font-weight: 700; letter-spacing: .03em;
+  color: var(--mise-ciano-testo);
+}
+.sost-azioni { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.motto-sost { font-family: "Playfair Display", serif; font-size: 1.3rem; color: var(--mise-ciano-testo); margin-top: 2rem; }
