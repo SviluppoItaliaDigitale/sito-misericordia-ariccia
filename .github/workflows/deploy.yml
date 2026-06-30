@@ -1,15 +1,12 @@
 name: Pubblica su Aruba (anteprima)
 
+# ⚠️ Pubblicazione su Aruba DISATTIVATA (richiesta utente 2026-06-30):
+# il sito NON deve essere pubblicato finché non si decide di lanciarlo.
+# Niente deploy automatico su push né cron: resta solo l'avvio MANUALE
+# (workflow_dispatch). Per riattivare il deploy automatico al lancio,
+# ripristinare i trigger "push: branches: [main]" e/o "schedule".
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
-  schedule:
-    # Ricostruzione giornaliera SUBITO DOPO la mezzanotte italiana
-    # (00:30 UTC ≈ 01:30 inverno / 02:30 estate in Italia): così la
-    # Liturgia/Parola del giorno e gli annunci scaduti sono già aggiornati
-    # nelle prime ore del mattino.
-    - cron: "30 0 * * *"
 
 concurrency:
   group: deploy-aruba
