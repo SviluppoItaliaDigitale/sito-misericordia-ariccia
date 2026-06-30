@@ -10,6 +10,8 @@ disableKinds = ["taxonomy", "term"]
 [params]
   descrizione = "Confraternita di Misericordia di Ariccia ODV — volontariato, servizi alla persona, telesoccorso, formazione e Servizio Civile Universale ai Castelli Romani dal 1994."
   telefono = "348 4068657"
+  telefonoFisso = "06 933 3717"
+  telefonoInfo = "328 8105399"
   email = "sede@misericordia-ariccia.it"
   pec = "misericordia-ariccia@pec.misericordia-ariccia.it"
   indirizzo = "Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)"

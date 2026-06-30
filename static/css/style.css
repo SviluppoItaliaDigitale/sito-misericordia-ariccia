@@ -193,10 +193,11 @@ a:hover { color: var(--mise-navy); }
 }
 .fascia-5x1000 .cf {
   font-family: "Jost", sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  font-weight: 700;
+  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+  font-weight: 800;
   letter-spacing: .12em;
-  color: #fff;
+  color: var(--mise-giallo);
+  text-shadow: 0 1px 2px rgba(0,0,0,.28);
 }
 
 /* ---- Testata pagine interne: fascia ciano sfumata ---- */

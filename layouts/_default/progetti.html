@@ -32,6 +32,22 @@
     </article>
     {{ end }}
 
+    {{ with .Params.collaborazioni }}
+    <h2 class="prog-titolo" data-split="words">Collaborazioni attive sul territorio</h2>
+    <div class="prog-griglia" data-anim-group>
+      {{ range . }}
+      <article class="prog-card">
+        <div class="prog-card-top">
+          <span class="prog-icona" aria-hidden="true">{{ .icona | default "🤝" }}</span>
+          <span class="prog-anno">in corso</span>
+        </div>
+        <h3>{{ .titolo }}</h3>
+        <p>{{ .testo | markdownify }}</p>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
     {{ with .Params.passati }}
     <h2 class="prog-titolo" data-split="words">I progetti che ci hanno accompagnato</h2>
     <div class="prog-griglia" data-anim-group>

@@ -15,7 +15,7 @@ nota:
   testo: "tutti gli anziani sopra i 65 anni residenti nei comuni della provincia di Roma, con un piccolo contributo spese bimestrale."
 contatto:
   label: "Per informazioni e adesioni"
-  tel: "348 4068657"
+  tel: "328 8105399"
   email: "sede@misericordia-ariccia.it"
 ---
 

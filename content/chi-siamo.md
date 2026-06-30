@@ -1,7 +1,7 @@
 ---
 title: "Chi siamo"
 layout: "chi-siamo"
-sommario: "Dal 1994 la Confraternita di Misericordia di Ariccia ODV è al fianco di chi vive un momento di bisogno e di sofferenza, nei Castelli Romani e nelle zone circostanti, nel segno delle Opere di Misericordia."
+sommario: "Dal 1994 la Confraternita di Misericordia accompagna la vita della comunità nei Castelli Romani e nelle zone circostanti, offrendo aiuto, ascolto e presenza a chiunque ne abbia bisogno, nel segno della solidarietà e della fraternità."
 filosofia: "Crediamo nella sinergia con le altre organizzazioni del Terzo Settore: la coprogettazione ci permette di costruire iniziative condivise e di migliorare la qualità dei servizi offerti alla comunità."
 fatti:
   - icona: "📅"
@@ -17,7 +17,7 @@ attivita:
     periodo: "2000–2013"
     testo: "Segreteria, pulizia e vigilanza, per essere vicini alle persone nei momenti del dolore."
   - titolo: "Centro di Ascolto"
-    testo: "Da oltre dieci anni punto di riferimento per i Servizi Sociali dei Comuni limitrofi, con aiuti materiali e sostegno umano attraverso il Banco Alimentare."
+    testo: "Da oltre quindici anni punto di riferimento per i Servizi Sociali dei Comuni limitrofi, con aiuti materiali e sostegno umano attraverso il Banco Alimentare."
   - titolo: "Trasporto infermi"
     testo: "Con due ambulanze e volontari formati ogni anno, a supporto della popolazione e del Servizio Sanitario Nazionale."
   - titolo: "Volontari ospedalieri"

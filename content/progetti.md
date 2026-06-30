@@ -9,6 +9,16 @@ inCorso:
     - "Co-finanziato dalla **Regione Lazio** — avviso *Comunità Solidali 2022*"
     - "Capofila: Maendeleo for Children APS"
     - "Partner: **Misericordia di Ariccia**, Empowerment for Social Change APS"
+collaborazioni:
+  - titolo: "Il muro della gentilezza"
+    icona: "🧱"
+    testo: "A Velletri, insieme alla **Rete di tutti**: un gesto semplice di solidarietà — chi può lascia, chi ha bisogno prende."
+  - titolo: "Servizio Mensa"
+    icona: "🍲"
+    testo: "Ad Ariccia, in collaborazione con la **Caritas**, per offrire un pasto e vicinanza a chi è in difficoltà."
+  - titolo: "Città ad impatto positivo"
+    icona: "🏙️"
+    testo: "Un progetto realizzato con **PMG**, il **Comune di Albano** e **Formalba**, per costruire comunità più solidali."
 passati:
   - titolo: "Dona un respiro"
     anno: "2020"

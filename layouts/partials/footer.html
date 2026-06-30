@@ -13,9 +13,8 @@
       <div class="col-md-4">
         <h2>Misericordia di Ariccia</h2>
         <p class="mb-1">Confraternita di Misericordia di Ariccia ODV</p>
-        <p class="mb-1"><strong>Sede operativa:</strong> {{ site.Params.sedeOperativa }}</p>
-        <p class="mb-1"><strong>Sede amministrativa:</strong> {{ site.Params.sedeAmministrativa }}</p>
-        <p class="mb-1">Tel. <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ site.Params.telefono }}</a></p>
+        <p class="mb-1"><strong>Sede operativa:</strong> {{ site.Params.sedeOperativa }}<br>Tel. <a href="tel:+39{{ replace site.Params.telefonoFisso " " "" }}">{{ site.Params.telefonoFisso }}</a> · Cell. <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ site.Params.telefono }}</a></p>
+        <p class="mb-1"><strong>Sede amministrativa:</strong> {{ site.Params.sedeAmministrativa }}<br>Per informazioni: <a href="tel:+39{{ replace site.Params.telefonoInfo " " "" }}">{{ site.Params.telefonoInfo }}</a></p>
         <p class="mb-1"><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
         <p class="mb-0">PEC: <a href="mailto:{{ site.Params.pec }}">{{ site.Params.pec }}</a></p>
       </div>
