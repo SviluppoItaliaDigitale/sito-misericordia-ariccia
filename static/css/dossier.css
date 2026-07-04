@@ -1,0 +1,322 @@
+/* =========================================================================
+   DOSSIER — esperienza editoriale interattiva a tema Misericordia
+   Palette e font ereditati dal sito (ciano/giallo/navy · Playfair/Jost/Inter)
+   ========================================================================= */
+
+.dossier {
+  --dsr-nav-h: 3.7rem;              /* altezza approssimata della navbar sticky */
+  --dsr-corpo: var(--mise-ciano);  /* accento opere corporali */
+  --dsr-anima: #d9b310;            /* accento opere spirituali (oro caldo) */
+  --dsr-navy: var(--mise-navy);
+  color: var(--mise-inchiostro);
+}
+
+/* La barra di avanzamento lettura (.barra-lettura) è già globale del sito. */
+
+/* Le ancore dell'indice non finiscono sotto navbar + indice sticky */
+#introduzione, #corporali, #spirituali, #nell-arte, #vivile {
+  scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem);
+}
+
+/* =========================================================================
+   COPERTINA
+   ========================================================================= */
+.dsr-cover {
+  position: relative;
+  min-height: min(92vh, 760px);
+  display: flex; align-items: center;
+  padding-block: clamp(4rem, 12vh, 8rem);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 15% 10%, #263156 0%, #1b223f 45%, #141a31 100%);
+  color: #fff;
+  isolation: isolate;
+}
+.dsr-cover-sfondo { position: absolute; inset: 0; z-index: -1; }
+.dsr-particelle { position: absolute; inset: 0; }
+.dsr-cover-glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(45% 55% at 82% 28%, rgba(0,165,220,.42) 0%, transparent 60%),
+    radial-gradient(38% 42% at 18% 88%, rgba(242,228,51,.18) 0%, transparent 62%);
+  mix-blend-mode: screen;
+}
+.dsr-cover::after { /* velatura carta in basso per stacco morbido */
+  content: ""; position: absolute; inset-inline: 0; inset-block-end: 0; height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(20,26,49,.55));
+  z-index: -1;
+}
+.dsr-cover-inner { position: relative; max-width: 60rem; }
+.dsr-occhiello {
+  font-family: "Jost", sans-serif; text-transform: uppercase;
+  letter-spacing: .22em; font-size: .82rem; font-weight: 600;
+  color: var(--mise-giallo); margin-bottom: 1.1rem;
+}
+.dsr-titolo {
+  font-family: "Playfair Display", serif; color: #fff;
+  font-weight: 600; line-height: 1.04; letter-spacing: -.01em;
+  font-size: clamp(2.6rem, 7vw, 5.2rem); margin: 0 0 1.2rem;
+  text-wrap: balance;
+}
+.dsr-sottotitolo {
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem); line-height: 1.6;
+  color: rgba(255,255,255,.86); max-width: 44rem; margin: 0 0 2rem;
+}
+.dsr-meta {
+  list-style: none; display: flex; flex-wrap: wrap; gap: .6rem;
+  padding: 0; margin: 0 0 2.4rem;
+}
+.dsr-meta li {
+  font-family: "Jost", sans-serif; font-size: .9rem;
+  padding: .4rem .9rem; border-radius: 999px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(4px);
+}
+.dsr-meta strong { color: var(--mise-giallo); font-weight: 700; }
+.dsr-cover-cta {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-family: "Jost", sans-serif; font-weight: 600; font-size: 1.02rem;
+  color: var(--mise-navy); text-decoration: none;
+  background: var(--mise-giallo); padding: .85rem 1.6rem; border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.dsr-cover-cta:hover { color: var(--mise-navy); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.dsr-cover-freccia { animation: dsr-rimbalzo 1.8s ease-in-out infinite; }
+@keyframes dsr-rimbalzo { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+/* =========================================================================
+   INDICE STICKY (scroll-spy)
+   ========================================================================= */
+.dsr-indice {
+  position: sticky; top: var(--dsr-nav-h); z-index: 900;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: saturate(1.2) blur(8px);
+  border-block-end: 1px solid rgba(27,34,63,.08);
+  box-shadow: 0 6px 18px -14px rgba(27,34,63,.6);
+}
+.dsr-indice-inner { display: flex; align-items: center; gap: 1rem; overflow-x: auto; scrollbar-width: none; }
+.dsr-indice-inner::-webkit-scrollbar { display: none; }
+.dsr-indice-eti {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .16em;
+  font-size: .72rem; font-weight: 600; color: var(--mise-ciano-testo);
+  flex: none; padding-block: .8rem;
+}
+.dsr-indice ul { display: flex; gap: .3rem; list-style: none; margin: 0; padding: 0; }
+.dsr-indice-link {
+  display: block; white-space: nowrap; text-decoration: none;
+  font-family: "Jost", sans-serif; font-size: .92rem; font-weight: 500;
+  color: var(--mise-navy); padding: .85rem .8rem; position: relative;
+  opacity: .7; transition: opacity .2s ease;
+}
+.dsr-indice-link:hover { opacity: 1; color: var(--mise-navy); }
+.dsr-indice-link.attivo { opacity: 1; font-weight: 600; }
+.dsr-indice-link.attivo::after {
+  content: ""; position: absolute; inset-inline: .8rem; inset-block-end: 0; height: 3px;
+  background: var(--mise-ciano); border-radius: 3px 3px 0 0;
+}
+
+/* =========================================================================
+   SEZIONI GENERICHE
+   ========================================================================= */
+.dsr-sezione { padding-block: clamp(3rem, 8vw, 5.5rem); }
+.dsr-intro { background: #fff; }
+.dsr-intro-testo { max-width: 46rem; margin-inline: auto; font-size: 1.16rem; line-height: 1.8; }
+.dsr-intro-testo > p:first-of-type::first-letter {
+  font-family: "Playfair Display", serif; font-weight: 600;
+  float: left; font-size: 3.6em; line-height: .8;
+  padding: .06em .12em 0 0; color: var(--mise-ciano-testo);
+}
+
+/* ---- Fascia numeri ---- */
+.dsr-numeri {
+  background: linear-gradient(180deg, var(--mise-navy), #141a31);
+  color: #fff; padding-block: clamp(2.6rem, 6vw, 4rem);
+}
+.dsr-numeri-griglia {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;
+}
+.dsr-num { display: flex; flex-direction: column; gap: .4rem; }
+.dsr-num-cifra {
+  font-family: "Playfair Display", serif; font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1;
+  color: var(--mise-giallo);
+}
+.dsr-num-eti {
+  font-family: "Jost", sans-serif; font-size: .92rem; letter-spacing: .01em;
+  color: rgba(255,255,255,.82);
+}
+
+/* =========================================================================
+   CAPITOLI + TESSERE OPERA
+   ========================================================================= */
+.dsr-capitolo { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.dsr-capitolo--corpo { background: var(--mise-ciano-velo); --dsr-accento: var(--dsr-corpo); }
+.dsr-capitolo--anima { background: var(--mise-giallo-soft); --dsr-accento: var(--dsr-anima); }
+
+.dsr-cap-testata {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
+  margin-bottom: 2.4rem; flex-wrap: wrap;
+}
+.dsr-cap-occhiello {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .18em;
+  font-size: .78rem; font-weight: 600; color: var(--dsr-accento); margin: 0 0 .5rem;
+}
+.dsr-cap-titolo { font-size: clamp(1.9rem, 4.4vw, 2.9rem); margin: 0 0 .7rem; }
+.dsr-cap-intro { max-width: 40rem; color: #495066; line-height: 1.65; margin: 0; }
+.dsr-espandi {
+  flex: none; font-family: "Jost", sans-serif; font-weight: 600; font-size: .9rem;
+  color: var(--mise-navy); background: #fff; border: 1px solid rgba(27,34,63,.16);
+  border-radius: 999px; padding: .55rem 1.2rem; cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.dsr-espandi:hover { border-color: var(--dsr-accento); transform: translateY(-2px); }
+
+.dsr-griglia {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem;
+}
+.dsr-opera {
+  background: #fff; border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(27,34,63,.07);
+  box-shadow: 0 10px 26px -18px rgba(27,34,63,.5);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.dsr-opera:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -20px rgba(27,34,63,.55); }
+.dsr-opera[open] { box-shadow: 0 18px 44px -18px rgba(27,34,63,.5); }
+.dsr-opera > summary {
+  display: flex; align-items: center; gap: 1rem; cursor: pointer;
+  padding: 1.15rem 1.3rem; list-style: none; position: relative;
+  border-inline-start: 4px solid var(--dsr-accento);
+}
+.dsr-opera > summary::-webkit-details-marker { display: none; }
+.dsr-opera-num {
+  font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.15rem;
+  color: var(--dsr-accento); opacity: .55; min-width: 1.8rem;
+}
+.dsr-opera-icona {
+  font-size: 1.6rem; line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(27,34,63,.18));
+}
+.dsr-opera-titolo {
+  font-family: "Jost", sans-serif; font-weight: 600; font-size: 1.06rem;
+  color: var(--mise-navy); flex: 1; line-height: 1.25;
+}
+.dsr-opera-piu {
+  flex: none; width: 26px; height: 26px; position: relative;
+  border-radius: 50%; background: var(--mise-carta); transition: background .2s ease;
+}
+.dsr-opera-piu::before, .dsr-opera-piu::after {
+  content: ""; position: absolute; inset-block-start: 50%; inset-inline-start: 50%;
+  width: 11px; height: 2px; border-radius: 2px; background: var(--dsr-accento);
+  transform: translate(-50%,-50%); transition: transform .25s ease, opacity .25s ease;
+}
+.dsr-opera-piu::after { transform: translate(-50%,-50%) rotate(90deg); }
+.dsr-opera[open] .dsr-opera-piu::after { opacity: 0; }
+.dsr-opera[open] .dsr-opera-piu { background: var(--dsr-accento); }
+.dsr-opera[open] .dsr-opera-piu::before { background: #fff; }
+.dsr-opera:hover .dsr-opera-piu { background: var(--dsr-accento); }
+.dsr-opera:hover .dsr-opera-piu::before,
+.dsr-opera:hover .dsr-opera-piu::after { background: #fff; }
+
+.dsr-opera-corpo {
+  padding: 0 1.3rem 1.3rem calc(1.3rem + 4px);
+  animation: dsr-apri .32s ease;
+}
+@keyframes dsr-apri { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.dsr-opera-spiega { color: #414861; line-height: 1.7; }
+.dsr-opera-spiega strong { color: var(--mise-navy); }
+.dsr-opera-servizio {
+  display: inline-flex; flex-direction: column; margin-top: 1rem;
+  text-decoration: none; padding: .6rem .95rem; border-radius: 12px;
+  background: var(--mise-carta); border: 1px solid rgba(27,34,63,.08);
+  transition: background .2s ease, transform .2s ease;
+}
+.dsr-opera-servizio:hover { background: #fff; transform: translateX(3px); border-color: var(--dsr-accento); }
+.dsr-opera-servizio-eti {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .12em;
+  font-size: .68rem; font-weight: 600; color: var(--dsr-accento);
+}
+.dsr-opera-servizio-nome { font-weight: 600; color: var(--mise-navy); font-size: .98rem; }
+
+/* =========================================================================
+   OPERE D'ARTE (figure a tutta larghezza)
+   ========================================================================= */
+.dsr-arte { margin: 0; position: relative; }
+.dsr-arte img { display: block; width: 100%; height: min(72vh, 640px); object-fit: cover; }
+.dsr-arte figcaption {
+  font-family: "Jost", sans-serif; font-size: .92rem; line-height: 1.5;
+  color: rgba(255,255,255,.9);
+  position: absolute; inset-inline: 0; inset-block-end: 0;
+  padding: 4rem 1.5rem 1.4rem;
+  background: linear-gradient(180deg, transparent, rgba(20,26,49,.86));
+}
+.dsr-arte .container { position: relative; }
+.dsr-arte-tit { display: block; font-family: "Playfair Display", serif; font-size: 1.2rem; color: #fff; margin-bottom: .15rem; }
+.dsr-arte-credit { display: block; font-size: .78rem; color: rgba(255,255,255,.6); margin-top: .2rem; }
+
+/* =========================================================================
+   CHIUSURA / CTA
+   ========================================================================= */
+.dsr-cta {
+  background: radial-gradient(120% 140% at 50% 0%, #263156 0%, #1b223f 55%, #141a31 100%);
+  color: #fff; padding-block: clamp(3.5rem, 9vw, 6rem); text-align: center;
+}
+.dsr-cta-inner { max-width: 42rem; margin-inline: auto; }
+.dsr-cta-occhiello {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .2em;
+  font-size: .8rem; font-weight: 600; color: var(--mise-giallo); margin-bottom: .8rem;
+}
+.dsr-cta-titolo { color: #fff; font-size: clamp(1.9rem, 4.6vw, 2.9rem); margin: 0 0 1rem; }
+.dsr-cta-testo { color: rgba(255,255,255,.85); font-size: 1.1rem; line-height: 1.65; margin: 0 auto 2rem; }
+.dsr-cta-azioni { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+.dsr-btn {
+  font-family: "Jost", sans-serif; font-weight: 600; font-size: 1rem;
+  text-decoration: none; padding: .85rem 1.7rem; border-radius: 999px;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.dsr-btn--primario { background: var(--mise-giallo); color: var(--mise-navy); box-shadow: 0 12px 30px rgba(0,0,0,.28); }
+.dsr-btn--primario:hover { color: var(--mise-navy); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.dsr-btn--fantasma { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); }
+.dsr-btn--fantasma:hover { color: var(--mise-navy); background: #fff; transform: translateY(-3px); }
+
+/* =========================================================================
+   PAGINA ELENCO DOSSIER
+   ========================================================================= */
+.dsr-elenco { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 1.4rem; }
+.dsr-elenco-card {
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.8rem; border-radius: 18px; text-decoration: none;
+  background: linear-gradient(160deg, #fff, var(--mise-ciano-velo));
+  border: 1px solid rgba(27,34,63,.08);
+  box-shadow: 0 12px 30px -20px rgba(27,34,63,.6);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.dsr-elenco-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px -22px rgba(27,34,63,.6); }
+.dsr-elenco-occhiello {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .14em;
+  font-size: .72rem; font-weight: 600; color: var(--mise-ciano-testo);
+}
+.dsr-elenco-titolo { font-family: "Playfair Display", serif; color: var(--mise-navy); font-size: 1.5rem; margin: 0; }
+.dsr-elenco-testo { color: #495066; line-height: 1.6; margin: 0; flex: 1; }
+.dsr-elenco-apri { font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-ciano-testo); margin-top: .4rem; }
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (max-width: 860px) {
+  .dsr-numeri-griglia { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1rem; }
+  .dsr-griglia { grid-template-columns: 1fr; }
+  .dsr-cap-testata { align-items: flex-start; }
+}
+@media (max-width: 520px) {
+  .dsr-arte img { height: 60vh; }
+  .dsr-opera > summary { padding: 1rem 1.05rem; gap: .75rem; }
+  .dsr-opera-icona { font-size: 1.35rem; }
+}
+
+/* ---- Rispetto per chi chiede meno movimento ---- */
+@media (prefers-reduced-motion: reduce) {
+  .dsr-cover-freccia { animation: none; }
+  .dsr-opera, .dsr-opera-servizio, .dsr-elenco-card, .dsr-btn, .dsr-cover-cta, .dsr-espandi { transition: none; }
+  .dsr-opera-corpo { animation: none; }
+}
