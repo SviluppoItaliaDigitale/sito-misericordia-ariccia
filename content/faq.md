@@ -26,13 +26,6 @@ Nella dichiarazione dei redditi, nel riquadro *«Sostegno del volontariato e deg
 </details>
 
 <details class="faq-item">
-<summary>Che cos'è il telesoccorso e chi può richiederlo?</summary>
-
-È un sistema che, premendo un pulsante, mette in contatto con una **centrale attiva 24 ore su 24** per chiedere aiuto immediato. È pensato soprattutto per **anziani e persone sole**. Scopri di più nella pagina [Telesoccorso](/servizi/telesoccorso/).
-
-</details>
-
-<details class="faq-item">
 <summary>Dove siete e come vi contatto?</summary>
 
 Trovi tutte le sedi (legale, operativa, amministrativa), i recapiti telefonici, l'email e la PEC nella pagina [Contatti](/contatti/), con i collegamenti alla mappa.
