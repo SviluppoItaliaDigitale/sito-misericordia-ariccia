@@ -1,0 +1,119 @@
+{{ define "main" }}
+{{ $anni := sub now.Year 1244 }}
+
+<article class="dossier" data-dossier>
+
+  <!-- ===================== COPERTINA ===================== -->
+  <header class="dsr-cover">
+    <div class="dsr-cover-sfondo" aria-hidden="true">
+      <div id="hero-particelle" class="dsr-particelle"></div>
+      <div class="dsr-cover-glow"></div>
+    </div>
+    <div class="container dsr-cover-inner">
+      {{ with .Params.occhiello }}<p class="dsr-occhiello" data-anim="fade-up">{{ . }}</p>{{ end }}
+      <h1 class="dsr-titolo" data-split="words">{{ .Title }}</h1>
+      {{ with .Params.sottotitolo }}<p class="dsr-sottotitolo" data-anim="fade-up" data-anim-delay="0.15">{{ . }}</p>{{ end }}
+      <ul class="dsr-meta" data-anim="fade-up" data-anim-delay="0.3">
+        <li><strong>{{ $anni }}</strong> anni di storia</li>
+        <li>dal <strong>1244</strong></li>
+        <li><strong>700+</strong> Misericordie</li>
+        {{ with .Params.lettura }}<li>lettura {{ . }}</li>{{ end }}
+      </ul>
+      {{ with .Params.cover_cta }}
+      <a class="dsr-cover-cta" href="{{ .ancora }}"><span>{{ .testo }}</span><span class="dsr-cover-freccia" aria-hidden="true">↓</span></a>
+      {{ end }}
+    </div>
+  </header>
+
+  <!-- ===================== INDICE ===================== -->
+  <nav class="dsr-indice" aria-label="Indice del dossier" data-dsr-indice>
+    <div class="container dsr-indice-inner">
+      <span class="dsr-indice-eti" aria-hidden="true">Indice</span>
+      <ul>
+        <li><a href="#introduzione" class="dsr-indice-link">Introduzione</a></li>
+        <li><a href="#linea-del-tempo" class="dsr-indice-link">Linea del tempo</a></li>
+        <li><a href="#oggi" class="dsr-indice-link">Le Misericordie oggi</a></li>
+        <li><a href="#vivile" class="dsr-indice-link">Vivile con noi</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== INTRODUZIONE ===================== -->
+  <section id="introduzione" class="dsr-sezione dsr-intro">
+    <div class="container">
+      <div class="dsr-intro-testo contenuto" data-anim="fade-up">
+        {{ with .Params.intro }}{{ . | markdownify }}{{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LINEA DEL TEMPO ===================== -->
+  {{ with .Params.tappe }}
+  <section id="linea-del-tempo" class="dsr-timeline-sezione">
+    <div class="container">
+      <div class="dsr-cap-testata dsr-cap-testata--centro">
+        <div>
+          <p class="dsr-cap-occhiello">Il racconto</p>
+          <h2 class="dsr-cap-titolo" data-split="words">La linea del tempo</h2>
+          <p class="dsr-cap-intro">Otto secoli in un colpo d'occhio: dalle origini medievali alle Misericordie di oggi, tappa dopo tappa.</p>
+        </div>
+      </div>
+      <ol class="dsr-timeline">
+        {{ range $t := . }}
+        <li class="dsr-tl-item" data-anim="fade-up">
+          <span class="dsr-tl-punto" aria-hidden="true"></span>
+          <div class="dsr-tl-card">
+            <div class="dsr-tl-intestazione">
+              <span class="dsr-tl-anno">{{ $t.anno }}</span>
+              {{ with $t.epoca }}<span class="dsr-tl-epoca">{{ . }}</span>{{ end }}
+            </div>
+            <h3 class="dsr-tl-titolo">{{ $t.titolo }}</h3>
+            {{ with $t.img }}
+            <figure class="dsr-tl-foto">
+              <img src="{{ . | relURL }}" alt="{{ $t.img_alt }}" loading="lazy">
+              {{ if or $t.img_didascalia $t.img_credit }}
+              <figcaption>{{ $t.img_didascalia }}{{ with $t.img_credit }}<span class="dsr-arte-credit">{{ . }}</span>{{ end }}</figcaption>
+              {{ end }}
+            </figure>
+            {{ end }}
+            <div class="dsr-tl-testo">{{ $t.testo | markdownify }}</div>
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- ===================== LE MISERICORDIE OGGI ===================== -->
+  <section id="oggi" class="dsr-numeri" aria-label="Le Misericordie oggi in numeri">
+    <div class="container">
+      {{ with .Params.oggi_numeri }}
+      <div class="dsr-numeri-griglia" data-anim-group>
+        {{ range $n := . }}
+        <div class="dsr-num">
+          <span class="dsr-num-cifra">{{ if $n.statico }}{{ $n.cifra }}{{ else }}<span data-conta="{{ $n.cifra }}">{{ $n.cifra }}</span>{{ end }}{{ with $n.suffisso }}<span aria-hidden="true">{{ . }}</span>{{ end }}</span>
+          <span class="dsr-num-eti">{{ $n.etichetta }}</span>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+      <p class="dsr-oggi-nota" data-anim="fade-up">Dalle ambulanze al trasporto socio-sanitario, dai poliambulatori alla Protezione Civile: la stessa, antica vocazione parla la lingua di oggi. Vuoi conoscere meglio le radici del Movimento? Leggi la pagina <a href="{{ "storia-e-tradizione/" | relURL }}">Storia e tradizione</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CHIUSURA / CTA ===================== -->
+  <section id="vivile" class="dsr-cta">
+    <div class="container dsr-cta-inner" data-anim="fade-up">
+      <p class="dsr-cta-occhiello">La storia continua con te</p>
+      <h2 class="dsr-cta-titolo">Scrivi il prossimo capitolo</h2>
+      <p class="dsr-cta-testo">Otto secoli di carità sono arrivati fino a noi grazie a chi, in ogni epoca, ha scelto di esserci. Anche ad Ariccia puoi far parte di questa storia.</p>
+      <div class="dsr-cta-azioni">
+        <a class="dsr-btn dsr-btn--primario" href="{{ "chi-siamo/" | relURL }}">Diventa volontario</a>
+        <a class="dsr-btn dsr-btn--fantasma" href="{{ "sostienici/" | relURL }}">Sostieni la Misericordia</a>
+      </div>
+    </div>
+  </section>
+
+</article>
+{{ end }}

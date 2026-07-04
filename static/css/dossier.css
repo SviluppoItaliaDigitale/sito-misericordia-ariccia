@@ -14,7 +14,8 @@
 /* La barra di avanzamento lettura (.barra-lettura) è già globale del sito. */
 
 /* Le ancore dell'indice non finiscono sotto navbar + indice sticky */
-#introduzione, #corporali, #spirituali, #nell-arte, #vivile {
+#introduzione, #corporali, #spirituali, #nell-arte, #vivile,
+#linea-del-tempo, #oggi {
   scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem);
 }
 
@@ -278,6 +279,76 @@
 .dsr-btn--primario:hover { color: var(--mise-navy); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
 .dsr-btn--fantasma { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); }
 .dsr-btn--fantasma:hover { color: var(--mise-navy); background: #fff; transform: translateY(-3px); }
+
+/* =========================================================================
+   LINEA DEL TEMPO (dossier storico)
+   ========================================================================= */
+.dsr-timeline-sezione {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  background: linear-gradient(180deg, #fff 0%, var(--mise-ciano-velo) 100%);
+}
+.dsr-cap-testata--centro { justify-content: center; text-align: center; margin-bottom: 3rem; }
+.dsr-cap-testata--centro .dsr-cap-intro { margin-inline: auto; }
+
+.dsr-timeline { list-style: none; margin: 0 auto; padding: 0; position: relative; max-width: 64rem; }
+.dsr-timeline::before {
+  content: ""; position: absolute; inset-block: .5rem; inset-inline-start: 50%;
+  width: 2px; transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--mise-ciano) 0%, var(--dsr-anima) 100%);
+  opacity: .4;
+}
+.dsr-tl-item { position: relative; width: 50%; box-sizing: border-box; padding: 0 2.6rem 2.4rem; }
+.dsr-tl-item:nth-child(odd)  { inset-inline-start: 0; }
+.dsr-tl-item:nth-child(even) { inset-inline-start: 50%; }
+.dsr-tl-punto {
+  position: absolute; inset-block-start: .5rem; width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--mise-ciano);
+  box-shadow: 0 0 0 5px var(--mise-ciano-velo); z-index: 1;
+}
+.dsr-tl-item:nth-child(odd)  .dsr-tl-punto { inset-inline-end: -8px; }
+.dsr-tl-item:nth-child(even) .dsr-tl-punto { inset-inline-start: -8px; }
+
+.dsr-tl-card {
+  background: #fff; border-radius: 16px; padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(27,34,63,.07);
+  box-shadow: 0 12px 30px -20px rgba(27,34,63,.55);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.dsr-tl-card:hover { transform: translateY(-3px); box-shadow: 0 20px 44px -22px rgba(27,34,63,.55); }
+.dsr-tl-intestazione { display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap; margin-bottom: .3rem; }
+.dsr-tl-anno {
+  font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.5rem;
+  color: var(--mise-ciano-testo); line-height: 1;
+}
+.dsr-tl-epoca {
+  font-family: "Jost", sans-serif; text-transform: uppercase; letter-spacing: .14em;
+  font-size: .7rem; font-weight: 600; color: #8a90a3; margin: 0;
+}
+.dsr-tl-titolo { font-family: "Jost", sans-serif; font-weight: 600; font-size: 1.18rem; color: var(--mise-navy); margin: 0 0 .7rem; line-height: 1.25; }
+.dsr-tl-foto { margin: 0 0 .9rem; }
+.dsr-tl-foto img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; display: block; }
+.dsr-tl-foto figcaption {
+  font-family: "Jost", sans-serif; font-size: .76rem; line-height: 1.45; color: #6b7185; margin-top: .45rem;
+}
+.dsr-tl-foto .dsr-arte-credit { display: block; color: #9aa0b0; font-size: .72rem; }
+.dsr-tl-testo { color: #414861; line-height: 1.7; }
+.dsr-tl-testo strong { color: var(--mise-navy); }
+
+.dsr-oggi-nota { text-align: center; max-width: 44rem; margin: 2.2rem auto 0; color: rgba(255,255,255,.82); line-height: 1.6; }
+.dsr-oggi-nota a { color: var(--mise-giallo); }
+.dsr-oggi-nota a:hover { color: #fff; }
+
+@media (max-width: 760px) {
+  .dsr-timeline::before { inset-inline-start: 7px; }
+  .dsr-tl-item,
+  .dsr-tl-item:nth-child(odd),
+  .dsr-tl-item:nth-child(even) { width: 100%; inset-inline-start: 0; padding: 0 0 1.9rem 2.1rem; }
+  .dsr-tl-item .dsr-tl-punto { inset-inline-start: 0; inset-inline-end: auto; }
+  .dsr-tl-foto img { height: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dsr-tl-card { transition: none; }
+}
 
 /* =========================================================================
    PAGINA ELENCO DOSSIER
