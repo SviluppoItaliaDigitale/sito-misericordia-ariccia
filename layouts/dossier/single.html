@@ -1,0 +1,173 @@
+{{ define "main" }}
+{{ $corporali := .Params.corporali }}
+{{ $spirituali := .Params.spirituali }}
+{{ $tot := add (len $corporali) (len $spirituali) }}
+
+<article class="dossier" data-dossier>
+
+  <!-- ===================== COPERTINA ===================== -->
+  <header class="dsr-cover">
+    <div class="dsr-cover-sfondo" aria-hidden="true">
+      <div id="hero-particelle" class="dsr-particelle"></div>
+      <div class="dsr-cover-glow"></div>
+    </div>
+    <div class="container dsr-cover-inner">
+      {{ with .Params.occhiello }}<p class="dsr-occhiello" data-anim="fade-up">{{ . }}</p>{{ end }}
+      <h1 class="dsr-titolo" data-split="words">{{ .Title }}</h1>
+      {{ with .Params.sottotitolo }}<p class="dsr-sottotitolo" data-anim="fade-up" data-anim-delay="0.15">{{ . }}</p>{{ end }}
+      <ul class="dsr-meta" data-anim="fade-up" data-anim-delay="0.3">
+        <li><strong>{{ $tot }}</strong> opere</li>
+        <li><strong>{{ len $corporali }}</strong> corporali</li>
+        <li><strong>{{ len $spirituali }}</strong> spirituali</li>
+        {{ with .Params.lettura }}<li>lettura {{ . }}</li>{{ end }}
+      </ul>
+      {{ with .Params.cover_cta }}
+      <a class="dsr-cover-cta" href="{{ .ancora }}"><span>{{ .testo }}</span><span class="dsr-cover-freccia" aria-hidden="true">↓</span></a>
+      {{ end }}
+    </div>
+  </header>
+
+  <!-- ===================== INDICE ===================== -->
+  <nav class="dsr-indice" aria-label="Indice del dossier" data-dsr-indice>
+    <div class="container dsr-indice-inner">
+      <span class="dsr-indice-eti" aria-hidden="true">Indice</span>
+      <ul>
+        <li><a href="#introduzione" class="dsr-indice-link">Introduzione</a></li>
+        <li><a href="#corporali" class="dsr-indice-link">Opere corporali</a></li>
+        <li><a href="#spirituali" class="dsr-indice-link">Opere spirituali</a></li>
+        <li><a href="#nell-arte" class="dsr-indice-link">Nell'arte</a></li>
+        <li><a href="#vivile" class="dsr-indice-link">Vivile con noi</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== INTRODUZIONE ===================== -->
+  <section id="introduzione" class="dsr-sezione dsr-intro">
+    <div class="container">
+      <div class="dsr-intro-testo contenuto" data-anim="fade-up">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NUMERI ===================== -->
+  <section class="dsr-numeri" aria-label="Le Opere in numeri">
+    <div class="container">
+      <div class="dsr-numeri-griglia" data-anim-group>
+        <div class="dsr-num"><span class="dsr-num-cifra"><span data-conta="{{ $tot }}">{{ $tot }}</span></span><span class="dsr-num-eti">Opere di Misericordia</span></div>
+        <div class="dsr-num"><span class="dsr-num-cifra"><span data-conta="{{ len $corporali }}">{{ len $corporali }}</span></span><span class="dsr-num-eti">per il corpo</span></div>
+        <div class="dsr-num"><span class="dsr-num-cifra"><span data-conta="{{ len $spirituali }}">{{ len $spirituali }}</span></span><span class="dsr-num-eti">per l'animo</span></div>
+        <div class="dsr-num"><span class="dsr-num-cifra"><span data-conta="1994">1994</span></span><span class="dsr-num-eti">al servizio dei Castelli Romani</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPITOLO: CORPORALI ===================== -->
+  {{ with $corporali }}
+  <section id="corporali" class="dsr-capitolo dsr-capitolo--corpo">
+    <div class="container">
+      <div class="dsr-cap-testata">
+        <div>
+          <p class="dsr-cap-occhiello">Capitolo I · Il corpo</p>
+          <h2 class="dsr-cap-titolo" data-split="words">Le sette opere corporali</h2>
+          <p class="dsr-cap-intro">Rispondono ai bisogni materiali della persona: fame, sete, malattia, solitudine, morte. Tocca una tessera per scoprirne il significato.</p>
+        </div>
+        <button type="button" class="dsr-espandi" data-dsr-espandi aria-expanded="false">Espandi tutto</button>
+      </div>
+      <div class="dsr-griglia" data-anim-group>
+        {{ range $i, $o := . }}
+        <details class="dsr-opera" data-dsr-opera>
+          <summary>
+            <span class="dsr-opera-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+            <span class="dsr-opera-icona" aria-hidden="true">{{ $o.icona }}</span>
+            <span class="dsr-opera-titolo">{{ $o.titolo }}</span>
+            <span class="dsr-opera-piu" aria-hidden="true"></span>
+          </summary>
+          <div class="dsr-opera-corpo">
+            <div class="dsr-opera-spiega">{{ $o.spiegazione | markdownify }}</div>
+            {{ with $o.servizio }}
+            <a class="dsr-opera-servizio" href="{{ .link | relURL }}">
+              <span class="dsr-opera-servizio-eti">Come la viviamo</span>
+              <span class="dsr-opera-servizio-nome">{{ .testo }} →</span>
+            </a>
+            {{ end }}
+          </div>
+        </details>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Opera d'arte: Caravaggio -->
+  <figure class="dsr-arte" data-anim="zoom">
+    <img src="{{ "img/opere/caravaggio-sette-opere.jpg" | relURL }}" alt="Le Sette opere di Misericordia, dipinto di Caravaggio (1607)" loading="lazy">
+    <figcaption>
+      <span class="dsr-arte-tit">«Le Sette opere di Misericordia»</span>
+      Caravaggio, 1607 — Pio Monte della Misericordia, Napoli.
+      <span class="dsr-arte-credit">Pubblico dominio · Wikimedia Commons</span>
+    </figcaption>
+  </figure>
+
+  <!-- ===================== CAPITOLO: SPIRITUALI ===================== -->
+  {{ with $spirituali }}
+  <section id="spirituali" class="dsr-capitolo dsr-capitolo--anima">
+    <div class="container">
+      <div class="dsr-cap-testata">
+        <div>
+          <p class="dsr-cap-occhiello">Capitolo II · L'animo</p>
+          <h2 class="dsr-cap-titolo" data-split="words">Le sette opere spirituali</h2>
+          <p class="dsr-cap-intro">Rispondono ai bisogni del cuore e della mente: ascolto, consiglio, consolazione, perdono, preghiera. Tocca una tessera per scoprirne il significato.</p>
+        </div>
+        <button type="button" class="dsr-espandi" data-dsr-espandi aria-expanded="false">Espandi tutto</button>
+      </div>
+      <div class="dsr-griglia" data-anim-group>
+        {{ range $i, $o := . }}
+        <details class="dsr-opera" data-dsr-opera>
+          <summary>
+            <span class="dsr-opera-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+            <span class="dsr-opera-icona" aria-hidden="true">{{ $o.icona }}</span>
+            <span class="dsr-opera-titolo">{{ $o.titolo }}</span>
+            <span class="dsr-opera-piu" aria-hidden="true"></span>
+          </summary>
+          <div class="dsr-opera-corpo">
+            <div class="dsr-opera-spiega">{{ $o.spiegazione | markdownify }}</div>
+            {{ with $o.servizio }}
+            <a class="dsr-opera-servizio" href="{{ .link | relURL }}">
+              <span class="dsr-opera-servizio-eti">Come la viviamo</span>
+              <span class="dsr-opera-servizio-nome">{{ .testo }} →</span>
+            </a>
+            {{ end }}
+          </div>
+        </details>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Opera d'arte: Alkmaar -->
+  <figure class="dsr-arte" id="nell-arte" data-anim="zoom">
+    <img src="{{ "img/opere/alkmaar-sette-opere.jpg" | relURL }}" alt="Polittico delle Sette opere di Misericordia del Maestro di Alkmaar, 1504" loading="lazy">
+    <figcaption>
+      <span class="dsr-arte-tit">«Le sette opere di Misericordia»</span>
+      Maestro di Alkmaar, 1504 — Rijksmuseum, Amsterdam.
+      <span class="dsr-arte-credit">Pubblico dominio · Wikimedia Commons</span>
+    </figcaption>
+  </figure>
+
+  <!-- ===================== CHIUSURA / CTA ===================== -->
+  <section id="vivile" class="dsr-cta">
+    <div class="container dsr-cta-inner" data-anim="fade-up">
+      <p class="dsr-cta-occhiello">Dalle parole ai gesti</p>
+      <h2 class="dsr-cta-titolo">Vivi le Opere di Misericordia con noi</h2>
+      <p class="dsr-cta-testo">Ogni opera, ad Ariccia, ha un volto e una mano. Puoi esserci anche tu: come volontario, con una donazione o con il tuo 5×1000.</p>
+      <div class="dsr-cta-azioni">
+        <a class="dsr-btn dsr-btn--primario" href="{{ "chi-siamo/" | relURL }}">Diventa volontario</a>
+        <a class="dsr-btn dsr-btn--fantasma" href="{{ "sostienici/" | relURL }}">Sostieni la Misericordia</a>
+      </div>
+    </div>
+  </section>
+
+</article>
+{{ end }}

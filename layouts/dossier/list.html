@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Approfondimenti</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    {{ with .Content }}<div class="contenuto mb-4" data-anim-group>{{ . }}</div>{{ end }}
+    <div class="dsr-elenco" data-anim-group>
+      {{ range .Pages }}
+      <a class="dsr-elenco-card" href="{{ .RelPermalink }}">
+        {{ with .Params.occhiello }}<span class="dsr-elenco-occhiello">{{ . }}</span>{{ end }}
+        <h2 class="dsr-elenco-titolo">{{ .Title }}</h2>
+        <p class="dsr-elenco-testo">{{ with .Params.sottotitolo }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}</p>
+        <span class="dsr-elenco-apri">Apri il dossier →</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
