@@ -4,6 +4,11 @@ title: "Servizio Civile Universale"
 
 {{< logo src="img/loghi/scu-universale.jpg" alt="Logo ufficiale del Servizio Civile Universale" class="logo-scu" width="170" height="170" >}}
 
+<figure class="storia-foto storia-foto--lato">
+  <img src="/img/scu-sognate-cose-grandi.jpg" alt="Locandina del Servizio Civile Universale con le Misericordie: Nuove competenze — Sognate cose grandi" loading="lazy" width="335" height="597">
+  <figcaption>Servizio Civile con le Misericordie: «Sognate cose grandi».</figcaption>
+</figure>
+
 Dal **2015** la Misericordia di Ariccia partecipa ai bandi del **Servizio Civile Universale**, offrendo ai giovani **tra i 18 e i 29 anni** la possibilità di vivere un anno di servizio alla comunità in un contesto di fraternità e amicizia.
 
 I nostri progetti nascono dalla volontà di contrastare la solitudine e l'emarginazione delle persone fragili — in particolare anziani e persone con disabilità — con il sostegno quotidiano, l'ascolto e la presenza accanto a chi è solo.
