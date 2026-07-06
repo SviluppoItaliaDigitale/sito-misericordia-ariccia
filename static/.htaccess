@@ -1,0 +1,8 @@
+# Durante lo sviluppo dell'anteprima: le pagine HTML non vanno tenute in cache
+# dal browser (altrimenti si vedono versioni vecchie dopo ogni aggiornamento).
+# Immagini, CSS e JS restano cacheabili normalmente.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
