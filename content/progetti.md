@@ -47,10 +47,6 @@ passati:
     documenti:
       - testo: "Piano operativo"
         url: "documenti/progetto-castle.pdf"
-  - titolo: "Telesoccorso e teleassistenza"
-    anno: "fino al 2022"
-    icona: "🆘"
-    testo: "Aiuto immediato 24 ore su 24 per anziani e persone sole: premendo il pulsante di un telecomando si contattava la centrale operativa, che in caso di malori, cadute o incidenti domestici faceva intervenire soccorsi, forze dell'ordine o familiari, con contatti costanti di teleassistenza."
   - titolo: "MIT Link"
     anno: "2024"
     icona: "🏅"
