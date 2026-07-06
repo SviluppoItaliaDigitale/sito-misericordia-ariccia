@@ -26,4 +26,4 @@ Si diventa confratelli con una **domanda scritta di ammissione**, sulla quale de
   <div><span class="num">80 mila</span> volontari attivi</div>
 </div>
 
-Anche tu puoi farne parte: non servono competenze particolari per iniziare, la formazione la facciamo insieme. [Scopri come diventare volontario](/chi-siamo/).
+Anche tu puoi farne parte: non servono competenze particolari per iniziare, la formazione la facciamo insieme. [Scopri come diventare volontario](/diventa-volontario/).
