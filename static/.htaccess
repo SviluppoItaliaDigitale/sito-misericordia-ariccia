@@ -1,8 +1,12 @@
-# Durante lo sviluppo dell'anteprima: le pagine HTML non vanno tenute in cache
-# dal browser (altrimenti si vedono versioni vecchie dopo ogni aggiornamento).
-# Immagini, CSS e JS restano cacheabili normalmente.
+# Le pagine HTML non vanno tenute in cache dal browser: a ogni aggiornamento
+# del sito si vede subito la versione nuova. Immagini, CSS e JS restano
+# cacheabili normalmente.
 <IfModule mod_headers.c>
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>
+
+# La vecchia cartella di anteprima non esiste più: chi ha un link vecchio
+# arriva alla stessa pagina del sito pubblicato alla radice.
+RedirectMatch 301 ^/anteprima/(.*)$ http://www.misericordia-ariccia.it/$1

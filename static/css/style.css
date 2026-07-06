@@ -200,14 +200,43 @@ a:hover { color: var(--mise-navy); }
   text-shadow: 0 1px 2px rgba(0,0,0,.28);
 }
 
-/* Callout "diventa volontario" in home: fascia navy a tutta larghezza, ben evidente */
+/* Callout "diventa volontario" in home: fascia navy a tutta larghezza, ben evidente.
+   Il gradiente "respira" lentamente, il bottone pulsa con un bagliore giallo. */
 .callout-volontari {
-  background: linear-gradient(120deg, var(--mise-navy) 0%, #2a3357 100%);
+  background: linear-gradient(120deg, var(--mise-navy) 0%, #2a3357 45%, #143c55 100%);
+  background-size: 220% 220%;
+  animation: callout-respira 12s ease-in-out infinite;
   color: #fff;
   overflow: hidden;
   position: relative;
   border-top: 5px solid var(--mise-giallo);
   border-bottom: 5px solid var(--mise-giallo);
+}
+@keyframes callout-respira {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.callout-volontari .callout-cuore {
+  display: inline-block; font-size: 2.6rem; line-height: 1;
+  margin-bottom: .35rem;
+  animation: callout-galleggia 3.6s ease-in-out infinite;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+@keyframes callout-galleggia {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+.callout-volontari .callout-cta {
+  animation: callout-bagliore 2.8s ease-in-out infinite;
+}
+@keyframes callout-bagliore {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(242,228,51,.45); }
+  55%      { box-shadow: 0 0 0 14px rgba(242,228,51,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .callout-volontari,
+  .callout-volontari .callout-cuore,
+  .callout-volontari .callout-cta { animation: none; }
 }
 .callout-volontari::after {
   content: "";

@@ -1,8 +1,9 @@
-name: Pubblica su Aruba (anteprima)
+name: Pubblica su Aruba (LIVE)
 
-# Sincronizzazione automatica della cartella "anteprima" su Aruba ATTIVA:
+# Pubblicazione LIVE del sito alla radice di www.misericordia-ariccia.it
+# (decisione utente del 2026-07-06, dopo l'OK sull'anteprima):
 #  - push su main: ad ogni modifica dei contenuti su GitHub il sito viene
-#    ricompilato e pubblicato in /anteprima/ (sincronizzazione contenuti);
+#    ricompilato e pubblicato alla radice del dominio;
 #  - cron giornaliero: rebuild notturno per aggiornare la Parola/Liturgia
 #    del giorno, il santo del giorno, le letture e gli annunci scaduti;
 #  - workflow_dispatch: avvio manuale on-demand.
@@ -48,4 +49,4 @@ jobs:
           # la verifica stretta del nome host fallirebbe
           security: loose
           local-dir: public/
-          server-dir: www.misericordia-ariccia.it/anteprima/
+          server-dir: www.misericordia-ariccia.it/

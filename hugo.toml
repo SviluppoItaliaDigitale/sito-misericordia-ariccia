@@ -48,10 +48,6 @@ disableKinds = ["taxonomy", "term"]
     parent = "chisiamo"
     weight = 4
   [[menus.main]]
-    name = "Liturgia del giorno"
-    pageRef = "/liturgia-del-giorno"
-    weight = 16
-  [[menus.main]]
     name = "Trasporto infermi"
     pageRef = "/trasporto-infermi"
     weight = 18
