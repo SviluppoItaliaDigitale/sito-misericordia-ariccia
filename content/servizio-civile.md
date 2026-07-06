@@ -31,4 +31,4 @@ Schede progetto storiche: [Scheda 2015](/documenti/scheda-servizio-civile-2015.p
 
 Le candidature si presentano attraverso il portale istituzionale [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/) nei periodi di apertura dei bandi: possono partecipare i giovani **tra i 18 e i 29 anni non compiuti**.
 
-**Per informazioni:** [328 8105399](tel:+393288105399) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
+**Per informazioni sul Servizio Civile:** cell. [328 8105399](tel:+393288105399) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)

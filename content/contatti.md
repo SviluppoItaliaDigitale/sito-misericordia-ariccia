@@ -11,8 +11,8 @@ title: "Contatti"
 
 ## Come contattarci
 
-- **Per informazioni:** [328 8105399](tel:+393288105399) (sede amministrativa)
-- **Per trasporti e servizi:** [348 4068657](tel:+393484068657) — anche [WhatsApp](https://wa.me/393484068657)
+- **Amministrazione e Servizio Civile:** cell. [328 8105399](tel:+393288105399)
+- **Per i servizi (trasporti, richieste di aiuto):** cell. [348 4068657](tel:+393484068657) — anche [WhatsApp](https://wa.me/393484068657)
 - **Telefono fisso (sede operativa):** [06 933 3717](tel:+39069333717)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 - **PEC:** [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
