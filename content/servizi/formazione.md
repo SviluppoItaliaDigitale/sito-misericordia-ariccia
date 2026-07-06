@@ -1,6 +1,6 @@
 ---
 title: "Formazione"
-summary: "Corsi di primo soccorso, soccorritore di I e II livello, BLSD-P e autisti dei mezzi di emergenza."
+summary: "Corsi di primo soccorso, soccorritore di I e II livello, BLSD e P-BLSD, autisti dei mezzi di emergenza."
 weight: 40
 sezioni:
   - icona: "⛑️"
@@ -10,8 +10,8 @@ sezioni:
     titolo: "Soccorritore di I e II livello"
     testo: "Il percorso di formazione socio-sanitaria che prepara i soccorritori impegnati nei servizi in ambulanza."
   - icona: "❤️"
-    titolo: "BLSD-P"
-    testo: "*Basic Life Support – Defibrillation, anche Pediatrico* (supporto vitale di base e defibrillazione, per adulti e in età pediatrica): tenuto da formatori abilitati ARES 118, abilita all'uso del defibrillatore nei casi di emergenza."
+    titolo: "BLSD e P-BLSD"
+    testo: "*Basic Life Support – Defibrillation* (supporto vitale di base e defibrillazione), nella versione per adulti (**BLSD**) e in quella pediatrica (**P-BLSD**): tenuto da formatori abilitati ARES 118, abilita all'uso del defibrillatore nei casi di emergenza."
   - icona: "🚑"
     titolo: "Autisti dei mezzi di emergenza"
     testo: "Riservato ai volontari della Misericordia."

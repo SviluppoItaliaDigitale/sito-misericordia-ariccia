@@ -17,7 +17,7 @@ Alla Misericordia di Ariccia ogni volontario trova il servizio più adatto al pr
 - **Trasporti sanitari e sociali** — accompagnare chi deve curarsi: in ambulanza, in auto o con i mezzi attrezzati.
 - **Centro di Ascolto e Banco Alimentare** — accogliere le famiglie in difficoltà, distribuire generi alimentari, ascoltare.
 - **Assistenza a eventi e manifestazioni** — presidio sanitario a gare sportive, feste e sagre del territorio.
-- **Formazione** — i corsi (primo soccorso, BLSD-P, soccorritore) li facciamo insieme: nessuna esperienza richiesta per iniziare.
+- **Formazione** — i corsi (primo soccorso, BLSD e P-BLSD, soccorritore) li facciamo insieme: nessuna esperienza richiesta per iniziare.
 
 ## Come si diventa volontari
 
