@@ -1,14 +1,6 @@
 ---
 title: "I nostri progetti"
 layout: "progetti"
-inCorso:
-  titolo: "MIT Link"
-  logo: "img/loghi/mit-link.png"
-  testo: "Il progetto mira a migliorare l'inclusione sociale di **100 persone con disabilità e non autosufficienti** nel territorio di Roma Città Metropolitana (area socio-sanitaria ASL RM6), creando un modello territoriale di gestione delle fragilità e promuovendo lo **sport** come strumento di aggregazione e crescita sociale."
-  dettagli:
-    - "Co-finanziato dalla **Regione Lazio** — avviso *Comunità Solidali 2022*"
-    - "Capofila: Maendeleo for Children APS"
-    - "Partner: **Misericordia di Ariccia**, Empowerment for Social Change APS"
 collaborazioni:
   - titolo: "Il muro della gentilezza"
     icona: "🧱"
@@ -37,6 +29,10 @@ passati:
         url: "documenti/regolamento-orti-sociali-semi-di-inclusione.pdf"
       - testo: "Avviso pubblico"
         url: "documenti/avviso-pubblico-semi-di-inclusione-2021.pdf"
+  - titolo: "Progetto FAMI"
+    anno: "2021"
+    icona: "🌍"
+    testo: "Progetto finanziato dal **Fondo Asilo, Migrazione e Integrazione (FAMI)** del Ministero dell'Interno, a sostegno dell'integrazione dei cittadini di Paesi terzi — [fami.dlci.interno.gov.it](https://fami.dlci.interno.gov.it/)."
   - titolo: "Coltivare Inclusione"
     anno: "2022"
     icona: "🌾"
@@ -51,6 +47,14 @@ passati:
     documenti:
       - testo: "Piano operativo"
         url: "documenti/progetto-castle.pdf"
+  - titolo: "Telesoccorso e teleassistenza"
+    anno: "fino al 2022"
+    icona: "🆘"
+    testo: "Aiuto immediato 24 ore su 24 per anziani e persone sole: premendo il pulsante di un telecomando si contattava la centrale operativa, che in caso di malori, cadute o incidenti domestici faceva intervenire soccorsi, forze dell'ordine o familiari, con contatti costanti di teleassistenza."
+  - titolo: "MIT Link"
+    anno: "2024"
+    icona: "🏅"
+    testo: "Inclusione sociale di **100 persone con disabilità e non autosufficienti** nell'area ASL RM6, promuovendo lo **sport** come strumento di aggregazione. Co-finanziato dalla **Regione Lazio** (avviso *Comunità Solidali 2022*), capofila Maendeleo for Children APS, partner Misericordia di Ariccia ed Empowerment for Social Change APS. Concluso nel 2024."
 ---
 
 Dalla raccolta fondi all'inclusione sociale: ecco i progetti con cui la Misericordia di Ariccia ha messo in pratica la solidarietà sul territorio.

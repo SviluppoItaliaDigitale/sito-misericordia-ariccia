@@ -9,6 +9,7 @@ In questa sezione pubblichiamo i documenti previsti dagli obblighi di trasparenz
 - [Statuto della Confraternita di Misericordia di Ariccia ODV (versione precedente)](/documenti/statuto.pdf)
 
 ## 5x1000 — rendicontazione
+- [Rendicontazione del 5x1000 — contributo percepito nel 2024, anno finanziario 2022/2023](/documenti/rendicontazione-5x1000-2024.pdf)
 - [Rendicontazione del 5x1000 — anno finanziario 2023](/documenti/rendicontazione-5x1000-2023.pdf)
 - [Rendicontazione del 5x1000 — anno finanziario 2022](/documenti/rendicontazione-5x1000-2022.pdf)
 

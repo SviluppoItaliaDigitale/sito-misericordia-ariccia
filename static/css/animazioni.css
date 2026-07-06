@@ -270,6 +270,18 @@ img[data-skeleton].caricata { opacity: 1; }
   50%      { transform: translateY(-10px) rotate(1.1deg); }
 }
 
+/* Versione piccola del fregio, nella navbar accanto a "Sostienici":
+   stesso logo ufficiale, galleggiamento appena accennato. */
+.fregio-navbar {
+  display: block; width: 42px; height: auto;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,.35));
+  animation: fregio-galleggia 6.5s ease-in-out infinite;
+}
+@keyframes fregio-galleggia {
+  0%, 100% { transform: translateY(0)    rotate(-1.1deg); }
+  50%      { transform: translateY(-3px) rotate(1.1deg); }
+}
+
 .emblema-3d {
   position: absolute; z-index: 2; pointer-events: none;
   width: min(34vw, 340px); aspect-ratio: 1 / 1;
@@ -309,5 +321,6 @@ img[data-skeleton].caricata { opacity: 1; }
   .barra-lettura { display: none; }
   .emblema-3d { display: none; }
   .emblema-logo img { animation: none; transform: none; }
+  .fregio-navbar { animation: none; transform: none; }
   [data-anim], [data-split] { opacity: 1 !important; transform: none !important; filter: none !important; }
 }

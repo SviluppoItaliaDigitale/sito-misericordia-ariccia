@@ -12,23 +12,6 @@ Le consorelle e i confratelli sono il cuore della Misericordia: donne e uomini c
   <figcaption>I confratelli nella veste storica, la «buffa» — fotografia di Giorgio Sommer (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
 </figure>
 
-## Le qualifiche
-
-<div class="mov-card-griglia">
-  <div class="mov-card">
-    <h3>Volontari aspiranti</h3>
-    <p>Collaborano per un periodo stabilito dallo Statuto, durante il quale sperimentano la vita della Confraternita. Sono iscritti nel registro dei volontari e partecipano alle assemblee come osservatori. Dopo un'adeguata formazione accedono al <strong>Rito della Vestizione</strong> e diventano confratelli e consorelle a tutti gli effetti.</p>
-  </div>
-  <div class="mov-card">
-    <h3>Confratelli effettivi</h3>
-    <p>Costituiscono il corpo funzionale della Confraternita: esercitano le attività caritative e godono di tutti i diritti sociali previsti dallo Statuto, compreso il diritto di voto. Dopo il periodo statutario accedono anche al diritto di eleggibilità.</p>
-  </div>
-  <div class="mov-card">
-    <h3>Confratelli «buonavoglia»</h3>
-    <p>Aderiscono spiritualmente agli ideali caritativi e sostengono la Confraternita in modo materiale e morale, pur non partecipando direttamente alle opere. Godono degli stessi diritti sociali degli effettivi.</p>
-  </div>
-</div>
-
 ## Una grande famiglia
 
 <div class="mov-dati" aria-label="Le Misericordie d'Italia in numeri">

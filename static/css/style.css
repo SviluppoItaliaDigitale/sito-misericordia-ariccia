@@ -200,6 +200,25 @@ a:hover { color: var(--mise-navy); }
   text-shadow: 0 1px 2px rgba(0,0,0,.28);
 }
 
+/* Callout "diventa volontario" in home: fascia navy con frase ad effetto */
+.callout-volontari {
+  background: linear-gradient(120deg, var(--mise-navy) 0%, #2a3357 100%);
+  color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+.callout-volontari::after {
+  content: "";
+  position: absolute; left: -2.5rem; bottom: -3.5rem;
+  width: 12rem; height: 12rem;
+  background: rgba(255,255,255,.07);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform: rotate(-12deg);
+}
+.callout-volontari h2 { color: #fff; font-size: clamp(1.6rem, 3.6vw, 2.4rem); }
+.callout-volontari p { color: rgba(255,255,255,.85); max-width: 46rem; margin-inline: auto; }
+
 /* ---- Testata pagine interne: fascia ciano sfumata ---- */
 .pagina-testata {
   background: linear-gradient(120deg, var(--mise-ciano) 0%, var(--mise-ciano-scuro) 85%);

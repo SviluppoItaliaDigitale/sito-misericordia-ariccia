@@ -7,7 +7,7 @@ fatti:
   - icona: "📅"
     testo: "Attiva dal **1994**"
   - icona: "📜"
-    testo: "Iscritta come **ODV** dal 2011"
+    testo: "Iscritta come **ODV** dal 2011, con **personalità giuridica** riconosciuta nello stesso anno"
   - icona: "✅"
     testo: "Nel **RUNTS** dal 28 maggio 2023"
   - icona: "🤝"
@@ -21,7 +21,8 @@ attivita:
   - titolo: "Trasporto infermi"
     testo: "Con due ambulanze e volontari formati ogni anno, a supporto della popolazione e del Servizio Sanitario Nazionale."
   - titolo: "Volontari ospedalieri"
-    testo: "Presso l'ospedale «P. Colombo» di Velletri."
+    periodo: "fino al 2020"
+    testo: "Presso l'ospedale «P. Colombo» di Velletri, fino alla pandemia di Covid-19."
 magistrato:
   - ruolo: "Governatore"
     nome: "Maddalena Basili"

@@ -4,10 +4,6 @@
   <div class="hero-foto" data-parallax="0.16" aria-hidden="true"></div>
   <div class="hero-velo" aria-hidden="true"></div>
   <div id="hero-particelle" class="hero-particelle" aria-hidden="true"></div>
-  <div class="emblema-logo" aria-hidden="true">
-    <img src="{{ "img/loghi/mise-fregio.png" | relURL }}" alt=""
-         width="340" height="340" loading="eager">
-  </div>
   <div class="container">
     <p class="occhiello mb-2" data-anim="fade-up">Ariccia · Castelli Romani · dal 1994</p>
     <h1>
@@ -41,11 +37,15 @@
     <span class="marquee__voce">Servizio Civile Universale</span>
     <span class="marquee__voce">Formazione</span>
     <span class="marquee__voce">Servizi alla persona</span>
+    <span class="marquee__voce">Centro di Ascolto</span>
+    <span class="marquee__voce">Banco Alimentare</span>
     <span class="marquee__voce">30+ anni al fianco della comunità</span>
     <span class="marquee__voce">Soccorso e trasporti sanitari</span>
     <span class="marquee__voce">Servizio Civile Universale</span>
     <span class="marquee__voce">Formazione</span>
     <span class="marquee__voce">Servizi alla persona</span>
+    <span class="marquee__voce">Centro di Ascolto</span>
+    <span class="marquee__voce">Banco Alimentare</span>
     <span class="marquee__voce">30+ anni al fianco della comunità</span>
   </div>
 </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="2">2</span></div>
-        <div class="etichetta">ambulanze a disposizione</div>
+        <div class="etichetta">ambulanze di tipo A</div>
       </div>
       <div class="col-6 col-md-3">
         <div class="numero"><span data-conta="2">2</span></div>
@@ -87,9 +87,6 @@
     </div>
   </div>
 </section>
-
-<!-- ============ La Parola del giorno (liturgia + link Vatican News) ============ -->
-{{ partial "parola-del-giorno.html" . }}
 
 <!-- ============ Cosa facciamo: titolo split + card con tilt ============ -->
 <section class="sezione-ciano py-5">
@@ -109,6 +106,9 @@
     </div>
   </div>
 </section>
+
+<!-- ============ La Parola del giorno (liturgia + link Vatican News) ============ -->
+{{ partial "parola-del-giorno.html" . }}
 
 <!-- onda di passaggio verso il bianco -->
 <div class="divisore" aria-hidden="true">
@@ -175,6 +175,15 @@
         <div class="cf">{{ site.Params.codiceFiscale }}</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ Callout: diventa volontario ============ -->
+<section class="container my-5">
+  <div class="callout-volontari rounded p-4 p-md-5 text-center" data-anim="zoom">
+    <h2 class="mb-2">Il bene ha bisogno di mani.<br>Anche delle tue.</h2>
+    <p class="mb-4">Non servono competenze particolari: la formazione la facciamo insieme. Serve solo un po' di tempo e il desiderio di donarlo.</p>
+    <a class="btn btn-giallo btn-lg" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
   </div>
 </section>
 

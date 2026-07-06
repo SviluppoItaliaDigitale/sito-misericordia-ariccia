@@ -1,6 +1,6 @@
 ---
 title: "Servizi sanitari"
-summary: "Trasporti in ambulanza, presidio alle manifestazioni, servizio navetta ASL e volontari ospedalieri."
+summary: "Trasporti in ambulanza, presidio alle manifestazioni e servizio navetta ASL."
 weight: 10
 sezioni:
   - icona: "🚩"
@@ -11,13 +11,10 @@ sezioni:
     testo: "Effettuiamo trasporti privati per visite di controllo presso ospedali o centri riabilitativi, dimissioni dalle strutture di ricovero verso la propria abitazione e altro ancora."
   - icona: "🏥"
     titolo: "Servizio navetta ASL"
-    testo: "In accordo con la ASL garantiamo il servizio navetta presso gli ospedali locali, almeno due giorni a settimana."
+    testo: "In accordo con la ASL garantiamo il servizio navetta presso gli ospedali locali."
   - icona: "🚓"
     titolo: "Trasporto detenuti"
     testo: "Tramite la convenzione con la ASL ci occupiamo anche dei trasporti di detenuti, con la presenza della Polizia Penitenziaria."
-  - icona: "🤝"
-    titolo: "Volontari ospedalieri"
-    testo: "Dopo un'apposita formazione, i nostri volontari operano all'ospedale di Velletri: aiutano i ricoverati nella loro quotidianità e offrono conforto, anche materiale — una delle Opere di Misericordia corporali, «visitare i malati»."
 nota:
   icona: "📞"
   titolo: "Come richiedere un trasporto:"
