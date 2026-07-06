@@ -4,6 +4,10 @@
   <div class="hero-foto" data-parallax="0.16" aria-hidden="true"></div>
   <div class="hero-velo" aria-hidden="true"></div>
   <div id="hero-particelle" class="hero-particelle" aria-hidden="true"></div>
+  <div class="emblema-logo" aria-hidden="true">
+    <img src="{{ "img/loghi/mise-triangolo.png" | relURL }}" alt=""
+         width="340" height="283" loading="eager">
+  </div>
   <div class="container">
     <p class="occhiello mb-2" data-anim="fade-up">Ariccia · Castelli Romani · dal 1994</p>
     <h1>
@@ -107,6 +111,15 @@
   </div>
 </section>
 
+<!-- ============ Callout: diventa volontario ============ -->
+<section class="callout-volontari text-center" data-anim="zoom">
+  <div class="container py-5">
+    <h2 class="mb-3">Il bene ha bisogno di mani.<br>Anche delle tue.</h2>
+    <p class="mb-4">Non servono competenze particolari: la formazione la facciamo insieme. Serve solo un po' di tempo e il desiderio di donarlo.</p>
+    <a class="btn btn-giallo btn-lg px-5" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
+  </div>
+</section>
+
 <!-- ============ La Parola del giorno (liturgia + link Vatican News) ============ -->
 {{ partial "parola-del-giorno.html" . }}
 
@@ -175,15 +188,6 @@
         <div class="cf">{{ site.Params.codiceFiscale }}</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ Callout: diventa volontario ============ -->
-<section class="container my-5">
-  <div class="callout-volontari rounded p-4 p-md-5 text-center" data-anim="zoom">
-    <h2 class="mb-2">Il bene ha bisogno di mani.<br>Anche delle tue.</h2>
-    <p class="mb-4">Non servono competenze particolari: la formazione la facciamo insieme. Serve solo un po' di tempo e il desiderio di donarlo.</p>
-    <a class="btn btn-giallo btn-lg" href="{{ "/chi-siamo/" | relURL }}">Diventa volontario</a>
   </div>
 </section>
 

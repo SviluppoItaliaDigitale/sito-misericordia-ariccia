@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#00a5dc">
   {{ $titolo := printf "%s%s" (cond .IsHome "" (printf "%s — " .Title)) site.Title }}
   {{ $descr := .Description | default site.Params.descrizione }}
-  {{ $img := absURL "img/loghi/mise-fregio.png" }}
+  {{ $img := absURL "img/loghi/mise-triangolo.png" }}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.Title }}">
   <meta property="og:title" content="{{ $titolo }}">

@@ -12,6 +12,12 @@ Le consorelle e i confratelli sono il cuore della Misericordia: donne e uomini c
   <figcaption>I confratelli nella veste storica, la «buffa» — fotografia di Giorgio Sommer (XIX sec.).<span class="storia-credit">Pubblico dominio · Wikimedia Commons</span></figcaption>
 </figure>
 
+## Confratelli e consorelle oggi
+
+Secondo lo [Statuto vigente](/documenti/statuto-registrato-2022.pdf), gli associati sono chiamati con il nome tradizionale di **Confratello** e **Consorella** e hanno tutti **uguali diritti e uguali doveri**: partecipano alle assemblee, votano ed eleggono le cariche sociali.
+
+Si diventa confratelli con una **domanda scritta di ammissione**, sulla quale delibera il Magistrato; l'attività di volontariato è **personale, spontanea e gratuita**, e ogni volontario è assicurato contro infortuni e responsabilità civile. Il volontariato è la divisa morale dei confratelli: la sola ricompensa è nella coscienza del dovere compiuto, salutata dal motto tradizionale delle Misericordie — **«Che Iddio gliene renda merito»**.
+
 ## Una grande famiglia
 
 <div class="mov-dati" aria-label="Le Misericordie d'Italia in numeri">
