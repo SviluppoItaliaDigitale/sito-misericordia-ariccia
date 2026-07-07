@@ -14,7 +14,7 @@ Non servono competenze particolari per iniziare: la formazione la facciamo insie
 <details class="faq-item">
 <summary>Come prenoto un trasporto sanitario o un accompagnamento?</summary>
 
-Contattaci con un po' di anticipo al **348 4068657** (anche WhatsApp) o via email, indicando **data, orario, luogo di partenza e destinazione**: ti spiegheremo come procedere. Per i servizi in convenzione l'accesso avviene tramite gli enti locali. In caso di **emergenza** chiama sempre il **112**.
+Contattaci con un po' di anticipo al **348 4068657** (anche WhatsApp) o via email, indicando **data, orario, luogo di partenza e destinazione**: ti spiegheremo come procedere. In caso di **emergenza** chiama sempre il **112**.
 
 </details>
 
