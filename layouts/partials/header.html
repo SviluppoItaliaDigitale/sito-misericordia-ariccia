@@ -51,6 +51,22 @@
         </li>
         {{ end }}
         {{ end }}
+        <li class="nav-item dropdown ms-lg-2">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Scegli la lingua">🌐 Lingua</a>
+          <ul class="dropdown-menu dropdown-menu-mise dropdown-menu-end">
+            <li><a class="dropdown-item" href="{{ "/en/" | relURL }}">🇬🇧 English (curated)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header">Traduzione automatica</h6></li>
+            <li><a class="dropdown-item" data-tl="en" href="#">English</a></li>
+            <li><a class="dropdown-item" data-tl="fr" href="#">Français</a></li>
+            <li><a class="dropdown-item" data-tl="ro" href="#">Română</a></li>
+            <li><a class="dropdown-item" data-tl="es" href="#">Español</a></li>
+            <li><a class="dropdown-item" data-tl="de" href="#">Deutsch</a></li>
+            <li><a class="dropdown-item" data-tl="ar" href="#" dir="rtl">العربية</a></li>
+            <li><a class="dropdown-item" data-tl="zh-CN" href="#">中文</a></li>
+            <li><a class="dropdown-item" data-tl="eo" href="#">Esperanto</a></li>
+          </ul>
+        </li>
         <li class="nav-item ms-lg-2">
           <button type="button" class="cerca-btn" data-cerca-apri aria-label="Cerca nel sito">
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
@@ -96,6 +112,21 @@
       {{ end }}
       {{ end }}
     </ul>
+    <div class="lingue-mobile mt-3">
+      <p class="mb-1 sottomenu-titolo">🌐 Lingua</p>
+      <a class="nav-link" href="{{ "/en/" | relURL }}">🇬🇧 English (curated)</a>
+      <p class="mb-1 mt-2 lingue-auto-tit">Traduzione automatica:</p>
+      <p class="lingue-auto mb-0">
+        <a data-tl="en" href="#">English</a> ·
+        <a data-tl="fr" href="#">Français</a> ·
+        <a data-tl="ro" href="#">Română</a> ·
+        <a data-tl="es" href="#">Español</a> ·
+        <a data-tl="de" href="#">Deutsch</a> ·
+        <a data-tl="ar" href="#" dir="rtl">العربية</a> ·
+        <a data-tl="zh-CN" href="#">中文</a> ·
+        <a data-tl="eo" href="#">Esperanto</a>
+      </p>
+    </div>
     <button type="button" class="cerca-btn cerca-btn--mobile" data-cerca-apri>
       <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
       <span>Cerca nel sito</span>
