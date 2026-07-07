@@ -30,6 +30,47 @@ Quando ci contatti, tieni pronti questi dati: **data e orario**, **luogo di part
 
 ## Come prenotare
 
+Compila i campi qui sotto e invia: si aprirà la tua app di posta con il messaggio **già pronto**, da controllare e spedire. È il modo più veloce per darci tutte le informazioni in una volta.
+
+<form id="form-prenota" class="prenota-form" novalidate>
+  <div class="pf-griglia">
+    <label class="pf-campo">Nome e cognome <span class="pf-obb">*</span>
+      <input type="text" name="nome" autocomplete="name" required>
+    </label>
+    <label class="pf-campo">Telefono <span class="pf-obb">*</span>
+      <input type="tel" name="tel" autocomplete="tel" required>
+    </label>
+    <label class="pf-campo">Tipo di trasporto
+      <select name="tipo">
+        <option>Ambulanza</option>
+        <option>Auto / vettura</option>
+        <option>Mezzo con pedana (carrozzina)</option>
+        <option>Non so, consigliatemi voi</option>
+      </select>
+    </label>
+    <label class="pf-campo">Numero di persone
+      <input type="number" name="persone" min="1" value="1" inputmode="numeric">
+    </label>
+    <label class="pf-campo">Data
+      <input type="date" name="data">
+    </label>
+    <label class="pf-campo">Ora
+      <input type="time" name="ora">
+    </label>
+    <label class="pf-campo pf-full">Luogo di partenza
+      <input type="text" name="partenza" placeholder="Indirizzo o struttura di partenza">
+    </label>
+    <label class="pf-campo pf-full">Destinazione
+      <input type="text" name="destinazione" placeholder="Ospedale, centro, indirizzo…">
+    </label>
+    <label class="pf-campo pf-full">Note (carrozzina, barella, accompagnatore…)
+      <textarea name="note" rows="2"></textarea>
+    </label>
+  </div>
+  <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
+  <p class="pf-nota">Nessun dato viene salvato online: il modulo prepara solo un'email dalla tua casella di posta. In alternativa, puoi chiamarci o scriverci su WhatsApp qui sotto.</p>
+</form>
+
 <div class="rt-azioni">
   <a class="btn btn-ciano btn-lg" href="tel:+393484068657">📞 Chiama il 348 4068657</a>
   <a class="btn btn-giallo btn-lg" href="https://wa.me/393484068657" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
