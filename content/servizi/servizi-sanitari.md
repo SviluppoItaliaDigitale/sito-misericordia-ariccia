@@ -35,4 +35,8 @@ contatto:
   email: "sede@misericordia-ariccia.it"
 ---
 
-![Ambulanza della Misericordia di Ariccia](/img/ambulanza.jpg)
+<div class="galleria-griglia">
+  <img src="/img/attivita/attivita-01.jpg" alt="Assistenza sanitaria a una manifestazione sportiva">
+  <img src="/img/attivita/attivita-08.jpg" alt="Presidio sanitario serale a un evento pubblico">
+  <img src="/img/attivita/attivita-11.jpg" alt="Assistenza sanitaria a una gara sportiva sul territorio">
+</div>

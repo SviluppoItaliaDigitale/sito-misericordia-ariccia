@@ -31,5 +31,9 @@ contatto:
   email: "sede@misericordia-ariccia.it"
 ---
 
-![I mezzi dei servizi sociali della Misericordia di Ariccia](/img/mezzi-servizi-sociali.jpg)
+<div class="galleria-griglia">
+  <img src="/img/attivita/attivita-03.jpg" alt="Mezzo per i servizi sociali della Misericordia di Ariccia">
+  <img src="/img/attivita/attivita-05.jpg" alt="Veicolo attrezzato per il trasporto sociale">
+  <img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali nel centro di Ariccia">
+</div>
 
