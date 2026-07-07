@@ -8,7 +8,7 @@ weight: 90
 
 > **In an emergency always call [112](tel:112).** These notes are a basic reminder and **do not replace** a first-aid course or the intervention of rescuers. Always follow the 112 operator's instructions.
 
-Knowing **what to do in the first few minutes** can make the difference. Here are essential pointers for the most common emergencies. To gain real skills, take a [first-aid and BLSD course](/en/servizi/) with the Misericordia.
+Knowing **what to do in the first few minutes** can make the difference. Here are essential pointers for the most common emergencies. To gain real skills, take a [first-aid and BLSD course](/en/formazione/) with the Misericordia.
 
 ## Golden rules
 

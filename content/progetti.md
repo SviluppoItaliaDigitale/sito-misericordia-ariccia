@@ -5,7 +5,7 @@ italianoSemplice: |
 
   Aiutiamo le persone in difficoltà sul territorio.
 
-  Oggi: "Il muro della gentilezza" a Velletri, il servizio Mensa con la Caritas e "Città ad impatto positivo".
+  Oggi: "Il muro della gentilezza" a Velletri, il servizio Mensa con la Caritas e "Città ad Impatto Positivo".
 
   In passato: raccolte di soldi per l'ospedale, orti sociali, aiuto durante il Covid, telesoccorso per gli anziani.
 
@@ -18,7 +18,7 @@ collaborazioni:
   - titolo: "Servizio Mensa"
     icona: "🍲"
     testo: "Ad Ariccia, in collaborazione con la **Caritas**, per offrire un pasto e vicinanza a chi è in difficoltà."
-  - titolo: "Città ad impatto positivo"
+  - titolo: "Città ad Impatto Positivo"
     icona: "🏙️"
     testo: "Un progetto realizzato con **PMG**, il **Comune di Albano** e **Formalba**, per costruire comunità più solidali."
 passati:
@@ -72,7 +72,7 @@ passati:
   - titolo: "MIT Link"
     anno: "2024"
     icona: "🏅"
-    testo: "Inclusione sociale di **100 persone con disabilità e non autosufficienti** nell'area ASL RM6, promuovendo lo **sport** come strumento di aggregazione. Co-finanziato dalla **Regione Lazio** (avviso *Comunità Solidali 2022*), capofila Maendeleo for Children APS, partner Misericordia di Ariccia ed Empowerment for Social Change APS. Concluso nel 2024."
+    testo: "Inclusione sociale di **100 persone con disabilità e non autosufficienti** nell'area ASL Roma 6, promuovendo lo **sport** come strumento di aggregazione. Co-finanziato dalla **Regione Lazio** (avviso *Comunità Solidali 2022*), capofila Maendeleo for Children APS, partner Misericordia di Ariccia ed Empowerment for Social Change APS. Concluso nel 2024."
 ---
 
 Dalla raccolta fondi all'inclusione sociale: ecco i progetti con cui la Misericordia di Ariccia ha messo in pratica la solidarietà sul territorio.

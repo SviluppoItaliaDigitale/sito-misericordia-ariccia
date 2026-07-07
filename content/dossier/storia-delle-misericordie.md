@@ -108,11 +108,11 @@ tappe:
   - anno: "Oggi"
     epoca: "Oggi"
     titolo: "Un movimento vivo, dal 1244"
-    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce **oltre 700 confraternite**, con circa **670.000 iscritti** e **oltre 100.000 volontari attivi**. Dalle ambulanze al trasporto socio-sanitario, dai poliambulatori alla Protezione Civile, dai centri sociali alle onoranze funebri: la stessa, antica vocazione — stare accanto a chi soffre — parla la lingua di oggi. La Misericordia di Ariccia ne è parte."
+    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce **oltre 800 confraternite**, con circa **670.000 iscritti** e **circa 80.000 volontari attivi**. Dalle ambulanze al trasporto socio-sanitario, dai poliambulatori alla Protezione Civile, dai centri sociali alle onoranze funebri: la stessa, antica vocazione — stare accanto a chi soffre — parla la lingua di oggi. La Misericordia di Ariccia ne è parte."
 oggi_numeri:
   - cifra: "1244"
     etichetta: "l'anno delle origini, a Firenze"
-  - cifra: "700"
+  - cifra: "800"
     suffisso: "+"
     etichetta: "Misericordie in Italia"
   - cifra: "670.000"

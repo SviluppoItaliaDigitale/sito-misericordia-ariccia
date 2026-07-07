@@ -11,7 +11,7 @@ The Misericordia di Ariccia serves the community with **health and social servic
 ## Health services
 
 - **Patient transport** by type-A ambulance, with trained crew and, when needed, medical staff on board
-- **Hospital transfers** with the local health authority (ASL Roma H6)
+- **Hospital transfers** with the local health authority (ASL Roma 6)
 - **Medical assistance** at sports events and public gatherings
 
 ## Social services
