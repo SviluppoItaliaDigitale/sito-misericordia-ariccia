@@ -60,6 +60,10 @@ disableKinds = ["taxonomy", "term"]
     pageRef = "/servizi"
     weight = 20
   [[menus.main]]
+    name = "Primo soccorso"
+    pageRef = "/primo-soccorso"
+    weight = 22
+  [[menus.main]]
     name = "Servizio Civile"
     pageRef = "/servizio-civile"
     weight = 30
