@@ -63,6 +63,7 @@
   <link rel="stylesheet" href="{{ "vendor/bootstrap/bootstrap.min.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/animazioni.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/accessibilita.css" | relURL }}">
   {{ if eq .Section "dossier" }}<link rel="stylesheet" href="{{ "css/dossier.css" | relURL }}">{{ end }}
   <link rel="icon" type="image/png" href="{{ "img/favicon.png" | relURL }}">
   <link rel="apple-touch-icon" href="{{ "img/favicon.png" | relURL }}">
@@ -77,6 +78,24 @@
           if (!window.__animOK) document.documentElement.classList.remove("anim-pronto");
         }, 4000);
       }
+    })();
+  </script>
+  <script>
+    /* Ripristina subito le preferenze di accessibilità salvate (evita lo sfarfallio). */
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem("mise-a11y") || "{}");
+        var h = document.documentElement;
+        if (s.scala && s.scala !== 100) h.style.fontSize = s.scala + "%";
+        var map = { dyslexia: "a11y-dyslexia", spacing: "a11y-spacing", links: "a11y-links",
+          noanim: "a11y-no-anim", cursore: "a11y-cursore", guida: "a11y-guida" };
+        for (var k in map) { if (s[k]) h.classList.add(map[k]); }
+        var f = [];
+        if (s.grayscale) f.push("grayscale(1)");
+        if (s.contrast) f.push("contrast(1.4)");
+        if (s.invert) f.push("invert(1) hue-rotate(180deg)");
+        if (f.length) { h.style.setProperty("--a11y-filtro", f.join(" ")); h.classList.add("a11y-filtri"); }
+      } catch (e) {}
     })();
   </script>
 </head>
@@ -113,6 +132,8 @@
 
   <script src="{{ "vendor/bootstrap/bootstrap.bundle.min.js" | relURL }}"></script>
   <script src="{{ "js/sito.js" | relURL }}"></script>
+  <script src="{{ "js/accessibilita.js" | relURL }}" defer></script>
+  <script src="{{ "js/ricerca.js" | relURL }}" data-indice="{{ "index.json" | relURL }}" defer></script>
 
   <!-- Motore animazioni: GSAP + ScrollTrigger + SplitText + particelle (auto-ospitati) -->
   <script src="{{ "vendor/gsap/gsap.min.js" | relURL }}" defer></script>

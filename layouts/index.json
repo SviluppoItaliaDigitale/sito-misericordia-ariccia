@@ -1,0 +1,7 @@
+{{- $pagine := where site.Pages "Kind" "in" (slice "page" "section") -}}
+[
+{{- range $i, $p := $pagine -}}
+{{- if $i }},{{ end }}
+{{ dict "title" $p.Title "url" $p.RelPermalink "section" (or $p.Section "") "content" (substr ($p.Plain | chomp | replaceRE "\\s+" " ") 0 1600) | jsonify }}
+{{- end -}}
+]
