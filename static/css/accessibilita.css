@@ -219,6 +219,30 @@ html.a11y-guida #a11y-guida { display: block; }
   .lettura-tools::before { width: 100%; margin-bottom: 2px; }
 }
 
+/* ============================================================
+   Modulo "Richiedi un trasporto"
+   ============================================================ */
+.prenota-form {
+  background: var(--mise-carta); border: 1px solid #e2e9ee; border-radius: 14px;
+  padding: 20px; margin: 0 0 1.4rem;
+}
+.pf-griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.pf-campo { display: flex; flex-direction: column; gap: 5px; font-weight: 600; font-size: .92rem; color: var(--mise-navy); }
+.pf-campo.pf-full { grid-column: 1 / -1; }
+.pf-obb { color: #c0392b; }
+.prenota-form input, .prenota-form select, .prenota-form textarea {
+  font: inherit; font-weight: 400; padding: .55rem .7rem;
+  border: 1.5px solid #cdd7df; border-radius: 9px; background: #fff; color: var(--mise-navy);
+}
+.prenota-form input:focus, .prenota-form select:focus, .prenota-form textarea:focus {
+  outline: none; border-color: var(--mise-ciano); box-shadow: 0 0 0 3px var(--mise-ciano-velo);
+}
+.pf-nota { font-size: .82rem; color: #6b7482; margin: .7rem 0 0; }
+
+@media (max-width: 560px) {
+  .pf-griglia { grid-template-columns: 1fr; }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 480px) {
   .a11y-pannello { width: calc(100vw - 20px); left: 10px; }
