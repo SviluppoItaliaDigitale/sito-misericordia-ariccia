@@ -179,6 +179,16 @@ html.a11y-guida #a11y-guida { display: block; }
 .cerca-ris mark { background: var(--mise-giallo); color: inherit; padding: 0 1px; border-radius: 2px; }
 .cerca-suggerimento { padding: 8px 14px 14px; font-size: .78rem; color: #8a94a2; }
 
+/* Messa a fuoco da tastiera ben visibile su tutti gli elementi interattivi
+   (accessibilità: WCAG 2.4.7 Focus Visible) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--mise-ciano);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
 /* ============================================================
    Barra di lettura accessibile negli articoli
    ============================================================ */
