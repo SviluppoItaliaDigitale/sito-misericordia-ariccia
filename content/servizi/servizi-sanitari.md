@@ -1,5 +1,15 @@
 ---
 title: "Servizi sanitari"
+italianoSemplice: |
+  **I servizi sanitari della Misericordia.**
+
+  Facciamo trasporti in ambulanza per le persone malate.
+
+  Siamo presenti alle feste e agli eventi per dare assistenza sanitaria.
+
+  Facciamo trasferimenti tra gli ospedali con la ASL RM H6.
+
+  Per richiedere un trasporto chiama il **348 4068657**.
 summary: "Trasporti in ambulanza, presidio alle manifestazioni e trasferimenti ospedalieri."
 weight: 10
 sezioni:

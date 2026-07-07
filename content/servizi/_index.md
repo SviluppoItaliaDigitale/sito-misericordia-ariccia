@@ -1,5 +1,11 @@
 ---
 title: "I nostri servizi"
+italianoSemplice: |
+  **La Misericordia di Ariccia offre servizi sanitari e sociali.**
+
+  Aiutiamo le persone della comunità, in modo gratuito.
+
+  Abbiamo due ambulanze, un mezzo con la pedana per le carrozzine e altri automezzi per i servizi sociali.
 ---
 
 La Misericordia di Ariccia è al servizio della comunità con servizi sanitari e sociali, in convenzione con gli enti locali e in forma gratuita.

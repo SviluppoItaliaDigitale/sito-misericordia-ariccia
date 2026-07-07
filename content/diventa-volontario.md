@@ -1,5 +1,15 @@
 ---
 title: "Diventa volontario"
+italianoSemplice: |
+  **Puoi diventare volontario della Misericordia.**
+
+  Aiuti le persone malate, sole o in difficoltà.
+
+  Non servono capacità speciali: impari tutto con noi.
+
+  Cosa puoi fare: trasporti, Centro di Ascolto, Banco Alimentare, aiuto alle feste.
+
+  Per iniziare vieni in sede o chiama il **348 4068657**. Per le iscrizioni: **328 8105399**.
 description: "Se hai un cuore grande e il desiderio di aiutare chi ha bisogno, c'è un posto anche per te alla Misericordia di Ariccia. Nessuna competenza richiesta: la formazione la facciamo insieme."
 ---
 

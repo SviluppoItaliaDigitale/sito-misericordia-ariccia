@@ -1,5 +1,13 @@
 ---
 title: "Chi siamo"
+italianoSemplice: |
+  **La Misericordia di Ariccia aiuta le persone dal 1994.**
+
+  Siamo un gruppo di volontari. Aiutiamo chi ha bisogno, nei Castelli Romani.
+
+  Facciamo trasporti per i malati. Diamo cibo con il Banco Alimentare. Ascoltiamo le persone in difficoltà.
+
+  Vuoi aiutare anche tu? Puoi diventare volontario.
 layout: "chi-siamo"
 sommario: "Dal 1994 la Confraternita di Misericordia accompagna la vita della comunità nei Castelli Romani e nelle zone circostanti, offrendo aiuto, ascolto e presenza a chiunque ne abbia bisogno, nel segno della solidarietà e della fraternità."
 filosofia: "Crediamo nella sinergia con le altre organizzazioni del Terzo Settore: la coprogettazione ci permette di costruire iniziative condivise e di migliorare la qualità dei servizi offerti alla comunità."

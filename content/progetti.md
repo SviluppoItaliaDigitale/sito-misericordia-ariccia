@@ -1,5 +1,15 @@
 ---
 title: "I nostri progetti"
+italianoSemplice: |
+  **I progetti della Misericordia di Ariccia.**
+
+  Aiutiamo le persone in difficoltà sul territorio.
+
+  Oggi: "Il muro della gentilezza" a Velletri, il servizio Mensa con la Caritas e "Città ad impatto positivo".
+
+  In passato: raccolte di soldi per l'ospedale, orti sociali, aiuto durante il Covid, telesoccorso per gli anziani.
+
+  Lavoriamo sempre insieme ad altre associazioni.
 layout: "progetti"
 collaborazioni:
   - titolo: "Il muro della gentilezza"

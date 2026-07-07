@@ -1,5 +1,14 @@
 ---
 title: "Contatti"
+italianoSemplice: |
+  **Come contattare la Misericordia di Ariccia.**
+
+  - Ufficio (sede operativa): **06 933 3717**
+  - Servizi e trasporti: **348 4068657** (anche WhatsApp)
+  - Amministrazione e iscrizioni: **328 8105399**
+  - Email: **sede@misericordia-ariccia.it**
+
+  Sede operativa: Piazzale Aldo Moro 6, Ariccia.
 ---
 
 ## Dove siamo

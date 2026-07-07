@@ -1,5 +1,13 @@
 ---
 title: "Richiedi un trasporto"
+italianoSemplice: |
+  **Puoi chiedere un trasporto alla Misericordia.**
+
+  Portiamo le persone alle visite, agli esami e alle cure. Aiutiamo chi ha difficoltà a muoversi.
+
+  Chiama il **348 4068657** e dì: la data, l'ora, da dove parti e dove vuoi andare.
+
+  In caso di emergenza chiama sempre il **112**.
 ---
 
 <div class="avviso-emergenza rounded p-3 px-4" role="note">

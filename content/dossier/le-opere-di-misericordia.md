@@ -1,5 +1,13 @@
 ---
 title: "Le Opere di Misericordia"
+italianoSemplice: |
+  **Le Opere di Misericordia sono i gesti di aiuto verso gli altri.**
+
+  Sono 14: 7 per il corpo e 7 per l'animo.
+
+  Per il corpo si aiutano le persone malate, povere e sole. Per l'animo si consiglia, si consola e si perdona.
+
+  La Misericordia di Ariccia mette in pratica questi gesti ogni giorno.
 occhiello: "Dossier · Il senso del nostro nome"
 sottotitolo: "Quattordici gesti concreti di carità — sette per il corpo, sette per l'animo — che da secoli danno forma e nome al nostro servizio."
 summary: "Un dossier interattivo sulle quattordici Opere di Misericordia, corporali e spirituali, e su come la Confraternita di Ariccia le vive ogni giorno."

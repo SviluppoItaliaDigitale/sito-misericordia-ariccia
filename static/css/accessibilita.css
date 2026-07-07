@@ -200,15 +200,20 @@ html.a11y-guida #a11y-guida { display: block; }
 .lt-btn[aria-pressed="true"] { background: var(--mise-ciano); color: #fff; }
 .lt-btn .ic { font-size: 1rem; line-height: 1; }
 
-.testo-semplice {
-  border: 2px dashed var(--mise-ciano); border-radius: 12px; padding: 18px 20px;
+.lettura-barra { padding-top: 1.2rem; }
+
+.testo-semplice { padding: 1.2rem 0 2.5rem; }
+.ts-box {
+  border: 2px dashed var(--mise-ciano); border-radius: 12px; padding: 20px 22px;
   background: #fbfdff;
 }
-.testo-semplice .ts-badge {
+.ts-box .ts-badge {
   display: inline-block; background: var(--mise-ciano); color: #fff; font-weight: 700;
-  font-size: .8rem; padding: .25rem .7rem; border-radius: 50rem; margin-bottom: .8rem;
+  font-size: .8rem; padding: .25rem .7rem; border-radius: 50rem; margin-bottom: .9rem;
 }
-.testo-semplice p { font-size: 1.12rem; line-height: 1.9; }
+.ts-box p { font-size: 1.12rem; line-height: 1.9; }
+.ts-box :is(h1, h2, h3) { color: var(--mise-navy); }
+.ts-box ul, .ts-box ol { font-size: 1.08rem; line-height: 1.85; }
 
 @media (max-width: 520px) {
   .lettura-tools::before { width: 100%; margin-bottom: 2px; }

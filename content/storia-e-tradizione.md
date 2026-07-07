@@ -1,5 +1,13 @@
 ---
 title: "Storia e tradizione"
+italianoSemplice: |
+  **Le Misericordie sono molto antiche.**
+
+  Sono nate a Firenze quasi 800 anni fa. Aiutano le persone malate e povere.
+
+  I volontari si chiamano confratelli. Un tempo portavano una veste che copriva il viso, per restare tutti uguali.
+
+  Oggi in Italia ci sono più di 800 Misericordie. La Misericordia di Ariccia è nata nel 1994 e fa parte di questa grande famiglia.
 ---
 
 Le Misericordie sono tra le più antiche associazioni di volontariato al mondo: una tradizione di carità che dura da quasi otto secoli, nel segno dell'aiuto al prossimo e delle Opere di Misericordia. La Misericordia di Ariccia, nata nel 1994, è parte di questo grande Movimento.

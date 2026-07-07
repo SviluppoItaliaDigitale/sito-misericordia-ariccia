@@ -1,5 +1,13 @@
 ---
 title: "Trasparenza"
+italianoSemplice: |
+  **Qui pubblichiamo i documenti della Misericordia.**
+
+  Sono i documenti che un'associazione deve mostrare a tutti.
+
+  Trovi lo Statuto, i conti del 5x1000, i contributi pubblici ricevuti e le informazioni sul Banco Alimentare.
+
+  Il nostro codice fiscale è **90031910582**.
 ---
 
 In questa sezione pubblichiamo i documenti previsti dagli obblighi di trasparenza per gli Enti del Terzo Settore.

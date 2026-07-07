@@ -1,5 +1,15 @@
 ---
 title: "Trasporto infermi e disabili"
+italianoSemplice: |
+  **La Misericordia accompagna le persone che non possono muoversi da sole.**
+
+  Portiamo malati, anziani e persone con disabilità alle visite e alle cure.
+
+  Usiamo l'ambulanza, l'auto o un mezzo con la pedana per la carrozzina.
+
+  Andiamo nei Castelli Romani e in tutta Italia.
+
+  Per prenotare chiama il **348 4068657**.
 description: "Trasporto infermi, malati, anziani e persone con disabilità nei Castelli Romani e in tutta Italia: con ambulanza, auto e mezzi con pedana per carrozzina. Volontari formati della Misericordia di Ariccia. Prenota: 348 4068657."
 layout: "trasporto"
 mezzi:

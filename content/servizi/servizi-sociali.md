@@ -1,5 +1,15 @@
 ---
 title: "Servizi sociali"
+italianoSemplice: |
+  **I servizi sociali della Misericordia.**
+
+  Trasportiamo le persone con disabilità.
+
+  Diamo cibo con il Banco Alimentare.
+
+  Con il Centro d'ascolto aiutiamo chi ha problemi di ogni tipo. C'è anche il sostegno di uno psicologo.
+
+  Per informazioni chiama il **348 4068657**.
 summary: "Trasporto persone con disabilità, Banco Alimentare, Centro d'ascolto e supporto psicologico."
 weight: 20
 sezioni:

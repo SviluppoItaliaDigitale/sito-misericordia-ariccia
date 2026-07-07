@@ -1,5 +1,13 @@
 ---
 title: "Otto secoli di carità"
+italianoSemplice: |
+  **La storia delle Misericordie.**
+
+  Le Misericordie sono nate a Firenze nel 1244, quasi 800 anni fa.
+
+  Da sempre aiutano le persone malate e povere.
+
+  Con il tempo sono nate in tutta Italia. Oggi sono più di 800. La Misericordia di Ariccia fa parte di questa storia dal 1994.
 layout: "storia"
 occhiello: "Dossier · Le radici del Movimento"
 sottotitolo: "La storia delle Confraternite di Misericordia, dalla nascita a Firenze nel 1244 fino al volontariato di oggi: quasi otto secoli di uomini e donne al servizio del prossimo."
