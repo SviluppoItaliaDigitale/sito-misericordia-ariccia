@@ -182,10 +182,13 @@ html.a11y-guida #a11y-guida { display: block; }
 /* ============================================================
    Home — riquadri in evidenza: Volontari + Prenota trasporto
    ============================================================ */
-.home-evidenza { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.home-evidenza { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .ev-card { border-radius: 18px; padding: 28px 30px; box-shadow: 0 12px 34px rgba(0, 0, 0, .12); }
 .ev-card--volontari { background: linear-gradient(135deg, #1b223f, #2b3566); color: #fff; }
 .ev-card--trasporto { background: var(--mise-ciano-velo); border: 2px solid var(--mise-ciano); }
+.ev-card--sostieni { background: var(--mise-giallo-soft); border: 2px solid var(--mise-giallo); }
+.btn-navy { background: var(--mise-navy); color: #fff; }
+.btn-navy:hover { background: #0f1428; color: #fff; }
 .ev-icona { font-size: 2.5rem; line-height: 1; display: block; margin-bottom: .4rem; }
 .ev-card h2 { margin: 0 0 .6rem; font-size: 1.5rem; }
 .ev-card--volontari h2 { color: #fff; }
