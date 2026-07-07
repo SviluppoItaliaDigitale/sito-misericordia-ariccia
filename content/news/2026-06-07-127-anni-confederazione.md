@@ -2,6 +2,16 @@
 title: "127 anni di Confederazione: giallo e ciano, colori che raccontano una storia di servizio"
 date: 2026-06-07
 slug: "127-anni-confederazione"
+italianoSemplice: |
+  **Le Misericordie compiono 127 anni.**
+
+  Le Misericordie sono un grande gruppo di volontari. Aiutano le persone da molti anni.
+
+  I loro colori sono il giallo e il ciano.
+
+  I volontari guidano le ambulanze. Aiutano le persone sole e malate.
+
+  Anche ad Ariccia i volontari aiutano ogni giorno. Lo fanno dal 1994.
 ---
 
 Il **7 giugno** la grande famiglia delle Misericordie celebra i **127 anni della Confederazione Nazionale**.

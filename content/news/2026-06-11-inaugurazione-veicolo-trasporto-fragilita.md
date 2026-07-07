@@ -2,6 +2,14 @@
 title: "Sabato 13 giugno: inauguriamo il nuovo veicolo per il trasporto delle persone con fragilità"
 date: 2026-06-11
 slug: "inaugurazione-veicolo-trasporto-fragilita"
+italianoSemplice: |
+  **La Misericordia ha un nuovo mezzo.** Serve per trasportare le persone con fragilità.
+
+  Lo presentiamo **sabato 13 giugno alle ore 17.00**. Il luogo è la chiesa Collegiata di Santa Maria Assunta, ad Ariccia.
+
+  Il mezzo arriva dal progetto "Città ad Impatto Positivo".
+
+  Tutti sono invitati. Vi aspettiamo alla festa.
 ---
 
 Una nuova carrozza al servizio della comunità. **Sabato 13 giugno alle ore 17.00**, presso la **Collegiata di Santa Maria Assunta** a Piazza di Corte, la Misericordia di Ariccia inaugura il **nuovo veicolo per il trasporto di persone con fragilità**.

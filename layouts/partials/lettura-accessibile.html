@@ -1,0 +1,16 @@
+{{/* Barra di lettura accessibile per gli articoli.
+     Ascolto vocale e Braille valgono per tutti; l'italiano semplice
+     compare solo se la pagina ha il campo front-matter "italianoSemplice". */}}
+<div class="lettura-tools" data-lettura role="group" aria-label="Strumenti di lettura accessibile">
+  <button type="button" class="lt-btn" data-lt="ascolta" aria-pressed="false">
+    <span class="ic" aria-hidden="true">🔊</span><span class="et">Ascolta</span>
+  </button>
+  {{ with .Params.italianoSemplice }}
+  <button type="button" class="lt-btn" data-lt="semplice" aria-pressed="false" aria-controls="testo-semplice">
+    <span class="ic" aria-hidden="true">📖</span><span class="et">Italiano semplice</span>
+  </button>
+  {{ end }}
+  <button type="button" class="lt-btn" data-lt="braille">
+    <span class="ic" aria-hidden="true">⠿</span><span class="et">Scarica in Braille</span>
+  </button>
+</div>

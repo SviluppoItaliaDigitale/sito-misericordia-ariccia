@@ -2,6 +2,20 @@
 title: "Velletri Moda – Prima Edizione: una sfilata in dialogo con le fragilità"
 date: 2026-07-12
 slug: "velletri-moda-prima-edizione"
+italianoSemplice: |
+  **C'è una sfilata di moda a Velletri.**
+
+  Si chiama "Velletri Moda". È **domenica 12 luglio 2026, alle ore 21**.
+
+  Il luogo è il CREA di Velletri, in Via Cantina Sperimentale 1.
+
+  **Programma:**
+
+  - dalle 20.30: si assaggiano vino e olio;
+  - alle 21: la sfilata;
+  - alla fine: uno spettacolo di teatro.
+
+  L'ingresso è libero. Anche la Misericordia di Ariccia aiuta questa festa. Vi aspettiamo.
 ---
 
 **Domenica 12 luglio 2026, alle ore 21:00**, prende vita la **Prima Edizione di Velletri Moda**, la sfilata che *Il Muro della Gentilezza* presenta "in dialogo con le fragilità", con il patrocinio del **Comune di Velletri**.

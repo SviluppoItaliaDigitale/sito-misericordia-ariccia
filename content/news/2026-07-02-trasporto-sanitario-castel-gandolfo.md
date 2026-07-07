@@ -2,6 +2,14 @@
 title: "Trasporto sanitario per persone infermi nella Città papale di Castel Gandolfo"
 date: 2026-07-02
 slug: "trasporto-sanitario-castel-gandolfo"
+italianoSemplice: |
+  **La Misericordia di Ariccia fa il trasporto sanitario. Ora anche a Castel Gandolfo.**
+
+  Accompagniamo le persone malate. Le portiamo alle visite e alle cure.
+
+  Lo facciamo con attenzione e gentilezza.
+
+  Per prenotare chiama questi numeri: **06 87729139** oppure **348 4068657**.
 ---
 
 La **Misericordia di Ariccia** porta il proprio servizio di **trasporto sanitario per persone infermi** anche nella **Città papale di Castel Gandolfo**.
