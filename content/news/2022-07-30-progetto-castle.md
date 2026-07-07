@@ -2,6 +2,14 @@
 title: "Progetto Castle"
 date: 2022-07-30
 slug: "progetto-castle"
+italianoSemplice: |
+  **Il progetto "Castle" aiuta le persone straniere in difficoltà.**
+
+  Aiuta a capire presto i loro bisogni.
+
+  Mette insieme i servizi del territorio, per dare una risposta migliore.
+
+  Il progetto è pagato con fondi europei per l'integrazione.
 ---
 
 Il progetto Castle: assistenza sociale e rafforzamento della rete ha voluto costruire un’ampia azione di sistema che ha agito nel segno del miglioramento della capacità del territorio di intercettare e gestire forme di vulnerabilità psico-sociale di cui sono portatori i cittadini di Paesi terzi nel contesto di riferimento, costruendo una risposta integrata e di rete che esitino in più appropriati percorsi di presa in carico psico-sociale.

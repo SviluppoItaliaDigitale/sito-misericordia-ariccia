@@ -2,6 +2,14 @@
 title: "Corso Primo Soccorso 2024"
 date: 2024-02-13
 slug: "corso-primo-soccorso-2024"
+italianoSemplice: |
+  **La Misericordia fa un corso di Primo Soccorso e BLSD.**
+
+  Il corso inizia **sabato 9 marzo 2024, alle ore 15.30**. È nella nostra sede, in Viale Antonietta Chigi 46, ad Ariccia.
+
+  Impari ad aiutare le persone in caso di emergenza. Alla fine ricevi un attestato BLSD.
+
+  Per informazioni chiama **320 012 7285** o scrivi a **sede@misericordia-ariccia.it**.
 ---
 
 🚑💙 Partecipa al nostro Corso di Primo Soccorso e BLSD! 💙🚑
