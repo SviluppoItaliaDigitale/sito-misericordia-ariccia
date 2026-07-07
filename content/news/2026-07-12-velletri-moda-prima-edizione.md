@@ -1,6 +1,6 @@
 ---
 title: "Velletri Moda – Prima Edizione: una sfilata in dialogo con le fragilità"
-date: 2026-07-04
+date: 2026-07-12
 slug: "velletri-moda-prima-edizione"
 ---
 
