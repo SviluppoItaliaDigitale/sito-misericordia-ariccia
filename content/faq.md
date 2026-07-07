@@ -1,5 +1,12 @@
 ---
 title: "Domande frequenti"
+italianoSemplice: |
+  **Le risposte alle domande più comuni.**
+
+  - Per diventare volontario: vieni in sede o chiama il **348 4068657**.
+  - Per prenotare un trasporto: chiama il **348 4068657** e dì la data, l'ora e i luoghi. In caso di emergenza chiama il **112**.
+  - Per il 5x1000: firma e scrivi il codice fiscale **90031910582**.
+  - Il sito non usa cookie e non raccoglie i tuoi dati.
 ---
 
 Le risposte alle domande che ci vengono rivolte più spesso. Non trovi quello che cerchi? [Contattaci](/contatti/).

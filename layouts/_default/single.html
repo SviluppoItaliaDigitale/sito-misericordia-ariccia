@@ -15,16 +15,9 @@
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
-    {{ partial "lettura-accessibile.html" . }}
     <article class="contenuto" data-anim-group>
       {{ .Content }}
     </article>
-    {{ with .Params.italianoSemplice }}
-    <div class="contenuto testo-semplice" id="testo-semplice" hidden>
-      <span class="ts-badge">📖 Versione in italiano semplice — frasi brevi e parole facili</span>
-      {{ . | markdownify }}
-    </div>
-    {{ end }}
   </div>
 </div>
 {{ end }}

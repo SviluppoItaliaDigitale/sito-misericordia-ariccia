@@ -1,5 +1,15 @@
 ---
 title: "Le Opere di Misericordia"
+italianoSemplice: |
+  **Le Opere di Misericordia sono i gesti di aiuto verso gli altri.**
+
+  Sono 14 in tutto: 7 per il corpo e 7 per l'animo.
+
+  Per il corpo: dare da mangiare, dare da bere, dare vestiti, ospitare chi non ha casa, curare i malati, visitare i carcerati, seppellire i morti.
+
+  Per l'animo: consigliare, insegnare, correggere con rispetto, consolare, perdonare, avere pazienza, pregare.
+
+  La Misericordia mette in pratica questi gesti ogni giorno.
 layout: "opere"
 corporali:
   - icona: "🍞"

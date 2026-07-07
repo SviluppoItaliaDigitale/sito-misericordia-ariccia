@@ -1,5 +1,13 @@
 ---
 title: "Privacy e cookie"
+italianoSemplice: |
+  **Questo sito rispetta la tua privacy.**
+
+  Il sito non usa cookie. Non ti segue e non raccoglie i tuoi dati.
+
+  Se ci scrivi o ci telefoni, usiamo i tuoi contatti solo per risponderti.
+
+  Non diamo i tuoi dati ad altri.
 ---
 
 ## Cookie e tracciamento

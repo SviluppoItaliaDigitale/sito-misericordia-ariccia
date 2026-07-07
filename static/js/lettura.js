@@ -9,7 +9,7 @@
   var barra = document.querySelector("[data-lettura]");
   if (!barra) return;
 
-  var articolo = document.querySelector(".pagina-corpo article.contenuto");
+  var articolo = document.getElementById("contenuto-principale");
   var semplice = document.getElementById("testo-semplice");
   var titolo = (document.querySelector("h1") || {}).textContent || "articolo";
 

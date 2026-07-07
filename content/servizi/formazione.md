@@ -1,5 +1,13 @@
 ---
 title: "Formazione"
+italianoSemplice: |
+  **La Misericordia organizza corsi di formazione.**
+
+  Insegniamo il primo soccorso e come aiutare in caso di emergenza.
+
+  Formiamo i soccorritori delle ambulanze e insegniamo a usare il defibrillatore (BLSD).
+
+  Per iscriverti chiama il **348 4068657**.
 summary: "Corsi di primo soccorso, soccorritore di I e II livello, BLSD e P-BLSD, autisti dei mezzi di emergenza."
 weight: 40
 sezioni:

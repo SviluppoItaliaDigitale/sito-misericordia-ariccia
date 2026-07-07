@@ -1,5 +1,13 @@
 ---
 title: "I confratelli"
+italianoSemplice: |
+  **I confratelli e le consorelle sono i volontari della Misericordia.**
+
+  Sono uomini e donne che donano il loro tempo per aiutare gli altri.
+
+  Hanno tutti gli stessi diritti e gli stessi doveri. Il loro aiuto è libero e gratuito.
+
+  Anche tu puoi diventare volontario. Non servono capacità speciali: la formazione la facciamo insieme.
 ---
 
 > «L'uomo necessita sempre di qualcosa in più di una cura solo tecnicamente corretta. Ha bisogno di umanità. Ha bisogno dell'attenzione del cuore.»

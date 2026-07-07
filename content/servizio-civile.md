@@ -1,5 +1,15 @@
 ---
 title: "Servizio Civile Universale"
+italianoSemplice: |
+  **Il Servizio Civile è un anno di aiuto alla comunità.**
+
+  È per i giovani tra 18 e 29 anni.
+
+  Con la Misericordia aiuti le persone anziane e fragili.
+
+  Per fare domanda vai sul sito "Scelgo il Servizio Civile", quando il bando è aperto.
+
+  Per informazioni chiama il **328 8105399**.
 ---
 
 {{< logo src="img/loghi/scu-universale.jpg" alt="Logo ufficiale del Servizio Civile Universale" class="logo-scu" width="170" height="170" >}}
