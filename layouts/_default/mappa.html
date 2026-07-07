@@ -16,54 +16,27 @@
 
       <p>Tutte le pagine del sito, organizzate per sezione. Cerchi qualcosa in particolare? Usa il pulsante <strong>Cerca</strong> in alto.</p>
 
-      <h2>Sezioni principali</h2>
+      {{/* Pagine principali: tutte le pagine di primo livello, in automatico */}}
+      <h2>Pagine principali</h2>
       <ul>
         <li><a href="{{ "/" | relURL }}">Home</a></li>
-        {{ range site.Menus.main }}
-          {{ if .HasChildren }}
-            <li>{{ .Name }}
-              <ul>{{ range .Children }}<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}</ul>
-            </li>
+        {{ range (where site.RegularPages "Section" "").ByTitle }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+
+      {{/* Ogni sezione con le sue pagine, in automatico */}}
+      {{ range site.Sections }}
+        {{ if .Pages }}
+        <h2>{{ .Title }}</h2>
+        <ul>
+          {{ if eq .Section "news" }}
+            {{ range .Pages.ByDate.Reverse }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mappa-data">{{ time.Format ":date_long" .Date }}</span></li>{{ end }}
           {{ else }}
-            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
           {{ end }}
+        </ul>
         {{ end }}
-      </ul>
-
-      {{ with (site.GetPage "/servizi") }}
-      <h2>I nostri servizi</h2>
-      <ul>
-        {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
-      </ul>
-      {{ end }}
-
-      <h2>Informazioni e servizi utili</h2>
-      <ul>
-        {{ range slice "/richiedi-trasporto" "/diventa-volontario" "/primo-soccorso" "/faq" "/sostienici" "/trasparenza" "/accessibilita" "/privacy" "/mappa-del-sito" }}
-          {{ with (site.GetPage .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
-        {{ end }}
-      </ul>
-
-      {{ with (site.GetPage "/dossier") }}
-      <h2>Dossier</h2>
-      <ul>
-        {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
-      </ul>
-      {{ end }}
-
-      {{ with (site.GetPage "/news") }}
-      <h2>News</h2>
-      <ul>
-        {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="mappa-data">{{ time.Format ":date_long" .Date }}</span></li>{{ end }}
-      </ul>
-      {{ end }}
-
-      {{ with (site.GetPage "/en") }}
-      <h2>English</h2>
-      <ul>
-        <li><a href="{{ .RelPermalink }}">{{ .Title }} — English home</a></li>
-        {{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
-      </ul>
       {{ end }}
 
       <p class="mt-4">Per i motori di ricerca è disponibile anche la <a href="{{ "/sitemap.xml" | relURL }}">sitemap.xml</a>. Ogni pagina può inoltre essere letta in un'altra lingua dal menù <strong>🌐 Lingua</strong>.</p>

@@ -54,16 +54,23 @@
   </div>
 </div>
 
-<!-- ============ Promo: Trasporto infermi (servizio di punta) ============ -->
-<section class="container my-4">
-  <div class="tr-promo-box" data-anim="zoom">
-    <div>
-      <h2>Hai bisogno di un trasporto?</h2>
-      <p>Trasporto infermi, anziani e persone con disabilità — <strong>ambulanza, auto e mezzi con pedana</strong>. Nei Castelli Romani e in tutta Italia.</p>
+<!-- ============ In evidenza: Volontari + Prenota un trasporto ============ -->
+<section class="container my-4 my-md-5" aria-label="Diventa volontario e prenota un trasporto">
+  <div class="home-evidenza" data-anim-group>
+    <div class="ev-card ev-card--volontari" data-anim="fade-up">
+      <span class="ev-icona" aria-hidden="true">🤝</span>
+      <h2>Cerchiamo nuovi volontari</h2>
+      <p>C'è posto anche per te. <strong>Non servono competenze particolari</strong>: la formazione la facciamo insieme. Serve solo un po' del tuo tempo e il desiderio di donarlo.</p>
+      <a class="btn btn-giallo btn-lg" href="{{ "/diventa-volontario/" | relURL }}">Diventa volontario →</a>
     </div>
-    <div class="tr-promo-azioni">
-      <a class="btn btn-giallo btn-lg" href="{{ "/trasporto-infermi/" | relURL }}">Scopri il servizio</a>
-      <a class="btn btn-ciano btn-lg" href="tel:+393484068657">📞 348 4068657</a>
+    <div class="ev-card ev-card--trasporto" data-anim="fade-up" data-anim-delay="0.15">
+      <span class="ev-icona" aria-hidden="true">🚑</span>
+      <h2>Prenota un trasporto</h2>
+      <p>Trasporto per <strong>malati, anziani e persone con disabilità</strong> — ambulanza, auto e mezzi con pedana, nei Castelli Romani e in tutta Italia. Compila la richiesta o chiamaci.</p>
+      <div class="ev-azioni">
+        <a class="btn btn-ciano btn-lg" href="{{ "/richiedi-trasporto/" | relURL }}">Prenota ora →</a>
+        <a class="btn btn-bianco btn-lg" href="tel:+393484068657">📞 348 4068657</a>
+      </div>
     </div>
   </div>
 </section>
