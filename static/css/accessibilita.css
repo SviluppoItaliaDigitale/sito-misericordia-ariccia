@@ -235,9 +235,21 @@ html.a11y-guida #a11y-guida { display: block; }
 .ev-card--volontari h2 { color: #fff; }
 .ev-card p { margin: 0 0 1.2rem; font-size: 1.05rem; line-height: 1.6; }
 .ev-card--volontari p { color: #e9edf7; }
-.ev-azioni { display: flex; gap: 10px; flex-wrap: wrap; }
-.btn-bianco { background: #fff; color: var(--mise-navy); border: 1.5px solid #d7dee5; }
-.btn-bianco:hover { background: #f1f4f7; color: var(--mise-navy); }
+.ev-azioni { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn-bianco {
+  background: #fff; color: var(--mise-navy); border: 2px solid var(--mise-ciano);
+  box-shadow: 0 4px 14px rgba(0, 165, 220, .18);
+  display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+}
+.btn-chiama, .btn-chiama:hover { text-decoration: none; }
+.btn-bianco:hover, .btn-bianco:focus-visible { background: var(--mise-ciano); color: #fff; border-color: var(--mise-ciano); }
+.btn-chiama .btn-chiama-ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.75rem; height: 1.75rem; border-radius: 50%; background: var(--mise-ciano-velo); font-size: .95rem;
+  transition: background .2s ease;
+}
+.btn-bianco:hover .btn-chiama-ic { background: rgba(255, 255, 255, .25); }
+.btn-chiama strong { font-weight: 800; letter-spacing: .02em; }
 @media (max-width: 720px) { .home-evidenza { grid-template-columns: 1fr; } }
 
 /* Sostienici — bonifico con QR e copia IBAN */

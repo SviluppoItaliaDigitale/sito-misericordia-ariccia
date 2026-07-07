@@ -128,7 +128,7 @@ a:hover { color: var(--mise-navy); }
   box-shadow: 0 3px 10px rgba(180,160,20,.30);
 }
 .btn-giallo:hover { background: #f8ee68; color: var(--mise-navy); transform: translateY(-1px); }
-.btn-giallo::after, .btn-ciano::after { content: " ↗"; font-weight: 700; }
+.btn-giallo::after, .btn-ciano::after, .btn-navy::after { content: " ↗"; font-weight: 700; }
 .btn-ciano {
   background: var(--mise-ciano-scuro);
   color: #fff;
@@ -193,9 +193,10 @@ a:hover { color: var(--mise-navy); }
 }
 .fascia-5x1000 .cf {
   font-family: "Jost", sans-serif;
-  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+  font-size: clamp(1.5rem, 3.8vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: .12em;
+  letter-spacing: .06em;
+  white-space: nowrap;
   color: var(--mise-giallo);
   text-shadow: 0 1px 2px rgba(0,0,0,.28);
 }
