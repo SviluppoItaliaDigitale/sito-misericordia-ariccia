@@ -240,6 +240,15 @@ html.a11y-guida #a11y-guida { display: block; }
 .btn-bianco:hover { background: #f1f4f7; color: var(--mise-navy); }
 @media (max-width: 720px) { .home-evidenza { grid-template-columns: 1fr; } }
 
+/* Sostienici — bonifico con QR e copia IBAN */
+.sost-bonifico { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: .6rem; }
+.sost-bonifico-dati { flex: 1; min-width: 200px; }
+.sost-copia { border: none; cursor: pointer; }
+.sost-copia.copiato { background: #1e8e4f !important; color: #fff; }
+.sost-qr { margin: 0; text-align: center; }
+.sost-qr img { background: #fff; border: 1px solid #e2e9ee; border-radius: 10px; padding: 6px; display: block; }
+.sost-qr figcaption { font-size: .72rem; color: #6b7482; margin-top: 4px; max-width: 130px; }
+
 /* Menù lingue nel menu mobile */
 .lingue-auto-tit { font-size: .82rem; color: var(--mise-navy); font-weight: 600; opacity: .8; }
 .lingue-auto { font-size: .95rem; line-height: 1.9; }

@@ -41,7 +41,16 @@
           <span class="sost-icona" aria-hidden="true">🏦</span>
           <h3>Dona con un bonifico</h3>
           <p>Puoi fare una donazione — o pagare la quota associativa — anche con un <strong>bonifico bancario</strong>. Ogni contributo resta sul territorio e sostiene le nostre attività <strong>ad Ariccia e nei Castelli Romani</strong>.</p>
-          <p class="sost-iban"><strong>Misericordia di Ariccia</strong><br>IBAN <span>IT31 X070 9238 9000 0000 0106 493</span></p>
+          <div class="sost-bonifico">
+            <div class="sost-bonifico-dati">
+              <p class="sost-iban mb-2"><strong>Confraternita di Misericordia di Ariccia ODV</strong><br>IBAN <span>IT31 X070 9238 9000 0000 0106 493</span></p>
+              <button type="button" class="btn btn-ciano btn-sm px-3 sost-copia" data-copia="IT31X0709238900000000106493">📋 Copia IBAN</button>
+            </div>
+            <figure class="sost-qr">
+              <img src="{{ "img/qr-bonifico-misericordia.svg" | relURL }}" alt="QR code per bonifico alla Misericordia di Ariccia" width="130" height="130" loading="lazy">
+              <figcaption>Inquadra con l'app della tua banca</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
