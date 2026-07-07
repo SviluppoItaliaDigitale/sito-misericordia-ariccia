@@ -179,6 +179,41 @@ html.a11y-guida #a11y-guida { display: block; }
 .cerca-ris mark { background: var(--mise-giallo); color: inherit; padding: 0 1px; border-radius: 2px; }
 .cerca-suggerimento { padding: 8px 14px 14px; font-size: .78rem; color: #8a94a2; }
 
+/* ============================================================
+   Barra di lettura accessibile negli articoli
+   ============================================================ */
+.lettura-tools {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin: 0 0 1.4rem; padding: 10px 12px;
+  background: var(--mise-ciano-velo); border: 1px solid #cfe6f1; border-radius: 12px;
+}
+.lettura-tools::before {
+  content: "♿ Leggi in modo accessibile:"; font-size: .82rem; font-weight: 700;
+  color: var(--mise-ciano-testo); margin-right: 4px;
+}
+.lt-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 2px solid var(--mise-ciano); color: var(--mise-ciano-testo);
+  border-radius: 50rem; padding: .32rem .8rem; font-weight: 700; font-size: .85rem; cursor: pointer;
+}
+.lt-btn:hover, .lt-btn:focus-visible { background: var(--mise-ciano); color: #fff; outline: none; }
+.lt-btn[aria-pressed="true"] { background: var(--mise-ciano); color: #fff; }
+.lt-btn .ic { font-size: 1rem; line-height: 1; }
+
+.testo-semplice {
+  border: 2px dashed var(--mise-ciano); border-radius: 12px; padding: 18px 20px;
+  background: #fbfdff;
+}
+.testo-semplice .ts-badge {
+  display: inline-block; background: var(--mise-ciano); color: #fff; font-weight: 700;
+  font-size: .8rem; padding: .25rem .7rem; border-radius: 50rem; margin-bottom: .8rem;
+}
+.testo-semplice p { font-size: 1.12rem; line-height: 1.9; }
+
+@media (max-width: 520px) {
+  .lettura-tools::before { width: 100%; margin-bottom: 2px; }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 480px) {
   .a11y-pannello { width: calc(100vw - 20px); left: 10px; }

@@ -2,6 +2,20 @@
 title: "Non servono superpoteri: servi tu. Il 5x1000 alla Misericordia di Ariccia"
 date: 2026-06-09
 slug: "5x1000-non-servono-superpoteri"
+italianoSemplice: |
+  **Puoi aiutare la Misericordia con il 5x1000.**
+
+  Il 5x1000 è una firma. La metti sulla dichiarazione dei redditi. È gratis: non paghi niente.
+
+  Con la tua firma aiuti i volontari, le ambulanze e le persone in difficoltà.
+
+  **Come fare:**
+
+  1. Nella dichiarazione dei redditi cerca il riquadro del volontariato.
+  2. Metti la tua firma.
+  3. Scrivi questo codice fiscale: **90031910582**.
+
+  Grazie per il tuo aiuto.
 ---
 
 È tempo di dichiarazione dei redditi, ed è il momento in cui una semplice **firma** può diventare un'ambulanza che parte, una spesa consegnata a domicilio, un pomeriggio di compagnia per chi è solo.

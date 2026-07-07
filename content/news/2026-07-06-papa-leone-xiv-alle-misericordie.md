@@ -2,6 +2,22 @@
 title: "«Siate sempre messaggeri di speranza, di carità e di pace»: Papa Leone XIV alle Misericordie"
 date: 2026-07-06
 slug: "papa-leone-xiv-alle-misericordie"
+italianoSemplice: |
+  **Il Papa ha parlato alle Misericordie.**
+
+  Il 14 febbraio il Papa Leone XIV ha incontrato le Misericordie in Vaticano.
+
+  Il Papa ha ricordato tre cose importanti:
+
+  - la fede;
+  - l'amore verso le persone;
+  - l'aiuto ai bisogni di oggi.
+
+  Poi ha detto: «Siate sempre messaggeri di speranza, di carità e di pace.»
+
+  Anche la Misericordia di Ariccia segue queste parole ogni giorno.
+
+  Vuoi aiutare anche tu? Puoi diventare volontario.
 ---
 
 Ci sono parole che restano, e che vale la pena custodire. Lo scorso **14 febbraio**, in Vaticano, **Papa Leone XIV** ha ricevuto in udienza la **Confederazione Nazionale delle Misericordie d'Italia** — la grande famiglia di cui anche la nostra Confraternita fa parte — e ha consegnato al Movimento un messaggio che sentiamo rivolto a ciascuno di noi.
