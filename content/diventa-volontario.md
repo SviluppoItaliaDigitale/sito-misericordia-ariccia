@@ -30,6 +30,7 @@ La sola ricompensa del volontario è nella coscienza del dovere compiuto, saluta
 ## Contatti
 
 - **Sede operativa:** Piazzale Aldo Moro, 6 — Ariccia · **Sede amministrativa:** Viale Antonietta Chigi, 46 — Ariccia
+- **Iscrizioni:** [328 8105399](tel:+393288105399)
 - **Telefono / WhatsApp:** [348 4068657](tel:+393484068657)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 
