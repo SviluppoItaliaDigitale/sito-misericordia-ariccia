@@ -28,4 +28,4 @@ Quando ci contatti, tieni pronti questi dati: **data e orario**, **luogo di part
   <a class="btn btn-ciano btn-lg" href="mailto:sede@misericordia-ariccia.it">✉️ Email</a>
 </div>
 
-Per i servizi **in convenzione**, l'accesso avviene tramite gli enti locali (Comune, ASL).
+Alcuni servizi vengono attivati tramite gli enti locali.

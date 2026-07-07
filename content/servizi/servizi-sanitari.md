@@ -1,6 +1,6 @@
 ---
 title: "Servizi sanitari"
-summary: "Trasporti in ambulanza, presidio alle manifestazioni e servizio navetta ASL."
+summary: "Trasporti in ambulanza, presidio alle manifestazioni e trasferimenti ospedalieri."
 weight: 10
 sezioni:
   - icona: "🚩"
@@ -10,15 +10,15 @@ sezioni:
     titolo: "Trasporti privati"
     testo: "Effettuiamo trasporti privati per visite di controllo presso ospedali o centri riabilitativi, dimissioni dalle strutture di ricovero verso la propria abitazione e altro ancora."
   - icona: "🏥"
-    titolo: "Servizio navetta ASL"
-    testo: "In accordo con la ASL garantiamo il servizio navetta presso gli ospedali locali."
+    titolo: "Trasferimenti ospedalieri"
+    testo: "Effettuiamo trasferimenti ospedalieri con la ASL Roma H6."
   - icona: "🚓"
     titolo: "Trasporto detenuti"
-    testo: "Tramite la convenzione con la ASL ci occupiamo anche dei trasporti di detenuti, con la presenza della Polizia Penitenziaria."
+    testo: "Ci occupiamo anche dei trasporti di detenuti, con la presenza della Polizia Penitenziaria."
 nota:
   icona: "📞"
   titolo: "Come richiedere un trasporto:"
-  testo: "contattaci con un po' di anticipo indicando **data, orario, luogo di partenza e destinazione**. Tutti i dettagli e i contatti nella pagina [**Richiedi un trasporto**](/richiedi-trasporto/). Per i servizi in convenzione l'accesso avviene tramite gli enti locali."
+  testo: "contattaci con un po' di anticipo indicando **data, orario, luogo di partenza e destinazione**. Tutti i dettagli e i contatti nella pagina [**Richiedi un trasporto**](/richiedi-trasporto/)."
 contatto:
   label: "Per richiedere un servizio"
   tel: "348 4068657"
