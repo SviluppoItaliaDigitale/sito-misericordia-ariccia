@@ -7,6 +7,10 @@ title = "Misericordia di Ariccia ODV"
 relativeURLs = true
 disableKinds = ["taxonomy", "term"]
 
+# Indice JSON per la ricerca interna al sito (generato in /index.json)
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
   descrizione = "Confraternita di Misericordia di Ariccia ODV — volontariato, servizi alla persona, Centro di Ascolto e Banco Alimentare, formazione e Servizio Civile Universale ai Castelli Romani dal 1994."
   telefono = "348 4068657"

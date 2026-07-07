@@ -1,0 +1,189 @@
+/* ============================================================
+   Misericordia di Ariccia — Strumenti di accessibilità + Ricerca
+   Widget autonomo: pulsante sul bordo sinistro + pannello opzioni.
+   Le preferenze vengono applicate come classi su <html> e salvate
+   in localStorage (vedi js/accessibilita.js).
+   ============================================================ */
+
+/* ---- Pulsante che apre il pannello (bordo sinistro, centrato) ---- */
+#a11y-apri {
+  position: fixed; left: 0; top: 45%; transform: translateY(-50%);
+  z-index: 1090; width: 48px; height: 52px;
+  border: none; border-radius: 0 12px 12px 0;
+  background: var(--mise-ciano); color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .28);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s ease, width .2s ease;
+}
+#a11y-apri:hover, #a11y-apri:focus-visible { background: var(--mise-ciano-scuro); width: 54px; outline: none; }
+#a11y-apri svg { width: 28px; height: 28px; }
+
+/* ---- Pannello ---- */
+.a11y-pannello {
+  position: fixed; left: 14px; top: 50%; transform: translateY(-50%);
+  z-index: 1095; width: 340px; max-width: calc(100vw - 28px);
+  max-height: 88vh; overflow-y: auto;
+  background: #fff; color: var(--mise-navy);
+  border-radius: 16px; box-shadow: 0 16px 48px rgba(0, 0, 0, .32);
+  padding: 18px; display: none;
+}
+.a11y-pannello.aperto { display: block; }
+.a11y-pannello[hidden] { display: none; }
+
+.a11y-testata { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.a11y-testata h2 { font-size: 1.15rem; margin: 0; display: flex; align-items: center; gap: 8px; color: var(--mise-navy); }
+.a11y-chiudi {
+  border: none; background: transparent; font-size: 1.5rem; line-height: 1;
+  color: var(--mise-navy); cursor: pointer; padding: 4px 8px; border-radius: 8px;
+}
+.a11y-chiudi:hover { background: var(--mise-ciano-velo); }
+.a11y-intro { font-size: .82rem; color: #55606f; margin: 0 0 12px; }
+
+/* Blocco dimensione testo con +/- */
+.a11y-testo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.a11y-testo .a11y-etichetta { flex: 1; font-weight: 600; font-size: .92rem; }
+.a11y-step {
+  width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--mise-ciano);
+  background: #fff; color: var(--mise-ciano-testo); font-size: 1.3rem; font-weight: 700;
+  cursor: pointer; line-height: 1;
+}
+.a11y-step:hover { background: var(--mise-ciano-velo); }
+.a11y-livello { min-width: 44px; text-align: center; font-variant-numeric: tabular-nums; font-weight: 700; font-size: .95rem; }
+
+/* Griglia di interruttori */
+.a11y-griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.a11y-opz {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  min-height: 74px; padding: 10px 6px; text-align: center;
+  border: 2px solid #e2e8ee; border-radius: 12px; background: #fff; color: var(--mise-navy);
+  font-size: .8rem; font-weight: 600; cursor: pointer; transition: border-color .15s ease, background .15s ease;
+}
+.a11y-opz .ic { font-size: 1.4rem; line-height: 1; }
+.a11y-opz:hover { border-color: var(--mise-ciano); }
+.a11y-opz[aria-pressed="true"] { border-color: var(--mise-ciano); background: var(--mise-ciano-velo); color: var(--mise-ciano-testo); }
+.a11y-opz[aria-pressed="true"]::after { content: "✓"; position: absolute; }
+.a11y-opz { position: relative; }
+.a11y-opz[aria-pressed="true"] .stato { color: var(--mise-ciano-testo); }
+.a11y-opz .stato { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #9aa4b2; }
+
+.a11y-reset {
+  width: 100%; margin-top: 12px; padding: 11px; border: none; border-radius: 10px;
+  background: var(--mise-navy); color: #fff; font-weight: 700; cursor: pointer; font-size: .9rem;
+}
+.a11y-reset:hover { background: #0f1428; }
+.a11y-nota { font-size: .72rem; color: #8a94a2; margin: 10px 0 0; text-align: center; }
+
+/* ============================================================
+   STATI applicati a <html> quando le opzioni sono attive
+   ============================================================ */
+
+/* Testo ad alta leggibilità (aiuto dislessia): font lineare + spaziature */
+html.a11y-dyslexia body,
+html.a11y-dyslexia .contenuto,
+html.a11y-dyslexia p,
+html.a11y-dyslexia li,
+html.a11y-dyslexia a,
+html.a11y-dyslexia h1, html.a11y-dyslexia h2, html.a11y-dyslexia h3,
+html.a11y-dyslexia h4, html.a11y-dyslexia h5, html.a11y-dyslexia h6 {
+  font-family: Verdana, Tahoma, "Trebuchet MS", "Segoe UI", Arial, sans-serif !important;
+  letter-spacing: .04em; word-spacing: .12em;
+}
+html.a11y-dyslexia p, html.a11y-dyslexia li { line-height: 1.9 !important; }
+
+/* Spaziatura testo aumentata */
+html.a11y-spacing p, html.a11y-spacing li, html.a11y-spacing dd, html.a11y-spacing dt,
+html.a11y-spacing blockquote, html.a11y-spacing figcaption {
+  line-height: 2 !important; letter-spacing: .08em !important; word-spacing: .16em !important;
+}
+
+/* Evidenzia i link */
+html.a11y-links a:not(.btn):not(.navbar-brand):not(.nav-link) {
+  text-decoration: underline !important; text-underline-offset: 3px;
+  text-decoration-thickness: 2px; font-weight: 700;
+  background: var(--mise-giallo-soft); box-shadow: 0 0 0 2px var(--mise-giallo);
+  border-radius: 3px;
+}
+
+/* Filtri visivi (grigio / contrasto / colori invertiti): applicati ai
+   contenitori principali per NON toccare il widget di accessibilità. */
+html.a11y-filtri .barra-annunci,
+html.a11y-filtri .navbar-mise,
+html.a11y-filtri main,
+html.a11y-filtri .fascia-rete,
+html.a11y-filtri .footer-mise {
+  filter: var(--a11y-filtro, none);
+}
+
+/* Ferma le animazioni e le transizioni */
+html.a11y-no-anim *,
+html.a11y-no-anim *::before,
+html.a11y-no-anim *::after {
+  animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important; scroll-behavior: auto !important;
+}
+
+/* Cursore ingrandito */
+html.a11y-cursore, html.a11y-cursore * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><path d='M8 4 L8 40 L18 30 L24 44 L30 41 L24 27 L38 27 Z' fill='white' stroke='black' stroke-width='2'/></svg>") 4 4, auto;
+}
+
+/* Riga guida di lettura che segue il mouse */
+#a11y-guida {
+  position: fixed; left: 0; right: 0; height: 34px; z-index: 1088; pointer-events: none;
+  background: rgba(27, 34, 63, .14); border-top: 2px solid var(--mise-ciano);
+  border-bottom: 2px solid var(--mise-ciano); display: none;
+}
+html.a11y-guida #a11y-guida { display: block; }
+
+/* ============================================================
+   RICERCA — modale a tutta pagina
+   ============================================================ */
+.cerca-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 2px solid rgba(255, 255, 255, .55); background: transparent; color: #fff;
+  border-radius: 50rem; padding: .3rem .85rem; font-weight: 600; font-size: .95rem; cursor: pointer;
+}
+.cerca-btn:hover, .cerca-btn:focus-visible { background: rgba(255, 255, 255, .16); outline: none; }
+.cerca-btn svg { width: 17px; height: 17px; }
+
+/* variante dentro il menu mobile */
+.cerca-btn--mobile { width: 100%; justify-content: center; border-color: var(--mise-ciano); color: var(--mise-navy); margin-top: .25rem; }
+.cerca-btn--mobile:hover { background: var(--mise-ciano-velo); }
+
+.cerca-overlay {
+  position: fixed; inset: 0; z-index: 1200; background: rgba(15, 20, 40, .55);
+  backdrop-filter: blur(3px); display: none; padding: 8vh 16px 16px;
+}
+.cerca-overlay.aperto { display: block; }
+.cerca-box {
+  max-width: 680px; margin: 0 auto; background: #fff; border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .4); overflow: hidden;
+}
+.cerca-testata { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #eceff3; }
+.cerca-testata svg { width: 22px; height: 22px; color: var(--mise-ciano-testo); flex: none; }
+#cerca-input {
+  flex: 1; border: none; outline: none; font-size: 1.15rem; color: var(--mise-navy); background: transparent;
+}
+.cerca-chiudi { border: none; background: #f1f4f7; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 1.1rem; color: var(--mise-navy); }
+.cerca-chiudi:hover { background: #e6eaef; }
+
+.cerca-risultati { max-height: 60vh; overflow-y: auto; padding: 6px; }
+.cerca-vuoto { padding: 26px 18px; text-align: center; color: #6b7482; }
+.cerca-ris {
+  display: block; padding: 12px 14px; border-radius: 10px; text-decoration: none; color: var(--mise-navy);
+}
+.cerca-ris:hover, .cerca-ris.attivo { background: var(--mise-ciano-velo); }
+.cerca-ris .sez { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--mise-ciano-testo); font-weight: 700; }
+.cerca-ris .tit { font-weight: 700; margin: 2px 0; }
+.cerca-ris .estratto { font-size: .85rem; color: #55606f; margin: 0; }
+.cerca-ris mark { background: var(--mise-giallo); color: inherit; padding: 0 1px; border-radius: 2px; }
+.cerca-suggerimento { padding: 8px 14px 14px; font-size: .78rem; color: #8a94a2; }
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .a11y-pannello { width: calc(100vw - 20px); left: 10px; }
+  .a11y-griglia { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #a11y-apri { transition: none; }
+}
