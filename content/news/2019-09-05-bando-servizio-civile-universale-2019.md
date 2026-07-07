@@ -2,6 +2,14 @@
 title: "Bando servizio civile universale 2019"
 date: 2019-09-05
 slug: "bando-servizio-civile-universale-2019"
+italianoSemplice: |
+  **C'è il bando per il Servizio Civile 2019.**
+
+  Cerchiamo 10 giovani per il progetto "Volontari Operattivi".
+
+  Puoi fare domanda se hai tra 18 e 28 anni.
+
+  La domanda si invia su internet, sul sito del Servizio Civile. La domanda scade **giovedì 10 ottobre, alle ore 14**.
 ---
 
 La Misericordia di Ariccia è lieta di annunciare che è attivo il bando per il Servizio Civile Universale 2019 con la selezione di 10 giovani per il progetto VOLONTARI OPER*ATTIVI*

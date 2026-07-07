@@ -2,6 +2,12 @@
 title: "Inaugurazione nuovo mezzo sociale"
 date: 2019-01-12
 slug: "inaugurazione-nuovo-mezzo-sociale"
+italianoSemplice: |
+  **La Misericordia di Ariccia ha nuovi mezzi di trasporto.**
+
+  Ti invitiamo alla festa. È **sabato 19 gennaio 2019, alle ore 16**, in Piazza di Corte ad Ariccia.
+
+  Benediremo i mezzi nuovi. Dopo c'è un piccolo rinfresco alla Casa del Volontariato, in Via Antonietta Chigi 46.
 ---
 
 La Misericordia di Ariccia è lieta di invitare la cittadinanza il 19/01/2019 alle ore 16.00 in piazza di Corte per l'inaugurazione e la benedizione dei nostri nuovi mezzi di trasporto per la comunità a cui seguirà un rinfresco presso la Casa del Volontariato in Via Antonietta Chigi 46.

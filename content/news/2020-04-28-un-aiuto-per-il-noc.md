@@ -2,6 +2,12 @@
 title: "Un aiuto per il NOC"
 date: 2020-04-28
 slug: "un-aiuto-per-il-noc"
+italianoSemplice: |
+  **Una nuova raccolta di soldi per l'ospedale nuovo (NOC).**
+
+  Vogliamo comprare uno strumento per controllare i monitor da lontano.
+
+  Puoi donare con un bonifico in banca.
 ---
 
 Viste le richieste di donazioni pervenute successivamente alla chiusura della raccolta fondi DonaunRespiro... la Misericordia di Ariccia, la Croce Rossa Italiana comitato dei Comuni dell'Appia e il Comune di Ariccia hanno deciso di promuovere una nuova raccolta fondi con l'obiettivo di acquistare una centrale per controllo remoto dei monitor da donare al NOC.

@@ -2,6 +2,14 @@
 title: "Memoria e Rinascita"
 date: 2020-05-17
 slug: "memoria-e-rinascita"
+italianoSemplice: |
+  **Un nuovo libro: "Memoria e Rinascita".**
+
+  L'ha scritto Caterina Viola, della nostra Misericordia.
+
+  Il libro parla del terremoto del 2016 ad Amatrice. Racconta le storie delle persone e il loro desiderio di ricominciare.
+
+  Buona lettura.
 ---
 
 [Trijjy Pan - Ciao Angelo](https://www.facebook.com/story.php?story_fbid=2915209865271114&id=100003463869896&sfnsn=scwspwa&extid=aekuRxRlOLjmXsiK&d=w&vh=i)

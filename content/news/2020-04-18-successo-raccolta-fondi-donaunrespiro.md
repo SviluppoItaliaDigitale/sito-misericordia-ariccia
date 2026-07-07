@@ -2,6 +2,14 @@
 title: "Successo raccolta fondi DonaUnRespiro"
 date: 2020-04-18
 slug: "successo-raccolta-fondi-donaunrespiro"
+italianoSemplice: |
+  **La raccolta di soldi "Dona un Respiro" è finita bene.**
+
+  In tre settimane sono stati raccolti più di **19.000 euro**.
+
+  L'obiettivo era 15.000 euro, per comprare un ventilatore per l'ospedale.
+
+  Grazie a tutti. Con i soldi in più compreremo anche altri strumenti per l'ospedale.
 ---
 
 Chiusa ufficialmente ieri sera presso la sede della Misericordia di Ariccia la campagna di raccolta fondi "donaunrespiro".

@@ -2,6 +2,14 @@
 title: "Avviso pubblico \"Comunità solidali 2021-Coltivare Inclusione\""
 date: 2022-04-13
 slug: "avviso-pubblico-comunita-solidali-2021-coltivare-inclusione"
+italianoSemplice: |
+  **La Misericordia ha vinto un bando della Regione Lazio: "Comunità Solidali".**
+
+  Il progetto aiuta le persone in difficoltà. Creeremo **orti sociali** per le famiglie fragili.
+
+  Puoi chiedere un orto se abiti ad Ariccia e sei in difficoltà (senza lavoro, pensionato, invalido).
+
+  Per fare domanda scrivi a **sede@misericordia-ariccia.it** o chiama il **328 810 5372**.
 ---
 
 La Misericordia di Ariccia in qualità di soggetto capofila di una rete di organizzazioni di volontariato, è risultata vincitrice in un bando indetto dalla Regione Lazio di sostegno a progetti di utilità sociale “**COMUNITÀ SOLIDALI 2020**” finalizzati al contrasto della povertà e dell’emarginazione sociale che prevede, tra le varie attività, la possibilità di organizzare e sostenere la coltivazione di orti sociali in favore di categorie fragili.
