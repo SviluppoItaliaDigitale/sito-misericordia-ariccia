@@ -43,6 +43,15 @@
     <div class="cs-racconto" data-anim="fade-up">
       {{ .Content }}
     </div>
+
+    <h2 class="cs-titolo-sezione" data-split="words">La Misericordia in immagini</h2>
+    <div class="galleria-griglia" data-anim="fade-up">
+      <img src="{{ "img/attivita/attivita-02.jpg" | relURL }}" alt="Assistenza della Misericordia di Ariccia a una processione">
+      <img src="{{ "img/attivita/attivita-07.jpg" | relURL }}" alt="I volontari accompagnano la processione con la statua della Santa">
+      <img src="{{ "img/attivita/attivita-06.jpg" | relURL }}" alt="I Castelli Romani, il territorio della Misericordia di Ariccia">
+      <img src="{{ "img/attivita/attivita-10.jpg" | relURL }}" alt="I volontari della Misericordia durante una celebrazione">
+      <img src="{{ "img/attivita/attivita-16.jpg" | relURL }}" alt="La Collegiata di Ariccia, cuore della comunità">
+    </div>
     {{ with .Params.attivita }}
     <h2 class="cs-titolo-sezione" data-split="words">Le attività che ci hanno accompagnato</h2>
     <div class="cs-griglia-attivita" data-anim-group>

@@ -16,6 +16,10 @@ italianoSemplice: |
 
 La Misericordia di Ariccia effettua **trasporti sanitari e sociali** con i propri mezzi e volontari formati. Contattaci e organizzeremo il servizio insieme.
 
+<div class="galleria-griglia">
+  <img src="/img/attivita/attivita-13.jpg" alt="Volontari della Misericordia accompagnano una persona lungo le scale">
+</div>
+
 ## Quali trasporti effettuiamo
 
 - Trasporti per **visite ed esami** presso ospedali o centri specialistici

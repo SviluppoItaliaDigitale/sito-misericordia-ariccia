@@ -20,6 +20,11 @@ description: "Se hai un cuore grande e il desiderio di aiutare chi ha bisogno, c
 
 Da quasi otto secoli le Misericordie stanno accanto a chi soffre; il Movimento accoglie **uomini e donne dai 16 agli 80 anni** che vogliano donare un po' del proprio tempo, ispirati ai valori evangelici e alle Opere di Misericordia. Non contano il mestiere, l'età o le competenze: contano le mani, l'ascolto e la presenza. I volontari delle Misericordie sono **«artigiani di misericordia»** — persone comuni che, un gesto alla volta, diventano vicinanza concreta per chi è solo, malato o in difficoltà.
 
+<div class="galleria-griglia">
+  <img src="/img/attivita/attivita-14.jpg" alt="Volontari della Misericordia di Ariccia con le famiglie a un evento">
+  <img src="/img/attivita/attivita-09.jpg" alt="I volontari della Misericordia durante una fiaccolata">
+</div>
+
 ## Cosa farai con noi
 
 Alla Misericordia di Ariccia ogni volontario trova il servizio più adatto al proprio tempo e alle proprie inclinazioni:

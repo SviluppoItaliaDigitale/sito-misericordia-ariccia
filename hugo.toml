@@ -76,10 +76,6 @@ disableKinds = ["taxonomy", "term"]
     pageRef = "/news"
     weight = 50
   [[menus.main]]
-    name = "Galleria"
-    pageRef = "/galleria"
-    weight = 52
-  [[menus.main]]
     name = "Dossier"
     pageRef = "/dossier"
     weight = 55
