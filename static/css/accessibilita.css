@@ -182,13 +182,54 @@ html.a11y-guida #a11y-guida { display: block; }
 /* ============================================================
    Home — riquadri in evidenza: Volontari + Prenota trasporto
    ============================================================ */
-.home-evidenza { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-.ev-card { border-radius: 18px; padding: 28px 30px; box-shadow: 0 12px 34px rgba(0, 0, 0, .12); }
-.ev-card--volontari { background: linear-gradient(135deg, #1b223f, #2b3566); color: #fff; }
+.home-evidenza { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.ev-card {
+  position: relative; overflow: hidden; border-radius: 20px; padding: 30px 32px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .12);
+  transition: transform .3s cubic-bezier(.2, .7, .3, 1), box-shadow .3s ease;
+}
+.ev-card:hover { transform: translateY(-9px); box-shadow: 0 26px 55px rgba(0, 0, 0, .20); }
+.ev-card--volontari {
+  background: linear-gradient(135deg, #1b223f, #2b3566, #1b223f); background-size: 220% 220%;
+  color: #fff; animation: ev-grad 9s ease infinite;
+}
 .ev-card--trasporto { background: var(--mise-ciano-velo); border: 2px solid var(--mise-ciano); }
 .ev-card--sostieni { background: var(--mise-giallo-soft); border: 2px solid var(--mise-giallo); }
+
+/* alone luminoso decorativo in alto a destra */
+.ev-card::before {
+  content: ""; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.28), transparent 70%);
+  pointer-events: none;
+}
+/* riflesso che attraversa la card al passaggio del mouse */
+.ev-card::after {
+  content: ""; position: absolute; top: 0; left: -70%; width: 45%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-18deg); opacity: 0; pointer-events: none;
+}
+.ev-card:hover::after { animation: ev-sheen 0.9s ease; }
+
+.ev-icona { animation: ev-float 3.6s ease-in-out infinite; transform-origin: center; }
+.ev-card:hover .ev-icona { animation: ev-pop 0.5s ease; }
+
+.ev-card .btn { transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.ev-card:hover .btn { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0, 0, 0, .18); }
+
 .btn-navy { background: var(--mise-navy); color: #fff; }
 .btn-navy:hover { background: #0f1428; color: #fff; }
+
+@keyframes ev-grad { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes ev-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes ev-pop { 0% { transform: scale(1); } 45% { transform: scale(1.22) rotate(-7deg); } 100% { transform: scale(1); } }
+@keyframes ev-sheen { 0% { left: -70%; opacity: .9; } 100% { left: 130%; opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-card, .ev-card:hover { transition: none; transform: none; }
+  .ev-card--volontari { animation: none; }
+  .ev-icona { animation: none; }
+  .ev-card::after { display: none; }
+}
 .ev-icona { font-size: 2.5rem; line-height: 1; display: block; margin-bottom: .4rem; }
 .ev-card h2 { margin: 0 0 .6rem; font-size: 1.5rem; }
 .ev-card--volontari h2 { color: #fff; }
