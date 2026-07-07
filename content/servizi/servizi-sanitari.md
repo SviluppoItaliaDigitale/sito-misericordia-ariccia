@@ -7,7 +7,7 @@ italianoSemplice: |
 
   Siamo presenti alle feste e agli eventi per dare assistenza sanitaria.
 
-  Facciamo trasferimenti tra gli ospedali con la ASL RM H6.
+  Facciamo trasferimenti tra gli ospedali con la ASL Roma 6.
 
   Per richiedere un trasporto chiama il **348 4068657**.
 summary: "Trasporti in ambulanza, presidio alle manifestazioni e trasferimenti ospedalieri."
@@ -21,7 +21,7 @@ sezioni:
     testo: "Effettuiamo trasporti privati per visite di controllo presso ospedali o centri riabilitativi, dimissioni dalle strutture di ricovero verso la propria abitazione e altro ancora."
   - icona: "🏥"
     titolo: "Trasferimenti ospedalieri"
-    testo: "Effettuiamo trasferimenti ospedalieri con la ASL Roma H6."
+    testo: "Effettuiamo trasferimenti ospedalieri con la ASL Roma 6."
   - icona: "🚓"
     titolo: "Trasporto detenuti"
     testo: "Ci occupiamo anche dei trasporti di detenuti, con la presenza della Polizia Penitenziaria."

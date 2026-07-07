@@ -57,6 +57,6 @@ La nostra missione è dare soccorso a chi si trova in situazioni di bisogno e di
 
 ## La nostra storia
 
-Da trent'anni la Confraternita è al servizio della comunità. Nata per l'assistenza domiciliare alle persone con disabilità, ha partecipato agli interventi nazionali nelle grandi calamità: l'alluvione in Versilia (1996), il terremoto delle Marche (1997), il terremoto dell'Aquila (2009) e il terremoto di Amatrice (2016), dove — grazie a progetti sostenuti da australiani di origine italiana — abbiamo portato aiuto psicologico ed economico alle popolazioni colpite.
+Da oltre trent'anni la Confraternita è al servizio della comunità. Nata per l'assistenza domiciliare alle persone con disabilità, ha partecipato agli interventi nazionali nelle grandi calamità: l'alluvione in Versilia (1996), il terremoto delle Marche (1997), il terremoto dell'Aquila (2009) e il terremoto di Amatrice (2016), dove — grazie a progetti sostenuti da australiani di origine italiana — abbiamo portato aiuto psicologico ed economico alle popolazioni colpite.
 
 Durante la pandemia di Covid-19 siamo stati in prima linea con la Protezione Civile dei Comuni di Ariccia e Velletri nella raccolta e consegna di viveri e farmaci, e abbiamo attivato un centro di teleassistenza per le persone fragili con i progetti "Attivi Insieme" e "Al Tuo Servizio".
