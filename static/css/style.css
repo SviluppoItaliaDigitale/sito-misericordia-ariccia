@@ -384,6 +384,7 @@ a:hover { color: var(--mise-navy); }
   border: 2px solid #d23b3b;
   border-left-width: 10px;
   color: var(--mise-inchiostro);
+  margin-bottom: 1.75rem;
 }
 .avviso-emergenza a { color: #b22222; font-weight: 700; }
 
