@@ -37,7 +37,7 @@
     var modale = new bootstrap.Modal(modaleEl);
     var img = modaleEl.querySelector("img");
     var didascalia = modaleEl.querySelector(".modal-didascalia");
-    document.querySelectorAll(".contenuto img").forEach(function (mini) {
+    document.querySelectorAll(".contenuto img, .galleria-griglia img").forEach(function (mini) {
       mini.style.cursor = "zoom-in";
       mini.setAttribute("role", "button");
       mini.setAttribute("tabindex", "0");
