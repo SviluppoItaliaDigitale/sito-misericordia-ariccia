@@ -9,7 +9,9 @@ italianoSemplice: |
 
   Con la Misericordia aiuti le persone anziane e fragili.
 
-  Per fare domanda vai sul sito "Domanda on Line" del Servizio Civile, quando il bando è aperto. Serve lo SPID.
+  Per fare domanda vai sul sito "Domanda on Line" del Servizio Civile, quando il bando è aperto.
+
+  Per entrare serve lo SPID o la Carta d'Identità Elettronica (CIE). Se non puoi averli, puoi chiedere le credenziali sullo stesso sito.
 
   Per informazioni chiama il **328 8105399**.
 ---
@@ -49,7 +51,7 @@ Schede progetto storiche: [Scheda 2015](/documenti/scheda-servizio-civile-2015.p
 Possono partecipare i giovani che hanno **compiuto 18 anni e non superato i 28** (cioè fino al giorno prima del compimento del 29° anno), cittadini italiani, di un Paese UE o regolarmente soggiornanti in Italia.
 
 1. **Informati sui bandi** — sul portale istituzionale [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/) trovi requisiti, scadenze e progetti attivi.
-2. **Presenta la domanda** — nei periodi di apertura del bando, esclusivamente online sulla piattaforma [DOL — Domanda on Line](https://domandaonline.serviziocivile.it/) (serve lo **SPID**). Si può presentare **una sola domanda**, per un solo progetto.
+2. **Presenta la domanda** — nei periodi di apertura del bando, esclusivamente online sulla piattaforma [DOL — Domanda on Line](https://domandaonline.serviziocivile.it/). Si accede con **SPID** o **CIE** (Carta d'Identità Elettronica); chi non può ottenerli — ad esempio i cittadini di altri Paesi residenti in Italia — può **richiedere le credenziali** direttamente sulla piattaforma. Si può presentare **una sola domanda**, per un solo progetto.
 3. **Scegli la nostra sede** — cerca i progetti delle **Misericordie del Lazio** con sede ad **Ariccia**.
 4. **Sostieni il colloquio** — dopo la scadenza del bando ti convochiamo per un colloquio di selezione; le graduatorie vengono pubblicate su questo sito e sui canali ufficiali.
 

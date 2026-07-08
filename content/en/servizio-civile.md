@@ -12,6 +12,6 @@ Our projects aim to counter loneliness and isolation among fragile people — es
 
 ## How to apply
 
-Applications are submitted online through the official **[DOL — Domanda on Line](https://domandaonline.serviziocivile.it/)** platform when calls are open (an Italian SPID digital identity is required). Applicants must be **aged 18–28** (up to the day before their 29th birthday). Details on requirements and deadlines: [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/).
+Applications are submitted online through the official **[DOL — Domanda on Line](https://domandaonline.serviziocivile.it/)** platform when calls are open. You log in with **SPID** or the Italian electronic ID card (**CIE**); applicants who cannot obtain either — for example foreign citizens legally resident in Italy — can **request DOL credentials** directly on the platform. Applicants must be **aged 18–28** (up to the day before their 29th birthday). Details on requirements and deadlines: [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/).
 
 **Information:** [+39 328 8105399](tel:+393288105399) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
