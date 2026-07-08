@@ -49,4 +49,4 @@ La sola ricompensa del volontario è nella coscienza del dovere compiuto, saluta
 - **Telefono / WhatsApp:** [348 4068657](tel:+393484068657)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 
-Hai tra i 18 e i 29 anni? Guarda anche il [**Servizio Civile Universale**](/servizio-civile/): un anno retribuito al servizio della comunità.
+Hai tra i 18 e i 28 anni? Guarda anche il [**Servizio Civile Universale**](/servizio-civile/): un anno retribuito al servizio della comunità.

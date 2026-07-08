@@ -9,4 +9,27 @@
 
 # La vecchia cartella di anteprima non esiste più: chi ha un link vecchio
 # arriva alla stessa pagina del sito pubblicato alla radice.
-RedirectMatch 301 ^/anteprima/(.*)$ http://www.misericordia-ariccia.it/$1
+RedirectMatch 301 ^/anteprima/(.*)$ https://www.misericordia-ariccia.it/$1
+
+# ---------------------------------------------------------------------------
+# Redirect 301 delle pagine del VECCHIO sito (WordPress e sito 2016).
+# I vecchi file possono essere ancora presenti sullo spazio Aruba e indicizzati
+# dai motori di ricerca: chi arriva da un vecchio link o da Google trova
+# la pagina corrispondente del sito nuovo, senza vicoli ciechi.
+# ---------------------------------------------------------------------------
+
+# Pagine WordPress (slug censiti nell'inventario contenuti, docs/)
+RedirectMatch 301 ^/su-di-noi/?$ https://www.misericordia-ariccia.it/chi-siamo/
+RedirectMatch 301 ^/i-nostri-servizi/?$ https://www.misericordia-ariccia.it/servizi/
+RedirectMatch 301 ^/formazione/?$ https://www.misericordia-ariccia.it/servizi/formazione/
+RedirectMatch 301 ^/telesoccorso/?$ https://www.misericordia-ariccia.it/servizi/servizi-sociali/
+RedirectMatch 301 ^/servizio-civile-nazionale/?$ https://www.misericordia-ariccia.it/servizio-civile/
+RedirectMatch 301 ^/portale-trasparenza/?$ https://www.misericordia-ariccia.it/trasparenza/
+RedirectMatch 301 ^/i-nostri-progetti/?$ https://www.misericordia-ariccia.it/progetti/
+RedirectMatch 301 ^/informativa-sui-cookie/?$ https://www.misericordia-ariccia.it/privacy/
+RedirectMatch 301 ^/login/?$ https://www.misericordia-ariccia.it/
+
+# Pagine del sito 2016 (file .php): contacts.php verso i contatti nuovi,
+# ogni altro .php residuo (incluso WordPress: wp-login.php ecc.) verso la home.
+RedirectMatch 301 ^/contacts\.php$ https://www.misericordia-ariccia.it/contatti/
+RedirectMatch 301 ^/(.*)\.php$ https://www.misericordia-ariccia.it/

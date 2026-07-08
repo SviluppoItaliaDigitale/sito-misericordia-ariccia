@@ -23,4 +23,4 @@ If you have a big heart and the wish to help those in need, there is a place for
 
 **Contact:** [+39 348 4068657](tel:+393484068657) · Registrations: [+39 328 8105399](tel:+393288105399) · [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 
-Aged 18–29? See also the [Civil Service](/en/servizio-civile/): a paid year in service to the community.
+Aged 18–28? See also the [Civil Service](/en/servizio-civile/): a paid year in service to the community.
