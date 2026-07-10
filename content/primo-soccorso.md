@@ -107,3 +107,5 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 ---
 
 **Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
+
+*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/).*
