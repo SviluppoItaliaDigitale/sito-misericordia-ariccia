@@ -38,3 +38,5 @@ contatto:
 Con la collaborazione di medici, infermieri e avvocati, i nostri istruttori formano i futuri soccorritori della Misericordia.
 
 I contenuti dei corsi di rianimazione e primo soccorso si allineano alle **Linee Guida ERC 2025-2030**, tradotte in italiano da [Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).
+
+Le Misericordie d'Italia sono inoltre **partner nazionale di [VIVA! La settimana per la rianimazione cardiopolmonare](https://www.settimanaviva.it/)** (12-18 ottobre 2026), la campagna di IRC per insegnare a tutti i gesti che salvano una vita.
