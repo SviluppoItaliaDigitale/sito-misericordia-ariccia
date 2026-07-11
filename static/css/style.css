@@ -968,3 +968,20 @@ a:hover { color: var(--mise-navy); }
 .lit-vn-link a:hover { background: var(--mise-giallo); color: var(--mise-navy); border-color: var(--mise-giallo); }
 .lit-letture-titolo { margin-top: 2rem; font-size: 1.4rem; color: var(--mise-navy); }
 @media (max-width: 575.98px) { .lit-vn-link { grid-template-columns: 1fr; } }
+
+/* ------- Condivisione senza tracker (link puri, nessuno script) ------- */
+.condividi {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #e3e9ee;
+}
+.condividi-tit { font-family: "Jost", sans-serif; font-weight: 600; margin-right: 4px; }
+.cond-btn {
+  display: inline-block; padding: 6px 14px; border-radius: 999px;
+  background: var(--mise-ciano-velo); color: var(--mise-navy);
+  border: 1px solid rgba(0, 165, 220, .35); text-decoration: none;
+  font-family: "Jost", sans-serif; font-size: .95rem;
+}
+.cond-btn:hover, .cond-btn:focus-visible { background: var(--mise-ciano); color: #fff; border-color: var(--mise-ciano); }
+
+/* ------- Data di ultimo aggiornamento della pagina ------- */
+.pagina-aggiornata { margin: .8rem 0 0; font-size: .9rem; color: #5a6474; }

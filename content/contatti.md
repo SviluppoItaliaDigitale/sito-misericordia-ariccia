@@ -31,3 +31,7 @@ italianoSemplice: |
 
 - [Facebook](https://www.facebook.com/MiseAriccia)
 - [Instagram](https://www.instagram.com/confraternitamisericordia)
+
+---
+
+Cerchi il 112, la guardia medica o le farmacie di turno? Vedi la pagina [**Numeri utili**](/numeri-utili/). Connessione lenta? C'è la [versione leggera dei contatti](/contatti-rapidi/).

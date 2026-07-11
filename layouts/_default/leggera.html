@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }} — {{ site.Title }}</title>
+<meta name="description" content="{{ .Description | default site.Params.descrizione }}">
+<meta name="robots" content="noindex">
+{{/* Pagina ULTRA-LEGGERA: nessun CSS esterno, nessuno script, niente
+     immagini. Pensata per connessioni deboli e telefoni con poco credito:
+     si apre in un attimo e contiene solo l'essenziale. */}}
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 34em; margin: 0 auto; padding: 1em; line-height: 1.5; color: #1b223f; }
+  h1 { font-size: 1.4em; } h2 { font-size: 1.1em; margin: 1.2em 0 .3em; }
+  a.tel { display: block; background: #1b223f; color: #fff; text-decoration: none; font-size: 1.2em; font-weight: bold; padding: .7em 1em; border-radius: .5em; margin: .4em 0; text-align: center; }
+  a.tel.emergenza { background: #b3261e; font-size: 1.4em; }
+  p.nota { font-size: .9em; color: #444; }
+  footer { margin-top: 2em; font-size: .85em; color: #444; border-top: 1px solid #ccc; padding-top: .8em; }
+</style>
+</head>
+<body>
+<h1>{{ .Title }} — Misericordia di Ariccia</h1>
+{{ .Content }}
+<h2>Emergenza</h2>
+<a class="tel emergenza" href="tel:112">☎ 112 — Emergenze</a>
+<a class="tel" href="tel:116117">☎ 116117 — Cure mediche non urgenti</a>
+<h2>Misericordia di Ariccia</h2>
+<a class="tel" href="tel:+393484068657">☎ 348 4068657 — Trasporti e aiuto (anche WhatsApp)</a>
+<a class="tel" href="tel:+39069333717">☎ 06 933 3717 — Sede operativa</a>
+<a class="tel" href="tel:+393288105399">☎ 328 8105399 — Amministrazione e Servizio Civile</a>
+<p>Email: <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a><br>
+Sede operativa: {{ site.Params.sedeOperativa }}</p>
+<p class="nota">La Misericordia svolge trasporti programmati e servizi sociali: non sostituisce il soccorso pubblico. In emergenza chiama sempre il 112.</p>
+<footer>
+  Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }}<br>
+  <a href="{{ "/" | relURL }}">Vai al sito completo</a> · <a href="{{ "/numeri-utili/" | relURL }}">Tutti i numeri utili</a>
+</footer>
+</body>
+</html>

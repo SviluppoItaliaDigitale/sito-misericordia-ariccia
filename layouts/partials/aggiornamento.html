@@ -1,0 +1,7 @@
+{{- /* Data di ultimo aggiornamento della pagina (da GitInfo: ultima modifica
+     del file su GitHub). Segnale di fiducia: il sito è vivo e curato. */ -}}
+{{- with .Lastmod -}}
+{{- if not .IsZero -}}
+<p class="pagina-aggiornata">Pagina aggiornata il {{ time.Format ":date_long" . }}</p>
+{{- end -}}
+{{- end -}}
