@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
   <meta name="description" content="{{ .Description | default site.Params.descrizione }}">
+  <link rel="canonical" href="{{ .Permalink }}">
   <meta name="theme-color" content="#00a5dc">
   {{ $titolo := printf "%s%s" (cond .IsHome "" (printf "%s — " .Title)) site.Title }}
   {{ $descr := .Description | default site.Params.descrizione }}

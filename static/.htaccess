@@ -30,7 +30,7 @@ RedirectMatch 301 ^/anteprima/(.*)$ https://www.misericordia-ariccia.it/$1
 RedirectMatch 301 ^/su-di-noi/?$ https://www.misericordia-ariccia.it/chi-siamo/
 RedirectMatch 301 ^/i-nostri-servizi/?$ https://www.misericordia-ariccia.it/servizi/
 RedirectMatch 301 ^/formazione/?$ https://www.misericordia-ariccia.it/servizi/formazione/
-RedirectMatch 301 ^/telesoccorso/?$ https://www.misericordia-ariccia.it/servizi/servizi-sociali/
+RedirectMatch 301 ^/telesoccorso/?$ https://www.misericordia-ariccia.it/progetti/
 RedirectMatch 301 ^/servizio-civile-nazionale/?$ https://www.misericordia-ariccia.it/servizio-civile/
 RedirectMatch 301 ^/portale-trasparenza/?$ https://www.misericordia-ariccia.it/trasparenza/
 RedirectMatch 301 ^/i-nostri-progetti/?$ https://www.misericordia-ariccia.it/progetti/
