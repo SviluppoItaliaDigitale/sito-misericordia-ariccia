@@ -5,6 +5,14 @@
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
+
+  # Intestazioni di sicurezza: il browser non deve "indovinare" i tipi di
+  # file, il sito non può essere incorniciato da altri siti, e non passiamo
+  # l'indirizzo completo delle pagine ai siti esterni che linkiamo.
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
 # La vecchia cartella di anteprima non esiste più: chi ha un link vecchio

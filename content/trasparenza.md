@@ -56,6 +56,8 @@ La Confraternita di Misericordia di Ariccia partecipa al **Programma Nazionale I
 - **239 pacchi alimentari** finanziati dal PN Inclusione
 - **3 giovani** del Servizio Civile Universale in servizio accanto alle persone fragili (ciclo 2025-2026)
 
+Tutti i numeri del nostro servizio, anno per anno, sono nella pagina [**Il nostro impatto**](/impatto/).
+
 ## Rendiconti annuali e altri documenti
 
 I rendiconti annuali dell'associazione sono depositati presso il **RUNTS**, come previsto dal Codice del Terzo Settore. Per richiedere copia di documenti non ancora pubblicati in questa pagina scrivi a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it): questa sezione viene aggiornata man mano che i documenti sono disponibili.

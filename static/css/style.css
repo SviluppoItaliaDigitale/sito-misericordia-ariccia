@@ -985,3 +985,7 @@ a:hover { color: var(--mise-navy); }
 
 /* ------- Data di ultimo aggiornamento della pagina ------- */
 .pagina-aggiornata { margin: .8rem 0 0; font-size: .9rem; color: #5a6474; }
+
+/* I link del rigo legale nel footer devono distinguersi anche senza il
+   colore (criterio WCAG 1.4.1, segnalato da Lighthouse) */
+.footer-mise .legale a { text-decoration: underline; }
