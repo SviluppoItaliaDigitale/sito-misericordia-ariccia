@@ -6,6 +6,28 @@
 > Questi interventi vanno fatti **sull'hosting del vecchio dominio** e sui
 > profili esterni: non sono realizzabili da questo repository.
 
+## 0. PRIMA DI TUTTO: certificato SSL e HTTPS sul dominio nuovo
+
+Il terzo audit (infrastrutturale) conferma il problema più urgente: Google
+sta indicizzando il sito nuovo **in HTTP**, perché su HTTPS il dominio
+presenta il certificato condiviso Aruba (`webx.aruba.it`) **scaduto il
+28 maggio 2026** e il server reindirizza HTTPS → HTTP.
+
+Passi (pannello Aruba, ~10 minuti):
+
+1. Hosting Linux → **Certificato SSL** → attivare il **certificato DV
+   gratuito** (o acquistarne uno) per `www.misericordia-ariccia.it`.
+2. Verificare da un browser che `https://www.misericordia-ariccia.it/`
+   si apra **senza avvisi** e senza redirect verso http.
+3. Nel repository, in `static/.htaccess`, **togliere i commenti** al blocco
+   "FORZATURA HTTPS" (già pronto) e pubblicare: da quel momento tutto il
+   traffico HTTP passa a HTTPS con 301.
+4. In Search Console, verificare con "Controllo URL" che Googlebot veda le
+   pagine in HTTPS; i canonical e la sitemap puntano già a https.
+
+> Nota: i tag `rel=canonical` del sito puntano già a `https://…`, quindi
+> appena il certificato è valido Google convergerà da solo sulle URL sicure.
+
 ## 1. Redirect 301 dal vecchio dominio (pagina per pagina)
 
 Da configurare sull'hosting del vecchio sito (`.htaccess` se Apache).
