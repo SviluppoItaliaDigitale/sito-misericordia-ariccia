@@ -64,9 +64,29 @@ enableGitInfo = true
     pageRef = "/trasporto-infermi"
     weight = 18
   [[menus.main]]
+    identifier = "servizi"
     name = "Servizi"
-    pageRef = "/servizi"
     weight = 20
+  [[menus.main]]
+    name = "Tutti i servizi"
+    pageRef = "/servizi"
+    parent = "servizi"
+    weight = 1
+  [[menus.main]]
+    name = "Richiedi un trasporto"
+    pageRef = "/richiedi-trasporto"
+    parent = "servizi"
+    weight = 2
+  [[menus.main]]
+    name = "Assistenza per eventi"
+    pageRef = "/assistenza-eventi"
+    parent = "servizi"
+    weight = 3
+  [[menus.main]]
+    name = "Formazione e corsi"
+    pageRef = "/servizi/formazione"
+    parent = "servizi"
+    weight = 4
   [[menus.main]]
     name = "Primo soccorso"
     pageRef = "/primo-soccorso"

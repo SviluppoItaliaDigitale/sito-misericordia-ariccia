@@ -146,9 +146,10 @@ html.a11y-guida #a11y-guida { display: block; }
 .cerca-btn:hover, .cerca-btn:focus-visible { background: rgba(255, 255, 255, .16); outline: none; }
 .cerca-btn svg { width: 17px; height: 17px; }
 
-/* variante dentro il menu mobile */
-.cerca-btn--mobile { width: 100%; justify-content: center; border-color: var(--mise-ciano); color: var(--mise-navy); margin-top: .25rem; }
-.cerca-btn--mobile:hover { background: var(--mise-ciano-velo); }
+/* variante dentro il menu mobile: il pannello è scuro (navy), quindi il
+   testo deve essere bianco — con il colore navy risultava invisibile */
+.cerca-btn--mobile { width: 100%; justify-content: center; border-color: var(--mise-ciano); color: #fff; margin-top: .25rem; }
+.cerca-btn--mobile:hover, .cerca-btn--mobile:focus-visible { background: rgba(0, 165, 220, .25); color: #fff; }
 
 .cerca-overlay {
   position: fixed; inset: 0; z-index: 1200; background: rgba(15, 20, 40, .55);
