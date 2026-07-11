@@ -15,6 +15,21 @@
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
+# ---------------------------------------------------------------------------
+# FORZATURA HTTPS — PRONTA MA DISATTIVATA.
+# Oggi il dominio serve su HTTPS un certificato Aruba condiviso SCADUTO e
+# reindirizza HTTPS -> HTTP: attivare questa regola ORA romperebbe il sito.
+# Appena il certificato SSL del dominio è attivo e valido (pannello Aruba,
+# "Certificato SSL DV" gratuito), TOGLIERE i cancelletti alle tre righe qui
+# sotto: ogni richiesta HTTP verrà portata su HTTPS con un 301, come
+# raccomandato per SEO e sicurezza.
+# ---------------------------------------------------------------------------
+#<IfModule mod_rewrite.c>
+#  RewriteEngine On
+#  RewriteCond %{HTTPS} !=on
+#  RewriteRule ^(.*)$ https://www.misericordia-ariccia.it/$1 [R=301,L]
+#</IfModule>
+
 # La vecchia cartella di anteprima non esiste più: chi ha un link vecchio
 # arriva alla stessa pagina del sito pubblicato alla radice.
 RedirectMatch 301 ^/anteprima/(.*)$ https://www.misericordia-ariccia.it/$1
