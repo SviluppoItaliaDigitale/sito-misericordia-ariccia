@@ -15,7 +15,7 @@ weight: 10
 sezioni:
   - icona: "🚩"
     titolo: "Assistenza sanitaria a manifestazioni ed eventi"
-    testo: "Garantiamo l'assistenza sanitaria a eventi sportivi, manifestazioni pubbliche e sagre di paese, con i nostri mezzi e i nostri soccorritori."
+    testo: "Garantiamo l'assistenza sanitaria a eventi sportivi, manifestazioni pubbliche e sagre di paese, con i nostri mezzi e i nostri soccorritori. Organizzi un evento? [Richiedi un preventivo](/assistenza-eventi/)."
   - icona: "🚐"
     titolo: "Trasporti privati"
     testo: "Effettuiamo trasporti privati per visite di controllo presso ospedali o centri riabilitativi, dimissioni dalle strutture di ricovero verso la propria abitazione e altro ancora."
