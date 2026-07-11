@@ -1,0 +1,13 @@
+{{- /* Pulsanti di condivisione SENZA script di terze parti: semplici link
+     in uscita, coerenti con la scelta "zero cookie, zero tracker" del sito. */ -}}
+{{- $u := .Permalink -}}
+{{- $t := .Title -}}
+{{- $testo := printf "%s — %s" $t $u -}}
+<div class="condividi" role="group" aria-label="Condividi questa pagina">
+  <span class="condividi-tit">Condividi:</span>
+  <a class="cond-btn" href="https://wa.me/?text={{ $testo | urlquery }}" target="_blank" rel="noopener nofollow">💬 WhatsApp</a>
+  <a class="cond-btn" href="https://t.me/share/url?url={{ $u | urlquery }}&text={{ $t | urlquery }}" target="_blank" rel="noopener nofollow">✈️ Telegram</a>
+  <a class="cond-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $u | urlquery }}" target="_blank" rel="noopener nofollow">📘 Facebook</a>
+  <a class="cond-btn" href="https://x.com/intent/post?url={{ $u | urlquery }}&text={{ $t | urlquery }}" target="_blank" rel="noopener nofollow">𝕏</a>
+  <a class="cond-btn" href="mailto:?subject={{ replace ($t | urlquery) "+" "%20" }}&body={{ replace ($testo | urlquery) "+" "%20" }}">✉️ Email</a>
+</div>

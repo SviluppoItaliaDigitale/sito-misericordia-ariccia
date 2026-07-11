@@ -6,6 +6,9 @@ title = "Misericordia di Ariccia ODV"
 # URL relativi: il sito funziona identico in /anteprima/ e nella radice
 relativeURLs = true
 disableKinds = ["taxonomy", "term"]
+# Data di ultima modifica delle pagine presa dalla cronologia git
+# (richiede il checkout completo nel workflow di deploy: fetch-depth 0)
+enableGitInfo = true
 
 # Indice JSON per la ricerca interna al sito (generato in /index.json)
 [outputs]
@@ -51,6 +54,11 @@ disableKinds = ["taxonomy", "term"]
     pageRef = "/opere-di-misericordia"
     parent = "chisiamo"
     weight = 4
+  [[menus.main]]
+    name = "Glossario"
+    pageRef = "/glossario"
+    parent = "chisiamo"
+    weight = 5
   [[menus.main]]
     name = "Trasporto infermi"
     pageRef = "/trasporto-infermi"
