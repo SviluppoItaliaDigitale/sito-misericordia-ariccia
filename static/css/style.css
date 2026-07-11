@@ -1000,3 +1000,6 @@ a:hover { color: var(--mise-navy); }
   background: #fff; color: var(--mise-navy); border-color: #fff; transform: translateY(-1px);
 }
 .btn-ghost::after { content: " ↗"; font-weight: 700; }
+
+/* I link dentro la fascia dei numeri si distinguono anche senza colore */
+.fascia-numeri a { text-decoration: underline; text-underline-offset: 3px; }

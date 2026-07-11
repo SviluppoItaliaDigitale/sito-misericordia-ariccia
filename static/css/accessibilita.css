@@ -364,7 +364,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible,
 .prenota-form input:focus, .prenota-form select:focus, .prenota-form textarea:focus {
   outline: none; border-color: var(--mise-ciano); box-shadow: 0 0 0 3px var(--mise-ciano-velo);
 }
-.pf-nota { font-size: .82rem; color: #6b7482; margin: .7rem 0 0; }
+.pf-nota { font-size: .82rem; color: #5a6474; margin: .7rem 0 0; } /* contrasto AA */
 
 @media (max-width: 560px) {
   .pf-griglia { grid-template-columns: 1fr; }
