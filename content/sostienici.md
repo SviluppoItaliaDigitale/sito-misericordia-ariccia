@@ -1,5 +1,6 @@
 ---
 title: "Sostienici"
+description: "Sostieni la Misericordia di Ariccia: 5x1000 con il codice fiscale 90031910582, donazioni con bonifico e volontariato. Ogni firma resta sul territorio."
 italianoSemplice: |
   **Puoi aiutare la Misericordia in tanti modi.**
 

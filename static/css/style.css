@@ -1003,3 +1003,19 @@ a:hover { color: var(--mise-navy); }
 
 /* I link dentro la fascia dei numeri si distinguono anche senza colore */
 .fascia-numeri a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ------- Avviso "contenuto d'archivio" sulle news datate ------- */
+.avviso-archivio { background: #f4f1e3; border: 1px solid #d9d2ae; color: #4c4a36; }
+
+/* ------- Stampa: solo il contenuto, in nero su bianco -------
+   Utile per le pagine pensate anche per la carta (Numeri utili,
+   Primo soccorso): niente menu, footer, pulsanti o widget. */
+@media print {
+  .navbar-mise, .barra-annunci, .footer-mise, .fascia-rete, .lettura-barra,
+  #a11y-apri, #torna-su, #whatsapp-flot, .condividi, .breadcrumb, .btn,
+  .rt-azioni, .testo-semplice { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  a { color: #000; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .85em; }
+  .pagina-testata { background: none; color: #000; padding: 0; }
+}

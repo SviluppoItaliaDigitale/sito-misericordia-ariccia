@@ -1,5 +1,6 @@
 ---
 title: "Contatti"
+description: "Sedi e recapiti della Misericordia di Ariccia: telefono 06 933 3717, cellulare 348 4068657 (anche WhatsApp), email e PEC. Sede operativa in Piazzale Aldo Moro 6."
 italianoSemplice: |
   **Come contattare la Misericordia di Ariccia.**
 

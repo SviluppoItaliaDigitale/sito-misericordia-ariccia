@@ -15,6 +15,11 @@
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
+    {{ if and (eq .Section "news") (.Date.Before (now.AddDate -1 0 0)) }}
+    <div class="avviso-archivio rounded p-3 px-4 mb-4" role="note">
+      📚 <strong>Contenuto d'archivio</strong> — questa notizia risale a {{ time.Format "January 2006" .Date }}: corsi, bandi ed eventi descritti si sono conclusi. La conserviamo per la memoria dell'associazione.
+    </div>
+    {{ end }}
     <article class="contenuto" data-anim-group>
       {{ .Content }}
     </article>

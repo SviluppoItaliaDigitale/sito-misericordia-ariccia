@@ -1,5 +1,6 @@
 ---
 title: "Richiedi un trasporto"
+description: "Prenota un trasporto sanitario o sociale con la Misericordia di Ariccia: ambulanza, auto o mezzi con pedana. Modulo online, telefono 348 4068657 e WhatsApp."
 italianoSemplice: |
   **Puoi chiedere un trasporto alla Misericordia.**
 

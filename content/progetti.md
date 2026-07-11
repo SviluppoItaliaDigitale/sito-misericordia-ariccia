@@ -1,5 +1,6 @@
 ---
 title: "I nostri progetti"
+description: "I progetti sociali della Misericordia di Ariccia: il Muro della Gentilezza, la mensa con la Caritas, gli orti sociali e le altre iniziative per la comunità."
 italianoSemplice: |
   **I progetti della Misericordia di Ariccia.**
 

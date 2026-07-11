@@ -1,5 +1,6 @@
 ---
 title: "Domande frequenti"
+description: "Le risposte alle domande più frequenti: come diventare volontario, come prenotare un trasporto sanitario e come destinare il 5x1000 alla Misericordia di Ariccia."
 italianoSemplice: |
   **Le risposte alle domande più comuni.**
 

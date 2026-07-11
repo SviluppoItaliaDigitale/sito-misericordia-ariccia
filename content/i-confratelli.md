@@ -1,5 +1,6 @@
 ---
 title: "I confratelli"
+description: "Chi sono i confratelli e le consorelle della Misericordia di Ariccia: il significato dell'appartenenza, l'abito storico e la vita della Confraternita."
 italianoSemplice: |
   **I confratelli e le consorelle sono i volontari della Misericordia.**
 
