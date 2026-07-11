@@ -1,5 +1,6 @@
 ---
 title: "Storia e tradizione"
+description: "Da Firenze 1244 ad Ariccia: otto secoli di storia delle Misericordie, la tradizione, l'abito e i valori della Confraternita."
 italianoSemplice: |
   **Le Misericordie sono molto antiche.**
 

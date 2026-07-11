@@ -60,7 +60,7 @@ L'antico motto con cui le Misericordie salutano e ringraziano: la sola "ricompen
 <details class="faq-item">
 <summary>Opere di Misericordia</summary>
 
-Le quattordici azioni di carità — sette **corporali** (dar da mangiare agli affamati, visitare gli infermi…) e sette **spirituali** — che da secoli ispirano il servizio delle Misericordie. [La pagina dedicata](/opere-di-misericordia/).
+Le quattordici azioni di carità — sette **corporali** (dar da mangiare agli affamati, visitare gli infermi…) e sette **spirituali** — che da secoli ispirano il servizio delle Misericordie. [Il dossier dedicato](/dossier/le-opere-di-misericordia/).
 
 </details>
 

@@ -1,5 +1,6 @@
 ---
 title: "Privacy e cookie"
+description: "Informativa privacy e cookie del sito della Misericordia di Ariccia: nessun cookie, nessun tracciamento, dati usati solo per rispondere a chi ci contatta."
 italianoSemplice: |
   **Questo sito rispetta la tua privacy.**
 

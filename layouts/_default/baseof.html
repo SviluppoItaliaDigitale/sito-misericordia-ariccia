@@ -4,11 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if not .IsHome }}{{ .Title }} — {{ end }}{{ site.Title }}</title>
-  <meta name="description" content="{{ .Description | default site.Params.descrizione }}">
+  {{ $descr := .Description | default (.Summary | plainify | truncate 158) | default site.Params.descrizione }}
+  <meta name="description" content="{{ $descr }}">
   <link rel="canonical" href="{{ .Permalink }}">
+  {{- /* hreflang: collega le versioni italiana e inglese quando esistono.
+       Le pagine inglesi vivono in /en/ con lo stesso nome file. */ -}}
+  {{ $coppia := "" }}
+  {{ if .IsHome }}{{ $coppia = site.GetPage "/en" }}
+  {{ else if eq .RelPermalink "/en/" }}{{ $coppia = site.Home }}
+  {{ else if .File }}
+    {{ if hasPrefix .RelPermalink "/en/" }}{{ $coppia = site.GetPage (printf "/%s" .File.ContentBaseName) }}
+    {{ else }}{{ $coppia = site.GetPage (printf "/en/%s" .File.ContentBaseName) }}{{ end }}
+  {{ end }}
+  {{ with $coppia }}
+    {{ $it := cond (hasPrefix $.RelPermalink "/en/") .Permalink $.Permalink }}
+    {{ $en := cond (hasPrefix $.RelPermalink "/en/") $.Permalink .Permalink }}
+  <link rel="alternate" hreflang="it" href="{{ $it }}">
+  <link rel="alternate" hreflang="en" href="{{ $en }}">
+  <link rel="alternate" hreflang="x-default" href="{{ $it }}">
+  {{ end }}
   <meta name="theme-color" content="#00a5dc">
   {{ $titolo := printf "%s%s" (cond .IsHome "" (printf "%s — " .Title)) site.Title }}
-  {{ $descr := .Description | default site.Params.descrizione }}
   {{ $img := absURL "img/loghi/mise-triangolo.png" }}
   {{- /* Per le news: come immagine di anteprima social usa la prima foto
        dell'articolo (se c'è) invece del logo generico. */ -}}
@@ -40,7 +56,13 @@
     "email": {{ site.Params.email | jsonify }},
     "telephone": "+393484068657",
     "taxID": {{ site.Params.codiceFiscale | jsonify }},
+    "legalName": "Confraternita di Misericordia di Ariccia ODV",
     "foundingDate": "1994",
+    "areaServed": "Ariccia e Castelli Romani",
+    "contactPoint": [
+      {"@type": "ContactPoint", "telephone": "+393484068657", "contactType": "customer service", "name": "Servizi e trasporti (anche WhatsApp)"},
+      {"@type": "ContactPoint", "telephone": "+393288105399", "contactType": "customer service", "name": "Amministrazione, iscrizioni e Servizio Civile"}
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Viale Antonietta Chigi, 46",

@@ -37,6 +37,10 @@ RedirectMatch 301 ^/i-nostri-progetti/?$ https://www.misericordia-ariccia.it/pro
 RedirectMatch 301 ^/informativa-sui-cookie/?$ https://www.misericordia-ariccia.it/privacy/
 RedirectMatch 301 ^/login/?$ https://www.misericordia-ariccia.it/
 
+# La pagina "Opere di Misericordia" e il dossier erano duplicati con lo
+# stesso titolo (segnalato dall'audit): resta solo il dossier.
+RedirectMatch 301 ^/opere-di-misericordia/?$ https://www.misericordia-ariccia.it/dossier/le-opere-di-misericordia/
+
 # Pagine del sito 2016 (file .php): contacts.php verso i contatti nuovi,
 # ogni altro .php residuo (incluso WordPress: wp-login.php ecc.) verso la home.
 RedirectMatch 301 ^/contacts\.php$ https://www.misericordia-ariccia.it/contatti/

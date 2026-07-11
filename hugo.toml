@@ -51,7 +51,7 @@ enableGitInfo = true
     weight = 3
   [[menus.main]]
     name = "Le Opere di Misericordia"
-    pageRef = "/opere-di-misericordia"
+    pageRef = "/dossier/le-opere-di-misericordia"
     parent = "chisiamo"
     weight = 4
   [[menus.main]]

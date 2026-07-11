@@ -1,5 +1,6 @@
 ---
 title: "Chi siamo"
+description: "La Confraternita di Misericordia di Ariccia ODV: storia, missione, iscrizione RUNTS e organi sociali dell'associazione di volontariato attiva dal 1994 nei Castelli Romani."
 italianoSemplice: |
   **La Misericordia di Ariccia aiuta le persone dal 1994.**
 

@@ -1,5 +1,6 @@
 ---
 title: "Servizio Civile Universale"
+description: "Servizio Civile Universale alla Misericordia di Ariccia: requisiti (18-28 anni), assegno mensile, domanda sulla piattaforma DOL e progetti attivi ad Ariccia."
 italianoSemplice: |
   **Il Servizio Civile è un anno di aiuto alla comunità.**
 

@@ -1,5 +1,6 @@
 ---
 title: "Trasparenza"
+description: "Trasparenza della Misericordia di Ariccia: statuto, rendicontazioni del 5x1000, contributi pubblici, organi sociali e impatto, secondo il Codice del Terzo Settore."
 italianoSemplice: |
   **Qui pubblichiamo i documenti della Misericordia.**
 
