@@ -6,27 +6,22 @@
 > Questi interventi vanno fatti **sull'hosting del vecchio dominio** e sui
 > profili esterni: non sono realizzabili da questo repository.
 
-## 0. PRIMA DI TUTTO: certificato SSL e HTTPS sul dominio nuovo
+## 0. Certificato SSL e HTTPS sul dominio nuovo — ✅ FATTO (15/07/2026)
 
-Il terzo audit (infrastrutturale) conferma il problema più urgente: Google
-sta indicizzando il sito nuovo **in HTTP**, perché su HTTPS il dominio
-presenta il certificato condiviso Aruba (`webx.aruba.it`) **scaduto il
-28 maggio 2026** e il server reindirizza HTTPS → HTTP.
+Il certificato dedicato `*.misericordia-ariccia.it` (Actalis DV, scadenza
+28/01/2027, rinnovo gestito da Aruba) è **attivo dal 15 luglio 2026**:
+HTTPS risponde senza avvisi, il redirect HTTP → HTTPS (301) e l'header
+HSTS sono applicati direttamente dal proxy di Aruba. I `rel=canonical`
+e la sitemap puntavano già a https, quindi Google convergerà da solo
+sulle URL sicure.
 
-Passi (pannello Aruba, ~10 minuti):
+Resta da fare in **Search Console**: verificare con "Controllo URL" che
+Googlebot veda le pagine in HTTPS e monitorare la sostituzione delle URL
+http nell'indice.
 
-1. Hosting Linux → **Certificato SSL** → attivare il **certificato DV
-   gratuito** (o acquistarne uno) per `www.misericordia-ariccia.it`.
-2. Verificare da un browser che `https://www.misericordia-ariccia.it/`
-   si apra **senza avvisi** e senza redirect verso http.
-3. Nel repository, in `static/.htaccess`, **togliere i commenti** al blocco
-   "FORZATURA HTTPS" (già pronto) e pubblicare: da quel momento tutto il
-   traffico HTTP passa a HTTPS con 301.
-4. In Search Console, verificare con "Controllo URL" che Googlebot veda le
-   pagine in HTTPS; i canonical e la sitemap puntano già a https.
-
-> Nota: i tag `rel=canonical` del sito puntano già a `https://…`, quindi
-> appena il certificato è valido Google convergerà da solo sulle URL sicure.
+> Nota tecnica: NON aggiungere una RewriteRule di forzatura HTTPS
+> nell'`.htaccess` — dietro il proxy Aruba la variabile `HTTPS` può non
+> essere valorizzata e si creerebbe un loop. Il redirect è già a monte.
 
 ## 1. Redirect 301 dal vecchio dominio (pagina per pagina)
 
