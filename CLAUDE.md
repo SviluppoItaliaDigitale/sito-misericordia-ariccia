@@ -106,7 +106,7 @@ Velletri Moda):
   approva con "mergia / vai live"; per correzioni di problemi da lui
   segnalati si può mergiare direttamente.
 - Dopo il deploy (workflow "Pubblica su Aruba (LIVE)", ~1 minuto):
-  verificare la pagina live con `curl` su **http** (i 503 intermittenti
-  sono l'anti-bot di Aruba: riprovare). HTTPS ha il certificato scaduto
-  finché non viene attivato dal pannello Aruba (vedi
-  `docs/migrazione-vecchio-dominio.md`).
+  verificare la pagina live con `curl` (i 503 intermittenti sono
+  l'anti-bot di Aruba: riprovare). **HTTPS è attivo dal 15/07/2026**
+  (certificato dedicato, redirect http→https gestito dal proxy Aruba):
+  usare `curl -L` o direttamente `https://`.
