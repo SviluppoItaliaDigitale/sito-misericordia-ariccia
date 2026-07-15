@@ -19,7 +19,7 @@ italianoSemplice: |
 
 C'eravamo anche noi, e che bello esserci stati. **Domenica 12 luglio**, all'aula magna del **CREA di Velletri**, la prima edizione di **Velletri Moda** ha superato ogni aspettativa: pubblico numeroso, sei giovani stilisti in passerella e una serata che ha dimostrato come la moda possa essere **etica, solidale e di comunità**.
 
-![Otto volontari della Misericordia di Ariccia in divisa, sorridenti, in servizio di assistenza a Velletri Moda](/img/news/velletri-moda-volontari.jpg)
+![Grafica della Misericordia di Ariccia per Velletri Moda: la foto degli otto volontari in divisa in servizio di assistenza sanitaria, con il ringraziamento a La Rete di Tutti e al Muro della Gentilezza](/img/news/velletri-moda-grafica.jpg)
 
 ## Una sfilata nata dalla gentilezza
 
