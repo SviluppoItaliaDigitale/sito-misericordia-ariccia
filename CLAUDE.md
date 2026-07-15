@@ -42,3 +42,71 @@ Se il prompt del monitoraggio cita ancora "anteprima", **ignora quel riferimento
 - `content/servizi/` — servizi offerti
 - `assets/` — loghi e immagini
 - `docs/` — documentazione di progetto
+
+## FLUSSO EDITORIALE — foto + testi → articolo, grafica e social
+
+Quando l'utente invia **una foto** (e/o un link di stampa, una locandina,
+una descrizione di evento), il lavoro atteso è SEMPRE questo, senza che
+debba rispiegarlo:
+
+### 1. Articolo sul sito (`content/news/AAAA-MM-GG-slug.md`)
+
+- Front matter: `title`, `date`, `slug`, `description` **unica e specifica**
+  (mai quella di default del sito), `italianoSemplice` (frasi brevi, parole
+  facili — c'è in ogni contenuto del sito).
+- Se c'è un articolo di stampa: leggerlo (WebFetch), usare solo fatti
+  verificati, **citare la fonte** con link in corsivo in fondo.
+- Prima immagine dell'articolo = **la grafica brand** (mai la foto grezza:
+  le foto WhatsApp hanno bande bianche): diventa automaticamente l'og:image.
+- Alt text descrittivo su ogni immagine; link interni alle pagine correlate
+  (`/assistenza-eventi/`, `/diventa-volontario/`, `/servizi/formazione/`…);
+  CTA finale; quando si ringrazia qualcuno chiudere con il motto
+  **«Che Iddio ve ne renda merito»**.
+- Attenzione: Hugo **non pubblica** contenuti con data futura (escono col
+  rebuild notturno delle 00:30 UTC).
+
+### 2. Grafica brand (1080×1350, per articolo e social)
+
+Ricetta consolidata (vedi gli esempi in questa sessione: lancio sito e
+Velletri Moda):
+
+- **Palette**: navy `#1b223f` (fondo), ciano `#00a5dc`, giallo `#f2e433`.
+- **Font locali** (`static/fonts/`, via `@font-face` con `file://`):
+  Playfair Display 600 per i titoli, Jost per il resto.
+- **Struttura**: badge giallo a pillola con evento/data → titolo Playfair
+  (parole chiave in giallo) → foto dentro cornice ciano arrotondata con
+  `object-fit: cover` + `transform: scale(1.1-1.25)` per **tagliare le
+  bande bianche** delle foto WhatsApp → cartiglio sfumato con didascalia →
+  eventuale fascia di ringraziamento → piede bianco con logo
+  (`static/img/loghi/mise-triangolo.png`) e `www.misericordia-ariccia.it`.
+- **Render**: HTML nello scratchpad → screenshot con Playwright
+  (`playwright-core` + Chromium in `/opt/pw-browsers/chromium-*/chrome-linux/chrome`,
+  attendere `document.fonts.ready`). NON usare lo screenshot CLI di
+  Chromium (scatta prima del caricamento font/immagini).
+- **Export**: JPEG qualità ~88 in `static/img/news/` per il sito;
+  PNG all'utente via SendUserFile per i social.
+- **Controllare sempre il render** (Read del PNG) prima di pubblicare:
+  contenuto che trabocca, testi tagliati, contrasti.
+
+### 3. Testi social (scriverli in chat, non solo su file)
+
+- **Facebook**: versione lunga con emoji, racconto, grazie, link
+  all'articolo, CTA (assistenza eventi / volontariato / 5x1000).
+- **Instagram**: versione corta, "link in bio".
+- Hashtag standard: `#MisericordiaDiAriccia #Misericordie #CastelliRomani
+  #Volontariato #GenteAlServizioDellaGente` + quelli dell'evento.
+- 5x1000 quando pertinente: **C.F. 90031910582**.
+
+### 4. Pubblicazione
+
+- Build di verifica con Hugo 0.154.5 (se manca: `CGO_ENABLED=0 go install
+  github.com/gohugoio/hugo@v0.154.5` — le release GitHub sono bloccate dal
+  proxy, il Go module proxy no).
+- Commit sulla branch designata → push → **PR** → l'utente storicamente
+  approva con "mergia / vai live"; per correzioni di problemi da lui
+  segnalati si può mergiare direttamente.
+- Dopo il deploy (workflow "Pubblica su Aruba (LIVE)", ~1 minuto):
+  verificare la pagina live con `curl` su **http** (i 503 intermittenti
+  sono l'anti-bot di Aruba: riprovare). HTTPS ha il certificato scaduto
+  finché non viene attivato dal pannello Aruba (vedi
+  `docs/migrazione-vecchio-dominio.md`).
