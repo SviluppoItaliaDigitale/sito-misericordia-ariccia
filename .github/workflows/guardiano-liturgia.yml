@@ -1,0 +1,57 @@
+name: Guardiano liturgia (riprova ogni mezz'ora)
+
+# Rete di sicurezza per l'aggiornamento notturno del santo del giorno e
+# delle letture: ogni mezz'ora, nella finestra notturna, controlla che la
+# pagina live della Liturgia mostri già la data di OGGI (ora italiana).
+# Se non è così — cron saltato, feed Evangelizo/LitCal momentaneamente giù,
+# FTP fallito, qualunque causa — rilancia il deploy e riprova al giro dopo.
+# Si ferma da solo appena la pagina risulta aggiornata: le run di controllo
+# durano pochi secondi.
+on:
+  schedule:
+    # Ogni mezz'ora dalle 22:20 UTC alle 05:50 UTC: copre la notte italiana
+    # (00:20 - 07:50 con l'ora legale, 23:20 - 06:50 con l'ora solare).
+    - cron: "20,50 22,23 * * *"
+    - cron: "20,50 0-5 * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+concurrency:
+  group: guardiano-liturgia
+  cancel-in-progress: false
+
+jobs:
+  controlla-e-ripara:
+    runs-on: ubuntu-latest
+    steps:
+      - name: La pagina live mostra già la data di oggi?
+        id: check
+        run: |
+          MESI=(gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre)
+          GIORNO=$(TZ=Europe/Rome date +%-d)
+          MESE=${MESI[$((10#$(TZ=Europe/Rome date +%m) - 1))]}
+          ANNO=$(TZ=Europe/Rome date +%Y)
+          ATTESA="$GIORNO $MESE $ANNO"
+          echo "Data attesa sulla pagina: $ATTESA"
+          # 5 tentativi: i 503 intermittenti sono l'anti-bot di Aruba
+          for i in 1 2 3 4 5; do
+            HTML=$(curl -sL --max-time 30 https://www.misericordia-ariccia.it/liturgia-del-giorno/ || true)
+            if echo "$HTML" | grep -q "$ATTESA"; then
+              echo "La pagina è aggiornata: nessuna azione."
+              echo "aggiornata=si" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Tentativo $i: pagina non (ancora) aggiornata o non raggiungibile."
+            sleep 20
+          done
+          echo "aggiornata=no" >> "$GITHUB_OUTPUT"
+
+      - name: Pagina non aggiornata, rilancio il deploy
+        if: steps.check.outputs.aggiornata == 'no'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Rilancio il workflow 'Pubblica su Aruba (LIVE)'. Se fallisce di nuovo, riproverò al prossimo controllo (tra mezz'ora)."
+          gh workflow run deploy.yml --ref main --repo "$GITHUB_REPOSITORY"

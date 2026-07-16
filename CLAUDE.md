@@ -19,6 +19,12 @@ I parametri corretti da usare sono:
 
 Se il prompt del monitoraggio cita ancora "anteprima", **ignora quel riferimento** e usa i valori corretti in questa tabella.
 
+Inoltre c'è una **rete di sicurezza automatica**: il workflow
+`.github/workflows/guardiano-liturgia.yml` controlla ogni mezz'ora, di
+notte, che la pagina della liturgia mostri la data di oggi; se il rebuild
+notturno è fallito per qualsiasi motivo, rilancia il deploy da solo e
+riprova ogni 30 minuti finché la pagina non risulta aggiornata.
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)
