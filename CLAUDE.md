@@ -15,7 +15,7 @@ I parametri corretti da usare sono:
 | Workflow da controllare | `Pubblica su Aruba (LIVE)` | ~~Pubblica su Aruba (anteprima)~~ |
 | File workflow | `.github/workflows/deploy.yml` | — |
 | Pagina liturgia live | `https://www.misericordia-ariccia.it/liturgia-del-giorno/` | ~~`/anteprima/liturgia-del-giorno/`~~ |
-| Cron deploy | `30 0 * * *` UTC (≈ 01:30 ora italiana invernale) | — |
+| Cron deploy | `5 22 * * *` + `5 23 * * *` UTC (≈ 00:05 italiane tutto l'anno, doppio cron per l'ora legale) | ~~`30 0 * * *`~~ |
 
 Se il prompt del monitoraggio cita ancora "anteprima", **ignora quel riferimento** e usa i valori corretti in questa tabella.
 
@@ -63,7 +63,7 @@ debba rispiegarlo:
   CTA finale; quando si ringrazia qualcuno chiudere con il motto
   **«Che Iddio ve ne renda merito»**.
 - Attenzione: Hugo **non pubblica** contenuti con data futura (escono col
-  rebuild notturno delle 00:30 UTC).
+  rebuild notturno, pochi minuti dopo la mezzanotte italiana).
 
 ### 2. Grafica brand (1080×1350, per articolo e social)
 
