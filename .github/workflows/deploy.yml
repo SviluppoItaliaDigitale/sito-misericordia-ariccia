@@ -12,11 +12,19 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # Ricostruzione giornaliera SUBITO DOPO la mezzanotte italiana
-    # (00:30 UTC ≈ 01:30 inverno / 02:30 estate in Italia): così la
-    # Liturgia/Parola del giorno e gli annunci scaduti sono già aggiornati
-    # nelle prime ore del mattino.
-    - cron: "30 0 * * *"
+    # Ricostruzione giornaliera APPENA DOPO la mezzanotte italiana, così il
+    # santo del giorno, le letture e gli annunci scaduti sono aggiornati fin
+    # dai primi minuti del nuovo giorno. Il cron di GitHub è in UTC e l'ora
+    # legale sposta l'offset dell'Italia: due pianificazioni si coprono a
+    # vicenda tutto l'anno.
+    #  - 22:05 UTC = 00:05 in ESTATE (ora legale, UTC+2); in inverno è solo
+    #    una ricostruzione in più alle 23:05 del giorno prima (innocua).
+    #  - 23:05 UTC = 00:05 in INVERNO (ora solare, UTC+1); in estate è una
+    #    ricostruzione in più alle 01:05 (innocua).
+    # Nota: GitHub può ritardare i cron di alcuni minuti nei momenti di
+    # punta; il minuto 5 evita la congestione dell'ora esatta.
+    - cron: "5 22 * * *"
+    - cron: "5 23 * * *"
 
 concurrency:
   group: deploy-aruba
