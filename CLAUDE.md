@@ -123,3 +123,11 @@ Velletri Moda):
   l'anti-bot di Aruba: riprovare). **HTTPS è attivo dal 15/07/2026**
   (certificato dedicato, redirect http→https gestito dal proxy Aruba):
   usare `curl -L` o direttamente `https://`.
+- **SEMPRE, nel messaggio finale all'utente**, indicare in modo ben
+  visibile i link cliccabili:
+  1. l'**URL dell'articolo live** appena pubblicato
+     (`https://www.misericordia-ariccia.it/news/<slug>/`);
+  2. per ogni grafica nuova, l'**URL della pagina di scarico**
+     `https://www.misericordia-ariccia.it/grafiche-social/`
+     (pagina riservata non indicizzata: la grafica va aggiunta lì in cima).
+  Vale anche quando l'utente chiede solo grafiche senza articolo.
