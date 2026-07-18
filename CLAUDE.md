@@ -91,6 +91,13 @@ Velletri Moda):
   Chromium (scatta prima del caricamento font/immagini).
 - **Export**: JPEG qualità ~88 in `static/img/news/` per il sito;
   PNG all'utente via SendUserFile per i social.
+- **SEMPRE, per ogni nuova grafica**: copiarla anche in
+  `static/img/social/<slug-breve>.jpg` e aggiungerla IN CIMA alla pagina
+  `content/grafiche-social.md` (immagine + bottone «⬇ Scarica» con
+  attributo `download`): è la pagina che l'utente ha nei preferiti del
+  telefono per scaricare le grafiche con un tocco. Dopo il deploy,
+  dargli il link diretto
+  `https://www.misericordia-ariccia.it/grafiche-social/`.
 - **Controllare sempre il render** (Read del PNG) prima di pubblicare:
   contenuto che trabocca, testi tagliati, contrasti.
 
