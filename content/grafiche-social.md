@@ -1,6 +1,13 @@
 ---
 title: "Grafiche per i social"
 description: "Le grafiche ufficiali della Misericordia di Ariccia pronte da scaricare per i social: un tocco sul bottone e l'immagine è sul tuo telefono."
+# Pagina di servizio: raggiungibile solo con il link diretto.
+# noindex per i motori; list:never la esclude da sitemap, mappa del sito,
+# ricerca interna e liste automatiche.
+noindex: true
+_build:
+  render: always
+  list: never
 italianoSemplice: |
   **Qui trovi le nostre immagini per i social.**
 
