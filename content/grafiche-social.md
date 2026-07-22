@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Festa di Santa Apollonia (25-26 luglio 2026)
+
+<img src="/img/social/santa-apollonia.jpg" alt="Grafica: l'ambulanza in Piazza di Corte per la Festa di Santa Apollonia, Patrona di Ariccia" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/santa-apollonia.jpg" download="misericordia-santa-apollonia.jpg">⬇ Scarica</a>
+
 ## «Qui dove la vita continua» — Villa La Rocca (18 luglio 2026)
 
 <img src="/img/social/villa-la-rocca.jpg" alt="Grafica: il nostro volontario alla presentazione del libro alla casa di riposo Villa La Rocca" width="540" loading="lazy">
