@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Processione di Santa Apollonia (25 luglio 2026)
+
+<img src="/img/social/apollonia-processione.jpg" alt="Grafica: il confratello con lo stendardo della Confraternita alla processione di Santa Apollonia" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/apollonia-processione.jpg" download="misericordia-processione-apollonia.jpg">⬇ Scarica</a>
+
 ## Serata Cirilli a Fantastiche Visioni (24 luglio 2026)
 
 <img src="/img/social/cirilli.jpg" alt="Grafica: il selfie di Gabriele Cirilli con le nostre volontarie al Parco Chigi" width="540" loading="lazy">
