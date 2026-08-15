@@ -20,6 +20,18 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Le parole del nostro Correttore — Assunzione di Maria (15 agosto 2026)
+
+<img src="/img/social/parole-correttore.jpg" alt="Grafica: «Le parole del nostro Correttore», il pensiero di don Antonio per la Festa dell'Assunta" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/parole-correttore.jpg" download="misericordia-parole-correttore.jpg">⬇ Scarica</a>
+
+E qui la **locandina con il messaggio completo** di don Antonio, da leggere e da girare su WhatsApp:
+
+<img src="/img/social/parole-correttore-locandina.jpg" alt="Locandina con il testo integrale del pensiero di don Antonio per la Festa dell'Assunzione di Maria" width="420" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/parole-correttore-locandina.jpg" download="misericordia-parole-correttore-locandina.jpg">⬇ Scarica la locandina</a>
+
 ## Processione di Santa Apollonia (25 luglio 2026)
 
 <img src="/img/social/apollonia-processione.jpg" alt="Grafica: il confratello con lo stendardo della Confraternita alla processione di Santa Apollonia" width="540" loading="lazy">
