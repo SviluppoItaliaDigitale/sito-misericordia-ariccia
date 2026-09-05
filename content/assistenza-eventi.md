@@ -71,7 +71,7 @@ Compila i campi e scegli come inviare: **email** (si apre la tua app di posta co
     <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
     <button type="submit" class="btn btn-giallo btn-lg" data-whatsapp>💬 Invia su WhatsApp</button>
   </div>
-  <p class="pf-nota">Nessun dato viene salvato online: il modulo prepara solo un messaggio (email o WhatsApp) che invii tu dal tuo telefono. In alternativa, chiamaci o scrivici su WhatsApp.</p>
+  <p class="pf-nota"><strong>Privacy:</strong> il sito non salva nulla, il modulo prepara solo il messaggio. Con <strong>email</strong> il testo resta nella tua casella di posta fino a quando lo invii. Con <strong>WhatsApp</strong> il testo viene passato all'app di WhatsApp (Meta) già al clic, come in qualsiasi chat: se preferisci non condividere dettagli sulla salute in quel modo, usa l'email o chiamaci.</p>
 </form>
 
 <div class="rt-azioni">
