@@ -35,7 +35,7 @@ Comuni, parrocchie, associazioni e società sportive, scuole, comitati di festa,
 
 ## Richiedi un preventivo
 
-Compila i campi e invia: si aprirà la tua app di posta con il messaggio **già pronto**, da controllare e spedire. Ti risponderemo con disponibilità e condizioni. Ti chiediamo di contattarci **con qualche settimana di anticipo**.
+Compila i campi e scegli come inviare: **email** (si apre la tua app di posta con il messaggio già pronto) oppure **WhatsApp** (si apre la chat con il testo già scritto). Ti risponderemo con disponibilità e condizioni. Ti chiediamo di contattarci **con qualche settimana di anticipo**.
 
 <form id="form-eventi" class="prenota-form" novalidate>
   <div class="pf-griglia">
@@ -67,8 +67,11 @@ Compila i campi e invia: si aprirà la tua app di posta con il messaggio **già 
       <textarea name="note" rows="2" placeholder="Esigenze particolari, percorso della gara, presenza di minori…"></textarea>
     </label>
   </div>
-  <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
-  <p class="pf-nota">Nessun dato viene salvato online: il modulo prepara solo un'email dalla tua casella di posta. In alternativa, chiamaci o scrivici su WhatsApp.</p>
+  <div class="pf-invio">
+    <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
+    <button type="submit" class="btn btn-giallo btn-lg" data-whatsapp>💬 Invia su WhatsApp</button>
+  </div>
+  <p class="pf-nota"><strong>Privacy:</strong> il sito non salva nulla, il modulo prepara solo il messaggio. Con <strong>email</strong> il testo resta nella tua casella di posta fino a quando lo invii. Con <strong>WhatsApp</strong> il testo viene passato all'app di WhatsApp (Meta) già al clic, come in qualsiasi chat: se preferisci non condividere dettagli sulla salute in quel modo, usa l'email o chiamaci.</p>
 </form>
 
 <div class="rt-azioni">
@@ -76,5 +79,35 @@ Compila i campi e invia: si aprirà la tua app di posta con il messaggio **già 
   <a class="btn btn-giallo btn-lg" href="https://wa.me/393484068657" target="_blank" rel="noopener">💬 Scrivici su WhatsApp</a>
   <a class="btn btn-ciano btn-lg" href="mailto:sede@misericordia-ariccia.it">✉️ Email</a>
 </div>
+
+## Domande frequenti
+
+<details class="faq-item">
+<summary>Per il mio evento è obbligatoria l'ambulanza?</summary>
+
+Dipende dal tipo di evento, dal numero di partecipanti e da quanto richiedono il Comune e l'ASL per l'autorizzazione. Descrivici l'evento: ti aiutiamo a **valutare il fabbisogno sanitario** e a definire il presidio più adatto.
+
+</details>
+
+<details class="faq-item">
+<summary>Quanto costa l'assistenza sanitaria a un evento?</summary>
+
+Dipende dalla durata, dal numero di mezzi e soccorritori necessari e dal luogo. Siamo un'organizzazione di volontariato: chiediamo un **contributo** che copre i costi del servizio. Compila il modulo e ti mandiamo un **preventivo senza impegno**.
+
+</details>
+
+<details class="faq-item">
+<summary>Con quanto anticipo devo chiedere il servizio?</summary>
+
+Idealmente **qualche settimana prima**, soprattutto per i weekend estivi e le feste patronali, quando le richieste sono tante.
+
+</details>
+
+<details class="faq-item">
+<summary>Coprite anche eventi fuori dai Castelli Romani?</summary>
+
+Operiamo ad **Ariccia e nei Castelli Romani** e, in base alla disponibilità dei volontari, nei territori limitrofi. Chiedici pure.
+
+</details>
 
 Alcune delle nostre assistenze recenti: [saggi di danza a Genzano](/news/assistenza-sanitaria-saggi-danza-genzano/), [«Fantastiche Visioni»](/news/assistenza-sanitaria-fantastiche-visioni/) — e trovi le altre nelle [news](/news/).

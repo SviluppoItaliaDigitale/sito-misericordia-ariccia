@@ -87,6 +87,22 @@ a:hover { color: var(--mise-navy); }
 }
 .navbar-mise .nav-link:hover { color: var(--mise-giallo); }
 .navbar-mise .nav-link.active { border-bottom-color: var(--mise-giallo); font-weight: 600; }
+/* Il menu esteso compare da 1200 px (navbar-expand-xl): sotto, con undici
+   voci più lingua, ricerca e Sostienici, non ci starebbe e si usa il pannello
+   laterale. Tra 1200 e 1499 px il menu è compatto: fregio nascosto, lingua e
+   Cerca con la sola icona (le etichette restano per lo screen reader). */
+@media (min-width: 1200px) and (max-width: 1499.98px) {
+  .navbar-mise .navbar-brand { font-size: 1rem; gap: .4rem; }
+  .navbar-mise .brand-mark { height: 2.3rem; }
+  .navbar-mise .nav-link { font-size: .86rem; padding-inline: .38rem; }
+  .navbar-mise .nav-item[aria-hidden="true"] { display: none !important; }
+  .navbar-mise .nav-link[aria-label="Scegli la lingua"] { font-size: 0; }
+  .navbar-mise .nav-link[aria-label="Scegli la lingua"]::before { content: "🌐"; font-size: 1rem; }
+  .navbar-mise .cerca-btn { padding: .3rem .55rem; }
+  .navbar-mise .cerca-btn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .navbar-mise .nav-item.ms-lg-2 { margin-left: .3rem !important; }
+  .navbar-mise .btn-giallo.btn-sm { padding-inline: .6rem; font-size: .82rem; }
+}
 .navbar-mise .navbar-toggler { border-color: rgba(255,255,255,.55); }
 .navbar-mise .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -453,6 +469,7 @@ a:hover { color: var(--mise-navy); }
 @media (prefers-reduced-motion: reduce) { #whatsapp-flot { transition: none; } }
 
 /* FAQ — accordion */
+.pf-invio { display: flex; flex-wrap: wrap; gap: .6rem; }
 .faq-item { background: var(--mise-carta); border-radius: .7rem; margin-bottom: .7rem; border-left: 4px solid var(--mise-ciano); overflow: hidden; }
 .faq-item summary {
   cursor: pointer; list-style: none; padding: .9rem 1.1rem;
@@ -883,7 +900,7 @@ a:hover { color: var(--mise-navy); }
 }
 /* Apertura al passaggio del mouse (desktop) — niente clic obbligatorio.
    Nessuno stacco tra voce e menu, così il mouse non "perde" l'hover. */
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar-mise .nav-item.dropdown:hover > .dropdown-menu,
   .navbar-mise .nav-item.dropdown:focus-within > .dropdown-menu {
     display: block; top: 100%; left: 0;

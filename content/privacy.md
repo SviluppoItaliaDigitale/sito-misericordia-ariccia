@@ -17,7 +17,7 @@ Questo sito **non utilizza cookie** di profilazione né strumenti di tracciament
 
 ## Trattamento dei dati
 
-Il sito è puramente informativo e **non raccoglie dati** tramite moduli online. Se ci scrivi via email o ci telefoni, utilizziamo i tuoi recapiti **solo per risponderti** e per la finalità per cui ci hai contattato, senza comunicarli o diffonderli a terzi.
+Il sito è puramente informativo e **non raccoglie dati** tramite moduli online: i moduli «Richiedi un trasporto» e «Assistenza per eventi» non inviano nulla ai nostri server, ma preparano un messaggio che spedisci tu con la tua app di posta oppure con **WhatsApp**. Se scegli WhatsApp, il testo del messaggio (compresi i dati che hai inserito) viene passato all'app di WhatsApp, gestita da Meta, secondo le sue condizioni e la sua informativa: se preferisci, usa l'email o il telefono. Se ci scrivi o ci telefoni, utilizziamo i tuoi recapiti **solo per risponderti** e per la finalità per cui ci hai contattato, senza comunicarli o diffonderli a terzi.
 
 ## Titolare del trattamento
 

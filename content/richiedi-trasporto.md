@@ -37,7 +37,7 @@ Quando ci contatti, tieni pronti questi dati: **data e orario**, **luogo di part
 
 ## Come prenotare
 
-Compila i campi qui sotto e invia: si aprirà la tua app di posta con il messaggio **già pronto**, da controllare e spedire. È il modo più veloce per darci tutte le informazioni in una volta.
+Compila i campi qui sotto e scegli come inviare: **email** (si apre la tua app di posta con il messaggio già pronto) oppure **WhatsApp** (si apre la chat con il nostro numero e il testo già scritto). È il modo più veloce per darci tutte le informazioni in una volta.
 
 <form id="form-prenota" class="prenota-form" novalidate>
   <div class="pf-griglia">
@@ -74,8 +74,11 @@ Compila i campi qui sotto e invia: si aprirà la tua app di posta con il messagg
       <textarea name="note" rows="2"></textarea>
     </label>
   </div>
-  <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
-  <p class="pf-nota">Nessun dato viene salvato online: il modulo prepara solo un'email dalla tua casella di posta. In alternativa, puoi chiamarci o scriverci su WhatsApp qui sotto.</p>
+  <div class="pf-invio">
+    <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
+    <button type="submit" class="btn btn-giallo btn-lg" data-whatsapp>💬 Invia su WhatsApp</button>
+  </div>
+  <p class="pf-nota"><strong>Privacy:</strong> il sito non salva nulla, il modulo prepara solo il messaggio. Con <strong>email</strong> il testo resta nella tua casella di posta fino a quando lo invii. Con <strong>WhatsApp</strong> il testo viene passato all'app di WhatsApp (Meta) già al clic, come in qualsiasi chat: se preferisci non condividere dettagli sulla salute in quel modo, usa l'email o chiamaci.</p>
 </form>
 
 <div class="rt-azioni">
@@ -85,3 +88,5 @@ Compila i campi qui sotto e invia: si aprirà la tua app di posta con il messagg
 </div>
 
 Alcuni servizi vengono attivati tramite gli enti locali.
+
+*Approfondisci: [ambulanza privata](/ambulanza-privata-castelli-romani/), [dimissioni ospedaliere](/dimissioni-ospedaliere/), [trasporto dializzati](/trasporto-dializzati/), [trasporto disabili](/trasporto-disabili-castelli-romani/).*

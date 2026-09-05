@@ -8,6 +8,7 @@
   if (!form) return;
 
   var DEST = "sede@misericordia-ariccia.it";
+  var WA = "393484068657";
 
   function val(nome) {
     var el = form.elements[nome];
@@ -42,6 +43,12 @@
 
     var oggetto = "Richiesta di trasporto - " + nome;
     var corpo = righe.join("\n");
+    if (e.submitter && e.submitter.hasAttribute("data-whatsapp")) {
+      /* Stesso messaggio, ma su WhatsApp: funziona anche sui telefoni senza
+         un'app di posta configurata. */
+      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(corpo), "_blank", "noopener");
+      return;
+    }
     var url = "mailto:" + DEST +
       "?subject=" + encodeURIComponent(oggetto) +
       "&body=" + encodeURIComponent(corpo);
@@ -59,6 +66,7 @@
   if (!form) return;
 
   var DEST = "sede@misericordia-ariccia.it";
+  var WA = "393484068657";
 
   function val(nome) {
     var el = form.elements[nome];
@@ -92,6 +100,10 @@
     ];
 
     var oggetto = "Richiesta assistenza evento - " + nome;
+    if (e.submitter && e.submitter.hasAttribute("data-whatsapp")) {
+      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(righe.join("\n")), "_blank", "noopener");
+      return;
+    }
     var url = "mailto:" + DEST +
       "?subject=" + encodeURIComponent(oggetto) +
       "&body=" + encodeURIComponent(righe.join("\n"));
