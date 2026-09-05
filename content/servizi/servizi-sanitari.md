@@ -1,5 +1,7 @@
 ---
 title: "Servizi sanitari"
+titoloSeo: "Servizi sanitari: ambulanza, trasporti e assistenza eventi ad Ariccia"
+description: "Trasporto in ambulanza, assistenza sanitaria a feste ed eventi, trasferimenti tra ospedali in convenzione con la ASL Roma 6: i servizi sanitari della Misericordia di Ariccia. Prenota al 348 4068657."
 italianoSemplice: |
   **I servizi sanitari della Misericordia.**
 
@@ -36,7 +38,7 @@ contatto:
 ---
 
 <div class="galleria-griglia">
-  <img src="/img/attivita/attivita-01.jpg" alt="Assistenza sanitaria a una manifestazione sportiva">
-  <img src="/img/attivita/attivita-08.jpg" alt="Presidio sanitario serale a un evento pubblico">
-  <img src="/img/attivita/attivita-11.jpg" alt="Assistenza sanitaria a una gara sportiva sul territorio">
+  <picture><source srcset="/img/attivita/attivita-01.webp" type="image/webp"><img src="/img/attivita/attivita-01.jpg" alt="Assistenza sanitaria a una manifestazione sportiva" width="1200" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-08.webp" type="image/webp"><img src="/img/attivita/attivita-08.jpg" alt="Presidio sanitario serale a un evento pubblico" width="1600" height="1204" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-11.webp" type="image/webp"><img src="/img/attivita/attivita-11.jpg" alt="Assistenza sanitaria a una gara sportiva sul territorio" width="1600" height="1200" loading="lazy" decoding="async"></picture>
 </div>

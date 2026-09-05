@@ -6,6 +6,24 @@
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 
+  # CSS e JS hanno l'impronta del contenuto nel nome (es. sito.a1b2c3.css):
+  # a ogni modifica cambia il nome, quindi possono restare in cache un anno.
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Font auto-ospitati: non cambiano mai.
+  <FilesMatch "\.(woff2|woff|ttf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Immagini: un mese (le foto nuove hanno sempre un nome nuovo).
+  <FilesMatch "\.(jpe?g|png|webp|gif|svg|ico|avif)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  # Documenti PDF e indice di ricerca / feed: un giorno.
+  <FilesMatch "\.(pdf|json|xml)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
   # Intestazioni di sicurezza: il browser non deve "indovinare" i tipi di
   # file, il sito non può essere incorniciato da altri siti, e non passiamo
   # l'indirizzo completo delle pagine ai siti esterni che linkiamo.
@@ -13,6 +31,39 @@
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Tipi MIME corretti per WebP e font (alcuni server non li conoscono).
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/avif .avif
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# Compressione dei file di testo (HTML, CSS, JS, JSON, XML, SVG, font):
+# riduce di circa il 70% i byte trasferiti. Se il modulo manca, si ignora.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml application/ld+json
+  AddOutputFilterByType DEFLATE image/svg+xml font/ttf font/otf application/vnd.ms-fontobject
+</IfModule>
+
+# Scadenze di cache anche via mod_expires (per i server senza mod_headers).
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 day"
+  ExpiresByType application/json "access plus 1 day"
 </IfModule>
 
 # ---------------------------------------------------------------------------

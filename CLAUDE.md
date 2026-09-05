@@ -46,8 +46,33 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
 - `content/liturgia-del-giorno.md` — pagina della Liturgia del giorno
 - `content/news/` — notizie
 - `content/servizi/` — servizi offerti
-- `assets/` — loghi e immagini
+- `assets/` — CSS, JS e librerie (Hugo Pipes: bundle unico minificato con
+  impronta nel nome; vedi `assets/README.md` e `layouts/_default/baseof.html`)
+- `static/img/` — loghi e foto (con copia `.webp` accanto a ogni jpg/png)
+- `static/fonts/` — font auto-ospitati (woff2)
+- `scripts/ottimizza-immagini.py` — ricompressione JPEG + creazione `.webp`
 - `docs/` — documentazione di progetto
+
+## SEO e performance (audit settembre 2026)
+
+- **Titoli**: `titoloSeo` nel front matter = titolo per Google/social (con
+  luogo e servizio), l'H1 in pagina resta `title`. `description` sempre
+  presente e specifica. `immagine` nel front matter = anteprima social
+  (default: `static/img/og-default.jpg` 1200×630).
+- **Schema.org**: NGO+LocalBusiness e WebSite in home; BreadcrumbList
+  ovunque; NewsArticle nelle news; Service nella sezione servizi e nelle
+  pagine con `servizio: "Nome del servizio"` nel front matter; FAQPage.
+- **Immagini**: le immagini Markdown passano dal render hook
+  `layouts/_default/_markup/render-image.html` (WebP se esiste, width/height,
+  lazy tranne la prima). Dopo aver aggiunto foto o grafiche nuove lanciare
+  `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`;
+  i JPEG in `static/img/social/` non vengono mai toccati).
+- **Cache**: `.htaccess` mette CSS/JS/font in cache un anno (nomi con
+  impronta), immagini un mese, HTML mai.
+- **Da fare fuori dal repo** (l'utente): Google Search Console e Bing
+  Webmaster (inviare `https://www.misericordia-ariccia.it/sitemap.xml`),
+  scheda Google Business Profile aggiornata con il sito, richiedere link
+  dai siti di Comune di Ariccia, Confederazione Misericordie, ASL Roma 6.
 
 ## FLUSSO EDITORIALE — foto + testi → articolo, grafica e social
 

@@ -5,7 +5,7 @@ description: "Le grafiche ufficiali della Misericordia di Ariccia pronte da scar
 # noindex per i motori; list:never la esclude da sitemap, mappa del sito,
 # ricerca interna e liste automatiche.
 noindex: true
-_build:
+build:
   render: always
   list: never
 italianoSemplice: |

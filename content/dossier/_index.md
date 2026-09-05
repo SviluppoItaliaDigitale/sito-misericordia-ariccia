@@ -1,5 +1,6 @@
 ---
 title: "Dossier"
+description: "I dossier della Misericordia di Ariccia: racconti visivi di approfondimento sulla storia delle Misericordie, le Opere di Misericordia e i valori del volontariato."
 italianoSemplice: |
   **I dossier sono racconti di approfondimento.**
 

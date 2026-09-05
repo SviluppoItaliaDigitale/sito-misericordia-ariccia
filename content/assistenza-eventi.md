@@ -1,5 +1,7 @@
 ---
 title: "Assistenza sanitaria per eventi"
+titoloSeo: "Assistenza sanitaria per eventi e manifestazioni ai Castelli Romani"
+servizio: "Assistenza sanitaria per eventi"
 description: "Presidio sanitario con ambulanza e soccorritori per gare sportive, sagre, concerti e manifestazioni nei Castelli Romani: richiedi un preventivo alla Misericordia di Ariccia."
 italianoSemplice: |
   **Organizzi una festa, una gara o un evento?**
@@ -16,8 +18,8 @@ italianoSemplice: |
 Gare sportive, sagre di paese, concerti, saggi di danza, processioni, manifestazioni pubbliche: per molti eventi la presenza di un **presidio sanitario è necessaria** (e per tutti è una buona idea). La Misericordia di Ariccia garantisce l'assistenza con **ambulanze, soccorritori formati e DAE**, come facciamo da anni per gli eventi dei Castelli Romani.
 
 <div class="galleria-griglia">
-  <img src="/img/attivita/attivita-01.jpg" alt="Assistenza sanitaria a una manifestazione sportiva">
-  <img src="/img/attivita/attivita-08.jpg" alt="Presidio sanitario serale a un evento pubblico">
+  <picture><source srcset="/img/attivita/attivita-01.webp" type="image/webp"><img src="/img/attivita/attivita-01.jpg" alt="Assistenza sanitaria a una manifestazione sportiva" width="1200" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-08.webp" type="image/webp"><img src="/img/attivita/attivita-08.jpg" alt="Presidio sanitario serale a un evento pubblico" width="1600" height="1204" loading="lazy" decoding="async"></picture>
 </div>
 
 ## Cosa offriamo

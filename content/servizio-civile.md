@@ -1,5 +1,6 @@
 ---
 title: "Servizio Civile Universale"
+titoloSeo: "Servizio Civile Universale ad Ariccia: progetti, requisiti e bando"
 description: "Servizio Civile Universale alla Misericordia di Ariccia: requisiti (18-28 anni), assegno mensile, domanda sulla piattaforma DOL e progetti attivi ad Ariccia."
 italianoSemplice: |
   **Il Servizio Civile è un anno di aiuto alla comunità.**
@@ -20,7 +21,7 @@ italianoSemplice: |
 {{< logo src="img/loghi/scu-universale.jpg" alt="Logo ufficiale del Servizio Civile Universale" class="logo-scu" width="170" height="170" >}}
 
 <figure class="storia-foto storia-foto--lato">
-  <img src="/img/scu-sognate-cose-grandi.jpg" alt="Locandina del Servizio Civile Universale con le Misericordie: Nuove competenze — Sognate cose grandi" loading="lazy" width="335" height="597">
+  <picture><source srcset="/img/scu-sognate-cose-grandi.webp" type="image/webp"><img src="/img/scu-sognate-cose-grandi.jpg" alt="Locandina del Servizio Civile Universale con le Misericordie: Nuove competenze — Sognate cose grandi" loading="lazy" width="335" height="597" decoding="async"></picture>
   <figcaption>Servizio Civile con le Misericordie: «Sognate cose grandi».</figcaption>
 </figure>
 

@@ -1,5 +1,7 @@
 ---
 title: "Otto secoli di carità"
+titoloSeo: "Otto secoli di carità: la storia delle Misericordie dal 1244 a oggi"
+description: "La storia delle Confraternite di Misericordia dal 1244 a Firenze fino a oggi: otto secoli di volontariato, la buffa, le tappe principali e i numeri del Movimento."
 italianoSemplice: |
   **La storia delle Misericordie.**
 
