@@ -1,5 +1,7 @@
 ---
 title: "Servizi sociali"
+titoloSeo: "Servizi sociali: trasporto disabili, Banco Alimentare e Centro di Ascolto ad Ariccia"
+description: "Trasporto per persone con disabilità, Banco Alimentare, Centro d'Ascolto e sostegno psicologico: i servizi sociali gratuiti della Misericordia di Ariccia per chi è in difficoltà nei Castelli Romani."
 italianoSemplice: |
   **I servizi sociali della Misericordia.**
 
@@ -32,8 +34,8 @@ contatto:
 ---
 
 <div class="galleria-griglia">
-  <img src="/img/attivita/attivita-03.jpg" alt="Mezzo per i servizi sociali della Misericordia di Ariccia">
-  <img src="/img/attivita/attivita-05.jpg" alt="Veicolo attrezzato per il trasporto sociale">
-  <img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali nel centro di Ariccia">
+  <picture><source srcset="/img/attivita/attivita-03.webp" type="image/webp"><img src="/img/attivita/attivita-03.jpg" alt="Mezzo per i servizi sociali della Misericordia di Ariccia" width="1600" height="1200" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-05.webp" type="image/webp"><img src="/img/attivita/attivita-05.jpg" alt="Veicolo attrezzato per il trasporto sociale" width="1200" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali nel centro di Ariccia" width="1200" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 

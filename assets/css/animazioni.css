@@ -38,7 +38,7 @@
    e farle fare parallasse senza muovere il testo. */
 .hero-foto {
   position: absolute; inset: -8% -4%;
-  background: url("../img/hero-piazza.jpg") center 38% / cover no-repeat;
+  background: var(--hero-foto) center 38% / cover no-repeat;
   z-index: 0;
   transform: scale(1.06);
   animation: kenburns 26s ease-in-out infinite alternate;

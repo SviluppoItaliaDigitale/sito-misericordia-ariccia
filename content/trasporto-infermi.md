@@ -1,5 +1,6 @@
 ---
 title: "Trasporto infermi e disabili"
+titoloSeo: "Trasporto infermi e disabili ad Ariccia e Castelli Romani: ambulanza e mezzi con pedana"
 italianoSemplice: |
   **La Misericordia accompagna le persone che non possono muoversi da sole.**
 

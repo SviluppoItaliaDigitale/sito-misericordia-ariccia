@@ -1,37 +1,54 @@
 # Sito web — Misericordia di Ariccia
 
-Nuovo sito web della **Confraternita di Misericordia di Ariccia ODV**, organizzazione di volontariato attiva dal 1994 nei Castelli Romani e zone limitrofe.
+Sito web della **Confraternita di Misericordia di Ariccia ODV**, organizzazione di
+volontariato attiva dal 1994 nei Castelli Romani.
 
-> Questo repository ospita lo sviluppo del **nuovo sito**, destinato a sostituire l'attuale
-> [misericordiadiariccia.it](https://www.misericordiadiariccia.it/) (WordPress).
+🌐 **Online**: https://www.misericordia-ariccia.it/
 
-## Stato del progetto
+## Tecnologia
 
-🚧 **In avvio** — struttura, tecnologia e ambiente di pubblicazione da definire.
-
-## Identità visiva
-
-- Colore primario: **navy `#07193F`**
-- Font: **Jost** (titoli) / **Inter** (testo)
-- Loghi e materiali: cartella `assets/` (da popolare)
+- **Hugo 0.154.5** (extended), sito statico: niente database, niente cookie,
+  niente tracker, font auto-ospitati.
+- **Deploy** automatico con GitHub Actions su Aruba (FTPS):
+  `.github/workflows/deploy.yml` — a ogni push su `main` e ogni notte
+  (Liturgia del giorno); `guardiano-liturgia.yml` è la rete di sicurezza.
+- **Performance**: CSS e JS in un solo bundle minificato con impronta nel
+  nome (cache un anno), immagini con copia WebP e dimensioni esplicite,
+  font precaricati, compressione e cache in `static/.htaccess`.
+- **SEO**: titoli e descrizioni per pagina, dati strutturati Schema.org
+  (organizzazione, briciole, servizi, articoli, FAQ), sitemap e hreflang.
 
 ## Struttura del repository
 
 ```
 sito-misericordia-ariccia/
-├── README.md        ← questo file
-├── assets/          ← loghi, immagini, materiali grafici
-├── contenuti/       ← testi e bozze delle pagine
-└── docs/            ← appunti di progetto e decisioni
+├── hugo.toml                ← configurazione (menu, contatti, titoli SEO)
+├── content/                 ← pagine (news/, servizi/, dossier/, en/…)
+├── layouts/                 ← template Hugo (baseof, home, partial, render hook)
+├── assets/                  ← CSS, JS, librerie (Hugo Pipes)
+├── static/                  ← img/, fonts/, documenti/, .htaccess, robots.txt
+├── data/annunci.yaml        ← barra annunci in alto
+├── scripts/                 ← ottimizza-immagini.py (JPEG + WebP)
+├── contenuti/               ← testi e bozze
+└── docs/                    ← appunti di progetto, inventario, benchmark
 ```
 
-La struttura evolverà quando sarà scelta la tecnologia del sito.
+## Lavorare in locale
+
+```bash
+CGO_ENABLED=0 go install github.com/gohugoio/hugo@v0.154.5   # se manca
+hugo server                       # anteprima su http://localhost:1313
+hugo --minify                     # build in public/
+python3 scripts/ottimizza-immagini.py static/img/news   # dopo nuove foto
+```
+
+Il flusso editoriale completo (articolo + grafica + testi social) è
+descritto in `CLAUDE.md`.
 
 ## Riferimenti
 
 - **Associazione:** Confraternita di Misericordia di Ariccia ODV — C.F. 90031910582
-- **Sede:** Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)
-- **Sito attuale:** https://www.misericordiadiariccia.it/
+- **Sede legale:** Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)
 - **Email:** sede@misericordia-ariccia.it
 
 ---

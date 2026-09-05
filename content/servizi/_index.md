@@ -1,5 +1,7 @@
 ---
 title: "I nostri servizi"
+titoloSeo: "Servizi sanitari e sociali ad Ariccia e Castelli Romani"
+description: "Servizi sanitari e sociali gratuiti della Misericordia di Ariccia: trasporto in ambulanza, trasporto disabili con pedana, assistenza eventi, Banco Alimentare, Centro di Ascolto e corsi di primo soccorso ai Castelli Romani."
 italianoSemplice: |
   **La Misericordia di Ariccia offre servizi sanitari e sociali.**
 

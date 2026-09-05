@@ -30,12 +30,12 @@ Con noi, in corteo e ai lati del percorso: il Sindaco con la fascia tricolore, l
 ## Le foto della serata
 
 <div class="galleria-griglia">
-  <img src="/img/news/apollonia-2026-piazza.jpg" alt="Piazza di Corte con la chiesa di Santa Maria Assunta, la processione in formazione e l'ambulanza della Misericordia accanto alla fontana">
-  <img src="/img/news/apollonia-2026-statua.jpg" alt="La statua dorata di Santa Apollonia sotto il baldacchino a colonne tortili, portata dai Cavalieri in veste rossa">
-  <img src="/img/news/apollonia-2026-processione.jpg" alt="La processione lungo le vie di Ariccia con la macchina dorata della Santa, il Sindaco con la fascia tricolore e un nostro volontario in primo piano">
-  <img src="/img/news/apollonia-2026-stendardo.jpg" alt="Il confratello della Misericordia regge lo stendardo della Confraternita, datato 1996, in Piazza di Corte">
-  <img src="/img/news/apollonia-2026-gruppo.jpg" alt="Foto di gruppo davanti all'Assunta: la statua della Santa, i Cavalieri, il Sindaco, le autorità, i costumi tradizionali e i volontari della Misericordia con lo stendardo">
-  <img src="/img/news/apollonia-2026-selfie.jpg" alt="Selfie delle volontarie della Misericordia tra la folla in Piazza di Corte durante la festa">
+  <picture><source srcset="/img/news/apollonia-2026-piazza.webp" type="image/webp"><img src="/img/news/apollonia-2026-piazza.jpg" alt="Piazza di Corte con la chiesa di Santa Maria Assunta, la processione in formazione e l'ambulanza della Misericordia accanto alla fontana" width="1051" height="688" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/news/apollonia-2026-statua.webp" type="image/webp"><img src="/img/news/apollonia-2026-statua.jpg" alt="La statua dorata di Santa Apollonia sotto il baldacchino a colonne tortili, portata dai Cavalieri in veste rossa" width="900" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/news/apollonia-2026-processione.webp" type="image/webp"><img src="/img/news/apollonia-2026-processione.jpg" alt="La processione lungo le vie di Ariccia con la macchina dorata della Santa, il Sindaco con la fascia tricolore e un nostro volontario in primo piano" width="1201" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/news/apollonia-2026-stendardo.webp" type="image/webp"><img src="/img/news/apollonia-2026-stendardo.jpg" alt="Il confratello della Misericordia regge lo stendardo della Confraternita, datato 1996, in Piazza di Corte" width="900" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/news/apollonia-2026-gruppo.webp" type="image/webp"><img src="/img/news/apollonia-2026-gruppo.jpg" alt="Foto di gruppo davanti all'Assunta: la statua della Santa, i Cavalieri, il Sindaco, le autorità, i costumi tradizionali e i volontari della Misericordia con lo stendardo" width="1600" height="1200" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/news/apollonia-2026-selfie.webp" type="image/webp"><img src="/img/news/apollonia-2026-selfie.jpg" alt="Selfie delle volontarie della Misericordia tra la folla in Piazza di Corte durante la festa" width="900" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 
 ## E stasera si continua!

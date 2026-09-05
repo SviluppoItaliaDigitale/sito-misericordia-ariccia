@@ -275,19 +275,23 @@ html.a11y-guida #a11y-guida { display: block; }
 }
 @media (prefers-reduced-motion: reduce) { .gal-item img { transition: none; } .gal-item img:hover { transform: none; } }
 
-/* Foto di repertorio inserite nelle pagine (img dirette dentro la griglia) */
-.galleria-griglia > img {
+/* Foto di repertorio inserite nelle pagine (img dirette dentro la griglia,
+   oppure dentro <picture> quando c'è la versione WebP) */
+.galleria-griglia > picture { display: block; break-inside: avoid; margin: 0 0 16px; }
+.galleria-griglia > picture > img { margin: 0; }
+.galleria-griglia > img, .galleria-griglia > picture > img {
   break-inside: avoid; margin: 0 0 16px;
   width: 100%; height: auto; display: block; border-radius: 14px; cursor: zoom-in;
   box-shadow: 0 6px 18px rgba(0, 0, 0, .10);
   transition: transform .25s ease, box-shadow .25s ease;
 }
-.galleria-griglia > img:hover, .galleria-griglia > img:focus-visible {
+.galleria-griglia > img:hover, .galleria-griglia > img:focus-visible,
+.galleria-griglia > picture > img:hover, .galleria-griglia > picture > img:focus-visible {
   transform: translateY(-4px); box-shadow: 0 16px 34px rgba(0, 0, 0, .20); outline: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .galleria-griglia > img { transition: none; }
-  .galleria-griglia > img:hover { transform: none; }
+  .galleria-griglia > img, .galleria-griglia > picture > img { transition: none; }
+  .galleria-griglia > img:hover, .galleria-griglia > picture > img:hover { transform: none; }
 }
 
 /* Menù lingue nel menu mobile */

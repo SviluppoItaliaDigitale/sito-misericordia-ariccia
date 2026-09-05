@@ -1,5 +1,7 @@
 ---
 title: "Formazione"
+titoloSeo: "Corsi di primo soccorso e BLSD ad Ariccia e Castelli Romani"
+description: "Corsi di primo soccorso, BLSD e P-BLSD, soccorritore di I e II livello e autisti dei mezzi di emergenza: la formazione della Misericordia di Ariccia, aperta a tutti, con istruttori abilitati ARES 118."
 italianoSemplice: |
   **La Misericordia organizza corsi di formazione.**
 

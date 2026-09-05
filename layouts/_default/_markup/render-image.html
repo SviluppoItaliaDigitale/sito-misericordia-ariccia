@@ -1,0 +1,20 @@
+{{- /* Immagini dei contenuti Markdown: WebP dove esiste la copia accanto al file,
+     dimensioni reali (niente salti di layout), caricamento pigro e decodifica
+     asincrona. Le immagini esterne o senza file in static/ passano invariate. */ -}}
+{{- $src := .Destination -}}
+{{- $file := "" -}}
+{{- if hasPrefix $src "/" }}{{ $file = printf "static%s" $src }}{{ else if not (hasPrefix $src "http") }}{{ $file = printf "static/%s" $src }}{{ end -}}
+{{- $dim := "" -}}
+{{- if and $file (fileExists $file) }}{{ $dim = imageConfig $file }}{{ end -}}
+{{- $webp := "" -}}
+{{- if and $file (findRE `\.(?i:jpe?g|png)$` $src) }}
+  {{- $cand := replaceRE `\.(?i:jpe?g|png)$` ".webp" $src -}}
+  {{- if fileExists (replaceRE `\.(?i:jpe?g|png)$` ".webp" $file) }}{{ $webp = $cand }}{{ end -}}
+{{- end -}}
+{{- /* La prima immagine dell'articolo è quasi sempre la più grande visibile
+     (LCP): si carica subito e con priorità; le altre in modo pigro. */ -}}
+{{- $carico := cond (eq .Ordinal 0) `fetchpriority="high"` `loading="lazy"` -}}
+{{- if $webp }}<picture>
+  <source srcset="{{ $webp | safeURL }}" type="image/webp">
+  <img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $dim }} width="{{ .Width }}" height="{{ .Height }}"{{ end }} {{ $carico | safeHTMLAttr }} decoding="async">
+</picture>{{ else }}<img src="{{ $src | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ with $dim }} width="{{ .Width }}" height="{{ .Height }}"{{ end }} {{ $carico | safeHTMLAttr }} decoding="async">{{ end -}}

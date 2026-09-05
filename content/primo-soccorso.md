@@ -1,5 +1,6 @@
 ---
 title: "Primo soccorso: cosa fare"
+titoloSeo: "Primo soccorso: cosa fare in caso di emergenza (guida pratica)"
 description: "Guida di primo soccorso della Misericordia di Ariccia: cosa fare in caso di soffocamento, arresto cardiaco, malore, emorragia, ustione e colpo di calore. In emergenza chiama sempre il 112."
 italianoSemplice: |
   **Cosa fare in caso di emergenza.**

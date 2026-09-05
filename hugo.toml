@@ -14,7 +14,15 @@ enableGitInfo = true
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+# Sitemap: frequenza indicativa; le date di modifica vengono da git (enableGitInfo)
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
 [params]
+  # Titolo della home per i motori di ricerca (l'H1 in pagina resta quello del layout)
+  titoloHome = "Misericordia di Ariccia ODV — Trasporto infermi, volontariato e servizi ai Castelli Romani"
   descrizione = "Confraternita di Misericordia di Ariccia ODV — volontariato, servizi alla persona, Centro di Ascolto e Banco Alimentare, formazione e Servizio Civile Universale ai Castelli Romani dal 1994."
   telefono = "348 4068657"
   telefonoFisso = "06 933 3717"

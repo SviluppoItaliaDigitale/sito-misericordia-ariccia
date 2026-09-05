@@ -22,8 +22,11 @@
 <nav class="navbar navbar-expand-lg navbar-mise sticky-top" aria-label="Navigazione principale">
   <div class="container">
     <a class="navbar-brand" href="{{ "/" | relURL }}">
-      <img class="brand-mark" src="{{ "img/loghi/mise-triangolo.png" | relURL }}"
-           alt="" width="64" height="56" aria-hidden="true">
+      <picture>
+        <source srcset="{{ "img/loghi/mise-triangolo-128.webp" | relURL }}" type="image/webp">
+        <img class="brand-mark" src="{{ "img/loghi/mise-triangolo-128.png" | relURL }}"
+             alt="" width="64" height="56" aria-hidden="true" decoding="async">
+      </picture>
       <span>Misericordia di Ariccia</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile"
@@ -79,8 +82,11 @@
           <a class="btn btn-giallo btn-sm px-3" href="{{ "/sostienici/" | relURL }}">Sostienici</a>
         </li>
         <li class="nav-item ms-lg-2" aria-hidden="true">
-          <img class="fregio-navbar" src="{{ "img/loghi/mise-fregio.png" | relURL }}"
-               alt="" width="42" height="42" loading="lazy">
+          <picture>
+            <source srcset="{{ "img/loghi/mise-fregio-84.webp" | relURL }}" type="image/webp">
+            <img class="fregio-navbar" src="{{ "img/loghi/mise-fregio-84.png" | relURL }}"
+                 alt="" width="42" height="42" loading="lazy" decoding="async">
+          </picture>
         </li>
       </ul>
     </div>

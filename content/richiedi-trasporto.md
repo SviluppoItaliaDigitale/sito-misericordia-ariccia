@@ -1,5 +1,7 @@
 ---
 title: "Richiedi un trasporto"
+titoloSeo: "Richiedi un trasporto sanitario o sociale ad Ariccia e Castelli Romani"
+servizio: "Trasporto sanitario e sociale"
 description: "Prenota un trasporto sanitario o sociale con la Misericordia di Ariccia: ambulanza, auto o mezzi con pedana. Modulo online, telefono 348 4068657 e WhatsApp."
 italianoSemplice: |
   **Puoi chiedere un trasporto alla Misericordia.**
@@ -18,7 +20,7 @@ italianoSemplice: |
 La Misericordia di Ariccia effettua **trasporti sanitari e sociali** con i propri mezzi e volontari formati. Contattaci e organizzeremo il servizio insieme.
 
 <div class="galleria-griglia">
-  <img src="/img/attivita/attivita-13.jpg" alt="Volontari della Misericordia accompagnano una persona lungo le scale">
+  <picture><source srcset="/img/attivita/attivita-13.webp" type="image/webp"><img src="/img/attivita/attivita-13.jpg" alt="Volontari della Misericordia accompagnano una persona lungo le scale" width="1200" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 
 ## Quali trasporti effettuiamo

@@ -1,5 +1,7 @@
 ---
 title: "Contatti rapidi"
+sitemap:
+  disable: true
 layout: "leggera"
 description: "Versione leggerissima con i contatti essenziali della Misericordia di Ariccia: si apre in un attimo anche con connessioni lente."
 ---
