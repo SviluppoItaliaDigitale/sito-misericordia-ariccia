@@ -80,6 +80,8 @@
       <article class="sv-card"><span class="sv-icona" aria-hidden="true">❤️</span><h3>Sostieni il bene</h3><p>Ogni trasporto sostiene il volontariato e i servizi gratuiti alle persone fragili del territorio.</p></article>
     </div>
 
+    {{ with .Content }}<div class="contenuto mt-4" data-anim="fade-up">{{ . }}</div>{{ end }}
+
     <div class="cs-cta mt-4" data-anim="fade-up">
       <h2>Prenota il tuo trasporto</h2>
       <p>Chiamaci o scrivici: troveremo insieme la soluzione migliore. In caso di emergenza chiama sempre il <a href="tel:112" style="color:#fff;text-decoration:underline">112</a>.</p>

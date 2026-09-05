@@ -170,8 +170,9 @@
     "provider" (dict "@type" "NGO" "@id" (printf "%s#organizzazione" site.BaseURL) "name" "Confraternita di Misericordia di Ariccia ODV" "url" site.BaseURL "telephone" "+393484068657")
     | jsonify | safeJS }}</script>
   {{ end }}
-  {{- /* Schema FAQPage: costruito dalle domande della pagina FAQ */ -}}
-  {{ if eq (path.Base .RelPermalink) "faq" }}
+  {{- /* Schema FAQPage: costruito dai blocchi <details><summary> presenti in
+       qualsiasi pagina (FAQ generale e sezioni "Domande frequenti" dei servizi). */ -}}
+  {{ if and (not .Params.noindex) (in .Content "<details") }}
   {{ $faq := slice }}
   {{ range findRE `(?s)<details[^>]*>.*?</details>` .Content }}
     {{ $q := replaceRE `(?s).*?<summary>(.*?)</summary>.*` "$1" . | plainify | strings.TrimSpace }}
