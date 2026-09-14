@@ -20,6 +20,14 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## La Misericordia raccontata in video — reportage «Albano Laziale, impatto positivo» (14 settembre 2026)
+
+<img src="/img/social/albano-impatto-positivo.jpg" alt="Grafica: la Governatrice Maddalena Basili con i volontari e il titolo «La Misericordia raccontata in video»" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/albano-impatto-positivo.jpg" download="misericordia-video-albano-impatto-positivo.jpg">⬇ Scarica</a>
+
+Il video da pubblicare insieme alla grafica (22 MB, formato 16:9): <a class="btn btn-ciano btn-lg" href="/video/albano-impatto-positivo.mp4" download="misericordia-albano-impatto-positivo.mp4">⬇ Scarica il video</a>
+
 ## Le parole del nostro Correttore — Assunzione di Maria (15 agosto 2026)
 
 <img src="/img/social/parole-correttore.jpg" alt="Grafica: «Le parole del nostro Correttore», il pensiero di don Antonio per la Festa dell'Assunta" width="540" loading="lazy">

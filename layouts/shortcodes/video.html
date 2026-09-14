@@ -1,0 +1,37 @@
+{{- /* Video auto-ospitato (niente YouTube: zero cookie e tracker).
+     Uso: {{< video src="video/nome.mp4" poster="img/video/nome.jpg" titolo="…"
+                    descrizione="…" durata="PT4M16S" data="2026-09-14"
+                    inizio="143" didascalia="…" >}}
+     - inizio: secondo da cui partire (frammento #t=), opzionale
+     - preload=none: il file (grande) si scarica solo quando l'utente preme play */ -}}
+{{- $src := .Get "src" -}}
+{{- $poster := .Get "poster" -}}
+{{- $inizio := .Get "inizio" -}}
+{{- $file := printf "static/%s" $src -}}
+{{- $posterFile := printf "static/%s" $poster -}}
+{{- $dim := "" }}{{ if and $poster (fileExists $posterFile) }}{{ $dim = imageConfig $posterFile }}{{ end -}}
+<figure class="video-riq">
+  <video controls preload="none" playsinline
+         {{ with $poster }}poster="{{ . | relURL }}"{{ end }}
+         {{ with $dim }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}
+         {{ with .Get "titolo" }}title="{{ . }}"{{ end }}>
+    <source src="{{ $src | relURL }}{{ with $inizio }}#t={{ . }}{{ end }}" type="video/mp4">
+    Il tuo browser non riproduce i video: <a href="{{ $src | relURL }}">scarica il file</a>.
+  </video>
+  {{ with .Get "didascalia" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+</figure>
+{{- /* Dati strutturati VideoObject: Google può mostrare l'anteprima video nei risultati */ -}}
+{{- if and (.Get "titolo") (.Get "descrizione") $poster }}
+<script type="application/ld+json">{{ dict
+  "@context" "https://schema.org"
+  "@type" "VideoObject"
+  "name" (.Get "titolo")
+  "description" (.Get "descrizione")
+  "thumbnailUrl" (absURL $poster)
+  "contentUrl" (absURL $src)
+  "uploadDate" (.Get "data" | default (.Page.Date.Format "2006-01-02"))
+  "duration" (.Get "durata" | default "")
+  "inLanguage" "it-IT"
+  "publisher" (dict "@type" "Organization" "name" "Confraternita di Misericordia di Ariccia ODV" "url" site.BaseURL)
+  | jsonify | safeJS }}</script>
+{{- end }}

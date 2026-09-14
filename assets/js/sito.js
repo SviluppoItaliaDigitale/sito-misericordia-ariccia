@@ -31,6 +31,25 @@
     });
   }
 
+  /* Video: i link con data-video-salta="secondi" portano il video della pagina
+     a quel punto e lo avviano (es. "vai alla parte della Misericordia"). */
+  document.querySelectorAll("[data-video-salta]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var v = document.querySelector(a.getAttribute("data-video-target") || ".video-riq video");
+      if (!v) return;
+      e.preventDefault();
+      var t = parseFloat(a.getAttribute("data-video-salta")) || 0;
+      var salta = function () { try { v.currentTime = t; } catch (err) {} };
+      /* play() va chiamato dentro il gesto dell'utente (iOS Safari lo rifiuta se
+         rimandato): parte subito e, se i metadati non sono ancora arrivati
+         (preload=none), il salto al minuto giusto avviene appena disponibili. */
+      if (v.readyState >= 1) salta(); else v.addEventListener("loadedmetadata", salta, { once: true });
+      var p = v.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
+      v.scrollIntoView({ behavior: riduciMotion ? "auto" : "smooth", block: "center" });
+    });
+  });
+
   /* Lightbox: le immagini dei contenuti si aprono ingrandite in un modale */
   var modaleEl = document.getElementById("lightbox");
   if (modaleEl && window.bootstrap) {
