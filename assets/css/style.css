@@ -470,6 +470,11 @@ a:hover { color: var(--mise-navy); }
 
 /* FAQ — accordion */
 .pf-invio { display: flex; flex-wrap: wrap; gap: .6rem; }
+/* Video auto-ospitato */
+.video-riq { margin: 1.5rem 0; }
+.video-riq video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; border-radius: .8rem; box-shadow: 0 10px 26px rgba(27,34,63,.20); }
+.video-riq figcaption { font-size: .92rem; color: #55607a; margin-top: .6rem; }
+.video-salta { display: inline-flex; align-items: center; gap: .4rem; }
 .faq-item { background: var(--mise-carta); border-radius: .7rem; margin-bottom: .7rem; border-left: 4px solid var(--mise-ciano); overflow: hidden; }
 .faq-item summary {
   cursor: pointer; list-style: none; padding: .9rem 1.1rem;

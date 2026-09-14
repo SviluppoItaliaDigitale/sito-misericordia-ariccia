@@ -19,6 +19,10 @@
   <FilesMatch "\.(jpe?g|png|webp|gif|svg|ico|avif)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
+  # Video auto-ospitati: un mese.
+  <FilesMatch "\.(mp4|webm)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
   # Documenti PDF e indice di ricerca / feed: un giorno.
   <FilesMatch "\.(pdf|json|xml)$">
     Header set Cache-Control "public, max-age=86400"
@@ -38,6 +42,7 @@
   AddType image/webp .webp
   AddType image/avif .avif
   AddType font/woff2 .woff2
+  AddType video/mp4 .mp4
   AddType application/manifest+json .webmanifest
 </IfModule>
 
