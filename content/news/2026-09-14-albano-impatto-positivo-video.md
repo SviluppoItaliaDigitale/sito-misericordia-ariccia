@@ -19,7 +19,7 @@ Quattro minuti per raccontare chi fa del bene, ogni giorno, sul nostro territori
 
 ![Grafica della Misericordia di Ariccia per il video «Albano Laziale, impatto positivo»: la Governatrice Maddalena Basili in pettorina gialla parla davanti ai volontari seduti nella sede, con un pulsante play al centro e il titolo «La Misericordia raccontata in video»](/img/news/albano-impatto-positivo-grafica.jpg)
 
-{{< video src="video/albano-impatto-positivo.mp4" poster="img/video/albano-impatto-positivo.jpg" titolo="Albano Laziale, impatto positivo: la Misericordia di Ariccia" descrizione="Reportage sulle realtà che fanno bene al territorio dei Castelli Romani: l'istituto Formalba e la Misericordia di Ariccia, con la Governatrice Maddalena Basili e il fondatore Fernando Nasoni." durata="PT4M16S" data="2026-09-14" didascalia="Il reportage completo (4 minuti e 16 secondi). Il video si scarica solo quando premi play." >}}
+{{< video src="video/albano-impatto-positivo.mp4" poster="img/video/albano-impatto-positivo.jpg" titolo="Albano Laziale, impatto positivo: la Misericordia di Ariccia" descrizione="Reportage realizzato da PMG sulle realtà che fanno bene al territorio dei Castelli Romani: l'istituto Formalba e la Misericordia di Ariccia, con la Governatrice Maddalena Basili e il fondatore Fernando Nasoni." durata="PT4M16S" data="2026-09-14" didascalia="Il reportage completo (4 minuti e 16 secondi), realizzato da PMG. Il video si scarica solo quando premi play." >}}
 
 <p><a class="btn btn-ciano" href="#" data-video-salta="143">▶ Vai alla parte della Misericordia (2:23)</a></p>
 
@@ -39,4 +39,4 @@ Se il video ti ha fatto venire voglia di darci una mano, [c'è posto anche per t
 
 A chi ha realizzato il reportage e ci ha dato voce: **che Iddio ve ne renda merito**.
 
-*Il video fa parte del reportage «Albano Laziale, impatto positivo», che racconta anche l'istituto di formazione Formalba di Albano Laziale.*
+*Il video fa parte del reportage «Albano Laziale, impatto positivo», realizzato da **PMG**, che racconta anche l'istituto di formazione Formalba di Albano Laziale.*

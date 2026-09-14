@@ -65,6 +65,6 @@ Durante la pandemia di Covid-19 siamo stati in prima linea con la Protezione Civ
 
 ## La Misericordia in video
 
-Tre minuti con la Governatrice **Maddalena Basili** e il fondatore **Fernando Nasoni**, dal reportage «Albano Laziale, impatto positivo»: chi siamo, cosa facciamo e da dove veniamo. [Leggi l'articolo con il racconto completo](/news/albano-impatto-positivo-video/).
+Tre minuti con la Governatrice **Maddalena Basili** e il fondatore **Fernando Nasoni**, dal reportage «Albano Laziale, impatto positivo» realizzato da PMG: chi siamo, cosa facciamo e da dove veniamo. [Leggi l'articolo con il racconto completo](/news/albano-impatto-positivo-video/).
 
 {{< video src="video/albano-impatto-positivo.mp4" poster="img/video/albano-impatto-positivo.jpg" titolo="La Misericordia di Ariccia nel reportage «Albano Laziale, impatto positivo»" descrizione="La Governatrice Maddalena Basili e il fondatore Fernando Nasoni raccontano la Misericordia di Ariccia: trasporti, Centro di Ascolto, distribuzione alimentare, ascolto e collaborazione con i servizi sociali di Albano, Genzano e Ariccia." durata="PT4M16S" data="2026-09-14" inizio="143" didascalia="Il video parte dalla parte dedicata alla Misericordia (minuto 2:23); riavvolgi per vedere il reportage completo." >}}
