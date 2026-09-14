@@ -39,8 +39,13 @@
       if (!v) return;
       e.preventDefault();
       var t = parseFloat(a.getAttribute("data-video-salta")) || 0;
-      var vai = function () { try { v.currentTime = t; } catch (err) {} v.play(); };
-      if (v.readyState >= 1) vai(); else { v.addEventListener("loadedmetadata", vai, { once: true }); v.load(); }
+      var salta = function () { try { v.currentTime = t; } catch (err) {} };
+      /* play() va chiamato dentro il gesto dell'utente (iOS Safari lo rifiuta se
+         rimandato): parte subito e, se i metadati non sono ancora arrivati
+         (preload=none), il salto al minuto giusto avviene appena disponibili. */
+      if (v.readyState >= 1) salta(); else v.addEventListener("loadedmetadata", salta, { once: true });
+      var p = v.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
       v.scrollIntoView({ behavior: riduciMotion ? "auto" : "smooth", block: "center" });
     });
   });
