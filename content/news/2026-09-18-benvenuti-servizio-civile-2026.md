@@ -1,9 +1,9 @@
 ---
 title: "Benvenuti, ragazzi! Al via il Servizio Civile Universale nella Misericordia"
 titoloSeo: "Al via il Servizio Civile Universale 2026-2027 alla Misericordia di Ariccia: benvenuti ai nuovi volontari"
-date: 2026-09-19
+date: 2026-09-18
 slug: "benvenuti-servizio-civile-2026"
-description: "Il 19 settembre 2026 è iniziato il Servizio Civile Universale 2026-2027 alla Misericordia di Ariccia. Il saluto di benvenuto della Governatrice Maddalena Basili ai nuovi giovani volontari."
+description: "Il 18 settembre 2026 è iniziato il Servizio Civile Universale 2026-2027 alla Misericordia di Ariccia. Il saluto di benvenuto della Governatrice Maddalena Basili ai nuovi giovani volontari."
 italianoSemplice: |
   **Oggi è iniziato il Servizio Civile alla Misericordia.**
 
@@ -18,7 +18,7 @@ italianoSemplice: |
   Vuoi fare anche tu il Servizio Civile? Guarda la pagina del Servizio Civile.
 ---
 
-Oggi, **19 settembre 2026**, nella nostra sede è cominciato un nuovo anno di **Servizio Civile Universale**: i giovani selezionati con il progetto *«Misericordie del Lazio unite per la rete»* hanno preso servizio e da oggi camminano insieme ai nostri volontari, al fianco delle persone fragili del territorio. Li accoglie, con queste parole, la **Governatrice Maddalena Basili**.
+Oggi, **18 settembre 2026**, nella nostra sede è cominciato un nuovo anno di **Servizio Civile Universale**: i giovani selezionati con il progetto *«Misericordie del Lazio unite per la rete»* hanno preso servizio e da oggi camminano insieme ai nostri volontari, al fianco delle persone fragili del territorio. Li accoglie, con queste parole, la **Governatrice Maddalena Basili**.
 
 ![Grafica della Misericordia di Ariccia per l'avvio del Servizio Civile Universale 2026-2027: il logo del Servizio Civile Universale dentro la cornice ciano, il titolo «Benvenuti, ragazzi!» e il saluto della Governatrice Maddalena Basili](/img/news/benvenuti-servizio-civile-2026.jpg)
 
