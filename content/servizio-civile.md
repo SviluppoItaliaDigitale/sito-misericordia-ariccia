@@ -31,7 +31,7 @@ I nostri progetti nascono dalla volontà di contrastare la solitudine e l'emargi
 
 ## Bando in corso
 
-Con il progetto **«Misericordie del Lazio unite per la rete 2025»** (settore Assistenza) sono stati selezionati **2 giovani**, che presteranno servizio nella nostra sede **da settembre 2026**, per **25 ore settimanali su 5 giorni**, a sostegno delle persone fragili.
+Con il progetto **«Misericordie del Lazio unite per la rete 2025»** (settore Assistenza) sono stati selezionati **2 giovani**, in servizio nella nostra sede **dal 19 settembre 2026**, per **25 ore settimanali su 5 giorni**, a sostegno delle persone fragili. [Leggi il benvenuto della Governatrice](/news/benvenuti-servizio-civile-2026/).
 
 Il ciclo precedente si è concluso a giugno 2026: grazie ad **Antonio, Francesca e Gabriele** per l'anno donato alla comunità.
 
@@ -44,7 +44,7 @@ Il ciclo precedente si è concluso a giugno 2026: grazie ad **Antonio, Francesca
 | 2017-2018 | 10 |
 | 2019-2020 | 10 |
 | 2025-2026 | 3 *(concluso)* |
-| 2026-2027 | 2 *(in partenza a settembre)* |
+| 2026-2027 | 2 *(in servizio da settembre 2026)* |
 
 Schede progetto storiche: [Scheda 2015](/documenti/scheda-servizio-civile-2015.pdf) · [Scheda 2016](/documenti/scheda-servizio-civile-2016.pdf) · [Scheda 2017](/documenti/scheda-servizio-civile-2017.pdf).
 

@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Benvenuti, ragazzi! Al via il Servizio Civile Universale (19 settembre 2026)
+
+<img src="/img/social/servizio-civile-2026.jpg" alt="Grafica: «Benvenuti, ragazzi!», l'avvio del Servizio Civile Universale 2026-2027 con il logo del Servizio Civile e il saluto della Governatrice Maddalena Basili" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/servizio-civile-2026.jpg" download="misericordia-benvenuti-servizio-civile-2026.jpg">⬇ Scarica</a>
+
 ## La Misericordia raccontata in video — reportage «Albano Laziale, impatto positivo» (14 settembre 2026)
 
 <img src="/img/social/albano-impatto-positivo.jpg" alt="Grafica: la Governatrice Maddalena Basili con i volontari e il titolo «La Misericordia raccontata in video»" width="540" loading="lazy">
