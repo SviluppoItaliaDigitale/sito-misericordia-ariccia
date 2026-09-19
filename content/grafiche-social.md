@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## In viaggio per chi ha bisogno — trasporto solidale a Fondi (18 settembre 2026)
+
+<img src="/img/social/trasporto-fondi.jpg" alt="Grafica: «In viaggio per chi ha bisogno», i due volontari della Misericordia sul lungomare al termine del trasporto solidale a Fondi" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/trasporto-fondi.jpg" download="misericordia-trasporto-fondi.jpg">⬇ Scarica</a>
+
 ## Benvenuti, ragazzi! Al via il Servizio Civile Universale (18 settembre 2026)
 
 <img src="/img/social/servizio-civile-2026.jpg" alt="Grafica: «Benvenuti, ragazzi!», l'avvio del Servizio Civile Universale 2026-2027 con il logo del Servizio Civile e il saluto della Governatrice Maddalena Basili" width="540" loading="lazy">
