@@ -1,8 +1,9 @@
 ---
-title: "In viaggio per chi ha bisogno: un trasporto solidale fino a Fondi"
-titoloSeo: "Trasporto solidale della Misericordia di Ariccia fino a Fondi: i volontari in viaggio per chi ha bisogno"
+title: "In viaggio per chi ha bisogno: un trasporto sanitario fino a Fondi"
+titoloSeo: "Trasporto sanitario della Misericordia di Ariccia fino a Fondi: i volontari in viaggio per chi ha bisogno"
 date: 2026-09-18
-slug: "trasporto-solidale-fondi"
+slug: "trasporto-sanitario-fondi"
+aliases: ["/news/trasporto-solidale-fondi/"]
 description: "Il 18 settembre 2026 i volontari della Misericordia di Ariccia hanno accompagnato una persona fragile fino a Fondi, sul litorale pontino, con il mezzo dei Servizi Sociali: il racconto e le foto della giornata."
 italianoSemplice: |
   **I nostri volontari hanno fatto un viaggio lungo.**
@@ -18,7 +19,7 @@ italianoSemplice: |
 
 Non tutti i trasporti finiscono a due passi da casa. Il **18 settembre 2026** due volontari della Misericordia di Ariccia sono partiti di buon'ora con il mezzo dei **Servizi Sociali** per accompagnare una persona fragile fino a **Fondi**, sul litorale pontino: oltre cento chilometri all'andata e altrettanti al ritorno, con la stessa cura che mettiamo nei viaggi di ogni giorno.
 
-![Grafica della Misericordia di Ariccia per il trasporto solidale a Fondi: i due volontari in polo gialla e azzurra sul lungomare, con il titolo «In viaggio per chi ha bisogno»](/img/news/trasporto-fondi-grafica.jpg)
+![Grafica della Misericordia di Ariccia per il trasporto sanitario a Fondi: i due volontari in polo gialla e azzurra sul lungomare, con il titolo «In viaggio per chi ha bisogno»](/img/news/trasporto-fondi-grafica.jpg)
 
 ## Il viaggio
 
@@ -28,7 +29,7 @@ A bordo c'era il **Citroën Berlingo dei Servizi Sociali**, il mezzo attrezzato 
 
 Missione compiuta, i due volontari si sono concessi una pausa sul lungomare prima di rimettersi in viaggio verso Ariccia. Il selfie che vedete qui sotto è la loro cartolina: un cielo un po' coperto, il mare sullo sfondo e due sorrisi stanchi ma contenti.
 
-![I due volontari della Misericordia di Ariccia in polo gialla e azzurra si fanno un selfie sul lungomare, con il mare e la spiaggia alle spalle, al termine del trasporto solidale a Fondi](/img/news/trasporto-fondi-volontari.jpg)
+![I due volontari della Misericordia di Ariccia in polo gialla e azzurra si fanno un selfie sul lungomare, con il mare e la spiaggia alle spalle, al termine del trasporto sanitario a Fondi](/img/news/trasporto-fondi-volontari.jpg)
 
 ## Vicini, anche quando la strada è lunga
 
