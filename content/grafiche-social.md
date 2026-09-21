@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Camminata solidale «Un Passo alla Volta» — assistenza sanitaria a Rocca di Papa (26 settembre 2026)
+
+<img src="/img/social/camminata-solidale.jpg" alt="Grafica: «In cammino per la speranza, un passo alla volta», l'assistenza sanitaria della Misericordia alla camminata solidale del 26 settembre 2026 ai Campi di Annibale di Rocca di Papa" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/camminata-solidale.jpg" download="misericordia-camminata-solidale-un-passo-alla-volta.jpg">⬇ Scarica</a>
+
 ## In viaggio per chi ha bisogno — trasporto sanitario a Fondi (18 settembre 2026)
 
 <img src="/img/social/trasporto-fondi.jpg" alt="Grafica: «In viaggio per chi ha bisogno», i due volontari della Misericordia sul lungomare al termine del trasporto sanitario a Fondi" width="540" loading="lazy">
