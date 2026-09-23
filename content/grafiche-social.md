@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Festa di San Pio — Santa Messa e assistenza sanitaria ad Ariccia (23 settembre 2026)
+
+<img src="/img/social/festa-san-pio.jpg" alt="Grafica: «Con San Pio, al servizio di Ariccia», la statua di San Pio a braccia aperte, la Santa Messa delle 18:30 a Santa Maria Assunta in Cielo e l'assistenza sanitaria della Misericordia" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/festa-san-pio.jpg" download="misericordia-festa-san-pio-2026.jpg">⬇ Scarica</a>
+
 ## Camminata solidale «Un Passo alla Volta» — assistenza sanitaria a Rocca di Papa (26 settembre 2026)
 
 <img src="/img/social/camminata-solidale.jpg" alt="Grafica: «In cammino per la speranza, un passo alla volta», l'assistenza sanitaria della Misericordia alla camminata solidale del 26 settembre 2026 ai Campi di Annibale di Rocca di Papa" width="540" loading="lazy">
