@@ -1,0 +1,16 @@
+{{- /* Elenco delle news pubblicate, letto dallo script scripts/pubblica_social.py
+       per la pubblicazione automatica su Facebook e Instagram. */ -}}
+{{- $voci := slice -}}
+{{- range .RegularPages -}}
+  {{- $voci = $voci | append (dict
+      "id" .File.ContentBaseName
+      "titolo" .Title
+      "url" .Permalink
+      "data" (.Date.Format "2006-01-02")
+      "sommario" (.Description | default (.Summary | plainify | htmlUnescape) | strings.TrimSpace)
+      "immagine" (partial "news-immagine.html" .)
+      "social" (.Params.social | default true)
+      "social_testo" (.Params.social_testo | default "")
+    ) -}}
+{{- end -}}
+{{- dict "news" $voci | jsonify (dict "indent" "  ") -}}

@@ -1,0 +1,8 @@
+{{/* Immagine principale di una news: parametro "immagine" oppure prima immagine
+     del testo. Restituisce l'URL assoluto, o stringa vuota se non ce n'è. */}}
+{{ $img := .Params.immagine | default "" }}
+{{ if not $img }}
+  {{ with findRESubmatch `<img[^>]+src="([^"]+)"` .Content 1 }}{{ $img = index (index . 0) 1 }}{{ end }}
+{{ end }}
+{{ if and $img (not (hasPrefix $img "http")) }}{{ $img = absURL (strings.TrimPrefix "/" $img) }}{{ end }}
+{{ return $img }}
