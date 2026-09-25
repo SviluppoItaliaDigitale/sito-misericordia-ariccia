@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Una sera di fede con San Pio — la Messa con il Nunzio e la reliquia (23 settembre 2026)
+
+<img src="/img/social/san-pio-resoconto.jpg" alt="Grafica: «Una sera di fede con San Pio», la foto di gruppo a Santa Maria Assunta con i celebranti e i volontari della Misericordia dopo la Messa presieduta dal Nunzio Apostolico" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/san-pio-resoconto.jpg" download="misericordia-san-pio-2026-resoconto.jpg">⬇ Scarica</a>
+
 ## Festa di San Pio — Santa Messa e assistenza sanitaria ad Ariccia (23 settembre 2026)
 
 <img src="/img/social/festa-san-pio.jpg" alt="Grafica: «Con San Pio, al servizio di Ariccia», la statua di San Pio a braccia aperte, la Santa Messa delle 18:30 a Santa Maria Assunta in Cielo e l'assistenza sanitaria della Misericordia" width="540" loading="lazy">
