@@ -38,6 +38,8 @@ Il ritrovo al **Parco La Pompa**, tra il gazebo delle iscrizioni e il banchetto 
 
 I nostri soccorritori hanno seguito la camminata dall'inizio alla fine, mentre altri volontari hanno percorso il sentiero con i colori giallo e azzurro della Misericordia, zaino in spalla. Tanta fatica buona e tanti sorrisi: è così che ci piace fare servizio.
 
+![I nostri volontari in divisa accanto all'ambulanza della Misericordia di Ariccia, l'Unità Mobile di Soccorso dedicata alla memoria della consorella Anna Cianfanelli, sul prato dei Campi di Annibale con i partecipanti della camminata sullo sfondo](/img/news/camminata-2026-ambulanza.jpg)
+
 ## Le foto della mattinata
 
 <div class="galleria-griglia">
