@@ -20,6 +20,12 @@ italianoSemplice: |
 
 Le grafiche ufficiali della Misericordia, **pronte da pubblicare** su Facebook, Instagram e WhatsApp (formato 1080×1350). Tocca **⬇ Scarica**: l'immagine finisce direttamente nei download del telefono, senza dover tenere premuto. La più recente è sempre in cima.
 
+## Un passo alla volta, insieme per la speranza — la camminata a Rocca di Papa (26 settembre 2026)
+
+<img src="/img/social/camminata-resoconto.jpg" alt="Grafica: «Un passo alla volta, insieme per la speranza», un volontario della Misericordia e una partecipante davanti alla scultura Flora sulla Via Sacra di Monte Cavo" width="540" loading="lazy">
+
+<a class="btn btn-giallo btn-lg" href="/img/social/camminata-resoconto.jpg" download="misericordia-camminata-un-passo-alla-volta-2026.jpg">⬇ Scarica</a>
+
 ## Una sera di fede con San Pio — la Messa con il Nunzio e la reliquia (23 settembre 2026)
 
 <img src="/img/social/san-pio-resoconto.jpg" alt="Grafica: «Una sera di fede con San Pio», la foto di gruppo a Santa Maria Assunta con i celebranti e i volontari della Misericordia dopo la Messa presieduta dal Nunzio Apostolico" width="540" loading="lazy">
