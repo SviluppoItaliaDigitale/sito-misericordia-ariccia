@@ -10,6 +10,8 @@ italianoSemplice: |
 
   La Misericordia ha un mezzo con la pedana: sali con la tua carrozzina.
 
+  Se non hai la carrozzina o le stampelle, te le prestiamo noi per il viaggio.
+
   Ti portiamo alle visite, al centro diurno, a fare la spesa, al mare.
 
   Per prenotare chiama il **348 4068657**.
@@ -22,6 +24,10 @@ Una carrozzina, un deambulatore, una gamba che non regge più: quando muoversi �
 ## Il mezzo con pedana
 
 Il nostro veicolo attrezzato ha una **pedana per la carrozzina**: si sale e si scende **restando seduti sulla propria sedia a rotelle**, che viene ancorata in sicurezza. Niente trasferimenti faticosi, niente sollevamenti. Per chi cammina con un aiuto usiamo anche **auto** comode; quando serve assistenza sanitaria, l'**ambulanza**.
+
+**Non hai la carrozzina o le stampelle?** Te le prestiamo noi per tutto il viaggio: diccelo quando prenoti.
+
+{{< video src="video/misericordia-servizi.mp4" poster="img/video/misericordia-servizi.jpg" verticale="si" didascalia="Il furgone con pedana e gli altri nostri servizi in un minuto." >}}
 
 ## Per quali spostamenti
 
@@ -52,6 +58,13 @@ Alcuni servizi possono essere attivati **tramite il Comune o i servizi sociali**
 <summary>Posso salire con la mia carrozzina elettrica?</summary>
 
 Diccelo quando prenoti: verifichiamo che **dimensioni e peso** della carrozzina siano compatibili con la pedana e gli ancoraggi del mezzo, e in caso troviamo un'alternativa.
+
+</details>
+
+<details class="faq-item">
+<summary>Mi prestate la carrozzina o le stampelle per il viaggio?</summary>
+
+Sì: se non le hai, **carrozzina e stampelle te le diamo noi** durante il trasporto. Segnalalo al momento della prenotazione, così le prepariamo sul mezzo.
 
 </details>
 

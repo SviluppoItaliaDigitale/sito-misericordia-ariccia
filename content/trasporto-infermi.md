@@ -8,6 +8,8 @@ italianoSemplice: |
 
   Usiamo l'ambulanza, l'auto o un mezzo con la pedana per la carrozzina.
 
+  Se non hai la carrozzina o le stampelle, te le prestiamo noi per il viaggio.
+
   Andiamo nei Castelli Romani e in tutta Italia.
 
   Per prenotare chiama il **348 4068657**.
@@ -24,6 +26,8 @@ mezzi:
     titolo: "Mezzo con pedana"
     testo: "Attrezzato con **pedana per carrozzina**: si sale comodamente restando sulla propria sedia a rotelle, senza trasferimenti faticosi."
 ---
+
+{{< video src="video/misericordia-servizi.mp4" poster="img/video/misericordia-servizi.jpg" verticale="si" didascalia="I nostri servizi in un minuto: [guarda la news](/news/servizi-misericordia-video/)." >}}
 
 ## Domande frequenti
 
@@ -45,6 +49,13 @@ Prima è, meglio è: anche **il giorno prima** ci aiuta a garantirti il mezzo gi
 <summary>Serve l'ambulanza o basta un'auto?</summary>
 
 Se la persona può stare seduta e non ha bisogno di assistenza durante il viaggio basta un'**auto** o il **mezzo con pedana** per la carrozzina. Se serve la barella o un soccorritore a bordo, l'**ambulanza**. Nel dubbio descrivici la situazione al telefono.
+
+</details>
+
+<details class="faq-item">
+<summary>Non ho la carrozzina o le stampelle: come faccio?</summary>
+
+Te le **prestiamo noi per tutto il viaggio**: carrozzina e stampelle sono a disposizione durante il trasporto. Basta dircelo quando prenoti.
 
 </details>
 

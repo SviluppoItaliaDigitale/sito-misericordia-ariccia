@@ -8,11 +8,15 @@ italianoSemplice: |
   Aiutiamo le persone della comunità, in modo gratuito.
 
   Abbiamo due ambulanze, un mezzo con la pedana per le carrozzine e altri automezzi per i servizi sociali.
+
+  Se non hai la carrozzina o le stampelle, te le prestiamo per il viaggio.
 ---
 
 La Misericordia di Ariccia è al servizio della comunità con servizi sanitari e sociali, in convenzione con gli enti locali e in forma gratuita.
 
 ![I mezzi dei servizi sociali della Misericordia](/img/mezzi-servizi-sociali.jpg)
+
+{{< video src="video/misericordia-servizi.mp4" poster="img/video/misericordia-servizi.jpg" verticale="si" didascalia="I nostri servizi in un minuto: [guarda la news](/news/servizi-misericordia-video/)." >}}
 
 ## Il nostro parco mezzi
 
@@ -20,4 +24,5 @@ Per rispondere al meglio a ogni richiesta abbiamo ampliato negli anni il nostro 
 
 - **due ambulanze di tipo A**, per il trasporto dei pazienti più delicati e critici, con personale formato e — quando serve — personale sanitario a bordo;
 - un **mezzo per il trasporto carrozzine**, allestito con pedana;
+- **carrozzine e stampelle in prestito** per chi ne ha bisogno durante il trasporto;
 - automezzi per i **servizi sociali** e gli accompagnamenti.
