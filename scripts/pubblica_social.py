@@ -55,9 +55,24 @@ def accorcia(testo, limite):
     return taglio + "…"
 
 
+GIORNI = ["lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato", "domenica"]
+MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
+        "agosto", "settembre", "ottobre", "novembre", "dicembre"]
+
+
+def riga_data(n):
+    """Se il post esce DOPO la data della news, apre il testo con la data
+    dell'evento, così "stamattina" o "sabato" non sembrano riferiti a oggi.
+    La data è `data_evento:` del front matter (se c'è) o la data della news."""
+    if dt.date.fromisoformat(n["data"]) >= dt.date.today():
+        return ""
+    g = dt.date.fromisoformat((n.get("data_evento") or n["data"])[:10])
+    return f"📅 {GIORNI[g.weekday()].capitalize()} {g.day} {MESI[g.month - 1]} {g.year}\n\n"
+
+
 def testo_facebook(n):
     corpo = n.get("social_testo") or accorcia(n["sommario"], 400)
-    return f"{n['titolo']}\n\n{corpo}\n\n👉 Leggi tutto: {n['url']}"
+    return f"{n['titolo']}\n\n{riga_data(n)}{corpo}\n\n👉 Leggi tutto: {n['url']}"
 
 
 def testo_instagram(n):
@@ -65,7 +80,7 @@ def testo_instagram(n):
     # Su Instagram i link nel testo non sono cliccabili: li scriviamo comunque
     # in forma breve, leggibile e ricopiabile.
     url_breve = n["url"].replace("https://", "").replace("www.", "").rstrip("/")
-    testo = f"{n['titolo']}\n\n{corpo}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
+    testo = f"{n['titolo']}\n\n{riga_data(n)}{corpo}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
     return testo[:2200]  # limite Instagram
 
 

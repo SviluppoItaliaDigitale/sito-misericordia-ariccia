@@ -37,8 +37,14 @@ slug: "titolo-della-news"
 social: false                    # NON condividere sui social
 immagine: "/img/news/foto.jpg"   # immagine per social/anteprima (altrimenti la prima del testo)
 social_testo: "Testo personalizzato per il post, al posto del riassunto automatico."
+data_evento: "2026-09-26"        # giorno dell'evento, se diverso dalla data della news
 ---
 ```
+
+- **Post in ritardo**: se il post esce *dopo* la data della news, il testo
+  si apre con la data dell'evento (es. «📅 Sabato 26 settembre 2026»), così
+  «stamattina», «sabato» o «ieri sera» non sembrano riferiti al giorno del
+  post. La data è `data_evento:` se c'è, altrimenti la data della news.
 
 - **Instagram richiede un'immagine JPEG** (`.jpg`): se la news non ha immagini,
   esce solo su Facebook.
@@ -109,6 +115,9 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
 - Il 30/09/2026 il registro è stato allineato ai post reali: le news 2026
   mancanti sono state pubblicate (in ordine, senza doppioni). Le news dal
   2019 al 2024 restano segnate «preesistente» e non vanno ripubblicate.
+- Instagram **non permette di modificare la didascalia via API**: per
+  correggere un post già uscito bisogna farlo a mano dall'app
+  (… → Modifica). Facebook invece sì.
 
 ## Parametri avanzati (variabili d'ambiente dello script)
 
