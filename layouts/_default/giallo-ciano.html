@@ -1,0 +1,66 @@
+{{ define "main" }}
+{{ $gc := site.Data.giallo_ciano }}
+{{ $ultimo := index $gc.numeri 0 }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Dalla Confederazione</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Giallo Ciano</li>
+      </ol>
+    </nav>
+
+    <!-- Ultimo numero: copertina tipografica nei due colori che danno il nome alla rivista -->
+    <section class="gc-ultimo mb-5" data-anim="fade-up" aria-labelledby="gc-ultimo-titolo">
+      <a class="gc-copertina" href="{{ $ultimo.link }}" rel="noopener" target="_blank"
+         aria-label="Sfoglia Giallo Ciano {{ $ultimo.numero }}, {{ $ultimo.uscita }} (si apre in una nuova scheda)">
+        <span class="gc-testata">Giallo<br>Ciano</span>
+        <span class="gc-numero">n. {{ $ultimo.numero }}</span>
+        <span class="gc-uscita">{{ $ultimo.uscita }}</span>
+      </a>
+      <div class="gc-ultimo-testo">
+        <h2 id="gc-ultimo-titolo">Il numero di {{ lower $ultimo.uscita }}</h2>
+        <p>Giallo e ciano sono i colori delle Misericordie: quelli delle nostre divise e delle nostre ambulanze. È anche il nome della rivista della <a href="https://www.misericordie.it/" rel="noopener">Confederazione Nazionale delle Misericordie d'Italia</a>, che racconta servizi, persone e storie delle Confraternite di tutta Italia, compresa la nostra.</p>
+        <p><a class="btn btn-ciano px-4" href="{{ $ultimo.link }}" rel="noopener" target="_blank">Sfoglia il numero {{ $ultimo.numero }}</a></p>
+        <p class="gc-nota mb-0">La rivista è pubblicata dalla Confederazione: i collegamenti portano al sito nazionale, dove trovi sempre la versione ufficiale.</p>
+      </div>
+    </section>
+
+    <!-- Archivio, come uno scaffale di emeroteca: un anno per riga -->
+    <section aria-labelledby="gc-archivio-titolo" data-anim="fade-up">
+      <h2 id="gc-archivio-titolo" class="mb-3">Tutti i numeri</h2>
+      {{/* i numeri sono in ordine dal più recente: raggruppo per anno mantenendo l'ordine */}}
+      {{ $anni := slice }}
+      {{ range $gc.numeri }}{{ $a := index (split .uscita " ") 1 }}{{ if not (in $anni $a) }}{{ $anni = $anni | append $a }}{{ end }}{{ end }}
+      <dl class="gc-scaffale">
+        {{ range $anni }}
+          {{ $anno := . }}
+          <div class="gc-anno">
+            <dt>{{ $anno }}</dt>
+            <dd>
+              <ul class="list-unstyled mb-0">
+                {{ range where $gc.numeri "uscita" "like" (printf "%s$" $anno) }}
+                  <li>
+                    <a href="{{ .link }}" rel="noopener" target="_blank">
+                      <span class="gc-dorso-numero">n. {{ index (split .numero "/") 0 }}</span>
+                      <span class="gc-dorso-mese">{{ index (split .uscita " ") 0 }}</span>
+                      <span class="gc-dorso-formato">{{ if eq .formato "archivio" }}sul sito nazionale{{ else }}{{ .formato }}{{ end }}</span>
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </dd>
+          </div>
+        {{ end }}
+      </dl>
+      <p class="mt-3"><a href="{{ $gc.archivio }}" rel="noopener">Archivio completo sul sito delle Misericordie d'Italia →</a></p>
+    </section>
+  </div>
+</div>
+{{ end }}
