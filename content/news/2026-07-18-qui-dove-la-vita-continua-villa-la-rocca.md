@@ -2,6 +2,7 @@
 title: "«Qui dove la vita continua»: una mattinata con i nonni di Villa La Rocca"
 date: 2026-07-18
 slug: "qui-dove-la-vita-continua-villa-la-rocca"
+social_testo: "Sabato 18 luglio 2026, la Misericordia di Ariccia alla presentazione del libro di Riccardo La Rosa alla casa di riposo Villa La Rocca di Rocca di Papa: storie di vita, ricordi e speranze insieme agli anziani."
 description: "La Misericordia di Ariccia alla presentazione del libro di Riccardo La Rosa alla casa di riposo Villa La Rocca di Rocca di Papa: storie di vita, ricordi e speranze insieme agli anziani."
 italianoSemplice: |
   **Una bella festa alla casa di riposo.**

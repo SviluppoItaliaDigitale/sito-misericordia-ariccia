@@ -3,6 +3,7 @@ title: "Con lo stendardo dietro la Santa: la Misericordia alla processione di Sa
 data_evento: "2026-07-25"
 date: 2026-07-26
 slug: "processione-santa-apollonia-2026"
+social_testo: "Sabato 25 luglio 2026, la Misericordia di Ariccia alla processione della Patrona Santa Apollonia: assistenza sanitaria con l'ambulanza e rappresentanza con lo stendardo della Confraternita. Le foto della serata."
 description: "La Misericordia di Ariccia alla processione della Patrona Santa Apollonia: assistenza sanitaria con l'ambulanza e rappresentanza con lo stendardo della Confraternita. Le foto della serata."
 italianoSemplice: |
   **Ieri sera c'è stata la processione di Santa Apollonia.**

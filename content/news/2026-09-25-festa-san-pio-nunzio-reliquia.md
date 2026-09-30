@@ -5,7 +5,7 @@ date: 2026-09-25
 slug: "festa-san-pio-2026-nunzio-reliquia"
 servizio: "Assistenza sanitaria per eventi"
 description: "Il 23 settembre 2026 la festa di San Pio a Santa Maria Assunta in Cielo, ad Ariccia, con la Messa presieduta dal Nunzio Apostolico Mons. Edgar Peña Parra e la reliquia di Padre Pio: la Misericordia presente in divisa e in servizio di assistenza sanitaria."
-social_testo: "🙏 Mercoledì sera la chiesa di Santa Maria Assunta in Cielo era piena per la festa di San Pio da Pietrelcina. A presiedere la Santa Messa il Nunzio Apostolico in Italia, Mons. Edgar Peña Parra, con il nostro vescovo Mons. Vincenzo Viva e il parroco don Antonio Salimbeni. Per l'occasione è arrivata dalla Nunziatura una reliquia di Padre Pio: una benda che copriva una delle sue ferite. Noi c'eravamo, in divisa accanto alla comunità e con il servizio di assistenza sanitaria 🚑. Grazie a tutti: che Iddio ve ne renda merito! 💛💙"
+social_testo: "🙏 Mercoledì 23 settembre 2026, in serata, la chiesa di Santa Maria Assunta in Cielo era piena per la festa di San Pio da Pietrelcina. A presiedere la Santa Messa il Nunzio Apostolico in Italia, Mons. Edgar Peña Parra, con il nostro vescovo Mons. Vincenzo Viva e il parroco don Antonio Salimbeni. Per l'occasione è arrivata dalla Nunziatura una reliquia di Padre Pio: una benda che copriva una delle sue ferite. Noi c'eravamo, in divisa accanto alla comunità e con il servizio di assistenza sanitaria 🚑. Grazie a tutti: che Iddio ve ne renda merito! 💛💙"
 italianoSemplice: |
   **Mercoledì 23 settembre c'è stata la festa di San Pio ad Ariccia.**
 

@@ -2,6 +2,7 @@
 title: "Ariccia in festa per Santa Apollonia: il programma del 25 e 26 luglio. E noi ci siamo"
 date: 2026-07-18
 slug: "festa-di-santa-apollonia-2026"
+social_testo: "Festa di Santa Apollonia, Patrona di Ariccia, sabato 25 e domenica 26 luglio 2026: processione, cannacciata, giochi antichi e fuochi sul ponte. I volontari della Misericordia erano in servizio per la festa."
 description: "Festa di Santa Apollonia, Patrona di Ariccia, 25-26 luglio 2026: processione, cannacciata, giochi antichi e fuochi sul ponte. I volontari della Misericordia in servizio per la festa."
 italianoSemplice: |
   **Ariccia fa festa per la sua Patrona, Santa Apollonia.**

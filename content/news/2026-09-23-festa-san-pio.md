@@ -3,6 +3,7 @@ title: "Festa di San Pio: la Misericordia alla Santa Messa e in servizio di assi
 titoloSeo: "Festa di San Pio da Pietrelcina ad Ariccia, 23 settembre 2026: Santa Messa a Santa Maria Assunta e assistenza sanitaria della Misericordia"
 date: 2026-09-23
 slug: "festa-san-pio-2026"
+social_testo: "Mercoledì 23 settembre 2026, festa di San Pio da Pietrelcina, la Misericordia di Ariccia ha partecipato in divisa alla Santa Messa delle 18:30 nella Chiesa di Santa Maria Assunta in Cielo, in Piazza di Corte, e ha garantito l'assistenza sanitaria ai fedeli."
 servizio: "Assistenza sanitaria per eventi"
 description: "Mercoledì 23 settembre 2026, festa di San Pio da Pietrelcina, la Misericordia di Ariccia partecipa in divisa alla Santa Messa delle 18:30 nella Chiesa di Santa Maria Assunta in Cielo, in Piazza di Corte, e garantisce l'assistenza sanitaria ai fedeli."
 italianoSemplice: |
