@@ -153,13 +153,15 @@ def pubblica_instagram(n):
     # 1) contenitore con l'immagine (URL pubblico, JPEG)  2) attesa elaborazione  3) pubblicazione
     c = graph_post(f"{IG_USER_ID}/media", {"image_url": n["immagine"], "caption": testo_instagram(n)})
     cid = c["id"]
-    for _ in range(20):
+    for _ in range(40):  # fino a ~2 minuti: con più post di fila Instagram rallenta
         stato = graph_get(cid, {"fields": "status_code"}).get("status_code")
         if stato == "FINISHED":
             break
         if stato in ("ERROR", "EXPIRED"):
             raise RuntimeError(f"Instagram ha rifiutato l'immagine {n['immagine']} (stato {stato})")
         time.sleep(3)
+    else:
+        raise RuntimeError(f"Instagram non ha finito di elaborare l'immagine (stato {stato}): si riprova al prossimo giro")
     r = graph_post(f"{IG_USER_ID}/media_publish", {"creation_id": cid})
     return r["id"]
 
