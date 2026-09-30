@@ -91,6 +91,25 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
 
 **Il token non va mai scritto nei file del repository**: solo nei secrets GitHub.
 
+## Stato della configurazione (30/09/2026)
+
+- Attiva dal 30/09/2026. Portfolio Meta «Misericordia di Ariccia ODV»
+  (ID 1419956906942849), pagina MiseAriccia (ID 623665131108377) collegata a
+  Instagram @confraternitamisericordia (ID 17841471518130375).
+- App Meta «Sito Misericordia Ariccia» (ID 2286230255250372), ancora «Non
+  pubblicata»: i post risultano comunque visibili al pubblico (verificato).
+- Utente di sistema **sito-web** (Admin), con accesso completo alla pagina
+  (Instagram incluso) e all'app. Il token della pagina **non scade**; permessi
+  minimi: `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`,
+  `business_management`, `instagram_basic`, `instagram_content_publish`.
+- Per rigenerare il token: Impostazioni business → Utenti di sistema →
+  sito-web → *Genera token* (stessa app, scadenza «Mai», stessi 6 permessi),
+  poi ricavare il token della pagina (punto 4 sopra) e aggiornare il secret
+  `META_PAGE_TOKEN`. Il token non va mai incollato in chat né nei file.
+- Il 30/09/2026 il registro è stato allineato ai post reali: le news 2026
+  mancanti sono state pubblicate (in ordine, senza doppioni). Le news dal
+  2019 al 2024 restano segnate «preesistente» e non vanno ripubblicate.
+
 ## Parametri avanzati (variabili d'ambiente dello script)
 
 | Variabile | Default | Significato |

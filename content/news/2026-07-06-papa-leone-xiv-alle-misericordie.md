@@ -20,6 +20,8 @@ italianoSemplice: |
   Vuoi aiutare anche tu? Puoi diventare volontario.
 ---
 
+![Grafica: la frase di Papa Leone XIV «Siate sempre messaggeri di speranza, di carità e di pace» e le tre radici delle Misericordie: spiritualità, carità, attenzione ai bisogni di oggi](/img/news/papa-leone-xiv-grafica.jpg)
+
 Ci sono parole che restano, e che vale la pena custodire. Lo scorso **14 febbraio**, in Vaticano, **Papa Leone XIV** ha ricevuto in udienza la **Confederazione Nazionale delle Misericordie d'Italia** — la grande famiglia di cui anche la nostra Confraternita fa parte — e ha consegnato al Movimento un messaggio che sentiamo rivolto a ciascuno di noi.
 
 > «Le Misericordie hanno una storia secolare, che affonda le radici nell'età medievale e incarna tre dimensioni della vita laicale cristiana: spiritualità, carità e attenzione ai bisogni di oggi.»
