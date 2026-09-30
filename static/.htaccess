@@ -35,6 +35,14 @@
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # HSTS: il browser, dopo la prima visita, per 6 mesi usa SOLO https
+  # (niente primo collegamento "in chiaro" che si potrebbe intercettare).
+  # Solo per www.misericordia-ariccia.it: niente includeSubDomains (PEC e
+  # webmail Aruba restano fuori) e niente preload. HTTPS attivo dal
+  # 15/07/2026 con certificato rinnovato da Aruba. Per annullarlo:
+  # max-age=0 per qualche settimana, poi togliere la riga.
+  Header always set Strict-Transport-Security "max-age=15552000"
 </IfModule>
 
 # Tipi MIME corretti per WebP e font (alcuni server non li conoscono).
