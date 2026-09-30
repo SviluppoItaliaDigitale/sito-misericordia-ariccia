@@ -1,0 +1,69 @@
+name: Controllo Giallo Ciano (rivista delle Misericordie)
+
+# Ogni sera, prima del rebuild notturno (22:05 UTC), confronta la pagina
+# nazionale https://www.misericordie.it/giallo-ciano/ con la nostra
+# /giallo-ciano/ (scripts/controlla_giallo_ciano.py):
+#  - numero nuovo -> aggiunto a data/giallo_ciano.json (online col rebuild
+#    notturno) + segnalazione GitHub per avvisare;
+#  - link che non funzionano -> segnalazione GitHub.
+# Una sola segnalazione aperta per tipo: finché resta aperta non se ne
+# creano altre uguali, si aggiunge un commento solo se cambia qualcosa.
+on:
+  schedule:
+    - cron: "37 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: controlla-giallo-ciano
+  cancel-in-progress: false
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confronta con il sito nazionale e controlla i link
+        run: python3 scripts/controlla_giallo_ciano.py
+
+      - name: Salva i numeri nuovi
+        run: |
+          git diff --quiet -- data/giallo_ciano.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add data/giallo_ciano.json
+          git commit -m "Giallo Ciano: aggiornato l'elenco dei numeri dal sito nazionale"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Avvisa con una segnalazione
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s giallo_ciano_avvisi.md ] || { echo "Nessun avviso."; exit 0; }
+          avvisa() {  # $1 = titolo, $2 = righe dell'avviso
+            [ -n "$2" ] || return 0
+            CORPO="$2
+
+          _Controllo automatico del $(TZ=Europe/Rome date '+%d/%m/%Y'): .github/workflows/controlla-giallo-ciano.yml_"
+            APERTA=$(gh issue list --state open --search "\"$1\" in:title" --json number,title \
+                     --jq ".[] | select(.title == \"$1\") | .number" | head -1)
+            if [ -n "$APERTA" ]; then
+              ULTIMO=$(gh issue view "$APERTA" --json body,comments --jq '[.body] + [.comments[].body] | last')
+              [ "${ULTIMO%%_Controllo*}" = "${CORPO%%_Controllo*}" ] || gh issue comment "$APERTA" --body "$CORPO"
+            else
+              gh issue create --title "$1" --body "$CORPO"
+            fi
+          }
+          # i numeri nuovi hanno sempre una segnalazione nuova (una per uscita)
+          grep '^- 🆕' giallo_ciano_avvisi.md | while read -r riga; do
+            USCITA=$(echo "$riga" | sed -E 's/.*Giallo Ciano di ([^*]+)\*\*.*/\1/')
+            gh issue create --title "Giallo Ciano: è uscito il numero di $USCITA" --body "$riga
+
+          Controlla che numero e data siano giusti nella pagina /giallo-ciano/ (file data/giallo_ciano.json)."
+          done
+          avvisa "Giallo Ciano: link da controllare" "$(grep -v '^- 🆕' giallo_ciano_avvisi.md)"
