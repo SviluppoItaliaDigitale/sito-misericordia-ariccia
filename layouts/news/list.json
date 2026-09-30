@@ -2,6 +2,7 @@
        per la pubblicazione automatica su Facebook e Instagram. */ -}}
 {{- $voci := slice -}}
 {{- range .RegularPages -}}
+  {{- $video := "" -}}{{- with .Params.social_video -}}{{- $video = absURL (strings.TrimPrefix "/" .) -}}{{- end -}}
   {{- $voci = $voci | append (dict
       "id" .File.ContentBaseName
       "titolo" .Title
@@ -12,6 +13,8 @@
       "social" (.Params.social | default true)
       "social_testo" (.Params.social_testo | default "")
       "data_evento" (.Params.data_evento | default "")
+      "video" $video
+      "video_copertina" (.Params.social_video_copertina | default "")
     ) -}}
 {{- end -}}
 {{- dict "news" $voci | jsonify (dict "indent" "  ") -}}

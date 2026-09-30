@@ -3,6 +3,7 @@
                     descrizione="…" durata="PT4M16S" data="2026-09-14"
                     inizio="143" didascalia="…" >}}
      - inizio: secondo da cui partire (frammento #t=), opzionale
+     - verticale="si": video 9:16 (Reel), riquadro stretto invece che 16:9
      - preload=none: il file (grande) si scarica solo quando l'utente preme play */ -}}
 {{- $src := .Get "src" -}}
 {{- $poster := .Get "poster" -}}
@@ -10,7 +11,7 @@
 {{- $file := printf "static/%s" $src -}}
 {{- $posterFile := printf "static/%s" $poster -}}
 {{- $dim := "" }}{{ if and $poster (fileExists $posterFile) }}{{ $dim = imageConfig $posterFile }}{{ end -}}
-<figure class="video-riq">
+<figure class="video-riq{{ if .Get "verticale" }} video-riq--verticale{{ end }}">
   <video controls preload="none" playsinline
          {{ with $poster }}poster="{{ . | relURL }}"{{ end }}
          {{ with $dim }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}
