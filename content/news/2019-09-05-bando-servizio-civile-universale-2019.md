@@ -30,6 +30,6 @@ Inoltre:
 
 Gli aspiranti operatori volontari devono presentare la domanda di partecipazione esclusivamente attraverso la piattaforma Domanda on Line (DOL), raggiungibile tramite PC, tablet e smartphone, all'indirizzo [https://domandaonline.serviziocivile.it](https://domandaonline.serviziocivile.it/).
 
-Nella sezione "[Selezione volontari SC](http://www.serviziocivile.gov.it/menusx/bandi/selezione-volontari/)" ci sono tutte le informazioni e la possibilità di leggere e scaricare il bando.
+*Aggiornamento: il bando 2019 è chiuso e la vecchia pagina del bando sul sito del Dipartimento non esiste più. Per i bandi di oggi guarda la nostra pagina [Servizio Civile](/servizio-civile/).*
 
-Anche quest’anno, per facilitare la partecipazione dei giovani e, più in generale, per avvicinarli al mondo del servizio civile, è disponibile il sito dedicato [www.scelgoilserviziocivile.gov.it](http://www.scelgoilserviziocivile.gov.it/) che, grazie al linguaggio più semplice, diretto proprio ai ragazzi, potrà facilitare l'orientamento tra le tante informazioni e supportare la scelta migliore.
+Anche quest’anno, per facilitare la partecipazione dei giovani e, più in generale, per avvicinarli al mondo del servizio civile, è disponibile il sito dedicato [www.scelgoilserviziocivile.gov.it](https://www.scelgoilserviziocivile.gov.it/) che, grazie al linguaggio più semplice, diretto proprio ai ragazzi, potrà facilitare l'orientamento tra le tante informazioni e supportare la scelta migliore.
