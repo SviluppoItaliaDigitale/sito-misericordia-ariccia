@@ -65,8 +65,7 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
 - **Immagini**: le immagini Markdown passano dal render hook
   `layouts/_default/_markup/render-image.html` (WebP se esiste, width/height,
   lazy tranne la prima). Dopo aver aggiunto foto o grafiche nuove lanciare
-  `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`;
-  i JPEG in `static/img/social/` non vengono mai toccati).
+  `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`).
 - **Cache**: `.htaccess` mette CSS/JS/font in cache un anno (nomi con
   impronta), immagini un mese, HTML mai.
 - **Da fare fuori dal repo** (l'utente): Google Search Console e Bing
@@ -114,26 +113,21 @@ Velletri Moda):
   (`playwright-core` + Chromium in `/opt/pw-browsers/chromium-*/chrome-linux/chrome`,
   attendere `document.fonts.ready`). NON usare lo screenshot CLI di
   Chromium (scatta prima del caricamento font/immagini).
-- **Export**: JPEG qualità ~88 in `static/img/news/` per il sito;
-  PNG all'utente via SendUserFile per i social.
-- **SEMPRE, per ogni nuova grafica**: copiarla anche in
-  `static/img/social/<slug-breve>.jpg` e aggiungerla IN CIMA alla pagina
-  `content/grafiche-social.md` (immagine + bottone «⬇ Scarica» con
-  attributo `download`): è la pagina che l'utente ha nei preferiti del
-  telefono per scaricare le grafiche con un tocco. Dopo il deploy,
-  dargli il link diretto
-  `https://www.misericordia-ariccia.it/grafiche-social/`.
+- **Export**: JPEG qualità ~88 in `static/img/news/` (deve essere JPEG:
+  è l'immagine che va anche su Instagram).
 - **Controllare sempre il render** (Read del PNG) prima di pubblicare:
   contenuto che trabocca, testi tagliati, contrasti.
 
-### 3. Testi social (scriverli in chat, non solo su file)
+### 3. Social: pubblicazione AUTOMATICA (dal 30/09/2026)
 
-- **Facebook**: versione lunga con emoji, racconto, grazie, link
-  all'articolo, CTA (assistenza eventi / volontariato / 5x1000).
-- **Instagram**: versione corta, "link in bio".
-- Hashtag standard: `#MisericordiaDiAriccia #Misericordie #CastelliRomani
-  #Volontariato #GenteAlServizioDellaGente` + quelli dell'evento.
-- 5x1000 quando pertinente: **C.F. 90031910582**.
+- Dopo il deploy, `scripts/pubblica_social.py` pubblica da solo ogni news
+  nuova sulla pagina Facebook MiseAriccia e su Instagram
+  @confraternitamisericordia (registro `.github/social/pubblicati.json`,
+  guida `docs/pubblicazione-social.md`). Non serve più preparare testi
+  social né la vecchia pagina `/grafiche-social/` (eliminata).
+- Il testo del post è `description`/sommario della news; per un testo
+  su misura usare `social_testo:` nel front matter; `social: false` per
+  non condividere. 5x1000 quando pertinente: **C.F. 90031910582**.
 
 ### 4. Pubblicazione
 
@@ -150,9 +144,6 @@ Velletri Moda):
   usare `curl -L` o direttamente `https://`.
 - **SEMPRE, nel messaggio finale all'utente**, indicare in modo ben
   visibile i link cliccabili:
-  1. l'**URL dell'articolo live** appena pubblicato
-     (`https://www.misericordia-ariccia.it/news/<slug>/`);
-  2. per ogni grafica nuova, l'**URL della pagina di scarico**
-     `https://www.misericordia-ariccia.it/grafiche-social/`
-     (pagina riservata non indicizzata: la grafica va aggiunta lì in cima).
-  Vale anche quando l'utente chiede solo grafiche senza articolo.
+  l'**URL dell'articolo live** appena pubblicato
+  (`https://www.misericordia-ariccia.it/news/<slug>/`) e, se il deploy
+  ha già girato, i post usciti su Facebook e Instagram.
