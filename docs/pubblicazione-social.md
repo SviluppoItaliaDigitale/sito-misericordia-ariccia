@@ -38,8 +38,15 @@ social: false                    # NON condividere sui social
 immagine: "/img/news/foto.jpg"   # immagine per social/anteprima (altrimenti la prima del testo)
 social_testo: "Testo personalizzato per il post, al posto del riassunto automatico."
 data_evento: "2026-09-26"        # giorno dell'evento, se diverso dalla data della news
+social_video: "/video/nome.mp4"  # pubblica il VIDEO: Reel su Instagram, video su Facebook
+social_video_copertina: 16       # secondo del video da usare come copertina del Reel (facoltativo)
 ---
 ```
+
+- **Video**: con `social_video:` (MP4 H.264 verticale 9:16, max 90 s per i Reel,
+  in `static/video/`) Instagram pubblica un **Reel** e Facebook un **video** sulla
+  pagina, col testo della news e il link all'articolo. L'immagine della news resta
+  l'anteprima per Google e per chi condivide il link.
 
 - **Post in ritardo**: se il post esce *dopo* la data della news, il testo
   si apre con la data dell'evento (es. «📅 Sabato 26 settembre 2026»), così

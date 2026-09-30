@@ -171,16 +171,31 @@ def aggiorna_facebook(news, reg, prova):
 
 
 def pubblica_facebook(n):
+    if n.get("video"):
+        # News con "social_video:": video caricato sulla pagina (il link all'articolo è nel testo)
+        r = graph_post(f"{PAGE_ID}/videos", {"file_url": n["video"], "description": testo_facebook(n),
+                                             "title": n["titolo"]})
+        return r["id"]
     # Post con link: Facebook costruisce l'anteprima da og:title/og:image.
     r = graph_post(f"{PAGE_ID}/feed", {"message": testo_facebook(n), "link": n["url"]})
     return r["id"]
 
 
 def pubblica_instagram(n):
-    # 1) contenitore con l'immagine (URL pubblico, JPEG)  2) attesa elaborazione  3) pubblicazione
-    c = graph_post(f"{IG_USER_ID}/media", {"image_url": n["immagine"], "caption": testo_instagram(n)})
+    # 1) contenitore con l'immagine (URL pubblico, JPEG) o col video (Reel)
+    # 2) attesa elaborazione  3) pubblicazione
+    if n.get("video"):
+        parametri = {"media_type": "REELS", "video_url": n["video"], "caption": testo_instagram(n),
+                     "share_to_feed": "true"}
+        if n.get("video_copertina"):  # secondo del video da usare come copertina del Reel
+            parametri["thumb_offset"] = str(int(float(n["video_copertina"]) * 1000))
+        attese = 100  # un video può richiedere qualche minuto (~5)
+    else:
+        parametri = {"image_url": n["immagine"], "caption": testo_instagram(n)}
+        attese = 40  # fino a ~2 minuti: con più post di fila Instagram rallenta
+    c = graph_post(f"{IG_USER_ID}/media", parametri)
     cid = c["id"]
-    for _ in range(40):  # fino a ~2 minuti: con più post di fila Instagram rallenta
+    for _ in range(attese):
         stato = graph_get(cid, {"fields": "status_code"}).get("status_code")
         if stato == "FINISHED":
             break
@@ -270,7 +285,7 @@ def main():
         fatte += 1
         print(f"\n== {n['titolo']}\n   {n['url']}")
         for rete in mancanti:
-            if rete == "instagram" and not n["immagine"].lower().endswith((".jpg", ".jpeg")):
+            if rete == "instagram" and not n.get("video") and not n["immagine"].lower().endswith((".jpg", ".jpeg")):
                 print("   instagram: saltato (serve un'immagine JPEG nella news o 'immagine:' nel front matter)")
                 if not prova:
                     reg.setdefault(n["id"], {})[rete] = "saltato: nessuna immagine JPEG"
@@ -278,7 +293,8 @@ def main():
                 continue
             if prova:
                 testo = testo_facebook(n) if rete == "facebook" else testo_instagram(n)
-                print(f"   {rete}: pubblicherebbe →\n" + "\n".join("      " + r for r in testo.splitlines()))
+                formato = (" come Reel" if rete == "instagram" else " come video") if n.get("video") else ""
+                print(f"   {rete}: pubblicherebbe{formato} →\n" + "\n".join("      " + r for r in testo.splitlines()))
                 continue
             try:
                 pid = reti[rete](n)
