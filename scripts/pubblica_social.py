@@ -38,6 +38,9 @@ PAGE_ID = os.environ.get("META_PAGE_ID", "").strip()
 PAGE_TOKEN = os.environ.get("META_PAGE_TOKEN", "").strip()
 IG_USER_ID = os.environ.get("META_IG_USER_ID", "").strip()
 
+# news (id separati da virgola) il cui post Instagram va cancellato e rifatto
+RIPUBBLICA_IG = [x.strip() for x in os.environ.get("RIPUBBLICA_INSTAGRAM", "").split(",") if x.strip()]
+
 MAX_GIORNI = int(os.environ.get("SOCIAL_MAX_GIORNI", "10"))
 MAX_PER_ESECUZIONE = int(os.environ.get("SOCIAL_MAX_PER_ESECUZIONE", "3"))
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "si", "yes")
@@ -63,8 +66,9 @@ MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
 def riga_data(n):
     """Se il post esce DOPO la data della news, apre il testo con la data
     dell'evento, così "stamattina" o "sabato" non sembrano riferiti a oggi.
-    La data è `data_evento:` del front matter (se c'è) o la data della news."""
-    if dt.date.fromisoformat(n["data"]) >= dt.date.today():
+    La data è `data_evento:` del front matter (se c'è) o la data della news.
+    Con `social_testo:` scritto a mano la data la mette chi scrive."""
+    if n.get("social_testo") or dt.date.fromisoformat(n["data"]) >= dt.date.today():
         return ""
     g = dt.date.fromisoformat((n.get("data_evento") or n["data"])[:10])
     return f"📅 {GIORNI[g.weekday()].capitalize()} {g.day} {MESI[g.month - 1]} {g.year}\n\n"
@@ -105,6 +109,35 @@ def graph_get(percorso, parametri):
     except urllib.error.HTTPError as e:
         dettaglio = e.read().decode(errors="replace")
         raise RuntimeError(f"HTTP {e.code} su {percorso}: {dettaglio}") from None
+
+
+def graph_delete(percorso):
+    q = urllib.parse.urlencode({"access_token": PAGE_TOKEN})
+    req = urllib.request.Request(f"{GRAPH}/{percorso}?{q}", method="DELETE")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        dettaglio = e.read().decode(errors="replace")
+        raise RuntimeError(f"HTTP {e.code} su {percorso}: {dettaglio}") from None
+
+
+def cancella_instagram(reg, prova):
+    """Cancella i post Instagram delle news in RIPUBBLICA_INSTAGRAM e le toglie
+    dal registro, così il giro normale le ripubblica col testo aggiornato.
+    Al primo errore si ferma: si ripubblicano solo quelle già cancellate,
+    mai un doppione."""
+    for nid in RIPUBBLICA_IG:
+        mid = reg.get(nid, {}).get("instagram", "")
+        if not mid.isdigit():
+            raise RuntimeError(f"{nid}: nessun post Instagram cancellabile nel registro ({mid!r})")
+        if prova:
+            print(f"   {nid}: cancellerebbe il post Instagram {mid} e lo ripubblicherebbe")
+            continue
+        graph_delete(mid)
+        del reg[nid]["instagram"]
+        salva_registro(reg)
+        print(f"   {nid}: cancellato il post Instagram {mid}")
 
 
 def pubblica_facebook(n):
@@ -170,8 +203,16 @@ def main():
         print("MODALITÀ PROVA: nessuna pubblicazione reale" + ("" if reti else " (credenziali Meta assenti)"))
         reti = {"facebook": None, "instagram": None}
 
-    limite = dt.date.today() - dt.timedelta(days=MAX_GIORNI)
     fatte, errori = 0, 0
+    if RIPUBBLICA_IG:
+        print(f"Ripubblicazione Instagram di {len(RIPUBBLICA_IG)} news")
+        try:
+            cancella_instagram(reg, prova)
+        except Exception as e:  # noqa: BLE001
+            errori += 1
+            print(f"ERRORE nella cancellazione: {e}", file=sys.stderr)
+
+    limite = dt.date.today() - dt.timedelta(days=MAX_GIORNI)
     # dalla più vecchia alla più recente, così sui social escono in ordine
     for n in sorted(news, key=lambda x: (x["data"], x["id"])):
         voce = reg.get(n["id"], {})

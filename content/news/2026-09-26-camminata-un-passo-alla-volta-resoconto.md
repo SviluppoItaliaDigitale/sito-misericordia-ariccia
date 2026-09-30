@@ -5,7 +5,7 @@ date: 2026-09-26
 slug: "camminata-un-passo-alla-volta-2026-resoconto"
 servizio: "Assistenza sanitaria per eventi"
 description: "Sabato 26 settembre 2026 la Misericordia di Ariccia ha garantito l'assistenza sanitaria e ha camminato con i partecipanti di «Un Passo alla Volta», dai Campi di Annibale all'Occhialone lungo la Via Sacra di Rocca di Papa, a sostegno di Loto OdV contro il tumore ovarico. Le foto della mattinata."
-social_testo: "💗 Stamattina a Rocca di Papa abbiamo camminato insieme per la speranza. Alla camminata solidale «Un Passo alla Volta», organizzata da Libere di Camminare ETS con Hydra Team a sostegno di Loto OdV contro il tumore ovarico, la Misericordia di Ariccia c'era con l'ambulanza per l'assistenza sanitaria 🚑 e con i volontari in divisa lungo la Via Sacra, tra il basolato romano, la scultura Flora e il panorama sui laghi dall'Occhialone. Grazie a chi ha organizzato, a chi ha camminato e a chi ha donato: che Iddio ve ne renda merito! 💛💙"
+social_testo: "💗 Sabato 26 settembre 2026, a Rocca di Papa, abbiamo camminato insieme per la speranza. Alla camminata solidale «Un Passo alla Volta», organizzata da Libere di Camminare ETS con Hydra Team a sostegno di Loto OdV contro il tumore ovarico, la Misericordia di Ariccia c'era con l'ambulanza per l'assistenza sanitaria 🚑 e con i volontari in divisa lungo la Via Sacra, tra il basolato romano, la scultura Flora e il panorama sui laghi dall'Occhialone. Grazie a chi ha organizzato, a chi ha camminato e a chi ha donato: che Iddio ve ne renda merito! 💛💙"
 italianoSemplice: |
   **Sabato 26 settembre abbiamo fatto una camminata a Rocca di Papa.**
 

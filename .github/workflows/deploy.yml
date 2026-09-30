@@ -16,6 +16,10 @@ on:
         description: "Social: solo prova (mostra cosa pubblicherebbe, senza pubblicare)"
         type: boolean
         default: false
+      ripubblica_instagram:
+        description: "Instagram: cancella e ripubblica i post di queste news (id separati da virgola)"
+        type: string
+        default: ""
   schedule:
     # Ricostruzione giornaliera APPENA DOPO la mezzanotte italiana, così il
     # santo del giorno, le letture e gli annunci scaduti sono aggiornati fin
@@ -86,6 +90,10 @@ jobs:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           DRY_RUN: ${{ inputs.social_prova && '1' || '' }}
+          RIPUBBLICA_INSTAGRAM: ${{ inputs.ripubblica_instagram }}
+          # per ripubblicare news vecchie: niente limite di età, fino a 12 news
+          SOCIAL_MAX_GIORNI: ${{ inputs.ripubblica_instagram && '400' || '10' }}
+          SOCIAL_MAX_PER_ESECUZIONE: ${{ inputs.ripubblica_instagram && '12' || '3' }}
         run: python3 scripts/pubblica_social.py
 
       - name: Salva il registro dei post social

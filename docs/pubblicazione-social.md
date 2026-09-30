@@ -128,6 +128,14 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
 | `META_GRAPH_VERSION` | v23.0 | versione della Graph API di Meta |
 | `DRY_RUN` | — | `1` = solo prova |
 
+**Cancellare e rifare un post Instagram** (es. didascalia sbagliata):
+correggere il testo nella news (`social_testo:`), mandarla live, poi
+GitHub → *Actions* → *Pubblica su Aruba (LIVE)* → *Run workflow* e scrivere
+nel campo **"Instagram: cancella e ripubblica"** gli id delle news (nome del
+file senza `.md`, separati da virgola). Conviene prima un giro con
+"Social: solo prova". Serve il permesso `instagram_manage_contents` nel token.
+Like e commenti del vecchio post si perdono.
+
 Per ripubblicare una news già condivisa: togliere la sua voce da
 `.github/social/pubblicati.json` (se è più vecchia di 10 giorni, lanciare lo
 script con `SOCIAL_MAX_GIORNI` più alto).
