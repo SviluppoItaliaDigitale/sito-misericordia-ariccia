@@ -65,7 +65,9 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
 - **Immagini**: le immagini Markdown passano dal render hook
   `layouts/_default/_markup/render-image.html` (WebP se esiste, width/height,
   lazy tranne la prima). Dopo aver aggiunto foto o grafiche nuove lanciare
-  `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`).
+  `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`;
+  lavora solo sulle immagini senza `.webp`, non ricomprime le `*-grafica.jpg`
+  e non cancella nulla; `--prova` mostra cosa farebbe).
 - **Cache**: `.htaccess` mette CSS/JS/font in cache un anno (nomi con
   impronta), immagini un mese, HTML mai.
 - **Da fare fuori dal repo** (l'utente): Google Search Console e Bing
