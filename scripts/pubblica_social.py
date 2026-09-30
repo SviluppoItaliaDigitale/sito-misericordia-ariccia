@@ -128,6 +128,9 @@ def cancella_instagram(reg, prova):
     Al primo errore si ferma: si ripubblicano solo quelle già cancellate,
     mai un doppione."""
     for nid in RIPUBBLICA_IG:
+        if nid in reg and "instagram" not in reg[nid]:
+            print(f"   {nid}: già tolto dal registro (post cancellato a mano), si ripubblica")
+            continue
         mid = reg.get(nid, {}).get("instagram", "")
         if not mid.isdigit():
             raise RuntimeError(f"{nid}: nessun post Instagram cancellabile nel registro ({mid!r})")
