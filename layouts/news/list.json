@@ -11,6 +11,7 @@
       "immagine" (partial "news-immagine.html" .)
       "social" (.Params.social | default true)
       "social_testo" (.Params.social_testo | default "")
+      "data_evento" (.Params.data_evento | default "")
     ) -}}
 {{- end -}}
 {{- dict "news" $voci | jsonify (dict "indent" "  ") -}}
