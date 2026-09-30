@@ -17,6 +17,18 @@
 }
 #a11y-apri:hover, #a11y-apri:focus-visible { background: var(--mise-ciano-scuro); width: 54px; outline: none; }
 #a11y-apri svg { width: 28px; height: 28px; }
+/* Su cellulare a metà del bordo sinistro copriva l'inizio dei titoli:
+   diventa un tondo in basso a sinistra, impilato sopra il pulsante WhatsApp
+   (#whatsapp-flot: left 1.2rem, bottom 1.2rem, 3.1rem). */
+@media (max-width: 767.98px) {
+  #a11y-apri {
+    top: auto; bottom: calc(1.2rem + 3.1rem + .7rem); left: 1.2rem; transform: none;
+    width: 3.1rem; height: 3.1rem; border-radius: 50%;
+  }
+  #a11y-apri:hover, #a11y-apri:focus-visible { width: 3.1rem; }
+  #a11y-apri:focus-visible { outline: 3px solid var(--mise-giallo); outline-offset: 2px; }
+  #a11y-apri svg { width: 26px; height: 26px; }
+}
 
 /* ---- Pannello ---- */
 .a11y-pannello {
