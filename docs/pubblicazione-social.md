@@ -136,6 +136,12 @@ file senza `.md`, separati da virgola). Conviene prima un giro con
 "Social: solo prova". Serve il permesso `instagram_manage_contents` nel token.
 Like e commenti del vecchio post si perdono.
 
+**Controllare o correggere i post Facebook**: nello stesso *Run workflow*,
+campo **"Facebook"**: `elenco` mostra nel log gli ultimi 40 post della pagina
+(sola lettura); gli id di news separati da virgola riscrivono il testo di
+quei post col testo attuale della news (Facebook, a differenza di Instagram,
+permette di modificare i post; like e commenti restano).
+
 Per ripubblicare una news già condivisa: togliere la sua voce da
 `.github/social/pubblicati.json` (se è più vecchia di 10 giorni, lanciare lo
 script con `SOCIAL_MAX_GIORNI` più alto).

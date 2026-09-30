@@ -41,6 +41,10 @@ IG_USER_ID = os.environ.get("META_IG_USER_ID", "").strip()
 # news (id separati da virgola) il cui post Instagram va cancellato e rifatto
 RIPUBBLICA_IG = [x.strip() for x in os.environ.get("RIPUBBLICA_INSTAGRAM", "").split(",") if x.strip()]
 
+# "elenco" = mostra gli ultimi post della pagina Facebook (sola lettura);
+# id di news separati da virgola = riscrive il testo di quei post Facebook
+AGGIORNA_FB = os.environ.get("AGGIORNA_FACEBOOK", "").strip()
+
 MAX_GIORNI = int(os.environ.get("SOCIAL_MAX_GIORNI", "10"))
 MAX_PER_ESECUZIONE = int(os.environ.get("SOCIAL_MAX_PER_ESECUZIONE", "3"))
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "si", "yes")
@@ -143,6 +147,29 @@ def cancella_instagram(reg, prova):
         print(f"   {nid}: cancellato il post Instagram {mid}")
 
 
+def elenca_facebook():
+    r = graph_get(f"{PAGE_ID}/posts", {"fields": "id,created_time,message", "limit": 40})
+    for p in r.get("data", []):
+        print(f"\n-- {p['created_time'][:10]}  {p['id']}")
+        print("\n".join("   " + riga for riga in (p.get("message") or "(senza testo)").splitlines()))
+
+
+def aggiorna_facebook(news, reg, prova):
+    """Riscrive il testo dei post Facebook già pubblicati (l'API lo consente)."""
+    per_id = {n["id"]: n for n in news}
+    for nid in [x.strip() for x in AGGIORNA_FB.split(",") if x.strip()]:
+        pid = reg.get(nid, {}).get("facebook", "")
+        if nid not in per_id or "_" not in pid:
+            print(f"   {nid}: nessun post Facebook modificabile nel registro ({pid!r})")
+            continue
+        testo = testo_facebook(per_id[nid])
+        if prova:
+            print(f"   {nid}: riscriverebbe il post {pid} →\n" + "\n".join("      " + r for r in testo.splitlines()))
+            continue
+        graph_post(pid, {"message": testo})
+        print(f"   {nid}: aggiornato il post Facebook {pid}")
+
+
 def pubblica_facebook(n):
     # Post con link: Facebook costruisce l'anteprima da og:title/og:image.
     r = graph_post(f"{PAGE_ID}/feed", {"message": testo_facebook(n), "link": n["url"]})
@@ -209,6 +236,15 @@ def main():
         reti = {"facebook": None, "instagram": None}
 
     fatte, errori = 0, 0
+    if AGGIORNA_FB and PAGE_ID and PAGE_TOKEN:
+        try:
+            if AGGIORNA_FB == "elenco":
+                elenca_facebook()
+            else:
+                aggiorna_facebook(news, reg, prova)
+        except Exception as e:  # noqa: BLE001
+            errori += 1
+            print(f"ERRORE su Facebook: {e}", file=sys.stderr)
     if RIPUBBLICA_IG:
         print(f"Ripubblicazione Instagram di {len(RIPUBBLICA_IG)} news")
         try:
