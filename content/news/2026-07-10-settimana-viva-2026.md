@@ -16,6 +16,8 @@ italianoSemplice: |
   Per informazioni sui corsi chiama il **348 4068657**.
 ---
 
+![Grafica: VIVA! 2026, la settimana della rianimazione dal 12 al 18 ottobre, con il World Restart a Heart Day del 16 ottobre](/img/news/settimana-viva-2026-grafica.jpg)
+
 Segnatevi le date: dal **12 al 18 ottobre 2026** torna in tutta Italia **[VIVA! La settimana per la rianimazione cardiopolmonare](https://www.settimanaviva.it/)**, la campagna nazionale di sensibilizzazione promossa da **Italian Resuscitation Council (IRC)** su invito dell'Unione Europea e di European Resuscitation Council.
 
 C'è un motivo per cui ne parliamo con orgoglio: le **Misericordie d'Italia sono partner nazionale della campagna**, al fianco di IRC insieme ad ANPAS e Croce Rossa Italiana. In quella settimana — in cui cade anche il *World Restart a Heart Day* del 16 ottobre — piazze, scuole e sedi delle associazioni di tutta Italia si trasformano in palestre di primo soccorso aperte a tutti.

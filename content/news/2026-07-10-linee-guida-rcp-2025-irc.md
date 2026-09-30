@@ -18,6 +18,8 @@ italianoSemplice: |
   Vuoi imparare? Fai un corso con noi. Chiama il **348 4068657**.
 ---
 
+![Grafica: arresto cardiaco, i primi minuti salvano la vita. Tre passi: chiama subito il 112, premi forte e veloce al centro del petto, usa subito il DAE](/img/news/linee-guida-rcp-2025-grafica.jpg)
+
 L'**European Resuscitation Council (ERC)** ha presentato a Rotterdam, il 22 ottobre 2025, le nuove **Linee Guida 2025-2030 sulla rianimazione cardiopolmonare**: il riferimento scientifico che per i prossimi cinque anni guiderà in tutta Europa la formazione e la pratica del soccorso, dal cittadino ai professionisti.
 
 **Italian Resuscitation Council (IRC)** ne sta pubblicando la **traduzione italiana, capitolo per capitolo**: sono già disponibili gratuitamente il **BLS dell'adulto**, il **BLS pediatrico**, il **supporto vitale neonatale**, il **supporto avanzato (ALS)**, il **primo soccorso**, l'epidemiologia, i «sistemi che salvano vite» e l'etica della rianimazione. Puoi scaricarli dalla [pagina ufficiale IRC](https://www.ircouncil.it/linee-guida-rcp-2025/).
