@@ -73,6 +73,18 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   scheda Google Business Profile aggiornata con il sito, richiedere link
   dai siti di Comune di Ariccia, Confederazione Misericordie, ASL Roma 6.
 
+## Riferimenti della Confederazione
+
+- **Giallo Ciano** (rivista nazionale): pagina `/giallo-ciano/`, dati in
+  `data/giallo_ciano.json`. Solo link al sito nazionale, niente copie dei
+  PDF. **Controllo automatico ogni sera** (`.github/workflows/controlla-giallo-ciano.yml`
+  + `scripts/controlla_giallo_ciano.py`): i numeri nuovi vengono aggiunti da
+  soli (online col rebuild notturno) e segnalati con una issue GitHub; i link
+  rotti aprono la issue «Giallo Ciano: link da controllare».
+- **8xmille alla Chiesa cattolica**: riquadro in `/sostienici/` e nel footer,
+  logo ufficiale in `static/img/loghi/8xmille-chiesa-cattolica*.svg`, link a
+  https://5xmille.8xmille.it/ («Due firme che fanno bene»).
+
 ## FLUSSO EDITORIALE — foto + testi → articolo, grafica e social
 
 Quando l'utente invia **una foto** (e/o un link di stampa, una locandina,

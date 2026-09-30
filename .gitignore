@@ -24,3 +24,4 @@ resources/_gen/
 # Playwright (prove locali)
 .playwright-mcp/
 __pycache__/
+giallo_ciano_avvisi.md

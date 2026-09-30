@@ -99,10 +99,10 @@
   "@type": "Service",
   "serviceType": "Trasporto sanitario di infermi e persone con disabilità",
   "name": "Trasporto infermi e disabili — Misericordia di Ariccia",
-  "description": {{ .Description | jsonify }},
-  "provider": {"@type": "NGO", "name": "Confraternita di Misericordia di Ariccia ODV", "telephone": "+393484068657", "url": {{ site.BaseURL | jsonify }}},
+  "description": {{ .Description }},
+  "provider": {"@type": "NGO", "name": "Confraternita di Misericordia di Ariccia ODV", "telephone": "+393484068657", "url": {{ site.BaseURL }}},
   "areaServed": [{"@type": "Place", "name": "Castelli Romani"}, {"@type": "Country", "name": "Italia"}],
-  "availableChannel": {"@type": "ServiceChannel", "servicePhone": "+393484068657", "serviceUrl": {{ (absURL "richiedi-trasporto/") | jsonify }}}
+  "availableChannel": {"@type": "ServiceChannel", "servicePhone": "+393484068657", "serviceUrl": {{ absURL "richiedi-trasporto/" }}}
 }
 </script>
 {{ end }}

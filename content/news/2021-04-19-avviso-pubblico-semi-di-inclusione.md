@@ -23,8 +23,6 @@ Il modello sarà basato su 4 pilastri fondamentali integrati tra loro:
 
 Il Partenariato è attualmente composto da:
 
-#### **Misericordia di Ariccia** – in qualità di Capofila
-
-#### **Croce Rossa Italiana** – Comitato dei Comuni dell’Appia
-
-#### **Maendeleo for Children** - MfC.
+- **Misericordia di Ariccia** – in qualità di Capofila
+- **Croce Rossa Italiana** – Comitato dei Comuni dell’Appia
+- **Maendeleo for Children** – MfC.

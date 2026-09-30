@@ -1,0 +1,54 @@
+{
+  "archivio": "https://www.misericordie.it/giallo-ciano/",
+  "numeri": [
+    {
+      "numero": "1/2026",
+      "uscita": "Luglio 2026",
+      "link": "https://www.flipbookpdf.net/web/site/1ee3fe64843290ee3e1b7c71130a892b74d3d077202607.pdf.html",
+      "formato": "sfogliabile"
+    },
+    {
+      "numero": "2/2025",
+      "uscita": "Dicembre 2025",
+      "link": "https://www.misericordie.it/wp-content/uploads/2026/07/giallociano-dicembre-2025.pdf",
+      "formato": "PDF"
+    },
+    {
+      "numero": "1/2025",
+      "uscita": "Giugno 2025",
+      "link": "https://www.flipbookpdf.net/web/site/6c801e5204035a7a483c2e6fc07904b7e3ac7928202506.pdf.html",
+      "formato": "sfogliabile"
+    },
+    {
+      "numero": "2/2024",
+      "uscita": "Dicembre 2024",
+      "link": "https://www.misericordie.it/wp-content/uploads/2025/06/GialloCiano_2-2024_DEF_BASSA.pdf",
+      "formato": "PDF"
+    },
+    {
+      "numero": "1/2024",
+      "uscita": "Agosto 2024",
+      "link": "https://www.misericordie.it/wp-content/uploads/2024/11/GC_1-2024_DEF_BASSA.pdf",
+      "formato": "PDF"
+    },
+    {
+      "numero": "3/2023",
+      "uscita": "Dicembre 2023",
+      "link": "https://www.misericordie.it/giallo-ciano/",
+      "formato": "archivio",
+      "nota": "Sul sito nazionale punta allo stesso PDF di ottobre 2023: si rimanda all'archivio finché non viene corretto."
+    },
+    {
+      "numero": "2/2023",
+      "uscita": "Ottobre 2023",
+      "link": "https://www.misericordie.it/wp-content/uploads/2024/11/GC_2-2023_DEF2_BASSA.pdf",
+      "formato": "PDF"
+    },
+    {
+      "numero": "1/2023",
+      "uscita": "Aprile 2023",
+      "link": "https://www.misericordie.it/wp-content/uploads/2024/11/GC_1-2023_DEF_BASSA.pdf",
+      "formato": "PDF"
+    }
+  ]
+}

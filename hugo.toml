@@ -68,6 +68,11 @@ enableGitInfo = true
     parent = "chisiamo"
     weight = 5
   [[menus.main]]
+    name = "Giallo Ciano, la rivista"
+    pageRef = "/giallo-ciano"
+    parent = "chisiamo"
+    weight = 6
+  [[menus.main]]
     name = "Trasporto infermi"
     pageRef = "/trasporto-infermi"
     weight = 18
