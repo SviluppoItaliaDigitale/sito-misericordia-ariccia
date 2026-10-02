@@ -391,3 +391,30 @@
   .dsr-opera, .dsr-opera-servizio, .dsr-elenco-card, .dsr-btn, .dsr-cover-cta, .dsr-espandi { transition: none; }
   .dsr-opera-corpo { animation: none; }
 }
+
+/* =========================================================================
+   DOSSIER PRIMO SOCCORSO — schede numerate con video verticale
+   ========================================================================= */
+.ps-cover-112 { margin: 1.2rem 0 0; font: 600 1.25rem/1.3 "Jost", sans-serif; }
+.ps-cover-112 a { display: inline-block; margin-left: .3rem; padding: .1rem .8rem; border-radius: 999px; background: #fff; color: var(--mise-navy); text-decoration: none; font-weight: 800; }
+.dossier-ps .ps-scheda { scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem); }
+.ps-schede { padding: 2rem 0 3rem; }
+.ps-scheda { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; align-items: start; padding: 2.6rem 0; border-top: 2px solid rgba(27,34,63,.12); }
+.ps-scheda:nth-child(even) .ps-num { color: var(--mise-ciano); }
+.ps-num { font: 600 4.5rem/1 "Playfair Display", serif; color: #d9b310; margin: 0 0 .2rem; }
+.ps-scheda h2 { margin: 0; font-size: 2.1rem; }
+.ps-motto { font: 600 1.1rem "Jost", sans-serif; color: var(--mise-ciano-testo); margin: .2rem 0 1rem; text-transform: none; }
+.ps-scheda h3 { font-size: 1.15rem; color: var(--mise-navy); margin: 1.2rem 0 .4rem; }
+.ps-fare { padding-left: 1.3rem; } .ps-fare li { margin-bottom: .4rem; }
+.ps-nonfare { margin-top: 1.2rem; padding: 1rem 1.2rem; border-left: 5px solid #d23b3b; background: #fdf2f2; border-radius: 0 .6rem .6rem 0; }
+.ps-nonfare h3 { margin-top: 0; color: #a12828; }
+.ps-nonfare ul { margin: 0; padding-left: 1.1rem; }
+.ps-video { margin: 0; position: sticky; top: calc(var(--dsr-nav-h) + 4rem); }
+.ps-impara { background: var(--mise-navy); color: #fff; padding: 3rem 0; margin-top: 1rem; }
+.ps-impara h2 { color: #fff; }
+.ps-impara .ps-fonte { margin-top: 1.5rem; font-size: .9rem; color: #c3c9dc; }
+.ps-impara .ps-fonte a { color: #fff; }
+@media (max-width: 767.98px) {
+  .ps-scheda { grid-template-columns: 1fr; gap: 1.2rem; }
+  .ps-video { position: static; justify-self: center; width: 100%; max-width: 320px; }
+}

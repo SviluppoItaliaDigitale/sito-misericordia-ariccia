@@ -12,7 +12,7 @@ italianoSemplice: |
   - Se una persona **soffoca**: dai colpi tra le spalle e spingi sulla pancia (manovra di Heimlich).
   - Se una persona **sviene**: sdraiala e solleva le gambe.
   - Se c'è una **ferita che sanguina**: premi forte sulla ferita con un panno pulito.
-  - Se c'è una **ustione**: metti la parte sotto l'acqua fresca per almeno 15 minuti.
+  - Se c'è una **ustione**: metti la parte sotto l'acqua fresca per almeno 20 minuti.
 
   Queste sono solo indicazioni semplici. Per imparare davvero, fai un **corso di primo soccorso** con noi.
 ---
@@ -22,6 +22,8 @@ italianoSemplice: |
 </div>
 
 Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indicazioni essenziali per le emergenze più comuni. Per acquisire competenze reali, partecipa a un [corso di primo soccorso e BLSD](/servizi/formazione/) della Misericordia.
+
+**Vuoi approfondire?** Leggi il nostro dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**, con una scheda e un video per ogni emergenza, secondo le linee guida IRC 2025.
 
 ## Le regole d'oro
 
@@ -68,17 +70,17 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <details class="faq-item">
 <summary>Emorragia (ferita che sanguina molto)</summary>
 
-1. **Premi con forza** sulla ferita con un panno o una garza pulita.
+1. **Premi con forza direttamente sulla ferita** con una garza o un panno pulito, e **non mollare**.
 2. **Non togliere** il panno se si inzuppa: aggiungine un altro sopra e continua a premere.
-3. Se possibile, **solleva** l'arto ferito.
-4. Chiama il **112** per le emorragie abbondanti o che non si fermano.
+3. Chiama il **112** per le emorragie abbondanti o che non si fermano.
+4. Su un braccio o una gamba, se la pressione non basta, chi è addestrato può usare un **laccio emostatico**.
 
 </details>
 
 <details class="faq-item">
 <summary>Ustione</summary>
 
-1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 15-20 minuti**.
+1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**.
 2. **Togli** anelli, orologi o vestiti solo se **non sono attaccati** alla pelle.
 3. **Non** applicare ghiaccio, oli, dentifricio o pomate.
 4. Copri con un panno pulito e chiama il **112** se l'ustione è estesa, profonda o su viso, mani o genitali.
