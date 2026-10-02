@@ -37,6 +37,8 @@ Bastano pochi gesti giusti, fatti subito, per cambiare il finale di un'emergenza
 9. **Avvelenamento.** **Non provocare il vomito.** Chiama il 112 o un Centro Antiveleni e tieni la confezione.
 10. **Trauma cranico.** Svenimento, vomito ripetuto, confusione o sonnolenza dopo un colpo alla testa: chiama il **112**.
 
+Per ognuna delle dieci emergenze trovi una scheda completa (come riconoscerla, cosa fare, cosa non fare) nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+
 Queste sono informazioni generali: **non sostituiscono un corso**. Il modo migliore per essere pronti è provare con le proprie mani, con un istruttore accanto.
 
 ## Impara con noi

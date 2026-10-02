@@ -1,0 +1,91 @@
+{{ define "main" }}
+{{- /* Dossier Primo soccorso: schede da front matter "argomenti" (id, titolo, motto,
+     riconosci, fare[], nonfare[]); il video di ogni scheda è static/video/primo-soccorso-<id>.mp4 */ -}}
+{{ $arg := .Params.argomenti }}
+<article class="dossier dossier-ps" data-dossier>
+
+  <header class="dsr-cover">
+    <div class="dsr-cover-sfondo" aria-hidden="true">
+      <div id="hero-particelle" class="dsr-particelle"></div>
+      <div class="dsr-cover-glow"></div>
+    </div>
+    <div class="container dsr-cover-inner">
+      {{ with .Params.occhiello }}<p class="dsr-occhiello" data-anim="fade-up">{{ . }}</p>{{ end }}
+      <h1 class="dsr-titolo" data-split="words">{{ .Title }}</h1>
+      {{ with .Params.sottotitolo }}<p class="dsr-sottotitolo" data-anim="fade-up" data-anim-delay="0.15">{{ . }}</p>{{ end }}
+      <ul class="dsr-meta" data-anim="fade-up" data-anim-delay="0.3">
+        <li><strong>{{ len $arg }}</strong> schede</li>
+        <li><strong>{{ len $arg }}</strong> video</li>
+        <li>linee guida <strong>IRC 2025</strong></li>
+        {{ with .Params.lettura }}<li>lettura {{ . }}</li>{{ end }}
+      </ul>
+      <p class="ps-cover-112" data-anim="fade-up" data-anim-delay="0.4">In ogni emergenza chiama il <a href="tel:112">112</a></p>
+      {{ with .Params.cover_cta }}
+      <a class="dsr-cover-cta" href="{{ .ancora }}"><span>{{ .testo }}</span><span class="dsr-cover-freccia" aria-hidden="true">↓</span></a>
+      {{ end }}
+    </div>
+  </header>
+
+  <nav class="dsr-indice" aria-label="Indice del dossier" data-dsr-indice>
+    <div class="container dsr-indice-inner">
+      <span class="dsr-indice-eti" aria-hidden="true">Schede</span>
+      <ul>
+        {{ range $i, $a := $arg }}<li><a href="#{{ $a.id }}" class="dsr-indice-link">{{ add $i 1 }}. {{ $a.titolo }}</a></li>{{ end }}
+      </ul>
+    </div>
+  </nav>
+
+  <section id="introduzione" class="dsr-sezione dsr-intro">
+    <div class="container">
+      <div class="dsr-intro-testo contenuto" data-anim="fade-up">{{ .Content }}</div>
+    </div>
+  </section>
+
+  <section id="schede" class="ps-schede">
+    <div class="container">
+      {{ range $i, $a := $arg }}
+      {{ $video := printf "video/primo-soccorso-%s.mp4" $a.id }}
+      {{ $poster := printf "img/video/primo-soccorso-%s.jpg" $a.id }}
+      <section id="{{ $a.id }}" class="ps-scheda" aria-labelledby="titolo-{{ $a.id }}">
+        <div class="ps-scheda-testo">
+          <p class="ps-num" aria-hidden="true">{{ add $i 1 }}</p>
+          <h2 id="titolo-{{ $a.id }}">{{ $a.titolo }}</h2>
+          <p class="ps-motto">{{ $a.motto }}</p>
+          <h3>Come riconoscerlo</h3>
+          <p>{{ $a.riconosci | markdownify }}</p>
+          <h3>Cosa fare</h3>
+          <ol class="ps-fare">{{ range $a.fare }}<li>{{ . | markdownify }}</li>{{ end }}</ol>
+          {{ with $a.nonfare }}
+          <div class="ps-nonfare">
+            <h3>Cosa non fare</h3>
+            <ul>{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
+          </div>
+          {{ end }}
+        </div>
+        {{ if fileExists (printf "static/%s" $video) }}
+        <figure class="ps-video video-riq video-riq--verticale">
+          <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: cosa fare in 30 secondi">
+            <source src="{{ $video | relURL }}" type="video/mp4">
+            Il tuo browser non riproduce i video: <a href="{{ $video | relURL }}">scarica il file</a>.
+          </video>
+          <figcaption>{{ $a.titolo }} in 30 secondi</figcaption>
+        </figure>
+        {{ end }}
+      </section>
+      {{ end }}
+    </div>
+  </section>
+
+  <section id="impara" class="ps-impara">
+    <div class="container">
+      <h2>Impara con le tue mani</h2>
+      <p>Queste schede sono informazioni generali e <strong>non sostituiscono un corso</strong>. Le manovre si imparano davvero solo provando, con un istruttore accanto: organizziamo corsi di primo soccorso, BLSD e P-BLSD aperti a tutti, anche per aziende, scuole e associazioni.</p>
+      <div class="sost-azioni">
+        <a class="btn btn-giallo px-4" href="{{ "/servizi/formazione/" | relURL }}">Scopri i corsi</a>
+        <a class="btn btn-ciano px-4" href="tel:+393484068657">Chiama il 348 4068657</a>
+      </div>
+      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso»). Contenuti a cura della Misericordia di Ariccia.</p>
+    </div>
+  </section>
+</article>
+{{ end }}
