@@ -1,15 +1,15 @@
 ---
 title: "Emorragia grave: premi e non mollare"
-titoloSeo: "Emorragia grave: cosa fare, primo soccorso in 30 secondi (linee guida IRC 2025)"
+titoloSeo: "Emorragia grave: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-13
 slug: "primo-soccorso-emorragia"
-description: "Cosa fare davanti a un'emorragia grave: pressione diretta sulla ferita, senza mollare, e chiamata al 112."
+description: "Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."
 immagine: "/img/news/primo-soccorso-emorragia-grafica.jpg"
 social_video: "/video/primo-soccorso-emorragia.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso in 30 secondi · 3/10 — Emorragia grave. Cosa fare davanti a un'emorragia grave: pressione diretta sulla ferita, senza mollare, e chiamata al 112. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 3/10 — Emorragia grave. Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
 italianoSemplice: |
-  **Emorragia grave: un video di 30 secondi su cosa fare.**
+  **Emorragia grave: un video con i disegni che spiega cosa fare, passo dopo passo.**
 
   È il numero 3 della nostra rubrica sul primo soccorso.
 
@@ -18,27 +18,49 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Emorragia grave: una scena del video «Primo soccorso in 30 secondi» della Misericordia di Ariccia](/img/news/primo-soccorso-emorragia-grafica.jpg)
+![Emorragia grave: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-emorragia-grafica.jpg)
 
-**Primo soccorso in 30 secondi** è la nostra rubrica: dieci video brevi, uno per ogni emergenza tra le più comuni. Oggi il numero **3 di 10**: **emorragia grave**. *Premi e non mollare.*
+**Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **3 di 10**: **emorragia grave**. *Premi e non mollare.*
 
-{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso in 30 secondi" descrizione="Cosa fare davanti a un'emorragia grave: pressione diretta sulla ferita, senza mollare, e chiamata al 112." data="2026-10-13" didascalia="Il video dura circa 30 secondi, con la voce narrante e i sottotitoli." >}}
+{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso passo passo" descrizione="Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo." data="2026-10-13" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
-## Come riconoscerlo
+## Passo passo
+
+### Proteggiti
+
+Prima di tutto, proteggi te stesso: se hai i guanti, indossali.
+
+### Premi
+
+Metti una garza, o un panno pulito, direttamente sulla ferita, e premi forte con la mano.
+
+### Non mollare
+
+Mantieni la pressione per almeno 10 minuti, senza sollevare la garza per controllare.
+
+### Se passa
+
+Se il sangue passa, non togliere la garza: aggiungine un'altra sopra e continua a premere.
+
+### Oggetti
+
+Se nella ferita c'è un oggetto conficcato, non toglierlo: premi ai lati.
+
+### Chiama
+
+Chiama il 112, o fallo chiamare, e metti il vivavoce: così puoi continuare a premere.
+
+### Laccio emostatico
+
+Se il sangue da un braccio o da una gamba non si ferma, chi è addestrato può usare un laccio emostatico: 5-7 cm sopra la ferita, segnando l'ora.
+
+### Shock
+
+Se è pallido, sudato e confuso, potrebbe essere in shock: fallo stare sdraiato e coprilo, per tenerlo al caldo.
+
+## Da ricordare
 
 Sangue che esce abbondante, a getto o che non si ferma da una ferita.
-
-## Cosa fare
-
-1. Se li hai, indossa i guanti.
-2. Premi forte **direttamente sulla ferita**, con una garza sterile o un panno pulito, e **mantieni la pressione senza mollare**.
-3. Chiama il **112**.
-4. Su un braccio o una gamba, se la pressione non basta, chi è addestrato può applicare un **laccio emostatico** il prima possibile, annotando l'ora.
-
-## Cosa non fare
-
-- Non togliere la pressione per «controllare» se il sangue si è fermato.
-- Non estrarre oggetti conficcati nella ferita: premi intorno.
 
 Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#emorragia)**.
 

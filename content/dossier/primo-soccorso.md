@@ -140,6 +140,6 @@ argomenti:
 
 In un'emergenza i primi minuti sono quelli che contano di più, e spesso chi è vicino non è un medico: è un familiare, un collega, un passante. **Sapere cosa fare, e cosa non fare, può cambiare il finale.**
 
-In questo dossier trovi **dieci schede**, una per ogni emergenza tra le più comuni. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di 30 secondi** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).
+In questo dossier trovi **dieci schede**, una per ogni emergenza tra le più comuni. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di approfondimento con disegni animati** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).
 
 **In ogni emergenza, il primo gesto è chiamare il [112](tel:112)**: l'operatore ti guida finché arrivano i soccorsi.
