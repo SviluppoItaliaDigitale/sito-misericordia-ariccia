@@ -64,11 +64,11 @@
         </div>
         {{ if fileExists (printf "static/%s" $video) }}
         <figure class="ps-video video-riq video-riq--verticale">
-          <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: cosa fare in 30 secondi">
+          <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: cosa fare passo passo">
             <source src="{{ $video | relURL }}" type="video/mp4">
             Il tuo browser non riproduce i video: <a href="{{ $video | relURL }}">scarica il file</a>.
           </video>
-          <figcaption>{{ $a.titolo }} in 30 secondi</figcaption>
+          <figcaption>{{ $a.titolo }}: il video passo passo</figcaption>
         </figure>
         {{ end }}
       </section>
