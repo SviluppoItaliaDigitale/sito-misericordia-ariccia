@@ -99,9 +99,10 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
 - App Meta «Sito Misericordia Ariccia» (ID 2286230255250372), ancora «Non
   pubblicata»: i post risultano comunque visibili al pubblico (verificato).
 - Utente di sistema **sito-web**, con accesso completo alla pagina
-  (Instagram incluso) e all'app. Ruolo nel portfolio: **Dipendente** (dal
-  03/10/2026), così la gestione di amministratori e persone del portfolio
-  resta solo ad Alessandro.
+  (Instagram incluso) e all'app. Ruolo nel portfolio: **Amministratore**
+  (scelta di Alessandro). Regola: tramite il token **non** si aggiungono né
+  si tolgono amministratori, persone o account del portfolio: quella
+  gestione resta solo ad Alessandro.
 - Token rigenerato il **03/10/2026** con permessi di gestione completa dei
   contenuti (il token della pagina **non scade**):
   `pages_show_list`, `pages_read_engagement`, `pages_read_user_content`,
