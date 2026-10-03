@@ -748,6 +748,14 @@ a:hover { color: var(--mise-navy); }
 .contenuto a[href$=".pdf"]:hover, .cs-racconto a[href$=".pdf"]:hover { background: #fff; color: var(--mise-navy); }
 
 /* ---- News come schede (lista news + home) ---- */
+.news-evidenza { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 2rem; align-items: center; margin-bottom: 2rem; padding: 1.4rem; border-radius: 1.2rem; background: var(--mise-navy); color: #fff; border-bottom: 5px solid var(--mise-giallo); }
+.news-evidenza-img img { width: 100%; height: auto; border-radius: .8rem; display: block; }
+.news-evidenza-eti { display: inline-block; margin: 0 0 .6rem; padding: .2rem .8rem; border-radius: 999px; background: var(--mise-giallo); color: var(--mise-navy); font-weight: 700; font-size: .9rem; }
+.news-evidenza .data { color: #c3c9dc; }
+.news-evidenza h2 { font-size: 1.8rem; margin: .2rem 0 .7rem; }
+.news-evidenza h2 a { color: #fff; text-decoration: none; }
+.news-evidenza h2 a:hover { text-decoration: underline; }
+@media (max-width: 767.98px) { .news-evidenza { grid-template-columns: 1fr; gap: 1.2rem; } .news-evidenza-img { justify-self: center; width: 100%; max-width: 240px; } .news-evidenza h2 { font-size: 1.45rem; } }
 .griglia-news { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.3rem; }
 .news-item {
   background: #fff; border: none; border-top: 4px solid var(--mise-ciano);
