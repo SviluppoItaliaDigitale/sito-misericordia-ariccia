@@ -23,7 +23,7 @@ italianoSemplice: |
 
 **Nel video c'è la simulazione delle compressioni a tempo:** 110 al minuto, con il conteggio da 1 a 30 e la musica allo stesso ritmo.
 
-{{< video src="video/primo-soccorso-rianimazione-bambino.mp4" poster="img/video/primo-soccorso-rianimazione-bambino.jpg" verticale="si" titolo="Rianimazione nel bambino: primo soccorso passo passo" descrizione="Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni." data="2026-11-24" didascalia="Il video dura circa 1 minuto e 35 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-rianimazione-bambino.mp4" poster="img/video/primo-soccorso-rianimazione-bambino.jpg" verticale="si" titolo="Rianimazione nel bambino: primo soccorso passo passo" descrizione="Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni." data="2026-11-24" didascalia="Il video dura circa 1 minuto e 50 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

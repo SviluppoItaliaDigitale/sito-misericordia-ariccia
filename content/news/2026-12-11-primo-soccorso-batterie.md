@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **10 di 13**: **batterie a bottone e calamite**.
 
-{{< video src="video/primo-soccorso-batterie.mp4" poster="img/video/primo-soccorso-batterie.jpg" verticale="si" titolo="Batterie a bottone e calamite: primo soccorso passo passo" descrizione="Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire." data="2026-12-11" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-batterie.mp4" poster="img/video/primo-soccorso-batterie.jpg" verticale="si" titolo="Batterie a bottone e calamite: primo soccorso passo passo" descrizione="Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire." data="2026-12-11" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

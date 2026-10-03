@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **8 di 13**: **monossido di carbonio**.
 
-{{< video src="video/primo-soccorso-monossido.mp4" poster="img/video/primo-soccorso-monossido.jpg" verticale="si" titolo="Monossido di carbonio: primo soccorso passo passo" descrizione="Stufe, camini e caldaie: i segni dell'intossicazione da monossido, cosa fare subito e come prevenirla con controlli e rilevatore." data="2026-12-04" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-monossido.mp4" poster="img/video/primo-soccorso-monossido.jpg" verticale="si" titolo="Monossido di carbonio: primo soccorso passo passo" descrizione="Stufe, camini e caldaie: i segni dell'intossicazione da monossido, cosa fare subito e come prevenirla con controlli e rilevatore." data="2026-12-04" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

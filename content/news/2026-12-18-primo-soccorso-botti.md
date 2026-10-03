@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **12 di 13**: **botti di capodanno**.
 
-{{< video src="video/primo-soccorso-botti.mp4" poster="img/video/primo-soccorso-botti.jpg" verticale="si" titolo="Botti di Capodanno: primo soccorso passo passo" descrizione="Fuochi solo a norma CE, mai raccogliere petardi inesplosi, e cosa fare per ustioni, ferite alla mano, dita staccate e lesioni agli occhi." data="2026-12-18" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-botti.mp4" poster="img/video/primo-soccorso-botti.jpg" verticale="si" titolo="Botti di Capodanno: primo soccorso passo passo" descrizione="Fuochi solo a norma CE, mai raccogliere petardi inesplosi, e cosa fare per ustioni, ferite alla mano, dita staccate e lesioni agli occhi." data="2026-12-18" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **10 di 10**: **trauma cranico**. *Attenti alla testa.*
 
-{{< video src="video/primo-soccorso-trauma-cranico.mp4" poster="img/video/primo-soccorso-trauma-cranico.jpg" verticale="si" titolo="Trauma cranico: primo soccorso passo passo" descrizione="Dopo un colpo alla testa: cosa osservare, quando chiamare il 112, collo e schiena, il bernoccolo e le 24 ore successive." data="2026-11-06" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-trauma-cranico.mp4" poster="img/video/primo-soccorso-trauma-cranico.jpg" verticale="si" titolo="Trauma cranico: primo soccorso passo passo" descrizione="Dopo un colpo alla testa: cosa osservare, quando chiamare il 112, collo e schiena, il bernoccolo e le 24 ore successive." data="2026-11-06" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

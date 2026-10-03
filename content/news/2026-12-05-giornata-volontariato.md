@@ -23,7 +23,7 @@ italianoSemplice: |
 
 Il **5 dicembre** è la **Giornata internazionale del volontariato**. Per noi è l'occasione per dire una parola semplice: **grazie**. Grazie ai volontari della Misericordia di Ariccia, che ogni giorno regalano il loro tempo a chi ha bisogno.
 
-{{< video src="video/giornata-volontariato.mp4" poster="img/video/giornata-volontariato.jpg" verticale="si" titolo="Giornata del volontariato: grazie, e c'è posto anche per te" descrizione="Il 5 dicembre è la Giornata internazionale del volontariato: grazie ai volontari della Misericordia di Ariccia. Trasporti, famiglie, eventi: c'è posto anche per te, dai 16 agli 80 anni." data="2026-12-05" didascalia="Il video dura circa 50 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/giornata-volontariato.mp4" poster="img/video/giornata-volontariato.jpg" verticale="si" titolo="Giornata del volontariato: grazie, e c'è posto anche per te" descrizione="Il 5 dicembre è la Giornata internazionale del volontariato: grazie ai volontari della Misericordia di Ariccia. Trasporti, famiglie, eventi: c'è posto anche per te, dai 16 agli 80 anni." data="2026-12-05" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Cosa fanno i nostri volontari
 

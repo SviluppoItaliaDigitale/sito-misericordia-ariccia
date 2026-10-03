@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **1 di 13**: **convulsioni**.
 
-{{< video src="video/primo-soccorso-convulsioni.mp4" poster="img/video/primo-soccorso-convulsioni.jpg" verticale="si" titolo="Convulsioni: primo soccorso passo passo" descrizione="Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco." data="2026-11-10" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-convulsioni.mp4" poster="img/video/primo-soccorso-convulsioni.jpg" verticale="si" titolo="Convulsioni: primo soccorso passo passo" descrizione="Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco." data="2026-11-10" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **7 di 13**: **ipotermia e congelamento**.
 
-{{< video src="video/primo-soccorso-freddo.mp4" poster="img/video/primo-soccorso-freddo.jpg" verticale="si" titolo="Ipotermia e congelamento: primo soccorso passo passo" descrizione="I segni dell'ipotermia, come scaldare una persona in modo sicuro, perché niente alcol, il congelamento e chi rischia di più." data="2026-12-01" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-freddo.mp4" poster="img/video/primo-soccorso-freddo.jpg" verticale="si" titolo="Ipotermia e congelamento: primo soccorso passo passo" descrizione="I segni dell'ipotermia, come scaldare una persona in modo sicuro, perché niente alcol, il congelamento e chi rischia di più." data="2026-12-01" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
