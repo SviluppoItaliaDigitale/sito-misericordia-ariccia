@@ -3,6 +3,7 @@ title: "Soffocamento nel lattante: 5 pacche e 5 compressioni"
 titoloSeo: "Soffocamento nel lattante: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-11-20
 slug: "primo-soccorso-soffocamento-lattante"
+in_evidenza_fino: "2026-11-23"
 description: "Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati."
 immagine: "/img/news/primo-soccorso-soffocamento-lattante-grafica.jpg"
 social_video: "/video/primo-soccorso-soffocamento-lattante.mp4"
