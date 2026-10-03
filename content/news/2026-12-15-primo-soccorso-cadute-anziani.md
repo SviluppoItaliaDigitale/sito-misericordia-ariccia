@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **11 di 13**: **cadute degli anziani**.
 
-{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

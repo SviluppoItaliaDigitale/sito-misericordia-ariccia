@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **6 di 13**: **fratture e distorsioni**.
 
-{{< video src="video/primo-soccorso-fratture.mp4" poster="img/video/primo-soccorso-fratture.jpg" verticale="si" titolo="Fratture e distorsioni: primo soccorso passo passo" descrizione="Come riconoscere una frattura, perché non raddrizzare l'arto, il ghiaccio nel panno, la frattura esposta e quando chiamare il 112." data="2026-11-27" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-fratture.mp4" poster="img/video/primo-soccorso-fratture.jpg" verticale="si" titolo="Fratture e distorsioni: primo soccorso passo passo" descrizione="Come riconoscere una frattura, perché non raddrizzare l'arto, il ghiaccio nel panno, la frattura esposta e quando chiamare il 112." data="2026-11-27" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **9 di 10**: **avvelenamento**. *Niente rimedi fai da te.*
 
-{{< video src="video/primo-soccorso-avvelenamento.mp4" poster="img/video/primo-soccorso-avvelenamento.jpg" verticale="si" titolo="Avvelenamento: primo soccorso passo passo" descrizione="Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa." data="2026-11-03" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-avvelenamento.mp4" poster="img/video/primo-soccorso-avvelenamento.jpg" verticale="si" titolo="Avvelenamento: primo soccorso passo passo" descrizione="Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa." data="2026-11-03" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

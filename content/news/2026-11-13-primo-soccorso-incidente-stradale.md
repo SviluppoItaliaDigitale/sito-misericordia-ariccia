@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **2 di 13**: **incidente stradale**.
 
-{{< video src="video/primo-soccorso-incidente-stradale.mp4" poster="img/video/primo-soccorso-incidente-stradale.jpg" verticale="si" titolo="Incidente stradale: primo soccorso passo passo" descrizione="Nella settimana della Giornata in ricordo delle vittime della strada: quattro frecce, giubbotto, triangolo, 112, non spostare i feriti e non togliere il casco." data="2026-11-13" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-incidente-stradale.mp4" poster="img/video/primo-soccorso-incidente-stradale.jpg" verticale="si" titolo="Incidente stradale: primo soccorso passo passo" descrizione="Nella settimana della Giornata in ricordo delle vittime della strada: quattro frecce, giubbotto, triangolo, 112, non spostare i feriti e non togliere il casco." data="2026-11-13" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **13 di 13**: **la cassetta di primo soccorso**.
 
-{{< video src="video/primo-soccorso-cassetta.mp4" poster="img/video/primo-soccorso-cassetta.jpg" verticale="si" titolo="La cassetta di primo soccorso: primo soccorso passo passo" descrizione="Cosa mettere nella cassetta di primo soccorso, i numeri utili, cosa tenere in auto, le scadenze, e gli auguri di buone feste." data="2026-12-22" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-cassetta.mp4" poster="img/video/primo-soccorso-cassetta.jpg" verticale="si" titolo="La cassetta di primo soccorso: primo soccorso passo passo" descrizione="Cosa mettere nella cassetta di primo soccorso, i numeri utili, cosa tenere in auto, le scadenze, e gli auguri di buone feste." data="2026-12-22" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

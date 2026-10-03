@@ -21,7 +21,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **4 di 13**: **soffocamento nel lattante**.
 
-{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

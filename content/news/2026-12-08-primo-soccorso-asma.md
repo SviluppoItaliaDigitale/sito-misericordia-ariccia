@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **9 di 13**: **crisi d'asma**.
 
-{{< video src="video/primo-soccorso-asma.mp4" poster="img/video/primo-soccorso-asma.jpg" verticale="si" titolo="Crisi d'asma: primo soccorso passo passo" descrizione="I segni della crisi d'asma, la posizione giusta, come aiutare con lo spray e quando chiamare il 112." data="2026-12-08" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-asma.mp4" poster="img/video/primo-soccorso-asma.jpg" verticale="si" titolo="Crisi d'asma: primo soccorso passo passo" descrizione="I segni della crisi d'asma, la posizione giusta, come aiutare con lo spray e quando chiamare il 112." data="2026-12-08" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

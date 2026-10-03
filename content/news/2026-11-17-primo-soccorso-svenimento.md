@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **3 di 13**: **svenimento**.
 
-{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
