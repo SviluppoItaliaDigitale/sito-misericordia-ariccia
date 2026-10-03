@@ -78,9 +78,22 @@ def riga_data(n):
     return f"📅 {GIORNI[g.weekday()].capitalize()} {g.day} {MESI[g.month - 1]} {g.year}\n\n"
 
 
+def credito_musica(n):
+    """Riga di credito per i video con musica di terzi (data/musica_video.json, licenza CC BY: va citato l'autore)."""
+    video = n.get("social_video")
+    if not video:
+        return ""
+    try:
+        dati = json.loads((Path(__file__).resolve().parent.parent / "data" / "musica_video.json").read_text())
+    except (OSError, ValueError):
+        return ""
+    brano = dati.get("video", {}).get(Path(video).name)
+    return f"\n\n🎵 Musica: «{brano}» di {dati['autore']} (incompetech.com), {dati['licenza']}" if brano else ""
+
+
 def testo_facebook(n):
     corpo = n.get("social_testo") or accorcia(n["sommario"], 400)
-    return f"{n['titolo']}\n\n{riga_data(n)}{corpo}\n\n👉 Leggi tutto: {n['url']}"
+    return f"{n['titolo']}\n\n{riga_data(n)}{corpo}{credito_musica(n)}\n\n👉 Leggi tutto: {n['url']}"
 
 
 def testo_instagram(n):
@@ -88,7 +101,7 @@ def testo_instagram(n):
     # Su Instagram i link nel testo non sono cliccabili: li scriviamo comunque
     # in forma breve, leggibile e ricopiabile.
     url_breve = n["url"].replace("https://", "").replace("www.", "").rstrip("/")
-    testo = f"{n['titolo']}\n\n{riga_data(n)}{corpo}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
+    testo = f"{n['titolo']}\n\n{riga_data(n)}{corpo}{credito_musica(n)}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
     return testo[:2200]  # limite Instagram
 
 

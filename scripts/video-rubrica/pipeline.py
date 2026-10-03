@@ -80,7 +80,14 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     track = np.clip(track[:int(T * SR)], -1, 1)
     with wave.open(str(d / 'voce.wav'), 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((track * 32767).astype(np.int16).tobytes())
-    subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm), v.get('musica', 'base')], check=True, capture_output=True)
+    # Musica: un brano scelto da Alessandro (cartella musica/, Kevin MacLeod, CC BY 4.0) oppure, per i video con le
+    # compressioni a tempo (bpm 110), la base originale generata da musica.py, che deve restare a tempo con il conteggio.
+    brano = v.get('brano', None if bpm == 110 else 'heartwarming')
+    if brano:
+        subprocess.run([FF,'-v','error','-y','-stream_loop','-1','-i',str(W/'musica'/f'{brano}.mp3'),'-t',f'{T:.3f}','-af',
+            f'loudnorm=I=-17:TP=-2,afade=t=in:d=0.5,afade=t=out:st={max(0,T-3):.3f}:d=3','-ar','44100','-ac','1',str(d/'musica.wav')],check=True)
+    else:
+        subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm), v.get('musica', 'base')], check=True, capture_output=True)
     subprocess.run([FF,'-v','error','-y','-i',str(d/'voce.wav'),'-i',str(d/'musica.wav'),'-filter_complex',
         '[0]aresample=44100,asplit[v][vs];[1]volume=0.30[m];[m][vs]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[md];[v][md]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5[o]',
         '-map','[o]','-ar','44100','-ac','1','-b:a','128k',str(d/'audio.mp3')],check=True)

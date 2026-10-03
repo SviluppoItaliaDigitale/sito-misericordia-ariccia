@@ -21,7 +21,10 @@
     <source src="{{ $src | relURL }}{{ with $inizio }}#t={{ . }}{{ end }}" type="video/mp4">
     Il tuo browser non riproduce i video: <a href="{{ $src | relURL }}">scarica il file</a>.
   </video>
-  {{ with .Get "didascalia" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  {{- $musica := index site.Data.musica_video.video (path.Base $src) -}}
+  {{- if or (.Get "didascalia") $musica }}
+  <figcaption>{{ with .Get "didascalia" }}{{ . | markdownify }}{{ end }}{{ with $musica }}{{ with site.Data.musica_video }}<small class="video-musica">Musica: «{{ index .video (path.Base $src) }}» di {{ .autore }} (<a href="{{ .fonte }}" rel="noopener">incompetech.com</a>), licenza <a href="{{ .licenza_url }}" rel="noopener license">{{ .licenza }}</a>.</small>{{ end }}{{ end }}</figcaption>
+  {{- end }}
 </figure>
 {{- /* Dati strutturati VideoObject: Google può mostrare l'anteprima video nei risultati */ -}}
 {{- if and (.Get "titolo") (.Get "descrizione") $poster }}

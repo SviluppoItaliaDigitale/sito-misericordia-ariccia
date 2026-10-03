@@ -486,6 +486,7 @@ a:hover { color: var(--mise-navy); }
 .video-riq { margin: 1.5rem 0; }
 .video-riq video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; border-radius: .8rem; box-shadow: 0 10px 26px rgba(27,34,63,.20); }
 .video-riq--verticale { max-width: 360px; }
+.video-musica { display: block; margin-top: .25rem; font-size: .8em; opacity: .8; }
 .video-riq--verticale video { aspect-ratio: 9 / 16; }
 .video-riq figcaption { font-size: .92rem; color: #55607a; margin-top: .6rem; }
 .video-salta { display: inline-flex; align-items: center; gap: .4rem; }
