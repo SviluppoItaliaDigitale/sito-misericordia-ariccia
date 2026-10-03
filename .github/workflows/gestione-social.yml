@@ -1,0 +1,80 @@
+name: "🛠️ Gestione social"
+
+# Gestione completa di pagina Facebook e Instagram (scripts/gestione_social.py).
+# Due modi di avviarlo, entrambi raggiungibili da qualsiasi dispositivo:
+#  - a mano: Actions → Gestione social → Run workflow (anche dall'app GitHub);
+#  - con un push del file .github/social/comando.json su un ramo diverso da main
+#    (così lo avvia anche una sessione cloud): l'esito viene scritto in
+#    .github/social/esito.md sullo stesso ramo.
+# Eliminare richiede sempre conferma = ELIMINA.
+
+on:
+  workflow_dispatch:
+    inputs:
+      azione:
+        description: "Cosa fare"
+        required: true
+        type: choice
+        options: [elenco, statistiche, commenti, messaggi, pubblica, modifica, elimina, rispondi-commento, nascondi-commento, elimina-commento, rispondi-messaggio, prova]
+      rete:
+        description: "Facebook o Instagram"
+        required: true
+        type: choice
+        options: [fb, ig]
+      id:
+        description: "Identificativo di post, commento o conversazione (per Instagram anche il link del post)"
+        required: false
+        type: string
+      testo:
+        description: "Testo (post, risposta, messaggio). Per nascondi-commento: mostra = rendi visibile"
+        required: false
+        type: string
+      immagine_url:
+        description: "Link pubblico di un'immagine JPEG (obbligatorio per pubblicare su Instagram)"
+        required: false
+        type: string
+      conferma:
+        description: "Per eliminare scrivi ELIMINA"
+        required: false
+        type: string
+  push:
+    branches-ignore: [main]
+    paths: [".github/social/comando.json"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestione-social
+  cancel-in-progress: false
+
+jobs:
+  esegui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Esegui
+        env:
+          PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          AZIONE: ${{ inputs.azione }}
+          RETE: ${{ inputs.rete }}
+          ID: ${{ inputs.id }}
+          TESTO: ${{ inputs.testo }}
+          IMMAGINE_URL: ${{ inputs.immagine_url }}
+          CONFERMA: ${{ inputs.conferma }}
+          COMANDO_FILE: ${{ github.event_name == 'push' && '.github/social/comando.json' || '' }}
+          ESITO_FILE: ${{ github.event_name == 'push' && '.github/social/esito.md' || '' }}
+        run: python3 scripts/gestione_social.py
+
+      - name: Salva l'esito sul ramo
+        if: always() && github.event_name == 'push'
+        run: |
+          [ -f .github/social/esito.md ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add .github/social/esito.md
+          git commit -m "Gestione social: esito" || exit 0
+          git push origin "HEAD:${GITHUB_REF_NAME}"
