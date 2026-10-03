@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Misericordia di Ariccia — Primo soccorso passo passo</title>
+<style>
+/*FONTS*/
+html,body{margin:0;height:100%;background:#0b0f1f;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;transform-origin:50% 50%;
+  background:linear-gradient(180deg,#1b223f 0%,#1a2140 60%,#151b36 100%);overflow:hidden;font-family:Jost,sans-serif;color:#fff}
+.render #stage{left:0;top:0;transform:none!important}
+canvas{position:absolute;left:0;top:0}
+#serie{position:absolute;left:96px;top:120px;font:600 28px Jost;color:#8f9abb;letter-spacing:.5px}
+#serie b{color:#f2e433;font-weight:700}
+#chip{position:absolute;left:96px;top:186px;height:64px;padding:0 30px;border-radius:32px;background:#f2e433;color:#1b223f;
+  font:600 32px/64px Jost;display:flex;align-items:center;gap:14px;white-space:nowrap}
+#dots{position:absolute;left:auto;right:96px;top:206px;width:330px;height:24px}
+#title{position:absolute;left:96px;top:272px;width:900px;font:600 100px/1.06 "Playfair Display",serif;letter-spacing:-.5px}
+#title .ln{display:block;overflow:hidden;padding:.05em 0 .12em}
+#title .in{display:block}
+#title em{font-style:normal;color:#f2e433}
+#tags{position:absolute;left:96px;top:1196px;width:900px;display:flex;flex-wrap:wrap;gap:14px 16px}
+.tag{height:58px;padding:0 24px;border-radius:29px;border:3px solid #f2e433;color:#fff;font:500 32px/52px Jost;display:flex;align-items:center;gap:12px;background:rgba(27,34,63,.85)}
+.tag::before{content:"";width:11px;height:11px;border-radius:50%;background:#f2e433}
+.tag.sos{background:#fff;color:#1b223f;border-color:#fff;font-weight:700}.tag.sos::before{background:#1b223f}
+#sub{position:absolute;left:96px;width:888px;top:1366px;display:flex;justify-content:center}
+#sub span{background:#0d1226;border-radius:16px;padding:16px 28px;font:500 41px/1.3 Jost;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#card{position:absolute;left:96px;top:640px;width:888px;height:420px;border-radius:40px;background:#fff;color:#1b223f;overflow:hidden;display:flex;align-items:center;gap:40px;padding:0 56px;box-sizing:border-box}
+#card img{width:180px;height:auto;flex:none}
+#card>div{white-space:nowrap}
+#card .n{font:600 44px "Playfair Display";margin-bottom:8px}
+#card .s{font:500 32px Jost;color:#3b4466}
+#card .tel{font:800 76px/1.1 Jost;letter-spacing:1px;margin:6px 0}
+#card .w{font:600 34px Jost;color:#006d96}
+#card .str{position:absolute;right:-40px;bottom:-60px;width:360px;height:120px;transform:rotate(-28deg);
+  background:linear-gradient(180deg,#00a5dc 0 33%,#fff 33% 42%,#f2e433 42% 80%,#fff 80% 86%,#e8702a 86%)}
+#sos{position:absolute;left:96px;top:1100px;height:78px;padding:0 34px;border-radius:39px;background:#fff;color:#1b223f;font:600 38px/78px Jost;display:flex;align-items:center;gap:16px}
+#sos i{font-style:normal;background:#1b223f;color:#fff;border-radius:22px;padding:0 16px;font:800 38px/56px Jost}
+#motto{position:absolute;left:0;width:1080px;top:1262px;text-align:center;font:600 58px "Playfair Display";color:#f2e433}
+#fonte{position:absolute;left:96px;width:888px;top:1370px;font:500 26px Jost;color:#8f9abb;text-align:center}
+#ui{position:fixed;inset:0;display:grid;place-items:center;background:rgba(10,14,30,.55);color:#fff;font:600 22px Jost;cursor:pointer;z-index:9}
+.render #ui{display:none}
+</style></head>
+<body>
+<div id="stage">
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="serie"></div>
+  <div id="chip"></div>
+  <canvas id="dots" width="330" height="24"></canvas>
+  <div id="title"></div>
+  <div id="tags"></div>
+  <div id="card"><img id="logo" alt=""><div><div class="n">Misericordia di Ariccia</div><div class="s">Corsi di primo soccorso e BLSD</div><div class="tel">348 4068657</div><div class="w">misericordia-ariccia.it</div></div><div class="str"></div></div>
+  <div id="sos">In ogni emergenza chiama il <i>112</i></div>
+  <div id="motto">Al fianco della comunità, ogni giorno.</div>
+  <div id="fonte">Fonte: linee guida IRC 2025 · informazioni generali, non sostituiscono un corso</div>
+  <div id="sub"><span></span></div>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+</div>
+<div id="ui">Tocca per avviare (con audio)</div>
+<audio id="aud" src="/*AUDIO*/"></audio>
+<script>
+const C = {navy:'#1b223f', ciano:'#00a5dc', giallo:'#f2e433', arancio:'#e8702a', bianco:'#ffffff', terra:'#12182f', tile:'#252e55'};
+const DUR = /*DUR*/[];
+const CONTA = /*CONTA*/{};
+const CFG = /*CFG*/{};
+const md = x=>x.replace(/\*([^*]+)\*/g,'<em>$1</em>');
+function spezza(fr){ if(fr.length<=88) return [fr]; const pz=fr.split(/(?<=,)\s+/); const out=[]; let cur='';
+  pz.forEach(x=>{ if(cur && (cur+' '+x).length>80){ out.push(cur); cur=x; } else cur=cur?cur+' '+x:x; }); if(cur) out.push(cur); return out; }
+const SCENE = CFG.scene.map(sc=>{ const sub=(sc.sub||sc.voce).split(/(?<=[.?!])\s+/).filter(Boolean).flatMap(spezza);
+  return {chip:sc.chip, title:sc.title.map(md), sub, w:sub.map(x=>x.length), ill:sc.ill, tags:sc.tags||[], conta:sc.conta}; });
+const PRE = 0.3, POST = 0.45, CODA = 2.5;
+const START = [], LEN = []; let acc = 0;
+SCENE.forEach((s,k)=>{ START[k]=acc; LEN[k]=PRE+DUR[k]+POST+(k===SCENE.length-1?CODA:0); acc+=LEN[k]; });
+const TOTAL = acc; window.TOTAL = TOTAL;
+const LAST = SCENE.length-1;
+
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const prog=(u,s,d)=>clamp((u-s)/d);
+const outCubic=x=>1-Math.pow(1-x,3), outQuart=x=>1-Math.pow(1-x,4), inOut=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const outBack=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const hash=n=>{const v=Math.sin(n*12.9898+78.233)*43758.5453;return v-Math.floor(v)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const $=id=>document.getElementById(id);
+const cv=$('cv'), ctx=cv.getContext('2d'), bg=$('bg'), bctx=bg.getContext('2d'), fx=$('fx'), fctx=fx.getContext('2d');
+function rr(c,x,y,w,h,r){r=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+const CX=540, CY=850;
+
+function drawBg(){
+  const c=bctx; c.clearRect(0,0,1080,1920);
+  c.save(); c.translate(1080,1920); c.rotate(-0.52);
+  [['#16325a',0,60],['#1f2a4a',70,40],['#2b2f3f',118,26]].forEach(([col,o,h])=>{c.fillStyle=col;c.fillRect(-900,-360+o,1400,h)});
+  c.restore();
+}
+/*ILL*/
+
+const dctx=$('dots').getContext('2d');
+function drawDots(k){ const c=dctx, W=330; c.clearRect(0,0,W,24); const N=SCENE.length, gap=(W-24)/(N-1);
+  c.strokeStyle='rgba(242,228,51,.35)'; c.lineWidth=3; c.beginPath(); c.moveTo(12,12); c.lineTo(W-12,12); c.stroke();
+  c.strokeStyle=C.giallo; c.beginPath(); c.moveTo(12,12); c.lineTo(12+gap*k,12); c.stroke();
+  for(let i=0;i<N;i++){ c.fillStyle=i<=k?C.giallo:'#1b223f'; c.strokeStyle=C.giallo; c.lineWidth=3; c.beginPath(); c.arc(12+gap*i,12,i===k?9:5.5,0,7); c.fill(); c.stroke(); } }
+
+let curK=-1;
+function setScene(k){ curK=k; const s=SCENE[k];
+  $('chip').textContent=s.chip;
+  $('title').innerHTML=s.title.map(l=>`<span class="ln"><span class="in">${l}</span></span>`).join('');
+  $('tags').innerHTML=(s.tags||[]).map(t=>`<span class="tag${t[2]?' sos':''}">${t[0]}</span>`).join('');
+  const h=(s.tags||[]).length? $('tags').offsetHeight : 0; $('sub').style.top=Math.max(1366,1196+h+26)+'px';
+}
+function subAt(k,u){ const s=SCENE[k], v=u-PRE; const Dv = s.conta? CONTA.voce : DUR[k];
+  if(v<-.1||v>Dv+.4) return ''; const tot=s.w.reduce((a,b)=>a+b,0); let accw=0;
+  for(let i=0;i<s.sub.length;i++){ accw+=s.w[i]; if(v<=accw/tot*Dv||i===s.sub.length-1) return s.sub[i]; } return ''; }
+function sweep(t){ const c=fctx; c.clearRect(0,0,1080,1920); const s=START[LAST]; const p=prog(t,s-.55,1.1); if(p<=0||p>=1) return;
+  c.save(); c.translate(540,960); c.rotate(-0.55); const x=lerp(-1900,1900,inOut(p));
+  [[C.ciano,0,260],['#fff',260,40],[C.giallo,300,300],['#fff',600,30],[C.arancio,630,90]].forEach(([col,o,w])=>{c.fillStyle=col;c.fillRect(x+o-500,-1600,w,3200)}); c.restore(); }
+
+function render(t){
+  t=clamp(t,0,TOTAL-1e-4); let k=0; for(let i=0;i<SCENE.length;i++) if(t>=START[i]) k=i;
+  const u=t-START[k], L=LEN[k], last=k===LAST;
+  if(k!==curK) setScene(k);
+  const out = last?1:1-prog(u,L-.3,.3);
+  const ci = k===0?1:outBack(prog(u,.03,.35)); $('chip').style.transform=`scale(${.6+.4*ci})`; $('chip').style.opacity=Math.min(ci,1)*out; $('chip').style.transformOrigin='0 50%';
+  document.querySelectorAll('#title .in').forEach((el,i)=>{ const p= k===0?1:outQuart(prog(u,.06+i*.1,.5)); el.style.transform=`translateY(${(1-p)*110}%)`; });
+  $('title').style.opacity=out;
+  const s=SCENE[k]; const Dk = s.conta? CONTA.voce : DUR[k];
+  document.querySelectorAll('#tags .tag').forEach((el,i)=>{ const tt = s.conta && s.tags[i][1]>.5 ? CONTA.at : PRE+s.tags[i][1]*Dk; const p=outBack(prog(u,tt-.15,.35)); el.style.opacity=clamp(p)*out; el.style.transform=`scale(${.5+.5*p})`; });
+  const st=subAt(k,u); $('sub').firstElementChild.textContent=st; $('sub').style.opacity=st?out:0;
+  const cp=last?outBack(prog(u,.2,.6)):0; $('card').style.opacity=clamp(cp); $('card').style.transform=`translateY(${(1-clamp(cp))*60}px) scale(${.92+.08*cp})`;
+  const sp2=last?outBack(prog(u,PRE+DUR[LAST]*.55,.45)):0; $('sos').style.opacity=clamp(sp2); $('sos').style.transform=`scale(${.6+.4*sp2})`; $('sos').style.transformOrigin='0 50%';
+  const mp=last?outCubic(prog(u,PRE+DUR[LAST]+.2,.6)):0; $('motto').style.opacity=mp; $('motto').style.transform=`translateY(${(1-mp)*30}px)`; $('fonte').style.opacity=mp;
+  $('sub').style.display=(last&&mp>0.01)?'none':'flex';
+  $('tags').style.display=last?'none':'flex';
+  ctx.clearRect(0,0,1080,1920);
+  if(!last){ const ip=k===0?1:outBack(prog(u,.1,.55));
+    ctx.save(); ctx.globalAlpha=out*clamp(ip*1.3); ctx.translate(CX,CY); const sc=(.82+.18*ip)*1.08; ctx.scale(sc,sc);
+    const A = f => outBack(prog(u, PRE + f*Dk - .12, .4));  // comparsa sincronizzata con la voce
+    try { (ILL[s.ill]||(()=>{}))({u, p:clamp((u-PRE)/Dk), D:Dk, A, k}); } catch(e){ console.error(s.ill, e); }
+    ctx.restore();
+    // dissolvenza in basso: i disegni non toccano le etichette
+    ctx.save(); ctx.globalCompositeOperation='destination-out'; const g=ctx.createLinearGradient(0,1120,0,1188); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,1)');
+    ctx.fillStyle=g; ctx.fillRect(0,1120,1080,68); ctx.fillStyle='#000'; ctx.fillRect(0,1188,1080,732); ctx.fillRect(0,0,1080,505); ctx.restore(); }
+  drawDots(k); sweep(t);
+}
+window.renderFrame=render;
+
+const isRender=/render=1/.test(location.search); if(isRender) document.body.classList.add('render');
+function fit(){ if(isRender) return; const s=Math.min(innerWidth/1080,innerHeight/1920); $('stage').style.transform=`translate(-50%,-50%) scale(${s})`; }
+addEventListener('resize',fit); fit();
+$('logo').src='/*LOGO*/';
+$('serie').innerHTML= CFG.num ? `${CFG.serie||'Primo soccorso passo passo'} · <b>${CFG.num}/${CFG.tot||10}</b>` : (CFG.serie||'');
+if(CFG.card){ document.querySelector('#card .s').textContent=CFG.card.s; document.querySelector('#card .tel').textContent=CFG.card.tel; }
+if(CFG.serie && CFG.serie.includes('2ª')) $('fonte').textContent='Fonte: linee guida ERC/IRC 2025 · informazioni generali, non sostituiscono un corso';
+if(!CFG.num) $('fonte').textContent='Misericordia di Ariccia · Piazzale Aldo Moro 6 · sede@misericordia-ariccia.it';
+Promise.all(['600 20px "Playfair Display"','400 20px Jost','500 20px Jost','600 20px Jost','700 20px Jost','800 20px Jost'].map(f=>document.fonts.load(f)))
+ .then(()=>$('logo').decode().catch(()=>{})).then(()=>{ drawBg(); render(0); window.__ready=true; });
+let t0=null, playing=false, pausedAt=0; const aud=$('aud');
+function loop(ts){ if(!playing) return; const t=(ts-t0)/1000; if(t>=TOTAL){ render(TOTAL); playing=false; $('ui').style.display='grid'; $('ui').textContent='Tocca per rivedere'; pausedAt=0; return;} render(t); requestAnimationFrame(loop); }
+$('ui').onclick=()=>{ $('ui').style.display='none'; playing=true; aud.currentTime=pausedAt; aud.play().catch(()=>{}); t0=performance.now()-pausedAt*1000; requestAnimationFrame(loop); };
+$('stage').onclick=()=>{ if(!playing) return; playing=false; pausedAt=(performance.now()-t0)/1000; aud.pause(); $('ui').style.display='grid'; $('ui').textContent='Pausa · tocca per riprendere'; };
+</script></body></html>

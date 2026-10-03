@@ -1,0 +1,6 @@
+{
+  "name": "video-rubrica",
+  "private": true,
+  "description": "Cattura dei fotogrammi dei video della rubrica (Chromium headless)",
+  "dependencies": { "playwright-core": "1.63.0" }
+}

@@ -87,6 +87,29 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   logo ufficiale in `static/img/loghi/8xmille-chiesa-cattolica*.svg`, link a
   https://5xmille.8xmille.it/ («Due firme che fanno bene»).
 
+## Rubrica «Primo soccorso passo passo» e contenuti a orario
+
+- **Video**: generatore in `scripts/video-rubrica/` (guida nel suo `README.md`):
+  testi in `contenuti*.py`, disegni in `ill*.js`, `./anteprima.sh`, `./render.sh`,
+  `./copia.sh`. Serie 1 (10 video, 6/10–6/11), serie 2 (13 video, 10/11–22/12),
+  speciale Giornata del volontariato (5/12). Contenuti sanitari sempre su linee guida
+  ERC/IRC correnti e rivisti da un istruttore.
+- **Dossier** `content/dossier/primo-soccorso.md` (23 schede): ogni scheda può avere
+  `dal: "AAAA-MM-GG"` → il suo video (`static/video/primo-soccorso-<id>.mp4`) e il link
+  all'articolo compaiono da quella data; prima c'è l'avviso «esce il …».
+  `riconosci_tit` cambia il titolo «Come riconoscerlo».
+- **Shortcode `video`**: parametro `dal="AAAA-MM-GG"` per mostrarlo solo da quella data.
+- **News in evidenza**: `in_evidenza_fino: "AAAA-MM-GG"` nel front matter → riquadro
+  grande in cima a `/news/` dal giorno di uscita fino a quella data compresa (intanto
+  esce dalla griglia). Calendario attuale: soffocamento lattante 20–23/11,
+  rianimazione bambino 24/11–4/12, speciale volontariato 5–31/12.
+- **Home**: dal 5 al 31/12/2026 il callout volontari diventa lo speciale con il video
+  (date in `layouts/home.html`, blocco «Callout: diventa volontario»).
+- Tutte le date contano dalla **mezzanotte italiana** (`time.AsTime … "Europe/Rome"`):
+  il cambio avviene col rebuild notturno, senza toccare nulla.
+- Social: `social_video` + `social_video_copertina` nel front matter → Reel su
+  Instagram e video su Facebook; `social_testo` per il testo su misura.
+
 ## FLUSSO EDITORIALE — foto + testi → articolo, grafica e social
 
 Quando l'utente invia **una foto** (e/o un link di stampa, una locandina,
