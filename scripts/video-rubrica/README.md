@@ -19,7 +19,7 @@ conteggio a voce da 1 a 30, musica allo stesso BPM).
 | `appro.src.html` | modello della pagina animata (impaginazione, sottotitoli, chiusura con la scheda contatti) |
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `musica/` | brani scelti da Alessandro (Kevin MacLeod, incompetech.com, CC BY 4.0): campo `brano` del video (`morning`, `touching-moments-two-higher`); di default `heartwarming`; i video con `bpm=110` (compressioni a tempo) usano `musica.py`. Ogni nuovo video va aggiunto a `data/musica_video.json` per il credito sotto il video e nei post |
-| `kokoro_voce.py` | voce Kokoro (scelta di Alessandro): **Nicola** di default (primo soccorso, 5x1000), **Sara** con `voce='sara'` (ultimo viaggio, accompagnamento, volontariato); `voce='paola'` torna a Piper |
+| `kokoro_voce.py` | voce Kokoro scelta da Alessandro: **Nicola** (maschile) in tutti i video. «Sara» è scartata (legge male, senza intonazione); `voce='paola'` torna a Piper |
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
 | `anteprima.sh`, `render.sh`, `copia.sh` | scorciatoie: anteprime, montaggio, copia nel sito |
