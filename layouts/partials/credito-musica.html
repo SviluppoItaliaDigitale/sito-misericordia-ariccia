@@ -1,0 +1,5 @@
+{{- /* Credito della musica di un video (licenza CC BY: va citato l'autore). Uso: {{ partial "credito-musica.html" "nome-file.mp4" }}
+     I brani per video sono in data/musica_video.json; per i video senza musica di terzi non stampa nulla. */ -}}
+{{- with site.Data.musica_video -}}{{- $d := . -}}{{- with index .video (path.Base $) -}}
+<small class="video-musica">Musica: «{{ . }}» di {{ $d.autore }} (<a href="{{ $d.fonte }}" rel="noopener">incompetech.com</a>), licenza <a href="{{ $d.licenza_url }}" rel="noopener license">{{ $d.licenza }}</a>.</small>
+{{- end -}}{{- end -}}
