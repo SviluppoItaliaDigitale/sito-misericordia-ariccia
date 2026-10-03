@@ -8,8 +8,36 @@
   <div class="container py-5">
     {{ with .Content }}<div class="contenuto mb-4" data-anim-group>{{ . }}</div>{{ end }}
     {{ if eq .Section "news" }}
+      {{- /* In evidenza: news con "in_evidenza_fino: AAAA-MM-GG" nel front matter, mostrate in alto
+           dal giorno di uscita fino a quella data compresa (mezzanotte italiana); intanto escono dalla griglia. */ -}}
+      {{- $evid := slice }}
+      {{- range .Pages }}{{ $p := . }}{{ with .Params.in_evidenza_fino }}{{ $fine := (time.AsTime . "Europe/Rome").AddDate 0 0 1 }}{{ if $fine.After now }}{{ $evid = $evid | append $p }}{{ end }}{{ end }}{{ end }}
+      {{- range $evid }}
+      {{- $p := . }}
+      {{- $img := .Params.immagine | default "" }}
+      <article class="news-evidenza" data-anim="fade-up">
+        {{ with $img }}
+        {{- $webp := replaceRE `\.(jpe?g|png)$` ".webp" . }}
+        {{- $file := printf "static%s" . }}
+        <a class="news-evidenza-img" href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true">
+          <picture>
+            {{ if fileExists (printf "static%s" $webp) }}<source srcset="{{ $webp | relURL }}" type="image/webp">{{ end }}
+            <img src="{{ . | relURL }}" alt="" {{ with (imageConfig $file) }}width="{{ .Width }}" height="{{ .Height }}"{{ end }} loading="eager" decoding="async">
+          </picture>
+        </a>
+        {{ end }}
+        <div class="news-evidenza-testo">
+          <p class="news-evidenza-eti">In evidenza</p>
+          <p class="data mb-1">{{ time.Format ":date_long" .Date }}</p>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ .Description | default (.Summary | plainify) | truncate 260 }}</p>
+          <a href="{{ .RelPermalink }}" class="btn btn-giallo">Leggi l'articolo</a>
+        </div>
+      </article>
+      {{- end }}
       <div class="griglia-news" data-anim-group>
         {{ range .Pages }}
+        {{ if in $evid . }}{{ continue }}{{ end }}
         <article class="news-item">
           <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

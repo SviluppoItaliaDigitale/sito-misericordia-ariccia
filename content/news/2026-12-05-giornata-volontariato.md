@@ -3,6 +3,7 @@ title: "Giornata del volontariato: grazie, e c'è posto anche per te"
 titoloSeo: "Giornata internazionale del volontariato: diventa volontario ad Ariccia"
 date: 2026-12-05
 slug: "giornata-volontariato-2026"
+in_evidenza_fino: "2026-12-31"
 description: "Il 5 dicembre è la Giornata internazionale del volontariato: grazie ai volontari della Misericordia di Ariccia. Trasporti, famiglie, eventi: c'è posto anche per te, dai 16 agli 80 anni."
 immagine: "/img/news/giornata-volontariato-grafica.jpg"
 social_video: "/video/giornata-volontariato.mp4"
