@@ -45,6 +45,8 @@ Alla Misericordia di Ariccia ogni volontario trova il servizio più adatto al pr
 
 La sola ricompensa del volontario è nella coscienza del dovere compiuto, salutata dall'antico motto delle Misericordie: **«Che Iddio te ne renda merito»**.
 
+{{< video src="video/giornata-volontariato.mp4" poster="img/video/giornata-volontariato.jpg" verticale="si" dal="2026-12-05" titolo="Giornata del volontariato: grazie, e c'è posto anche per te" descrizione="Il grazie della Misericordia di Ariccia ai suoi volontari e l'invito a unirsi: trasporti, famiglie, eventi, dai 16 agli 80 anni." data="2026-12-05" didascalia="**5 dicembre, Giornata internazionale del volontariato**: il nostro grazie ai volontari e l'invito a unirti a noi. [Leggi l'articolo](/news/giornata-volontariato-2026/)." >}}
+
 ## Contatti
 
 - **Sede operativa:** Piazzale Aldo Moro, 6 — Ariccia · **Sede amministrativa:** Viale Antonietta Chigi, 46 — Ariccia
