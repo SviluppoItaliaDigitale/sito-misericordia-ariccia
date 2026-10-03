@@ -3,6 +3,7 @@ title: "Rianimazione nel bambino e nel lattante"
 titoloSeo: "Rianimazione nel bambino: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-11-24
 slug: "primo-soccorso-rianimazione-bambino"
+in_evidenza_fino: "2026-12-04"
 description: "Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni."
 immagine: "/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg"
 social_video: "/video/primo-soccorso-rianimazione-bambino.mp4"
