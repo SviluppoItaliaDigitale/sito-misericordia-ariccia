@@ -4,7 +4,9 @@
                     inizio="143" didascalia="…" >}}
      - inizio: secondo da cui partire (frammento #t=), opzionale
      - verticale="si": video 9:16 (Reel), riquadro stretto invece che 16:9
-     - preload=none: il file (grande) si scarica solo quando l'utente preme play */ -}}
+     - preload=none: il file (grande) si scarica solo quando l'utente preme play
+     - dal="AAAA-MM-GG": il video compare solo da quella data (mezzanotte italiana, col rebuild notturno) */ -}}
+{{- if or (not (.Get "dal")) (not ((time.AsTime (.Get "dal") "Europe/Rome").After now)) -}}
 {{- $src := .Get "src" -}}
 {{- $poster := .Get "poster" -}}
 {{- $inizio := .Get "inizio" -}}
@@ -35,4 +37,5 @@
   "inLanguage" "it-IT"
   "publisher" (dict "@type" "Organization" "name" "Confraternita di Misericordia di Ariccia ODV" "url" site.BaseURL)
   | jsonify | safeJS }}</script>
+{{- end }}
 {{- end }}
