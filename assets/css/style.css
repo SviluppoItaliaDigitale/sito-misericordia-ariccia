@@ -257,6 +257,17 @@ a:hover { color: var(--mise-navy); }
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-7px); }
 }
+.callout-volontari--speciale .cv-speciale { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; align-items: center; }
+.callout-volontari--speciale .cv-testo { text-align: left; }
+.callout-volontari--speciale .cv-data { display: inline-block; background: var(--mise-giallo); color: var(--mise-navy); font-weight: 700; border-radius: 999px; padding: .3rem .9rem; margin-bottom: .9rem; }
+.callout-volontari--speciale .cv-azioni { display: flex; flex-wrap: wrap; gap: .8rem; }
+.callout-volontari--speciale .cv-video { margin: 0; }
+@media (max-width: 767.98px) {
+  .callout-volontari--speciale .cv-speciale { grid-template-columns: 1fr; gap: 1.6rem; }
+  .callout-volontari--speciale .cv-testo { text-align: center; }
+  .callout-volontari--speciale .cv-azioni { justify-content: center; }
+  .callout-volontari--speciale .cv-video { justify-self: center; width: 100%; max-width: 280px; }
+}
 .callout-volontari .callout-cta {
   animation: callout-bagliore 2.8s ease-in-out infinite;
 }
