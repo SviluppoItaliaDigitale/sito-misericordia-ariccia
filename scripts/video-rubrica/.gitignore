@@ -1,0 +1,5 @@
+# prodotti e dipendenze locali del generatore (si ricreano)
+out/
+voce/
+node_modules
+package-lock.json
