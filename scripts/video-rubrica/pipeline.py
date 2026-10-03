@@ -14,8 +14,14 @@ ORD = ['ictus','infarto','emorragia','rianimazione','soffocamento','anafilassi',
 NUM = 'uno due tre quattro cinque sei sette otto nove dieci undici dodici tredici quattordici quindici sedici diciassette diciotto diciannove venti ventuno ventidue ventitré ventiquattro venticinque ventisei ventisette ventotto ventinove trenta'.split()
 b64 = lambda p: base64.b64encode(Path(p).read_bytes()).decode()
 SR = 22050
-def piper(text, out, ls=1.0):
-    subprocess.run(['python3','-m','piper','-m',MODEL,'--length-scale',str(ls),'--sentence-silence','0.25','-f',str(out)], input=text, text=True, capture_output=True, check=True)
+# Parole che la voce legge con l'accento sbagliato: si correggono solo nell'audio, i sottotitoli restano giusti.
+PRONUNCIA = {'Iddio': 'Iddìo', 'CAF': 'Caf'}
+def pron(text):
+    for k, v in PRONUNCIA.items(): text = text.replace(k, v)
+    return text
+def piper(text, out, ls=1.0, sil=0.25):
+    text = pron(text)
+    subprocess.run(['python3','-m','piper','-m',MODEL,'--length-scale',str(ls),'--sentence-silence',str(sil),'-f',str(out)], input=text, text=True, capture_output=True, check=True)
 def rd(p):
     w = wave.open(str(p)); assert w.getframerate() == SR
     return np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
@@ -45,8 +51,8 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     for i, sc in enumerate(v['scene']):
         wav = d / f'v{i}.wav'
         tf = d / f'v{i}.txt'
-        if not wav.exists() or not tf.exists() or tf.read_text() != sc['voce']:
-            piper(sc['voce'], wav); tf.write_text(sc['voce'])
+        if not wav.exists() or not tf.exists() or tf.read_text() != pron(sc['voce']):
+            piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(pron(sc['voce']))
         a = rd(wav); Dv = len(a) / SR
         if sc.get('conta'):
             n = sc['conta']; b = 60 / bpm
@@ -74,7 +80,7 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     track = np.clip(track[:int(T * SR)], -1, 1)
     with wave.open(str(d / 'voce.wav'), 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((track * 32767).astype(np.int16).tobytes())
-    subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm)], check=True, capture_output=True)
+    subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm), v.get('musica', 'base')], check=True, capture_output=True)
     subprocess.run([FF,'-v','error','-y','-i',str(d/'voce.wav'),'-i',str(d/'musica.wav'),'-filter_complex',
         '[0]aresample=44100,asplit[v][vs];[1]volume=0.30[m];[m][vs]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[md];[v][md]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5[o]',
         '-map','[o]','-ar','44100','-ac','1','-b:a','128k',str(d/'audio.mp3')],check=True)
@@ -82,7 +88,7 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     fonts = (f"@font-face{{font-family:'Playfair Display';font-weight:600;src:url(data:font/woff2;base64,{b64(F/'playfair-600-latin.woff2')}) format('woff2')}}"
              f"@font-face{{font-family:'Jost';font-weight:100 900;src:url(data:font/woff2;base64,{b64(F/'jost-latin.woff2')}) format('woff2')}}")
     s = s.replace('/*FONTS*/', fonts).replace('/*LOGO*/','data:image/png;base64,'+b64(REPO / 'static' / 'img' / 'loghi' / 'mise-triangolo.png'))
-    s = s.replace('/*ILL*/', (W/'ill.js').read_text() + '\n' + (W/'ill2.js').read_text())
+    s = s.replace('/*ILL*/', (W/'ill.js').read_text() + '\n' + (W/'ill2.js').read_text() + '\n' + (W/'ill3.js').read_text())
     s = s.replace('/*DUR*/[]', json.dumps(D)).replace('/*CONTA*/{}', json.dumps(conta)).replace('/*CFG*/{}', json.dumps(v, ensure_ascii=False))
     s = s.replace('src="/*AUDIO*/"', 'src="data:audio/mpeg;base64,'+b64(d/'audio.mp3')+'"')
     (d/'video.html').write_text(s)

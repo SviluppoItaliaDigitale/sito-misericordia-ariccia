@@ -29,6 +29,12 @@ mezzi:
 
 {{< video src="video/misericordia-servizi.mp4" poster="img/video/misericordia-servizi.jpg" verticale="si" didascalia="I nostri servizi in un minuto: [guarda la news](/news/servizi-misericordia-video/)." >}}
 
+## L'ultimo viaggio
+
+Per chi è malato e ha un **ultimo desiderio** (rivedere il mare, tornare al paese natale, esserci al matrimonio di un nipote) organizziamo insieme alla famiglia **«L'ultimo viaggio»**: in ambulanza, con la barella e i nostri volontari accanto dal primo all'ultimo momento. Chiamaci al **[348 4068657](tel:+393484068657)**: ne parliamo insieme.
+
+{{< video src="video/ultimo-viaggio.mp4" poster="img/video/ultimo-viaggio.jpg" verticale="si" dal="2026-10-04" didascalia="L'ultimo viaggio: perché nessun desiderio resti un sogno." >}}
+
 ## Domande frequenti
 
 <details class="faq-item">

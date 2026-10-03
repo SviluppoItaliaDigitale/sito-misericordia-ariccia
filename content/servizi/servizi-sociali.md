@@ -7,6 +7,8 @@ italianoSemplice: |
 
   Trasportiamo le persone con disabilità.
 
+  Ti accompagniamo a fare la spesa, alla posta, in banca, dal medico.
+
   Diamo cibo con il Banco Alimentare.
 
   Con il Centro d'ascolto aiutiamo chi ha problemi di ogni tipo. C'è anche il sostegno di uno psicologo.
@@ -18,6 +20,9 @@ sezioni:
   - icona: "♿"
     titolo: "Trasporto persone con disabilità"
     testo: "Trasporti per persone con difficoltà motorie o altra disabilità, in convenzione con gli enti locali o in accordo con le famiglie, anche verso i centri diurni."
+  - icona: "🛒"
+    titolo: "Accompagnamento nella vita di ogni giorno"
+    testo: "Spesa, posta e banca, medico e farmacia, parrucchiere, messa e cimitero, visite a chi ami: ti prendiamo a casa, ti aspettiamo e ti riportiamo indietro, anche in carrozzina. [Guarda il video](/news/accompagnamento-sociale-video/)."
   - icona: "🍞"
     titolo: "Banco Alimentare"
     testo: "Distribuiamo beni di prima necessità alle persone in difficoltà e partecipiamo ogni anno alla **Colletta Alimentare** nei supermercati del territorio."
@@ -39,3 +44,6 @@ contatto:
   <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali nel centro di Ariccia" width="1200" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 
+## Ti accompagniamo nella vita di ogni giorno
+
+{{< video src="video/accompagnamento-sociale.mp4" poster="img/video/accompagnamento-sociale.jpg" verticale="si" didascalia="La spesa, la posta, il medico e le piccole gioie: [leggi la news](/news/accompagnamento-sociale-video/). Prenota al **348 4068657**, con qualche giorno di anticipo." >}}

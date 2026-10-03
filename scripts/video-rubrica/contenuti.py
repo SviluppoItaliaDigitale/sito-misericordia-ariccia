@@ -138,3 +138,5 @@ V = {
 
 from contenuti2 import V2
 V.update(V2)
+from contenuti3 import V3
+V.update(V3)

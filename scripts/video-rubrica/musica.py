@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Base musicale originale (giro di Do: Do - La min - Fa - Sol), generata in codice:
-nessun campione esterno, nessun diritto d'autore di terzi. Uso: musica.py DURATA_S out.wav"""
+nessun campione esterno, nessun diritto d'autore di terzi. Uso: musica.py DURATA_S out.wav [BPM] [base|dolce]
+«dolce»: La min - Fa - Do - Sol, senza percussioni, arpeggio lento a campana (per video commoventi)."""
 import sys, wave, numpy as np
 SR = 44100; DUR = float(sys.argv[1]); OUT = sys.argv[2]
 BPM = float(sys.argv[3]) if len(sys.argv) > 3 else 88; beat = 60 / BPM; bar = 4 * beat
@@ -9,6 +10,8 @@ mix = np.zeros(n)
 def hz(m): return 440 * 2 ** ((m - 69) / 12)
 # accordi in MIDI (voicing morbido) e basso
 GIRO = [([60, 64, 67, 72], 48), ([57, 60, 64, 69], 45), ([53, 57, 60, 65], 41), ([55, 59, 62, 67], 43)]
+DOLCE = len(sys.argv) > 4 and sys.argv[4] == 'dolce'
+if DOLCE: GIRO = [GIRO[1], GIRO[2], GIRO[0], GIRO[3]]
 def env(length, a, r):
     e = np.ones(length); ai = int(a * SR); ri = int(r * SR)
     if ai: e[:ai] = np.linspace(0, 1, ai)
@@ -29,14 +32,20 @@ while s < DUR:
         Lb = int(beat * 1.8 * SR); tb = np.arange(Lb) / SR
         add(s + b * beat, Lb, 0.16 * np.sin(2 * np.pi * hz(bass) * tb) * np.exp(-tb * 2.2) * env(Lb, 0.01, 0.2))
     # arpeggio pizzicato in ottavi (dal 3° giro in poi, così l'inizio è più calmo)
-    if k >= 2:
+    if DOLCE and k >= 1:
+        # campane lente: un accordo spezzato in quarti, lunga coda
+        for i, m in enumerate([notes[0] + 12, notes[2] + 12, notes[3] + 12, notes[1] + 24]):
+            La = int(beat * 3.5 * SR); ta = np.arange(La) / SR
+            tone = np.sin(2 * np.pi * hz(m) * ta) + 0.25 * np.sin(2 * np.pi * hz(m) * 2 * ta) + 0.08 * np.sin(2 * np.pi * hz(m) * 3 * ta)
+            add(s + i * beat, La, 0.045 * tone * np.exp(-ta * 1.6) * env(La, 0.004, 0.3))
+    if not DOLCE and k >= 2:
         seq = [notes[0] + 12, notes[1] + 12, notes[2] + 12, notes[3] + 12, notes[2] + 12, notes[1] + 12, notes[2] + 12, notes[3] + 12]
         for i, m in enumerate(seq):
             La = int(beat * 0.9 * SR); ta = np.arange(La) / SR
             tone = np.sin(2 * np.pi * hz(m) * ta) + 0.3 * np.sin(2 * np.pi * hz(m) * 2 * ta)
             add(s + i * beat / 2, La, 0.05 * tone * np.exp(-ta * 6) * env(La, 0.005, 0.05))
     # battito leggero (cassa morbida) sui quarti dal 3° giro
-    if k >= 2:
+    if not DOLCE and k >= 2:
         for b in range(4):
             Lk = int(0.25 * SR); tk = np.arange(Lk) / SR
             f = 90 * np.exp(-tk * 18) + 45
