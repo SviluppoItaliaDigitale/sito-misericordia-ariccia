@@ -28,7 +28,7 @@ function village(x,y,s,u){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
 function church(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-70,-60,140,140,4,'#f3ead8'); poly([[-80,-60],[0,-130],[80,-60]],'#e9d3a8'); box(-20,10,40,70,20,'#8a5a3a'); fc(0,-30,16,'#9fd8f0'); ln([[0,-130],[0,-180]],'#f3ead8',8); ln([[-16,-162],[16,-162]],'#f3ead8',8); ctx.restore(); }
 
 Object.assign(ILL, {
-mani({u,p}){ box(-440,-60,880,260,40,'#e9edf6'); ln([[-440,40],[440,40]],'rgba(27,34,63,.08)',40);
+'mani-strette'({u,p}){ box(-440,-60,880,260,40,'#e9edf6'); ln([[-440,40],[440,40]],'rgba(27,34,63,.08)',40);
   // mano anziana: dal polso a sinistra, dita verso il centro
   ln([[-440,60],[-235,60]],'#bfc8de',74);
   ctx.save(); ctx.translate(-150,60); ctx.rotate(Math.PI/2); hand(0,0,1.15,0,'#efd3bd'); ctx.restore();
