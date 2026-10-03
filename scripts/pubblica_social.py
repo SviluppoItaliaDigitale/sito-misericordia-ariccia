@@ -80,7 +80,7 @@ def riga_data(n):
 
 def credito_musica(n):
     """Riga di credito per i video con musica di terzi (data/musica_video.json, licenza CC BY: va citato l'autore)."""
-    video = n.get("social_video")
+    video = n.get("video") or n.get("social_video")  # nel feed di Hugo (layouts/news/list.json) il campo si chiama "video"
     if not video:
         return ""
     try:
