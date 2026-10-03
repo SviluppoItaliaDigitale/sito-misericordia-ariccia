@@ -27,46 +27,73 @@ function village(x,y,s,u){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
   box(-10,-190,40,170,4,'#f3ead8'); poly([[-16,-190],[10,-240],[36,-190]],'#c4573a'); ctx.save(); ctx.translate(10,-160); ctx.rotate(Math.sin(u*3)*.35); fe(0,10,12,16,C.giallo); ctx.restore(); ctx.restore(); }
 function church(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-70,-60,140,140,4,'#f3ead8'); poly([[-80,-60],[0,-130],[80,-60]],'#e9d3a8'); box(-20,10,40,70,20,'#8a5a3a'); fc(0,-30,16,'#9fd8f0'); ln([[0,-130],[0,-180]],'#f3ead8',8); ln([[-16,-162],[16,-162]],'#f3ead8',8); ctx.restore(); }
 
-// ambulanza con livrea Misericordia (come i mezzi della sede): (x,y)= centro, ruote a y+70*s
-function miseAmbulanza(x,y,s,u,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(o.flip?-s:s,s);
-  const Y='#f3e23a', B='#1f5fbf', O='#e8702a';
-  ctx.fillStyle=Y; ctx.beginPath(); ctx.moveTo(-230,60); ctx.lineTo(-230,-110); ctx.quadraticCurveTo(-230,-130,-210,-130); ctx.lineTo(110,-130); ctx.lineTo(150,-130); ctx.quadraticCurveTo(175,-128,190,-90); ctx.lineTo(225,-30); ctx.quadraticCurveTo(235,-10,235,20); ctx.lineTo(235,60); ctx.closePath(); ctx.fill();
-  ctx.save(); ctx.clip(); ctx.fillStyle=O; ctx.fillRect(-240,0,480,18); ctx.fillStyle='#fff'; ctx.fillRect(-240,18,480,5);
-  ctx.fillStyle=B; for(let i=0;i<6;i++){ ctx.beginPath(); ctx.moveTo(-200+i*70,-130); ctx.lineTo(-170+i*70,-130); ctx.lineTo(-230+i*70,0); ctx.lineTo(-260+i*70,0); ctx.closePath(); ctx.fill(); }
-  for(let i=0;i<14;i++){ ctx.fillStyle=i%2?B:Y; ctx.fillRect(-230+i*34,23,34,37); } ctx.restore();
-  box(-200,-110,250,60,8,'rgba(243,226,58,.0)');
-  poly([[150,-118],[176,-118],[212,-52],[150,-52]],'#cfe9f5'); box(100,-112,40,56,6,'#cfe9f5');
-  box(-200,-114,140,44,6,'#fff'); tx('MISERICORDIA',-130,-99,17,B,'800'); tx('ARICCIA',-130,-81,15,B,'800');
-  ctx.save(); ctx.translate(-10,-75); ctx.fillStyle=B; for(let i=0;i<3;i++){ ctx.save(); ctx.rotate(i*Math.PI/3); ctx.fillRect(-9,-30,18,60); ctx.restore(); } ln([[0,-20],[0,22]],'#fff',4); ctx.restore();
-  const lit=(u*2.4%1)<.5; box(60,-146,90,16,6,'#24305c'); fc(78,-138,9,lit?'#3aa0ff':'#1d3a7a'); fc(132,-138,9,lit?'#1d3a7a':'#3aa0ff');
-  if(o.luci!==false){ if(lit) fc(78,-138,26,'rgba(58,160,255,.3)'); else fc(132,-138,26,'rgba(58,160,255,.3)'); }
-  fc(-150,64,34,'#1a1f36'); fc(150,64,34,'#1a1f36'); fc(-150,64,14,'#aab3cc'); fc(150,64,14,'#aab3cc');
-  if(o.porte){ box(-262,-128,34,184,4,Y); box(-262,-128,34,184,4,'rgba(0,0,0,.06)'); box(-226,-120,12,170,2,'#e3e7f1'); }
+// ambulanza con livrea Misericordia (dalla foto del mezzo della sede): bianca sopra, gialla sotto, fascia arancione,
+// due bande blu diagonali sul retro, stella della vita, scritte blu, lampeggiante blu. (x,y)= centro, ruote a y+64*s
+// Ambulanza con la livrea delle Misericordie, ricalcata dal fac-simile ufficiale (furgone visto di lato, muso a destra).
+// Coordinate prese dal disegno (1616 px di larghezza) e riportate in scala: ruote a ±150, tetto a -124.
+function miseAmbulanza(x,y,s,u,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  const k=.311, M=a=>a.map(([px,py])=>[(px-822)*k,(py-845)*k+64]), P=(a,c)=>poly(M(a),c), Q=(px,py)=>M([[px,py]])[0];
+  const BL='#0f8fd8', GI='#fff200', AR='#e8790a', GR='#6f6f72', VE='#7a7a7e';
+  const corpo=M([[88,248],[150,238],[950,238],[1030,258],[1175,368],[1395,585],[1520,640],[1572,700],[1580,840],[1460,856],[60,852],[56,700],[70,300]]);
+  if(o.porte){ const [dx,dy]=Q(20,252); box(dx-8,dy,34,182,4,'#fff'); ctx.strokeStyle='rgba(27,34,63,.3)'; ctx.lineWidth=2; rr(ctx,dx-8,dy,34,182,4); ctx.stroke(); }
+  poly(corpo,'#fff'); ctx.save(); ctx.beginPath(); corpo.forEach(([a,b],i)=>i?ctx.lineTo(a,b):ctx.moveTo(a,b)); ctx.closePath(); ctx.clip();
+  P([[130,378],[960,378],[960,560],[130,560]],VE);                                  // finestrature del vano sanitario
+  P([[1000,388],[1118,388],[1228,515],[1240,582],[1018,582],[1000,560]],'#8d8d91'); // finestrino della cabina
+  P([[88,285],[252,285],[252,333],[136,333]],BL); P([[950,285],[1012,285],[1060,333],[950,333]],BL);  // fasce blu in alto
+  P([[136,340],[1060,340],[1082,360],[156,360]],GI);                                // filetto giallo
+  [[105,175,BL],[235,330,GI],[330,400,BL]].forEach(([l,r,c])=>P([[l,378],[r,378],[r+245,742],[l+245,742]],c)); // diagonali blu-giallo-blu
+  P([[100,585],[1385,585],[1425,640],[100,640]],AR);                                // fascia arancio
+  P([[480,745],[1052,745],[1058,760],[488,760]],BL);
+  P([[505,766],[1125,766],[1125,814],[515,814]],GR);                                // paracolpi laterale
+  P([[560,818],[1116,818],[1116,832],[568,832]],GI);
+  P([[56,705],[250,705],[250,852],[56,852]],GR); P([[1440,672],[1575,650],[1582,850],[1460,856]],GR); // paraurti
+  ln(M([[1180,372],[1380,575],[1500,640]]),BL,3); ln(M([[1170,380],[1372,590],[1495,655]]),GI,3);   // filetti sul montante
+  ctx.restore();
+  ctx.strokeStyle='rgba(27,34,63,.28)'; ctx.lineWidth=2.5; ctx.beginPath(); corpo.forEach(([a,b],i)=>i?ctx.lineTo(a,b):ctx.moveTo(a,b)); ctx.closePath(); ctx.stroke();
+  ln(M([[960,250],[960,850]]),'rgba(27,34,63,.18)',2); ln(M([[560,250],[560,850]]),'rgba(27,34,63,.12)',2);
+  { const [rx,ry]=Q(70,530); box(rx,ry,11,52,4,'#d8261c'); }                       // fanale posteriore
+  { const [hx,hy]=Q(1392,598); box(hx,hy,22,12,4,'#f4dccb'); }                       // faro
+  [905,1015].forEach(hx=>{ const [a,b]=Q(hx,592); box(a-5,b,10,16,4,'#3a3a3e'); });   // maniglie
+  { const [mx,my]=Q(275,330); ctx.fillStyle=BL; ctx.font='700 20px "Playfair Display"'; ctx.textAlign='left'; ctx.textBaseline='alphabetic'; ctx.fillText('MISERICORDIA DI ARICCIA',mx,my,(920-275)*k); }
+  { const [cx,cy]=Q(750,580); ctx.fillStyle=BL; ctx.font='italic 600 5.5px "Playfair Display"'; ctx.textAlign='center'; ctx.fillText('Che Iddio te ne renda merito',cx,cy); }
+  { const [sx,sy]=Q(497,470); ctx.save(); ctx.translate(sx,sy); ctx.fillStyle='#1450a8'; for(let i=0;i<3;i++){ ctx.save(); ctx.rotate(i*Math.PI/3); ctx.fillRect(-5,-15,10,30); ctx.restore(); } ln([[0,-10],[0,11]],'#fff',2.4); ctx.restore(); } // stella della vita
+  { const [tx0,ty0]=Q(1100,690); poly([[tx0,ty0-12],[tx0+12,ty0+9],[tx0-12,ty0+9]],GI); ctx.strokeStyle='#1b223f'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(tx0,ty0-12); ctx.lineTo(tx0+12,ty0+9); ctx.lineTo(tx0-12,ty0+9); ctx.closePath(); ctx.stroke(); ln([[tx0,ty0-6],[tx0,ty0+5]],'#d8261c',1.6); ln([[tx0-3,ty0-3],[tx0+3,ty0-3]],'#d8261c',1.6);
+    ctx.fillStyle=BL; ctx.font='700 6px "Playfair Display"'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('Tel. 348 4068657',tx0,ty0+19); }
+  const lit=(u*2.2%1)<.5, [lx,ly]=Q(880,238);                                       // barra lampeggianti blu sul tetto
+  box(lx-4,ly-12,52,12,5,'#1d3a7a'); fc(lx+8,ly-6,7,lit?'#59b4ff':'#2a5cb8'); fc(lx+36,ly-6,7,lit?'#2a5cb8':'#59b4ff');
+  if(o.luci!==false) fc(lit?lx+8:lx+36,ly-6,20,'rgba(89,180,255,.35)');
+  [[340,845],[1305,845]].forEach(([wx,wy])=>{ const [a,b]=Q(wx,wy); ctx.fillStyle='#4a4a4e'; ctx.beginPath(); ctx.arc(a,b,43,Math.PI,0); ctx.lineTo(a+43,b+(852-845)*k); ctx.lineTo(a-43,b+(852-845)*k); ctx.fill(); });
+  [[340,845],[1305,845]].forEach(([wx,wy])=>{ const [a,b]=Q(wx,wy); fc(a,b,34,'#1a1f36'); fc(a,b,20,'#c9ccd3'); fc(a,b,7,'#8d9099'); });
   ctx.restore(); }
 Object.assign(ILL, {
-'mani-strette'({u,p}){ // stretta di mano vista di lato: l'anziana da sinistra, la giovane da destra; le dita si incrociano e si stringono
-  const E='#efd3bd', ED='#c99d7f', G=SKD, GD='#9c6e4e';
-  const t=clamp(p*1.5), k=outCubic(t), dx=(1-k)*330, chiusa=clamp((t-.7)/.3), cy=40;
-  box(-440,-110,880,330,40,'#e9edf6'); ctx.save(); ctx.translate(0,cy); ctx.scale(1.18,1.18); ctx.translate(0,-cy);
-  const pezzo=(fn,col,dk)=>{ ctx.fillStyle=col; ctx.strokeStyle=dk; ctx.lineWidth=5; ctx.lineJoin='round'; fn(); ctx.fill(); ctx.stroke(); };
-  // braccio e mano giovane (sotto): manica da destra, palmo orizzontale
-  ctx.save(); ctx.translate(dx,0);
-  ln([[170,cy+10],[700,cy+10]],RS,104);
-  pezzo(()=>{ ctx.beginPath(); ctx.moveTo(180,cy-40); ctx.quadraticCurveTo(60,cy-58,-40,cy-40); ctx.quadraticCurveTo(-62,cy-36,-62,cy-14); ctx.lineTo(-62,cy+30); ctx.quadraticCurveTo(-60,cy+58,-30,cy+60); ctx.lineTo(180,cy+60); ctx.closePath(); },G,GD);
-  ctx.restore();
-  // braccio e mano anziana (sopra): manica da sinistra, dorso e dita che avvolgono la mano giovane
-  ln([[-700,cy+10],[-150,cy+10]],'#bfc8de',104);
-  pezzo(()=>{ ctx.beginPath(); ctx.moveTo(-170,cy-46); ctx.quadraticCurveTo(-60,cy-64,10,cy-50); ctx.lineTo(10,cy+56); ctx.quadraticCurveTo(-80,cy+66,-170,cy+56); ctx.closePath(); },E,ED);
-  const wrap=lerp(0,1,chiusa);
-  for(let f=0;f<4;f++){ const x=0+f*30, len=70+wrap*40-Math.abs(f-1.5)*8;
-    pezzo(()=>{ ctx.beginPath(); rr(ctx,x,cy-52,26,len,13); },E,ED); }
-  ctx.save(); ctx.strokeStyle='rgba(150,100,70,.35)'; ctx.lineWidth=3; for(let i=0;i<4;i++){ ctx.beginPath(); ctx.moveTo(-130+i*20,cy-30); ctx.quadraticCurveTo(-124+i*20,cy,-130+i*20,cy+30); ctx.stroke(); } ctx.restore();
-  // pollice della mano giovane che si chiude sopra il dorso dell'anziana
-  if(chiusa>0){ ctx.save(); ctx.globalAlpha*=chiusa; ctx.translate(dx,0);
-    pezzo(()=>{ ctx.beginPath(); ctx.moveTo(150,cy-36); ctx.quadraticCurveTo(40,cy-92,-70,cy-66); ctx.quadraticCurveTo(-92,cy-60,-80,cy-44); ctx.quadraticCurveTo(20,cy-56,130,cy-14); ctx.closePath(); },G,GD);
+'mani-strette'({u,p}){ // due braccia a V che salgono dagli angoli e si stringono la mano in alto, al centro
+  const E='#efd3bd', ED='#b98b6c', G=SKD, GD='#8f6142';
+  const t=clamp(p*1.4), k=outCubic(t), chiusa=clamp((t-.65)/.35);
+  const sp=(1-k)*140;  // all'inizio le mani sono lontane
+  const pz=(fn,col,dk,lw=5)=>{ ctx.fillStyle=col; ctx.strokeStyle=dk; ctx.lineWidth=lw; ctx.lineJoin='round'; ctx.lineCap='round'; fn(); ctx.fill(); ctx.stroke(); };
+  ctx.save(); ctx.translate(0,30);
+  // braccio anziano (sinistra, manica grigia) e mano dietro
+  ctx.save(); ctx.translate(-sp,sp*.6);
+  ln([[-360,330],[-70,10]],'#9aa5c4',112); ln([[-360,330],[-70,10]],'#bfc8de',100);
+  ctx.save(); ctx.translate(-40,-30); ctx.rotate(.72);
+  pz(()=>{ ctx.beginPath(); rr(ctx,-58,-70,116,140,54); },E,ED);
+  for(let f=0;f<4;f++) pz(()=>{ ctx.beginPath(); rr(ctx,-52+f*28,-170+Math.abs(f-1.5)*12,26,120,13); },E,ED,4);
+  ctx.restore(); ctx.restore();
+  // braccio giovane (destra, manica azzurra) e mano davanti che stringe
+  ctx.save(); ctx.translate(sp,sp*.6);
+  ln([[360,330],[70,10]],'#0083b0',112); ln([[360,330],[70,10]],RS,100);
+  ctx.save(); ctx.translate(40,-30); ctx.rotate(-.72);
+  pz(()=>{ ctx.beginPath(); rr(ctx,-58,-70,116,140,54); },G,GD);
+  const curl=lerp(120,78,chiusa);   // le dita si chiudono attorno alla mano anziana
+  for(let f=0;f<4;f++) pz(()=>{ ctx.beginPath(); rr(ctx,-56+f*28,-70-curl+Math.abs(f-1.5)*10,26,curl+20,13); },G,GD,4);
+  pz(()=>{ ctx.beginPath(); ctx.save(); ctx.translate(-58,10); ctx.rotate(-.9+chiusa*.5); rr(ctx,-14,-78,28,86,14); ctx.restore(); },G,GD,4);
+  ctx.restore(); ctx.restore();
+  // punte delle dita anziane che avvolgono il dorso della mano giovane
+  if(chiusa>0){ ctx.save(); ctx.globalAlpha*=chiusa; ctx.translate(40,-30); ctx.rotate(-.72);
+    for(let f=0;f<4;f++) pz(()=>{ ctx.beginPath(); rr(ctx,30,-44+f*26,40,22,11); },E,ED,4);
     ctx.restore(); }
   ctx.restore();
-  if(chiusa>=1){ const b=1+Math.sin(u*2.5)*.06; ctx.save(); ctx.translate(0,-230); ctx.scale(b,b); ctx.fillStyle=RED; heartP(0,0,.55); ctx.fill(); ctx.restore(); } },
+  if(chiusa>=1){ const b=1+Math.sin(u*2.5)*.06; ctx.save(); ctx.translate(0,-250); ctx.scale(b,b); ctx.fillStyle=RED; heartP(0,0,.6); ctx.fill(); ctx.restore(); } },
 'tramonto-finale'({u}){ sea(u,{promenade:true,sunX:0,sunY:40+Math.min(25,u*4)});
   ctx.save(); ctx.globalAlpha=.92; ctx.fillStyle='#141a33';
   ctx.translate(-60,150); ctx.fillRect(-150,0,300,14); ctx.fillRect(-120,14,10,56); ctx.fillRect(110,14,10,56); ctx.beginPath(); ctx.arc(-115,76,12,0,TAU); ctx.arc(115,76,12,0,TAU); ctx.fill();
@@ -101,12 +128,12 @@ visita({u,A}){ grp(-90,20,1,1,()=>bust(0,80,.5,{shirt:'#bfc8de',head:{hairCol:GR
   grp(300,20,1,A(.85),()=>{ panel(0,0,260,400,true,'senza passaggio'); car(0,-40,.4,'#6b7491'); vieto(0,-40,80,1); }); },
 prenota({u,A}){ ctx.save(); ctx.translate(-250,40); box(-90,-170,180,340,30,'#0d1226'); sbox(-90,-170,180,340,30,'#3a4570',6); box(-76,-152,152,290,18,'#24305c');
   tx('Misericordia',0,-100,20,'#aab3cc','600'); tx('348 4068657',0,-62,22,'#fff','800'); fc(0,70,32,'#2fbf71'); ctx.save(); ctx.translate(0,70); ctx.rotate(-.6); box(-18,-7,36,14,7,'#fff'); ctx.restore();
-  for(let i=0;i<3;i++){ const r=((u*1.2+i/3)%1); arc(110,-130,26+r*60,-0.9,0.4,`rgba(242,228,51,${1-r})`,7); } ctx.restore();
-  grp(150,-150,1,A(.35),()=>{ box(-290,-66,580,132,66,C.giallo); tx('348 4068657',0,4,68,C.navy,'800'); });
+  for(let i=0;i<3;i++){ const r=((u*1.2+i/3)%1); arc(110,-130,22+r*34,-0.9,0.4,`rgba(242,228,51,${1-r})`,7); } ctx.restore();
+  grp(165,-215,1,A(.35),()=>{ box(-275,-62,550,124,62,C.giallo); tx('348 4068657',0,4,64,C.navy,'800'); });
   grp(60,60,1,A(.5),()=>{ fc(0,0,52,'#25d366'); box(-30,-20,60,40,14,'#fff'); for(let i=0;i<3;i++) fc(-16+i*16,0,5,'#25d366'); tx('anche WhatsApp',75,2,32,'#fff','700','Jost','left'); });
   if(CFG.nome==='Accompagnamento sociale') grp(170,200,1,A(.9),()=>{ box(-200,-40,400,80,16,'#fff'); tx('qualche giorno prima',0,2,30,C.navy,'700'); }); },
 mare({u}){ sea(u,{sunY:-20+Math.min(30,u*6)}); },
-'mare-barella'({u,A}){ sea(u,{promenade:true,sunX:80}); stretcher(-40,170,1.1); grp(220,140,1,A(.3),()=>volunteer(0,0,1.2)); grp(-350,140,1,A(.6),()=>{ for(let i=0;i<4;i++){ const f=(u*.8+i/4)%1; arc(0,-40,20+f*50,-1.2,-.3,`rgba(255,255,255,${1-f})`,5); } }); },
+'mare-barella'({u,A}){ sea(u,{promenade:true,sunX:80}); stretcher(-40,170,1.1); grp(220,140,1,A(.3),()=>volunteer(0,0,1.2)); grp(-390,30,1,A(.6),()=>{ for(let i=0;i<4;i++){ const f=(u*.8+i/4)%1; arc(0,-40,20+f*50,-1.2,-.3,`rgba(255,255,255,${1-f})`,5); } }); },
 paese({u,A}){ ctx.save(); rr(ctx,-440,-300,880,560,30); ctx.clip(); ctx.fillStyle='#24305c'; ctx.fillRect(-440,-300,880,560); fc(300,-200,50,'rgba(242,228,51,.9)'); village(0,0,1,u); ctx.restore(); },
 'casa-giardino'({u,p}){ ground(220); house(-120,60,1); const g=clamp(p*1.4);
   for(let i=0;i<7;i++){ const fx=-380+i*110+(i>2?260:0), h=60*g; if(fx>-200&&fx<60) continue; ln([[fx,220],[fx,220-h]],'#7cc46a',6); fc(fx,218-h,14*g,[RED,C.giallo,'#f3b9c4'][i%3]); }
@@ -116,9 +143,10 @@ festa({u,A}){ arc(-55,0,90,0,TAU,'#e0b84a',22); arc(55,0,90,0,TAU,'#f2e433',22);
 passioni({u,A}){ grp(-300,0,1,A(.25),()=>{ fc(0,0,120,C.tile); church(0,30,.65); });
   grp(0,0,1,A(.55),()=>{ fc(0,0,120,C.tile); ctx.save(); ctx.rotate(u*1.5); fc(0,0,50,'#fff'); for(let i=0;i<5;i++){ const a=i/5*TAU; fc(Math.cos(a)*30,Math.sin(a)*30,12,C.navy); } fc(0,0,14,C.navy); ctx.restore(); });
   grp(300,0,1,A(.85),()=>{ fc(0,0,120,C.tile); const b=Math.abs(Math.sin(u*2.5))*10; ctx.fillStyle=RED; ctx.beginPath(); ctx.arc(0,-20-b,40,Math.PI,0); ctx.lineTo(0,50-b); ctx.closePath(); ctx.fill(); fc(0,-20-b,15,'#fff'); }); },
-barella({u,p,A}){ ground(240); miseAmbulanza(120,170,1.15,u,{porte:true});
-  const x=lerp(-150,-430,1-clamp((p-.2)/.5)); stretcher(x-60,200,.9,{blanket:C.ciano});
-  grp(-330,150,1,A(.85),()=>{ volunteer(0,0,1.1); }); },
+barella({u,p,A}){ ground(240); miseAmbulanza(210,170,1,u,{porte:true});
+    const x=lerp(-230,-320,1-clamp((p-.2)/.5));
+    grp(x-125,110,1,A(.3),()=>{ volunteer(0,0,1.1); });
+    stretcher(x,200,.75,{blanket:C.ciano}); },
 famiglia({u,A}){ stretcher(-40,150,1.3); grp(-280,0,1,A(.3),()=>bust(0,60,.45,{shirt:'#f3b9c4',head:{hair:'long',mouth:'smile'}})); grp(260,0,1,A(.5),()=>bust(0,60,.45,{shirt:RS,head:{mouth:'smile'}}));
   const b=1+Math.sin(u*3)*.06; ctx.save(); ctx.translate(-10,-200); ctx.scale(b,b); ctx.fillStyle=RED; heartP(0,0,.6); ctx.fill(); ctx.restore(); },
 });
@@ -141,7 +169,7 @@ moduli({u,A}){ [['730',-300,.2],['Redditi',0,.4],['CU',300,.8]].forEach(([l,x,t]
   for(let i=0;i<11;i++){ sbox(-350+i*64,95,56,80,8,'#aab3cc',3); if(i<n) tx(cf[i],-322+i*64,137,48,C.navy,'800'); } },
 'codice-fiscale'({u,p}){ const cf='90031910582', n=Math.min(11,Math.floor(clamp((p-.2)/.72)*11)+ (p>.2?1:0));
   for(let i=0;i<11;i++){ const x=-400+i*80, on=i<n; box(x-34,-70,68,110,12,on?C.giallo:C.tile); if(on){ const k=outBack(clamp((p-.2-i*.065)/.06)); ctx.save(); ctx.translate(x,-14); ctx.scale(k,k); tx(cf[i],0,0,74,C.navy,'800'); ctx.restore(); } }
-  tx('Codice fiscale',0,-150,36,'#aab3cc','600'); if(n>=11){ const f=(u*1.2)%1; sbox(-450-f*10,-90-f*10,900+f*20,150+f*20,24,`rgba(242,228,51,${1-f})`,6); } },
+  tx('Codice fiscale',0,-150,36,'#aab3cc','600'); ctx.globalAlpha=clamp(p*4); tx('Confraternita di Misericordia',0,110,44,'#fff','600','P'); tx('di Ariccia ODV',0,166,44,'#fff','600','P'); ctx.globalAlpha=1; if(n>=11){ const f=(u*1.2)%1; sbox(-450-f*10,-90-f*10,900+f*20,150+f*20,24,`rgba(242,228,51,${1-f})`,6); } },
 castelli({u,A}){ ctx.fillStyle='#2f6b4f'; ctx.beginPath(); ctx.moveTo(-440,240); ctx.quadraticCurveTo(-250,-60,-40,80); ctx.quadraticCurveTo(160,-80,440,200); ctx.lineTo(440,250); ctx.lineTo(-440,250); ctx.fill();
   fe(-60,150,120,40,'#3a8ac0'); tx('lago',-60,150,24,'#cfe9f5','600');
   [[-260,40],[-200,20],[40,20],[100,0],[200,40]].forEach(([hx,hy])=>{ box(hx-20,hy-26,40,40,3,'#f3ead8'); poly([[hx-24,hy-26],[hx,hy-46],[hx+24,hy-26]],'#c4573a'); });
