@@ -15,6 +15,7 @@ conteggio a voce da 1 a 30, musica allo stesso BPM).
 | `contenuti3.py` | video dei servizi: accompagnamento sociale e «L'ultimo viaggio» (voce più lenta con `voce_lenta`, musica `dolce`) |
 | `ill.js`, `ill2.js`, `ill3.js` | libreria dei disegni animati (`ILL[nome]({u, p, D, A})`) |
 | `riferimenti/livrea-ambulanza-facsimile.jpg` | fac-simile della livrea delle nostre ambulanze: `miseAmbulanza` in `ill3.js` è ricalcata da qui (non inventare livree) |
+| `riferimenti/volontari-divisa.png` | riferimento per i volontari: divisa blu con colletto e fasce giallo fluo, filetti argento, triangolo e bandiera (`volunteer()` in `ill3.js`, `bust(…,{divisa:true})` in `ill.js`) |
 | `appro.src.html` | modello della pagina animata (impaginazione, sottotitoli, chiusura con la scheda contatti) |
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 |

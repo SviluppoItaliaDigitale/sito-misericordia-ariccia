@@ -21,7 +21,7 @@ function bolt(x,y,s,col){ poly([[x+8*s,y-40*s],[x-18*s,y+6*s],[x,y+6*s],[x-10*s,
 
 // ---------- testa e busto ----------
 function head(x,y,r,o={}){
-  if(o.hair==='long'){ fe(x,y+r*.35,r*1.12,r*1.2,o.hairCol||HAIR); }
+  if(o.hair==='long'){ const hc=o.hairCol||HAIR; fe(x,y-r*.05,r*1.12,r*1.05,hc); fe(x-r*.78,y+r*.55,r*.42,r*.85,hc); fe(x+r*.78,y+r*.55,r*.42,r*.85,hc); } // capelli lunghi ai lati, mai sotto il mento
   fc(x-r*.98,y+r*.12,r*.2,SKD); fc(x+r*.98,y+r*.12,r*.2,SKD);
   fc(x,y,r,o.pale?'#f1dccd':SK);
   ctx.fillStyle=o.hairCol||HAIR; ctx.beginPath(); ctx.arc(x,y,r*1.03,Math.PI,0); ctx.bezierCurveTo(x+r*.95,y-r*.3,x-r*.3,y-r*.75,x-r*1.03,y); ctx.fill();
@@ -30,6 +30,7 @@ function head(x,y,r,o={}){
   if(o.closed){ ln([[x-r*.48,y+r*.08],[x-r*.24,y+r*.08]],C.navy,r*.07); ln([[x+r*.24,y+r*.08],[x+r*.48,y+r*.08]],C.navy,r*.07); }
   else { fc(x-r*.36,y+r*.08,r*.085,C.navy); fc(x+r*.36,y+r*.08,r*.085,C.navy);
     if(d>0){ ctx.fillStyle=o.pale?'#f1dccd':SK; ctx.fillRect(x-r*.5,y+r*.08-r*.12,r*.28,r*.12*d*1.4); } }
+  if(o.beard){ ctx.strokeStyle=o.hairCol||HAIR; ctx.lineWidth=r*.26; ctx.lineCap='round'; ctx.beginPath(); ctx.arc(x,y+r*.12,r*.84,.35,Math.PI-.35); ctx.stroke(); }
   ctx.strokeStyle=C.navy; ctx.lineWidth=r*.07; ctx.lineCap='round';
   const m=o.mouth||'smile';
   if(m==='smile'){ ctx.beginPath(); ctx.moveTo(x-r*.34,y+r*.42+d*r*.3); ctx.quadraticCurveTo(x+d*r*.14,y+r*.72-d*r*.12,x+r*.34,y+r*.42); ctx.stroke(); }
@@ -43,17 +44,29 @@ function arm(sx,sy,pts,col,dk,w,hand=true){ const P=[[sx,sy],...pts]; ln(P,dk,w+
 const POSE={ down:[[-170,80],[-168,215]], up:[[-200,-150],[-195,-320]], chest:[[-150,110],[-10,30]], throat:[[-150,40],[-34,-112]], mouth:[[-160,40],[-40,-170]], hip:[[-170,80],[-168,215]] };
 function mir(p){ return p.map(q=>[-q[0],q[1]]); }
 // busto frontale: (x,y) = centro del petto
+// Divisa dei volontari della Misericordia (dal riferimento inviato da Alessandro): blu, colletto e fascia giallo fluo,
+// filetti argento rifrangenti, cartellino col nome, triangolo delle Misericordie, bandiera sulla spalla.
+const DIV='#4b62b4', DIVD='#3c519c', FLUO='#c9dd2c', ARG='#dfe3ec';
+function divisaBusto(){ ctx.save(); ctx.beginPath(); ctx.moveTo(-150,280); ctx.lineTo(-150,-20); ctx.quadraticCurveTo(-150,-85,-85,-88); ctx.lineTo(85,-88); ctx.quadraticCurveTo(150,-85,150,-20); ctx.lineTo(150,280); ctx.closePath(); ctx.clip(); ctx.fillStyle=DIVD; ctx.fillRect(0,-90,152,372);
+  ctx.fillStyle=ARG; ctx.fillRect(-150,58,300,8); ctx.fillRect(-150,104,300,8); ctx.fillStyle=FLUO; ctx.fillRect(-150,68,300,34); ctx.restore();
+  ln([[0,-40],[0,280]],'#8ea3dd',5);
+  poly([[-66,-90],[-34,-90],[0,-40],[-16,-26]],FLUO); poly([[66,-90],[34,-90],[0,-40],[16,-26]],'#b5c824');
+  box(-118,-30,58,34,5,'#fff'); ln([[-108,-18],[-72,-18]],'#aab3cc',4); ln([[-108,-8],[-84,-8]],'#aab3cc',4);
+  poly([[86,-40],[110,2],[62,2]],'#f2e433'); ctx.strokeStyle=C.navy; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(86,-40); ctx.lineTo(110,2); ctx.lineTo(62,2); ctx.closePath(); ctx.stroke();
+  ln([[86,-26],[86,-4]],'#d8261c',4); ln([[79,-19],[93,-19]],'#d8261c',4); }
 function bust(x,y,s,o={}){
-  const sh=o.shirt||VS, sd=o.shirtD||VSD;
+  const sh=o.divisa?DIV:(o.shirt||VS), sd=o.divisa?DIVD:(o.shirtD||VSD);
   ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
   if(o.jx) ctx.translate(o.jx,0);
   box(-30,-140,60,70,10,SKD);
   ctx.fillStyle=sh; ctx.beginPath(); ctx.moveTo(-150,280); ctx.lineTo(-150,-20); ctx.quadraticCurveTo(-150,-85,-85,-88); ctx.lineTo(85,-88); ctx.quadraticCurveTo(150,-85,150,-20); ctx.lineTo(150,280); ctx.closePath(); ctx.fill();
   poly([[-34,-88],[0,-40],[34,-88]],SKD);
+  if(o.divisa) divisaBusto();
   if(o.under) o.under();
   head(0,-205,100,o.head||{});
   const L=o.L||POSE.down, R=o.R||mir(POSE.down);
   if(!o.noArms){ arm(-122,-50,L,sh,sd,54); arm(122,-50,R,sh,sd,54); }
+  if(o.divisa&&!o.noArms){ ctx.fillStyle='#2e9e4f'; ctx.fillRect(112,-44,9,16); ctx.fillStyle='#fff'; ctx.fillRect(121,-44,9,16); ctx.fillStyle='#d8261c'; ctx.fillRect(130,-44,9,16); }
   if(o.over) o.over();
   ctx.restore();
 }

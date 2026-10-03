@@ -5,7 +5,24 @@ function wheelchair(x,y,s,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
   ln([[-30,-24],[-30,-80]],o.shirt||'#bfc8de',30); fc(-30,-110,22,SK); ctx.fillStyle=o.hairCol||GRAYH; ctx.beginPath(); ctx.arc(-30,-110,23,Math.PI,0); ctx.fill();
   ln([[-30,-14],[30,-14],[36,40]],PANT,18); ln([[-24,-60],[10,-36]],o.shirt||'#bfc8de',12); ctx.restore(); }
 function elder(x,y,s){ stick(x,y,s,{hairCol:GRAYH,shirt:'#bfc8de'}); ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ln([[44,45],[60,125]],'#8a5a3a',7); ctx.restore(); }
-function volunteer(x,y,s){ stick(x,y,s,{shirt:RS}); ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.fillStyle=C.giallo; ctx.fillRect(-20,22,40,8); ctx.restore(); }
+// Volontario in divisa della Misericordia, figura intera (stesso ingombro di stick: piedi a y=128). o: opzioni di head() (hair, hairCol, glasses, beard).
+function volunteer(x,y,s,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  box(-30,56,27,64,9,DIV); box(3,56,27,64,9,DIVD);                                     // pantaloni
+  [[-30,DIV],[3,DIVD]].forEach(([lx])=>{ ctx.fillStyle=ARG; ctx.fillRect(lx,90,27,3); ctx.fillStyle=FLUO; ctx.fillRect(lx,94,27,5); ctx.fillStyle=ARG; ctx.fillRect(lx,100,27,2); });
+  box(-33,116,31,12,6,'#2f3b3b'); box(2,116,31,12,6,'#2f3b3b');                       // scarpe
+  box(-55,-27,19,76,9,DIV); box(36,-27,19,76,9,DIVD);                                   // maniche
+  [-55,36].forEach(ax=>{ ctx.fillStyle=ARG; ctx.fillRect(ax,26,19,2); ctx.fillStyle=FLUO; ctx.fillRect(ax,29,19,6); ctx.fillStyle=ARG; ctx.fillRect(ax,36,19,2); });
+  fc(-45.5,52,10,SK); fc(45.5,52,10,SKD);
+  box(-8,-44,16,14,4,SKD);
+  ctx.save(); rr(ctx,-40,-34,80,96,20); ctx.fillStyle=DIV; ctx.fill(); ctx.clip(); ctx.fillStyle=DIVD; ctx.fillRect(0,-40,50,110);
+  ctx.fillStyle=ARG; ctx.fillRect(-40,10,80,2.5); ctx.fillRect(-40,25.5,80,2.5); ctx.fillStyle=FLUO; ctx.fillRect(-40,13,80,12); ctx.restore();
+  ln([[0,-18],[0,60]],'#8ea3dd',2.5);
+  poly([[-20,-35],[-6,-35],[0,-18],[-9,-13]],FLUO); poly([[20,-35],[6,-35],[0,-18],[9,-13]],'#b5c824'); // colletto
+  box(-31,-12,14,9,2,'#fff');                                                            // cartellino
+  poly([[24,-15],[31,-2],[17,-2]],'#f2e433'); ln([[24,-11],[24,-4]],'#d8261c',1.6);       // triangolo Misericordie
+  ctx.fillStyle='#2e9e4f'; ctx.fillRect(40,-21,3.5,7); ctx.fillStyle='#fff'; ctx.fillRect(43.5,-21,3.5,7); ctx.fillStyle='#d8261c'; ctx.fillRect(47,-21,3.5,7); // bandiera
+  head(0,-64,27,{mouth:'smile',...o});
+  ctx.restore(); }
 function miseCar(x,y,s){ car(x,y,s,'#fff'); ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.fillStyle=C.ciano; ctx.fillRect(-150,-6,300,12); ctx.fillStyle=C.giallo; ctx.fillRect(-150,6,300,6); ctx.restore(); }
 function cart(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.strokeStyle='#cfd6e8'; ctx.lineWidth=8; ctx.lineJoin='round';
   ctx.beginPath(); ctx.moveTo(-110,-70); ctx.lineTo(-80,-70); ctx.lineTo(-50,30); ctx.lineTo(80,30); ctx.lineTo(100,-40); ctx.lineTo(-64,-40); ctx.stroke();
@@ -102,10 +119,10 @@ Object.assign(ILL, {
   ctx.lineWidth=14; ctx.lineCap='round'; ctx.strokeStyle='#141a33'; ctx.beginPath(); ctx.moveTo(-14,-100); ctx.lineTo(-120,-40); ctx.stroke(); ctx.restore();
   const f=(u*.25)%1; ctx.save(); ctx.globalAlpha=1-f; ctx.translate(40,60-f*220); ctx.fillStyle=C.giallo; heartP(0,0,.25); ctx.fill(); ctx.restore(); },
 'auto-casa'({u,A}){ house(-250,40,1.05); const t=clamp(u/1.6); miseCar(lerp(520,200,outCubic(t)),150,.9);
-  grp(-60,90,1,A(.5),()=>{ elder(0,0,1.1); volunteer(70,0,1.1); ln([[30,0],[60,10]],RS,12); }); },
+  grp(-60,90,1,A(.5),()=>{ elder(0,0,1.1); volunteer(70,0,1.1,{hairCol:'#b07a3a'}); ln([[30,0],[60,10]],RS,12); }); },
 supermercato({u,A}){ box(-430,-260,560,400,16,'#55607f'); box(-430,-260,560,70,16,C.ciano); cart(-370,-228,.4); tx('Supermercato',-140,-225,36,'#fff','700');
   box(-380,-160,200,240,8,'rgba(159,216,240,.5)'); box(-150,-160,240,240,8,'rgba(159,216,240,.5)'); ground(220);
-  const x=lerp(-260,120,clamp((u-.4)/3)); elder(x-90,90,1.05); volunteer(x,90,1.05); cart(x+110,140,.8);
+  const x=lerp(-260,120,clamp((u-.4)/3)); elder(x-90,90,1.05); volunteer(x,90,1.05,{hair:'long',hairCol:'#8a4a2a'}); cart(x+110,140,.8);
   grp(340,40,1,A(.85),()=>{ bag(-40,40,.6,'#e9d3a8'); bag(50,50,.55,'#e9d3a8'); fc(-50,-30,20,RED); box(30,-40,26,60,10,'#7cc46a'); }); },
 'posta-banca'({u,A}){ grp(-220,0,1,A(.2),()=>{ panel(0,0,380,460,true,'posta'); box(-120,-90,240,160,12,C.giallo); ln([[-120,-90],[0,0],[120,-90]],C.navy,8); const f=(u*.8)%1; box(-60,90-f*0,120,30,8,'#fff'); });
   grp(220,0,1,A(.6),()=>{ panel(0,0,380,460,true,'banca'); poly([[-130,-90],[0,-160],[130,-90]],'#cfd6e8'); for(let i=0;i<4;i++) box(-110+i*66,-80,28,150,4,'#cfd6e8'); box(-140,70,280,22,4,'#cfd6e8'); [[-50,130],[0,120],[50,130]].forEach(([cx,cy],i)=>fc(cx,cy-Math.abs(Math.sin(u*3+i))*10,22,'#e0b84a')); }); },
@@ -145,9 +162,9 @@ passioni({u,A}){ grp(-300,0,1,A(.25),()=>{ fc(0,0,120,C.tile); church(0,30,.65);
   grp(300,0,1,A(.85),()=>{ fc(0,0,120,C.tile); const b=Math.abs(Math.sin(u*2.5))*10; ctx.fillStyle=RED; ctx.beginPath(); ctx.arc(0,-20-b,40,Math.PI,0); ctx.lineTo(0,50-b); ctx.closePath(); ctx.fill(); fc(0,-20-b,15,'#fff'); }); },
 barella({u,p,A}){ ground(240); miseAmbulanza(210,170,1,u,{porte:true});
     const x=lerp(-230,-320,1-clamp((p-.2)/.5));
-    grp(x-125,110,1,A(.3),()=>{ volunteer(0,0,1.1); });
+    grp(x-125,110,1,A(.3),()=>{ volunteer(0,0,1.1,{beard:true}); });
     stretcher(x,200,.75,{blanket:C.ciano}); },
-famiglia({u,A}){ stretcher(-40,150,1.3); grp(-280,0,1,A(.3),()=>bust(0,60,.45,{shirt:'#f3b9c4',head:{hair:'long',mouth:'smile'}})); grp(260,0,1,A(.5),()=>bust(0,60,.45,{shirt:RS,head:{mouth:'smile'}}));
+famiglia({u,A}){ stretcher(-40,150,1.3); grp(-280,0,1,A(.3),()=>bust(0,60,.45,{shirt:'#f3b9c4',head:{hair:'long',mouth:'smile'}})); grp(260,0,1,A(.5),()=>bust(0,60,.45,{divisa:true,head:{mouth:'smile',glasses:true,hairCol:'#c9a35a'}}));
   const b=1+Math.sin(u*3)*.06; ctx.save(); ctx.translate(-10,-200); ctx.scale(b,b); ctx.fillStyle=RED; heartP(0,0,.6); ctx.fill(); ctx.restore(); },
 });
 function firma(x,y,w,k,col=C.navy){ ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=6; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.beginPath(); const N=60;
