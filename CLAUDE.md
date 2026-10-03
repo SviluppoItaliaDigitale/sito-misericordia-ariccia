@@ -107,6 +107,12 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   (date in `layouts/home.html`, blocco «Callout: diventa volontario»).
 - Tutte le date contano dalla **mezzanotte italiana** (`time.AsTime … "Europe/Rome"`):
   il cambio avviene col rebuild notturno, senza toccare nulla.
+- **5x1000 ricorrente**: video `static/video/5x1000.mp4` (anche in `/sostienici/`) e
+  news già programmate ogni anno l'11 maggio (inizio dichiarazioni) e il 15 settembre
+  (ultimi giorni del 730), dal 2027 al **2030**, ognuna in evidenza fino a fine mese e
+  pubblicata da sola sui social. Prima del 2031 crearne altre sullo stesso modello.
+- **Video dei servizi**: accompagnamento sociale (`/servizi/servizi-sociali/`) e
+  «L'ultimo viaggio» (`/trasporto-infermi/`), testi in `contenuti3.py`.
 - Social: `social_video` + `social_video_copertina` nel front matter → Reel su
   Instagram e video su Facebook; `social_testo` per il testo su misura.
 
