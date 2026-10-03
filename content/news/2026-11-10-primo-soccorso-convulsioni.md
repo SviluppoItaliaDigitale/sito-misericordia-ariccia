@@ -56,7 +56,7 @@ Quando i movimenti finiscono, controlla il respiro. Se respira normalmente, mett
 
 Se dopo i movimenti non respira normalmente, può essere un arresto cardiaco: chiama il 112 e inizia la rianimazione.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
 
 ## Impara con noi
 

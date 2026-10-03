@@ -52,7 +52,7 @@ Anche se sembra a posto, controllalo nelle ore successive, soprattutto se ha bat
 
 Per prevenire: via i tappeti scivolosi, luci accese di notte, maniglioni in bagno, scarpe chiuse e un telefono sempre a portata di mano.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
 
 ## Impara con noi
 

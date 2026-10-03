@@ -58,7 +58,7 @@ Chiama il 112 se l'ustione è più grande del palmo della sua mano, se è sul vi
 
 Pelle arrossata, con bolle o lesioni dopo il contatto con calore, liquidi bollenti, fiamme o vapore.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#ustioni)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#ustioni)**.
 
 ## Impara con noi
 

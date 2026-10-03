@@ -62,7 +62,7 @@ Per prevenire: prodotti nelle confezioni originali, chiusi e in alto, lontano da
 
 Ingestione o contatto con farmaci, detersivi, prodotti chimici, piante o funghi; inalazione di gas o fumi.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#avvelenamento)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#avvelenamento)**.
 
 ## Impara con noi
 

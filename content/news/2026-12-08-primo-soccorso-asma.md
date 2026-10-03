@@ -52,7 +52,7 @@ Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, p
 
 Se perde conoscenza e non respira normalmente, inizia la rianimazione.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#asma)**.
 
 ## Impara con noi
 

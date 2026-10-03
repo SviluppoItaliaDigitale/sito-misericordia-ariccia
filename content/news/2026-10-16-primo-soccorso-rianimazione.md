@@ -68,7 +68,7 @@ Poi riprendi subito le compressioni, e non fermarti finché non arrivano i socco
 
 La persona **non risponde** quando la chiami e la scuoti delicatamente, e **non respira normalmente** (non respira, oppure fa respiri rari e rumorosi).
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#rianimazione)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#rianimazione)**.
 
 ## Impara con noi
 

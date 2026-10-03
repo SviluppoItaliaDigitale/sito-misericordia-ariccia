@@ -52,7 +52,7 @@ Se colpisce un occhio, non strofinarlo e non togliere frammenti. Coprilo senza p
 
 I bambini guardano da lontano: niente botti in mano ai più piccoli.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#botti)**.
 
 ## Impara con noi
 

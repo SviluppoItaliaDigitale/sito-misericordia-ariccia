@@ -52,7 +52,7 @@ Quando sta meglio, fallo rialzare piano: prima seduto, poi in piedi. Se si alza 
 
 Chiama il 112 se è svenuto durante uno sforzo, se ha avuto dolore al petto o il cuore che batte forte, o se si è ferito cadendo.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#svenimento)**.
 
 ## Impara con noi
 

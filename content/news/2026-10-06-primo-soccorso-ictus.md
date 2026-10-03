@@ -58,7 +58,7 @@ Resta con lui e rassicuralo. Se perde conoscenza ma respira normalmente, mettilo
 
 Improvvisamente un lato del viso cade, un braccio perde forza, la persona parla male o non capisce. Basta **un solo segno**.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#ictus)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#ictus)**.
 
 ## Impara con noi
 

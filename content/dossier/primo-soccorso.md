@@ -1,20 +1,21 @@
 ---
-title: "Primo soccorso: le 10 cose da sapere"
-titoloSeo: "Primo soccorso: cosa fare in caso di ictus, infarto, soffocamento, rianimazione e altre emergenze"
-description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, secondo le linee guida IRC 2025."
+title: "Primo soccorso passo passo: 23 emergenze"
+titoloSeo: "Primo soccorso: cosa fare in 23 emergenze, da ictus e infarto a soffocamento e rianimazione nel bambino"
+description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025."
 layout: "primo-soccorso"
 italianoSemplice: |
-  **Questa pagina spiega cosa fare in 10 emergenze.**
+  **Questa pagina spiega cosa fare in 23 emergenze.**
 
-  Per ogni emergenza trovi: come riconoscerla, cosa fare, cosa non fare e un video corto.
+  Per ogni emergenza trovi: come riconoscerla, cosa fare, cosa non fare e un video con i disegni.
 
   In ogni emergenza chiama il **112**.
 
   Queste informazioni non sostituiscono un corso. Puoi imparare con i nostri corsi di primo soccorso.
 occhiello: "Dossier · Primo soccorso"
-sottotitolo: "Dieci emergenze, dieci schede: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida IRC 2025."
-summary: "Un dossier pratico sulle 10 emergenze più comuni: come riconoscerle, cosa fare e cosa non fare, con un video breve per ognuna, secondo le linee guida IRC 2025."
-lettura: "10 minuti"
+sottotitolo: "Ventitré emergenze, una scheda per ognuna: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida ERC/IRC 2025."
+summary: "Un dossier pratico su 23 emergenze, dai bambini agli anziani: come riconoscerle, cosa fare e cosa non fare, con un video di approfondimento per ognuna, secondo le linee guida ERC/IRC 2025."
+lettura: "20 minuti"
+serie2_da: "convulsioni"
 cover_cta:
   testo: "Inizia dalle schede"
   ancora: "#schede"
@@ -136,10 +137,187 @@ argomenti:
     nonfare:
       - "Non farla tornare a giocare o ad allenarsi lo stesso giorno."
       - "Se c'è stata una caduta da un'altezza o un trauma forte, non muoverle il collo."
+  - id: "convulsioni"
+    titolo: "Convulsioni"
+    motto: "Proteggi, non trattenere"
+    dal: "2026-11-10"
+    riconosci: "Perdita di coscienza con **scosse ritmiche** di braccia e gambe, a volte bava alla bocca o morso della lingua. Di solito finisce da sola in pochi minuti."
+    fare:
+      - "Allontana gli oggetti pericolosi e fai **spazio intorno**."
+      - "Metti qualcosa di **morbido sotto la testa** e allenta il colletto."
+      - "**Guarda l'ora**: se dura più di 5 minuti chiama il **112**."
+      - "Chiama il 112 anche se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende."
+      - "Finiti i movimenti, **controlla il respiro**: se respira normalmente mettila **su un fianco** e resta con lei. Se non respira normalmente, inizia la rianimazione."
+    nonfare:
+      - "Non trattenere i movimenti."
+      - "Non mettere niente in bocca: né dita, né oggetti, né acqua."
+  - id: "incidente-stradale"
+    titolo: "Incidente stradale"
+    motto: "Prima la sicurezza"
+    dal: "2026-11-13"
+    riconosci: "Veicoli coinvolti, persone ferite o incastrate, traffico che continua a passare: il primo pericolo è per chi si ferma ad aiutare."
+    fare:
+      - "Fermati in un posto sicuro, accendi le **quattro frecce** e indossa il **giubbotto catarifrangente**."
+      - "Metti il **triangolo** ad almeno 50 metri."
+      - "Se puoi farlo senza rischi, spegni i motori. Niente sigarette."
+      - "Chiama il **112**: dove sei, quanti feriti, se qualcuno è incastrato."
+      - "Parla con i feriti, rassicurali e coprili. Se uno non respira normalmente, inizia la rianimazione."
+    nonfare:
+      - "Non spostare i feriti, salvo un pericolo immediato come un incendio."
+      - "Non togliere il casco al motociclista, se non per farlo respirare."
+  - id: "svenimento"
+    titolo: "Svenimento"
+    motto: "Giù, e gambe su"
+    dal: "2026-11-17"
+    riconosci: "Prima: pallore, sudore, nausea, vista annebbiata, ronzio nelle orecchie. Poi una breve perdita di coscienza, di solito meno di un minuto."
+    fare:
+      - "Se senti che stai per svenire: **incrocia le gambe stringendo i muscoli**, oppure accovacciati o sdraiati."
+      - "Se sviene: **sdraiata con le gambe sollevate**, vestiti allentati, aria."
+      - "Se non si riprende in un minuto, **controlla il respiro** e chiama il **112**."
+      - "Quando sta meglio, falla rialzare piano: prima seduta, poi in piedi."
+    nonfare:
+      - "Non farla alzare di colpo."
+      - "Non sottovalutare uno svenimento durante uno sforzo, con dolore al petto o palpitazioni: chiama il 112."
+  - id: "soffocamento-lattante"
+    titolo: "Soffocamento nel lattante"
+    motto: "5 pacche e 5 compressioni"
+    dal: "2026-11-20"
+    riconosci: "Un bambino sotto l'anno che **non riesce a piangere, tossire o respirare** e diventa blu."
+    fare:
+      - "Se tossisce o piange, lascialo tossire e tienilo d'occhio."
+      - "Fai chiamare il **112**, o chiama con il vivavoce."
+      - "**5 pacche** tra le scapole: a pancia in giù sul tuo avambraccio, con la testa più in basso, sostenendo il mento."
+      - "**5 compressioni sul torace**: a pancia in su, testa in basso, con i **due pollici** al centro del torace."
+      - "Alterna 5 e 5. Se perde conoscenza: **5 soffi** nella bocca e nel naso, poi rianimazione."
+    nonfare:
+      - "Non infilare le dita in bocca alla cieca."
+      - "Non dare alimenti tondi interi: taglia uva, pomodorini e olive in quattro, per lungo."
+  - id: "rianimazione-bambino"
+    titolo: "Rianimazione nel bambino"
+    motto: "Prima 5 soffi"
+    dal: "2026-11-24"
+    riconosci: "Il bambino **non risponde** e **non respira normalmente**."
+    fare:
+      - "Chiama il **112** con il vivavoce. Se sei solo e senza telefono, fai prima 1 minuto di rianimazione."
+      - "Dai **5 soffi** (nel lattante su bocca e naso), finché il torace si alza."
+      - "Compressioni al centro del torace, per **un terzo della sua profondità** (circa 4 cm nel lattante, 5 nel bambino), **100-120 al minuto**: nel lattante con i **due pollici** che circondano il torace, nel bambino con una o due mani."
+      - "Poi **30 compressioni e 2 soffi** (15 e 2 se hai fatto un corso pediatrico)."
+      - "Usa il **DAE**: sotto i 25 kg in modalità pediatrica, se c'è, con le piastre una davanti e una dietro."
+    nonfare:
+      - "Non fermarti finché non arrivano i soccorsi o il bambino non respira normalmente."
+      - "Se non riesci a soffiare, non restare fermo: fai almeno le compressioni."
+  - id: "fratture"
+    titolo: "Fratture e distorsioni"
+    motto: "Ferma, non raddrizzare"
+    dal: "2026-11-27"
+    riconosci: "Dolore forte, gonfiore, livido, una forma strana dell'arto o la parte che non si riesce a muovere."
+    fare:
+      - "Sostieni la parte **nella posizione in cui si trova** (mani, cuscino, fascia per il braccio)."
+      - "**Ghiaccio avvolto in un panno**, per circa 20 minuti."
+      - "Frattura esposta: copri con una **garza pulita** e premi intorno se sanguina."
+      - "Chiama il **112** per fratture esposte, di anca, femore, schiena o collo, dolore fortissimo, mano o piede freddi e senza sensibilità."
+    nonfare:
+      - "Non raddrizzare l'arto e non farlo muovere."
+      - "Non spingere dentro l'osso e non mettere il ghiaccio direttamente sulla pelle."
+  - id: "freddo"
+    titolo: "Ipotermia e congelamento"
+    motto: "Al caldo, con delicatezza"
+    dal: "2026-12-01"
+    riconosci: "Brividi forti, pelle fredda e pallida, mani impacciate, poi confusione e sonnolenza. **Se smette di tremare è grave.** Congelamento: dita, orecchie o naso bianchi e insensibili."
+    fare:
+      - "Portala al riparo e al caldo, **muovendola con delicatezza**."
+      - "Togli i vestiti bagnati, asciugala e coprila con coperte asciutte, **anche la testa**."
+      - "Se è sveglia e deglutisce, una **bevanda calda e zuccherata**."
+      - "Se è confusa, sonnolenta o non trema più, chiama il **112**. Se non respira normalmente, rianimazione."
+    nonfare:
+      - "Niente alcol: fa perdere ancora più calore."
+      - "Sul congelamento non strofinare e non scaldare con fuoco o stufe."
+  - id: "monossido"
+    titolo: "Monossido di carbonio"
+    motto: "Il gas che non si sente"
+    dal: "2026-12-04"
+    riconosci: "Mal di testa, nausea, vertigini, sonnolenza, **spesso in più persone della stessa casa**, anche negli animali. Il gas non ha odore né colore."
+    fare:
+      - "**Apri porte e finestre ed esci** all'aria aperta."
+      - "Spegni l'apparecchio solo se puoi farlo subito e senza rischi."
+      - "Chiama il **112**, anche se fuori ti senti meglio."
+      - "Previeni: **controllo annuale** di caldaia, stufe e canne fumarie e un **rilevatore di monossido**."
+    nonfare:
+      - "Non entrare in un ambiente pieno di gas se rischi anche tu."
+      - "Mai bracieri o generatori in casa, mai il forno a gas per scaldarsi, mai il motore acceso in garage chiuso."
+  - id: "asma"
+    titolo: "Crisi d'asma"
+    motto: "Seduto e con calma"
+    dal: "2026-12-08"
+    riconosci: "Fiato corto, **fischi nel respiro**, tosse, oppressione al petto. Nei casi gravi non riesce a parlare."
+    fare:
+      - "Fallo stare **seduto, leggermente in avanti**, con le braccia appoggiate."
+      - "Resta calmo e aiutalo a respirare lentamente."
+      - "Se ha il **suo spray** per la crisi, aiutalo a usarlo come gli ha spiegato il medico."
+      - "Chiama il **112** se lo spray non basta, non riesce a parlare, ha le labbra blu o è sonnolento."
+    nonfare:
+      - "Non farlo sdraiare."
+      - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi."
+  - id: "batterie"
+    titolo: "Batterie a bottone e calamite"
+    motto: "Basta il dubbio"
+    dal: "2026-12-11"
+    riconosci: "Un bambino può aver ingoiato una batteria a bottone o delle calamite. **Spesso all'inizio non ci sono segni**; a volte tosse, bava, dolore, vomito o rifiuto del cibo."
+    fare:
+      - "Anche solo il dubbio: chiama il **112** o vai **subito al pronto soccorso**."
+      - "Porta la **confezione** o una batteria uguale."
+      - "Previeni: giocattoli con il **vano batterie a vite**, batterie nuove e scariche lontane dai bambini."
+    nonfare:
+      - "Non aspettare i sintomi: in poche ore la batteria può bruciare l'esofago."
+      - "Non farlo vomitare e non dargli cibo o bevande, se non lo dicono i medici o il Centro Antiveleni."
+  - id: "cadute-anziani"
+    titolo: "Cadute degli anziani"
+    motto: "Senza fretta"
+    dal: "2026-12-15"
+    riconosci_tit: "Cosa osservare"
+    riconosci: "Dolore, un colpo alla testa, confusione, una gamba che non si muove o un'anca molto dolorante."
+    fare:
+      - "Tranquillizzalo e chiedi dove ha male, se ha battuto la testa, se ricorda cosa è successo."
+      - "Chiama il **112** se ha battuto la testa, prende anticoagulanti, ha dolore forte all'anca, non muove una gamba o è confuso."
+      - "Se sta bene, rialzarsi **a tappe**: su un fianco, in ginocchio, poi con una sedia robusta."
+      - "Se non riesce ad alzarsi: cuscino sotto la testa, coperta, e aspetta i soccorsi."
+      - "Previeni: niente tappeti scivolosi, luci di notte, maniglioni in bagno, telefono vicino."
+    nonfare:
+      - "Non tirarlo su di colpo e non forzarlo."
+      - "Non lasciarlo solo nelle ore successive, soprattutto se ha battuto la testa."
+  - id: "botti"
+    titolo: "Botti di Capodanno"
+    motto: "Festa senza danni"
+    dal: "2026-12-18"
+    riconosci_tit: "Il rischio"
+    riconosci: "Ogni anno ustioni, ferite alle mani e lesioni agli occhi, spesso da petardi illegali o inesplosi."
+    fare:
+      - "Solo fuochi con **marchio CE**, comprati nei negozi autorizzati."
+      - "Ustione: **acqua corrente fresca per almeno 20 minuti**, poi pellicola o garza pulita."
+      - "Mano che sanguina: **premi forte** e chiama il **112**."
+      - "Dito staccato: in un **sacchetto pulito chiuso**, e il sacchetto nel ghiaccio."
+      - "Occhio colpito: coprilo senza premere e chiama il **112**."
+    nonfare:
+      - "Non raccogliere né riaccendere un petardo inesploso."
+      - "Non strofinare l'occhio, non togliere frammenti, non mettere il dito a contatto con il ghiaccio."
+  - id: "cassetta"
+    titolo: "La cassetta di primo soccorso"
+    motto: "Pronti a tutto"
+    dal: "2026-12-22"
+    riconosci_tit: "Cosa serve"
+    riconosci: "Guanti, garze sterili, bende, cerotti, forbici, un disinfettante, ghiaccio istantaneo e una coperta isotermica."
+    fare:
+      - "Aggiungi un **foglio con i numeri utili**: 112, Centro Antiveleni, il tuo medico."
+      - "In auto tieni anche **giubbotto catarifrangente e triangolo**."
+      - "**Una volta all'anno** controlla le scadenze e rimetti quello che hai usato."
+      - "Tienila a portata degli adulti e fuori dalla portata dei bambini."
+    nonfare:
+      - "Non tenerci farmaci di altre persone."
+      - "Non dimenticare lo strumento più utile: sapere cosa fare e chiamare subito il 112."
 ---
 
 In un'emergenza i primi minuti sono quelli che contano di più, e spesso chi è vicino non è un medico: è un familiare, un collega, un passante. **Sapere cosa fare, e cosa non fare, può cambiare il finale.**
 
-In questo dossier trovi **dieci schede**, una per ogni emergenza tra le più comuni. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di approfondimento con disegni animati** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).
+In questo dossier trovi **ventitré schede**: le dieci emergenze più comuni e altre tredici, dai neonati agli anziani, dal freddo ai botti di Capodanno. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di approfondimento con disegni animati** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e dell'[European Resuscitation Council](https://www.erc.edu/). Le schede nuove si arricchiscono del loro video man mano che esce, fino al 22 dicembre.
 
 **In ogni emergenza, il primo gesto è chiamare il [112](tel:112)**: l'operatore ti guida finché arrivano i soccorsi.

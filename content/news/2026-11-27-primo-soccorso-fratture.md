@@ -52,7 +52,7 @@ Chiama il 112 per fratture esposte, per l'anca, il femore, la schiena o il collo
 
 Per una distorsione: riposo, ghiaccio nel panno e parte sollevata. Se il dolore non passa, fatti vedere da un medico.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#fratture)**.
 
 ## Impara con noi
 

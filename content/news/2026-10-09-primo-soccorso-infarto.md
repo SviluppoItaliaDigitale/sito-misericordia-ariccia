@@ -58,7 +58,7 @@ Se perde conoscenza e non respira normalmente, inizia subito la rianimazione e f
 
 Dolore, peso o oppressione **al centro del petto**, che può andare verso braccio (spesso il sinistro), mandibola, schiena o stomaco. Spesso con sudore freddo, nausea o fiato corto. Nelle donne, negli anziani e in chi ha il diabete i segni possono essere più sfumati.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#infarto)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#infarto)**.
 
 ## Impara con noi
 

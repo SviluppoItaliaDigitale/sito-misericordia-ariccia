@@ -62,7 +62,7 @@ Se è pallido, sudato e confuso, potrebbe essere in shock: fallo stare sdraiato 
 
 Sangue che esce abbondante, a getto o che non si ferma da una ferita.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#emorragia)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#emorragia)**.
 
 ## Impara con noi
 

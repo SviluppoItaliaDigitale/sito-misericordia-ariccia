@@ -58,7 +58,7 @@ Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei bambini
 
 Mentre mangia, la persona si porta le mani alla gola, **non riesce a parlare né a tossire**, respira male o non respira.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#soffocamento)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento)**.
 
 ## Impara con noi
 

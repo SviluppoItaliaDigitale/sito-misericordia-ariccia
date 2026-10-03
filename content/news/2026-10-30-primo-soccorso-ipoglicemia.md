@@ -54,7 +54,7 @@ Se non risponde o non riesce a deglutire, niente in bocca: rischia di soffocare.
 
 In una persona con diabete: sudore, tremore, pallore, confusione, comportamento strano, riduzione improvvisa della risposta.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#ipoglicemia)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#ipoglicemia)**.
 
 ## Impara con noi
 

@@ -1,7 +1,12 @@
 {{ define "main" }}
 {{- /* Dossier Primo soccorso: schede da front matter "argomenti" (id, titolo, motto,
-     riconosci, fare[], nonfare[]); il video di ogni scheda è static/video/primo-soccorso-<id>.mp4 */ -}}
+     riconosci, fare[], nonfare[], opzionali riconosci_tit e dal); il video di ogni scheda è
+     static/video/primo-soccorso-<id>.mp4 e compare (con il link all'articolo) solo dalla data "dal",
+     a mezzanotte italiana: il rebuild notturno lo fa uscire insieme alla news. */ -}}
 {{ $arg := .Params.argomenti }}
+{{ $s2 := .Params.serie2_da }}
+{{ $nvideo := 0 }}
+{{ range $arg }}{{ if or (not .dal) (not ((time.AsTime .dal "Europe/Rome").After now)) }}{{ $nvideo = add $nvideo 1 }}{{ end }}{{ end }}
 <article class="dossier dossier-ps" data-dossier>
 
   <header class="dsr-cover">
@@ -15,8 +20,8 @@
       {{ with .Params.sottotitolo }}<p class="dsr-sottotitolo" data-anim="fade-up" data-anim-delay="0.15">{{ . }}</p>{{ end }}
       <ul class="dsr-meta" data-anim="fade-up" data-anim-delay="0.3">
         <li><strong>{{ len $arg }}</strong> schede</li>
-        <li><strong>{{ len $arg }}</strong> video</li>
-        <li>linee guida <strong>IRC 2025</strong></li>
+        <li><strong>{{ $nvideo }}</strong> video</li>
+        <li>linee guida <strong>ERC/IRC 2025</strong></li>
         {{ with .Params.lettura }}<li>lettura {{ . }}</li>{{ end }}
       </ul>
       <p class="ps-cover-112" data-anim="fade-up" data-anim-delay="0.4">In ogni emergenza chiama il <a href="tel:112">112</a></p>
@@ -46,12 +51,14 @@
       {{ range $i, $a := $arg }}
       {{ $video := printf "video/primo-soccorso-%s.mp4" $a.id }}
       {{ $poster := printf "img/video/primo-soccorso-%s.jpg" $a.id }}
+      {{ $uscito := or (not $a.dal) (not ((time.AsTime $a.dal "Europe/Rome").After now)) }}
+      {{ if eq $a.id $s2 }}<h2 class="ps-gruppo">Altre emergenze: dai neonati agli anziani</h2>{{ end }}
       <section id="{{ $a.id }}" class="ps-scheda" aria-labelledby="titolo-{{ $a.id }}">
         <div class="ps-scheda-testo">
           <p class="ps-num" aria-hidden="true">{{ add $i 1 }}</p>
           <h2 id="titolo-{{ $a.id }}">{{ $a.titolo }}</h2>
           <p class="ps-motto">{{ $a.motto }}</p>
-          <h3>Come riconoscerlo</h3>
+          <h3>{{ $a.riconosci_tit | default "Come riconoscerlo" }}</h3>
           <p>{{ $a.riconosci | markdownify }}</p>
           <h3>Cosa fare</h3>
           <ol class="ps-fare">{{ range $a.fare }}<li>{{ . | markdownify }}</li>{{ end }}</ol>
@@ -62,14 +69,16 @@
           </div>
           {{ end }}
         </div>
-        {{ if fileExists (printf "static/%s" $video) }}
+        {{ if and $uscito (fileExists (printf "static/%s" $video)) }}
         <figure class="ps-video video-riq video-riq--verticale">
           <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: cosa fare passo passo">
             <source src="{{ $video | relURL }}" type="video/mp4">
             Il tuo browser non riproduce i video: <a href="{{ $video | relURL }}">scarica il file</a>.
           </video>
-          <figcaption>{{ $a.titolo }}: il video passo passo</figcaption>
+          <figcaption>{{ $a.titolo }}: il video passo passo{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}">leggi l'articolo</a>{{ end }}</figcaption>
         </figure>
+        {{ else if $a.dal }}
+        <p class="ps-video-presto">Il video con i disegni animati esce il <strong>{{ (time.AsTime $a.dal "Europe/Rome") | time.Format "2 January" }}</strong>.</p>
         {{ end }}
       </section>
       {{ end }}
@@ -84,7 +93,7 @@
         <a class="btn btn-giallo px-4" href="{{ "/servizi/formazione/" | relURL }}">Scopri i corsi</a>
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Chiama il 348 4068657</a>
       </div>
-      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso»). Contenuti a cura della Misericordia di Ariccia.</p>
+      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.</p>
     </div>
   </section>
 </article>

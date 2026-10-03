@@ -52,7 +52,7 @@ Fai controllare ogni anno caldaia, stufe e canne fumarie, e installa un rilevato
 
 Mai bracieri o generatori in casa, mai il forno a gas per scaldarsi, mai il motore acceso in garage chiuso.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#monossido)**.
 
 ## Impara con noi
 
