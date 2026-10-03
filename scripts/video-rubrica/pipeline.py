@@ -15,7 +15,7 @@ NUM = 'uno due tre quattro cinque sei sette otto nove dieci undici dodici tredic
 b64 = lambda p: base64.b64encode(Path(p).read_bytes()).decode()
 SR = 22050
 # Parole che la voce legge con l'accento sbagliato: si correggono solo nell'audio, i sottotitoli restano giusti.
-PRONUNCIA = {'Iddio': 'Iddìo'}
+PRONUNCIA = {'Iddio': 'Iddìo', 'CAF': 'Caf'}
 def pron(text):
     for k, v in PRONUNCIA.items(): text = text.replace(k, v)
     return text
