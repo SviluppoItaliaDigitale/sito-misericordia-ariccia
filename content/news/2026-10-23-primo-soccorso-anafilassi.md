@@ -58,7 +58,7 @@ Se perde conoscenza e non respira normalmente, inizia la rianimazione.
 
 Dopo un cibo, un farmaco o una puntura d'insetto: gonfiore di labbra, lingua o viso, fatica a respirare, orticaria diffusa, malessere improvviso.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#anafilassi)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#anafilassi)**.
 
 ## Impara con noi
 

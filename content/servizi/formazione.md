@@ -43,7 +43,7 @@ I contenuti dei corsi di rianimazione e primo soccorso si allineano alle **Linee
 
 Le Misericordie d'Italia sono inoltre **partner nazionale di [VIVA! La settimana per la rianimazione cardiopolmonare](https://www.settimanaviva.it/)** (12-18 ottobre 2026), la campagna di IRC per insegnare a tutti i gesti che salvano una vita.
 
-**Un ripasso prima del corso?** Leggi il nostro dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**: una scheda e un video con disegni animati per ogni emergenza, secondo le linee guida IRC 2025.
+**Un ripasso prima del corso?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**: una scheda e un video con disegni animati per 23 emergenze, secondo le linee guida ERC/IRC 2025.
 
 ## Domande frequenti
 

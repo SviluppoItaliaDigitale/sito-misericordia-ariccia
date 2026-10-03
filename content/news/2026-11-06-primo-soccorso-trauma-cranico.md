@@ -62,7 +62,7 @@ Nelle 24 ore dopo, non lasciarlo solo. Niente alcol, niente guida, e riposo.
 
 Dopo un colpo alla testa: mal di testa, vertigini, nausea, vista disturbata, confusione, difficoltà a ricordare, sonnolenza.
 
-Trovi tutte e dieci le schede nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/#trauma-cranico)**.
+Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#trauma-cranico)**.
 
 ## Impara con noi
 

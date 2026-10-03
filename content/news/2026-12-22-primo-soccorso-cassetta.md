@@ -52,7 +52,7 @@ Lo strumento più utile però sei tu: sapere cosa fare, e chiamare subito il 112
 
 Grazie per averci seguito. Buon Natale e buon anno dalla Misericordia di Ariccia.
 
-Le dieci emergenze più comuni sono nel dossier **[Primo soccorso: le 10 cose da sapere](/dossier/primo-soccorso/)**.
+Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cassetta)**.
 
 ## Impara con noi
 

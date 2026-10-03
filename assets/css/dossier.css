@@ -400,7 +400,7 @@
 .dossier-ps .ps-scheda { scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem); }
 .ps-schede { padding: 2rem 0 3rem; }
 .ps-scheda { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 2.5rem; align-items: start; padding: 2.6rem 0; border-top: 2px solid rgba(27,34,63,.12); }
-.ps-scheda:nth-child(even) .ps-num { color: var(--mise-ciano); }
+.ps-scheda:nth-of-type(even) .ps-num { color: var(--mise-ciano); }
 .ps-num { font: 600 4.5rem/1 "Playfair Display", serif; color: #d9b310; margin: 0 0 .2rem; }
 .ps-scheda h2 { margin: 0; font-size: 2.1rem; }
 .ps-motto { font: 600 1.1rem "Jost", sans-serif; color: var(--mise-ciano-testo); margin: .2rem 0 1rem; text-transform: none; }
@@ -410,6 +410,9 @@
 .ps-nonfare h3 { margin-top: 0; color: #a12828; }
 .ps-nonfare ul { margin: 0; padding-left: 1.1rem; }
 .ps-video { margin: 0; position: sticky; top: calc(var(--dsr-nav-h) + 4rem); }
+.ps-video figcaption a { color: var(--mise-ciano-testo); font-weight: 600; }
+.ps-gruppo { margin: 2.5rem 0 0; padding-top: 2rem; border-top: 6px solid var(--mise-giallo, #f2e433); font-size: 1.7rem; }
+.ps-video-presto { align-self: center; margin: 0; padding: 1.2rem 1.3rem; border: 2px dashed rgba(27,34,63,.25); border-radius: .8rem; color: var(--mise-navy); font-size: 1rem; text-align: center; }
 .ps-impara { background: var(--mise-navy); color: #fff; padding: 3rem 0; margin-top: 1rem; }
 .ps-impara h2 { color: #fff; }
 .ps-impara .ps-fonte { margin-top: 1.5rem; font-size: .9rem; color: #c3c9dc; }
