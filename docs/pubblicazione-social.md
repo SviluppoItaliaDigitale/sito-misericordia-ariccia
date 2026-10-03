@@ -111,12 +111,23 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
   Instagram @confraternitamisericordia (ID 17841471518130375).
 - App Meta «Sito Misericordia Ariccia» (ID 2286230255250372), ancora «Non
   pubblicata»: i post risultano comunque visibili al pubblico (verificato).
-- Utente di sistema **sito-web** (Admin), con accesso completo alla pagina
-  (Instagram incluso) e all'app. Il token della pagina **non scade**; permessi
-  minimi: `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`,
-  `business_management`, `instagram_basic`, `instagram_content_publish`.
+- Utente di sistema **sito-web**, con accesso completo alla pagina
+  (Instagram incluso) e all'app. Ruolo nel portfolio: **Amministratore**
+  (scelta di Alessandro). Regola: tramite il token **non** si aggiungono né
+  si tolgono amministratori, persone o account del portfolio: quella
+  gestione resta solo ad Alessandro.
+- Token rigenerato il **03/10/2026** con permessi di gestione completa dei
+  contenuti (il token della pagina **non scade**):
+  `pages_show_list`, `pages_read_engagement`, `pages_read_user_content`,
+  `pages_manage_posts`, `pages_manage_engagement`, `pages_manage_metadata`,
+  `read_insights`, `instagram_basic`, `instagram_content_publish`,
+  `instagram_manage_contents`, `instagram_manage_comments`,
+  `instagram_manage_insights`, `instagram_manage_messages`,
+  `business_management` (imposto da Meta, non si può togliere).
+  Esclusi di proposito i permessi pubblicitari (`ads_*`, `pages_manage_ads`)
+  e quelli di negozio e contenuti sponsorizzati.
 - Per rigenerare il token: Impostazioni business → Utenti di sistema →
-  sito-web → *Genera token* (stessa app, scadenza «Mai», stessi 6 permessi),
+  sito-web → *Genera token* (stessa app, scadenza «Mai», stessi permessi),
   poi ricavare il token della pagina (punto 4 sopra) e aggiornare il secret
   `META_PAGE_TOKEN`. Il token non va mai incollato in chat né nei file.
 - Il 30/09/2026 il registro è stato allineato ai post reali: le news 2026
