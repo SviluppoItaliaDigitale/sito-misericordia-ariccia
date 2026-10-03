@@ -117,13 +117,17 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
   si tolgono amministratori, persone o account del portfolio: quella
   gestione resta solo ad Alessandro.
 - Token rigenerato il **03/10/2026** con permessi di gestione completa dei
-  contenuti (il token della pagina **non scade**):
+  contenuti, uguali a quelli della PC Genzano (il token della pagina **non
+  scade**):
   `pages_show_list`, `pages_read_engagement`, `pages_read_user_content`,
   `pages_manage_posts`, `pages_manage_engagement`, `pages_manage_metadata`,
-  `read_insights`, `instagram_basic`, `instagram_content_publish`,
+  `pages_messaging` (Messenger), `read_insights`, `instagram_basic`, `instagram_content_publish`,
   `instagram_manage_contents`, `instagram_manage_comments`,
   `instagram_manage_insights`, `instagram_manage_messages`,
   `business_management` (imposto da Meta, non si può togliere).
+  Nell'app è stato aggiunto il caso d'uso «Interagisci con i clienti su
+  Messenger from Meta» (serve a `pages_messaging`); sito-web ha sull'app il
+  ruolo «Sviluppa l'app», non «Gestisci l'app».
   Esclusi di proposito i permessi pubblicitari (`ads_*`, `pages_manage_ads`)
   e quelli di negozio e contenuti sponsorizzati.
 - Per rigenerare il token: Impostazioni business → Utenti di sistema →
