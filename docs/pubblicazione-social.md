@@ -141,6 +141,24 @@ Con solo `META_PAGE_ID` + `META_PAGE_TOKEN` pubblica solo su Facebook.
   correggere un post già uscito bisogna farlo a mano dall'app
   (… → Modifica). Facebook invece sì.
 
+## Gestione da qualsiasi dispositivo («🛠️ Gestione social»)
+
+Il workflow `.github/workflows/gestione-social.yml` (script
+`scripts/gestione_social.py`) gestisce pagina Facebook e Instagram anche col PC
+spento: elenco dei post, statistiche, pubblicare, modificare il testo (solo
+Facebook), eliminare, commenti (leggere, rispondere, nascondere, eliminare),
+messaggi Messenger/Direct (leggere, rispondere), prova invisibile.
+
+- **Dal telefono**: app GitHub → repository → *Actions* → *🛠️ Gestione social*
+  → *Run workflow*, scegliere azione e rete e compilare i campi. Per eliminare
+  scrivere `ELIMINA` nel campo conferma. Il risultato compare nel riepilogo del run.
+- **Tramite Claude, anche da sessione cloud**: su un ramo diverso da `main` si
+  scrive `.github/social/comando.json`, ad esempio
+  `{"azione": "commenti", "rete": "ig", "id": "https://www.instagram.com/p/…"}`,
+  e si fa push: il workflow parte da solo e scrive il risultato in
+  `.github/social/esito.md` sullo stesso ramo (poi il ramo si cancella).
+  Campi: `azione`, `rete` (`fb`/`ig`), `id`, `testo`, `immagine_url`, `conferma`.
+
 ## Parametri avanzati (variabili d'ambiente dello script)
 
 | Variabile | Default | Significato |
