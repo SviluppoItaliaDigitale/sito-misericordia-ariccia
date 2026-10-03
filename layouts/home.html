@@ -187,7 +187,36 @@
   </div>
 </section>
 
-<!-- ============ Callout: diventa volontario ============ -->
+<!-- ============ Callout: diventa volontario ============
+     Dal 5 al 31 dicembre 2026 (mezzanotte italiana, col rebuild notturno) diventa lo speciale
+     «Giornata internazionale del volontariato», con il video; poi torna da solo quello di sempre. -->
+{{- $spDal := time.AsTime "2026-12-05" "Europe/Rome" -}}
+{{- $spAl := time.AsTime "2027-01-01" "Europe/Rome" -}}
+{{- if and (not ($spDal.After now)) ($spAl.After now) }}
+<section class="callout-volontari callout-volontari--speciale">
+  <div class="container py-5">
+    <div class="cv-speciale">
+      <div class="cv-testo">
+        <span class="callout-cuore" aria-hidden="true">🤝</span>
+        <p class="cv-data">5 dicembre · Giornata internazionale del volontariato</p>
+        <h2 class="mb-3" data-split="words">Grazie a chi c'è, ogni giorno. E c'è posto anche per te.</h2>
+        <p class="mb-4" data-anim="fade-up" data-anim-delay="0.25">Trasporti, famiglie, eventi: i nostri volontari regalano il loro tempo a chi ha bisogno. <strong>Che Iddio ve ne renda merito.</strong> Puoi unirti a noi dai 16 agli 80 anni: la formazione la facciamo insieme.</p>
+        <div class="cv-azioni" data-anim="fade-up" data-anim-delay="0.45">
+          <a class="btn btn-giallo btn-lg px-4 callout-cta" href="{{ "/diventa-volontario/" | relURL }}">Diventa volontario</a>
+          <a class="btn btn-bianco btn-lg px-4" href="{{ "/news/giornata-volontariato-2026/" | relURL }}">Leggi l'articolo</a>
+        </div>
+      </div>
+      {{- $poster := "img/video/giornata-volontariato.jpg" }}
+      <figure class="cv-video video-riq video-riq--verticale">
+        <video controls preload="none" playsinline poster="{{ $poster | relURL }}" width="1080" height="1920" title="Giornata del volontariato: grazie, e c'è posto anche per te">
+          <source src="{{ "video/giornata-volontariato.mp4" | relURL }}" type="video/mp4">
+          Il tuo browser non riproduce i video: <a href="{{ "video/giornata-volontariato.mp4" | relURL }}">scarica il file</a>.
+        </video>
+      </figure>
+    </div>
+  </div>
+</section>
+{{- else }}
 <section class="callout-volontari text-center">
   <div class="container py-5">
     <span class="callout-cuore" aria-hidden="true">🤝</span>
@@ -198,6 +227,7 @@
     </div>
   </div>
 </section>
+{{- end }}
 
 <!-- ============ La Parola del giorno (liturgia + link Vatican News) ============ -->
 {{ partial "parola-del-giorno.html" . }}
