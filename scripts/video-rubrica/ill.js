@@ -173,12 +173,8 @@ function handTop(x,y,s,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ln
   for(let i=0;i<4;i++) box(-58+i*30,-6,26,74-Math.abs(i-1.5)*10,13,o.glove||SK); box(54,-60,26,64,13,o.glove||SK); ctx.restore(); }
 function drop(x,y,s,col=RED){ ctx.fillStyle=col; ctx.beginPath(); ctx.moveTo(x,y-40*s); ctx.bezierCurveTo(x+30*s,y-5*s,x+30*s,y+28*s,x,y+28*s); ctx.bezierCurveTo(x-30*s,y+28*s,x-30*s,y-5*s,x,y-40*s); ctx.fill(); }
 function car(x,y,s,col='#6b7491'){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-150,-50,300,80,24,col); poly([[-90,-50],[-55,-110],[60,-110],[100,-50]],col); poly([[-75,-55],[-48,-98],[0,-98],[0,-55]],'#cfe9f5'); poly([[12,-55],[12,-98],[52,-98],[82,-55]],'#cfe9f5'); fc(-85,32,30,'#1a1f36'); fc(85,32,30,'#1a1f36'); fc(-85,32,12,'#aab3cc'); fc(85,32,12,'#aab3cc'); ctx.restore(); }
-function ambulance(x,y,s,u){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
-  box(-200,-150,280,180,20,'#fff'); poly([[80,-110],[150,-110],[200,-40],[200,30],[80,30]],'#fff'); poly([[96,-96],[146,-96],[184,-44],[96,-44]],'#cfe9f5');
-  ctx.fillStyle=C.arancio; ctx.fillRect(-200,-30,400,22); ctx.fillStyle=C.ciano; ctx.fillRect(-200,-8,400,14);
-  box(-110,-120,60,60,8,RED); ctx.fillStyle='#fff'; ctx.fillRect(-88,-112,16,44); ctx.fillRect(-102,-98,44,16);
-  const on=(u*3%1)<.5; box(-40,-176,70,28,10,on?'#3aa0ff':'#24305c'); if(on) fc(-5,-162,46,'rgba(58,160,255,.25)');
-  fc(-120,36,34,'#1a1f36'); fc(120,36,34,'#1a1f36'); fc(-120,36,14,'#aab3cc'); fc(120,36,14,'#aab3cc'); ctx.restore(); }
+// L'ambulanza è quella con la livrea vera delle Misericordie (miseAmbulanza in ill3.js), adattata all'ingombro dei vecchi disegni.
+function ambulance(x,y,s,u){ miseAmbulanza(x,y-18*s,s*.85,u); }
 function bottle(x,y,s,col='#3a8d6c',lab='#fff'){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-60,-70,120,170,24,col); box(-24,-120,48,56,8,col); box(-30,-140,60,26,8,'#fff'); box(-46,-20,92,60,8,lab); ctx.restore(); }
 function eye(x,y,s,pup=1,o={}){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.fillStyle='#fff'; ctx.beginPath(); ctx.moveTo(-110,0); ctx.quadraticCurveTo(0,-90,110,0); ctx.quadraticCurveTo(0,90,-110,0); ctx.fill();
   fc(0,0,46,o.iris||'#5b8fb9'); fc(0,0,18*pup,'#0d1226'); fc(14,-14,8,'#fff'); ctx.strokeStyle=C.navy; ctx.lineWidth=8; ctx.beginPath(); ctx.moveTo(-110,0); ctx.quadraticCurveTo(0,-90,110,0); ctx.quadraticCurveTo(0,90,-110,0); ctx.stroke(); ctx.restore(); }
