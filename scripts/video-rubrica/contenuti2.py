@@ -107,7 +107,7 @@ V2 = {
   S('Previeni', ['Controlli','e *rilevatore*.'], 'Fai controllare ogni anno caldaia, stufe e canne fumarie, e installa un rilevatore di monossido.', 'rilevatore', [['Controllo ogni anno', .35], ['Rilevatore di monossido', .8]]),
   S('Mai', ['Mai','al *chiuso*.'], 'Mai bracieri o generatori in casa, mai il forno a gas per scaldarsi, mai il motore acceso in garage chiuso.', 'no-braciere', [['Niente bracieri', .2], ['Niente forno per scaldarsi', .5], ['Niente motore in garage', .85]]),
   FINE]),
-'giornata-volontariato': dict(nome='Giornata del volontariato', num=0, brano='morning', serie='Speciale · 5 dicembre, Giornata del volontariato',
+'giornata-volontariato': dict(nome='Giornata del volontariato', num=0, brano='morning', voce='sara', serie='Speciale · 5 dicembre, Giornata del volontariato',
   card=dict(s='Diventa volontario · iscrizioni', tel='328 8105399'), scene=[
   S('5 dicembre', ['Giornata del','*volontariato*.'], 'Il cinque dicembre è la Giornata internazionale del volontariato. Oggi diciamo grazie.', 'mani-cuore', sub='Il 5 dicembre è la Giornata internazionale del volontariato. Oggi diciamo grazie.'),
   S('Grazie', ['A chi c\'è,','*ogni giorno*.'], 'Grazie ai volontari della Misericordia di Ariccia, che regalano il loro tempo a chi ha bisogno. Che Iddio ve ne renda merito.', 'grazie', [['Che Iddio ve ne renda merito', .8]]),

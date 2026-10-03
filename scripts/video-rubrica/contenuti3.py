@@ -2,7 +2,7 @@
 from contenuti import S
 TEL = 'tre quattro otto, quattro zero sei, otto sei cinque sette'
 V3 = {
-'accompagnamento-sociale': dict(nome='Accompagnamento sociale', num=0, brano='morning', serie='I nostri servizi · Accompagnamento sociale',
+'accompagnamento-sociale': dict(nome='Accompagnamento sociale', num=0, brano='morning', voce='sara', serie='I nostri servizi · Accompagnamento sociale',
   card=dict(s='Prenota un accompagnamento', tel='348 4068657'), scene=[
   S('Accompagnamento', ['Le cose','di *ogni giorno*.'], 'La spesa, la posta, la banca. Per chi non può muoversi da solo, sono le cose più difficili.', 'auto-casa'),
   S('La spesa', ['Al','*supermercato*.'], 'Ti accompagniamo a fare la spesa. Il volontario spinge il carrello e porta le buste fino a casa.', 'supermercato', [['Il carrello', .45], ['Le buste fino a casa', .85]]),
@@ -16,7 +16,7 @@ V3 = {
     sub='Per prenotare chiamaci, o scrivici su WhatsApp, al 348 4068657, con qualche giorno di anticipo.'),
   dict(chip='Misericordia di Ariccia', title=['Accanto a te,','*ogni giorno*.'], voce='Misericordia di Ariccia: accanto a te, ogni giorno.', ill='fine', tags=[]),
   ]),
-"ultimo-viaggio": dict(nome="L'ultimo viaggio", num=0, serie="I nostri servizi · L'ultimo viaggio", bpm=66, musica='dolce', brano='touching-moments-two-higher', voce_lenta=1.12,
+"ultimo-viaggio": dict(nome="L'ultimo viaggio", num=0, serie="I nostri servizi · L'ultimo viaggio", bpm=66, musica='dolce', brano='touching-moments-two-higher', voce='sara', voce_lenta=1.12,
   card=dict(s="L'ultimo viaggio · informazioni", tel='348 4068657'), scene=[
   S("L'ultimo viaggio", ['Quando il tempo','diventa *prezioso*.'], "C'è un momento in cui il tempo diventa prezioso. E un desiderio, l'ultimo, non può più aspettare.", 'mare'),
   S('Il mare', ['Rivedere','il *mare*.'], "Rivedere il mare, un'ultima volta. Sentire il vento sul viso, il rumore delle onde, e guardare l'orizzonte come da bambini.", 'mare-barella', [['Il vento sul viso', .4], ['Le onde', .6], ["L'orizzonte", .85]]),

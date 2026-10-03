@@ -19,6 +19,7 @@ conteggio a voce da 1 a 30, musica allo stesso BPM).
 | `appro.src.html` | modello della pagina animata (impaginazione, sottotitoli, chiusura con la scheda contatti) |
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `musica/` | brani scelti da Alessandro (Kevin MacLeod, incompetech.com, CC BY 4.0): campo `brano` del video (`morning`, `touching-moments-two-higher`); di default `heartwarming`; i video con `bpm=110` (compressioni a tempo) usano `musica.py`. Ogni nuovo video va aggiunto a `data/musica_video.json` per il credito sotto il video e nei post |
+| `kokoro_voce.py` | voce Kokoro (scelta di Alessandro): **Nicola** di default (primo soccorso, 5x1000), **Sara** con `voce='sara'` (ultimo viaggio, accompagnamento, volontariato); `voce='paola'` torna a Piper |
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
 | `anteprima.sh`, `render.sh`, `copia.sh` | scorciatoie: anteprime, montaggio, copia nel sito |
@@ -37,6 +38,16 @@ mkdir -p voce && cd voce                           # voce italiana «paola» (Pi
 curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/it/it_IT/paola/medium/it_IT-paola-medium.onnx
 curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/main/it/it_IT/paola/medium/it_IT-paola-medium.onnx.json
 cd ..
+```
+
+Voci Kokoro (una volta per sessione; ~320 MB, in `kokoro/`, escluso da git):
+
+```bash
+python3 -m venv kokoro/venv && kokoro/venv/bin/pip install kokoro-onnx==0.4.9
+H=https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main
+curl -L -o kokoro/kokoro-v1.0.onnx $H/onnx/model.onnx
+curl -L -o /tmp/if_sara.bin $H/voices/if_sara.bin && curl -L -o /tmp/im_nicola.bin $H/voices/im_nicola.bin
+python3 -c "import numpy as n; n.savez('kokoro/voci-it.npz', **{k: n.fromfile(f'/tmp/{k}.bin', n.float32).reshape(-1,1,256) for k in ['if_sara','im_nicola']})"
 ```
 
 Chromium: nelle sessioni cloud è già in `/opt/pw-browsers/chromium-1194/…`;

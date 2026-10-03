@@ -88,7 +88,7 @@ def credito_musica(n):
     except (OSError, ValueError):
         return ""
     brano = dati.get("video", {}).get(Path(video).name)
-    return f"\n\n🎵 Musica: «{brano}» di {dati['autore']} (incompetech.com), {dati['licenza']}" if brano else ""
+    return f"\n\n🎵 {brano} – {dati['autore']} (incompetech.com) CC BY 4.0" if brano else ""
 
 
 def testo_facebook(n):

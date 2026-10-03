@@ -111,7 +111,7 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   news già programmate ogni anno l'11 maggio (inizio dichiarazioni) e il 15 settembre
   (ultimi giorni del 730), dal 2027 al **2030**, ognuna in evidenza fino a fine mese e
   pubblicata da sola sui social. Prima del 2031 crearne altre sullo stesso modello.
-- **Musica dei video**: brani di Kevin MacLeod (CC BY 4.0) scelti da Alessandro, in `scripts/video-rubrica/musica/`; crediti in `data/musica_video.json` (mostrati sotto il video e nei post social). Solo i video della rianimazione a tempo usano la musica generata.
+- **Musica dei video**: brani di Kevin MacLeod (CC BY 4.0) scelti da Alessandro, in `scripts/video-rubrica/musica/`; crediti in `data/musica_video.json` (mostrati sotto il video e nei post social). Solo i video della rianimazione a tempo usano la musica generata. Voci Kokoro: Nicola (primo soccorso, 5x1000), Sara (ultimo viaggio, accompagnamento, volontariato).
 - **Video dei servizi**: accompagnamento sociale (`/servizi/servizi-sociali/`) e
   «L'ultimo viaggio» (`/trasporto-infermi/`), testi in `contenuti3.py`.
 - Social: `social_video` + `social_video_copertina` nel front matter → Reel su

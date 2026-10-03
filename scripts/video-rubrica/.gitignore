@@ -3,3 +3,4 @@ out/
 voce/
 node_modules
 package-lock.json
+kokoro/
