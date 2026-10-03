@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **5 di 10**: **soffocamento**. *5 colpi, 5 spinte.*
 
-{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

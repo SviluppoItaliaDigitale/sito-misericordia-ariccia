@@ -1,0 +1,19 @@
+{
+ "_nota": "Musica dei video generati da scripts/video-rubrica: brani di Kevin MacLeod (incompetech.com), licenza CC BY 4.0. Il credito compare sotto il video (shortcode video) e nei post social (scripts/pubblica_social.py).",
+ "autore": "Kevin MacLeod",
+ "fonte": "https://incompetech.com",
+ "licenza": "CC BY 4.0",
+ "licenza_url": "https://creativecommons.org/licenses/by/4.0/deed.it",
+ "video": {
+  "primo-soccorso-ictus.mp4": "Heartwarming",
+  "primo-soccorso-infarto.mp4": "Heartwarming",
+  "primo-soccorso-emorragia.mp4": "Heartwarming",
+  "primo-soccorso-soffocamento.mp4": "Heartwarming",
+  "primo-soccorso-anafilassi.mp4": "Heartwarming",
+  "primo-soccorso-ustioni.mp4": "Heartwarming",
+  "primo-soccorso-ipoglicemia.mp4": "Heartwarming",
+  "accompagnamento-sociale.mp4": "Morning",
+  "ultimo-viaggio.mp4": "Touching Moments Two – Higher",
+  "5x1000.mp4": "Heartwarming"
+ }
+}

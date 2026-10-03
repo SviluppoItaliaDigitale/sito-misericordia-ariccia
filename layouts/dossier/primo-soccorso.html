@@ -75,7 +75,7 @@
             <source src="{{ $video | relURL }}" type="video/mp4">
             Il tuo browser non riproduce i video: <a href="{{ $video | relURL }}">scarica il file</a>.
           </video>
-          <figcaption>{{ $a.titolo }}: il video passo passo{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}">leggi l'articolo</a>{{ end }}</figcaption>
+          <figcaption>{{ $a.titolo }}: il video passo passo{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}">leggi l'articolo</a>{{ end }}{{ partial "credito-musica.html" $video }}</figcaption>
         </figure>
         {{ else if $a.dal }}
         <p class="ps-video-presto">Il video con i disegni animati esce il <strong>{{ (time.AsTime $a.dal "Europe/Rome") | time.Format "2 January" }}</strong>.</p>

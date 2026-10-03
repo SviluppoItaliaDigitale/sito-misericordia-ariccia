@@ -24,7 +24,7 @@ italianoSemplice: |
 
 **Nel video c'è la simulazione del massaggio cardiaco a tempo:** le mani spingono al ritmo giusto, 110 compressioni al minuto, con il conteggio ad alta voce da 1 a 30. Anche la musica di sottofondo va a 110 battiti al minuto: puoi usarla per allenare l'orecchio al ritmo.
 
-{{< video src="video/primo-soccorso-rianimazione.mp4" poster="img/video/primo-soccorso-rianimazione.jpg" verticale="si" titolo="Arresto cardiaco: primo soccorso passo passo" descrizione="Nella Giornata mondiale della rianimazione: sicurezza, coscienza, respiro, 112 e DAE, e la simulazione del massaggio cardiaco a tempo, 110 compressioni al minuto." data="2026-10-16" didascalia="Il video dura circa 1 minuto e 35 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-rianimazione.mp4" poster="img/video/primo-soccorso-rianimazione.jpg" verticale="si" titolo="Arresto cardiaco: primo soccorso passo passo" descrizione="Nella Giornata mondiale della rianimazione: sicurezza, coscienza, respiro, 112 e DAE, e la simulazione del massaggio cardiaco a tempo, 110 compressioni al minuto." data="2026-10-16" didascalia="Il video dura circa 1 minuto e 50 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

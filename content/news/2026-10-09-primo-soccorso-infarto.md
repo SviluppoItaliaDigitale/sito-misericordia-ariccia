@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **2 di 10**: **infarto**. *Il tempo è vita.*
 
-{{< video src="video/primo-soccorso-infarto.mp4" poster="img/video/primo-soccorso-infarto.jpg" verticale="si" titolo="Infarto: primo soccorso passo passo" descrizione="Dolore o peso al centro del petto, i segni più sfumati in donne, anziani e diabetici, perché chiamare il 112 e non andare in ospedale in auto." data="2026-10-09" didascalia="Il video dura circa 1 minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-infarto.mp4" poster="img/video/primo-soccorso-infarto.jpg" verticale="si" titolo="Infarto: primo soccorso passo passo" descrizione="Dolore o peso al centro del petto, i segni più sfumati in donne, anziani e diabetici, perché chiamare il 112 e non andare in ospedale in auto." data="2026-10-09" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

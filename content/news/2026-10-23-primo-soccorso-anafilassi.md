@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **6 di 10**: **anafilassi**. *Adrenalina e 112.*
 
-{{< video src="video/primo-soccorso-anafilassi.mp4" poster="img/video/primo-soccorso-anafilassi.jpg" verticale="si" titolo="Anafilassi: primo soccorso passo passo" descrizione="Le cause, i segni della reazione allergica grave, come usare l'autoiniettore di adrenalina e in che posizione mettere la persona." data="2026-10-23" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-anafilassi.mp4" poster="img/video/primo-soccorso-anafilassi.jpg" verticale="si" titolo="Anafilassi: primo soccorso passo passo" descrizione="Le cause, i segni della reazione allergica grave, come usare l'autoiniettore di adrenalina e in che posizione mettere la persona." data="2026-10-23" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -21,7 +21,10 @@
     <source src="{{ $src | relURL }}{{ with $inizio }}#t={{ . }}{{ end }}" type="video/mp4">
     Il tuo browser non riproduce i video: <a href="{{ $src | relURL }}">scarica il file</a>.
   </video>
-  {{ with .Get "didascalia" }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  {{- $musica := partial "credito-musica.html" $src -}}
+  {{- if or (.Get "didascalia") $musica }}
+  <figcaption>{{ with .Get "didascalia" }}{{ . | markdownify }}{{ end }}{{ $musica }}</figcaption>
+  {{- end }}
 </figure>
 {{- /* Dati strutturati VideoObject: Google può mostrare l'anteprima video nei risultati */ -}}
 {{- if and (.Get "titolo") (.Get "descrizione") $poster }}

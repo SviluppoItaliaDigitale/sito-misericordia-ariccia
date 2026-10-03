@@ -19,9 +19,17 @@ PRONUNCIA = {'Iddio': 'Iddìo', 'CAF': 'Caf'}
 def pron(text):
     for k, v in PRONUNCIA.items(): text = text.replace(k, v)
     return text
+# Voce: 'nicola' o 'sara' (Kokoro, scelte da Alessandro) oppure 'paola' (Piper). Si sceglie col campo «voce» del video.
+VOCE = 'nicola'
+KOKORO_PY = os.environ.get('KOKORO_PY', str(W / 'kokoro' / 'venv' / 'bin' / 'python'))
 def piper(text, out, ls=1.0, sil=0.25):
     text = pron(text)
-    subprocess.run(['python3','-m','piper','-m',MODEL,'--length-scale',str(ls),'--sentence-silence',str(sil),'-f',str(out)], input=text, text=True, capture_output=True, check=True)
+    if VOCE == 'paola':
+        subprocess.run(['python3','-m','piper','-m',MODEL,'--length-scale',str(ls),'--sentence-silence',str(sil),'-f',str(out)], input=text, text=True, capture_output=True, check=True)
+        return
+    tmp = Path(str(out) + '.24k.wav')
+    subprocess.run([KOKORO_PY, str(W / 'kokoro_voce.py'), VOCE, f'{min(2.0, max(0.5, 1 / ls)):.3f}', str(sil), str(tmp)], input=text, text=True, capture_output=True, check=True)
+    subprocess.run([FF,'-v','error','-y','-i',str(tmp),'-ar',str(SR),'-ac','1',str(out)], check=True); tmp.unlink()
 def rd(p):
     w = wave.open(str(p)); assert w.getframerate() == SR
     return np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
@@ -29,8 +37,8 @@ def trim(a, th=0.02):
     i = np.where(np.abs(a) > th)[0]
     return a[max(0, i[0]-200): i[-1]+400] if len(i) else a
 def numero(i):  # numero pronunciato, sotto 0,42 s
-    (OUT / 'num').mkdir(parents=True, exist_ok=True)
-    p = OUT / 'num' / f'c{i}.wav'
+    (OUT / 'num' / VOCE).mkdir(parents=True, exist_ok=True)
+    p = OUT / 'num' / VOCE / f'c{i}.wav'
     if not p.exists():
         ls = 0.75
         for _ in range(4):
@@ -39,10 +47,14 @@ def numero(i):  # numero pronunciato, sotto 0,42 s
             ls *= 0.42 / L
     return trim(rd(p))
 ANTE = '--anteprima' in sys.argv
-if not Path(MODEL).exists():
-    sys.exit(f'Manca la voce Piper: {MODEL}\nScaricala come spiegato in README.md (it_IT-paola-medium.onnx e .onnx.json).')
+
 for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     v = dict(contenuti.V[key]); v.setdefault('num', ORD.index(key) + 1 if key in ORD else 0)
+    VOCE = v.get('voce', 'nicola')
+    if VOCE == 'paola' and not Path(MODEL).exists():
+        sys.exit(f'Manca la voce Piper: {MODEL}\nScaricala come spiegato in README.md (it_IT-paola-medium.onnx e .onnx.json).')
+    if VOCE != 'paola' and not Path(KOKORO_PY).exists():
+        sys.exit('Manca Kokoro: prepara kokoro/ come spiegato in README.md.')
     d = OUT / key; d.mkdir(parents=True, exist_ok=True)
     bpm = v.get('bpm', 88); beat = 60 / bpm
     PRE, POST, CODA = 0.3, 0.45, 2.5
@@ -51,8 +63,8 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     for i, sc in enumerate(v['scene']):
         wav = d / f'v{i}.wav'
         tf = d / f'v{i}.txt'
-        if not wav.exists() or not tf.exists() or tf.read_text() != pron(sc['voce']):
-            piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(pron(sc['voce']))
+        if not wav.exists() or not tf.exists() or tf.read_text() != VOCE + '|' + pron(sc['voce']):
+            piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(VOCE + '|' + pron(sc['voce']))
         a = rd(wav); Dv = len(a) / SR
         if sc.get('conta'):
             n = sc['conta']; b = 60 / bpm
@@ -80,7 +92,14 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     track = np.clip(track[:int(T * SR)], -1, 1)
     with wave.open(str(d / 'voce.wav'), 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((track * 32767).astype(np.int16).tobytes())
-    subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm), v.get('musica', 'base')], check=True, capture_output=True)
+    # Musica: un brano scelto da Alessandro (cartella musica/, Kevin MacLeod, CC BY 4.0) oppure, per i video con le
+    # compressioni a tempo (bpm 110), la base originale generata da musica.py, che deve restare a tempo con il conteggio.
+    brano = v.get('brano', None if bpm == 110 else 'heartwarming')
+    if brano:
+        subprocess.run([FF,'-v','error','-y','-stream_loop','-1','-i',str(W/'musica'/f'{brano}.mp3'),'-t',f'{T:.3f}','-af',
+            f'loudnorm=I=-17:TP=-2,afade=t=in:d=0.5,afade=t=out:st={max(0,T-3):.3f}:d=3','-ar','44100','-ac','1',str(d/'musica.wav')],check=True)
+    else:
+        subprocess.run(['python3', str(W / 'musica.py'), str(T), str(d / 'musica.wav'), str(bpm), v.get('musica', 'base')], check=True, capture_output=True)
     subprocess.run([FF,'-v','error','-y','-i',str(d/'voce.wav'),'-i',str(d/'musica.wav'),'-filter_complex',
         '[0]aresample=44100,asplit[v][vs];[1]volume=0.30[m];[m][vs]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[md];[v][md]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5[o]',
         '-map','[o]','-ar','44100','-ac','1','-b:a','128k',str(d/'audio.mp3')],check=True)

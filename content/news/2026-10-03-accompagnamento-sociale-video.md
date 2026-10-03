@@ -24,7 +24,7 @@ italianoSemplice: |
 
 Per chi è anziano, solo, ha una disabilità o semplicemente non guida, **le cose più semplici possono diventare le più difficili**: fare la spesa, ritirare la pensione, prendere le medicine. Per questo, oltre ai trasporti sanitari, facciamo anche **accompagnamento sociale**: ti portiamo dove devi andare nella vita di tutti i giorni. Lo abbiamo raccontato in un video.
 
-{{< video src="video/accompagnamento-sociale.mp4" poster="img/video/accompagnamento-sociale.jpg" verticale="si" titolo="Accompagnamento sociale: le cose di ogni giorno" descrizione="Spesa, posta e banca, medico e farmacia, parrucchiere, messa e cimitero, visite a chi ami: la Misericordia di Ariccia accompagna chi non può muoversi da solo." data="2026-10-03" didascalia="Il video dura circa un minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/accompagnamento-sociale.mp4" poster="img/video/accompagnamento-sociale.jpg" verticale="si" titolo="Accompagnamento sociale: le cose di ogni giorno" descrizione="Spesa, posta e banca, medico e farmacia, parrucchiere, messa e cimitero, visite a chi ami: la Misericordia di Ariccia accompagna chi non può muoversi da solo." data="2026-10-03" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Dove ti accompagniamo
 

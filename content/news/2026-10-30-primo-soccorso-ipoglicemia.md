@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **8 di 10**: **ipoglicemia**. *Serve zucchero.*
 
-{{< video src="video/primo-soccorso-ipoglicemia.mp4" poster="img/video/primo-soccorso-ipoglicemia.jpg" verticale="si" titolo="Ipoglicemia: primo soccorso passo passo" descrizione="Come riconoscere un calo di zuccheri in una persona con diabete, quanto zucchero dare, la regola dei 15 minuti e cosa fare se non risponde." data="2026-10-30" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ipoglicemia.mp4" poster="img/video/primo-soccorso-ipoglicemia.jpg" verticale="si" titolo="Ipoglicemia: primo soccorso passo passo" descrizione="Come riconoscere un calo di zuccheri in una persona con diabete, quanto zucchero dare, la regola dei 15 minuti e cosa fare se non risponde." data="2026-10-30" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
