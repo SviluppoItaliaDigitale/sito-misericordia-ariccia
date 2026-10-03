@@ -22,7 +22,7 @@ italianoSemplice: |
 
 C'è un momento in cui il tempo diventa prezioso. E un desiderio, l'ultimo, non può più aspettare. Per chi è malato e non può più muoversi da solo, a volte basta poco per un grande regalo: **rivedere un luogo amato, esserci in un giorno importante**. Lo chiamiamo **«L'ultimo viaggio»**.
 
-{{< video src="video/ultimo-viaggio.mp4" poster="img/video/ultimo-viaggio.jpg" verticale="si" titolo="L'ultimo viaggio" descrizione="Rivedere il mare, tornare al paese natale, esserci al matrimonio di un nipote: la Misericordia di Ariccia accompagna in ambulanza chi ha un ultimo desiderio." data="2026-10-04" didascalia="Il video dura poco più di un minuto, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/ultimo-viaggio.mp4" poster="img/video/ultimo-viaggio.jpg" verticale="si" titolo="L'ultimo viaggio" descrizione="Rivedere il mare, tornare al paese natale, esserci al matrimonio di un nipote: la Misericordia di Ariccia accompagna in ambulanza chi ha un ultimo desiderio." data="2026-10-04" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Desideri che non possono aspettare
 

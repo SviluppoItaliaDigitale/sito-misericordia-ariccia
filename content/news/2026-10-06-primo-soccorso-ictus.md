@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **1 di 10**: **ictus**. *Il tempo è cervello.*
 
-{{< video src="video/primo-soccorso-ictus.mp4" poster="img/video/primo-soccorso-ictus.jpg" verticale="si" titolo="Ictus: primo soccorso passo passo" descrizione="Viso, braccia, parola e gli altri segni improvvisi: come riconoscere un ictus, perché chiamare subito il 112 e cosa non dare alla persona." data="2026-10-06" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ictus.mp4" poster="img/video/primo-soccorso-ictus.jpg" verticale="si" titolo="Ictus: primo soccorso passo passo" descrizione="Viso, braccia, parola e gli altri segni improvvisi: come riconoscere un ictus, perché chiamare subito il 112 e cosa non dare alla persona." data="2026-10-06" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

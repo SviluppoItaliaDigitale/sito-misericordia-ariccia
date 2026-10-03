@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **7 di 10**: **ustioni**. *20 minuti di acqua.*
 
-{{< video src="video/primo-soccorso-ustioni.mp4" poster="img/video/primo-soccorso-ustioni.jpg" verticale="si" titolo="Ustioni: primo soccorso passo passo" descrizione="Fermare il fuoco, 20 minuti di acqua corrente, togliere anelli, coprire con la pellicola, i rimedi da evitare e quando chiamare il 112." data="2026-10-27" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ustioni.mp4" poster="img/video/primo-soccorso-ustioni.jpg" verticale="si" titolo="Ustioni: primo soccorso passo passo" descrizione="Fermare il fuoco, 20 minuti di acqua corrente, togliere anelli, coprire con la pellicola, i rimedi da evitare e quando chiamare il 112." data="2026-10-27" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

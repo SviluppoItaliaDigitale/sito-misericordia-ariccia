@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **3 di 10**: **emorragia grave**. *Premi e non mollare.*
 
-{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso passo passo" descrizione="Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo." data="2026-10-13" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso passo passo" descrizione="Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo." data="2026-10-13" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
