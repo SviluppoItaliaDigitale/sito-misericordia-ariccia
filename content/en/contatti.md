@@ -18,7 +18,7 @@ weight: 80
 - **Operational office:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM), Italy
 - **Administrative office:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM), Italy
 
-**Access:** step-free entrance, suitable for wheelchairs, with **parking** available.
+**Access (both offices):** step-free entrance, suitable for wheelchairs, with **parking** available.
 
 ## How to reach us
 
