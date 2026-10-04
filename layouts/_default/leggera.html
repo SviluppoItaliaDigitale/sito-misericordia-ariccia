@@ -1,5 +1,6 @@
+{{- $en := eq (partial "lingua.html" .) "en" -}}
 <!DOCTYPE html>
-<html lang="it">
+<html lang="{{ cond $en "en" "it" }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +22,22 @@
 <body>
 <h1>{{ .Title }} — Misericordia di Ariccia</h1>
 {{ .Content }}
+{{ if $en }}
+<h2>Emergency</h2>
+<a class="tel emergenza" href="tel:112">☎ 112 — Emergencies</a>
+<a class="tel" href="tel:116117">☎ 116117 — Non-urgent medical care</a>
+<h2>Misericordia di Ariccia</h2>
+<a class="tel" href="tel:+393484068657">☎ +39 348 4068657 — Transport and help (also WhatsApp)</a>
+<a class="tel" href="tel:+39069333717">☎ +39 06 933 3717 — Operations base</a>
+<a class="tel" href="tel:+393288105399">☎ +39 328 8105399 — Administration and Civil Service</a>
+<p>Email: <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a><br>
+Operations base: {{ site.Params.sedeOperativa }}</p>
+<p class="nota">The Misericordia provides planned transport and social services: it does not replace the public emergency service. In an emergency always call 112.</p>
+<footer>
+  Confraternita di Misericordia di Ariccia ODV — Tax code {{ site.Params.codiceFiscale }}<br>
+  <a href="{{ "/en/" | relURL }}">Go to the full website</a> · <a href="{{ "/en/numeri-utili/" | relURL }}">All useful numbers</a>
+</footer>
+{{ else }}
 <h2>Emergenza</h2>
 <a class="tel emergenza" href="tel:112">☎ 112 — Emergenze</a>
 <a class="tel" href="tel:116117">☎ 116117 — Cure mediche non urgenti</a>
@@ -35,5 +52,6 @@ Sede operativa: {{ site.Params.sedeOperativa }}</p>
   Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }}<br>
   <a href="{{ "/" | relURL }}">Vai al sito completo</a> · <a href="{{ "/numeri-utili/" | relURL }}">Tutti i numeri utili</a>
 </footer>
+{{ end }}
 </body>
 </html>

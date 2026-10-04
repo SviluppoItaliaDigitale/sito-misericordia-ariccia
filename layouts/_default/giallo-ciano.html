@@ -1,17 +1,23 @@
 {{ define "main" }}
 {{ $gc := site.Data.giallo_ciano }}
 {{ $ultimo := index $gc.numeri 0 }}
+{{- /* Pagina inglese (/en/giallo-ciano/): mesi e formati tradotti; i dati restano in italiano */ -}}
+{{ $en := eq (partial "lingua.html" .) "en" }}
+{{ $mesi := dict "Gennaio" "January" "Febbraio" "February" "Marzo" "March" "Aprile" "April" "Maggio" "May" "Giugno" "June" "Luglio" "July" "Agosto" "August" "Settembre" "September" "Ottobre" "October" "Novembre" "November" "Dicembre" "December" }}
+{{ $formati := dict "sfogliabile" "flipbook" "PDF" "PDF" }}
+{{ $uscitaUltimo := $ultimo.uscita }}
+{{ if $en }}{{ $p := split $ultimo.uscita " " }}{{ $uscitaUltimo = printf "%s %s" (index $mesi (index $p 0) | default (index $p 0)) (index $p 1) }}{{ end }}
 <div class="pagina-testata">
   <div class="container">
-    <p class="occhiello mb-1" data-anim="fade-up">Dalla Confederazione</p>
+    <p class="occhiello mb-1" data-anim="fade-up">{{ cond $en "From the Confederation" "Dalla Confederazione" }}</p>
     <h1 data-split="words">{{ .Title }}</h1>
   </div>
 </div>
 <div class="pagina-corpo">
   <div class="container py-5">
-    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+    <nav aria-label="{{ cond $en "Breadcrumb" "Percorso" }}" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
-        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Giallo Ciano</li>
       </ol>
     </nav>
@@ -19,22 +25,29 @@
     <!-- Ultimo numero: copertina tipografica nei due colori che danno il nome alla rivista -->
     <section class="gc-ultimo mb-5" data-anim="fade-up" aria-labelledby="gc-ultimo-titolo">
       <a class="gc-copertina" href="{{ $ultimo.link }}" rel="noopener" target="_blank"
-         aria-label="Sfoglia Giallo Ciano {{ $ultimo.numero }}, {{ $ultimo.uscita }} (si apre in una nuova scheda)">
+         aria-label="{{ if $en }}Read Giallo Ciano {{ $ultimo.numero }}, {{ $uscitaUltimo }} (opens in a new tab){{ else }}Sfoglia Giallo Ciano {{ $ultimo.numero }}, {{ $ultimo.uscita }} (si apre in una nuova scheda){{ end }}">
         <span class="gc-testata">Giallo<br>Ciano</span>
         <span class="gc-numero">n. {{ $ultimo.numero }}</span>
-        <span class="gc-uscita">{{ $ultimo.uscita }}</span>
+        <span class="gc-uscita">{{ $uscitaUltimo }}</span>
       </a>
       <div class="gc-ultimo-testo">
+        {{ if $en }}
+        <h2 id="gc-ultimo-titolo">The {{ $uscitaUltimo }} issue</h2>
+        <p>Yellow and cyan (<em lang="it">giallo</em> and <em lang="it">ciano</em>) are the colours of the Misericordie: those of our uniforms and our ambulances. It is also the name of the magazine of the <a href="https://www.misericordie.it/" rel="noopener">National Confederation of the Misericordie of Italy</a>, which tells the stories, people and services of the Confraternities all over Italy, including ours. The magazine is in Italian.</p>
+        <p><a class="btn btn-ciano px-4" href="{{ $ultimo.link }}" rel="noopener" target="_blank">Read issue {{ $ultimo.numero }}</a></p>
+        <p class="gc-nota mb-0">The magazine is published by the Confederation: we use the same links as the <a href="{{ $gc.archivio }}" rel="noopener">national website</a>. The PDFs are on the Misericordie d'Italia website; the flipbooks open on flipbookpdf.net, the service chosen by the Confederation.</p>
+        {{ else }}
         <h2 id="gc-ultimo-titolo">Il numero di {{ lower $ultimo.uscita }}</h2>
         <p>Giallo e ciano sono i colori delle Misericordie: quelli delle nostre divise e delle nostre ambulanze. È anche il nome della rivista della <a href="https://www.misericordie.it/" rel="noopener">Confederazione Nazionale delle Misericordie d'Italia</a>, che racconta servizi, persone e storie delle Confraternite di tutta Italia, compresa la nostra.</p>
         <p><a class="btn btn-ciano px-4" href="{{ $ultimo.link }}" rel="noopener" target="_blank">Sfoglia il numero {{ $ultimo.numero }}</a></p>
         <p class="gc-nota mb-0">La rivista è pubblicata dalla Confederazione: usiamo gli stessi collegamenti del <a href="{{ $gc.archivio }}" rel="noopener">sito nazionale</a>. I PDF sono sul sito delle Misericordie d'Italia, i numeri sfogliabili si aprono su flipbookpdf.net, il servizio scelto dalla Confederazione.</p>
+        {{ end }}
       </div>
     </section>
 
     <!-- Archivio, come uno scaffale di emeroteca: un anno per riga -->
     <section aria-labelledby="gc-archivio-titolo" data-anim="fade-up">
-      <h2 id="gc-archivio-titolo" class="mb-3">Tutti i numeri</h2>
+      <h2 id="gc-archivio-titolo" class="mb-3">{{ cond $en "All issues" "Tutti i numeri" }}</h2>
       {{/* i numeri sono in ordine dal più recente: raggruppo per anno mantenendo l'ordine */}}
       {{ $anni := slice }}
       {{ range $gc.numeri }}{{ $a := index (split .uscita " ") 1 }}{{ if not (in $anni $a) }}{{ $anni = $anni | append $a }}{{ end }}{{ end }}
@@ -49,8 +62,9 @@
                   <li>
                     <a href="{{ .link }}" rel="noopener" target="_blank">
                       <span class="gc-dorso-numero">n. {{ index (split .numero "/") 0 }}</span>
-                      <span class="gc-dorso-mese">{{ index (split .uscita " ") 0 }}</span>
-                      <span class="gc-dorso-formato">{{ if eq .formato "archivio" }}sul sito nazionale{{ else }}{{ .formato }}{{ end }}</span>
+                      {{ $mese := index (split .uscita " ") 0 }}
+                      <span class="gc-dorso-mese">{{ cond $en (index $mesi $mese | default $mese) $mese }}</span>
+                      <span class="gc-dorso-formato">{{ if eq .formato "archivio" }}{{ cond $en "on the national website" "sul sito nazionale" }}{{ else }}{{ cond $en (index $formati .formato | default .formato) .formato }}{{ end }}</span>
                     </a>
                   </li>
                 {{ end }}
@@ -59,7 +73,7 @@
           </div>
         {{ end }}
       </dl>
-      <p class="mt-3"><a href="{{ $gc.archivio }}" rel="noopener">Archivio completo sul sito delle Misericordie d'Italia →</a></p>
+      <p class="mt-3"><a href="{{ $gc.archivio }}" rel="noopener">{{ cond $en "Full archive on the Misericordie d'Italia website →" "Archivio completo sul sito delle Misericordie d'Italia →" }}</a></p>
     </section>
   </div>
 </div>

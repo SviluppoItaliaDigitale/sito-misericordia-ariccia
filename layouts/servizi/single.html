@@ -1,16 +1,19 @@
 {{ define "main" }}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
-    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}
+    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ cond $en "Our services" .Title }}</p>{{ end }}{{ end }}
     <h1 data-split="words">{{ .Title }}</h1>
   </div>
 </div>
 <div class="pagina-corpo">
   <div class="container py-5">
-    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+    <nav aria-label="{{ cond $en "Breadcrumb" "Percorso" }}" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
-        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
-        {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
+        {{- /* Pagine inglesi (/en/servizi-*): Home → /en/, poi «Our services» */}}
+        <li class="breadcrumb-item"><a href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
+        {{ if $en }}<li class="breadcrumb-item"><a href="{{ "/en/servizi/" | relURL }}">Our services</a></li>
+        {{ else }}{{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
@@ -35,9 +38,9 @@
 
     {{ with .Params.contatto }}
     <div class="sv-contatto" data-anim="fade-up">
-      <p class="sv-contatto-label">{{ .label | default "Per informazioni" }}</p>
+      <p class="sv-contatto-label">{{ .label | default (cond $en "For information" "Per informazioni") }}</p>
       <div class="sv-contatto-righe">
-        {{ with .tel }}<a href="tel:+39{{ replace . " " "" }}">📞 {{ . }}</a>{{ end }}
+        {{ with .tel }}<a href="tel:+39{{ replace . " " "" }}">📞 {{ if $en }}+39 {{ end }}{{ . }}</a>{{ end }}
         {{ with .email }}<a href="mailto:{{ . }}">✉️ {{ . }}</a>{{ end }}
         {{ range .documenti }}<a href="{{ .url | relURL }}">📄 {{ .testo }}</a>{{ end }}
       </div>

@@ -201,7 +201,7 @@
   {{ $css := slice (resources.Get "vendor/bootstrap/bootstrap.min.css") (resources.Get "css/style.css") (resources.Get "css/animazioni.css") (resources.Get "css/accessibilita.css") }}
   {{ $cssBundle := $css | resources.Concat "css/sito.css" | minify | fingerprint "sha256" }}
   <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}">
-  {{ if eq .Section "dossier" }}{{ $dossierCss := resources.Get "css/dossier.css" | minify | fingerprint "sha256" }}<link rel="stylesheet" href="{{ $dossierCss.RelPermalink }}">{{ end }}
+  {{ if eq .Type "dossier" }}{{ $dossierCss := resources.Get "css/dossier.css" | minify | fingerprint "sha256" }}<link rel="stylesheet" href="{{ $dossierCss.RelPermalink }}">{{ end }}
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "img/favicon-32.png" | relURL }}">
   <link rel="icon" type="image/png" sizes="256x256" href="{{ "img/favicon.png" | relURL }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "img/apple-touch-icon.png" | relURL }}">
@@ -298,6 +298,6 @@
   <!-- Motore animazioni: GSAP + ScrollTrigger + SplitText + particelle (auto-ospitati), un solo file -->
   {{ $anim := slice (resources.Get "vendor/gsap/gsap.min.js") (resources.Get "vendor/gsap/ScrollTrigger.min.js") (resources.Get "vendor/gsap/SplitText.min.js") (resources.Get "vendor/particles/particles.min.js") (resources.Get "js/animazioni.js" | minify) | resources.Concat "js/animazioni.js" | fingerprint "sha256" }}
   <script src="{{ $anim.RelPermalink }}" defer></script>
-  {{ if eq .Section "dossier" }}{{ $dossierJs := resources.Get "js/dossier.js" | minify | fingerprint "sha256" }}<script src="{{ $dossierJs.RelPermalink }}" defer></script>{{ end }}
+  {{ if eq .Type "dossier" }}{{ $dossierJs := resources.Get "js/dossier.js" | minify | fingerprint "sha256" }}<script src="{{ $dossierJs.RelPermalink }}" defer></script>{{ end }}
 </body>
 </html>

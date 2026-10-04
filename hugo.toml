@@ -161,6 +161,26 @@ enableGitInfo = true
     parent = "whoweare"
     weight = 5
   [[menus.en]]
+    name = "Glossary"
+    pageRef = "/en/glossario"
+    parent = "whoweare"
+    weight = 6
+  [[menus.en]]
+    name = "History of the Misericordie"
+    pageRef = "/en/dossier/storia-delle-misericordie"
+    parent = "whoweare"
+    weight = 7
+  [[menus.en]]
+    name = "Giallo Ciano, the magazine"
+    pageRef = "/en/giallo-ciano"
+    parent = "whoweare"
+    weight = 8
+  [[menus.en]]
+    name = "Our impact"
+    pageRef = "/en/impatto"
+    parent = "whoweare"
+    weight = 9
+  [[menus.en]]
     name = "Patient transport"
     pageRef = "/en/trasporto-infermi"
     weight = 18
@@ -184,9 +204,54 @@ enableGitInfo = true
     parent = "services"
     weight = 3
   [[menus.en]]
+    name = "Health services"
+    pageRef = "/en/servizi-sanitari"
+    parent = "services"
+    weight = 4
+  [[menus.en]]
+    name = "Social services"
+    pageRef = "/en/servizi-sociali"
+    parent = "services"
+    weight = 5
+  [[menus.en]]
+    name = "Event medical cover"
+    pageRef = "/en/assistenza-eventi"
+    parent = "services"
+    weight = 6
+  [[menus.en]]
+    name = "Private ambulance"
+    pageRef = "/en/ambulanza-privata-castelli-romani"
+    parent = "services"
+    weight = 7
+  [[menus.en]]
+    name = "Hospital discharges"
+    pageRef = "/en/dimissioni-ospedaliere"
+    parent = "services"
+    weight = 8
+  [[menus.en]]
+    name = "Dialysis transport"
+    pageRef = "/en/trasporto-dializzati"
+    parent = "services"
+    weight = 9
+  [[menus.en]]
+    name = "Disability transport"
+    pageRef = "/en/trasporto-disabili-castelli-romani"
+    parent = "services"
+    weight = 10
+  [[menus.en]]
+    identifier = "firstaid"
     name = "First aid"
-    pageRef = "/en/primo-soccorso"
     weight = 22
+  [[menus.en]]
+    name = "What to do"
+    pageRef = "/en/primo-soccorso"
+    parent = "firstaid"
+    weight = 1
+  [[menus.en]]
+    name = "23 emergencies, step by step"
+    pageRef = "/en/dossier/primo-soccorso"
+    parent = "firstaid"
+    weight = 2
   [[menus.en]]
     name = "Civil Service"
     pageRef = "/en/servizio-civile"

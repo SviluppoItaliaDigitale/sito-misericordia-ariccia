@@ -2,6 +2,9 @@
    (la barra di lettura e le particelle sono gestite da animazioni.js) */
 (function () {
   "use strict";
+  var T = document.documentElement.lang === "en"
+    ? { espandi: "Expand all", comprimi: "Collapse all" }
+    : { espandi: "Espandi tutto", comprimi: "Comprimi tutto" };
   var dossier = document.querySelector("[data-dossier]");
   if (!dossier) return;
 
@@ -43,7 +46,7 @@
       var apri = btn.getAttribute("aria-expanded") !== "true";
       opere.forEach(function (o) { o.open = apri; });
       btn.setAttribute("aria-expanded", apri ? "true" : "false");
-      btn.textContent = apri ? "Comprimi tutto" : "Espandi tutto";
+      btn.textContent = apri ? T.comprimi : T.espandi;
     });
   });
 
@@ -56,8 +59,8 @@
       o.addEventListener("toggle", function () {
         var tutteAperte = Array.prototype.every.call(opere, function (x) { return x.open; });
         var nessunaAperta = Array.prototype.every.call(opere, function (x) { return !x.open; });
-        if (tutteAperte) { btn.setAttribute("aria-expanded", "true"); btn.textContent = "Comprimi tutto"; }
-        else if (nessunaAperta) { btn.setAttribute("aria-expanded", "false"); btn.textContent = "Espandi tutto"; }
+        if (tutteAperte) { btn.setAttribute("aria-expanded", "true"); btn.textContent = T.comprimi; }
+        else if (nessunaAperta) { btn.setAttribute("aria-expanded", "false"); btn.textContent = T.espandi; }
       });
     });
   });

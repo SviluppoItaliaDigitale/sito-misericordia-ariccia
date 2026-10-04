@@ -86,6 +86,10 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   La lingua si legge da `partials/lingua.html` (template) e da `<html lang>` (JS).
 - Quando si cambia un testo importante in italiano (costi, privacy, bandi),
   aggiornare anche la pagina inglese corrispondente.
+- Tradotte tutte le pagine tranne news, Liturgia del giorno e le pagine
+  spagnola/rumena. I dossier inglesi stanno in `content/en/dossier/` con
+  `type: "dossier"`; i servizi in `content/en/servizi-*.md` con `type: "servizi"`.
+  I video restano in italiano (didascalie con «video in Italian»).
 
 ## Riferimenti della Confederazione
 
