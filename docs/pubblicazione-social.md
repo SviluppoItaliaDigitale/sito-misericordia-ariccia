@@ -185,3 +185,15 @@ permette di modificare i post; like e commenti restano).
 Per ripubblicare una news già condivisa: togliere la sua voce da
 `.github/social/pubblicati.json` (se è più vecchia di 10 giorni, lanciare lo
 script con `SOCIAL_MAX_GIORNI` più alto).
+
+## Se i post li vede solo l'amministratore
+
+Controllare che l'app Meta sia in modalità **Live** (developers.facebook.com →
+«Sito Misericordia Ariccia» → Pubblicazione, oppure l'elenco app che mostra
+«Modalità: Attiva»). In modalità Sviluppo i contenuti pubblicati dall'API
+risultano `published` con privacy «Tutti», ma Facebook li mostra solo alle
+persone con un ruolo nell'app. È successo dal 30 settembre al 4 ottobre 2026;
+per pubblicare servono l'URL dell'informativa privacy e una categoria nelle
+impostazioni di base dell'app. Su Facebook i video escono come post con link
+più Reel (Reels API); i Reel caricati con `/videos` non venivano distribuiti.
+
