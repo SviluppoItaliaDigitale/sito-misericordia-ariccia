@@ -1,4 +1,5 @@
 ---
+traduzione: "/servizio-civile"
 title: "Universal Civil Service"
 summary: "A paid year of service to the community for young people aged 18–28."
 weight: 60
@@ -9,6 +10,10 @@ weight: 60
 Since **2015** the Misericordia di Ariccia has taken part in the **Universal Civil Service**, offering young people **aged 18–28** the chance to spend a year serving the community, in a spirit of friendship and fraternity, with a **monthly allowance** paid by the State (€519.47 in the 2026 call).
 
 Our projects aim to counter loneliness and isolation among fragile people — especially the elderly and people with disabilities — through daily support, listening and presence.
+
+## Current project (applications closed)
+
+With the project **«Misericordie del Lazio unite per la rete 2025»** (care sector), **2 young people** were selected and have been serving at our premises **since 18 September 2026**, **25 hours a week over 5 days**, supporting vulnerable people. Applications for this project are **closed**: when a new call is published we will announce it on this page.
 
 ## How to apply
 

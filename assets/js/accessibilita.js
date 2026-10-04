@@ -7,6 +7,26 @@
   var CHIAVE = "mise-a11y";
   var html = document.documentElement;
 
+  /* Testi del pannello: inglese nelle pagine /en/ (<html lang="en">) */
+  var EN = html.lang === "en";
+  var T = EN ? {
+    apri: "Open accessibility tools", titolo: "Accessibility", chiudi: "Close",
+    intro: "Adjust how the site reads. Your settings stay saved on this device.",
+    dimensione: "Text size", meno: "Smaller text", piu: "Larger text",
+    reset: "↺ Reset all", nota: "Based on your reading preferences · no data sent online",
+    dyslexia: "Readable font", dyslexiaNota: "dyslexia", spacing: "More spacing", links: "Highlight links",
+    contrast: "High contrast", invert: "Invert colours", grayscale: "Greyscale",
+    guida: "Reading guide", cursore: "Large cursor", noanim: "Stop animations"
+  } : {
+    apri: "Apri gli strumenti di accessibilità", titolo: "Accessibilità", chiudi: "Chiudi",
+    intro: "Personalizza la lettura del sito. Le impostazioni restano salvate su questo dispositivo.",
+    dimensione: "Dimensione testo", meno: "Riduci il testo", piu: "Ingrandisci il testo",
+    reset: "↺ Reimposta tutto", nota: "Conforme alle preferenze di lettura · nessun dato inviato online",
+    dyslexia: "Testo leggibile", dyslexiaNota: "dislessia", spacing: "Più spaziatura", links: "Evidenzia link",
+    contrast: "Contrasto alto", invert: "Colori invertiti", grayscale: "Scala di grigi",
+    guida: "Guida di lettura", cursore: "Cursore grande", noanim: "Ferma animazioni"
+  };
+
   /* Stato predefinito */
   var stato = {
     scala: 100,        // percentuale font-size radice (90–170)
@@ -71,7 +91,7 @@
     var apri = document.createElement("button");
     apri.id = "a11y-apri";
     apri.type = "button";
-    apri.setAttribute("aria-label", "Apri gli strumenti di accessibilità");
+    apri.setAttribute("aria-label", T.apri);
     apri.setAttribute("aria-expanded", "false");
     apri.innerHTML =
       '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">' +
@@ -83,20 +103,20 @@
     pannello.className = "a11y-pannello";
     pannello.id = "a11y-pannello";
     pannello.setAttribute("role", "dialog");
-    pannello.setAttribute("aria-label", "Strumenti di accessibilità");
+    pannello.setAttribute("aria-label", T.titolo);
     pannello.setAttribute("aria-modal", "false");
     pannello.hidden = true;
 
     var opzioni = [
-      { k: "dyslexia",  ic: "🔤", et: "Testo leggibile", nota: "dislessia" },
-      { k: "spacing",   ic: "↔️", et: "Più spaziatura" },
-      { k: "links",     ic: "🔗", et: "Evidenzia link" },
-      { k: "contrast",  ic: "◐", et: "Contrasto alto" },
-      { k: "invert",    ic: "🌗", et: "Colori invertiti" },
-      { k: "grayscale", ic: "⬜", et: "Scala di grigi" },
-      { k: "guida",     ic: "📏", et: "Guida di lettura" },
-      { k: "cursore",   ic: "🖱️", et: "Cursore grande" },
-      { k: "noanim",    ic: "⏸️", et: "Ferma animazioni" }
+      { k: "dyslexia",  ic: "🔤", et: T.dyslexia, nota: T.dyslexiaNota },
+      { k: "spacing",   ic: "↔️", et: T.spacing },
+      { k: "links",     ic: "🔗", et: T.links },
+      { k: "contrast",  ic: "◐", et: T.contrast },
+      { k: "invert",    ic: "🌗", et: T.invert },
+      { k: "grayscale", ic: "⬜", et: T.grayscale },
+      { k: "guida",     ic: "📏", et: T.guida },
+      { k: "cursore",   ic: "🖱️", et: T.cursore },
+      { k: "noanim",    ic: "⏸️", et: T.noanim }
     ];
 
     var htmlOpz = opzioni.map(function (o) {
@@ -109,19 +129,19 @@
 
     pannello.innerHTML =
       '<div class="a11y-testata">' +
-        '<h2><span aria-hidden="true">♿</span> Accessibilità</h2>' +
-        '<button type="button" class="a11y-chiudi" aria-label="Chiudi">×</button>' +
+        '<h2><span aria-hidden="true">♿</span> ' + T.titolo + '</h2>' +
+        '<button type="button" class="a11y-chiudi" aria-label="' + T.chiudi + '">×</button>' +
       '</div>' +
-      '<p class="a11y-intro">Personalizza la lettura del sito. Le impostazioni restano salvate su questo dispositivo.</p>' +
+      '<p class="a11y-intro">' + T.intro + '</p>' +
       '<div class="a11y-testo">' +
-        '<span class="a11y-etichetta">Dimensione testo</span>' +
-        '<button type="button" class="a11y-step" data-azione="meno" aria-label="Riduci il testo">−</button>' +
+        '<span class="a11y-etichetta">' + T.dimensione + '</span>' +
+        '<button type="button" class="a11y-step" data-azione="meno" aria-label="' + T.meno + '">−</button>' +
         '<span class="a11y-livello" id="a11y-livello">100%</span>' +
-        '<button type="button" class="a11y-step" data-azione="piu" aria-label="Ingrandisci il testo">+</button>' +
+        '<button type="button" class="a11y-step" data-azione="piu" aria-label="' + T.piu + '">+</button>' +
       '</div>' +
       '<div class="a11y-griglia">' + htmlOpz + '</div>' +
-      '<button type="button" class="a11y-reset">↺ Reimposta tutto</button>' +
-      '<p class="a11y-nota">Conforme alle preferenze di lettura · nessun dato inviato online</p>';
+      '<button type="button" class="a11y-reset">' + T.reset + '</button>' +
+      '<p class="a11y-nota">' + T.nota + '</p>';
 
     var guida = document.createElement("div");
     guida.id = "a11y-guida";

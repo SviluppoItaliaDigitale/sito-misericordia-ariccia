@@ -3,8 +3,9 @@
 {{- $u := .Permalink -}}
 {{- $t := .Title -}}
 {{- $testo := printf "%s — %s" $t $u -}}
-<div class="condividi" role="group" aria-label="Condividi questa pagina">
-  <span class="condividi-tit">Condividi:</span>
+{{- $en := eq (partial "lingua.html" .) "en" -}}
+<div class="condividi" role="group" aria-label="{{ cond $en "Share this page" "Condividi questa pagina" }}">
+  <span class="condividi-tit">{{ cond $en "Share:" "Condividi:" }}</span>
   <a class="cond-btn" href="https://wa.me/?text={{ $testo | urlquery }}" target="_blank" rel="noopener nofollow">💬 WhatsApp</a>
   <a class="cond-btn" href="https://t.me/share/url?url={{ $u | urlquery }}&text={{ $t | urlquery }}" target="_blank" rel="noopener nofollow">✈️ Telegram</a>
   <a class="cond-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $u | urlquery }}" target="_blank" rel="noopener nofollow">📘 Facebook</a>

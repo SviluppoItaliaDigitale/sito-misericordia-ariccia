@@ -1,3 +1,5 @@
+{{- /* Footer: nelle pagine inglesi (/en/) testi e collegamenti in inglese. */ -}}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <!-- Fascia di appartenenza alla rete -->
 <section class="fascia-rete">
   <div class="container d-flex flex-wrap align-items-center justify-content-center gap-3 py-3">
@@ -6,7 +8,8 @@
       <img src="{{ "img/loghi/mise-triangolo-128.png" | relURL }}" alt="Misericordia di Ariccia"
            width="52" height="43" loading="lazy" decoding="async">
     </picture>
-    <p class="mb-0">Aderiamo alla <a href="https://www.misericordie.it/" rel="noopener"><strong>Confederazione Nazionale delle Misericordie d'Italia</strong></a> — nella tradizione delle Misericordie, al fianco del prossimo dal 1244.</p>
+    {{ if $en }}<p class="mb-0">We are members of the <a href="https://www.misericordie.it/" rel="noopener"><strong>National Confederation of the Misericordie of Italy</strong></a>: in the tradition of the Misericordie, standing by our neighbour since 1244.</p>
+    {{ else }}<p class="mb-0">Aderiamo alla <a href="https://www.misericordie.it/" rel="noopener"><strong>Confederazione Nazionale delle Misericordie d'Italia</strong></a> — nella tradizione delle Misericordie, al fianco del prossimo dal 1244.</p>{{ end }}
   </div>
 </section>
 
@@ -16,21 +19,28 @@
       <div class="col-md-4">
         <h2>Misericordia di Ariccia</h2>
         <p class="mb-1">Confraternita di Misericordia di Ariccia ODV</p>
-        <p class="mb-1"><strong>Sede operativa:</strong> {{ site.Params.sedeOperativa }}<br>Tel. <a href="tel:+39{{ replace site.Params.telefonoFisso " " "" }}">{{ site.Params.telefonoFisso }}</a> · Cell. <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ site.Params.telefono }}</a></p>
-        <p class="mb-1"><strong>Sede amministrativa:</strong> {{ site.Params.sedeAmministrativa }}<br>Amministrazione e Servizio Civile: <a href="tel:+39{{ replace site.Params.telefonoInfo " " "" }}">{{ site.Params.telefonoInfo }}</a></p>
+        {{ $pre := cond $en "+39 " "" }}
+        <p class="mb-1"><strong>{{ cond $en "Operations base:" "Sede operativa:" }}</strong> {{ site.Params.sedeOperativa }}<br>{{ cond $en "Phone" "Tel." }} <a href="tel:+39{{ replace site.Params.telefonoFisso " " "" }}">{{ $pre }}{{ site.Params.telefonoFisso }}</a> · {{ cond $en "Mobile" "Cell." }} <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ $pre }}{{ site.Params.telefono }}</a></p>
+        <p class="mb-1"><strong>{{ cond $en "Administrative office:" "Sede amministrativa:" }}</strong> {{ site.Params.sedeAmministrativa }}<br>{{ cond $en "Administration and Civil Service:" "Amministrazione e Servizio Civile:" }} <a href="tel:+39{{ replace site.Params.telefonoInfo " " "" }}">{{ $pre }}{{ site.Params.telefonoInfo }}</a></p>
         <p class="mb-1"><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
         <p class="mb-0">PEC: <a href="mailto:{{ site.Params.pec }}">{{ site.Params.pec }}</a></p>
       </div>
       <div class="col-md-4">
-        <h2>Collegamenti</h2>
+        <h2>{{ cond $en "Links" "Collegamenti" }}</h2>
         <ul class="list-unstyled">
-          {{ range site.Menus.main }}
+          {{ range (index site.Menus (cond $en "en" "main")) }}
             {{ if .HasChildren }}
               {{ range .Children }}<li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}
             {{ else }}
               <li class="mb-1"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
             {{ end }}
           {{ end }}
+          {{ if $en }}
+          <li class="mb-1"><a href="{{ "/en/sostienici/" | relURL }}">Support us — 5x1000</a></li>
+          <li class="mb-1"><a href="{{ "/en/privacy/" | relURL }}">Privacy &amp; cookies</a></li>
+          <li class="mb-1"><a href="{{ "/en/accessibilita/" | relURL }}">Accessibility</a></li>
+          <li class="mb-1"><a href="{{ "/" | relURL }}" lang="it" hreflang="it">Italian website (full version)</a></li>
+          {{ else }}
           <li class="mb-1"><a href="{{ "/impatto/" | relURL }}">Il nostro impatto</a></li>
           <li class="mb-1"><a href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a></li>
           <li class="mb-1"><a href="{{ "/numeri-utili/" | relURL }}">Numeri utili</a></li>
@@ -40,23 +50,28 @@
           <li class="mb-1"><a href="{{ "/accessibilita/" | relURL }}">Accessibilità</a></li>
           <li class="mb-1"><a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></li>
           <li class="mb-1"><a href="{{ "/news/index.xml" | relURL }}">Feed RSS delle notizie</a></li>
+          {{ end }}
         </ul>
         <p class="mb-1">
-          <a href="{{ site.Params.facebook }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="Seguici su Facebook">Facebook</a> ·
-          <a href="{{ site.Params.instagram }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="Seguici su Instagram">Instagram</a>
+          <a href="{{ site.Params.facebook }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="{{ cond $en "Follow us on Facebook" "Seguici su Facebook" }}">Facebook</a> ·
+          <a href="{{ site.Params.instagram }}" rel="noopener" data-bs-toggle="tooltip" data-bs-title="{{ cond $en "Follow us on Instagram" "Seguici su Instagram" }}">Instagram</a>
         </p>
       </div>
       <div class="col-md-4">
         <h2>5x1000</h2>
-        <p>Sostieni la Misericordia con la tua firma: codice fiscale <strong>{{ site.Params.codiceFiscale }}</strong>.</p>
-        <p><a class="footer-8xmille" href="https://5xmille.8xmille.it/" rel="noopener"><img src="{{ "img/loghi/8xmille-chiesa-cattolica-bianco.svg" | relURL }}" alt="" width="62" height="45" loading="lazy"> E l'8xmille alla Chiesa cattolica</a></p>
-        <p class="motto">«Che Dio te ne renda merito»</p>
+        {{ if $en }}<p>Taxpayers in Italy can support us with a signature on their tax return: tax code <strong>{{ site.Params.codiceFiscale }}</strong>.</p>
+        {{ else }}<p>Sostieni la Misericordia con la tua firma: codice fiscale <strong>{{ site.Params.codiceFiscale }}</strong>.</p>{{ end }}
+        <p><a class="footer-8xmille" href="https://5xmille.8xmille.it/" rel="noopener"><img src="{{ "img/loghi/8xmille-chiesa-cattolica-bianco.svg" | relURL }}" alt="" width="62" height="45" loading="lazy"> {{ cond $en "And the 8xmille to the Catholic Church" "E l'8xmille alla Chiesa cattolica" }}</a></p>
+        <p class="motto"{{ if $en }} lang="it"{{ end }}>«Che Dio te ne renda merito»</p>{{ if $en }}
+        <p class="small mb-0">“May God reward you for it”: the traditional thanks of the Misericordie.</p>{{ end }}
       </div>
     </div>
     <hr class="border-secondary my-4">
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-      <p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a> · <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></p>
-      <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="Niente tracciamenti, niente banner: navighi libero.">🍃 Sito senza cookie e senza tracker</span>
+      {{ if $en }}<p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — Tax code {{ site.Params.codiceFiscale }} — Volunteer organisation (ODV) active since 1994. · <a href="{{ "/en/privacy/" | relURL }}">Privacy &amp; cookies</a> · <a href="{{ "/en/accessibilita/" | relURL }}">Accessibility</a></p>
+      <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="No tracking, no banners: browse freely.">🍃 No cookies, no trackers</span>
+      {{ else }}<p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a> · <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></p>
+      <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="Niente tracciamenti, niente banner: navighi libero.">🍃 Sito senza cookie e senza tracker</span>{{ end }}
     </div>
   </div>
 </footer>

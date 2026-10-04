@@ -75,6 +75,18 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
   scheda Google Business Profile aggiornata con il sito, richiedere link
   dai siti di Comune di Ariccia, Confederazione Misericordie, ASL Roma 6.
 
+## Versione inglese (`/en/`)
+
+- Ogni pagina in `content/en/` dichiara la sua pagina italiana nel front matter
+  con `traduzione: "/percorso"` (es. `en/formazione.md` → `"/servizi/formazione"`):
+  da lì hreflang e selettore 🌐 collegano le due versioni (`partials/controparte.html`).
+- Nelle pagine `/en/` menu (`[[menus.en]]` in `hugo.toml`), annunci (solo voci
+  con `testo_en` in `data/annunci.yaml`), footer, briciole e strumenti JS
+  (accessibilità, ricerca, lettura vocale, modulo trasporti) sono in inglese.
+  La lingua si legge da `partials/lingua.html` (template) e da `<html lang>` (JS).
+- Quando si cambia un testo importante in italiano (costi, privacy, bandi),
+  aggiornare anche la pagina inglese corrispondente.
+
 ## Riferimenti della Confederazione
 
 - **Giallo Ciano** (rivista nazionale): pagina `/giallo-ciano/`, dati in

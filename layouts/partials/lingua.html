@@ -1,0 +1,9 @@
+{{- /* Lingua della pagina: italiano di default; inglese in /en/, rumeno e
+     spagnolo nelle pagine riassuntive. Un front matter "lingua" ha la precedenza.
+     Uso: {{ $lingua := partial "lingua.html" . }} — usata da baseof, header, footer… */ -}}
+{{- $lingua := "it" }}
+{{- if .Params.lingua }}{{ $lingua = .Params.lingua }}
+{{- else if hasPrefix .RelPermalink "/en/" }}{{ $lingua = "en" }}
+{{- else if eq .RelPermalink "/ro/" }}{{ $lingua = "ro" }}
+{{- else if eq .RelPermalink "/es/" }}{{ $lingua = "es" }}{{ end }}
+{{- return $lingua -}}

@@ -9,21 +9,36 @@
   var URL_INDICE = document.currentScript && document.currentScript.dataset.indice
     ? document.currentScript.dataset.indice : "index.json";
 
+  /* Testi: inglese nelle pagine /en/ (<html lang="en">). L'indice resta unico:
+     nelle pagine inglesi le pagine /en/ vengono prima. */
+  var EN = document.documentElement.lang === "en";
+  var T = EN ? {
+    titolo: "Search the site", segnaposto: "Search the site…", chiudi: "Close search",
+    suggerimento: "Tip: try “transport”, “volunteer”, “5x1000”, “civil service”.",
+    vuoto: "Type a word to search the site’s pages.", caricamento: "Loading…",
+    nessuno: function (q) { return "No results for “" + q + "”. Try another word."; }
+  } : {
+    titolo: "Cerca nel sito", segnaposto: "Cerca nel sito…", chiudi: "Chiudi la ricerca",
+    suggerimento: "Suggerimento: prova con “trasporto”, “volontario”, “5x1000”, “servizio civile”.",
+    vuoto: "Scrivi una parola per cercare tra le pagine del sito.", caricamento: "Caricamento…",
+    nessuno: function (q) { return "Nessun risultato per «" + q + "». Prova con un'altra parola."; }
+  };
+
   /* Overlay */
   var overlay = document.createElement("div");
   overlay.className = "cerca-overlay";
   overlay.id = "cerca-overlay";
   overlay.innerHTML =
-    '<div class="cerca-box" role="dialog" aria-label="Cerca nel sito" aria-modal="true">' +
+    '<div class="cerca-box" role="dialog" aria-label="' + T.titolo + '" aria-modal="true">' +
       '<div class="cerca-testata">' +
         '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">' +
           '<circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>' +
-        '<input id="cerca-input" type="search" autocomplete="off" placeholder="Cerca nel sito…" ' +
-          'aria-label="Cerca nel sito" aria-controls="cerca-risultati">' +
-        '<button type="button" class="cerca-chiudi" aria-label="Chiudi la ricerca">×</button>' +
+        '<input id="cerca-input" type="search" autocomplete="off" placeholder="' + T.segnaposto + '" ' +
+          'aria-label="' + T.titolo + '" aria-controls="cerca-risultati">' +
+        '<button type="button" class="cerca-chiudi" aria-label="' + T.chiudi + '">×</button>' +
       '</div>' +
       '<div class="cerca-risultati" id="cerca-risultati" role="listbox"></div>' +
-      '<p class="cerca-suggerimento">Suggerimento: prova con “trasporto”, “volontario”, “5x1000”, “servizio civile”.</p>' +
+      '<p class="cerca-suggerimento">' + T.suggerimento + '</p>' +
     '</div>';
 
   var input, risultati, chiudiBtn;
@@ -80,8 +95,8 @@
 
   function cerca(q) {
     var termini = normalizza(q).split(/\s+/).filter(Boolean);
-    if (!termini.length) { mostraVuoto("Scrivi una parola per cercare tra le pagine del sito."); return; }
-    if (!indice) { mostraVuoto("Caricamento…"); return; }
+    if (!termini.length) { mostraVuoto(T.vuoto); return; }
+    if (!indice) { mostraVuoto(T.caricamento); return; }
 
     var trovati = indice.map(function (p) {
       var fascio = normalizza((p.title || "") + " " + (p.section || "") + " " + (p.content || ""));
@@ -96,12 +111,14 @@
       /* Prima le pagine operative (servizi, richieste, contatti), poi le notizie:
          cercando «trasporto» deve uscire «Richiedi un trasporto», non una news. */
       if (punteggio > 0 && p.section !== "news") punteggio += 4;
+      /* Pagine nella lingua di chi cerca prima delle altre */
+      if (punteggio > 0 && (p.section === "en") === EN) punteggio += 3;
       return { p: p, punteggio: punteggio };
     }).filter(function (x) { return x.punteggio > 0; })
       .sort(function (a, b) { return b.punteggio - a.punteggio; })
       .slice(0, 12);
 
-    if (!trovati.length) { mostraVuoto("Nessun risultato per «" + q + "». Prova con un'altra parola."); return; }
+    if (!trovati.length) { mostraVuoto(T.nessuno(q)); return; }
 
     risultati.innerHTML = trovati.map(function (x) {
       var p = x.p;
@@ -114,7 +131,11 @@
   }
 
   function mostraVuoto(msg) {
-    risultati.innerHTML = '<p class="cerca-vuoto">' + msg + '</p>';
+    var p = document.createElement("p");
+    p.className = "cerca-vuoto";
+    p.textContent = msg; // il messaggio può contenere ciò che si è scritto: niente HTML
+    risultati.innerHTML = "";
+    risultati.appendChild(p);
   }
 
   function apri() {
@@ -122,7 +143,7 @@
     document.body.style.overflow = "hidden";
     caricaIndice().then(function () { if (input.value.trim()) cerca(input.value); });
     setTimeout(function () { input.focus(); }, 30);
-    if (!input.value.trim()) mostraVuoto("Scrivi una parola per cercare tra le pagine del sito.");
+    if (!input.value.trim()) mostraVuoto(T.vuoto);
   }
   function chiudi() {
     overlay.classList.remove("aperto");

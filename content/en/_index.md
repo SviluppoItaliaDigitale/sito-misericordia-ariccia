@@ -1,4 +1,5 @@
 ---
+traduzione: "/"
 title: "English"
 description: "The Confraternita di Misericordia di Ariccia ODV: volunteer-run health transport, food bank, listening centre, first-aid training and civil service in the Castelli Romani, near Rome, since 1994."
 ---

@@ -9,7 +9,7 @@
         var orig = btn.getAttribute("data-label") || btn.textContent;
         if (!btn.getAttribute("data-label")) btn.setAttribute("data-label", orig);
         btn.classList.add("copiato");
-        btn.textContent = "✓ Copiato!";
+        btn.textContent = document.documentElement.lang === "en" ? "✓ Copied!" : "✓ Copiato!";
         setTimeout(function () {
           btn.classList.remove("copiato");
           btn.textContent = btn.getAttribute("data-label");
@@ -33,7 +33,7 @@
       document.body.removeChild(ta);
       esito();
     } catch (e) {
-      alert("Copia manuale: " + testo);
+      alert((document.documentElement.lang === "en" ? "Copy manually: " : "Copia manuale: ") + testo);
     }
   }
 })();

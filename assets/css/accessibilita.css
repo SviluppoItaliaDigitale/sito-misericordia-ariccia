@@ -334,6 +334,7 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible,
   content: "♿ Leggi in modo accessibile:"; font-size: .82rem; font-weight: 700;
   color: var(--mise-ciano-testo); margin-right: 4px;
 }
+html[lang="en"] .lettura-tools::before { content: "♿ Accessible reading:"; }
 .lt-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: #fff; border: 2px solid var(--mise-ciano); color: var(--mise-ciano-testo);

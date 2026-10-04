@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-{{- /* Lingua della pagina: italiano di default; inglese in /en/, rumeno e
-     spagnolo nelle pagine riassuntive. Un front matter "lingua" ha la precedenza. */ -}}
-{{- $lingua := "it" }}
-{{- if .Params.lingua }}{{ $lingua = .Params.lingua }}
-{{- else if hasPrefix .RelPermalink "/en/" }}{{ $lingua = "en" }}
-{{- else if eq .RelPermalink "/ro/" }}{{ $lingua = "ro" }}
-{{- else if eq .RelPermalink "/es/" }}{{ $lingua = "es" }}{{ end }}
+{{- /* Lingua della pagina (it, en in /en/, ro, es): vedi partials/lingua.html.
+     Nelle pagine inglesi anche menu, footer e strumenti sono in inglese. */ -}}
+{{- $lingua := partial "lingua.html" . }}
+{{- $en := eq $lingua "en" }}
 <html lang="{{ $lingua }}">
 <head>
   <meta charset="utf-8">
@@ -22,21 +19,14 @@
   <meta name="author" content="Confraternita di Misericordia di Ariccia ODV">
   <meta name="geo.region" content="IT-RM">
   <meta name="geo.placename" content="Ariccia">
-  {{- /* hreflang: collega le versioni italiana e inglese quando esistono.
-       Le pagine inglesi vivono in /en/ con lo stesso nome file. */ -}}
-  {{ $coppia := "" }}
-  {{ if .IsHome }}{{ $coppia = site.GetPage "/en" }}
-  {{ else if eq .RelPermalink "/en/" }}{{ $coppia = site.Home }}
-  {{ else if .File }}
-    {{ if hasPrefix .RelPermalink "/en/" }}{{ $coppia = site.GetPage (printf "/%s" .File.ContentBaseName) }}
-    {{ else }}{{ $coppia = site.GetPage (printf "/en/%s" .File.ContentBaseName) }}{{ end }}
-  {{ end }}
-  {{ with $coppia }}
-    {{ $it := cond (hasPrefix $.RelPermalink "/en/") .Permalink $.Permalink }}
-    {{ $en := cond (hasPrefix $.RelPermalink "/en/") $.Permalink .Permalink }}
-  <link rel="alternate" hreflang="it" href="{{ $it }}">
-  <link rel="alternate" hreflang="en" href="{{ $en }}">
-  <link rel="alternate" hreflang="x-default" href="{{ $it }}">
+  {{- /* hreflang: collega le versioni italiana e inglese quando esistono
+       (campo "traduzione" delle pagine in content/en/, vedi partials/controparte.html). */ -}}
+  {{ with partial "controparte.html" . }}
+    {{ $urlIt := cond (hasPrefix $.RelPermalink "/en/") .Permalink $.Permalink }}
+    {{ $urlEn := cond (hasPrefix $.RelPermalink "/en/") $.Permalink .Permalink }}
+  <link rel="alternate" hreflang="it" href="{{ $urlIt }}">
+  <link rel="alternate" hreflang="en" href="{{ $urlEn }}">
+  <link rel="alternate" hreflang="x-default" href="{{ $urlIt }}">
   {{ end }}
   <link rel="alternate" type="application/rss+xml" title="Notizie della Misericordia di Ariccia" href="{{ "news/index.xml" | absURL }}">
   <meta name="theme-color" content="#00a5dc">
@@ -143,9 +133,9 @@
   {{ end }}
   {{- /* Briciole di pane per i motori di ricerca (BreadcrumbList) */ -}}
   {{ if not .IsHome }}
-  {{ $briciole := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) }}
+  {{ $briciole := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" (cond $en (absURL "en/") site.BaseURL)) }}
   {{ $pos := 2 }}
-  {{ with .Parent }}{{ if not .IsHome }}
+  {{ with .Parent }}{{ if not (or .IsHome (and $en (eq .RelPermalink "/en/"))) }}
     {{ $briciole = $briciole | append (dict "@type" "ListItem" "position" $pos "name" .Title "item" .Permalink) }}
     {{ $pos = 3 }}
   {{ end }}{{ end }}
@@ -250,7 +240,7 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <a class="skip-link" href="#contenuto">{{ cond $en "Skip to content" "Vai al contenuto" }}</a>
   {{ partial "header.html" . }}
   <main id="contenuto">
     {{ if not .IsHome }}
@@ -277,10 +267,10 @@
   {{ partial "footer.html" . }}
 
   <!-- Torna su -->
-  <button id="torna-su" type="button" aria-label="Torna all'inizio della pagina">↑</button>
+  <button id="torna-su" type="button" aria-label="{{ cond $en "Back to top" "Torna all'inizio della pagina" }}">↑</button>
 
   <!-- Contatto rapido WhatsApp (numero servizi) -->
-  <a id="whatsapp-flot" href="https://wa.me/393484068657" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp" data-bs-toggle="tooltip" data-bs-title="Scrivici su WhatsApp">
+  <a id="whatsapp-flot" href="https://wa.me/393484068657" target="_blank" rel="noopener" aria-label="{{ cond $en "Message us on WhatsApp" "Scrivici su WhatsApp" }}" data-bs-toggle="tooltip" data-bs-title="{{ cond $en "Message us on WhatsApp" "Scrivici su WhatsApp" }}">
     <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false">
       <path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 27l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C6.4 9.7 10.7 5.4 16 5.4S25.6 9.7 25.6 15 21.3 24.8 16 24.8zm5.4-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/>
     </svg>
@@ -294,7 +284,7 @@
           <img src="" alt="" class="img-fluid rounded">
           <p class="modal-didascalia text-white mt-2 mb-0"></p>
         </div>
-        <button type="button" class="btn-close btn-close-white lightbox-chiudi" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        <button type="button" class="btn-close btn-close-white lightbox-chiudi" data-bs-dismiss="modal" aria-label="{{ cond $en "Close" "Chiudi" }}"></button>
       </div>
     </div>
   </div>

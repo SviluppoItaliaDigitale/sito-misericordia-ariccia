@@ -1,0 +1,17 @@
+{{- /* La stessa pagina nell'altra lingua (italiano ↔ inglese), o "" se non c'è.
+     Ogni pagina in content/en/ dichiara la sua pagina italiana nel front matter
+     con `traduzione: "/percorso"`; per le pagine italiane si cerca la pagina
+     inglese che le dichiara. Usata dal selettore lingua e dagli hreflang. */ -}}
+{{- $altra := "" }}
+{{- if hasPrefix .RelPermalink "/en/" }}
+  {{- with .Params.traduzione }}{{ $altra = site.GetPage . }}{{ end }}
+{{- else }}
+  {{- $qui := . }}
+  {{- with site.GetPage "/en" }}
+    {{- if $qui.IsHome }}{{ $altra = . }}
+    {{- else }}
+      {{- range .Pages }}{{ $en := . }}{{ with .Params.traduzione }}{{ if eq (site.GetPage .) $qui }}{{ $altra = $en }}{{ end }}{{ end }}{{ end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $altra -}}

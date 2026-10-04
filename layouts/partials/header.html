@@ -1,17 +1,30 @@
 <!-- Barra annunci (stile Confederazione): messaggi a rotazione.
-     Le voci vengono da data/annunci.yaml; quelle SCADUTE (campo "al" passato) non si mostrano. -->
+     Le voci vengono da data/annunci.yaml; quelle SCADUTE (campo "al" passato) non si mostrano.
+     Nelle pagine inglesi (/en/) compaiono solo le voci con "testo_en". -->
+{{- /* Pagine inglesi: menu "en" di hugo.toml e testi dell'interfaccia in inglese.
+     $altra = la stessa pagina nell'altra lingua, se esiste (per il selettore). */ -}}
+{{ $en := eq (partial "lingua.html" .) "en" }}
+{{ $nomeMenu := cond $en "en" "main" }}
+{{ $menu := index site.Menus $nomeMenu }}
+{{ $altra := partial "controparte.html" . }}
+{{- /* Titolo della pagina corrispondente nel selettore; non per le due home */ -}}
+{{ $titoloAltra := "" }}
+{{ with $altra }}{{ if not (or .IsHome (eq .RelPermalink "/en/")) }}{{ $titoloAltra = .Title }}{{ end }}{{ end }}
 {{ $oggi := now }}
 {{ $voci := slice }}
 {{ range site.Data.annunci.voci }}
-  {{ if or (not .al) (gt (time.AsTime .al) $oggi) }}{{ $voci = $voci | append . }}{{ end }}
+  {{ if and (or (not .al) (gt (time.AsTime .al) $oggi)) (or (not $en) .testo_en) }}{{ $voci = $voci | append . }}{{ end }}
 {{ end }}
 {{ if $voci }}
-<div class="barra-annunci" aria-label="Annunci in evidenza">
+<div class="barra-annunci" aria-label="{{ cond $en "Announcements" "Annunci in evidenza" }}">
   <div id="annunci" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-inner container text-center">
       {{ range $i, $v := $voci }}
       <div class="carousel-item{{ if eq $i 0 }} active{{ end }}">
-        <span aria-hidden="true">➜</span> {{ $v.testo | safeHTML }}{{ if $v.cf }} C.F. {{ site.Params.codiceFiscale }}{{ end }}{{ if $v.tel }} <a href="tel:+39{{ replace site.Params.telefono " " "" }}"><strong>{{ site.Params.telefono }}</strong></a>{{ end }}{{ if $v.link }} — <a href="{{ $v.link | relURL }}">{{ $v.linkTesto }}</a>{{ end }}
+        {{- $testo := cond $en $v.testo_en $v.testo }}
+        {{- $link := cond (and $en $v.link_en) $v.link_en $v.link }}
+        {{- $linkTesto := cond (and $en $v.linkTesto_en) $v.linkTesto_en $v.linkTesto }}
+        <span aria-hidden="true">➜</span> {{ $testo | safeHTML }}{{ if $v.cf }} {{ cond $en "Tax code" "C.F." }} {{ site.Params.codiceFiscale }}{{ end }}{{ if $v.tel }} <a href="tel:+39{{ replace site.Params.telefono " " "" }}"><strong>{{ cond $en "+39 " "" }}{{ site.Params.telefono }}</strong></a>{{ end }}{{ if $link }} — <a href="{{ $link | relURL }}">{{ $linkTesto }}</a>{{ end }}
       </div>
       {{ end }}
     </div>
@@ -19,9 +32,9 @@
 </div>
 {{ end }}
 
-<nav class="navbar navbar-expand-xl navbar-mise sticky-top" aria-label="Navigazione principale">
+<nav class="navbar navbar-expand-xl navbar-mise sticky-top" aria-label="{{ cond $en "Main navigation" "Navigazione principale" }}">
   <div class="container">
-    <a class="navbar-brand" href="{{ "/" | relURL }}">
+    <a class="navbar-brand" href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">
       <picture>
         <source srcset="{{ "img/loghi/mise-triangolo-128.webp" | relURL }}" type="image/webp">
         <img class="brand-mark" src="{{ "img/loghi/mise-triangolo-128.png" | relURL }}"
@@ -30,7 +43,7 @@
       <span>Misericordia di Ariccia</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile"
-            aria-controls="menuMobile" aria-label="Apri il menu">
+            aria-controls="menuMobile" aria-label="{{ cond $en "Open the menu" "Apri il menu" }}">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -38,30 +51,31 @@
     <div class="collapse navbar-collapse d-none d-xl-block">
       <ul class="navbar-nav ms-auto align-items-lg-center">
         {{ $pagina := . }}
-        {{ range site.Menus.main }}
+        {{ range $menu }}
         {{ if .HasChildren }}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle{{ if $pagina.HasMenuCurrent "main" . }} active{{ end }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
+          <a class="nav-link dropdown-toggle{{ if $pagina.HasMenuCurrent $nomeMenu . }} active{{ end }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
           <ul class="dropdown-menu dropdown-menu-mise">
             {{ range .Children }}
-            <li><a class="dropdown-item{{ if $pagina.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            <li><a class="dropdown-item{{ if $pagina.IsMenuCurrent $nomeMenu . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
             {{ end }}
           </ul>
         </li>
         {{ else }}
         <li class="nav-item">
-          <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+          <a class="nav-link{{ if or ($pagina.IsMenuCurrent $nomeMenu .) ($pagina.HasMenuCurrent $nomeMenu .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
         </li>
         {{ end }}
         {{ end }}
         <li class="nav-item dropdown ms-lg-2">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Scegli la lingua">🌐 Lingua</a>
+          <a class="nav-link dropdown-toggle lingua-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ cond $en "Choose a language" "Scegli la lingua" }}">🌐 {{ cond $en "Language" "Lingua" }}</a>
           <ul class="dropdown-menu dropdown-menu-mise dropdown-menu-end">
-            <li><a class="dropdown-item" href="{{ "/en/" | relURL }}">🇬🇧 English (curated)</a></li>
+            {{ if $en }}<li><a class="dropdown-item" lang="it" hreflang="it" href="{{ with $altra }}{{ .RelPermalink }}{{ else }}{{ "/" | relURL }}{{ end }}">🇮🇹 Italiano{{ with $titoloAltra }} — {{ . }}{{ end }}</a></li>
+            {{ else }}<li><a class="dropdown-item" lang="en" hreflang="en" href="{{ with $altra }}{{ .RelPermalink }}{{ else }}{{ "/en/" | relURL }}{{ end }}">🇬🇧 English{{ with $titoloAltra }} — {{ . }}{{ else }} (curated){{ end }}</a></li>{{ end }}
             <li><a class="dropdown-item" href="{{ "/ro/" | relURL }}">🇷🇴 Română (rezumat)</a></li>
             <li><a class="dropdown-item" href="{{ "/es/" | relURL }}">🇪🇸 Español (resumen)</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Traduzione automatica</h6></li>
+            <li><h6 class="dropdown-header">{{ cond $en "Automatic translation" "Traduzione automatica" }}</h6></li>
             <li><a class="dropdown-item" data-tl="en" href="#">English</a></li>
             <li><a class="dropdown-item" data-tl="fr" href="#">Français</a></li>
             <li><a class="dropdown-item" data-tl="ro" href="#">Română</a></li>
@@ -73,13 +87,13 @@
           </ul>
         </li>
         <li class="nav-item ms-lg-2">
-          <button type="button" class="cerca-btn" data-cerca-apri aria-label="Cerca nel sito">
+          <button type="button" class="cerca-btn" data-cerca-apri aria-label="{{ cond $en "Search the site" "Cerca nel sito" }}">
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-            <span>Cerca</span>
+            <span>{{ cond $en "Search" "Cerca" }}</span>
           </button>
         </li>
         <li class="nav-item ms-lg-2">
-          <a class="btn btn-giallo btn-sm px-3" href="{{ "/sostienici/" | relURL }}">Sostienici</a>
+          <a class="btn btn-giallo btn-sm px-3" href="{{ cond $en ("/en/sostienici/" | relURL) ("/sostienici/" | relURL) }}">{{ cond $en "Support us" "Sostienici" }}</a>
         </li>
         <li class="nav-item ms-lg-2" aria-hidden="true">
           <picture>
@@ -97,35 +111,36 @@
 <div class="offcanvas offcanvas-end offcanvas-mise" tabindex="-1" id="menuMobile" aria-labelledby="menuMobileTitolo">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="menuMobileTitolo">Misericordia di Ariccia</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Chiudi il menu"></button>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="{{ cond $en "Close the menu" "Chiudi il menu" }}"></button>
   </div>
   <div class="offcanvas-body">
     <ul class="navbar-nav">
       {{ $pagina := . }}
-      <li class="nav-item"><a class="nav-link{{ if $pagina.IsHome }} active{{ end }}" href="{{ "/" | relURL }}">Home</a></li>
-      {{ range site.Menus.main }}
+      <li class="nav-item"><a class="nav-link{{ if or $pagina.IsHome (eq $pagina.RelPermalink "/en/") }} active{{ end }}" href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
+      {{ range $menu }}
       {{ if .HasChildren }}
       <li class="nav-item">
         <span class="nav-link sottomenu-titolo">{{ .Name }}</span>
         <ul class="navbar-nav sottomenu">
           {{ range .Children }}
-          <li class="nav-item"><a class="nav-link{{ if $pagina.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          <li class="nav-item"><a class="nav-link{{ if $pagina.IsMenuCurrent $nomeMenu . }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </li>
       {{ else }}
       <li class="nav-item">
-        <a class="nav-link{{ if or ($pagina.IsMenuCurrent "main" .) ($pagina.HasMenuCurrent "main" .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+        <a class="nav-link{{ if or ($pagina.IsMenuCurrent $nomeMenu .) ($pagina.HasMenuCurrent $nomeMenu .) }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
       </li>
       {{ end }}
       {{ end }}
     </ul>
     <div class="lingue-mobile mt-3">
-      <p class="mb-1 sottomenu-titolo">🌐 Lingua</p>
-      <a class="nav-link" href="{{ "/en/" | relURL }}">🇬🇧 English (curated)</a>
+      <p class="mb-1 sottomenu-titolo">🌐 {{ cond $en "Language" "Lingua" }}</p>
+      {{ if $en }}<a class="nav-link" lang="it" hreflang="it" href="{{ with $altra }}{{ .RelPermalink }}{{ else }}{{ "/" | relURL }}{{ end }}">🇮🇹 Italiano{{ with $titoloAltra }} — {{ . }}{{ end }}</a>
+      {{ else }}<a class="nav-link" lang="en" hreflang="en" href="{{ with $altra }}{{ .RelPermalink }}{{ else }}{{ "/en/" | relURL }}{{ end }}">🇬🇧 English{{ with $titoloAltra }} — {{ . }}{{ else }} (curated){{ end }}</a>{{ end }}
       <a class="nav-link" href="{{ "/ro/" | relURL }}">🇷🇴 Română (rezumat)</a>
       <a class="nav-link" href="{{ "/es/" | relURL }}">🇪🇸 Español (resumen)</a>
-      <p class="mb-1 mt-2 lingue-auto-tit">Traduzione automatica:</p>
+      <p class="mb-1 mt-2 lingue-auto-tit">{{ cond $en "Automatic translation:" "Traduzione automatica:" }}</p>
       <p class="lingue-auto mb-0">
         <a data-tl="en" href="#">English</a> ·
         <a data-tl="fr" href="#">Français</a> ·
@@ -139,12 +154,12 @@
     </div>
     <button type="button" class="cerca-btn cerca-btn--mobile" data-cerca-apri>
       <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-      <span>Cerca nel sito</span>
+      <span>{{ cond $en "Search the site" "Cerca nel sito" }}</span>
     </button>
-    <a class="btn btn-giallo w-100 mt-3" href="{{ "/sostienici/" | relURL }}">Sostienici — 5x1000</a>
+    <a class="btn btn-giallo w-100 mt-3" href="{{ cond $en ("/en/sostienici/" | relURL) ("/sostienici/" | relURL) }}">{{ cond $en "Support us — 5x1000" "Sostienici — 5x1000" }}</a>
     <div class="mt-4 piccoli-contatti">
-      <p class="mb-1"><a href="tel:+39{{ replace site.Params.telefono " " "" }}">📞 {{ site.Params.telefono }}</a></p>
-      <p class="mb-1"><a href="https://wa.me/393484068657" target="_blank" rel="noopener">💬 WhatsApp 348 4068657</a></p>
+      <p class="mb-1"><a href="tel:+39{{ replace site.Params.telefono " " "" }}">📞 {{ cond $en "+39 " "" }}{{ site.Params.telefono }}</a></p>
+      <p class="mb-1"><a href="https://wa.me/393484068657" target="_blank" rel="noopener">💬 WhatsApp {{ cond $en "+39 " "" }}348 4068657</a></p>
       <p class="mb-0"><a href="mailto:{{ site.Params.email }}">✉️ {{ site.Params.email }}</a></p>
     </div>
   </div>

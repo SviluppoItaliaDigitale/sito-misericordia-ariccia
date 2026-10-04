@@ -1,4 +1,5 @@
 ---
+traduzione: "/dossier/le-opere-di-misericordia"
 title: "The Works of Mercy"
 summary: "Fourteen concrete acts of charity — seven for the body, seven for the soul — that give our name its meaning."
 weight: 130

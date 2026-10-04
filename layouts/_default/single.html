@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
     {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}
@@ -8,10 +9,11 @@
 </div>
 <div class="pagina-corpo">
   <div class="container py-5">
-    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+    <nav aria-label="{{ cond $en "Breadcrumb" "Percorso" }}" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
-        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
-        {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
+        {{- /* Pagine inglesi: «Home» è la home inglese (/en/), che quindi non si ripete */}}
+        <li class="breadcrumb-item"><a href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
+        {{ with .Parent }}{{ if not (or .IsHome (and $en (eq .RelPermalink "/en/"))) }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>

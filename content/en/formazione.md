@@ -1,4 +1,5 @@
 ---
+traduzione: "/servizi/formazione"
 title: "Training"
 summary: "First-aid, rescuer, BLSD and paediatric-BLSD courses, and emergency-vehicle drivers."
 weight: 180

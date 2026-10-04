@@ -1,4 +1,5 @@
 ---
+traduzione: "/storia-e-tradizione"
 title: "Story & tradition"
 summary: "The Misericordie: almost eight centuries of charity, from Florence in 1244 to today's volunteering."
 weight: 110

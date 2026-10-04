@@ -96,8 +96,8 @@ a:hover { color: var(--mise-navy); }
   .navbar-mise .brand-mark { height: 2.3rem; }
   .navbar-mise .nav-link { font-size: .86rem; padding-inline: .38rem; }
   .navbar-mise .nav-item[aria-hidden="true"] { display: none !important; }
-  .navbar-mise .nav-link[aria-label="Scegli la lingua"] { font-size: 0; }
-  .navbar-mise .nav-link[aria-label="Scegli la lingua"]::before { content: "🌐"; font-size: 1rem; }
+  .navbar-mise .lingua-toggle { font-size: 0; }
+  .navbar-mise .lingua-toggle::before { content: "🌐"; font-size: 1rem; }
   .navbar-mise .cerca-btn { padding: .3rem .55rem; }
   .navbar-mise .cerca-btn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .navbar-mise .nav-item.ms-lg-2 { margin-left: .3rem !important; }
