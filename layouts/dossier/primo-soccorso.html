@@ -3,6 +3,7 @@
      riconosci, fare[], nonfare[], opzionali riconosci_tit e dal); il video di ogni scheda è
      static/video/primo-soccorso-<id>.mp4 e compare (con il link all'articolo) solo dalla data "dal",
      a mezzanotte italiana: il rebuild notturno lo fa uscire insieme alla news. */ -}}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 {{ $arg := .Params.argomenti }}
 {{ $s2 := .Params.serie2_da }}
 {{ $nvideo := 0 }}
@@ -19,21 +20,21 @@
       <h1 class="dsr-titolo" data-split="words">{{ .Title }}</h1>
       {{ with .Params.sottotitolo }}<p class="dsr-sottotitolo" data-anim="fade-up" data-anim-delay="0.15">{{ . }}</p>{{ end }}
       <ul class="dsr-meta" data-anim="fade-up" data-anim-delay="0.3">
-        <li><strong>{{ len $arg }}</strong> schede</li>
-        <li><strong>{{ $nvideo }}</strong> video</li>
-        <li>linee guida <strong>ERC/IRC 2025</strong></li>
-        {{ with .Params.lettura }}<li>lettura {{ . }}</li>{{ end }}
+        <li><strong>{{ len $arg }}</strong> {{ cond $en "topics" "schede" }}</li>
+        <li><strong>{{ $nvideo }}</strong> video{{ if $en }}s (in Italian){{ end }}</li>
+        <li>{{ cond $en "guidelines" "linee guida" }} <strong>ERC/IRC 2025</strong></li>
+        {{ with .Params.lettura }}<li>{{ cond $en "reading time" "lettura" }} {{ . }}</li>{{ end }}
       </ul>
-      <p class="ps-cover-112" data-anim="fade-up" data-anim-delay="0.4">In ogni emergenza chiama il <a href="tel:112">112</a></p>
+      <p class="ps-cover-112" data-anim="fade-up" data-anim-delay="0.4">{{ cond $en "In any emergency call" "In ogni emergenza chiama il" }} <a href="tel:112">112</a></p>
       {{ with .Params.cover_cta }}
       <a class="dsr-cover-cta" href="{{ .ancora }}"><span>{{ .testo }}</span><span class="dsr-cover-freccia" aria-hidden="true">↓</span></a>
       {{ end }}
     </div>
   </header>
 
-  <nav class="dsr-indice" aria-label="Indice del dossier" data-dsr-indice>
+  <nav class="dsr-indice" aria-label="{{ cond $en "Dossier contents" "Indice del dossier" }}" data-dsr-indice>
     <div class="container dsr-indice-inner">
-      <span class="dsr-indice-eti" aria-hidden="true">Schede</span>
+      <span class="dsr-indice-eti" aria-hidden="true">{{ cond $en "Topics" "Schede" }}</span>
       <ul>
         {{ range $i, $a := $arg }}<li><a href="#{{ $a.id }}" class="dsr-indice-link">{{ add $i 1 }}. {{ $a.titolo }}</a></li>{{ end }}
       </ul>
@@ -52,33 +53,34 @@
       {{ $video := printf "video/primo-soccorso-%s.mp4" $a.id }}
       {{ $poster := printf "img/video/primo-soccorso-%s.jpg" $a.id }}
       {{ $uscito := or (not $a.dal) (not ((time.AsTime $a.dal "Europe/Rome").After now)) }}
-      {{ if eq $a.id $s2 }}<h2 class="ps-gruppo">Altre emergenze: dai neonati agli anziani</h2>{{ end }}
+      {{ if eq $a.id $s2 }}<h2 class="ps-gruppo">{{ cond $en "More emergencies: from newborns to older people" "Altre emergenze: dai neonati agli anziani" }}</h2>{{ end }}
       <section id="{{ $a.id }}" class="ps-scheda" aria-labelledby="titolo-{{ $a.id }}">
         <div class="ps-scheda-testo">
           <p class="ps-num" aria-hidden="true">{{ add $i 1 }}</p>
           <h2 id="titolo-{{ $a.id }}">{{ $a.titolo }}</h2>
           <p class="ps-motto">{{ $a.motto }}</p>
-          <h3>{{ $a.riconosci_tit | default "Come riconoscerlo" }}</h3>
+          <h3>{{ $a.riconosci_tit | default (cond $en "How to recognise it" "Come riconoscerlo") }}</h3>
           <p>{{ $a.riconosci | markdownify }}</p>
-          <h3>Cosa fare</h3>
+          <h3>{{ cond $en "What to do" "Cosa fare" }}</h3>
           <ol class="ps-fare">{{ range $a.fare }}<li>{{ . | markdownify }}</li>{{ end }}</ol>
           {{ with $a.nonfare }}
           <div class="ps-nonfare">
-            <h3>Cosa non fare</h3>
+            <h3>{{ cond $en "What not to do" "Cosa non fare" }}</h3>
             <ul>{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}</ul>
           </div>
           {{ end }}
         </div>
         {{ if and $uscito (fileExists (printf "static/%s" $video)) }}
         <figure class="ps-video video-riq video-riq--verticale">
-          <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: cosa fare passo passo">
+          <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: {{ cond $en "what to do, step by step" "cosa fare passo passo" }}">
             <source src="{{ $video | relURL }}" type="video/mp4">
-            Il tuo browser non riproduce i video: <a href="{{ $video | relURL }}">scarica il file</a>.
+            {{ cond $en "Your browser cannot play this video:" "Il tuo browser non riproduce i video:" }} <a href="{{ $video | relURL }}">{{ cond $en "download the file" "scarica il file" }}</a>.
           </video>
-          <figcaption>{{ $a.titolo }}: il video passo passo{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}">leggi l'articolo</a>{{ end }}{{ partial "credito-musica.html" $video }}</figcaption>
+          <figcaption>{{ $a.titolo }}: {{ cond $en "the step-by-step video (in Italian)" "il video passo passo" }}{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}"{{ if $en }} lang="it" hreflang="it"{{ end }}>{{ cond $en "read the article (Italian)" "leggi l'articolo" }}</a>{{ end }}{{ partial "credito-musica.html" (dict "src" $video "en" $en) }}</figcaption>
         </figure>
         {{ else if $a.dal }}
-        <p class="ps-video-presto">Il video con i disegni animati esce il <strong>{{ (time.AsTime $a.dal "Europe/Rome") | time.Format "2 January" }}</strong>.</p>
+        {{ if $en }}<p class="ps-video-presto">The animated video (in Italian) comes out on <strong>{{ (time.AsTime $a.dal "Europe/Rome").Format "2 January" }}</strong>.</p>
+        {{ else }}<p class="ps-video-presto">Il video con i disegni animati esce il <strong>{{ (time.AsTime $a.dal "Europe/Rome") | time.Format "2 January" }}</strong>.</p>{{ end }}
         {{ end }}
       </section>
       {{ end }}
@@ -87,6 +89,15 @@
 
   <section id="impara" class="ps-impara">
     <div class="container">
+      {{ if $en }}
+      <h2>Learn with your own hands</h2>
+      <p>These pages are general information and <strong>are no substitute for a course</strong>. You only really learn the techniques by practising, with an instructor beside you: we run first-aid, BLSD and paediatric BLSD courses open to everyone, including companies, schools and associations (courses are held in Italian).</p>
+      <div class="sost-azioni">
+        <a class="btn btn-giallo px-4" href="{{ "/en/formazione/" | relURL }}">Our courses</a>
+        <a class="btn btn-ciano px-4" href="tel:+393484068657">Call +39 348 4068657</a>
+      </div>
+      <p class="ps-fonte">Sources: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener" lang="it" hreflang="it">2025 CPR guidelines, Italian Resuscitation Council</a> (chapter 4 “Adult BLS” and chapter 12 “First aid”) and <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, 2025 guidelines</a> (paediatric life support and first aid). Content by the Misericordia di Ariccia.</p>
+      {{ else }}
       <h2>Impara con le tue mani</h2>
       <p>Queste schede sono informazioni generali e <strong>non sostituiscono un corso</strong>. Le manovre si imparano davvero solo provando, con un istruttore accanto: organizziamo corsi di primo soccorso, BLSD e P-BLSD aperti a tutti, anche per aziende, scuole e associazioni.</p>
       <div class="sost-azioni">
@@ -94,6 +105,7 @@
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Chiama il 348 4068657</a>
       </div>
       <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.</p>
+      {{ end }}
     </div>
   </section>
 </article>

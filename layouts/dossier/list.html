@@ -1,7 +1,8 @@
 {{ define "main" }}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
-    <p class="occhiello mb-1" data-anim="fade-up">Approfondimenti</p>
+    <p class="occhiello mb-1" data-anim="fade-up">{{ cond $en "In depth" "Approfondimenti" }}</p>
     <h1 data-split="words">{{ .Title }}</h1>
   </div>
 </div>
@@ -14,7 +15,7 @@
         {{ with .Params.occhiello }}<span class="dsr-elenco-occhiello">{{ . }}</span>{{ end }}
         <h2 class="dsr-elenco-titolo">{{ .Title }}</h2>
         <p class="dsr-elenco-testo">{{ with .Params.sottotitolo }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}</p>
-        <span class="dsr-elenco-apri">Apri il dossier →</span>
+        <span class="dsr-elenco-apri">{{ cond $en "Open the dossier →" "Apri il dossier →" }}</span>
       </a>
       {{ end }}
     </div>

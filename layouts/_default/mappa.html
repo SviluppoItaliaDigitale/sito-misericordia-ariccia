@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
     <h1 data-split="words">{{ .Title }}</h1>
@@ -6,13 +7,32 @@
 </div>
 <div class="pagina-corpo">
   <div class="container py-5">
-    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+    <nav aria-label="{{ cond $en "Breadcrumb" "Percorso" }}" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
-        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
     <div class="contenuto" data-anim-group>
+      {{ if $en }}
+      {{- /* Mappa inglese: solo le pagine in /en/, in automatico */}}
+      {{ with .Content }}{{ . }}{{ else }}<p>All the English pages of the site. Looking for something specific? Use the <strong>Search</strong> button at the top.</p>{{ end }}
+      {{ with site.GetPage "/en" }}
+      <h2>Main pages</h2>
+      <ul>
+        <li><a href="{{ .RelPermalink }}">Home</a></li>
+        {{ range .RegularPages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+      </ul>
+      {{ range .Sections }}
+      <h2>{{ .Title }}</h2>
+      <ul>
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ range .RegularPages }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+      </ul>
+      {{ end }}
+      {{ end }}
+      <p class="mt-4">News articles and the daily liturgy are only in Italian: see the <a href="{{ "/mappa-del-sito/" | relURL }}" lang="it" hreflang="it">Italian site map</a>, or read any page in your language with the <strong>🌐 Language</strong> menu. For search engines there is also the <a href="{{ "/sitemap.xml" | relURL }}">sitemap.xml</a>.</p>
+      {{ else }}
 
       <p>Tutte le pagine del sito, organizzate per sezione. Cerchi qualcosa in particolare? Usa il pulsante <strong>Cerca</strong> in alto.</p>
 
@@ -40,6 +60,7 @@
       {{ end }}
 
       <p class="mt-4">Per i motori di ricerca è disponibile anche la <a href="{{ "/sitemap.xml" | relURL }}">sitemap.xml</a>. Ogni pagina può inoltre essere letta in un'altra lingua dal menù <strong>🌐 Lingua</strong>.</p>
+      {{ end }}
     </div>
   </div>
 </div>

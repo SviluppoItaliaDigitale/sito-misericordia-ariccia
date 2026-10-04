@@ -81,6 +81,22 @@
   var form = document.getElementById("form-eventi");
   if (!form) return;
 
+  /* Pagina inglese (/en/assistenza-eventi/): messaggio con etichette in inglese */
+  var EN = document.documentElement.lang === "en";
+  var T = EN ? {
+    manca: "Please enter at least your name and phone number, so we can call you back.",
+    intro: "Request for event medical cover from the website (English page)",
+    nome: "Name", tel: "Phone", ente: "Organisation or association", evento: "Type of event",
+    data: "Date", orario: "Times", luogo: "Venue", partecipanti: "Expected attendance", note: "Notes",
+    fine: "I look forward to your quote. Thank you.", oggetto: "Event medical cover request - "
+  } : {
+    manca: "Per favore inserisci almeno nome e telefono, così possiamo richiamarti.",
+    intro: "Richiesta di assistenza sanitaria per evento dal sito",
+    nome: "Nome e cognome", tel: "Telefono", ente: "Ente o associazione", evento: "Tipo di evento",
+    data: "Data", orario: "Orario", luogo: "Luogo", partecipanti: "Partecipanti stimati", note: "Note",
+    fine: "Attendo un preventivo. Grazie.", oggetto: "Richiesta assistenza evento - "
+  };
+
   var DEST = "sede@misericordia-ariccia.it";
   var WA = "393484068657";
 
@@ -94,28 +110,28 @@
 
     var nome = val("nome"), tel = val("tel");
     if (!nome || !tel) {
-      alert("Per favore inserisci almeno nome e telefono, così possiamo richiamarti.");
+      alert(T.manca);
       (nome ? form.elements.tel : form.elements.nome).focus();
       return;
     }
 
     var righe = [
-      "Richiesta di assistenza sanitaria per evento dal sito",
+      T.intro,
       "",
-      "Nome e cognome: " + nome,
-      "Telefono: " + tel,
-      "Ente o associazione: " + (val("ente") || "-"),
-      "Tipo di evento: " + (val("evento") || "-"),
-      "Data: " + (val("data") || "-"),
-      "Orario: " + (val("orario") || "-"),
-      "Luogo: " + (val("luogo") || "-"),
-      "Partecipanti stimati: " + (val("partecipanti") || "-"),
-      "Note: " + (val("note") || "-"),
+      T.nome + ": " + nome,
+      T.tel + ": " + tel,
+      T.ente + ": " + (val("ente") || "-"),
+      T.evento + ": " + (val("evento") || "-"),
+      T.data + ": " + (val("data") || "-"),
+      T.orario + ": " + (val("orario") || "-"),
+      T.luogo + ": " + (val("luogo") || "-"),
+      T.partecipanti + ": " + (val("partecipanti") || "-"),
+      T.note + ": " + (val("note") || "-"),
       "",
-      "Attendo un preventivo. Grazie."
+      T.fine
     ];
 
-    var oggetto = "Richiesta assistenza evento - " + nome;
+    var oggetto = T.oggetto + nome;
     if (e.submitter && e.submitter.hasAttribute("data-whatsapp")) {
       window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(righe.join("\n")), "_blank", "noopener");
       return;
