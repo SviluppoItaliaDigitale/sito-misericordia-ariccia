@@ -13,6 +13,8 @@ italianoSemplice: |
   Sede operativa: Piazzale Aldo Moro 6, Ariccia.
 
   Se vuoi venire in sede, **devi prima telefonare** per prendere un appuntamento.
+
+  In sede si entra senza scale. C'è il parcheggio.
 ---
 
 ## Dove siamo
@@ -23,6 +25,8 @@ italianoSemplice: |
 
 - **Sede operativa:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM) — Tel. [06 933 3717](tel:+39069333717) · Cell. [348 4068657](tel:+393484068657) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Piazzale%20Aldo%20Moro%206%20Ariccia)
 - **Sede amministrativa:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM) — Cell. [328 8105399](tel:+393288105399) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Viale%20Antonietta%20Chigi%2046%20Ariccia)
+
+**Accesso:** si entra **senza scale**, comodo anche in carrozzina, e c'è il **parcheggio**.
 
 *Sede legale (a soli fini amministrativi e fiscali): Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM).*
 
