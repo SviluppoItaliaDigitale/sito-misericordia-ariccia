@@ -21,14 +21,23 @@
   window.__animOK = true; // segnala alla rete di sicurezza in <head> che il JS gira
 
   var html = document.documentElement;
-  var riduci = (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
-               html.classList.contains("a11y-no-anim");
+  var sistemaRidotto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var riduci = sistemaRidotto || html.classList.contains("a11y-no-anim");
   var hover = !window.matchMedia || window.matchMedia("(hover: hover)").matches;
   var haGSAP = window.gsap && window.ScrollTrigger;
 
   // Questi due non hanno bisogno di GSAP e devono girare anche se GSAP manca:
-  if (!riduci) avviaBarraLettura();  // barra di avanzamento lettura in cima
-  avviaSkeletonImg();                // immagini che sfumano quando caricate
+  if (!sistemaRidotto) avviaBarraLettura(); // barra di lettura (il CSS la nasconde con «Ferma animazioni»)
+  avviaSkeletonImg();                       // immagini che sfumano quando caricate
+
+  /* «Ferma animazioni» tolto a pagina aperta: ripartono subito parole rotanti
+     e particelle. Gli ingressi allo scroll restano statici (contenuto già
+     visibile): torneranno dalla pagina successiva. */
+  document.addEventListener("mise:movimento", function (e) {
+    if (!e.detail || e.detail.fermo || sistemaRidotto || !haGSAP) return;
+    avviaParoleRotanti();
+    if (!document.querySelector("#hero-particelle canvas")) avviaParticelle(false);
+  });
 
   // Niente moto: assicura tutto visibile, scrivi i numeri finali ed esci con grazia.
   if (riduci || !haGSAP) {
@@ -139,30 +148,7 @@
     });
 
     /* ---- 6. Parole che ruotano nel titolo ---- */
-    document.querySelectorAll(".parole-rotanti").forEach(function (box) {
-      var spans = box.querySelectorAll("span");
-      if (spans.length < 2) return;
-      var i = 0;
-      box.classList.add("in-rotazione");
-      gsap.set(spans, { yPercent: 100, opacity: 0 });
-      gsap.set(spans[0], { yPercent: 0, opacity: 1 });
-      document.addEventListener("mise:movimento", function (e) {
-        if (!e.detail || !e.detail.fermo) return;
-        // Una sola frase, ferma e leggibile: niente spostamenti né sovrapposizioni.
-        gsap.killTweensOf(spans);
-        gsap.set(spans, { yPercent: 100, opacity: 0 });
-        gsap.set(spans[0], { yPercent: 0, opacity: 1 });
-        i = 0;
-      });
-      setInterval(function () {
-        if (html.classList.contains("a11y-no-anim") || document.hidden) return;
-        var cur = spans[i], nxt = spans[(i + 1) % spans.length];
-        gsap.to(cur, { yPercent: -100, opacity: 0, duration: .5, ease: "power2.in" });
-        gsap.fromTo(nxt, { yPercent: 100, opacity: 0 },
-                         { yPercent: 0, opacity: 1, duration: .55, ease: "power2.out" });
-        i = (i + 1) % spans.length;
-      }, 2300);
-    });
+    avviaParoleRotanti();
 
     /* ---- 7. Tilt 3D leggero (solo con mouse) ---- */
     if (hover) {
@@ -198,6 +184,34 @@
     // Qualcosa è andato storto: mostra tutto, niente schermate vuote.
     document.documentElement.classList.remove("anim-pronto");
     if (window.console) console.warn("Animazioni disattivate:", err);
+  }
+
+  /* ---- 6. Parole che ruotano nel titolo (anche riavviabili) ---- */
+  function avviaParoleRotanti() {
+    document.querySelectorAll(".parole-rotanti").forEach(function (box) {
+      var spans = box.querySelectorAll("span");
+      if (spans.length < 2 || box.classList.contains("in-rotazione")) return; // già avviate
+      var i = 0;
+      box.classList.add("in-rotazione");
+      gsap.set(spans, { yPercent: 100, opacity: 0 });
+      gsap.set(spans[0], { yPercent: 0, opacity: 1 });
+      document.addEventListener("mise:movimento", function (e) {
+        if (!e.detail || !e.detail.fermo) return;
+        // Una sola frase, ferma e leggibile: niente spostamenti né sovrapposizioni.
+        gsap.killTweensOf(spans);
+        gsap.set(spans, { yPercent: 100, opacity: 0 });
+        gsap.set(spans[0], { yPercent: 0, opacity: 1 });
+        i = 0;
+      });
+      setInterval(function () {
+        if (html.classList.contains("a11y-no-anim") || document.hidden) return;
+        var cur = spans[i], nxt = spans[(i + 1) % spans.length];
+        gsap.to(cur, { yPercent: -100, opacity: 0, duration: .5, ease: "power2.in" });
+        gsap.fromTo(nxt, { yPercent: 100, opacity: 0 },
+                         { yPercent: 0, opacity: 1, duration: .55, ease: "power2.out" });
+        i = (i + 1) % spans.length;
+      }, 2300);
+    });
   }
 
   /* Stato finale senza movimento: tutto visibile, numeri e barre al valore. */
