@@ -46,7 +46,17 @@
     return safe;
   }
 
+  /* Rete di sicurezza: entità HTML rimaste nell'indice (&ldquo; &rsquo; …) */
+  var decoder = document.createElement("textarea");
+  function decodifica(s) {
+    s = s == null ? "" : String(s);
+    if (s.indexOf("&") < 0) return s;
+    decoder.innerHTML = s;
+    return decoder.value;
+  }
+
   function estratto(contenuto, termini) {
+    contenuto = decodifica(contenuto);
     var norm = normalizza(contenuto);
     var pos = -1;
     for (var i = 0; i < termini.length; i++) {
@@ -83,6 +93,9 @@
         if (titoloN.indexOf(t) > -1) punteggio += 5;
         punteggio += 1;
       }
+      /* Prima le pagine operative (servizi, richieste, contatti), poi le notizie:
+         cercando «trasporto» deve uscire «Richiedi un trasporto», non una news. */
+      if (punteggio > 0 && p.section !== "news") punteggio += 4;
       return { p: p, punteggio: punteggio };
     }).filter(function (x) { return x.punteggio > 0; })
       .sort(function (a, b) { return b.punteggio - a.punteggio; })
@@ -94,7 +107,7 @@
       var p = x.p;
       return '<a class="cerca-ris" role="option" href="' + p.url + '">' +
         (p.section ? '<span class="sez">' + evidenzia(p.section, termini) + '</span>' : '') +
-        '<span class="tit">' + evidenzia(p.title || p.url, termini) + '</span>' +
+        '<span class="tit">' + evidenzia(decodifica(p.title) || p.url, termini) + '</span>' +
         '<p class="estratto">' + evidenzia(estratto(p.content || "", termini), termini) + '</p>' +
         '</a>';
     }).join("");

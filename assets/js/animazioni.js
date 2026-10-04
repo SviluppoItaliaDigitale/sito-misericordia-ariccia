@@ -12,32 +12,57 @@
    7. Tilt 3D leggero sulle card
    8. Particelle nell'hero
    9. Barre che crescono
-   Tutto si disattiva con prefers-reduced-motion.
+   Tutto si disattiva con prefers-reduced-motion e con «Ferma animazioni»
+   del pannello di accessibilità (anche a pagina già aperta).
    ============================================================ */
 (function () {
   "use strict";
 
   window.__animOK = true; // segnala alla rete di sicurezza in <head> che il JS gira
 
-  var riduci = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var html = document.documentElement;
+  var sistemaRidotto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var riduci = sistemaRidotto || html.classList.contains("a11y-no-anim");
   var hover = !window.matchMedia || window.matchMedia("(hover: hover)").matches;
   var haGSAP = window.gsap && window.ScrollTrigger;
 
   // Questi due non hanno bisogno di GSAP e devono girare anche se GSAP manca:
-  if (!riduci) avviaBarraLettura();  // barra di avanzamento lettura in cima
-  avviaSkeletonImg();                // immagini che sfumano quando caricate
+  if (!sistemaRidotto) avviaBarraLettura(); // barra di lettura (il CSS la nasconde con «Ferma animazioni»)
+  avviaSkeletonImg();                       // immagini che sfumano quando caricate
+
+  /* «Ferma animazioni» tolto a pagina aperta: ripartono subito parole rotanti
+     e particelle. Gli ingressi allo scroll restano statici (contenuto già
+     visibile): torneranno dalla pagina successiva. */
+  document.addEventListener("mise:movimento", function (e) {
+    if (!e.detail || e.detail.fermo || sistemaRidotto || !haGSAP) return;
+    avviaParoleRotanti();
+    if (!document.querySelector("#hero-particelle canvas")) avviaParticelle(false);
+  });
 
   // Niente moto: assicura tutto visibile, scrivi i numeri finali ed esci con grazia.
   if (riduci || !haGSAP) {
-    document.documentElement.classList.remove("anim-pronto");
-    document.querySelectorAll("[data-conta]").forEach(function (el) {
-      el.textContent = parseInt(el.getAttribute("data-conta"), 10) || 0;
-    });
-    document.querySelectorAll(".barra-cresce > span[data-barra]").forEach(function (s) {
-      s.style.width = (parseFloat(s.getAttribute("data-barra")) || 0) + "%";
-    });
+    statoFinale();
     return;
   }
+
+  /* «Ferma animazioni» premuto a pagina aperta: porta subito tutto allo stato
+     finale, spegne lo scroll-driven e le particelle. Le parole rotanti si
+     fermano da sole sulla prima frase (vedi punto 6). */
+  document.addEventListener("mise:movimento", function (e) {
+    if (!e.detail || !e.detail.fermo) return;
+    try {
+      ScrollTrigger.getAll().forEach(function (st) {
+        var a = st.animation;
+        var scrub = st.vars && st.vars.scrub;
+        st.kill();
+        if (a) { a.progress(scrub ? 0 : 1); a.kill(); }
+      });
+      gsap.globalTimeline.getChildren(true, true, false).forEach(function (t) { t.progress(1); });
+      gsap.set("[data-parallax]", { clearProps: "transform" });
+    } catch (err) {}
+    statoFinale();
+    fermaParticelle();
+  });
 
   try {
     gsap.registerPlugin(ScrollTrigger);
@@ -123,26 +148,14 @@
     });
 
     /* ---- 6. Parole che ruotano nel titolo ---- */
-    document.querySelectorAll(".parole-rotanti").forEach(function (box) {
-      var spans = box.querySelectorAll("span");
-      if (spans.length < 2) return;
-      var i = 0;
-      gsap.set(spans, { yPercent: 100, opacity: 0 });
-      gsap.set(spans[0], { yPercent: 0, opacity: 1 });
-      setInterval(function () {
-        var cur = spans[i], nxt = spans[(i + 1) % spans.length];
-        gsap.to(cur, { yPercent: -100, opacity: 0, duration: .5, ease: "power2.in" });
-        gsap.fromTo(nxt, { yPercent: 100, opacity: 0 },
-                         { yPercent: 0, opacity: 1, duration: .55, ease: "power2.out" });
-        i = (i + 1) % spans.length;
-      }, 2300);
-    });
+    avviaParoleRotanti();
 
     /* ---- 7. Tilt 3D leggero (solo con mouse) ---- */
     if (hover) {
       document.querySelectorAll("[data-tilt]").forEach(function (c) {
         var max = 7;
         c.addEventListener("pointermove", function (e) {
+          if (html.classList.contains("a11y-no-anim")) { c.style.transform = ""; return; }
           var r = c.getBoundingClientRect();
           var px = (e.clientX - r.left) / r.width - .5;
           var py = (e.clientY - r.top) / r.height - .5;
@@ -171,6 +184,53 @@
     // Qualcosa è andato storto: mostra tutto, niente schermate vuote.
     document.documentElement.classList.remove("anim-pronto");
     if (window.console) console.warn("Animazioni disattivate:", err);
+  }
+
+  /* ---- 6. Parole che ruotano nel titolo (anche riavviabili) ---- */
+  function avviaParoleRotanti() {
+    document.querySelectorAll(".parole-rotanti").forEach(function (box) {
+      var spans = box.querySelectorAll("span");
+      if (spans.length < 2 || box.classList.contains("in-rotazione")) return; // già avviate
+      var i = 0;
+      box.classList.add("in-rotazione");
+      gsap.set(spans, { yPercent: 100, opacity: 0 });
+      gsap.set(spans[0], { yPercent: 0, opacity: 1 });
+      document.addEventListener("mise:movimento", function (e) {
+        if (!e.detail || !e.detail.fermo) return;
+        // Una sola frase, ferma e leggibile: niente spostamenti né sovrapposizioni.
+        gsap.killTweensOf(spans);
+        gsap.set(spans, { yPercent: 100, opacity: 0 });
+        gsap.set(spans[0], { yPercent: 0, opacity: 1 });
+        i = 0;
+      });
+      setInterval(function () {
+        if (html.classList.contains("a11y-no-anim") || document.hidden) return;
+        var cur = spans[i], nxt = spans[(i + 1) % spans.length];
+        gsap.to(cur, { yPercent: -100, opacity: 0, duration: .5, ease: "power2.in" });
+        gsap.fromTo(nxt, { yPercent: 100, opacity: 0 },
+                         { yPercent: 0, opacity: 1, duration: .55, ease: "power2.out" });
+        i = (i + 1) % spans.length;
+      }, 2300);
+    });
+  }
+
+  /* Stato finale senza movimento: tutto visibile, numeri e barre al valore. */
+  function statoFinale() {
+    html.classList.remove("anim-pronto");
+    document.querySelectorAll("[data-conta]").forEach(function (el) {
+      el.textContent = parseInt(el.getAttribute("data-conta"), 10) || 0;
+    });
+    document.querySelectorAll(".barra-cresce > span[data-barra]").forEach(function (s) {
+      s.style.width = (parseFloat(s.getAttribute("data-barra")) || 0) + "%";
+    });
+    document.querySelectorAll(".tratto-mano").forEach(function (t) { t.classList.add("disegnato"); });
+  }
+
+  function fermaParticelle() {
+    try {
+      (window.pJSDom || []).forEach(function (p) { p.pJS.fn.vendors.destroypJS(); });
+      window.pJSDom = [];
+    } catch (e) {}
   }
 
   /* ---- 9. Particelle nell'hero ---- */

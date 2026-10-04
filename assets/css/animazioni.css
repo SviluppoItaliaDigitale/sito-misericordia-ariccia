@@ -324,3 +324,27 @@ img[data-skeleton].caricata { opacity: 1; }
   .fregio-navbar { animation: none; transform: none; }
   [data-anim], [data-split] { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
+
+/* ============================================================
+   «FERMA ANIMAZIONI» (pannello di accessibilità, classe su <html>)
+   Stesse regole del moto ridotto, valide anche a pagina aperta.
+   Le parole rotanti mostrano UNA sola frase, senza spostamenti:
+   senza rotazione attiva le tre frasi starebbero una sopra l'altra.
+   ============================================================ */
+.parole-rotanti:not(.in-rotazione) > span:not(:first-child),
+html.a11y-no-anim .parole-rotanti > span:not(:first-child) { display: none; }
+html.a11y-no-anim .parole-rotanti > span:first-child { transform: none !important; opacity: 1 !important; }
+html.a11y-no-anim .hero-foto { animation: none; transform: none; inset: 0; }
+html.a11y-no-anim .gradiente-vivo, html.a11y-no-anim .pagina-testata { animation: none; }
+html.a11y-no-anim .marquee__pista { animation: none; }
+html.a11y-no-anim .tratto-mano svg path { stroke-dashoffset: 0; animation: none; }
+html.a11y-no-anim img[data-skeleton] { opacity: 1; }
+html.a11y-no-anim .barra-lettura,
+html.a11y-no-anim .emblema-3d,
+html.a11y-no-anim .hero-particelle,
+html.a11y-no-anim .dsr-particelle { display: none; }
+html.a11y-no-anim .emblema-logo img,
+html.a11y-no-anim .fregio-navbar { animation: none; transform: none; }
+html.a11y-no-anim [data-anim],
+html.a11y-no-anim [data-split],
+html.a11y-no-anim [data-anim-group] > * { opacity: 1 !important; transform: none !important; filter: none !important; }

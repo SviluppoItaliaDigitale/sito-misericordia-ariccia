@@ -220,6 +220,8 @@
        Rete di sicurezza: se l'orchestratore non parte entro 4s, mostra tutto. */
     (function () {
       var r = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      /* «Ferma animazioni» salvato nel pannello di accessibilità vale come moto ridotto */
+      try { if (JSON.parse(localStorage.getItem("mise-a11y") || "{}").noanim) r = true; } catch (e) {}
       if (!r) {
         document.documentElement.className += " anim-pronto";
         setTimeout(function () {

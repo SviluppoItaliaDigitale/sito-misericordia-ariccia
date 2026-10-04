@@ -2,6 +2,6 @@
 [
 {{- range $i, $p := $pagine -}}
 {{- if $i }},{{ end }}
-{{ dict "title" $p.Title "url" $p.RelPermalink "section" (or $p.Section "") "content" (substr ($p.Plain | chomp | replaceRE "\\s+" " ") 0 1600) | jsonify }}
+{{ dict "title" ($p.Title | htmlUnescape) "url" $p.RelPermalink "section" (or $p.Section "") "content" (substr ($p.Plain | htmlUnescape | chomp | replaceRE "\\s+" " ") 0 1600) | jsonify }}
 {{- end -}}
 ]

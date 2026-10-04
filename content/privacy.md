@@ -4,9 +4,13 @@ description: "Informativa privacy e cookie del sito della Misericordia di Aricci
 italianoSemplice: |
   **Questo sito rispetta la tua privacy.**
 
-  Il sito non usa cookie. Non ti segue e non raccoglie i tuoi dati.
+  Il sito non usa cookie e non ti segue.
 
-  Se ci scrivi o ci telefoni, usiamo i tuoi contatti solo per risponderti.
+  Le scelte del pannello di accessibilità restano solo sul tuo telefono o computer.
+
+  Il modulo per i trasporti non ci manda niente da solo: prepara un messaggio, e sei tu a inviarlo.
+
+  Se ci scrivi o ci telefoni, riceviamo i tuoi dati. Li usiamo solo per risponderti e per fare il servizio che ci chiedi.
 
   Non diamo i tuoi dati ad altri.
 ---
@@ -15,9 +19,17 @@ italianoSemplice: |
 
 Questo sito **non utilizza cookie** di profilazione né strumenti di tracciamento o statistiche di terze parti. Non vengono installati cookie tecnici o di analisi: puoi navigare liberamente, senza banner di consenso.
 
-## Trattamento dei dati
+## Dati di navigazione
 
-Il sito è puramente informativo e **non raccoglie dati** tramite moduli online: i moduli «Richiedi un trasporto» e «Assistenza per eventi» non inviano nulla ai nostri server, ma preparano un messaggio che spedisci tu con la tua app di posta oppure con **WhatsApp**. Se scegli WhatsApp, il testo del messaggio (compresi i dati che hai inserito) viene passato all'app di WhatsApp, gestita da Meta, secondo le sue condizioni e la sua informativa: se preferisci, usa l'email o il telefono. Se ci scrivi o ci telefoni, utilizziamo i tuoi recapiti **solo per risponderti** e per la finalità per cui ci hai contattato, senza comunicarli o diffonderli a terzi.
+Come ogni sito, il server che lo ospita (Aruba) riceve i dati tecnici necessari a mostrarti le pagine, come l'indirizzo IP e la pagina richiesta, e può registrarli nei propri log per motivi di sicurezza. Noi non li usiamo per profilarti.
+
+## Preferenze salvate sul tuo dispositivo
+
+Le scelte del pannello di accessibilità (dimensione del testo, contrasto, «Ferma animazioni»…) vengono salvate **solo nel tuo browser** (memoria locale), non sono cookie e non ci vengono inviate. Puoi cancellarle con «Reimposta tutto» o svuotando i dati del sito nel browser.
+
+## Richieste che ci invii
+
+I moduli «Richiedi un trasporto» e «Assistenza per eventi» **non inviano nulla ai nostri server**: preparano un messaggio che spedisci tu con la tua app di posta oppure con **WhatsApp**. Se scegli WhatsApp, il testo del messaggio (compresi i dati che hai inserito) viene passato all'app di WhatsApp, gestita da Meta, secondo le sue condizioni e la sua informativa: se preferisci, usa l'email o il telefono. Quando ci scrivi (email, WhatsApp) o ci telefoni, invece, **riceviamo i dati che ci comunichi**: li utilizziamo **solo per risponderti** e per organizzare il servizio richiesto, senza comunicarli o diffonderli a terzi. Ti chiediamo di indicare solo le informazioni utili a organizzare il servizio (come la persona può viaggiare), **senza diagnosi o referti**.
 
 ## Titolare del trattamento
 

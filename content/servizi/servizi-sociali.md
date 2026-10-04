@@ -1,7 +1,7 @@
 ---
 title: "Servizi sociali"
 titoloSeo: "Servizi sociali: trasporto disabili, Banco Alimentare e Centro di Ascolto ad Ariccia"
-description: "Trasporto per persone con disabilità, Banco Alimentare, Centro d'Ascolto e sostegno psicologico: i servizi sociali gratuiti della Misericordia di Ariccia per chi è in difficoltà nei Castelli Romani."
+description: "Trasporto per persone con disabilità, Banco Alimentare, Centro d'Ascolto e sostegno psicologico: i servizi sociali della Misericordia di Ariccia per chi è in difficoltà nei Castelli Romani."
 italianoSemplice: |
   **I servizi sociali della Misericordia.**
 

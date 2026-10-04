@@ -40,7 +40,12 @@
     html.classList.toggle("a11y-dyslexia", stato.dyslexia);
     html.classList.toggle("a11y-spacing", stato.spacing);
     html.classList.toggle("a11y-links", stato.links);
+    var eraFermo = html.classList.contains("a11y-no-anim");
     html.classList.toggle("a11y-no-anim", stato.noanim);
+    /* Avvisa caroselli, parole rotanti e particelle (sito.js, animazioni.js) */
+    if (eraFermo !== !!stato.noanim) {
+      try { document.dispatchEvent(new CustomEvent("mise:movimento", { detail: { fermo: !!stato.noanim } })); } catch (e) {}
+    }
     html.classList.toggle("a11y-cursore", stato.cursore);
     html.classList.toggle("a11y-guida", stato.guida);
 

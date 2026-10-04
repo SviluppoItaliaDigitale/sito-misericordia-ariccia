@@ -1,18 +1,27 @@
 ---
 title: "I nostri servizi"
 titoloSeo: "Servizi sanitari e sociali ad Ariccia e Castelli Romani"
-description: "Servizi sanitari e sociali gratuiti della Misericordia di Ariccia: trasporto in ambulanza, trasporto disabili con pedana, assistenza eventi, Banco Alimentare, Centro di Ascolto e corsi di primo soccorso ai Castelli Romani."
+description: "Servizi sanitari e sociali della Misericordia di Ariccia: trasporto in ambulanza, trasporto disabili con pedana, assistenza eventi, Banco Alimentare, Centro di Ascolto e corsi di primo soccorso ai Castelli Romani."
 italianoSemplice: |
   **La Misericordia di Ariccia offre servizi sanitari e sociali.**
 
-  Aiutiamo le persone della comunità, in modo gratuito.
+  Aiutiamo le persone della comunità.
+
+  Alcuni servizi sono gratis: il Banco Alimentare e il Centro di Ascolto.
+
+  Per i trasporti chiediamo un contributo. Serve a pagare i costi del mezzo.
+  Chiamaci e ti diciamo prima quanto costa.
 
   Abbiamo due ambulanze, un mezzo con la pedana per le carrozzine e altri automezzi per i servizi sociali.
 
   Se non hai la carrozzina o le stampelle, te le prestiamo per il viaggio.
 ---
 
-La Misericordia di Ariccia è al servizio della comunità con servizi sanitari e sociali, in convenzione con gli enti locali e in forma gratuita.
+La Misericordia di Ariccia è al servizio della comunità con servizi sanitari e sociali. Non tutti funzionano allo stesso modo:
+
+- **gratuiti**: Banco Alimentare, Centro di Ascolto e sostegno a chi è in difficoltà;
+- **in convenzione con gli enti locali**: alcuni servizi vengono attivati tramite gli enti locali, secondo le loro regole;
+- **con un contributo**: per i [trasporti](/trasporto-infermi/) chiediamo un contributo che copre i costi del mezzo e sostiene i servizi gratuiti. Chiamaci con i dettagli del viaggio: ti diciamo le condizioni prima, senza impegno.
 
 ![I mezzi dei servizi sociali della Misericordia](/img/mezzi-servizi-sociali.jpg)
 
