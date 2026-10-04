@@ -1,4 +1,5 @@
 ---
+traduzione: "/sostienici"
 title: "Support us"
 summary: "Help the Misericordia with your 5×1000, a donation or your time as a volunteer."
 weight: 70

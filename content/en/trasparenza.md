@@ -1,4 +1,5 @@
 ---
+traduzione: "/trasparenza"
 title: "Transparency"
 summary: "Statute, 5×1000 reporting, public contributions and food-bank data, as required for Third Sector bodies."
 weight: 150

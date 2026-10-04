@@ -1,4 +1,5 @@
 ---
+traduzione: "/accessibilita"
 title: "Accessibility statement"
 summary: "Our commitment to a site accessible to everyone: reading tools, easy language, read-aloud, Braille and no tracking."
 weight: 160

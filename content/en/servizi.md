@@ -1,4 +1,5 @@
 ---
+traduzione: "/servizi"
 title: "Our services"
 summary: "Health and social services for the community: ambulances, patient transport, food bank, listening centre and training."
 weight: 20

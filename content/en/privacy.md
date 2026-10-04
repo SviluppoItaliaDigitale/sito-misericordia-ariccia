@@ -1,4 +1,5 @@
 ---
+traduzione: "/privacy"
 title: "Privacy & cookies"
 summary: "No cookies and no tracking. Accessibility settings stay on your device. If you write or call us, we use your details only to reply."
 weight: 170

@@ -1,4 +1,5 @@
 ---
+traduzione: "/richiedi-trasporto"
 title: "Request a transport"
 summary: "Request medical or social transport with our volunteers: form, phone or WhatsApp. In an emergency call 112."
 description: "Request a medical or social transport from the Misericordia di Ariccia (Castelli Romani, near Rome): ambulance, car or wheelchair-accessible vehicle. Form, phone +39 348 4068657 and WhatsApp."

@@ -77,9 +77,9 @@ riprova ogni 30 minuti finché la pagina non risulta aggiornata.
 
 ## Versione inglese (`/en/`)
 
-- Pagine in `content/en/` con lo **stesso nome file** della pagina italiana
-  (es. `en/formazione.md` ↔ `servizi/formazione.md`): così hreflang e il
-  selettore 🌐 collegano da soli le due versioni.
+- Ogni pagina in `content/en/` dichiara la sua pagina italiana nel front matter
+  con `traduzione: "/percorso"` (es. `en/formazione.md` → `"/servizi/formazione"`):
+  da lì hreflang e selettore 🌐 collegano le due versioni (`partials/controparte.html`).
 - Nelle pagine `/en/` menu (`[[menus.en]]` in `hugo.toml`), annunci (solo voci
   con `testo_en` in `data/annunci.yaml`), footer, briciole e strumenti JS
   (accessibilità, ricerca, lettura vocale, modulo trasporti) sono in inglese.

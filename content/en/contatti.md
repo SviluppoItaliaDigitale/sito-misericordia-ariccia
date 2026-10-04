@@ -1,4 +1,5 @@
 ---
+traduzione: "/contatti"
 title: "Contact us"
 summary: "Addresses, phone numbers and email of the Misericordia di Ariccia."
 weight: 80

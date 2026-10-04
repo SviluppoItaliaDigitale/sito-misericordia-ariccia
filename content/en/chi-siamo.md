@@ -1,4 +1,5 @@
 ---
+traduzione: "/chi-siamo"
 title: "Who we are"
 summary: "A volunteer confraternity serving the Castelli Romani since 1994: health transport, food bank, listening centre and training."
 weight: 10

@@ -1,4 +1,5 @@
 ---
+traduzione: "/primo-soccorso"
 title: "First aid: what to do"
 summary: "Basic first-aid reminders for common emergencies. In an emergency always call 112."
 weight: 90

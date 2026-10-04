@@ -1,4 +1,5 @@
 ---
+traduzione: "/progetti"
 title: "Our projects"
 summary: "From fundraising to social inclusion: the projects through which the Misericordia puts solidarity into practice."
 weight: 140

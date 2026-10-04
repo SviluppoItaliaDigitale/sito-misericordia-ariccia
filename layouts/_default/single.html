@@ -11,8 +11,9 @@
   <div class="container py-5">
     <nav aria-label="{{ cond $en "Breadcrumb" "Percorso" }}" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
-        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}"{{ if $en }} lang="it" hreflang="it"{{ end }}>Home</a></li>
-        {{ with .Parent }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
+        {{- /* Pagine inglesi: «Home» è la home inglese (/en/), che quindi non si ripete */}}
+        <li class="breadcrumb-item"><a href="{{ cond $en ("/en/" | relURL) ("/" | relURL) }}">Home</a></li>
+        {{ with .Parent }}{{ if not (or .IsHome (and $en (eq .RelPermalink "/en/"))) }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>

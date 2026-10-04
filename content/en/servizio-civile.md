@@ -1,4 +1,5 @@
 ---
+traduzione: "/servizio-civile"
 title: "Universal Civil Service"
 summary: "A paid year of service to the community for young people aged 18–28."
 weight: 60

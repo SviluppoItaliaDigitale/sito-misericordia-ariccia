@@ -1,4 +1,5 @@
 ---
+traduzione: "/trasporto-infermi"
 title: "Patient & disability transport"
 summary: "We take sick, elderly and disabled people to visits, treatment and hospital, by ambulance, car or wheelchair-accessible vehicle."
 weight: 30

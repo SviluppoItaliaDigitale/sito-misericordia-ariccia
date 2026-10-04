@@ -1,4 +1,5 @@
 ---
+traduzione: "/i-confratelli"
 title: "The confratelli"
 summary: "The confratelli and consorelle are the heart of the Misericordia: volunteers who give time to the charity of their neighbour."
 weight: 120

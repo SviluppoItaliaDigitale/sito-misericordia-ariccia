@@ -1,4 +1,5 @@
 ---
+traduzione: "/faq"
 title: "Frequently asked questions"
 summary: "Quick answers about volunteering, requesting a transport, the 5×1000 and privacy."
 weight: 100

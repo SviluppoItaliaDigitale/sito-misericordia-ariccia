@@ -6,11 +6,7 @@
 {{ $en := eq (partial "lingua.html" .) "en" }}
 {{ $nomeMenu := cond $en "en" "main" }}
 {{ $menu := index site.Menus $nomeMenu }}
-{{ $altra := "" }}
-{{ if $en }}
-  {{ if eq .RelPermalink "/en/" }}{{ $altra = site.Home }}{{ else }}{{ with .File }}{{ $altra = site.GetPage (printf "/%s" .ContentBaseName) }}{{ end }}{{ end }}
-{{ else if .IsHome }}{{ $altra = site.GetPage "/en" }}
-{{ else }}{{ with .File }}{{ $altra = site.GetPage (printf "/en/%s" .ContentBaseName) }}{{ end }}{{ end }}
+{{ $altra := partial "controparte.html" . }}
 {{- /* Titolo della pagina corrispondente nel selettore; non per le due home */ -}}
 {{ $titoloAltra := "" }}
 {{ with $altra }}{{ if not (or .IsHome (eq .RelPermalink "/en/")) }}{{ $titoloAltra = .Title }}{{ end }}{{ end }}

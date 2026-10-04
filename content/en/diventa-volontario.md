@@ -1,4 +1,5 @@
 ---
+traduzione: "/diventa-volontario"
 title: "Become a volunteer"
 summary: "No special skills are needed — we train you together. Join us and help people in need."
 weight: 50

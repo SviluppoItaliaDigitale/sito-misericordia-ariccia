@@ -19,21 +19,14 @@
   <meta name="author" content="Confraternita di Misericordia di Ariccia ODV">
   <meta name="geo.region" content="IT-RM">
   <meta name="geo.placename" content="Ariccia">
-  {{- /* hreflang: collega le versioni italiana e inglese quando esistono.
-       Le pagine inglesi vivono in /en/ con lo stesso nome file. */ -}}
-  {{ $coppia := "" }}
-  {{ if .IsHome }}{{ $coppia = site.GetPage "/en" }}
-  {{ else if eq .RelPermalink "/en/" }}{{ $coppia = site.Home }}
-  {{ else if .File }}
-    {{ if hasPrefix .RelPermalink "/en/" }}{{ $coppia = site.GetPage (printf "/%s" .File.ContentBaseName) }}
-    {{ else }}{{ $coppia = site.GetPage (printf "/en/%s" .File.ContentBaseName) }}{{ end }}
-  {{ end }}
-  {{ with $coppia }}
-    {{ $it := cond (hasPrefix $.RelPermalink "/en/") .Permalink $.Permalink }}
-    {{ $en := cond (hasPrefix $.RelPermalink "/en/") $.Permalink .Permalink }}
-  <link rel="alternate" hreflang="it" href="{{ $it }}">
-  <link rel="alternate" hreflang="en" href="{{ $en }}">
-  <link rel="alternate" hreflang="x-default" href="{{ $it }}">
+  {{- /* hreflang: collega le versioni italiana e inglese quando esistono
+       (campo "traduzione" delle pagine in content/en/, vedi partials/controparte.html). */ -}}
+  {{ with partial "controparte.html" . }}
+    {{ $urlIt := cond (hasPrefix $.RelPermalink "/en/") .Permalink $.Permalink }}
+    {{ $urlEn := cond (hasPrefix $.RelPermalink "/en/") $.Permalink .Permalink }}
+  <link rel="alternate" hreflang="it" href="{{ $urlIt }}">
+  <link rel="alternate" hreflang="en" href="{{ $urlEn }}">
+  <link rel="alternate" hreflang="x-default" href="{{ $urlIt }}">
   {{ end }}
   <link rel="alternate" type="application/rss+xml" title="Notizie della Misericordia di Ariccia" href="{{ "news/index.xml" | absURL }}">
   <meta name="theme-color" content="#00a5dc">
@@ -140,9 +133,9 @@
   {{ end }}
   {{- /* Briciole di pane per i motori di ricerca (BreadcrumbList) */ -}}
   {{ if not .IsHome }}
-  {{ $briciole := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) }}
+  {{ $briciole := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" (cond $en (absURL "en/") site.BaseURL)) }}
   {{ $pos := 2 }}
-  {{ with .Parent }}{{ if not .IsHome }}
+  {{ with .Parent }}{{ if not (or .IsHome (and $en (eq .RelPermalink "/en/"))) }}
     {{ $briciole = $briciole | append (dict "@type" "ListItem" "position" $pos "name" .Title "item" .Permalink) }}
     {{ $pos = 3 }}
   {{ end }}{{ end }}
