@@ -165,6 +165,28 @@ def a_elenco(**_):
         scrivi(f"errore: {r['errore']}")
 
 
+def a_diagnosi_video(ident, **_):
+    """Stato di uno o più video/Reel della pagina (ID separati da virgola)."""
+    campi = ("id,title,published,privacy,status,permalink_url,created_time,updated_time,length,"
+             "content_category,embeddable,is_crosspost_video,copyright_monitoring_status")
+    for vid in [x.strip() for x in ident.split(",") if x.strip()]:
+        r = chiama("GET", vid, fields=campi)
+        scrivi(f"### Video `{vid}`")
+        scrivi("```")
+        scrivi(json.dumps(r, ensure_ascii=False, indent=1))
+        scrivi("```")
+    r = chiama("GET", PAGE_ID, fields="id,name,is_published,is_unclaimed,can_post,country_page_likes,verification_status")
+    scrivi("### Pagina")
+    scrivi("```")
+    scrivi(json.dumps(r, ensure_ascii=False, indent=1))
+    scrivi("```")
+    r = chiama("GET", f"{PAGE_ID}/video_reels", fields="id,created_time,published,permalink_url,status", limit=10)
+    scrivi("### Reels della pagina")
+    scrivi("```")
+    scrivi(json.dumps(r, ensure_ascii=False, indent=1))
+    scrivi("```")
+
+
 def a_statistiche(**_):
     p = chiama("GET", PAGE_ID, fields="name,followers_count,fan_count")
     scrivi(f"### Facebook — {p.get('name', '')}")
@@ -290,6 +312,7 @@ def a_rispondi_messaggio(rete, ident, testo, **_):
 
 
 AZIONI = {
+    "diagnosi-video": a_diagnosi_video,
     "prova": a_prova, "elenco": a_elenco, "statistiche": a_statistiche,
     "pubblica": a_pubblica, "modifica": a_modifica, "elimina": a_elimina,
     "commenti": a_commenti, "rispondi-commento": a_rispondi_commento,
