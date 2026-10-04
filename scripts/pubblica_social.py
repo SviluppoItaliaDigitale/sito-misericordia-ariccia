@@ -195,6 +195,39 @@ def pubblica_facebook(n):
     return r["id"]
 
 
+def pubblica_facebook_reel(n):
+    """Reel sulla pagina Facebook con la Reels API ufficiale (tre fasi: start,
+    upload del file da URL, finish). È la stessa via di Meta Business Suite:
+    i video caricati con /videos venivano convertiti in Reel ma non distribuiti.
+    Limiti Meta: verticale 9:16, da 3 a 90 secondi."""
+    avvio = graph_post(f"{PAGE_ID}/video_reels", {"upload_phase": "start"})
+    vid = avvio["video_id"]
+    # Fase 2: Facebook scarica il file dall'URL pubblico del sito.
+    req = urllib.request.Request(f"https://rupload.facebook.com/video-upload/{GRAPH.rsplit('/', 1)[1]}/{vid}",
+                                 data=b"", method="POST",
+                                 headers={"Authorization": f"OAuth {PAGE_TOKEN}", "file_url": n["video"]})
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            esito = json.load(resp)
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"HTTP {e.code} nel caricamento del Reel: {e.read().decode(errors='replace')}") from None
+    if not esito.get("success"):
+        raise RuntimeError(f"caricamento del Reel non riuscito: {esito}")
+    graph_post(f"{PAGE_ID}/video_reels", {"upload_phase": "finish", "video_id": vid,
+                                          "video_state": "PUBLISHED", "description": testo_facebook(n)})
+    # Attesa dell'elaborazione (di solito 1–3 minuti); se fallisce lo dice qui.
+    for _ in range(100):
+        stato = graph_get(vid, {"fields": "status"}).get("status", {})
+        fase = stato.get("publishing_phase", {})
+        if fase.get("status") == "complete" or stato.get("video_status") == "ready":
+            return vid
+        if stato.get("video_status") == "error" or fase.get("status") == "error":
+            raise RuntimeError(f"Facebook ha rifiutato il Reel {n['video']}: {stato}")
+        time.sleep(3)
+    print(f"   facebook_reel: ancora in elaborazione (id {vid}), si considera pubblicato")
+    return vid
+
+
 def pubblica_instagram(n):
     # 1) contenitore con l'immagine (URL pubblico, JPEG) o col video (Reel)
     # 2) attesa elaborazione  3) pubblicazione
@@ -257,12 +290,13 @@ def main():
     reti = {}
     if PAGE_ID and PAGE_TOKEN:
         reti["facebook"] = pubblica_facebook
+        reti["facebook_reel"] = pubblica_facebook_reel  # solo per le news con video
     if IG_USER_ID and PAGE_TOKEN:
         reti["instagram"] = pubblica_instagram
     prova = DRY_RUN or not reti
     if prova:
         print("MODALITÀ PROVA: nessuna pubblicazione reale" + ("" if reti else " (credenziali Meta assenti)"))
-        reti = {"facebook": None, "instagram": None}
+        reti = {"facebook": None, "facebook_reel": None, "instagram": None}
 
     fatte, errori = 0, 0
     if AGGIORNA_FB and PAGE_ID and PAGE_TOKEN:
@@ -286,7 +320,7 @@ def main():
     # dalla più vecchia alla più recente, così sui social escono in ordine
     for n in sorted(news, key=lambda x: (x["data"], x["id"])):
         voce = reg.get(n["id"], {})
-        mancanti = [r for r in reti if r not in voce]
+        mancanti = [r for r in reti if r not in voce and (r != "facebook_reel" or n.get("video"))]
         if not mancanti:
             continue
         if not n.get("social", True):
@@ -306,8 +340,8 @@ def main():
                     salva_registro(reg)
                 continue
             if prova:
-                testo = testo_facebook(n) if rete == "facebook" else testo_instagram(n)
-                formato = " come Reel" if (rete == "instagram" and n.get("video")) else ""
+                testo = testo_instagram(n) if rete == "instagram" else testo_facebook(n)
+                formato = " come Reel" if (rete == "facebook_reel" or (rete == "instagram" and n.get("video"))) else ""
                 print(f"   {rete}: pubblicherebbe{formato} →\n" + "\n".join("      " + r for r in testo.splitlines()))
                 continue
             try:
