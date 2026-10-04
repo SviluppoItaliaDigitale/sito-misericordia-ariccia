@@ -10,6 +10,10 @@ Since **2015** the Misericordia di Ariccia has taken part in the **Universal Civ
 
 Our projects aim to counter loneliness and isolation among fragile people — especially the elderly and people with disabilities — through daily support, listening and presence.
 
+## Current project (applications closed)
+
+With the project **«Misericordie del Lazio unite per la rete 2025»** (care sector), **2 young people** were selected and have been serving at our premises **since 18 September 2026**, **25 hours a week over 5 days**, supporting vulnerable people. Applications for this project are **closed**: when a new call is published we will announce it on this page.
+
 ## How to apply
 
 Applications are submitted online through the official **[DOL — Domanda on Line](https://domandaonline.serviziocivile.it/)** platform when calls are open. You log in with **SPID** or the Italian electronic ID card (**CIE**); applicants who cannot obtain either — for example foreign citizens legally resident in Italy — can **request DOL credentials** directly on the platform. Applicants must be **aged 18–28** (up to the day before their 29th birthday). Details on requirements and deadlines: [Scelgo il Servizio Civile](https://www.scelgoilserviziocivile.gov.it/).

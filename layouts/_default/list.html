@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
     <h1 data-split="words">{{ .Title }}</h1>
@@ -54,7 +55,7 @@
           <span class="chip" aria-hidden="true">↗</span>
           <h2>{{ .Title }}</h2>
           <p>{{ .Summary | plainify | truncate 140 }}</p>
-          <a href="{{ .RelPermalink }}" class="stretched-link">Scopri di più</a>
+          <a href="{{ .RelPermalink }}" class="stretched-link">{{ cond $en "Read more" "Scopri di più" }}<span class="visually-hidden">: {{ .Title }}</span></a>
         </div>
       </div>
       {{ end }}

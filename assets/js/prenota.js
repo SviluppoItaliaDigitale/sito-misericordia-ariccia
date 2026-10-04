@@ -7,6 +7,22 @@
   var form = document.getElementById("form-prenota");
   if (!form) return;
 
+  /* Pagina inglese (/en/richiedi-trasporto/): messaggio con etichette in inglese */
+  var EN = document.documentElement.lang === "en";
+  var T = EN ? {
+    manca: "Please enter at least your name and phone number, so we can call you back.",
+    intro: "Transport request from the website (English page)",
+    nome: "Name", tel: "Phone", tipo: "Type of transport", persone: "Number of people",
+    data: "Date", ora: "Time", partenza: "Pick-up", destinazione: "Destination", note: "Notes",
+    fine: "I look forward to your confirmation. Thank you.", oggetto: "Transport request - "
+  } : {
+    manca: "Per favore inserisci almeno nome e telefono, così possiamo richiamarti.",
+    intro: "Richiesta di trasporto dal sito",
+    nome: "Nome e cognome", tel: "Telefono", tipo: "Tipo di trasporto", persone: "Numero di persone",
+    data: "Data", ora: "Ora", partenza: "Partenza", destinazione: "Destinazione", note: "Note",
+    fine: "Attendo conferma. Grazie.", oggetto: "Richiesta di trasporto - "
+  };
+
   var DEST = "sede@misericordia-ariccia.it";
   var WA = "393484068657";
 
@@ -20,28 +36,28 @@
 
     var nome = val("nome"), tel = val("tel");
     if (!nome || !tel) {
-      alert("Per favore inserisci almeno nome e telefono, così possiamo richiamarti.");
+      alert(T.manca);
       (nome ? form.elements.tel : form.elements.nome).focus();
       return;
     }
 
     var righe = [
-      "Richiesta di trasporto dal sito",
+      T.intro,
       "",
-      "Nome e cognome: " + nome,
-      "Telefono: " + tel,
-      "Tipo di trasporto: " + (val("tipo") || "-"),
-      "Numero di persone: " + (val("persone") || "-"),
-      "Data: " + (val("data") || "-"),
-      "Ora: " + (val("ora") || "-"),
-      "Partenza: " + (val("partenza") || "-"),
-      "Destinazione: " + (val("destinazione") || "-"),
-      "Note: " + (val("note") || "-"),
+      T.nome + ": " + nome,
+      T.tel + ": " + tel,
+      T.tipo + ": " + (val("tipo") || "-"),
+      T.persone + ": " + (val("persone") || "-"),
+      T.data + ": " + (val("data") || "-"),
+      T.ora + ": " + (val("ora") || "-"),
+      T.partenza + ": " + (val("partenza") || "-"),
+      T.destinazione + ": " + (val("destinazione") || "-"),
+      T.note + ": " + (val("note") || "-"),
       "",
-      "Attendo conferma. Grazie."
+      T.fine
     ];
 
-    var oggetto = "Richiesta di trasporto - " + nome;
+    var oggetto = T.oggetto + nome;
     var corpo = righe.join("\n");
     if (e.submitter && e.submitter.hasAttribute("data-whatsapp")) {
       /* Stesso messaggio, ma su WhatsApp: funziona anche sui telefoni senza

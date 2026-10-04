@@ -6,7 +6,11 @@ weight: 20
 
 *[‹ English home](/en/)*
 
-The Misericordia di Ariccia serves the community with **health and social services**, free of charge.
+The Misericordia di Ariccia serves the community with **health and social services**. They do not all work the same way:
+
+- **free of charge**: food bank, listening centre and support for people in difficulty;
+- **under agreements with local authorities**: some services are arranged through the public bodies, under their own rules;
+- **with a contribution**: for [transport](/en/trasporto-infermi/) we ask for a contribution that covers the cost of the vehicle and helps fund our free services. Call us with the details of the journey: we tell you the terms beforehand, with no obligation.
 
 ## Health services
 

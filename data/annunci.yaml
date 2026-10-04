@@ -3,12 +3,17 @@
 # non viene più mostrato (gli annunci SCADUTI spariscono al successivo rebuild del sito).
 # Senza "al" l'annuncio è permanente.
 # Campi: testo (HTML ammesso) · link + linkTesto (facoltativi) · cf:true (aggiunge il C.F.) · tel:true (aggiunge il telefono)
+# Pagine inglesi (/en/): mostrano solo le voci con "testo_en" (facoltativi link_en e linkTesto_en).
 voci:
   - testo: "Emergenza sanitaria? Chiama sempre il <a href=\"tel:112\"><strong>112</strong></a> — Numero Unico di Emergenza"
+    testo_en: "Medical emergency? Always call <a href=\"tel:112\"><strong>112</strong></a> — European emergency number"
 
   - testo: "<strong>Campagna Adesioni 2026</strong>: entra a far parte della nostra squadra"
     link: "/diventa-volontario/"
     linkTesto: "diventa volontario"
+    testo_en: "<strong>Volunteers wanted</strong>: join our team"
+    link_en: "/en/diventa-volontario/"
+    linkTesto_en: "become a volunteer"
 
   - testo: "Il nostro <strong>Centro di Ascolto</strong> è sempre attivo"
     link: "/servizi/servizi-sociali/"
@@ -18,9 +23,13 @@ voci:
     cf: true
     link: "/sostienici/"
     linkTesto: "come fare"
+    testo_en: "Give your <strong>5x1000</strong> on your Italian tax return:"
+    link_en: "/en/sostienici/"
+    linkTesto_en: "how to"
 
   - testo: "Serve un trasporto o un aiuto?"
     tel: true
+    testo_en: "Need a transport or some help? Call"
 
   - testo: "<strong>Sabato 13 giugno, ore 17</strong>: inaugurazione del nuovo veicolo a Piazza di Corte"
     link: "/news/inaugurazione-veicolo-trasporto-fragilita/"

@@ -129,5 +129,84 @@ enableGitInfo = true
     pageRef = "/contatti"
     weight = 70
 
+# Menu delle pagine inglesi (/en/): stessa struttura, solo pagine tradotte.
+# Le voci senza pagina inglese portano alla pagina italiana (segnata «IT»).
+  [[menus.en]]
+    identifier = "whoweare"
+    name = "About us"
+    weight = 10
+  [[menus.en]]
+    name = "Who we are"
+    pageRef = "/en/chi-siamo"
+    parent = "whoweare"
+    weight = 1
+  [[menus.en]]
+    name = "Story & tradition"
+    pageRef = "/en/storia-e-tradizione"
+    parent = "whoweare"
+    weight = 2
+  [[menus.en]]
+    name = "The confratelli"
+    pageRef = "/en/i-confratelli"
+    parent = "whoweare"
+    weight = 3
+  [[menus.en]]
+    name = "The Works of Mercy"
+    pageRef = "/en/opere-di-misericordia"
+    parent = "whoweare"
+    weight = 4
+  [[menus.en]]
+    name = "Transparency"
+    pageRef = "/en/trasparenza"
+    parent = "whoweare"
+    weight = 5
+  [[menus.en]]
+    name = "Patient transport"
+    pageRef = "/en/trasporto-infermi"
+    weight = 18
+  [[menus.en]]
+    identifier = "services"
+    name = "Services"
+    weight = 20
+  [[menus.en]]
+    name = "All services"
+    pageRef = "/en/servizi"
+    parent = "services"
+    weight = 1
+  [[menus.en]]
+    name = "Request a transport"
+    pageRef = "/en/richiedi-trasporto"
+    parent = "services"
+    weight = 2
+  [[menus.en]]
+    name = "Training"
+    pageRef = "/en/formazione"
+    parent = "services"
+    weight = 3
+  [[menus.en]]
+    name = "First aid"
+    pageRef = "/en/primo-soccorso"
+    weight = 22
+  [[menus.en]]
+    name = "Civil Service"
+    pageRef = "/en/servizio-civile"
+    weight = 30
+  [[menus.en]]
+    name = "Projects"
+    pageRef = "/en/progetti"
+    weight = 40
+  [[menus.en]]
+    name = "Volunteer"
+    pageRef = "/en/diventa-volontario"
+    weight = 50
+  [[menus.en]]
+    name = "FAQ"
+    pageRef = "/en/faq"
+    weight = 60
+  [[menus.en]]
+    name = "Contact"
+    pageRef = "/en/contatti"
+    weight = 70
+
 [markup.goldmark.renderer]
   unsafe = true

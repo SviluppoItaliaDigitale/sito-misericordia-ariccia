@@ -2,6 +2,10 @@
      del file su GitHub). Segnale di fiducia: il sito è vivo e curato. */ -}}
 {{- with .Lastmod -}}
 {{- if not .IsZero -}}
+{{- if eq (partial "lingua.html" $) "en" }}
+<p class="pagina-aggiornata">Page updated on {{ .Format "2 January 2006" }}</p>
+{{- else }}
 <p class="pagina-aggiornata">Pagina aggiornata il {{ time.Format ":date_long" . }}</p>
+{{- end }}
 {{- end -}}
 {{- end -}}
