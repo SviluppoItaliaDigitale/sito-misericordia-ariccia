@@ -11,6 +11,10 @@ weight: 80
 
 ## Where we are
 
+<div class="avviso-archivio rounded p-3 px-4 mb-3" role="note">
+<strong>Visits to our offices are by appointment only.</strong> Before coming, please call <a href="tel:+39069333717">+39 06 933 3717</a> or <a href="tel:+393484068657">+39 348 4068657</a>, so we can tell you when to find us and who can help. For transport requests you don't need to come in: <a href="/en/richiedi-trasporto/">request one here</a>; we usually reply within a few minutes, and always on the same day.
+</div>
+
 - **Operational office:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM), Italy
 - **Administrative office:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM), Italy
 
