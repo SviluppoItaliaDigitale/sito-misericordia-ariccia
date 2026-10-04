@@ -184,13 +184,14 @@ def aggiorna_facebook(news, reg, prova):
 
 
 def pubblica_facebook(n):
+    # Sempre un post con link: Facebook costruisce l'anteprima da og:title/og:image
+    # e il video si guarda nell'articolo. I video caricati con l'API (/videos)
+    # venivano trasformati in Reel e Facebook non li distribuiva a nessuno
+    # (visibili solo agli amministratori, 4 ottobre 2026): niente più Reel su FB.
+    testo = testo_facebook(n)
     if n.get("video"):
-        # News con "social_video:": video caricato sulla pagina (il link all'articolo è nel testo)
-        r = graph_post(f"{PAGE_ID}/videos", {"file_url": n["video"], "description": testo_facebook(n),
-                                             "title": n["titolo"]})
-        return r["id"]
-    # Post con link: Facebook costruisce l'anteprima da og:title/og:image.
-    r = graph_post(f"{PAGE_ID}/feed", {"message": testo_facebook(n), "link": n["url"]})
+        testo = testo.replace("\n\n👉 Leggi tutto:", "\n\n▶️ Guarda il video e leggi tutto:")
+    r = graph_post(f"{PAGE_ID}/feed", {"message": testo, "link": n["url"]})
     return r["id"]
 
 
@@ -306,7 +307,7 @@ def main():
                 continue
             if prova:
                 testo = testo_facebook(n) if rete == "facebook" else testo_instagram(n)
-                formato = (" come Reel" if rete == "instagram" else " come video") if n.get("video") else ""
+                formato = " come Reel" if (rete == "instagram" and n.get("video")) else ""
                 print(f"   {rete}: pubblicherebbe{formato} →\n" + "\n".join("      " + r for r in testo.splitlines()))
                 continue
             try:
