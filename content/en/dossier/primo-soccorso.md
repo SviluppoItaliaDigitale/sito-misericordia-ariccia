@@ -2,7 +2,7 @@
 traduzione: "/dossier/primo-soccorso"
 title: "First aid step by step: 23 emergencies"
 titoloSeo: "First aid: what to do in 23 emergencies, from stroke and heart attack to choking and CPR in children"
-description: "The Misericordia di Ariccia first-aid dossier: how to recognise and what to do in case of stroke, heart attack, severe bleeding, cardiac arrest, choking, anaphylaxis, burns, hypoglycaemia, poisoning and head injury, seizures, road accidents, fainting, choking and CPR in infants and children, fractures, cold, carbon monoxide, asthma, button batteries, falls in older people, fireworks and the first-aid kit, following the ERC/IRC 2025 guidelines."
+description: "The Misericordia di Ariccia first-aid dossier: how to recognise and what to do in case of stroke, heart attack, severe bleeding, cardiac arrest, choking in adults, anaphylaxis, burns, hypoglycaemia, poisoning and head injury, seizures, road accidents, fainting, choking and CPR in infants and children, fractures, cold, carbon monoxide, asthma, button batteries, falls in older people, fireworks and the first-aid kit, following the ERC/IRC 2025 guidelines."
 type: "dossier"
 layout: "primo-soccorso"
 occhiello: "Dossier · First aid"

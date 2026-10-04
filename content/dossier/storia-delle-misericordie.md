@@ -111,7 +111,7 @@ tappe:
     titolo: "Nasce la Misericordia di Ariccia"
     testo: "In questa lunghissima tradizione si inserisce, nel **1994**, la **Confraternita di Misericordia di Ariccia**: giovani e adulti dei Castelli Romani che scelgono di mettersi al servizio della comunità. Trasporto sanitario, servizi sociali, formazione, Servizio Civile, aiuto alle famiglie fragili: le Opere di Misericordia, qui e ora."
     img: "/img/trenta-anni.jpg"
-    img_alt: "Trent'anni della Misericordia di Ariccia (1995–2025)"
+    img_alt: "Grafica per i trent'anni della Misericordia di Ariccia: il logo delle Misericordie tra due mani aperte"
     img_didascalia: "La Misericordia di Ariccia al fianco della comunità dei Castelli Romani dal 1994."
   - anno: "2017"
     epoca: "Oggi"
