@@ -185,6 +185,9 @@ Velletri Moda):
   @confraternitamisericordia (registro `.github/social/pubblicati.json`,
   guida `docs/pubblicazione-social.md`). Non serve più preparare testi
   social né la vecchia pagina `/grafiche-social/` (eliminata).
+- **Su Facebook sempre post con link** (anche per le news con video): i video
+  caricati con l'API diventavano Reel che Facebook non distribuiva (visibili
+  solo agli amministratori, verificato il 4/10/2026). Su Instagram i Reel vanno.
 - Il testo del post è `description`/sommario della news; per un testo
   su misura usare `social_testo:` nel front matter; `social: false` per
   non condividere. 5x1000 quando pertinente: **C.F. 90031910582**.
