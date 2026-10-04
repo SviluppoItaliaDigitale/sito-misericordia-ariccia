@@ -11,12 +11,22 @@ italianoSemplice: |
   - Email: **sede@misericordia-ariccia.it**
 
   Sede operativa: Piazzale Aldo Moro 6, Ariccia.
+
+  Se vuoi venire in sede, **devi prima telefonare** per prendere un appuntamento.
+
+  In sede si entra senza scale. C'è il parcheggio.
 ---
 
 ## Dove siamo
 
+<div class="avviso-archivio rounded p-3 px-4 mb-3" role="note">
+<strong>In sede si riceve solo su appuntamento, da fissare per telefono.</strong> Prima di venire <strong>è necessario chiamare</strong> il <a href="tel:+39069333717">06 933 3717</a> o il <a href="tel:+393484068657">348 4068657</a>: senza telefonata potresti non trovare nessuno. Al telefono ti diciamo quando venire e chi ti può aiutare. Per le richieste di trasporto non serve venire in sede: <a href="/richiedi-trasporto/">chiedi qui</a>, di solito rispondiamo in pochi minuti e comunque in giornata.
+</div>
+
 - **Sede operativa:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM) — Tel. [06 933 3717](tel:+39069333717) · Cell. [348 4068657](tel:+393484068657) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Piazzale%20Aldo%20Moro%206%20Ariccia)
 - **Sede amministrativa:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM) — Cell. [328 8105399](tel:+393288105399) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Viale%20Antonietta%20Chigi%2046%20Ariccia)
+
+**Accesso:** si entra **senza scale**, comodo anche in carrozzina, e c'è il **parcheggio**.
 
 *Sede legale (a soli fini amministrativi e fiscali): Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM).*
 
