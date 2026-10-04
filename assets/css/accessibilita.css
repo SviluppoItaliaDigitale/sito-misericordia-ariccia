@@ -381,6 +381,13 @@ select:focus-visible, textarea:focus-visible, summary:focus-visible,
   outline: none; border-color: var(--mise-ciano); box-shadow: 0 0 0 3px var(--mise-ciano-velo);
 }
 .pf-nota { font-size: .82rem; color: #5a6474; margin: .7rem 0 0; } /* contrasto AA */
+.pf-aiuto { font-weight: 400; font-size: .84rem; color: #5a6474; } /* contrasto AA */
+/* I tre passaggi dopo il clic: apri l'app → invii tu → ti richiamiamo noi */
+.pf-passi {
+  margin: 0 0 14px; padding: 12px 14px 12px 2.1rem; font-size: .92rem; color: var(--mise-navy);
+  background: #fff; border-left: 4px solid var(--mise-giallo); border-radius: 4px 9px 9px 4px;
+}
+.pf-passi li + li { margin-top: .3rem; }
 
 @media (max-width: 560px) {
   .pf-griglia { grid-template-columns: 1fr; }

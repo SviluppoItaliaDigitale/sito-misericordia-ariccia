@@ -2,13 +2,17 @@
 title: "Richiedi un trasporto"
 titoloSeo: "Richiedi un trasporto sanitario o sociale ad Ariccia e Castelli Romani"
 servizio: "Trasporto sanitario e sociale"
-description: "Prenota un trasporto sanitario o sociale con la Misericordia di Ariccia: ambulanza, auto o mezzi con pedana. Modulo online, telefono 348 4068657 e WhatsApp."
+description: "Richiedi un trasporto sanitario o sociale con la Misericordia di Ariccia: ambulanza, auto o mezzi con pedana. Modulo online, telefono 348 4068657 e WhatsApp."
 italianoSemplice: |
   **Puoi chiedere un trasporto alla Misericordia.**
 
   Portiamo le persone alle visite, agli esami e alle cure. Aiutiamo chi ha difficoltà a muoversi.
 
   Chiama il **348 4068657** e dì: la data, l'ora, da dove parti e dove vuoi andare.
+
+  Ti richiamiamo noi per confermare. Il trasporto è fissato solo dopo la nostra conferma.
+
+  Per i trasporti chiediamo un contributo per i costi del mezzo.
 
   In caso di emergenza chiama sempre il **112**.
 ---
@@ -33,9 +37,11 @@ La Misericordia di Ariccia effettua **trasporti sanitari e sociali** con i propr
 
 ## Cosa ci serve sapere
 
-Quando ci contatti, tieni pronti questi dati: **data e orario**, **luogo di partenza e destinazione**, **numero di persone** ed eventuali esigenze particolari (carrozzina, barella, accompagnatore). Ti chiediamo, dove possibile, **un congruo preavviso** per organizzare mezzo e volontari.
+Quando ci contatti, tieni pronti questi dati: **data e orario**, **luogo di partenza e destinazione**, **numero di persone** ed eventuali esigenze particolari (carrozzina, barella, accompagnatore). Prima ci contatti, meglio è: anche **il giorno prima** ci aiuta a garantirti il mezzo giusto e l'equipaggio. Per i trasporti ricorrenti (dialisi, terapie) fissiamo insieme un calendario.
 
-## Come prenotare
+**Quanto costa?** Siamo un'organizzazione di volontariato: per i trasporti chiediamo un **contributo** che copre i costi del mezzo. Te lo diciamo prima, quando ti confermiamo il servizio.
+
+## Come fare la richiesta
 
 Compila i campi qui sotto e scegli come inviare: **email** (si apre la tua app di posta con il messaggio già pronto) oppure **WhatsApp** (si apre la chat con il nostro numero e il testo già scritto). È il modo più veloce per darci tutte le informazioni in una volta.
 
@@ -71,9 +77,15 @@ Compila i campi qui sotto e scegli come inviare: **email** (si apre la tua app d
       <input type="text" name="destinazione" placeholder="Ospedale, centro, indirizzo…">
     </label>
     <label class="pf-campo pf-full">Note (carrozzina, barella, accompagnatore…)
-      <textarea name="note" rows="2"></textarea>
+      <textarea name="note" rows="2" aria-describedby="pf-note-aiuto"></textarea>
+      <span class="pf-aiuto" id="pf-note-aiuto">Non inserire diagnosi, referti o altre informazioni sanitarie non necessarie: ci basta sapere come la persona può viaggiare.</span>
     </label>
   </div>
+  <ol class="pf-passi">
+    <li>Premi un pulsante: si apre la tua <strong>app di posta</strong> o <strong>WhatsApp</strong> con il messaggio già scritto.</li>
+    <li><strong>Invia tu</strong> il messaggio dall'app: finché non lo invii, non riceviamo nulla.</li>
+    <li>Ti <strong>richiamiamo noi</strong> per confermare disponibilità e contributo. Il trasporto è fissato solo dopo la nostra conferma.</li>
+  </ol>
   <div class="pf-invio">
     <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>
     <button type="submit" class="btn btn-giallo btn-lg" data-whatsapp>💬 Invia su WhatsApp</button>

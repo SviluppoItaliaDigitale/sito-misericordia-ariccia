@@ -24,6 +24,29 @@
     });
   }
 
+  /* Caroselli (annunci in cima, galleria in home): niente scorrimento automatico
+     con moto ridotto o con «Ferma animazioni» attivo; frecce e pallini restano.
+     Si ricreano da zero perché Bootstrap riavvia il giro al mouseleave. */
+  function fermo() {
+    return riduciMotion || document.documentElement.classList.contains("a11y-no-anim");
+  }
+  function impostaCaroselli() {
+    if (!window.bootstrap || !bootstrap.Carousel) return;
+    var stop = fermo();
+    document.querySelectorAll(".carousel[data-bs-interval]").forEach(function (c) {
+      var vecchio = bootstrap.Carousel.getInstance(c);
+      if (vecchio) vecchio.dispose();
+      if (stop) c.removeAttribute("data-bs-ride"); else c.setAttribute("data-bs-ride", "carousel");
+      new bootstrap.Carousel(c, {
+        ride: stop ? false : "carousel",
+        interval: stop ? false : (parseInt(c.getAttribute("data-bs-interval"), 10) || 5000),
+        pause: "hover"
+      });
+    });
+  }
+  impostaCaroselli();
+  document.addEventListener("mise:movimento", impostaCaroselli);
+
   /* Tooltip Bootstrap (dove richiesti) */
   if (window.bootstrap) {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (el) {

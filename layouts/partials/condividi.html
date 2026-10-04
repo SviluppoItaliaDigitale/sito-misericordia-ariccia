@@ -9,5 +9,7 @@
   <a class="cond-btn" href="https://t.me/share/url?url={{ $u | urlquery }}&text={{ $t | urlquery }}" target="_blank" rel="noopener nofollow">✈️ Telegram</a>
   <a class="cond-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $u | urlquery }}" target="_blank" rel="noopener nofollow">📘 Facebook</a>
   <a class="cond-btn" href="https://x.com/intent/post?url={{ $u | urlquery }}&text={{ $t | urlquery }}" target="_blank" rel="noopener nofollow">𝕏</a>
-  <a class="cond-btn" href="mailto:?subject={{ replace ($t | urlquery) "+" "%20" }}&body={{ replace ($testo | urlquery) "+" "%20" }}">✉️ Email</a>
+  {{- /* Il motore dei template codifica da solo i valori nella query del link
+       (spazi = %20): codificarli prima dava %2520 nelle app di posta. */}}
+  <a class="cond-btn" href="mailto:?subject={{ $t }}&body={{ $testo }}">✉️ Email</a>
 </div>
