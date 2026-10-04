@@ -168,7 +168,7 @@ def a_elenco(**_):
 def a_diagnosi_video(ident, **_):
     """Stato di uno o più video/Reel della pagina (ID separati da virgola)."""
     campi = ("id,title,published,privacy,status,permalink_url,created_time,updated_time,length,"
-             "content_category,embeddable,is_crosspost_video,copyright_monitoring_status")
+             "content_category,embeddable,is_crosspost_video,views,description")
     for vid in [x.strip() for x in ident.split(",") if x.strip()]:
         r = chiama("GET", vid, fields=campi)
         scrivi(f"### Video `{vid}`")
