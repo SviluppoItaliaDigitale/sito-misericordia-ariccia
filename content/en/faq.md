@@ -10,7 +10,7 @@ weight: 100
 No special skills are needed to start — we train you together. Drop by our offices, write to [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) or call/WhatsApp **+39 348 4068657**.
 
 **How do I request a transport or accompaniment?**
-Contact us in advance at **+39 348 4068657** (also WhatsApp) or by email, giving date, time, pick-up and destination: even the day before helps. We call you back to confirm. In an emergency, always call **112**.
+Contact us in advance at **+39 348 4068657** (also WhatsApp) or by email, giving date, time, pick-up and destination: even the day before helps. We call you back to confirm, usually within a few minutes and always on the same day. In an emergency, always call **112**.
 
 **Is transport free?**
 Not always. Our food bank and listening centre are free; for transport we ask for a **contribution** that covers the cost of the vehicle. We tell you the terms before confirming, with no obligation.

@@ -21,6 +21,8 @@ The Misericordia di Ariccia provides **medical and social transport** with its o
 - Transport for **people with disabilities** or reduced mobility
 - Accompaniment and **social transport**
 
+**When do we reply?** We check requests throughout the day: we usually reply **within a few minutes**, at most **within a few hours**, and always **on the same day**.
+
 ## What we need to know
 
 Please have ready: **date and time**, **pick-up and destination**, **number of people** and any special needs (wheelchair, stretcher, companion). The sooner, the better: even **the day before** helps us find the right vehicle and crew. For recurring trips (dialysis, therapy) we agree a schedule together.
@@ -70,7 +72,7 @@ Fill in the fields below and choose how to send it: **email** (your email app op
   <ol class="pf-passi">
     <li>Press a button: your <strong>email app</strong> or <strong>WhatsApp</strong> opens with the message already written.</li>
     <li><strong>You send</strong> the message from the app: until you send it, we receive nothing.</li>
-    <li><strong>We call you back</strong> to confirm availability and the contribution. Your transport is booked only once we have confirmed it.</li>
+    <li><strong>We call you back</strong> to confirm availability and the contribution: usually within a few minutes, at most within a few hours, and always on the same day. Your transport is booked only once we have confirmed it.</li>
   </ol>
   <div class="pf-invio">
     <button type="submit" class="btn btn-ciano btn-lg">✉️ Send by email</button>

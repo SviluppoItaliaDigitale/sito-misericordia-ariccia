@@ -10,7 +10,9 @@ italianoSemplice: |
 
   Chiama il **348 4068657** e dì: la data, l'ora, da dove parti e dove vuoi andare.
 
-  Ti richiamiamo noi per confermare. Il trasporto è fissato solo dopo la nostra conferma.
+  Ti richiamiamo noi per confermare. Di solito rispondiamo in pochi minuti, al massimo in poche ore, comunque in giornata.
+
+  Il trasporto è fissato solo dopo la nostra conferma.
 
   Per i trasporti chiediamo un contributo per i costi del mezzo.
 
@@ -34,6 +36,8 @@ La Misericordia di Ariccia effettua **trasporti sanitari e sociali** con i propr
 - Trasporto verso **centri diurni** e percorsi riabilitativi
 - Trasporto di **persone con disabilità** o difficoltà motorie
 - Accompagnamenti e **trasporto sociale**
+
+**Quando rispondiamo?** Leggiamo le richieste di continuo: di solito ti rispondiamo **in pochi minuti**, al massimo **in poche ore** e comunque **in giornata**.
 
 ## Cosa ci serve sapere
 
@@ -84,7 +88,7 @@ Compila i campi qui sotto e scegli come inviare: **email** (si apre la tua app d
   <ol class="pf-passi">
     <li>Premi un pulsante: si apre la tua <strong>app di posta</strong> o <strong>WhatsApp</strong> con il messaggio già scritto.</li>
     <li><strong>Invia tu</strong> il messaggio dall'app: finché non lo invii, non riceviamo nulla.</li>
-    <li>Ti <strong>richiamiamo noi</strong> per confermare disponibilità e contributo. Il trasporto è fissato solo dopo la nostra conferma.</li>
+    <li>Ti <strong>richiamiamo noi</strong> per confermare disponibilità e contributo: di solito in pochi minuti, al massimo in poche ore e comunque in giornata. Il trasporto è fissato solo dopo la nostra conferma.</li>
   </ol>
   <div class="pf-invio">
     <button type="submit" class="btn btn-ciano btn-lg">✉️ Invia la richiesta via email</button>

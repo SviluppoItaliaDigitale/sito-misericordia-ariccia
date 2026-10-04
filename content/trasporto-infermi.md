@@ -45,6 +45,13 @@ Siamo un'organizzazione di volontariato: chiediamo un **contributo** che copre i
 </details>
 
 <details class="faq-item">
+<summary>Quanto tempo ci mettete a rispondere?</summary>
+
+Leggiamo le richieste di continuo: di solito ti rispondiamo **in pochi minuti**, al massimo **in poche ore** e comunque **in giornata**. Il trasporto è fissato solo dopo la nostra conferma.
+
+</details>
+
+<details class="faq-item">
 <summary>Con quanto anticipo devo prenotare?</summary>
 
 Prima è, meglio è: anche **il giorno prima** ci aiuta a garantirti il mezzo giusto e l'equipaggio. Per i trasporti ricorrenti (dialisi, terapie) fissiamo insieme un calendario.
