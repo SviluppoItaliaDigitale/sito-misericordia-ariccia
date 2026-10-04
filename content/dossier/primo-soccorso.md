@@ -1,7 +1,7 @@
 ---
 title: "Primo soccorso passo passo: 23 emergenze"
 titoloSeo: "Primo soccorso: cosa fare in 23 emergenze, da ictus e infarto a soffocamento e rianimazione nel bambino"
-description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025."
+description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025."
 layout: "primo-soccorso"
 italianoSemplice: |
   **Questa pagina spiega cosa fare in 23 emergenze.**
