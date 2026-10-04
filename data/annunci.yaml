@@ -5,6 +5,11 @@
 # Campi: testo (HTML ammesso) · link + linkTesto (facoltativi) · cf:true (aggiunge il C.F.) · tel:true (aggiunge il telefono)
 # Pagine inglesi (/en/): mostrano solo le voci con "testo_en" (facoltativi link_en e linkTesto_en).
 voci:
+  - testo: "Oggi è <strong>San Francesco</strong>, patrono d'Italia: 800 anni dalla sua morte"
+    link: "/news/san-francesco-800-anni/"
+    linkTesto: "usai con essi misericordia"
+    al: "2026-10-04T23:59:00+02:00"
+
   - testo: "Emergenza sanitaria? Chiama sempre il <a href=\"tel:112\"><strong>112</strong></a> — Numero Unico di Emergenza"
     testo_en: "Medical emergency? Always call <a href=\"tel:112\"><strong>112</strong></a> — European emergency number"
 
