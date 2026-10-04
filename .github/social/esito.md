@@ -1,32 +1,117 @@
-## Gestione social — diagnosi-video (2026-10-04 19:28 UTC)
+## Gestione social — diagnosi-video (2026-10-04 19:29 UTC)
 ### Video `2128070854490419`
 ```
 {
- "errore": "(#100) The page is not qualified to use Video Copyright API. Please verify that the page has completed Video Copyright API onboarding process."
-}
-```
-### Video `1762996491627657`
-```
-{
- "errore": "(#100) The page is not qualified to use Video Copyright API. Please verify that the page has completed Video Copyright API onboarding process."
-}
-```
-### Video `1789262798936921`
-```
-{
- "errore": "(#100) The page is not qualified to use Video Copyright API. Please verify that the page has completed Video Copyright API onboarding process."
-}
-```
-### Video `2109666756293741`
-```
-{
- "errore": "(#100) The page is not qualified to use Video Copyright API. Please verify that the page has completed Video Copyright API onboarding process."
+ "id": "2128070854490419",
+ "title": "L'ultimo viaggio: perché nessun desiderio resti un sogno",
+ "published": true,
+ "privacy": {
+  "allow": "",
+  "deny": "",
+  "description": "Tutti",
+  "friends": "",
+  "networks": "",
+  "value": "EVERYONE"
+ },
+ "status": {
+  "video_status": "ready",
+  "uploading_phase": {
+   "status": "complete"
+  },
+  "processing_phase": {
+   "status": "complete"
+  },
+  "publishing_phase": {
+   "status": "complete",
+   "publish_status": "published",
+   "publish_time": "2026-10-04T00:24:57+0000"
+  }
+ },
+ "permalink_url": "/reel/2128070854490419/",
+ "created_time": "2026-10-04T00:24:57+0000",
+ "updated_time": "2026-10-04T00:26:11+0000",
+ "length": 92.3,
+ "content_category": "OTHER",
+ "embeddable": true,
+ "is_crosspost_video": false,
+ "views": 7,
+ "description": "L'ultimo viaggio: perché nessun desiderio resti un sogno\n\n🌅 C'è un momento in cui il tempo diventa prezioso, e un desiderio, l'ultimo, non può più aspettare. Rivedere il mare, tornare nel paese dove si è nati, rivedere la propria casa, esserci al matrimonio di un nipote. Con «L'ultimo viaggio» lo realizziamo insieme: in ambulanza, con la barella, con i nostri volontari accanto dal primo all'ultimo momento, e con un familiare vicino. Perché nessun desiderio resti soltanto un sogno. 📞 Se una persona che ami ha un ultimo desiderio, chiamaci al 348 4068657: ne parliamo insieme, con il cuore.\n\n🎵 Touching Moments Two – Higher – Kevin MacLeod (incompetech.com) CC BY 4.0\n\n👉 Leggi tutto: https://www.misericordia-ariccia.it/news/ultimo-viaggio/"
 }
 ```
 ### Video `1415394646698557`
 ```
 {
- "errore": "(#100) The page is not qualified to use Video Copyright API. Please verify that the page has completed Video Copyright API onboarding process."
+ "id": "1415394646698557",
+ "title": "Nessuno resta solo: in 40 secondi, cosa fa un volontario della Misericordia",
+ "published": true,
+ "privacy": {
+  "allow": "",
+  "deny": "",
+  "description": "Tutti",
+  "friends": "",
+  "networks": "",
+  "value": "EVERYONE"
+ },
+ "status": {
+  "video_status": "ready",
+  "uploading_phase": {
+   "status": "complete"
+  },
+  "processing_phase": {
+   "status": "complete"
+  },
+  "publishing_phase": {
+   "status": "complete",
+   "publish_status": "published",
+   "publish_time": "2026-09-30T15:55:25+0000"
+  }
+ },
+ "permalink_url": "/reel/1415394646698557/",
+ "created_time": "2026-09-30T15:55:25+0000",
+ "updated_time": "2026-09-30T15:56:32+0000",
+ "length": 42.44,
+ "content_category": "OTHER",
+ "embeddable": true,
+ "is_crosspost_video": false,
+ "views": 9,
+ "description": "Nessuno resta solo: in 40 secondi, cosa fa un volontario della Misericordia\n\n📞 Squilla il telefono: qualcuno, qui ad Ariccia, deve raggiungere l'ospedale per curarsi. L'equipaggio indossa la divisa e parte. Durante il viaggio c'è chi ti tiene il braccio e ti fa due chiacchiere: nessuno resta solo. 💛💙 Dietro ogni viaggio ci sono persone comuni, come te. Non servono capacità speciali: la formazione la facciamo insieme (primo soccorso, BLSD, soccorritore). Diventa volontario, dai 16 agli 80 anni: chiama o scrivi su WhatsApp al 348 4068657.\n\n👉 Leggi tutto: https://www.misericordia-ariccia.it/news/diventa-volontario-video/"
+}
+```
+### Video `2655910244881376`
+```
+{
+ "id": "2655910244881376",
+ "published": true,
+ "privacy": {
+  "allow": "",
+  "deny": "",
+  "description": "Tutti",
+  "friends": "",
+  "networks": "",
+  "value": "EVERYONE"
+ },
+ "status": {
+  "video_status": "ready",
+  "uploading_phase": {
+   "status": "complete"
+  },
+  "processing_phase": {
+   "status": "complete"
+  },
+  "publishing_phase": {
+   "status": "complete",
+   "publish_status": "published",
+   "publish_time": "2026-09-14T00:23:56+0000"
+  }
+ },
+ "permalink_url": "/reel/2655910244881376/",
+ "created_time": "2026-09-14T00:23:56+0000",
+ "updated_time": "2026-09-28T12:07:05+0000",
+ "length": 255.93,
+ "content_category": "OTHER",
+ "embeddable": true,
+ "is_crosspost_video": false,
+ "views": 652
 }
 ```
 ### Pagina
