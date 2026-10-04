@@ -185,6 +185,11 @@ Velletri Moda):
   @confraternitamisericordia (registro `.github/social/pubblicati.json`,
   guida `docs/pubblicazione-social.md`). Non serve più preparare testi
   social né la vecchia pagina `/grafiche-social/` (eliminata).
+- **L'app Meta «Sito Misericordia Ariccia» deve restare in modalità Live**
+  (developers.facebook.com → app → Pubblicazione). In modalità Sviluppo tutto
+  ciò che pubblica l'API risulta pubblicato ma lo vedono solo gli amministratori
+  dell'app: è successo dal 30/9 al 4/10/2026 (post e Reel invisibili agli altri).
+  Se «solo io lo vedo», controllare prima questo.
 - **Facebook, news con video**: post con link all'articolo **più** un Reel
   caricato con la **Reels API** ufficiale (`/video_reels`, tre fasi; registro
   `facebook_reel`). Mai `/videos`: quei video diventavano Reel non distribuiti,
