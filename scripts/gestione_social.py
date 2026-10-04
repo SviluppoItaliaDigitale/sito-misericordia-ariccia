@@ -187,6 +187,14 @@ def a_diagnosi_video(ident, **_):
     scrivi("```")
 
 
+def a_elimina_molti(ident, conf, **_):
+    """Elimina più post/video Facebook (ID separati da virgola). CONFERMA=ELIMINA."""
+    conferma(conf)
+    for oid in [x.strip() for x in ident.split(",") if x.strip()]:
+        r = chiama("DELETE", oid)
+        scrivi(f"- `{oid}`: {'eliminato' if r.get('success') else r}")
+
+
 def a_statistiche(**_):
     p = chiama("GET", PAGE_ID, fields="name,followers_count,fan_count")
     scrivi(f"### Facebook — {p.get('name', '')}")
@@ -312,6 +320,7 @@ def a_rispondi_messaggio(rete, ident, testo, **_):
 
 
 AZIONI = {
+    "elimina-molti": a_elimina_molti,
     "diagnosi-video": a_diagnosi_video,
     "prova": a_prova, "elenco": a_elenco, "statistiche": a_statistiche,
     "pubblica": a_pubblica, "modifica": a_modifica, "elimina": a_elimina,
