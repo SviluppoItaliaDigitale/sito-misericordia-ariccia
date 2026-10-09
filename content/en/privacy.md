@@ -42,7 +42,7 @@ Giving us your data is optional, but without contact details we cannot reply or 
 
 ## How long we keep it
 
-Requests are kept **as long as needed** to handle them and provide the service, then deleted. Accounting records (receipts for contributions) for the period required by law, normally **10 years**. Server logs are handled by Aruba for its own technical security periods.
+Requests (emails, WhatsApp messages, notes) are **deleted as soon as they have been processed**, that is once the service has been organised or the request answered. Accounting records (receipts for contributions) for the period required by law, normally **10 years**. Server logs are handled by Aruba for its own technical security periods.
 
 ## Your rights
 

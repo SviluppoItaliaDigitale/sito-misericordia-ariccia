@@ -50,7 +50,7 @@ Darci i dati è facoltativo, ma senza un recapito non possiamo risponderti né o
 
 ## Per quanto tempo li teniamo
 
-Le richieste per il **tempo necessario** a gestirle e a svolgere il servizio, poi le cancelliamo. I documenti contabili (ricevute dei contributi) per il tempo previsto dalla legge, di norma **10 anni**. I log del server sono gestiti da Aruba per i suoi tempi tecnici di sicurezza.
+Le richieste (email, messaggi WhatsApp, appunti) le **cancelliamo subito dopo averle elaborate**, cioè appena il servizio è organizzato o la richiesta ha avuto risposta. I documenti contabili (ricevute dei contributi) per il tempo previsto dalla legge, di norma **10 anni**. I log del server sono gestiti da Aruba per i suoi tempi tecnici di sicurezza.
 
 ## Titolare del trattamento
 
