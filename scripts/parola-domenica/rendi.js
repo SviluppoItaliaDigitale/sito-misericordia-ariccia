@@ -1,7 +1,7 @@
 // Carosello della Parola della domenica: node rendi.js SCHEDA.json CARTELLA_USCITA [OPERA.jpg]
 // Crea AAAA-MM-GG-1.jpg … (JPEG 1080×1350, qualità 88): con l'opera la 1 è la copertina,
 // poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra
-// o se una scritta tocca ornamenti, stemma, filetti o opera.
+// o se una scritta tocca ornamenti, stemma, filetti o opera; si rifiuta se manca il Vangelo.
 const { chromium } = require('playwright-core');
 const fs = require('fs'), path = require('path');
 const [scheda, cartella, opera] = process.argv.slice(2);
@@ -11,6 +11,7 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
   .find(p => fs.existsSync(p));
 (async () => {
   const s = JSON.parse(fs.readFileSync(scheda, 'utf8'));
+  if (!s.pagine.some(v => v.lettura === 'Vangelo')) { console.error('manca il Vangelo: ogni carosello deve avere almeno un versetto del Vangelo'); process.exit(1); }
   if (s.opera && !opera) { console.error('la scheda ha un\'opera: passare anche OPERA.jpg'); process.exit(1); }
   const conOpera = s.opera ? 1 : 0, n = s.pagine.length + conOpera;
   fs.mkdirSync(cartella, { recursive: true });

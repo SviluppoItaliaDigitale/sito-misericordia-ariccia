@@ -25,3 +25,5 @@ resources/_gen/
 .playwright-mcp/
 __pycache__/
 giallo_ciano_avvisi.md
+# letture CEI 2008 del giorno, generate al deploy da scripts/liturgia_cei.py
+data/liturgia_cei.json

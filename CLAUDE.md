@@ -76,7 +76,11 @@ mercoledì la routine cloud «Parola della domenica»: scheda in
 
 ## Fonti dati Liturgia del giorno
 
-- **Letture** (Evangelizo): `https://feed.evangelizo.org/v2/reader.php?date=AAAAMMGG&type=all&lang=IT`
+- **Letture (testo principale, CEI 2008 letto a Messa)**: `https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia=AAAAMMGG`,
+  scaricate al deploy da `scripts/liturgia_cei.py` in `data/liturgia_cei.json` (non versionato).
+  Uso consentito dalle note legali CEI (scopo formativo, non commerciale, testo integrale, fonte citata).
+- **Letture (ripiego, CEI 1974)** (Evangelizo): `https://feed.evangelizo.org/v2/reader.php?date=AAAAMMGG&type=all&lang=IT`
+  — usate solo se la CEI non risponde.
 - **Calendario liturgico** (LitCal): `https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/AAAA?year_type=CIVIL`
 
 > Nota: questi feed sono bloccati dal proxy dell'ambiente di monitoraggio cloud.
@@ -210,6 +214,18 @@ Velletri Moda):
   bande bianche** delle foto WhatsApp → cartiglio sfumato con didascalia →
   eventuale fascia di ringraziamento → piede bianco con logo
   (`static/img/loghi/mise-triangolo.png`) e `www.misericordia-ariccia.it`.
+- **Cornice (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: ogni grafica social ha la
+  cornice della confraternita, **sobria** (Alessandro: niente di pacchiano): doppio filetto
+  dorato, due volute e il giglio di Firenze in ogni angolo, la stessa della «Parola della
+  domenica». Blocco pronto: `scripts/grafica-brand/cornice.html` (contenuti ad almeno 100 px
+  da lati e alto, lontani dagli angoli).
+- **Filigrane (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: in ogni grafica per
+  i social (articoli, avvisi, eventi…) lo **stemma FM della confraternita** e il
+  **giglio di Firenze** in trasparenza, dietro ai testi e sul fondo navy (mai sopra la
+  foto), con le scritte ben leggibili. Blocco pronto da copiare:
+  `scripts/grafica-brand/filigrane.html` (il contenitore vuole `position:relative;
+  isolation:isolate`). Giglio: `static/img/loghi/giglio-firenze-bianco.svg`
+  (Wikimedia Commons, pubblico dominio).
 - **Render**: HTML nello scratchpad → screenshot con Playwright
   (`playwright-core` + Chromium in `/opt/pw-browsers/chromium-*/chrome-linux/chrome`,
   attendere `document.fonts.ready`). NON usare lo screenshot CLI di

@@ -1037,6 +1037,13 @@ a:hover { color: var(--mise-navy); }
 }
 .lit-vn-link a:hover { background: var(--mise-giallo); color: var(--mise-navy); border-color: var(--mise-giallo); }
 .lit-letture-titolo { margin-top: 2rem; font-size: 1.4rem; color: var(--mise-navy); }
+.lit-lettura { margin: 0 0 2rem; }
+.lit-sezione { font-size: 1.15rem; color: var(--mise-ciano-testo); margin-bottom: .2rem; }
+.lit-titoletto { font-style: italic; margin-bottom: .3rem; }
+.lit-fonte { font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy); margin-bottom: .6rem; }
+.lit-rif { font-weight: 400; color: var(--mise-ciano-testo); margin-left: .3rem; }
+.lit-r { color: var(--mise-ciano-testo); }
+.lit-chiusura { font-style: italic; color: var(--mise-navy); }
 @media (max-width: 575.98px) { .lit-vn-link { grid-template-columns: 1fr; } }
 
 /* ------- Condivisione senza tracker (link puri, nessuno script) ------- */

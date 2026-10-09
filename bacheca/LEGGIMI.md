@@ -30,6 +30,7 @@ bacheca/
 | `da-rifare` | chi controlla | le note del controllo dicono cosa cambiare |
 | `approvato` | chi controlla | va bene; può essere usato nel sito |
 | `pubblicato` | chi lo mette nel sito | indicare dove (file e URL) |
+| `annullato` | chi l'ha aperto | non serve più: non lavorarci |
 
 Ogni passaggio si annota in fondo al file, nella sezione **Registro**, con data e
 nome (`Claude`, `ChatGPT`, `Codex`, `Alessandro`). Non si cancella mai quello che
