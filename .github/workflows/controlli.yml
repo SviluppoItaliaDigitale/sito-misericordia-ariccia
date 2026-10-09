@@ -19,9 +19,11 @@ permissions:
   contents: read
   issues: write
 
+# Le PR non devono annullare il controllo dopo un deploy (e viceversa): gruppi
+# separati; si annulla solo un controllo vecchio della stessa PR.
 concurrency:
-  group: controlli-sito
-  cancel-in-progress: true
+  group: controlli-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   controlli:
