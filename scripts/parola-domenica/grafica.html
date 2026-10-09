@@ -42,6 +42,9 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .angolo.a1{left:-2px;top:-2px}.angolo.a2{right:-2px;top:-2px;transform:scaleX(-1)}
 .angolo.a3{left:-2px;bottom:-2px;transform:scaleY(-1)}.angolo.a4{right:-2px;bottom:-2px;transform:scale(-1,-1)}
 .filetto{display:block;width:560px;height:40px;margin:0 auto}
+.filigrana{position:absolute;opacity:.07;pointer-events:none;z-index:-1} /* dietro a tutto, testo compreso */
+.filigrana.stemma-f{right:84px;bottom:60px;width:400px;height:400px;filter:grayscale(1) brightness(2.2)}
+.filigrana.giglio-f{left:70px;bottom:90px;width:250px;height:300px;opacity:.055}
 .stemma{position:absolute;right:96px;top:236px;width:118px;height:118px}
 .sigillo{position:absolute;right:104px;top:104px;width:140px;height:140px}
 /* piede bianco del brand */
@@ -80,6 +83,23 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
       </g>
       <path d="M277 8 h6 v8 h8 v6 h-8 v12 h-6 v-12 h-8 v-6 h8z" fill="#e2231a"/>
     </symbol>
+    <!-- giglio di Firenze (bottonato, con gli stami): la prima Misericordia nacque a Firenze -->
+    <symbol id="giglio" viewBox="0 0 200 240">
+      <g fill="#fff">
+        <path d="M100 8 C84 38 79 78 90 112 H110 C121 78 116 38 100 8Z"/>
+        <path d="M112 112 C126 64 168 50 186 80 C198 102 184 128 162 122 C176 112 172 92 156 92 C140 92 130 104 125 112Z"/>
+        <path d="M88 112 C74 64 32 50 14 80 C2 102 16 128 38 122 C24 112 28 92 44 92 C60 92 70 104 75 112Z"/>
+        <rect x="66" y="112" width="68" height="16" rx="3"/>
+        <path d="M93 128 H107 L104 174 H96Z"/>
+        <path d="M94 132 C72 130 56 146 62 172 C70 158 82 150 95 150Z"/>
+        <path d="M106 132 C128 130 144 146 138 172 C130 158 118 150 105 150Z"/>
+        <path d="M86 112 C80 92 74 76 70 62 L76 60 C80 74 86 90 92 110Z"/>
+        <path d="M114 112 C120 92 126 76 130 62 L124 60 C120 74 114 90 108 110Z"/>
+        <path d="M72 62 C60 58 58 44 70 30 C80 44 80 58 72 62Z"/>
+        <path d="M128 62 C140 58 142 44 130 30 C120 44 120 58 128 62Z"/>
+        <path d="M71 64 C62 66 56 62 54 56 C62 54 68 58 71 64Z"/><path d="M129 64 C138 66 144 62 146 56 C138 54 132 58 129 64Z"/>
+      </g>
+    </symbol>
   </defs>
 </svg>
 <div class="ornato">
@@ -98,6 +118,8 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
   <div class="numero" id="c-numero"></div>
 </section>
 <section class="pagina" id="pagina" hidden>
+  <svg class="filigrana giglio-f"><use href="#giglio"/></svg>
+  <img class="filigrana stemma-f" src="../../static/img/loghi/mise-fregio.png" alt="">
   <img class="stemma" src="../../static/img/loghi/mise-fregio.png" alt="">
   <div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="p-giorno"></div></div>
   <div class="lettura"><div class="nome" id="p-nome"></div><div class="libro" id="p-libro"></div></div>
