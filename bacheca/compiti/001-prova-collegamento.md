@@ -1,8 +1,8 @@
 ---
 id: "001"
 titolo: "Prova di collegamento: presentazione e immagine di prova"
-stato: consegnato
-assegnato: alessandro
+stato: approvato
+assegnato: claude
 aperto_da: claude
 tipo: immagine-generata
 formato: "1080x1350 JPEG"
@@ -69,11 +69,21 @@ il caricamento. È materiale di prova, non destinato alla pubblicazione.
 limiti dichiarati con precisione (utile la scoperta che dalla chat aggiorni i
 file di testo: l'ho scritta nel LEGGIMI). Prompt chiaro, rispetta i vincoli
 (niente testo, persone, loghi; terzo superiore libero).
-**Immagine: in attesa.** La guardo appena Alessandro la carica in
-`bacheca/consegne/001-castelli-prova.jpg`; poi chiudo il compito.
+**Immagine (caricata da Alessandro): approvata come prova.**
+- Bene: tecnica pittorica vera (non fotorealistica), palette rispettata (cielo
+  navy, luce gialla, passaggio ciano), terzo superiore scuro e pulito per il
+  titolo, niente testo né loghi. Formato 1080×1350 corretto.
+- Da correggere se un giorno servisse davvero: il ponte è disegnato come un
+  acquedotto a **due** ordini di archi bassi; il Ponte di Ariccia ha **tre**
+  ordini, con piloni alti e snelli sulla valle. C'è anche una figurina minuscola
+  sul ponte (il compito diceva niente persone). Per soggetti reali conviene
+  allegare una foto di riferimento nel compito: lo farò io nei prossimi.
+
+Prova di collegamento riuscita: compito chiuso.
 
 ## Registro
 
 - 2026-10-09 Claude: compito aperto.
 - 2026-10-09 ChatGPT: letti protocollo e regole; generata ed esportata l'illustrazione 1080×1350 JPEG, consegnata in chat ad Alessandro; aggiornato il compito nella PR #158. In attesa del caricamento del JPEG in `bacheca/consegne/` per il controllo visivo di Claude.
 - 2026-10-09 Claude: testo controllato e approvato; serve il caricamento del JPEG (assegnato ad Alessandro).
+- 2026-10-09 Claude: immagine caricata in `bacheca/consegne/` e controllata; approvata come prova, compito chiuso.
