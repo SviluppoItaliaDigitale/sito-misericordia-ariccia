@@ -45,6 +45,17 @@ nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
 `.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
 cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
 
+## Bacheca Claude ⇄ ChatGPT (dal 9/10/2026)
+
+Cartella `bacheca/` (protocollo in `bacheca/LEGGIMI.md`, istruzioni per Codex in
+`AGENTS.md`): quando serve un'immagine generata o quando Alessandro lo chiede,
+Claude apre un compito in `bacheca/compiti/NNN-titolo.md` (copiando
+`bacheca/MODELLO.md`) e ChatGPT lo esegue. La chat crea le immagini e Codex
+scrive nel repo con una PR. Claude controlla la consegna aprendo davvero
+l'immagine, poi la approva o la rimanda indietro con note. Le PR di Codex
+toccano solo `bacheca/`: Claude le controlla e le unisce. I push che toccano
+solo la bacheca non ripubblicano il sito.
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)
