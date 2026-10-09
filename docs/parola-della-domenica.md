@@ -14,7 +14,7 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 |---|---|
 | Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | cornice dorata doppia con angoli a voluta, filetto con la croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina e filigrana nei versetti |
+| Grafica | cornice dorata doppia con angoli a voluta, filetto con la croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina e accanto al nome della lettura. **Mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
 | Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica.html`, `rendi.js`) |
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
@@ -64,8 +64,9 @@ Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
 6. **Grafica**: `cd scripts/parola-domenica && npm ci` (la prima volta), poi
    `node scripts/parola-domenica/rendi.js SCHEDA.json static/img/parola OPERA.jpg`
    (senza opera: senza l'ultimo argomento). **Aprire ogni JPEG e guardarlo**: opera intera
-   e leggibile, testi non tagliati, lettura giusta su ogni pagina. Se un testo non entra lo
-   script esce con errore: scegliere una frase più corta.
+   e leggibile, testi non tagliati, lettura giusta su ogni pagina. Se un testo non entra o una
+   scritta tocca ornamenti, stemma, filetti o opera, lo script esce con errore: scegliere una
+   frase più corta (non spostare gli ornamenti sopra il testo).
 7. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
 8. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
    online le immagini). La domenica alle 7:47 il workflow pubblica da solo.

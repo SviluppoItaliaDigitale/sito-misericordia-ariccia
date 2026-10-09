@@ -1,6 +1,7 @@
 // Carosello della Parola della domenica: node rendi.js SCHEDA.json CARTELLA_USCITA [OPERA.jpg]
 // Crea AAAA-MM-GG-1.jpg … (JPEG 1080×1350, qualità 88): con l'opera la 1 è la copertina,
-// poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra.
+// poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra
+// o se una scritta tocca ornamenti, stemma, filetti o opera.
 const { chromium } = require('playwright-core');
 const fs = require('fs'), path = require('path');
 const [scheda, cartella, opera] = process.argv.slice(2);
@@ -25,6 +26,7 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
     await p.screenshot({ path: file, type: 'jpeg', quality: 88 });
     console.log(`${file}${esito.corpo ? ` (versetto a ${esito.corpo}px)` : ''}`);
     if (esito.trabocca) { console.error(`ATTENZIONE: nella pagina ${k + 1} il testo non entra`); errori++; }
+    for (const x of esito.sovrapposizioni || []) { console.error(`ATTENZIONE: nella pagina ${k + 1} ${x}`); errori++; }
     await p.close();
   }
   await b.close();
