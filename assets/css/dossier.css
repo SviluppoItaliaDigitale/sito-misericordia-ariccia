@@ -468,3 +468,10 @@
   display: block; font-style: normal; font-size: .72rem; font-weight: 700;
   letter-spacing: .06em; text-transform: uppercase; color: #6b6352; margin-bottom: .1rem;
 }
+.dsr-corredo-foto { margin: 0 0 1rem; }
+.dsr-corredo-foto img {
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  background: #e8e3d6; border-radius: 4px; filter: saturate(.92);
+}
+.dsr-corredo-foto figcaption { font-size: .78rem; color: #6b6352; margin-top: .4rem; line-height: 1.35; }
+.dsr-corredo-foto .dsr-arte-credit { display: inline; color: #8a8270; font-size: .72rem; }
