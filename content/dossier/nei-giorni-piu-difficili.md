@@ -47,7 +47,7 @@ tappe:
   - anno: "San Sebastiano"
     epoca: "Il patrono"
     titolo: "Il santo che protegge dal contagio"
-    testo: "Non è un caso che il patrono della Misericordia di Firenze, e di tante altre, sia **San Sebastiano**: nella tradizione è il santo invocato contro la peste. La sua festa, il **20 gennaio**, è ancora oggi il giorno in cui molte Misericordie accolgono i nuovi confratelli."
+    testo: "Non è un caso che il patrono della Misericordia di Firenze, e di tante altre, sia **San Sebastiano**: nella tradizione è il santo invocato contro la peste. Nei giorni della sua festa, il **20 gennaio**, le Misericordie che lo hanno come patrono accolgono spesso i nuovi confratelli con la vestizione."
     img: "/img/storia/san-sebastiano-misericordia.jpg"
     img_alt: "Statua in marmo di San Sebastiano, opera di Benedetto da Maiano, nella chiesa della Misericordia di Firenze"
     img_didascalia: "San Sebastiano di Benedetto da Maiano, nella chiesa della Misericordia di Firenze."

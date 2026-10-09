@@ -57,7 +57,7 @@ tappe:
   - anno: "I patroni"
     epoca: "Tobia e Sebastiano"
     titolo: "Il santo che seppelliva i morti e quello che protegge dal contagio"
-    testo: "Il primo patrono della Misericordia di Firenze fu **San Tobia**, che nell'Antico Testamento soccorre gratuitamente due forestieri e seppellisce i morti. Nel Cinquecento il patrono principale diventa **San Sebastiano**, invocato contro la peste. Ancora oggi la sua festa, il **20 gennaio**, a Firenze si celebra con i «panellini» benedetti, e in molte Misericordie è il giorno della **vestizione** dei nuovi confratelli: la veste, la buffa, il cordiglio e il rosario con la medaglia."
+    testo: "Il primo patrono della Misericordia di Firenze fu **San Tobia**, che nell'Antico Testamento soccorre gratuitamente due forestieri e seppellisce i morti. Nel Cinquecento il patrono principale diventa **San Sebastiano**, invocato contro la peste. Ancora oggi la sua festa, il **20 gennaio**, a Firenze si celebra con i «panellini» benedetti, e molte Misericordie celebrano la **vestizione** dei nuovi confratelli nella festa del proprio patrono, che spesso è proprio lui: la veste, la buffa, il cordiglio e il rosario con la medaglia."
     img: "/img/storia/san-sebastiano-misericordia.jpg"
     img_alt: "Statua in marmo di San Sebastiano nella chiesa della Misericordia di Firenze"
     img_didascalia: "San Sebastiano, patrono delle Misericordie, di Benedetto da Maiano."
