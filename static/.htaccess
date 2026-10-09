@@ -44,8 +44,9 @@
   # gli hash vanno ricalcolati (hugo --minify, poi
   # python3 scripts/controlli/controlla_sito.py public --csp). Quando per
   # qualche settimana non ci sono segnalazioni, si può rendere effettiva
-  # togliendo «-Report-Only».
-  Header set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'sha256-Wmwm8dZAQ24a0W60CzIylPDYkmZTln7lcHdV3XNAXZY=' 'sha256-JWmOvZ/AP+i72UYB5jeLYM0toq17VhI6aF4VMz1vlYY=' 'sha256-GTwJlo6S2LUBX7mxi8CZ2VyQCNBb/tp+FnBX/hYGgl0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+  # togliendo «-Report-Only» (prova del 9/10/2026 su 7 pagine: nessuna
+  # violazione).
+  Header set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'sha256-Wmwm8dZAQ24a0W60CzIylPDYkmZTln7lcHdV3XNAXZY=' 'sha256-JWmOvZ/AP+i72UYB5jeLYM0toq17VhI6aF4VMz1vlYY=' 'sha256-GTwJlo6S2LUBX7mxi8CZ2VyQCNBb/tp+FnBX/hYGgl0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
 
   # HSTS: il browser, dopo la prima visita, per 6 mesi usa SOLO https
   # (niente primo collegamento "in chiaro" che si potrebbe intercettare).
