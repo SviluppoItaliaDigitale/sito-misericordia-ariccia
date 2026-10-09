@@ -31,7 +31,7 @@ contatto:
 <div class="galleria-griglia">
   <picture><source srcset="/img/attivita/attivita-03.webp" type="image/webp"><img src="/img/attivita/attivita-03.jpg" alt="Social services vehicle of the Misericordia di Ariccia" width="1600" height="1200" loading="lazy" decoding="async"></picture>
   <picture><source srcset="/img/attivita/attivita-05.webp" type="image/webp"><img src="/img/attivita/attivita-05.jpg" alt="Vehicle equipped for social transport" width="1200" height="1600" loading="lazy" decoding="async"></picture>
-  <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Social services vehicle in the centre of Ariccia" width="1200" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Social services vehicle of the Misericordia di Ariccia in a square of the Castelli Romani" width="1200" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 
 ## We help you with everyday life
