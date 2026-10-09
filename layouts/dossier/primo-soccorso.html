@@ -96,7 +96,7 @@
         <a class="btn btn-giallo px-4" href="{{ "/en/formazione/" | relURL }}">Our courses</a>
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Call +39 348 4068657</a>
       </div>
-      <p class="ps-fonte">Sources: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener" lang="it" hreflang="it">2025 CPR guidelines, Italian Resuscitation Council</a> (chapter 4 “Adult BLS” and chapter 12 “First aid”) and <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, 2025 guidelines</a> (paediatric life support and first aid). Content by the Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Sources last checked: {{ (time.AsTime .).Format "2 January 2006" }}.{{ end }}{{ with .Params.revisione_istruttore }} Reviewed by {{ . }}.{{ end }}</p>
+      <p class="ps-fonte">Sources: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener" lang="it" hreflang="it">2025 CPR guidelines, Italian Resuscitation Council</a> (chapter 4 “Adult BLS” and chapter 12 “First aid”) and <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, 2025 guidelines</a> (paediatric life support and first aid). Content by the Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Sources last checked: {{ (time.AsTime .).Format "2 January 2006" }}.{{ end }}{{ with .Params.revisione_istruttore_en }} Reviewed by {{ . }}.{{ end }}</p>
       <p class="ps-stampa"><button type="button" class="btn btn-outline-secondary" data-stampa>🖨️ Print the cards</button></p>
       {{ else }}
       <h2>Impara con le tue mani</h2>
@@ -105,7 +105,7 @@
         <a class="btn btn-giallo px-4" href="{{ "/servizi/formazione/" | relURL }}">Scopri i corsi</a>
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Chiama il 348 4068657</a>
       </div>
-      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Fonti controllate il {{ time.Format "2 January 2006" (time.AsTime .) }}.{{ end }}{{ with .Params.revisione_istruttore }} Revisione: {{ . }}.{{ end }}</p>
+      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Fonti controllate il {{ time.Format "2 January 2006" (time.AsTime .) }}.{{ end }}{{ with .Params.revisione_istruttore }} Contenuti sanitari rivisti dal {{ . }}.{{ end }}</p>
       <p class="ps-stampa"><button type="button" class="btn btn-outline-secondary" data-stampa>🖨️ Stampa le schede</button></p>
       {{ end }}
     </div>
