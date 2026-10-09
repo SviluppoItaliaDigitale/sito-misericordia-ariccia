@@ -1,0 +1,6 @@
+{
+  "name": "parola-domenica",
+  "private": true,
+  "description": "Render della grafica della Parola della domenica (Chromium headless)",
+  "dependencies": { "playwright-core": "1.63.0" }
+}

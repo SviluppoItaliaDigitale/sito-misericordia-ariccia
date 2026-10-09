@@ -1,0 +1,67 @@
+name: Parola della domenica (social)
+
+# Ogni domenica mattina pubblica su Facebook e Instagram la «Parola della
+# domenica» preparata in settimana dalla routine (.github/social/parola/
+# AAAA-MM-GG.json + grafica in static/img/parola/, già online col deploy).
+# Doppio cron per l'ora legale: esce alle 4:47 italiane tutto l'anno (prima
+# delle 5, decisione di Alessandro); il secondo giro trova il registro già
+# scritto e non ripubblica.
+# Procedura completa: docs/parola-della-domenica.md
+on:
+  schedule:
+    - cron: "47 2 * * 0"
+    - cron: "47 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Giorno da pubblicare (AAAA-MM-GG, vuoto = oggi)"
+        type: string
+        default: ""
+      prova:
+        description: "Solo prova (mostra cosa pubblicherebbe)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: parola-domenica
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Orario
+        id: ora
+        run: |
+          ORA=$(TZ=Europe/Rome date +%H)
+          echo "Ora italiana: $ORA"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ORA" -lt 4 ]; then
+            echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Troppo presto (ora solare): pubblica il giro delle 4:47."
+          fi
+
+      - name: Checkout
+        if: steps.ora.outputs.salta != '1'
+        uses: actions/checkout@v4
+
+      - name: Pubblica sui social
+        if: steps.ora.outputs.salta != '1'
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          DRY_RUN: ${{ inputs.prova && '1' || '' }}
+        run: python3 scripts/pubblica_social.py --parola ${{ inputs.data }}
+
+      - name: Salva il registro dei post social
+        if: always() && steps.ora.outputs.salta != '1'
+        run: |
+          git diff --quiet -- .github/social/ && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add .github/social/
+          git commit -m "Social: registro Parola della domenica [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

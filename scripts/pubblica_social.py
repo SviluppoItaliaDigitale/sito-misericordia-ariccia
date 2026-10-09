@@ -16,6 +16,10 @@ Regole di sicurezza:
 Credenziali (secrets GitHub): META_PAGE_ID, META_PAGE_TOKEN, META_IG_USER_ID.
 Vedi docs/pubblicazione-social.md.
 
+Con --parola pubblica invece la «Parola della domenica» di oggi (solo social,
+nessuna pagina sul sito): scheda in .github/social/parola/AAAA-MM-GG.json e
+grafica già online in /img/parola/AAAA-MM-GG.jpg. Vedi docs/parola-della-domenica.md.
+
 Solo libreria standard: nessuna dipendenza da installare.
 """
 
@@ -293,7 +297,7 @@ def pubblica_instagram(n):
             parametri["thumb_offset"] = str(int(float(n["video_copertina"]) * 1000))
         attese = 100  # un video può richiedere qualche minuto (~5)
     else:
-        parametri = {"image_url": n["immagine"], "caption": testo_instagram(n)}
+        parametri = {"image_url": n["immagine"], "caption": n.get("_testo") or testo_instagram(n)}
         attese = 40  # fino a ~2 minuti: con più post di fila Instagram rallenta
     c = con_luogo(lambda par: graph_post(f"{IG_USER_ID}/media", par), parametri, "location_id")
     cid = c["id"]
@@ -323,9 +327,131 @@ def salva_registro(reg):
     REGISTRO.write_text(json.dumps(reg, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
 
+# ---------------------------------------------------------------- Parola della domenica
+
+SITO = "https://www.misericordia-ariccia.it"
+PAROLA_DIR = RADICE / ".github/social/parola"
+LITURGIA = SITO + "/liturgia-del-giorno/"
+HASHTAG_PAROLA = "#ParolaDiDio #VangeloDellaDomenica #MisericordiaAriccia #Misericordie #Ariccia"
+
+
+def oggi_roma():
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("Europe/Rome"))
+    except Exception:  # noqa: BLE001 — senza tzdata: UTC+1 basta per la data
+        return dt.datetime.utcnow() + dt.timedelta(hours=1)
+
+
+def immagini_parola(s):
+    """URL delle pagine del carosello: copertina (se c'è l'opera) e una per versetto."""
+    n = len(s["pagine"]) + (1 if s.get("opera") else 0)
+    return [f"{SITO}/img/parola/{s['data']}-{k}.jpg" for k in range(1, n + 1)]
+
+
+def testo_parola(s, rete):
+    righe = [f"📖 La Parola della domenica · {s['giorno_liturgico']}"]
+    righe += [f"«{v['versetto']}»\n({v['lettura']}, {v['riferimento']})" for v in s["pagine"]]
+    if s.get("testo_social"):
+        righe.append(s["testo_social"])
+    o = s.get("opera")
+    if o:
+        righe.append(f"🎨 In copertina: {o['autore']}, {o['titolo']}" + (f" ({o['anno']})" if o.get("anno") else "")
+                     + (f", {o['luogo']}" if o.get("luogo") else "") + f" · illustra {o['illustra']} · pubblico dominio")
+    if rete == "instagram":
+        righe.append("📖 Tutte le letture della domenica sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno")
+        righe.append(HASHTAG_PAROLA)
+        return "\n\n".join(righe)[:2200]
+    righe.append(f"📖 Leggi tutte le letture della domenica sul nostro sito:\n👉 {LITURGIA}")
+    return "\n\n".join(righe)
+
+
+def attendi_contenitore(cid, attese=40):
+    for _ in range(attese):
+        stato = graph_get(cid, {"fields": "status_code"}).get("status_code")
+        if stato == "FINISHED":
+            return
+        if stato in ("ERROR", "EXPIRED"):
+            raise RuntimeError(f"Instagram ha rifiutato il contenitore {cid} (stato {stato})")
+        time.sleep(3)
+    raise RuntimeError(f"Instagram non ha finito di elaborare {cid}: si riprova al prossimo giro")
+
+
+def facebook_album(immagini, testo):
+    """Un solo post con più foto: si caricano non pubblicate, poi si allegano al post."""
+    foto = [graph_post(f"{PAGE_ID}/photos", {"url": u, "published": "false"})["id"] for u in immagini]
+    parametri = {"message": testo}
+    for i, fid in enumerate(foto):
+        parametri[f"attached_media[{i}]"] = json.dumps({"media_fbid": fid})
+    return con_luogo(lambda par: graph_post(f"{PAGE_ID}/feed", par), parametri, "place")["id"]
+
+
+def instagram_carosello(immagini, testo):
+    if len(immagini) == 1:
+        return pubblica_instagram({"immagine": immagini[0], "_testo": testo})
+    figli = []
+    for u in immagini:
+        cid = graph_post(f"{IG_USER_ID}/media", {"image_url": u, "is_carousel_item": "true"})["id"]
+        attendi_contenitore(cid)
+        figli.append(cid)
+    c = con_luogo(lambda par: graph_post(f"{IG_USER_ID}/media", par),
+                  {"media_type": "CAROUSEL", "children": ",".join(figli), "caption": testo}, "location_id")
+    attendi_contenitore(c["id"])
+    return graph_post(f"{IG_USER_ID}/media_publish", {"creation_id": c["id"]})["id"]
+
+
+def pubblica_parola(giorno=None):
+    """Pubblica il carosello del giorno: album su Facebook, carosello su Instagram, una volta sola."""
+    giorno = giorno or oggi_roma().date().isoformat()
+    file = PAROLA_DIR / f"{giorno}.json"
+    if not file.exists():
+        print(f"::warning::Nessuna Parola della domenica per il {giorno} ({file.relative_to(RADICE)} manca)")
+        return 1
+    s = json.loads(file.read_text(encoding="utf-8"))
+    immagini = immagini_parola(s)
+    for u in immagini:
+        try:
+            with urllib.request.urlopen(urllib.request.Request(u, method="HEAD"), timeout=30) as r:
+                if not r.headers.get("Content-Type", "").startswith("image/jpeg"):
+                    raise RuntimeError(f"tipo {r.headers.get('Content-Type')}")
+        except Exception as e:  # noqa: BLE001
+            if not DRY_RUN:
+                print(f"ERRORE: la pagina {u} non è online ({e}): serve il deploy", file=sys.stderr)
+                return 1
+            print(f"(prova) non ancora online: {u}")
+    chiave = f"parola-{giorno}"
+    reg = carica_registro()
+    voce = reg.get(chiave, {})
+    prova = DRY_RUN or not (PAGE_ID and PAGE_TOKEN)
+    errori = 0
+    for rete in ("facebook", "instagram"):
+        if rete in voce:
+            print(f"{rete}: già pubblicata ({voce[rete]})")
+            continue
+        testo = testo_parola(s, rete)
+        if prova:
+            print(f"{rete}: pubblicherebbe {len(immagini)} immagini con il testo →\n"
+                  + "\n".join("   " + r for r in testo.splitlines()))
+            continue
+        if rete == "instagram" and not IG_USER_ID:
+            continue
+        try:
+            pid = facebook_album(immagini, testo) if rete == "facebook" else instagram_carosello(immagini, testo)
+            reg.setdefault(chiave, {})[rete] = pid
+            salva_registro(reg)
+            print(f"{rete}: pubblicata (id {pid})")
+        except Exception as e:  # noqa: BLE001
+            errori += 1
+            print(f"{rete}: ERRORE — {e}", file=sys.stderr)
+    return 1 if errori else 0
+
+
 # ---------------------------------------------------------------- main
 
 def main():
+    if "--parola" in sys.argv:
+        resto = [a for a in sys.argv[1:] if a != "--parola"]
+        return pubblica_parola(resto[0] if resto else None)
     if not FEED.exists():
         sys.exit(f"Feed non trovato: {FEED} (compilare prima il sito con hugo)")
     news = json.loads(FEED.read_text(encoding="utf-8"))["news"]

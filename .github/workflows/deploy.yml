@@ -10,6 +10,10 @@ name: Pubblica su Aruba (LIVE)
 on:
   push:
     branches: [main]
+    # La bacheca Claude ⇄ ChatGPT non fa parte del sito: non ripubblica.
+    paths-ignore:
+      - "bacheca/**"
+      - "AGENTS.md"
   workflow_dispatch:
     inputs:
       social_prova:
