@@ -92,7 +92,7 @@
   <!-- ===================== CORREDO (facoltativo) =====================
        Schede «da cartellino di museo»: front matter `corredo` con voci
        {nome, nota (facoltativa, es. "solo in alcune Misericordie"), com_e,
-       significato}; titoli in `corredo_titolo`, `corredo_intro`. -->
+       significato, img, img_alt, img_pos, img_didascalia, img_credit}; titoli in `corredo_titolo`, `corredo_intro`. -->
   {{ with .Params.corredo }}
   <section id="corredo" class="dsr-sezione dsr-corredo">
     <div class="container">
@@ -107,6 +107,12 @@
         {{ range $i, $c := . }}
         <li class="dsr-corredo-voce" data-anim="fade-up">
           <span class="dsr-corredo-num" aria-hidden="true">{{ add $i 1 }}</span>
+          {{ with $c.img }}
+          <figure class="dsr-corredo-foto">
+            <img src="{{ . | relURL }}" alt="{{ $c.img_alt }}" loading="lazy"{{ with $c.img_pos }} style="object-position: {{ . | safeCSS }}"{{ end }}>
+            {{ if or $c.img_didascalia $c.img_credit }}<figcaption>{{ $c.img_didascalia }}{{ with $c.img_credit }} <span class="dsr-arte-credit">{{ . }}</span>{{ end }}</figcaption>{{ end }}
+          </figure>
+          {{ end }}
           <h3 class="dsr-corredo-nome">{{ $c.nome }}</h3>
           {{ with $c.nota }}<p class="dsr-corredo-nota">{{ . }}</p>{{ end }}
           <p class="dsr-corredo-com">{{ $c.com_e | markdownify }}</p>

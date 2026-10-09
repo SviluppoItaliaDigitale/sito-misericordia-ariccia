@@ -1,0 +1,59 @@
+{{ define "main" }}
+{{- /* Pagina «Crediti fotografici»: testo in .Content, poi l'elenco costruito
+       da solo con tutte le immagini dei dossier italiani che hanno
+       `img_credit` (nelle `tappe` e nel `corredo` del front matter).
+       Le immagini aggiunte in futuro ai dossier compaiono qui da sole;
+       ogni immagine è elencata una volta, con le pagine dove si trova. */ -}}
+{{ $visti := newScratch }}
+{{ $ordine := slice }}
+{{ range where (where site.RegularPages "Section" "dossier") "Lang" "it" }}
+  {{ $p := . }}
+  {{ range $gruppo := slice (.Params.tappe | default slice) (.Params.corredo | default slice) }}
+    {{ range $gruppo }}
+      {{ if and .img .img_credit }}
+        {{ $k := .img }}
+        {{ if not ($visti.Get $k) }}
+          {{ $ordine = $ordine | append $k }}
+          {{ $visti.Set $k (dict "img" .img "alt" (.img_alt | default "") "did" (.img_didascalia | default (.img_alt | default "")) "credit" .img_credit "pagine" (slice $p)) }}
+        {{ else }}
+          {{ $v := $visti.Get $k }}
+          {{ if not (in $v.pagine $p) }}
+            {{ $visti.Set $k (merge $v (dict "pagine" ($v.pagine | append $p))) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<div class="pagina-testata">
+  <div class="container">
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    <div class="contenuto cr-testo mb-5">{{ .Content }}</div>
+
+    <h2 id="elenco" class="mb-3">Le immagini dei dossier ({{ len $ordine }})</h2>
+    <ul class="cr-lista list-unstyled">
+      {{ range $ordine }}
+      {{ $v := $visti.Get . }}
+      <li class="cr-voce">
+        <img class="cr-mini" src="{{ $v.img | relURL }}" alt="" loading="lazy" width="96" height="72">
+        <div>
+          <p class="cr-did">{{ $v.did }}</p>
+          <p class="cr-credit">{{ $v.credit }}</p>
+          <p class="cr-dove">In: {{ range $i, $pg := $v.pagine }}{{ if $i }}, {{ end }}<a href="{{ $pg.RelPermalink }}">{{ $pg.Title }}</a>{{ end }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}
