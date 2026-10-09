@@ -56,7 +56,14 @@ Scrivi nella Consegna il prompt usato e segna `stato: consegnato`.
 
 ## Controllo
 
+**Claude, 2026-10-09 — approvata.** Ottimo lavoro: sagoma fedele alla buffa storica (cappuccio
+arrotondato che copre il volto, veste lunga con le pieghe, cordiglio con nappa e rosario), nera,
+niente punta né bianco, SVG pulito (nessuno script né collegamento esterno). Come filigrana
+scura funziona. La metto a confronto con la sagoma semplice di Claude: sceglie Alessandro quale
+usare nelle grafiche.
+
 ## Registro
 
 - 2026-10-09 Claude: compito aperto (richiesta di Alessandro: simbolo della buffa nelle grafiche).
 - 2026-10-09 ChatGPT: prodotta la sagoma nera monocromatica in PNG trasparente 800×1200 e caricata la variante SVG in `bacheca/consegne/002-buffa.svg`; registrato il prompt e lo stato `consegnato`. In attesa del controllo di Claude.
+- 2026-10-09 Claude: consegna controllata e approvata; scelta finale ad Alessandro.

@@ -50,6 +50,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .filetto{display:block;width:560px;height:40px;margin:0 auto}
 .filigrana{position:absolute;color:#fff;opacity:.07;pointer-events:none;z-index:-1} /* dietro a tutto, testo compreso */
 .filigrana.stemma-f{right:84px;bottom:60px;width:400px;height:400px;filter:grayscale(1) brightness(2.2)}
+.filigrana.buffa-f{left:90px;bottom:84px;width:200px;height:300px;color:#05070f;opacity:.45}
 .filigrana.rosario-f{left:96px;bottom:96px;width:200px;height:280px;opacity:.08}
 .filigrana.pesce-f{left:84px;bottom:110px;width:300px;height:165px;opacity:.08}
 .stemma{position:absolute;right:96px;top:236px;width:118px;height:118px}
@@ -101,6 +102,14 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
     <!-- rosario: corona a decine, pendente e crocifisso -->
     <symbol id="rosario" viewBox="0 0 200 280">
       <g fill="currentColor"><circle cx="80.8" cy="148.6" r="3.6"/><circle cx="71.9" cy="144.4" r="3.6"/><circle cx="63.6" cy="138.6" r="3.6"/><circle cx="56.2" cy="131.5" r="3.6"/><circle cx="49.8" cy="123.1" r="3.6"/><circle cx="44.8" cy="113.8" r="3.6"/><circle cx="41.0" cy="103.6" r="3.6"/><circle cx="38.8" cy="93.0" r="3.6"/><circle cx="38.0" cy="82.0" r="6"/><circle cx="38.8" cy="71.0" r="3.6"/><circle cx="41.0" cy="60.4" r="3.6"/><circle cx="44.8" cy="50.2" r="3.6"/><circle cx="49.8" cy="40.9" r="3.6"/><circle cx="56.2" cy="32.5" r="3.6"/><circle cx="63.6" cy="25.4" r="3.6"/><circle cx="71.9" cy="19.6" r="3.6"/><circle cx="80.8" cy="15.4" r="3.6"/><circle cx="90.3" cy="12.9" r="3.6"/><circle cx="100.0" cy="12.0" r="6"/><circle cx="109.7" cy="12.9" r="3.6"/><circle cx="119.2" cy="15.4" r="3.6"/><circle cx="128.1" cy="19.6" r="3.6"/><circle cx="136.4" cy="25.4" r="3.6"/><circle cx="143.8" cy="32.5" r="3.6"/><circle cx="150.2" cy="40.9" r="3.6"/><circle cx="155.2" cy="50.2" r="3.6"/><circle cx="159.0" cy="60.4" r="3.6"/><circle cx="161.2" cy="71.0" r="3.6"/><circle cx="162.0" cy="82.0" r="6"/><circle cx="161.2" cy="93.0" r="3.6"/><circle cx="159.0" cy="103.6" r="3.6"/><circle cx="155.2" cy="113.8" r="3.6"/><circle cx="150.2" cy="123.1" r="3.6"/><circle cx="143.8" cy="131.5" r="3.6"/><circle cx="136.4" cy="138.6" r="3.6"/><circle cx="128.1" cy="144.4" r="3.6"/><circle cx="119.2" cy="148.6" r="3.6"/><circle cx="100" cy="152" r="7" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="160" r="6"/><circle cx="100" cy="174" r="3.8"/><circle cx="100" cy="188" r="3.8"/><circle cx="100" cy="202" r="3.8"/><circle cx="100" cy="216" r="6"/><path d="M96 222 h8 v14 h14 v8 h-14 v26 h-8 v-26 h-14 v-8 h14z"/></g>
+    </symbol>
+    <!-- buffa: confratello con la veste storica nera, cappuccio arrotondato che copre il volto e rosario alla cintura -->
+    <symbol id="buffa" viewBox="0 0 200 300">
+      <path fill="currentColor" d="M100 16 C118 14 132 30 130 52 C129 66 124 76 118 84 C132 96 140 120 144 160 L152 292 H54 L62 170 C64 130 70 104 84 90 C74 80 70 64 72 50 C74 32 86 18 100 16 Z"/>
+      <g fill="#1b223f"><ellipse cx="119" cy="50" rx="6" ry="3.6"/>
+        <circle cx="122" cy="178" r="2.6"/><circle cx="123" cy="187" r="2.6"/><circle cx="124" cy="196" r="2.6"/><circle cx="125" cy="205" r="2.6"/><circle cx="126" cy="214" r="2.6"/>
+        <path d="M124 220 h4 v6 h6 v4 h-6 v12 h-4 v-12 h-6 v-4 h6z"/></g>
+      <path d="M63 168 C90 174 120 174 146 166" stroke="#1b223f" stroke-width="2.4" fill="none"/>
     </symbol>
   </defs>
 </svg>
@@ -202,8 +211,8 @@ window.versetto = async (s, i, n, primo) => {
   $('p-rif').textContent = v.riferimento;
   $('p-numero').textContent = `${primo + i} / ${n}`;
   if (primo + i === n) { $('p-rimando').hidden = false; $('p-motto').hidden = false; }
-  // un solo simbolo cristiano in filigrana per pagina, a rotazione: pesce, rosario
-  const simbolo = ['pesce', 'rosario'][i % 2];
+  // un solo simbolo in filigrana per pagina, a rotazione: pesce, rosario, buffa (scura come la veste)
+  const simbolo = ['pesce', 'rosario', 'buffa'][i % 3];
   $('p-simbolo').setAttribute('class', `filigrana ${simbolo}-f`);
   $('p-simbolo').innerHTML = `<use href="#${simbolo}"/>`;  // ultima pagina: rimando alla Liturgia del giorno del sito
   await document.fonts.ready;
