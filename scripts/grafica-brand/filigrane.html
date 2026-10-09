@@ -1,0 +1,13 @@
+<!-- Filigrane della confraternita per OGNI grafica social (articoli, avvisi, eventi…).
+     Copiare questo blocco dentro il contenitore 1080×1350 della grafica, che deve avere
+     position:relative e isolation:isolate (senza, le filigrane finiscono sotto il suo sfondo).
+     Stemma FM in basso a destra, giglio di Firenze in basso a sinistra, quasi trasparenti,
+     DIETRO ai testi (z-index -1): devono stare sul fondo navy, non sopra la foto, e le
+     scritte devono restare ben leggibili. CARTELLA = percorso assoluto del repo. -->
+<style>
+  .filigrana{position:absolute;pointer-events:none;z-index:-1}
+  .filigrana-stemma{right:44px;bottom:150px;width:340px;height:340px;opacity:.07;filter:grayscale(1) brightness(2.2)}
+  .filigrana-giglio{left:52px;bottom:160px;width:200px;height:274px;opacity:.06}
+</style>
+<img class="filigrana filigrana-stemma" src="file://CARTELLA/static/img/loghi/mise-fregio.png" alt="">
+<img class="filigrana filigrana-giglio" src="file://CARTELLA/static/img/loghi/giglio-firenze-bianco.svg" alt="">

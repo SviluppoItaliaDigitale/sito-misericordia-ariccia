@@ -214,6 +214,13 @@ Velletri Moda):
   bande bianche** delle foto WhatsApp → cartiglio sfumato con didascalia →
   eventuale fascia di ringraziamento → piede bianco con logo
   (`static/img/loghi/mise-triangolo.png`) e `www.misericordia-ariccia.it`.
+- **Filigrane (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: in ogni grafica per
+  i social (articoli, avvisi, eventi…) lo **stemma FM della confraternita** e il
+  **giglio di Firenze** in trasparenza, dietro ai testi e sul fondo navy (mai sopra la
+  foto), con le scritte ben leggibili. Blocco pronto da copiare:
+  `scripts/grafica-brand/filigrane.html` (il contenitore vuole `position:relative;
+  isolation:isolate`). Giglio: `static/img/loghi/giglio-firenze-bianco.svg`
+  (Wikimedia Commons, pubblico dominio).
 - **Render**: HTML nello scratchpad → screenshot con Playwright
   (`playwright-core` + Chromium in `/opt/pw-browsers/chromium-*/chrome-linux/chrome`,
   attendere `document.fonts.ready`). NON usare lo screenshot CLI di
