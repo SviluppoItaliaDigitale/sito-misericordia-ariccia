@@ -33,7 +33,7 @@
       <span class="dsr-indice-eti" aria-hidden="true">{{ cond $en "Contents" "Indice" }}</span>
       <ul>
         <li><a href="#introduzione" class="dsr-indice-link">{{ cond $en "Introduction" "Introduzione" }}</a></li>
-        <li><a href="#linea-del-tempo" class="dsr-indice-link">{{ cond $en "Timeline" "Linea del tempo" }}</a></li>
+        <li><a href="#linea-del-tempo" class="dsr-indice-link">{{ .Params.indice_tappe | default (cond $en "Timeline" "Linea del tempo") }}</a></li>
         {{ if .Params.oggi_numeri }}<li><a href="#oggi" class="dsr-indice-link">{{ cond $en "The Misericordie today" "Le Misericordie oggi" }}</a></li>{{ end }}
         {{ if .Params.fonti }}<li><a href="#fonti" class="dsr-indice-link">{{ cond $en "Sources" "Fonti" }}</a></li>{{ end }}
         <li><a href="#vivile" class="dsr-indice-link">{{ cond $en "Join us" "Vivile con noi" }}</a></li>
