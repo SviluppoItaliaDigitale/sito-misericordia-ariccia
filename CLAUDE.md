@@ -61,8 +61,9 @@ solo la bacheca non ripubblicano il sito.
 Ogni domenica alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
 Instagram (solo social, nessuna pagina) un carosello: copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
-versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara ogni
-mercoledì la routine cloud «Parola della domenica»: scheda in
+versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara il
+mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
+serve, domenica all'1:55 con il «recupero notturno»): scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
 

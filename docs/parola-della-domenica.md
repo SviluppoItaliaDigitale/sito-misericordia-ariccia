@@ -20,9 +20,19 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
 
-## Procedura settimanale (la routine del mercoledì)
+## Procedura settimanale (la routine del mercoledì, con recuperi)
 
-Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
+Si prepara **la domenica che viene**. Se la scheda c'è già, non si fa nulla.
+
+**Se mercoledì salta il lavoro si recupera da soli** (regola di Alessandro: il carosello deve
+essere pronto entro domenica mattina presto):
+- la routine «Parola della domenica» gira **da mercoledì a sabato alle 8:55**: se la scheda della
+  domenica c'è già esce subito, altrimenti la prepara;
+- la routine «Parola della domenica — recupero notturno» gira **domenica all'1:55**: se manca
+  ancora, prepara la scheda di **oggi** e la mette online prima delle 4:47 (il deploy dura ~1 minuto);
+- se alle 4:47 manca ancora, il workflow fallisce e GitHub avvisa Alessandro per email.
+
+Di domenica `letture.py` senza data prende le letture di oggi.
 
 1. **Letture**: `python3 scripts/parola-domenica/letture.py` (oppure `letture.py AAAA-MM-GG`).
    Dà il giorno liturgico e le letture riga per riga, con un numero di versetto
