@@ -21,9 +21,8 @@ import json
 import re
 import sys
 import urllib.request
+from pathlib import Path
 
-CEI = "https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia={d}"
-SEZIONI_CEI = [("Prima Lettura", "Prima lettura"), ("Seconda Lettura", "Seconda lettura"), ("Vangelo", "Vangelo")]
 URL = "https://feed.evangelizo.org/v2/reader.php?date={d}&lang=IT&type={t}"
 LETTURE = {"FR": "Prima lettura", "PS": "Salmo responsoriale", "SR": "Seconda lettura", "GSP": "Vangelo"}
 
@@ -54,31 +53,13 @@ def versetti(titolo):
 
 
 def letture_cei(d):
-    """Prima lettura, seconda lettura e Vangelo in CEI 2008: titoletto, formula d'annuncio
-    («Dal libro del profeta Isaìa»), riferimento e testo, fino a «Parola di Dio/del Signore»."""
-    pagina = leggi(CEI.format(d=d))
-    pagina = re.sub(r"<(script|style).*?</\1>", "", pagina, flags=re.S)
-    righe = [r.strip() for r in html.unescape(re.sub(r"<[^>]+>", "\n", pagina)).splitlines() if r.strip()]
-    esito, pos = [], 0
-    for titolo, nome in SEZIONI_CEI:
-        try:
-            i = righe.index(titolo, pos)
-        except ValueError:
-            continue
-        fine = next((j for j in range(i + 1, len(righe)) if righe[j].startswith(("Parola di Dio", "Parola del Signore"))), None)
-        if fine is None:
-            continue
-        blocco = righe[i + 1:fine]
-        k = next((j for j, r in enumerate(blocco) if r.startswith(("Dal ", "Dalla ", "Dagli ", "Dai "))), None)
-        if k is None or k + 1 >= len(blocco):
-            continue
-        rif, resto = blocco[k + 1], blocco[k + 2:]
-        while resto and re.fullmatch(r"[\d.,\-a-z ]+", resto[0]):  # riferimenti spezzati su più righe («.», «19-20»)
-            rif += resto.pop(0)
-        esito.append({"lettura": nome, "titoletto": " ".join(blocco[:k]), "fonte_lettura": blocco[k],
-                      "riferimento": rif, "testo": " ".join(resto)})
-        pos = fine
-    return esito
+    """Prima lettura, seconda lettura e Vangelo in CEI 2008 (stesso lettore della pagina
+    Liturgia del giorno, scripts/liturgia_cei.py), col testo su una riga sola."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from liturgia_cei import letture
+    return [{"lettura": x["sezione"], "titoletto": x["titoletto"], "fonte_lettura": x["fonte_lettura"],
+             "riferimento": x["riferimento"], "testo": " ".join(x["righe"])}
+            for x in letture(d) if x["sezione"] in ("Prima lettura", "Seconda lettura", "Vangelo")]
 
 
 def main():

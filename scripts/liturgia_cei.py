@@ -22,10 +22,16 @@ from pathlib import Path
 
 URL = "https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia={d}"
 USCITA = Path(__file__).resolve().parent.parent / "data" / "liturgia_cei.json"
-TITOLI = {"Prima Lettura": "Prima lettura", "Salmo Responsoriale": "Salmo responsoriale",
-          "Seconda Lettura": "Seconda lettura", "Acclamazione al Vangelo": "Acclamazione al Vangelo",
-          "Vangelo": "Vangelo"}
+# Titoli delle sezioni, confrontati in minuscolo (la Veglia pasquale li scrive in maiuscolo)
+TITOLI = {f"{n} lettura": f"{n.capitalize()} lettura"
+          for n in ("prima", "seconda", "terza", "quarta", "quinta", "sesta", "settima")}
+TITOLI.update({"epistola": "Epistola", "salmo responsoriale": "Salmo responsoriale",
+               "acclamazione al vangelo": "Acclamazione al Vangelo", "vangelo": "Vangelo"})
+LETTURE = {v for v in TITOLI.values() if v.endswith("lettura")} | {"Epistola", "Vangelo"}
 FINE_LETTURA = ("Parola di Dio", "Parola del Signore")
+# formula d'annuncio: «Dal libro…», «Dalla lettera…», e per la Passione (Palme, Venerdì Santo)
+# «Passione di nostro Signore Gesù Cristo secondo…»
+ANNUNCIO = ("Dal ", "Dalla ", "Dagli ", "Dai ", "Passione di nostro Signore")
 
 
 def righe_pagina(d):
@@ -37,28 +43,30 @@ def righe_pagina(d):
 
 
 def letture(d):
-    """Sezioni del giorno, ognuna con le sue righe. Prima lettura, seconda lettura e Vangelo
-    hanno anche titoletto, formula d'annuncio («Dal libro…») e riferimento."""
+    """Sezioni del giorno, ognuna con le sue righe. Le letture (anche le sette della Veglia
+    pasquale e l'Epistola) e il Vangelo hanno titoletto, formula d'annuncio e riferimento."""
     righe = righe_pagina(d)
-    inizio = next((i for i, r in enumerate(righe) if r == "Prima Lettura"), None)
+    inizio = next((i for i, r in enumerate(righe) if r.lower() == "prima lettura"), None)
     if inizio is None:
         return []
-    teste = [i for i in range(inizio, len(righe)) if righe[i] in TITOLI]
+    teste = [i for i in range(inizio, len(righe)) if righe[i].lower() in TITOLI]
     esito = []
     for n, i in enumerate(teste):
-        nome = TITOLI[righe[i]]
+        nome = TITOLI[righe[i].lower()]
         limite = teste[n + 1] if n + 1 < len(teste) else len(righe)
         blocco = righe[i + 1:limite]
-        if nome in ("Prima lettura", "Seconda lettura", "Vangelo"):
+        if nome in LETTURE:
             fine = next((j for j, r in enumerate(blocco) if r.startswith(FINE_LETTURA)), None)
-            k = next((j for j, r in enumerate(blocco) if r.startswith(("Dal ", "Dalla ", "Dagli ", "Dai "))), None)
-            if fine is None or k is None or k + 1 >= fine:
-                return []  # pagina cambiata: meglio il ripiego che un testo sbagliato
+            k = next((j for j, r in enumerate(blocco) if r.startswith(ANNUNCIO)), None)
+            if fine is None:  # es. Veglia pasquale: dopo l'Esodo segue il cantico, senza «Parola di Dio»
+                fine = len(blocco)
+            if k is None or k + 1 >= fine:
+                continue  # sezione illeggibile: si salta (prima lettura e Vangelo restano obbligatori)
             rif, corpo = blocco[k + 1], blocco[k + 2:fine]
             while corpo and re.fullmatch(r"[\d.,\-a-z ]+", corpo[0]):  # riferimento spezzato («.», «19-20»)
                 rif += corpo.pop(0)
             esito.append({"sezione": nome, "titoletto": " ".join(blocco[:k]), "fonte_lettura": blocco[k],
-                          "riferimento": rif, "righe": corpo, "chiusura": blocco[fine]})
+                          "riferimento": rif, "righe": corpo, "chiusura": blocco[fine] if fine < len(blocco) else ""})
             if nome == "Vangelo":
                 break
         else:
