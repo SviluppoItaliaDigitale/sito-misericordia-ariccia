@@ -169,8 +169,6 @@ fonti:
     url: "https://www.poste.it/risorse/filatelia/pdf/emissioni2015/F.info%20Giubileo.pdf"
   - titolo: "gonews, il Fiorino d'oro alle Misericordie (2022)"
     url: "https://www.gonews.it/?p=1174817"
-  - titolo: "Confederazione, la Medaglia d'oro al merito della sanità pubblica"
-    url: "https://www.misericordie.it/alle-misericordie-la-medaglia-doro-al-merito-della-sanita-pubblica-consegnata-oggi-al-quirinale"
   - titolo: "Quotidiano Sanità, elenco e motivazioni dei premiati (2023)"
     url: "https://www.quotidianosanita.it/insights/ecco-l-elenco-completo-e-le-motivazioni-di-tutti-i-premiati-oggi-al-quirinale/"
   - titolo: "Poste San Marino, emissione di Natale 2025"

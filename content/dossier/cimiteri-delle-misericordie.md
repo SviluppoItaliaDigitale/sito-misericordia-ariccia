@@ -98,7 +98,7 @@ fonti:
   - titolo: "Catechismo della Chiesa cattolica, n. 2447"
     url: "https://www.vatican.va/archive/catechism_it/p3s2c2a7_it.htm"
   - titolo: "Papa Francesco, udienza generale del 30 novembre 2016"
-    url: "https://c.vatican.va/content/francesco/it/audiences/2016/documents/papa-francesco_20161130_udienza-generale.pdf"
+    url: "https://www.vatican.va/content/francesco/it/audiences/2016/documents/papa-francesco_20161130_udienza-generale.html"
   - titolo: "Venerabile Arciconfraternita della Misericordia di Firenze (Museo Galileo)"
     url: "https://brunelleschi.imss.fi.it/itineraries/place/VenerabileArciconfraternitaMisericordiaFirenze.html"
   - titolo: "Cimitero di Trespiano, Wikipedia"

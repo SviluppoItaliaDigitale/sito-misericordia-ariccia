@@ -13,4 +13,4 @@ According to the Statute, members have **equal rights and duties**: they take pa
 
 ## A great family
 
-More than **800** confraternities, **670,000** members and **80,000** active volunteers across Italy. You can be part of it too: no special skills are needed to start — we train you together. [Find out how to become a volunteer](/en/diventa-volontario/).
+More than **770** confraternities, **670,000** members and over **100,000** active volunteers across Italy. You can be part of it too: no special skills are needed to start — we train you together. [Find out how to become a volunteer](/en/diventa-volontario/).

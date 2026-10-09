@@ -8,7 +8,7 @@ italianoSemplice: |
 
   I volontari si chiamano confratelli. Un tempo portavano una veste che copriva il viso, per restare tutti uguali.
 
-  Oggi in Italia ci sono più di 800 Misericordie. La Misericordia di Ariccia è nata nel 1994 e fa parte di questa grande famiglia.
+  Oggi in Italia ci sono più di 770 Misericordie. La Misericordia di Ariccia è nata nel 1994 e fa parte di questa grande famiglia.
 ---
 
 Le Misericordie sono tra le più antiche associazioni di volontariato al mondo: una tradizione di carità che dura da quasi otto secoli, nel segno dell'aiuto al prossimo e delle Opere di Misericordia. La Misericordia di Ariccia, nata nel 1994, è parte di questo grande Movimento.
@@ -101,9 +101,9 @@ Verso la metà dell'Ottocento esistevano quasi cento Misericordie, soprattutto i
 ## Le Misericordie oggi
 
 <div class="mov-dati" aria-label="Le Misericordie d'Italia in numeri">
-  <div><span class="num">800+</span> confraternite</div>
+  <div><span class="num">770+</span> confraternite</div>
   <div><span class="num">670 mila</span> iscritti</div>
-  <div><span class="num">80 mila</span> volontari attivi</div>
+  <div><span class="num">100 mila</span> volontari attivi</div>
 </div>
 
 Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce queste realtà diffuse in tutta la penisola. La Misericordia di Ariccia ne è parte, portando nei Castelli Romani la stessa, antica vocazione: stare accanto a chi soffre.

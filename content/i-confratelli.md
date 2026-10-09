@@ -30,9 +30,9 @@ Si diventa confratelli con una **domanda scritta di ammissione**, sulla quale de
 ## Una grande famiglia
 
 <div class="mov-dati" aria-label="Le Misericordie d'Italia in numeri">
-  <div><span class="num">800+</span> confraternite</div>
+  <div><span class="num">770+</span> confraternite</div>
   <div><span class="num">670 mila</span> iscritti</div>
-  <div><span class="num">80 mila</span> volontari attivi</div>
+  <div><span class="num">100 mila</span> volontari attivi</div>
 </div>
 
 Anche tu puoi farne parte: non servono competenze particolari per iniziare, la formazione la facciamo insieme. [Scopri come diventare volontario](/diventa-volontario/).

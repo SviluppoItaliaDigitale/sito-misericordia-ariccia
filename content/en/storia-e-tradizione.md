@@ -23,4 +23,4 @@ Following the Florentine example, similar confraternities arose across Tuscany a
 
 ## The Misericordie today
 
-Today the **National Confederation of the Misericordie of Italy** brings together over **800** confraternities, **670,000** members and **80,000** active volunteers. The Misericordia di Ariccia carries this ancient calling into the Castelli Romani: to stand beside those who suffer.
+Today the **National Confederation of the Misericordie of Italy** brings together over **770** confraternities, **670,000** members and over **100,000** active volunteers. The Misericordia di Ariccia carries this ancient calling into the Castelli Romani: to stand beside those who suffer.
