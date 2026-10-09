@@ -47,7 +47,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .filetto{display:block;width:560px;height:40px;margin:0 auto}
 .filigrana{position:absolute;color:#fff;opacity:.07;pointer-events:none;z-index:-1} /* dietro a tutto, testo compreso */
 .filigrana.stemma-f{right:84px;bottom:60px;width:400px;height:400px;filter:grayscale(1) brightness(2.2)}
-.filigrana.giglio-f{left:70px;bottom:90px;width:250px;height:300px;opacity:.055}
+.filigrana.pesce-f{left:84px;bottom:110px;width:300px;height:165px;opacity:.08}
 .stemma{position:absolute;right:96px;top:236px;width:118px;height:118px}
 .sigillo{position:absolute;right:104px;top:104px;width:140px;height:140px}
 /* piede bianco del brand */
@@ -70,17 +70,21 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
         <path d="M27 58 q-7 -4 -6 -12 q6 4 6 12z"/><path d="M58 27 q-4 -7 -12 -6 q4 6 12 6z"/>
       </g>
     </symbol>
-    <!-- filetto: due linee con losanghe e, al centro, la croce dello stemma FM in un tondo -->
+    <!-- filetto: linee con alfa e omega ai lati della croce dello stemma FM in un tondo (Ap 22,13) -->
     <symbol id="filetto" viewBox="0 0 560 40">
       <g stroke="#f2e433" stroke-width="2" fill="none">
-        <path d="M20 20 H232 M328 20 H540"/>
+        <path d="M20 20 H214 M346 20 H540"/>
         <circle cx="280" cy="20" r="17"/>
       </g>
-      <g fill="#f2e433">
-        <path d="M232 20 l9 -6 l9 6 l-9 6z"/><path d="M310 20 l9 -6 l9 6 l-9 6z"/>
-        <circle cx="14" cy="20" r="3"/><circle cx="546" cy="20" r="3"/>
+      <g fill="#f2e433" font-family="Playfair, 'DejaVu Serif', serif" font-weight="600" font-size="30" text-anchor="middle">
+        <text x="237" y="31">Α</text><text x="323" y="31">Ω</text>
       </g>
+      <g fill="#f2e433"><circle cx="14" cy="20" r="3"/><circle cx="546" cy="20" r="3"/></g>
       <path d="M277 8 h6 v8 h8 v6 h-8 v12 h-6 v-12 h-8 v-6 h8z" fill="#e2231a"/>
+    </symbol>
+    <!-- pesce (ichthys): il segno dei primi cristiani -->
+    <symbol id="pesce" viewBox="0 0 200 110">
+      <path d="M14 55 C60 0 130 0 186 92 M14 55 C60 110 130 110 186 18" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round"/>
     </symbol>
     <!-- giglio di Firenze: «Fleur de lis of Florence.svg» (Wikimedia Commons, pubblico dominio,
          ricalcato sull'identità visiva del Comune di Firenze). La prima Misericordia nacque a Firenze. -->
@@ -109,7 +113,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
   <div class="numero" id="c-numero"></div>
 </section>
 <section class="pagina" id="pagina" hidden>
-  <svg class="filigrana giglio-f"><use href="#giglio"/></svg>
+  <svg class="filigrana pesce-f"><use href="#pesce"/></svg>
   <img class="filigrana stemma-f" src="../../static/img/loghi/mise-fregio.png" alt="">
   <img class="stemma" src="../../static/img/loghi/mise-fregio.png" alt="">
   <div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="p-giorno"></div></div>
