@@ -15,7 +15,7 @@
 
 /* Le ancore dell'indice non finiscono sotto navbar + indice sticky */
 #introduzione, #corporali, #spirituali, #nell-arte, #vivile,
-#linea-del-tempo, #oggi {
+#linea-del-tempo, #oggi, #fonti {
   scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem);
 }
 
