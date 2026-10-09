@@ -12,11 +12,17 @@
     {{ end }}
   {{ end }}
 {{ end }}
-{{/* Letture e Vangelo del giorno (Evangelizo, feed gratuito per siti cattolici) */}}
+{{/* Letture del giorno in CEI 2008 (quella letta a Messa): data/liturgia_cei.json, scritto da
+     scripts/liturgia_cei.py prima della compilazione. Vale solo se è di oggi. */}}
+{{ $cei := false }}
+{{ with site.Data.liturgia_cei }}{{ if eq .data (time.Format "2006-01-02" $oggi) }}{{ $cei = . }}{{ end }}{{ end }}
+{{/* Ripiego: Evangelizo (feed gratuito per siti cattolici, traduzione CEI 1974) */}}
 {{ $letture := "" }}
 {{ $evurl := printf "https://feed.evangelizo.org/v2/reader.php?date=%d%02d%02d&type=all&lang=IT" $oggi.Year (int $oggi.Month) $oggi.Day }}
+{{ if not $cei }}
 {{ with try (resources.GetRemote $evurl) }}
   {{ with .Value }}{{ $letture = .Content }}{{ end }}
+{{ end }}
 {{ end }}
 <div class="pagina-testata">
   <div class="container">
@@ -46,6 +52,21 @@
         </div>
       </div>
 
+      {{ with $cei }}
+      <h2 class="lit-letture-titolo">Le letture di oggi</h2>
+      <div class="messale messale-cei">
+        {{ range .letture }}
+        <section class="lit-lettura">
+          <h3 class="lit-sezione">{{ .sezione }}</h3>
+          {{ with .titoletto }}<p class="lit-titoletto">{{ . }}</p>{{ end }}
+          <p class="lit-fonte">{{ with .fonte_lettura }}{{ . }} {{ end }}<span class="lit-rif">{{ .riferimento }}</span></p>
+          <p class="lit-testo">{{ range $i, $r := .righe }}{{ if $i }}<br>{{ end }}{{ if eq $r "R." }}<strong class="lit-r">R.</strong>{{ else }}{{ $r }}{{ end }}{{ end }}</p>
+          {{ with .chiusura }}<p class="lit-chiusura">{{ . }}</p>{{ end }}
+        </section>
+        {{ end }}
+      </div>
+      <p class="lit-credit">Testo delle letture: traduzione <strong>CEI 2008</strong>, quella proclamata a Messa, dal sito ufficiale della Conferenza Episcopale Italiana (<a href="{{ .fonte }}" rel="noopener" target="_blank">chiesacattolica.it</a>). Per l'omelia e i commenti: <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vatican News</a>.</p>
+      {{ end }}
       {{ with $letture }}
       <h2 class="lit-letture-titolo">Le letture di oggi</h2>
       <div class="messale">{{ . | safeHTML }}</div>

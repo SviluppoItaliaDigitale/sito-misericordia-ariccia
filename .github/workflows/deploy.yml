@@ -69,6 +69,12 @@ jobs:
           hugo-version: "0.154.5"
           extended: true
 
+      - name: Letture del giorno in CEI 2008
+        # Scrive data/liturgia_cei.json per /liturgia-del-giorno/; se la CEI non
+        # risponde la pagina usa da sola il testo Evangelizo (CEI 1974).
+        continue-on-error: true
+        run: python3 scripts/liturgia_cei.py
+
       - name: Compila il sito
         run: hugo --minify
 

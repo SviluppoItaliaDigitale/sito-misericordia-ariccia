@@ -76,7 +76,11 @@ mercoledì la routine cloud «Parola della domenica»: scheda in
 
 ## Fonti dati Liturgia del giorno
 
-- **Letture** (Evangelizo): `https://feed.evangelizo.org/v2/reader.php?date=AAAAMMGG&type=all&lang=IT`
+- **Letture (testo principale, CEI 2008 letto a Messa)**: `https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia=AAAAMMGG`,
+  scaricate al deploy da `scripts/liturgia_cei.py` in `data/liturgia_cei.json` (non versionato).
+  Uso consentito dalle note legali CEI (scopo formativo, non commerciale, testo integrale, fonte citata).
+- **Letture (ripiego, CEI 1974)** (Evangelizo): `https://feed.evangelizo.org/v2/reader.php?date=AAAAMMGG&type=all&lang=IT`
+  — usate solo se la CEI non risponde.
 - **Calendario liturgico** (LitCal): `https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/AAAA?year_type=CIVIL`
 
 > Nota: questi feed sono bloccati dal proxy dell'ambiente di monitoraggio cloud.
