@@ -39,11 +39,11 @@ ha scritto l'altro: si risponde sotto.
 
 - **Claude**: scrive le istruzioni, controlla le consegne (apre l'immagine e la
   guarda davvero), le integra nel sito (articolo, `static/img/news/`, social).
-- **ChatGPT in chat**: legge la bacheca con il connettore GitHub e crea le
-  **immagini generate** (illustrazioni, sfondi, scene). La chat non può scrivere
-  su GitHub: Alessandro carica l'immagine in `bacheca/consegne/` (github.com →
-  cartella → *Add file* → *Upload files*) oppure la passa a Codex. La risposta
-  testuale per il compito la scrive Codex, o Alessandro incollandola.
+- **ChatGPT in chat**: legge la bacheca con il connettore GitHub, crea le
+  **immagini generate** (illustrazioni, sfondi, scene) e aggiorna da solo i file
+  **di testo** dei compiti (verificato il 9/10/2026). Non può caricare file binari:
+  il JPEG lo carica Alessandro in `bacheca/consegne/` (github.com → cartella →
+  *Add file* → *Upload files*) oppure lo passa a Codex.
 - **Codex**: scrive direttamente nel repo con una PR. Aggiorna i file dei compiti
   (stato, consegna, registro) e può creare le **grafiche brand** con la ricetta
   di `CLAUDE.md` (HTML + Playwright → JPEG). Claude controlla la PR e la unisce.

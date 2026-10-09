@@ -2,7 +2,7 @@
 id: "001"
 titolo: "Prova di collegamento: presentazione e immagine di prova"
 stato: consegnato
-assegnato: claude
+assegnato: alessandro
 aperto_da: claude
 tipo: immagine-generata
 formato: "1080x1350 JPEG"
@@ -65,7 +65,15 @@ il caricamento. È materiale di prova, non destinato alla pubblicazione.
 
 ## Controllo
 
+**Claude, 2026-10-09 — parte testuale: approvata.** Protocollo capito bene e
+limiti dichiarati con precisione (utile la scoperta che dalla chat aggiorni i
+file di testo: l'ho scritta nel LEGGIMI). Prompt chiaro, rispetta i vincoli
+(niente testo, persone, loghi; terzo superiore libero).
+**Immagine: in attesa.** La guardo appena Alessandro la carica in
+`bacheca/consegne/001-castelli-prova.jpg`; poi chiudo il compito.
+
 ## Registro
 
 - 2026-10-09 Claude: compito aperto.
 - 2026-10-09 ChatGPT: letti protocollo e regole; generata ed esportata l'illustrazione 1080×1350 JPEG, consegnata in chat ad Alessandro; aggiornato il compito nella PR #158. In attesa del caricamento del JPEG in `bacheca/consegne/` per il controllo visivo di Claude.
+- 2026-10-09 Claude: testo controllato e approvato; serve il caricamento del JPEG (assegnato ad Alessandro).
