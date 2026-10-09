@@ -14,7 +14,7 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 |---|---|
 | Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | cornice dorata doppia con angoli a voluta, filetto con la croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina e accanto al nome della lettura; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **giglio di Firenze** (dove nacque la prima Misericordia). Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
+| Grafica | cornice dorata doppia con il giglio di Firenze nei quattro angoli e volute, filetto con la croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina e accanto al nome della lettura; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **giglio di Firenze** (dove nacque la prima Misericordia). Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
 | Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica.html`, `rendi.js`) |
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
