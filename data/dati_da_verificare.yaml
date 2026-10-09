@@ -373,7 +373,7 @@ dati:
   delicato: false
   frequenza: "mensile"
   verificato: "2026-10-09"
-  note: "INCOERENZA segnalata nella issue: online (FSE) si cambia solo il medico di famiglia; il pediatra si sceglie allo sportello ASL. guida-ai-diritti.md li accomuna."
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro: online (FSE) si cambia il medico di famiglia, il pediatra si sceglie allo sportello ASL."
 - id: "fse-referti-1-ottobre-2026"
   cosa: "Dal 1° ottobre 2026 il Fascicolo sanitario elettronico è l'unico posto online dove vedere i referti di laboratorio; delega per gli anziani all'ASL."
   valore: "dal 1° ottobre 2026"
@@ -501,15 +501,15 @@ dati:
   note: "Soglia confermata da più fonti (anche guide 2026). Esistono anche E05 e E24, non citati sul sito."
 - id: "ausili-nomenclatore"
   cosa: "Gli ausili del nomenclatore (allegato 5 del DPCM LEA 2017) sono gratuiti con prescrizione di uno specialista pubblico; le tariffe nazionali sono in fase di revisione."
-  valore: "DPCM 12/01/2017 all. 5; tariffe in revisione"
+  valore: "DPCM 12/01/2017 all. 5; nuove tariffe dal 21/09/2026 (DM 7/8/2026)"
   dove:
   - "content/dossier/guida-ai-diritti.md"
-  fonte: "https://www.salute.gov.it/new/it/tema/livelli-essenziali-di-assistenza/il-dpcm-del-2017-e-gli-allegati/"
+  fonte: "https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2026-09-19&atto.codiceRedazionale=26A04955"
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
   verificato: "2026-10-09"
-  note: "POSSIBILE AGGIORNAMENTO segnalato nella issue: DM Salute 7/8/2026 sulle tariffe di specialistica e protesica (GU n. 218 del 19/09/2026), applicato dal 21/09/2026 secondo fonti di settore. Togliere «in fase di revisione» dopo conferma."
+  note: "Aggiornato il 9/10/2026 con l'ok di Alessandro: DM Salute 7/8/2026 (GU n. 218 del 19/09/2026), tariffe in vigore dal 21/09/2026."
 - id: "caregiver-lr-5-2024"
   cosa: "Nel Lazio il caregiver familiare è riconosciuto dalla legge regionale 5/2024: domanda al PUA, tesserino «Card Giver», formazione, sostituzioni, contributi."
   valore: "L.R. Lazio 5/2024; Card Giver"
@@ -554,7 +554,7 @@ dati:
   delicato: true
   frequenza: "annuale"
   verificato: "2026-10-09"
-  note: "Confermato. Segnalato nella issue: in bambini-e-scuole.md «chiunque può usare un defibrillatore» semplifica l'art. 3 (chi non è formato può usarlo in assenza di personale formato)."
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro: in bambini-e-scuole.md la frase sul DAE ora segue l'art. 3 (chi non è formato può usarlo se non c'è personale addestrato)."
 - id: "codice-terzo-settore"
   cosa: "Obblighi di trasparenza secondo il Codice del Terzo Settore (D.Lgs. 117/2017) e il RUNTS."
   valore: "D.Lgs. 117/2017"
@@ -1580,8 +1580,8 @@ dati:
   verificato: ""
   note: ""
 - id: "runts-iscrizione"
-  cosa: "Iscritta al RUNTS dal 28 maggio 2023; ODV con personalità giuridica dal 2011; statuto vigente registrato il 28 maggio 2022."
-  valore: "RUNTS dal 28/05/2023; statuto 28/05/2022"
+  cosa: "Iscritta al RUNTS dal 28 marzo 2023; ODV con personalità giuridica dal 2011; statuto vigente registrato il 28 maggio 2022."
+  valore: "RUNTS dal 28/03/2023; statuto 28/05/2022"
   dove:
   - "content/chi-siamo.md"
   - "content/en/glossario.md"
@@ -1592,7 +1592,7 @@ dati:
   delicato: true
   frequenza: "annuale"
   verificato: "2026-10-09"
-  note: "SEGNALATO nella issue (dato dell'associazione, decide Alessandro): la scheda RUNTS dice «Iscritto tramite trasmigrazione il 28/03/2023» (non 28/05); personalità giuridica 23/02/2011; prima iscrizione al registro regionale 01/12/1998."
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro (28 maggio → 28 marzo 2023) secondo la scheda RUNTS («Iscritto tramite trasmigrazione il 28/03/2023»). Resta da valutare «Iscritta come ODV dal 2011» in chi-siamo.md: prima iscrizione al registro regionale 01/12/1998, nel 2011 la personalità giuridica."
 - id: "magistrato-composizione"
   cosa: "Composizione del Magistrato: Governatore Maddalena Basili, Vice Fernando Nasoni, Correttore don Antonio Salimbeni, Segretario Pellegrino Ascione, Tesoriere Cristina Custode, membri Caterina Viola, Franco Santini, Fausto Cecchini."
   valore: "Governatore: Maddalena Basili"
@@ -1694,7 +1694,7 @@ dati:
   note: "Verificare con lo statuto/regolamento confederale vigente."
 - id: "volontari-ospedalieri-en"
   cosa: "La pagina inglese delle Opere di Misericordia dice che la Misericordia vive le opere anche con «hospital volunteers»."
-  valore: "hospital volunteers (al presente)"
+  valore: "non più citati per Ariccia"
   dove:
   - "content/en/opere-di-misericordia.md"
   fonte: "Dato interno dell'associazione"
@@ -1702,7 +1702,7 @@ dati:
   delicato: false
   frequenza: "annuale"
   verificato: "2026-10-09"
-  note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue). POSSIBILE AGGIORNAMENTO: secondo chi-siamo.md e progetti.md il servizio dei volontari ospedalieri al «P. Colombo» di Velletri è finito nel 2020; la frase inglese al presente va corretta (fonte: content/chi-siamo.md)."
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro: tolti i «hospital volunteers» dalla frase su Ariccia in en/opere-di-misericordia.md (servizio finito nel 2020). La frase italiana del dossier parla delle Misericordie in generale e resta."
 - id: "comuni-serviti"
   cosa: "Comuni serviti: Ariccia, Albano Laziale, Genzano di Roma, Marino, Castel Gandolfo, Velletri, Lanuvio, Nemi, Rocca di Papa, Lariano; trasporti in tutta Italia."
   valore: "10 comuni dei Castelli Romani + Italia"

@@ -13,7 +13,7 @@ The **Works of Mercy** are the concrete acts through which the Misericordie have
 
 Feed the hungry · give drink to the thirsty · clothe the naked · shelter the homeless · visit the sick · visit the imprisoned · bury the dead.
 
-The Misericordia di Ariccia lives them every day through the **food bank**, **health transport**, hospital volunteers and closeness to those who suffer.
+The Misericordia di Ariccia lives them every day through the **food bank**, **health transport** and closeness to those who suffer.
 
 ## Spiritual works
 
