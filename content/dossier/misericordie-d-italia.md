@@ -10,7 +10,7 @@ italianoSemplice: |
 
   Ogni Misericordia ha la sua storia. Alcune sono nate durante le epidemie. Altre sono nate dopo un pellegrinaggio o un fatto triste visto per strada.
 
-  Nel 1899 le Misericordie si sono unite in una grande rete. Oggi sono più di 800 in quasi tutta Italia. Anche la Misericordia di Ariccia ne fa parte, dal 1994.
+  Nel 1899 le Misericordie si sono unite in una grande rete. Oggi sono circa 700 in quasi tutta Italia. Anche la Misericordia di Ariccia ne fa parte, dal 1994.
 layout: "storia"
 occhiello: "Dossier · Le Misericordie d'Italia nei secoli"
 sottotitolo: "Da Firenze alla Sicilia, otto secoli di confraternite: le città, le date, le persone e le storie che hanno fatto nascere le Misericordie, fino a quella di Ariccia."
@@ -107,23 +107,23 @@ tappe:
     testo: "In Italia ci sono istituzioni antiche e famose che portano il nome «Misericordia» ma non fanno parte del nostro movimento. Il **Pio Monte della Misericordia** di Napoli, fondato nel 1602 da sette giovani nobili, è un ente benefico che custodisce *Le sette opere di Misericordia* di **Caravaggio**. A Bergamo la **Misericordia Maggiore** è un antico ente assistenziale cittadino. Sono storie diverse, ma nate dalla stessa idea: le opere di misericordia."
   - anno: "Oggi"
     epoca: "Oggi"
-    titolo: "Più di 800 Misericordie"
-    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce **oltre 800 confraternite**, con circa **670.000 iscritti** e **80.000 volontari** impegnati con continuità. Sono presenti in quasi tutte le regioni. Dalla Toscana, dove sono ancora la maggioranza, il modello fiorentino è arrivato fino alla Sicilia, e ai Castelli Romani con la Misericordia di Ariccia."
+    titolo: "Settecento Misericordie, centomila volontari"
+    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** conta **quasi 700 sedi**, oltre **670.000 soci** e **100.000 volontari attivi**, secondo i dati presentati dalla Confederazione per l'udienza dal Papa del 14 febbraio 2026. Sono presenti in quasi tutte le regioni. Dalla Toscana, dove sono ancora la maggioranza, il modello fiorentino è arrivato fino alla Sicilia, e ai Castelli Romani con la Misericordia di Ariccia."
 oggi_numeri:
   - cifra: "1244"
     etichetta: "la prima, a Firenze"
   - cifra: "1899"
     etichetta: "nasce la rete nazionale, a Pistoia"
-  - cifra: "800"
-    suffisso: "+"
-    etichetta: "Misericordie in Italia"
+  - cifra: "100.000"
+    etichetta: "volontari attivi"
+    statico: true
   - cifra: "1994"
     etichetta: "nasce la Misericordia di Ariccia"
 fonti:
   - titolo: "Confederazione Nazionale delle Misericordie d'Italia, Storia e tradizione"
     url: "https://www.misericordie.it/storia-e-tradizione/"
-  - titolo: "Confederazione Nazionale delle Misericordie d'Italia, Chi siamo"
-    url: "https://www.misericordie.it/chi-siamo/"
+  - titolo: "Confederazione Nazionale delle Misericordie d'Italia, comunicato per l'udienza del 14 febbraio 2026"
+    url: "https://press.vatican.va/content/dam/salastampa/it/fuori-bollettino/CS%20Confederazione%20Nazionale%20delle%20Misericordie%20d%E2%80%99Italia.pdf"
   - titolo: "Misericordia (Firenze), Wikipedia"
     url: "https://it.wikipedia.org/wiki/Misericordia_(Firenze)"
   - titolo: "Arciconfraternita di Misericordia di Siena, Chi siamo"
