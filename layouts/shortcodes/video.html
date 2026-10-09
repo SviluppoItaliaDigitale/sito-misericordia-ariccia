@@ -5,7 +5,9 @@
      - inizio: secondo da cui partire (frammento #t=), opzionale
      - verticale="si": video 9:16 (Reel), riquadro stretto invece che 16:9
      - preload=none: il file (grande) si scarica solo quando l'utente preme play
-     - dal="AAAA-MM-GG": il video compare solo da quella data (mezzanotte italiana, col rebuild notturno) */ -}}
+     - dal="AAAA-MM-GG": il video compare solo da quella data (mezzanotte italiana, col rebuild notturno)
+     - sottotitoli: se accanto al video c'è un .vtt con lo stesso nome (static/video/nome.vtt) si aggiunge
+       da solo come traccia attivabile (i video della rubrica li creano con pipeline.py --sottotitoli) */ -}}
 {{- if or (not (.Get "dal")) (not ((time.AsTime (.Get "dal") "Europe/Rome").After now)) -}}
 {{- $en := eq (partial "lingua.html" .Page) "en" -}}
 {{- $src := .Get "src" -}}
@@ -20,6 +22,7 @@
          {{ with $dim }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}
          {{ with .Get "titolo" }}title="{{ . }}"{{ end }}>
     <source src="{{ $src | relURL }}{{ with $inizio }}#t={{ . }}{{ end }}" type="video/mp4">
+    {{- partial "traccia-vtt.html" $src }}
     {{ cond $en "Your browser cannot play this video:" "Il tuo browser non riproduce i video:" }} <a href="{{ $src | relURL }}">{{ cond $en "download the file" "scarica il file" }}</a>.
   </video>
   {{- $musica := partial "credito-musica.html" (dict "src" $src "en" $en) -}}

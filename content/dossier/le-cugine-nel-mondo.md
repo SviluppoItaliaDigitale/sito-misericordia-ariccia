@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Le cugine nel mondo"
 titoloSeo: "Le Misericordie nel mondo: le Santas Casas del Portogallo e del Brasile, Macao, Nagasaki e le nuove Misericordie in Terra Santa, Albania e Ucraina"
 description: "Le «cugine» delle Misericordie nel mondo: la Santa Casa di Lisbona del 1498, le 388 Misericórdias del Portogallo, le Santas Casas del Brasile, Goa, Macao e i confratelli giapponesi di Nagasaki; e le Misericordie nate dalla Confederazione italiana a Betlemme, in Albania e in Ucraina."

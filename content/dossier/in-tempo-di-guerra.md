@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Le Misericordie in tempo di guerra"
 titoloSeo: "Le Misericordie in tempo di guerra: Risorgimento, Grande Guerra, fascismo, 1944 e missioni di pace"
 description: "Che cosa hanno fatto le Misericordie nelle guerre: Livorno 1849, i 26.898 feriti della Grande Guerra, don Facibeni, come furono trattate dal regime fascista, i bombardamenti del 1943-44, Firenze e i Castelli Romani nel 1944, fino ad Albania, Ucraina e Gaza."

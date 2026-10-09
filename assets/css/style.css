@@ -482,6 +482,16 @@ a:hover { color: var(--mise-navy); }
 
 /* FAQ — accordion */
 .pf-invio { display: flex; flex-wrap: wrap; gap: .6rem; }
+.pf-stato:empty { display: none; }
+.pf-stato { margin: .8rem 0 .4rem; padding: .6rem .9rem; border-left: 4px solid var(--mise-ciano, #00a5dc); background: #eef8fc; font-weight: 600; }
+.pf-testo { font-family: inherit; font-size: 1rem; margin-bottom: .8rem; }
+
+/* Richiedi un trasporto: i 3 passi per chi preferisce telefonare */
+.tre-passi { border: 3px solid var(--mise-giallo, #f2e433); background: #fffde6; border-radius: .6rem; padding: 1rem 1.25rem; margin: 0 0 1.75rem; font-size: 1.25rem; line-height: 1.45; }
+.tre-passi-tit { font-weight: 700; margin: 0 0 .4rem; }
+.tre-passi ol { margin: 0; padding-left: 1.6rem; }
+.tre-passi li { margin: .25rem 0; }
+.tre-passi a { font-weight: 700; white-space: nowrap; }
 /* Video auto-ospitato */
 .video-riq { margin: 1.5rem 0; }
 .video-riq video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; border-radius: .8rem; box-shadow: 0 10px 26px rgba(27,34,63,.20); }

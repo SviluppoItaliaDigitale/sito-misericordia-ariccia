@@ -73,7 +73,7 @@
         {{ if and $uscito (fileExists (printf "static/%s" $video)) }}
         <figure class="ps-video video-riq video-riq--verticale">
           <video controls preload="none" playsinline {{ if fileExists (printf "static/%s" $poster) }}poster="{{ $poster | relURL }}"{{ end }} width="1080" height="1920" title="{{ $a.titolo }}: {{ cond $en "what to do, step by step" "cosa fare passo passo" }}">
-            <source src="{{ $video | relURL }}" type="video/mp4">
+            <source src="{{ $video | relURL }}" type="video/mp4">{{ partial "traccia-vtt.html" $video }}
             {{ cond $en "Your browser cannot play this video:" "Il tuo browser non riproduce i video:" }} <a href="{{ $video | relURL }}">{{ cond $en "download the file" "scarica il file" }}</a>.
           </video>
           <figcaption>{{ $a.titolo }}: {{ cond $en "the step-by-step video (in Italian)" "il video passo passo" }}{{ if $a.dal }} · <a href="{{ printf "/news/primo-soccorso-%s/" $a.id | relURL }}"{{ if $en }} lang="it" hreflang="it"{{ end }}>{{ cond $en "read the article (Italian)" "leggi l'articolo" }}</a>{{ end }}{{ partial "credito-musica.html" (dict "src" $video "en" $en) }}</figcaption>
@@ -96,7 +96,8 @@
         <a class="btn btn-giallo px-4" href="{{ "/en/formazione/" | relURL }}">Our courses</a>
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Call +39 348 4068657</a>
       </div>
-      <p class="ps-fonte">Sources: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener" lang="it" hreflang="it">2025 CPR guidelines, Italian Resuscitation Council</a> (chapter 4 “Adult BLS” and chapter 12 “First aid”) and <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, 2025 guidelines</a> (paediatric life support and first aid). Content by the Misericordia di Ariccia.</p>
+      <p class="ps-fonte">Sources: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener" lang="it" hreflang="it">2025 CPR guidelines, Italian Resuscitation Council</a> (chapter 4 “Adult BLS” and chapter 12 “First aid”) and <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, 2025 guidelines</a> (paediatric life support and first aid). Content by the Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Sources last checked: {{ (time.AsTime .).Format "2 January 2006" }}.{{ end }}{{ with .Params.revisione_istruttore }} Reviewed by {{ . }}.{{ end }}</p>
+      <p class="ps-stampa"><button type="button" class="btn btn-outline-secondary" data-stampa>🖨️ Print the cards</button></p>
       {{ else }}
       <h2>Impara con le tue mani</h2>
       <p>Queste schede sono informazioni generali e <strong>non sostituiscono un corso</strong>. Le manovre si imparano davvero solo provando, con un istruttore accanto: organizziamo corsi di primo soccorso, BLSD e P-BLSD aperti a tutti, anche per aziende, scuole e associazioni.</p>
@@ -104,7 +105,8 @@
         <a class="btn btn-giallo px-4" href="{{ "/servizi/formazione/" | relURL }}">Scopri i corsi</a>
         <a class="btn btn-ciano px-4" href="tel:+393484068657">Chiama il 348 4068657</a>
       </div>
-      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.</p>
+      <p class="ps-fonte">Fonte: <a href="https://www.ircouncil.it/linee-guida-rcp-2025/" rel="noopener">Linee guida RCP 2025, Italian Resuscitation Council</a> (capitolo 4 «BLS adulto» e capitolo 12 «Primo soccorso») e <a href="https://www.erc.edu/" rel="noopener">European Resuscitation Council, linee guida 2025</a> (supporto vitale pediatrico e primo soccorso). Contenuti a cura della Misericordia di Ariccia.{{ with .Params.fonti_controllate }} Fonti controllate il {{ time.Format "2 January 2006" (time.AsTime .) }}.{{ end }}{{ with .Params.revisione_istruttore }} Revisione: {{ . }}.{{ end }}</p>
+      <p class="ps-stampa"><button type="button" class="btn btn-outline-secondary" data-stampa>🖨️ Stampa le schede</button></p>
       {{ end }}
     </div>
   </section>

@@ -1,0 +1,98 @@
+name: Controlli del sito
+
+# Rete di sicurezza dopo ogni pubblicazione (audit del 9/10/2026):
+#  - dopo il deploy «Pubblica su Aruba (LIVE)» e a mano (Run workflow): ricompila
+#    il sito, cerca link/immagini/video mancanti, controlla la CSP, il registro dei
+#    dati e le news in uscita, apre le pagine principali online e verifica il
+#    certificato FTPS; il rapporto aggiorna la issue «Stato del sito»;
+#  - su ogni pull request verso main: gli stessi controlli sulla build, senza issue.
+# Script: scripts/controlli/controlla_sito.py (solo libreria standard Python).
+on:
+  workflow_run:
+    workflows: ["Pubblica su Aruba (LIVE)"]
+    types: [completed]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: controlli-sito
+  cancel-in-progress: true
+
+jobs:
+  controlli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # come il deploy: Hugo usa la data dell'ultimo commit di ogni pagina
+
+      - name: Installa Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.154.5"
+          extended: true
+
+      - name: Compila il sito (come il deploy)
+        run: hugo --minify
+
+      - name: Controlli
+        id: controlli
+        run: |
+          LIVE=""
+          [ "${{ github.event_name }}" != "pull_request" ] && LIVE="--live"
+          python3 scripts/controlli/controlla_sito.py public $LIVE --report rapporto.md && echo "esito=ok" >> "$GITHUB_OUTPUT" || echo "esito=problemi" >> "$GITHUB_OUTPUT"
+
+      # Certificato del server FTPS di Aruba: il deploy oggi usa «security: loose»
+      # perché il certificato non corrisponde al nome host. Qui si verifica senza
+      # pubblicare nulla: quando la verifica stretta passa, si può togliere «loose».
+      # Il nome del server è un secret: nel rapporto va solo l'esito.
+      - name: Certificato FTPS
+        if: github.event_name != 'pull_request'
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+        run: |
+          if [ -z "$FTP_HOST" ]; then echo "- FTPS: secret FTP_HOST non disponibile" >> rapporto.md; exit 0; fi
+          OUT=$(echo | timeout 30 openssl s_client -starttls ftp -connect "$FTP_HOST:21" -servername "$FTP_HOST" -verify_hostname "$FTP_HOST" 2>&1 || true)
+          echo "$OUT" | grep -E "subject=|issuer=|Verify return code" || true
+          echo | timeout 30 openssl s_client -starttls ftp -connect "$FTP_HOST:21" -servername "$FTP_HOST" 2>/dev/null | openssl x509 -noout -ext subjectAltName 2>/dev/null || true
+          CODICE=$(echo "$OUT" | grep -o "Verify return code: [0-9]*" | tail -1 | grep -o "[0-9]*$")
+          echo "" >> rapporto.md
+          echo "### 🔐 Pubblicazione FTPS" >> rapporto.md
+          if [ "$CODICE" = "0" ]; then
+            echo "- ✅ Il certificato del server corrisponde al nome usato dal deploy: si può togliere \`security: loose\` da deploy.yml." >> rapporto.md
+          else
+            echo "- ⚠️ Il certificato del server **non** corrisponde al nome usato dal deploy (codice ${CODICE:-?}): resta \`security: loose\`. Nel log di questo passaggio ci sono i nomi validi del certificato: usare uno di quelli come FTP_HOST." >> rapporto.md
+          fi
+
+      - name: Aggiorna la issue «Stato del sito»
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY: ${{ github.event.workflow_run.conclusion || 'avvio manuale' }}
+          DEPLOY_URL: ${{ github.event.workflow_run.html_url || '' }}
+        run: |
+          {
+            echo "Rapporto automatico del workflow **Controlli del sito**, aggiornato dopo ogni pubblicazione. Non chiudere questa issue."
+            echo ""
+            if [ "$DEPLOY" = "success" ]; then echo "### 🚀 Ultimo deploy: ✅ riuscito ([dettagli]($DEPLOY_URL))";
+            elif [ "$DEPLOY" = "avvio manuale" ]; then echo "### 🚀 Controllo avviato a mano";
+            else echo "### 🚀 Ultimo deploy: ❌ $DEPLOY ([dettagli]($DEPLOY_URL))"; fi
+            echo ""
+            cat rapporto.md
+            echo ""
+            echo "[Esecuzione di questo controllo](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          } > corpo.md
+          N=$(gh issue list --state open --search 'in:title "Stato del sito"' --json number,title --jq '.[] | select(.title=="Stato del sito") | .number' | head -1)
+          if [ -n "$N" ]; then gh issue edit "$N" --body-file corpo.md; else gh issue create --title "Stato del sito" --body-file corpo.md; fi
+
+      - name: Esito
+        if: steps.controlli.outputs.esito != 'ok'
+        run: |
+          echo "::error::Controlli non superati: vedi il rapporto (issue «Stato del sito» o log del passaggio Controlli)."
+          exit 1

@@ -1,4 +1,5 @@
 ---
+tema: "memoria"
 title: "I cimiteri delle Misericordie"
 titoloSeo: "I cimiteri delle Misericordie: Pinti e Soffiano a Firenze, Siena, Livorno, Prato, Grosseto, Antella"
 description: "Perché le Misericordie seppelliscono i morti e quali cimiteri storici hanno costruito: Pinti e Soffiano a Firenze, il camposanto di Siena, Livorno, Prato, Grosseto e l'Antella, tra arte, architettura e personaggi illustri."

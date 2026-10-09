@@ -1,4 +1,5 @@
 ---
+tema: "guide"
 title: "Prevenzione stagionale"
 titoloSeo: "Prevenzione stagionale: caldo e anziani, influenza, monossido, freddo, casa sicura, strada, zecche e punture"
 description: "I consigli ufficiali per stare bene in ogni stagione: ondate di calore e bollettini di Roma, anziani soli, bambini in auto, colpo di calore, vaccino antinfluenzale 2026-27, monossido, ghiaccio e freddo, cadute in casa, seggiolini e casco, zecche e punture. Fonti: Ministero della Salute, ISS, Regione Lazio, ISTAT."

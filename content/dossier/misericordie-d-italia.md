@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Le Misericordie d'Italia"
 titoloSeo: "Le Misericordie d'Italia nei secoli: Siena, Pisa, Arezzo, Livorno, Prato e le altre"
 description: "Un viaggio tra le Misericordie storiche d'Italia: Siena 1250, Arezzo, Volterra, Pisa 1330, Prato 1588, Livorno 1595, Lucca, Pistoia e la nascita della Confederazione nel 1899, fino a quelle del Sud e alla nostra, ad Ariccia."

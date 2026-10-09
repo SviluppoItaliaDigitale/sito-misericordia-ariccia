@@ -475,3 +475,22 @@
 }
 .dsr-corredo-foto figcaption { font-size: .78rem; color: #6b6352; margin-top: .4rem; line-height: 1.35; }
 .dsr-corredo-foto .dsr-arte-credit { display: inline; color: #8a8270; font-size: .72rem; }
+
+/* Elenco dei dossier raggruppato per tema, con indice in cima */
+.dsr-temi ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 2rem; }
+.dsr-temi a { display: inline-block; padding: .45rem .9rem; border: 2px solid var(--mise-navy); border-radius: .4rem; color: var(--mise-navy); font-weight: 600; text-decoration: none; }
+.dsr-temi a:hover, .dsr-temi a:focus-visible { background: var(--mise-navy); color: #fff; }
+.dsr-temi-n { font-weight: 400; opacity: .75; }
+.dsr-tema-tit { font-family: "Playfair Display", serif; color: var(--mise-navy); font-size: 1.7rem; margin: 2.5rem 0 1rem; padding-top: .5rem; border-top: 3px solid var(--mise-giallo); scroll-margin-top: 6rem; }
+.dsr-tema-tit:first-of-type { margin-top: 0; }
+
+/* Stampa del dossier primo soccorso: solo le schede, una dopo l'altra, senza
+   copertina animata, video e indice; ogni scheda non si spezza tra due pagine. */
+@media print {
+  .dsr-cover-sfondo, .dsr-particelle, .dsr-cover-glow, .dsr-cover-cta, .dsr-indice,
+  .ps-video, .ps-stampa, video { display: none !important; }
+  .dsr-cover { min-height: 0 !important; height: auto !important; background: none !important; color: #000 !important; padding: 0 0 1rem !important; }
+  .dsr-cover * { color: #000 !important; }
+  .ps-scheda { break-inside: avoid; page-break-inside: avoid; border: 1px solid #999; margin: 0 0 .8rem; padding: .6rem; }
+  .dossier * { opacity: 1 !important; transform: none !important; }
+}

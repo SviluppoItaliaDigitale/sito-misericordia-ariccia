@@ -47,7 +47,7 @@ Siamo un'organizzazione di volontariato: chiediamo un **contributo** che copre i
 <details class="faq-item">
 <summary>Quanto tempo ci mettete a rispondere?</summary>
 
-Leggiamo le richieste di continuo: di solito ti rispondiamo **in pochi minuti**, al massimo **in poche ore** e comunque **in giornata**. Il trasporto è fissato solo dopo la nostra conferma.
+Di solito ti rispondiamo **in giornata**, spesso molto prima. Di notte e nei giorni festivi può volerci di più: se è urgente o è per il giorno dopo, **telefonaci**. Il trasporto è fissato solo dopo la nostra conferma.
 
 </details>
 

@@ -29,7 +29,28 @@ Le scelte del pannello di accessibilità (dimensione del testo, contrasto, «Fer
 
 ## Richieste che ci invii
 
-I moduli «Richiedi un trasporto» e «Assistenza per eventi» **non inviano nulla ai nostri server**: preparano un messaggio che spedisci tu con la tua app di posta oppure con **WhatsApp**. Se scegli WhatsApp, il testo del messaggio (compresi i dati che hai inserito) viene passato all'app di WhatsApp, gestita da Meta, secondo le sue condizioni e la sua informativa: se preferisci, usa l'email o il telefono. Quando ci scrivi (email, WhatsApp) o ci telefoni, invece, **riceviamo i dati che ci comunichi**: li utilizziamo **solo per risponderti** e per organizzare il servizio richiesto, senza comunicarli o diffonderli a terzi. Ti chiediamo di indicare solo le informazioni utili a organizzare il servizio (come la persona può viaggiare), **senza diagnosi o referti**.
+I moduli «Richiedi un trasporto» e «Assistenza per eventi» **non inviano nulla ai nostri server**: preparano un messaggio che spedisci tu con la tua app di posta oppure con **WhatsApp**. Se scegli WhatsApp, il testo del messaggio (compresi i dati che hai inserito) viene passato all'app di WhatsApp, gestita da Meta, secondo le sue condizioni e la sua informativa: se preferisci, usa l'email o il telefono. Quando ci scrivi (email, WhatsApp) o ci telefoni, invece, **riceviamo i dati che ci comunichi**: li utilizziamo **solo per risponderti** e per organizzare il servizio richiesto, senza venderli né diffonderli. Ti chiediamo di indicare solo le informazioni utili a organizzare il servizio (come la persona può viaggiare), **senza diagnosi o referti**.
+
+## Perché usiamo i tuoi dati e su quale base
+
+| Che cosa | Perché | Base giuridica (GDPR) |
+|---|---|---|
+| Nome, telefono, email, date e indirizzi di una richiesta | Risponderti e organizzare il trasporto o il servizio che chiedi | Art. 6.1.b: misure richieste da te e svolgimento del servizio |
+| Informazioni su come la persona può viaggiare (carrozzina, barella…) | Mandare il mezzo e l'equipaggio giusti | Art. 9.2.a: tuo consenso esplicito, che dai comunicandocele; puoi revocarlo quando vuoi |
+| Dati per ricevute e contributi | Obblighi fiscali e contabili | Art. 6.1.c: obbligo di legge |
+| Dati tecnici di navigazione (log del server) | Sicurezza del sito | Art. 6.1.f: legittimo interesse a proteggere il sito |
+
+Darci i dati è facoltativo, ma senza un recapito non possiamo risponderti né organizzare il servizio. Non usiamo i tuoi dati per pubblicità e non prendiamo decisioni automatiche su di te.
+
+## Chi può vederli
+
+- I **volontari e gli incaricati** della Misericordia che organizzano il servizio, autorizzati e tenuti alla riservatezza.
+- I **fornitori tecnici** che usiamo: Aruba S.p.A. (sito e posta elettronica, in Italia). Se scegli **WhatsApp**, anche **Meta**, secondo le sue condizioni: in questo caso i dati possono essere trasferiti fuori dall'Unione europea, con le garanzie previste (EU-U.S. Data Privacy Framework). Se non lo vuoi, usa l'email o il telefono.
+- Le **autorità**, solo quando la legge lo impone.
+
+## Per quanto tempo li teniamo
+
+Le richieste per il **tempo necessario** a gestirle e a svolgere il servizio, poi le cancelliamo. I documenti contabili (ricevute dei contributi) per il tempo previsto dalla legge, di norma **10 anni**. I log del server sono gestiti da Aruba per i suoi tempi tecnici di sicurezza.
 
 ## Titolare del trattamento
 
@@ -40,4 +61,8 @@ Email: [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) — P
 
 ## I tuoi diritti
 
-Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli o cancellarli scrivendo agli indirizzi sopra indicati, ai sensi del Regolamento (UE) 2016/679 (GDPR).
+In qualsiasi momento puoi chiedere di **accedere** ai tuoi dati, **correggerli**, **cancellarli**, **limitarne** l'uso, **opporti** al trattamento, riceverli in un formato leggibile (**portabilità**) e **revocare il consenso** già dato, scrivendo agli indirizzi sopra indicati (artt. 15-22 del Regolamento (UE) 2016/679, GDPR). Ti rispondiamo entro un mese.
+
+Se pensi che i tuoi dati siano trattati in modo non corretto, puoi presentare **reclamo al Garante per la protezione dei dati personali** ([garanteprivacy.it](https://www.garanteprivacy.it/)).
+
+*Informativa aggiornata a ottobre 2026.*

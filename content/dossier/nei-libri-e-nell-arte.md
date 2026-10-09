@@ -1,4 +1,5 @@
 ---
+tema: "memoria"
 title: "Le Misericordie nei libri e nell'arte"
 titoloSeo: "Le Misericordie nei libri, nei dipinti e nelle fotografie: Dickens, De Amicis, Trollope, Perodi, Pagliano, Alinari"
 description: "Come scrittori, pittori e fotografi hanno visto i confratelli della Misericordia: Thouar, Dickens, De Amicis, le sorelle Horner, Trollope, Emma Perodi, Gardner, Lucas, Savinio, il quadro di Pagliano e le prime fotografie di Firenze. E i falsi miti: Pinocchio, Camera con vista, i film."

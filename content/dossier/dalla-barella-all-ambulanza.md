@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Dalla barella all'ambulanza"
 titoloSeo: "Dalla barella all'ambulanza: la storia dei mezzi di soccorso delle Misericordie, dalle zane al 118"
 description: "Otto secoli di mezzi per portare i malati: le zane della leggenda, il cataletto del 1478, le lettighe a ruote e le ambulanze a cavalli, il carro-lettiga del 1903, la prima autoambulanza di Firenze nel 1911, le Jeep del dopoguerra, il decreto del 1987, il 118 e le ambulanze di oggi."

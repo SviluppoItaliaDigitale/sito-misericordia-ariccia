@@ -1,4 +1,5 @@
 ---
+tema: "fede"
 title: "Le Opere di Misericordia"
 description: "Le quattordici Opere di Misericordia, sette corporali e sette spirituali, spiegate una per una: i gesti concreti di carità che danno nome e senso alla Misericordia di Ariccia."
 italianoSemplice: |

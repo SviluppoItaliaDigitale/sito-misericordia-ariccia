@@ -12,6 +12,15 @@ weight: 40
 <strong>In an emergency always call <a href="tel:112">112</a></strong> (European emergency number). This page is <strong>not an automatic booking service</strong>: your request must be confirmed by us.
 </div>
 
+<div class="tre-passi" role="region" aria-label="How to request a transport in 3 steps">
+  <p class="tre-passi-tit">The easiest way: phone us</p>
+  <ol>
+    <li><strong>Call</strong> <a href="tel:+393484068657">+39 348 406 8657</a></li>
+    <li><strong>Tell us</strong> who is travelling, from where, to where and when</li>
+    <li><strong>We call you back</strong> to confirm</li>
+  </ol>
+</div>
+
 The Misericordia di Ariccia provides **medical and social transport** with its own vehicles and trained volunteers. Contact us and we will organise the service together.
 
 ## Transports we provide
@@ -22,7 +31,7 @@ The Misericordia di Ariccia provides **medical and social transport** with its o
 - Transport for **people with disabilities** or reduced mobility
 - Accompaniment and **social transport**
 
-**When do we reply?** We check requests throughout the day: we usually reply **within a few minutes**, at most **within a few hours**, and always **on the same day**.
+**When do we reply?** Usually **on the same day**, often much sooner. At night and on public holidays it may take longer: if the transport is urgent or for the next day, **please phone us**.
 
 ## What we need to know
 
@@ -73,7 +82,7 @@ Fill in the fields below and choose how to send it: **email** (your email app op
   <ol class="pf-passi">
     <li>Press a button: your <strong>email app</strong> or <strong>WhatsApp</strong> opens with the message already written.</li>
     <li><strong>You send</strong> the message from the app: until you send it, we receive nothing.</li>
-    <li><strong>We call you back</strong> to confirm availability and the contribution: usually within a few minutes, at most within a few hours, and always on the same day. Your transport is booked only once we have confirmed it.</li>
+    <li><strong>We call you back</strong> to confirm availability and the contribution, usually on the same day (at night and on public holidays it may take longer). Your transport is booked only once we have confirmed it.</li>
   </ol>
   <div class="pf-invio">
     <button type="submit" class="btn btn-ciano btn-lg">✉️ Send by email</button>

@@ -35,6 +35,16 @@ pubblica da sola i dati certi; quelli delicati o dubbi li mette nella issue
 «Verifica dati: da controllare». Procedura: `docs/verifica-dati.md`.
 **Quando aggiungi un dato aggiornabile al sito, aggiungilo anche al registro.**
 
+## Controlli automatici del sito (dal 9/10/2026)
+
+Dopo ogni deploy il workflow «Controlli del sito» (`.github/workflows/controlli.yml`,
+script `scripts/controlli/controlla_sito.py`) ricompila il sito e aggiorna la issue
+**«Stato del sito»**: link/immagini/video mancanti, CSP, registro dei dati, revisione
+sanitaria, news in uscita (controllo editoriale `controllo_editoriale:` nel front matter
+nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
+`.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
+cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)

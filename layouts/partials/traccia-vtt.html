@@ -1,0 +1,6 @@
+{{- /* Sottotitoli attivabili: se esiste static/<video>.vtt accanto al .mp4 aggiunge la traccia.
+     Uso: {{ partial "traccia-vtt.html" "video/nome.mp4" }} (i .vtt li crea scripts/video-rubrica/pipeline.py --sottotitoli) */ -}}
+{{- $vtt := replaceRE `\.mp4$` ".vtt" . -}}
+{{- if fileExists (printf "static/%s" $vtt) }}
+<track kind="captions" srclang="it" label="Italiano" src="{{ $vtt | relURL }}">
+{{- end -}}

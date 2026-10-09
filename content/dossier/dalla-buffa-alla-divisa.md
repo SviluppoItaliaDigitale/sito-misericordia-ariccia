@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Dalla buffa alla divisa"
 titoloSeo: "Dalla buffa alla divisa giallo-ciano: la storia dell'abito dei confratelli della Misericordia"
 description: "Dalla veste rossa del 1244 alla cappa nera con la buffa del 1495, il significato di ogni pezzo del corredo (cordiglio, rosario, medaglia, sanrocchino, cappello), dalla fascia al braccio dell'Ottocento alle prime divise di servizio, fino alla divisa giallo-ciano delle Misericordie d'Italia, ai suoi distintivi e alla cerimonia della Vestizione."

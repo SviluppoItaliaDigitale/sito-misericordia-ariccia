@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Generatore dei video «Primo soccorso passo passo»: voce (Piper) -> tempi -> HTML animato
 -> fotogrammi (Chromium) -> musica originale -> MP4 1080x1920. Guida: README.md.
-Uso: pipeline.py chiave [...] [--anteprima]  (--anteprima: solo un foglio di fotogrammi chiave in out/<chiave>/foglio.png)"""
+Uso: pipeline.py chiave [...] [--anteprima] [--sottotitoli]
+  --anteprima: solo un foglio di fotogrammi chiave in out/<chiave>/foglio.png
+  --sottotitoli: solo voce e tempi, poi out/<nome>.vtt con gli stessi sottotitoli che compaiono nel video"""
 import base64, json, os, re, subprocess, sys, wave
 from pathlib import Path
 import numpy as np
@@ -47,6 +49,31 @@ def numero(i):  # numero pronunciato, sotto 0,42 s
             ls *= 0.42 / L
     return trim(rd(p))
 ANTE = '--anteprima' in sys.argv
+SUBS = '--sottotitoli' in sys.argv
+
+def vtt(v, D, conta, PRE, POST, CODA):
+    """Sottotitoli WebVTT con le stesse regole di appro.src.html (spezza, subAt): frase per frase,
+    tempo diviso in proporzione alla lunghezza; nell'ultima scena spariscono quando compare il motto."""
+    def spezza(fr):
+        if len(fr) <= 88: return [fr]
+        out, cur = [], ''
+        for x in re.split(r'(?<=,)\s+', fr):
+            if cur and len(cur + ' ' + x) > 80: out.append(cur); cur = x
+            else: cur = cur + ' ' + x if cur else x
+        return out + ([cur] if cur else [])
+    ts = lambda s: f'{int(s//3600):02d}:{int(s%3600//60):02d}:{s%60:06.3f}'
+    righe, start, n = ['WEBVTT', ''], 0.0, len(v['scene'])
+    for k, sc in enumerate(v['scene']):
+        sub = [y for x in re.split(r'(?<=[.?!])\s+', sc.get('sub') or sc['voce']) if x for y in spezza(x)]
+        Dv = conta['voce'] if sc.get('conta') else D[k]
+        tot, accw, prima = sum(map(len, sub)), 0, -0.1
+        for i, frase in enumerate(sub):
+            accw += len(frase)
+            fine = Dv + (0.2 if k == n - 1 else 0.4) if i == len(sub) - 1 else accw / tot * Dv
+            righe += [f'{ts(start + PRE + max(prima, -PRE))} --> {ts(start + PRE + fine)}', frase, '']
+            prima = fine
+        start += PRE + D[k] + POST + (CODA if k == n - 1 else 0)
+    return '\n'.join(righe)
 
 for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     v = dict(contenuti.V[key]); v.setdefault('num', ORD.index(key) + 1 if key in ORD else 0)
@@ -85,6 +112,9 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
             voci.append(a); D.append(round(Dv, 3))
         acc += PRE + D[-1] + POST + (CODA if i == len(v['scene']) - 1 else 0)
     T = round(acc, 2)
+    if SUBS:
+        nome = f'primo-soccorso-{key}' if v['num'] else key
+        (OUT / f'{nome}.vtt').write_text(vtt(v, D, conta, PRE, POST, CODA)); print('SOTTOTITOLI', nome, T, flush=True); continue
     track = np.zeros(int(T * SR) + SR); t = 0.0
     for i, a in enumerate(voci):
         s = int((t + PRE) * SR); track[s:s+len(a)] += a

@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 traduzione: "/dossier/storia-delle-misericordie"
 title: "Eight centuries of charity"
 titoloSeo: "Eight centuries of charity: the history of the Misericordie from 1244 to today"

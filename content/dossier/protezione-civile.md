@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Le Misericordie nella protezione civile"
 titoloSeo: "Le Misericordie nella protezione civile: dal Friuli 1976 all'alluvione di Faenza, la colonna mobile, i moduli e la fiera REAS"
 description: "Come le Misericordie sono diventate una forza nazionale di protezione civile: Friuli 1976, Irpinia 1980, il riconoscimento del 1996, L'Aquila, Amatrice, Covid, Ucraina, le alluvioni del 2023 e 2024, la colonna mobile, i moduli operativi e la fiera dell'emergenza REAS di Montichiari."

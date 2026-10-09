@@ -6,6 +6,7 @@ for k in "$@"; do
   n="primo-soccorso-$k"; [ -f "out/$n.mp4" ] || n="$k"
   [ -f "out/$n.mp4" ] || { echo "manca out/$n.mp4"; continue; }
   cp "out/$n.mp4" "$R/static/video/$n.mp4"
+  [ -f "out/$n.vtt" ] && cp "out/$n.vtt" "$R/static/video/$n.vtt"   # sottotitoli (pipeline.py --sottotitoli)
   rm -f "$R/static/img/video/$n.webp" "$R/static/img/news/$n-grafica.webp"
   $FF -v error -y -ss 1.8 -i "out/$n.mp4" -frames:v 1 -q:v 3 "$R/static/img/video/$n.jpg"
   $FF -v error -y -ss 1.8 -i "out/$n.mp4" -frames:v 1 -vf "crop=1080:1350:0:10" -q:v 3 "$R/static/img/news/$n-grafica.jpg"
