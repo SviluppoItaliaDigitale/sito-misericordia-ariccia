@@ -56,6 +56,15 @@ l'immagine, poi la approva o la rimanda indietro con note. Le PR di Codex
 toccano solo `bacheca/`: Claude le controlla e le unisce. I push che toccano
 solo la bacheca non ripubblicano il sito.
 
+## Parola della domenica sui social (dal 9/10/2026)
+
+Ogni domenica alle 7:47 il workflow `parola-domenica.yml` pubblica su Facebook e
+Instagram (solo social, nessuna pagina) un versetto delle letture con la sua grafica
+e, se c'è, un'opera d'arte di pubblico dominio da Wikimedia Commons. Lo prepara ogni
+mercoledì la routine cloud «Parola della domenica»: scheda in
+`.github/social/parola/AAAA-MM-GG.json`, grafica in `static/img/parola/`, strumenti in
+`scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)
