@@ -48,6 +48,7 @@
           <li class="mb-1"><a href="{{ "/faq/" | relURL }}">Domande frequenti</a></li>
           <li class="mb-1"><a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a></li>
           <li class="mb-1"><a href="{{ "/accessibilita/" | relURL }}">Accessibilità</a></li>
+          <li class="mb-1"><a href="{{ "/crediti-fotografici/" | relURL }}">Crediti fotografici</a></li>
           <li class="mb-1"><a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></li>
           <li class="mb-1"><a href="{{ "/news/index.xml" | relURL }}">Feed RSS delle notizie</a></li>
           {{ end }}
@@ -70,7 +71,7 @@
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
       {{ if $en }}<p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — Tax code {{ site.Params.codiceFiscale }} — Volunteer organisation (ODV) active since 1994. · <a href="{{ "/en/privacy/" | relURL }}">Privacy &amp; cookies</a> · <a href="{{ "/en/accessibilita/" | relURL }}">Accessibility</a></p>
       <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="No tracking, no banners: browse freely.">🍃 No cookies, no trackers</span>
-      {{ else }}<p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a> · <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></p>
+      {{ else }}<p class="legale mb-0">Confraternita di Misericordia di Ariccia ODV — C.F. {{ site.Params.codiceFiscale }} — Organizzazione di Volontariato attiva dal 1994. · <a href="{{ "/privacy/" | relURL }}">Privacy e cookie</a> · <a href="{{ "/crediti-fotografici/" | relURL }}">Crediti fotografici</a> · <a href="{{ "/mappa-del-sito/" | relURL }}">Mappa del sito</a></p>
       <span class="badge-no-cookie" data-bs-toggle="tooltip" data-bs-title="Niente tracciamenti, niente banner: navighi libero.">🍃 Sito senza cookie e senza tracker</span>{{ end }}
     </div>
   </div>
