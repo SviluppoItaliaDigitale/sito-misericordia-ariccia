@@ -40,7 +40,7 @@ Non dare latte, acqua o altro da bere, se non lo dice il Centro Antiveleni.
 
 ### Chiama
 
-Chiama il 112 o un Centro Antiveleni. A Roma rispondono giorno e notte il Gemelli, l'Umberto I e, per i bambini, il Bambino Gesù.
+Chiama il 112 o un Centro Antiveleni. A Roma rispondono giorno e notte il Gemelli (**06 305 4343**), l'Umberto I (**06 4997 8000**) e, per i bambini, il Bambino Gesù (**06 6859 3726**).
 
 ### La confezione
 

@@ -53,7 +53,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 3. **Alterna** 5 colpi dorsali e 5 compressioni finché l'ostruzione si libera.
 4. Se la persona perde coscienza, chiama il **112** e inizia le compressioni toraciche.
 
-*Nel lattante (meno di 1 anno): 5 pacche dorsali e 5 compressioni sul torace con due dita, mai la manovra di Heimlich.*
+*Nel lattante (meno di 1 anno): 5 pacche dorsali e 5 compressioni sul torace con i due pollici, mai la manovra di Heimlich.*
 
 </details>
 
@@ -103,7 +103,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. **Proteggi** la persona da urti: allontana oggetti pericolosi e metti qualcosa di morbido sotto la testa.
 2. **Non** immobilizzarla e **non mettere nulla in bocca**.
 3. Quando le scosse finiscono, mettila **sul fianco** (posizione laterale di sicurezza).
-4. Chiama il **112** se la crisi dura più di qualche minuto, si ripete o è la prima volta.
+4. Chiama il **112** se la crisi dura più di 5 minuti, si ripete o è la prima volta.
 
 </details>
 

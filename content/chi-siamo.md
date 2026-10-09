@@ -17,7 +17,7 @@ fatti:
   - icona: "📅"
     testo: "Attiva dal **1994**"
   - icona: "📜"
-    testo: "Iscritta come **ODV** dal 2011, con **personalità giuridica** riconosciuta nello stesso anno"
+    testo: "Iscritta come **ODV** nel registro regionale del volontariato dal 1998, con **personalità giuridica** dal 2011"
   - icona: "✅"
     testo: "Nel **RUNTS** dal 28 marzo 2023"
   - icona: "🤝"

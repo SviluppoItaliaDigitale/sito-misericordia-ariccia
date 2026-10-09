@@ -74,7 +74,7 @@ quiz:
 insegnanti: |
   **Insegnare il 112 senza fare paura.** Le indicazioni dei servizi 112 europei sono semplici: spiegare che il 112 si chiama quando c'è un pericolo vero (qualcuno non risponde o non respira, un incidente, un incendio) e, se possibile, dopo aver chiamato un adulto vicino; far imparare a memoria l'indirizzo di casa; insegnare a dire subito **cosa è successo e dove**, a rispondere alle domande e a **non riattaccare**. Si può fare una prova giocando, fingendo di comporre il numero. Un cartellino sul frigorifero con **112** e l'indirizzo di casa aiuta anche i nonni e gli ospiti. Per sapere che cosa succede dopo la chiamata leggi la nostra guida [Cosa succede quando chiami il 112](/dossier/chiamare-il-112/).
 
-  **Kids Save Lives.** È la campagna internazionale, promossa dallo European Resuscitation Council e approvata nel 2015 dall'Organizzazione mondiale della sanità, che chiede **due ore l'anno di rianimazione cardiopolmonare a scuola dai 12 anni**. In Italia la promuove l'Italian Resuscitation Council. Le ragioni sono forti: secondo l'INAIL in Italia circa 60.000 persone l'anno hanno un arresto cardiaco improvviso, e anche se nel 70% dei casi c'è qualcuno vicino, la rianimazione comincia solo nel 15%.
+  **Kids Save Lives.** È la campagna internazionale, promossa dallo European Resuscitation Council e approvata nel 2015 dall'Organizzazione mondiale della sanità, che chiede **due ore l'anno di rianimazione cardiopolmonare a scuola dai 12 anni**. In Italia la promuove l'Italian Resuscitation Council. Le ragioni sono forti: secondo le Linee guida europee 2025, in Italia circa tre arresti cardiaci su quattro avvengono in casa, e in Europa chi è presente comincia la rianimazione solo in poco più di metà dei casi (58%).
 
   **La legge 116 del 2021.** La legge sui defibrillatori prevede che la formazione al primo soccorso degli studenti **comprenda la rianimazione di base, l'uso del defibrillatore e le manovre contro il soffocamento**, con attenzione all'età, anche per docenti e personale. Le scuole la organizzano in autonomia, **in accordo con le strutture sanitarie e di volontariato**, e possono dedicare il **16 ottobre**, Giornata mondiale della rianimazione cardiopolmonare, a iniziative sul tema. La legge stabilisce anche che **anche chi non è formato può usare un defibrillatore**, se non c'è personale addestrato, in caso di sospetto arresto cardiaco, senza rischiare di essere punito.
 
@@ -94,6 +94,8 @@ fonti:
     url: "https://erc.edu/projects/kids-save-lives"
   - titolo: "Italian Resuscitation Council, Kids Save Lives in Italia e in Europa"
     url: "https://www.ircouncil.it/wp-content/uploads/2017/11/Semeraro-Kids-save-lives-in-Italia-e-in-Europa.pdf"
+  - titolo: "IRC, Linee guida ERC 2025, cap. 2 Epidemiologia (dati EuReCa-3)"
+    url: "https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_2-EPIDEMIOLOGIA-1.pdf"
   - titolo: "INAIL, la rianimazione cardiopolmonare nella scuola (2022)"
     url: "https://certifico.com/component/attachments/download/33091"
   - titolo: "Legge 4 agosto 2021, n. 116 (Normattiva)"

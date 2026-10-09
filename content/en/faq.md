@@ -17,7 +17,7 @@ Contact us in advance at **+39 348 4068657** (also WhatsApp) or by email, giving
 Not always. Our food bank and listening centre are free; for transport we ask for a **contribution** that covers the cost of the vehicle. We tell you the terms before confirming, with no obligation.
 
 **How do I give my 5×1000 to the Misericordia?**
-On the Italian tax return, in the *"Support for volunteering and Third Sector bodies"* box, sign and write our tax code **90031910582**. It costs nothing.
+On the Italian tax return, in the *"Support for Third Sector bodies registered in the RUNTS"* box, sign and write our tax code **90031910582**. It costs nothing.
 
 **Where are you and how do I contact you?**
 All addresses and phone numbers are on the [Contact us](/en/contatti/) page.

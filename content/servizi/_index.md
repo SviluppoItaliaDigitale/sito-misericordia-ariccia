@@ -31,7 +31,7 @@ La Misericordia di Ariccia è al servizio della comunità con servizi sanitari e
 
 Per rispondere al meglio a ogni richiesta abbiamo ampliato negli anni il nostro parco mezzi:
 
-- **due ambulanze di tipo A**, per il trasporto dei pazienti più delicati e critici, con personale formato e — quando serve — personale sanitario a bordo;
+- **due ambulanze di tipo A** (soccorso, secondo il DM 553/1987), per il trasporto dei pazienti più delicati e critici, con personale formato e — quando serve — personale sanitario a bordo;
 - un **mezzo per il trasporto carrozzine**, allestito con pedana;
 - **carrozzine e stampelle in prestito** per chi ne ha bisogno durante il trasporto;
 - automezzi per i **servizi sociali** e gli accompagnamenti.
