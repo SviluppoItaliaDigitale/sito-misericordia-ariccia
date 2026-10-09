@@ -30,6 +30,6 @@ Il primo scopo dell'abito dei confratelli è sempre stato renderli **uguali**: s
 - **Anni Novanta**: la **divisa giallo-ciano**, uguale in tutta Italia.
 - **Oggi**: la veste storica si consegna ai nuovi confratelli nella **Vestizione**.
 
-Il **20 gennaio** è la festa di San Sebastiano, patrono della Misericordia di Firenze: e proprio nella festa del patrono molte Misericordie celebrano la Vestizione. Nel dossier trovi anche il significato di ogni pezzo della veste e com'è fatta la divisa di oggi. La storia dei mezzi è in [Dalla barella all'ambulanza](/dossier/dalla-barella-all-ambulanza/).
+Il **20 gennaio** è la festa di San Sebastiano, patrono della Misericordia di Firenze: e proprio nella festa del patrono molte Misericordie celebrano la Vestizione. Nel dossier c'è anche **il corredo della veste, pezzo per pezzo**: la cappa che rende tutti uguali, la buffa che rende anonimi (per questo i confratelli erano detti «sfacciati», senza faccia), il cordiglio della povertà, il rosario portato «a coro» o «a passeggiata», la medaglia, il sanrocchino e il cappello dei pellegrini. E com'è fatta la divisa di oggi. La storia dei mezzi è in [Dalla barella all'ambulanza](/dossier/dalla-barella-all-ambulanza/).
 
 👉 **[Leggi il dossier completo](/dossier/dalla-buffa-alla-divisa/)**
