@@ -129,7 +129,6 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 </section>
 <section class="pagina" id="pagina" hidden>
   <svg class="filigrana pesce-f" id="p-simbolo"><use href="#pesce"/></svg>
-  <img class="filigrana stemma-f" src="../../static/img/loghi/mise-fregio.png" alt="">
   <div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="p-giorno"></div></div>
   <div class="lettura"><div class="nome" id="p-nome"></div><div class="libro" id="p-libro"></div></div>
   <div class="parola">
@@ -206,10 +205,15 @@ window.versetto = async (s, i, n, primo) => {
   $('p-rif').textContent = v.riferimento;
   $('p-numero').textContent = `${primo + i} / ${n}`;
   if (primo + i === n) $('p-rimando').hidden = false;
-  // un solo simbolo in filigrana per pagina, a rotazione: pesce, rosario, buffa (scura come la veste)
-  const simbolo = ['pesce', 'rosario', 'buffa'][i % 3];
+  // una sola filigrana per pagina, a rotazione: stemma, pesce, rosario, buffa. Il punto di partenza
+  // cambia ogni settimana, così anche con tre versetti compaiono tutti a turno.
+  const simboli = ['stemma', 'pesce', 'rosario', 'buffa'];
+  const settimana = Math.floor(Date.parse(s.data) / 604800000);
+  const simbolo = simboli[(settimana + i) % simboli.length];
   $('p-simbolo').setAttribute('class', `filigrana ${simbolo}-f`);
-  $('p-simbolo').innerHTML = `<use href="#${simbolo}"/>`;  // ultima pagina: rimando alla Liturgia del giorno del sito
+  $('p-simbolo').innerHTML = simbolo === 'stemma'
+    ? '<image href="../../static/img/loghi/mise-fregio.png" width="100%" height="100%"/>'
+    : `<use href="#${simbolo}"/>`;
   await document.fonts.ready;
   const esito = stringi(document.querySelector('.parola'), $('p-versetto'), 40);
   return { ...esito, sovrapposizioni: sovrapposizioni() };
