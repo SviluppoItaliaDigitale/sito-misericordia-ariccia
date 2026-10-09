@@ -1,0 +1,118 @@
+{{ define "main" }}
+{{- /* Pagina «Per bambini e scuole»: testo in Markdown (.Content), poi i
+       numeri amici, il quiz (dati nel front matter `quiz`, risposte corrette
+       con `giusta`) e la parte per genitori e insegnanti. Il quiz funziona
+       senza salvare nulla: se il JavaScript manca, le spiegazioni si leggono
+       aprendo «Vedi la risposta». */ -}}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">{{ .Params.occhiello }}</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    <section class="bb-pollici mb-5" aria-labelledby="bb-pollici-tit" data-anim="fade-up">
+      <h2 id="bb-pollici-tit">Pollice, pollice, due pollici: 1-1-2</h2>
+      <ol class="bb-tasti list-unstyled" aria-label="Il trucco per ricordare il 112">
+        <li><span class="bb-tasto" aria-hidden="true">1</span><span>alza il pollice sinistro</span></li>
+        <li><span class="bb-tasto" aria-hidden="true">1</span><span>alza il pollice destro</span></li>
+        <li><span class="bb-tasto bb-tasto--giallo" aria-hidden="true">2</span><span>alzali tutti e due insieme</span></li>
+      </ol>
+      <p class="bb-nota">Il trucco viene dalla Commissione europea. L'11 febbraio, cioè l'11/2, è la Giornata europea del 112.</p>
+    </section>
+
+    <div class="contenuto bb-testo mb-5">{{ .Content }}</div>
+
+    {{ with .Params.numeri }}
+    <section class="mb-5" aria-labelledby="bb-numeri-tit" data-anim="fade-up">
+      <h2 id="bb-numeri-tit">I numeri amici</h2>
+      <ul class="bb-numeri list-unstyled">
+        {{ range . }}
+        <li class="bb-numero"><span class="bb-numero-cifra">{{ .numero }}</span><span class="bb-numero-testo"><strong>{{ .nome }}</strong> {{ .testo }}</span></li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+
+    {{ with .Params.quiz }}
+    <section class="bb-quiz mb-5" id="quiz" aria-labelledby="bb-quiz-tit">
+      <h2 id="bb-quiz-tit">Il quiz del piccolo soccorritore</h2>
+      <p>Dieci domande. Scegli una risposta: ti diremo subito se è giusta, e perché.</p>
+      <ol class="list-unstyled bb-domande">
+        {{ range $i, $q := . }}
+        <li class="bb-domanda" data-giusta="{{ $q.giusta }}">
+          <fieldset>
+            <legend><span class="bb-num">{{ add $i 1 }}</span> {{ $q.domanda }}</legend>
+            {{ range $j, $r := $q.risposte }}
+            <label class="bb-risposta"><input type="radio" name="q{{ $i }}" value="{{ $j }}"> <span>{{ $r }}</span></label>
+            {{ end }}
+            <p class="bb-esito" aria-live="polite"></p>
+            <details class="bb-spiega">
+              <summary>Vedi la risposta</summary>
+              <p><strong>{{ index $q.risposte $q.giusta }}.</strong> {{ $q.perche }}</p>
+            </details>
+          </fieldset>
+        </li>
+        {{ end }}
+      </ol>
+      <p class="bb-punteggio" aria-live="polite" hidden></p>
+    </section>
+    {{ end }}
+
+    {{ with .Params.insegnanti }}
+    <section class="bb-adulti contenuto mb-5" aria-labelledby="bb-adulti-tit">
+      <h2 id="bb-adulti-tit">Per genitori e insegnanti</h2>
+      {{ . | markdownify }}
+    </section>
+    {{ end }}
+
+    {{ with .Params.fonti }}
+    <section class="bb-fonti contenuto">
+      <h2>Fonti</h2>
+      <ul>{{ range . }}<li><a href="{{ .url }}" rel="noopener" target="_blank">{{ .titolo }}</a></li>{{ end }}</ul>
+    </section>
+    {{ end }}
+  </div>
+</div>
+<script>
+/* Quiz: alla scelta mostra se è giusta e la spiegazione; alla fine il punteggio. */
+(function () {
+  var domande = document.querySelectorAll(".bb-domanda");
+  if (!domande.length) return;
+  var fatte = 0, giuste = 0, tot = domande.length;
+  var punteggio = document.querySelector(".bb-punteggio");
+  domande.forEach(function (d) {
+    var giusta = d.getAttribute("data-giusta");
+    var esito = d.querySelector(".bb-esito");
+    var spiega = d.querySelector(".bb-spiega");
+    d.addEventListener("change", function (e) {
+      if (d.classList.contains("fatta")) return;
+      d.classList.add("fatta");
+      var ok = e.target.value === giusta;
+      fatte++; if (ok) giuste++;
+      d.querySelectorAll("input").forEach(function (inp) {
+        inp.disabled = true;
+        if (inp.value === giusta) inp.closest("label").classList.add("bb-giusta");
+        else if (inp === e.target) inp.closest("label").classList.add("bb-sbagliata");
+      });
+      esito.textContent = ok ? "Risposta giusta!" : "Non è questa. Qui sotto trovi la risposta giusta.";
+      esito.className = "bb-esito " + (ok ? "ok" : "no");
+      spiega.open = true;
+      if (fatte === tot) {
+        punteggio.hidden = false;
+        punteggio.textContent = "Hai risposto giusto a " + giuste + " domande su " + tot + "." +
+          (giuste === tot ? " Tutte giuste: complimenti!" : " Riprova quando vuoi: ricaricando la pagina il quiz ricomincia.");
+      }
+    });
+  });
+})();
+</script>
+{{ end }}
