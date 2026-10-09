@@ -23,6 +23,7 @@ Partite, corse, feste, pellegrinaggi: dove c'è una folla, c'è un'ambulanza pro
 - **Palio di Siena**: il soccorso ai fantini in 15 secondi e il piano sanitario per 18.000 persone.
 - **Calcio storico fiorentino**: la Misericordia sul sabbione «da decenni».
 - **Mugello, Passatore, Milano-Cortina 2026**.
+- **Le squadre della Misericordia**: il basket nato nel 1982 tra i volontari di Montale e le corse podistiche di Grignano e Calenzano.
 - **Grandi eventi della Chiesa**: la GMG del 2000, l'addio a Papa Francesco, il Giubileo 2025.
 
 Organizzi un evento ad Ariccia o nei Castelli Romani? **[Richiedi l'assistenza sanitaria](/assistenza-eventi/)**.

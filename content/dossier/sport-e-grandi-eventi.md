@@ -1,7 +1,7 @@
 ---
 title: "Le Misericordie, lo sport e i grandi eventi"
 titoloSeo: "Le Misericordie allo sport e ai grandi eventi: Palio di Siena, Calcio storico, Mugello, Olimpiadi, Giubileo"
-description: "Dove c'è una folla, c'è un'ambulanza: le Misericordie al Palio di Siena, al Calcio storico fiorentino, al Mugello, alla 100 km del Passatore, alle Olimpiadi di Milano-Cortina e ai grandi eventi della Chiesa, dalla GMG del 2000 al Giubileo del 2025."
+description: "Dove c'è una folla, c'è un'ambulanza: le Misericordie al Palio di Siena, al Calcio storico fiorentino, al Mugello, alla 100 km del Passatore, alle Olimpiadi di Milano-Cortina e ai grandi eventi della Chiesa, dalla GMG del 2000 al Giubileo del 2025, fino alle società sportive che portano il nome della Misericordia."
 date: 2026-10-09
 italianoSemplice: |
   **Quando c'è una grande festa o una gara, ci sono anche i volontari della Misericordia.**
@@ -10,12 +10,14 @@ italianoSemplice: |
 
   Lo fanno al Palio di Siena, alle partite di calcio e alle grandi feste della Chiesa.
 
+  Alcune Misericordie hanno anche una loro squadra, per esempio di basket.
+
   Anche la Misericordia di Ariccia fa assistenza agli eventi.
 layout: "storia"
 occhiello: "Dossier · Le Misericordie in servizio"
 sottotitolo: "Dove c'è una folla, c'è un'ambulanza pronta. Dal Palio di Siena alle Olimpiadi, dalla Giornata mondiale della gioventù al Giubileo: i volontari che non si vedono, finché non servono."
-summary: "L'assistenza sanitaria delle Misericordie a sport e grandi eventi: Palio di Siena, Calcio storico fiorentino, Calcio storico di Castelfiorentino per una nuova ambulanza, MotoGP al Mugello, stadio Franchi, 100 km del Passatore, Olimpiadi di Milano-Cortina 2026, GMG 2000, esequie di Papa Francesco e Giubileo 2025."
-lettura: "6 minuti"
+summary: "L'assistenza sanitaria delle Misericordie a sport e grandi eventi: Palio di Siena, Calcio storico fiorentino, Calcio storico di Castelfiorentino per una nuova ambulanza, MotoGP al Mugello, stadio Franchi, 100 km del Passatore, Olimpiadi di Milano-Cortina 2026, GMG 2000, esequie di Papa Francesco e Giubileo 2025; le società sportive nate nelle Misericordie (basket a Montale, podismo a Grignano e Calenzano) e il patto con il CSI toscano."
+lettura: "7 minuti"
 meta:
   - "**15 secondi** per soccorrere un fantino"
   - "dal **2000** a oggi"
@@ -68,6 +70,18 @@ tappe:
     epoca: "Roma"
     titolo: "L'addio a Papa Francesco e il Giubileo"
     testo: "Per le **esequie di Papa Francesco**, il 26 aprile 2025, le Misericordie sono partite da tutta Italia: da Pistoia già dal 23 aprile, più di cinquanta confratelli e consorelle da Pisa, volontari da Chianciano Terme con la colonna mobile nazionale. Nello stesso anno, per il **Giubileo del mondo del volontariato** di marzo, il programma ufficiale prevedeva **5.000 volontari delle Misericordie**, con stand di prevenzione sanitaria; ad agosto volontari della Misericordia di Bibbiena erano in servizio a **Tor Vergata** per il Giubileo dei giovani."
+  - anno: "1982"
+    epoca: "Montale"
+    titolo: "Una squadra nata in sede"
+    testo: "Le Misericordie lo sport non lo seguono solo da bordo campo: a volte lo fanno nascere. Nel **1982** un gruppo di giovani volontari della **Misericordia di Montale**, in provincia di Pistoia, fonda una società di pallacanestro. Oggi si chiama **Centro Basket Libertas Misericordia Montale**: ha il minibasket dal 1991, un settore giovanile e, nella stagione 2015/16, è arrivata fino alla serie C Gold. Il nome della confraternita è rimasto sulle maglie."
+  - anno: "Prato e Firenze"
+    epoca: "Podismo"
+    titolo: "Le corse della Misericordia"
+    testo: "Nel podismo ci sono società e gare che portano il nome della Misericordia. A **Grignano**, vicino a Prato, l'**Asd Misericordia di Grignano** organizza il suo trofeo: nel settembre 2026 è arrivato alla **33ª edizione**, con percorsi di 5 e 11 chilometri e il ristoro finale preparato dai volontari. A **Calenzano** il Trofeo Misericordia, organizzato dall'Atletica Calenzano con il sostegno della Misericordia, ha compiuto vent'anni nel 2026: si parte dalla sede della confraternita e si finisce alla sua festa."
+  - anno: "2021"
+    epoca: "Toscana"
+    titolo: "Un patto con lo sport"
+    testo: "Nel gennaio 2021 la **Federazione delle Misericordie della Toscana** e il **Centro Sportivo Italiano** della Toscana hanno firmato due protocolli. Con il primo, le società del CSI possono chiedere alle Misericordie un'ambulanza con un soccorritore abilitato al defibrillatore per partite e manifestazioni. Con il secondo, possono chiedere corsi per imparare a usare il **defibrillatore**, con al massimo sei persone per corso, perché un DAE serve solo se a bordo campo c'è chi lo sa usare."
   - anno: "Noi"
     epoca: "La Misericordia di Ariccia"
     titolo: "Anche ai Castelli, dove c'è festa"
@@ -77,6 +91,14 @@ tappe:
     img_didascalia: "I nostri volontari in servizio alla camminata «Un passo alla volta», Campi di Annibale, settembre 2026."
     img_credit: "Misericordia di Ariccia"
 fonti:
+  - titolo: "Centro Basket Libertas Misericordia Montale, la storia della società"
+    url: "https://www.basketmontale.it/pagine.php?pag=storia"
+  - titolo: "La Nazione Prato, torna il Trofeo Misericordia di Grignano (2026)"
+    url: "https://www.lanazione.it/prato/sport/torna-il-trofeo-misericordia-di-grignano-a561m50s"
+  - titolo: "La Nazione Firenze, il Trofeo Misericordia Calenzano compie vent'anni (2026)"
+    url: "https://www.lanazione.it/firenze/sport/il-trofeo-misericordia-calenzano-compie-ventanni-gp9n6qkp"
+  - titolo: "gonews, accordo Misericordie e CSI per l'assistenza sanitaria negli eventi sportivi (2021)"
+    url: "https://www.gonews.it/2021/01/12/accordo-misericordie-csi-per-lassistenza-sanitaria-negli-eventi-sportivi/amp/"
   - titolo: "La Nazione Siena, le prove di soccorso all'alba per il Palio (2011)"
     url: "https://www.lanazione.it/siena/cronaca/2011/08/13/562135-prove_soccorso_alba_secondi.shtml"
   - titolo: "La Nazione Siena, i volontari e il soccorso ai fantini (2019)"
