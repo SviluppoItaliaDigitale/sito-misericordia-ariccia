@@ -15,7 +15,7 @@
 
 /* Le ancore dell'indice non finiscono sotto navbar + indice sticky */
 #introduzione, #corporali, #spirituali, #nell-arte, #vivile,
-#linea-del-tempo, #oggi, #fonti {
+#linea-del-tempo, #corredo, #oggi, #fonti {
   scroll-margin-top: calc(var(--dsr-nav-h) + 3.4rem);
 }
 
@@ -428,4 +428,43 @@
 @media (max-width: 767.98px) {
   .ps-scheda { grid-template-columns: 1fr; gap: 1.2rem; }
   .ps-video { position: static; justify-self: center; width: 100%; max-width: 320px; }
+}
+
+/* =========================================================================
+   CORREDO — schede a cartellino di museo (es. la veste storica)
+   ========================================================================= */
+.dsr-corredo { background: #f4f1ea; border-block: 1px solid #e3ddcf; }
+.dsr-corredo-lista {
+  list-style: none; margin: 2rem 0 0; padding: 0;
+  display: grid; gap: 0 clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
+}
+.dsr-corredo-voce {
+  position: relative;
+  padding: 1.4rem 0 1.5rem 3.4rem;
+  border-top: 1px solid #1b223f;
+}
+.dsr-corredo-num {
+  position: absolute; inset-inline-start: 0; top: 1.25rem;
+  font-family: "Playfair Display", Georgia, serif; font-size: 1.9rem; line-height: 1;
+  color: var(--mise-ciano);
+}
+.dsr-corredo-nome {
+  font-family: "Playfair Display", Georgia, serif; font-weight: 600;
+  font-size: 1.35rem; margin: 0 0 .2rem; color: var(--mise-navy);
+}
+.dsr-corredo-nota {
+  display: inline-block; margin: .1rem 0 .55rem; padding: .05rem .55rem;
+  font-size: .78rem; font-weight: 600; color: var(--mise-navy);
+  background: var(--mise-giallo, #f2e433); border-radius: 3px;
+}
+.dsr-corredo-com { margin: .35rem 0 .7rem; }
+.dsr-corredo-sig {
+  margin: 0; padding-inline-start: .9rem;
+  border-inline-start: 3px solid var(--mise-giallo, #f2e433);
+  font-style: italic;
+}
+.dsr-corredo-eti {
+  display: block; font-style: normal; font-size: .72rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: #6b6352; margin-bottom: .1rem;
 }

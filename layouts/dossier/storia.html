@@ -34,6 +34,7 @@
       <ul>
         <li><a href="#introduzione" class="dsr-indice-link">{{ cond $en "Introduction" "Introduzione" }}</a></li>
         <li><a href="#linea-del-tempo" class="dsr-indice-link">{{ .Params.indice_tappe | default (cond $en "Timeline" "Linea del tempo") }}</a></li>
+        {{ with .Params.corredo }}<li><a href="#corredo" class="dsr-indice-link">{{ $.Params.corredo_indice | default (cond $en "In detail" "Nel dettaglio") }}</a></li>{{ end }}
         {{ if .Params.oggi_numeri }}<li><a href="#oggi" class="dsr-indice-link">{{ cond $en "The Misericordie today" "Le Misericordie oggi" }}</a></li>{{ end }}
         {{ if .Params.fonti }}<li><a href="#fonti" class="dsr-indice-link">{{ cond $en "Sources" "Fonti" }}</a></li>{{ end }}
         <li><a href="#vivile" class="dsr-indice-link">{{ cond $en "Join us" "Vivile con noi" }}</a></li>
@@ -81,6 +82,35 @@
             {{ end }}
             <div class="dsr-tl-testo">{{ $t.testo | markdownify }}</div>
           </div>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- ===================== CORREDO (facoltativo) =====================
+       Schede «da cartellino di museo»: front matter `corredo` con voci
+       {nome, nota (facoltativa, es. "solo in alcune Misericordie"), com_e,
+       significato}; titoli in `corredo_titolo`, `corredo_intro`. -->
+  {{ with .Params.corredo }}
+  <section id="corredo" class="dsr-sezione dsr-corredo">
+    <div class="container">
+      <div class="dsr-cap-testata">
+        <div>
+          <p class="dsr-cap-occhiello">{{ cond $en "Piece by piece" "Pezzo per pezzo" }}</p>
+          <h2 class="dsr-cap-titolo" data-split="words">{{ $.Params.corredo_titolo }}</h2>
+          {{ with $.Params.corredo_intro }}<p class="dsr-cap-intro">{{ . | markdownify }}</p>{{ end }}
+        </div>
+      </div>
+      <ol class="dsr-corredo-lista">
+        {{ range $i, $c := . }}
+        <li class="dsr-corredo-voce" data-anim="fade-up">
+          <span class="dsr-corredo-num" aria-hidden="true">{{ add $i 1 }}</span>
+          <h3 class="dsr-corredo-nome">{{ $c.nome }}</h3>
+          {{ with $c.nota }}<p class="dsr-corredo-nota">{{ . }}</p>{{ end }}
+          <p class="dsr-corredo-com">{{ $c.com_e | markdownify }}</p>
+          <p class="dsr-corredo-sig"><span class="dsr-corredo-eti">{{ cond $en "Meaning" "Significato" }}</span> {{ $c.significato | markdownify }}</p>
         </li>
         {{ end }}
       </ol>
