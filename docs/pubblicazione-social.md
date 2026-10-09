@@ -167,6 +167,16 @@ messaggi Messenger/Direct (leggere, rispondere), prova invisibile.
 | `SOCIAL_MAX_PER_ESECUZIONE` | 3 | news massime per esecuzione |
 | `META_GRAPH_VERSION` | v23.0 | versione della Graph API di Meta |
 | `DRY_RUN` | — | `1` = solo prova |
+| `SOCIAL_LUOGO_ID` | — | id della pagina-luogo «Ariccia» da usare come luogo dei post |
+
+**Luogo «Ariccia» nei post** (dal 9/10/2026): ogni post Facebook (`place`) e
+Instagram (`location_id`) viene geolocalizzato ad Ariccia. Lo script cerca da
+solo la pagina-luogo «Ariccia» con la Graph API; se la ricerca non è permessa
+usa la nostra pagina, se il suo indirizzo è ad Ariccia. Il risultato è scritto
+nel log («Luogo dei post: …»): copiarlo in `SOCIAL_LUOGO_ID` per non cercarlo
+ogni volta. Se Meta rifiuta il luogo il post esce comunque, senza luogo.
+I post già pubblicati non si possono geolocalizzare dopo (Instagram non lo
+permette via API).
 
 **Cancellare e rifare un post Instagram** (es. didascalia sbagliata):
 correggere il testo nella news (`social_testo:`), mandarla live, poi
