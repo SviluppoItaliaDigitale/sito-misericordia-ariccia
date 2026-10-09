@@ -2,7 +2,7 @@
 title: "Le preghiere dei confratelli"
 titoloSeo: "Le preghiere delle Misericordie: il motto, la preghiera al ritorno dal servizio, i patroni e le opere di misericordia"
 description: "La spiritualità delle Misericordie: le opere di misericordia, il motto «Che Iddio te ne renda merito», le preghiere al ritorno dal servizio, il Requiem per i defunti, San Sebastiano e la Madonna della Misericordia, e la differenza con la devozione alla Divina Misericordia."
-date: 2026-10-14
+date: 2026-10-09
 italianoSemplice: |
   **Le Misericordie sono confraternite cristiane.**
 

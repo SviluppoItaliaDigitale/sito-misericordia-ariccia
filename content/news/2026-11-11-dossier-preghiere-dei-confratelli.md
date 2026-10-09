@@ -1,7 +1,7 @@
 ---
 title: "Le preghiere dei confratelli: il motto, il ritorno dal servizio, i patroni"
 titoloSeo: "Le preghiere dei confratelli della Misericordia | Dossier"
-date: 2026-10-14
+date: 2026-11-11
 slug: "dossier-preghiere-dei-confratelli"
 description: "Un dossier sulla spiritualità delle Misericordie: il motto «Che Iddio te ne renda merito», il Pater, Ave e Requiem recitati al ritorno dal servizio, il cambio sotto la barella, San Sebastiano, la Madonna della Misericordia e la differenza con la Divina Misericordia."
 immagine: "/img/news/dossier-preghiere-grafica.jpg"

@@ -1,0 +1,396 @@
+{
+ "schede": [
+  {
+   "numero": 1,
+   "luogo": "Firenze · intorno al 1240 · leggenda",
+   "titolo": "Le prime barelle comprate con le multe sulle bestemmie",
+   "testo": "I facchini dell'Arte della Lana si ritrovavano in una cantina vicino al Duomo e bestemmiavano di continuo. Uno di loro, Piero di Luca Borsi, propose una multa per ogni bestemmia. Con i soldi raccolti si comprarono sei «zane», grandi ceste per portare i malati all'ospedale.",
+   "fonte": "Confederazione delle Misericordie; S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2026-10-18-lo-sapevi-che-01-multe-sulle-bestemmie",
+   "social": "2026-10-18",
+   "immagine": "/img/news/lo-sapevi-che-01-multe-sulle-bestemmie-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Otto secoli di carità",
+    "url": "/dossier/storia-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 2,
+   "luogo": "Firenze e Pisa · Ottocento",
+   "titolo": "Due rintocchi «a caso», tre «a morto»",
+   "testo": "La campana della Misericordia suonava anche di notte. Due colpi volevano dire «a caso»: una disgrazia per strada o sul lavoro. Tre colpi volevano dire «a morto». Chi aveva un familiare fuori casa restava in ansia finché non lo vedeva tornare.",
+   "fonte": "G. Conti, *Firenze vecchia* (1899); Regolamento della Misericordia di Pisa (1848)",
+   "news": "2026-10-25-lo-sapevi-che-02-campana-a-caso-a-morto",
+   "social": "2026-10-25",
+   "immagine": "/img/news/lo-sapevi-che-02-campana-a-caso-a-morto-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Nei giorni più difficili",
+    "url": "/dossier/nei-giorni-piu-difficili/"
+   }
+  },
+  {
+   "numero": 3,
+   "luogo": "Firenze · dal Medioevo",
+   "titolo": "Il cappuccio nero per fare il bene senza farsi riconoscere",
+   "testo": "Si chiama «buffa»: copre il viso e lascia due fori per gli occhi. Con guanti e ghette, nessuno poteva riconoscere il confratello. Il motivo è nel Vangelo: «non sappia la tua sinistra quello che fa la tua destra».",
+   "fonte": "Confederazione delle Misericordie, *Storia e tradizione*",
+   "news": "2026-11-01-lo-sapevi-che-03-la-buffa",
+   "social": "2026-11-01",
+   "immagine": "/img/news/lo-sapevi-che-03-la-buffa-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I tesori delle Misericordie",
+    "url": "/dossier/tesori-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 4,
+   "luogo": "Sansepolcro · 1445",
+   "titolo": "Tre anni di contratto, più di quindici per finire",
+   "testo": "Nel 1445 la Compagnia della Misericordia di Sansepolcro commissiona un polittico a Piero della Francesca. Il contratto gli dà tre anni e vuole tutto di sua mano. Piero ne impiega più di quindici. Ne valeva la pena.",
+   "fonte": "Wikipedia, *Polittico della Misericordia*",
+   "news": "2026-11-08-lo-sapevi-che-04-piero-della-francesca-in-ritardo",
+   "social": "2026-11-08",
+   "immagine": "/img/news/lo-sapevi-che-04-piero-della-francesca-in-ritardo-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I tesori delle Misericordie",
+    "url": "/dossier/tesori-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 5,
+   "luogo": "Pisa · 1848",
+   "titolo": "Il cambio sotto la barella? Un colpo sulla stanga",
+   "testo": "Chi era stanco di portare la barella non parlava: batteva la mano sulla stanga e la squadra si fermava per il cambio, «nel più grande silenzio». Davanti alla casa del malato era vietato sedersi sulle stanghe o appoggiarsi al muro.",
+   "fonte": "Regolamento disciplinare della Misericordia di Pisa (1848), artt. 26-31",
+   "news": "2026-11-15-lo-sapevi-che-05-colpo-sulla-stanga",
+   "social": "2026-11-15",
+   "immagine": "/img/news/lo-sapevi-che-05-colpo-sulla-stanga-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le preghiere dei confratelli",
+    "url": "/dossier/preghiere-dei-confratelli/"
+   }
+  },
+  {
+   "numero": 6,
+   "luogo": "La lingua italiana",
+   "titolo": "«L'hanno portato all'ospedale con la Misericordia»",
+   "testo": "Il vocabolario Treccani registra «Misericordia» anche come la sede e l'ambulanza della confraternita: «andare alla Misericordia», «l'hanno portato all'ospedale con la Misericordia». E c'è un omonimo inatteso: un pugnale medievale.",
+   "fonte": "Vocabolario Treccani, voce «misericordia»",
+   "news": "2026-11-22-lo-sapevi-che-06-portato-via-con-la-misericordia",
+   "social": "2026-11-22",
+   "immagine": "/img/news/lo-sapevi-che-06-portato-via-con-la-misericordia-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Glossario",
+    "url": "/glossario/"
+   }
+  },
+  {
+   "numero": 7,
+   "luogo": "Roma · dal 1540",
+   "titolo": "Michelangelo e il condannato liberato ogni anno",
+   "testo": "A Roma i fiorentini avevano una «cugina» della Misericordia: l'Arciconfraternita di San Giovanni Decollato, nata nel 1488. I confratelli confortavano i condannati a morte. Dal 1540 potevano liberarne uno ogni anno.",
+   "fonte": "Turismo Roma, *Oratorio di San Giovanni Decollato*",
+   "news": "2026-11-29-lo-sapevi-che-07-michelangelo-san-giovanni-decollato",
+   "social": "2026-11-29",
+   "immagine": "/img/news/lo-sapevi-che-07-michelangelo-san-giovanni-decollato-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Confratelli illustri",
+    "url": "/dossier/confratelli-illustri/"
+   }
+  },
+  {
+   "numero": 8,
+   "luogo": "Firenze · Ottocento",
+   "titolo": "Nemmeno un caffè: solo un bicchiere d'acqua",
+   "testo": "I confratelli che assistevano i malati in casa non potevano accettare denaro, né mangiare o bere qualcosa. Era concesso al massimo un bicchiere d'acqua. Lo raccontano Charles Dickens nel 1846 e una guida inglese del 1877.",
+   "fonte": "C. Dickens, *Pictures from Italy* (1846); S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2026-12-06-lo-sapevi-che-08-solo-un-bicchiere-d-acqua",
+   "social": "2026-12-06",
+   "immagine": "/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le preghiere dei confratelli",
+    "url": "/dossier/preghiere-dei-confratelli/"
+   }
+  },
+  {
+   "numero": 9,
+   "luogo": "Lisbona · dal 1783",
+   "titolo": "Le «cugine» portoghesi che gestiscono la lotteria",
+   "testo": "La Santa Casa da Misericórdia di Lisbona nasce nel 1498, voluta dalla regina Eleonora. Dal 1783 gestisce la lotteria del Portogallo, e la gestisce ancora oggi: i ricavi finanziano le opere sociali.",
+   "fonte": "Archivio storico della Santa Casa di Lisbona; Confederazione delle Misericordie",
+   "news": "2026-12-13-lo-sapevi-che-09-lisbona-lotteria",
+   "social": "2026-12-13",
+   "immagine": "/img/news/lo-sapevi-che-09-lisbona-lotteria-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le Misericordie d'Italia",
+    "url": "/dossier/misericordie-d-italia/"
+   }
+  },
+  {
+   "numero": 10,
+   "luogo": "Firenze · Trecento",
+   "titolo": "Il primo ritratto di Firenze è in un affresco della Misericordia",
+   "testo": "Nel Museo del Bigallo c'è la Madonna della Misericordia che apre il mantello sui fiorentini. Ai suoi piedi si riconoscono il Battistero e il Duomo ancora senza facciata. È la più antica veduta di Firenze che si conosca.",
+   "fonte": "Visit Tuscany, *Museo del Bigallo*; Wikipedia, *Loggia del Bigallo*",
+   "news": "2026-12-20-lo-sapevi-che-10-prima-veduta-di-firenze",
+   "social": "2026-12-20",
+   "immagine": "/img/news/lo-sapevi-che-10-prima-veduta-di-firenze-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I tesori delle Misericordie",
+    "url": "/dossier/tesori-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 11,
+   "luogo": "Firenze · dal 1525",
+   "titolo": "Sotto la loggia, i bambini smarriti aspettavano la famiglia",
+   "testo": "Un affresco del 1386 nella Loggia del Bigallo mostra i capitani della Misericordia che affidano bambini abbandonati a nuove madri. Dal 1525 la loggia servì a mostrare i bambini smarriti, perché qualcuno li riconoscesse.",
+   "fonte": "Wikipedia, *Loggia del Bigallo*",
+   "news": "2026-12-27-lo-sapevi-che-11-bambini-smarriti-bigallo",
+   "social": "2026-12-27",
+   "immagine": "/img/news/lo-sapevi-che-11-bambini-smarriti-bigallo-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I tesori delle Misericordie",
+    "url": "/dossier/tesori-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 12,
+   "luogo": "Viareggio · 1924",
+   "titolo": "Giacomo Puccini, confratello a Viareggio",
+   "testo": "Il compositore della Bohème e della Tosca era iscritto alla Misericordia di Viareggio. Quando morì, nel 1924, la confraternita fece celebrare una messa solenne da Requiem. Nella sua sala consiliare c'è ancora un pianoforte di Puccini.",
+   "fonte": "Associazione Dimore Storiche Italiane, *Misericordia di Viareggio*",
+   "news": "2027-01-03-lo-sapevi-che-12-puccini-confratello",
+   "social": "2027-01-03",
+   "immagine": "/img/news/lo-sapevi-che-12-puccini-confratello-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Confratelli illustri",
+    "url": "/dossier/confratelli-illustri/"
+   }
+  },
+  {
+   "numero": 13,
+   "luogo": "Pisa · 1848",
+   "titolo": "La raccolta punti della carità",
+   "testo": "A Pisa ogni servizio valeva «punti di diligenza»: uno in città, due nei sobborghi, tre oltre un miglio dalle mura. Con mille punti si poteva diventare capo di guardia. E chi non sapeva leggere? Diventava capo di guardia onorario.",
+   "fonte": "Regolamento della Misericordia di Pisa (1848)",
+   "news": "2027-01-10-lo-sapevi-che-13-punti-di-diligenza",
+   "social": "2027-01-10",
+   "immagine": "/img/news/lo-sapevi-che-13-punti-di-diligenza-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I confratelli",
+    "url": "/i-confratelli/"
+   }
+  },
+  {
+   "numero": 14,
+   "luogo": "Firenze · Ottocento",
+   "titolo": "Al Palio, le barelle aspettavano dietro i tendoni",
+   "testo": "Al Palio dei Barberi i cavalli correvano senza fantino per le vie di Firenze. All'arrivo, alla Porta alla Croce, bisognava fermarli in corsa. Lì, dietro i tendoni, aspettavano i cataletti della Misericordia.",
+   "fonte": "G. Conti, *Firenze vecchia* (1899)",
+   "news": "2027-01-17-lo-sapevi-che-14-palio-dei-barberi",
+   "social": "2027-01-17",
+   "immagine": "/img/news/lo-sapevi-che-14-palio-dei-barberi-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Assistenza sanitaria per eventi",
+    "url": "/assistenza-eventi/"
+   }
+  },
+  {
+   "numero": 15,
+   "luogo": "Firenze · 1865",
+   "titolo": "Il marchese morto in servizio",
+   "testo": "Lo chiamavano il «Federigo Borromeo di Firenze» per la sua carità. Il marchese Carlo Torrigiani faceva servizio come giornante della Misericordia, con la stessa veste di tutti. Morì nel 1865 per una malattia presa durante il servizio.",
+   "fonte": "S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2027-01-24-lo-sapevi-che-15-marchese-torrigiani",
+   "social": "2027-01-24",
+   "immagine": "/img/news/lo-sapevi-che-15-marchese-torrigiani-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Confratelli illustri",
+    "url": "/dossier/confratelli-illustri/"
+   }
+  },
+  {
+   "numero": 16,
+   "luogo": "Firenze · 1877",
+   "titolo": "Nottanti, mutanti e «stracciafoglie»",
+   "testo": "Nel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli.",
+   "fonte": "S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2027-01-31-lo-sapevi-che-16-nottanti-e-stracciafoglie",
+   "social": "2027-01-31",
+   "immagine": "/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Glossario",
+    "url": "/glossario/"
+   }
+  },
+  {
+   "numero": 17,
+   "luogo": "Viareggio · 1920",
+   "titolo": "L'ambulanza «sbuffante e traballante» e i soccorritori in bicicletta",
+   "testo": "Il 5 dicembre 1920 a Viareggio entra in servizio la prima ambulanza a motore della Misericordia. Un medico la descrive come «un carro angoloso e rozzo, sbuffante e traballante». D'estate c'era anche il «Plotone ciclistico».",
+   "fonte": "Associazione Dimore Storiche Italiane, *Misericordia di Viareggio*",
+   "news": "2027-02-07-lo-sapevi-che-17-ambulanza-sbuffante-viareggio",
+   "social": "2027-02-07",
+   "immagine": "/img/news/lo-sapevi-che-17-ambulanza-sbuffante-viareggio-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Trasporto infermi",
+    "url": "/trasporto-infermi/"
+   }
+  },
+  {
+   "numero": 18,
+   "luogo": "Firenze · anni '40 dell'Ottocento · si dice",
+   "titolo": "Il granduca che si alzava da tavola al suono della campana",
+   "testo": "Charles Dickens scrive che anche il granduca di Toscana era iscritto alla Misericordia. E aggiunge un «si dice»: al suono della campana lo si vide alzarsi da tavola e uscire in silenzio, per rispondere alla chiamata.",
+   "fonte": "C. Dickens, *Pictures from Italy* (1846)",
+   "news": "2027-02-14-lo-sapevi-che-18-granduca-a-tavola",
+   "social": "2027-02-14",
+   "immagine": "/img/news/lo-sapevi-che-18-granduca-a-tavola-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Confratelli illustri",
+    "url": "/dossier/confratelli-illustri/"
+   }
+  },
+  {
+   "numero": 19,
+   "luogo": "Firenze e Pisa · Ottocento",
+   "titolo": "Passa la Misericordia: giù il cappello",
+   "testo": "Quando passavano i confratelli con la barella, i fiorentini si toglievano il cappello. Nel 1877 l'uso stava già scomparendo. Anche i confratelli avevano le loro regole: a Pisa la squadra si scopriva il capo davanti al Santissimo, all'arcivescovo o al granduca.",
+   "fonte": "S. e J. Horner, *Walks in Florence* (1877); Regolamento della Misericordia di Pisa (1848), art. 34",
+   "news": "2027-02-21-lo-sapevi-che-19-giu-il-cappello",
+   "social": "2027-02-21",
+   "immagine": "/img/news/lo-sapevi-che-19-giu-il-cappello-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Trasporto infermi",
+    "url": "/trasporto-infermi/"
+   }
+  },
+  {
+   "numero": 20,
+   "luogo": "Prato · 1588",
+   "titolo": "Trenta pellegrini di ritorno da Loreto",
+   "testo": "Il 22 luglio 1588 trenta pratesi tornano da un pellegrinaggio alla Santa Casa di Loreto. Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato.",
+   "fonte": "La Nazione, 2026",
+   "news": "2027-02-28-lo-sapevi-che-20-pellegrini-di-loreto-prato",
+   "social": "2027-02-28",
+   "immagine": "/img/news/lo-sapevi-che-20-pellegrini-di-loreto-prato-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le Misericordie d'Italia",
+    "url": "/dossier/misericordie-d-italia/"
+   }
+  },
+  {
+   "numero": 21,
+   "luogo": "Pisa 1848 · Firenze 1971",
+   "titolo": "Le «Sorelle» della Misericordia",
+   "testo": "Nel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971.",
+   "fonte": "Regolamento della Misericordia di Pisa (1848); Wikipedia, *Misericordia di Firenze*",
+   "news": "2027-03-07-lo-sapevi-che-21-le-sorelle-della-misericordia",
+   "social": "2027-03-07",
+   "immagine": "/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Diventa volontario",
+    "url": "/diventa-volontario/"
+   }
+  },
+  {
+   "numero": 22,
+   "luogo": "Pisa 1848 · Firenze 1877",
+   "titolo": "Mezz'ora per un malato, un quarto d'ora per un morto",
+   "testo": "Dopo il suono della campana, il regolamento di Pisa dava ai confratelli mezz'ora per presentarsi se c'era un malato, un quarto d'ora se c'era un morto. Per un ferito si partiva «al più presto possibile».",
+   "fonte": "Regolamento della Misericordia di Pisa (1848); S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2027-03-14-lo-sapevi-che-22-mezz-ora-per-arrivare",
+   "social": "2027-03-14",
+   "immagine": "/img/news/lo-sapevi-che-22-mezz-ora-per-arrivare-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Nei giorni più difficili",
+    "url": "/dossier/nei-giorni-piu-difficili/"
+   }
+  },
+  {
+   "numero": 23,
+   "luogo": "Pisa · 1848 · ancora oggi",
+   "titolo": "«Iddio gliene renda merito» – «Vada in pace»",
+   "testo": "Al cambio sotto la barella, chi prendeva il posto diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace». È l'antenato del motto che i confratelli usano ancora oggi: «Che Iddio te ne renda merito».",
+   "fonte": "Regolamento disciplinare della Misericordia di Pisa (1848), artt. 31 e 36",
+   "news": "2027-03-21-lo-sapevi-che-23-iddio-gliene-renda-merito",
+   "social": "2027-03-21",
+   "immagine": "/img/news/lo-sapevi-che-23-iddio-gliene-renda-merito-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le preghiere dei confratelli",
+    "url": "/dossier/preghiere-dei-confratelli/"
+   }
+  },
+  {
+   "numero": 24,
+   "luogo": "Pisa · 1848",
+   "titolo": "Un compagno della stessa altezza e niente calze colorate",
+   "testo": "Appena vestito, ogni confratello doveva scegliersi un compagno «di eguale altezza», così la barella restava dritta. Scarpe e calze colorate erano vietate: chi le aveva doveva coprirle con le ghette.",
+   "fonte": "Regolamento disciplinare della Misericordia di Pisa (1848), artt. 6-8",
+   "news": "2027-03-28-lo-sapevi-che-24-compagno-della-stessa-altezza",
+   "social": "2027-03-28",
+   "immagine": "/img/news/lo-sapevi-che-24-compagno-della-stessa-altezza-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I confratelli",
+    "url": "/i-confratelli/"
+   }
+  },
+  {
+   "numero": 25,
+   "luogo": "Firenze · Ottocento",
+   "titolo": "Il sorteggio con la ghianda",
+   "testo": "Quando moriva un confratello, a Firenze si tirava a sorte chi doveva pagare le candele del funerale. I nomi, su strisce di pergamena, si chiudevano in pezzetti di legno a forma di ghianda, poi mescolati in un contenitore girato con una manovella.",
+   "fonte": "S. e J. Horner, *Walks in Florence* (1877)",
+   "news": "2027-04-04-lo-sapevi-che-25-sorteggio-con-la-ghianda",
+   "social": "2027-04-04",
+   "immagine": "/img/news/lo-sapevi-che-25-sorteggio-con-la-ghianda-grafica.jpg",
+   "approfondisci": {
+    "titolo": "I cimiteri delle Misericordie",
+    "url": "/dossier/cimiteri-delle-misericordie/"
+   }
+  },
+  {
+   "numero": 26,
+   "luogo": "Firenze · 1785",
+   "titolo": "Il granduca che chiuse le confraternite ma salvò la Misericordia",
+   "testo": "Il granduca Pietro Leopoldo soppresse quasi tutte le confraternite della Toscana. Ma era anche iscritto alla Misericordia di Firenze, e la protesse. La Misericordia continuò il suo servizio.",
+   "fonte": "Museo Galileo; Wikipedia, *Misericordia di Firenze*",
+   "news": "2027-04-11-lo-sapevi-che-26-pietro-leopoldo-confratello",
+   "social": "2027-04-11",
+   "immagine": "/img/news/lo-sapevi-che-26-pietro-leopoldo-confratello-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Confratelli illustri",
+    "url": "/dossier/confratelli-illustri/"
+   }
+  },
+  {
+   "numero": 27,
+   "luogo": "Castelfiorentino · 1580",
+   "titolo": "La portantina del 1580 e la «volantina»",
+   "testo": "La Misericordia di Castelfiorentino conserva la sua più antica portantina a mano, del 1580, un carro funebre a cavalli e la «volantina», un carro senza ruote. Nell'ottobre 2024 l'alluvione dell'Elsa ha raggiunto anche questi cimeli.",
+   "fonte": "La Nazione, ottobre 2024",
+   "news": "2027-04-18-lo-sapevi-che-27-portantina-di-castelfiorentino",
+   "social": "2027-04-18",
+   "immagine": "/img/news/lo-sapevi-che-27-portantina-di-castelfiorentino-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le Misericordie d'Italia",
+    "url": "/dossier/misericordie-d-italia/"
+   }
+  },
+  {
+   "numero": 28,
+   "luogo": "Pistoia · 1899",
+   "titolo": "Un movimento nazionale nato in due giorni",
+   "testo": "A metà Ottocento le Misericordie erano tante, ma ognuna faceva da sé. Il 24 e 25 settembre 1899, al primo congresso di Pistoia, nacque la Federazione da cui viene l'attuale Confederazione nazionale.",
+   "fonte": "Confederazione delle Misericordie, *Storia e tradizione*",
+   "news": "2027-04-25-lo-sapevi-che-28-pistoia-1899-in-due-giorni",
+   "social": "2027-04-25",
+   "immagine": "/img/news/lo-sapevi-che-28-pistoia-1899-in-due-giorni-grafica.jpg",
+   "approfondisci": {
+    "titolo": "Le Misericordie d'Italia",
+    "url": "/dossier/misericordie-d-italia/"
+   }
+  }
+ ]
+}

@@ -2,7 +2,7 @@
 title: "I confratelli illustri"
 titoloSeo: "I confratelli illustri delle Misericordie: granduchi Medici e Lorena, papi, Puccini, Michelangelo"
 description: "Granduchi che diventavano Capi di Guardia, un cardinale poi papa, un re, un medico e un compositore: i personaggi famosi che hanno fatto parte delle Misericordie o le hanno protette, distinguendo i fatti documentati dalle leggende."
-date: 2026-10-12
+date: 2026-10-09
 italianoSemplice: |
   **Nelle Misericordie ci sono stati anche personaggi famosi.**
 

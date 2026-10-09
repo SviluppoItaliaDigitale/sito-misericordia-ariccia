@@ -1,7 +1,7 @@
 ---
 title: "I confratelli illustri: granduchi, papi e Puccini sotto la buffa"
 titoloSeo: "I confratelli illustri delle Misericordie: Medici, Lorena, Clemente XII, Puccini | Dossier"
-date: 2026-10-12
+date: 2026-10-28
 slug: "dossier-confratelli-illustri"
 description: "Granduchi Medici eletti Capi di Guardia, un cardinale diventato papa, un principe poi re, il medico degli ospizi marini e Giacomo Puccini: i personaggi famosi delle Misericordie, con le fonti e le leggende da sfatare."
 immagine: "/img/news/dossier-confratelli-grafica.jpg"

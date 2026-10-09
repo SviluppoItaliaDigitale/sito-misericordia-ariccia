@@ -1,9 +1,9 @@
 {{ define "main" }}
-{{- /* Raccolta della rubrica «Lo sapevi che…»: ogni pillola è una news con
-       rubrica: "lo-sapevi-che" nel front matter. Hugo pubblica solo quelle con
-       data passata, quindi la pagina si allunga da sola ogni domenica. */ -}}
-{{ $pillole := where (where site.RegularPages "Section" "news") "Params.rubrica" "lo-sapevi-che" }}
-{{ $pillole = sort $pillole "Params.numero" "desc" }}
+{{- /* Raccolta della rubrica «Lo sapevi che…»: tutte le schede sono in
+       data/lo_sapevi_che.json e si vedono subito. Ogni scheda ha anche una news
+       che esce una domenica alla volta (e va sui social): il link «Leggi la
+       scheda completa» compare quando quella news è pubblicata. */ -}}
+{{ $schede := site.Data.lo_sapevi_che.schede }}
 <div class="pagina-testata">
   <div class="container">
     <p class="occhiello mb-1" data-anim="fade-up">Curiosità dalla storia delle Misericordie</p>
@@ -19,22 +19,20 @@
       </ol>
     </nav>
     <div class="ls-intro contenuto mb-5" data-anim="fade-up">{{ .Content }}</div>
-    {{ with $pillole }}
-    <p class="ls-conta"><strong>{{ len . }}</strong> {{ cond (eq (len .) 1) "scheda uscita" "schede uscite" }} finora · una nuova ogni domenica</p>
-    <ol class="ls-schedario list-unstyled" reversed>
-      {{ range . }}
-      <li class="ls-scheda" id="pillola-{{ .Params.numero }}">
-        <span class="ls-numero" aria-hidden="true">{{ printf "%02d" (int .Params.numero) }}</span>
-        <p class="ls-luogo">{{ .Params.luogo }}</p>
-        <h2><a href="{{ .RelPermalink }}">{{ .Params.pillola_titolo }}</a></h2>
-        <p>{{ .Params.pillola_testo }}</p>
-        <p class="ls-fonte">Fonte: {{ .Params.fonte_breve | markdownify }}</p>
+    <p class="ls-conta"><strong>{{ len $schede }}</strong> schede · ogni domenica una arriva anche sui nostri social</p>
+    <ol class="ls-schedario list-unstyled">
+      {{ range $schede }}
+      {{ $news := site.GetPage (printf "/news/%s" .news) }}
+      <li class="ls-scheda" id="scheda-{{ .numero }}">
+        <span class="ls-numero" aria-hidden="true">{{ printf "%02d" (int .numero) }}</span>
+        <p class="ls-luogo">{{ .luogo }}</p>
+        <h2>{{ with $news }}<a href="{{ .RelPermalink }}">{{ end }}{{ .titolo }}{{ if $news }}</a>{{ end }}</h2>
+        <p>{{ .testo }}</p>
+        <p class="ls-link">{{ with $news }}<a href="{{ .RelPermalink }}">Leggi la scheda completa</a> · {{ end }}Approfondisci: <a href="{{ .approfondisci.url | relURL }}">{{ .approfondisci.titolo }}</a></p>
+        <p class="ls-fonte">Fonte: {{ .fonte | markdownify }}</p>
       </li>
       {{ end }}
     </ol>
-    {{ else }}
-    <p class="ls-conta">La prima scheda esce domenica.</p>
-    {{ end }}
   </div>
 </div>
 {{ end }}
