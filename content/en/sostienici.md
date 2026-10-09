@@ -11,7 +11,7 @@ You can support the Misericordia di Ariccia in several ways.
 
 ## 5×1000
 
-On the Italian tax return, in the box *"Support for volunteering and Third Sector bodies"*, **sign and write our tax code: 90031910582**. It costs you nothing, but it helps sustain volunteers, ambulances and services.
+On the Italian tax return, in the box *"Support for Third Sector bodies registered in the RUNTS"*, **sign and write our tax code: 90031910582**. It costs you nothing, but it helps sustain volunteers, ambulances and services.
 
 ## Donation
 

@@ -74,7 +74,7 @@ tappe:
   - anno: "A casa"
     epoca: "ADI e PUA"
     titolo: "Cure a casa e lo sportello unico"
-    testo: "L'**assistenza domiciliare integrata (ADI)** porta a casa medico, infermiere e fisioterapista a chi non può andare in ambulatorio: di solito la propone il **medico di famiglia** al distretto. Il **PUA, Punto Unico di Accesso**, è lo sportello dove chiedere **una volta sola** aiuti sanitari, socio-sanitari e sociali non urgenti. Per Ariccia è quello del **Distretto H2**: trovi sedi e orari aggiornati sul sito [aslroma6.it](https://www.aslroma6.it/)."
+    testo: "L'**assistenza domiciliare integrata (ADI)** porta a casa medico, infermiere e fisioterapista a chi non può andare in ambulatorio: di solito la propone il **medico di famiglia** al distretto. Il **PUA, Punto Unico di Accesso**, è lo sportello dove chiedere **una volta sola** aiuti sanitari, socio-sanitari e sociali non urgenti. Ad Ariccia il PUA è nella **Casa della Comunità** (ex ospedale Spolverini), con CUP e centro prelievi; sedi e orari aggiornati sul sito [aslroma6.it](https://www.aslroma6.it/)."
   - anno: "Caregiver"
     epoca: "Chi assiste"
     titolo: "Il caregiver familiare ha dei diritti"

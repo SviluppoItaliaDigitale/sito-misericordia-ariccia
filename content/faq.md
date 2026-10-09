@@ -29,7 +29,7 @@ Contattaci con un po' di anticipo al **348 4068657** (anche WhatsApp) o via emai
 <details class="faq-item">
 <summary>Come dono il mio 5x1000 alla Misericordia?</summary>
 
-Nella dichiarazione dei redditi, nel riquadro *«Sostegno del volontariato e degli enti del Terzo Settore»*, firma e scrivi il nostro codice fiscale **90031910582**. Non costa nulla. Tutti i dettagli nella pagina [Sostienici](/sostienici/).
+Nella dichiarazione dei redditi, nel riquadro *«Sostegno degli enti del Terzo settore iscritti nel RUNTS»*, firma e scrivi il nostro codice fiscale **90031910582**. Non costa nulla. Tutti i dettagli nella pagina [Sostienici](/sostienici/).
 
 </details>
 
