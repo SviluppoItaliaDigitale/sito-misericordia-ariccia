@@ -6,7 +6,7 @@ Testo da usare: CEI 2008, quello letto a Messa, dal sito ufficiale della CEI
 giorno del sito) usa ancora la traduzione CEI 1974: serve solo per i numeri dei versetti
 e come riserva se la pagina CEI non risponde.
 
-  letture.py                → prossima domenica
+  letture.py                → la domenica che viene (di domenica: oggi, per il recupero notturno)
   letture.py 2026-10-11     → quel giorno
 
 Stampa un JSON: titolo liturgico; in "cei_2008" le letture col testo da copiare; in
@@ -67,7 +67,7 @@ def main():
         giorno = dt.date.fromisoformat(sys.argv[1])
     else:
         oggi = dt.date.today()
-        giorno = oggi + dt.timedelta(days=(6 - oggi.weekday()) or 7)
+        giorno = oggi + dt.timedelta(days=6 - oggi.weekday())  # di domenica è oggi
     d = giorno.strftime("%Y%m%d")
     esito = {"data": giorno.isoformat(), "giorno_liturgico": leggi(URL.format(d=d, t="liturgic_t")).strip(),
              "letture": []}
