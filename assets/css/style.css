@@ -1145,3 +1145,41 @@ a:hover { color: var(--mise-navy); }
 .ls-scheda p { margin-bottom: .6rem; }
 .ls-fonte { font-size: .85rem; color: #5a6275; border-top: 1px dashed #d9e1e8; padding-top: .5rem; margin: .8rem 0 0 !important; }
 .ls-link { font-size: .92rem; }
+
+/* ---- Pagina «Per bambini e scuole» (/bambini-e-scuole/): tasti del telefono e quaderno a quadretti ---- */
+.bb-pollici h2, .bb-quiz h2 { margin-bottom: 1rem; }
+.bb-tasti { display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 0 0 .75rem; }
+.bb-tasti li { display: flex; align-items: center; gap: .75rem; font-weight: 600; color: var(--mise-navy); }
+.bb-tasto {
+  display: inline-grid; place-items: center; width: 4.2rem; height: 4.2rem; border-radius: 1.1rem;
+  background: var(--mise-ciano); color: #fff; font-family: "Playfair Display", serif; font-size: 2.4rem; line-height: 1;
+  box-shadow: 0 5px 0 var(--mise-ciano-scuro);
+}
+.bb-tasto--giallo { background: var(--mise-giallo); color: var(--mise-navy); box-shadow: 0 5px 0 #c9bd1f; }
+.bb-nota { font-size: .92rem; color: #5a6275; }
+.bb-testo { max-width: 46rem; }
+.bb-numeri { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); margin: 0; }
+.bb-numero { display: flex; gap: 1rem; align-items: center; background: #fff; border: 2px solid var(--mise-ciano-velo); border-radius: 1rem; padding: 1rem 1.1rem; }
+.bb-numero-cifra { font-family: "Playfair Display", serif; font-size: 1.9rem; color: var(--mise-ciano-testo); min-width: 5.5rem; }
+.bb-quiz {
+  border-radius: 1rem; padding: 1.75rem 1.5rem;
+  background-color: #fff;
+  background-image: linear-gradient(rgba(0,165,220,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0,165,220,.12) 1px, transparent 1px);
+  background-size: 22px 22px; border: 1px solid #d9e1e8;
+}
+.bb-domande { margin: 1.25rem 0 0; display: grid; gap: 1.25rem; }
+.bb-domanda fieldset { background: rgba(255,255,255,.94); border-radius: .8rem; padding: 1rem 1.1rem; border: 1px solid #d9e1e8; }
+.bb-domanda legend { font-weight: 700; color: var(--mise-navy); font-size: 1.05rem; float: none; width: auto; margin-bottom: .6rem; }
+.bb-num { display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--mise-giallo); color: var(--mise-navy); font-size: .95rem; margin-right: .35rem; }
+.bb-risposta { display: flex; gap: .6rem; align-items: flex-start; padding: .5rem .65rem; border-radius: .55rem; cursor: pointer; margin: 0 0 .3rem; }
+.bb-risposta:hover { background: var(--mise-ciano-velo); }
+.bb-risposta input { margin-top: .3rem; accent-color: var(--mise-ciano-testo); }
+.bb-giusta { background: #e3f5e8; outline: 2px solid #2e8b4e; }
+.bb-sbagliata { background: #fdecea; outline: 2px solid #c0392b; }
+.bb-spiega { margin-top: .5rem; font-size: .95rem; }
+.bb-spiega summary { color: var(--mise-ciano-testo); cursor: pointer; font-weight: 600; }
+.bb-esito { margin: .5rem 0 0; font-weight: 700; }
+.bb-esito.ok { color: #2e7d46; }
+.bb-esito.no { color: #b03a2e; }
+.bb-punteggio { margin-top: 1.25rem; font-size: 1.15rem; font-weight: 700; color: var(--mise-navy); background: var(--mise-giallo-soft); border-radius: .8rem; padding: 1rem 1.2rem; }
+.bb-adulti, .bb-fonti { max-width: 46rem; }
