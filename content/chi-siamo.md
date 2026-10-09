@@ -19,7 +19,7 @@ fatti:
   - icona: "📜"
     testo: "Iscritta come **ODV** dal 2011, con **personalità giuridica** riconosciuta nello stesso anno"
   - icona: "✅"
-    testo: "Nel **RUNTS** dal 28 maggio 2023"
+    testo: "Nel **RUNTS** dal 28 marzo 2023"
   - icona: "🤝"
     testo: "Affiliata alla **Confederazione delle Misericordie d'Italia**"
 attivita:

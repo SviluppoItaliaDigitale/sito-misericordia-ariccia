@@ -76,7 +76,7 @@ La forma giuridica della nostra associazione: un ente non profit che svolge atti
 <details class="faq-item">
 <summary>ETS e RUNTS</summary>
 
-**ETS** è l'Ente del Terzo Settore; il **RUNTS** è il Registro Unico Nazionale del Terzo Settore, l'albo pubblico nazionale in cui gli ETS sono iscritti. La Misericordia di Ariccia è nel RUNTS dal 28 maggio 2023 ([trasparenza](/trasparenza/)).
+**ETS** è l'Ente del Terzo Settore; il **RUNTS** è il Registro Unico Nazionale del Terzo Settore, l'albo pubblico nazionale in cui gli ETS sono iscritti. La Misericordia di Ariccia è nel RUNTS dal 28 marzo 2023 ([trasparenza](/trasparenza/)).
 
 </details>
 

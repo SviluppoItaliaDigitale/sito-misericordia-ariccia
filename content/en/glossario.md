@@ -72,7 +72,7 @@ The legal form of our association: a non-profit body that carries out activities
 <details class="faq-item">
 <summary>ETS and RUNTS</summary>
 
-An **ETS** (*Ente del Terzo Settore*) is a Third Sector organisation, the Italian legal category for non-profit bodies; the **RUNTS** (*Registro Unico Nazionale del Terzo Settore*) is the National Single Register of the Third Sector, the public national register in which these organisations are listed. The Misericordia di Ariccia has been in the RUNTS since 28 May 2023 ([transparency](/en/trasparenza/)).
+An **ETS** (*Ente del Terzo Settore*) is a Third Sector organisation, the Italian legal category for non-profit bodies; the **RUNTS** (*Registro Unico Nazionale del Terzo Settore*) is the National Single Register of the Third Sector, the public national register in which these organisations are listed. The Misericordia di Ariccia has been in the RUNTS since 28 March 2023 ([transparency](/en/trasparenza/)).
 
 </details>
 

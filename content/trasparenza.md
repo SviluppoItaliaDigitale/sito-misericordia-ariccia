@@ -18,7 +18,7 @@ In questa sezione pubblichiamo i documenti previsti dagli **obblighi di traspare
 ## Informazioni generali
 
 - **Denominazione:** Confraternita di Misericordia di Ariccia ODV
-- **Forma giuridica:** Organizzazione di Volontariato con personalità giuridica, iscritta al **RUNTS** (Registro Unico Nazionale del Terzo Settore) dal 28 maggio 2023
+- **Forma giuridica:** Organizzazione di Volontariato con personalità giuridica, iscritta al **RUNTS** (Registro Unico Nazionale del Terzo Settore) dal 28 marzo 2023
 - **Codice fiscale:** 90031910582
 - **Sede legale:** Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)
 - **Rete di appartenenza:** Confederazione Nazionale delle Misericordie d'Italia
