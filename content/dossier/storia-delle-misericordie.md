@@ -9,7 +9,7 @@ italianoSemplice: |
 
   Da sempre aiutano le persone malate e povere.
 
-  Con il tempo sono nate in tutta Italia. Oggi sono più di 800. La Misericordia di Ariccia fa parte di questa storia dal 1994.
+  Con il tempo sono nate in tutta Italia. Oggi sono più di 770. La Misericordia di Ariccia fa parte di questa storia dal 1994.
 layout: "storia"
 occhiello: "Dossier · Le radici del Movimento"
 sottotitolo: "La storia delle Confraternite di Misericordia, dalla nascita a Firenze nel 1244 fino al volontariato di oggi: quasi otto secoli di uomini e donne al servizio del prossimo."
@@ -120,14 +120,14 @@ tappe:
   - anno: "Oggi"
     epoca: "Oggi"
     titolo: "Un movimento vivo, dal 1244"
-    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce **oltre 800 confraternite**, con circa **670.000 iscritti** e **circa 80.000 volontari attivi**. Dalle ambulanze al trasporto socio-sanitario, dai poliambulatori alla Protezione Civile, dai centri sociali alle onoranze funebri: la stessa, antica vocazione — stare accanto a chi soffre — parla la lingua di oggi. La Misericordia di Ariccia ne è parte."
+    testo: "Oggi la **Confederazione Nazionale delle Misericordie d'Italia** riunisce **oltre 770 confraternite**, con circa **670.000 iscritti** e **oltre 100.000 volontari attivi**. Dalle ambulanze al trasporto socio-sanitario, dai poliambulatori alla Protezione Civile, dai centri sociali alle onoranze funebri: la stessa, antica vocazione — stare accanto a chi soffre — parla la lingua di oggi. La Misericordia di Ariccia ne è parte."
     img: "/img/hero-piazza.jpg"
     img_alt: "Volontari e ambulanza della Misericordia di Ariccia nella piazza di Ariccia"
     img_didascalia: "La stessa, antica vocazione, nella piazza di Ariccia oggi."
 oggi_numeri:
   - cifra: "1244"
     etichetta: "l'anno delle origini, a Firenze"
-  - cifra: "800"
+  - cifra: "770"
     suffisso: "+"
     etichetta: "Misericordie in Italia"
   - cifra: "670.000"

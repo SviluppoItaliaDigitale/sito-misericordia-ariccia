@@ -18,7 +18,7 @@
         {{- with .Params.meta }}{{ range . }}<li>{{ . | markdownify }}</li>{{ end }}{{ else }}
         <li><strong>{{ $anni }}</strong> {{ cond $en "years of history" "anni di storia" }}</li>
         <li>{{ cond $en "since" "dal" }} <strong>1244</strong></li>
-        <li><strong>800+</strong> Misericordie</li>{{ end }}
+        <li><strong>770+</strong> Misericordie</li>{{ end }}
         {{ with .Params.lettura }}<li>{{ cond $en "reading time" "lettura" }} {{ . }}</li>{{ end }}
       </ul>
       {{ with .Params.cover_cta }}

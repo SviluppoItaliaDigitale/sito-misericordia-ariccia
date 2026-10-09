@@ -21,6 +21,6 @@ Our mission is to give help — both practical and human — to those who are su
 
 ## A long tradition
 
-The Misericordie are among the oldest volunteer associations in the world: a tradition of charity almost eight centuries old, born in Florence in 1244. Today more than **800** Misericordie operate across Italy; Ariccia has been part of this family since 1994.
+The Misericordie are among the oldest volunteer associations in the world: a tradition of charity almost eight centuries old, born in Florence in 1244. Today more than **770** Misericordie operate across Italy; Ariccia has been part of this family since 1994.
 
 Would you like to help too? You can [become a volunteer](/en/diventa-volontario/).

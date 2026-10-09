@@ -103,7 +103,7 @@ fonti:
   - titolo: "Protezione civile, campi scuola Anch'io sono la protezione civile (2026)"
     url: "https://www.protezionecivile.gov.it/en/notizia/i-am-civil-protection-too-school-camps-continue-2026-edition-focuses-training-active-citizenship-and-culture-prevention/"
   - titolo: "Dipartimento per le politiche della famiglia, il servizio 114"
-    url: "https://www.minori.gov.it/en/print/8849"
+    url: "https://famiglia.governo.it/media/bnrhjtgu/nuovo-avviso-pubblico-servizio-telefonico-114_luglio-2026.pdf"
   - titolo: "Telefono Azzurro"
     url: "https://azzurro.it/"
 ---
