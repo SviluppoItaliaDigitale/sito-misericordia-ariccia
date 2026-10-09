@@ -75,9 +75,11 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          # il certificato del server Aruba è intestato al nome macchina:
-          # la verifica stretta del nome host fallirebbe
-          security: loose
+          # verifica stretta del certificato (nome host e catena): dal 9/10/2026
+          # il certificato Aruba (Actalis) corrisponde a FTP_HOST, come controlla
+          # il workflow «Controlli del sito» dopo ogni deploy. Se un giorno il
+          # deploy fallisse per il certificato, guardare la issue «Stato del sito».
+          security: strict
           local-dir: public/
           server-dir: www.misericordia-ariccia.it/
 
