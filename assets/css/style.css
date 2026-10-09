@@ -1123,3 +1123,24 @@ a:hover { color: var(--mise-navy); }
 @media (max-width: 575.98px) { .sost-8xmille { grid-template-columns: 1fr; } }
 .footer-8xmille { display: inline-flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.88); text-decoration: none; font-size: .9rem; }
 .footer-8xmille:hover { color: #fff; text-decoration: underline; }
+
+/* ---- Rubrica «Lo sapevi che…» (/lo-sapevi-che/): schedario d'archivio ---- */
+.ls-intro { max-width: 46rem; }
+.ls-conta { color: var(--mise-ciano-testo); font-weight: 600; margin-bottom: 1.5rem; }
+.ls-schedario { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 2rem; align-items: start; margin: 0; }
+.ls-scheda {
+  position: relative; margin: 0;
+  background: #fff; border: 1px solid #d9e1e8; border-left: 6px solid var(--mise-giallo);
+  border-radius: 4px; padding: 1.4rem 1.5rem 1.1rem;
+}
+.ls-scheda:nth-child(3n+2) { border-left-color: var(--mise-ciano); }
+.ls-numero {
+  position: absolute; top: .4rem; right: 1rem; font-family: "Playfair Display", serif;
+  font-size: 3.4rem; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--mise-ciano);
+}
+.ls-luogo { color: var(--mise-ciano-testo); font-weight: 600; font-size: .92rem; margin: 0 4rem .35rem 0; }
+.ls-scheda h2 { font-size: 1.3rem; line-height: 1.25; margin: 0 4rem .6rem 0; }
+.ls-scheda h2 a { color: var(--mise-navy); text-decoration: none; }
+.ls-scheda h2 a:hover, .ls-scheda h2 a:focus { text-decoration: underline; }
+.ls-scheda p { margin-bottom: .6rem; }
+.ls-fonte { font-size: .85rem; color: #5a6275; border-top: 1px dashed #d9e1e8; padding-top: .5rem; margin: .8rem 0 0 !important; }

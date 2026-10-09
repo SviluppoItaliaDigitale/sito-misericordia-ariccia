@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{- /* Raccolta della rubrica «Lo sapevi che…»: ogni pillola è una news con
+       rubrica: "lo-sapevi-che" nel front matter. Hugo pubblica solo quelle con
+       data passata, quindi la pagina si allunga da sola ogni domenica. */ -}}
+{{ $pillole := where (where site.RegularPages "Section" "news") "Params.rubrica" "lo-sapevi-che" }}
+{{ $pillole = sort $pillole "Params.numero" "desc" }}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Curiosità dalla storia delle Misericordie</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lo sapevi che…</li>
+      </ol>
+    </nav>
+    <div class="ls-intro contenuto mb-5" data-anim="fade-up">{{ .Content }}</div>
+    {{ with $pillole }}
+    <p class="ls-conta"><strong>{{ len . }}</strong> {{ cond (eq (len .) 1) "scheda uscita" "schede uscite" }} finora · una nuova ogni domenica</p>
+    <ol class="ls-schedario list-unstyled" reversed>
+      {{ range . }}
+      <li class="ls-scheda" id="pillola-{{ .Params.numero }}">
+        <span class="ls-numero" aria-hidden="true">{{ printf "%02d" (int .Params.numero) }}</span>
+        <p class="ls-luogo">{{ .Params.luogo }}</p>
+        <h2><a href="{{ .RelPermalink }}">{{ .Params.pillola_titolo }}</a></h2>
+        <p>{{ .Params.pillola_testo }}</p>
+        <p class="ls-fonte">Fonte: {{ .Params.fonte_breve | markdownify }}</p>
+      </li>
+      {{ end }}
+    </ol>
+    {{ else }}
+    <p class="ls-conta">La prima scheda esce domenica.</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
