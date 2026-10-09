@@ -1144,3 +1144,4 @@ a:hover { color: var(--mise-navy); }
 .ls-scheda h2 a:hover, .ls-scheda h2 a:focus { text-decoration: underline; }
 .ls-scheda p { margin-bottom: .6rem; }
 .ls-fonte { font-size: .85rem; color: #5a6275; border-top: 1px dashed #d9e1e8; padding-top: .5rem; margin: .8rem 0 0 !important; }
+.ls-link { font-size: .92rem; }

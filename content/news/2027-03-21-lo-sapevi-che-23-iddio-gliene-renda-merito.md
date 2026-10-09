@@ -26,7 +26,7 @@ Nel regolamento della Misericordia di **Pisa** del 1848 c'è anche la frase da d
 
 Rientrati in sede, ogni fratello alzava la buffa e ripeteva il ringraziamento al compagno.
 
-È l'antenato del motto che i confratelli usano ancora oggi quando qualcuno li ringrazia: «**Che Iddio te ne renda merito**». Non è chi riceve aiuto a dover dire grazie, ma chi ha avuto l'occasione di farlo. Con questa scheda si chiude la prima serie di «Lo sapevi che…»: grazie a chi ci ha seguito ogni domenica.
+È l'antenato del motto che i confratelli usano ancora oggi quando qualcuno li ringrazia: «**Che Iddio te ne renda merito**». Non è chi riceve aiuto a dover dire grazie, ma chi ha avuto l'occasione di farlo.
 
 *Fonti: [Regolamento disciplinare della Misericordia di Pisa (1848)](https://www.um.edu.mt/library/oar/handle/123456789/129121); [Confederazione delle Misericordie, Storia e tradizione](https://www.misericordie.it/storia-e-tradizione/).*
 

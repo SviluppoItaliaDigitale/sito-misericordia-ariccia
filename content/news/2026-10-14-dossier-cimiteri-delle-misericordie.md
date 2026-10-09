@@ -1,7 +1,7 @@
 ---
 title: "I cimiteri delle Misericordie: il nuovo dossier"
 titoloSeo: "I cimiteri delle Misericordie: Pinti, Soffiano, Siena, Livorno, Antella | Dossier"
-date: 2026-10-10
+date: 2026-10-14
 slug: "dossier-cimiteri-delle-misericordie"
 description: "Perché le Misericordie seppelliscono i morti e quali cimiteri hanno costruito: il cimitero di Pinti riservato ai confratelli, Soffiano, il camposanto di Siena con la Pietà di Duprè, Livorno con Mascagni e Ciampi, l'Antella con Galileo Chini."
 immagine: "/img/news/dossier-cimiteri-grafica.jpg"

@@ -2,7 +2,7 @@
 title: "Francobolli, monete e medaglie"
 titoloSeo: "Le Misericordie nei francobolli, nelle monete e nelle medaglie: dal 1835 a oggi"
 description: "Le Misericordie raccontate da francobolli, monete e medaglie: le medaglie ottocentesche per i Capi di Guardia, il francobollo italiano del 1994 per i 750 anni della Misericordia di Firenze, le emissioni di Brasile, Vaticano e San Marino, la moneta portoghese del 1998 e le onorificenze di oggi."
-date: 2026-10-13
+date: 2026-10-09
 italianoSemplice: |
   **Le Misericordie sono anche nei francobolli e nelle medaglie.**
 

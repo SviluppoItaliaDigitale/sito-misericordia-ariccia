@@ -1,7 +1,7 @@
 ---
 title: "Le Misericordie nei francobolli, nelle monete e nelle medaglie"
 titoloSeo: "Le Misericordie nei francobolli, nelle monete e nelle medaglie | Dossier"
-date: 2026-10-13
+date: 2026-11-04
 slug: "dossier-francobolli-e-medaglie"
 description: "Un dossier per collezionisti e curiosi: la medaglia di Livorno per il colera del 1835, le medaglie per i Capi di Guardia di Firenze, il francobollo italiano del 1994 per i 750 anni della Misericordia di Firenze, Brasile, Vaticano, San Marino e la moneta portoghese del 1998."
 immagine: "/img/news/dossier-francobolli-grafica.jpg"

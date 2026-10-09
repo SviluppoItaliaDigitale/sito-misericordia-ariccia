@@ -64,4 +64,36 @@
       });
     });
   });
+
+  /* ---- 4. Linea del tempo animata: il filo si disegna mentre scorri, i punti
+     compaiono, le foto si svelano. Solo con GSAP e movimento attivo
+     (niente con prefers-reduced-motion o «Ferma animazioni»). ---- */
+  var linea = document.querySelector(".dsr-timeline");
+  var ridotto = (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+    document.documentElement.classList.contains("a11y-no-anim");
+  if (linea && window.gsap && window.ScrollTrigger && !ridotto) {
+    var filo = document.createElement("span");
+    filo.className = "dsr-tl-filo";
+    filo.setAttribute("aria-hidden", "true");
+    linea.appendChild(filo);
+    var disegna = function (p) { filo.style.transform = "translateX(-50%) scaleY(" + p + ")"; };
+    ScrollTrigger.create({
+      trigger: linea, start: "top 70%", end: "bottom 70%",
+      onUpdate: function (st) { disegna(st.progress); }
+    });
+    linea.querySelectorAll(".dsr-tl-item").forEach(function (li) {
+      var punto = li.querySelector(".dsr-tl-punto");
+      var anno = li.querySelector(".dsr-tl-anno");
+      var foto = li.querySelector(".dsr-tl-foto img");
+      var t = gsap.timeline({ scrollTrigger: { trigger: li, start: "top 85%", once: true } });
+      if (punto) t.from(punto, { scale: 0, duration: .5, ease: "back.out(3)" }, 0);
+      if (anno) t.from(anno, { x: -24, opacity: 0, duration: .6, ease: "power2.out" }, .1);
+      if (foto) t.fromTo(foto, { clipPath: "inset(0 0 100% 0)", scale: 1.12 },
+        { clipPath: "inset(0 0 0% 0)", scale: 1, duration: 1.1, ease: "power3.out" }, .2);
+    });
+    // «Ferma animazioni» a pagina aperta: il filo resta disegnato per intero
+    document.addEventListener("mise:movimento", function (e) {
+      if (e.detail && e.detail.fermo) disegna(1);
+    });
+  }
 })();

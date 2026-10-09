@@ -2,7 +2,7 @@
 title: "I tesori delle Misericordie"
 titoloSeo: "Musei, sedi storiche e tesori d'arte delle Misericordie: Firenze, Bigallo, Arezzo, Sansepolcro, Napoli"
 description: "Una piccola guida ai musei, alle sedi storiche e alle opere d'arte delle Misericordie: il Museo della Misericordia di Firenze, la Loggia del Bigallo, il Palazzo di Fraternita ad Arezzo, Piero della Francesca a Sansepolcro, San Miniato, Anghiari, Roma e Napoli."
-date: 2026-10-11
+date: 2026-10-09
 italianoSemplice: |
   **Le Misericordie hanno anche tanti tesori d'arte.**
 
