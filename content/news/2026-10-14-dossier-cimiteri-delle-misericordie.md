@@ -5,7 +5,7 @@ date: 2026-10-14
 slug: "dossier-cimiteri-delle-misericordie"
 description: "Perché le Misericordie seppelliscono i morti e quali cimiteri hanno costruito: il cimitero di Pinti riservato ai confratelli, Soffiano, il camposanto di Siena con la Pietà di Duprè, Livorno con Mascagni e Ciampi, l'Antella con Galileo Chini."
 immagine: "/img/news/dossier-cimiteri-grafica.jpg"
-social_testo: "🕊️ Nuovo dossier: I cimiteri delle Misericordie. «Seppellire i morti» è la settima opera di misericordia, e nell'Ottocento alcune Misericordie hanno costruito cimiteri che oggi sono musei a cielo aperto. A Firenze, a Pinti, erano sepolti solo i confratelli; a Siena c'è la Pietà di Giovanni Duprè; a Livorno riposano Pietro Mascagni e Carlo Azeglio Ciampi; all'Antella Galileo Chini e la donna amata da Leopardi."
+social_testo: "🕊️ Nuovo dossier: I cimiteri delle Misericordie. «Seppellire i morti» è la settima opera di misericordia, e nell'Ottocento alcune Misericordie hanno costruito cimiteri che oggi sono musei a cielo aperto. A Firenze, a Pinti, erano sepolti solo i confratelli; a Siena c'è la Pietà di Giovanni Duprè; a Livorno riposano Pietro Mascagni e Carlo Azeglio Ciampi; all'Antella Galileo Chini, Romeo Menti del Grande Torino e la donna amata da Leopardi; a Firenze, a Soffiano, i fondatori della Gucci e Artemio Franchi."
 italianoSemplice: |
   **Abbiamo pubblicato un nuovo dossier sui cimiteri delle Misericordie.**
 
