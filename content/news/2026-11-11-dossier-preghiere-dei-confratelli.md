@@ -13,7 +13,7 @@ italianoSemplice: |
 
   Dopo il servizio i volontari pregano per i malati e per i confratelli morti.
 
-  Il patrono delle Misericordie è San Sebastiano. La sua festa è il 20 gennaio.
+  Il patrono di molte Misericordie, tra cui quella di Firenze, è San Sebastiano. La sua festa è il 20 gennaio.
 ---
 
 ![Le preghiere dei confratelli: la Madonna della Misericordia di Bernardo Rossellino ad Arezzo, che apre il mantello sui confratelli](/img/news/dossier-preghiere-grafica.jpg)
@@ -25,7 +25,7 @@ Le Misericordie sono confraternite cristiane, ma la loro preghiera più importan
 - **Il motto**: perché il volontario risponde «Che Iddio te ne renda merito» a chi lo ringrazia.
 - **Sotto la barella**: a Pisa, nel 1848, chi dava il cambio diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace».
 - **Il ritorno in sede**: a Firenze, ancora oggi, la squadra recita un Pater, un'Ave e un Requiem per i confratelli defunti.
-- **I patroni**: San Tobia, che seppelliva i morti, e San Sebastiano, festeggiato il **20 gennaio**, giorno della vestizione dei nuovi confratelli.
+- **I patroni**: San Tobia, che seppelliva i morti, e San Sebastiano, festeggiato il **20 gennaio**, festa in cui molte Misericordie celebrano la vestizione dei nuovi confratelli.
 - **Maria**: la Madonna della Misericordia che apre il mantello, e le preghiere antiche che la raccontano.
 - **Una distinzione**: le Misericordie e la devozione alla Divina Misericordia non sono la stessa cosa.
 
