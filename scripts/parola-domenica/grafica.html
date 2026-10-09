@@ -14,7 +14,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .testa{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--giallo);padding-bottom:14px}
 .rubrica{font-family:Playfair;font-weight:600;font-size:36px;color:var(--giallo)}
 .giorno{font-size:21px;text-align:right;line-height:1.25;color:var(--chiaro)}
-.numero{position:absolute;right:110px;bottom:86px;font-size:22px;color:var(--chiaro);letter-spacing:.04em}
+.numero{position:absolute;right:120px;bottom:44px;font-size:22px;color:var(--chiaro);letter-spacing:.04em}
 /* copertina */
 #copertina{padding-top:128px}
 #copertina .titolo{font-family:Playfair;font-weight:600;font-size:68px;line-height:1.05;color:var(--giallo)}
@@ -25,20 +25,27 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .illustra b{color:var(--ciano);font-weight:600}
 .credito{margin-top:8px;font-size:19px;color:#b9c3dc;line-height:1.35}
 .credito i{font-style:italic}
-.rimando{position:absolute;left:110px;right:200px;bottom:82px;font-size:24px;line-height:1.3;color:var(--giallo)}
+.rimando{position:absolute;left:132px;right:200px;bottom:52px;font-size:24px;line-height:1.3;color:var(--giallo)}
 .rimando b{font-weight:600}
-.scorri{position:absolute;left:110px;bottom:82px;font-size:25px;font-weight:600;color:var(--giallo)}
+.scorri{position:absolute;left:120px;bottom:40px;font-size:25px;font-weight:600;color:var(--giallo)}
 /* pagina del versetto */
 .lettura{margin-top:52px;border-left:6px solid var(--giallo);padding-left:24px}
 .lettura .nome{font-size:40px;font-weight:600;color:var(--ciano);line-height:1.1}
 .lettura .libro{margin-top:6px;font-size:28px;color:var(--chiaro)}
-.parola{position:absolute;left:104px;right:104px;top:400px;bottom:170px;display:flex;flex-direction:column;justify-content:center}
+.parola{position:absolute;left:104px;right:104px;top:400px;bottom:120px;display:flex;flex-direction:column;justify-content:center}
 .virgolette{font-family:Playfair;font-size:150px;line-height:.62;color:var(--ciano);height:66px;margin-bottom:22px;overflow:hidden}
 .versetto{font-family:Playfair;font-weight:600;font-size:72px;line-height:1.18}
 .versetto em{font-style:normal;color:var(--giallo)}
 .rif{margin-top:26px;font-size:32px;font-weight:600;color:var(--ciano)}
 /* ornamenti rinascimentali: doppia cornice con angoli a voluta, filetto con la croce dello stemma */
-.cornice-pagina{position:absolute;left:0;top:0;width:1080px;height:1244px;pointer-events:none}
+.ornato{position:absolute;left:18px;right:18px;top:18px;bottom:124px;border:2px solid var(--giallo);pointer-events:none}
+.ornato::after{content:"";position:absolute;inset:7px;border:1px solid rgba(242,228,51,.55)}
+.angolo{position:absolute;width:86px;height:86px}
+.angolo.a1{left:-2px;top:-2px}.angolo.a2{right:-2px;top:-2px;transform:scaleX(-1)}
+.angolo.a3{left:-2px;bottom:-2px;transform:scaleY(-1)}.angolo.a4{right:-2px;bottom:-2px;transform:scale(-1,-1)}
+.giglio-angolo{position:absolute;width:56px;height:72px;padding:5px 6px;background:var(--navy);color:var(--giallo);overflow:visible}
+.giglio-angolo.g1{left:-12px;top:-16px}.giglio-angolo.g2{right:-12px;top:-16px}
+.giglio-angolo.g3{left:-12px;bottom:-16px}.giglio-angolo.g4{right:-12px;bottom:-16px}
 .filetto{display:block;width:560px;height:40px;margin:0 auto}
 .filigrana{position:absolute;color:#fff;opacity:.07;pointer-events:none;z-index:-1} /* dietro a tutto, testo compreso */
 .filigrana.stemma-f{right:84px;bottom:60px;width:400px;height:400px;filter:grayscale(1) brightness(2.2)}
@@ -54,6 +61,17 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 <body>
 <svg width="0" height="0" style="position:absolute">
   <defs>
+    <!-- angolo: due volute con foglioline (il giglio d'angolo è a parte, sempre dritto), come nei fregi a stampa del Cinquecento -->
+    <symbol id="angolo" viewBox="0 0 86 86">
+      <g fill="none" stroke="#f2e433" stroke-width="2.2" stroke-linecap="round">
+        <path d="M20 46 C20 66 38 70 44 60 C49 52 41 45 35 50 C31 54 35 59 39 57"/>
+        <path d="M46 20 C66 20 70 38 60 44 C52 49 45 41 50 35 C54 31 59 35 57 39"/>
+        <path d="M20 46 L20 76 M46 20 L76 20"/>
+      </g>
+      <g fill="#f2e433">
+        <path d="M27 58 q-7 -4 -6 -12 q6 4 6 12z"/><path d="M58 27 q-4 -7 -12 -6 q4 6 12 6z"/>
+      </g>
+    </symbol>
     <!-- filetto: linee con alfa e omega ai lati della croce dello stemma FM in un tondo (Ap 22,13) -->
     <symbol id="filetto" viewBox="0 0 560 40">
       <g stroke="#f2e433" stroke-width="2" fill="none">
@@ -79,44 +97,12 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
     </symbol>
   </defs>
 </svg>
-<!-- Cornice da libro a stampa del Rinascimento: fascia con tralcio di vite tra due filetti,
-     pietre angolari col giglio di Firenze, medaglioni a metà dei lati (croce dello stemma, losanghe). -->
-<svg class="cornice-pagina" viewBox="0 0 1080 1244">
-  <defs>
-    <pattern id="tralcio-o" width="64" height="30" patternUnits="userSpaceOnUse" x="14" y="14">
-      <path d="M0 15 C10 3 22 3 32 15 S54 27 64 15" fill="none" stroke="#f2e433" stroke-width="1.8"/>
-      <path d="M14 7 q6 -7 12 -2 q-6 6 -12 2z M46 23 q6 7 12 2 q-6 -6 -12 -2z" fill="#f2e433"/>
-      <g fill="#f2e433"><circle cx="30" cy="20" r="1.9"/><circle cx="33" cy="23" r="1.9"/><circle cx="27" cy="23" r="1.9"/>
-      <circle cx="62" cy="10" r="1.9"/><circle cx="1" cy="7" r="1.9"/><circle cx="2" cy="10" r="1.9"/></g>
-    </pattern>
-    <pattern id="tralcio-v" width="30" height="64" patternUnits="userSpaceOnUse" x="14" y="14">
-      <path d="M15 0 C3 10 3 22 15 32 S27 54 15 64" fill="none" stroke="#f2e433" stroke-width="1.8"/>
-      <path d="M7 14 q-7 6 -2 12 q6 -6 2 -12z M23 46 q7 6 2 12 q-6 -6 -2 -12z" fill="#f2e433"/>
-      <g fill="#f2e433"><circle cx="20" cy="30" r="1.9"/><circle cx="23" cy="33" r="1.9"/><circle cx="23" cy="27" r="1.9"/>
-      <circle cx="10" cy="62" r="1.9"/><circle cx="7" cy="1" r="1.9"/><circle cx="10" cy="2" r="1.9"/></g>
-    </pattern>
-  </defs>
-  <g class="orn">
-    <rect x="14" y="14" width="1052" height="30" fill="url(#tralcio-o)"/>
-    <rect x="14" y="1186" width="1052" height="30" fill="url(#tralcio-o)"/>
-    <rect x="14" y="14" width="30" height="1202" fill="url(#tralcio-v)"/>
-    <rect x="1036" y="14" width="30" height="1202" fill="url(#tralcio-v)"/>
-  </g>
-  <g fill="none" stroke="#f2e433">
-    <rect x="12" y="12" width="1056" height="1206" stroke-width="3"/>
-    <rect x="45" y="45" width="990" height="1140" stroke-width="2"/>
-    <rect x="53" y="53" width="974" height="1124" stroke-width="1" opacity=".55"/>
-  </g>
-  <!-- pietre angolari col giglio -->
-  <g class="orn">
-    <g transform="translate(29 29)"><rect x="-34" y="-34" width="68" height="68" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><rect x="-28" y="-28" width="56" height="56" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><use href="#giglio" x="-17" y="-23" width="34" height="46" style="color:#f2e433"/></g><g transform="translate(1051 29)"><rect x="-34" y="-34" width="68" height="68" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><rect x="-28" y="-28" width="56" height="56" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><use href="#giglio" x="-17" y="-23" width="34" height="46" style="color:#f2e433"/></g><g transform="translate(29 1201)"><rect x="-34" y="-34" width="68" height="68" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><rect x="-28" y="-28" width="56" height="56" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><use href="#giglio" x="-17" y="-23" width="34" height="46" style="color:#f2e433"/></g><g transform="translate(1051 1201)"><rect x="-34" y="-34" width="68" height="68" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><rect x="-28" y="-28" width="56" height="56" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><use href="#giglio" x="-17" y="-23" width="34" height="46" style="color:#f2e433"/></g>
-  </g>
-  <!-- medaglioni a metà dei lati -->
-  <g class="orn">
-    <g transform="translate(540 29)"><circle r="24" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><circle r="18" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><path d="M-3 -13 h6 v10 h10 v6 h-10 v13 h-6 v-13 h-10 v-6 h10z" fill="#e2231a"/></g><g transform="translate(540 1201)"><circle r="24" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><circle r="18" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><path d="M-3 -13 h6 v10 h10 v6 h-10 v13 h-6 v-13 h-10 v-6 h10z" fill="#e2231a"/></g>
-    <g transform="translate(29 615)"><path d="M0 -26 L18 0 L0 26 L-18 0z" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><path d="M0 -17 L11 0 L0 17 L-11 0z" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><circle r="4.5" fill="#f2e433"/></g><g transform="translate(1051 615)"><path d="M0 -26 L18 0 L0 26 L-18 0z" fill="#1b223f" stroke="#f2e433" stroke-width="2.5"/><path d="M0 -17 L11 0 L0 17 L-11 0z" fill="none" stroke="#f2e433" stroke-width="1" opacity=".6"/><circle r="4.5" fill="#f2e433"/></g>
-  </g>
-</svg>
+<div class="ornato">
+  <svg class="angolo a1"><use href="#angolo"/></svg><svg class="angolo a2"><use href="#angolo"/></svg>
+  <svg class="angolo a3"><use href="#angolo"/></svg><svg class="angolo a4"><use href="#angolo"/></svg>
+  <svg class="giglio-angolo g1"><use href="#giglio"/></svg><svg class="giglio-angolo g2"><use href="#giglio"/></svg>
+  <svg class="giglio-angolo g3"><use href="#giglio"/></svg><svg class="giglio-angolo g4"><use href="#giglio"/></svg>
+</div>
 <section class="pagina" id="copertina" hidden>
   <img class="sigillo" src="../../static/img/loghi/mise-fregio.png" alt="">
   <div class="titolo">La Parola<br>della domenica</div>
@@ -168,8 +154,8 @@ const sovrapposizioni = () => {
       const r = document.createRange(); r.selectNodeContents(w.currentNode);
       for (const q of r.getClientRects()) testi.push({ q, nome: w.currentNode.textContent.trim().slice(0, 30) }); }
   });
-  document.querySelectorAll('.cornice-pagina .orn > *,.stemma,.sigillo,.filetto,.cornice,.virgolette').forEach(el => {
-    if (vis(el) || el.closest('.cornice-pagina')) grafica.push({ q: el.getBoundingClientRect(), nome: el.closest('.cornice-pagina') ? 'la cornice' : (el.className.baseVal || el.className) });
+  document.querySelectorAll('.angolo,.giglio-angolo,.stemma,.sigillo,.filetto,.cornice,.virgolette').forEach(el => {
+    if (vis(el) || el.closest('.ornato')) grafica.push({ q: el.getBoundingClientRect(), nome: el.className.baseVal || el.className });
   });
   const tocca = (a, b, m = 4) => a.left < b.right + m && b.left < a.right + m && a.top < b.bottom + m && b.top < a.bottom + m;
   const trovate = [];
@@ -182,7 +168,7 @@ window.copertina = async (s, immagine, n) => {
   $('copertina').hidden = false;
   $('c-giorno').textContent = `${s.giorno_liturgico} · ${data(s)}`;
   const img = $('c-img'); img.src = immagine; await img.decode();
-  const o = s.opera, maxL = 888, maxA = 490, r = img.naturalWidth / img.naturalHeight;
+  const o = s.opera, maxL = 888, maxA = 520, r = img.naturalWidth / img.naturalHeight;
   const l = Math.min(maxL, maxA * r);
   $('c-cornice').style.width = l + 'px'; $('c-cornice').style.height = (l / r) + 'px';
   $('c-illustra').innerHTML = `<b>${esc(o.illustra)}</b> · ${esc(o.scena)}`;

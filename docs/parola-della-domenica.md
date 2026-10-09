@@ -15,7 +15,7 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 |---|---|
 | Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | cornice da libro a stampa rinascimentale: fascia con tralcio di vite tra filetti dorati, pietre angolari col giglio di Firenze, medaglioni a metà dei lati (croce dello stemma, losanghe); filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **pesce** (ichthys); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
+| Grafica | cornice dorata doppia, sobria, con il giglio di Firenze e due volute in ogni angolo (Alessandro: niente di pacchiano); filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **pesce** (ichthys); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
 | Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica.html`, `rendi.js`) |
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
@@ -28,7 +28,9 @@ Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
    Dà il giorno liturgico e le letture riga per riga, con un numero di versetto
    **stimato** (tiene conto dei salti come «4,12-14.19-20»): controllarlo sempre.
 2. **Versetti** (da 1 a 4, di solito 2-3): i più belli e significativi della domenica, da
-   prima lettura, seconda lettura e Vangelo (il Salmo no). Non serve uno per lettura.
+   prima lettura, seconda lettura e Vangelo (il Salmo no). Non serve uno per lettura, ma il
+   **Vangelo è obbligatorio**: almeno un versetto del Vangelo c'è sempre (`rendi.js` si
+   rifiuta di creare il carosello senza).
    - Frasi che si capiscono **da sole**: da 6 a 35 parole circa; mai una minaccia o una
      condanna presa isolata.
    - Testo copiato **esatto** da `cei_2008` (traduzione CEI 2008, quella letta a Messa, dal

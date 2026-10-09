@@ -214,11 +214,11 @@ Velletri Moda):
   bande bianche** delle foto WhatsApp → cartiglio sfumato con didascalia →
   eventuale fascia di ringraziamento → piede bianco con logo
   (`static/img/loghi/mise-triangolo.png`) e `www.misericordia-ariccia.it`.
-- **Cornice rinascimentale (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: ogni grafica
-  social ha la cornice della confraternita (tralcio di vite tra filetti dorati, pietre angolari
-  col giglio di Firenze, medaglioni con la croce dello stemma), la stessa della «Parola della
-  domenica». Blocco pronto: `scripts/grafica-brand/cornice.html` (primo figlio del contenitore;
-  contenuti ad almeno 80 px dai bordi e niente testo nei 70 px sopra il piede).
+- **Cornice (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: ogni grafica social ha la
+  cornice della confraternita, **sobria** (Alessandro: niente di pacchiano): doppio filetto
+  dorato, due volute e il giglio di Firenze in ogni angolo, la stessa della «Parola della
+  domenica». Blocco pronto: `scripts/grafica-brand/cornice.html` (contenuti ad almeno 100 px
+  da lati e alto, lontani dagli angoli).
 - **Filigrane (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: in ogni grafica per
   i social (articoli, avvisi, eventi…) lo **stemma FM della confraternita** e il
   **giglio di Firenze** in trasparenza, dietro ai testi e sul fondo navy (mai sopra la
