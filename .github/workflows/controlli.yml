@@ -50,9 +50,9 @@ jobs:
           [ "${{ github.event_name }}" != "pull_request" ] && LIVE="--live"
           python3 scripts/controlli/controlla_sito.py public $LIVE --report rapporto.md && echo "esito=ok" >> "$GITHUB_OUTPUT" || echo "esito=problemi" >> "$GITHUB_OUTPUT"
 
-      # Certificato del server FTPS di Aruba: il deploy oggi usa «security: loose»
-      # perché il certificato non corrisponde al nome host. Qui si verifica senza
-      # pubblicare nulla: quando la verifica stretta passa, si può togliere «loose».
+      # Certificato del server FTPS di Aruba: dal 9/10/2026 il deploy usa
+      # «security: strict». Qui si verifica senza pubblicare nulla, così un
+      # certificato scaduto o cambiato si vede prima che il deploy fallisca.
       # Il nome del server è un secret: nel rapporto va solo l'esito.
       - name: Certificato FTPS
         if: github.event_name != 'pull_request'
@@ -67,9 +67,9 @@ jobs:
           echo "" >> rapporto.md
           echo "### 🔐 Pubblicazione FTPS" >> rapporto.md
           if [ "$CODICE" = "0" ]; then
-            echo "- ✅ Il certificato del server corrisponde al nome usato dal deploy: si può togliere \`security: loose\` da deploy.yml." >> rapporto.md
+            echo "- ✅ Certificato valido e corrispondente al nome del server (il deploy usa la verifica stretta)." >> rapporto.md
           else
-            echo "- ⚠️ Il certificato del server **non** corrisponde al nome usato dal deploy (codice ${CODICE:-?}): resta \`security: loose\`. Nel log di questo passaggio ci sono i nomi validi del certificato: usare uno di quelli come FTP_HOST." >> rapporto.md
+            echo "- ❌ Il certificato del server **non** è valido per il nome usato dal deploy (codice ${CODICE:-?}): il prossimo deploy con verifica stretta fallirà. Nel log di questo passaggio ci sono i nomi validi del certificato; se Aruba lo ha cambiato, aggiornare FTP_HOST (o, solo temporaneamente, \`security: loose\` in deploy.yml)." >> rapporto.md
           fi
 
       - name: Aggiorna la issue «Stato del sito»
