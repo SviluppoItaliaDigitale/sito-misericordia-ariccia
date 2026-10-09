@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Nei giorni più difficili"
 titoloSeo: "Nei giorni più difficili: le Misericordie nelle epidemie, nelle guerre e nelle calamità, dal 1348 a oggi"
 description: "Dalla peste nera del 1348 al colera dell'Ottocento, dai terremoti all'alluvione di Firenze del 1966, fino al Covid e all'Ucraina: cosa hanno fatto le Misericordie nelle grandi emergenze della storia italiana."

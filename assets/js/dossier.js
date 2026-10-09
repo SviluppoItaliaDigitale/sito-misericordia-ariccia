@@ -97,3 +97,11 @@
     });
   }
 })();
+
+/* Pulsante «Stampa le schede» del dossier primo soccorso (niente script inline: CSP) */
+(function () {
+  "use strict";
+  document.querySelectorAll("[data-stampa]").forEach(function (b) {
+    b.addEventListener("click", function () { window.print(); });
+  });
+})();

@@ -110,17 +110,20 @@
     "i": "⠊", "j": "⠚", "k": "⠅", "l": "⠇", "m": "⠍", "n": "⠝", "o": "⠕", "p": "⠏",
     "q": "⠟", "r": "⠗", "s": "⠎", "t": "⠞", "u": "⠥", "v": "⠧", "w": "⠺", "x": "⠭",
     "y": "⠽", "z": "⠵",
-    "à": "⠁", "á": "⠁", "è": "⠑", "é": "⠑", "ì": "⠊", "í": "⠊",
-    "ò": "⠕", "ó": "⠕", "ù": "⠥", "ú": "⠥",
-    ",": "⠂", ";": "⠆", ":": "⠒", ".": "⠲", "?": "⠦", "!": "⠖",
-    "'": "⠄", "’": "⠄", "-": "⠤", "–": "⠤", "(": "⠶", ")": "⠶",
-    "/": "⠌", "«": "⠶", "»": "⠶", "\"": "⠶", "“": "⠶", "”": "⠶", " ": "⠀"
+    /* Vocali accentate del Braille italiano (non più semplificate):
+       à 12356, è 2346, é 123456, ì 34, ò/ó 346, ù 23456. í e ú, rarissime
+       in italiano, restano come ì e ù. */
+    "à": "⠷", "á": "⠷", "è": "⠮", "é": "⠿", "ì": "⠌", "í": "⠌",
+    "ò": "⠬", "ó": "⠬", "ù": "⠾", "ú": "⠾",
+    ",": "⠂", ";": "⠆", ":": "⠒", ".": "⠲", "?": "⠢", "!": "⠖",
+    "'": "⠄", "’": "⠄", "-": "⠤", "–": "⠤", "(": "⠢", ")": "⠔",
+    "/": "⠌", "«": "⠦", "»": "⠴", "“": "⠦", "”": "⠴", " ": "⠀"
   };
   var NUM = { "1": "⠁", "2": "⠃", "3": "⠉", "4": "⠙", "5": "⠑", "6": "⠋", "7": "⠛", "8": "⠓", "9": "⠊", "0": "⠚" };
   var SEGNO_NUM = "⠼", SEGNO_MAIUSC = "⠠";
 
   function inBraille(testo) {
-    var out = "", inNumero = false;
+    var out = "", inNumero = false, virgAperta = false;
     for (var i = 0; i < testo.length; i++) {
       var ch = testo[i];
       var basso = ch.toLowerCase();
@@ -130,6 +133,8 @@
         continue;
       }
       inNumero = false;
+      /* virgolette dritte: alternativamente di apertura e di chiusura */
+      if (ch === '"') { out += virgAperta ? "⠴" : "⠦"; virgAperta = !virgAperta; continue; }
       if (ch !== basso && BRAILLE[basso]) { out += SEGNO_MAIUSC + BRAILLE[basso]; continue; }
       if (BRAILLE[basso]) { out += BRAILLE[basso]; }
       else if (ch === "\n") { out += "\n"; }

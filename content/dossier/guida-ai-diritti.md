@@ -1,4 +1,5 @@
 ---
+tema: "guide"
 title: "Guida ai diritti socio-sanitari"
 titoloSeo: "Guida ai diritti socio-sanitari ad Ariccia e nei Castelli Romani: invalidità, Legge 104, trasporti, esenzioni, ausili, caregiver"
 description: "Una guida pratica per le famiglie di Ariccia e dei Castelli Romani: a quale ASL e distretto rivolgersi, la nuova procedura INPS per l'invalidità dal 2026, Legge 104, trasporto per la dialisi, pass disabili, esenzioni ticket, ausili, assistenza domiciliare, caregiver, amministratore di sostegno e Fascicolo sanitario."

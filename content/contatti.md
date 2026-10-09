@@ -20,7 +20,7 @@ italianoSemplice: |
 ## Dove siamo
 
 <div class="avviso-archivio rounded p-3 px-4 mb-3" role="note">
-<strong>In sede si riceve solo su appuntamento, da fissare per telefono.</strong> Prima di venire <strong>è necessario chiamare</strong> il <a href="tel:+39069333717">06 933 3717</a> o il <a href="tel:+393484068657">348 4068657</a>: senza telefonata potresti non trovare nessuno. Al telefono ti diciamo quando venire e chi ti può aiutare. Per le richieste di trasporto non serve venire in sede: <a href="/richiedi-trasporto/">chiedi qui</a>, di solito rispondiamo in pochi minuti e comunque in giornata.
+<strong>In sede si riceve solo su appuntamento, da fissare per telefono.</strong> Prima di venire <strong>è necessario chiamare</strong> il <a href="tel:+39069333717">06 933 3717</a> o il <a href="tel:+393484068657">348 4068657</a>: senza telefonata potresti non trovare nessuno. Al telefono ti diciamo quando venire e chi ti può aiutare. Per le richieste di trasporto non serve venire in sede: <a href="/richiedi-trasporto/">chiedi qui</a>, di solito rispondiamo in giornata.
 </div>
 
 - **Sede operativa:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM) — Tel. [06 933 3717](tel:+39069333717) · Cell. [348 4068657](tel:+393484068657) — [vedi sulla mappa](https://www.openstreetmap.org/search?query=Piazzale%20Aldo%20Moro%206%20Ariccia)

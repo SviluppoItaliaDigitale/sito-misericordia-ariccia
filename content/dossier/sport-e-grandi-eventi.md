@@ -1,4 +1,5 @@
 ---
+tema: "storia"
 title: "Le Misericordie, lo sport e i grandi eventi"
 titoloSeo: "Le Misericordie allo sport e ai grandi eventi: Palio di Siena, Calcio storico, Mugello, Olimpiadi, Giubileo"
 description: "Dove c'è una folla, c'è un'ambulanza: le Misericordie al Palio di Siena, al Calcio storico fiorentino, al Mugello, alla 100 km del Passatore, alle Olimpiadi di Milano-Cortina e ai grandi eventi della Chiesa, dalla GMG del 2000 al Giubileo del 2025, fino alle società sportive che portano il nome della Misericordia."

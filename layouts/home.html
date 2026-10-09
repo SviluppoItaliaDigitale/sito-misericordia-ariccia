@@ -209,7 +209,7 @@
       {{- $poster := "img/video/giornata-volontariato.jpg" }}
       <figure class="cv-video video-riq video-riq--verticale">
         <video controls preload="none" playsinline poster="{{ $poster | relURL }}" width="1080" height="1920" title="Giornata del volontariato: grazie, e c'è posto anche per te">
-          <source src="{{ "video/giornata-volontariato.mp4" | relURL }}" type="video/mp4">
+          <source src="{{ "video/giornata-volontariato.mp4" | relURL }}" type="video/mp4">{{ partial "traccia-vtt.html" "video/giornata-volontariato.mp4" }}
           Il tuo browser non riproduce i video: <a href="{{ "video/giornata-volontariato.mp4" | relURL }}">scarica il file</a>.
         </video>
         <figcaption>{{ partial "credito-musica.html" "giornata-volontariato.mp4" }}</figcaption>

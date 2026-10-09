@@ -1,4 +1,5 @@
 ---
+tema: "fede"
 title: "I Papi e le Misericordie"
 titoloSeo: "I Papi e le Misericordie: da Clemente VII a Leone XIV, udienze, discorsi e parole per i confratelli"
 description: "Cinque secoli di incontri tra i Papi e le Misericordie: la chiesa concessa da Clemente VII, il cardinale Corsini Capo di Guardia, l'Angelus di Paolo VI, le udienze di Giovanni Paolo II, Benedetto XVI, Francesco e Leone XIV con le loro parole più belle."

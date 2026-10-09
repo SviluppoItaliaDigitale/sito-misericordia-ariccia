@@ -1,4 +1,5 @@
 ---
+tema: "memoria"
 title: "Francobolli, medaglie e stendardi"
 titoloSeo: "Le Misericordie nei francobolli, nelle medaglie, negli stendardi e nei gonfaloni: dal 1386 a oggi"
 description: "Le Misericordie raccontate da insegne, stendardi, gonfaloni, francobolli, monete e medaglie: la croce tra la F e la M dei Capitani, i gonfaloni della peste con la Madonna della Misericordia, gli stendardi dell'Ottocento, le medaglie ottocentesche per i Capi di Guardia, il francobollo italiano del 1994 per i 750 anni della Misericordia di Firenze, le emissioni di Brasile, Vaticano e San Marino, la moneta portoghese del 1998 e le onorificenze di oggi."

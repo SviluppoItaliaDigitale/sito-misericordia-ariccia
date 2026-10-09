@@ -1,4 +1,5 @@
 ---
+tema: "guide"
 title: "Cosa succede quando chiami il 112"
 titoloSeo: "Cosa succede quando chiami il 112 nel Lazio: chi risponde, cosa ti chiedono, cosa fare mentre arriva l'ambulanza"
 description: "Guida pratica al 112 nel Lazio: chi risponde, come ti localizza, le domande dell'operatore e del 118, cosa fare e non fare mentre aspetti i soccorsi, l'app Where ARE U, il 112 per le persone sorde, quando chiamare invece il 116117."

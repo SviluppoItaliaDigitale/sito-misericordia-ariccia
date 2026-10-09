@@ -36,6 +36,17 @@
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 
+  # Content Security Policy in SOLA OSSERVAZIONE (Report-Only): non blocca
+  # nulla, il browser segnala in console cosa bloccherebbe. Il sito usa solo
+  # file propri (niente CDN, tracker o iframe esterni). Gli script inline
+  # ammessi sono indicati con il loro hash, calcolato sulla build con
+  # --minify: se si cambiano, il workflow «Controlli del sito» lo segnala e
+  # gli hash vanno ricalcolati (hugo --minify, poi
+  # python3 scripts/controlli/controlla_sito.py public --csp). Quando per
+  # qualche settimana non ci sono segnalazioni, si può rendere effettiva
+  # togliendo «-Report-Only».
+  Header set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'sha256-Wmwm8dZAQ24a0W60CzIylPDYkmZTln7lcHdV3XNAXZY=' 'sha256-JWmOvZ/AP+i72UYB5jeLYM0toq17VhI6aF4VMz1vlYY=' 'sha256-GTwJlo6S2LUBX7mxi8CZ2VyQCNBb/tp+FnBX/hYGgl0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+
   # HSTS: il browser, dopo la prima visita, per 6 mesi usa SOLO https
   # (niente primo collegamento "in chiaro" che si potrebbe intercettare).
   # Solo per www.misericordia-ariccia.it: niente includeSubDomains (PEC e
@@ -51,6 +62,7 @@
   AddType image/avif .avif
   AddType font/woff2 .woff2
   AddType video/mp4 .mp4
+  AddType text/vtt .vtt
   AddType application/manifest+json .webmanifest
 </IfModule>
 
