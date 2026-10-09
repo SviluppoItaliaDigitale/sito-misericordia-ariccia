@@ -359,10 +359,10 @@ def testo_parola(s, rete):
         righe.append(f"🎨 In copertina: {o['autore']}, {o['titolo']}" + (f" ({o['anno']})" if o.get("anno") else "")
                      + (f", {o['luogo']}" if o.get("luogo") else "") + f" · illustra {o['illustra']} · pubblico dominio")
     if rete == "instagram":
-        righe.append("Le letture complete su misericordia-ariccia.it/liturgia-del-giorno")
+        righe.append("📖 Tutte le letture della domenica sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno")
         righe.append(HASHTAG_PAROLA)
         return "\n\n".join(righe)[:2200]
-    righe.append(f"👉 Le letture complete: {LITURGIA}")
+    righe.append(f"📖 Leggi tutte le letture della domenica sul nostro sito:\n👉 {LITURGIA}")
     return "\n\n".join(righe)
 
 

@@ -4,7 +4,8 @@ Ogni domenica alle **7:47** esce su Facebook (album) e Instagram (carosello) un
 **carosello**: in copertina **una sola opera d'arte, intera**, con scritto quale lettura
 illustra; poi **una pagina per ogni versetto** scelto tra prima lettura, seconda lettura e
 Vangelo, ognuna con il nome della lettura ben visibile. Sul sito non c'è una pagina: il
-post rimanda alla [Liturgia del giorno](https://www.misericordia-ariccia.it/liturgia-del-giorno/).
+post e l'ultima pagina del carosello rimandano a leggere le letture complete sulla
+[Liturgia del giorno](https://www.misericordia-ariccia.it/liturgia-del-giorno/) del nostro sito.
 
 Indicazioni di Alessandro (9/10/2026): i versetti sono **quelli più belli e significativi**,
 non per forza uno per lettura; l'opera va mostrata **per intero** (mai un dettaglio) e deve
@@ -14,7 +15,7 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 |---|---|
 | Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | cornice dorata doppia con il giglio di Firenze nei quattro angoli e volute, filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina e accanto al nome della lettura; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **pesce** (ichthys); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
+| Grafica | cornice dorata doppia con il giglio di Firenze nei quattro angoli e volute, filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, lo stemma e il **pesce** (ichthys); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
 | Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica.html`, `rendi.js`) |
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
@@ -30,8 +31,14 @@ Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
    prima lettura, seconda lettura e Vangelo (il Salmo no). Non serve uno per lettura.
    - Frasi che si capiscono **da sole**: da 6 a 35 parole circa; mai una minaccia o una
      condanna presa isolata.
-   - Testo copiato **esatto** dal feed (traduzione CEI), togliendo solo le virgolette del
-     discorso diretto; se la frase comincia a metà versetto si mette la maiuscola.
+   - Testo copiato **esatto** da `cei_2008` (traduzione CEI 2008, quella letta a Messa, dal
+     sito ufficiale chiesacattolica.it), togliendo solo le virgolette del discorso diretto; se
+     la frase comincia a metà versetto si mette la maiuscola. **Non** copiare dal testo
+     Evangelizo (`letture`): è la vecchia CEI 1974 e a volte è diverso (es. «macellati» invece di
+     «uccisi»); serve solo per contare i versetti. Se la pagina CEI non risponde si usa
+     Evangelizo e si scrive `"traduzione": "CEI 1974 (Evangelizo)"` nella scheda.
+   - `fonte_lettura`: la formula di `cei_2008` senza gli accenti di lettura (Isaìa → Isaia,
+     Filippési → Filippesi).
    - Ordine: quello della Messa (prima lettura, seconda, Vangelo).
    - `evidenza`: 2-6 parole del versetto, copiate identiche, che vanno in giallo.
 3. **Opera d'arte** (una sola, facoltativa), di solito sul **Vangelo**:
@@ -53,7 +60,7 @@ Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
    frasi fatte o fatti inventati. Chiudere con «Buona domenica!». Versetti, crediti
    dell'opera, link e hashtag li aggiunge lo script.
 5. **Scheda** `.github/social/parola/AAAA-MM-GG.json` (modello: quella del 2026-10-11):
-   - `data`, `giorno_liturgico` (dal feed), `testo_social`, `preparata_da`;
+   - `data`, `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»), `preparata_da`;
    - `opera`: `autore`, `titolo` (in italiano), `anno`, `luogo` (museo), `licenza`, `fonte`
      (pagina Commons), `illustra` (es. «Vangelo, Mt 22,1-14»), `scena` (una frase su cosa
      si vede, legata al brano);

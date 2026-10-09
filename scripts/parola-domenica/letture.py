@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
-"""Scarica le letture di una domenica (o di un giorno) da Evangelizo, la stessa fonte
-della pagina Liturgia del giorno del sito.
+"""Scarica le letture di una domenica (o di un giorno).
+
+Testo da usare: CEI 2008, quello letto a Messa, dal sito ufficiale della CEI
+(chiesacattolica.it/liturgia-del-giorno). Evangelizo (la fonte della pagina Liturgia del
+giorno del sito) usa ancora la traduzione CEI 1974: serve solo per i numeri dei versetti
+e come riserva se la pagina CEI non risponde.
 
   letture.py                → prossima domenica
   letture.py 2026-10-11     → quel giorno
 
-Stampa un JSON: titolo liturgico e, per prima lettura, salmo, seconda lettura e Vangelo,
-il riferimento e le righe del testo. "versetto_stimato" numera le righe a partire dal
+Stampa un JSON: titolo liturgico; in "cei_2008" le letture col testo da copiare; in
+"letture" il testo Evangelizo riga per riga (una riga = un versetto). "versetto_stimato" numera le righe a partire dal
 primo versetto del riferimento: è solo un aiuto, il riferimento esatto va controllato.
 Solo libreria standard.
 """
@@ -18,6 +22,8 @@ import re
 import sys
 import urllib.request
 
+CEI = "https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia={d}"
+SEZIONI_CEI = [("Prima Lettura", "Prima lettura"), ("Seconda Lettura", "Seconda lettura"), ("Vangelo", "Vangelo")]
 URL = "https://feed.evangelizo.org/v2/reader.php?date={d}&lang=IT&type={t}"
 LETTURE = {"FR": "Prima lettura", "PS": "Salmo responsoriale", "SR": "Seconda lettura", "GSP": "Vangelo"}
 
@@ -47,6 +53,34 @@ def versetti(titolo):
     return numeri
 
 
+def letture_cei(d):
+    """Prima lettura, seconda lettura e Vangelo in CEI 2008: titoletto, formula d'annuncio
+    («Dal libro del profeta Isaìa»), riferimento e testo, fino a «Parola di Dio/del Signore»."""
+    pagina = leggi(CEI.format(d=d))
+    pagina = re.sub(r"<(script|style).*?</\1>", "", pagina, flags=re.S)
+    righe = [r.strip() for r in html.unescape(re.sub(r"<[^>]+>", "\n", pagina)).splitlines() if r.strip()]
+    esito, pos = [], 0
+    for titolo, nome in SEZIONI_CEI:
+        try:
+            i = righe.index(titolo, pos)
+        except ValueError:
+            continue
+        fine = next((j for j in range(i + 1, len(righe)) if righe[j].startswith(("Parola di Dio", "Parola del Signore"))), None)
+        if fine is None:
+            continue
+        blocco = righe[i + 1:fine]
+        k = next((j for j, r in enumerate(blocco) if r.startswith(("Dal ", "Dalla ", "Dagli ", "Dai "))), None)
+        if k is None or k + 1 >= len(blocco):
+            continue
+        rif, resto = blocco[k + 1], blocco[k + 2:]
+        while resto and re.fullmatch(r"[\d.,\-a-z ]+", resto[0]):  # riferimenti spezzati su più righe («.», «19-20»)
+            rif += resto.pop(0)
+        esito.append({"lettura": nome, "titoletto": " ".join(blocco[:k]), "fonte_lettura": blocco[k],
+                      "riferimento": rif, "testo": " ".join(resto)})
+        pos = fine
+    return esito
+
+
 def main():
     if len(sys.argv) > 1:
         giorno = dt.date.fromisoformat(sys.argv[1])
@@ -67,6 +101,14 @@ def main():
             "righe": [{"versetto_stimato": numeri[i] if i < len(numeri) else "", "testo": r}
                       for i, r in enumerate(righe)],
         })
+    try:
+        esito["cei_2008"] = letture_cei(d)
+    except Exception as e:  # noqa: BLE001
+        esito["cei_2008"] = []
+        print(f"ATTENZIONE: pagina CEI non raggiungibile ({e}): usare il testo Evangelizo e scriverlo nella scheda",
+              file=sys.stderr)
+    if not esito["cei_2008"]:
+        print("ATTENZIONE: testo CEI 2008 non trovato", file=sys.stderr)
     print(json.dumps(esito, ensure_ascii=False, indent=1))
 
 

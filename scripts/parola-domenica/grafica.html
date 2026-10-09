@@ -25,9 +25,11 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .illustra b{color:var(--ciano);font-weight:600}
 .credito{margin-top:8px;font-size:19px;color:#b9c3dc;line-height:1.35}
 .credito i{font-style:italic}
+.rimando{position:absolute;left:132px;right:200px;bottom:52px;font-size:24px;line-height:1.3;color:var(--giallo)}
+.rimando b{font-weight:600}
 .scorri{position:absolute;left:120px;bottom:40px;font-size:25px;font-weight:600;color:var(--giallo)}
 /* pagina del versetto */
-.lettura{margin-top:52px;margin-right:150px;border-left:6px solid var(--giallo);padding-left:24px}
+.lettura{margin-top:52px;border-left:6px solid var(--giallo);padding-left:24px}
 .lettura .nome{font-size:40px;font-weight:600;color:var(--ciano);line-height:1.1}
 .lettura .libro{margin-top:6px;font-size:28px;color:var(--chiaro)}
 .parola{position:absolute;left:104px;right:104px;top:400px;bottom:120px;display:flex;flex-direction:column;justify-content:center}
@@ -115,7 +117,6 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 <section class="pagina" id="pagina" hidden>
   <svg class="filigrana pesce-f"><use href="#pesce"/></svg>
   <img class="filigrana stemma-f" src="../../static/img/loghi/mise-fregio.png" alt="">
-  <img class="stemma" src="../../static/img/loghi/mise-fregio.png" alt="">
   <div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="p-giorno"></div></div>
   <div class="lettura"><div class="nome" id="p-nome"></div><div class="libro" id="p-libro"></div></div>
   <div class="parola">
@@ -124,6 +125,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
     <div class="versetto" id="p-versetto"></div>
     <div class="rif" id="p-rif"></div>
   </div>
+  <div class="rimando" id="p-rimando" hidden>Tutte le letture di oggi sul nostro sito:<br><b>misericordia-ariccia.it/liturgia-del-giorno</b></div>
   <div class="numero" id="p-numero"></div>
 </section>
 <div class="piede">
@@ -145,7 +147,7 @@ const stringi = (box, el, minimo) => {  // il testo si rimpicciolisce finché st
 const sovrapposizioni = () => {
   const testi = [], grafica = [];
   const vis = el => el.offsetParent !== null || getComputedStyle(el).position === 'fixed';
-  document.querySelectorAll('.titolo,.sotto,.illustra,.credito,.scorri,.numero,.rubrica,.giorno,.lettura,.versetto,.rif,.sito,.marchio').forEach(el => {
+  document.querySelectorAll('.titolo,.sotto,.illustra,.credito,.scorri,.rimando,.numero,.rubrica,.giorno,.lettura,.versetto,.rif,.sito,.marchio').forEach(el => {
     if (!vis(el)) return;
     const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
     while (w.nextNode()) { if (!w.currentNode.textContent.trim()) continue;
@@ -190,6 +192,7 @@ window.versetto = async (s, i, n, primo) => {
   $('p-versetto').innerHTML = t;
   $('p-rif').textContent = v.riferimento;
   $('p-numero').textContent = `${primo + i} / ${n}`;
+  if (primo + i === n) $('p-rimando').hidden = false;  // ultima pagina: rimando alla Liturgia del giorno del sito
   await document.fonts.ready;
   const esito = stringi(document.querySelector('.parola'), $('p-versetto'), 40);
   return { ...esito, sovrapposizioni: sovrapposizioni() };
