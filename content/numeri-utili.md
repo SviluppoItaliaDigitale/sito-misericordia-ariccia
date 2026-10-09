@@ -18,7 +18,7 @@ I numeri da salvare in rubrica e da tenere sul frigorifero. Puoi anche **stampar
 ## Emergenze
 
 - **112 — Numero Unico di Emergenza** (gratuito, attivo 24 ore su 24): ambulanza, forze dell'ordine, vigili del fuoco. In qualsiasi emergenza, chiama prima di tutto il 112.
-- **116117 — Cure mediche non urgenti** (gratuito, 24 ore su 24, attivo a Roma e provincia): continuità assistenziale (ex guardia medica), consigli sanitari nelle situazioni che non sono un'emergenza.
+- **116117 — Cure mediche non urgenti** (gratuito, 24 ore su 24, attivo in tutto il Lazio dal 24 agosto 2026): continuità assistenziale (ex guardia medica), consigli sanitari nelle situazioni che non sono un'emergenza.
 - **1522 — Antiviolenza e stalking** (gratuito, 24 ore su 24, anche via chat): per le donne vittime di violenza.
 - **114 — Emergenza infanzia** (gratuito, 24 ore su 24): per segnalare situazioni di pericolo per bambini e adolescenti.
 - **803 555 — Sala operativa della Protezione Civile della Regione Lazio** (numero verde): per le emergenze di protezione civile sul territorio regionale.
