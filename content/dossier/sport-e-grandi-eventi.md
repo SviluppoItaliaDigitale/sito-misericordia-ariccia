@@ -1,0 +1,108 @@
+---
+title: "Le Misericordie, lo sport e i grandi eventi"
+titoloSeo: "Le Misericordie allo sport e ai grandi eventi: Palio di Siena, Calcio storico, Mugello, Olimpiadi, Giubileo"
+description: "Dove c'è una folla, c'è un'ambulanza: le Misericordie al Palio di Siena, al Calcio storico fiorentino, al Mugello, alla 100 km del Passatore, alle Olimpiadi di Milano-Cortina e ai grandi eventi della Chiesa, dalla GMG del 2000 al Giubileo del 2025."
+date: 2026-10-09
+italianoSemplice: |
+  **Quando c'è una grande festa o una gara, ci sono anche i volontari della Misericordia.**
+
+  Sono pronti ad aiutare chi si sente male o si fa male.
+
+  Lo fanno al Palio di Siena, alle partite di calcio e alle grandi feste della Chiesa.
+
+  Anche la Misericordia di Ariccia fa assistenza agli eventi.
+layout: "storia"
+occhiello: "Dossier · Le Misericordie in servizio"
+sottotitolo: "Dove c'è una folla, c'è un'ambulanza pronta. Dal Palio di Siena alle Olimpiadi, dalla Giornata mondiale della gioventù al Giubileo: i volontari che non si vedono, finché non servono."
+summary: "L'assistenza sanitaria delle Misericordie a sport e grandi eventi: Palio di Siena, Calcio storico fiorentino, Calcio storico di Castelfiorentino per una nuova ambulanza, MotoGP al Mugello, stadio Franchi, 100 km del Passatore, Olimpiadi di Milano-Cortina 2026, GMG 2000, esequie di Papa Francesco e Giubileo 2025."
+lettura: "6 minuti"
+meta:
+  - "**15 secondi** per soccorrere un fantino"
+  - "dal **2000** a oggi"
+  - "fonti citate"
+cover_cta:
+  testo: "Inizia la lettura"
+  ancora: "#introduzione"
+cap_titolo: "In servizio dove c'è festa"
+cap_intro: "Gli eventi in cui la presenza delle Misericordie è documentata da fonti pubbliche."
+intro: |
+  C'è un servizio delle Misericordie che quasi nessuno nota: quello ai **grandi eventi**. Partite, corse, feste, pellegrinaggi. Ambulanze parcheggiate in un angolo, volontari in divisa ai bordi del campo o della piazza, un posto medico montato dietro le transenne. Non si vedono, finché qualcuno non ha bisogno.
+
+  È una tradizione antica: già nell'Ottocento, al Palio dei Barberi di Firenze, le barelle della Misericordia aspettavano dietro i tendoni (lo raccontiamo in [Lo sapevi che…](/lo-sapevi-che/)). Oggi si chiama **assistenza sanitaria agli eventi**, e segue piani precisi preparati con il 118.
+
+  In questo dossier mettiamo solo gli eventi in cui la presenza delle Misericordie è documentata. Per altri, come il Giro d'Italia o le grandi maratone, le fonti parlano di altre associazioni, e quindi non li citiamo.
+tappe:
+  - anno: "Siena"
+    epoca: "Palio"
+    titolo: "Quindici secondi per un fantino"
+    testo: "Al **Palio di Siena** i volontari della Misericordia e della Pubblica Assistenza si dividono i compiti in Piazza del Campo. Il più delicato è «raccattare» i fantini caduti: bisogna portarli via dalla pista prima che i cavalli ripassino. Nelle prove all'alba del 2011 la Misericordia simulava il soccorso dalla curva del Casato all'ambulanza: il recupero riusciva in **15 secondi**, in una prova in 13. Nel 2019 una ventina di volontari per associazione si è esercitata con il 118 alla pista di Mociano."
+  - anno: "2022"
+    epoca: "Palio"
+    titolo: "Un piano per 18.000 persone"
+    testo: "Dietro la festa c'è un piano preciso, guidato dal 118 dell'Asl Toscana sud-est e preparato con Pubbliche assistenze, **Misericordie**, Croce Rossa e radioamatori. Per il Palio del 2 luglio 2022: **5 postazioni sanitarie**, circa **100 soccorritori**, 7 medici, 7 infermieri e **17 ambulanze** per circa 18.000 persone tra la Piazza e i palchi."
+  - anno: "Firenze"
+    epoca: "Calcio storico"
+    titolo: "Sul sabbione di Santa Croce"
+    testo: "Al **Calcio storico fiorentino**, in piazza Santa Croce, la Misericordia di Firenze è in servizio con i suoi volontari dei servizi sportivi: nel 2026 il 13 e 14 giugno per le semifinali e il 24 giugno, giorno di San Giovanni, per la finale. Lo fa, scrive, «da decenni», sempre in prima linea accanto ai calcianti. I volontari dei servizi sportivi seguono anche le partite della Fiorentina allo stadio Franchi."
+  - anno: "2022"
+    epoca: "Castelfiorentino"
+    titolo: "Una partita per una nuova ambulanza"
+    testo: "A volte lo sport restituisce. Il 22 maggio 2022 a **Castelfiorentino** si è giocata una partita di Calcio storico tra 54 veterani, preceduta da un corteo di circa settanta figuranti. L'ingresso era libero, con offerte: il ricavato serviva a comprare un nuovo mezzo per la Misericordia del paese."
+  - anno: "2019"
+    epoca: "Mugello"
+    titolo: "Il centro medico della MotoGP"
+    testo: "Per il **Gran Premio d'Italia di MotoGP** all'autodromo del Mugello, nel 2019, il piano di sicurezza della Prefettura di Firenze prevedeva tre posti di soccorso per il pubblico, un elicottero e «un centro medico coordinato con 118 e Misericordia di Firenze», con una strada riservata ai soccorsi fino all'ospedale di Borgo San Lorenzo."
+  - anno: "2024"
+    epoca: "100 km del Passatore"
+    titolo: "Venti punti sanitari in una notte"
+    testo: "La **100 km del Passatore** è una delle ultramaratone più famose d'Italia: si parte da Firenze nel pomeriggio, si attraversa l'Appennino di notte e si arriva a Faenza. Nel 2024 gli organizzatori annunciavano **20 punti sanitari** lungo il percorso, gestiti dalla Croce Rossa di Faenza e dal Coordinamento delle **Misericordie dell'area fiorentina**, con medici, infermieri e massaggiatori."
+  - anno: "2026"
+    epoca: "Milano-Cortina"
+    titolo: "Sulle piste olimpiche"
+    testo: "Alle **Olimpiadi invernali di Milano-Cortina 2026** volontari delle Misericordie di varie regioni hanno lavorato a **Livigno**, sede delle gare di snowboard e freestyle. La Misericordia di Sansepolcro ha mandato quattro volontari a turni di cinque giorni al punto di emergenza di Livigno, sede dell'elisoccorso; c'era anche quella di Osimo, «assieme alle Misericordie di tutta Italia»."
+  - anno: "2000"
+    epoca: "Giornata mondiale della gioventù"
+    titolo: "Le Misericordie nel piano sanitario del Vaticano"
+    testo: "Anche la Chiesa, nei suoi grandi raduni, chiama le Misericordie. Per la **Giornata mondiale della gioventù** dell'agosto 2000 a Roma il piano sanitario della Città del Vaticano elencava, accanto all'eliambulanza dell'Aeronautica e ai mezzi dell'Ordine di Malta, «2 ambulanze delle Misericordie d'Italia»."
+  - anno: "2025"
+    epoca: "Roma"
+    titolo: "L'addio a Papa Francesco e il Giubileo"
+    testo: "Per le **esequie di Papa Francesco**, il 26 aprile 2025, le Misericordie sono partite da tutta Italia: da Pistoia già dal 23 aprile, più di cinquanta confratelli e consorelle da Pisa, volontari da Chianciano Terme con la colonna mobile nazionale. Nello stesso anno, per il **Giubileo del mondo del volontariato** di marzo, il programma ufficiale prevedeva **5.000 volontari delle Misericordie**, con stand di prevenzione sanitaria; ad agosto volontari della Misericordia di Bibbiena erano in servizio a **Tor Vergata** per il Giubileo dei giovani."
+  - anno: "Noi"
+    epoca: "La Misericordia di Ariccia"
+    titolo: "Anche ai Castelli, dove c'è festa"
+    testo: "Anche la Misericordia di Ariccia fa **assistenza sanitaria agli eventi**: camminate, spettacoli, saggi di danza, sfilate, feste di paese, con ambulanza, soccorritori formati e defibrillatore. Organizzi un evento ad Ariccia o nei Castelli Romani? Scopri come funziona e [richiedi un preventivo](/assistenza-eventi/)."
+    img: "/img/news/camminata-2026-ambulanza.jpg"
+    img_alt: "I volontari della Misericordia di Ariccia in divisa giallo-ciano accanto all'ambulanza, sul prato dei Campi di Annibale, durante una camminata"
+    img_didascalia: "I nostri volontari in servizio alla camminata «Un passo alla volta», Campi di Annibale, settembre 2026."
+    img_credit: "Misericordia di Ariccia"
+fonti:
+  - titolo: "La Nazione Siena, le prove di soccorso all'alba per il Palio (2011)"
+    url: "https://www.lanazione.it/siena/cronaca/2011/08/13/562135-prove_soccorso_alba_secondi.shtml"
+  - titolo: "La Nazione Siena, i volontari e il soccorso ai fantini (2019)"
+    url: "https://www.lanazione.it/siena/cronaca/soccorso-fantini-palio-volontari-e5f49770"
+  - titolo: "gonews, il piano sanitario del Palio del 2 luglio 2022"
+    url: "https://www.gonews.it/2022/06/27/palio-2-luglio-siena-118/amp/"
+  - titolo: "Misericordia di Firenze, servizio alla finale del Calcio storico 2026"
+    url: "https://www.misericordia.firenze.it/News/Dettaglio/6009/Servizio-finale-Calcio-Storico-2026"
+  - titolo: "gonews, Calcio storico a Castelfiorentino per la Misericordia (2022)"
+    url: "https://www.gonews.it/2022/05/18/calcio-storico-castelfiorentino/amp/"
+  - titolo: "Ministero dell'Interno, il piano di sicurezza per il Mugello (2019)"
+    url: "https://www.interno.gov.it/it/notizie/pronto-piano-sicurezza-lautodromo-mugello"
+  - titolo: "IUTA Italia, la 100 km del Passatore 2024"
+    url: "https://www.iutaitalia.it/2024/05/49-100-km-del-passatore-2024/"
+  - titolo: "La Nazione Arezzo, la Misericordia di Sansepolcro alle Olimpiadi (2026)"
+    url: "https://www.lanazione.it/arezzo/cronaca/la-misericordia-alle-olimpiadi-90ea291a"
+  - titolo: "il Resto del Carlino, la Misericordia di Osimo a Livigno (2026)"
+    url: "https://www.ilrestodelcarlino.it/ancona/cronaca/olimpiadi-al-pronto-soccorso-di-44dde2dc"
+  - titolo: "Sala Stampa della Santa Sede, i servizi sanitari per la GMG 2000"
+    url: "https://press.vatican.va/content/salastampa/it/bollettino/pubblico/2000/08/10/0472.pdf"
+  - titolo: "La Nazione Pistoia, la Misericordia verso i funerali del Papa (2025)"
+    url: "https://www.lanazione.it/pistoia/cronaca/verso-i-funerali-la-mobilitazione-691d7973"
+  - titolo: "La Nazione Pisa, i volontari pisani alle esequie del Papa (2025)"
+    url: "https://www.lanazione.it/pisa/cronaca/i-volontari-pisani-fra-assistenza-5a452751"
+  - titolo: "Giubileo 2025, i volontari per il Giubileo del volontariato"
+    url: "https://www.iubilaeum2025.va/en/notizie/comunicati/2025/25mila-per-giubileo-volontariato.html"
+  - titolo: "La Nazione, la Misericordia di Bibbiena al Giubileo dei giovani (2025)"
+    url: "https://www.lanazione.it/cronaca/la-misericordia-di-bibbiena-in-servizio-al-giubileo-dei-giovani-ivs0dgyy"
+---
