@@ -1,6 +1,6 @@
 # La Parola della domenica (solo social)
 
-Ogni domenica alle **7:47** esce su Facebook (album) e Instagram (carosello) un
+Ogni domenica alle **4:47** esce su Facebook (album) e Instagram (carosello) un
 **carosello**: in copertina **una sola opera d'arte, intera**, con scritto quale lettura
 illustra; poi **una pagina per ogni versetto** scelto tra prima lettura, seconda lettura e
 Vangelo, ognuna con il nome della lettura ben visibile. Sul sito non c'è una pagina: il
@@ -76,7 +76,7 @@ Si prepara **la domenica successiva**. Se la scheda c'è già, non si fa nulla.
    frase più corta (non spostare gli ornamenti sopra il testo).
 7. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
 8. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
-   online le immagini). La domenica alle 7:47 il workflow pubblica da solo.
+   online le immagini). La domenica alle 4:47 il workflow pubblica da solo.
 
 ## Domeniche e feste particolari
 

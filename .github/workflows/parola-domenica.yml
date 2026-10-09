@@ -3,13 +3,14 @@ name: Parola della domenica (social)
 # Ogni domenica mattina pubblica su Facebook e Instagram la «Parola della
 # domenica» preparata in settimana dalla routine (.github/social/parola/
 # AAAA-MM-GG.json + grafica in static/img/parola/, già online col deploy).
-# Doppio cron per l'ora legale: esce alle 7:47 italiane tutto l'anno; il
-# secondo giro trova il registro già scritto e non ripubblica.
+# Doppio cron per l'ora legale: esce alle 4:47 italiane tutto l'anno (prima
+# delle 5, decisione di Alessandro); il secondo giro trova il registro già
+# scritto e non ripubblica.
 # Procedura completa: docs/parola-della-domenica.md
 on:
   schedule:
-    - cron: "47 5 * * 0"
-    - cron: "47 6 * * 0"
+    - cron: "47 2 * * 0"
+    - cron: "47 3 * * 0"
   workflow_dispatch:
     inputs:
       data:
@@ -37,8 +38,8 @@ jobs:
         run: |
           ORA=$(TZ=Europe/Rome date +%H)
           echo "Ora italiana: $ORA"
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ORA" -lt 7 ]; then
-            echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Troppo presto (ora solare): pubblica il giro delle 7:47."
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ORA" -lt 4 ]; then
+            echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Troppo presto (ora solare): pubblica il giro delle 4:47."
           fi
 
       - name: Checkout

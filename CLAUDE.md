@@ -58,7 +58,7 @@ solo la bacheca non ripubblicano il sito.
 
 ## Parola della domenica sui social (dal 9/10/2026)
 
-Ogni domenica alle 7:47 il workflow `parola-domenica.yml` pubblica su Facebook e
+Ogni domenica alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
 Instagram (solo social, nessuna pagina) un carosello: copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
 versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara ogni
