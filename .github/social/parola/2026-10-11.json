@@ -1,19 +1,39 @@
 {
   "data": "2026-10-11",
   "giorno_liturgico": "XXVIII Domenica del Tempo Ordinario",
-  "lettura": "Vangelo",
-  "riferimento": "Mt 22,9",
-  "versetto": "Andate ora ai crocicchi delle strade e tutti quelli che troverete, chiamateli alle nozze.",
-  "evidenza": "chiamateli alle nozze",
-  "testo_social": "Gli invitati non vengono, ma il re non annulla la festa: manda i servi per le strade a chiamare chiunque incontrino. Nessuno è escluso. Andare incontro alle persone là dove sono è anche il cuore del nostro servizio. Buona domenica!",
   "opera": {
-    "autore": "Bernardo Strozzi",
-    "titolo": "La parabola del banchetto nuziale",
-    "anno": "1636",
-    "licenza": "Pubblico dominio",
-    "fonte": "https://commons.wikimedia.org/wiki/File:Bernardo_Strozzi_-_Parable_of_the_Wedding_Feast.jpg",
-    "inquadratura": "center 12%"
+    "autore": "Maarten de Vos (disegno) e bottega Sadeler (incisione)",
+    "titolo": "Il re manda i servi a chiamare gli invitati alle nozze",
+    "anno": "fine XVI secolo",
+    "luogo": "Rijksmuseum, Amsterdam",
+    "licenza": "CC0 (pubblico dominio)",
+    "fonte": "https://commons.wikimedia.org/wiki/File:De_koning_laat_zijn_dienaren_gasten_uitnodigen_voor_het_bruiloftsfeest_Gelijkenis_van_het_bruiloftsfeest_(serietitel),_RP-P-1904-1228.jpg",
+    "illustra": "Vangelo, Mt 22,1-14",
+    "scena": "il re manda i servi a chiamare gli invitati alle nozze del figlio; sullo sfondo la città degli invitati che hanno rifiutato."
   },
-  "immagine": "/img/parola/2026-10-11.jpg",
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro del profeta Isaia",
+      "riferimento": "Is 25,8",
+      "versetto": "Eliminerà la morte per sempre; il Signore Dio asciugherà le lacrime su ogni volto.",
+      "evidenza": "asciugherà le lacrime su ogni volto"
+    },
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla lettera di san Paolo apostolo ai Filippesi",
+      "riferimento": "Fil 4,13",
+      "versetto": "Tutto posso in colui che mi dà la forza.",
+      "evidenza": "colui che mi dà la forza"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 22,9",
+      "versetto": "Andate ora ai crocicchi delle strade e tutti quelli che troverete, chiamateli alle nozze.",
+      "evidenza": "chiamateli alle nozze"
+    }
+  ],
+  "testo_social": "Dio prepara un banchetto per tutti i popoli e asciuga ogni lacrima. Paolo ci ricorda dove trovare la forza. E nel Vangelo il re, rifiutato dagli invitati, non annulla la festa: manda i servi per le strade a chiamare chiunque incontrino. Andare incontro alle persone là dove sono è anche il cuore del nostro servizio. Buona domenica!",
   "preparata_da": "Claude, 2026-10-09"
 }

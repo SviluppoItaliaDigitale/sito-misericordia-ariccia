@@ -1,36 +1,39 @@
 <!doctype html>
-<!-- Grafica «La Parola della domenica» 1080×1350. La riempie rendi.js con i dati della scheda. -->
+<!-- Carosello «La Parola della domenica», pagine 1080×1350. Le riempie rendi.js:
+     copertina (opera intera + quale lettura illustra) e una pagina per versetto. -->
 <html lang="it"><head><meta charset="utf-8">
 <style>
 @font-face{font-family:Playfair;src:url(../../static/fonts/playfair-600-latin.woff2);font-weight:600}
 @font-face{font-family:Jost;src:url(../../static/fonts/jost-latin.woff2);font-weight:300 700}
-:root{--navy:#1b223f;--ciano:#00a5dc;--giallo:#f2e433}
+:root{--navy:#1b223f;--ciano:#00a5dc;--giallo:#f2e433;--chiaro:#dfe6f5}
 *{box-sizing:border-box;margin:0;padding:0}
 body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jost;overflow:hidden;position:relative}
-/* testata: nome della rubrica e giorno liturgico */
-.testa{position:absolute;left:56px;right:56px;top:40px;display:flex;justify-content:space-between;align-items:baseline;
-  border-bottom:2px solid var(--giallo);padding-bottom:14px}
+.pagina{position:absolute;inset:0 0 106px 0;padding:44px 56px 0}
+[hidden]{display:none!important}
+/* testata comune */
+.testa{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--giallo);padding-bottom:14px}
 .rubrica{font-family:Playfair;font-weight:600;font-size:40px;color:var(--giallo)}
-.giorno{font-size:23px;font-weight:400;text-align:right;line-height:1.25;color:#dfe6f5}
-/* opera d'arte nella cornice ciano, come le foto delle grafiche brand */
-.opera{position:absolute;left:56px;right:56px;top:156px;height:650px;border:6px solid var(--ciano);border-radius:22px;overflow:hidden;
-  box-shadow:0 14px 40px rgba(0,0,0,.35)}
-.opera img{width:100%;height:100%;object-fit:cover}
-.credito{position:absolute;left:0;right:0;bottom:0;padding:44px 24px 14px;font-size:19px;color:#f3f3f3;
-  background:linear-gradient(transparent,rgba(10,14,32,.88))}
+.giorno{font-size:23px;text-align:right;line-height:1.25;color:var(--chiaro)}
+.numero{position:absolute;right:56px;bottom:30px;font-size:22px;color:var(--chiaro);letter-spacing:.04em}
+/* copertina */
+#copertina .titolo{font-family:Playfair;font-weight:600;font-size:76px;line-height:1.05;color:var(--giallo)}
+#copertina .sotto{margin-top:12px;font-size:28px;color:var(--chiaro)}
+.cornice{margin:30px auto 0;border:6px solid var(--ciano);border-radius:18px;overflow:hidden;background:#f4efe4;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cornice img{display:block;width:100%;height:100%;object-fit:contain}
+.illustra{margin-top:22px;font-size:27px;line-height:1.35}
+.illustra b{color:var(--ciano);font-weight:600}
+.credito{margin-top:8px;font-size:20px;color:#b9c3dc;line-height:1.35}
 .credito i{font-style:italic}
-/* versetto */
-.parola{position:absolute;left:72px;right:72px;top:830px;bottom:130px;display:flex;flex-direction:column;justify-content:center}
-.virgolette{font-family:Playfair;font-size:120px;line-height:.6;color:var(--ciano);height:44px}
-.versetto{font-family:Playfair;font-weight:600;font-size:54px;line-height:1.22}
+.scorri{position:absolute;left:56px;bottom:26px;font-size:25px;font-weight:600;color:var(--giallo)}
+/* pagina del versetto */
+.lettura{margin-top:64px;border-left:6px solid var(--giallo);padding-left:24px}
+.lettura .nome{font-size:40px;font-weight:600;color:var(--ciano);line-height:1.1}
+.lettura .libro{margin-top:6px;font-size:28px;color:var(--chiaro)}
+.parola{position:absolute;left:72px;right:72px;top:330px;bottom:96px;display:flex;flex-direction:column;justify-content:center}
+.virgolette{font-family:Playfair;font-size:180px;line-height:.6;color:var(--ciano);height:72px}
+.versetto{font-family:Playfair;font-weight:600;font-size:76px;line-height:1.18}
 .versetto em{font-style:normal;color:var(--giallo)}
-.rif{margin-top:20px;font-size:30px;font-weight:600;color:var(--ciano)}
-.rif span{font-weight:400;color:#dfe6f5}
-/* senza opera: solo tipografica, il versetto prende tutto lo spazio */
-body.solo-testo .opera{display:none}
-body.solo-testo .parola{top:150px}
-body.solo-testo .versetto{font-size:84px}
-body.solo-testo .virgolette{font-size:200px;height:80px}
+.rif{margin-top:26px;font-size:32px;font-weight:600;color:var(--ciano)}
 /* piede bianco del brand */
 .piede{position:absolute;left:0;right:0;bottom:0;height:106px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 56px}
 .marchio{display:flex;align-items:center;gap:18px;color:var(--navy);font-weight:600;font-size:25px;line-height:1.15}
@@ -38,44 +41,71 @@ body.solo-testo .virgolette{font-size:200px;height:80px}
 .sito{color:#0a7fb0;font-weight:600;font-size:25px}
 </style></head>
 <body>
-<div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="giorno"></div></div>
-<div class="opera"><img id="img" alt=""><div class="credito" id="credito"></div></div>
-<div class="parola">
-  <div class="virgolette">“</div>
-  <div class="versetto" id="versetto"></div>
-  <div class="rif" id="rif"></div>
-</div>
+<section class="pagina" id="copertina" hidden>
+  <div class="titolo">La Parola<br>della domenica</div>
+  <div class="sotto" id="c-giorno"></div>
+  <div class="cornice" id="c-cornice"><img id="c-img" alt=""></div>
+  <div class="illustra" id="c-illustra"></div>
+  <div class="credito" id="c-credito"></div>
+  <div class="scorri" id="c-scorri"></div>
+  <div class="numero" id="c-numero"></div>
+</section>
+<section class="pagina" id="pagina" hidden>
+  <div class="testa"><div class="rubrica">La Parola della domenica</div><div class="giorno" id="p-giorno"></div></div>
+  <div class="lettura"><div class="nome" id="p-nome"></div><div class="libro" id="p-libro"></div></div>
+  <div class="parola">
+    <div class="virgolette">“</div>
+    <div class="versetto" id="p-versetto"></div>
+    <div class="rif" id="p-rif"></div>
+  </div>
+  <div class="numero" id="p-numero"></div>
+</section>
 <div class="piede">
   <div class="marchio"><img src="../../static/img/loghi/mise-triangolo.png" alt="">Misericordia<br>di Ariccia</div>
   <div class="sito">www.misericordia-ariccia.it</div>
 </div>
 <script>
-window.riempi = async (s, immagine) => {
-  const esc = t => t.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-  const mesi = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
-  const [a, m, g] = s.data.split('-').map(Number);
-  document.getElementById('giorno').innerHTML = `${g} ${mesi[m - 1]} ${a}<br>${esc(s.giorno_liturgico)}`;
-  let v = esc(s.versetto);
-  if (s.evidenza) v = v.replace(esc(s.evidenza), `<em>${esc(s.evidenza)}</em>`);
-  document.getElementById('versetto').innerHTML = v;
-  document.getElementById('rif').innerHTML = `${esc(s.riferimento)} <span>· ${esc(s.lettura)}</span>`;
-  if (s.opera && immagine) {
-    const img = document.getElementById('img');
-    img.src = immagine;
-    img.style.objectPosition = s.opera.inquadratura || 'center';
-    if (s.opera.zoom) { img.style.transform = `scale(${s.opera.zoom})`; img.style.transformOrigin = s.opera.inquadratura || 'center'; }
-    const o = s.opera;
-    document.getElementById('credito').innerHTML = `${esc(o.autore)}, <i>${esc(o.titolo)}</i>${o.anno ? ' (' + esc(o.anno) + ')' : ''}${o.luogo ? ', ' + esc(o.luogo) : ''}`;
-    await img.decode();
-  } else {
-    document.body.classList.add('solo-testo');
-  }
-  // il versetto deve stare nel suo spazio: si rimpicciolisce finché non trabocca
-  const box = document.querySelector('.parola'), el = document.getElementById('versetto');
+const esc = t => String(t).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+const data = s => { const [a, m, g] = s.data.split('-').map(Number); return `${g} ${MESI[m - 1]} ${a}`; };
+const $ = id => document.getElementById(id);
+const stringi = (box, el, minimo) => {  // il testo si rimpicciolisce finché sta nel suo spazio
   let px = parseFloat(getComputedStyle(el).fontSize);
-  while (box.scrollHeight > box.clientHeight + 1 && px > 30) { px -= 2; el.style.fontSize = px + 'px'; }
-  await document.fonts.ready;
+  while (box.scrollHeight > box.clientHeight + 1 && px > minimo) { px -= 2; el.style.fontSize = px + 'px'; }
   return { corpo: px, trabocca: box.scrollHeight > box.clientHeight + 1 };
+};
+
+// Copertina: l'opera INTERA (mai ritagliata), la cornice prende le sue proporzioni.
+window.copertina = async (s, immagine, n) => {
+  $('copertina').hidden = false;
+  $('c-giorno').textContent = `${s.giorno_liturgico} · ${data(s)}`;
+  const img = $('c-img'); img.src = immagine; await img.decode();
+  const o = s.opera, maxL = 968, maxA = 700, r = img.naturalWidth / img.naturalHeight;
+  const l = Math.min(maxL, maxA * r);
+  $('c-cornice').style.width = l + 'px'; $('c-cornice').style.height = (l / r) + 'px';
+  $('c-illustra').innerHTML = `<b>${esc(o.illustra)}</b> · ${esc(o.scena)}`;
+  $('c-credito').innerHTML = `${esc(o.autore)}, <i>${esc(o.titolo)}</i>${o.anno ? ', ' + esc(o.anno) : ''}${o.luogo ? ' · ' + esc(o.luogo) : ''} · pubblico dominio`;
+  $('c-scorri').textContent = `Scorri: ${s.pagine.length === 1 ? 'il versetto' : s.pagine.length + ' versetti'} della domenica →`;
+  $('c-numero').textContent = `1 / ${n}`;
+  await document.fonts.ready;
+  const p = $('copertina');
+  return { corpo: 0, trabocca: p.scrollHeight > p.clientHeight + 1 };
+};
+
+// Pagina del versetto: si capisce subito da quale lettura viene.
+window.versetto = async (s, i, n, primo) => {
+  $('pagina').hidden = false;
+  const v = s.pagine[i];
+  $('p-giorno').innerHTML = `${data(s)}<br>${esc(s.giorno_liturgico)}`;
+  $('p-nome').textContent = v.lettura;
+  $('p-libro').textContent = v.fonte_lettura;
+  let t = esc(v.versetto);
+  if (v.evidenza) t = t.replace(esc(v.evidenza), `<em>${esc(v.evidenza)}</em>`);
+  $('p-versetto').innerHTML = t;
+  $('p-rif').textContent = v.riferimento;
+  $('p-numero').textContent = `${primo + i} / ${n}`;
+  await document.fonts.ready;
+  return stringi(document.querySelector('.parola'), $('p-versetto'), 40);
 };
 </script>
 </body></html>

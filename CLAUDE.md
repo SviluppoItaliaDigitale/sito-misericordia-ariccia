@@ -59,10 +59,11 @@ solo la bacheca non ripubblicano il sito.
 ## Parola della domenica sui social (dal 9/10/2026)
 
 Ogni domenica alle 7:47 il workflow `parola-domenica.yml` pubblica su Facebook e
-Instagram (solo social, nessuna pagina) un versetto delle letture con la sua grafica
-e, se c'è, un'opera d'arte di pubblico dominio da Wikimedia Commons. Lo prepara ogni
+Instagram (solo social, nessuna pagina) un carosello: copertina con una sola opera
+d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
+versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara ogni
 mercoledì la routine cloud «Parola della domenica»: scheda in
-`.github/social/parola/AAAA-MM-GG.json`, grafica in `static/img/parola/`, strumenti in
+`.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
 
 ## Infrastruttura
