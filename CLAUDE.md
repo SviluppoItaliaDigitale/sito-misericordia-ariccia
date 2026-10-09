@@ -25,6 +25,16 @@ notte, che la pagina della liturgia mostri la data di oggi; se il rebuild
 notturno è fallito per qualsiasi motivo, rilancia il deploy da solo e
 riprova ogni 30 minuti finché la pagina non risulta aggiornata.
 
+## Verifica quotidiana dei dati (dal 9/10/2026)
+
+Una routine cloud («Verifica dati sito Misericordia Ariccia», ogni mattina)
+controlla sulle fonti ufficiali tutti i dati che possono cambiare (112 e
+116117 nel Lazio, ASL Roma 6, leggi, importi, vaccini, statistiche, contatti),
+elencati con file e fonte in `data/dati_da_verificare.yaml`. Corregge e
+pubblica da sola i dati certi; quelli delicati o dubbi li mette nella issue
+«Verifica dati: da controllare». Procedura: `docs/verifica-dati.md`.
+**Quando aggiungi un dato aggiornabile al sito, aggiungilo anche al registro.**
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)
