@@ -41,7 +41,7 @@ contatto:
 <div class="galleria-griglia">
   <picture><source srcset="/img/attivita/attivita-03.webp" type="image/webp"><img src="/img/attivita/attivita-03.jpg" alt="Mezzo per i servizi sociali della Misericordia di Ariccia" width="1600" height="1200" loading="lazy" decoding="async"></picture>
   <picture><source srcset="/img/attivita/attivita-05.webp" type="image/webp"><img src="/img/attivita/attivita-05.jpg" alt="Veicolo attrezzato per il trasporto sociale" width="1200" height="1600" loading="lazy" decoding="async"></picture>
-  <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali nel centro di Ariccia" width="1200" height="1600" loading="lazy" decoding="async"></picture>
+  <picture><source srcset="/img/attivita/attivita-15.webp" type="image/webp"><img src="/img/attivita/attivita-15.jpg" alt="Mezzo dei servizi sociali della Misericordia di Ariccia in una piazza dei Castelli Romani" width="1200" height="1600" loading="lazy" decoding="async"></picture>
 </div>
 
 ## Ti accompagniamo nella vita di ogni giorno
