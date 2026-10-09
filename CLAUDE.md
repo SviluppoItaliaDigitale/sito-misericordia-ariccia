@@ -194,6 +194,8 @@ Velletri Moda):
   caricato con la **Reels API** ufficiale (`/video_reels`, tre fasi; registro
   `facebook_reel`). Mai `/videos`: quei video diventavano Reel non distribuiti,
   visibili solo agli amministratori (4/10/2026). Limite Reel via API: 90 s.
+- Tutti i post escono con il luogo **Ariccia** (Facebook `place`, Instagram
+  `location_id`; vedi `docs/pubblicazione-social.md`).
 - Il testo del post è `description`/sommario della news; per un testo
   su misura usare `social_testo:` nel front matter; `social: false` per
   non condividere. 5x1000 quando pertinente: **C.F. 90031910582**.

@@ -49,6 +49,12 @@ MAX_GIORNI = int(os.environ.get("SOCIAL_MAX_GIORNI", "10"))
 MAX_PER_ESECUZIONE = int(os.environ.get("SOCIAL_MAX_PER_ESECUZIONE", "3"))
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "si", "yes")
 
+# Luogo dei post (Facebook «place», Instagram «location_id»): la pagina-luogo
+# «Ariccia». Se SOCIAL_LUOGO_ID non è impostato lo script la cerca da solo con
+# la Graph API (vedi luogo_post); se non la trova i post escono senza luogo.
+LUOGO_ID = os.environ.get("SOCIAL_LUOGO_ID", "").strip()
+LUOGO_NOME = "Ariccia"
+
 HASHTAG = "#MisericordiaAriccia #Misericordie #Ariccia #CastelliRomani #Volontariato"
 
 
@@ -183,6 +189,54 @@ def aggiorna_facebook(news, reg, prova):
         print(f"   {nid}: aggiornato il post Facebook {pid}")
 
 
+_luogo = {}
+
+
+def luogo_post():
+    """Id della pagina-luogo «Ariccia» da usare come luogo dei post, o None.
+    1) SOCIAL_LUOGO_ID; 2) ricerca delle pagine con dati di posizione
+    (city = Ariccia); 3) la nostra pagina, se il suo indirizzo è ad Ariccia.
+    Il risultato si calcola una volta per esecuzione e si scrive nel log."""
+    if "id" in _luogo:
+        return _luogo["id"]
+    trovato, come = None, ""
+    if LUOGO_ID:
+        trovato, come = LUOGO_ID, "SOCIAL_LUOGO_ID"
+    else:
+        try:
+            r = graph_get("pages/search", {"q": LUOGO_NOME, "fields": "id,name,location"})
+            for p in r.get("data", []):
+                loc = p.get("location") or {}
+                if p.get("name") == LUOGO_NOME and loc.get("city") == LUOGO_NOME and not loc.get("street"):
+                    trovato, come = p["id"], "ricerca pagine"
+                    break
+        except Exception as e:  # noqa: BLE001
+            print(f"Luogo: ricerca della pagina «{LUOGO_NOME}» non riuscita ({e})")
+        if not trovato and PAGE_ID:
+            try:
+                loc = graph_get(PAGE_ID, {"fields": "location"}).get("location") or {}
+                if loc.get("city") == LUOGO_NOME:
+                    trovato, come = PAGE_ID, "indirizzo della nostra pagina"
+            except Exception as e:  # noqa: BLE001
+                print(f"Luogo: lettura dell'indirizzo della pagina non riuscita ({e})")
+    print(f"Luogo dei post: {trovato} ({come})" if trovato else "Luogo dei post: nessuno, si pubblica senza luogo")
+    _luogo["id"] = trovato
+    return trovato
+
+
+def con_luogo(pubblica, parametri, chiave):
+    """Prova a pubblicare col luogo; se Meta rifiuta proprio il luogo, riprova senza."""
+    luogo = luogo_post()
+    if luogo:
+        try:
+            return pubblica({**parametri, chiave: luogo})
+        except RuntimeError as e:
+            if "place" not in str(e).lower() and "location" not in str(e).lower():
+                raise
+            print(f"   luogo rifiutato da Meta, si pubblica senza ({e})")
+    return pubblica(parametri)
+
+
 def pubblica_facebook(n):
     # Sempre un post con link: Facebook costruisce l'anteprima da og:title/og:image
     # e il video si guarda nell'articolo. I video caricati con l'API (/videos)
@@ -191,7 +245,8 @@ def pubblica_facebook(n):
     testo = testo_facebook(n)
     if n.get("video"):
         testo = testo.replace("\n\n👉 Leggi tutto:", "\n\n▶️ Guarda il video e leggi tutto:")
-    r = graph_post(f"{PAGE_ID}/feed", {"message": testo, "link": n["url"]})
+    r = con_luogo(lambda par: graph_post(f"{PAGE_ID}/feed", par),
+                  {"message": testo, "link": n["url"]}, "place")
     return r["id"]
 
 
@@ -240,7 +295,7 @@ def pubblica_instagram(n):
     else:
         parametri = {"image_url": n["immagine"], "caption": testo_instagram(n)}
         attese = 40  # fino a ~2 minuti: con più post di fila Instagram rallenta
-    c = graph_post(f"{IG_USER_ID}/media", parametri)
+    c = con_luogo(lambda par: graph_post(f"{IG_USER_ID}/media", par), parametri, "location_id")
     cid = c["id"]
     for _ in range(attese):
         stato = graph_get(cid, {"fields": "status_code"}).get("status_code")
@@ -299,6 +354,8 @@ def main():
         reti = {"facebook": None, "facebook_reel": None, "instagram": None}
 
     fatte, errori = 0, 0
+    if not prova:
+        luogo_post()  # sempre nel log, anche quando non c'è niente da pubblicare
     if AGGIORNA_FB and PAGE_ID and PAGE_TOKEN:
         try:
             if AGGIORNA_FB == "elenco":
