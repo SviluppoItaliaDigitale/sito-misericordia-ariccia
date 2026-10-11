@@ -23,12 +23,12 @@ Claude (Claude Code) e ChatGPT (chat con connettore GitHub, Codex) lavorano sugl
 ChatGPT lavora **in autonomia fino alla pubblicazione**, senza aspettare Claude:
 
 1. **Leggi la versione di `main`** di questo file e l'elenco delle pull request aperte. Se un file che devi toccare è già in una PR aperta di un'altra sessione, non toccarlo: scrivilo in «Domande» e fai il resto.
-2. **Prendi le richieste aperte** indirizzate a ChatGPT (o a «chi è disponibile»), in ordine di data. Se non ce ne sono, rispondi in una riga: «Nessuna richiesta aperta per me in bacheca».
-3. **Apri un ramo tuo** da `main` aggiornato: `chatgpt/<argomento>-AAAAMMGG` (o `codex/...`). Non riprendere il ramo di un'altra sessione.
+2. **Prendi prima i lavori lasciati a metà** nella sezione «Lavori in corso», poi le richieste aperte indirizzate a ChatGPT (o a «chi è disponibile»), in ordine di data. Solo se entrambe le sezioni sono vuote rispondi in una riga: «Nessuna richiesta aperta per me in bacheca».
+3. **Apri un ramo tuo** da `main` aggiornato: `chatgpt/<argomento>-AAAAMMGG` (o `codex/...`). Non riprendere il ramo di un'altra sessione, **salvo quando è indicato in «Lavori in corso»**: quel ramo, e la sua PR, sono passati a te e li continui lì.
 4. **Fai il lavoro** seguendo le istruzioni della richiesta e le regole del repository. Leggi solo i file che servono a quel lavoro.
 5. **Fai i controlli del repository** elencati in «Questo repository» (build, script di controllo). Se Claude non c'è, la revisione che di solito fa Claude la fai tu: usa come lista di controllo i file pertinenti di `.claude/agents/` se il repository li ha, altrimenti le regole di `CLAUDE.md`, `.claude/rules/` e i controlli di «Questo repository»; rendi e guarda le immagini, rileggi il testo.
 6. **Nella stessa PR aggiorna questa bacheca**: accanto alla richiesta scrivi «fatta da ChatGPT, PR #N» e una riga su che cosa hai fatto; se una parte non si poteva fare, scrivi il motivo.
-7. **Apri la PR verso `main`, aspetta i controlli automatici e, se sono verdi, uniscila tu** (squash) e verifica che la pubblicazione parta e finisca (scheda Actions). Questo vale salvo le eccezioni sotto e salvo quelle scritte in «Questo repository». Se il tuo strumento non può unire una PR, scrivi ad Alessandro una riga sola: «Unisci la PR #N: <link>».
+7. **Apri la PR verso `main`, aspetta i controlli automatici e, se sono verdi, uniscila tu** (squash) e, dove il merge pubblica qualcosa (lo dice «Questo repository»), verifica che la pubblicazione parta e finisca (scheda Actions). Dove il merge non pubblica nulla, non lanciare a mano i workflow di pubblicazione. Questo vale salvo le eccezioni sotto e salvo quelle scritte in «Questo repository». Se il tuo strumento non può unire una PR, scrivi ad Alessandro una riga sola: «Unisci la PR #N: <link>».
 8. **Un merge per volta**: se hai più lavori pronti, mettili in una sola PR, oppure aspetta che la pubblicazione precedente sia finita prima di unire la successiva.
 9. **Rispondi ad Alessandro in breve**: che cosa hai fatto, numero della PR, link della pagina pubblicata, che cosa resta.
 
