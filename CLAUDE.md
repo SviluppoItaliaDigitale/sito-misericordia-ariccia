@@ -52,8 +52,9 @@ Cartella `bacheca/` (protocollo in `bacheca/LEGGIMI.md`, istruzioni per Codex in
 Claude apre un compito in `bacheca/compiti/NNN-titolo.md` (copiando
 `bacheca/MODELLO.md`) e ChatGPT lo esegue. La chat crea le immagini e Codex
 scrive nel repo con una PR. Claude controlla la consegna aprendo davvero
-l'immagine, poi la approva o la rimanda indietro con note. Le PR di Codex
-toccano solo `bacheca/`: Claude le controlla e le unisce. I push che toccano
+l'immagine, poi la approva o la rimanda indietro con note. Dall'11/10/2026 ChatGPT e Codex lavorano anche sui file del sito e
+uniscono da sé le PR a controlli verdi, seguendo il protocollo comune di
+`COORDINAMENTO.md` (uguale in tutti i repository; eccezioni scritte lì). I push che toccano
 solo la bacheca non ripubblicano il sito.
 
 ## Parola della domenica sui social (dal 9/10/2026)

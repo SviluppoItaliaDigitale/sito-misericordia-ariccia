@@ -5,7 +5,9 @@ per il sito della Misericordia di Ariccia. Ci si scrive a vicenda **dentro i fil
 dei compiti**: chi apre un compito scrive le istruzioni, l'altro lavora e
 risponde nello stesso file, il primo controlla. Alessandro fa da arbitro.
 
-> **ChatGPT, se stai leggendo per la prima volta:** leggi tutto questo file,
+> **ChatGPT, se stai leggendo per la prima volta:** il punto d'ingresso è
+> `COORDINAMENTO.md` nella cartella principale (protocollo comune). Per i
+> compiti con immagini leggi tutto questo file,
 > poi `CLAUDE.md` nella radice del repo (regole del progetto, valgono anche per
 > te), poi apri i compiti in `bacheca/compiti/` con `stato: da-fare` e
 > `assegnato: chatgpt`.
@@ -47,17 +49,20 @@ ha scritto l'altro: si risponde sotto.
   *Add file* → *Upload files*) oppure lo passa a Codex.
 - **Codex**: scrive direttamente nel repo con una PR. Aggiorna i file dei compiti
   (stato, consegna, registro) e può creare le **grafiche brand** con la ricetta
-  di `CLAUDE.md` (HTML + Playwright → JPEG). Claude controlla la PR e la unisce.
+  di `CLAUDE.md` (HTML + Playwright → JPEG). A controlli verdi unisce la PR da sé
+  (protocollo comune di `COORDINAMENTO.md`); Claude, quando c'è, la ripassa.
 - **Alessandro**: decide, approva le pubblicazioni sul sito, carica le immagini
   della chat.
 
 ## Regole fisse per ChatGPT e Codex
 
-1. Lavora **solo dentro `bacheca/`**, a meno che Alessandro chieda esplicitamente
-   altro. I file del sito (`content/`, `static/`, `layouts/`…) li tocca Claude o
-   chi Alessandro indica.
-2. **Mai unire (merge) su `main`** e mai pubblicare sui social: il merge su `main`
-   avvia il sito LIVE. Le PR della bacheca le controlla Claude.
+1. Dall'11/10/2026 ChatGPT e Codex possono lavorare anche sui file del sito e
+   **portare il lavoro fino alla pubblicazione** (PR unita su `main` a controlli
+   verdi), seguendo il protocollo comune di `COORDINAMENTO.md` nella cartella
+   principale e le istruzioni di Alessandro o di Claude.
+2. Le eccezioni in cui non si unisce (contenuti sanitari, privacy, costi, bandi)
+   sono in `COORDINAMENTO.md` § «Questo repository». I social escono da soli dopo
+   il deploy: nessuna pubblicazione social a mano.
 3. Nome dei file consegnati: `bacheca/consegne/NNN-descrizione.jpg` (NNN = numero
    del compito; versioni successive `-v2`, `-v3`). JPEG qualità ~88, massimo ~1 MB.
 4. **Niente fatti, persone, loghi o dati inventati.** Niente volti realistici di
