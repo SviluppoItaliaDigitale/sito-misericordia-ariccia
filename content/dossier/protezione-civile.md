@@ -116,7 +116,7 @@ tappe:
   - anno: "REAS"
     epoca: "Montichiari"
     titolo: "La fiera dell'emergenza"
-    testo: "Dal **2001** a Montichiari, in provincia di Brescia, si tiene **REAS**, il Salone internazionale dell'emergenza: ambulanze, mezzi speciali, droni, robot di ricerca, attrezzature per il soccorso in acqua e per le sale operative. Nel 2024 ha avuto oltre **30.000 visitatori** da 40 Paesi. Le Misericordie ci sono con un padiglione proprio dal **2016**, quando portarono anche un elicottero dell'elisoccorso. Per i volontari è l'appuntamento dell'anno per incontrarsi di persona. L'edizione 2026 si tiene dall'**8 al 10 ottobre**, con la «**Casa Giallo Ciano**» delle Misericordie e le prove di guida sicura in emergenza."
+    testo: "Dal **2001** a Montichiari, in provincia di Brescia, si tiene **REAS**, il Salone internazionale dell'emergenza: ambulanze, mezzi speciali, droni, robot di ricerca, attrezzature per il soccorso in acqua e per le sale operative. Nel 2024 ha avuto oltre **30.000 visitatori** da 40 Paesi. Le Misericordie ci sono con un padiglione proprio dal **2016**, quando portarono anche un elicottero dell'elisoccorso. Per i volontari è l'appuntamento dell'anno per incontrarsi di persona. L'edizione 2026, dall'**8 al 10 ottobre**, ha ospitato la «**Casa Giallo Ciano**» delle Misericordie e le prove di guida sicura in emergenza."
   - anno: "Noi"
     epoca: "La Misericordia di Ariccia"
     titolo: "Un altro modo di esserci"

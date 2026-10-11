@@ -1252,9 +1252,9 @@ dati:
   fonte: "https://www.misericordie.it/"
   tipo: "evento"
   delicato: false
-  frequenza: "settimanale"
-  verificato: "2026-10-09"
-  note: "Date confermate (8-10/10/2026, Montichiari). DAL 11 OTTOBRE 2026 volgere al passato la frase «L'edizione 2026 si tiene…» in content/dossier/protezione-civile.md (riga del REAS)."
+  frequenza: "annuale"
+  verificato: "2026-10-11"
+  note: "REAS 2026 concluso (8-10/10/2026, Montichiari): l'11/10/2026 la frase in protezione-civile.md è stata volta al passato. Con l'annuncio di REAS 2027 si può aggiungere la nuova edizione."
 - id: "medaglia-oro-sanita-2023"
   cosa: "Medaglia d'oro al merito della sanità pubblica alla Confederazione (27/04/2023), ritirata dal presidente Domenico Giani."
   valore: "presidente nazionale: Domenico Giani"
