@@ -92,6 +92,7 @@ ha scritto l'altro: si risponde sotto.
 - In chat: *«Leggi `bacheca/LEGGIMI.md` nel repo sito-misericordia-ariccia e fai
   il compito NNN.»*
 - In Codex: *«Segui `bacheca/LEGGIMI.md` e lavora il compito NNN: aggiorna il
-  file del compito e apri una PR che tocca solo `bacheca/`.»*
+  file del compito e la voce in `COORDINAMENTO.md`, e apri una PR che tocca solo
+  `bacheca/` e `COORDINAMENTO.md`.»*
 - Per consegnare un'immagine fatta in chat via Codex: allegala al task e scrivi
   *«Salvala come `bacheca/consegne/NNN-….jpg` e segna il compito consegnato.»*
