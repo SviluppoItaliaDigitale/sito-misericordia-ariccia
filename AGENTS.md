@@ -6,3 +6,7 @@
 - Il merge su `main` pubblica il sito LIVE: un merge per volta, mai commit diretti su `main`.
 - Le regole del progetto sono in `CLAUDE.md` e in `.claude/rules/`: valgono anche per te. Leggi solo le parti che servono al lavoro in corso.
 - La cartella `bacheca/` (vedi `bacheca/LEGGIMI.md`) resta per i compiti con immagini già aperti in `bacheca/compiti/`; dal 13/10/2026 le immagini nuove le fa Claude e i nuovi lavori arrivano con il passaggio preparato da Claude qui sopra.
+
+## Code Review Rules
+
+- **Firma dei commit: non giudicarla dai commit del tuo ambiente.** I commit che vedi mentre rivedi una pull request li crea l'ambiente di revisione, con un'identità di servizio, e possono riportare la descrizione della pull request: non sono i commit della pull request. Non segnalare autore, committer o righe di firma dei commit: li controlla e li corregge chi unisce (`scripts/passa-a.py chiudi` riscrive a nome di Alessandro Cuollo i commit con un altro autore e toglie i trailer, regola `.claude/rules/firma-dei-lavori.md`). Segnala invece nomi di strumenti o righe di firma nei file modificati che vengono pubblicati; i file di governo interni (`CLAUDE.md`, `AGENTS.md`, `COORDINAMENTO.md`, `.claude/`, `memoria/`) ne parlano per forza.
