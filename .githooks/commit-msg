@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# commit-msg — toglie dal messaggio ogni riga che rimanda a uno strumento
+# automatico, prima che il commit esista.
+#
+# Perche' esiste (21/09/2026): la regola di CLAUDE.md «nessun riferimento
+# all'IA in cio' che si produce» vale anche per i messaggi di commit, ma era
+# affidata alla memoria di chi scrive. Un censimento ha trovato 170 commit su
+# main, dal 19 giugno 2026, con la riga di sessione nel messaggio: prodotti da
+# sessioni diverse, in mesi diversi, tutte convinte di rispettare la regola.
+# Ripulire quella storia costerebbe la riscrittura di oltre cinquemila commit;
+# impedire che ne nascano altri costa questo file.
+#
+# Agisce sul messaggio, mai sul contenuto. Se il messaggio resta vuoto dopo la
+# pulizia, il commit viene rifiutato con una spiegazione (un messaggio fatto
+# solo di quelle righe non descriveva nulla).
+#
+# Attivo dove `core.hooksPath` punta a .githooks/ — lo imposta
+# scripts/imposta-identita-git.sh, che gira all'avvio di ogni sessione.
+
+set -u
+MSG_FILE="$1"
+[ -f "$MSG_FILE" ] || exit 0
+
+PRIMA=$(mktemp); cp "$MSG_FILE" "$PRIMA"
+
+# Righe bandite: rimando di sessione, co-autore strumento, firme dei generatori.
+grep -viE '^[[:space:]]*(Claude-Session|Co-?authored-by:[[:space:]]*Claude|Generated with|🤖 Generated)' \
+  "$PRIMA" > "$MSG_FILE"
+
+# Via le righe vuote accumulate in fondo.
+printf '%s\n' "$(sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$MSG_FILE")" > "$MSG_FILE"
+
+if ! cmp -s "$PRIMA" "$MSG_FILE"; then
+  echo "[commit-msg] Rimosse dal messaggio le righe che rimandano a strumenti automatici (regola CLAUDE.md)." >&2
+fi
+
+# Un messaggio vuoto non descrive il lavoro: meglio fermarsi.
+if ! grep -qE '[^[:space:]#]' "$MSG_FILE"; then
+  echo "[commit-msg] Messaggio vuoto dopo la pulizia: scrivi che cosa cambia questo commit." >&2
+  rm -f "$PRIMA"; exit 1
+fi
+
+rm -f "$PRIMA"
+exit 0

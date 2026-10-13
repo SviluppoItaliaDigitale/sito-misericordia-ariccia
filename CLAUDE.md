@@ -47,15 +47,48 @@ cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py p
 
 ## Bacheca Claude ⇄ ChatGPT (dal 9/10/2026)
 
-Cartella `bacheca/` (protocollo in `bacheca/LEGGIMI.md`, istruzioni per Codex in
-`AGENTS.md`): quando serve un'immagine generata o quando Alessandro lo chiede,
-Claude apre un compito in `bacheca/compiti/NNN-titolo.md` (copiando
-`bacheca/MODELLO.md`) e ChatGPT lo esegue. La chat crea le immagini e Codex
-scrive nel repo con una PR. Claude controlla la consegna aprendo davvero
-l'immagine, poi la approva o la rimanda indietro con note. Dall'11/10/2026 ChatGPT e Codex lavorano anche sui file del sito e
-uniscono da sé le PR a controlli verdi, seguendo il protocollo comune di
-`COORDINAMENTO.md` (uguale in tutti i repository; eccezioni scritte lì). I push che toccano
-solo la bacheca non ripubblicano il sito.
+La bacheca è `COORDINAMENTO.md` nella cartella principale (protocollo comune,
+uguale in tutti i repository; eccezioni e controlli di questo sito nella parte
+«Questo repository»); istruzioni per Codex in `AGENTS.md`. Dall'11/10/2026
+ChatGPT e Codex lavorano anche sui file del sito e uniscono da sé le PR a
+controlli verdi, salvo le eccezioni scritte lì (contenuti sanitari, privacy,
+costi, bandi). I push che toccano solo la bacheca (`bacheca/`, `AGENTS.md`,
+`COORDINAMENTO.md`) non ripubblicano il sito.
+
+- **Passaggi a ChatGPT: li avvia Claude da sola (dal 13/10/2026).** Niente più
+  «guarda la bacheca» da aspettare: quando un lavoro va a ChatGPT, Claude lo
+  avvia con `python3 scripts/passa-a.py nuovo` (ramo `chatgpt/<argomento>-AAAAMMGG`,
+  voce in `COORDINAMENTO.md` § «Richieste» con la nota «passata in automatico»,
+  PR in bozza con la richiesta nella descrizione, commento di avvio
+  `@codex esegui la richiesta nella descrizione`). La richiesta è sempre
+  completa, nelle sette parti di `passa-a.py modello` (obiettivo, file, che cosa
+  fare, vincoli, controlli, consegna, che cosa non fare): nel canale automatico
+  ChatGPT non può fare domande. Codex lavora su quel ramo e non unisce; Claude
+  controlla il risultato (`passa-a.py stato`, immagini rese e guardate, controlli
+  del repository) e chiude a nome di Alessandro con `passa-a.py chiudi --pr N`
+  (commit riscritti se hanno un altro autore, PR pronta, controlli verdi, squash
+  merge, commenti dello strumento tolti, deploy verificato). Criteri, costi e
+  casi in cui non si passa nulla: `COORDINAMENTO.md` § «Passaggio automatico a
+  ChatGPT».
+- **Immagini: le fa Claude.** Le grafiche raster (grafiche brand, locandine,
+  immagini generate, JPEG per articoli e social) non passano più dalla chat di
+  ChatGPT né da Alessandro: le fa Claude con i propri strumenti — la ricetta
+  della grafica brand in questo file (§ «2. Grafica brand»), i blocchi di
+  `scripts/grafica-brand/`, i connettori grafici della sessione quando ci sono,
+  le opere e le foto con licenza libera — e le controlla aprendo davvero il
+  render prima di pubblicarle. Alessandro non deve fare nulla a mano (sua
+  istruzione del 13/10/2026: «io non devo fare nulla, devi fare tutto te in
+  piena autonomia»). La cartella `bacheca/compiti/` (protocollo in
+  `bacheca/LEGGIMI.md`, modello in `bacheca/MODELLO.md`) resta per i compiti
+  già aperti; i nuovi passano da `passa-a.py`.
+- **Regole comuni a tutti i repository**: `.claude/rules/autonomia.md` (piena
+  autonomia, lavoro diviso fra agenti, domande ad Alessandro nei dubbi) e
+  `.claude/rules/firma-dei-lavori.md` (ogni lavoro a firma di Alessandro Cuollo
+  o del suo nominativo IU0QVW, mai di uno strumento: identità git impostata da
+  `scripts/imposta-identita-git.sh`, hook `SessionStart` in
+  `.claude/settings.json`, che attiva anche `.githooks/commit-msg`; nessun nome
+  di strumenti in commit, PR, commenti e file pubblicati; squash merge con
+  messaggio scritto).
 
 ## Parola della domenica sui social (dal 9/10/2026)
 
