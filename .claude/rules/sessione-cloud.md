@@ -17,6 +17,7 @@ Vale in tutti i progetti, presenti e futuri. Obiettivo: Alessandro lavora da PC,
 
 ## Nuovo repository
 Quando si crea un repository nuovo per una realtà o un progetto:
-1. Copia in `.claude/rules/` tutte le regole trasversali di `assistente-personale/.claude/rules/`, e in `.claude/skills/` la skill `landing-premium` se il repo riguarda un sito.
+1. Copia in `.claude/rules/` tutte le regole trasversali di `assistente-personale/.claude/rules/`, e in `.claude/skills/` la skill `landing-premium` se il repo riguarda un sito. Copia anche il kit del passaggio automatico e dell'identità dei commit (dal 13/10/2026): `scripts/passa-a.py`, `scripts/imposta-identita-git.sh`, `.githooks/commit-msg` (tutti eseguibili) e, in `.claude/settings.json`, `"includeCoAuthoredBy": false` più l'hook `SessionStart` che esegue `bash scripts/imposta-identita-git.sh` (timeout 10); poi `.claude/strumenti.md` con la riga del kit. Verifica: `bash scripts/imposta-identita-git.sh`, `git config user.name` = `Alessandro Cuollo`, `git config core.hooksPath` = `.githooks`, `python3 scripts/passa-a.py stato` senza errori.
 2. Aggiungi il repo alla routine cloud «Allineamento quotidiano regole e skill nei repo dei siti» (`trig_01P4p1hNKf9AUZ9WH3ur8Dkk`): va sia nelle `sources` sia nell'elenco delle destinazioni del prompt.
-3. Aggiungi il repo in `memoria/` (voce della realtà) e in `CLAUDE.md` di `assistente-personale` se cambia il modo di lavorare.
+3. Copia in radice `COORDINAMENTO.md` (prima parte identica a quella di `assistente-personale/COORDINAMENTO.md`, poi la sezione «Questo repository») e crea `AGENTS.md` che rimanda alla bacheca.
+4. Aggiungi il repo in `memoria/` (voce della realtà) e in `CLAUDE.md` di `assistente-personale` se cambia il modo di lavorare.
