@@ -72,7 +72,11 @@ EMAIL_ORA="$(git config user.email 2>/dev/null || true)"
 #      Un collaboratore diverso ha un altro nome e non viene toccato.
 da_correggere=0
 [ -z "$NOME_ORA" ] || [ -z "$EMAIL_ORA" ] && da_correggere=1
-printf '%s %s' "$NOME_ORA" "$EMAIL_ORA" | grep -qiE 'claude|anthropic|\bbot\b|assistant' && da_correggere=1
+# Strumenti riconosciuti (13/10/2026: anche Codex/ChatGPT, Gemini/Jules, Copilot e simili,
+# perche' i passaggi automatici fanno lavorare altri strumenti sugli stessi repository).
+printf '%s %s' "$NOME_ORA" "$EMAIL_ORA" \
+  | grep -qiE 'claude|anthropic|codex|chatgpt|openai|gemini|jules|copilot|devin|cursor|\bbot\b|\[bot\]|assistant' \
+  && da_correggere=1
 [ "$EMAIL_ORA" = "$EMAIL_OK" ] && [ "$NOME_ORA" != "$NOME_OK" ] && da_correggere=1
 [ "$NOME_ORA" = "SviluppoItaliaDigitale" ] && da_correggere=1
 

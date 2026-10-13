@@ -13,12 +13,17 @@ Comandi
                                 PR in bozza (titolo + brief), commento «@codex esegui la richiesta
                                 nella descrizione», numero della PR scritto in bacheca
   stato  [--tutte]              le PR aperte sui rami chatgpt/*: bozza, commit dopo l'avvio,
-                                risposte dello strumento, crediti esauriti, controlli
-  chiudi --pr N [--attesa-minuti 40] [--senza-pulizia] [--senza-merge]
+                                risposte dello strumento, ambiente mancante, crediti esauriti, controlli
+  riavvia --pr N                rimanda il commento di avvio su una PR già aperta (per esempio dopo
+                                che Alessandro ha creato l'ambiente cloud del repository)
+  chiudi --pr N [--attesa-minuti 40] [--attesa-deploy-minuti 30] [--senza-pulizia]
+         [--senza-merge] [--senza-attesa-deploy]
                                 riscrive a nome di Alessandro i commit con un altro autore,
+                                porta nel ramo le novità della base (merge, mai rebase),
                                 segna la PR pronta, aspetta i controlli, squash merge con
                                 messaggio scritto, toglie dalla PR il commento di avvio e le
-                                risposte dello strumento, cancella il ramo
+                                risposte dello strumento, cancella il ramo e, dove c'è
+                                `deploy.yml`, aspetta che il deploy del merge finisca bene
 
 Solo libreria standard; GitHub via `gh api` (REST: in sessione cloud GraphQL non c'è);
 git solo con oggetti e riferimenti (commit-tree, update-ref): nessun checkout, la cartella
@@ -64,6 +69,14 @@ VIETATE = re.compile(
 )
 # Le sigle vanno cercate rispettando le maiuscole: «ai» e «ia» minuscole sono parole italiane.
 VIETATE_SIGLE = re.compile(r"\b(IA|AI|LLM)\b")
+# Account degli strumenti su GitHub (commenti e revisioni da togliere a lavoro unito).
+# `github-actions[bot]` NON c'è: i suoi rapporti (accessibilità, controlli) restano sulla PR.
+BOT_STRUMENTO = re.compile(r"codex|chatgpt|openai|claude|anthropic|gemini|jules|copilot", re.IGNORECASE)
+# Righe di trailer da togliere dai messaggi di commit (qualunque strumento).
+TRAILER_STRUMENTO = re.compile(
+    r"^\s*(co-?authored-by\s*:|signed-off-by\s*:|claude-session\s*:|generated (with|by)\b|🤖|made with\b)",
+    re.IGNORECASE,
+)
 
 # Le sette parti della richiesta, nell'ordine, riconosciute dal numero e dalla prima parola.
 PARTI = [
@@ -171,6 +184,13 @@ def gh_api(percorso: str, metodo: str = "GET", dati: dict | None = None, ok_se: 
         return json.loads(out)
     except json.JSONDecodeError:
         return out
+
+
+def fetch_rami(radice: Path, *rami: str) -> None:
+    """Aggiorna `origin/<ramo>` con refspec espliciti: i cloni delle sessioni cloud sono a ramo singolo
+    (`fetch = +refs/heads/main:…`) e `git fetch origin <ramo>` lì non crea il riferimento remoto."""
+    cmd = ["git", "fetch", "-q", "origin"] + [f"+refs/heads/{r}:refs/remotes/origin/{r}" for r in rami]
+    run(cmd, cwd=str(radice))
 
 
 def radice_repo() -> Path:
@@ -296,11 +316,16 @@ def inserisci_in_richieste(testo: str, voce: str) -> str:
     m2 = re.search(r"^## ", testo[inizio:], re.MULTILINE)
     fine = inizio + m2.start() if m2 else len(testo)
     sezione = testo[inizio:fine]
+    # La riga sentinella «- Nessuna richiesta aperta.» non può restare accanto a una richiesta vera.
+    sezione = re.sub(r"^- \*{0,2}Nessuna richiesta aperta\b[^\n]*\n?", "", sezione, flags=re.MULTILINE)
     m3 = re.search(r"^- \*\*", sezione, re.MULTILINE)
     if m3:
-        punto = inizio + m3.start()
-        return testo[:punto] + voce + "\n" + testo[punto:]
-    return testo[:fine].rstrip("\n") + "\n\n" + voce + "\n" + testo[fine:]
+        punto = m3.start()
+        sezione = sezione[:punto] + voce + "\n" + sezione[punto:]
+    else:
+        prima = sezione.rstrip("\n")
+        sezione = (prima + "\n\n" if prima.strip() else "\n") + voce + "\n"
+    return testo[:inizio] + sezione + testo[fine:]
 
 
 # --- Comandi -------------------------------------------------------------------
@@ -342,9 +367,13 @@ def cmd_nuovo(args) -> None:
             die(f"esiste già la PR #{pr['number']} sul ramo {ref}: controllala con `stato`")
 
     info(f"repository {repo}, base {base}, ramo {ramo}")
-    run(["git", "fetch", "-q", "origin", base], cwd=str(radice))
+    fetch_rami(radice, base)
     if run(["git", "ls-remote", "--heads", "origin", ramo], cwd=str(radice)).stdout.strip():
         die(f"il ramo {ramo} esiste già su origin")
+    ref = f"refs/heads/{ramo}"
+    if run(["git", "show-ref", "--verify", "--quiet", ref], cwd=str(radice), check=False).returncode == 0:
+        die(f"il ramo {ramo} esiste già in locale: non lo sovrascrivo (cancellalo con "
+            f"`git branch -D {ramo}` se è un residuo, o scegli un altro --argomento)")
     base_sha = run(["git", "rev-parse", f"origin/{base}"], cwd=str(radice)).stdout.strip()
     r = run(["git", "show", f"{base_sha}:{BACHECA}"], cwd=str(radice), check=False)
     if r.returncode != 0:
@@ -353,8 +382,8 @@ def cmd_nuovo(args) -> None:
     voce = voce_bacheca(f"{data:%Y-%m-%d}", titolo, ramo, parti, None)
     albero = albero_con_file(radice, base_sha, BACHECA, inserisci_in_richieste(testo, voce))
     commit1 = commit_tree(radice, albero, [base_sha], f"Bacheca: richiesta «{titolo}»")
-    ref = f"refs/heads/{ramo}"
-    run(["git", "update-ref", ref, commit1], cwd=str(radice))
+    # Il vecchio valore «tutto zeri» chiede a git di creare il ramo solo se non esiste ancora.
+    run(["git", "update-ref", ref, commit1, "0" * 40], cwd=str(radice))
 
     corpo_pr = (
         f"{brief.rstrip()}\n\n---\n"
@@ -406,6 +435,11 @@ def _e_bot(utente: dict) -> bool:
     return (utente or {}).get("type") == "Bot" or "[bot]" in (utente or {}).get("login", "")
 
 
+def _e_strumento(utente: dict) -> bool:
+    """Vero per l'account di uno strumento (Codex e simili), falso per `github-actions[bot]`."""
+    return _e_bot(utente) and bool(BOT_STRUMENTO.search((utente or {}).get("login", "")))
+
+
 def _controlli(repo: str, sha: str) -> tuple[list[dict], str]:
     """Check run sul commit: (elenco, riassunto)."""
     dati = gh_api(f"repos/{repo}/commits/{sha}/check-runs?per_page=100") or {}
@@ -434,8 +468,10 @@ def cmd_stato(args) -> None:
         avvio = next((c for c in commenti if c["user"]["login"] == io_login
                       and c["body"].strip().lower().startswith("@codex")), None)
         t_avvio = _quando(avvio["created_at"]) if avvio else None
-        risposte = [c for c in commenti if _e_bot(c["user"])]
+        risposte = [c for c in commenti if _e_strumento(c["user"])]
         crediti_finiti = any(re.search(r"usage limit|reached your .*limit|crediti", c["body"], re.I)
+                             for c in risposte)
+        ambiente_manca = any(re.search(r"create an environment|crea un ambiente", c["body"], re.I)
                              for c in risposte)
         dopo = [c for c in commits if t_avvio and _quando(c["commit"]["committer"]["date"]) > t_avvio]
         altri_autori = sorted({f"{c['commit']['author']['name']} <{c['commit']['author']['email']}>"
@@ -459,7 +495,11 @@ def cmd_stato(args) -> None:
         else:
             print("  risposte dello strumento: nessuna")
         print(f"  controlli: {riass}")
-        if crediti_finiti:
+        if ambiente_manca and not dopo:
+            giudizio = ("AMBIENTE MANCANTE: lo strumento non ha un ambiente cloud per questo repository. "
+                        "Lo crea Alessandro da PC (chatgpt.com/codex/cloud/settings/environments), "
+                        "poi `riavvia --pr %d`; nel frattempo il lavoro lo fa Claude da sola" % n)
+        elif crediti_finiti:
             giudizio = "CREDITI FINITI: il lavoro lo fa Claude da sola e lo scrive in bacheca"
         elif dopo:
             giudizio = "HA FATTO PUSH: controllare il risultato, poi `chiudi --pr %d`" % n
@@ -473,18 +513,166 @@ def cmd_stato(args) -> None:
 
 
 def _messaggio_pulito(body: str) -> str:
-    righe = [r for r in body.splitlines()
-             if not re.match(r"^\s*(co-authored-by|signed-off-by|claude-session|generated (with|by))", r, re.I)]
+    """Messaggio di commit senza trailer né nomi di strumenti (stesse liste dei testi pubblici)."""
+    righe = [r for r in body.splitlines() if not TRAILER_STRUMENTO.match(r)]
     testo = "\n".join(righe)
-    testo = re.sub(r"\b(ChatGPT|Chat GPT|Codex|OpenAI|Claude|Anthropic|Copilot)\b", "lavoro", testo)
+    testo = VIETATE.sub("strumento", testo)
+    testo = VIETATE_SIGLE.sub("strumento", testo)
     testo = re.sub(r"\n{3,}", "\n\n", testo).strip()
     return testo or "Lavoro sul ramo"
+
+
+def _allinea_alla_base(radice: Path, repo: str, ramo: str, base: str) -> bool:
+    """Porta nel ramo le novità della base con un commit di merge (mai rebase su un ramo condiviso),
+    così i controlli girano sullo stato che verrà davvero unito. Solo oggetti git, nessun checkout.
+    Restituisce True se ha fatto push; si ferma se il merge ha conflitti."""
+    fetch_rami(radice, base, ramo)
+    sha_base = run(["git", "rev-parse", f"origin/{base}"], cwd=str(radice)).stdout.strip()
+    sha_ramo = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+    if run(["git", "merge-base", "--is-ancestor", sha_base, sha_ramo], cwd=str(radice),
+           check=False).returncode == 0:
+        info(f"il ramo contiene già tutto {base}")
+        return False
+    r = run(["git", "merge-tree", "--write-tree", "--messages", sha_ramo, sha_base], cwd=str(radice),
+            check=False)
+    if r.returncode != 0:
+        if r.returncode == 1:
+            die(f"il ramo {ramo} è in conflitto con {base}: va risolto a mano su una sessione con "
+                f"checkout (merge di {base} nel ramo, mai rebase), poi `chiudi` di nuovo.\n" + r.stdout[:1500])
+        die(f"git merge-tree non disponibile o fallito ({r.returncode}): serve git ≥ 2.38.\n{r.stderr[:500]}")
+    albero = r.stdout.split("\n", 1)[0].strip()
+    nuovo = commit_tree(radice, albero, [sha_ramo, sha_base], f"Allineamento con {base}")
+    run(["git", "push", "-q", f"--force-with-lease={ramo}:{sha_ramo}", "origin",
+         f"{nuovo}:refs/heads/{ramo}"], cwd=str(radice))
+    info(f"ramo {ramo} allineato a {base} con un commit di merge ({nuovo[:7]}): i controlli ripartono")
+    return True
+
+
+def _glob_github(pattern: str, percorso: str) -> bool:
+    """Confronto alla maniera dei filtri `paths` di GitHub Actions: `**` attraversa le cartelle, `*` no."""
+    rx = ""
+    i = 0
+    while i < len(pattern):
+        c = pattern[i]
+        if pattern.startswith("**", i):
+            rx += ".*"
+            i += 2
+            continue
+        rx += {"*": "[^/]*", "?": "[^/]"}.get(c, re.escape(c))
+        i += 1
+    return re.fullmatch(rx, percorso) is not None
+
+
+def _filtri_push(testo_workflow: str) -> dict[str, list[str]]:
+    """Le liste `paths` e `paths-ignore` del trigger `push` di un workflow (lettura minima, senza PyYAML)."""
+    filtri: dict[str, list[str]] = {}
+    m = re.search(r"^on:\s*\n((?:[ \t]+.*\n|\s*#.*\n|\n)*)", testo_workflow, re.MULTILINE)
+    blocco = m.group(1) if m else ""
+    m2 = re.search(r"^  push:\s*\n((?:    .*\n|\s*#.*\n|\n)*)", blocco, re.MULTILINE)
+    push = m2.group(1) if m2 else ""
+    for chiave in ("paths", "paths-ignore"):
+        m3 = re.search(rf"^    {chiave}:\s*\n((?:\s*-\s*.*\n|\s*#.*\n)*)", push, re.MULTILINE)
+        if m3:
+            voci = re.findall(r"^\s*-\s*['\"]?([^'\"\n#]+?)['\"]?\s*$", m3.group(1), re.MULTILINE)
+            filtri[chiave] = [v.strip() for v in voci if v.strip()]
+    return filtri
+
+
+def _deploy_atteso(radice: Path, repo: str, base: str, sha: str) -> tuple[bool, str]:
+    """Il commit unito farà partire `deploy.yml`? Guarda il workflow e i file del commit sul ramo
+    di base appena aggiornato (mai la cartella di lavoro di chi lancia lo script), e rispetta i
+    filtri `paths` / `paths-ignore` del trigger `push` (le bacheche non ripubblicano i siti)."""
+    wf = gh_api(f"repos/{repo}/actions/workflows/deploy.yml", tollerante=True)
+    if not isinstance(wf, dict):
+        return False, "il repository non ha il workflow deploy.yml"
+    if wf.get("state") not in (None, "active"):
+        return False, f"deploy.yml è in stato «{wf.get('state')}»"
+    fetch_rami(radice, base)
+    r = run(["git", "show", f"{sha}:.github/workflows/deploy.yml"], cwd=str(radice), check=False)
+    if r.returncode != 0:
+        return True, "deploy.yml non leggibile dal commit: aspetto comunque"
+    filtri = _filtri_push(r.stdout)
+    if not filtri:
+        return True, "ogni push su " + base + " ripubblica"
+    toccati = run(["git", "diff-tree", "--no-commit-id", "--name-only", "-r", sha],
+                  cwd=str(radice)).stdout.split()
+    if "paths" in filtri:
+        passa = [f for f in toccati if any(_glob_github(p, f) for p in filtri["paths"])]
+        if not passa:
+            return False, "nessun file del commit rientra nei `paths` del deploy"
+    if "paths-ignore" in filtri:
+        passa = [f for f in toccati if not any(_glob_github(p, f) for p in filtri["paths-ignore"])]
+        if not passa:
+            return False, "il commit tocca solo file esclusi dal deploy (`paths-ignore`)"
+    return True, "il commit tocca file che ripubblicano il sito"
+
+
+def _aspetta_deploy(radice: Path, repo: str, base: str, sha: str, minuti: int) -> None:
+    """Aspetta il run di `deploy.yml` per il commit di merge e ne riferisce l'esito.
+    Nessun run entro cinque minuti, un run fallito o un deploy mai concluso fermano lo script,
+    perché il sito non risulta ripubblicato; un run annullato dalla coda (vince l'ultimo) si
+    segue nel suo sostituto fino alla conclusione."""
+    atteso, motivo = _deploy_atteso(radice, repo, base, sha)
+    if not atteso:
+        info(f"nessun deploy da aspettare: {motivo}")
+        return
+    info(f"deploy atteso: {motivo}")
+    url_wf = f"https://github.com/{repo}/actions/workflows/deploy.yml"
+    scadenza = time.time() + minuti * 60
+    inizio = time.time()
+    run_id = None
+    run_dati: dict = {}
+    while time.time() < scadenza:
+        if run_id is None:
+            dati = gh_api(f"repos/{repo}/actions/workflows/deploy.yml/runs?head_sha={sha}&per_page=5",
+                          tollerante=True)
+            runs = dati.get("workflow_runs", []) if isinstance(dati, dict) else []
+            if runs:
+                run_dati = runs[0]
+                run_id = run_dati["id"]
+            elif time.time() - inizio > 300:
+                die(f"nessun run del deploy per {sha[:7]} dopo 5 minuti: il sito NON risulta ripubblicato "
+                    f"(workflow non partito o non osservabile). Controlla {url_wf} e rilancialo a mano.")
+            else:
+                info("in attesa che parta il deploy…")
+                time.sleep(30)
+                continue
+        else:
+            letto = gh_api(f"repos/{repo}/actions/runs/{run_id}", tollerante=True)
+            if isinstance(letto, dict):
+                run_dati = letto
+            else:
+                info("lettura del run fallita, riprovo")
+                time.sleep(30)
+                continue
+        stato, esito = run_dati["status"], run_dati.get("conclusion")
+        if stato == "completed":
+            if esito == "success":
+                info(f"deploy del merge concluso bene: {run_dati['html_url']}")
+                return
+            if esito == "cancelled":
+                # In coda vince l'ultimo deploy: si segue il sostituto fino in fondo.
+                dopo = gh_api(f"repos/{repo}/actions/workflows/deploy.yml/runs?per_page=5", tollerante=True)
+                recenti = dopo.get("workflow_runs", []) if isinstance(dopo, dict) else []
+                sost = next((r for r in recenti if r["id"] != run_id
+                             and _quando(r["created_at"]) >= _quando(run_dati["created_at"])), None)
+                if not sost:
+                    die(f"deploy del merge annullato e nessun deploy successivo lo sostituisce: "
+                        f"{run_dati['html_url']} — rilancia il deploy a mano")
+                info(f"deploy {run_id} annullato dalla coda: seguo il sostituto {sost['html_url']}")
+                run_id, run_dati = sost["id"], sost
+                continue
+            die(f"deploy del merge FALLITO ({esito}): {run_dati['html_url']} — il sito non è aggiornato, "
+                "va guardato il log e rilanciato il deploy")
+        info(f"deploy in corso ({stato}): {run_dati['html_url']}")
+        time.sleep(30)
+    die(f"il deploy non si è concluso entro {minuti} minuti: {run_dati.get('html_url') or url_wf}")
 
 
 def _riscrivi_autori(radice: Path, repo: str, ramo: str, base: str) -> bool:
     """Riscrive a nome di Alessandro i commit del ramo con un altro autore o con righe di strumento.
     Usa solo oggetti git (commit-tree): nessun checkout. Restituisce True se ha fatto push."""
-    run(["git", "fetch", "-q", "origin", base, ramo], cwd=str(radice))
+    fetch_rami(radice, base, ramo)
     vecchio_sha = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
     mb = run(["git", "merge-base", f"origin/{base}", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
     shas = run(["git", "rev-list", "--reverse", "--topo-order", f"{mb}..origin/{ramo}"],
@@ -559,11 +747,13 @@ def _aspetta_controlli(repo: str, n: int, minuti: int) -> str:
 
 
 def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
+    """Toglie dalla PR il commento di avvio e i commenti dell'account dello strumento.
+    I rapporti di `github-actions[bot]` (accessibilità, controlli) restano: sono del repository."""
     commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
     tolti, rimasti = 0, []
     for c in commenti:
         mio_avvio = c["user"]["login"] == io_login and c["body"].strip().lower().startswith("@codex")
-        if mio_avvio or _e_bot(c["user"]):
+        if mio_avvio or _e_strumento(c["user"]):
             esito = gh_api(f"repos/{repo}/issues/comments/{c['id']}", "DELETE", ok_se=("404",), tollerante=True)
             if isinstance(esito, tuple):
                 rimasti.append(c["html_url"])
@@ -571,7 +761,7 @@ def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
                 tolti += 1
     revisioni = gh_api(f"repos/{repo}/pulls/{n}/comments?per_page=100", paginato=True) or []
     for c in revisioni:
-        if _e_bot(c["user"]):
+        if _e_strumento(c["user"]):
             esito = gh_api(f"repos/{repo}/pulls/comments/{c['id']}", "DELETE", ok_se=("404",), tollerante=True)
             if isinstance(esito, tuple):
                 rimasti.append(c["html_url"])
@@ -583,6 +773,21 @@ def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
         # dalla pagina della PR o da una sessione sul PC, e qui si dice quali sono.
         info("commenti NON cancellati (il canale di questa sessione non lo permette): da togliere a mano:\n  "
              + "\n  ".join(rimasti))
+
+
+def cmd_riavvia(args) -> None:
+    """Rimanda il commento di avvio su una PR chatgpt/* già aperta (ambiente creato dopo, strumento
+    rimasto muto): niente ramo nuovo, niente voce nuova in bacheca."""
+    radice = radice_repo()
+    repo = owner_repo(radice)
+    n = args.pr
+    pr = gh_api(f"repos/{repo}/pulls/{n}")
+    if pr["state"] != "open":
+        die(f"la PR #{n} non è aperta ({pr['state']})")
+    if not pr["head"]["ref"].startswith(PREFISSO_RAMO):
+        die(f"la PR #{n} non è su un ramo chatgpt/* ({pr['head']['ref']})")
+    gh_api(f"repos/{repo}/issues/{n}/comments", "POST", {"body": COMMENTO_AVVIO + COMMENTO_AVVIO_CODA})
+    info(f"commento di avvio rimandato sulla PR #{n}: {pr['html_url']} — segui con `stato`")
 
 
 def cmd_chiudi(args) -> None:
@@ -601,6 +806,7 @@ def cmd_chiudi(args) -> None:
     io_login = (gh_api("user") or {}).get("login", "")
 
     _riscrivi_autori(radice, repo, ramo, base)
+    _allinea_alla_base(radice, repo, ramo, base)
 
     if pr["draft"]:
         _segna_pronta(repo, n)
@@ -617,7 +823,8 @@ def cmd_chiudi(args) -> None:
     })
     if not (esito and esito.get("merged")):
         die(f"merge non riuscito: {esito}")
-    info(f"PR #{n} unita con squash: {esito.get('sha', '')[:7]} "
+    sha_merge = esito.get("sha", "")
+    info(f"PR #{n} unita con squash: {sha_merge[:7]} "
          "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
     esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
     if isinstance(esito, tuple):
@@ -627,9 +834,12 @@ def cmd_chiudi(args) -> None:
         info(f"ramo {ramo} cancellato")
     if not args.senza_pulizia:
         _pulisci_commenti(repo, n, io_login)
-    if (radice / ".github" / "workflows" / "deploy.yml").exists():
-        info(f"deploy: https://github.com/{repo}/actions/workflows/deploy.yml — verifica che parta e finisca")
     info("ricorda: la voce in bacheca va spostata in «Archiviati» con l'esito nella prossima PR")
+    if args.senza_attesa_deploy:
+        info(f"--senza-attesa-deploy: se il repository pubblica un sito, verifica a mano "
+             f"https://github.com/{repo}/actions/workflows/deploy.yml")
+    elif sha_merge:
+        _aspetta_deploy(radice, repo, base, sha_merge, args.attesa_deploy_minuti)
 
 
 # --- Main ----------------------------------------------------------------------
@@ -655,13 +865,19 @@ def main() -> None:
     ps.add_argument("--tutte", action="store_true", help="tutte le PR aperte, non solo chatgpt/*")
     ps.set_defaults(fn=cmd_stato)
 
+    pr_ = sub.add_parser("riavvia", help="rimanda il commento di avvio su una PR chatgpt/* già aperta")
+    pr_.add_argument("--pr", type=int, required=True)
+    pr_.set_defaults(fn=cmd_riavvia)
+
     pc = sub.add_parser("chiudi", help="riscrive gli autori, segna pronta, aspetta i controlli, unisce")
     pc.add_argument("--pr", type=int, required=True)
     pc.add_argument("--titolo", help="titolo del commit di merge (predefinito: titolo della PR)")
     pc.add_argument("--messaggio", help="corpo del commit di merge (predefinito: riga sulla bacheca)")
-    pc.add_argument("--attesa-minuti", type=int, default=40)
+    pc.add_argument("--attesa-minuti", type=int, default=40, help="attesa massima dei controlli della PR")
+    pc.add_argument("--attesa-deploy-minuti", type=int, default=30, help="attesa massima del deploy dopo il merge")
     pc.add_argument("--senza-pulizia", action="store_true", help="non toglie i commenti dalla PR")
     pc.add_argument("--senza-merge", action="store_true", help="si ferma dopo i controlli, senza unire")
+    pc.add_argument("--senza-attesa-deploy", action="store_true", help="dopo il merge non aspetta il deploy")
     pc.add_argument("--qualsiasi", action="store_true", help="accetta anche rami non chatgpt/*")
     pc.set_defaults(fn=cmd_chiudi)
 
