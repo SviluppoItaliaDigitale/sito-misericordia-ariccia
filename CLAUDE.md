@@ -55,21 +55,25 @@ controlli verdi, salvo le eccezioni scritte lì (contenuti sanitari, privacy,
 costi, bandi). I push che toccano solo la bacheca (`bacheca/`, `AGENTS.md`,
 `COORDINAMENTO.md`) non ripubblicano il sito.
 
-- **Passaggi a ChatGPT: li avvia Claude da sola (dal 13/10/2026).** Niente più
-  «guarda la bacheca» da aspettare: quando un lavoro va a ChatGPT, Claude lo
-  avvia con `python3 scripts/passa-a.py nuovo` (ramo `chatgpt/<argomento>-AAAAMMGG`,
-  voce in `COORDINAMENTO.md` § «Richieste» con la nota «passata in automatico»,
-  PR in bozza con la richiesta nella descrizione, commento di avvio
-  `@codex esegui la richiesta nella descrizione`). La richiesta è sempre
-  completa, nelle sette parti di `passa-a.py modello` (obiettivo, file, che cosa
-  fare, vincoli, controlli, consegna, che cosa non fare): nel canale automatico
-  ChatGPT non può fare domande. Codex lavora su quel ramo e non unisce; Claude
-  controlla il risultato (`passa-a.py stato`, immagini rese e guardate, controlli
-  del repository) e chiude a nome di Alessandro con `passa-a.py chiudi --pr N`
-  (commit riscritti se hanno un altro autore, PR pronta, controlli verdi, squash
-  merge, commenti dello strumento tolti, deploy verificato). Criteri, costi e
-  casi in cui non si passa nulla: `COORDINAMENTO.md` § «Passaggio automatico a
-  ChatGPT».
+- **Passaggi a ChatGPT: li prepara e li chiude Claude (dal 13/10/2026).**
+  Niente più «guarda la bacheca» da aspettare: quando un lavoro va a ChatGPT,
+  Claude lo prepara con `python3 scripts/passa-a.py nuovo` (ramo
+  `chatgpt/<argomento>-AAAAMMGG`, voce in `COORDINAMENTO.md` § «Richieste» con
+  la nota «preparata da Claude, da avviare a mano in Codex Cloud», PR in bozza
+  con la richiesta nella descrizione) e riporta ad Alessandro il testo di
+  avvio, con la richiesta intera. Ad Alessandro restano due gesti, perché il
+  canale automatico `@codex` sulle PR per il suo account è muto e le vie a
+  pagamento sono escluse: l'avvio in Codex Cloud (incolla il testo) e, a
+  lavoro finito, «Create PR» nel task. La richiesta è sempre completa, nelle
+  sette parti di `passa-a.py modello` (obiettivo, file, che cosa fare, vincoli,
+  controlli, consegna, che cosa non fare): in Codex Cloud ChatGPT non può fare
+  domande. Codex non unisce e non tocca la bacheca; Claude controlla il
+  risultato (`passa-a.py stato`, immagini rese e guardate, controlli del
+  repository) e chiude a nome di Alessandro con `passa-a.py chiudi --pr N
+  --consegna M` (consegna portata nel ramo, commit riscritti se hanno un altro
+  autore, voce di bacheca archiviata, PR pronta, controlli verdi, squash merge,
+  commenti dello strumento tolti, deploy verificato). Criteri, costi e casi in
+  cui non si passa nulla: `COORDINAMENTO.md` § «Passaggio a ChatGPT».
 - **Immagini: le fa Claude.** Le grafiche raster (grafiche brand, locandine,
   immagini generate, JPEG per articoli e social) non passano più dalla chat di
   ChatGPT né da Alessandro: le fa Claude con i propri strumenti — la ricetta
