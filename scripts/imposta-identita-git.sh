@@ -73,7 +73,7 @@ EMAIL_ORA="$(git config user.email 2>/dev/null || true)"
 da_correggere=0
 [ -z "$NOME_ORA" ] || [ -z "$EMAIL_ORA" ] && da_correggere=1
 # Strumenti riconosciuti (13/10/2026: anche Codex/ChatGPT, Gemini/Jules, Copilot e simili,
-# perche' i passaggi automatici fanno lavorare altri strumenti sugli stessi repository).
+# perche' i passaggi a ChatGPT fanno lavorare altri strumenti sugli stessi repository).
 printf '%s %s' "$NOME_ORA" "$EMAIL_ORA" \
   | grep -qiE 'claude|anthropic|codex|chatgpt|openai|gemini|jules|copilot|devin|cursor|\bbot\b|\[bot\]|assistant' \
   && da_correggere=1

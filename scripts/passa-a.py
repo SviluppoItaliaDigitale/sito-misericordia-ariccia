@@ -1,29 +1,42 @@
 #!/usr/bin/env python3
 """
-Passa un lavoro a ChatGPT (Codex) da solo e lo richiude a nome di Alessandro:
-ramo `chatgpt/…`, voce in bacheca, PR in bozza con la richiesta, commento di avvio.
+Passa un lavoro a ChatGPT (Codex) e lo richiude a nome di Alessandro — preparato da Claude,
+avviato da Alessandro, chiuso da Claude: ramo `chatgpt/…`, voce in bacheca, PR in bozza con
+la richiesta, testo di avvio da incollare in Codex Cloud.
 
-Protocollo: `COORDINAMENTO.md` § «Passaggio automatico a ChatGPT» (uguale in tutti i
-repository di Alessandro) e regola `.claude/rules/firma-dei-lavori.md`.
+Protocollo: `COORDINAMENTO.md` § «Passaggio a ChatGPT» (uguale in tutti i repository di
+Alessandro) e regola `.claude/rules/firma-dei-lavori.md`. In Codex Cloud i gesti a mano sono
+due, entrambi di Alessandro: l'avvio (incolla il testo di avvio) e, a lavoro finito, «Create PR»
+dal task, che apre la pull request di consegna (la documentazione di Codex Cloud: «Review
+changes and test results before committing or opening a pull request»). Il commento `@codex …`
+sulla PR, che avvierebbe Codex da solo, per l'account di Alessandro non funziona (difetto aperto
+del canale delle PR, verificato il 13/10/2026 con gli ambienti cloud pubblicati): si usa solo con
+`--con-codex`, per riprovarlo senza spendere nulla.
 
 Comandi
   modello                       stampa lo schema della richiesta (sette parti, da compilare)
-  nuovo  --argomento SLUG --titolo "…" --brief FILE.md [--base main] [--prova]
+  nuovo  --argomento SLUG --titolo "…" --brief FILE.md [--base main] [--prova] [--con-codex]
                                 ramo chatgpt/SLUG-AAAAMMGG da origin/BASE, voce in «Richieste»,
-                                PR in bozza (titolo + brief), commento «@codex esegui la richiesta
-                                nella descrizione», numero della PR scritto in bacheca
-  stato  [--tutte]              le PR aperte sui rami chatgpt/*: bozza, commit dopo l'avvio,
-                                risposte dello strumento, ambiente mancante, crediti esauriti, controlli
-  riavvia --pr N                rimanda il commento di avvio su una PR già aperta (per esempio dopo
-                                che Alessandro ha creato l'ambiente cloud del repository)
-  chiudi --pr N [--attesa-minuti 40] [--attesa-deploy-minuti 30] [--senza-pulizia]
-         [--senza-merge] [--senza-attesa-deploy]
-                                riscrive a nome di Alessandro i commit con un altro autore,
-                                porta nel ramo le novità della base (merge, mai rebase),
-                                segna la PR pronta, aspetta i controlli, squash merge con
-                                messaggio scritto, toglie dalla PR il commento di avvio e le
-                                risposte dello strumento, cancella il ramo e, dove c'è
-                                `deploy.yml`, aspetta che il deploy del merge finisca bene
+                                PR in bozza (titolo + brief), numero della PR in bacheca; stampa
+                                il testo di avvio (intestazione + richiesta completa) da incollare
+                                in Codex Cloud. Con --con-codex lascia anche il commento
+                                «@codex esegui la richiesta nella descrizione»
+  stato  [--tutte]              le PR aperte sui rami chatgpt/*: bozza, pull request di consegna
+                                (certe o possibili), commit arrivati dopo la preparazione,
+                                risposte dello strumento, canale muto, crediti esauriti, controlli
+  riavvia --pr N [--con-codex]  ristampa il testo di avvio di una PR già aperta (e, con
+                                --con-codex, rimanda il commento di avvio)
+  chiudi --pr N [--consegna M] [--attesa-minuti 40] [--attesa-deploy-minuti 30]
+         [--senza-pulizia] [--senza-merge] [--senza-attesa-deploy]
+                                con --consegna porta nel ramo il lavoro arrivato nella PR M
+                                (aperta dal task con «Create PR»), le dà titolo e descrizione
+                                neutri e la chiude come assorbita; poi riscrive a nome di
+                                Alessandro i commit con un altro autore, porta nel ramo le
+                                novità della base (merge, mai rebase), sposta in «Archiviati»
+                                la voce di bacheca con la riga di esito, segna la PR pronta,
+                                aspetta i controlli, squash merge con messaggio scritto, toglie
+                                dalle PR i commenti dello strumento, cancella il ramo e, dove
+                                c'è `deploy.yml`, aspetta che il deploy del merge finisca bene
 
 Solo libreria standard; GitHub via `gh api` (REST: in sessione cloud GraphQL non c'è);
 git solo con oggetti e riferimenti (commit-tree, update-ref): nessun checkout, la cartella
@@ -57,9 +70,22 @@ COMMENTO_AVVIO = "@codex esegui la richiesta nella descrizione"
 COMMENTO_AVVIO_CODA = (
     "\n\nLavora su questo ramo e fai push qui: non aprire altre pull request, non unire e "
     "non segnare pronta questa. Segui la richiesta punto per punto, esegui i controlli "
-    "indicati prima del push, aggiorna la bacheca `COORDINAMENTO.md` sullo stesso ramo e "
-    "rispondi con un commento breve: che cosa hai fatto, che cosa resta e perché."
+    "indicati prima del push, non modificare `COORDINAMENTO.md` (l'esito lo scrive chi chiude) "
+    "e rispondi con un commento breve: che cosa hai fatto, che cosa resta e perché."
 )
+# Nota nella riga di testa della voce di bacheca: chi prepara, chi avvia.
+NOTA_PREPARATA = "preparata da Claude, da avviare a mano in Codex Cloud"
+# Piede della descrizione della PR preparata: separa la richiesta (sopra) dal resto. `riavvia` lo
+# usa per ricavare la richiesta dalla descrizione, quindi il suo inizio non va cambiato.
+PIEDE_PR = (
+    "\n\n---\nLa richiesta per esteso, con la stessa data e lo stesso titolo, è anche nella bacheca "
+    f"`{BACHECA}` § «Richieste», su questo ramo. Il lavoro arriva su questo ramo o con una pull "
+    "request di consegna; l'esito in bacheca lo scrive chi chiude."
+)
+INIZIO_PIEDE_PR = "\n\n---\nLa richiesta per esteso"
+# Messaggi di commit di servizio dello script: non sono lavoro consegnato dallo strumento.
+PREFISSI_SERVIZIO = ("Bacheca: richiesta «", "Bacheca: PR #", "Bacheca: archiviata ", "Allineamento con ",
+                     "Consegna dalla pull request #")
 
 # Parole che non possono comparire in titolo e descrizione della PR (testi pubblici).
 VIETATE = re.compile(
@@ -104,17 +130,17 @@ Niente da cercare, niente da indovinare. Dove serve un testo, il testo è qui.>
 stile, niente riferimenti a strumenti nei file e nei messaggi di commit, identità dei commit.>
 
 ## 5. Controlli
-<Comandi esatti da eseguire prima del push, con il risultato atteso (es. `python3 scripts/…`,
-`hugo --minify`). Se un controllo fallisce, si corregge prima di fare push.>
+<Comandi esatti da eseguire prima di consegnare, con il risultato atteso (es. `python3 scripts/…`,
+`hugo --minify`). Se un controllo fallisce, si corregge prima di consegnare.>
 
 ## 6. Consegna
-<Commit sul ramo di questa pull request (messaggi in italiano, senza nomi di strumenti);
-riga di esito accanto alla richiesta in `COORDINAMENTO.md` § «Richieste», sullo stesso ramo;
-un commento breve sulla pull request: fatto / non fatto / perché.>
+<Solo le modifiche ai file del punto 2, con messaggi di commit in italiano e senza nomi di
+strumenti; alla fine un riassunto breve: fatto / non fatto / perché. `COORDINAMENTO.md` non
+si tocca: l'esito in bacheca lo scrive chi chiude il lavoro.>
 
 ## 7. Che cosa non fare
-<Non unire la pull request, non segnarla pronta, non aprirne altre, non toccare file fuori
-dall'elenco del punto 2, non inventare dati mancanti: se manca qualcosa, scriverlo nel commento.>
+<Non unire nulla, non segnare pronta nessuna pull request, non toccare file fuori dall'elenco
+del punto 2, non inventare dati mancanti: se manca qualcosa, scriverlo nel riassunto finale.>
 """
 
 
@@ -296,10 +322,46 @@ def controlla_brief(testo: str) -> list[tuple[str, str]]:
     return parti
 
 
+def testo_avvio(repo: str, ramo: str, titolo: str, data: str, pr: int | str, brief: str) -> str:
+    """Il testo che Alessandro incolla in Codex Cloud: un'intestazione breve e la richiesta completa.
+    Il contenitore di Codex non legge la pull request e la sua rete può essere limitata, e il
+    selettore del ramo può restare sul principale: per questo la richiesta viaggia intera nel testo
+    e non rimanda né alla bacheca né a pagine esterne."""
+    return (
+        f"Richiesta «{titolo}» del {data} per il repository {repo} (pull request #{pr}, ramo {ramo}).\n"
+        f"Lavora sul ramo {ramo} se è quello selezionato per questo task; altrimenti va bene il ramo "
+        f"principale. Esegui la richiesta qui sotto punto per punto e i controlli che indica prima di "
+        f"consegnare. Non modificare {BACHECA}: l'esito lo scrive chi chiude il lavoro. Messaggi di "
+        f"commit in italiano, senza nomi di strumenti. Non unire nulla. Alla fine riassumi in poche "
+        f"righe che cosa hai fatto, che cosa resta e perché.\n\n"
+        f"{brief.strip()}\n"
+    )
+
+
+def stampa_avvio(repo: str, ramo: str, pr: int | str, testo: str) -> None:
+    """Stampa il testo di avvio e i due gesti di Alessandro (gli unici passaggi a mano del protocollo)."""
+    print("\n==== testo da incollare in Codex Cloud (chatgpt.com/codex) — inizio ====")
+    print(testo.rstrip())
+    print("==== testo da incollare in Codex Cloud — fine ====")
+    print("---- per Alessandro ----")
+    print(f"1. Avvio: chatgpt.com/codex → ambiente di {repo} → ramo «{ramo}» se il selettore lo "
+          f"offre (altrimenti il principale) → incolla il testo qui sopra → avvia.")
+    print("2. Consegna: quando Codex ha finito, «Create PR» dal task. Nient'altro: non unire.")
+    print(f"3. Il resto lo fa la sessione: `passa-a.py stato` riconosce la pull request di consegna #M, "
+          f"`passa-a.py chiudi --pr {pr} --consegna M` la porta nel ramo e unisce.")
+
+
 def voce_bacheca(data: str, titolo: str, ramo: str, parti: list[tuple[str, str]], pr: int | None) -> str:
-    """La voce per «Richieste»: una riga di testa e la richiesta indentata sotto."""
-    nota = f"passata in automatico; PR #{pr}" if pr else "passata in automatico; PR in apertura"
+    """La voce per «Richieste»: una riga di testa, la nota sull'avvio a mano (quando la PR c'è) e la
+    richiesta indentata sotto."""
+    nota = f"{NOTA_PREPARATA}; PR #{pr}" if pr else f"{NOTA_PREPARATA}; PR in apertura"
     righe = [f"- **{data} — da Claude a ChatGPT — {titolo}** ({nota}; ramo `{ramo}`)"]
+    if pr:
+        righe.append(f"  - **Avvio a mano (Alessandro).** In Codex Cloud: ambiente del repository, ramo "
+                     f"`{ramo}` se il selettore lo offre, poi il testo di avvio (intestazione più le sette "
+                     f"parti qui sotto: lo stampa `passa-a.py nuovo`, lo ristampa `passa-a.py riavvia --pr {pr}`). "
+                     f"A lavoro finito, «Create PR» dal task: la pull request di consegna la porta nel ramo "
+                     f"e la chiude `passa-a.py chiudi --pr {pr} --consegna M`.")
     for intestazione, corpo in parti:
         righe.append(f"  - **{intestazione}.**")
         for r in corpo.splitlines():
@@ -307,17 +369,22 @@ def voce_bacheca(data: str, titolo: str, ramo: str, parti: list[tuple[str, str]]
     return "\n".join(righe).rstrip() + "\n"
 
 
-def inserisci_in_richieste(testo: str, voce: str) -> str:
-    """Mette la voce in cima all'elenco di «## Richieste», dopo il paragrafo introduttivo."""
-    m = re.search(r"^## Richieste[^\n]*\n", testo, re.MULTILINE)
+def _sezione(testo: str, nome: str) -> tuple[int, int]:
+    """Inizio e fine del corpo della sezione `## <nome>` (senza la riga di titolo)."""
+    m = re.search(rf"^## {re.escape(nome)}[^\n]*\n", testo, re.MULTILINE)
     if not m:
-        die(f"sezione «## Richieste» non trovata in {BACHECA}")
+        die(f"sezione «## {nome}» non trovata in {BACHECA}")
     inizio = m.end()
     m2 = re.search(r"^## ", testo[inizio:], re.MULTILINE)
-    fine = inizio + m2.start() if m2 else len(testo)
+    return inizio, (inizio + m2.start() if m2 else len(testo))
+
+
+def inserisci_in_sezione(testo: str, nome: str, voce: str, sentinella: str) -> str:
+    """Mette la voce in cima all'elenco di `## <nome>`, dopo l'eventuale paragrafo introduttivo,
+    togliendo la riga sentinella («Nessuna richiesta aperta», «Nessuna voce»)."""
+    inizio, fine = _sezione(testo, nome)
     sezione = testo[inizio:fine]
-    # La riga sentinella «- Nessuna richiesta aperta.» non può restare accanto a una richiesta vera.
-    sezione = re.sub(r"^- \*{0,2}Nessuna richiesta aperta\b[^\n]*\n?", "", sezione, flags=re.MULTILINE)
+    sezione = re.sub(rf"^- \*{{0,2}}{sentinella}\b[^\n]*\n?", "", sezione, flags=re.MULTILINE)
     m3 = re.search(r"^- \*\*", sezione, re.MULTILINE)
     if m3:
         punto = m3.start()
@@ -326,6 +393,40 @@ def inserisci_in_richieste(testo: str, voce: str) -> str:
         prima = sezione.rstrip("\n")
         sezione = (prima + "\n\n" if prima.strip() else "\n") + voce + "\n"
     return testo[:inizio] + sezione + testo[fine:]
+
+
+def inserisci_in_richieste(testo: str, voce: str) -> str:
+    return inserisci_in_sezione(testo, "Richieste", voce, "Nessuna richiesta aperta")
+
+
+def archivia_voce(testo: str, n: int, base: str, data: str, esito: str | None = None) -> str | None:
+    """Sposta la voce di «Richieste» che porta «PR #n» in cima ad «Archiviati», con la riga di esito.
+    Restituisce il testo nuovo, o None se la voce non c'è."""
+    esito = esito or f"Lavoro consegnato e unito in `{base}` con la pull request #{n}."
+    inizio, fine = _sezione(testo, "Richieste")
+    sezione = testo[inizio:fine]
+    voci = list(re.finditer(r"^- \*\*.*$", sezione, re.MULTILINE))
+    trovata = None
+    for i, v in enumerate(voci):
+        if re.search(rf"PR #{n}\b", v.group(0)):
+            trovata = (v.start(), voci[i + 1].start() if i + 1 < len(voci) else len(sezione))
+            break
+    if not trovata:
+        return None
+    a, b = trovata
+    voce = sezione[a:b].rstrip("\n") + "\n"
+    resto = sezione[:a] + sezione[b:]
+    resto = re.sub(r"^- \*{0,2}Nessuna richiesta aperta\b[^\n]*\n?", "", resto, flags=re.MULTILINE)
+    if not re.search(r"^- \*\*", resto, re.MULTILINE):
+        resto = resto.rstrip("\n") + "\n\n- Nessuna richiesta aperta."
+    resto = "\n" + re.sub(r"\n{3,}", "\n\n", resto).strip("\n") + "\n\n"
+    testo = testo[:inizio] + resto + testo[fine:]
+    righe = voce.splitlines()
+    righe.insert(1, f"  - **Esito ({data}).** {esito}")
+    voce = "\n".join(righe) + "\n"
+    if not re.search(r"^## Archiviati", testo, re.MULTILINE):
+        testo = testo.rstrip("\n") + "\n\n## Archiviati\n\n"
+    return inserisci_in_sezione(testo, "Archiviati", voce, "Nessuna voce")
 
 
 # --- Comandi -------------------------------------------------------------------
@@ -379,23 +480,22 @@ def cmd_nuovo(args) -> None:
     if r.returncode != 0:
         die(f"{BACHECA} non trovato sul ramo {base}")
     testo = r.stdout
-    voce = voce_bacheca(f"{data:%Y-%m-%d}", titolo, ramo, parti, None)
-    albero = albero_con_file(radice, base_sha, BACHECA, inserisci_in_richieste(testo, voce))
+    data_str = f"{data:%Y-%m-%d}"
+    voce1 = voce_bacheca(data_str, titolo, ramo, parti, None)
+    albero = albero_con_file(radice, base_sha, BACHECA, inserisci_in_richieste(testo, voce1))
     commit1 = commit_tree(radice, albero, [base_sha], f"Bacheca: richiesta «{titolo}»")
     # Il vecchio valore «tutto zeri» chiede a git di creare il ramo solo se non esiste ancora.
     run(["git", "update-ref", ref, commit1, "0" * 40], cwd=str(radice))
 
-    corpo_pr = (
-        f"{brief.rstrip()}\n\n---\n"
-        f"La richiesta per esteso, con la stessa data e lo stesso titolo, è nella bacheca "
-        f"`{BACHECA}` § «Richieste», su questo ramo. Chi la prende lavora su questo ramo, "
-        f"fa i controlli del repository e scrive lì l'esito."
-    )
+    corpo_pr = f"{brief.rstrip()}{PIEDE_PR}"
     if args.prova:
         info("PROVA: ramo e voce in bacheca creati solo in locale; niente push, PR o commento.")
         print(run(["git", "show", "--stat", "--format=%an <%ae>%n%s", commit1], cwd=str(radice)).stdout)
         print("---- descrizione della PR ----")
         print(corpo_pr)
+        print("---- voce in bacheca dopo l'apertura della PR (con N al posto del numero) ----")
+        print(voce_bacheca(data_str, titolo, ramo, parti, "N"))
+        stampa_avvio(repo, ramo, "N", testo_avvio(repo, ramo, titolo, data_str, "N", brief))
         run(["git", "update-ref", "-d", ref], cwd=str(radice), check=False)
         return
 
@@ -406,29 +506,66 @@ def cmd_nuovo(args) -> None:
     numero = pr["number"]
     info(f"PR in bozza #{numero}: {pr['html_url']}")
 
-    # Numero della PR nella voce di bacheca (secondo commit: lo squash li riunisce).
-    testo2 = run(["git", "show", f"{commit1}:{BACHECA}"], cwd=str(radice)).stdout.replace(
-        f"(passata in automatico; PR in apertura; ramo `{ramo}`)",
-        f"(passata in automatico; PR #{numero}; ramo `{ramo}`)", 1)
+    # Numero della PR e nota sull'avvio a mano nella voce di bacheca (secondo commit: lo squash li riunisce).
+    voce2 = voce_bacheca(data_str, titolo, ramo, parti, numero)
+    testo1 = run(["git", "show", f"{commit1}:{BACHECA}"], cwd=str(radice)).stdout
+    testo2 = testo1.replace(voce1, voce2, 1)
+    if testo2 == testo1:
+        die(f"voce di bacheca non ritrovata nel commit {commit1[:7]}: non aggiorno il ramo")
     albero2 = albero_con_file(radice, commit1, BACHECA, testo2)
     commit2 = commit_tree(radice, albero2, [commit1], f"Bacheca: PR #{numero} per «{titolo}»")
     run(["git", "update-ref", ref, commit2, commit1], cwd=str(radice))
     run(["git", "push", "-q", "origin", f"{ref}:{ref}"], cwd=str(radice))
 
-    if not args.senza_avvio:
+    if args.con_codex:
         gh_api(f"repos/{repo}/issues/{numero}/comments", "POST",
                {"body": COMMENTO_AVVIO + COMMENTO_AVVIO_CODA})
-        info("commento di avvio lasciato sulla PR")
-    info(f"fatto. Prossimi passi: `passa-a.py stato` per seguire, `passa-a.py chiudi --pr {numero}` per unire.")
-
-
-def _pr_chatgpt(repo: str, tutte: bool) -> list[dict]:
-    aperte = gh_api(f"repos/{repo}/pulls?state=open&per_page=100", paginato=True) or []
-    return [p for p in aperte if tutte or p["head"]["ref"].startswith(PREFISSO_RAMO)]
+        info("commento di avvio lasciato sulla PR (canale automatico, da riprovare: se lo strumento "
+             "chiede un ambiente, si procede con il testo di avvio qui sotto)")
+    stampa_avvio(repo, ramo, numero, testo_avvio(repo, ramo, titolo, data_str, numero, brief))
+    info(f"fatto. Poi: `passa-a.py stato` per seguire, `passa-a.py chiudi --pr {numero} --consegna M` per unire.")
 
 
 def _quando(iso: str) -> dt.datetime:
     return dt.datetime.fromisoformat(iso.replace("Z", "+00:00"))
+
+
+def _ora_it(d: dt.datetime) -> str:
+    """Data e ora in ora italiana (nelle sessioni cloud l'ora locale della macchina è UTC)."""
+    try:
+        from zoneinfo import ZoneInfo
+        d = d.astimezone(ZoneInfo("Europe/Rome"))
+    except Exception:
+        d = d.astimezone()
+    return d.strftime("%d/%m %H:%M")
+
+
+def _di_servizio(messaggio: str) -> bool:
+    """Commit fatti dallo script (bacheca, allineamento, consegna), non lavoro arrivato dallo strumento."""
+    return messaggio.startswith(PREFISSI_SERVIZIO)
+
+
+def _consegne(aperte: list[dict], n: int, ramo: str, titolo: str,
+              t_prep: dt.datetime | None) -> tuple[list[dict], list[dict]]:
+    """Le pull request aperte con cui il lavoro è stato consegnato (in Codex Cloud: «Create PR» dal
+    task). Certe: base = il ramo preparato, oppure titolo o descrizione che citano quel ramo, la PR #n
+    o il titolo della richiesta. Possibili: un ramo `codex/…` aperto dopo la preparazione, quando il
+    task è partito dal ramo principale e la pull request non porta altri segni: va riconosciuta
+    guardandola prima di assorbirla."""
+    certe, possibili = [], []
+    for p in aperte:
+        if p["number"] == n or p["head"]["ref"] == ramo:
+            continue
+        testo = f"{p.get('title') or ''}\n{p.get('body') or ''}"
+        nostra = p["head"]["ref"].startswith(("claude/", PREFISSO_RAMO))
+        if (p["base"]["ref"] == ramo or ramo in testo
+                or (not nostra and (re.search(rf"#{n}\b", testo)
+                                    or (titolo and titolo.lower() in testo.lower())))):
+            certe.append(p)
+        elif (p["head"]["ref"].startswith("codex/")
+              and (t_prep is None or _quando(p["created_at"]) > t_prep)):
+            possibili.append(p)
+    return certe, possibili
 
 
 def _e_bot(utente: dict) -> bool:
@@ -455,7 +592,8 @@ def _controlli(repo: str, sha: str) -> tuple[list[dict], str]:
 def cmd_stato(args) -> None:
     radice = radice_repo()
     repo = owner_repo(radice)
-    prs = _pr_chatgpt(repo, args.tutte)
+    aperte = gh_api(f"repos/{repo}/pulls?state=open&per_page=100", paginato=True) or []
+    prs = [p for p in aperte if args.tutte or p["head"]["ref"].startswith(PREFISSO_RAMO)]
     if not prs:
         info("nessuna PR aperta sui rami chatgpt/*")
         return
@@ -463,52 +601,77 @@ def cmd_stato(args) -> None:
     adesso = dt.datetime.now(dt.timezone.utc)
     for pr in prs:
         n = pr["number"]
+        ramo = pr["head"]["ref"]
         commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
         commits = gh_api(f"repos/{repo}/pulls/{n}/commits?per_page=100", paginato=True) or []
         avvio = next((c for c in commenti if c["user"]["login"] == io_login
                       and c["body"].strip().lower().startswith("@codex")), None)
         t_avvio = _quando(avvio["created_at"]) if avvio else None
+        # La preparazione finisce con il commit «Bacheca: PR #N …»: ciò che arriva dopo è lavoro consegnato.
+        prep = [c for c in commits if c["commit"]["message"].startswith("Bacheca: PR #")]
+        t_prep = _quando(prep[-1]["commit"]["committer"]["date"]) if prep else None
+        riferimenti = [t for t in (t_prep, t_avvio) if t]
+        t_rif = max(riferimenti) if riferimenti else None
         risposte = [c for c in commenti if _e_strumento(c["user"])]
         crediti_finiti = any(re.search(r"usage limit|reached your .*limit|crediti", c["body"], re.I)
                              for c in risposte)
         ambiente_manca = any(re.search(r"create an environment|crea un ambiente", c["body"], re.I)
                              for c in risposte)
-        dopo = [c for c in commits if t_avvio and _quando(c["commit"]["committer"]["date"]) > t_avvio]
+        dopo = [c for c in commits if not _di_servizio(c["commit"]["message"])
+                and (t_rif is None or _quando(c["commit"]["committer"]["date"]) > t_rif)]
+        certe, possibili = _consegne(aperte, n, ramo, pr["title"], t_prep)
         altri_autori = sorted({f"{c['commit']['author']['name']} <{c['commit']['author']['email']}>"
                                for c in commits
                                if c["commit"]["author"]["email"].lower() not in AUTORI_OK})
         _, riass = _controlli(repo, pr["head"]["sha"])
         print(f"\nPR #{n} {'[bozza]' if pr['draft'] else '[pronta]'} — {pr['title']}")
-        print(f"  ramo {pr['head']['ref']} · {pr['html_url']}")
-        if t_avvio:
-            ore = (adesso - t_avvio).total_seconds() / 3600
-            print(f"  avvio: {t_avvio.astimezone().strftime('%d/%m %H:%M')} ({ore:.1f} h fa)")
+        print(f"  ramo {ramo} · {pr['html_url']}")
+        if t_prep:
+            ore = (adesso - t_prep).total_seconds() / 3600
+            print(f"  preparata: {_ora_it(t_prep)} ({ore:.1f} h fa)")
         else:
-            print("  avvio: nessun commento di avvio trovato")
-        print(f"  commit totali {len(commits)}, dopo l'avvio {len(dopo)}")
+            print("  preparata: data non ricavabile (nessun commit «Bacheca: PR #…» sul ramo)")
+        if t_avvio:
+            print(f"  commento di avvio automatico: {_ora_it(t_avvio)}")
+        print(f"  commit totali {len(commits)}, di lavoro arrivati dopo la preparazione {len(dopo)}")
+        for c in certe:
+            print(f"  consegna in pull request: #{c['number']} ({c['head']['ref']} → {c['base']['ref']}) · {c['html_url']}")
+        for c in possibili:
+            print(f"  possibile consegna (da riconoscere guardandola): #{c['number']} "
+                  f"({c['head']['ref']} → {c['base']['ref']}) · {c['html_url']}")
         if altri_autori:
             print(f"  autori da riscrivere prima di unire: {'; '.join(altri_autori)}")
         if risposte:
             ultima = risposte[-1]
             testo = re.sub(r"\s+", " ", ultima["body"]).strip()
-            print(f"  ultima risposta dello strumento ({_quando(ultima['created_at']).astimezone().strftime('%d/%m %H:%M')}): {testo[:220]}")
-        else:
-            print("  risposte dello strumento: nessuna")
+            print(f"  ultima risposta dello strumento ({_ora_it(_quando(ultima['created_at']))}): {testo[:220]}")
         print(f"  controlli: {riass}")
-        if ambiente_manca and not dopo:
-            giudizio = ("AMBIENTE MANCANTE: lo strumento non ha un ambiente cloud per questo repository. "
-                        "Lo crea Alessandro da PC (chatgpt.com/codex/cloud/settings/environments), "
-                        "poi `riavvia --pr %d`; nel frattempo il lavoro lo fa Claude da sola" % n)
+        if certe:
+            m = certe[0]["number"]
+            giudizio = (f"CONSEGNA NELLA PR #{m}: controllare il risultato, poi "
+                        f"`chiudi --pr {n} --consegna {m}` (porta il lavoro nel ramo e chiude la #{m})")
+        elif possibili:
+            m = possibili[0]["number"]
+            giudizio = (f"POSSIBILE CONSEGNA NELLA PR #{m}: guardarla; se è questo lavoro, controllare il "
+                        f"risultato e `chiudi --pr {n} --consegna {m}`")
+        elif dopo:
+            giudizio = f"HA FATTO PUSH: controllare il risultato, poi `chiudi --pr {n}`"
+        elif ambiente_manca:
+            giudizio = ("CANALE AUTOMATICO MUTO: al commento di avvio lo strumento chiede un ambiente "
+                        "(difetto del canale delle PR). Si avvia a mano in Codex Cloud: `riavvia --pr %d` "
+                        "ristampa il testo di avvio; se urge, il lavoro lo fa Claude da sola" % n)
         elif crediti_finiti:
             giudizio = "CREDITI FINITI: il lavoro lo fa Claude da sola e lo scrive in bacheca"
-        elif dopo:
-            giudizio = "HA FATTO PUSH: controllare il risultato, poi `chiudi --pr %d`" % n
-        elif t_avvio and (adesso - t_avvio) > dt.timedelta(hours=24):
-            giudizio = "NESSUNA RISPOSTA DA OLTRE 24 ORE: il lavoro lo fa Claude da sola e lo scrive in bacheca"
+        elif t_rif and (adesso - t_rif) > dt.timedelta(hours=24):
+            giudizio = ("PREPARATA DA OLTRE 24 ORE SENZA CONSEGNA: chiedere ad Alessandro se l'ha avviata "
+                        "e, se il task è finito, se manca solo «Create PR» (`riavvia --pr %d` ristampa il "
+                        "testo di avvio); se l'ha avviata e non arriva nulla, il lavoro lo fa Claude da sola "
+                        "e lo scrive in bacheca" % n)
         elif risposte:
-            giudizio = "in lavorazione (ha risposto, nessun push ancora)"
+            giudizio = "in lavorazione (lo strumento ha risposto, nessun push ancora)"
         else:
-            giudizio = "in attesa"
+            giudizio = ("in attesa dell'avvio a mano in Codex Cloud o, a lavoro finito, di «Create PR» "
+                        "(`riavvia --pr %d` ristampa il testo di avvio)" % n)
         print(f"  => {giudizio}")
 
 
@@ -776,18 +939,113 @@ def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
 
 
 def cmd_riavvia(args) -> None:
-    """Rimanda il commento di avvio su una PR chatgpt/* già aperta (ambiente creato dopo, strumento
-    rimasto muto): niente ramo nuovo, niente voce nuova in bacheca."""
+    """Ristampa il testo di avvio di una PR chatgpt/* già aperta (e, con --con-codex, rimanda il
+    commento di avvio): niente ramo nuovo, niente voce nuova in bacheca. La richiesta si ricava
+    dalla descrizione della PR, dove `nuovo` l'ha scritta sopra il piede."""
     radice = radice_repo()
     repo = owner_repo(radice)
     n = args.pr
     pr = gh_api(f"repos/{repo}/pulls/{n}")
     if pr["state"] != "open":
         die(f"la PR #{n} non è aperta ({pr['state']})")
-    if not pr["head"]["ref"].startswith(PREFISSO_RAMO):
-        die(f"la PR #{n} non è su un ramo chatgpt/* ({pr['head']['ref']})")
-    gh_api(f"repos/{repo}/issues/{n}/comments", "POST", {"body": COMMENTO_AVVIO + COMMENTO_AVVIO_CODA})
-    info(f"commento di avvio rimandato sulla PR #{n}: {pr['html_url']} — segui con `stato`")
+    ramo = pr["head"]["ref"]
+    if not ramo.startswith(PREFISSO_RAMO):
+        die(f"la PR #{n} non è su un ramo chatgpt/* ({ramo})")
+    m = re.search(r"-(\d{4})(\d{2})(\d{2})$", ramo)
+    if m:
+        data = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    else:
+        data = _quando(pr["created_at"]).strftime("%Y-%m-%d")
+    corpo = (pr.get("body") or "").replace("\r\n", "\n")
+    if INIZIO_PIEDE_PR in corpo:
+        brief = corpo.split(INIZIO_PIEDE_PR, 1)[0]
+    else:
+        info("descrizione senza il piede di `nuovo`: uso la descrizione intera come richiesta")
+        brief = corpo
+    if not brief.strip():
+        die(f"la descrizione della PR #{n} è vuota: non c'è una richiesta da ristampare")
+    if args.con_codex:
+        gh_api(f"repos/{repo}/issues/{n}/comments", "POST", {"body": COMMENTO_AVVIO + COMMENTO_AVVIO_CODA})
+        info(f"commento di avvio rimandato sulla PR #{n}: {pr['html_url']}")
+    stampa_avvio(repo, ramo, n, testo_avvio(repo, ramo, pr["title"], data, n, brief))
+    info("segui con `stato`")
+
+
+def _assorbi_consegna(radice: Path, repo: str, n: int, ramo: str, m: int, io_login: str) -> None:
+    """Porta nel ramo della PR preparata (#n) il lavoro consegnato con una pull request propria (#m:
+    in Codex Cloud la apre «Create PR» dal task), poi la chiude come assorbita con un titolo neutro.
+    Solo oggetti git, nessun checkout; i commit arrivati si riscrivono dopo, come tutti gli altri."""
+    if m == n:
+        die("--consegna: è la stessa pull request")
+    prm = gh_api(f"repos/{repo}/pulls/{m}")
+    if prm["state"] != "open":
+        die(f"la PR #{m} non è aperta ({prm['state']})")
+    repo_m = (prm["head"].get("repo") or {}).get("full_name") or repo
+    if repo_m.lower() != repo.lower():
+        die(f"la PR #{m} viene da un altro repository ({repo_m}): il suo ramo va portato qui a mano")
+    ramo_m = prm["head"]["ref"]
+    if ramo_m == ramo:
+        die(f"la PR #{m} è sullo stesso ramo {ramo}: non c'è nulla da assorbire")
+    fetch_rami(radice, ramo, ramo_m)
+    sha_ramo = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+    sha_m = run(["git", "rev-parse", f"origin/{ramo_m}"], cwd=str(radice)).stdout.strip()
+    if run(["git", "merge-base", "--is-ancestor", sha_m, sha_ramo], cwd=str(radice),
+           check=False).returncode == 0:
+        info(f"il lavoro della PR #{m} è già nel ramo {ramo}")
+    else:
+        if run(["git", "merge-base", "--is-ancestor", sha_ramo, sha_m], cwd=str(radice),
+               check=False).returncode == 0:
+            nuovo = sha_m
+            info(f"il ramo {ramo_m} prosegue {ramo}: lo porto avanti senza commit di merge")
+        else:
+            r = run(["git", "merge-tree", "--write-tree", "--messages", sha_ramo, sha_m], cwd=str(radice),
+                    check=False)
+            if r.returncode != 0:
+                if r.returncode == 1:
+                    die(f"il ramo {ramo_m} della PR #{m} è in conflitto con {ramo}: va risolto a mano su "
+                        f"una sessione con checkout (merge di {ramo_m} in {ramo}), poi `chiudi` di nuovo.\n"
+                        + r.stdout[:1500])
+                die(f"git merge-tree non disponibile o fallito ({r.returncode}): serve git ≥ 2.38.\n{r.stderr[:500]}")
+            albero = r.stdout.split("\n", 1)[0].strip()
+            nuovo = commit_tree(radice, albero, [sha_ramo, sha_m], f"Consegna dalla pull request #{m}")
+        run(["git", "push", "-q", f"--force-with-lease={ramo}:{sha_ramo}", "origin",
+             f"{nuovo}:refs/heads/{ramo}"], cwd=str(radice))
+        info(f"lavoro della PR #{m} portato nel ramo {ramo} ({nuovo[:7]})")
+    neutro = (f"Lavoro portato nel ramo della pull request #{n}, che viene unita da lì: "
+              f"questa si chiude come assorbita.")
+    gh_api(f"repos/{repo}/issues/{m}/comments", "POST", {"body": neutro})
+    # Titolo neutro sempre. La descrizione si riscrive solo se la PR è dell'account di Alessandro:
+    # la riga che il canale delle sessioni aggiunge ai testi la toglie il workflow di pulizia, che
+    # lavora solo sui testi dell'account; su una PR di un altro autore resterebbe.
+    modifica = {"title": f"Consegna per la pull request #{n}", "state": "closed"}
+    if (prm.get("user") or {}).get("login") == io_login:
+        modifica["body"] = neutro
+    else:
+        info(f"la PR #{m} è di {(prm.get('user') or {}).get('login')}: descrizione lasciata com'è "
+             "(se nomina lo strumento, si toglie dalla pagina della PR)")
+    gh_api(f"repos/{repo}/pulls/{m}", "PATCH", modifica)
+    info(f"PR #{m} chiusa come assorbita dalla #{n}, con titolo neutro")
+
+
+def _archivia_voce(radice: Path, ramo: str, n: int, base: str) -> bool:
+    """Sposta in «Archiviati» la voce di bacheca della PR #n, con la riga di esito, con un commit sul
+    ramo prima dei controlli: così la bacheca unita è già in ordine. Restituisce True se ha fatto push."""
+    fetch_rami(radice, ramo)
+    sha = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+    r = run(["git", "show", f"{sha}:{BACHECA}"], cwd=str(radice), check=False)
+    if r.returncode != 0:
+        info(f"{BACHECA} assente sul ramo: niente da archiviare")
+        return False
+    nuovo_testo = archivia_voce(r.stdout, n, base, f"{oggi():%d/%m/%Y}")
+    if nuovo_testo is None:
+        info(f"nessuna voce con «PR #{n}» in «Richieste» della bacheca: niente da archiviare")
+        return False
+    albero = albero_con_file(radice, sha, BACHECA, nuovo_testo)
+    nuovo = commit_tree(radice, albero, [sha], f"Bacheca: archiviata la richiesta della pull request #{n}")
+    run(["git", "push", "-q", f"--force-with-lease={ramo}:{sha}", "origin", f"{nuovo}:refs/heads/{ramo}"],
+        cwd=str(radice))
+    info(f"voce della PR #{n} spostata in «Archiviati» con l'esito ({nuovo[:7]})")
+    return True
 
 
 def cmd_chiudi(args) -> None:
@@ -805,8 +1063,11 @@ def cmd_chiudi(args) -> None:
     controlla_vietate(titolo, "il titolo del merge")
     io_login = (gh_api("user") or {}).get("login", "")
 
+    if args.consegna:
+        _assorbi_consegna(radice, repo, n, ramo, args.consegna, io_login)
     _riscrivi_autori(radice, repo, ramo, base)
     _allinea_alla_base(radice, repo, ramo, base)
+    _archivia_voce(radice, ramo, n, base)
 
     if pr["draft"]:
         _segna_pronta(repo, n)
@@ -834,7 +1095,8 @@ def cmd_chiudi(args) -> None:
         info(f"ramo {ramo} cancellato")
     if not args.senza_pulizia:
         _pulisci_commenti(repo, n, io_login)
-    info("ricorda: la voce in bacheca va spostata in «Archiviati» con l'esito nella prossima PR")
+        if args.consegna:
+            _pulisci_commenti(repo, args.consegna, io_login)
     if args.senza_attesa_deploy:
         info(f"--senza-attesa-deploy: se il repository pubblica un sito, verifica a mano "
              f"https://github.com/{repo}/actions/workflows/deploy.yml")
@@ -852,25 +1114,29 @@ def main() -> None:
     pm.add_argument("--out", help="scrive lo schema in questo file invece che a schermo")
     pm.set_defaults(fn=cmd_modello)
 
-    pn = sub.add_parser("nuovo", help="avvia un passaggio: ramo, bacheca, PR in bozza, commento")
+    pn = sub.add_parser("nuovo", help="prepara un passaggio: ramo, bacheca, PR in bozza, testo di avvio")
     pn.add_argument("--argomento", required=True, help="slug del ramo chatgpt/<argomento>-AAAAMMGG")
     pn.add_argument("--titolo", required=True, help="titolo della PR e della voce in bacheca (senza nomi di strumenti)")
     pn.add_argument("--brief", required=True, help="file Markdown con le sette parti della richiesta")
     pn.add_argument("--base", help="ramo di partenza (predefinito: quello principale del repository)")
     pn.add_argument("--prova", action="store_true", help="solo in locale: niente push, PR, commento")
-    pn.add_argument("--senza-avvio", action="store_true", help="apre la PR senza il commento di avvio")
+    pn.add_argument("--con-codex", action="store_true",
+                    help="lascia anche il commento di avvio sulla PR (canale automatico, da riprovare senza spese)")
     pn.set_defaults(fn=cmd_nuovo)
 
     ps = sub.add_parser("stato", help="stato delle PR sui rami chatgpt/*")
     ps.add_argument("--tutte", action="store_true", help="tutte le PR aperte, non solo chatgpt/*")
     ps.set_defaults(fn=cmd_stato)
 
-    pr_ = sub.add_parser("riavvia", help="rimanda il commento di avvio su una PR chatgpt/* già aperta")
+    pr_ = sub.add_parser("riavvia", help="ristampa il testo di avvio di una PR chatgpt/* già aperta")
     pr_.add_argument("--pr", type=int, required=True)
+    pr_.add_argument("--con-codex", action="store_true", help="rimanda anche il commento di avvio sulla PR")
     pr_.set_defaults(fn=cmd_riavvia)
 
-    pc = sub.add_parser("chiudi", help="riscrive gli autori, segna pronta, aspetta i controlli, unisce")
+    pc = sub.add_parser("chiudi", help="riscrive gli autori, archivia la voce, segna pronta, aspetta i controlli, unisce")
     pc.add_argument("--pr", type=int, required=True)
+    pc.add_argument("--consegna", type=int, metavar="M",
+                    help="pull request di consegna aperta dallo strumento dal suo ramo: la porta nel ramo e la chiude")
     pc.add_argument("--titolo", help="titolo del commit di merge (predefinito: titolo della PR)")
     pc.add_argument("--messaggio", help="corpo del commit di merge (predefinito: riga sulla bacheca)")
     pc.add_argument("--attesa-minuti", type=int, default=40, help="attesa massima dei controlli della PR")
