@@ -128,8 +128,9 @@ def run(cmd: list[str], cwd: str | None = None, check: bool = True, env: dict | 
 
 
 def gh_api(percorso: str, metodo: str = "GET", dati: dict | None = None, ok_se: tuple = (),
-           paginato: bool = False):
-    """Chiama l'API REST di GitHub con `gh api`. Restituisce il JSON decodificato (o None)."""
+           paginato: bool = False, tollerante: bool = False):
+    """Chiama l'API REST di GitHub con `gh api`. Restituisce il JSON decodificato (o None).
+    Con `tollerante=True` un errore non ferma lo script: restituisce ("ERRORE", testo)."""
     cmd = ["gh", "api", "-X", metodo, percorso, "-H", "Accept: application/vnd.github+json"]
     if paginato:
         cmd.append("--paginate")
@@ -146,6 +147,8 @@ def gh_api(percorso: str, metodo: str = "GET", dati: dict | None = None, ok_se: 
         testo = (r.stdout + r.stderr).strip()
         if any(s in testo for s in ok_se):
             return None
+        if tollerante:
+            return ("ERRORE", testo[:300])
         die(f"GitHub ({metodo} {percorso}): {testo[:800]}")
     out = r.stdout.strip()
     if not out:
@@ -557,18 +560,29 @@ def _aspetta_controlli(repo: str, n: int, minuti: int) -> str:
 
 def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
     commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
-    tolti = 0
+    tolti, rimasti = 0, []
     for c in commenti:
         mio_avvio = c["user"]["login"] == io_login and c["body"].strip().lower().startswith("@codex")
         if mio_avvio or _e_bot(c["user"]):
-            gh_api(f"repos/{repo}/issues/comments/{c['id']}", "DELETE", ok_se=("404",))
-            tolti += 1
+            esito = gh_api(f"repos/{repo}/issues/comments/{c['id']}", "DELETE", ok_se=("404",), tollerante=True)
+            if isinstance(esito, tuple):
+                rimasti.append(c["html_url"])
+            else:
+                tolti += 1
     revisioni = gh_api(f"repos/{repo}/pulls/{n}/comments?per_page=100", paginato=True) or []
     for c in revisioni:
         if _e_bot(c["user"]):
-            gh_api(f"repos/{repo}/pulls/comments/{c['id']}", "DELETE", ok_se=("404",))
-            tolti += 1
+            esito = gh_api(f"repos/{repo}/pulls/comments/{c['id']}", "DELETE", ok_se=("404",), tollerante=True)
+            if isinstance(esito, tuple):
+                rimasti.append(c["html_url"])
+            else:
+                tolti += 1
     info(f"commenti tolti dalla PR: {tolti} (le revisioni del bot, se ci sono, non si possono cancellare)")
+    if rimasti:
+        # Nelle sessioni cloud il proxy di GitHub vieta le cancellazioni (HTTP 403): si fanno
+        # dalla pagina della PR o da una sessione sul PC, e qui si dice quali sono.
+        info("commenti NON cancellati (il canale di questa sessione non lo permette): da togliere a mano:\n  "
+             + "\n  ".join(rimasti))
 
 
 def cmd_chiudi(args) -> None:
@@ -603,8 +617,14 @@ def cmd_chiudi(args) -> None:
     })
     if not (esito and esito.get("merged")):
         die(f"merge non riuscito: {esito}")
-    info(f"PR #{n} unita con squash: {esito.get('sha', '')[:7]}")
-    gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"))
+    info(f"PR #{n} unita con squash: {esito.get('sha', '')[:7]} "
+         "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
+    esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
+    if isinstance(esito, tuple):
+        info(f"ramo {ramo} non cancellato (il canale di questa sessione non lo permette): "
+             "si toglie dalla pagina della PR o da una sessione sul PC; è già unito, resta innocuo")
+    else:
+        info(f"ramo {ramo} cancellato")
     if not args.senza_pulizia:
         _pulisci_commenti(repo, n, io_login)
     if (radice / ".github" / "workflows" / "deploy.yml").exists():
