@@ -19,6 +19,6 @@ Vale in tutti i progetti per skill, comandi, hook, agenti, plugin, server MCP e 
 - Installali solo nel progetto che serve, senza aggiornamento automatico, e provali con la sandbox attiva (`/sandbox`) quando è disponibile.
 
 ## Approvazione e registro
-- Prima di creare uno strumento che resta o di installare qualcosa di esterno, proponi in due righe: cosa, perché ora, dove va, rischi. Procedi solo dopo il sì di Alessandro.
+- Prima di creare uno strumento che resta o di installare qualcosa di esterno, proponi in due righe: cosa, perché ora, dove va, rischi. Procedi solo dopo il sì di Alessandro. **Eccezione dal 13/10/2026** (regola `autonomia.md`): agenti e skill di supporto si creano da soli quando un lavoro reale ne ha bisogno, senza proposta preventiva; vanno comunque registrati qui sotto e citati nel resoconto.
 - Annota ogni strumento in `.claude/strumenti.md` del progetto: nome, scopo, data, origine (per gli esterni anche fonte, licenza e versione). Crea il file al primo strumento.
 - Quando uno strumento non serve più, proponi di toglierlo.

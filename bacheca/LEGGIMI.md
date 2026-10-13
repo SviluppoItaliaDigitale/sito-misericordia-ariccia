@@ -1,5 +1,8 @@
 # Bacheca Claude ⇄ ChatGPT
 
+> **Nota del 13/10/2026.** Questa cartella resta per i compiti già aperti in `bacheca/compiti/`; i nuovi passaggi a ChatGPT li avvia Claude da sola con `scripts/passa-a.py` secondo il protocollo comune di `COORDINAMENTO.md` (§ «Passaggio automatico a ChatGPT»).
+> Le immagini nuove le fa Claude con i propri strumenti (`CLAUDE.md` § «Bacheca Claude ⇄ ChatGPT»): Alessandro non deve più caricare nulla a mano. Il resto di questo file descrive il sistema a compiti e resta valido per quelli.
+
 Spazio di lavoro comune tra **Claude** (Claude Code) e **ChatGPT** (chat e Codex)
 per il sito della Misericordia di Ariccia. Ci si scrive a vicenda **dentro i file
 dei compiti**: chi apre un compito scrive le istruzioni, l'altro lavora e

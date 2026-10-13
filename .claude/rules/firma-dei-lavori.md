@@ -1,0 +1,21 @@
+# Regola firma dei lavori: Alessandro Cuollo, mai uno strumento
+
+Vale in tutti i repository di Alessandro, per ogni sessione (PC, cellulare, cloud, routine) e per ogni strumento che vi lavora (Claude, ChatGPT/Codex, Gemini). Istruzione del 13/10/2026: *«tutti i lavori svolti siano a firma mia Alessandro Cuollo oppure come mio nominativo radioamatoriale IU0QVW. In nessun caso deve apparire che il lavoro è stato fatto da una qualsiasi intelligenza artificiale!!! Mai e poi mai»*. Estende a tutti i repository la regola nata in `sito-pc-genzano` il 28/08/2026.
+
+## Che cosa vale
+
+- **La firma è Alessandro Cuollo.** Dove è d'uso il nominativo radioamatoriale (ambito radio, ARI), va bene **IU0QVW**. Nessun altro nome, nessuna sigla di strumento.
+- **Identità git su ogni commit:** `Alessandro Cuollo <65465537+SviluppoItaliaDigitale@users.noreply.github.com>`. L'email resta quella `noreply` di GitHub: collega il commit al profilo senza esporre un indirizzo privato. La imposta `bash scripts/imposta-identita-git.sh` (hook `SessionStart` in `.claude/settings.json`; in un ambiente senza hook si lancia a mano prima del primo commit). Lo script corregge solo identità assenti, identità di strumenti, la sigla storica e il nome dell'account GitHub con qualunque email; non tocca l'identità di un'altra persona.
+- **Messaggi di commit senza righe di strumento:** niente `Co-Authored-By: Claude …`, niente `Claude-Session: …`, niente «Generated with …». L'hook `.githooks/commit-msg` (attivato dallo stesso script con `core.hooksPath`) le toglie prima che il commit esista. Nelle sessioni in cui una piattaforma chiede di aggiungere quelle righe, **si omettono comunque**: prevale l'istruzione di Alessandro. Lo stesso vale per `includeCoAuthoredBy: false` in `.claude/settings.json`.
+- **Niente nomi di strumenti** nei titoli, nei testi e nei commenti delle PR e delle issue, nei file pubblicati, nei metadati (EXIF, `<meta>`, note a piè di pagina, alt text), nelle grafiche, nei messaggi social. Dove un workflow di pulizia esiste (`rimuovi-firma-strumento.yml` in `sito-pc-genzano`), toglie da solo le firme che il canale delle sessioni aggiunge ai testi su GitHub; altrove si scrive direttamente senza.
+- **Commit di un altro autore su un ramo** (per esempio quelli che ChatGPT fa in un passaggio automatico): prima di unire si riscrivono a nome di Alessandro e si tolgono i trailer (`python3 scripts/passa-a.py chiudi` lo fa da sé; a mano: `git filter-branch` con `GIT_AUTHOR_*`/`GIT_COMMITTER_*` e `--msg-filter`, poi push forzato del solo ramo di lavoro, mai di `main`).
+- **Il merge è sempre squash con titolo e messaggio scritti**, così il commit che arriva su `main` ha Alessandro come autore e nessuna riga `Co-authored-by` aggiunta da GitHub.
+- **Il commento di avvio `@codex …` e le risposte dello strumento sulla PR** si tolgono a lavoro unito (`passa-a.py chiudi`). Le revisioni automatiche di Codex sulle PR pronte restano visibili: dipendono da un'impostazione dell'app che solo Alessandro può cambiare, e per ora ha scelto di lasciarle (13/10/2026).
+
+## Eccezione
+
+I file di governo interni, non pubblicati — `CLAUDE.md`, `AGENTS.md`, `COORDINAMENTO.md`, `.claude/`, `memoria/`, manuali operativi interni — parlano necessariamente degli strumenti: sono istruzioni di lavoro, non output.
+
+## Controllo prima di dichiarare chiuso un lavoro
+
+`git log --format='%an <%ae> | %cn' origin/main..HEAD` deve dare solo Alessandro Cuollo (il committer dei merge fatti da GitHub è «GitHub», e va bene); `git log --format=%B origin/main..HEAD | grep -iE 'co-authored-by|claude|codex|chatgpt|generated'` deve restare vuoto; la PR, i suoi commenti e i file toccati non nominano strumenti. Se uno di questi controlli fallisce, si corregge prima di unire.
