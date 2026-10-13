@@ -29,14 +29,20 @@ Comandi
   chiudi --pr N [--consegna M] [--attesa-minuti 40] [--attesa-deploy-minuti 30]
          [--senza-pulizia] [--senza-merge] [--senza-attesa-deploy]
                                 con --consegna porta nel ramo il lavoro arrivato nella PR M
-                                (aperta dal task con «Create PR»), le dà titolo e descrizione
-                                neutri e la chiude come assorbita; poi riscrive a nome di
-                                Alessandro i commit con un altro autore, porta nel ramo le
-                                novità della base (merge, mai rebase), sposta in «Archiviati»
-                                la voce di bacheca con la riga di esito, segna la PR pronta,
-                                aspetta i controlli, squash merge con messaggio scritto, toglie
-                                dalle PR i commenti dello strumento, cancella il ramo e, dove
-                                c'è `deploy.yml`, aspetta che il deploy del merge finisca bene
+                                (aperta dal task con «Create PR»), le dà un titolo neutro (e la
+                                descrizione, se è dell'account di Alessandro) e la chiude come
+                                assorbita; poi riscrive a nome di Alessandro i commit con un
+                                altro autore, porta nel ramo le novità della base (merge, mai
+                                rebase), sposta in «Archiviati» la voce di bacheca con la riga
+                                di esito, segna la PR pronta, aspetta i controlli, squash merge
+                                con messaggio scritto, toglie dalle PR i commenti dello
+                                strumento, cancella il ramo e, dove c'è `deploy.yml`, aspetta
+                                che il deploy del merge finisca bene. Con --senza-merge si
+                                ferma dopo aver portato dentro la consegna, riscritto gli
+                                autori e allineato il ramo: la PR resta in bozza e la voce in
+                                «Richieste»; aggiorna la copia locale del ramo (se non è quella
+                                in uso) e stampa i passi per correggere sul ramo, poi si
+                                rilancia `chiudi` (anche con lo stesso --consegna)
 
 Solo libreria standard; GitHub via `gh api` (REST: in sessione cloud GraphQL non c'è);
 git solo con oggetti e riferimenti (commit-tree, update-ref): nessun checkout, la cartella
@@ -546,24 +552,31 @@ def _di_servizio(messaggio: str) -> bool:
 
 
 def _consegne(aperte: list[dict], n: int, ramo: str, titolo: str,
-              t_prep: dt.datetime | None) -> tuple[list[dict], list[dict]]:
+              t_prep: dt.datetime | None, t_pr: dt.datetime | None) -> tuple[list[dict], list[dict]]:
     """Le pull request aperte con cui il lavoro è stato consegnato (in Codex Cloud: «Create PR» dal
-    task). Certe: base = il ramo preparato, oppure titolo o descrizione che citano quel ramo, la PR #n
-    o il titolo della richiesta. Possibili: un ramo `codex/…` aperto dopo la preparazione, quando il
-    task è partito dal ramo principale e la pull request non porta altri segni: va riconosciuta
-    guardandola prima di assorbirla."""
+    task). Contano solo quelle aperte dopo la preparazione (o, se la sua ora non si ricava, dopo la PR
+    preparata): una pull request più vecchia non può essere la consegna. Certe: base = il ramo
+    preparato, oppure titolo o descrizione che citano quel ramo o la PR #n. Possibili, da riconoscere
+    guardandole prima di assorbirle: quelle che riportano solo il titolo della richiesta (un titolo
+    generico può coincidere per caso) e i rami `codex/…` senza altri segni, quando il task è partito
+    dal ramo principale. Le pull request delle sessioni (`claude/…`, `chatgpt/…`) contano solo se
+    puntano al ramo preparato."""
     certe, possibili = [], []
+    soglia = t_prep or t_pr
     for p in aperte:
         if p["number"] == n or p["head"]["ref"] == ramo:
             continue
+        if soglia is not None and _quando(p["created_at"]) <= soglia:
+            continue
         testo = f"{p.get('title') or ''}\n{p.get('body') or ''}"
         nostra = p["head"]["ref"].startswith(("claude/", PREFISSO_RAMO))
-        if (p["base"]["ref"] == ramo or ramo in testo
-                or (not nostra and (re.search(rf"#{n}\b", testo)
-                                    or (titolo and titolo.lower() in testo.lower())))):
+        if p["base"]["ref"] == ramo:
             certe.append(p)
-        elif (p["head"]["ref"].startswith("codex/")
-              and (t_prep is None or _quando(p["created_at"]) > t_prep)):
+        elif nostra:
+            continue
+        elif ramo in testo or re.search(rf"#{n}\b", testo):
+            certe.append(p)
+        elif (titolo and titolo.lower() in testo.lower()) or p["head"]["ref"].startswith("codex/"):
             possibili.append(p)
     return certe, possibili
 
@@ -619,7 +632,7 @@ def cmd_stato(args) -> None:
                              for c in risposte)
         dopo = [c for c in commits if not _di_servizio(c["commit"]["message"])
                 and (t_rif is None or _quando(c["commit"]["committer"]["date"]) > t_rif)]
-        certe, possibili = _consegne(aperte, n, ramo, pr["title"], t_prep)
+        certe, possibili = _consegne(aperte, n, ramo, pr["title"], t_prep, _quando(pr["created_at"]))
         altri_autori = sorted({f"{c['commit']['author']['name']} <{c['commit']['author']['email']}>"
                                for c in commits
                                if c["commit"]["author"]["email"].lower() not in AUTORI_OK})
@@ -979,7 +992,19 @@ def _assorbi_consegna(radice: Path, repo: str, n: int, ramo: str, m: int, io_log
         die("--consegna: è la stessa pull request")
     prm = gh_api(f"repos/{repo}/pulls/{m}")
     if prm["state"] != "open":
-        die(f"la PR #{m} non è aperta ({prm['state']})")
+        # Già assorbita da un `chiudi` precedente (per esempio con --senza-merge). Il segno è il titolo
+        # neutro che quel `chiudi` le ha dato: i commit consegnati, riscritti a nome di Alessandro, hanno
+        # cambiato SHA, quindi la testa originale della #m può non risultare più nel ramo.
+        if (prm.get("title") or "") == f"Consegna per la pull request #{n}":
+            info(f"la PR #{m} è già stata assorbita dalla #{n} con un `chiudi` precedente")
+            return
+        fetch_rami(radice, ramo)
+        sha_ramo = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+        if run(["git", "merge-base", "--is-ancestor", prm["head"]["sha"], sha_ramo], cwd=str(radice),
+               check=False).returncode == 0:
+            info(f"la PR #{m} è chiusa e il suo lavoro è già nel ramo {ramo}")
+            return
+        die(f"la PR #{m} non è aperta ({prm['state']}) e il suo lavoro non è nel ramo {ramo}")
     repo_m = (prm["head"].get("repo") or {}).get("full_name") or repo
     if repo_m.lower() != repo.lower():
         die(f"la PR #{m} viene da un altro repository ({repo_m}): il suo ramo va portato qui a mano")
@@ -1027,6 +1052,59 @@ def _assorbi_consegna(radice: Path, repo: str, n: int, ramo: str, m: int, io_log
     info(f"PR #{m} chiusa come assorbita dalla #{n}, con titolo neutro")
 
 
+def _e_antenato(radice: Path, a: str, b: str) -> bool:
+    return run(["git", "merge-base", "--is-ancestor", a, b], cwd=str(radice), check=False).returncode == 0
+
+
+def _cartella_del_ramo(radice: Path, ref: str) -> str | None:
+    """La cartella di lavoro, fra tutte quelle collegate al repository (`git worktree`), che ha in uso
+    il ramo; None se nessuna."""
+    percorso = None
+    for riga in run(["git", "worktree", "list", "--porcelain"], cwd=str(radice)).stdout.splitlines():
+        if riga.startswith("worktree "):
+            percorso = riga[len("worktree "):]
+        elif riga == f"branch {ref}":
+            return percorso
+    return None
+
+
+def _ramo_locale_per_correggere(radice: Path, ramo: str) -> list[str]:
+    """Dopo --senza-merge il ramo remoto è andato avanti (consegna, autori riscritti, allineamento), mentre
+    la copia locale lasciata da `nuovo` punta ancora alla preparazione: chi corregge partendo da lì
+    lavorerebbe su una storia vecchia. Se il ramo non è in uso in nessuna cartella di lavoro collegata,
+    la porta su origin/<ramo> con update-ref (file intatti, mai commit locali persi); altrimenti non tocca
+    nulla e restituisce i comandi esatti. Restituisce i passi da fare prima delle correzioni."""
+    fetch_rami(radice, ramo)
+    remoto = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+    ref = f"refs/heads/{ramo}"
+    cartella = _cartella_del_ramo(radice, ref)
+    in_uso = cartella is not None
+    # In uso in un'altra cartella collegata: lì `git switch` fallirebbe, si lavora in quella cartella.
+    vai = [f"cd {cartella}"] if in_uso and Path(cartella).resolve() != radice.resolve() else []
+    dove = f" (in uso nella cartella {cartella})" if vai else ""
+    locale = run(["git", "rev-parse", "--verify", "--quiet", ref], cwd=str(radice), check=False).stdout.strip()
+    if locale == remoto:
+        info(f"copia locale del ramo {ramo}{dove} già uguale al remoto")
+        return vai if in_uso else [f"git switch {ramo}"]
+    if in_uso:
+        # Il ramo è quello di una cartella di lavoro: aggiornarlo vuol dire toccare i file, lo fa chi corregge.
+        if _e_antenato(radice, locale, remoto):
+            info(f"il ramo {ramo}{dove} è indietro rispetto al remoto: va portato avanti prima di correggere")
+            return vai + [f"git merge --ff-only origin/{ramo}"]
+        info(f"il ramo {ramo}{dove} ha commit che non sono sul remoto: va unito al remoto (merge, mai rebase)")
+        return vai + [f"git merge origin/{ramo}"]
+    if not locale:
+        run(["git", "update-ref", ref, remoto, "0" * 40], cwd=str(radice))
+        info(f"copia locale del ramo {ramo} creata su origin/{ramo} ({remoto[:7]})")
+        return [f"git switch {ramo}"]
+    if _e_antenato(radice, locale, remoto):
+        run(["git", "update-ref", ref, remoto, locale], cwd=str(radice))
+        info(f"copia locale del ramo {ramo} portata sul remoto ({locale[:7]} → {remoto[:7]})")
+        return [f"git switch {ramo}"]
+    info(f"la copia locale del ramo {ramo} ha commit che non sono sul remoto: non la tocco")
+    return [f"git switch {ramo}", f"git merge origin/{ramo}"]
+
+
 def _archivia_voce(radice: Path, ramo: str, n: int, base: str) -> bool:
     """Sposta in «Archiviati» la voce di bacheca della PR #n, con la riga di esito, con un commit sul
     ramo prima dei controlli: così la bacheca unita è già in ordine. Restituisce True se ha fatto push."""
@@ -1063,20 +1141,35 @@ def cmd_chiudi(args) -> None:
     controlla_vietate(titolo, "il titolo del merge")
     io_login = (gh_api("user") or {}).get("login", "")
 
+    if args.senza_merge and not pr["draft"]:
+        # Una PR del passaggio resta in bozza finché `chiudi` non unisce; se qualcuno l'ha già segnata
+        # pronta, le correzioni arrivano su una PR pronta (da qui non si può rimettere in bozza: serve
+        # GraphQL). La revisione automatica parte all'apertura, al passaggio a pronta o su richiesta.
+        info(f"attenzione: la PR #{n} è già pronta, non in bozza; i commit di questo `chiudi` e le "
+             "correzioni arriveranno su una PR pronta")
     if args.consegna:
         _assorbi_consegna(radice, repo, n, ramo, args.consegna, io_login)
     _riscrivi_autori(radice, repo, ramo, base)
     _allinea_alla_base(radice, repo, ramo, base)
+    if args.senza_merge:
+        # Serve a correggere sul ramo il lavoro arrivato: niente archivio della voce, la PR resta com'è
+        # (in bozza: niente revisione automatica, che consuma crediti) e i controlli si aspettano dopo.
+        passi = _ramo_locale_per_correggere(radice, ramo)
+        passi += ["correzioni e `git commit` (messaggi in italiano, senza nomi di strumenti)",
+                  f"git push origin {ramo}",
+                  f"python3 scripts/passa-a.py chiudi --pr {n}"
+                  + (f" --consegna {args.consegna}" if args.consegna else "")]
+        info("--senza-merge: consegna nel ramo, autori riscritti, ramo allineato; la PR resta com'è e la "
+             "voce di bacheca in «Richieste». Per correggere sul ramo:\n  "
+             + "\n  ".join(f"{i}. {p if p.startswith('correzioni') else f'`{p}`'}"
+                           for i, p in enumerate(passi, 1)))
+        return
     _archivia_voce(radice, ramo, n, base)
 
     if pr["draft"]:
         _segna_pronta(repo, n)
         info(f"PR #{n} segnata pronta")
     sha = _aspetta_controlli(repo, n, args.attesa_minuti)
-
-    if args.senza_merge:
-        info("--senza-merge: mi fermo prima di unire")
-        return
     messaggio = args.messaggio or f"Richiesta della bacheca di coordinamento: {titolo}."
     controlla_vietate(messaggio, "il messaggio del merge")
     esito = gh_api(f"repos/{repo}/pulls/{n}/merge", "PUT", {
@@ -1142,7 +1235,10 @@ def main() -> None:
     pc.add_argument("--attesa-minuti", type=int, default=40, help="attesa massima dei controlli della PR")
     pc.add_argument("--attesa-deploy-minuti", type=int, default=30, help="attesa massima del deploy dopo il merge")
     pc.add_argument("--senza-pulizia", action="store_true", help="non toglie i commenti dalla PR")
-    pc.add_argument("--senza-merge", action="store_true", help="si ferma dopo i controlli, senza unire")
+    pc.add_argument("--senza-merge", action="store_true",
+                    help="porta dentro la consegna, riscrive gli autori e allinea il ramo, poi si ferma: "
+                         "la PR resta in bozza e la voce di bacheca in «Richieste»; aggiorna la copia locale "
+                         "del ramo e stampa i passi per correggere")
     pc.add_argument("--senza-attesa-deploy", action="store_true", help="dopo il merge non aspetta il deploy")
     pc.add_argument("--qualsiasi", action="store_true", help="accetta anche rami non chatgpt/*")
     pc.set_defaults(fn=cmd_chiudi)
