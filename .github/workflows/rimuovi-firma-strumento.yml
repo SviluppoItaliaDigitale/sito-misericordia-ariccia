@@ -17,11 +17,13 @@ name: "🧹 Togli la firma dello strumento dai testi su GitHub"
 #   - a mano: pulizia di un periodo intero (input «dal»), a giri di 400 testi
 #     con un'ora di pausa, perché GitHub limita le scritture.
 #
-# Pull request dei passaggi (dal 14/10/2026): quando si chiude una PR su un
-# ramo chatgpt/… o codex/…, toglie il commento di avvio «@codex …», i commenti
-# degli strumenti e il ramo, che `passa-a.py chiudi` dalle sessioni cloud non
-# può cancellare (il canale di GitHub risponde 403). Il giro di ogni giorno
-# ripassa anche queste PR.
+# Pull request chiuse (dal 14/10/2026): quando si chiude una PR su un ramo
+# chatgpt/… o codex/… (passaggi), toglie il commento di avvio «@codex …», i
+# commenti degli strumenti e il ramo, che `passa-a.py chiudi` dalle sessioni
+# cloud non può cancellare (il canale di GitHub risponde 403); quando si unisce
+# una PR da un ramo di lavoro claude/…, cancella il ramo. Un ramo resta se lo
+# usa un'altra PR aperta o se dopo la chiusura ha ricevuto commit nuovi. Il
+# giro di ogni giorno ripassa anche queste PR.
 #
 # Lo script si prende sempre dal ramo principale: è quello che gira con i
 # permessi di scrittura, quindi deve essere la versione già unita.
@@ -83,11 +85,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/rimuovi-firma-strumento.py --evento
 
-  passaggio:
+  chiusura:
     if: >-
       github.event_name == 'pull_request' && github.event.action == 'closed' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      (startsWith(github.event.pull_request.head.ref, 'chatgpt/') || startsWith(github.event.pull_request.head.ref, 'codex/'))
+      (startsWith(github.event.pull_request.head.ref, 'chatgpt/') || startsWith(github.event.pull_request.head.ref, 'codex/') ||
+       (startsWith(github.event.pull_request.head.ref, 'claude/') && github.event.pull_request.merged))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -102,7 +105,7 @@ jobs:
           sparse-checkout: scripts/rimuovi-firma-strumento.py
           sparse-checkout-cone-mode: false
 
-      - name: "🧹 Togli commento di avvio, commenti degli strumenti e ramo"
+      - name: "🧹 Togli commento di avvio, commenti degli strumenti e ramo chiuso"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/rimuovi-firma-strumento.py --passaggio
