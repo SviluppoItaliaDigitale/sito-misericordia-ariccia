@@ -383,7 +383,7 @@ scuoti({u,p,A}){
 },
 respiro({u,p,A}){
   lying(-60,230,.8,{});
-  const s=Math.min(10,Math.floor(p*14)+1); timer(300,-120,110,p*1.4,s+'″',{size:64});
+  phone(300,-130,.55,{ring:true,u,speaker:1});   // linee guida 2025: il respiro si guarda mentre si è già al telefono col 112
   ctx.save(); ctx.setLineDash([12,12]); ln([[-160,40],[-160,-60]],'rgba(242,228,51,.6)',5); ctx.restore();
   eye(-160,-110,.55,1);
   const g=A(.8); if(g>0){ const f=(u*.7)%1; grp(-330,-60,1,g,()=>{ arc(0,0,30+f*30,-.8,.8,`rgba(255,255,255,${1-f})`,6); tx('?',60,-60,60,C.giallo,'800','P'); }); }
