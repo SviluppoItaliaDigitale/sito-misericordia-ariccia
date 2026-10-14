@@ -56,6 +56,7 @@ import datetime as dt
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -1080,29 +1081,31 @@ def _ramo_locale_per_correggere(radice: Path, ramo: str) -> list[str]:
     cartella = _cartella_del_ramo(radice, ref)
     in_uso = cartella is not None
     # In uso in un'altra cartella collegata: lì `git switch` fallirebbe, si lavora in quella cartella.
-    vai = [f"cd {cartella}"] if in_uso and Path(cartella).resolve() != radice.resolve() else []
+    vai = [f"cd {shlex.quote(cartella)}"] if in_uso and Path(cartella).resolve() != radice.resolve() else []
+    # Nomi quotati per la shell: i comandi si copiano così come sono (percorsi con spazi, rami con `;` o `$`).
+    q, qo = shlex.quote(ramo), shlex.quote(f"origin/{ramo}")
     dove = f" (in uso nella cartella {cartella})" if vai else ""
     locale = run(["git", "rev-parse", "--verify", "--quiet", ref], cwd=str(radice), check=False).stdout.strip()
     if locale == remoto:
         info(f"copia locale del ramo {ramo}{dove} già uguale al remoto")
-        return vai if in_uso else [f"git switch {ramo}"]
+        return vai if in_uso else [f"git switch {q}"]
     if in_uso:
         # Il ramo è quello di una cartella di lavoro: aggiornarlo vuol dire toccare i file, lo fa chi corregge.
         if _e_antenato(radice, locale, remoto):
             info(f"il ramo {ramo}{dove} è indietro rispetto al remoto: va portato avanti prima di correggere")
-            return vai + [f"git merge --ff-only origin/{ramo}"]
+            return vai + [f"git merge --ff-only {qo}"]
         info(f"il ramo {ramo}{dove} ha commit che non sono sul remoto: va unito al remoto (merge, mai rebase)")
-        return vai + [f"git merge origin/{ramo}"]
+        return vai + [f"git merge {qo}"]
     if not locale:
         run(["git", "update-ref", ref, remoto, "0" * 40], cwd=str(radice))
         info(f"copia locale del ramo {ramo} creata su origin/{ramo} ({remoto[:7]})")
-        return [f"git switch {ramo}"]
+        return [f"git switch {q}"]
     if _e_antenato(radice, locale, remoto):
         run(["git", "update-ref", ref, remoto, locale], cwd=str(radice))
         info(f"copia locale del ramo {ramo} portata sul remoto ({locale[:7]} → {remoto[:7]})")
-        return [f"git switch {ramo}"]
+        return [f"git switch {q}"]
     info(f"la copia locale del ramo {ramo} ha commit che non sono sul remoto: non la tocco")
-    return [f"git switch {ramo}", f"git merge origin/{ramo}"]
+    return [f"git switch {q}", f"git merge {qo}"]
 
 
 def _archivia_voce(radice: Path, ramo: str, n: int, base: str) -> bool:
@@ -1156,7 +1159,7 @@ def cmd_chiudi(args) -> None:
         # (in bozza: niente revisione automatica, che consuma crediti) e i controlli si aspettano dopo.
         passi = _ramo_locale_per_correggere(radice, ramo)
         passi += ["correzioni e `git commit` (messaggi in italiano, senza nomi di strumenti)",
-                  f"git push origin {ramo}",
+                  f"git push origin {shlex.quote(ramo)}",
                   f"python3 scripts/passa-a.py chiudi --pr {n}"
                   + (f" --consegna {args.consegna}" if args.consegna else "")]
         info("--senza-merge: consegna nel ramo, autori riscritti, ramo allineato; la PR resta com'è e la "
