@@ -946,10 +946,12 @@ def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
                 tolti += 1
     info(f"commenti tolti dalla PR: {tolti} (le revisioni del bot, se ci sono, non si possono cancellare)")
     if rimasti:
-        # Nelle sessioni cloud il proxy di GitHub vieta le cancellazioni (HTTP 403): si fanno
-        # dalla pagina della PR o da una sessione sul PC, e qui si dice quali sono.
-        info("commenti NON cancellati (il canale di questa sessione non lo permette): da togliere a mano:\n  "
-             + "\n  ".join(rimasti))
+        # Nelle sessioni cloud il proxy di GitHub vieta le cancellazioni (HTTP 403). Sulle PR dei passaggi
+        # (rami chatgpt/* e codex/*) le fa il workflow «Togli la firma dello strumento» appena la PR si
+        # chiude, con il giro di ogni notte come rete; qui si dice quali sono.
+        info("commenti non cancellati da qui (il canale di questa sessione non lo permette): sulle pull "
+             "request dei passaggi li toglie il workflow «Togli la firma dello strumento» alla chiusura, "
+             "altrove vanno tolti dalla pagina della PR:\n  " + "\n  ".join(rimasti))
 
 
 def cmd_riavvia(args) -> None:
@@ -1185,8 +1187,12 @@ def cmd_chiudi(args) -> None:
          "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
     esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
     if isinstance(esito, tuple):
-        info(f"ramo {ramo} non cancellato (il canale di questa sessione non lo permette): "
-             "si toglie dalla pagina della PR o da una sessione sul PC; è già unito, resta innocuo")
+        if ramo.startswith(("chatgpt/", "codex/")):
+            info(f"ramo {ramo} non cancellato da qui (il canale di questa sessione non lo permette): "
+                 "lo toglie il workflow «Togli la firma dello strumento» alla chiusura della PR")
+        else:
+            info(f"ramo {ramo} non cancellato (il canale di questa sessione non lo permette): "
+                 "si toglie dalla pagina della PR o da una sessione sul PC; è già unito, resta innocuo")
     else:
         info(f"ramo {ramo} cancellato")
     if not args.senza_pulizia:

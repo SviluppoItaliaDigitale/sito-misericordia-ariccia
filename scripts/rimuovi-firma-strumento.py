@@ -15,8 +15,18 @@ Tocca solo testi scritti dall'account proprietario del repository, e solo la
 coda del testo: righe di firma finali e il separatore «---» che le precede.
 Il resto del testo resta identico.
 
+Pull request dei passaggi (dal 14/10/2026). Quando si chiude una pull request
+su un ramo `chatgpt/…` (passaggio preparato con `passa-a.py nuovo`) o `codex/…`
+(consegna aperta dal task), toglie quello che `passa-a.py chiudi` dovrebbe
+togliere e che dalle sessioni cloud non può cancellare (il canale di GitHub
+risponde 403): il commento di avvio «@codex …» dell'account, i commenti degli
+account degli strumenti (i rapporti di github-actions[bot] restano) e il ramo,
+se nessun'altra pull request aperta lo usa. Le revisioni inviate non si
+possono cancellare.
+
 Uso:
   rimuovi-firma-strumento.py --evento              # dal workflow, sul testo dell'evento
+  rimuovi-firma-strumento.py --passaggio           # dal workflow, sulla PR appena chiusa
   rimuovi-firma-strumento.py --tutti [--dal AAAA-MM-GG | --giorni N] [--max N]
                              [--giri N --pausa SECONDI] [--prova]
 
@@ -37,6 +47,7 @@ import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 API = os.environ.get("GITHUB_API_URL", "https://api.github.com").rstrip("/")
@@ -70,6 +81,10 @@ RIGHE_FIRMA = [
     re.compile(r"^Co-Authored-By:\s*Claude\b.*$", re.I),
 ]
 RIGA_SEPARATORE = re.compile(r"^(?:-{3,}|\*{3,}|_{3,})$")
+
+# Pull request dei passaggi e account degli strumenti: gli stessi criteri di `passa-a.py`.
+RAMO_PASSAGGIO = re.compile(r"^(?:chatgpt|codex)/")
+BOT_STRUMENTO = re.compile(r"codex|chatgpt|openai|claude|anthropic|gemini|jules|copilot", re.IGNORECASE)
 
 
 def pulisci(testo: str) -> str:
@@ -136,9 +151,35 @@ def dell_account(oggetto: dict) -> bool:
     return (oggetto.get("user") or {}).get("login") == OWNER
 
 
+def di_strumento(oggetto: dict) -> bool:
+    """Vero per i testi di un account di strumento (un bot come chatgpt-codex-connector[bot]),
+    falso per github-actions[bot], i cui rapporti sono del repository."""
+    utente = oggetto.get("user") or {}
+    login = utente.get("login") or ""
+    return (utente.get("type") == "Bot" or "[bot]" in login) and bool(BOT_STRUMENTO.search(login))
+
+
 class Contatore:
     def __init__(self, prova: bool, massimo: int):
         self.prova, self.massimo, self.fatti, self.trovati = prova, massimo, 0, 0
+        self.eliminati, self.non_eliminati = 0, 0
+
+    def elimina(self, url: str, etichetta: str) -> None:
+        """Cancella un commento o un ramo; 404 e 422 vogliono dire che non c'è già più."""
+        print(f"  {'[prova] ' if self.prova else ''}cancello {etichetta}", flush=True)
+        if self.prova:
+            self.eliminati += 1
+            return
+        try:
+            chiama("DELETE", url)
+            self.eliminati += 1
+            time.sleep(1.0)   # restare sotto i limiti di GitHub sulle scritture
+        except urllib.error.HTTPError as e:
+            if e.code in (404, 422):
+                print(f"    già tolto ({e.code})")
+            else:
+                self.non_eliminati += 1
+                print(f"    non riuscito: HTTP {e.code}", flush=True)
 
     def esaurito(self) -> bool:
         return self.fatti >= self.massimo
@@ -158,6 +199,52 @@ class Contatore:
             chiama(metodo, url, {campo_body: nuovo})
             time.sleep(1.0)   # restare sotto i limiti di GitHub sulle scritture
         self.fatti += 1
+
+
+def pulisci_passaggio(pr: dict, c: Contatore) -> None:
+    """Pull request chiusa su un ramo chatgpt/* o codex/*: toglie il commento di avvio «@codex …»
+    dell'account, i commenti degli strumenti e il ramo (se nessun'altra PR aperta lo usa)."""
+    n = pr["number"]
+    testa = pr.get("head") or {}
+    ramo = testa.get("ref") or ""
+    if pr.get("state") != "closed" or not RAMO_PASSAGGIO.match(ramo):
+        return
+    if ((testa.get("repo") or {}).get("full_name") or "").lower() != REPO.lower():
+        print(f"  #{n}: il ramo {ramo} è in un altro repository, non lo tocco")
+        return
+    base = f"{API}/repos/{REPO}"
+    for o in elenco(f"{base}/issues/{n}/comments", massimo_pagine=5):
+        avvio = dell_account(o) and (o.get("body") or "").strip().lower().startswith("@codex")
+        if avvio or di_strumento(o):
+            c.elimina(f"{base}/issues/comments/{o['id']}", f"commento {o['id']} su #{n}")
+    for o in elenco(f"{base}/pulls/{n}/comments", massimo_pagine=5):
+        if di_strumento(o):
+            c.elimina(f"{base}/pulls/comments/{o['id']}", f"commento di revisione {o['id']} su #{n}")
+    ref = urllib.parse.quote(ramo, safe="/")
+    try:
+        chiama("GET", f"{base}/git/ref/heads/{ref}")
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return   # ramo già cancellato
+        raise
+    testa_q = urllib.parse.quote(f"{OWNER}:{ramo}", safe="")
+    if chiama("GET", f"{base}/pulls?state=open&head={testa_q}&per_page=5"):
+        print(f"  ramo {ramo}: lo usa un'altra pull request aperta, resta")
+        return
+    c.elimina(f"{base}/git/refs/heads/{ref}", f"ramo {ramo} di #{n}")
+
+
+def modo_passaggio() -> int:
+    with open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8") as f:
+        ev = json.load(f)
+    pr = ev.get("pull_request") or {}
+    if not pr:
+        print("evento senza pull request")
+        return 0
+    c = Contatore(prova=False, massimo=0)
+    pulisci_passaggio(pr, c)
+    print(f"cancellati: {c.eliminati}" + (f" · non riusciti: {c.non_eliminati}" if c.non_eliminati else ""))
+    return 1 if c.non_eliminati else 0
 
 
 def modo_evento() -> int:
@@ -192,7 +279,8 @@ def modo_evento() -> int:
     return 0
 
 
-def modo_tutti(dal: str, massimo: int, prova: bool) -> int:
+def modo_tutti(dal: str, massimo: int, prova: bool) -> tuple[int, int]:
+    """Un giro: restituisce (testi con la firma rimasti, cancellazioni non riuscite)."""
     base = f"{API}/repos/{REPO}"
     since = f"{dal}T00:00:00Z"
     c = Contatore(prova=prova, massimo=massimo)
@@ -226,6 +314,21 @@ def modo_tutti(dal: str, massimo: int, prova: bool) -> int:
         elif dell_account(o):
             c.correggi("PATCH", f"{base}/issues/{n}", "body", o.get("body") or "", f"descrizione issue #{n}")
 
+    print("Pull request dei passaggi chiuse (rami chatgpt/* e codex/*)")
+    for pagina in range(1, 51):
+        lotto = chiama("GET", f"{base}/pulls?state=closed&sort=updated&direction=desc"
+                              f"&per_page=100&page={pagina}") or []
+        for pr in lotto:
+            if (pr.get("updated_at") or "") < since:
+                lotto = []
+                break
+            pulisci_passaggio(pr, c)
+        if len(lotto) < 100:
+            break
+    if c.eliminati or c.non_eliminati:
+        print(f"cancellazioni: {c.eliminati}" + (" (prova)" if prova else "")
+              + (f" · non riuscite: {c.non_eliminati}" if c.non_eliminati else ""))
+
     resto = c.trovati - c.fatti
     if interrotto:
         # Il giro si è fermato prima di vedere tutto: quanto resta non si sa,
@@ -234,13 +337,15 @@ def modo_tutti(dal: str, massimo: int, prova: bool) -> int:
     print(f"\ntesti con la firma: {c.trovati} · {'da correggere (prova)' if prova else 'corretti'}: {c.fatti}"
           + (" · giro interrotto al limite, il prossimo riprende" if interrotto
              else f" · rimasti per il prossimo giro: {resto}" if resto > 0 else ""))
-    return resto
+    return resto, c.non_eliminati
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--evento", action="store_true", help="corregge il testo dell'evento GitHub in corso")
+    g.add_argument("--passaggio", action="store_true",
+                   help="pulisce la pull request di un passaggio appena chiusa (evento GitHub in corso)")
     g.add_argument("--tutti", action="store_true", help="passa tutti i testi dal giorno indicato")
     ap.add_argument("--dal", default="", help="data di inizio AAAA-MM-GG (con --tutti)")
     ap.add_argument("--giorni", type=int, default=3, help="in alternativa a --dal: ultimi N giorni")
@@ -254,14 +359,21 @@ def main() -> int:
         return 2
     if a.evento:
         return modo_evento()
+    if a.passaggio:
+        return modo_passaggio()
     dal = a.dal or time.strftime("%Y-%m-%d", time.gmtime(time.time() - a.giorni * 86400))
+    falliti = 0
     for giro in range(1, a.giri + 1):
         print(f"=== giro {giro} di {a.giri}, testi dal {dal} ===", flush=True)
-        resto = modo_tutti(dal, a.max, a.prova)
-        if resto <= 0 or a.prova or giro == a.giri:
+        resto, falliti = modo_tutti(dal, a.max, a.prova)
+        if (resto <= 0 and not falliti) or a.prova or giro == a.giri:
             break
         print(f"attendo {a.pausa} s per i limiti di GitHub sulle scritture", flush=True)
         time.sleep(a.pausa)
+    if falliti:
+        # Cancellazioni non riuscite anche all'ultimo giro: il passo fallisce, così il run è rosso e si vede.
+        print(f"cancellazioni non riuscite: {falliti}", file=sys.stderr)
+        return 1
     return 0
 
 
