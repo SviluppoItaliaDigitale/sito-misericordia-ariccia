@@ -1,0 +1,40 @@
+{
+  "data": "2026-10-18",
+  "giorno_liturgico": "XXIX Domenica del Tempo Ordinario",
+  "opera": {
+    "autore": "Tiziano Vecellio",
+    "titolo": "Il Cristo della moneta",
+    "anno": "1516 circa",
+    "luogo": "Gemäldegalerie Alte Meister, Dresda",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:The_Tribute_Money_(1516)_-_Tizian_(Gem%C3%A4ldegalerie_Alte_Meister,_Dresden).jpg",
+    "illustra": "Vangelo, Mt 22,15-21",
+    "scena": "un fariseo porge a Gesù la moneta del tributo; Gesù lo guarda negli occhi prima di rispondere."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro del profeta Isaia",
+      "riferimento": "Is 45,4",
+      "versetto": "Io ti ho chiamato per nome, ti ho dato un titolo, sebbene tu non mi conosca.",
+      "evidenza": "ti ho chiamato per nome"
+    },
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla prima lettera di san Paolo apostolo ai Tessalonicesi",
+      "riferimento": "1Ts 1,3",
+      "versetto": "L’operosità della vostra fede, la fatica della vostra carità e la fermezza della vostra speranza nel Signore nostro Gesù Cristo.",
+      "evidenza": "la fatica della vostra carità"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 22,21",
+      "versetto": "Rendete dunque a Cesare quello che è di Cesare e a Dio quello che è di Dio.",
+      "evidenza": "a Dio quello che è di Dio"
+    }
+  ],
+  "testo_social": "Dio chiama ognuno per nome, anche chi non lo conosce ancora. Paolo ringrazia per una comunità dove la fede si vede nelle opere e la carità costa fatica. E nel Vangelo Gesù ci ricorda che, oltre a ciò che dobbiamo a Cesare, c'è ciò che dobbiamo a Dio: noi stessi, fatti a sua immagine. La fatica della carità la conosce bene chi presta servizio, di giorno e di notte. Buona domenica!",
+  "preparata_da": "Claude, 2026-10-14",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
