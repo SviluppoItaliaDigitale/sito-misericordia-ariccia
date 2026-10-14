@@ -51,7 +51,7 @@ V = {
   S('2 · Risponde?', ['Chiamalo','e *scuotilo*.'], 'Scuotilo leggermente per le spalle e chiamalo ad alta voce. Non risponde?', 'scuoti', [['Non risponde', .85]]),
   S('3 · Chiama', ['Chiama','*subito* il 112.'], 'Chiama subito '+U12+' e metti il vivavoce: l\'operatore ti guida. Fatti portare un defibrillatore, il di a e, se c\'è.', 'telefono-dae', [['Chiama subito il 112', .2, 1], ['Vivavoce', .45], ['DAE', .85]],
     sub='Chiama subito il 112 e metti il vivavoce: l\'operatore ti guida. Fatti portare un defibrillatore, il DAE, se c\'è.'),
-  S('4 · Respira?', ['Guarda','se *respira*.'], 'Mentre aspetti la risposta, guarda se respira normalmente. Respiri rari e rumorosi, come singhiozzi, non sono un respiro normale. Se hai dubbi, l\'operatore ti aiuta.', 'respiro', [['Mentre chiami', .3], ['Singhiozzi: non è respiro', .75]]),
+  S('4 · Respira?', ['Guarda','se *respira*.'], 'Mentre aspetti la risposta, guarda se respira normalmente. Respiri rari e rumorosi, come singhiozzi, non sono un respiro normale. Nel dubbio, consideralo un arresto cardiaco.', 'respiro', [['Mentre chiami', .25], ['Singhiozzi: non è respiro', .6], ['Nel dubbio: inizia', .85, 1]]),
   S('5 · Le mani', ['Al centro','del *petto*.'], 'Non respira normalmente? Inginocchiati al suo fianco. Mani una sopra l\'altra, al centro del petto. Braccia tese, spalle sopra le mani.', 'mani', [['Centro del petto', .45], ['Braccia tese', .8]]),
   S('6 · Compressioni', ['Segui il','*ritmo*.'], 'Spingi forte, cinque o sei centimetri, e lascia risalire il torace. Segui il ritmo.', 'rcp-sim', [['5-6 cm', .3], ['110 al minuto', .9]], conta=30,
     sub='Spingi forte, 5-6 centimetri, e lascia risalire il torace. Segui il ritmo.'),

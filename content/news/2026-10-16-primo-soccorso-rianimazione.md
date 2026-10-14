@@ -43,7 +43,7 @@ Chiama subito il 112 e metti il vivavoce: l'operatore ti guida. Fatti portare un
 
 ### Respira?
 
-Mentre aspetti la risposta, guarda se respira normalmente. Respiri rari e rumorosi, come singhiozzi, non sono un respiro normale. Se hai dubbi, l'operatore ti aiuta.
+Mentre aspetti la risposta, guarda se respira normalmente. Respiri rari e rumorosi, come singhiozzi, non sono un respiro normale. Nel dubbio, consideralo un arresto cardiaco: l'operatore ti aiuta a riconoscerlo.
 
 ### Le mani
 
