@@ -1187,7 +1187,7 @@ def cmd_chiudi(args) -> None:
          "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
     esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
     if isinstance(esito, tuple):
-        if ramo.startswith(("chatgpt/", "codex/")):
+        if ramo.startswith(("chatgpt/", "codex/", "claude/")):
             info(f"ramo {ramo} non cancellato da qui (il canale di questa sessione non lo permette): "
                  "lo toglie il workflow «Togli la firma dello strumento» alla chiusura della PR")
         else:
