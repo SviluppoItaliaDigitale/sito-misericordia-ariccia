@@ -3,6 +3,7 @@ title: "Lo sapevi che… Le prime barelle comprate con le multe sulle bestemmie"
 titoloSeo: "Le prime barelle comprate con le multe sulle bestemmie | Lo sapevi che… storia delle Misericordie"
 date: 2026-10-18
 slug: "lo-sapevi-che-01-multe-sulle-bestemmie"
+controllo_editoriale: "2026-10-15"
 description: "Lo sapevi che… n. 1: I facchini dell'Arte della Lana si ritrovavano in una cantina vicino al Duomo e bestemmiavano di continuo. Uno di loro, Piero di Luca Borsi, propose una multa per ogni bestemmia. Con i soldi raccolti si comprarono sei «zane», grandi ceste per portare i malati all'ospedale."
 immagine: "/img/news/lo-sapevi-che-01-multe-sulle-bestemmie-grafica.jpg"
 rubrica: "lo-sapevi-che"
