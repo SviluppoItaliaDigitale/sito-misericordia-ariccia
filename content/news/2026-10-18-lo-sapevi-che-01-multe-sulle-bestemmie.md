@@ -25,7 +25,7 @@ italianoSemplice: |
 
 La tradizione la racconta così, ed è la storia più famosa sulle origini della Misericordia di Firenze. I facchini si ritrovavano alla «Buca degli Adimari» e, fra un bicchiere e l'altro, bestemmiavano. Piero di Luca Borsi propose a tutti una piccola multa per ogni bestemmia; una guida inglese del 1877 aggiunge che il denaro finiva in una cassetta appesa al muro.
 
-Con quei soldi si comprarono sei **zane**, le ceste che si portavano a spalla, e i facchini cominciarono a trasportare gratis i malati e i feriti agli ospedali della città.
+Con quei soldi si comprarono sei **zane**, le ceste che si portavano a spalla, e i facchini cominciarono a portare i malati e i feriti agli ospedali della città. All'inizio per ogni viaggio prendevano un piccolo compenso; poi, racconta la guida del 1877, rifiutarono ogni pagamento.
 
 **È una leggenda?** Probabilmente sì, almeno in parte: i documenti delle origini sono andati perduti e la stessa Confederazione la presenta come tradizione. Ma racconta bene lo spirito della Misericordia: trasformare un vizio in un servizio.
 
