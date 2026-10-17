@@ -31,5 +31,8 @@ for key in sys.argv[1:]:
     s = s.replace('src="/*AUDIO*/"', 'src="data:audio/mpeg;base64,' + b64(muto) + '"')
     (d / 'video.html').write_text(s)
     env = {**os.environ, 'KEY': key, 'PATH': '/opt/node22/bin:' + os.environ.get('PATH', '/usr/bin:/bin')}
+    (d / 'prova.png').unlink(missing_ok=True)  # mai guardare per sbaglio la prova di un giro precedente
     r = subprocess.run(['node', str(W / 'prova_impaginazione.js')], cwd=OUT, env=env, capture_output=True, text=True)
     print(r.stdout[-1500:], r.stderr[-1500:], flush=True)
+    if r.returncode or not (d / 'prova.png').exists():
+        sys.exit(f'{key}: prova non riuscita (codice {r.returncode})')
