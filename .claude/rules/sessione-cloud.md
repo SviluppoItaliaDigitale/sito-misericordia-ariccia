@@ -11,6 +11,7 @@ Vale in tutti i progetti, presenti e futuri. Obiettivo: Alessandro lavora da PC,
 - Riconoscila così: non esistono `~/Scrivania`, gli altri progetti del PC e gli MCP locali (Firecrawl, Playwright).
 - Per il web usa `WebSearch` e `WebFetch`. Gmail, Calendar, Drive e Canva funzionano (connettori di claude.ai).
 - Regole, agenti, skill e memoria vengono dal repo: seguili come sul PC. I permessi li approva Alessandro dal cellulare.
+- Qui un agente non ne avvia altri: la sessione parte con un solo livello di agenti. Per un lavoro grande e divisibile la sessione principale lo alza per sé, mai nelle routine, come spiega la regola `autonomia.md`, § «Dividere e velocizzare».
 - I risultati vanno nel repo, su Drive o inviati ad Alessandro: non esiste un desktop.
 - A fine lavoro fai **commit e push**, così il lavoro arriva al PC e alle altre postazioni. Nei repo dei siti, dove il merge su `main` avvia il deploy, segui le regole di pubblicazione del repo.
 - Se ti serve un altro repo, dillo: va aggiunto quando si crea la sessione.
