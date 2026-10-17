@@ -7,6 +7,20 @@
 - Le regole del progetto sono in `CLAUDE.md` e in `.claude/rules/`: valgono anche per te. Leggi solo le parti che servono al lavoro in corso.
 - La cartella `bacheca/` (vedi `bacheca/LEGGIMI.md`) resta per i compiti con immagini già aperti in `bacheca/compiti/`; dal 13/10/2026 le immagini nuove le fa Claude e i nuovi lavori arrivano con il passaggio preparato da Claude qui sopra.
 
+## Qualità e guasti: regole per ogni intelligenza artificiale (dal 17/10/2026)
+
+Valgono per te come per Claude, in tutti i repository di Alessandro. Testo completo in `.claude/rules/qualita.md` e `.claude/rules/guasti.md`.
+
+- **Lavori perfetti, a prova di confutazione.** Ogni fatto, numero, data, norma, nome o indicazione di sicurezza ha una fonte primaria che hai verificato nel lavoro in corso, non la memoria. Ciò che non si può dimostrare non si scrive, oppure si scrive come stima e lo si dichiara.
+- **Lo stesso dato è uguale ovunque.** Prima di scrivere un dato, cerca come lo scrivono già le altre pagine e gli altri file del repository, codice compreso. Se non coincide, stabilisci sulla fonte qual è quello giusto e allinea tutte le copie nello stesso lavoro, mai una sola.
+- **Prima di consegnare, prova a confutare il tuo lavoro** come farebbe un revisore esterno: ogni affermazione, ogni numero, ogni link, ogni comando. Il lavoro è finito solo quando quella lettura non trova più niente.
+- **Tutti i controlli si eseguono, nessuno si salta.** Uno strumento che manca si installa: `apt-get update` e poi `apt-get install`, poi `pip` o `npm`, poi il download dalla fonte ufficiale. «Qui non si installa» non è un motivo per consegnare. Se tutte le strade falliscono, scrivi che cosa hai provato e con quale errore: il controllo lo fa la CI della pull request, prima di unire.
+- **Ogni errore trovato diventa un controllo.** Si corregge in tutte le copie e si aggiunge ciò che lo avrebbe fermato: una voce di registro, un test, un controllo bloccante sulle pull request.
+- **Onestà sui limiti.** Non dichiarare conformità, certificazioni o assenza di errori che non hai misurato; scrivi che cosa non hai potuto verificare e perché.
+- **Nessun guasto ignorato.** Un controllo che non riesce a leggere la sua fonte (404, 410, 403 o 5xx che persistono, timeout ripetuti, schema cambiato) non chiude in verde: fallisce e apre o aggiorna una sola issue con le label `automazione` e `fonte-rotta`, che si chiude da sola quando la fonte torna. Un errore di lettura non cambia mai i dati in vigore. Un link rotto si ripara con la pagina attuale, verificata con una richiesta reale sulla fonte, mai con un indirizzo indovinato.
+- **Nei dubbi chiedi** ad Alessandro, con la tua raccomandazione accanto, e intanto fai il resto del lavoro.
+
 ## Code Review Rules
 
 - **Firma dei commit: non giudicarla dai commit del tuo ambiente.** I commit che vedi mentre rivedi una pull request li crea l'ambiente di revisione, con un'identità di servizio, e possono riportare la descrizione della pull request: non sono i commit della pull request. Non segnalare autore, committer o righe di firma dei commit: li controlla e li corregge chi unisce (`scripts/passa-a.py chiudi` riscrive a nome di Alessandro Cuollo i commit con un altro autore e toglie i trailer, regola `.claude/rules/firma-dei-lavori.md`). Segnala invece nomi di strumenti o righe di firma nei file modificati che vengono pubblicati; i file di governo interni (`CLAUDE.md`, `AGENTS.md`, `COORDINAMENTO.md`, `.claude/`, `memoria/`) ne parlano per forza.
+- **Dati incoerenti e affermazioni senza fonte.** Segnala ogni dato (orari, quantità, numeri, date, norme, recapiti) che la pull request scrive in modo diverso da come lo scrive già il resto del repository, e ogni fatto o indicazione di sicurezza nuova senza una fonte verificabile (regola `.claude/rules/qualita.md`).
