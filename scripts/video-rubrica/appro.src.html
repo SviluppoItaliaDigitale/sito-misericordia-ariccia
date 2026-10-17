@@ -21,7 +21,7 @@ canvas{position:absolute;left:0;top:0}
 #title .ln{display:block;overflow:hidden;padding:.05em 0 .12em}
 #title .in{display:block}
 #title em{font-style:normal;color:#f2e433}
-#tags{position:absolute;left:96px;top:1196px;width:900px;display:flex;flex-wrap:wrap;gap:14px 16px}
+#tags{position:absolute;left:96px;top:1196px;width:820px;display:flex;flex-wrap:wrap;gap:14px 16px}
 .tag{height:64px;padding:0 26px;border-radius:32px;border:3px solid #f2e433;color:#fff;font:500 36px/58px Jost;display:flex;align-items:center;gap:12px;background:rgba(27,34,63,.85)}
 .tag::before{content:"";width:11px;height:11px;border-radius:50%;background:#f2e433}
 .tag.sos{background:#fff;color:#1b223f;border-color:#fff;font-weight:700}.tag.sos::before{background:#1b223f}
@@ -102,12 +102,13 @@ function drawDots(k){ const c=dctx, W=330; c.clearRect(0,0,W,24); const N=SCENE.
   c.strokeStyle=C.giallo; c.beginPath(); c.moveTo(12,12); c.lineTo(12+gap*k,12); c.stroke();
   for(let i=0;i<N;i++){ c.fillStyle=i<=k?C.giallo:'#1b223f'; c.strokeStyle=C.giallo; c.lineWidth=3; c.beginPath(); c.arc(12+gap*i,12,i===k?9:5.5,0,7); c.fill(); c.stroke(); } }
 
-let curK=-1;
+let curK=-1, SUBTOP=1300;
+const SUBMAX=1530; // fondo massimo del sottotitolo: sotto c'è la fascia dei comandi di Instagram (380 px)
 function setScene(k){ curK=k; const s=SCENE[k];
   $('chip').textContent=s.chip;
   $('title').innerHTML=s.title.map(l=>`<span class="ln"><span class="in">${l}</span></span>`).join('');
   $('tags').innerHTML=(s.tags||[]).map(t=>`<span class="tag${t[2]?' sos':''}">${t[0]}</span>`).join('');
-  const h=(s.tags||[]).length? $('tags').offsetHeight : 0; $('sub').style.top=Math.max(1300,1196+h+16)+'px';
+  const h=(s.tags||[]).length? $('tags').offsetHeight : 0; SUBTOP=Math.max(1300,1196+h+16); $('sub').style.top=SUBTOP+'px';
 }
 function subAt(k,u){ const s=SCENE[k], v=u-PRE; const Dv = s.conta? CONTA.voce : DUR[k];
   if(v<-.1||v>Dv+.4) return ''; const tot=s.w.reduce((a,b)=>a+b,0); let accw=0;
@@ -127,6 +128,7 @@ function render(t){
   const s=SCENE[k]; const Dk = s.conta? CONTA.voce : DUR[k];
   document.querySelectorAll('#tags .tag').forEach((el,i)=>{ const tt = s.conta && s.tags[i][1]>.5 ? CONTA.at : PRE+s.tags[i][1]*Dk; const p=outBack(prog(u,tt-.15,.35)); el.style.opacity=clamp(p)*out; el.style.transform=`scale(${.5+.5*p})`; });
   const st=subAt(k,u); $('sub').firstElementChild.textContent=st; $('sub').style.opacity=st?out:0;
+  if(st){ const hs=$('sub').offsetHeight; $('sub').style.top=Math.min(SUBTOP,SUBMAX-hs)+'px'; } // frase lunga: sale invece di finire sotto i comandi
   const cp=last?outBack(prog(u,.2,.6)):0; $('card').style.opacity=clamp(cp); $('card').style.transform=`translateY(${(1-clamp(cp))*60}px) scale(${.92+.08*cp})`;
   const sp2=last?outBack(prog(u,PRE+DUR[LAST]*.55,.45)):0; $('sos').style.opacity=clamp(sp2); $('sos').style.transform=`scale(${.6+.4*sp2})`; $('sos').style.transformOrigin='0 50%';
   const mp=last?outCubic(prog(u,PRE+DUR[LAST]+.2,.6)):0; $('motto').style.opacity=mp; $('motto').style.transform=`translateY(${(1-mp)*30}px)`; $('fonte').style.opacity=mp;
