@@ -18,6 +18,13 @@ const { chromium } = require('playwright-core');
       await p.evaluate(`window.renderFrame(${t})`);
       const b = await p.evaluate(`(()=>{const e=document.getElementById('sub'),c=getComputedStyle(e);if(c.display==='none'||+c.opacity<.5||!e.textContent.trim())return -1;const r=e.firstElementChild.getBoundingClientRect();return r.height*10000+r.bottom})()`);
       if (b > fondo) { fondo = b; migliore = t; }
+      // Controllo numerico: sottotitolo nella fascia bassa, sopra le etichette, etichette sotto i pulsanti a destra.
+      const guai = await p.evaluate(`(()=>{const g=[],s=document.getElementById('sub'),r=s.firstElementChild.getBoundingClientRect(),vis=getComputedStyle(s).display!=='none'&&+s.style.opacity>.5&&s.textContent.trim();
+        if(vis&&r.bottom>1540)g.push('sottotitolo nella fascia bassa');
+        document.querySelectorAll('#tags .tag').forEach(e=>{if(+e.style.opacity<.5)return;const q=e.getBoundingClientRect();
+          if(vis&&q.bottom>r.top&&q.top<r.bottom&&q.right>r.left&&q.left<r.right)g.push("sottotitolo sopra un'etichetta");
+          if(q.right>930&&q.bottom>1210)g.push('etichetta sotto i pulsanti')});return [...new Set(g)]})()`);
+      if (guai.length) console.log('ATTENZIONE scena', k + 1, 'a', t.toFixed(1), 's:', guai.join(', '));
     }
     times.push(migliore);
   }

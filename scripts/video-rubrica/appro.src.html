@@ -128,7 +128,8 @@ function render(t){
   const s=SCENE[k]; const Dk = s.conta? CONTA.voce : DUR[k];
   document.querySelectorAll('#tags .tag').forEach((el,i)=>{ const tt = s.conta && s.tags[i][1]>.5 ? CONTA.at : PRE+s.tags[i][1]*Dk; const p=outBack(prog(u,tt-.15,.35)); el.style.opacity=clamp(p)*out; el.style.transform=`scale(${.5+.5*p})`; });
   const st=subAt(k,u); $('sub').firstElementChild.textContent=st; $('sub').style.opacity=st?out:0;
-  if(st){ const hs=$('sub').offsetHeight; $('sub').style.top=Math.min(SUBTOP,SUBMAX-hs)+'px'; } // frase lunga: sale invece di finire sotto i comandi
+  // Frase lunga: sottotitolo ed etichette salgono insieme (stessa distanza fra loro) invece di finire sotto i comandi.
+  { const hs=st?$('sub').offsetHeight:0, su=Math.max(0,SUBTOP+hs-SUBMAX); $('sub').style.top=(SUBTOP-su)+'px'; $('tags').style.top=(1196-su)+'px'; }
   const cp=last?outBack(prog(u,.2,.6)):0; $('card').style.opacity=clamp(cp); $('card').style.transform=`translateY(${(1-clamp(cp))*60}px) scale(${.92+.08*cp})`;
   const sp2=last?outBack(prog(u,PRE+DUR[LAST]*.55,.45)):0; $('sos').style.opacity=clamp(sp2); $('sos').style.transform=`scale(${.6+.4*sp2})`; $('sos').style.transformOrigin='0 50%';
   const mp=last?outCubic(prog(u,PRE+DUR[LAST]+.2,.6)):0; $('motto').style.opacity=mp; $('motto').style.transform=`translateY(${(1-mp)*30}px)`; $('fonte').style.opacity=mp;
