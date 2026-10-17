@@ -45,6 +45,16 @@ nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
 `.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
 cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
 
+## Guasti mai ignorati (dal 17/10/2026)
+
+Istruzione di Alessandro: «gli errori 404 e simili non devono mai essere ignorati e devono
+essere risolti». Due controlli aprono issue in-place con label `automazione` + `fonte-rotta`,
+che si chiudono da sole al rientro: **«Link rotti sul sito»** (`controllo-link.yml`, ogni
+mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante) e **«Salute del
+sito: automazioni in errore»** (`salute-sito.yml`, ogni giorno, workflow con l'ultimo run su
+main fallito). Chi trova una di queste issue ripara la causa: URL nuovo solo se verificato con
+una richiesta reale sulla fonte, altrimenti domanda ad Alessandro.
+
 ## Bacheca Claude ⇄ ChatGPT (dal 9/10/2026)
 
 La bacheca è `COORDINAMENTO.md` nella cartella principale (protocollo comune,
