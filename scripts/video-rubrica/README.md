@@ -23,6 +23,7 @@ conteggio a voce da 1 a 30, musica allo stesso BPM).
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
 | `anteprima.sh`, `render.sh`, `copia.sh` | scorciatoie: anteprime, montaggio, copia nel sito |
+| `prova_impaginazione.py` (+ `.js`) | prova senza voce: un fotogramma intero per scena con in rosso la zona coperta dai comandi di Instagram, in `out/<chiave>/prova.png`. Da usare quando si tocca `appro.src.html` o si scrive un video nuovo: titoli, etichette e sottotitoli devono restare fuori dalla zona rossa |
 | `articoli.py`, `articoli2.py` | generano le news programmate dai testi dei video (non sovrascrivono quelle esistenti) |
 | `comune.py` | ffmpeg e scrittura prudente delle news |
 
@@ -88,3 +89,10 @@ scheda finale), importarlo in fondo a `contenuti.py`, creare i disegni mancanti 
 `illN.js` (aggiungerlo in `pipeline.py` accanto a `ill2.js`) e le news con uno script
 come `articoli2.py`. Contenuti sanitari: sempre verificati su linee guida ERC/IRC
 correnti, e fatti rivedere da un istruttore prima dell'uscita.
+
+## Impaginazione per Instagram (dal 17/10/2026)
+
+Nei Reels Instagram copre la fascia bassa (circa 380 px) e una colonna a destra (circa
+150 px) con descrizione e pulsanti. I sottotitoli partono da 1300 px e sono larghi 820 px,
+così anche con tre righe restano fuori; riga della serie a 33 px ed etichette a 36 px per
+leggerle dal telefono. Prima di un video nuovo: `python3 prova_impaginazione.py <chiave>`.
