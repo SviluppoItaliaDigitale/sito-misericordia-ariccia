@@ -1,0 +1,39 @@
+name: Salute del sito
+
+# Ogni giorno controlla tutte le automazioni del repository (script
+# scripts/salute-sito.py): i workflow il cui ULTIMO run su main è fallito o è
+# stato annullato per tempo scaduto, e ogni run fallito delle ultime 24 ore.
+# Apre o aggiorna la issue «Salute del sito: automazioni in errore» (label
+# automazione + fonte-rotta), commenta solo se l'elenco cambia e la chiude da
+# sola quando tutto è verde. Istruzione di Alessandro del 17/10/2026: un guasto
+# non resta mai ignorato; la routine giornaliera legge la issue e ripara.
+#
+# 07:41 italiane (ora legale), fuori dal minuto 0 e dopo il guardiano notturno.
+
+on:
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  checks: read
+  issues: write
+
+concurrency:
+  group: salute-sito
+  cancel-in-progress: false
+
+jobs:
+  salute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Controlla le automazioni e aggiorna la issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/salute-sito.py

@@ -1,0 +1,112 @@
+name: Controllo link del sito
+
+# Controlla ogni settimana TUTTI i link del sito compilato, interni ed esterni.
+# Istruzione di Alessandro del 17/10/2026: «gli errori 404 e simili non devono
+# mai essere ignorati e devono essere risolti... vale per tutti i link del sito».
+#
+# - lychee gira con fail: false, perché timeout, errori 5xx e blocchi anti-robot
+#   sono quasi sempre passeggeri;
+# - scripts/controlla-link-rotti.py rende ROSSO il run per ogni 404/410 e per
+#   ogni file interno mancante, e scrive il corpo della issue;
+# - la issue «Link rotti sul sito» (label automazione + fonte-rotta) si aggiorna
+#   a ogni giro e si chiude da sola quando non ci sono più link rotti.
+# Il run rosso lo vede anche «Salute del sito» (salute-sito.yml).
+#
+# Mercoledì 06:23 italiane (ora legale): fuori dal minuto 0 e lontano dal
+# rebuild notturno di deploy.yml.
+
+on:
+  schedule:
+    - cron: "23 4 * * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: controllo-link
+  cancel-in-progress: false
+
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TITOLO: "Link rotti sul sito"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Installa Hugo
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
+        with:
+          hugo-version: "0.154.5"
+          extended: true
+
+      - name: Compila il sito (come in deploy.yml)
+        run: hugo --minify
+
+      - name: Ripristina la cache di lychee
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
+
+      - name: Controlla tutti i link
+        id: lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          # 403 e 429 accettati: molti siti rifiutano i programmi ma servono le
+          # persone; --root-dir risolve i percorsi /css/, /img/ contro il sito compilato.
+          args: >-
+            --cache
+            --max-cache-age 1d
+            --no-progress
+            --accept 200..=206,301,302,307,308,403,429
+            --timeout 20
+            --max-retries 3
+            --retry-wait-time 5
+            --user-agent "Mozilla/5.0 (compatible; MisericordiaAricciaLinkChecker/1.0; +https://www.misericordia-ariccia.it/)"
+            --root-dir "${{ github.workspace }}/public"
+            --exclude "^tel:"
+            --exclude "^mailto:"
+            --exclude "^#"
+            --exclude "localhost"
+            --exclude "127\.0\.0\.1"
+            --exclude-path "public/vendor"
+            public/**/*.html
+          output: ./lychee-report.md
+          format: markdown
+          fail: false
+
+      - name: Individua i link rotti e aggiorna la issue
+        if: always()
+        run: |
+          rc=0
+          python3 scripts/controlla-link-rotti.py ./lychee-report.md --corpo corpo.md || rc=$?
+          if [ "$rc" -ge 2 ]; then
+            echo "::error::Rapporto di lychee assente: il controllo non è stato eseguito."
+            exit "$rc"
+          fi
+          {
+            echo
+            echo "Ultimo controllo: [run ${GITHUB_RUN_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}), $(TZ=Europe/Rome date '+%d/%m/%Y %H:%M') ora italiana."
+          } >> corpo.md
+          num=$(gh issue list --state open --label fonte-rotta --search "in:title \"$TITOLO\"" \
+                --json number,title --jq "map(select(.title == \"$TITOLO\")) | .[0].number // empty")
+          if [ "$rc" -eq 1 ]; then
+            if [ -n "$num" ]; then
+              gh issue edit "$num" --body-file corpo.md
+              echo "Issue #$num aggiornata."
+            else
+              gh issue create --title "$TITOLO" --label automazione --label fonte-rotta --body-file corpo.md
+            fi
+            echo "::error::Link rotti sul sito: vedi la issue «$TITOLO»."
+            exit 1
+          elif [ -n "$num" ]; then
+            gh issue edit "$num" --body-file corpo.md
+            gh issue close "$num" --comment "Nessun link rotto al controllo del $(TZ=Europe/Rome date '+%d/%m/%Y'): chiusa da sola."
+          fi
