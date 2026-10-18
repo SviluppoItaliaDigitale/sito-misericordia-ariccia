@@ -10,7 +10,8 @@ name: Parola della domenica (social)
 #    pagine siano online; dalle 4:00 una mancanza rende rosso il giro (email);
 #  - dalle 4:47 alle 7:00: PUBBLICA ciò che manca nel registro (i giri dopo il
 #    primo riuscito trovano il registro e non fanno nulla);
-#  - dopo le 7:00 non si pubblica più, nemmeno a mano.
+#  - dopo le 6:50 non parte più nessuna pubblicazione, nemmeno a mano, e lo
+#    script ricontrolla l'ora prima di ogni social: nulla esce dopo le 7:00.
 # GitHub non garantisce gli avvii a orario (il 18/10/2026 ha saltato i giri
 # delle 4:47): per questo i giri sono tanti, in minuti meno affollati. I cron
 # coprono ora legale e ora solare; il passo «Orario» tiene solo quelli che
@@ -57,8 +58,8 @@ jobs:
           echo "Ora italiana: $(TZ=Europe/Rome date '+%A %d/%m %H:%M')"
           echo "hm=$HM" >> "$GITHUB_OUTPUT"
           if [ "$EVENTO" = "schedule" ]; then
-            if [ "$GIORNO" != "7" ] || [ "$HM" -ge 700 ]; then
-              echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Fuori dalla finestra della domenica (0:00-7:00): niente da fare."
+            if [ "$GIORNO" != "7" ] || [ "$HM" -ge 650 ]; then
+              echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Fuori dalla finestra della domenica (0:00-6:50; entro le 7:00 la Parola deve essere uscita): niente da fare."
             elif [ "$HM" -lt 447 ]; then
               echo "modo=verifica" >> "$GITHUB_OUTPUT"
             else
@@ -68,8 +69,8 @@ jobs:
             # Avvio manuale: la prova va sempre; la pubblicazione vera solo per la
             # domenica di oggi e prima delle 7:00 (dopo iniziano le Messe).
             if [ "$PROVA" != "true" ]; then
-              if [ "$GIORNO" != "7" ] || [ "$HM" -ge 700 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
-                echo "::error::La Parola della domenica si pubblica solo la domenica stessa entro le 7:00 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
+              if [ "$GIORNO" != "7" ] || [ "$HM" -ge 650 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
+                echo "::error::La Parola della domenica si pubblica solo la domenica stessa entro le 7:00: l'ultimo avvio utile è alle 6:50 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
                 exit 1
               fi
             fi
@@ -103,6 +104,7 @@ jobs:
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           DRY_RUN: ${{ inputs.prova && '1' || '' }}
           DATA: ${{ inputs.data }}
+          PAROLA_ENTRO: "07:00"   # lo script ricontrolla l'ora prima di ogni social
         run: python3 scripts/pubblica_social.py --parola $DATA
 
       - name: Salva il registro dei post social

@@ -435,6 +435,11 @@ def pubblica_parola(giorno=None):
             continue
         if rete == "instagram" and not IG_USER_ID:
             continue
+        entro = os.environ.get("PAROLA_ENTRO", "")  # es. "07:00": dopo, la Parola non esce più (Messe)
+        if entro and oggi_roma().strftime("%H:%M") >= entro:
+            errori += 1
+            print(f"{rete}: NON pubblicata, sono passate le {entro} (regola del 18/10/2026)", file=sys.stderr)
+            continue
         try:
             pid = facebook_album(immagini, testo) if rete == "facebook" else instagram_carosello(immagini, testo)
             reg.setdefault(chiave, {})[rete] = pid
