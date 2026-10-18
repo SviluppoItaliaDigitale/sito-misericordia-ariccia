@@ -1335,6 +1335,8 @@ dati:
   cosa: "Cellulare per servizi e trasporti (anche WhatsApp)."
   valore: "348 4068657"
   dove:
+  - "contenuti/campagne/2026-10-18-esci-dal-post/manifesto.html"
+  - "content/news/2026-10-18-esci-dal-post-entra-nella-squadra.md"
   - "content/accessibilita.md"
   - "content/ambulanza-privata-castelli-romani.md"
   - "content/assistenza-eventi.md"
