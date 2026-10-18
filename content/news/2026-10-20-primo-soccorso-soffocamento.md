@@ -3,6 +3,7 @@ title: "Soffocamento: 5 colpi e 5 compressioni"
 titoloSeo: "Soffocamento: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-20
 slug: "primo-soccorso-soffocamento"
+controllo_editoriale: "2026-10-18"
 description: "Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza."
 immagine: "/img/news/primo-soccorso-soffocamento-grafica.jpg"
 social_video: "/video/primo-soccorso-soffocamento.mp4"
@@ -22,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **5 di 10**: **soffocamento**. *5 colpi, 5 spinte.*
 
-{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -32,7 +33,7 @@ Se tossisce e riesce a parlare, incoraggialo a tossire forte, e resta con lui.
 
 ### Ostruzione grave
 
-Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito.
+Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito: chiama il 112, o fallo chiamare, e metti il vivavoce.
 
 ### 5 colpi
 
@@ -44,11 +45,11 @@ Se non basta, mettiti dietro di lui: pugno appena sopra l'ombelico, coperto dall
 
 ### Alterna
 
-Continua alternando cinque colpi e cinque compressioni, finché l'oggetto non esce.
+Continua alternando cinque colpi e cinque compressioni, finché l'oggetto non esce. Non infilare le dita in bocca alla cieca.
 
 ### Se sviene
 
-Se perde conoscenza, accompagnalo a terra, chiama il 112 e inizia la rianimazione.
+Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato il 112, chiamalo subito.
 
 ### Dopo
 

@@ -48,10 +48,11 @@ Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indic
 
 Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respirare, parlare o tossire**:
 
-1. Dai **5 colpi tra le scapole** con il palmo della mano, inclinando la persona in avanti.
-2. Se non basta, esegui la **manovra di Heimlich**: 5 compressioni decise sulla pancia, tra ombelico e sterno.
-3. **Alterna** 5 colpi dorsali e 5 compressioni finché l'ostruzione si libera.
-4. Se la persona perde coscienza, chiama il **112** e inizia le compressioni toraciche.
+1. **Chiama subito il 112** (o fallo chiamare da chi è vicino) e metti il vivavoce.
+2. Dai **5 colpi tra le scapole** con il palmo della mano, inclinando la persona in avanti.
+3. Se non basta, esegui la **manovra di Heimlich**: 5 compressioni decise sulla pancia, tra ombelico e sterno.
+4. **Alterna** 5 colpi dorsali e 5 compressioni finché l'ostruzione si libera. Non infilare le dita in bocca alla cieca.
+5. Se la persona perde coscienza, accompagnala a terra e inizia le compressioni toraciche; se nessuno ha ancora chiamato il **112**, chiamalo subito.
 
 *Nel lattante (meno di 1 anno): 5 pacche dorsali e 5 compressioni sul torace con i due pollici, mai la manovra di Heimlich.*
 

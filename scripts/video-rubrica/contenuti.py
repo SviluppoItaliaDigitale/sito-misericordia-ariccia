@@ -64,12 +64,13 @@ V = {
 'soffocamento': dict(nome='Soffocamento', scene=[
   S('Soffocamento', ['Cosa fare','in un *adulto*.'], 'Soffocamento in un adulto: cosa fare, passo passo.', 'gola'),
   S('Tossisce?', ['Lascialo','*tossire*.'], 'Se tossisce e riesce a parlare, incoraggialo a tossire forte, e resta con lui.', 'tosse', [['Incoraggia la tosse', .55]]),
-  S('Ostruzione grave', ['Non parla,','non *respira*.'], 'Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito.', 'gola', [['Mani alla gola', .6], ['Agisci subito', .85, 1]]),
+  S('Ostruzione grave', ['Non parla,','non *respira*.'], 'Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito: chiama '+U12+', o fallo chiamare, e metti il vivavoce.', 'gola', [['Mani alla gola', .3], ['Chiama subito il 112', .6, 1], ['Vivavoce', .85]],
+    sub='Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito: chiama il 112, o fallo chiamare, e metti il vivavoce.'),
   S('5 colpi', ['Tra le','*scapole*.'], 'Mettiti di lato, sostienilo con una mano sul petto e piegalo in avanti. Con il palmo dell\'altra mano, dai fino a cinque colpi forti tra le scapole.', 'colpi', [['Piegato in avanti', .35], ['Fino a 5 colpi', .8]]),
   S('5 compressioni', ['Spingi','*dentro* e in su.'], 'Se non basta, mettiti dietro di lui: pugno appena sopra l\'ombelico, coperto dall\'altra mano. Tira con forza verso di te e verso l\'alto, fino a cinque volte.', 'addome', [['Sopra l\'ombelico', .35], ['Dentro e in su', .7], ['Fino a 5 volte', .9]]),
-  S('Alterna', ['5 e 5,','senza *fermarti*.'], 'Continua alternando cinque colpi e cinque compressioni, finché l\'oggetto non esce.', 'alterna', [['Alterna 5 e 5', .6]]),
-  S('Se sviene', ['112 e','*rianimazione*.'], 'Se perde conoscenza, accompagnalo a terra, chiama '+U12+' e inizia la rianimazione.', 'rcp-mini', [['Chiama il 112', .55, 1], ['Rianimazione', .85]],
-    sub='Se perde conoscenza, accompagnalo a terra, chiama il 112 e inizia la rianimazione.'),
+  S('Alterna', ['5 e 5,','senza *fermarti*.'], 'Continua alternando cinque colpi e cinque compressioni, finché l\'oggetto non esce. Non infilare le dita in bocca alla cieca.', 'alterna', [['Alterna 5 e 5', .4], ['Niente dita in bocca', .85]]),
+  S('Se sviene', ['A terra e','*rianimazione*.'], 'Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato '+U12+', chiamalo subito.', 'rcp-mini', [['Rianimazione', .4], ['112, se non l\'hai già chiamato', .85, 1]],
+    sub='Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato il 112, chiamalo subito.'),
   S('Dopo', ['Sempre','dal *medico*.'], 'Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei bambini piccoli le manovre sono diverse: si imparano a un corso.', 'medico', [['Visita medica', .3], ['Bambini: manovre diverse', .8]]),
   FINE]),
 'anafilassi': dict(nome='Anafilassi', scene=[

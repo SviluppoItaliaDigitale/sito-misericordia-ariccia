@@ -6,11 +6,18 @@ name: Parola della domenica (social)
 # Doppio cron per l'ora legale: esce alle 4:47 italiane tutto l'anno (prima
 # delle 5, decisione di Alessandro); il secondo giro trova il registro già
 # scritto e non ripubblica.
+# Giri di riserva (dal 18/10/2026): GitHub non garantisce gli avvii a orario
+# e quel giorno li ha saltati tutti e due (l'11/10 erano partiti con ore di
+# ritardo). Se il primo giro è andato, i successivi trovano il registro e non
+# fanno nulla; se è saltato, la Parola esce comunque in mattinata.
 # Procedura completa: docs/parola-della-domenica.md
 on:
   schedule:
     - cron: "47 2 * * 0"
     - cron: "47 3 * * 0"
+    - cron: "23 5 * * 0"
+    - cron: "23 6 * * 0"
+    - cron: "23 8 * * 0"
   workflow_dispatch:
     inputs:
       data:

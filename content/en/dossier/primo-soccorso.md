@@ -71,10 +71,11 @@ argomenti:
     riconosci: "While eating, the person brings their hands to their throat, **cannot speak or cough**, is struggling to breathe or is not breathing."
     fare:
       - "If they are coughing, **encourage them to keep coughing**: it is the best way to clear the obstruction."
-      - "If they cannot cough: lean them forwards and give **up to 5** firm **back blows** with the heel of your hand **between the shoulder blades**."
+      - "If they can no longer cough or speak, **call 112 straight away** (or have someone nearby call) and put the phone on speaker."
+      - "Meanwhile lean them forwards and give **up to 5** firm **back blows** with the heel of your hand **between the shoulder blades**."
       - "If that doesn't work: **up to 5 abdominal thrusts** (Heimlich manoeuvre): fist above the navel, pull sharply inwards and upwards."
       - "**Alternate** 5 back blows and 5 abdominal thrusts until the object comes out."
-      - "If they become unresponsive: call **112** and start **CPR**."
+      - "If they become unresponsive: lower them to the ground and start **CPR**; if nobody has called **112** yet, call now."
       - "After abdominal thrusts the person must always be seen by a doctor."
     nonfare:
       - "Don't put your fingers blindly into their mouth."
