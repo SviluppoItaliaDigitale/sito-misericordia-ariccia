@@ -107,7 +107,9 @@ costi, bandi). I push che toccano solo la bacheca (`bacheca/`, `AGENTS.md`,
 ## Parola della domenica sui social (dal 9/10/2026)
 
 Ogni domenica alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
-Instagram (solo social, nessuna pagina) un carosello: copertina con una sola opera
+Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, poi iniziano
+le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
+di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
 versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara il
 mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se

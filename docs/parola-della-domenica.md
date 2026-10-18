@@ -30,8 +30,9 @@ essere pronto entro domenica mattina presto):
   domenica c'è già esce subito, altrimenti la prepara;
 - la routine «Parola della domenica — recupero notturno» gira **domenica all'1:55**: se manca
   ancora, prepara la scheda di **oggi** e la mette online prima delle 4:47 (il deploy dura ~1 minuto);
-- se alle 4:47 manca ancora, il workflow fallisce e GitHub avvisa Alessandro per email.
-- se GitHub non avvia il giro delle 4:47 (gli avvii a orario non sono garantiti: il 18/10/2026 li ha saltati), ci sono i giri di riserva delle 7:23, 8:23 e 10:23 (ora legale; un'ora prima con l'ora solare): pubblicano solo ciò che manca nel registro. A mano: Actions → «Parola della domenica (social)» → Run workflow con `prova` **tolta** (di default l'avvio manuale è solo una prova).
+- **dalla mezzanotte alle 4:47** il workflow controlla ogni mezz'ora che scheda e pagine siano online; dalle 4:00 una mancanza fa fallire il giro e GitHub avvisa Alessandro per email;
+- **dalle 4:47 alle 7:00** pubblica, ogni mezz'ora, ciò che ancora manca nel registro (i giri successivi a quello riuscito non fanno nulla). Tanti giri perché GitHub non garantisce gli avvii a orario: il 18/10/2026 ha saltato i due delle 4:47;
+- **dopo le 7:00 non si pubblica più** (regola di Alessandro del 18/10/2026: poi iniziano le Messe e non ha più senso): l'ultimo avvio utile è alle 6:50, anche a mano (l'avvio manuale rifiuta la pubblicazione vera fuori dalla finestra), e lo script ricontrolla l'ora prima di ogni social (`PAROLA_ENTRO`), così un giro lento non pubblica dopo le 7. A mano, entro le 7: Actions → «Parola della domenica (social)» → Run workflow con `prova` **tolta** (di default l'avvio manuale è solo una prova).
 
 Di domenica `letture.py` senza data prende le letture di oggi.
 

@@ -3,21 +3,26 @@ name: Parola della domenica (social)
 # Ogni domenica mattina pubblica su Facebook e Instagram la «Parola della
 # domenica» preparata in settimana dalla routine (.github/social/parola/
 # AAAA-MM-GG.json + grafica in static/img/parola/, già online col deploy).
-# Doppio cron per l'ora legale: esce alle 4:47 italiane tutto l'anno (prima
-# delle 5, decisione di Alessandro); il secondo giro trova il registro già
-# scritto e non ripubblica.
-# Giri di riserva (dal 18/10/2026): GitHub non garantisce gli avvii a orario
-# e quel giorno li ha saltati tutti e due (l'11/10 erano partiti con ore di
-# ritardo). Se il primo giro è andato, i successivi trovano il registro e non
-# fanno nulla; se è saltato, la Parola esce comunque in mattinata.
+# Orari (regola di Alessandro del 18/10/2026: la Parola esce entro le 7:00 di
+# domenica, poi iniziano le Messe e non ha più senso; i controlli partono dalla
+# mezzanotte):
+#  - ogni mezz'ora da mezzanotte alle 4:47 italiane: VERIFICA che scheda e
+#    pagine siano online; dalle 4:00 una mancanza rende rosso il giro (email);
+#  - dalle 4:47 alle 7:00: PUBBLICA ciò che manca nel registro (i giri dopo il
+#    primo riuscito trovano il registro e non fanno nulla);
+#  - dopo le 6:50 non parte più nessuna pubblicazione, nemmeno a mano, e lo
+#    script ricontrolla l'ora prima di ogni social: nulla esce dopo le 7:00.
+# GitHub non garantisce gli avvii a orario (il 18/10/2026 ha saltato i giri
+# delle 4:47): per questo i giri sono tanti, in minuti meno affollati. I cron
+# coprono ora legale e ora solare; il passo «Orario» tiene solo quelli che
+# cadono di domenica tra le 0:00 e le 7:00 italiane.
 # Procedura completa: docs/parola-della-domenica.md
 on:
   schedule:
+    - cron: "7,37 22,23 * * 6"
+    - cron: "7,37 0-5 * * 0"
     - cron: "47 2 * * 0"
     - cron: "47 3 * * 0"
-    - cron: "23 5 * * 0"
-    - cron: "23 6 * * 0"
-    - cron: "23 8 * * 0"
   workflow_dispatch:
     inputs:
       data:
@@ -42,28 +47,68 @@ jobs:
     steps:
       - name: Orario
         id: ora
+        env:
+          EVENTO: ${{ github.event_name }}
+          PROVA: ${{ inputs.prova }}
+          DATA: ${{ inputs.data }}
         run: |
-          ORA=$(TZ=Europe/Rome date +%H)
-          echo "Ora italiana: $ORA"
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$ORA" -lt 4 ]; then
-            echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Troppo presto (ora solare): pubblica il giro delle 4:47."
+          GIORNO=$(TZ=Europe/Rome date +%u)          # 7 = domenica
+          HM=$((10#$(TZ=Europe/Rome date +%H%M)))    # es. 447 = 4:47
+          OGGI=$(TZ=Europe/Rome date +%F)
+          echo "Ora italiana: $(TZ=Europe/Rome date '+%A %d/%m %H:%M')"
+          echo "hm=$HM" >> "$GITHUB_OUTPUT"
+          if [ "$EVENTO" = "schedule" ]; then
+            if [ "$GIORNO" != "7" ] || [ "$HM" -ge 650 ]; then
+              echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Fuori dalla finestra della domenica (0:00-6:50; entro le 7:00 la Parola deve essere uscita): niente da fare."
+            elif [ "$HM" -lt 447 ]; then
+              echo "modo=verifica" >> "$GITHUB_OUTPUT"
+            else
+              echo "modo=pubblica" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            # Avvio manuale: la prova va sempre; la pubblicazione vera solo per la
+            # domenica di oggi e prima delle 7:00 (dopo iniziano le Messe).
+            if [ "$PROVA" != "true" ]; then
+              if [ "$GIORNO" != "7" ] || [ "$HM" -ge 650 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
+                echo "::error::La Parola della domenica si pubblica solo la domenica stessa entro le 7:00: l'ultimo avvio utile è alle 6:50 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
+                exit 1
+              fi
+            fi
+            echo "modo=pubblica" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Checkout
         if: steps.ora.outputs.salta != '1'
         uses: actions/checkout@v4
 
+      - name: Verifica (da mezzanotte alle 4:47)
+        if: steps.ora.outputs.modo == 'verifica'
+        env:
+          HM: ${{ steps.ora.outputs.hm }}
+        run: |
+          RC=0; OUT=$(DRY_RUN=1 python3 scripts/pubblica_social.py --parola 2>&1) || RC=$?
+          echo "$OUT"
+          if [ "$RC" -ne 0 ] || echo "$OUT" | grep -q "non ancora online"; then
+            MSG="La Parola di oggi non è pronta: manca la scheda o le pagine non sono online (la routine «recupero notturno» delle 1:55 deve prepararla)."
+            if [ "$HM" -ge 400 ]; then echo "::error::$MSG"; exit 1; fi
+            echo "::warning::$MSG"
+          else
+            echo "Scheda e pagine pronte: si pubblica dalle 4:47."
+          fi
+
       - name: Pubblica sui social
-        if: steps.ora.outputs.salta != '1'
+        if: steps.ora.outputs.modo == 'pubblica'
         env:
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           DRY_RUN: ${{ inputs.prova && '1' || '' }}
-        run: python3 scripts/pubblica_social.py --parola ${{ inputs.data }}
+          DATA: ${{ inputs.data }}
+          PAROLA_ENTRO: "07:00"   # lo script ricontrolla l'ora prima di ogni social
+        run: python3 scripts/pubblica_social.py --parola $DATA
 
       - name: Salva il registro dei post social
-        if: always() && steps.ora.outputs.salta != '1'
+        if: always() && steps.ora.outputs.modo == 'pubblica'
         run: |
           git diff --quiet -- .github/social/ && exit 0
           git config user.name "github-actions[bot]"
