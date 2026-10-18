@@ -77,10 +77,11 @@ argomenti:
     riconosci: "Mentre mangia, la persona si porta le mani alla gola, **non riesce a parlare né a tossire**, respira male o non respira."
     fare:
       - "Se tossisce, **incoraggiala a tossire**: è il modo migliore per liberarsi."
-      - "Se non riesce a tossire: piegala in avanti e dai **fino a 5 colpi** forti con il palmo **tra le scapole**."
+      - "Se non riesce più a tossire né a parlare, **chiama subito il 112** (o fallo chiamare da chi è vicino) e metti il vivavoce."
+      - "Intanto piegala in avanti e dai **fino a 5 colpi** forti con il palmo **tra le scapole**."
       - "Se non basta: **fino a 5 compressioni addominali** (manovra di Heimlich): pugno sopra l'ombelico, spingi in dentro e in su."
       - "**Alterna** 5 colpi e 5 compressioni finché il corpo estraneo esce."
-      - "Se perde conoscenza: chiama il **112** e inizia la **rianimazione**."
+      - "Se perde conoscenza: accompagnala a terra e inizia la **rianimazione**; se nessuno ha ancora chiamato il **112**, chiamalo subito."
       - "Dopo le compressioni addominali la persona va sempre fatta vedere da un medico."
     nonfare:
       - "Non infilare le dita in bocca alla cieca."

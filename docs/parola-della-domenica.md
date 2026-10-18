@@ -31,6 +31,7 @@ essere pronto entro domenica mattina presto):
 - la routine «Parola della domenica — recupero notturno» gira **domenica all'1:55**: se manca
   ancora, prepara la scheda di **oggi** e la mette online prima delle 4:47 (il deploy dura ~1 minuto);
 - se alle 4:47 manca ancora, il workflow fallisce e GitHub avvisa Alessandro per email.
+- se GitHub non avvia il giro delle 4:47 (gli avvii a orario non sono garantiti: il 18/10/2026 li ha saltati), ci sono i giri di riserva delle 7:23, 8:23 e 10:23 (ora legale; un'ora prima con l'ora solare): pubblicano solo ciò che manca nel registro. A mano: Actions → «Parola della domenica (social)» → Run workflow con `prova` **tolta** (di default l'avvio manuale è solo una prova).
 
 Di domenica `letture.py` senza data prende le letture di oggi.
 
