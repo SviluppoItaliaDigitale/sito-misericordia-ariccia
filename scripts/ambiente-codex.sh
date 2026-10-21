@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Prepara l'ambiente di Codex Cloud (ChatGPT) per questo repository: identità git, skill di Alessandro, strumenti dei controlli e delle skill.
 # Lo lancia la prima riga dello «Script di installazione» di ogni ambiente (Impostazioni → Codex Cloud → «…» → Modifica → «Modifica ambiente»), su tutti i repository in /workspace: vedi memoria/piano-b-chatgpt.md di assistente-personale.
-# Quando questo file cambia, gli ambienti lo usano al più tardi dopo 12 ore: Codex tiene in cache la configurazione fino a 12 ore e la rifà
-# da sé quando cambia lo «Script di installazione» dell'ambiente, non un file del repository. Per usarlo subito si cambia lo script di
-# installazione (basta la data nel commento in testa) e si ripubblica: Modifica → «Salva bozza» → «Pubblica».
+# Quando questo file cambia, si ripubblica ogni ambiente (Modifica → «Salva bozza» → «Pubblica»): i lavori nuovi partono da ciò che
+# l'ambiente ha preparato alla pubblicazione, e l'aggiornamento del repository non rifà l'installazione.
 # Identico in tutti i repository di Alessandro (copia di riferimento: assistente-personale). Non fallisce mai: ciò che non installa lo scrive e va avanti.
 # Prova senza installare nulla: bash scripts/ambiente-codex.sh --prova
 set -u
@@ -21,7 +20,7 @@ if [ "$PROVA" -eq 0 ] && [ -f scripts/imposta-identita-git.sh ]; then
 fi
 
 # 2. Skill di Alessandro e indice delle routine, prima delle dipendenze: servono anche quelle delle skill.
-#    In assistente-personale sono nel repository. Negli altri serve la variabile d'ambiente AP_TOKEN (lettura del repository
+#    In assistente-personale sono nel repository. Negli altri serve il token AP_TOKEN (sola lettura del repository
 #    assistente-personale) e se ne scaricano solo skill, routine e file della radice, non i dati personali.
 #    Si cancella e si riscarica solo una copia fatta da questo script (segno in .git): mai una copia di lavoro, come quella del PC.
 AP="$HOME/assistente-personale"
@@ -45,7 +44,7 @@ elif [ -n "${AP_TOKEN:-}" ]; then
       log "skill e ROUTINE.md di assistente-personale in $AP"
     else
       rm -rf "$AP"
-      log "assistente-personale NON clonato: controlla la variabile d'ambiente AP_TOKEN (fra le «Variabili di ambiente», non fra i «Segreti di rete»)"
+      log "assistente-personale NON clonato: controlla AP_TOKEN (con un segreto di rete non è ancora stato provato: vedi memoria/piano-b-chatgpt.md di assistente-personale)"
     fi
   fi
 fi
