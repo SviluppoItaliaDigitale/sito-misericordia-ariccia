@@ -30,7 +30,7 @@ Prima di svenire spesso si diventa pallidi e sudati, con nausea, capogiri e la v
 
 ### Le contromanovre
 
-Se senti che stai per svenire, sdraiati. Se non puoi, accovacciati, oppure incrocia le gambe e stringi forte i muscoli.
+Se senti che stai per svenire, sdraiati, se puoi con le gambe sollevate. Se non puoi sdraiarti, accovacciati, oppure incrocia le gambe e stringi forte i muscoli.
 
 ### Se sviene
 
@@ -44,7 +44,7 @@ Di solito si riprende in fretta. Se non si riprende, chiama il 112 e guarda se r
 
 Quando sta meglio, fallo rialzare piano: prima seduto, poi in piedi. Se si alza di colpo, può svenire di nuovo.
 
-### Dal medico
+### Quando chiamare
 
 Chiama il 112 se è svenuto durante uno sforzo, se ha avuto dolore al petto o il cuore che batte forte, o se si è ferito cadendo.
 

@@ -38,11 +38,11 @@ Anche solo il dubbio basta: chiama il 112 o vai subito al pronto soccorso. Non a
 
 ### Cosa non fare
 
-Non farlo vomitare, e non dargli altri cibi o bevande.
+Non farlo vomitare, e non dargli cibi o bevande, a parte il miele.
 
 ### Il miele
 
-Sopra l'anno di età, se l'ha ingoiata da meno di 12 ore, puoi dargli 2 cucchiaini di miele (10 ml) ogni 10 minuti, fino a 6 volte, mentre lo porti al pronto soccorso. Il miele non deve mai farti perdere tempo.
+Sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore, puoi dargli 2 cucchiaini di miele (10 ml) ogni 10 minuti, fino a 6 volte, mentre lo porti al pronto soccorso. Il miele non deve mai farti perdere tempo.
 
 ### Calamite
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare né dare altri cibi o bevande, il miele sopra i 12 mesi entro 12 ore senza ritardare il pronto soccorso, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*
+*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare né dare altri cibi o bevande, il miele sopra i 12 mesi, se deglutisce, entro 12 ore senza ritardare il pronto soccorso, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*

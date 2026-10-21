@@ -52,7 +52,7 @@ Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corre
 
 ### Gas e fumi
 
-Gas o fumi, come il monossido di carbonio: apri le finestre e porta la persona all'aria aperta, solo se non rischi anche tu.
+Gas o fumi, come il monossido di carbonio: porta la persona all'aria aperta, solo se non rischi anche tu. Le finestre aprile solo se puoi farlo senza fermarti.
 
 ### Previeni
 
@@ -70,4 +70,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Croce Rossa Italiana, Avvelenamenti](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/avvelenamenti/) (non far vomitare, perché un corrosivo risalendo fa altri danni, niente da bere senza il Centro Antiveleni, cosa, quanto e quando, la confezione); [Centro Antiveleni di Milano, Casalinghi](https://www.centroantiveleni.org/alimentari-2/) (niente latte, pelle e occhi da lavare con acqua, prodotti chiusi e nelle confezioni originali); [Centro Antiveleni di Careggi, Intossicazione dei bambini](https://www.aou-careggi.toscana.it/internet/diagnosi-e-cura/strutture-cliniche/crr-centri-di-riferimento-regionale/centro-antiveleni/intossicazione-dei-bambini/) (incidenti in casa, bambini più a rischio, mai travasare in altre bottiglie); [Istituto Superiore di Sanità, Centri Antiveleni](https://www.iss.it/-/cnsc-cav) (i numeri di Roma); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (gas e fumi: aprire porte e finestre).*
+*Fonti: [Croce Rossa Italiana, Avvelenamenti](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/avvelenamenti/) (non far vomitare, perché un corrosivo risalendo fa altri danni, niente da bere senza il Centro Antiveleni, cosa, quanto e quando, la confezione); [Centro Antiveleni di Milano, Casalinghi](https://www.centroantiveleni.org/alimentari-2/) (niente latte, pelle e occhi da lavare con acqua, prodotti chiusi e nelle confezioni originali); [Centro Antiveleni di Careggi, Intossicazione dei bambini](https://www.aou-careggi.toscana.it/internet/diagnosi-e-cura/strutture-cliniche/crr-centri-di-riferimento-regionale/centro-antiveleni/intossicazione-dei-bambini/) (incidenti in casa, bambini più a rischio, mai travasare in altre bottiglie); [Istituto Superiore di Sanità, Centri Antiveleni](https://www.iss.it/-/cnsc-cav) (i numeri di Roma); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (gas e fumi: aprire le finestre).*

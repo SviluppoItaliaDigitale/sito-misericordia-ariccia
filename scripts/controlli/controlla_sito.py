@@ -61,12 +61,13 @@ FORME_SBAGLIATE = [
      "batterie a bottone: niente cibo né bevande, sopra i 12 mesi il miele mentre si va al pronto soccorso "
      "(Ospedale Bambino Gesù); la confezione non è nella fonte"),
     (re.compile(r"apri\s+porte\s+e\s+finestre\s+ed\s+esci|open\s+doors\s+and\s+windows\s+and\s+get\s+out", re.I),
-     "monossido: prima si esce all'aria aperta; le finestre si aprono solo se si può farlo senza fermarsi (NHS)"),
+     "monossido: prima si esce all'aria aperta (NHS); le finestre si aprono solo se si può farlo senza fermarsi (Regione Toscana)"),
     (re.compile(r"ronzio\s+nelle\s+orecchie|ringing\s+in\s+the\s+ears", re.I),
-     "svenimento: i segni prima sono pallore, sudore, nausea, capogiri, vista annebbiata (NHS, Auxologico); "
+     "svenimento: i segni prima sono sudore, nausea, capogiri, vista annebbiata (NHS) e pallore (Auxologico); "
      "il ronzio non è nelle fonti"),
-    (re.compile(r"luci\s+(?:accese\s+)?di\s+notte|night\s+lights", re.I),
-     "cadute: la prevenzione segue l'NHS (niente tappeti e fili, antiscivolo, maniglioni); le luci non sono nella fonte"),
+    (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
+     "fratture: mano o piede freddi non è un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
+     "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post

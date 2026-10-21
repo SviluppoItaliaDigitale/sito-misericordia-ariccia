@@ -176,7 +176,7 @@ argomenti:
     dal: "2026-11-17"
     riconosci: "Prima: pallore, sudore, nausea, capogiri, vista annebbiata. Poi una breve perdita di coscienza, di solito meno di un minuto."
     fare:
-      - "Se senti che stai per svenire: **sdraiati**; se non puoi, accovacciati, oppure **incrocia le gambe stringendo i muscoli**."
+      - "Se senti che stai per svenire: **sdraiati**, se puoi con le gambe sollevate; se non puoi, accovacciati, oppure **incrocia le gambe stringendo i muscoli**."
       - "Se sviene: **sdraiata a pancia in su**, se puoi con le gambe sollevate."
       - "Se non si riprende in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**."
       - "Quando sta meglio, falla rialzare piano: prima seduta, poi in piedi."
@@ -219,7 +219,7 @@ argomenti:
     fare:
       - "Sostieni la parte **nella posizione in cui si trova** (mani, cuscino, fascia per il braccio)."
       - "**Ghiaccio avvolto in un panno**, per circa 20 minuti."
-      - "Frattura esposta: non spingere dentro l'osso; se sanguina, **premi sulla ferita** con una garza o un panno pulito."
+      - "Frattura esposta: non spingere dentro l'osso; se sanguina, **premi sulla ferita** con una garza o un panno pulito, senza premere sull'osso."
       - "Chiama il **112** per fratture esposte, di anca, femore, schiena o collo, o dolore fortissimo."
     nonfare:
       - "Non raddrizzare l'arto e non farlo muovere."
@@ -230,7 +230,7 @@ argomenti:
     dal: "2026-12-01"
     riconosci: "Brividi forti, pelle fredda e pallida, mani impacciate, poi confusione e sonnolenza. **Se smette di tremare è grave.** Congelamento: dita, orecchie o naso bianchi e insensibili."
     fare:
-      - "Portala al riparo e al caldo, **muovendola con delicatezza**."
+      - "Portala al riparo dal vento e al caldo, **spostandola con delicatezza**."
       - "Togli i vestiti bagnati, asciugala e coprila con coperte asciutte, **anche la testa**."
       - "Se è sveglia e deglutisce, una **bevanda calda e zuccherata**."
       - "Se è confusa, sonnolenta o non trema più, chiama il **112**. Se non respira normalmente, rianimazione."
@@ -270,11 +270,11 @@ argomenti:
     riconosci: "Un bambino può aver ingoiato una batteria a bottone o delle calamite. **Spesso all'inizio non ci sono segni**; a volte tosse, bava, dolore, vomito o rifiuto del cibo."
     fare:
       - "Anche solo il dubbio: chiama il **112** o vai **subito al pronto soccorso**."
-      - "Sopra l'anno di età, se l'ha ingoiata da meno di 12 ore: **miele**, 10 ml (2 cucchiaini) ogni 10 minuti, fino a 6 volte, **mentre lo porti al pronto soccorso**, senza perdere tempo."
+      - "Sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore: **miele**, 10 ml (2 cucchiaini) ogni 10 minuti, fino a 6 volte, **mentre lo porti al pronto soccorso**, senza perdere tempo."
       - "Previeni: giocattoli con il **vano batterie a vite**, batterie nuove e scariche lontane dai bambini."
     nonfare:
       - "Non aspettare i sintomi: in poche ore la batteria può bruciare l'esofago."
-      - "Non farlo vomitare e non dargli altri cibi o bevande."
+      - "Non farlo vomitare e non dargli cibi o bevande, a parte il miele."
   - id: "cadute-anziani"
     titolo: "Cadute degli anziani"
     motto: "Senza fretta"
@@ -287,7 +287,7 @@ argomenti:
       - "Chiama il **112** se ha battuto la testa (ancora di più se prende anticoagulanti), se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi o se è confuso."
       - "Se sta bene, rialzarsi **a tappe**: su un fianco, in ginocchio, poi con una sedia robusta."
       - "Se non riesce ad alzarsi: coperta, al caldo, e aspetta i soccorsi. Se ha battuto la testa o ha male al collo, **non muovergli la testa**."
-      - "Previeni: niente tappeti e fili in cui inciampare, tappetini antiscivolo nella doccia e nella vasca, maniglioni in bagno."
+      - "Previeni: niente tappeti e fili in cui inciampare, antiscivolo e maniglioni in bagno, una luce notturna, pantofole chiuse antiscivolo, un telefono vicino al letto."
     nonfare:
       - "Non tirarlo su di colpo e non forzarlo."
       - "Non lasciarlo solo nelle ore successive, soprattutto se ha battuto la testa."
@@ -311,7 +311,7 @@ argomenti:
     motto: "Pronti a tutto"
     dal: "2026-12-22"
     riconosci_tit: "Cosa serve"
-    riconosci: "Guanti, garze sterili, bende, cerotti, forbici, un disinfettante, e ghiaccio istantaneo."
+    riconosci: "Guanti, garze sterili, bende, cerotti, forbici, un disinfettante e ghiaccio istantaneo."
     fare:
       - "In auto tieni anche **giubbotto catarifrangente e triangolo**."
       - "Controlla **regolarmente** le scadenze e rimetti quello che hai usato."

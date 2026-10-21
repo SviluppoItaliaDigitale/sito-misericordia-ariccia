@@ -170,7 +170,7 @@ argomenti:
     dal: "2026-11-17"
     riconosci: "Beforehand: pallor, sweating, nausea, dizziness, blurred vision. Then a brief loss of consciousness, usually less than a minute."
     fare:
-      - "If you feel you are about to faint: **lie down**; if you can't, squat, or **cross your legs and tense your muscles**."
+      - "If you feel you are about to faint: **lie down**, with your legs raised if you can; if you can't, squat, or **cross your legs and tense your muscles**."
       - "If they faint: **lying on their back**, with legs raised if you can."
       - "If they don't come round quickly, call **112** and check whether they are breathing normally: if not, start **CPR**."
       - "Once they feel better, help them up slowly: first sitting, then standing."
@@ -213,7 +213,7 @@ argomenti:
     fare:
       - "Support the part **in the position you find it** (hands, a cushion, an arm sling)."
       - "**Ice wrapped in a cloth**, for about 20 minutes."
-      - "Open fracture: don't push the bone back in; if it is bleeding, **press on the wound** with a clean gauze or cloth."
+      - "Open fracture: don't push the bone back in; if it is bleeding, **press on the wound** with a clean gauze or cloth, without pressing on the bone."
       - "Call **112** for open fractures, fractures of the hip, thigh bone, back or neck, or very severe pain."
     nonfare:
       - "Don't straighten the limb and don't let them move it."
@@ -224,7 +224,7 @@ argomenti:
     dal: "2026-12-01"
     riconosci: "Intense shivering, cold pale skin, clumsy hands, then confusion and drowsiness. **If they stop shivering, it is serious.** Frostbite: white, numb fingers, ears or nose."
     fare:
-      - "Get them to shelter and somewhere warm, **moving them gently**."
+      - "Get them out of the wind and somewhere warm, **moving them gently**."
       - "Remove wet clothing, dry them and cover them with dry blankets, **including the head**."
       - "If they are awake and can swallow, a **warm, sweet drink**."
       - "If they are confused, drowsy or no longer shivering, call **112**. If they are not breathing normally, start CPR."
@@ -264,11 +264,11 @@ argomenti:
     riconosci: "A child may have swallowed a button battery or magnets. **Often there are no signs at first**; sometimes coughing, drooling, pain, vomiting or refusing food."
     fare:
       - "Even if you only suspect it: call **112** or go **straight to A&E** (pronto soccorso)."
-      - "Over one year old, if swallowed less than 12 hours ago: **honey**, 10 ml (2 teaspoons) every 10 minutes, up to 6 times, **on the way to A&E**, without losing any time."
+      - "Over one year old, if they can swallow and it was swallowed less than 12 hours ago: **honey**, 10 ml (2 teaspoons) every 10 minutes, up to 6 times, **on the way to A&E**, without losing any time."
       - "Prevention: toys with a **screw-fastened battery compartment**, new and used batteries kept away from children."
     nonfare:
       - "Don't wait for symptoms: within a few hours the battery can burn the oesophagus."
-      - "Don't make the child vomit and don't give any other food or drink."
+      - "Don't make the child vomit and don't give food or drink, apart from honey."
   - id: "cadute-anziani"
     titolo: "Falls in older people"
     motto: "No rush"
@@ -281,7 +281,7 @@ argomenti:
       - "Call **112** if they hit their head (all the more if they take anticoagulants, blood thinners), have pain in the back, neck or hip, cannot get up or are confused."
       - "If they are fine, get up **in stages**: onto one side, onto the knees, then using a sturdy chair."
       - "If they cannot get up: a blanket, keep them warm, and wait for help. If they hit their head or have neck pain, **don't move their head**."
-      - "Prevention: no rugs or loose wires to trip over, non-slip mats in the shower and bath, grab rails in the bathroom."
+      - "Prevention: no rugs or loose wires to trip over, non-slip mats and grab rails in the bathroom, a night light, closed non-slip slippers, a phone by the bed."
     nonfare:
       - "Don't pull them up suddenly and don't force them."
       - "Don't leave them alone in the following hours, especially if they hit their head."
@@ -305,7 +305,7 @@ argomenti:
     motto: "Ready for anything"
     dal: "2026-12-22"
     riconosci_tit: "What you need"
-    riconosci: "Gloves, sterile gauze, bandages, plasters, scissors, a disinfectant, and an instant ice pack."
+    riconosci: "Gloves, sterile gauze, bandages, plasters, scissors, a disinfectant and an instant ice pack."
     fare:
       - "In the car, also keep a **high-visibility vest and warning triangle**."
       - "Check expiry dates **regularly** and replace what you have used."

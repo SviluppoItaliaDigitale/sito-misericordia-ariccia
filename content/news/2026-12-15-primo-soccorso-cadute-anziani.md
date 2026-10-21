@@ -50,7 +50,7 @@ Anche se sembra a posto, controllalo nelle ore successive, soprattutto se ha bat
 
 ### Previeni
 
-Per prevenire: via i tappeti e i fili in cui si può inciampare, un tappetino antiscivolo nella doccia e nella vasca, e i maniglioni in bagno.
+Per prevenire: via i tappeti e i fili in cui si può inciampare, antiscivolo e maniglioni in bagno, una luce notturna verso il bagno, pantofole chiuse con la suola antiscivolo e un telefono vicino al letto.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, prevenzione); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*
+*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, tappeti, fili, antiscivolo e maniglioni); [ASL Roma 3, Piano Regionale della Prevenzione del Lazio, Prevenire gli incidenti domestici](https://www.aslroma3.it/wp-content/uploads/2025/12/articolo-PP5-incidenti-domestici-anziani.pdf) (luce notturna, pantofole chiuse con la suola antiscivolo, telefono sul comodino); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*

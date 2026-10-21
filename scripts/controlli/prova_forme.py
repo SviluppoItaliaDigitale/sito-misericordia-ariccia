@@ -69,8 +69,9 @@ CASI = [  # (testo, deve essere segnalato)
     ("Esci subito all'aria aperta. Se puoi farlo senza fermarti, apri le finestre.", False),
     ("vista annebbiata e un ronzio " + "nelle orecchie", True),
     ("blurred vision, ringing " + "in the ears", True),
-    ("luci accese " + "di notte, maniglioni in bagno", True),
-    ("niente tappeti e fili, tappetini antiscivolo, maniglioni in bagno", False),
+    ("o se mano o piede " + "sono freddi e senza sensibilità", True),
+    ("or a hand or foot " + "that is cold and numb", True),
+    ("una luce notturna verso il bagno, pantofole chiuse", False),
 ]
 
 errori = 0
