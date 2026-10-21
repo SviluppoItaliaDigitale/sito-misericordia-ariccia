@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- Nessun lavoro a metà al 11/10/2026.
+- **21/10/2026 — Claude — Modelli grafici nazionali nel repository.** Che cosa: i modelli grafici della Confederazione nazionale mostrati nei webinar del 2026 (post con fascia, storia, testimonianza, carosello «Cosa facciamo», Save the date, assemblea dei soci, biglietto da visita, carta intestata), rifatti identici per Ariccia, vanno in `scripts/grafica-brand/modelli-nazionali/` (cartella che non va online) con la skill `grafiche-modelli-nazionali`, che riempie i campi e salva l'immagine con i controlli; poi i richiami in `CLAUDE.md` (§ «2. Grafica brand»), in `AGENTS.md` e qui in «Questo repository». Ramo `claude/modelli-grafici-nazionali`, PR da aprire. Prossimo passo: modelli, istruzioni, prova di tutti gli esempi, PR, controlli verdi, merge (il merge pubblica il sito ma non cambia pagine). Cervello: documento della Misericordia di Ariccia, «Registro aggiornamenti»; i riassunti dei webinar sono già nel Cervello. Disegni di partenza: tavole «Grafiche Misericordia di Ariccia» nel canvas di Alessandro.
 
 ## Richieste
 
