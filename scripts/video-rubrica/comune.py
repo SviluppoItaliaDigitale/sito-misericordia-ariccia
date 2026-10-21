@@ -1,5 +1,5 @@
 """Pezzi in comune agli script della rubrica: ffmpeg, pagina animata dei video e scrittura prudente delle news."""
-import base64, json, os, sys
+import base64, json, os, re, sys
 from pathlib import Path
 
 W = Path(__file__).resolve().parent; REPO = W.parents[1]
@@ -29,6 +29,15 @@ def caratteri():
             f"@font-face{{font-family:'Montserrat';font-weight:100 900;font-display:block;src:url(data:font/woff2;base64,{b64(MODELLI/'font'/'montserrat-latin-ext.woff2')}) format('woff2');unicode-range:{_ESTESO}}}"
             f"@font-face{{font-family:'Montserrat';font-weight:100 900;font-display:block;src:url(data:font/woff2;base64,{b64(MODELLI/'font'/'montserrat-latin.woff2')}) format('woff2');unicode-range:{_LATINO}}}")
 
+def disegni():
+    """File dei disegni: ill.js per primo (definisce ILL e le funzioni che usano gli altri), poi ill2.js, ill3.js…
+    in ordine di numero. Un illN.js nuovo entra da solo nella pagina, senza registrarlo da nessuna parte."""
+    trovati = sorted((int(m.group(1) or 0), f.name) for f in W.glob('ill*.js') if (m := re.fullmatch(r'ill(\d*)\.js', f.name)))
+    nomi = [n for _, n in trovati]
+    if not nomi or nomi[0] != 'ill.js':
+        sys.exit(f'manca ill.js, che definisce ILL: trovati {nomi}')
+    return nomi
+
 def pagina(v, D, conta, audio):
     """Pagina animata di un video (appro.src.html) con caratteri, loghi ufficiali dei modelli nazionali, motore di
     firma e cornice, disegni, tempi (D, conta) e dati del video (v). audio: indirizzo dell'audio (data:… o file)."""
@@ -37,7 +46,7 @@ def pagina(v, D, conta, audio):
     s = s.replace('/*LOGO*/', 'data:image/png;base64,' + b64(MODELLI / 'loghi' / 'triangolo-misericordie.png'))
     s = s.replace('/*STEMMA*/', 'data:image/png;base64,' + b64(MODELLI / 'loghi' / 'stemma-misericordie.png'))
     s = s.replace('/*CORNICE*/', MOTORE.read_text())
-    s = s.replace('/*ILL*/', '\n'.join((W / f).read_text() for f in ('ill.js', 'ill2.js', 'ill3.js')))
+    s = s.replace('/*ILL*/', '\n'.join((W / f).read_text() for f in disegni()))
     s = s.replace('/*DUR*/[]', json.dumps(D)).replace('/*CONTA*/{}', json.dumps(conta)).replace('/*CFG*/{}', json.dumps(v, ensure_ascii=False))
     return s.replace('src="/*AUDIO*/"', f'src="{audio}"')
 

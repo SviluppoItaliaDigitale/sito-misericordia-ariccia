@@ -19,7 +19,7 @@ ogni fotogramma la firma «Misericordia di Ariccia» e la cornice di microtesto
 | `contenuti3.py` | video dei servizi: accompagnamento sociale e «L'ultimo viaggio» (voce più lenta con `voce_lenta`, musica `dolce`) |
 | `ill.js`, `ill2.js`, `ill3.js` | libreria dei disegni animati (`ILL[nome]({u, p, D, A})`) |
 | `riferimenti/livrea-ambulanza-facsimile.jpg` | fac-simile della livrea delle nostre ambulanze: `miseAmbulanza` in `ill3.js` è ricalcata da qui (non inventare livree) |
-| `riferimenti/volontari-divisa.png` | riferimento per i volontari: SOLO la divisa giallo-ciano (blu, quella sanitaria; l'arancione è della protezione civile, settore non attivo: non usarla) con colletto con colletto e fasce giallo fluo, filetti argento, triangolo e bandiera (`volunteer()` in `ill3.js`, `bust(…,{divisa:true})` in `ill.js`) |
+| `riferimenti/volontari-divisa.png` | riferimento per i volontari: SOLO la divisa giallo-ciano (blu, quella sanitaria; l'arancione è della protezione civile, settore non attivo: non usarla) con colletto e fasce giallo fluo, filetti argento, triangolo e bandiera (`volunteer()` in `ill3.js`, `bust(…,{divisa:true})` in `ill.js`) |
 | `appro.src.html` | modello della pagina animata nello stile nazionale (fascia blu con filo giallo e stemma, firma, titolo con evidenziatore, sottotitoli, chiusura con la scheda contatti, cornice di microtesto) |
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `musica/` | brani scelti da Alessandro (Kevin MacLeod, incompetech.com, CC BY 4.0): campo `brano` del video (`morning`, `touching-moments-two-higher`); di default `heartwarming`; i video con `bpm=110` (compressioni a tempo) usano `musica.py`. Ogni nuovo video va aggiunto a `data/musica_video.json` per il credito sotto il video e nei post |
@@ -110,8 +110,10 @@ Facebook/Instagram resta quello vecchio (il sito si aggiorna, i post no).
 Aggiungere un `contenutiN.py` sul modello di `contenuti2.py` (campi `serie`, `num`,
 `tot`; `bpm=110` e `conta=30` per una simulazione a tempo; `card` per cambiare la
 scheda finale), importarlo in fondo a `contenuti.py`, creare i disegni mancanti in un
-`illN.js` (aggiungerlo in `pipeline.py` accanto a `ill2.js`) e le news con uno script
-come `articoli2.py`. Contenuti sanitari: sempre verificati su linee guida ERC/IRC
+`illN.js` (entra da solo nella pagina, dopo `ill.js` e in ordine di numero: lo carica
+`pagina()` di `comune.py`) e le news con uno script come `articoli2.py`. Se una scena chiede
+un disegno che non c'è, `prova_impaginazione.py` e il montaggio si fermano con l'errore
+«disegno mancante». Contenuti sanitari: sempre verificati su linee guida ERC/IRC
 correnti, e fatti rivedere da un istruttore prima dell'uscita.
 
 ## Impaginazione per Instagram (dal 17/10/2026)

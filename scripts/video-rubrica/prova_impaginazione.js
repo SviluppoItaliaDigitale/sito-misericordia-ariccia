@@ -1,7 +1,7 @@
 // Prova d'impaginazione (vedi prova_impaginazione.py): per ogni scena il fotogramma più a rischio
 // con sovrapposta la zona coperta dai comandi di Instagram (in rosso) e la firma (in verde), in KEY/prova.png.
-// Esce con 1 se manca la firma o la cornice, se una scritta o un disegno tocca la firma, o se un'email o un sito va a
-// capo a metà.
+// Esce con 1 se manca la firma o la cornice, se una scritta o un disegno tocca la firma, se un'email o un sito va a
+// capo a metà, o se una scena chiede un disegno che non è in ILL.
 const { chromium } = require('playwright-core');
 (async () => {
   const K = process.env.KEY;
@@ -9,6 +9,10 @@ const { chromium } = require('playwright-core');
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto('file://' + process.cwd() + '/' + K + '/video.html?render=1'); await p.waitForFunction('window.__ready === true');
+  // Disegni: ogni scena trova il suo in ILL. Un nome sbagliato o un illN.js non caricato lascerebbe la scena vuota
+  // senza nessun errore.
+  const mancanti = await p.evaluate(`[...new Set(SCENE.filter(s=>s.ill&&typeof ILL[s.ill]!=='function').map(s=>s.ill))]`);
+  if (mancanti.length) { console.log('ERRORE disegno mancante in ill*.js:', mancanti.join(', ')); process.exitCode = 1; }
   // Per ogni scena prova dieci istanti della voce e tiene quello con il sottotitolo più alto (frase più lunga),
   // a parità quello che scende di più: è il caso peggiore da confrontare con la zona di Instagram e con le etichette.
   const times = [];
