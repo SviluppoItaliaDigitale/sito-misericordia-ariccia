@@ -44,8 +44,10 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
 .angolo.a1{left:-2px;top:-2px}.angolo.a2{right:-2px;top:-2px;transform:scaleX(-1)}
 .angolo.a3{left:-2px;bottom:-2px;transform:scaleY(-1)}.angolo.a4{right:-2px;bottom:-2px;transform:scale(-1,-1)}
 .giglio-angolo{position:absolute;width:56px;height:72px;padding:5px 6px;background:var(--navy);color:var(--giallo);overflow:visible}
-.giglio-angolo.g1{left:-12px;top:-16px}.giglio-angolo.g2{right:-12px;top:-16px}
-.giglio-angolo.g3{left:-12px;bottom:-16px}.giglio-angolo.g4{right:-12px;bottom:-16px}
+.giglio-angolo.g1{left:-4px;top:-16px}.giglio-angolo.g2{right:-4px;top:-16px}
+.giglio-angolo.g3{left:-4px;bottom:-16px}.giglio-angolo.g4{right:-4px;bottom:-16px}
+/* dal 21/10/2026 i gigli stanno 8 px più dentro (erano a -12px): lungo i bordi corre la cornice di microtesto
+   (scripts/grafica-brand/firma-e-cornice.js), che lascia liberi gli angoli per 80 px */
 .filetto{display:block;width:560px;height:40px;margin:0 auto}
 .filigrana{position:absolute;color:#fff;opacity:.07;pointer-events:none;z-index:-1} /* dietro a tutto, testo compreso */
 .filigrana.stemma-f{right:84px;bottom:60px;width:400px;height:400px;filter:grayscale(1) brightness(2.2)}
@@ -141,7 +143,7 @@ body{width:1080px;height:1350px;background:var(--navy);color:#fff;font-family:Jo
   <div class="numero" id="p-numero"></div>
 </section>
 <div class="piede">
-  <div class="marchio"><img src="../../static/img/loghi/mise-triangolo.png" alt="">Misericordia<br>di Ariccia</div>
+  <div class="marchio" data-firma><img src="../../static/img/loghi/mise-triangolo.png" alt="">Misericordia<br>di Ariccia</div>
   <div class="sito">www.misericordia-ariccia.it</div>
 </div>
 <script>

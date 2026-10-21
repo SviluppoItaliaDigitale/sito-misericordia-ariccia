@@ -15,7 +15,7 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 |---|---|
 | Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | cornice dorata doppia, sobria, con il giglio di Firenze e due volute in ogni angolo (Alessandro: niente di pacchiano); filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, **un solo simbolo per pagina** a rotazione settimanale (stemma, **pesce**, **rosario**, **buffa**, la veste storica dei confratelli, sagoma scura disegnata da ChatGPT nel compito 002 della bacheca); «Firenze · 1244» sotto lo stemma in copertina; niente motto né altre scritte in più (Alessandro: «troppe scritte»); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo |
+| Grafica | cornice dorata doppia, sobria, con il giglio di Firenze e due volute in ogni angolo (Alessandro: niente di pacchiano); filetto con alfa e omega ai lati della croce dello stemma FM, stemma storico (`static/img/loghi/mise-fregio.png`) come sigillo in copertina; nelle pagine dei versetti, in filigrana trasparentissima dietro il testo, **un solo simbolo per pagina** a rotazione settimanale (stemma, **pesce**, **rosario**, **buffa**, la veste storica dei confratelli, sagoma scura disegnata da ChatGPT nel compito 002 della bacheca); «Firenze · 1244» sotto lo stemma in copertina; niente motto né altre scritte in più (Alessandro: «troppe scritte»); il **giglio di Firenze** (dove nacque la prima Misericordia) solo negli angoli. Le filigrane possono stare dietro le scritte purché si leggano (decisione di Alessandro); per tutto il resto **mai scritte sopra la grafica**: `rendi.js` lo controlla da solo. Dal 21/10/2026 (Alessandro: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!») ogni pagina ha la firma «Misericordia di Ariccia» accanto al triangolo (elemento `data-firma`) e una **cornice di microtesto** lungo i bordi (nome, sito, «grafica della Confraternita di Misericordia di Ariccia ODV», anno), incisa da `rendi.js` con il motore `scripts/grafica-brand/firma-e-cornice.js`: invisibile da lontano, leggibile ingrandendo, lascia liberi gli 80 px di ogni angolo, dove ci sono i gigli (spostati di 8 px verso l'interno) |
 | Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica.html`, `rendi.js`) |
 | Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
@@ -89,7 +89,12 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    (senza opera: senza l'ultimo argomento). **Aprire ogni JPEG e guardarlo**: opera intera
    e leggibile, testi non tagliati, lettura giusta su ogni pagina. Se un testo non entra o una
    scritta tocca ornamenti, stemma, filetti o opera, lo script esce con errore: scegliere una
-   frase più corta (non spostare gli ornamenti sopra il testo).
+   frase più corta (non spostare gli ornamenti sopra il testo). Esce con errore anche se in
+   una pagina manca la firma «Misericordia di Ariccia» o non si legge (meno di 24 px,
+   trasparente, fuori pagina). La cornice di microtesto la mette lo script: ingrandendo un
+   bordo del JPEG si legge «MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it…». I JPEG
+   non si risalvano con altri programmi: perderebbero il segno della cornice, che «Controlli
+   del sito» cerca nelle pagine in uscita.
 7. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
 8. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
    online le immagini). La domenica alle 4:47 il workflow pubblica da solo.

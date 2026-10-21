@@ -9,10 +9,13 @@ Legge la build di Hugo (cartella public/) e il repo, e scrive un rapporto in Mar
   5. forme già corrette che non devono tornare (FORME_SBAGLIATE), cercate nei sorgenti del sito
      e nei generatori di video, grafiche e post (CARTELLE_TESTI), così si vedono anche nelle news
      programmate e prima che un video o una grafica le renda in un file che nessuno rilegge;
-  6. con --live: pagine principali online e build pubblicata uguale a quella attesa.
+  6. firma «Misericordia di Ariccia» e cornice di microtesto: il segno del motore nelle grafiche delle news e
+     nelle pagine della Parola che escono dal 22/10/2026, la firma in ogni modello grafico;
+  7. con --live: pagine principali online e build pubblicata uguale a quella attesa.
 Solo libreria standard. Uso: controlla_sito.py public [--live] [--report out.md] [--csp]
   --csp: stampa gli hash degli script inline da copiare in static/.htaccess ed esce.
-Esce con codice 1 se ci sono link interni rotti, script inline fuori dalla CSP o forme da non usare."""
+Esce con codice 1 se ci sono link interni rotti, script inline fuori dalla CSP, forme da non usare o grafiche
+senza firma e cornice."""
 import base64, datetime as dt, glob, hashlib, html, os, re, sys, time, urllib.request
 from pathlib import Path
 from urllib.parse import urlsplit, unquote, urljoin
@@ -60,6 +63,14 @@ FORME_SBAGLIATE = [
 CARTELLE_TESTI = ("content", "layouts", "data", "assets", "archetypes", "static", "contenuti", "scripts", ".github/social")
 FILE_TESTI = ("hugo.toml",)
 ESTENSIONI_TESTI = (".md", ".html", ".yaml", ".yml", ".json", ".toml", ".py", ".js", ".vtt", ".srt", ".txt", ".svg")
+# Firma «Misericordia di Ariccia» e cornice di microtesto (richiesta di Alessandro del 21/10/2026: «metti in ogni
+# slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Il motore
+# scripts/grafica-brand/firma-e-cornice.js scrive in testa al JPEG (commento) o al PNG (blocco tEXt) il suo segno:
+# lo devono avere le grafiche delle news e le pagine della Parola che escono da DAL_FIRMA, e ogni modello grafico
+# deve avere la firma (elemento data-firma). La prova di questo controllo è scripts/controlli/prova_cornice.py.
+DAL_FIRMA = dt.date(2026, 10, 22)
+MOTORE_FIRMA = REPO / "scripts/grafica-brand/firma-e-cornice.js"
+MODELLI_FIRMA = ("scripts/grafica-brand/modelli-nazionali/*.html", "scripts/parola-domenica/grafica*.html")
 
 
 def hash_inline(pub):
@@ -137,6 +148,58 @@ def forme_sbagliate():
     return trovate
 
 
+def segno_firma():
+    """Il segno che il motore scrive nelle grafiche (MARCATORE di firma-e-cornice.js), in byte."""
+    m = re.search(r"const MARCATORE = '([^']+)'", MOTORE_FIRMA.read_text(encoding="utf-8"))
+    return m.group(1).encode() if m else None
+
+
+def ha_segno(dati, segno):
+    """Vero se il JPEG ha il segno in un commento (segmento COM) o il PNG in un blocco tEXt, prima dei dati
+    dell'immagine: un segno sparso nei pixel compressi non vale."""
+    if dati[:2] == b"\xff\xd8":
+        i = 2
+        while i + 4 <= len(dati) and dati[i] == 0xFF:
+            tipo, lung = dati[i + 1], int.from_bytes(dati[i + 2:i + 4], "big")
+            if tipo == 0xFE and segno in dati[i + 4:i + 2 + lung]: return True
+            if tipo == 0xDA: break                          # inizio dei dati compressi
+            i += 2 + lung
+        return False
+    if dati[:8] == b"\x89PNG\r\n\x1a\n":
+        i = 8
+        while i + 8 <= len(dati):
+            lung, tipo = int.from_bytes(dati[i:i + 4], "big"), dati[i + 4:i + 8]
+            if tipo == b"tEXt" and segno in dati[i + 8:i + 8 + lung]: return True
+            if tipo == b"IDAT": break
+            i += 12 + lung
+        return False
+    return False
+
+
+def grafiche_senza_firma():
+    segno = segno_firma()
+    if not segno:
+        return ["scripts/grafica-brand/firma-e-cornice.js: non trovo il segno (const MARCATORE)"]
+    mancano = []
+    for f in sorted((REPO / "content/news").glob("*.md")):
+        fm = f.read_text(encoding="utf-8").split("---")[1]
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        im = re.search(r'^immagine:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
+        if not d or not im or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
+        img = REPO / "static" / im.group(1).strip().lstrip("/")
+        if img.suffix.lower() in (".jpg", ".jpeg", ".png") and img.is_file() and not ha_segno(img.read_bytes()[:65536], segno):
+            mancano.append(f"`{img.relative_to(REPO)}` (news {f.name})")
+    for img in sorted((REPO / "static/img/parola").glob("*.jpg")):
+        m = re.match(r"(\d{4}-\d{2}-\d{2})-\d+\.jpg$", img.name)
+        if m and dt.date.fromisoformat(m.group(1)) >= DAL_FIRMA and not ha_segno(img.read_bytes()[:65536], segno):
+            mancano.append(f"`{img.relative_to(REPO)}` (Parola della domenica)")
+    for schema in MODELLI_FIRMA:
+        for modello in sorted(REPO.glob(schema)):
+            if "data-firma" not in modello.read_text(encoding="utf-8"):
+                mancano.append(f"`{modello.relative_to(REPO)}`: modello senza la firma (elemento data-firma)")
+    return mancano
+
+
 def scarica(url, tentativi=4):
     for i in range(tentativi):
         try:
@@ -191,6 +254,14 @@ def main():
     righe += ["", f"### ✍️ Forme da non usare: {'✅ nessuna' if not sbagliate else f'❌ {len(sbagliate)} da correggere'}"]
     righe += [f"- `{dove}`: «{trovato}» → {regola}" for dove, trovato, regola in sbagliate[:30]]
     errori += bool(sbagliate)
+
+    senza = grafiche_senza_firma()
+    righe += ["", "### 🖋️ Firma «Misericordia di Ariccia» e cornice di microtesto: "
+              + ("✅ in tutte le grafiche in uscita e in tutti i modelli" if not senza else f"❌ {len(senza)} senza")]
+    righe += [f"- {x}: rifarla con il modello, oppure `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice FILE` "
+              "(con `--firma basso-sinistra` se la grafica non mostra il nome)" if not x.endswith("(elemento data-firma)") else f"- {x}"
+              for x in senza[:30]]
+    errori += bool(senza)
 
     if "--live" in sys.argv:
         righe += ["", "### 🌐 Sito online"]

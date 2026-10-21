@@ -10,11 +10,20 @@ Uso:
   rendi.py DATI.json --lutto si|no                       la grafica ricorda una persona morta (sì) oppure no
   rendi.py --elenco                                      modelli, misure e campi
   rendi.py --esempi CARTELLA [--anteprima FILE.jpg]      disegna tutti gli esempi e, se chiesto, il foglio d'insieme
+  rendi.py --cornice FILE.jpg ... [--firma basso-sinistra]  firma e cornice su grafiche già fatte (vedi sotto)
   rendi.py --autotest                                    prova lo script e i controlli
 
 Il formato viene dall'estensione di --uscita: .jpg (qualità 88, per il sito e i social), .png, oppure .pdf per la
 carta intestata (A4) e il biglietto da visita (85×55 mm), con i testi vettoriali. Le foto si indicano con il percorso
 del file, relativo al file dei dati (o alla cartella corrente con --campo).
+
+Firma e cornice (regola del 21/10/2026, richiesta di Alessandro: «metti in ogni slide, documento grafico eccetera
+sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»): ogni modello ha la firma «Misericordia di Ariccia»
+fissa (elemento data-firma) e lo script si ferma se manca, se è troppo piccola o se una scritta la tocca. Ogni grafica
+esce anche con la cornice di microtesto lungo i bordi (motore scripts/grafica-brand/firma-e-cornice.js): nei JPEG e PNG
+incisa nei primi pixel dei bordi, con un commento che i controlli del sito cercano; nei modelli da stampa vettoriale,
+dentro il margine di stampa (<meta name="microtesto"> del modello). Per le grafiche fatte in altro modo (per esempio la
+copertina tratta da un video) c'è --cornice, che aggiunge la cornice e, con --firma, la firma su un fondo libero.
 
 Foto in bianco e nero solo per il lutto: sui social il bianco e nero dice che si ricorda una persona morta. Con
 "lutto": true nei dati (oppure --lutto si) la foto diventa in bianco e nero, mentre fascia, colori, loghi e testi
@@ -32,6 +41,7 @@ Pillow solo per --autotest.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import html
 import json
@@ -48,6 +58,10 @@ TAG_AMMESSI = {"p", "br", "strong", "b", "em", "i", "u", "span"}
 CLASSI_AMMESSE = {"evidenzia", "sottolinea", "finale"}
 SUFFISSI_FOTO = ("-posizione", "-alt", "-zoom")
 FOTO_PROVA = MODELLI / "foto-prova"
+MOTORE = MODELLI.parent / "firma-e-cornice.html"       # firma e cornice di microtesto (regola del 21/10/2026)
+MOTORE_JS = MODELLI.parent / "firma-e-cornice.js"
+MARCATORE = re.search(r"const MARCATORE = '([^']+)'", MOTORE_JS.read_text(encoding="utf-8")).group(1).encode()
+POSIZIONI_FIRMA = ("basso-sinistra", "basso-centro", "basso-destra")
 # Frasi che di solito ricordano una persona morta: se compaiono e i dati non dicono se è un lutto, lo script si
 # ferma. Solo frasi poco ambigue: «scomparsa» da sola no, perché nei testi della Misericordia è anche la persona
 # scomparsa da cercare, e «morte» da sola no, perché torna nei testi di primo soccorso.
@@ -126,7 +140,8 @@ ASPETTA_JS = r"""async () => {
   return true;
 }"""
 
-CONTROLLA_JS = r"""(area) => {
+CONTROLLA_JS = r"""(o) => {
+  const area = o.area;
   const W = document.documentElement.clientWidth, H = document.documentElement.clientHeight;
   const problemi = [];
   const visibile = (el) => el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden';
@@ -163,8 +178,8 @@ CONTROLLA_JS = r"""(area) => {
     else if (area > 0 && r.some((x) => x.top < area || x.bottom > H - area))
       problemi.push(`fuori dall'area sicura della storia (${area} px dall'alto e dal basso): «${nome(el)}»`);
   }
-  // 3. testi che toccano loghi, fasce, parti fisse o altri testi
-  const ostacoli = [...document.querySelectorAll('[data-logo], [data-ostacolo]')].filter(visibile);
+  // 3. testi che toccano loghi, fasce, parti fisse, la firma o altri testi
+  const ostacoli = [...document.querySelectorAll('[data-logo], [data-ostacolo], [data-firma]')].filter(visibile);
   const viste = new Set();
   for (const t of testi) {
     const rt = rettangoli(t);
@@ -172,7 +187,7 @@ CONTROLLA_JS = r"""(area) => {
       if (o.contains(t) || t.contains(o)) continue;
       const ro = o.getBoundingClientRect();
       if (rt.some((r) => tocca(r, ro)))
-        problemi.push(`«${nome(t)}» tocca ${o.hasAttribute('data-logo') ? 'il logo' : 'una parte fissa della grafica'}`);
+        problemi.push(`«${nome(t)}» tocca ${o.hasAttribute('data-logo') ? 'il logo' : o.hasAttribute('data-firma') ? 'la firma «Misericordia di Ariccia»' : 'una parte fissa della grafica'}`);
     }
     for (const u of testi) {
       if (u === t || t.contains(u) || u.contains(t)) continue;
@@ -200,6 +215,26 @@ CONTROLLA_JS = r"""(area) => {
   }
   // 5. segnaposti e foto di prova
   const tavola = document.querySelector('.tavola');
+  // 6. firma «Misericordia di Ariccia» (regola del 21/10/2026): c'è, si vede, è grande abbastanza, sta nella tavola
+  //    (nelle storie nell'area sicura) e non tocca i loghi; che le scritte non la tocchino lo controlla il punto 3.
+  const righeTesto = (el) => { const r = document.createRange(); r.selectNodeContents(el); return [...r.getClientRects()].filter((x) => x.width > 0.5 && x.height > 0.5); };
+  const firme = [...document.querySelectorAll('[data-firma]')].filter(visibile)
+    .filter((el) => (el.innerText || '').replace(/\s+/g, ' ').toLowerCase().includes('misericordia di ariccia'));
+  if (!firme.length) problemi.push('manca la firma «Misericordia di Ariccia»: ogni grafica la porta, ben visibile (elemento data-firma del modello)');
+  for (const el of firme) {
+    const corpo = parseFloat(getComputedStyle(el).fontSize);
+    if (corpo < o.firmaMinima) problemi.push(`la firma «Misericordia di Ariccia» è troppo piccola: ${corpo} px, ne servono almeno ${o.firmaMinima}`);
+    let opacita = 1;
+    for (let x = el; x && x.nodeType === 1; x = x.parentElement) opacita *= parseFloat(getComputedStyle(x).opacity);
+    if (opacita < 0.8) problemi.push('la firma «Misericordia di Ariccia» è semitrasparente: deve leggersi bene');
+    const rf = righeTesto(el);
+    if (rf.some((x) => x.left < -0.5 || x.top < -0.5 || x.right > W + 0.5 || x.bottom > H + 0.5))
+      problemi.push('la firma «Misericordia di Ariccia» esce dalla tavola');
+    else if (area > 0 && rf.some((x) => x.top < area || x.bottom > H - area))
+      problemi.push(`la firma «Misericordia di Ariccia» è fuori dall'area sicura della storia (${area} px dall'alto e dal basso)`);
+    for (const l of document.querySelectorAll('[data-logo]'))
+      if (visibile(l) && rf.some((x) => tocca(x, l.getBoundingClientRect()))) problemi.push('la firma «Misericordia di Ariccia» tocca il logo');
+  }
   const segnaposti = [...new Set((tavola ? tavola.innerText : '').match(/\[[^\[\]\n]{2,}\]/g) || [])];
   const prova = [...document.querySelectorAll('img[data-prova]')].some(visibile);
   return { problemi, segnaposti, prova };
@@ -236,11 +271,21 @@ def leggi_modello(modello: Path) -> dict:
     area = re.search(r'<meta name="area-sicura" content="(\d+)"', testo)
     stampa = re.search(r'<meta name="stampa" content="([\d.]+)x([\d.]+)mm"', testo)
     campi = re.search(r"Campi \(attributo data-campo\):\n(.*?)\nSi compila", testo, flags=re.S)
+    # cornice di microtesto dei modelli da stampa: margine e corpo in mm, lati (tutti e quattro se non detti)
+    micro = re.search(r'<meta name="microtesto" content="([^"]+)"', testo)
+    if stampa and not micro:
+        raise SystemExit(f"Errore: {modello.name} è da stampa ma non dichiara la cornice di microtesto (<meta name=\"microtesto\">).")
+    microtesto = None
+    if micro:
+        valori = dict(x.split("=", 1) for x in micro.group(1).split())
+        microtesto = {"margine_mm": float(valori["margine"].removesuffix("mm")), "corpo_mm": float(valori["corpo"].removesuffix("mm")),
+                      "lati": valori.get("lati", "alto,basso,sinistra,destra").split(",")}
     return {
         "file": modello,
         "w": int(m.group(1)), "h": int(m.group(2)),
         "area": int(area.group(1)) if area else 0,
         "stampa": (float(stampa.group(1)), float(stampa.group(2))) if stampa else None,
+        "microtesto": microtesto,
         "foto": set(re.findall(r'<img data-campo="([\w-]+)"', testo)),
         "html": set(re.findall(r'data-campo="([\w-]+)"[^>]*\bdata-html\b', testo)),
         "elenco_campi": campi.group(1).rstrip() if campi else "",
@@ -313,12 +358,39 @@ def prepara_campi(info: dict, campi: dict, base: Path) -> dict:
     return pronti
 
 
+def firma_minima(info: dict) -> float:
+    """Corpo minimo della firma: 5 punti tipografici in stampa, 24 px nei formati social (1080 px), 16 px negli altri."""
+    if info["stampa"]:
+        return round(5 / 72 * 25.4 * info["w"] / info["stampa"][0], 1)
+    return 24 if info["w"] <= 1200 else 16
+
+
+def firma_e_cornice(browser, sorgente: bytes, tipo: str, formato: str, opzioni: dict | None = None) -> tuple[bytes, dict]:
+    """Passa un'immagine dal motore scripts/grafica-brand/firma-e-cornice.js: restituisce i byte del JPEG (qualità 88)
+    o del PNG con la cornice di microtesto, la firma se chiesta e il commento che i controlli del sito cercano."""
+    pagina = browser.new_page()
+    try:
+        pagina.goto(MOTORE.as_uri(), wait_until="load")
+        dati = f"data:{tipo};base64," + base64.b64encode(sorgente).decode()
+        esito = pagina.evaluate("([s, o]) => window.firmaECornice(s, o)",
+                                [dati, dict(opzioni or {}, formato=formato, qualita=QUALITA_JPEG / 100)])
+    finally:
+        pagina.close()
+    return base64.b64decode(esito.pop("dati").split(",", 1)[1]), esito
+
+
+def ha_firma_e_cornice(dati: bytes) -> bool:
+    """Vero se il JPEG o il PNG porta il commento del motore firma-e-cornice (che lo scrive in testa al file)."""
+    return MARCATORE in dati[:4096]
+
+
 def disegna(browser, info: dict, campi: dict, uscita: Path, bozza: bool = False, scala: float = 1.0,
-            lutto: bool | None = None) -> dict:
-    """Disegna una grafica e la salva. Restituisce problemi (bloccanti) e avvisi (bozza).
+            lutto: bool | None = None, prova_js: str | None = None, cornice: bool = True) -> dict:
+    """Disegna una grafica e la salva, con la cornice di microtesto. Restituisce problemi (bloccanti) e avvisi (bozza).
 
     lutto: True mette in bianco e nero le foto (e solo le foto), False conferma che non è un lutto,
-    None (non detto) ferma la grafica se i testi ricordano una persona morta."""
+    None (non detto) ferma la grafica se i testi ricordano una persona morta.
+    prova_js e cornice=False servono solo a --autotest (cambiare la grafica prima dei controlli, confronto senza cornice)."""
     formato = uscita.suffix.lower()
     if formato not in (".jpg", ".jpeg", ".png", ".pdf"):
         raise SystemExit("Errore: --uscita deve finire in .jpg, .png o .pdf.")
@@ -337,13 +409,28 @@ def disegna(browser, info: dict, campi: dict, uscita: Path, bozza: bool = False,
         if lutto:
             pagina.evaluate("() => document.body.classList.add('lutto')")
         pagina.evaluate(ASPETTA_JS)
-        esito = pagina.evaluate(CONTROLLA_JS, info["area"])
+        if prova_js:
+            pagina.evaluate(prova_js)
+        esito = pagina.evaluate(CONTROLLA_JS, {"area": info["area"], "firmaMinima": firma_minima(info)})
         problemi += esito["problemi"]
         avvisi = []
         if esito["segnaposti"]:
             (avvisi if bozza else problemi).append("restano segnaposti da compilare: " + ", ".join(esito["segnaposti"]))
         if esito["prova"]:
             (avvisi if bozza else problemi).append("c'è ancora la foto di prova: indica una foto vera nel campo «foto»")
+        # Cornice di microtesto: vettoriale dentro il margine di stampa nei modelli da stampa, incisa sui bordi negli altri.
+        microtesto = 0
+        if info["microtesto"] and cornice:
+            m, px_mm = info["microtesto"], info["w"] / info["stampa"][0]
+            pagina.add_script_tag(path=str(MOTORE_JS))
+            v = pagina.evaluate("(o) => window.corniceVettoriale(o)", {
+                "margine": round(m["margine_mm"] * px_mm, 2), "corpo": round(m["corpo_mm"] * px_mm, 2), "lati": m["lati"]})
+            microtesto = v["parole"]
+            if v["tocchi"]:
+                problemi.append("la cornice di microtesto tocca: " + ", ".join(f"«{x}»" for x in v["tocchi"]))
+            mancano = [x for x in (m["lati"] or ["alto", "basso", "sinistra", "destra"]) if x not in {s["lato"] for s in v["strisce"]}]
+            if mancano:
+                problemi.append("la cornice di microtesto non trova posto sul lato " + ", ".join(mancano))
         uscita.parent.mkdir(parents=True, exist_ok=True)
         if formato == ".pdf":
             larghezza_mm, altezza_mm = info["stampa"]
@@ -351,12 +438,16 @@ def disegna(browser, info: dict, campi: dict, uscita: Path, bozza: bool = False,
                        margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
                        scale=round(larghezza_mm / 25.4 * 96 / info["w"], 5), page_ranges="1")
         else:
-            pagina.screenshot(path=str(uscita), type="png" if formato == ".png" else "jpeg",
-                              quality=None if formato == ".png" else QUALITA_JPEG,
-                              clip={"x": 0, "y": 0, "width": info["w"], "height": info["h"]})
+            png = pagina.screenshot(type="png", clip={"x": 0, "y": 0, "width": info["w"], "height": info["h"]})
+            dati, motore = firma_e_cornice(browser, png, "image/png", "png" if formato == ".png" else "jpeg",
+                                           {"cornice": cornice and not info["microtesto"], "marcatore": cornice})
+            uscita.write_bytes(dati)
+            if motore.get("cornice"):
+                microtesto = motore["cornice"]["corpo"]
     finally:
         pagina.close()
-    return {"file": str(uscita), "problemi": problemi, "avvisi": avvisi, "lutto": bool(lutto and info["foto"])}
+    return {"file": str(uscita), "problemi": problemi, "avvisi": avvisi, "lutto": bool(lutto and info["foto"]),
+            "microtesto": microtesto}
 
 
 def avvia_browser(p):
@@ -437,6 +528,45 @@ def esempi(cartella: Path, anteprima: Path | None) -> int:
     return 0 if tutto_bene else 1
 
 
+def cornice_su_file(file: list[Path], uscita: Path | None, firma: dict | None, forza: bool, browser=None) -> int:
+    """--cornice: cornice di microtesto (e firma, se chiesta) su grafiche già fatte, al loro posto o in --uscita.
+    Una grafica che ha già la cornice si lascia com'è: due cornici una sopra l'altra non si leggono più."""
+    if uscita and len(file) > 1:
+        raise SystemExit("Errore: --uscita vale per un file solo; con più file ogni grafica si aggiorna al suo posto.")
+    if browser is None:
+        sync_playwright = importa_playwright()
+        with sync_playwright() as p:
+            b = avvia_browser(p)
+            try:
+                return cornice_su_file(file, uscita, firma, forza, b)
+            finally:
+                b.close()
+    errori = 0
+    for f in file:
+        if f.suffix.lower() not in (".jpg", ".jpeg", ".png") or not f.is_file():
+            print(f"PROBLEMI in {f}: serve un file JPEG o PNG esistente")
+            errori += 1
+            continue
+        dati = f.read_bytes()
+        if ha_firma_e_cornice(dati):
+            print(f"già fatta: {f} (ha già firma e cornice; per cambiarla si rifà dalla grafica originale)")
+            continue
+        png = f.suffix.lower() == ".png"
+        nuovi, esito = firma_e_cornice(browser, dati, "image/png" if png else "image/jpeg", "png" if png else "jpeg",
+                                       {"firma": firma} if firma else {})
+        fi = esito.get("firma")
+        if fi and fi["scarto"] > 6 and not forza:
+            print(f"PROBLEMI in {f}: sotto la firma non c'è un fondo uniforme (scarto {fi['scarto']}), coprirebbe un disegno "
+                  "o una scritta: spostala con --firma-basso, --firma-margine o --firma (--forza solo se il fondo va bene così)")
+            errori += 1
+            continue
+        dest = uscita or f
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(nuovi)
+        print(f"ok: {dest}" + (f" (firma a x {fi['x']}, linea di base {fi['y']}, corpo {fi['corpo']}, {fi['colore']})" if fi else ""))
+    return 1 if errori else 0
+
+
 def elenco() -> int:
     for f in sorted(MODELLI.glob("*.html")):
         info = leggi_modello(f)
@@ -474,6 +604,8 @@ def autotest() -> int:
             attesa(not r["problemi"], f"esempio {f.name}: {r['problemi']}")
             attesa(Image.open(r["file"]).size == (info["w"], info["h"]), f"esempio {f.name}: misure sbagliate")
             attesa(bool(r["avvisi"]) == bool(dati.get("bozza")), f"esempio {f.name}: bozza segnata male ({r['avvisi']})")
+            attesa(ha_firma_e_cornice(Path(r["file"]).read_bytes()) and r["microtesto"],
+                   f"esempio {f.name}: manca la cornice di microtesto o il suo segno nel file")
         foto = MODELLI.parents[2] / "static" / "img" / "ambulanza.jpg"   # una foto vera della Misericordia
         post = leggi_modello(MODELLI / "post-con-fascia.html")
         buoni = {"fascia": "Volontariato", "evidenziato": "Prova", "titolo": "di un titolo.", "sottotitolo": "Una riga di prova.",
@@ -564,6 +696,49 @@ def autotest() -> int:
         mediabox = re.search(rb"/MediaBox\s*\[\s*0\s+0\s+([\d.]+)\s+([\d.]+)\s*\]", testo_pdf)
         attesa(bool(mediabox) and abs(float(mediabox.group(1)) - 595.3) < 2 and abs(float(mediabox.group(2)) - 841.9) < 2,
                f"PDF della carta non in A4: {mediabox.group(0) if mediabox else 'MediaBox mancante'}")
+        attesa(not r["problemi"] and r["microtesto"] > 20, f"carta intestata senza cornice di microtesto o con problemi: {r}")
+
+        # firma «Misericordia di Ariccia» (regola del 21/10/2026): tolta, piccola, trasparente o coperta si ferma tutto
+        def con_prova(js, info=post):
+            return disegna(b, info, prepara_campi(info, buoni, t), t / "firma.jpg", prova_js=js)
+        for js, attesi in (("() => document.querySelector('[data-firma]').remove()", "manca la firma"),
+                           ("() => { document.querySelector('[data-firma]').style.fontSize = '12px'; }", "troppo piccola"),
+                           ("() => { document.querySelector('[data-firma]').style.opacity = '0.4'; }", "semitrasparente"),
+                           ("() => { const f = document.querySelector('[data-firma]'), r = document.querySelector('[data-campo=titolo]')"
+                            ".getBoundingClientRect(); f.style.bottom = 'auto'; f.style.top = r.top + 'px'; }", "tocca la firma")):
+            r = con_prova(js)
+            attesa(any(attesi in x for x in r["problemi"]), f"firma sbagliata non segnalata ({attesi}): {r['problemi']}")
+        for modello in sorted(MODELLI.glob("*.html")):
+            attesa("data-firma" in modello.read_text(encoding="utf-8"), f"{modello.name} non ha la firma (data-firma)")
+
+        # cornice raster: tocca solo i bordi (la striscia di corpo+4 px), l'interno resta identico
+        senza = disegna(b, post, prepara_campi(post, buoni, t), t / "senza.png", cornice=False)
+        con = disegna(b, post, prepara_campi(post, buoni, t), t / "con.png")
+        attesa(not ha_firma_e_cornice(Path(senza["file"]).read_bytes()) and ha_firma_e_cornice(Path(con["file"]).read_bytes()),
+               "il segno di firma e cornice nel PNG non va")
+        diff = ImageChops.difference(Image.open(senza["file"]).convert("RGB"), Image.open(con["file"]).convert("RGB")).convert("L")
+        s = con["microtesto"] + 4
+        W, H = diff.size
+        for nome, scatola in (("alto", (s, 0, W - s, s)), ("basso", (s, H - s, W - s, H)),
+                              ("sinistra", (0, s, s, H - s)), ("destra", (W - s, s, W, H - s))):
+            attesa(diff.crop(scatola).getbbox() is not None, f"la cornice raster manca sul lato {nome}")
+        interno = diff.copy()
+        interno.paste(0, (0, 0, W, s)); interno.paste(0, (0, H - s, W, H)); interno.paste(0, (0, 0, s, H)); interno.paste(0, (W - s, 0, W, H))
+        attesa(interno.getbbox() is None, f"la cornice raster cambia l'interno della grafica ({interno.getbbox()})")
+
+        # --cornice su grafiche già fatte: segno aggiunto, misure uguali, seconda volta lasciata com'è,
+        # firma rifiutata sopra un fondo non uniforme
+        uniforme, rumore = t / "uniforme.jpg", t / "rumore.jpg"
+        Image.new("RGB", (1080, 1350), (12, 40, 90)).save(uniforme, quality=92)
+        Image.effect_noise((1080, 1350), 90).convert("RGB").save(rumore, quality=92)
+        attesa(cornice_su_file([uniforme], None, {"posizione": "basso-sinistra"}, False, b) == 0, "--cornice --firma su fondo uniforme rifiutata")
+        prima = uniforme.read_bytes()
+        attesa(ha_firma_e_cornice(prima) and Image.open(uniforme).size == (1080, 1350), "--cornice: segno mancante o misure cambiate")
+        zona_firma = Image.open(uniforme).convert("L").crop((60, 1240, 480, 1290))   # 6% dal bordo, linea di base al 5% dal fondo
+        attesa(zona_firma.getextrema()[1] > 230, "--firma: firma chiara sul fondo scuro non trovata")
+        attesa(cornice_su_file([uniforme], None, None, False, b) == 0 and uniforme.read_bytes() == prima, "--cornice rifatta su una grafica che l'ha già")
+        attesa(cornice_su_file([rumore], None, {"posizione": "basso-sinistra"}, False, b) == 1, "--firma accettata sopra un fondo non uniforme")
+        attesa(not ha_firma_e_cornice(rumore.read_bytes()), "--firma rifiutata ma il file è stato cambiato lo stesso")
         try:
             disegna(b, post, prepara_campi(post, buoni, t), t / "post.pdf")
             falliti.append("PDF di un post accettato")
@@ -576,7 +751,9 @@ def autotest() -> int:
             print(f"  - {f}")
         return 1
     print("Autotest superato: esempi, misure, testi lunghi, campi inesistenti, foto di prova, lutto (foto in bianco e nero, "
-          "grafica a colori, testi riconosciuti), segnaposti, HTML non ammesso, assemblea, area sicura della storia e PDF A4.")
+          "grafica a colori, testi riconosciuti), segnaposti, HTML non ammesso, assemblea, area sicura della storia, PDF A4, "
+          "firma «Misericordia di Ariccia» (mancante, piccola, trasparente, coperta) e cornice di microtesto (solo sui bordi, "
+          "nei PDF, su grafiche già fatte, mai due volte).")
     return 0
 
 
@@ -593,6 +770,15 @@ def main(argv=None) -> int:
     a.add_argument("--elenco", action="store_true", help="elenca modelli, misure e campi")
     a.add_argument("--esempi", type=Path, metavar="CARTELLA", help="disegna tutti gli esempi in CARTELLA")
     a.add_argument("--anteprima", type=Path, metavar="FILE", help="con --esempi: foglio d'insieme in JPEG")
+    a.add_argument("--cornice", type=Path, nargs="+", metavar="FILE",
+                   help="mette la cornice di microtesto su grafiche JPEG o PNG già fatte (al loro posto, o in --uscita se è una sola)")
+    a.add_argument("--firma", choices=POSIZIONI_FIRMA, help="con --cornice: scrive anche la firma «Misericordia di Ariccia» in basso")
+    a.add_argument("--firma-margine", type=int, metavar="PX", help="distanza della firma dal bordo laterale (6%% della larghezza)")
+    a.add_argument("--firma-basso", type=int, metavar="PX", help="distanza della linea di base dal fondo (5%% dell'altezza)")
+    a.add_argument("--firma-corpo", type=int, metavar="PX", help="corpo della firma (3%% della larghezza: 32 px su 1080)")
+    a.add_argument("--firma-carattere", default="Montserrat", help="Montserrat (modelli nazionali) o Jost (stile dei video)")
+    a.add_argument("--firma-colore", default="auto", help="auto (chiaro sul fondo scuro, scuro sul chiaro) oppure un colore, es. #DFE6F5")
+    a.add_argument("--forza", action="store_true", help="con --firma: scrive anche se il fondo sotto la firma non è uniforme")
     a.add_argument("--autotest", action="store_true")
     x = a.parse_args(argv)
     if x.autotest:
@@ -601,8 +787,14 @@ def main(argv=None) -> int:
         return elenco()
     if x.esempi:
         return esempi(x.esempi, x.anteprima)
+    if x.cornice:
+        firma = None
+        if x.firma:
+            firma = {"posizione": x.firma, "carattere": x.firma_carattere, "colore": x.firma_colore}
+            firma.update({k: v for k, v in (("margine", x.firma_margine), ("basso", x.firma_basso), ("corpo", x.firma_corpo)) if v is not None})
+        return cornice_su_file(x.cornice, x.uscita, firma, x.forza)
     if not x.dati and not x.modello:
-        a.error("indica un file di dati o --modello (oppure --elenco, --esempi, --autotest)")
+        a.error("indica un file di dati o --modello (oppure --elenco, --esempi, --cornice, --autotest)")
     dati = leggi_dati(x.dati) if x.dati else {"campi": {}}
     info = leggi_modello(trova_modello(x.modello or dati["modello"]))
     da_riga = {}
