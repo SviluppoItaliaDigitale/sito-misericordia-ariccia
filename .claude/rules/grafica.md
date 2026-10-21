@@ -14,9 +14,10 @@ Vale in tutti i progetti per siti, landing, pagine, locandine e post. Obiettivo:
 - Testi: "Scopri di più", "Il futuro di…", "non solo X, ma Y", elenchi sempre in terzine, trattini lunghi a raffica.
 
 ## Come dare personalità
+- **Modelli ufficiali prima di tutto**: se la realtà ha modelli grafici ufficiali da usare identici, si usano quelli e non si reinventano. Misericordia di Ariccia, dal 21/10/2026: modelli nazionali della Confederazione nel repository del sito (`direzione-visiva.md` della realtà), e in ogni grafica la firma «Misericordia di Ariccia» con la cornice di microtesto ai bordi. Le indicazioni di questa sezione valgono per ciò che i modelli non coprono, senza contraddirli.
 - **Parti dalla realtà vera**: logo, colori istituzionali, foto reali, luoghi, mezzi, divise, documenti, storia. Il dettaglio specifico (la sede, il territorio dei Castelli, il nominativo IQ0AP) vale più di qualsiasi effetto.
 - **Dichiara una direzione** prima del codice, in una riga con un riferimento concreto (es. "manifesto tipografico svizzero", "giornale locale anni '60", "segnaletica d'emergenza", "quaderno di caccia scout", "rivista tecnica radioamatoriale"). Deve essere diversa da progetto a progetto.
-- **Tipografia scelta, non di default**: abbinamenti meno battuti, gerarchie forti, titoli con carattere. Se il brand impone i font (es. Misericordia Jost/Inter, AGESCI Roboto), la personalità arriva da composizione, scala, foto e colore, non cambiando font.
+- **Tipografia scelta, non di default**: abbinamenti meno battuti, gerarchie forti, titoli con carattere. Se il brand impone i font (es. Misericordia Montserrat, AGESCI Roboto), la personalità arriva da composizione, scala, foto e colore, non cambiando font.
 - **Colore con intenzione**: palette ricavata dal brand o dal contesto (materiali, luoghi), con un accento inatteso usato poco. Niente gradienti decorativi senza motivo.
 - **Composizione**: griglie asimmetriche, scale contrastanti, elementi che rompono la griglia, ritmo variato tra le sezioni; almeno una sezione che non si trova in un template.
 - **Immagini vere** prima dello stock; se servono illustrazioni o immagini AI, stile coerente e dichiarato, mai il mix icone + blob.
@@ -52,9 +53,17 @@ Istruzione di Alessandro del 17/10/2026: *«utilizza adobe e tutti i suoi strume
   - Il link di download dura un'ora: il file si salva subito nel lavoro.
   - Una foto di repertorio non deve mai sembrare un'attività vera della realtà (niente «i nostri volontari» sotto persone di Stock). Per ogni foto si annotano titolo, numero Adobe Stock e licenza nel registro dei materiali del lavoro, e nell'alt text si descrive l'immagine.
 
+## Foto in bianco e nero: solo per il lutto (dal 21/10/2026)
+Sui social il bianco e nero dice che si ricorda una persona morta (Alessandro, 21/10/2026).
+- Le foto restano a colori. Una foto a colori va in bianco e nero solo nelle grafiche e nei post fatti per ricordare chi è morto: persone della realtà (soci, volontari, benefattori, chi ne ha fatto parte) e personaggi pubblici che le sono stati vicini, dal Papa in giù; anche nell'anniversario della morte, nel ricordo delle vittime di una tragedia e il 2 novembre.
+- In bianco e nero va solo la foto: loghi, fasce, colori e testi dell'ente restano a colori. Dove la grafica dell'ente è stampata sulla foto (per esempio la fascia blu delle foto della Protezione Civile), il bianco e nero si applica prima, sulla sola foto.
+- Le immagini che documentano un evento restano come sono: mappe, ShakeMap, immagini satellitari, grafici, codici colore e foto d'archivio nate in bianco e nero. Il bianco e nero riguarda la grafica del ricordo, non le foto di un articolo che racconta.
+- Per un personaggio pubblico serve una foto con una licenza che ne permetta l'uso (per esempio Wikimedia Commons), con l'autore citato.
+- Misericordia di Ariccia: lo fa `rendi.py` dei modelli nazionali con `"lutto": true`, e si ferma se il testo sembra un ricordo e il dato manca.
+
 ## Limiti che restano
 - Accessibilità (contrasto, struttura titoli, tastiera, `prefers-reduced-motion`), prestazioni e brand ufficiali vengono prima dell'originalità.
 - Niente dati, foto o testimonianze inventati: segnaposto evidenti dove mancano.
 
 ## Controllo prima di consegnare
-Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto.
+Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto. Controlla anche le foto: a colori, salvo una grafica di lutto.
