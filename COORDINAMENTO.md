@@ -119,7 +119,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 ### Controlli prima di unire una PR
 
 - Build con Hugo 0.154.5 extended senza errori (`hugo --minify`).
-- Il workflow «Controlli del sito» sulla PR verde (`scripts/controlli/controlla_sito.py`: link, immagini, video, CSP, registro dei dati, revisione sanitaria, news in uscita).
+- Il workflow «Controlli del sito» sulla PR verde (`scripts/controlli/controlla_sito.py`: link, immagini, video, CSP, registro dei dati, revisione sanitaria, news in uscita, forme già corrette che non devono tornare, come il motto «Che Iddio te ne renda merito»).
 - Immagini nuove: `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`). Grafiche nello stile nazionale: dai modelli, con la skill `grafiche-modelli-nazionali` (`rendi.py` chiude con «ok», senza «BOZZA»), oppure, se nessun modello va bene, con gli stessi elementi del kit nazionale (`CLAUDE.md`, § «2. Grafica brand»); sempre guardate prima di usarle.
 - News: front matter completo (`description` specifica, `italianoSemplice`), fonti citate, link interni, data non futura se deve uscire subito.
 - Dato aggiornabile nuovo (numeri, importi, leggi, contatti): aggiungilo a `data/dati_da_verificare.yaml`.

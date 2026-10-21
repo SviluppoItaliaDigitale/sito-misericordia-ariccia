@@ -42,6 +42,11 @@ script `scripts/controlli/controlla_sito.py`) ricompila il sito e aggiorna la is
 **«Stato del sito»**: link/immagini/video mancanti, CSP, registro dei dati, revisione
 sanitaria, news in uscita (controllo editoriale `controllo_editoriale:` nel front matter
 nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
+Blocca anche le **forme già corrette che non devono tornare** (`FORME_SBAGLIATE` nello
+script, cercate nei sorgenti, news programmate comprese): per esempio il motto si scrive
+con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo e nel glossario del
+sito, mai «Che Dio…». Quando si corregge un errore che potrebbe ripresentarsi, si
+aggiunge la sua forma all'elenco.
 `.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
 cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
 
@@ -285,8 +290,15 @@ comunicazione della Confederazione pubblicati su YouTube.
   del 2 novembre. Si chiede con `"lutto": true` nei dati: diventa grigia solo
   la foto, mentre fascia, colori, stemma e testi restano istituzionali.
   `rendi.py` si ferma se il testo ricorda una persona morta e il dato manca.
-- **5×1000**: le grafiche ufficiali della Confederazione già compilate per
-  Ariccia (`static/img/news/5x1000-*.jpg`), così come sono.
+- **5×1000**: le grafiche ufficiali della campagna nazionale, già compilate per
+  Ariccia, così come sono. Quelle della campagna 2026 («Non servono superpoteri.
+  Servi Tu.») sono `static/img/news/5x1000-ambulanza.jpg`, `-compagnia.jpg`,
+  `-emporio.jpg` e `-spesa.jpg`. Per un anno nuovo si controlla prima se la
+  Confederazione ha pubblicato la campagna di quell'anno e si usa quella,
+  cambiando solo il codice fiscale. Non sono modelli ufficiali `5x1000-grafica.jpg`
+  (una scena del video del 5×1000) e `5x1000-quadrato.jpg` (grafica fatta qui, con
+  il vecchio dominio), entrambe nello stile precedente: restano nelle news che le
+  usano già, ma non si prendono a modello.
 - **Grafica di una news**: `static/img/news/AAAA-MM-GG-<slug>-grafica.jpg`, JPEG
   qualità 88 (deve essere JPEG: va anche su Instagram), poi
   `python3 scripts/ottimizza-immagini.py static/img/news`. È la prima immagine
