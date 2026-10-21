@@ -19,7 +19,7 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
   let errori = 0;
   for (let k = 0; k < n; k++) {
     const p = await b.newPage({ viewport: { width: 1080, height: 1350 } });
-    await p.goto('file://' + path.join(__dirname, 'grafica.html'));
+    await p.goto('file://' + path.join(__dirname, process.env.GRAFICA || 'grafica.html'));  // GRAFICA=grafica-nazionale.html: proposta nello stile nazionale
     const esito = k < conOpera
       ? await p.evaluate(([s, img, n]) => window.copertina(s, img, n), [s, 'file://' + path.resolve(opera), n])
       : await p.evaluate(([s, i, n, primo]) => window.versetto(s, i, n, primo), [s, k - conOpera, n, conOpera + 1]);
