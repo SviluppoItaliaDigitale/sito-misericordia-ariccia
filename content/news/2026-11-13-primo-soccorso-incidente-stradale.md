@@ -1,6 +1,6 @@
 ---
 title: "Incidente stradale: come aiutare in sicurezza"
-titoloSeo: "Incidente stradale: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Incidente stradale: cosa fare passo passo, primo soccorso"
 date: 2026-11-13
 slug: "primo-soccorso-incidente-stradale"
 description: "Nella settimana della Giornata in ricordo delle vittime della strada: quattro frecce, giubbotto, triangolo, 112, non spostare i feriti e non togliere il casco."
@@ -64,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Regione del Veneto, Un'altra strada: le 5 cose da fare in caso di incidente](https://www.unaltrastrada.it/informazioni-utili/article/le-5-cose-da-fare-per-affrontare-al-meglio-un-incidente) (quattro frecce, giubbotto, triangolo, chiamare i soccorsi, non spostare i feriti se non c'è un pericolo immediato, non togliere il casco, stare vicino ai feriti); [Polizia Locale Unione Bassa Reggiana, Sinistri stradali](https://polizialocale.bassareggiana.it/Servizi/Sinistri-stradali-Cosa-fare) (triangolo almeno 50 metri prima); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (sospetta lesione del collo negli incidenti stradali, rianimazione con le istruzioni dell'operatore).*

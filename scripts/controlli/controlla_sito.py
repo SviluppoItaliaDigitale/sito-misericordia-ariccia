@@ -41,6 +41,21 @@ FORME_SBAGLIATE = [
     (re.compile(r"perde\s+conoscenza,\s+accompagnalo\s+a\s+terra,\s+chiama\s+(?:il\s+112|'\+U12\+')\s+e\s+inizia", re.I),
      "soffocamento: il 112 si chiama subito, quando non riesce più a tossire o a parlare, non solo quando "
      "perde conoscenza (IRC 2025, cap. 12; corretto il 18/10/2026)"),
+    # Correzioni della rubrica approvate il 21/10/2026 (issue #147), sui capitoli IRC 2025 4, 9 e 12.
+    (re.compile(r"se\s+non\s+migliora,\s+dagli\s+altro\s+zucchero", re.I),
+     "ipoglicemia: lo zucchero si ripete se dopo 15 minuti ha ANCORA I SINTOMI; se non migliora si chiama il 112 "
+     "(IRC 2025, cap. 12)"),
+    (re.compile(r"circa\s+(?:4|quattro)\s+(?:cm|centimetri)\s+nel\s+lattante|about\s+4\s+cm\s+in\s+an\s+infant|≈\s*4\s*cm", re.I),
+     "rianimazione del bambino: almeno un terzo del torace, mai più di 6 cm; i «4-5 cm» sono del 2021 (IRC 2025, cap. 9)"),
+    (re.compile(r"cuscino\s+sotto\s+la\s+testa|cushion\s+under\s+the\s+head", re.I),
+     "cadute: la testa non si solleva con un cuscino, va tenuta ferma se ha battuto la testa o ha male al collo "
+     "(IRC 2025, cap. 12)"),
+    (re.compile(r"si\s+riprende\s+in\s+meno\s+di\s+un\s+minuto", re.I),
+     "svenimento: se non si riprende si chiama il 112 e si guarda se respira; niente attesa di un minuto "
+     "(IRC 2025, cap. 4 e 12)"),
+    (re.compile(r"e\s+il\s+sacchetto\s+nel\s+ghiaccio|and\s+the\s+bag\s+in\s+ice", re.I),
+     "parte amputata: garza bagnata, sacchetto chiuso dentro un altro sacchetto con acqua e ghiaccio, mai a contatto "
+     "col ghiaccio, in ospedale con il ferito (IRC 2025, cap. 12)"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post

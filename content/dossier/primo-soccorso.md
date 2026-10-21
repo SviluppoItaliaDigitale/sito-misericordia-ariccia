@@ -118,6 +118,7 @@ argomenti:
       - "Se dopo **15 minuti** i sintomi non passano, **ripeti**."
       - "Quando sta meglio, fagli mangiare uno spuntino leggero."
       - "Se non risponde o non migliora: chiama il **112**."
+      - "Se non risponde: se respira normalmente, mettilo in **posizione laterale di sicurezza**; se non respira normalmente, inizia la **rianimazione**."
     nonfare:
       - "Non dare niente per bocca a chi non risponde: rischia di soffocare."
   - id: "avvelenamento"
@@ -152,7 +153,7 @@ argomenti:
       - "Metti qualcosa di **morbido sotto la testa** e allenta il colletto."
       - "**Guarda l'ora**: se dura più di 5 minuti chiama il **112**."
       - "Chiama il 112 anche se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende."
-      - "Finiti i movimenti, **controlla il respiro**: se respira normalmente mettila **su un fianco** e resta con lei. Se non respira normalmente, inizia la rianimazione."
+      - "Finiti i movimenti, **controlla il respiro**: se respira normalmente mettila **su un fianco** e resta con lei. Se non respira normalmente, chiama subito il **112** e inizia la **rianimazione**."
     nonfare:
       - "Non trattenere i movimenti."
       - "Non mettere niente in bocca: né dita, né oggetti, né acqua."
@@ -177,8 +178,8 @@ argomenti:
     riconosci: "Prima: pallore, sudore, nausea, vista annebbiata, ronzio nelle orecchie. Poi una breve perdita di coscienza, di solito meno di un minuto."
     fare:
       - "Se senti che stai per svenire: **incrocia le gambe stringendo i muscoli**, oppure accovacciati o sdraiati."
-      - "Se sviene: **sdraiata con le gambe sollevate**, vestiti allentati, aria."
-      - "Se non si riprende in un minuto, **controlla il respiro** e chiama il **112**."
+      - "Se sviene: **sdraiata a pancia in su**, se puoi con le gambe sollevate, vestiti allentati, aria."
+      - "Se non si riprende in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**."
       - "Quando sta meglio, falla rialzare piano: prima seduta, poi in piedi."
     nonfare:
       - "Non farla alzare di colpo."
@@ -187,7 +188,7 @@ argomenti:
     titolo: "Soffocamento nel lattante"
     motto: "5 pacche e 5 compressioni"
     dal: "2026-11-20"
-    riconosci: "Un bambino sotto l'anno che **non riesce a piangere, tossire o respirare** e diventa blu."
+    riconosci: "Un bambino sotto l'anno che **non riesce a piangere o a tossire bene**, o fa fatica a respirare: è un'ostruzione grave, non aspettare che diventi blu."
     fare:
       - "Se tossisce o piange, lascialo tossire e tienilo d'occhio."
       - "Fai chiamare il **112**, o chiama con il vivavoce."
@@ -203,9 +204,9 @@ argomenti:
     dal: "2026-11-24"
     riconosci: "Il bambino **non risponde** e **non respira normalmente**."
     fare:
-      - "Chiama il **112** con il vivavoce. Se sei solo e senza telefono, fai prima 1 minuto di rianimazione."
+      - "Non risponde? Chiama subito il **112** con il vivavoce e intanto guarda se respira normalmente: l'operatore ti guida. Se sei solo e senza telefono, fai prima 1 minuto di rianimazione."
       - "Dai **5 soffi** (nel lattante su bocca e naso), finché il torace si alza."
-      - "Compressioni al centro del torace, per **un terzo della sua profondità** (circa 4 cm nel lattante, 5 nel bambino), **100-120 al minuto**: nel lattante con i **due pollici** che circondano il torace, nel bambino con una o due mani."
+      - "Compressioni al centro del torace, per **almeno un terzo della sua profondità**, ma **mai più di 6 cm**, **100-120 al minuto**: nel lattante con i **due pollici** che circondano il torace, nel bambino con una o due mani."
       - "Poi **30 compressioni e 2 soffi** (15 e 2 se hai fatto un corso pediatrico)."
       - "Usa il **DAE**: sotto i 25 kg in modalità pediatrica, se c'è, con le piastre una davanti e una dietro."
     nonfare:
@@ -258,11 +259,11 @@ argomenti:
     fare:
       - "Fallo stare **seduto, leggermente in avanti**, con le braccia appoggiate."
       - "Resta calmo e aiutalo a respirare lentamente."
-      - "Se ha il **suo spray** per la crisi, aiutalo a usarlo come gli ha spiegato il medico."
+      - "Se ha il **suo spray** per la crisi, aiutalo a usarlo, con il distanziatore se c'è, come gli ha spiegato il medico."
       - "Chiama il **112** se lo spray non basta, non riesce a parlare, ha le labbra blu o è sonnolento."
     nonfare:
       - "Non farlo sdraiare."
-      - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi."
+      - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi. Chiama subito il **112** e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella coscia."
   - id: "batterie"
     titolo: "Batterie a bottone e calamite"
     motto: "Basta il dubbio"
@@ -282,10 +283,11 @@ argomenti:
     riconosci_tit: "Cosa osservare"
     riconosci: "Dolore, un colpo alla testa, confusione, una gamba che non si muove o un'anca molto dolorante."
     fare:
-      - "Tranquillizzalo e chiedi dove ha male, se ha battuto la testa, se ricorda cosa è successo."
+      - "Se non risponde, chiama il **112** e guarda se respira normalmente."
+      - "Se risponde, tranquillizzalo e chiedi dove ha male, se ha battuto la testa, se ricorda cosa è successo."
       - "Chiama il **112** se ha battuto la testa, prende anticoagulanti, ha dolore forte all'anca, non muove una gamba o è confuso."
       - "Se sta bene, rialzarsi **a tappe**: su un fianco, in ginocchio, poi con una sedia robusta."
-      - "Se non riesce ad alzarsi: cuscino sotto la testa, coperta, e aspetta i soccorsi."
+      - "Se non riesce ad alzarsi: coperta, al caldo, e aspetta i soccorsi. Se ha battuto la testa o ha male al collo, **non muovergli la testa**."
       - "Previeni: niente tappeti scivolosi, luci di notte, maniglioni in bagno, telefono vicino."
     nonfare:
       - "Non tirarlo su di colpo e non forzarlo."
@@ -300,7 +302,7 @@ argomenti:
       - "Solo fuochi con **marchio CE**, comprati nei negozi autorizzati."
       - "Ustione: **acqua corrente fresca per almeno 20 minuti**, poi pellicola o garza pulita."
       - "Mano che sanguina: **premi forte** e chiama il **112**."
-      - "Dito staccato: in un **sacchetto pulito chiuso**, e il sacchetto nel ghiaccio."
+      - "Dito staccato: avvolto in una **garza bagnata**, in un **sacchetto chiuso** dentro un altro sacchetto con acqua e ghiaccio; va in ospedale con il ferito."
       - "Occhio colpito: coprilo senza premere e chiama il **112**."
     nonfare:
       - "Non raccogliere né riaccendere un petardo inesploso."

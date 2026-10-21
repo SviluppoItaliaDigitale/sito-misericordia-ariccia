@@ -22,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **8 di 10**: **ipoglicemia**. *Serve zucchero.*
 
-{{< video src="video/primo-soccorso-ipoglicemia.mp4" poster="img/video/primo-soccorso-ipoglicemia.jpg" verticale="si" titolo="Ipoglicemia: primo soccorso passo passo" descrizione="Come riconoscere un calo di zuccheri in una persona con diabete, quanto zucchero dare, la regola dei 15 minuti e cosa fare se non risponde." data="2026-10-30" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ipoglicemia.mp4" poster="img/video/primo-soccorso-ipoglicemia.jpg" verticale="si" titolo="Ipoglicemia: primo soccorso passo passo" descrizione="Come riconoscere un calo di zuccheri in una persona con diabete, quanto zucchero dare, la regola dei 15 minuti e cosa fare se non risponde." data="2026-10-30" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -36,11 +36,11 @@ I segni: sudore, tremore, pallore, fame, mal di testa. Poi confusione, o un comp
 
 ### Zucchero
 
-Se è sveglio e riesce a deglutire, dagli subito zucchero: compresse di glucosio, un succo di frutta o una bibita zuccherata, non light, oppure 3-4 zollette.
+Se è sveglio e riesce a deglutire, dagli subito 15-20 g di zucchero: compresse di glucosio, mezzo bicchiere di succo di frutta o di bibita zuccherata, non light, oppure 4 zollette.
 
 ### Dopo 15 minuti
 
-Aspetta 15 minuti. Se non migliora, dagli altro zucchero.
+Aspetta 15 minuti. Se ha ancora i sintomi, dagli altro zucchero. Se non migliora, chiama il 112.
 
 ### Poi
 
@@ -48,7 +48,7 @@ Quando sta meglio, fagli mangiare qualcosa: pane, crackers, o il pasto, se è or
 
 ### Non risponde
 
-Se non risponde o non riesce a deglutire, niente in bocca: rischia di soffocare. Chiama il 112 e, se respira, mettilo in posizione laterale di sicurezza.
+Se non risponde o non riesce a deglutire, niente in bocca: rischia di soffocare. Chiama il 112. Se respira normalmente, mettilo in posizione laterale di sicurezza; se non respira normalmente, inizia la rianimazione.
 
 ## Da ricordare
 

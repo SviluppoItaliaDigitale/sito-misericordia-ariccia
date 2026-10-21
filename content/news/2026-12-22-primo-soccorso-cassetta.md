@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (kit di primo soccorso in casa e in auto, triangolo e giubbotto, controlli regolari, coperta isotermica); [Decreto ministeriale 15 luglio 2003, n. 388](https://www.normattiva.it/uri-res/N2Ls?urn:nir:ministero.salute:decreto:2003-07-15;388) (contenuto minimo della cassetta: guanti, garze sterili, cerotti, forbici, disinfettante, ghiaccio pronto uso).*

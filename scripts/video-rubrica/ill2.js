@@ -18,7 +18,7 @@ function contatore(x,y,u){ const tc=u-(CONTA.at||0), b=CONTA.beat||.545, n=CONTA
   const beatOn=hit && (((tc/b)%1+1)%1)<.2; fc(x,y+240,beatOn?34:26,beatOn?C.giallo:'rgba(242,228,51,.35)'); tx('110/min',x,y+295,30,'#fff','700');
   if(tc>(n-1)*b+b/2) spunta(x,y,60,outBack(clamp((tc-(n-1)*b-b/2)/.4))); }
 function gauge(x,y,c,label){ box(x-30,y,60,240,30,C.tile); box(x-24,y+6+228*.82,48,228*.18,0,'rgba(242,228,51,.35)');
-  box(x-24,y+6,48,Math.max(8,228*c),24,c>.82?C.giallo:C.ciano); ln([[x-40,y+6+228*.82],[x+40,y+6+228*.82]],'#fff',4); tx(label,x,y+270,28,'#fff','700'); }
+  box(x-24,y+6,48,Math.max(8,228*c),24,c>.82?C.giallo:C.ciano); ln([[x-40,y+6+228*.82],[x+40,y+6+228*.82]],'#fff',4); tx(label,x,y-26,28,'#fff','700'); }
 function panel(x,y,w,h,on,label){ box(x-w/2,y-h/2,w,h,26,on===false?'rgba(37,46,85,.45)':C.tile); if(label) tx(label,x,y+h/2-30,28,'#fff','700'); }
 function stick(x,y,s,o={}){ // figurina semplice in piedi
   ctx.save(); ctx.translate(x,y); ctx.scale(s,s); if(o.rot) ctx.rotate(o.rot);
@@ -100,7 +100,7 @@ ventila5({u,p,A}){ const n=Math.min(5,Math.floor(p*6)+1); const rise=Math.max(0,
   grp(220,0,1,A(.8),()=>{ panel(0,0,380,480,true,'bambino'); box(-110,-170,220,260,60,'#f2a541'); ctx.save(); ctx.translate(0,-40); ln([[0,-20],[60,-200]],RS,60); box(-46,-30,92,70,30,SK); ctx.restore(); }); },
 'rcp-lattante-sim'({u}){ const c=compAt(u), d=c*18; box(-420,170,620,36,10,'#6b7491'); babyLying(-120,170,1.5,d/1.5);
   ctx.save(); ctx.translate(-120,-10+d); box(-100,-36,200,80,32,SK); box(-112,-26,34,110,17,SKD); box(78,-26,34,110,17,SKD); fe(-20,40,16,24,SK); fe(20,40,16,24,SK); ctx.restore(); ln([[-210,-60+d],[-300,-220]],RS,50); ln([[-30,-60+d],[60,-220]],RSD,50);
-  contatore(320,-150,u); gauge(-400,-260,c,'≈ 4 cm'); },
+  contatore(320,-150,u); gauge(-400,-260,c,'≥ 1/3'); },
 'ventila-bimbo'({u,A}){ grp(0,-160,1,A(.15),()=>{ box(-400,-90,800,180,40,C.tile); tx('30',-200,-10,110,C.giallo,'800','P'); tx(':',0,-20,90,'#fff','800'); tx('2',170,-10,110,C.giallo,'800','P'); tx('compressioni',-200,62,26,'#fff','600'); tx('soffi',170,62,26,'#fff','600'); });
   grp(0,40,1,A(.55),()=>{ box(-400,-60,800,120,30,'#fff'); tx('con un corso pediatrico: 15 e 2',0,2,36,C.navy,'700'); });
   grp(0,200,1,A(.88),()=>{ box(-400,-50,800,100,30,'rgba(255,255,255,.12)'); tx('se non riesci a soffiare: solo compressioni',0,2,32,'#fff','600'); }); },

@@ -23,17 +23,17 @@ italianoSemplice: |
 
 **Nel video c'è la simulazione delle compressioni a tempo:** 110 al minuto, con il conteggio da 1 a 30 e la musica allo stesso ritmo.
 
-{{< video src="video/primo-soccorso-rianimazione-bambino.mp4" poster="img/video/primo-soccorso-rianimazione-bambino.jpg" verticale="si" titolo="Rianimazione nel bambino: primo soccorso passo passo" descrizione="Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni." data="2026-11-24" didascalia="Il video dura circa 1 minuto e 50 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-rianimazione-bambino.mp4" poster="img/video/primo-soccorso-rianimazione-bambino.jpg" verticale="si" titolo="Rianimazione nel bambino: primo soccorso passo passo" descrizione="Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni." data="2026-11-24" didascalia="Il video dura circa 1 minuto e 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
 ### Riconosci
 
-Chiamalo e toccalo con delicatezza. Non risponde e non respira normalmente? Devi agire subito.
+Chiamalo e toccalo con delicatezza. Non risponde? Chiama subito il 112 con il vivavoce, e intanto guarda se respira normalmente.
 
-### Chiama
+### L'operatore
 
-Chiama il 112 con il vivavoce: l'operatore ti guida. Se sei solo e senza telefono, fai prima un minuto di rianimazione, poi vai a chiamare.
+L'operatore del 112 ti guida e ti aiuta a capire se iniziare la rianimazione. Se sei solo e senza telefono, fai prima un minuto di rianimazione, poi vai a chiamare.
 
 ### 5 soffi
 
@@ -45,7 +45,7 @@ Nel lattante, circonda il torace con le mani e spingi con i due pollici. Nel bam
 
 ### Compressioni
 
-Spingi per un terzo del torace, circa 4 cm nel lattante, 5 nel bambino. Segui il ritmo.
+Spingi per almeno un terzo del torace, ma mai più di 6 cm. Segui il ritmo.
 
 ### 30 e 2
 

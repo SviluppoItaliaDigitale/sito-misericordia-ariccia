@@ -1,6 +1,6 @@
 ---
 title: "Se un anziano cade: cosa fare"
-titoloSeo: "Cadute degli anziani: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Cadute degli anziani: cosa fare passo passo, primo soccorso"
 date: 2026-12-15
 slug: "primo-soccorso-cadute-anziani"
 description: "Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura."
@@ -20,13 +20,13 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **11 di 13**: **cadute degli anziani**.
 
-{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
 ### Calma
 
-Non tirarlo su di colpo. Prima tranquillizzalo, e chiedigli come sta.
+Non tirarlo su di colpo. Se non risponde, chiama il 112 e guarda se respira normalmente. Se risponde, tranquillizzalo e chiedigli come sta.
 
 ### Le domande
 
@@ -42,7 +42,7 @@ Se sta bene, aiutalo ad alzarsi a tappe: prima su un fianco, poi in ginocchio, p
 
 ### Se non si alza
 
-Se non riesce ad alzarsi, non forzarlo: mettigli un cuscino sotto la testa, coprilo e aspetta i soccorsi.
+Se non riesce ad alzarsi, non forzarlo: coprilo, tienilo al caldo e aspetta i soccorsi. Se ha battuto la testa o ha male al collo, non muovergli la testa.
 
 ### Le ore dopo
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, prevenzione); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*

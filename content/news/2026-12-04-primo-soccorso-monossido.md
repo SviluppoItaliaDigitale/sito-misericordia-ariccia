@@ -1,6 +1,6 @@
 ---
 title: "Monossido di carbonio: il pericolo che non si sente"
-titoloSeo: "Monossido di carbonio: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Monossido di carbonio: cosa fare passo passo, primo soccorso"
 date: 2026-12-04
 slug: "primo-soccorso-monossido"
 description: "Stufe, camini e caldaie: i segni dell'intossicazione da monossido, cosa fare subito e come prevenirla con controlli e rilevatore."
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Istituto Superiore di Sanità, EpiCentro, Monossido di carbonio](https://www.epicentro.iss.it/ambiente/monossido-carbonio) (da dove viene, segni, più persone colpite, subito al pronto soccorso, controlli ogni anno, mai forno, bracieri, generatori o motore acceso al chiuso); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (aprire porte e finestre, spegnere gli apparecchi, chiamare i soccorsi); [NHS, Carbon monoxide poisoning](https://www.nhs.uk/conditions/carbon-monoxide-poisoning/) (spegnere l'apparecchio solo se si può, uscire all'aperto, rilevatore di monossido); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (rianimazione).*
