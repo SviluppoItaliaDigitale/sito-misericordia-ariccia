@@ -133,19 +133,37 @@ LIMITE_ALT = 1000
 _alt_rifiutati = set()  # parametri che Meta ha rifiutato in questo giro: non si mandano più
 
 
+def lunghezza_alt(testo):
+    """Lunghezza del testo alternativo in unità UTF-16 (22/10/2026), come la contano il generatore delle grafiche
+    della Protezione Civile e la pubblicazione di social-pc-genzano: è il conteggio più severo, perché un
+    carattere fuori dal piano di base (un'emoji, un simbolo musicale) vale 2. Meta non dice in che unità conta i
+    1000 caratteri; così il limite non si supera in nessun modo di contare."""
+    return len(str(testo).encode("utf-16-le")) // 2
+
+
+def _entro(testo, limite):
+    """La parte iniziale di `testo` che sta in `limite` unità UTF-16."""
+    usate = 0
+    for i, c in enumerate(testo):
+        usate += 2 if ord(c) > 0xFFFF else 1
+        if usate > limite:
+            return testo[:i]
+    return testo
+
+
 def testo_alt(testo, limite=LIMITE_ALT):
     """Testo alternativo su una riga e dentro il limite di Meta: se è più lungo si tengono le frasi intere."""
     testo = re.sub(r"\s+", " ", str(testo or "")).strip()
-    if len(testo) <= limite:
+    if lunghezza_alt(testo) <= limite:
         return testo
     tenute = ""
     for frase in re.split(r"(?:(?<=[.!?…])|(?<=[.!?…]»))\s+", testo):
         prova = f"{tenute} {frase}".strip()
-        if len(prova) > limite:
+        if lunghezza_alt(prova) > limite:
             break
         tenute = prova
     # una sola frase più lunga del limite (non succede con i testi di oggi): si taglia all'ultima parola intera
-    return tenute or testo[:limite - 1].rsplit(" ", 1)[0].rstrip(",;:—–-") + "…"
+    return tenute or _entro(testo, limite - 1).rsplit(" ", 1)[0].rstrip(",;:—–-") + "…"
 
 
 def alt_news(n):
