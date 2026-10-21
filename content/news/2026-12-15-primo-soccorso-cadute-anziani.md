@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **11 di 13**: **cadute degli anziani**.
 
-{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-cadute-anziani.mp4" poster="img/video/primo-soccorso-cadute-anziani.jpg" verticale="si" titolo="Cadute degli anziani: primo soccorso passo passo" descrizione="Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura." data="2026-12-15" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -34,7 +34,7 @@ Chiedi se ha dolore, se ha battuto la testa, se ricorda cosa è successo, e guar
 
 ### Quando chiamare
 
-Chiama il 112 se ha battuto la testa, se prende anticoagulanti, se ha un dolore forte all'anca o non riesce a muovere una gamba, o se è confuso.
+Chiama il 112 se ha battuto la testa, ancora di più se prende anticoagulanti, se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi, o se è confuso.
 
 ### Se sta bene
 
@@ -50,7 +50,7 @@ Anche se sembra a posto, controllalo nelle ore successive, soprattutto se ha bat
 
 ### Previeni
 
-Per prevenire: via i tappeti scivolosi, luci accese di notte, maniglioni in bagno, scarpe chiuse e un telefono sempre a portata di mano.
+Per prevenire: via i tappeti e i fili in cui si può inciampare, antiscivolo e maniglioni in bagno, una luce notturna verso il bagno, pantofole chiuse con la suola antiscivolo e un telefono vicino al letto.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, prevenzione); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*
+*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, tappeti, fili, antiscivolo e maniglioni); [ASL Roma 3, Piano Regionale della Prevenzione del Lazio, Prevenire gli incidenti domestici](https://www.aslroma3.it/wp-content/uploads/2025/12/articolo-PP5-incidenti-domestici-anziani.pdf) (luce notturna, pantofole chiuse con la suola antiscivolo, telefono sul comodino); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*

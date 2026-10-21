@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **10 di 13**: **batterie a bottone e calamite**.
 
-{{< video src="video/primo-soccorso-batterie.mp4" poster="img/video/primo-soccorso-batterie.jpg" verticale="si" titolo="Batterie a bottone e calamite: primo soccorso passo passo" descrizione="Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire." data="2026-12-11" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-batterie.mp4" poster="img/video/primo-soccorso-batterie.jpg" verticale="si" titolo="Batterie a bottone e calamite: primo soccorso passo passo" descrizione="Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire." data="2026-12-11" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -38,11 +38,11 @@ Anche solo il dubbio basta: chiama il 112 o vai subito al pronto soccorso. Non a
 
 ### Cosa non fare
 
-Non farlo vomitare, e non dargli da mangiare o da bere, se non lo dicono i medici o il Centro Antiveleni.
+Non farlo vomitare, e non dargli cibi o bevande, a parte il miele.
 
-### La confezione
+### Il miele
 
-Porta con te la confezione, o una batteria uguale: aiuta i medici a capire.
+Sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore, puoi dargli 2 cucchiaini di miele (10 ml) ogni 10 minuti, fino a 6 volte, mentre lo porti al pronto soccorso. Il miele non deve mai farti perdere tempo.
 
 ### Calamite
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*
+*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare né dare altri cibi o bevande, il miele sopra i 12 mesi, se deglutisce, entro 12 ore senza ritardare il pronto soccorso, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*

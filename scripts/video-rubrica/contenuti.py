@@ -120,7 +120,7 @@ V = {
     sub='A Roma, giorno e notte: Gemelli 06 305 4343 · Umberto I 06 4997 8000 · per i bambini, Bambino Gesù 06 6859 3726.'),
   S('La confezione', ['Tienila','in *mano*.'], 'Tieni a portata di mano la confezione, e di\' cosa ha preso, quanto e quando.', 'confezione', [['Cosa', .55], ['Quanto', .7], ['Quando', .85]]),
   S('Pelle e occhi', ['Sciacqua','a *lungo*.'], 'Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corrente.', 'occhi', [['Via i vestiti', .35], ['Acqua corrente', .8]]),
-  S('Gas e fumi', ['Aria','*aperta*.'], 'Gas o fumi, come il monossido di carbonio: apri le finestre e porta la persona all\'aria aperta, solo se non rischi anche tu.', 'finestra', [['Apri le finestre', .55], ['Senza rischi per te', .88]]),
+  S('Gas e fumi', ['Aria','*aperta*.'], 'Gas o fumi, come il monossido di carbonio: porta la persona all\'aria aperta, solo se non rischi anche tu. Le finestre aprile solo se puoi farlo senza fermarti.', 'finestra', [['Aria aperta', .3], ['Senza rischi per te', .6], ['Finestre, senza fermarti', .88]]),
   S('Previeni', ['Lontano','dai *bambini*.'], 'Per prevenire: prodotti nelle confezioni originali, chiusi e in alto, lontano dai bambini. Mai in bottiglie da bibita.', 'armadietto', [['Confezioni originali', .2], ['In alto', .45], ['Mai nelle bottiglie', .85]]),
   FINE]),
 'trauma-cranico': dict(nome='Trauma cranico', scene=[
@@ -142,3 +142,10 @@ from contenuti2 import V2
 V.update(V2)
 from contenuti3 import V3
 V.update(V3)
+
+# Scheda finale: per gli argomenti che le linee guida IRC/ERC 2025 non trattano (o non solo) la fonte non è
+# «linee guida IRC 2025»: le fonti vere sono citate nell'articolo (21/10/2026, issue #147).
+FONTE_ARTICOLO = "Fonti nell'articolo su misericordia-ariccia.it · informazioni generali, non sostituiscono un corso"
+for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'svenimento', 'fratture', 'freddo',
+           'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta'):
+    V[_k]['fonte'] = FONTE_ARTICOLO

@@ -34,7 +34,7 @@ Mal di testa, nausea, vertigini, sonnolenza. Se stanno male più persone in casa
 
 ### Fuori
 
-Apri porte e finestre ed esci all'aria aperta. Spegni l'apparecchio solo se puoi farlo subito e senza rischi.
+Esci subito all'aria aperta. Se puoi farlo senza fermarti, apri le finestre. Spegni l'apparecchio solo se puoi farlo subito e senza rischi.
 
 ### Chiama
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Istituto Superiore di Sanità, EpiCentro, Monossido di carbonio](https://www.epicentro.iss.it/ambiente/monossido-carbonio) (da dove viene, segni, più persone colpite, subito al pronto soccorso, controlli ogni anno, mai forno, bracieri, generatori o motore acceso al chiuso); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (aprire porte e finestre, spegnere gli apparecchi, chiamare i soccorsi); [NHS, Carbon monoxide poisoning](https://www.nhs.uk/conditions/carbon-monoxide-poisoning/) (spegnere l'apparecchio solo se si può, uscire all'aperto, rilevatore di monossido); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (rianimazione).*
+*Fonti: [Istituto Superiore di Sanità, EpiCentro, Monossido di carbonio](https://www.epicentro.iss.it/ambiente/monossido-carbonio) (da dove viene, segni, più persone colpite, subito al pronto soccorso, controlli ogni anno, mai forno, bracieri, generatori o motore acceso al chiuso); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (aprire le finestre, spegnere gli apparecchi, chiamare i soccorsi); [NHS, Carbon monoxide poisoning](https://www.nhs.uk/conditions/carbon-monoxide-poisoning/) (uscire subito all'aperto, spegnere l'apparecchio solo se si può, rilevatore di monossido); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (rianimazione).*

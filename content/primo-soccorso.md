@@ -62,9 +62,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <summary>Svenimento o malore</summary>
 
 1. **Sdraia** la persona e **solleva le gambe** per favorire il ritorno del sangue alla testa.
-2. Slaccia gli indumenti stretti e assicura **aria fresca**.
-3. Quando riprende conoscenza, falla rialzare **lentamente**.
-4. Se **non si riprende** in poco tempo, non respira bene o si è fatta male cadendo, chiama il **112**.
+2. Quando riprende conoscenza, falla rialzare **lentamente**.
+3. Se **non si riprende** in poco tempo, non respira bene o si è fatta male cadendo, chiama il **112**.
 
 </details>
 
