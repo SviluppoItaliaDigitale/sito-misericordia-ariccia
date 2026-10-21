@@ -123,8 +123,9 @@ Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, 
 le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
 di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
-versetti più significativi delle letture, con il nome della lettura ben visibile. Lo prepara il
-mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
+versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 25/10/2026
+il carosello è nello stile nazionale, come tutte le grafiche
+(`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara il mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
 serve, domenica all'1:55 con il «recupero notturno»): scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
@@ -339,9 +340,10 @@ comunicazione della Confederazione pubblicati su YouTube.
   tagliati, ritaglio della foto, contrasti.
 - **Stile precedente**, fino al 20/10/2026: navy `#1b223f`, Playfair Display e
   Jost, cornice dorata e filigrane (blocchi in `scripts/grafica-brand/cornice.html`
-  e `filigrane.html`). Resta nelle grafiche già pubblicate e, finché non passa
-  allo stile nazionale, nella «Parola della domenica». Non si usa per grafiche
-  nuove.
+  e `filigrane.html`). Resta nelle grafiche già pubblicate, compresa la «Parola
+  della domenica» fino al 18/10/2026 (dal 25/10/2026 è nello stile nazionale),
+  e, finché non passano allo stile nazionale, nei video della rubrica «Primo
+  soccorso passo passo» in programma. Non si usa per grafiche nuove.
 
 ### 3. Social: pubblicazione AUTOMATICA (dal 30/09/2026)
 
