@@ -2,8 +2,15 @@
 
 - **Quando gira:** ogni giorno alle 08:00 italiane con l'ora legale, alle 07:00 con l'ora solare.
 - **Routine di Claude:** `trig_01QHWD37UUth9jJ8YwPpEb6W`, testo aggiornato il 28/08/2026. Sotto la riga c'è lo stesso testo della routine, salvo l'indirizzo email di Alessandro, tolto perché il repository è pubblico: se cambi l'uno, cambia anche l'altro.
-- **Se Claude è ferma:** la esegue ChatGPT quando Alessandro chiede «fai le routine di oggi» (`AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto»). Dove il testo chiede una notifica push o un'email ad Alessandro, l'esito va nel riassunto finale e, se il lavoro nasce da una issue, in un commento sulla issue; dove chiede di avviare un agente, applichi tu la lista di controllo del suo file in `.claude/agents/`.
+- **Se Claude è ferma:** la esegue ChatGPT quando Alessandro chiede «fai le routine di oggi» (`AGENTS.md`, § «Quando Claude è ferma, lavori tu al suo posto»). Dove il testo chiede una notifica push o un'email ad Alessandro, l'esito va nel riassunto finale e, se il lavoro nasce da una issue, in un commento sulla issue; dove chiede di avviare un agente, applichi tu la lista di controllo del suo file in `.claude/agents/`.
 - **Come capire se oggi è già stata fatta:** non lascia tracce se va tutto bene: i controlli sono solo letture, quindi rifalli sempre.
+- **Valori superati nel testo:** la routine è stata scritta nella fase di anteprima, finita il 6 luglio 2026, e alcuni valori non valgono più. Valgono questi, come dice anche `CLAUDE.md`:
+  - pagina da controllare: https://www.misericordia-ariccia.it/liturgia-del-giorno/ (l'indirizzo `/anteprima/liturgia-del-giorno/` rimanda lì con un 301);
+  - workflow: «Pubblica su Aruba (LIVE)», cioè `deploy.yml`, al posto di «Pubblica su Aruba (anteprima)»;
+  - ricostruzione notturna: il cron è alle 22:05 e alle 23:05 UTC (una delle due cade alle 00:05 italiane), ma GitHub le avvia quasi sempre in ritardo, fra le 00:00 e le 04:00 UTC: al punto 4 «di oggi» vuol dire l'esecuzione della notte appena passata, che `gh` di solito data a oggi e di rado a ieri, dopo le 22:00 UTC;
+  - letture: quelle principali sono della CEI (chiesacattolica.it), Evangelizo è solo il ripiego; se un feed non risponde dall'ambiente cloud, che può bloccarli, guarda i log dell'ultimo deploy;
+  - rilancio: `gh workflow run deploy.yml` senza input, come fa il guardiano notturno (`guardiano-liturgia.yml`): gli input servono solo per i social, e `ripubblica_instagram` cancella e ripubblica dei post.
+  Il testo della routine lo può correggere solo Alessandro, dalla pagina della routine; finché resta così, il corpo qui sotto resta uguale alla routine.
 
 ---
 Sei l'agente di monitoraggio della funzione "Liturgia del giorno" del sito della Misericordia di Ariccia (anteprima animata su Aruba). Parti da zero contesto: esegui questi passi e agisci.
