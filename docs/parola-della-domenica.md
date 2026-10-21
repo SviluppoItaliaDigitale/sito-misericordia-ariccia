@@ -101,6 +101,13 @@ Di domenica `letture.py` senza data prende le letture di oggi.
 
 ## Se qualcosa va storto
 
+- Le fonti delle letture hanno errori passeggeri: il feed Evangelizo risponde a volte 403
+  senza testo (circa una richiesta su dieci) e la pagina CEI a volte chiude la connessione.
+  `letture.py` e `liturgia_cei.py` riprovano da soli fino a cinque volte, con attese di 3, 6, 12
+  e 24 secondi (`scarica()` in `scripts/liturgia_cei.py`); se l'errore resta, lo script si
+  ferma e lo dice. Il 21/10/2026 la preparazione del mercoledì non ha prodotto la scheda e
+  lo script, provato subito dopo, si è fermato proprio su un 403 del feed.
+
 - La domenica senza scheda il workflow fallisce con l'avviso «Nessuna Parola della
   domenica»: si può preparare la scheda a mano e lanciare il workflow da Actions con
   `data` e `prova` tolta.
