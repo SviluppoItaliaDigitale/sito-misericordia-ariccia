@@ -1,6 +1,6 @@
 ---
 name: grafiche-modelli-nazionali
-description: Fa le grafiche della Misericordia di Ariccia con i modelli della Confederazione nazionale, identici agli originali (post 4:5 con foto e fascia, storie, testimonianze, caroselli, Save the date, assemblea dei soci, biglietto da visita, carta intestata). Riempie i campi, salva JPEG, PNG o PDF con la firma «Misericordia di Ariccia» e la cornice di microtesto, e controlla testi, loghi, caratteri e segnaposti. Usala per ogni grafica, post, storia, carosello, invito, ricordo di un defunto, biglietto o lettera della Misericordia di Ariccia, anche quando la richiesta non nomina i modelli nazionali, e per mettere firma e cornice a una grafica fatta in altro modo.
+description: Fa le grafiche della Misericordia di Ariccia con i modelli della Confederazione nazionale, identici agli originali (post 4:5 con foto e fascia, storie, testimonianze, caroselli, Save the date, assemblea dei soci, biglietto da visita, carta intestata). Riempie i campi, salva JPEG, PNG o PDF con la firma «Misericordia di Ariccia» e la cornice di microtesto, e controlla testi, loghi, caratteri e segnaposti. Usala per ogni grafica, post, storia, carosello, invito, ricordo di un defunto, biglietto o lettera della Misericordia di Ariccia, anche quando la richiesta non nomina i modelli nazionali, e per mettere firma e cornice a una grafica o a un documento PDF fatti in altro modo.
 ---
 
 # Grafiche della Misericordia con i modelli nazionali
@@ -54,22 +54,29 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 
 ## Grafiche fatte in altro modo
 
-Per una grafica che non nasce dai modelli (copertina tratta da un video, design di Canva, grafica fatta da un'altra AI):
+Per una grafica che non nasce dai modelli (copertina tratta da un video, design di Canva, grafica fatta da un'altra AI) o per un documento PDF della Misericordia:
 
 ```
 python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice GRAFICA.jpg [ALTRE.jpg …] [--uscita NUOVA.jpg]
 python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice GRAFICA.jpg --firma basso-sinistra
+python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice DOCUMENTO.pdf [--uscita NUOVO.pdf]
 ```
 
-- Senza `--uscita` aggiorna i file al loro posto; i file che hanno già il segno si saltano.
+- JPEG e PNG: senza `--uscita` si aggiornano al loro posto; i file che hanno già il segno si saltano.
 - Se la grafica non dice già «Misericordia di Ariccia» in modo leggibile, aggiungi `--firma basso-sinistra` (oppure `basso-centro`, `basso-destra`): la firma va su un fondo uniforme e lo script si ferma se sotto c'è un disegno o una scritta. Si sposta con `--firma-basso` e `--firma-margine` (px), si cambia con `--firma-corpo`, `--firma-carattere` (Montserrat o Jost) e `--firma-colore`; `--forza` solo dopo aver guardato che il fondo va bene così.
-- Un design di Canva o di un altro programma si esporta in JPEG o PNG e poi passa da qui. Un PDF fatto altrove non riceve la cornice: per lettere e biglietti si usano i modelli da stampa, che ce l'hanno già.
+- PDF: il file di partenza non cambia, esce `DOCUMENTO-cornice.pdf` (o `--uscita`) con la cornice dei modelli da stampa in ogni pagina, in testo vettoriale dentro il margine (6 mm dal bordo; sotto i 100 mm di lato 3 mm, come nel biglietto da visita), e con il segno nel dizionario Info del file. Le pagine non si riscrivono: la cornice si aggiunge sopra, come decorazione che i lettori di schermo saltano. Un PDF che ha già la cornice si salta.
+  - «Misericordia di Ariccia» deve esserci nel testo del PDF o nei campi del modulo compilati, altrimenti lo script si ferma: si aggiunge il nome al documento, oppure `--firma basso-sinistra` lo scrive in basso nelle pagine che non l'hanno, solo su un fondo libero (qui `--firma-basso`, `--firma-margine` e `--firma-corpo` sono in punti, il corpo almeno 5). Un PDF scansionato non ha testo da leggere: senza `--firma` si ferma.
+  - La cornice corre solo dove il margine è libero. Un fondo al vivo o un ornamento che arriva al bordo della pagina la accorciano, come nei modelli; una scritta, un numero di pagina o la coda di una firma entrati nel margine fermano il lavoro, perché la cornice ci starebbe accanto come se ne facesse parte. Si libera il margine e si rifà il PDF, oppure, dopo aver guardato la pagina, `--forza` mette la cornice solo sugli altri lati. Per una grafica con una foto o una sfumatura a tutta pagina si esporta un PNG o un JPEG.
+  - La cornice dice «grafica della Confraternita di Misericordia di Ariccia ODV»: va sui documenti fatti dalla Misericordia, non sui moduli ministeriali, sugli avvisi o sugli atti di altri enti.
+  - Servono pypdf, pypdfium2 e numpy (`pip install pypdf pypdfium2 numpy`). Prova: `python3 scripts/controlli/prova_cornice_pdf.py`.
+- Un design di Canva o di un altro programma si esporta in JPEG, PNG o PDF e poi passa da qui. Per lettere e biglietti nuovi si usano i modelli da stampa, che la cornice ce l'hanno già.
 
 ## Dove va il risultato
 
 - **Grafica di una news**: `static/img/news/AAAA-MM-GG-<slug>-grafica.jpg`, con la data e lo slug della news (il nome in `-grafica.jpg` la protegge dalla ricompressione), poi `python3 scripts/ottimizza-immagini.py static/img/news`; nel front matter `immagine:` e come prima immagine dell'articolo (`CLAUDE.md`, § «1. Articolo sul sito»). Esce da sola sui social insieme alla news.
 - **Caroselli e storie**: la pubblicazione automatica manda una sola immagine per news (il carosello automatico esiste solo per la Parola della domenica). I file si consegnano ad Alessandro, nella chat o nella cartella del lavoro.
 - **Biglietti e lettere**: PDF consegnato ad Alessandro; non vanno sul sito.
+- **PDF passati da `--cornice`**: il file nuovo si consegna ad Alessandro insieme a quello di partenza; sul sito prende il posto del vecchio solo se lo decide lui.
 
 ## Controllo prima di consegnare
 
