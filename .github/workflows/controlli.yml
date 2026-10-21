@@ -108,6 +108,11 @@ jobs:
       - name: Prova di firma e cornice delle grafiche
         run: python3 scripts/controlli/prova_cornice.py
 
+      # Testo alternativo dei post automatici (dal 21/10/2026): dove Meta lo accetta e dove no, ripresa senza
+      # il parametro se Meta lo rifiuta, testi della Parola, alt di ogni news nel feed compilato qui sopra.
+      - name: Prova del testo alternativo dei post
+        run: python3 scripts/controlli/prova_testo_alternativo.py public/news/index.json
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

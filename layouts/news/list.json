@@ -10,8 +10,10 @@
       "data" (.Date.Format "2006-01-02")
       "sommario" (.Description | default (.Summary | plainify | htmlUnescape) | strings.TrimSpace)
       "immagine" (partial "news-immagine.html" .)
+      "immagine_alt" (partial "news-immagine-alt.html" .)
       "social" (.Params.social | default true)
       "social_testo" (.Params.social_testo | default "")
+      "social_alt" (.Params.social_alt | default "")
       "data_evento" (.Params.data_evento | default "")
       "video" $video
       "video_copertina" (.Params.social_video_copertina | default "")

@@ -1,0 +1,21 @@
+{{/* Testo alternativo dell'immagine principale di una news, quella che va sui social
+     (la stessa di news-immagine.html): l'attributo alt dell'immagine del testo con
+     lo stesso indirizzo. Stringa vuota se l'immagine non è nel testo o non ha alt.
+     Lo legge scripts/pubblica_social.py (campo «immagine_alt» del feed). */}}
+{{ $img := partial "news-immagine.html" . }}
+{{ $alt := "" }}
+{{ $trovata := false }}
+{{ if $img }}
+  {{ range findRE `<img\s[^>]*>` .Content }}
+    {{ if not $trovata }}
+      {{ $src := "" }}
+      {{ with findRESubmatch `\ssrc="([^"]+)"` . 1 }}{{ $src = index (index . 0) 1 }}{{ end }}
+      {{ if and $src (not (hasPrefix $src "http")) }}{{ $src = absURL (strings.TrimPrefix "/" $src) }}{{ end }}
+      {{ if eq $src $img }}
+        {{ $trovata = true }}
+        {{ with findRESubmatch `\salt="([^"]*)"` . 1 }}{{ $alt = index (index . 0) 1 | htmlUnescape | strings.TrimSpace }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $alt }}
