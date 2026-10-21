@@ -787,7 +787,7 @@ dati:
   verificato: "2026-10-09"
   note: ""
 - id: "rcp-bambino-parametri"
-  cosa: "Rianimazione nel bambino (IRC 2025, cap. 9): se non risponde si chiama SUBITO il 112 con il vivavoce e il respiro si guarda mentre si aspetta l'operatore; 5 soffi iniziali; compressioni di almeno un terzo del torace, mai più di 6 cm (non più «circa 4 cm nel lattante, 5 nel bambino», valori del 2021), 100-120 al minuto; 30:2 (15:2 se formati PBLS); soccorritore solo senza telefono: 1 minuto di RCP prima di chiamare. Corretto il 21/10/2026."
+  cosa: "Rianimazione nel bambino (IRC 2025, cap. 9): se non risponde si chiama SUBITO il 112 con il vivavoce e il respiro si guarda mentre si aspetta l'operatore; 5 soffi iniziali; compressioni di almeno un terzo del torace, mai più di 6 cm (non più i 4 cm del lattante e i 5 del bambino, valori del 2021), 100-120 al minuto; 30:2 (15:2 se formati PBLS); soccorritore solo senza telefono: 1 minuto di RCP prima di chiamare. Corretto il 21/10/2026."
   valore: "112 subito; almeno 1/3 del torace, max 6 cm; 30:2"
   dove:
   - "content/news/2026-11-24-primo-soccorso-rianimazione-bambino.md"
