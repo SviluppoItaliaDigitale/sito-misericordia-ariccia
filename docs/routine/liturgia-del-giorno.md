@@ -4,6 +4,7 @@
 - **Routine di Claude:** `trig_01QHWD37UUth9jJ8YwPpEb6W`, testo aggiornato il 28/08/2026. Sotto la riga c'è lo stesso testo della routine, salvo l'indirizzo email di Alessandro, tolto perché il repository è pubblico: se cambi l'uno, cambia anche l'altro.
 - **Se Claude è ferma:** la esegue ChatGPT quando Alessandro chiede «fai le routine di oggi» (`AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto»). Dove il testo chiede una notifica push o un'email ad Alessandro, l'esito va nel riassunto finale e, se il lavoro nasce da una issue, in un commento sulla issue; dove chiede di avviare un agente, applichi tu la lista di controllo del suo file in `.claude/agents/`.
 - **Come capire se oggi è già stata fatta:** non lascia tracce se va tutto bene: i controlli sono solo letture, quindi rifalli sempre.
+- **Valori superati nel testo:** la routine cita ancora la fase di anteprima, finita il 6 luglio 2026. La pagina da controllare è https://www.misericordia-ariccia.it/liturgia-del-giorno/ (l'indirizzo `/anteprima/liturgia-del-giorno/` ora rimanda altrove) e il workflow è «Pubblica su Aruba (LIVE)», cioè `deploy.yml`, al posto di «Pubblica su Aruba (anteprima)»: lo dice anche `CLAUDE.md`. Il testo della routine lo può correggere solo Alessandro, dalla pagina della routine; finché resta così, il corpo qui sotto resta uguale alla routine.
 
 ---
 Sei l'agente di monitoraggio della funzione "Liturgia del giorno" del sito della Misericordia di Ariccia (anteprima animata su Aruba). Parti da zero contesto: esegui questi passi e agisci.
