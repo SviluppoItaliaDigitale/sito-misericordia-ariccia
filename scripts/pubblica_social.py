@@ -169,13 +169,41 @@ def riga_alt_instagram(n):
     return f"testo alternativo ({fonte}): {alt}" if alt else f"testo alternativo: nessuno, {fonte}"
 
 
+# Il testo alternativo nominato nel rifiuto di Meta, in qualunque grafia: alt_text, alt_text_custom, «Alt text».
+ALT_NOMINATO = re.compile(r"alt[ _-]?text", re.I)
+# Parametri e cause diversi dal testo alternativo. Un «(#100)» che ne nomina uno riguarda quello (indirizzo o immagine
+# che non si scarica, luogo, didascalia, programmazione), non il testo alternativo.
+ALTRA_CAUSA = re.compile(r"url|image|photo|video|media|place|location|caption|message|children|link|publish|schedul",
+                         re.I)
+
+
+def errore_meta(errore):
+    """Testo e codice dell'errore di Meta dentro un errore di graph_post («HTTP 400 su <percorso>: <JSON>»): il
+    messaggio, il titolo e il messaggio per l'utente, senza il percorso della richiesta né le chiavi del JSON, che
+    contengono parole come «media» e «message». Se la risposta non è un JSON leggibile, i campi si cercano nel testo."""
+    t = re.sub(r"^HTTP \d+ su \S+: ", "", str(errore))
+    try:
+        e = json.JSONDecoder().raw_decode(t[t.index("{"):])[0].get("error") or {}
+    except (ValueError, AttributeError):
+        e = {}
+    if isinstance(e, dict) and e:
+        testo = " ".join(str(e[k]) for k in ("message", "error_user_title", "error_user_msg") if e.get(k))
+        return testo, e.get("code")
+    campi = re.findall(r'"(?:message|error_user_title|error_user_msg)"\s*:\s*"((?:[^"\\]|\\.)*)"', t)
+    codice = re.search(r'"code"\s*:\s*(\d+)', t)
+    return (" ".join(campi) if campi else t), (int(codice.group(1)) if codice else None)
+
+
 def alt_rifiutato(errore, chiave):
-    """Vero se l'errore di Meta può dipendere dal testo alternativo: lo nomina, oppure è il generico
-    «(#100) Invalid parameter» senza riferimenti al luogo (quello lo gestisce con_luogo)."""
-    t = str(errore)
-    if chiave in t or "alt_text" in t:
+    """Vero se il rifiuto di Meta dipende o può dipendere dal testo alternativo: lo nomina, oppure è il generico
+    «(#100) Invalid parameter» che non nomina un altro parametro, perché a volte Meta non dice quale parametro rifiuta.
+    Un «(#100)» che nomina il luogo lo gestisce con_luogo; uno che nomina l'immagine o l'indirizzo, e gli altri errori,
+    col testo alternativo non c'entrano. Stesso criterio della Protezione Civile (scripts/pubblica-social-auto.py del
+    repository dei social) e di Cooprimavera (scripts/gestione_social.py)."""
+    testo, codice = errore_meta(errore)
+    if chiave in testo or ALT_NOMINATO.search(testo):
         return True
-    return bool(re.search(r'\(#100\)|"code"\s*:\s*100\b', t)) and not re.search(r"place|location", t, re.I)
+    return (codice == 100 or "(#100)" in testo) and not ALTRA_CAUSA.search(testo)
 
 
 def con_alt(pubblica, parametri, chiave):

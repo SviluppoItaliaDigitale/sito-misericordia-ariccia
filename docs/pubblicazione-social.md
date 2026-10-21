@@ -88,8 +88,14 @@ lo accetta:
 - **Limite**: 1000 caratteri, il massimo di Instagram; un testo più lungo si
   accorcia a frasi intere.
 - **Se Meta rifiuta il parametro** del testo alternativo, il post si rifà
-  subito una volta senza, e per il resto dell'esecuzione il parametro non si
-  manda più: un post non salta mai per il testo alternativo. Il log lo scrive.
+  subito una volta senza, e se così esce, per il resto dell'esecuzione il
+  parametro non si manda più: un post non salta mai per il testo alternativo.
+  Il log lo scrive. Si riprova senza quando il rifiuto nomina il testo
+  alternativo, oppure quando è il generico «(#100) Invalid parameter» e non
+  nomina un altro parametro, perché a volte Meta non dice quale parametro
+  rifiuta. Un «(#100)» che nomina l'immagine, l'indirizzo o il luogo non
+  riguarda il testo alternativo e non si riprova senza (il luogo rifiutato lo
+  gestisce la ripresa senza luogo).
 - **In prova** (`DRY_RUN=1` o "Social: solo prova") il log mostra il testo
   alternativo di ogni immagine e da dove viene.
 
