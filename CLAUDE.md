@@ -43,7 +43,8 @@ script `scripts/controlli/controlla_sito.py`) ricompila il sito e aggiorna la is
 sanitaria, news in uscita (controllo editoriale `controllo_editoriale:` nel front matter
 nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
 Blocca anche le **forme già corrette che non devono tornare** (`FORME_SBAGLIATE` nello
-script, cercate nei sorgenti, news programmate comprese): per esempio il motto si scrive
+script, cercate nei sorgenti del sito e nei generatori di video, grafiche e post, cioè
+`scripts/`, i sottotitoli in `static/` e le schede social, news programmate comprese): per esempio il motto si scrive
 con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo e nel glossario del
 sito, mai «Che Dio…». Quando si corregge un errore che potrebbe ripresentarsi, si
 aggiunge la sua forma all'elenco.

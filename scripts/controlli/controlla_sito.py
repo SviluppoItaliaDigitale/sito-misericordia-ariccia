@@ -6,8 +6,9 @@ Legge la build di Hugo (cartella public/) e il repo, e scrive un rapporto in Mar
   2. script inline non coperti dagli hash della Content-Security-Policy in static/.htaccess;
   3. registro dei dati (data/dati_da_verificare.yaml): voci scadute e contenuti sanitari senza revisione;
   4. news programmate in uscita nei prossimi 14 giorni, con la data del controllo editoriale;
-  5. forme già corrette che non devono tornare (FORME_SBAGLIATE), cercate nei sorgenti
-     (content, layouts, data), così si vedono anche nelle news programmate;
+  5. forme già corrette che non devono tornare (FORME_SBAGLIATE), cercate nei sorgenti del sito
+     e nei generatori di video, grafiche e post (CARTELLE_TESTI), così si vedono anche nelle news
+     programmate e prima che un video o una grafica le renda in un file che nessuno rilegge;
   6. con --live: pagine principali online e build pubblicata uguale a quella attesa.
 Solo libreria standard. Uso: controlla_sito.py public [--live] [--report out.md] [--csp]
   --csp: stampa gli hash degli script inline da copiare in static/.htaccess ed esce.
@@ -28,6 +29,11 @@ FORME_SBAGLIATE = [
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),
 ]
+# Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
+# (scripts/, schede social). Non i file di governo (CLAUDE.md, COORDINAMENTO.md…), che citano la forma per vietarla.
+CARTELLE_TESTI = ("content", "layouts", "data", "assets", "archetypes", "static", "contenuti", "scripts", ".github/social")
+FILE_TESTI = ("hugo.toml",)
+ESTENSIONI_TESTI = (".md", ".html", ".yaml", ".yml", ".json", ".toml", ".py", ".js", ".vtt", ".srt", ".txt", ".svg")
 
 
 def hash_inline(pub):
@@ -92,14 +98,16 @@ def news_programmate(giorni=14):
 
 
 def forme_sbagliate():
+    file = [REPO / nome for nome in FILE_TESTI]
+    for cartella in CARTELLE_TESTI:
+        file += sorted((REPO / cartella).rglob("*"))
     trovate = []
-    for cartella in ("content", "layouts", "data"):
-        for f in sorted((REPO / cartella).rglob("*")):
-            if not f.is_file() or f.suffix not in (".md", ".html", ".yaml", ".yml", ".json", ".toml"): continue
-            testo = f.read_text(encoding="utf-8", errors="replace")
-            for rx, regola in FORME_SBAGLIATE:
-                for m in rx.finditer(testo):
-                    trovate.append((f"{f.relative_to(REPO)}:{testo.count(chr(10), 0, m.start()) + 1}", m.group(0), regola))
+    for f in file:
+        if not f.is_file() or f.suffix not in ESTENSIONI_TESTI or "node_modules" in f.parts: continue
+        testo = f.read_text(encoding="utf-8", errors="replace")
+        for rx, regola in FORME_SBAGLIATE:
+            for m in rx.finditer(testo):
+                trovate.append((f"{f.relative_to(REPO)}:{testo.count(chr(10), 0, m.start()) + 1}", m.group(0), regola))
     return trovate
 
 
