@@ -66,7 +66,7 @@ FORME_SBAGLIATE = [
      "svenimento: i segni prima sono sudore, nausea, capogiri, vista annebbiata (NHS) e pallore (Auxologico); "
      "il ronzio non è nelle fonti"),
     (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
-     "fratture: mano o piede freddi non è un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
+     "fratture: le estremità fredde non sono un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
      "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
