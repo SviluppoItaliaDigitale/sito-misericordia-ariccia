@@ -20,17 +20,18 @@ import html
 import json
 import re
 import sys
-import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from liturgia_cei import letture as letture_del_giorno, scarica  # noqa: E402  (stesso lettore della Liturgia del giorno)
 
 URL = "https://feed.evangelizo.org/v2/reader.php?date={d}&lang=IT&type={t}"
 LETTURE = {"FR": "Prima lettura", "PS": "Salmo responsoriale", "SR": "Seconda lettura", "GSP": "Vangelo"}
 
 
 def leggi(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "MisericordiaAriccia-ParolaDomenica/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", errors="replace")
+    # il feed risponde a volte 403 senza corpo: scarica() riprova (21/10/2026, la routine si era fermata qui)
+    return scarica(url, "MisericordiaAriccia-ParolaDomenica/1.0")
 
 
 def testo(grezzo):
@@ -55,11 +56,9 @@ def versetti(titolo):
 def letture_cei(d):
     """Prima lettura, seconda lettura e Vangelo in CEI 2008 (stesso lettore della pagina
     Liturgia del giorno, scripts/liturgia_cei.py), col testo su una riga sola."""
-    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-    from liturgia_cei import letture
     return [{"lettura": x["sezione"], "titoletto": x["titoletto"], "fonte_lettura": x["fonte_lettura"],
              "riferimento": x["riferimento"], "testo": " ".join(x["righe"])}
-            for x in letture(d) if x["sezione"] in ("Prima lettura", "Seconda lettura", "Vangelo")]
+            for x in letture_del_giorno(d) if x["sezione"] in ("Prima lettura", "Seconda lettura", "Vangelo")]
 
 
 def main():

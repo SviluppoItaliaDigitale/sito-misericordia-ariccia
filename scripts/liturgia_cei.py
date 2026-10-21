@@ -14,9 +14,12 @@ citata. Solo libreria standard.
 
 import datetime as dt
 import html
+import http.client
 import json
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -32,12 +35,29 @@ FINE_LETTURA = ("Parola di Dio", "Parola del Signore")
 # formula d'annuncio: «Dal libro…», «Dalla lettera…», e per la Passione (Palme, Venerdì Santo)
 # «Passione di nostro Signore Gesù Cristo secondo…»
 ANNUNCIO = ("Dal ", "Dalla ", "Dagli ", "Dai ", "Passione di nostro Signore")
+# Errori passeggeri visti il 21/10/2026: il feed Evangelizo risponde a volte 403 senza corpo
+# (circa una richiesta su dieci) e la pagina CEI a volte chiude la connessione. Si riprova.
+RIPROVA_HTTP = (403, 408, 425, 429, 500, 502, 503, 504)
+
+
+def scarica(url, agente, tentativi=5, attesa=3):
+    """Testo di una pagina, riprovando sugli errori passeggeri con attese crescenti (3, 6, 12, 24 s).
+    Un errore che non passa (404, 410…) o l'ultimo tentativo fallito arrivano a chi chiama."""
+    for i in range(tentativi):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": agente})
+            with urllib.request.urlopen(req, timeout=40) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except (urllib.error.URLError, http.client.HTTPException, ConnectionError, TimeoutError) as e:
+            passeggero = not isinstance(e, urllib.error.HTTPError) or e.code in RIPROVA_HTTP
+            if not passeggero or i == tentativi - 1:
+                raise
+            print(f"{url}: {e}, riprovo tra {attesa * 2 ** i} s", file=sys.stderr)
+            time.sleep(attesa * 2 ** i)
 
 
 def righe_pagina(d):
-    req = urllib.request.Request(URL.format(d=d), headers={"User-Agent": "MisericordiaAriccia-Liturgia/1.0"})
-    with urllib.request.urlopen(req, timeout=40) as r:
-        pagina = r.read().decode("utf-8", errors="replace")
+    pagina = scarica(URL.format(d=d), "MisericordiaAriccia-Liturgia/1.0")
     pagina = re.sub(r"<(script|style).*?</\1>", "", pagina, flags=re.S)
     return [r.strip() for r in html.unescape(re.sub(r"<[^>]+>", "\n", pagina)).splitlines() if r.strip()]
 
