@@ -42,7 +42,7 @@ FORME_SBAGLIATE = [
     (re.compile(r"se\s+non\s+migliora,\s+dagli\s+altro\s+zucchero", re.I),
      "ipoglicemia: lo zucchero si ripete se dopo 15 minuti ha ANCORA I SINTOMI; se non migliora si chiama il 112 "
      "(IRC 2025, cap. 12)"),
-    (re.compile(r"circa\s+(?:4|quattro)\s+(?:cm|centimetri)\s+nel\s+lattante|about\s+4\s+cm\s+in\s+an\s+infant", re.I),
+    (re.compile(r"circa\s+(?:4|quattro)\s+(?:cm|centimetri)\s+nel\s+lattante|about\s+4\s+cm\s+in\s+an\s+infant|≈\s*4\s*cm", re.I),
      "rianimazione del bambino: almeno un terzo del torace, mai più di 6 cm; i «4-5 cm» sono del 2021 (IRC 2025, cap. 9)"),
     (re.compile(r"cuscino\s+sotto\s+la\s+testa|cushion\s+under\s+the\s+head", re.I),
      "cadute: niente cuscino sotto la testa, che va tenuta ferma se ha battuto la testa o ha male al collo "

@@ -53,6 +53,8 @@ CASI = [  # (testo, deve essere segnalato)
     ("circa quattro centimetri " + "nel lattante", True),
     ("to one third of its depth (about 4 cm " + "in an infant, 5 cm in a child)", True),
     ("Spingi per almeno un terzo del torace, ma mai più di 6 cm.", False),
+    ("gauge(-400,-260,c,'≈ 4 " + "cm')", True),
+    ("gauge(-400,-260,c,'≥ 1/3')", False),
     ("mettigli un cuscino " + "sotto la testa, coprilo", True),
     ("a cushion " + "under the head, a blanket", True),
     ("Metti qualcosa di morbido sotto la testa, come una giacca piegata.", False),
