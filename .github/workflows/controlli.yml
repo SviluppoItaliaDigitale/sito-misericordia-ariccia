@@ -93,6 +93,11 @@ jobs:
           N=$(gh issue list --state open --search 'in:title "Stato del sito"' --json number,title --jq '.[] | select(.title=="Stato del sito") | .number' | head -1)
           if [ -n "$N" ]; then gh issue edit "$N" --body-file corpo.md; else gh issue create --title "Stato del sito" --body-file corpo.md; fi
 
+      # Tentativi sulle fonti delle letture (scarica() in scripts/liturgia_cei.py): un server locale
+      # risponde con gli errori passeggeri visti il 21/10/2026. Se un caso non passa, il job fallisce.
+      - name: Prova dei tentativi delle letture
+        run: python3 scripts/controlli/prova_letture.py
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

@@ -47,7 +47,10 @@ script, cercate nei sorgenti del sito e nei generatori di video, grafiche e post
 `scripts/`, i sottotitoli in `static/` e le schede social, news programmate comprese): per esempio il motto si scrive
 con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo e nel glossario del
 sito, mai «Che Dio…». Quando si corregge un errore che potrebbe ripresentarsi, si
-aggiunge la sua forma all'elenco.
+aggiunge la sua forma all'elenco. Nello stesso workflow `scripts/controlli/prova_letture.py`
+prova con un server locale i tentativi sulle fonti delle letture (`scarica()` in
+`scripts/liturgia_cei.py`: 403, connessione chiusa, 404), usati da Liturgia del giorno e
+Parola della domenica.
 `.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
 cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
 
