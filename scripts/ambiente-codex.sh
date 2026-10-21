@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Prepara l'ambiente di Codex Cloud (ChatGPT) per questo repository: identità git, skill di Alessandro, strumenti dei controlli e delle skill.
-# Si imposta una volta sola: Codex → Impostazioni → Ambienti → questo repository → «Script di configurazione» = bash scripts/ambiente-codex.sh
-# Quando questo file cambia, nella pagina dell'ambiente si preme «Reset cache»: la cache dura fino a 12 ore e non si accorge del cambio.
+# Lo lancia la prima riga dello «Script di installazione» di ogni ambiente (Impostazioni → Codex Cloud → «…» → Modifica → «Modifica ambiente»), su tutti i repository in /workspace: vedi memoria/piano-b-chatgpt.md di assistente-personale.
+# Quando questo file cambia, si ripubblica ogni ambiente (Modifica → «Salva bozza» → «Pubblica»): i lavori nuovi partono da ciò che
+# l'ambiente ha preparato alla pubblicazione, e l'aggiornamento del repository non rifà l'installazione.
 # Identico in tutti i repository di Alessandro (copia di riferimento: assistente-personale). Non fallisce mai: ciò che non installa lo scrive e va avanti.
 # Prova senza installare nulla: bash scripts/ambiente-codex.sh --prova
 set -u
@@ -19,7 +20,7 @@ if [ "$PROVA" -eq 0 ] && [ -f scripts/imposta-identita-git.sh ]; then
 fi
 
 # 2. Skill di Alessandro e indice delle routine, prima delle dipendenze: servono anche quelle delle skill.
-#    In assistente-personale sono nel repository. Negli altri serve il segreto AP_TOKEN (lettura del repository
+#    In assistente-personale sono nel repository. Negli altri serve il token AP_TOKEN (sola lettura del repository
 #    assistente-personale) e se ne scaricano solo skill, routine e file della radice, non i dati personali.
 #    Si cancella e si riscarica solo una copia fatta da questo script (segno in .git): mai una copia di lavoro, come quella del PC.
 AP="$HOME/assistente-personale"
@@ -43,7 +44,7 @@ elif [ -n "${AP_TOKEN:-}" ]; then
       log "skill e ROUTINE.md di assistente-personale in $AP"
     else
       rm -rf "$AP"
-      log "assistente-personale NON clonato: controlla il segreto AP_TOKEN"
+      log "assistente-personale NON clonato: controlla AP_TOKEN (con un segreto di rete non è ancora stato provato: vedi memoria/piano-b-chatgpt.md di assistente-personale)"
     fi
   fi
 fi
