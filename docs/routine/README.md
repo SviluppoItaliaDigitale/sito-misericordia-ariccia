@@ -1,6 +1,6 @@
 # Testi delle routine di Claude — sito della Misericordia di Ariccia
 
-Copia di riferimento dei testi delle routine di Claude che lavorano su questo repository. La fonte operativa resta la routine (https://claude.ai/code/routines/<id>); questa cartella versiona il testo e serve a chi lavora al posto di Claude quando è ferma: ChatGPT esegue le routine di oggi da questi file (`AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto»). Quando cambi il testo di una routine, cambi anche il suo file nello stesso lavoro.
+Copia di riferimento dei testi delle routine di Claude che lavorano su questo repository. La fonte operativa resta la routine (https://claude.ai/code/routines/<id>); questa cartella versiona il testo e serve a chi lavora al posto di Claude quando è ferma: ChatGPT esegue le routine di oggi da questi file (`AGENTS.md`, § «Quando Claude è ferma, lavori tu al suo posto»). Quando cambi il testo di una routine, cambi anche il suo file nello stesso lavoro.
 
 Orari in ora italiana. Le routine di Claude con l'orario fissato in UTC si spostano di un'ora con il cambio dell'ora: qui sono scritti tutti e due.
 

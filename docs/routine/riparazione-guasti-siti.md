@@ -2,7 +2,7 @@
 
 - **Quando gira:** ogni giorno alle 15:13 italiane con l'ora legale, alle 14:13 con l'ora solare.
 - **Routine di Claude:** `trig_01RBJ5MxdCUxjeq5UDGu5Lej`, testo aggiornato il 17/10/2026. Sotto la riga c'è lo stesso testo della routine: se cambi l'uno, cambia anche l'altro.
-- **Se Claude è ferma:** la esegue ChatGPT quando Alessandro chiede «fai le routine di oggi» (`AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto»). Dove il testo chiede una notifica push o un'email ad Alessandro, l'esito va nel riassunto finale e, se il lavoro nasce da una issue, in un commento sulla issue; dove chiede di avviare un agente, applichi tu la lista di controllo del suo file in `.claude/agents/`.
+- **Se Claude è ferma:** la esegue ChatGPT quando Alessandro chiede «fai le routine di oggi» (`AGENTS.md`, § «Quando Claude è ferma, lavori tu al suo posto»). Dove il testo chiede una notifica push o un'email ad Alessandro, l'esito va nel riassunto finale e, se il lavoro nasce da una issue, in un commento sulla issue; dove chiede di avviare un agente, applichi tu la lista di controllo del suo file in `.claude/agents/`.
 - **Come capire se oggi è già stata fatta:** issue `fonte-rotta`, «Salute» e «Link rotti» dei due siti chiuse o commentate dall'account di Alessandro dopo le 15:13 (14:13 con l'ora solare); quando non c'è nulla da riparare non lascia segni, e rifarla comporta solo letture.
 
 ---

@@ -615,16 +615,20 @@ def cmd_stato(args) -> None:
     prs = [p for p in aperte if args.tutte or p["head"]["ref"].startswith(PREFISSO_RAMO)]
     io_login = (gh_api("user") or {}).get("login", "")
     adesso = dt.datetime.now(dt.timezone.utc)
-    # PR fuori dai passaggi: rami chatgpt/* senza il commit «Bacheca: PR #…» e rami codex/* o gemini/*
-    # che nessun passaggio riconosce come consegna (lavoro fatto in riserva o da una richiesta della bacheca).
-    fuori, rivendicate, mostrate = [], set(), 0
+    # PR fuori dai passaggi: rami chatgpt/* che non sono passaggi preparati e rami codex/* o gemini/* che
+    # nessun passaggio riconosce come consegna certa (lavoro fatto in riserva o da una richiesta della bacheca).
+    # Una consegna solo possibile compare anche fra queste: se non è la consegna, è lavoro fuori dai passaggi.
+    fuori, rivendicate, possibili_di, mostrate = [], set(), {}, 0
     for pr in prs:
         n = pr["number"]
         ramo = pr["head"]["ref"]
         commits = gh_api(f"repos/{repo}/pulls/{n}/commits?per_page=100", paginato=True) or []
         # La preparazione finisce con il commit «Bacheca: PR #N …»: ciò che arriva dopo è lavoro consegnato.
         prep = [c for c in commits if c["commit"]["message"].startswith("Bacheca: PR #")]
-        if not prep and not args.tutte:
+        # Un passaggio si riconosce dal commit di preparazione o, se il ramo è stato rifatto e l'ha perso,
+        # dal piede che `nuovo` mette nella descrizione della PR.
+        passaggio = bool(prep) or INIZIO_PIEDE_PR in (pr.get("body") or "")
+        if not passaggio and not args.tutte:
             fuori.append(pr)
             continue
         commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
@@ -632,6 +636,8 @@ def cmd_stato(args) -> None:
                       and c["body"].strip().lower().startswith("@codex")), None)
         t_avvio = _quando(avvio["created_at"]) if avvio else None
         t_prep = _quando(prep[-1]["commit"]["committer"]["date"]) if prep else None
+        if t_prep is None and passaggio:
+            t_prep = _quando(pr["created_at"])   # ramo rifatto senza il commit di preparazione: vale l'apertura della PR
         riferimenti = [t for t in (t_prep, t_avvio) if t]
         t_rif = max(riferimenti) if riferimenti else None
         risposte = [c for c in commenti if _e_strumento(c["user"])]
@@ -642,7 +648,9 @@ def cmd_stato(args) -> None:
         dopo = [c for c in commits if not _di_servizio(c["commit"]["message"])
                 and (t_rif is None or _quando(c["commit"]["committer"]["date"]) > t_rif)]
         certe, possibili = _consegne(aperte, n, ramo, pr["title"], t_prep, _quando(pr["created_at"]))
-        rivendicate.update(c["number"] for c in certe + possibili)
+        rivendicate.update(c["number"] for c in certe)
+        for c in possibili:
+            possibili_di.setdefault(c["number"], []).append(n)
         altri_autori = sorted({f"{c['commit']['author']['name']} <{c['commit']['author']['email']}>"
                                for c in commits
                                if c["commit"]["author"]["email"].lower() not in AUTORI_OK})
@@ -676,7 +684,10 @@ def cmd_stato(args) -> None:
         elif possibili:
             m = possibili[0]["number"]
             giudizio = (f"POSSIBILE CONSEGNA NELLA PR #{m}: guardarla; se è questo lavoro, controllare il "
-                        f"risultato e `chiudi --pr {n} --consegna {m}`")
+                        f"risultato e `chiudi --pr {n} --consegna {m}`, altrimenti trattarla come le PR "
+                        f"fuori dai passaggi (compare anche in fondo)")
+            if dopo:
+                giudizio += f"; in più HA FATTO PUSH: controllare il risultato, poi `chiudi --pr {n}`"
         elif dopo:
             giudizio = f"HA FATTO PUSH: controllare il risultato, poi `chiudi --pr {n}`"
         elif ambiente_manca:
@@ -710,7 +721,10 @@ def cmd_stato(args) -> None:
         print(f"\nPR #{n} {'[bozza]' if pr['draft'] else '[pronta]'} — {pr['title']}")
         print(f"  ramo {ramo} · {pr['html_url']}")
         print(f"  controlli: {riass}")
-        print("  => NON È UN PASSAGGIO (nessun commit «Bacheca: PR #…» sul ramo): lavoro fatto in riserva o "
+        if n in possibili_di:
+            print("  forse è la consegna della PR " + ", ".join(f"#{x}" for x in possibili_di[n])
+                  + " (vedi sopra): se lo è, si chiude con quella; se non lo è, vale il giudizio qui sotto")
+        print("  => NON È UN PASSAGGIO (né un passaggio preparato né la sua consegna certa): lavoro fatto in riserva o "
               "da una richiesta della bacheca. Controllarlo come una consegna; se va bene, "
               f"`chiudi --pr {n}{opzione} --titolo \"…\" --messaggio \"…\"`; se un controllo è rosso, "
               "correggerlo sul ramo")
@@ -976,7 +990,7 @@ def _pulisci_commenti(repo: str, n: int, io_login: str) -> None:
     info(f"commenti tolti dalla PR: {tolti} (le revisioni del bot, se ci sono, non si possono cancellare)")
     if rimasti:
         # Nelle sessioni cloud il proxy di GitHub vieta le cancellazioni (HTTP 403). Sulle PR dei passaggi
-        # (rami chatgpt/* e codex/*) le fa il workflow «Togli la firma dello strumento» appena la PR si
+        # (rami chatgpt/*, codex/* e gemini/*) le fa il workflow «Togli la firma dello strumento» appena la PR si
         # chiude, con il giro di ogni notte come rete; qui si dice quali sono.
         info("commenti non cancellati da qui (il canale di questa sessione non lo permette): sulle pull "
              "request dei passaggi li toglie il workflow «Togli la firma dello strumento» alla chiusura, "

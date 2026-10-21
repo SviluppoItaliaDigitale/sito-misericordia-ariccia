@@ -1,6 +1,6 @@
 # Promemoria una tantum
 
-Routine di Claude che scattano una volta sola, a una data fissa, e riprendono una chat già aperta. Se Claude è ferma, quel giorno le esegue ChatGPT come le altre routine di oggi (`AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto»). Dove il testo dice di scrivere ad Alessandro, l'esito va nel riassunto finale. Come capire se una è già stata fatta: dal resoconto o dalla proposta mandati ad Alessandro quel giorno, che chi lavora al posto di Claude non vede; in quel caso la rifà, perché i controlli sono letture, si corregge solo ciò che non va e la proposta chiede il via prima di produrre. Orari in ora italiana.
+Routine di Claude che scattano una volta sola, a una data fissa, e riprendono una chat già aperta. Se Claude è ferma, quel giorno le esegue ChatGPT come le altre routine di oggi (`AGENTS.md`, § «Quando Claude è ferma, lavori tu al suo posto»). Dove il testo dice di scrivere ad Alessandro, l'esito va nel riassunto finale. Come capire se una è già stata fatta: dal resoconto o dalla proposta mandati ad Alessandro quel giorno, che chi lavora al posto di Claude non vede; in quel caso la rifà, perché i controlli sono letture, si corregge solo ciò che non va e la proposta chiede il via prima di produrre. Orari in ora italiana.
 
 ## Controllo 2ª serie primo soccorso (10/11)
 
