@@ -8,8 +8,9 @@ che lo ferma); il tono sul bianco è quello dei modelli; il segno sta nel dizion
 byte come fa controlla_sito.py; il PDF di partenza non cambia. Prova i rifiuti (nome mancante, scritta o campo del
 modulo nel margine, firma su un fondo non libero, PDF protetto o con una firma digitale) e i casi da accettare
 (ornamento d'angolo, granello di polvere, pagina ruotata, rifilo, PDF con struttura, nome solo in un campo del modulo,
-firma solo nelle pagine senza nome e chiara sul fondo scuro, linguetta al vivo, cornice già fatta). Infine i modelli da
-stampa veri: carta intestata e biglietto.
+firma solo nelle pagine senza nome e chiara sul fondo scuro, linguetta al vivo, cornice già fatta, anche con il
+segno perso o in un PDF unito ad altre pagine, che la ricevono senza toccare quelle che l'hanno). Infine i modelli
+da stampa veri: carta intestata e biglietto, anche unita a una pagina senza cornice.
 Serve: Playwright con Chromium, pypdf, pypdfium2, numpy. Esce con 1 se un caso non va come deve.
 Uso: prova_cornice_pdf.py [--tieni CARTELLA]   (con --tieni i PDF della prova restano lì, da guardare)
 """
@@ -302,10 +303,44 @@ def casi_pdf(browser, t: Path) -> int:
         prova_esito("cornice già fatta", uscita, esito, msg, 0, "già fatta")
         attesa(not (t / "lettera-cornice-cornice.pdf").exists() and impronta(uscita) == uscita_prima,
                "cornice già fatta: rifatta lo stesso")
+        # 2-bis. un altro programma ha perso il segno nel dizionario Info (o ha unito il PDF ad altri): le pagine con la
+        # cornice si riconoscono lo stesso e restano com'erano, le altre la ricevono
+        senza_segno = t / "senza-segno.pdf"
+        w = pypdf.PdfWriter()
+        w.append(str(uscita))
+        with open(senza_segno, "wb") as f:
+            w.write(f)
+        attesa(not cornice_pdf.ha_segno(senza_segno), "senza segno: il segno è rimasto nel PDF unito")
+        esito, msg = cornice(senza_segno, browser=browser)
+        prova_esito("cornice già fatta, segno perso", senza_segno, esito, msg, 0, "già fatta",
+                    uscita=t / "senza-segno-cornice.pdf")
+        attesa(not (t / "senza-segno-cornice.pdf").exists(), "cornice già fatta, segno perso: rifatta lo stesso")
+        for nome_caso, solo_strato in (("unito", False), ("unito, riconosciuto dallo strato", True)):
+            unito = t / f"unito-{int(solo_strato)}.pdf"
+            w = pypdf.PdfWriter()
+            w.append(str(uscita))
+            w.append(str(fab.pdf(f"seconda-{int(solo_strato)}", [foglio()])))
+            with open(unito, "wb") as f:
+                w.write(f)
+            testo_cornice = cornice_pdf.TESTO_CORNICE
+            if solo_strato:      # il testo della cornice non si legge (strisce corte): resta il blocco /Artifact
+                cornice_pdf.TESTO_CORNICE = "testo che in nessuna pagina c'è"
+            try:
+                esito, msg = cornice(unito, browser=browser)
+            finally:
+                cornice_pdf.TESTO_CORNICE = testo_cornice
+            fatto = t / f"unito-{int(solo_strato)}-cornice.pdf"
+            prova_esito(nome_caso, unito, esito, msg, 0, "pagina 1 con la cornice già fatta")
+            if fatto.exists():
+                a, _, _ = disegno(unito, 0)
+                b, _, _ = disegno(fatto, 0)
+                attesa(a.shape == b.shape and int(np.abs(a.astype(np.int16) - b.astype(np.int16)).max()) <= 6,
+                       f"{nome_caso}: la pagina 1, che aveva già la cornice, è cambiata (cornice doppia)")
+                confronta(f"{nome_caso}, pagina 2", unito, fatto, 1)
         # 3. stessa uscita del file di partenza: rifiutata
         esito, msg = cornice(lettera, uscita=lettera, browser=browser)
         prova_esito("uscita uguale alla partenza", lettera, esito, msg, 1, "non si cambia", prima=prima)
-    n += 3
+    n += 6
 
     # 4. attraverso rendi.py (cornice_su_file), come da riga di comando
     lettera_b = fab.pdf("lettera-b", [foglio()])
@@ -538,6 +573,24 @@ def casi_modelli(browser, t: Path) -> int:
         esito, msg = cornice(Path(con["file"]), browser=browser)
         prova_esito(f"modello {nome} passato da --cornice", Path(con["file"]), esito, msg, 0, "già fatta")
         n += 2
+    # una lettera sulla carta intestata (cornice del modello) unita a una pagina senza cornice: la prima resta com'è, la
+    # seconda la riceve (il segno nel dizionario Info si perde nell'unione)
+    unito = t / "carta-e-pagina.pdf"
+    w = pypdf.PdfWriter()
+    w.append(str(t / "carta-intestata.pdf"))
+    w.append(str(Fabbrica(browser, t).pdf("pagina-dopo-la-carta", [foglio()])))
+    with open(unito, "wb") as f:
+        w.write(f)
+    esito, msg = cornice(unito, browser=browser)
+    prova_esito("carta intestata unita a una pagina senza cornice", unito, esito, msg, 0, "pagina 1 con la cornice già fatta")
+    fatto = t / "carta-e-pagina-cornice.pdf"
+    if fatto.exists():
+        a, _, _ = disegno(unito, 0)
+        b, _, _ = disegno(fatto, 0)
+        attesa(a.shape == b.shape and int(np.abs(a.astype(np.int16) - b.astype(np.int16)).max()) <= 6,
+               "carta intestata unita: la prima pagina, che aveva la cornice del modello, è cambiata (cornice doppia)")
+        confronta("carta intestata unita, pagina 2", unito, fatto, 1)
+    n += 1
     return n
 
 

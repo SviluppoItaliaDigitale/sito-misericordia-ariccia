@@ -13,7 +13,9 @@ vivo, un ornamento d'angolo) o cambia il fondo (una fascia, un riquadro) accorci
 scritta, un numero di pagina o la coda di una firma entrati nel margine fermano invece quel lato, perché la cornice gli
 starebbe accanto come se ne facesse parte: il lavoro si ferma, salvo --forza (cornice sugli altri lati). Le pagine di
 prima restano intatte: il loro contenuto non si riscrive, si avvolge (q … Q) e la cornice si aggiunge sopra come
-contenuto decorativo (/Artifact, che i lettori di schermo saltano). Il segno sta nel dizionario Info, chiave
+contenuto decorativo (/Artifact, che i lettori di schermo saltano). Le pagine che hanno già la cornice (di un modello
+da stampa, o messa qui in un PDF poi unito ad altri) restano come sono e le altre la ricevono; se ce l'hanno tutte, il
+lavoro è già fatto. Il segno sta nel dizionario Info, chiave
 /FirmaECornice: lo legge ha_segno() qui sotto, e si trova anche nei byte del file, come i segni dei JPEG e dei PNG che
 cerca scripts/controlli/controlla_sito.py. Se nel testo del PDF, compresi i campi del modulo compilati, non c'è
 «Misericordia di Ariccia» il lavoro si ferma: il nome va aggiunto al documento, oppure --firma lo scrive in basso nelle
@@ -413,6 +415,30 @@ def valori_dei_campi(reader) -> list[str]:
     return risultato
 
 
+def ha_strato(pagina) -> bool:
+    """Vero se la pagina porta già lo strato della cornice messo da qui (il blocco /Artifact in coda al contenuto):
+    vale anche quando un altro programma ha unito o risalvato il PDF e il segno nel dizionario Info è andato perso."""
+    try:
+        c = pagina["/Contents"].get_object() if "/Contents" in pagina else []
+        return any(ARTEFATTO in f.get_object().get_data() for f in (c if isinstance(c, list) else [c]))
+    except Exception:
+        return False
+
+
+def elenco_pagine(numeri: list[int]) -> str:
+    """«pagina 5», «pagine 6-17, 20 e 32»."""
+    tratti: list[list[int]] = []
+    for x in numeri:
+        if tratti and x == tratti[-1][1] + 1:
+            tratti[-1][1] = x
+        else:
+            tratti.append([x, x])
+    parti = [str(a) if a == b else f"{a}-{b}" for a, b in tratti]
+    if len(parti) == 1 and "-" not in parti[0]:
+        return f"pagina {parti[0]}"
+    return "pagine " + (parti[0] if len(parti) == 1 else ", ".join(parti[:-1]) + " e " + parti[-1])
+
+
 def raggruppa(problemi: list[str]) -> list[str]:
     """Lo stesso problema su più pagine si scrive una volta sola («pagine 6-17 e 20: …»), nell'ordine in cui compare."""
     gruppi: dict[str, list[int]] = {}
@@ -421,22 +447,7 @@ def raggruppa(problemi: list[str]) -> list[str]:
         numeri = gruppi.setdefault(r.group(2) if r else x, [])
         if r:
             numeri.append(int(r.group(1)))
-    righe = []
-    for testo, numeri in gruppi.items():
-        if not numeri:
-            righe.append(testo)
-            continue
-        tratti: list[list[int]] = []
-        for x in numeri:
-            if tratti and x == tratti[-1][1] + 1:
-                tratti[-1][1] = x
-            else:
-                tratti.append([x, x])
-        parti = [str(a) if a == b else f"{a}-{b}" for a, b in tratti]
-        chi = (f"pagina {parti[0]}" if len(parti) == 1 and "-" not in parti[0] else
-               "pagine " + (parti[0] if len(parti) == 1 else ", ".join(parti[:-1]) + " e " + parti[-1]))
-        righe.append(f"{chi}: {testo}")
-    return righe
+    return [f"{elenco_pagine(numeri)}: {testo}" if numeri else testo for testo, numeri in gruppi.items()]
 
 
 def cornice_su_pdf(file: Path, uscita: Path | None, firma: dict | None, forza: bool, browser) -> int:
@@ -470,9 +481,12 @@ def cornice_su_pdf(file: Path, uscita: Path | None, firma: dict | None, forza: b
         tp = documento[i].get_textpage()
         testi.append(re.sub(r"\s+", " ", tp.get_text_range() + " " + (campi[i] if i < len(campi) else "")).casefold())
         tp.close()
-    if any(TESTO_CORNICE in t for t in testi):
+    # pagine che hanno già la cornice (di un modello da stampa, o messa qui in un PDF poi unito ad altri): restano come
+    # sono, due cornici una sopra l'altra non si leggono; le altre la ricevono
+    gia = [TESTO_CORNICE in t or ha_strato(p) for t, p in zip(testi, reader.pages)]
+    if all(gia):
         documento.close()
-        print(f"già fatta: {file} (nelle pagine c'è già la cornice di microtesto)")
+        print(f"già fatta: {file} (in tutte le pagine c'è già la cornice di microtesto)")
         return 0
     con_nome = [NOME in t for t in testi]
     if not any(con_nome) and not firma:
@@ -492,6 +506,8 @@ def cornice_su_pdf(file: Path, uscita: Path | None, firma: dict | None, forza: b
         pagina_web.goto(MOTORE.as_uri(), wait_until="load")
         for i, pagina in enumerate(writer.pages):
             n = i + 1
+            if gia[i]:
+                continue
             rot = int(pagina["/Rotate"]) % 360 if "/Rotate" in pagina else 0
             if rot not in (0, 90, 180, 270) or "/MediaBox" not in pagina:
                 problemi.append(f"pagina {n}: " + ("manca la misura della pagina (MediaBox)" if rot in (0, 90, 180, 270)
@@ -652,7 +668,10 @@ def cornice_su_pdf(file: Path, uscita: Path | None, firma: dict | None, forza: b
     temporaneo.replace(dest)
     lati = {tuple(r[1]) for r in resoconto}
     firme = [str(r[0]) for r in resoconto if r[3]]
+    gia_fatte = [i + 1 for i, x in enumerate(gia) if x]
     print(f"ok: {dest} ({len(resoconto)} {'pagina' if len(resoconto) == 1 else 'pagine'}; cornice sui lati "
           + ("; ".join(", ".join(x) for x in sorted(lati)) if len(lati) > 1 else ", ".join(next(iter(lati), ())))
-          + (f"; firma a pagina {', '.join(firme)}" if firme else "") + ")")
+          + (f"; firma a pagina {', '.join(firme)}" if firme else "")
+          + ((f"; {elenco_pagine(gia_fatte)} con la cornice già fatta, "
+              + ("lasciata com'era" if len(gia_fatte) == 1 else "lasciate com'erano")) if gia_fatte else "") + ")")
     return 0
