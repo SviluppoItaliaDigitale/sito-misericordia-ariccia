@@ -122,7 +122,7 @@ serve, domenica all'1:55 con il «recupero notturno»): scheda in
 - **Generatore**: Hugo 0.154.5 (extended)
 - **Hosting**: Aruba (FTPS)
 - **Deploy**: GitHub Actions — `.github/workflows/deploy.yml`
-  - Trigger: push su `main`, schedule giornaliero (00:30 UTC), workflow_dispatch
+  - Trigger: push su `main`, schedule giornaliero (22:05 e 23:05 UTC: una delle due cade alle 00:05 italiane in ogni stagione), workflow_dispatch
 - **Server-dir FTP**: `www.misericordia-ariccia.it/` (radice)
 
 ## Fonti dati Liturgia del giorno

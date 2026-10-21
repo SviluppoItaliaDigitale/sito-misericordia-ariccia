@@ -23,7 +23,10 @@ Comandi
                                 «@codex esegui la richiesta nella descrizione»
   stato  [--tutte]              le PR aperte sui rami chatgpt/*: bozza, pull request di consegna
                                 (certe o possibili), commit arrivati dopo la preparazione,
-                                risposte dello strumento, canale muto, crediti esauriti, controlli
+                                risposte dello strumento, canale muto, crediti esauriti, controlli;
+                                in fondo le altre PR aperte di ChatGPT o Gemini, che non sono
+                                passaggi (rami chatgpt/* senza il commit «Bacheca: PR #…», rami
+                                codex/* e gemini/* che nessun passaggio riconosce come consegna)
   riavvia --pr N [--con-codex]  ristampa il testo di avvio di una PR già aperta (e, con
                                 --con-codex, rimanda il commento di avvio)
   chiudi --pr N [--consegna M] [--attesa-minuti 40] [--attesa-deploy-minuti 30]
@@ -73,6 +76,8 @@ NOMI_OK = {NOME_OK.lower(), "github"}
 
 BACHECA = "COORDINAMENTO.md"
 PREFISSO_RAMO = "chatgpt/"
+# Rami degli strumenti che possono contenere lavoro fuori dai passaggi (in riserva o da una richiesta della bacheca).
+RAMI_FUORI_PASSAGGIO = ("codex/", "gemini/")
 COMMENTO_AVVIO = "@codex esegui la richiesta nella descrizione"
 COMMENTO_AVVIO_CODA = (
     "\n\nLavora su questo ramo e fai push qui: non aprire altre pull request, non unire e "
@@ -608,21 +613,24 @@ def cmd_stato(args) -> None:
     repo = owner_repo(radice)
     aperte = gh_api(f"repos/{repo}/pulls?state=open&per_page=100", paginato=True) or []
     prs = [p for p in aperte if args.tutte or p["head"]["ref"].startswith(PREFISSO_RAMO)]
-    if not prs:
-        info("nessuna PR aperta sui rami chatgpt/*")
-        return
     io_login = (gh_api("user") or {}).get("login", "")
     adesso = dt.datetime.now(dt.timezone.utc)
+    # PR fuori dai passaggi: rami chatgpt/* senza il commit «Bacheca: PR #…» e rami codex/* o gemini/*
+    # che nessun passaggio riconosce come consegna (lavoro fatto in riserva o da una richiesta della bacheca).
+    fuori, rivendicate, mostrate = [], set(), 0
     for pr in prs:
         n = pr["number"]
         ramo = pr["head"]["ref"]
-        commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
         commits = gh_api(f"repos/{repo}/pulls/{n}/commits?per_page=100", paginato=True) or []
+        # La preparazione finisce con il commit «Bacheca: PR #N …»: ciò che arriva dopo è lavoro consegnato.
+        prep = [c for c in commits if c["commit"]["message"].startswith("Bacheca: PR #")]
+        if not prep and not args.tutte:
+            fuori.append(pr)
+            continue
+        commenti = gh_api(f"repos/{repo}/issues/{n}/comments?per_page=100", paginato=True) or []
         avvio = next((c for c in commenti if c["user"]["login"] == io_login
                       and c["body"].strip().lower().startswith("@codex")), None)
         t_avvio = _quando(avvio["created_at"]) if avvio else None
-        # La preparazione finisce con il commit «Bacheca: PR #N …»: ciò che arriva dopo è lavoro consegnato.
-        prep = [c for c in commits if c["commit"]["message"].startswith("Bacheca: PR #")]
         t_prep = _quando(prep[-1]["commit"]["committer"]["date"]) if prep else None
         riferimenti = [t for t in (t_prep, t_avvio) if t]
         t_rif = max(riferimenti) if riferimenti else None
@@ -634,6 +642,7 @@ def cmd_stato(args) -> None:
         dopo = [c for c in commits if not _di_servizio(c["commit"]["message"])
                 and (t_rif is None or _quando(c["commit"]["committer"]["date"]) > t_rif)]
         certe, possibili = _consegne(aperte, n, ramo, pr["title"], t_prep, _quando(pr["created_at"]))
+        rivendicate.update(c["number"] for c in certe + possibili)
         altri_autori = sorted({f"{c['commit']['author']['name']} <{c['commit']['author']['email']}>"
                                for c in commits
                                if c["commit"]["author"]["email"].lower() not in AUTORI_OK})
@@ -687,6 +696,26 @@ def cmd_stato(args) -> None:
             giudizio = ("in attesa dell'avvio a mano in Codex Cloud o, a lavoro finito, di «Create PR» "
                         "(`riavvia --pr %d` ristampa il testo di avvio)" % n)
         print(f"  => {giudizio}")
+        mostrate += 1
+    if not args.tutte:
+        fuori += [p for p in aperte if p["head"]["ref"].startswith(RAMI_FUORI_PASSAGGIO)
+                  and p["number"] not in rivendicate]
+    if fuori:
+        print("\nAltre PR aperte di ChatGPT o Gemini, fuori dai passaggi preparati:")
+    for pr in fuori:
+        n = pr["number"]
+        ramo = pr["head"]["ref"]
+        _, riass = _controlli(repo, pr["head"]["sha"])
+        opzione = "" if ramo.startswith(PREFISSO_RAMO) else " --qualsiasi"
+        print(f"\nPR #{n} {'[bozza]' if pr['draft'] else '[pronta]'} — {pr['title']}")
+        print(f"  ramo {ramo} · {pr['html_url']}")
+        print(f"  controlli: {riass}")
+        print("  => NON È UN PASSAGGIO (nessun commit «Bacheca: PR #…» sul ramo): lavoro fatto in riserva o "
+              "da una richiesta della bacheca. Controllarlo come una consegna; se va bene, "
+              f"`chiudi --pr {n}{opzione} --titolo \"…\" --messaggio \"…\"`; se un controllo è rosso, "
+              "correggerlo sul ramo")
+    if not mostrate and not fuori:
+        info("nessuna PR aperta sui rami chatgpt/*, codex/* o gemini/*")
 
 
 def _messaggio_pulito(body: str) -> str:
@@ -1187,7 +1216,7 @@ def cmd_chiudi(args) -> None:
          "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
     esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
     if isinstance(esito, tuple):
-        if ramo.startswith(("chatgpt/", "codex/", "claude/")):
+        if ramo.startswith(("chatgpt/", "codex/", "gemini/", "claude/")):
             info(f"ramo {ramo} non cancellato da qui (il canale di questa sessione non lo permette): "
                  "lo toglie il workflow «Togli la firma dello strumento» alla chiusura della PR")
         else:
@@ -1226,7 +1255,7 @@ def main() -> None:
                     help="lascia anche il commento di avvio sulla PR (canale automatico, da riprovare senza spese)")
     pn.set_defaults(fn=cmd_nuovo)
 
-    ps = sub.add_parser("stato", help="stato delle PR sui rami chatgpt/*")
+    ps = sub.add_parser("stato", help="stato dei passaggi (PR sui rami chatgpt/*) e delle altre PR di ChatGPT o Gemini")
     ps.add_argument("--tutte", action="store_true", help="tutte le PR aperte, non solo chatgpt/*")
     ps.set_defaults(fn=cmd_stato)
 
