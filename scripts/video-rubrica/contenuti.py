@@ -81,8 +81,8 @@ V = {
     sub='Chiama subito il 112, e di\' che sospetti una reazione allergica grave.'),
   S('Adrenalina', ['L\'autoiniettore','sulla *coscia*.'], 'Se ha l\'autoiniettore di adrenalina, aiutalo a usarlo: sulla parte esterna della coscia, anche sopra i vestiti, tenendolo premuto per il tempo indicato.', 'penna', [['Esterno coscia', .4], ['Anche sui vestiti', .6], ['Il tempo indicato', .88]]),
   S('La posizione', ['Seduto','o *sdraiato*.'], 'Se respira male, fallo stare seduto. Se è debole o pallido, sdraiato con le gambe sollevate. Non farlo alzare in piedi all\'improvviso.', 'posizioni', [['Respira male: seduto', .2], ['Debole: gambe su', .55], ['Non alzarlo', .85]]),
-  S('Dopo 5 minuti', ['La seconda','*dose*.'], 'Se dopo cinque minuti non migliora e ha una seconda dose, si può ripetere.', 'penna-timer', [['Seconda dose dopo 5 minuti', .7]],
-    sub='Se dopo 5 minuti non migliora e ha una seconda dose, si può ripetere.'),
+  S('Dopo 5 minuti', ['La seconda','*dose*.'], 'Se dopo cinque minuti ha ancora i sintomi, anche se va un po\' meglio, e ha una seconda dose, usala.', 'penna-timer', [['Seconda dose dopo 5 minuti', .7]],
+    sub='Se dopo 5 minuti ha ancora i sintomi, anche se va un po\' meglio, e ha una seconda dose, usala.'),
   S('Se non respira', ['Pronto alla','*rianimazione*.'], 'Se perde conoscenza e non respira normalmente, inizia la rianimazione.', 'rcp-mini', [['Rianimazione', .8]]),
   FINE]),
 'ustioni': dict(nome='Ustioni', scene=[

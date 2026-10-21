@@ -93,7 +93,7 @@ argomenti:
     fare:
       - "Chiama il **112**."
       - "Se la persona ha l'**autoiniettore di adrenalina**, aiutala a usarlo nella parte esterna della coscia, il prima possibile."
-      - "Se dopo **5 minuti** non migliora e ha una seconda dose, si può ripetere."
+      - "Se dopo **5 minuti** ha ancora i sintomi, anche se va un po' meglio, e ha una seconda dose, usala."
     nonfare:
       - "Non farla alzare in piedi di colpo: se si sente svenire, falla sdraiare."
       - "Non aspettare che i sintomi peggiorino."
