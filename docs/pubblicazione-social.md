@@ -95,7 +95,9 @@ lo accetta:
   nomina un altro parametro, perché a volte Meta non dice quale parametro
   rifiuta. Un «(#100)» che nomina l'immagine, l'indirizzo o il luogo non
   riguarda il testo alternativo e non si riprova senza (il luogo rifiutato lo
-  gestisce la ripresa senza luogo).
+  gestisce la ripresa senza luogo). Il controllo legge anche titolo e messaggio
+  per l'utente, che Meta scrive nella lingua della richiesta, e riconosce le
+  parole in inglese e in italiano.
 - **In prova** (`DRY_RUN=1` o "Social: solo prova") il log mostra il testo
   alternativo di ogni immagine e da dove viene.
 

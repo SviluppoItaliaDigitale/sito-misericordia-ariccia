@@ -170,10 +170,13 @@ def riga_alt_instagram(n):
 
 
 # Il testo alternativo nominato nel rifiuto di Meta, in qualunque grafia: alt_text, alt_text_custom, «Alt text».
-ALT_NOMINATO = re.compile(r"alt[ _-]?text", re.I)
-# Parametri e cause diversi dal testo alternativo. Un «(#100)» che ne nomina uno riguarda quello (indirizzo o immagine
-# che non si scarica, luogo, didascalia, programmazione), non il testo alternativo.
-ALTRA_CAUSA = re.compile(r"url|image|photo|video|media|place|location|caption|message|children|link|publish|schedul",
+# Anche in italiano: titolo e messaggio per l'utente (error_user_title, error_user_msg) Meta li scrive nella lingua
+# della richiesta (guida «Handling Errors» della Graph API).
+ALT_NOMINATO = re.compile(r"alt[ _-]?text|testo alternativo", re.I)
+# Parametri e cause diversi dal testo alternativo, in inglese e in italiano. Un «(#100)» che ne nomina uno riguarda
+# quello (indirizzo o immagine che non si scarica, luogo, didascalia, programmazione), non il testo alternativo.
+ALTRA_CAUSA = re.compile(r"url|image|photo|video|media|place|location|caption|message|children|link|publish|schedul"
+                         r"|immagin|foto|indirizz|luogo|posizion|didascal|messagg|programm",
                          re.I)
 
 

@@ -141,7 +141,9 @@ attesa(len(g.su("222/media")) == 2 and "alt_text" not in ps._alt_rifiutati,
        f"errore che non dipende dal testo alternativo: riprese sbagliate o alt segnato come rifiutato ({g.su('222/media')})")
 # un «(#100)» che nomina l'immagine, l'indirizzo o il luogo non dipende dal testo alternativo: nessuna ripresa senza
 for errore, dettaglio in (("Invalid image URL", None), ("url should represent a valid URL", None),
-                          ("Invalid parameter", "The image could not be downloaded.")):
+                          ("Invalid parameter", "The image could not be downloaded."),
+                          # titolo e messaggio per l'utente Meta li scrive nella lingua della richiesta
+                          ("Invalid parameter", "Non è stato possibile scaricare l'immagine.")):
     g = GraphFinta(rifiuta="image_url", errore=errore, dettaglio=dettaglio); prepara(g)
     try:
         ps.pubblica_instagram(dict(NEWS))
@@ -150,11 +152,12 @@ for errore, dettaglio in (("Invalid image URL", None), ("url should represent a 
         pass
     attesa(len(g.su("222/media")) == 1 and "alt_text" not in ps._alt_rifiutati,
            f"«(#100) {errore}» ({dettaglio}): ripresa senza testo alternativo ({len(g.su('222/media'))} chiamate)")
-# il testo alternativo nominato solo nel messaggio per l'utente: si riprova senza
-g = GraphFinta(rifiuta="alt_text", errore="Invalid parameter", dettaglio="Alt text is too long."); prepara(g)
-attesa(ps.pubblica_instagram(dict(NEWS)) == "2", "alt nominato nel messaggio per l'utente: il post non è uscito")
-attesa(len(g.su("222/media")) == 2 and "alt_text" in ps._alt_rifiutati,
-       f"alt nominato nel messaggio per l'utente: riprese sbagliate ({g.su('222/media')})")
+# il testo alternativo nominato solo nel messaggio per l'utente, anche in italiano: si riprova senza
+for dettaglio in ("Alt text is too long.", "Il testo alternativo dell'immagine è troppo lungo."):
+    g = GraphFinta(rifiuta="alt_text", errore="Invalid parameter", dettaglio=dettaglio); prepara(g)
+    attesa(ps.pubblica_instagram(dict(NEWS)) == "2", f"alt nominato nel messaggio per l'utente ({dettaglio}): il post non è uscito")
+    attesa(len(g.su("222/media")) == 2 and "alt_text" in ps._alt_rifiutati,
+           f"alt nominato nel messaggio per l'utente ({dettaglio}): riprese sbagliate ({g.su('222/media')})")
 # il criterio sui testi degli errori: contano messaggio e messaggio per l'utente, non il percorso né le chiavi del JSON
 for errore, atteso in (
         ('HTTP 400 su 222/media: {"error":{"message":"(#100) Invalid parameter","code":100}}', True),
@@ -163,6 +166,10 @@ for errore, atteso in (
         ('HTTP 400 su 222/media: {"error":{"message":"(#100) Invalid image URL","code":100}}', False),
         ('HTTP 400 su 111/feed: {"error":{"message":"(#100) Invalid parameter","code":100,'
          '"error_user_msg":"Invalid place id"}}', False),
+        ('HTTP 400 su 222/media: {"error":{"message":"Invalid parameter","code":100,'
+         '"error_user_msg":"Il testo alternativo dell\'immagine \\u00e8 troppo lungo."}}', True),
+        ('HTTP 400 su 222/media: {"error":{"message":"Invalid parameter","code":100,'
+         '"error_user_msg":"Non \\u00e8 stato possibile scaricare l\'immagine."}}', False),
         ('HTTP 400 su 222/media: {"error":{"message":"Application request limit reached","code":4}}', False),
         ("HTTP 500 su 222/media: errore del server", False)):
     attesa(ps.alt_rifiutato(RuntimeError(errore), "alt_text") is atteso, f"alt_rifiutato({errore!r}) dovrebbe dare {atteso}")
