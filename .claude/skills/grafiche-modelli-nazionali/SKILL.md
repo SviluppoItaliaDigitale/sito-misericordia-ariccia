@@ -15,7 +15,7 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 3. **Testi.** Brevi e nel tono della Misericordia: caldo, concreto, mai retorico. Il testo lungo va nell'articolo o nella didascalia, non nella grafica. Ogni dato ha una fonte: numeri, email e indirizzi da `hugo.toml` (`[params]`), date e luoghi dal documento o dalla persona che li ha dati. Niente frasi attribuite a qualcuno che non le ha dette.
 4. **Foto.** Foto vere della Misericordia, con i permessi. Mai pazienti o persone assistite riconoscibili, mai dati sanitari, targhe, indirizzi o dettagli dei servizi; volontarie e volontari in primo piano solo con il loro consenso; minori mai riconoscibili senza il consenso dei genitori. Le foto di repertorio non devono sembrare attività della Misericordia.
 5. **Firma e cornice, sempre.** Ogni grafica dice «Misericordia di Ariccia» e ha lungo i bordi una cornice di microtesto (Alessandro, 21/10/2026: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Con i modelli le mette `rendi.py`; per una grafica fatta in altro modo vedi «Grafiche fatte in altro modo» qui sotto.
-6. **Lutto.** Le foto restano a colori. Solo quando la grafica ricorda una persona morta (consorelle e confratelli, volontari, benefattori, personaggi pubblici vicini alla Misericordia dal Papa in giù, anniversari della morte, vittime di una tragedia, 2 novembre) la foto va in bianco e nero: sui social il bianco e nero è il segno del lutto. La grafica resta istituzionale e a colori. Per un personaggio pubblico, foto con licenza libera e autore citato nel testo del post.
+6. **Lutto.** Le foto a colori restano a colori; quelle nate in bianco e nero, come quelle d'archivio, restano come sono. Solo quando la grafica ricorda una persona morta (consorelle e confratelli, volontari, benefattori, personaggi pubblici vicini alla Misericordia dal Papa in giù, anniversari della morte, vittime di una tragedia, 2 novembre) la foto va in bianco e nero: sui social il bianco e nero è il segno del lutto. La grafica resta istituzionale e a colori. Per un personaggio pubblico, foto con licenza libera e autore citato nel testo del post.
 
 ## Fare la grafica
 
@@ -77,7 +77,7 @@ python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice GRAFICA.jpg
 - [ ] «Misericordia di Ariccia» si legge e la cornice di microtesto c'è sui bordi (ingrandendo); il file non è stato risalvato con un altro programma.
 - [ ] Ogni dato ha una fonte, i recapiti sono quelli di `hugo.toml`, niente inventato.
 - [ ] Foto vera e con i permessi; nessuna persona assistita riconoscibile.
-- [ ] Foto a colori; in bianco e nero (`"lutto": true`) solo se la grafica ricorda una persona morta.
+- [ ] Nessuna foto a colori portata in bianco e nero, salvo una grafica che ricorda una persona morta (`"lutto": true`).
 - [ ] `rendi.py` ha scritto «ok» senza «BOZZA».
 - [ ] L'immagine è stata aperta e guardata.
 - [ ] C'è la descrizione della foto per l'articolo o la didascalia.

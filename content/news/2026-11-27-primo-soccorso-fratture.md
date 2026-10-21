@@ -1,6 +1,6 @@
 ---
 title: "Fratture e distorsioni: ferma, non raddrizzare"
-titoloSeo: "Fratture e distorsioni: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Fratture e distorsioni: cosa fare passo passo, primo soccorso"
 date: 2026-11-27
 slug: "primo-soccorso-fratture"
 description: "Come riconoscere una frattura, perché non raddrizzare l'arto, il ghiaccio nel panno, la frattura esposta e quando chiamare il 112."
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Croce Rossa Italiana, Traumi alle ossa, articolazioni, muscoli](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/traumi-ossa-articolazioni-muscoli/) (segni, non rimettere a posto l'osso, tenere ferma la parte, ghiaccio in un panno per al massimo 20 minuti, quando chiamare il 112); [NHS, Broken arm or wrist](https://www.nhs.uk/conditions/broken-arm-or-wrist/) (sciarpa a fascia, fermare il sangue con una garza pulita); [NHS, Broken leg](https://www.nhs.uk/conditions/broken-leg/) (osso che esce dalla pelle: subito i soccorsi); [NHS, Falls](https://www.nhs.uk/conditions/falls/) (anca, schiena o collo: chiamare i soccorsi); [NHS, Sprains and strains](https://www.nhs.uk/conditions/sprains-and-strains/) (distorsione: riposo, ghiaccio, parte sollevata, medico se non migliora).*

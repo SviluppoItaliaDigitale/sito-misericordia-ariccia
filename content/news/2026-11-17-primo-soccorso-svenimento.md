@@ -1,6 +1,6 @@
 ---
 title: "Svenimento: sdraiato e gambe su"
-titoloSeo: "Svenimento: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Svenimento: cosa fare passo passo, primo soccorso"
 date: 2026-11-17
 slug: "primo-soccorso-svenimento"
 description: "I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112."
@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **3 di 13**: **svenimento**.
 
-{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -34,15 +34,15 @@ Se senti che stai per svenire, incrocia le gambe e stringi forte i muscoli, oppu
 
 ### Se sviene
 
-Se sviene, mettilo sdraiato e sollevagli le gambe: il sangue torna alla testa.
+Se sviene, mettilo sdraiato a pancia in su e, se puoi, sollevagli le gambe.
 
 ### Aria
 
 Allenta i vestiti stretti, fai spazio intorno e lascia circolare l'aria.
 
-### Un minuto
+### Se non si riprende
 
-Di solito si riprende in meno di un minuto. Se non si riprende, controlla il respiro e chiama il 112.
+Di solito si riprende in fretta. Se non si riprende, chiama il 112 e guarda se respira normalmente. Se non respira normalmente, inizia la rianimazione.
 
 ### Piano piano
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [NHS, Fainting](https://www.nhs.uk/conditions/fainting/) (segni prima dello svenimento, sdraiato con le gambe sollevate, quando chiamare i soccorsi); [Istituto Auxologico Italiano, Sincope](https://www.auxologico.it/malattia/sincope-svenimento) (pallore e sudore, sdraiarsi, contromanovre, rialzarsi piano); [American Heart Association, contromanovre fisiche raccomandate](https://cpr.heart.org/en/resuscitation-science/first-aid-guidelines/first-aid/description-of-recommended-physical-counterpressure-maneuvers) (incrociare le gambe stringendo i muscoli, accovacciarsi); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (se non respira normalmente, rianimazione).*

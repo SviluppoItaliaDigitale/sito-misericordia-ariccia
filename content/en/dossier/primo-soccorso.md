@@ -112,6 +112,7 @@ argomenti:
       - "If the symptoms have not gone after **15 minutes**, **repeat**."
       - "Once they feel better, give them a light snack."
       - "If they do not respond or do not improve: call **112**."
+      - "If they do not respond: if they are breathing normally, put them in the **recovery position**; if they are not breathing normally, start **CPR**."
     nonfare:
       - "Don't give anything by mouth to someone who is not responding: they could choke."
   - id: "avvelenamento"
@@ -146,7 +147,7 @@ argomenti:
       - "Put something **soft under their head** and loosen their collar."
       - "**Check the time**: if it lasts more than 5 minutes, call **112**."
       - "Also call 112 if it is their first seizure, if they are injured, if they are pregnant, if the seizures recur or if they do not come round."
-      - "Once the movements stop, **check their breathing**: if they are breathing normally, put them **on their side** and stay with them. If they are not breathing normally, start CPR."
+      - "Once the movements stop, **check their breathing**: if they are breathing normally, put them **on their side** and stay with them. If they are not breathing normally, call **112** straight away and start **CPR**."
     nonfare:
       - "Don't restrain their movements."
       - "Don't put anything in their mouth: no fingers, no objects, no water."
@@ -171,8 +172,8 @@ argomenti:
     riconosci: "Beforehand: pallor, sweating, nausea, blurred vision, ringing in the ears. Then a brief loss of consciousness, usually less than a minute."
     fare:
       - "If you feel you are about to faint: **cross your legs and tense your muscles**, or squat or lie down."
-      - "If they faint: **lying down with legs raised**, clothing loosened, fresh air."
-      - "If they don't come round within a minute, **check their breathing** and call **112**."
+      - "If they faint: **lying on their back**, with legs raised if you can, clothing loosened, fresh air."
+      - "If they don't come round quickly, call **112** and check whether they are breathing normally: if not, start **CPR**."
       - "Once they feel better, help them up slowly: first sitting, then standing."
     nonfare:
       - "Don't let them get up suddenly."
@@ -181,7 +182,7 @@ argomenti:
     titolo: "Choking in infants"
     motto: "5 back blows and 5 chest thrusts"
     dal: "2026-11-20"
-    riconosci: "A baby under one year old who **cannot cry, cough or breathe** and turns blue."
+    riconosci: "A baby under one year old who **cannot cry or cough effectively**, or is struggling to breathe: this is a severe obstruction, don't wait for them to turn blue."
     fare:
       - "If they are coughing or crying, let them cough and keep a close eye on them."
       - "Have someone call **112**, or call on speakerphone."
@@ -197,9 +198,9 @@ argomenti:
     dal: "2026-11-24"
     riconosci: "The child **does not respond** and **is not breathing normally**."
     fare:
-      - "Call **112** on speakerphone. If you are alone with no phone, do 1 minute of CPR first."
+      - "Not responding? Call **112** straight away on speakerphone and check meanwhile whether they are breathing normally: the operator will guide you. If you are alone with no phone, do 1 minute of CPR first."
       - "Give **5 rescue breaths** (in an infant over the mouth and nose), until the chest rises."
-      - "Compressions in the centre of the chest, to **one third of its depth** (about 4 cm in an infant, 5 cm in a child), **100–120 a minute**: in an infant with **two thumbs** encircling the chest, in a child with one or two hands."
+      - "Compressions in the centre of the chest, to **at least one third of its depth**, but **never more than 6 cm**, **100–120 a minute**: in an infant with **two thumbs** encircling the chest, in a child with one or two hands."
       - "Then **30 compressions and 2 breaths** (15 and 2 if you have done a paediatric course)."
       - "Use the **AED**: under 25 kg in paediatric mode, if available, with one pad on the front and one on the back."
     nonfare:
@@ -252,11 +253,11 @@ argomenti:
     fare:
       - "Have them **sit up, leaning slightly forwards**, with their arms resting on something."
       - "Stay calm and help them breathe slowly."
-      - "If they have **their own reliever inhaler**, help them use it as their doctor has explained."
+      - "If they have **their own reliever inhaler**, help them use it, with a spacer if there is one, as their doctor has explained."
       - "Call **112** if the inhaler isn't enough, they cannot speak, their lips are blue or they are drowsy."
     nonfare:
       - "Don't make them lie down."
-      - "Don't underestimate swelling of the lips or tongue: it may be anaphylaxis."
+      - "Don't underestimate swelling of the lips or tongue: it may be anaphylaxis. Call **112** straight away and, if they have an adrenaline auto-injector, help them use it in the thigh."
   - id: "batterie"
     titolo: "Button batteries and magnets"
     motto: "Suspicion is enough"
@@ -276,10 +277,11 @@ argomenti:
     riconosci_tit: "What to look for"
     riconosci: "Pain, a knock to the head, confusion, a leg that won't move or a very painful hip."
     fare:
-      - "Reassure them and ask where it hurts, whether they hit their head, whether they remember what happened."
+      - "If they do not respond, call **112** and check whether they are breathing normally."
+      - "If they respond, reassure them and ask where it hurts, whether they hit their head, whether they remember what happened."
       - "Call **112** if they hit their head, take anticoagulants (blood thinners), have severe hip pain, cannot move a leg or are confused."
       - "If they are fine, get up **in stages**: onto one side, onto the knees, then using a sturdy chair."
-      - "If they cannot get up: a cushion under the head, a blanket, and wait for help."
+      - "If they cannot get up: a blanket, keep them warm, and wait for help. If they hit their head or have neck pain, **don't move their head**."
       - "Prevention: no slippery rugs, night lights, grab rails in the bathroom, a phone within reach."
     nonfare:
       - "Don't pull them up suddenly and don't force them."
@@ -294,7 +296,7 @@ argomenti:
       - "Only fireworks with the **CE mark**, bought from authorised shops."
       - "Burn: **cool running water for at least 20 minutes**, then cling film or clean gauze."
       - "Bleeding hand: **press hard** and call **112**."
-      - "Severed finger: in a **clean, sealed bag**, and the bag in ice."
+      - "Severed finger: wrapped in **damp gauze**, in a **sealed bag** placed inside another bag with water and ice; it goes to hospital with the injured person."
       - "Injured eye: cover it without pressing and call **112**."
     nonfare:
       - "Don't pick up or relight an unexploded firecracker."

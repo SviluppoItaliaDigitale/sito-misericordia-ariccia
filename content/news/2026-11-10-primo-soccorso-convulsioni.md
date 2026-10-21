@@ -1,6 +1,6 @@
 ---
 title: "Convulsioni: cosa fare e cosa non fare"
-titoloSeo: "Convulsioni: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Convulsioni: cosa fare passo passo, primo soccorso"
 date: 2026-11-10
 slug: "primo-soccorso-convulsioni"
 description: "Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco."
@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **1 di 13**: **convulsioni**.
 
-{{< video src="video/primo-soccorso-convulsioni.mp4" poster="img/video/primo-soccorso-convulsioni.jpg" verticale="si" titolo="Convulsioni: primo soccorso passo passo" descrizione="Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco." data="2026-11-10" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-convulsioni.mp4" poster="img/video/primo-soccorso-convulsioni.jpg" verticale="si" titolo="Convulsioni: primo soccorso passo passo" descrizione="Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco." data="2026-11-10" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -54,7 +54,7 @@ Quando i movimenti finiscono, controlla il respiro. Se respira normalmente, mett
 
 ### Attenzione
 
-Se dopo i movimenti non respira normalmente, può essere un arresto cardiaco: chiama il 112 e inizia la rianimazione.
+Se dopo i movimenti non risponde e non respira normalmente, può essere un arresto cardiaco: chiama subito il 112, con il vivavoce, e inizia la rianimazione.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
 
@@ -64,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Lega Italiana Contro l'Epilessia, Guida alle epilessie 2023](https://soci.lice.it/pdf/web_2023_guida_alle_epilessie.pdf) (spazio intorno, non bloccare i movimenti, niente in bocca, qualcosa di morbido sotto la testa, vestiti slacciati, l'orologio, quando chiamare, su un fianco dopo la crisi); [CDC, First Aid for Seizures](https://www.cdc.gov/epilepsy/first-aid-for-seizures/index.html) (chiamare anche per la prima crisi e in gravidanza); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (movimenti simili alle convulsioni all'inizio di un arresto cardiaco, vivavoce, rianimazione).*
