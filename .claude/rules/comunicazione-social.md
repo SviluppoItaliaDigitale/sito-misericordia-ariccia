@@ -74,7 +74,7 @@ Vale in tutti i repository di Alessandro per chi prepara testi, grafiche, foto e
 - **Mai pazienti o persone assistite riconoscibili**: né volto, né voce, né segni particolari, nemmeno sullo sfondo o di spalle se il contesto le identifica (W2 1:09:26; W3).
 - Mai dati sanitari (monitor, referti, schede, farmaci), targhe, indirizzi, numeri civici, citofoni o dettagli del servizio come luogo, ora e motivo della chiamata. Controllare anche gli sfondi: schermi, fogli, nomi sulle divise (W2; W3).
 - Volontari in primo piano solo con il loro consenso e una liberatoria scritta che dica dove si useranno le immagini. Per un primo piano riconoscibile il luogo pubblico non basta (W2 1:17:29).
-- Minori mai riconoscibili senza il consenso di chi esercita la responsabilità genitoriale, di entrambi i genitori quando possibile, e mai il loro nome accanto al volto (W2; W3).
+- Minori mai riconoscibili senza il consenso preventivo di tutti coloro che esercitano la responsabilità genitoriale, di norma entrambi i genitori anche con l'affidamento condiviso, e mai il loro nome accanto al volto (W2; W3; Garante per la protezione dei dati personali, provvedimento del 29/04/2026, doc. web 10251841).
 - Preferire il dettaglio, come mani al lavoro, stemma, attrezzatura, ruote del mezzo: racconta il servizio senza mostrare chi viene aiutato (W2 0:28:05).
 - Ritoccare solo l'aspetto: togliere un telefono che spunta da una tasca va bene, cambiare il senso di una scena no (W3 0:19:29).
 - Non far passare un'immagine generata per un servizio vero: presentarla come illustrativa (W2).
