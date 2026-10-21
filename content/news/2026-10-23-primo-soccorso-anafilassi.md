@@ -3,6 +3,7 @@ title: "Anafilassi: riconoscerla e usare l'adrenalina"
 titoloSeo: "Anafilassi: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-23
 slug: "primo-soccorso-anafilassi"
+controllo_editoriale: "2026-10-21"
 description: "Le cause, i segni della reazione allergica grave, come usare l'autoiniettore di adrenalina e in che posizione mettere la persona."
 immagine: "/img/news/primo-soccorso-anafilassi-grafica.jpg"
 social_video: "/video/primo-soccorso-anafilassi.mp4"
@@ -48,7 +49,7 @@ Se respira male, fallo stare seduto. Se è debole o pallido, sdraiato con le gam
 
 ### Dopo 5 minuti
 
-Se dopo 5 minuti non migliora e ha una seconda dose, si può ripetere.
+Se dopo 5 minuti ha ancora i sintomi, anche se va un po' meglio, e ha una seconda dose, usala.
 
 ### Se non respira
 

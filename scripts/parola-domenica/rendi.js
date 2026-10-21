@@ -2,6 +2,11 @@
 // Crea AAAA-MM-GG-1.jpg … (JPEG 1080×1350, qualità 88): con l'opera la 1 è la copertina,
 // poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra
 // o se una scritta tocca ornamenti, stemma, filetti o opera; si rifiuta se manca il Vangelo.
+// Dal 21/10/2026 (richiesta di Alessandro: «metti in ogni slide … sempre Misericordia di Ariccia!
+// Altrimenti ci rubano la grafica!!») ogni pagina deve portare la firma «Misericordia di Ariccia»
+// (elemento data-firma, ben visibile) ed esce con la cornice di microtesto lungo i bordi, fatta dal
+// motore scripts/grafica-brand/firma-e-cornice.js, che scrive anche nel JPEG il segno che i
+// controlli del sito cercano.
 const { chromium } = require('playwright-core');
 const fs = require('fs'), path = require('path');
 const [scheda, cartella, opera] = process.argv.slice(2);
@@ -23,8 +28,25 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
     const esito = k < conOpera
       ? await p.evaluate(([s, img, n]) => window.copertina(s, img, n), [s, 'file://' + path.resolve(opera), n])
       : await p.evaluate(([s, i, n, primo]) => window.versetto(s, i, n, primo), [s, k - conOpera, n, conOpera + 1]);
+    const firma = await p.evaluate(() => {
+      const f = document.querySelector('[data-firma]');
+      if (!f) return null;
+      const cs = getComputedStyle(f), r = f.getBoundingClientRect();
+      let opacita = 1;
+      for (let el = f; el; el = el.parentElement) opacita *= parseFloat(getComputedStyle(el).opacity);
+      return { testo: f.innerText.replace(/\s+/g, ' ').trim(), corpo: parseFloat(cs.fontSize), opacita,
+               dentro: r.width > 0 && r.left >= 0 && r.top >= 0 && r.right <= 1080 && r.bottom <= 1350 && cs.visibility !== 'hidden' };
+    });
+    if (!firma || !/misericordia di ariccia/i.test(firma.testo)) { console.error(`ATTENZIONE: nella pagina ${k + 1} manca la firma «Misericordia di Ariccia»`); errori++; }
+    else if (firma.corpo < 24 || firma.opacita < 0.8 || !firma.dentro) { console.error(`ATTENZIONE: nella pagina ${k + 1} la firma «Misericordia di Ariccia» non si legge bene (corpo ${firma.corpo}px, opacità ${firma.opacita})`); errori++; }
+    const png = await p.screenshot({ type: 'png' });
+    const motore = await b.newPage();
+    await motore.goto('file://' + path.join(__dirname, '..', 'grafica-brand', 'firma-e-cornice.html'));
+    const fatta = await motore.evaluate(([dati, o]) => window.firmaECornice(dati, o),
+      ['data:image/png;base64,' + png.toString('base64'), { formato: 'jpeg', qualita: 0.88, angoli: 80 }]);
+    await motore.close();
     const file = path.join(cartella, `${s.data}-${k + 1}.jpg`);
-    await p.screenshot({ path: file, type: 'jpeg', quality: 88 });
+    fs.writeFileSync(file, Buffer.from(fatta.dati.split(',')[1], 'base64'));
     console.log(`${file}${esito.corpo ? ` (versetto a ${esito.corpo}px)` : ''}`);
     if (esito.trabocca) { console.error(`ATTENZIONE: nella pagina ${k + 1} il testo non entra`); errori++; }
     for (const x of esito.sovrapposizioni || []) { console.error(`ATTENZIONE: nella pagina ${k + 1} ${x}`); errori++; }

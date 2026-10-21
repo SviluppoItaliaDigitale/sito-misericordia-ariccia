@@ -48,6 +48,11 @@ body { margin: 0; background: #FFFFFF; }
 body.lutto img[data-campo] { filter: grayscale(1); }
 [hidden] { display: none !important; }
 
+/* Firma «Misericordia di Ariccia» (regola del 21/10/2026: «metti in ogni slide, documento grafico eccetera sempre
+   Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Fissa in ogni modello (attributo data-firma): posizione
+   e colore li dà il modello, rendi.py controlla che ci sia, che sia grande abbastanza e che nessuna scritta la tocchi. */
+.firma { position: absolute; margin: 0; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 30px; line-height: 1; letter-spacing: 0.01em; white-space: nowrap; }
+
 /* Campi con HTML (attributo data-html): paragrafi senza margini, grassetto pieno. */
 [data-campo] p { margin: 0; }
 [data-campo] strong { font-weight: 700; }

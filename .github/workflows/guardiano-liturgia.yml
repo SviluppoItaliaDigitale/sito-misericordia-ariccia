@@ -1,12 +1,24 @@
 name: Guardiano liturgia (riprova ogni mezz'ora)
 
-# Rete di sicurezza per l'aggiornamento notturno del santo del giorno e
-# delle letture: ogni mezz'ora, nella finestra notturna, controlla che la
-# pagina live della Liturgia mostri già la data di OGGI (ora italiana).
-# Se non è così — cron saltato, feed Evangelizo/LitCal momentaneamente giù,
-# FTP fallito, qualunque causa — rilancia il deploy e riprova al giro dopo.
-# Si ferma da solo appena la pagina risulta aggiornata: le run di controllo
-# durano pochi secondi.
+# Rete di sicurezza per l'aggiornamento notturno della Liturgia del giorno.
+# Ogni mezz'ora, nella finestra notturna, controlla che la pagina live sia
+# quella di OGGI (ora italiana) e completa: data di oggi, celebrazione del
+# giorno (calendario LitCal) e letture nel testo CEI 2008, quello letto a
+# Messa. Se qualcosa manca (cron saltato, fonte momentaneamente giù, FTP
+# fallito, qualunque causa) rilancia il deploy e riprova al giro dopo; si
+# ferma da solo appena la pagina è completa. Le run di controllo durano pochi
+# secondi.
+#
+# Dalle 6 italiane, se la pagina non è ancora completa, apre o aggiorna la
+# issue «Liturgia del giorno: pagina incompleta o non aggiornata» (label
+# automazione + fonte-rotta, al massimo un commento ogni tre ore), che si
+# chiude da sola al primo controllo in cui la pagina torna completa. Il run
+# resta verde: gira 16 volte a notte e una run rossa a ogni giro sarebbe solo
+# rumore (regola guasti.md, punto 1).
+#
+# Dal 21/10/2026 fa anche i controlli della routine cloud «Monitoraggio
+# Liturgia del giorno», spenta lo stesso giorno: lavora senza intelligenza
+# artificiale, quindi anche quando Claude è ferma.
 on:
   schedule:
     # Ogni mezz'ora dalle 22:20 UTC alle 05:50 UTC: copre la notte italiana
@@ -17,6 +29,7 @@ on:
 
 permissions:
   actions: write
+  issues: write
 
 concurrency:
   group: guardiano-liturgia
@@ -25,8 +38,12 @@ concurrency:
 jobs:
   controlla-e-ripara:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PAGINA: https://www.misericordia-ariccia.it/liturgia-del-giorno/
+      TITOLO_ISSUE: "Liturgia del giorno: pagina incompleta o non aggiornata"
     steps:
-      - name: La pagina live mostra già la data di oggi?
+      - name: La pagina live è quella di oggi, ed è completa?
         id: check
         run: |
           MESI=(gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre)
@@ -35,23 +52,88 @@ jobs:
           ANNO=$(TZ=Europe/Rome date +%Y)
           ATTESA="$GIORNO $MESE $ANNO"
           echo "Data attesa sulla pagina: $ATTESA"
+          STATO="irraggiungibile"
           # 5 tentativi: i 503 intermittenti sono l'anti-bot di Aruba
           for i in 1 2 3 4 5; do
-            HTML=$(curl -sL --max-time 30 https://www.misericordia-ariccia.it/liturgia-del-giorno/ || true)
-            if echo "$HTML" | grep -q "$ATTESA"; then
-              echo "La pagina è aggiornata: nessuna azione."
-              echo "aggiornata=si" >> "$GITHUB_OUTPUT"
-              exit 0
+            HTML=$(curl -sL --max-time 30 "$PAGINA" || true)
+            if ! printf '%s' "$HTML" | grep -q 'lit-data'; then
+              STATO="irraggiungibile"
+            elif ! printf '%s' "$HTML" | grep -q "$ATTESA"; then
+              STATO="data-vecchia"
+            elif ! printf '%s' "$HTML" | grep -q 'lit-letture-titolo'; then
+              STATO="senza-letture"
+            elif ! printf '%s' "$HTML" | grep -q 'traduzione <strong>CEI 2008</strong>'; then
+              STATO="ripiego-evangelizo"
+            elif ! printf '%s' "$HTML" | grep -Eq 'lit-data"?>[^<]*<strong>'; then
+              STATO="senza-celebrazione"
+            else
+              STATO="ok"
             fi
-            echo "Tentativo $i: pagina non (ancora) aggiornata o non raggiungibile."
+            if [ "$STATO" = "ok" ]; then
+              echo "La pagina è di oggi e completa: nessuna azione."
+              break
+            fi
+            echo "Tentativo $i: $STATO"
             sleep 20
           done
-          echo "aggiornata=no" >> "$GITHUB_OUTPUT"
+          echo "stato=$STATO" >> "$GITHUB_OUTPUT"
+          echo "ora=$(TZ=Europe/Rome date +%H)" >> "$GITHUB_OUTPUT"
 
-      - name: Pagina non aggiornata, rilancio il deploy
-        if: steps.check.outputs.aggiornata == 'no'
+      - name: Pagina non completa, rilancio il deploy
+        if: steps.check.outputs.stato != 'ok'
         env:
           GH_TOKEN: ${{ github.token }}
+          STATO: ${{ steps.check.outputs.stato }}
         run: |
-          echo "Rilancio il workflow 'Pubblica su Aruba (LIVE)'. Se fallisce di nuovo, riproverò al prossimo controllo (tra mezz'ora)."
+          echo "Rilancio il workflow 'Pubblica su Aruba (LIVE)' ($STATO). Se non basta, riproverò al prossimo controllo (tra mezz'ora)."
           gh workflow run deploy.yml --ref main --repo "$GITHUB_REPOSITORY"
+
+      - name: Issue di segnalazione (si apre dalle 6, si chiude da sola)
+        if: steps.check.outputs.stato != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATO: ${{ steps.check.outputs.stato }}
+          ORA: ${{ steps.check.outputs.ora }}
+        run: |
+          R="$GITHUB_REPOSITORY"
+          APERTA=$(gh api "repos/$R/issues?state=open&labels=fonte-rotta&per_page=100" \
+            --jq ".[] | select(.title == \"$TITOLO_ISSUE\") | \"\(.number) \(.updated_at)\"" | head -1)
+          NUM="${APERTA%% *}"
+          if [ "$STATO" = "ok" ]; then
+            if [ -n "$NUM" ]; then
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: alle $(TZ=Europe/Rome date +%H:%M) la pagina è di oggi e completa (data, celebrazione del giorno, letture CEI 2008). La chiudo."
+              gh api -X PATCH "repos/$R/issues/$NUM" -f state=closed -f state_reason=completed >/dev/null
+              echo "Issue #$NUM chiusa."
+            fi
+            exit 0
+          fi
+          # Prima delle 6 italiane si riprova soltanto: il deploy notturno parte spesso in ritardo.
+          if [ "$((10#$ORA))" -lt 6 ]; then
+            echo "Prima delle 6: nessuna issue, solo un nuovo tentativo."
+            exit 0
+          fi
+          case "$STATO" in
+            data-vecchia) SPIEGA="la pagina mostra ancora la data di un altro giorno: il deploy notturno non è arrivato in fondo" ;;
+            senza-letture) SPIEGA="mancano le letture: non hanno risposto né la CEI (chiesacattolica.it) né il ripiego Evangelizo" ;;
+            ripiego-evangelizo) SPIEGA="le letture vengono dal ripiego Evangelizo (traduzione CEI 1974): la CEI (chiesacattolica.it) non ha risposto a scripts/liturgia_cei.py" ;;
+            senza-celebrazione) SPIEGA="manca la celebrazione del giorno: il calendario LitCal non ha risposto" ;;
+            *) SPIEGA="la pagina non risponde, o risponde senza la riga della data, dopo 5 tentativi" ;;
+          esac
+          CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s' \
+            "Controllo del guardiano alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y'): $SPIEGA." \
+            "Pagina: $PAGINA" \
+            "Il guardiano ha rilanciato il deploy e riprova ogni mezz'ora fino alle 7:50 (6:50 con l'ora solare). La issue si chiude da sola quando la pagina torna completa. Da guardare: il log dell'ultimo «Pubblica su Aruba (LIVE)» (passi «Letture del giorno in CEI 2008» e «Compila il sito») e le fonti in CLAUDE.md, § «Fonti dati Liturgia del giorno»." \
+            "Run: $GITHUB_SERVER_URL/$R/actions/runs/$GITHUB_RUN_ID")
+          if [ -z "$NUM" ]; then
+            gh api -X POST "repos/$R/issues" -f title="$TITOLO_ISSUE" -f body="$CORPO" \
+              -f "labels[]=automazione" -f "labels[]=fonte-rotta" --jq '"Aperta la issue #\(.number)"'
+            exit 0
+          fi
+          AGGIORNATA="${APERTA#* }"
+          ETA=$(( $(date -u +%s) - $(date -u -d "$AGGIORNATA" +%s) ))
+          if [ "$ETA" -lt 10800 ]; then
+            echo "Issue #$NUM aggiornata meno di tre ore fa: nessun commento nuovo."
+          else
+            gh api -X POST "repos/$R/issues/$NUM/comments" -f body="$CORPO" >/dev/null
+            echo "Commento aggiunto alla issue #$NUM."
+          fi

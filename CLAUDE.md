@@ -5,25 +5,23 @@
 Il sito è **LIVE** su `https://www.misericordia-ariccia.it/` (radice del dominio).
 La fase anteprima è terminata il **6 luglio 2026**.
 
-## Monitoraggio automatico — Liturgia del giorno
+## Controllo automatico — Liturgia del giorno
 
-Questo repo ha un agente di monitoraggio pianificato (Claude Code web routine).
-I parametri corretti da usare sono:
+Il controllo lo fa il workflow `.github/workflows/guardiano-liturgia.yml`,
+senza intelligenza artificiale, quindi anche quando Claude è ferma. Ogni
+mezz'ora, di notte (00:20-07:50 italiane con l'ora legale, 23:20-06:50 con
+l'ora solare), verifica che la pagina
+`https://www.misericordia-ariccia.it/liturgia-del-giorno/` sia di oggi e
+completa: data di oggi, celebrazione del giorno (LitCal) e letture nel testo
+CEI 2008. Se qualcosa manca rilancia il deploy («Pubblica su Aruba (LIVE)»,
+`deploy.yml`) e riprova al giro dopo. Dalle 6 italiane, se la pagina non è
+ancora completa, apre o aggiorna la issue «Liturgia del giorno: pagina
+incompleta o non aggiornata» (label `automazione` + `fonte-rotta`), che si
+chiude da sola quando la pagina torna completa.
 
-| Parametro | Valore CORRETTO | Valore OBSOLETO (da ignorare) |
-|---|---|---|
-| Workflow da controllare | `Pubblica su Aruba (LIVE)` | ~~Pubblica su Aruba (anteprima)~~ |
-| File workflow | `.github/workflows/deploy.yml` | — |
-| Pagina liturgia live | `https://www.misericordia-ariccia.it/liturgia-del-giorno/` | ~~`/anteprima/liturgia-del-giorno/`~~ |
-| Cron deploy | `5 22 * * *` + `5 23 * * *` UTC (≈ 00:05 italiane tutto l'anno, doppio cron per l'ora legale) | ~~`30 0 * * *`~~ |
-
-Se il prompt del monitoraggio cita ancora "anteprima", **ignora quel riferimento** e usa i valori corretti in questa tabella.
-
-Inoltre c'è una **rete di sicurezza automatica**: il workflow
-`.github/workflows/guardiano-liturgia.yml` controlla ogni mezz'ora, di
-notte, che la pagina della liturgia mostri la data di oggi; se il rebuild
-notturno è fallito per qualsiasi motivo, rilancia il deploy da solo e
-riprova ogni 30 minuti finché la pagina non risulta aggiornata.
+La routine cloud «Monitoraggio Liturgia del giorno», che faceva gli stessi
+controlli una volta al giorno con valori della fase di anteprima, è spenta
+dal 21/10/2026.
 
 ## Verifica quotidiana dei dati (dal 9/10/2026)
 
@@ -42,6 +40,9 @@ script `scripts/controlli/controlla_sito.py`) ricompila il sito e aggiorna la is
 **«Stato del sito»**: link/immagini/video mancanti, CSP, registro dei dati, revisione
 sanitaria, news in uscita (controllo editoriale `controllo_editoriale:` nel front matter
 nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
+Dal 21/10/2026 controlla anche la firma «Misericordia di Ariccia» e la cornice di
+microtesto delle grafiche in uscita e dei modelli (§ «2. Grafica brand»; prova in
+`scripts/controlli/prova_cornice.py`).
 Blocca anche le **forme già corrette che non devono tornare** (`FORME_SBAGLIATE` nello
 script, cercate nei sorgenti del sito e nei generatori di video, grafiche e post, cioè
 `scripts/`, i sottotitoli in `static/` e le schede social, news programmate comprese): per esempio il motto si scrive
@@ -280,7 +281,28 @@ comunicazione della Confederazione pubblicati su YouTube.
   visita; carta intestata. Si riempiono e si salvano con la skill
   `grafiche-modelli-nazionali` (`python3 .claude/skills/grafiche-modelli-nazionali/rendi.py`),
   che controlla testi, loghi, caratteri, segnaposti e foto di prova. Si usano
-  identici: niente cornice, filigrane o altri loghi, colori e caratteri del modello.
+  identici: colori e caratteri del modello, niente cornici decorative, filigrane
+  o altri loghi. L'unica aggiunta è la firma con la cornice di microtesto (punto
+  qui sotto).
+- **Firma «Misericordia di Ariccia» e cornice di microtesto in ogni grafica (dal
+  21/10/2026).** Alessandro: «metti in ogni slide, documento grafico eccetera
+  sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!! e se riesci
+  anche un microtesto come filigrana ai bordi a mo' di cornice». Ogni modello ha
+  la firma fissa (elemento `data-firma`): `rendi.py` si ferma se manca, se è
+  troppo piccola (5 punti in stampa, 24 px nei formati social larghi 1080 px,
+  16 px negli altri), se è trasparente o se una scritta la tocca. Ogni grafica
+  esce con la cornice di microtesto lungo i bordi (nome, sito, «grafica della
+  Confraternita di Misericordia di Ariccia ODV», anno): nei JPEG e PNG la incide
+  il motore
+  `scripts/grafica-brand/firma-e-cornice.js`, con il tono adattato al fondo,
+  invisibile da lontano e leggibile ingrandendo; nei PDF da stampa è testo
+  vettoriale dentro il margine (`<meta name="microtesto">` del modello). Il
+  motore scrive nel file anche un segno che i controlli del sito cercano: lo
+  devono avere le grafiche delle news e le pagine della Parola che escono dal
+  22/10/2026. Per le grafiche fatte in altro modo (copertine dei video, Canva,
+  altre AI) c'è `rendi.py --cornice FILE`, che aggiunge la cornice e, con
+  `--firma basso-sinistra`, la firma su un fondo libero (si ferma se sotto c'è
+  un disegno o una scritta). Le grafiche già pubblicate restano come sono.
 - **Se nessun modello va bene**: si parte dal modello più vicino e si usano
   solo gli elementi del kit nazionale, cioè i colori (blu `#003F85`, giallo
   `#FCEB0C`, azzurro `#009FE3`, evidenziatore `#013C7C`), il carattere
