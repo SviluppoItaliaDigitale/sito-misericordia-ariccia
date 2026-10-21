@@ -66,4 +66,4 @@ Sui social il bianco e nero dice che si ricorda una persona morta (Alessandro, 2
 - Niente dati, foto o testimonianze inventati: segnaposto evidenti dove mancano.
 
 ## Controllo prima di consegnare
-Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto. Controlla anche le foto: a colori, salvo una grafica di lutto.
+Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto. Controlla anche le foto: nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto.
