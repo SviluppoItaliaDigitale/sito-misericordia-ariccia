@@ -103,6 +103,11 @@ jobs:
       - name: Prova delle forme da non usare
         run: python3 scripts/controlli/prova_forme.py
 
+      # Firma «Misericordia di Ariccia» e cornice di microtesto (regola del 21/10/2026): il controllo deve
+      # riconoscere il segno del motore solo nel posto giusto, e le grafiche in uscita devono averlo.
+      - name: Prova di firma e cornice delle grafiche
+        run: python3 scripts/controlli/prova_cornice.py
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

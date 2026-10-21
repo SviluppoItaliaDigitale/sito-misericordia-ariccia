@@ -14,6 +14,10 @@ for k in "$@"; do
   if [ -f "out/$k/video.html" ] && (cd out && KEY="$k" PATH="/opt/node22/bin:$PATH" node ../grafica.js); then
     rm -f "$R/static/img/news/$n-grafica.webp"
     $FF -v error -y -i "out/$k/grafica.png" -vf "crop=1080:1350:0:10" -q:v 3 "$R/static/img/news/$n-grafica.jpg"
+    # firma «Misericordia di Ariccia» in basso, allineata al titolo, e cornice di microtesto (regola del 21/10/2026)
+    python3 "$R/.claude/skills/grafiche-modelli-nazionali/rendi.py" --cornice "$R/static/img/news/$n-grafica.jpg" \
+      --firma basso-sinistra --firma-carattere Jost --firma-margine 96 --firma-basso 80 --firma-corpo 34 --firma-colore '#FFFFFF' \
+      || { echo "ERRORE: firma e cornice non messe sulla grafica di $n"; ERR=1; }
   else echo "ERRORE: grafica di $n non rifatta (manca out/$k/video.html o errore): resta quella di prima"; ERR=1; fi
   echo "copiato $n"
 done
