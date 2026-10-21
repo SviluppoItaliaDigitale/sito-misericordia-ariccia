@@ -37,6 +37,7 @@ slug: "titolo-della-news"
 social: false                    # NON condividere sui social
 immagine: "/img/news/foto.jpg"   # immagine per social/anteprima (altrimenti la prima del testo)
 social_testo: "Testo personalizzato per il post, al posto del riassunto automatico."
+social_alt: "Testo alternativo dell'immagine su Instagram, al posto dell'alt dell'immagine nell'articolo."
 data_evento: "2026-09-26"        # giorno dell'evento, se diverso dalla data della news
 social_video: "/video/nome.mp4"  # pubblica il VIDEO: Reel su Instagram, video su Facebook
 social_video_copertina: 16       # secondo del video da usare come copertina del Reel (facoltativo)
@@ -56,6 +57,55 @@ social_video_copertina: 16       # secondo del video da usare come copertina del
 - **Instagram richiede un'immagine JPEG** (`.jpg`): se la news non ha immagini,
   esce solo su Facebook.
 - Formato consigliato per Instagram: quadrato (1080×1080) o verticale 4:5 (1080×1350).
+
+## Testo alternativo delle immagini (dal 21/10/2026)
+
+Il testo alternativo descrive l'immagine a chi non la vede: i lettori di
+schermo lo leggono al posto della foto. I post automatici lo mandano dove Meta
+lo accetta:
+
+| Post | Testo alternativo |
+|---|---|
+| Instagram, news con immagine | sì (`alt_text` sul contenitore dell'immagine) |
+| Instagram, carosello della Parola della domenica | sì, su ogni pagina (`alt_text`) |
+| Facebook, album della Parola della domenica | sì, su ogni foto (`alt_text_custom`) |
+| Facebook, news (post con link) | no: l'anteprima del link la crea Facebook dalla pagina del sito |
+| Reel di Instagram, video di Facebook | no: Meta non lo accetta per i video |
+
+- **News**: si usa `social_alt:` del front matter, se c'è; altrimenti l'alt
+  dell'immagine dell'articolo che diventa l'immagine del post (di solito la
+  grafica brand, prima immagine della news). Un buon alt scritto nell'articolo
+  serve quindi sia al sito sia a Instagram. Se l'immagine pubblicata non ha un
+  alt nel testo, il post esce lo stesso, senza testo alternativo, e il log lo
+  dice.
+- **Parola della domenica**: i testi si ricavano dalla scheda
+  (`.github/social/parola/AAAA-MM-GG.json`), senza scrivere nulla a mano.
+  Copertina: «La Parola della domenica», giorno liturgico e data, poi titolo,
+  autore e anno dell'opera, la lettura che illustra e che cosa raffigura.
+  Pagine dei versetti: nome della lettura e riferimento, poi il versetto intero
+  tra virgolette; l'ultima rimanda alle letture su
+  misericordia-ariccia.it/liturgia-del-giorno.
+- **Limite**: 1000 caratteri, il massimo di Instagram; un testo più lungo si
+  accorcia a frasi intere.
+- **Se Meta rifiuta il parametro** del testo alternativo, il post si rifà
+  subito una volta senza, e per il resto dell'esecuzione il parametro non si
+  manda più: un post non salta mai per il testo alternativo. Il log lo scrive.
+- **In prova** (`DRY_RUN=1` o "Social: solo prova") il log mostra il testo
+  alternativo di ogni immagine e da dove viene.
+
+### Come scrivere `social_alt:`
+
+Serve quando l'alt dell'immagine nell'articolo non va bene per il post, per
+esempio perché è troppo breve o descrive un'altra cosa.
+
+- Dire che cosa si vede, come a chi ascolta al telefono: chi, che cosa, dove.
+  Una o due frasi di solito bastano.
+- Riportare le **scritte importanti della grafica** (titolo, data, luogo,
+  numeri utili): dentro un'immagine il lettore di schermo non le legge.
+- Non cominciare con «Immagine di», «Foto di», «Grafica che mostra»: il lettore
+  di schermo dice già che è un'immagine.
+- Niente hashtag, emoji, link o inviti a cliccare; frasi intere in italiano
+  corretto, al massimo 1000 caratteri.
 
 ## Provare senza pubblicare
 

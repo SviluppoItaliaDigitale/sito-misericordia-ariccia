@@ -20,12 +20,18 @@ Con --parola pubblica invece la «Parola della domenica» di oggi (solo social,
 nessuna pagina sul sito): scheda in .github/social/parola/AAAA-MM-GG.json e
 grafica già online in /img/parola/AAAA-MM-GG.jpg. Vedi docs/parola-della-domenica.md.
 
+Testo alternativo (dal 21/10/2026): le immagini di Instagram (news e carosello
+della Parola) e le foto dell'album Facebook della Parola escono con il loro
+testo alternativo; i Reel e i post Facebook con link non lo accettano. Vedi
+docs/pubblicazione-social.md.
+
 Solo libreria standard: nessuna dipendenza da installare.
 """
 
 import datetime as dt
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -113,6 +119,83 @@ def testo_instagram(n):
     url_breve = n["url"].replace("https://", "").replace("www.", "").rstrip("/")
     testo = f"{n['titolo']}\n\n{riga_data(n)}{corpo}{credito_musica(n)}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
     return testo[:2200]  # limite Instagram
+
+
+# ---------------------------------------------------------------- testo alternativo
+#
+# Ogni immagine ha il suo testo alternativo (regola .claude/rules/comunicazione-social.md, dal webinar
+# su disabilità e fragilità). Instagram: «alt_text» sul contenitore di un'immagine singola o di
+# un'immagine del carosello, fino a 1000 caratteri; Meta lo ha introdotto il 24/03/2025 e non lo accetta
+# per Reel e storie. Facebook: «alt_text_custom» sulle foto caricate con /{page-id}/photos (l'album della
+# Parola). I post Facebook delle news sono post con link: non c'è una foto a cui darlo.
+
+LIMITE_ALT = 1000
+_alt_rifiutati = set()  # parametri che Meta ha rifiutato in questo giro: non si mandano più
+
+
+def testo_alt(testo, limite=LIMITE_ALT):
+    """Testo alternativo su una riga e dentro il limite di Meta: se è più lungo si tengono le frasi intere."""
+    testo = re.sub(r"\s+", " ", str(testo or "")).strip()
+    if len(testo) <= limite:
+        return testo
+    tenute = ""
+    for frase in re.split(r"(?:(?<=[.!?…])|(?<=[.!?…]»))\s+", testo):
+        prova = f"{tenute} {frase}".strip()
+        if len(prova) > limite:
+            break
+        tenute = prova
+    # una sola frase più lunga del limite (non succede con i testi di oggi): si taglia all'ultima parola intera
+    return tenute or testo[:limite - 1].rsplit(" ", 1)[0].rstrip(",;:—–-") + "…"
+
+
+def alt_news(n):
+    """Testo alternativo dell'immagine di una news e da dove viene: «social_alt:» del front matter, altrimenti
+    l'alt dell'immagine dell'articolo che diventa l'immagine del post (di solito la grafica brand). Il feed di
+    Hugo lo dà in «immagine_alt» solo per l'immagine pubblicata, cioè n["immagine"] (partial
+    news-immagine-alt.html). Testo vuoto se l'immagine pubblicata non ha un alt nel testo."""
+    if (n.get("social_alt") or "").strip():
+        return testo_alt(n["social_alt"]), "social_alt del front matter"
+    if (n.get("immagine_alt") or "").strip():
+        return testo_alt(n["immagine_alt"]), "alt dell'immagine nell'articolo"
+    return "", ("l'immagine pubblicata non ha un alt nel testo: aggiungilo all'immagine nell'articolo "
+                "o scrivi social_alt: nel front matter")
+
+
+def riga_alt_instagram(n):
+    """Riga per il log: che testo alternativo riceve il post Instagram di una news."""
+    if n.get("video"):
+        return "testo alternativo: no, è un Reel (Instagram non lo accetta per i Reel)"
+    alt, fonte = alt_news(n)
+    return f"testo alternativo ({fonte}): {alt}" if alt else f"testo alternativo: nessuno, {fonte}"
+
+
+def alt_rifiutato(errore, chiave):
+    """Vero se l'errore di Meta può dipendere dal testo alternativo: lo nomina, oppure è il generico
+    «(#100) Invalid parameter» senza riferimenti al luogo (quello lo gestisce con_luogo)."""
+    t = str(errore)
+    if chiave in t or "alt_text" in t:
+        return True
+    return bool(re.search(r'\(#100\)|"code"\s*:\s*100\b', t)) and not re.search(r"place|location", t, re.I)
+
+
+def con_alt(pubblica, parametri, chiave):
+    """Pubblica col testo alternativo (parametri[chiave]); se Meta rifiuta la richiesta per un parametro, riprova
+    una volta senza e lo scrive nel log: il post non deve mai saltare per il testo alternativo. Se senza testo
+    alternativo la richiesta riesce, era quello il problema e in questo giro non si manda più; se fallisce
+    ancora, il problema era un altro e l'errore prosegue come prima."""
+    senza = {k: v for k, v in parametri.items() if k != chiave}
+    if not parametri.get(chiave) or chiave in _alt_rifiutati:
+        return pubblica(senza)
+    try:
+        return pubblica(parametri)
+    except RuntimeError as e:
+        if not alt_rifiutato(e, chiave):
+            raise
+        print(f"   Meta ha rifiutato la richiesta con il testo alternativo ({chiave}): si riprova una volta senza ({e})")
+        risultato = pubblica(senza)
+        _alt_rifiutati.add(chiave)
+        print(f"   riuscita senza testo alternativo: in questo giro {chiave} non si manda più")
+        return risultato
 
 
 # ---------------------------------------------------------------- Graph API
@@ -291,6 +374,7 @@ def pubblica_instagram(n):
     # 1) contenitore con l'immagine (URL pubblico, JPEG) o col video (Reel)
     # 2) attesa elaborazione  3) pubblicazione
     if n.get("video"):
+        # niente testo alternativo: Instagram non lo accetta per i Reel
         parametri = {"media_type": "REELS", "video_url": n["video"], "caption": testo_instagram(n),
                      "share_to_feed": "true"}
         if n.get("video_copertina"):  # secondo del video da usare come copertina del Reel
@@ -298,8 +382,12 @@ def pubblica_instagram(n):
         attese = 100  # un video può richiedere qualche minuto (~5)
     else:
         parametri = {"image_url": n["immagine"], "caption": n.get("_testo") or testo_instagram(n)}
+        alt = n["_alt"] if "_alt" in n else alt_news(n)[0]  # _alt: pagina unica della Parola
+        if alt:
+            parametri["alt_text"] = alt
         attese = 40  # fino a ~2 minuti: con più post di fila Instagram rallenta
-    c = con_luogo(lambda par: graph_post(f"{IG_USER_ID}/media", par), parametri, "location_id")
+    c = con_luogo(lambda par: con_alt(lambda q: graph_post(f"{IG_USER_ID}/media", q), par, "alt_text"),
+                  parametri, "location_id")
     cid = c["id"]
     for _ in range(attese):
         stato = graph_get(cid, {"fields": "status_code"}).get("status_code")
@@ -349,6 +437,42 @@ def immagini_parola(s):
     return [f"{SITO}/img/parola/{s['data']}-{k}.jpg" for k in range(1, n + 1)]
 
 
+# il campo «illustra» della scheda comincia con il nome della lettura (es. «Vangelo, Mt 22,34-40»)
+LETTURE_CON_ARTICOLO = (("Vangelo", "il Vangelo"), ("Prima lettura", "la prima lettura"),
+                        ("Seconda lettura", "la seconda lettura"), ("Salmo", "il Salmo"))
+
+
+def con_articolo(illustra):
+    for nome, articolato in LETTURE_CON_ARTICOLO:
+        if illustra.startswith(nome):
+            return articolato + illustra[len(nome):]
+    return f"il brano {illustra}"
+
+
+def alt_parola(s):
+    """Testi alternativi delle pagine del carosello, nello stesso ordine di immagini_parola: la copertina
+    (se c'è l'opera) e una pagina per versetto; l'ultima rimanda alle letture complete sul sito. Si ricavano
+    solo dai dati della scheda, quindi valgono con la grafica nazionale (dal 25/10/2026) come con la precedente."""
+    testi = []
+    o = s.get("opera")
+    if o:
+        g = dt.date.fromisoformat(s["data"])
+        opera = f"L'opera «{o['titolo']}» di {o['autore']}" + (f" ({o['anno']})" if o.get("anno") else "")
+        if (o.get("illustra") or "").strip():
+            opera += f" illustra {con_articolo(o['illustra'].strip())}"
+        scena = (o.get("scena") or "").strip()
+        opera += f": {scena}" if scena else ""
+        opera += "" if opera[-1] in ".!?…" else "."
+        testi.append(testo_alt(f"La Parola della domenica: {s['giorno_liturgico']}, "
+                               f"{g.day} {MESI[g.month - 1]} {g.year}. {opera}"))
+    for i, v in enumerate(s["pagine"]):
+        t = f"{v['lettura']}, {v['riferimento']}: «{v['versetto'].strip()}»"
+        if i == len(s["pagine"]) - 1:
+            t += " Tutte le letture di oggi sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno."
+        testi.append(testo_alt(t))
+    return testi
+
+
 def testo_parola(s, rete):
     righe = [f"📖 La Parola della domenica · {s['giorno_liturgico']}"]
     righe += [f"«{v['versetto']}»\n({v['lettura']}, {v['riferimento']})" for v in s["pagine"]]
@@ -377,21 +501,28 @@ def attendi_contenitore(cid, attese=40):
     raise RuntimeError(f"Instagram non ha finito di elaborare {cid}: si riprova al prossimo giro")
 
 
-def facebook_album(immagini, testo):
-    """Un solo post con più foto: si caricano non pubblicate, poi si allegano al post."""
-    foto = [graph_post(f"{PAGE_ID}/photos", {"url": u, "published": "false"})["id"] for u in immagini]
+def facebook_album(immagini, testo, alt=None):
+    """Un solo post con più foto: si caricano non pubblicate, ognuna col suo testo alternativo
+    (alt_text_custom), poi si allegano al post."""
+    alt = alt or [""] * len(immagini)
+    foto = [con_alt(lambda q: graph_post(f"{PAGE_ID}/photos", q),
+                    {"url": u, "published": "false", "alt_text_custom": a}, "alt_text_custom")["id"]
+            for u, a in zip(immagini, alt)]
     parametri = {"message": testo}
     for i, fid in enumerate(foto):
         parametri[f"attached_media[{i}]"] = json.dumps({"media_fbid": fid})
     return con_luogo(lambda par: graph_post(f"{PAGE_ID}/feed", par), parametri, "place")["id"]
 
 
-def instagram_carosello(immagini, testo):
+def instagram_carosello(immagini, testo, alt=None):
+    """Carosello Instagram: un contenitore per pagina, ognuno col suo testo alternativo (alt_text)."""
+    alt = alt or [""] * len(immagini)
     if len(immagini) == 1:
-        return pubblica_instagram({"immagine": immagini[0], "_testo": testo})
+        return pubblica_instagram({"immagine": immagini[0], "_testo": testo, "_alt": alt[0]})
     figli = []
-    for u in immagini:
-        cid = graph_post(f"{IG_USER_ID}/media", {"image_url": u, "is_carousel_item": "true"})["id"]
+    for u, a in zip(immagini, alt):
+        cid = con_alt(lambda q: graph_post(f"{IG_USER_ID}/media", q),
+                      {"image_url": u, "is_carousel_item": "true", "alt_text": a}, "alt_text")["id"]
         attendi_contenitore(cid)
         figli.append(cid)
     c = con_luogo(lambda par: graph_post(f"{IG_USER_ID}/media", par),
@@ -409,6 +540,7 @@ def pubblica_parola(giorno=None):
         return 1
     s = json.loads(file.read_text(encoding="utf-8"))
     immagini = immagini_parola(s)
+    alt = alt_parola(s)
     for u in immagini:
         try:
             with urllib.request.urlopen(urllib.request.Request(u, method="HEAD"), timeout=30) as r:
@@ -429,9 +561,13 @@ def pubblica_parola(giorno=None):
             print(f"{rete}: già pubblicata ({voce[rete]})")
             continue
         testo = testo_parola(s, rete)
+        chiave_alt = "alt_text" if rete == "instagram" else "alt_text_custom"
         if prova:
             print(f"{rete}: pubblicherebbe {len(immagini)} immagini con il testo →\n"
                   + "\n".join("   " + r for r in testo.splitlines()))
+            print(f"{rete}: testo alternativo di ogni pagina ({chiave_alt}) →")
+            for u, a in zip(immagini, alt):
+                print(f"   {u.rsplit('/', 1)[1]}: {a}")
             continue
         if rete == "instagram" and not IG_USER_ID:
             continue
@@ -441,7 +577,9 @@ def pubblica_parola(giorno=None):
             print(f"{rete}: NON pubblicata, sono passate le {entro} (regola del 18/10/2026)", file=sys.stderr)
             continue
         try:
-            pid = facebook_album(immagini, testo) if rete == "facebook" else instagram_carosello(immagini, testo)
+            print(f"{rete}: testo alternativo ({chiave_alt}) su {sum(1 for a in alt if a)} pagine su {len(immagini)}")
+            pid = (facebook_album(immagini, testo, alt) if rete == "facebook"
+                   else instagram_carosello(immagini, testo, alt))
             reg.setdefault(chiave, {})[rete] = pid
             salva_registro(reg)
             print(f"{rete}: pubblicata (id {pid})")
@@ -531,8 +669,12 @@ def main():
                 testo = testo_instagram(n) if rete == "instagram" else testo_facebook(n)
                 formato = " come Reel" if (rete == "facebook_reel" or (rete == "instagram" and n.get("video"))) else ""
                 print(f"   {rete}: pubblicherebbe{formato} →\n" + "\n".join("      " + r for r in testo.splitlines()))
+                if rete == "instagram":
+                    print(f"   {rete}: {riga_alt_instagram(n)}")
                 continue
             try:
+                if rete == "instagram":
+                    print(f"   {rete}: {riga_alt_instagram(n)}")
                 pid = reti[rete](n)
                 reg.setdefault(n["id"], {})[rete] = pid
                 salva_registro(reg)  # subito: se qualcosa dopo fallisce non si ripubblica

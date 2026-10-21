@@ -10,7 +10,7 @@ Uso:
   rendi.py DATI.json --lutto si|no                       la grafica ricorda una persona morta (sì) oppure no
   rendi.py --elenco                                      modelli, misure e campi
   rendi.py --esempi CARTELLA [--anteprima FILE.jpg]      disegna tutti gli esempi e, se chiesto, il foglio d'insieme
-  rendi.py --cornice FILE.jpg ... [--firma basso-sinistra]  firma e cornice su grafiche già fatte (vedi sotto)
+  rendi.py --cornice FILE.jpg|.png|.pdf ... [--firma basso-sinistra]  firma e cornice su grafiche già fatte (vedi sotto)
   rendi.py --autotest                                    prova lo script e i controlli
 
 Il formato viene dall'estensione di --uscita: .jpg (qualità 88, per il sito e i social), .png, oppure .pdf per la
@@ -22,8 +22,12 @@ sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»): ogni model
 fissa (elemento data-firma) e lo script si ferma se manca, se è troppo piccola o se una scritta la tocca. Ogni grafica
 esce anche con la cornice di microtesto lungo i bordi (motore scripts/grafica-brand/firma-e-cornice.js): nei JPEG e PNG
 incisa nei primi pixel dei bordi, con un commento che i controlli del sito cercano; nei modelli da stampa vettoriale,
-dentro il margine di stampa (<meta name="microtesto"> del modello). Per le grafiche fatte in altro modo (per esempio la
-copertina tratta da un video) c'è --cornice, che aggiunge la cornice e, con --firma, la firma su un fondo libero.
+dentro il margine di stampa (<meta name="microtesto"> del modello), e il PDF porta lo stesso segno nel dizionario Info
+(chiave /FirmaECornice). Per le grafiche fatte in altro modo (per esempio la copertina tratta da un video) c'è --cornice,
+che aggiunge la cornice e, con --firma, la firma su un fondo libero. Funziona con JPEG, PNG e PDF: le immagini si
+aggiornano al loro posto, il PDF di partenza non cambia ed esce FILE-cornice.pdf, con la cornice dei modelli da stampa
+in ogni pagina, solo dove il margine è libero (cornice_pdf.py, accanto a questo script). Un PDF senza «Misericordia di
+Ariccia» nel testo si ferma: il nome va aggiunto, oppure lo scrive --firma.
 
 Foto in bianco e nero solo per il lutto: sui social il bianco e nero dice che si ricorda una persona morta. Con
 "lutto": true nei dati (oppure --lutto si) la foto diventa in bianco e nero, mentre fascia, colori, loghi e testi
@@ -36,7 +40,7 @@ restano segnaposti tra parentesi quadre o la foto di prova (questi ultimi due so
 "bozza": true nei dati, oppure --bozza). Il controllo automatico non giudica l'equilibrio: il risultato si guarda
 sempre.
 Richiede Playwright per Python con Chromium (pip install playwright, poi python -m playwright install chromium);
-Pillow solo per --autotest.
+per i PDF anche pypdf, pypdfium2 e numpy; Pillow solo per --autotest.
 """
 from __future__ import annotations
 
@@ -428,6 +432,9 @@ def disegna(browser, info: dict, campi: dict, uscita: Path, bozza: bool = False,
             microtesto = v["parole"]
             if v["tocchi"]:
                 problemi.append("la cornice di microtesto tocca: " + ", ".join(f"«{x}»" for x in v["tocchi"]))
+            if v.get("tagliate"):
+                problemi.append("la cornice di microtesto esce dalla sua striscia (ultima parola tagliata) sul lato "
+                                + ", ".join(v["tagliate"]))
             mancano = [x for x in (m["lati"] or ["alto", "basso", "sinistra", "destra"]) if x not in {s["lato"] for s in v["strisce"]}]
             if mancano:
                 problemi.append("la cornice di microtesto non trova posto sul lato " + ", ".join(mancano))
@@ -437,6 +444,9 @@ def disegna(browser, info: dict, campi: dict, uscita: Path, bozza: bool = False,
             pagina.pdf(path=str(uscita), width=f"{larghezza_mm}mm", height=f"{altezza_mm}mm", print_background=True,
                        margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
                        scale=round(larghezza_mm / 25.4 * 96 / info["w"], 5), page_ranges="1")
+            if microtesto:
+                import cornice_pdf   # il segno di firma e cornice nel dizionario Info, come nei JPEG e PNG
+                cornice_pdf.marca(uscita)
         else:
             png = pagina.screenshot(type="png", clip={"x": 0, "y": 0, "width": info["w"], "height": info["h"]})
             dati, motore = firma_e_cornice(browser, png, "image/png", "png" if formato == ".png" else "jpeg",
@@ -529,8 +539,9 @@ def esempi(cartella: Path, anteprima: Path | None) -> int:
 
 
 def cornice_su_file(file: list[Path], uscita: Path | None, firma: dict | None, forza: bool, browser=None) -> int:
-    """--cornice: cornice di microtesto (e firma, se chiesta) su grafiche già fatte, al loro posto o in --uscita.
-    Una grafica che ha già la cornice si lascia com'è: due cornici una sopra l'altra non si leggono più."""
+    """--cornice: cornice di microtesto (e firma, se chiesta) su grafiche già fatte, al loro posto o in --uscita; i PDF
+    in FILE-cornice.pdf (o --uscita), con cornice_pdf.py. Una grafica che ha già la cornice si lascia com'è: due
+    cornici una sopra l'altra non si leggono più."""
     if uscita and len(file) > 1:
         raise SystemExit("Errore: --uscita vale per un file solo; con più file ogni grafica si aggiorna al suo posto.")
     if browser is None:
@@ -543,8 +554,12 @@ def cornice_su_file(file: list[Path], uscita: Path | None, firma: dict | None, f
                 b.close()
     errori = 0
     for f in file:
+        if f.suffix.lower() == ".pdf" and f.is_file():
+            import cornice_pdf   # accanto a questo script
+            errori += cornice_pdf.cornice_su_pdf(f, uscita, firma, forza, browser)
+            continue
         if f.suffix.lower() not in (".jpg", ".jpeg", ".png") or not f.is_file():
-            print(f"PROBLEMI in {f}: serve un file JPEG o PNG esistente")
+            print(f"PROBLEMI in {f}: serve un file JPEG, PNG o PDF esistente")
             errori += 1
             continue
         dati = f.read_bytes()
@@ -697,6 +712,24 @@ def autotest() -> int:
         attesa(bool(mediabox) and abs(float(mediabox.group(1)) - 595.3) < 2 and abs(float(mediabox.group(2)) - 841.9) < 2,
                f"PDF della carta non in A4: {mediabox.group(0) if mediabox else 'MediaBox mancante'}")
         attesa(not r["problemi"] and r["microtesto"] > 20, f"carta intestata senza cornice di microtesto o con problemi: {r}")
+        # PDF: segno nel dizionario Info e --cornice sui PDF già fatti (prova completa: scripts/controlli/prova_cornice_pdf.py)
+        import cornice_pdf
+        attesa(cornice_pdf.ha_segno(t / "carta.pdf"), "PDF della carta senza il segno")
+        disegna(b, carta, {}, t / "carta-senza.pdf", bozza=True, cornice=False)
+        attesa(cornice_su_file([t / "carta-senza.pdf"], None, None, False, b) == 0 and cornice_pdf.ha_segno(t / "carta-senza-cornice.pdf"),
+               "--cornice sulla carta intestata in PDF senza cornice: rifiutata o senza segno")
+        attesa(cornice_su_file([t / "carta-senza-cornice.pdf"], None, None, False, b) == 0
+               and not (t / "carta-senza-cornice-cornice.pdf").exists(), "--cornice rifatta su un PDF che l'ha già")
+        pg = b.new_page()
+        pg.set_content("<p style='font:12pt sans-serif;margin:30mm'>Una lettera qualsiasi.</p>")
+        pg.pdf(path=str(t / "anonimo.pdf"), format="A4")
+        pg.close()
+        attesa(cornice_su_file([t / "anonimo.pdf"], None, None, False, b) == 1 and not (t / "anonimo-cornice.pdf").exists(),
+               "--cornice su un PDF senza «Misericordia di Ariccia» non si è fermata")
+        lettere_larghe = ("() => { const s = document.createElement('style'); "
+                          "s.textContent = '[data-microtesto] div { letter-spacing: 3px !important }'; document.head.append(s); }")
+        r = disegna(b, carta, {}, t / "carta-larga.pdf", bozza=True, prova_js=lettere_larghe)
+        attesa(any("esce dalla sua striscia" in x for x in r["problemi"]), f"riga della cornice più lunga della striscia non segnalata: {r['problemi']}")
 
         # firma «Misericordia di Ariccia» (regola del 21/10/2026): tolta, piccola, trasparente o coperta si ferma tutto
         def con_prova(js, info=post):
@@ -753,7 +786,8 @@ def autotest() -> int:
     print("Autotest superato: esempi, misure, testi lunghi, campi inesistenti, foto di prova, lutto (foto in bianco e nero, "
           "grafica a colori, testi riconosciuti), segnaposti, HTML non ammesso, assemblea, area sicura della storia, PDF A4, "
           "firma «Misericordia di Ariccia» (mancante, piccola, trasparente, coperta) e cornice di microtesto (solo sui bordi, "
-          "nei PDF, su grafiche già fatte, mai due volte).")
+          "nei PDF, su grafiche e PDF già fatti, mai due volte, mai una riga più lunga della sua striscia). Per i PDF già fatti "
+          "la prova completa è scripts/controlli/prova_cornice_pdf.py.")
     return 0
 
 
@@ -771,14 +805,20 @@ def main(argv=None) -> int:
     a.add_argument("--esempi", type=Path, metavar="CARTELLA", help="disegna tutti gli esempi in CARTELLA")
     a.add_argument("--anteprima", type=Path, metavar="FILE", help="con --esempi: foglio d'insieme in JPEG")
     a.add_argument("--cornice", type=Path, nargs="+", metavar="FILE",
-                   help="mette la cornice di microtesto su grafiche JPEG o PNG già fatte (al loro posto, o in --uscita se è una sola)")
-    a.add_argument("--firma", choices=POSIZIONI_FIRMA, help="con --cornice: scrive anche la firma «Misericordia di Ariccia» in basso")
-    a.add_argument("--firma-margine", type=int, metavar="PX", help="distanza della firma dal bordo laterale (6%% della larghezza)")
-    a.add_argument("--firma-basso", type=int, metavar="PX", help="distanza della linea di base dal fondo (5%% dell'altezza)")
-    a.add_argument("--firma-corpo", type=int, metavar="PX", help="corpo della firma (3%% della larghezza: 32 px su 1080)")
+                   help="mette la cornice di microtesto su grafiche già fatte: JPEG e PNG al loro posto (o in --uscita se è una "
+                        "sola), PDF in FILE-cornice.pdf (o --uscita), con il PDF di partenza che non cambia")
+    a.add_argument("--firma", choices=POSIZIONI_FIRMA, help="con --cornice: scrive anche la firma «Misericordia di Ariccia» in basso "
+                   "(nei PDF solo nelle pagine che non hanno il nome nel testo)")
+    a.add_argument("--firma-margine", type=float, metavar="PX|PT", help="distanza della firma dal bordo laterale, in px nelle "
+                   "immagini e in punti nei PDF (6%% della larghezza)")
+    a.add_argument("--firma-basso", type=float, metavar="PX|PT", help="distanza della linea di base dal fondo, in px o in punti "
+                   "(5%% dell'altezza)")
+    a.add_argument("--firma-corpo", type=float, metavar="PX|PT", help="corpo della firma, in px o in punti (3%% della larghezza: "
+                   "32 px su 1080; nei PDF almeno 5 punti)")
     a.add_argument("--firma-carattere", default="Montserrat", help="Montserrat (modelli nazionali) o Jost (stile dei video)")
     a.add_argument("--firma-colore", default="auto", help="auto (chiaro sul fondo scuro, scuro sul chiaro) oppure un colore, es. #DFE6F5")
-    a.add_argument("--forza", action="store_true", help="con --firma: scrive anche se il fondo sotto la firma non è uniforme")
+    a.add_argument("--forza", action="store_true", help="con --firma: scrive anche se il fondo sotto la firma non è uniforme; nei PDF "
+                   "accetta anche la cornice sui soli lati dove il margine è libero")
     a.add_argument("--autotest", action="store_true")
     x = a.parse_args(argv)
     if x.autotest:

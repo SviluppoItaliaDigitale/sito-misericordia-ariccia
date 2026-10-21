@@ -301,7 +301,7 @@ comunicazione della Confederazione pubblicati su YouTube.
   motore scrive nel file anche un segno che i controlli del sito cercano: lo
   devono avere le grafiche delle news e le pagine della Parola che escono dal
   22/10/2026. Per le grafiche fatte in altro modo (copertine dei video, Canva,
-  altre AI) c'è `rendi.py --cornice FILE`, che aggiunge la cornice e, con
+  altre AI) c'è `rendi.py --cornice FILE` (JPEG, PNG e PDF), che aggiunge la cornice e, con
   `--firma basso-sinistra`, la firma su un fondo libero (si ferma se sotto c'è
   un disegno o una scritta). Le grafiche già pubblicate restano come sono.
 - **Se nessun modello va bene**: si parte dal modello più vicino e si usano

@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+"""Prova del testo alternativo nei post automatici (scripts/pubblica_social.py), sui controlli di ogni PR.
+
+Al posto della Graph API di Meta c'è un sostituto finto di graph_post e graph_get che registra le chiamate. Si
+controlla che il testo alternativo arrivi dove Meta lo accetta (alt_text sui contenitori Instagram delle immagini,
+anche nel carosello; alt_text_custom sulle foto dell'album Facebook della Parola), che manchi dove non lo accetta
+(Reel, post Facebook con link), che una news senza alt esca lo stesso e che, se Meta rifiuta il parametro, il post si
+rifaccia una volta senza. Si provano anche i testi della Parola su tutte le schede e, se si passa il feed compilato da
+Hugo (public/news/index.json), che ogni news vi abbia l'alt della sua immagine. Nasce il 21/10/2026 con il testo
+alternativo nei post. Esce con 1 se un caso non va come deve. Solo libreria standard.
+Uso: prova_testo_alternativo.py [public/news/index.json]
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "scripts"))
+import pubblica_social as ps  # noqa: E402
+
+falliti = []
+
+
+def attesa(cond, messaggio):
+    if not cond:
+        falliti.append(messaggio)
+
+
+class GraphFinta:
+    """Registra le chiamate; rifiuta, se richiesto, le richieste con un certo parametro, come farebbe Meta."""
+
+    def __init__(self, rifiuta=None, errore=None):
+        self.chiamate, self.rifiuta, self.errore, self.n = [], rifiuta, errore, 0
+
+    def post(self, percorso, parametri):
+        self.chiamate.append((percorso, dict(parametri)))
+        if self.rifiuta and self.rifiuta in parametri:
+            raise RuntimeError(f'HTTP 400 su {percorso}: {{"error":{{"message":"(#100) {self.errore}",'
+                               f'"type":"OAuthException","code":100,"fbtrace_id":"prova"}}}}')
+        self.n += 1
+        return {"id": f"{self.n}"}
+
+    def get(self, percorso, parametri):
+        return {"status_code": "FINISHED"}
+
+    def su(self, fine):
+        return [p for c, p in self.chiamate if c.endswith(fine)]
+
+
+def prepara(graph, luogo=None):
+    ps.PAGE_ID, ps.PAGE_TOKEN, ps.IG_USER_ID = "111", "prova", "222"
+    ps.graph_post, ps.graph_get = graph.post, graph.get
+    ps._luogo["id"] = luogo                 # niente ricerca del luogo su Meta
+    ps._alt_rifiutati.clear()
+    ps.time.sleep = lambda *_: None
+
+
+NEWS = {"id": "2026-10-25-prova", "titolo": "Titolo di prova", "url": "https://www.misericordia-ariccia.it/news/prova/",
+        "data": "2026-10-25", "sommario": "Sommario di prova.", "social_testo": "", "data_evento": "", "video": "",
+        "video_copertina": "", "immagine": "https://www.misericordia-ariccia.it/img/news/prova-grafica.jpg",
+        "immagine_alt": "Lo sapevi che… n. 2: Due rintocchi «a caso», tre «a morto»", "social_alt": ""}
+
+# 1. news con immagine: alt_text = alt dell'immagine dell'articolo, sul contenitore dell'immagine
+g = GraphFinta(); prepara(g)
+attesa(ps.pubblica_instagram(dict(NEWS)) == "2", "news con immagine: pubblicazione non riuscita")
+media = g.su("222/media")
+attesa(len(media) == 1 and media[0].get("alt_text") == NEWS["immagine_alt"] and media[0]["image_url"] == NEWS["immagine"],
+       f"news con immagine: alt_text sbagliato o mancante ({media})")
+attesa(len(g.su("media_publish")) == 1, "news con immagine: media_publish non chiamato una volta")
+
+# 2. social_alt del front matter prevale sull'alt dell'immagine
+g = GraphFinta(); prepara(g)
+ps.pubblica_instagram(dict(NEWS, social_alt="Testo alternativo  scritto\na mano."))
+attesa(g.su("222/media")[0].get("alt_text") == "Testo alternativo scritto a mano.", f"social_alt non usato: {g.chiamate}")
+
+# 3. news con video: Reel su Instagram, niente testo alternativo (Meta non lo accetta per i Reel)
+g = GraphFinta(); prepara(g)
+reel = dict(NEWS, video="https://www.misericordia-ariccia.it/video/prova.mp4")
+ps.pubblica_instagram(reel)
+media = g.su("222/media")
+attesa(media and media[0].get("media_type") == "REELS" and "alt_text" not in media[0], f"Reel con testo alternativo: {media}")
+attesa("Reel" in ps.riga_alt_instagram(reel), "riga del log del Reel sbagliata")
+
+# 4. news senza alt: esce lo stesso, senza alt_text, e il log dice perché
+g = GraphFinta(); prepara(g)
+senza = dict(NEWS, immagine_alt="")
+attesa(ps.pubblica_instagram(senza) == "2" and "alt_text" not in g.su("222/media")[0], f"news senza alt: {g.chiamate}")
+attesa("social_alt" in ps.riga_alt_instagram(senza), "news senza alt: il log non dice come aggiungerlo")
+attesa(ps.alt_news({k: v for k, v in NEWS.items() if k not in ("immagine_alt", "social_alt")})[0] == "",
+       "feed senza i campi del testo alternativo: alt inventato")
+
+# 5. Facebook, news: post con link, nessun testo alternativo
+g = GraphFinta(); prepara(g)
+ps.pubblica_facebook(dict(NEWS))
+feed = g.su("111/feed")
+attesa(len(feed) == 1 and not any(k.startswith("alt") for k in feed[0]), f"post Facebook con link e testo alternativo: {feed}")
+
+# 6-7. Parola: album Facebook (alt_text_custom su ogni foto) e carosello Instagram (alt_text su ogni pagina)
+scheda = json.loads((REPO / ".github/social/parola/2026-10-25.json").read_text(encoding="utf-8"))
+immagini, alt = ps.immagini_parola(scheda), ps.alt_parola(scheda)
+g = GraphFinta(); prepara(g)
+ps.facebook_album(immagini, "testo", alt)
+foto = g.su("111/photos")
+attesa([f.get("alt_text_custom") for f in foto] == alt and all(f["published"] == "false" for f in foto),
+       f"album Facebook: alt_text_custom sbagliati ({foto})")
+attesa(len([k for k in g.su("111/feed")[0] if k.startswith("attached_media")]) == len(immagini), "album Facebook: foto non allegate")
+g = GraphFinta(); prepara(g)
+ps.instagram_carosello(immagini, "testo", alt)
+media = g.su("222/media")
+figli, contenitore = [m for m in media if m.get("is_carousel_item")], [m for m in media if m.get("media_type") == "CAROUSEL"]
+attesa([m.get("alt_text") for m in figli] == alt, f"carosello Instagram: alt_text delle pagine sbagliati ({figli})")
+attesa(len(contenitore) == 1 and "alt_text" not in contenitore[0], "carosello Instagram: alt_text sul contenitore del carosello")
+g = GraphFinta(); prepara(g)
+ps.instagram_carosello(immagini[:1], "testo", alt[:1])
+attesa(g.su("222/media")[0].get("alt_text") == alt[0], "Parola di una pagina sola: alt_text mancante")
+
+# 8. Meta rifiuta il parametro: una sola ripresa senza, poi in questo giro non lo si manda più
+g = GraphFinta(rifiuta="alt_text", errore="Param alt_text is not valid"); prepara(g)
+attesa(ps.pubblica_instagram(dict(NEWS)) == "2", "alt_text rifiutato: il post non è uscito")
+media = g.su("222/media")
+attesa(len(media) == 2 and "alt_text" in media[0] and "alt_text" not in media[1], f"alt_text rifiutato: riprese sbagliate ({media})")
+ps.pubblica_instagram(dict(NEWS))
+attesa(len(g.su("222/media")) == 3, "alt_text rifiutato: rimandato nello stesso giro")
+g = GraphFinta(rifiuta="alt_text_custom", errore="Invalid parameter"); prepara(g)
+ps.facebook_album(immagini, "testo", alt)
+foto = g.su("111/photos")
+attesa(len(foto) == len(immagini) + 1 and "alt_text_custom" in foto[0] and all("alt_text_custom" not in f for f in foto[1:]),
+       f"alt_text_custom rifiutato: riprese sbagliate ({len(foto)} chiamate)")
+# errore generico «(#100)» che non dipende dal testo alternativo: una ripresa senza, poi l'errore prosegue
+# e il testo alternativo resta per i post seguenti
+g = GraphFinta(rifiuta="image_url", errore="Invalid parameter"); prepara(g)
+try:
+    ps.pubblica_instagram(dict(NEWS))
+    falliti.append("errore che non dipende dal testo alternativo: il post risulta uscito")
+except RuntimeError:
+    pass
+attesa(len(g.su("222/media")) == 2 and "alt_text" not in ps._alt_rifiutati,
+       f"errore che non dipende dal testo alternativo: riprese sbagliate o alt segnato come rifiutato ({g.su('222/media')})")
+# un errore che non c'entra non si riprova
+g = GraphFinta(); prepara(g)
+ps.graph_post = lambda p, q: (_ for _ in ()).throw(RuntimeError("HTTP 500 su 222/media: errore del server"))
+try:
+    ps.pubblica_instagram(dict(NEWS))
+    falliti.append("errore 500: non si è fermato")
+except RuntimeError:
+    pass
+# luogo rifiutato: lo gestisce con_luogo, il testo alternativo resta
+g = GraphFinta(rifiuta="location_id", errore="Invalid parameter location_id"); prepara(g, luogo="999")
+ps.pubblica_instagram(dict(NEWS))
+media = g.su("222/media")
+attesa(len(media) == 2 and media[1].get("alt_text") == NEWS["immagine_alt"] and "location_id" not in media[1],
+       f"luogo rifiutato: il testo alternativo si è perso ({media})")
+
+# 9. testi della Parola su tutte le schede: uno per pagina, entro 1000 caratteri, senza «immagine di»
+for f in sorted((REPO / ".github/social/parola").glob("*.json")):
+    s = json.loads(f.read_text(encoding="utf-8"))
+    testi = ps.alt_parola(s)
+    attesa(len(testi) == len(ps.immagini_parola(s)), f"{f.name}: i testi non sono uno per pagina")
+    attesa(all(0 < len(t) <= ps.LIMITE_ALT for t in testi), f"{f.name}: testo vuoto o oltre {ps.LIMITE_ALT} caratteri")
+    attesa(not any(re.search(r"\bimmagine\s+di\b", t, re.I) for t in testi), f"{f.name}: «immagine di» in un testo")
+    attesa(testi[-1].endswith(" Tutte le letture di oggi sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno."),
+           f"{f.name}: l'ultima pagina non rimanda alle letture: «{testi[-1][-90:]}»")
+    for v, t in zip(s["pagine"], testi[-len(s["pagine"]):]):
+        attesa(t.startswith(f"{v['lettura']}, {v['riferimento']}: «{v['versetto'].strip()}»"), f"{f.name}: versetto non intero in «{t[:60]}»")
+    if s.get("opera"):
+        o = s["opera"]
+        attesa(all(x in testi[0] for x in ("La Parola della domenica", s["giorno_liturgico"], o["titolo"], o["autore"])),
+               f"{f.name}: copertina senza giorno, titolo o autore: «{testi[0]}»")
+copertina = ps.alt_parola(scheda)[0]
+attesa("25 ottobre 2026" in copertina and "illustra il Vangelo, Mt 22,34-40" in copertina and "(1886-1894)" in copertina,
+       f"copertina del 25/10/2026: data, lettura o anno mancanti: «{copertina}»")
+for illustra, atteso in (("Prima lettura, Es 22,20-26", "la prima lettura, Es 22,20-26"),
+                         ("Seconda lettura, 1Ts 1,5-10", "la seconda lettura, 1Ts 1,5-10"),
+                         ("Lettera agli Ebrei, Eb 4,12", "il brano Lettera agli Ebrei, Eb 4,12")):
+    attesa(ps.con_articolo(illustra) == atteso, f"«{illustra}» con l'articolo: {ps.con_articolo(illustra)}")
+
+# 10. un testo troppo lungo si accorcia a frasi intere
+lungo = " ".join(f"Frase numero {i} del testo alternativo, con qualche parola in più per allungarla." for i in range(40))
+corto = ps.testo_alt(lungo)
+attesa(len(corto) <= 1000 and corto.endswith("allungarla.") and lungo.startswith(corto), f"testo lungo accorciato male: {len(corto)}")
+
+# 11. feed compilato da Hugo: ogni news ha l'alt della sua immagine (partial news-immagine-alt.html)
+if len(sys.argv) > 1:
+    news = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))["news"]
+    norma = lambda t: re.sub(r"\s+", " ", t.replace("’", "'").replace("“", '"').replace("”", '"')).strip()
+    controllate = 0
+    for n in news:
+        attesa("immagine_alt" in n and "social_alt" in n, f"feed: {n['id']} senza i campi immagine_alt e social_alt")
+        sorgente = REPO / "content/news" / f"{n['id']}.md"
+        if not n.get("immagine") or not sorgente.is_file():
+            continue
+        for alt_md, src in re.findall(r"!\[([^\]]*)\]\(([^)\s]+)", sorgente.read_text(encoding="utf-8")):
+            if n["immagine"].endswith(src) and alt_md.strip():
+                controllate += 1
+                attesa(norma(n.get("immagine_alt", "")) == norma(alt_md), f"feed: {n['id']} ha l'alt «{n.get('immagine_alt')}» invece di «{alt_md}»")
+                break
+    attesa(controllate > 0, "feed: nessuna news controllata (feed vuoto o immagini senza alt)")
+    print(f"Feed: {controllate} news con l'alt della loro immagine.")
+
+if falliti:
+    print("PROVA FALLITA:")
+    for f in falliti:
+        print(f"  - {f}")
+    sys.exit(1)
+print("Prova del testo alternativo superata: news con immagine, social_alt, Reel, news senza alt, post con link, "
+      "album e carosello della Parola, parametro rifiutato, testi della Parola, testo lungo.")
