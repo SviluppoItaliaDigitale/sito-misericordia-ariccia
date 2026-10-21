@@ -1,7 +1,7 @@
 #!/bin/bash
-# Copia nel sito video, copertina (fotogramma a 1,8 s) e grafica 1080x1350 senza sottotitolo (grafica.js) dei video montati; poi crea i .webp.
+# Copia nel sito video, sottotitoli e copertina (fotogramma a 1,8 s) dei video montati; poi crea i .webp.
+# La grafica della news NON viene dal video: dal 21/10/2026 si fa col modello nazionale (skill grafiche-modelli-nazionali).
 cd "$(dirname "$0")"; R=$(cd ../.. && pwd)
-ERR=0
 FF=$(python3 -c "import sys; sys.path.insert(0,'.'); from comune import FF; print(FF)")
 for k in "$@"; do
   n="primo-soccorso-$k"; [ -f "out/$n.mp4" ] || n="$k"
@@ -10,13 +10,6 @@ for k in "$@"; do
   [ -f "out/$n.vtt" ] && cp "out/$n.vtt" "$R/static/video/$n.vtt"   # sottotitoli (pipeline.py --sottotitoli)
   rm -f "$R/static/img/video/$n.webp"
   $FF -v error -y -ss 1.8 -i "out/$n.mp4" -frames:v 1 -q:v 3 "$R/static/img/video/$n.jpg"
-  # grafica: stesso fotogramma ma senza sottotitolo (grafica.js), altrimenti la striscia finisce tagliata in fondo
-  if [ -f "out/$k/video.html" ] && (cd out && KEY="$k" PATH="/opt/node22/bin:$PATH" node ../grafica.js); then
-    rm -f "$R/static/img/news/$n-grafica.webp"
-    $FF -v error -y -i "out/$k/grafica.png" -vf "crop=1080:1350:0:10" -q:v 3 "$R/static/img/news/$n-grafica.jpg"
-  else echo "ERRORE: grafica di $n non rifatta (manca out/$k/video.html o errore): resta quella di prima"; ERR=1; fi
   echo "copiato $n"
 done
 python3 "$R/scripts/ottimizza-immagini.py" "$R/static/img/video" | tail -1
-python3 "$R/scripts/ottimizza-immagini.py" "$R/static/img/news" | tail -1
-exit $ERR   # grafica non rifatta: uscita con errore, così non passa inosservata
