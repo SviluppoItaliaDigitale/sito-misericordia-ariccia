@@ -22,14 +22,15 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
   fs.mkdirSync(cartella, { recursive: true });
   const b = await chromium.launch({ executablePath: chrome, args: ['--allow-file-access-from-files'] });
   let errori = 0;
+  const grafica = process.env.GRAFICA || 'grafica.html';  // GRAFICA=grafica-nazionale.html: proposta nello stile nazionale
   for (let k = 0; k < n; k++) {
     const p = await b.newPage({ viewport: { width: 1080, height: 1350 } });
-    await p.goto('file://' + path.join(__dirname, process.env.GRAFICA || 'grafica.html'));  // GRAFICA=grafica-nazionale.html: proposta nello stile nazionale
+    await p.goto('file://' + path.join(__dirname, grafica));
     const esito = k < conOpera
       ? await p.evaluate(([s, img, n]) => window.copertina(s, img, n), [s, 'file://' + path.resolve(opera), n])
       : await p.evaluate(([s, i, n, primo]) => window.versetto(s, i, n, primo), [s, k - conOpera, n, conOpera + 1]);
     const firma = await p.evaluate(() => {
-      const f = document.querySelector('[data-firma]');
+      const f = [...document.querySelectorAll('[data-firma]')].find(el => el.getClientRects().length > 0);
       if (!f) return null;
       const cs = getComputedStyle(f), r = f.getBoundingClientRect();
       let opacita = 1;
@@ -43,7 +44,8 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
     const motore = await b.newPage();
     await motore.goto('file://' + path.join(__dirname, '..', 'grafica-brand', 'firma-e-cornice.html'));
     const fatta = await motore.evaluate(([dati, o]) => window.firmaECornice(dati, o),
-      ['data:image/png;base64,' + png.toString('base64'), { formato: 'jpeg', qualita: 0.88, angoli: 80 }]);
+      // grafica.html ha i gigli negli angoli: la cornice lascia liberi gli 80 px di ogni angolo
+      ['data:image/png;base64,' + png.toString('base64'), { formato: 'jpeg', qualita: 0.88, angoli: grafica === 'grafica.html' ? 80 : 0 }]);
     await motore.close();
     const file = path.join(cartella, `${s.data}-${k + 1}.jpg`);
     fs.writeFileSync(file, Buffer.from(fatta.dati.split(',')[1], 'base64'));
