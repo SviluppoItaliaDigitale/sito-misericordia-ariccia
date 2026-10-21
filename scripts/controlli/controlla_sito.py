@@ -28,7 +28,12 @@ FORME_SBAGLIATE = [
     (re.compile(r"\bche\s+dio\s+(?:te\s+ne|ve\s+ne|gliene)\s+renda\s+merito", re.I),
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),
+    # Il valore intero, non solo l'inizio: «Alessandro Cuollo, <altro>» o il nome senza data non passano.
+    (re.compile(r'"preparata_da"\s*:\s*"(?!Alessandro Cuollo, 20\d\d-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])")[^"]*"'),
+     "le schede della Parola della domenica si firmano esattamente «Alessandro Cuollo, AAAA-MM-GG» (la data "
+     "di preparazione e nient'altro), mai con il nome di uno strumento: regola sulla firma dei lavori (21/10/2026)"),
 ]
+# La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
 # (scripts/, schede social). Non i file di governo (CLAUDE.md, COORDINAMENTO.md…), che citano la forma per vietarla.
 CARTELLE_TESTI = ("content", "layouts", "data", "assets", "archetypes", "static", "contenuti", "scripts", ".github/social")

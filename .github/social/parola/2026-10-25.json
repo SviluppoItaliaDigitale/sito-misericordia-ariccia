@@ -1,0 +1,40 @@
+{
+  "data": "2026-10-25",
+  "giorno_liturgico": "XXX Domenica del Tempo Ordinario",
+  "opera": {
+    "autore": "James Tissot",
+    "titolo": "Lo scriba si alzò per mettere alla prova Gesù",
+    "anno": "1886-1894",
+    "luogo": "Brooklyn Museum, New York",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_The_Scribe_Stood_to_Tempt_Jesus_(Le_scribe_se_leva_pour_tenter_J%C3%A9sus)_-_James_Tissot_-_overall.jpg",
+    "illustra": "Vangelo, Mt 22,34-40",
+    "scena": "un dottore della Legge si alza davanti a Gesù per metterlo alla prova, come racconta anche Luca (Lc 10,25)."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro dell’Esodo",
+      "riferimento": "Es 22,26",
+      "versetto": "Quando griderà verso di me, io l’ascolterò, perché io sono pietoso.",
+      "evidenza": "perché io sono pietoso"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 22,37",
+      "versetto": "Amerai il Signore tuo Dio con tutto il tuo cuore, con tutta la tua anima e con tutta la tua mente.",
+      "evidenza": "con tutto il tuo cuore"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 22,39",
+      "versetto": "Amerai il tuo prossimo come te stesso.",
+      "evidenza": "il tuo prossimo"
+    }
+  ],
+  "testo_social": "Dio ascolta chi grida verso di lui, perché è pietoso: lo dice nel libro dell’Esodo, parlando del forestiero, della vedova, dell’orfano e del povero. Nel Vangelo Gesù tiene insieme due comandamenti: amare Dio con tutto il cuore e amare il prossimo come noi stessi. Il secondo, dice, è simile al primo. Farsi prossimi a chi ha bisogno è, da secoli, il servizio delle Misericordie. Buona domenica!",
+  "preparata_da": "Alessandro Cuollo, 2026-10-21",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
