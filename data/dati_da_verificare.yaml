@@ -1,6 +1,6 @@
 # Inventario dei dati del sito che invecchiano (numeri, norme, importi, date, recapiti, link ufficiali).
 # Lo usa l'agente automatico che ogni giorno li ricontrolla sulla fonte ufficiale e aggiorna il sito o apre una segnalazione.
-aggiornato: "2026-10-09"
+aggiornato: "2026-10-21"
 dati:
 - id: "nue-112-lazio"
   cosa: "Il 112 è il Numero Unico di Emergenza nel Lazio: gratuito, 24 ore su 24, per ambulanza, forze dell'ordine e vigili del fuoco; i vecchi 113, 115, 118 rispondono tramite la centrale del 112."
@@ -1016,6 +1016,7 @@ dati:
   - "layouts/home.html"
   - "layouts/partials/footer.html"
   - "layouts/partials/header.html"
+  - "scripts/grafica-brand/modelli-nazionali/carta-intestata.html"
   fonte: "https://www.lavoro.gov.it/temi-e-priorita-terzo-settore-e-responsabilita-sociale-delle-imprese-focus/cinque-mille/allegato-A-5x1000-elenco-ammessi-2025.pdf"
   tipo: "associazione"
   delicato: true
@@ -1132,6 +1133,7 @@ dati:
   - "content/en/servizio-civile.md"
   - "content/glossario.md"
   - "content/servizio-civile.md"
+  - "scripts/grafica-brand/modelli-nazionali/esempi/post-servizio-civile.json"
   fonte: "https://www.scelgoilserviziocivile.gov.it/"
   tipo: "legge"
   delicato: false
@@ -1401,6 +1403,10 @@ dati:
   - "layouts/dossier/primo-soccorso.html"
   - "layouts/home.html"
   - "layouts/partials/header.html"
+  - "scripts/grafica-brand/modelli-nazionali/biglietto-retro.html"
+  - "scripts/grafica-brand/modelli-nazionali/esempi/carosello-4-invito.json"
+  - "scripts/grafica-brand/modelli-nazionali/esempi/post-diventa-volontario.json"
+  - "scripts/grafica-brand/modelli-nazionali/esempi/storia-diventa-volontario.json"
   fonte: "Dato interno dell'associazione (hugo.toml [params] telefono)"
   tipo: "associazione"
   delicato: true
@@ -1445,6 +1451,7 @@ dati:
   - "layouts/_default/baseof.html"
   - "layouts/_default/leggera.html"
   - "layouts/partials/footer.html"
+  - "scripts/grafica-brand/modelli-nazionali/carta-intestata.html"
   fonte: "Dato interno dell'associazione"
   tipo: "associazione"
   delicato: true
@@ -1491,6 +1498,8 @@ dati:
   - "layouts/_default/leggera.html"
   - "layouts/partials/footer.html"
   - "layouts/partials/header.html"
+  - "scripts/grafica-brand/modelli-nazionali/biglietto-retro.html"
+  - "scripts/grafica-brand/modelli-nazionali/carta-intestata.html"
   fonte: "Dato interno dell'associazione"
   tipo: "associazione"
   delicato: true
@@ -1530,6 +1539,7 @@ dati:
   - "layouts/_default/chi-siamo.html"
   - "layouts/_default/leggera.html"
   - "layouts/partials/footer.html"
+  - "scripts/grafica-brand/modelli-nazionali/biglietto-retro.html"
   fonte: "Dato interno dell'associazione"
   tipo: "associazione"
   delicato: true
@@ -1548,6 +1558,7 @@ dati:
   - "layouts/_default/baseof.html"
   - "layouts/_default/chi-siamo.html"
   - "layouts/partials/footer.html"
+  - "scripts/grafica-brand/modelli-nazionali/carta-intestata.html"
   fonte: "Dato interno dell'associazione"
   tipo: "associazione"
   delicato: true
@@ -1667,6 +1678,7 @@ dati:
   - "content/impatto.md"
   - "layouts/_default/trasporto.html"
   - "layouts/home.html"
+  - "scripts/grafica-brand/modelli-nazionali/esempi/post-giornata-volontariato.json"
   fonte: "Dato interno dell'associazione"
   tipo: "associazione"
   delicato: false

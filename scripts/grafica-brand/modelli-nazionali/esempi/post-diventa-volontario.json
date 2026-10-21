@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia.html",
+  "campi": {
+    "fascia": "Volontariato",
+    "evidenziato": "C'è un posto",
+    "titolo": "anche per te.",
+    "sottotitolo": "Scegli tu come esserci: chiamaci o scrivici su WhatsApp al 348 4068657.",
+    "foto": "../../../../static/img/ambulanza.jpg",
+    "foto-posizione": "84% 50%",
+    "foto-alt": "Ambulanza della Misericordia di Ariccia"
+  }
+}

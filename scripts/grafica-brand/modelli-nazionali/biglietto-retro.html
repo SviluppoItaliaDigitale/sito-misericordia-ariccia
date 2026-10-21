@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1020x660">
+<meta name="stampa" content="85x55mm">
+<title>Biglietto da visita, retro</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Biglietto da visita, retro, 1020×660 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Recapiti della sede operativa, come sul sito. 85×55 mm: in PDF per la tipografia.
+Campi (attributo data-campo):
+  nome           testo   nome e cognome
+  ruolo          testo   ruolo nella Confraternita
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="--blu: #003F8A; width: 1020px; height: 660px; position: relative; overflow: hidden; background: #FFFFFF; font-family: Montserrat, sans-serif; color: #233B74">
+<img data-logo src="loghi/triangolo-misericordie.png" alt="Logo delle Misericordie" style="position: absolute; left: 66px; top: 58px; width: 124px; height: auto">
+<div style="position: absolute; left: 66px; right: 66px; top: 226px; display: flex; flex-direction: column; gap: 10px">
+<span data-campo="nome" style="font-weight: 700; font-size: 46px; line-height: 1.1; color: var(--blu)">[Nome Cognome]</span>
+<span data-campo="ruolo" style="font-weight: 400; font-size: 28px; line-height: 1.2">[Ruolo]</span>
+</div>
+<div data-ostacolo style="position: absolute; left: 66px; top: 372px; display: flex; flex-direction: column; gap: 6px; font-weight: 400; font-size: 25px; line-height: 1.35">
+<span>Piazzale Aldo Moro 6 · 00072 Ariccia (RM)</span>
+<span>348 4068657 · sede@misericordia-ariccia.it</span>
+<span style="font-weight: 600">www.misericordia-ariccia.it</span>
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 86px; box-sizing: border-box; padding: 0 66px; background: var(--blu); display: flex; align-items: center; font-weight: 700; font-size: 23px; line-height: 1.2; color: #FFFFFF">Confraternita di Misericordia di Ariccia ODV</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Post assemblea</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Post assemblea, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Dal post nazionale dell'assemblea: carattere Roboto Condensed.
+Campi (attributo data-campo):
+  titolo         testo   tipo di assemblea, in una riga
+  giorno         testo   giorno della settimana
+  data           testo   giorno e mese (es. 15 MARZO)
+  ora            testo   ora
+  luogo          testo   dove si tiene, come scritto nella convocazione
+  convocazione   testo   quale convocazione
+  nota           testo   riga nella pillola bianca (di solito resta questa)
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: radial-gradient(130% 95% at 0% 45%, #19A5D8 0%, #1190C8 32%, #0B72B2 60%, #06589C 82%, #044C8F 100%); font-family: 'Roboto Condensed', sans-serif; color: #FFFFFF; text-align: center">
+<svg aria-hidden="true" style="position: absolute; left: 0; top: 0" width="1080" height="1350" viewBox="0 0 1080 1350" fill="none">
+<g stroke="rgba(255, 255, 255, 0.12)" stroke-width="2"><circle cx="1180" cy="1260" r="260"></circle><circle cx="1180" cy="1260" r="330"></circle><circle cx="1180" cy="1260" r="400"></circle><circle cx="1180" cy="1260" r="470"></circle><circle cx="1180" cy="1260" r="540"></circle><circle cx="1180" cy="1260" r="610"></circle><circle cx="1180" cy="1260" r="680"></circle><circle cx="1180" cy="1260" r="750"></circle><circle cx="1180" cy="1260" r="820"></circle><circle cx="1180" cy="1260" r="890"></circle><circle cx="1180" cy="1260" r="960"></circle><circle cx="1180" cy="1260" r="1030"></circle><circle cx="1180" cy="1260" r="1100"></circle><circle cx="1180" cy="1260" r="1170"></circle><circle cx="1180" cy="1260" r="1240"></circle><circle cx="1180" cy="1260" r="1310"></circle><circle cx="1180" cy="1260" r="1380"></circle><circle cx="1180" cy="1260" r="1450"></circle><circle cx="1180" cy="1260" r="1520"></circle><circle cx="1180" cy="1260" r="1590"></circle><circle cx="1180" cy="1260" r="1660"></circle></g>
+<g stroke="rgba(255, 255, 255, 0.10)" stroke-width="2"><circle cx="-160" cy="60" r="220"></circle><circle cx="-160" cy="60" r="290"></circle><circle cx="-160" cy="60" r="360"></circle><circle cx="-160" cy="60" r="430"></circle><circle cx="-160" cy="60" r="500"></circle><circle cx="-160" cy="60" r="570"></circle><circle cx="-160" cy="60" r="640"></circle><circle cx="-160" cy="60" r="710"></circle><circle cx="-160" cy="60" r="780"></circle><circle cx="-160" cy="60" r="850"></circle></g>
+<g stroke="rgba(255, 255, 255, 0.28)" stroke-width="2.5"><circle cx="100" cy="80" r="16"></circle><circle cx="92" cy="118" r="9"></circle><circle cx="958" cy="138" r="9"></circle><circle cx="818" cy="180" r="16"></circle><circle cx="226" cy="760" r="18"></circle><circle cx="1044" cy="740" r="13"></circle><circle cx="176" cy="1160" r="13"></circle><circle cx="96" cy="640" r="11"></circle></g>
+</svg>
+<img data-logo src="loghi/stemma-misericordie.png" alt="Stemma della Confederazione Nazionale delle Misericordie d'Italia" style="position: absolute; left: 415px; top: 81px; width: 250px; height: auto">
+<div data-campo="titolo" style="position: absolute; left: 0; right: 0; top: 438px; font-weight: 700; font-size: 92px; line-height: 92px; color: var(--giallo)">ASSEMBLEA DEI SOCI</div>
+<div data-ostacolo style="position: absolute; left: 0; right: 0; top: 550px; font-weight: 400; font-size: 56px; line-height: 74px; letter-spacing: 0.08em">CONFRATERNITA DI MISERICORDIA<br>DI ARICCIA ODV</div>
+<div style="position: absolute; left: 74px; width: 466px; top: 780px; display: flex; flex-direction: column; align-items: center">
+<span data-campo="giorno" style="font-weight: 500; font-size: 61px; line-height: 61px; letter-spacing: 0.05em">[GIORNO]</span>
+<span data-campo="data" style="margin-top: 2px; font-weight: 700; font-size: 100px; line-height: 100px">[GG MESE]</span>
+</div>
+<div style="position: absolute; left: 539px; width: 466px; top: 780px; display: flex; flex-direction: column; align-items: center">
+<span style="font-weight: 500; font-size: 61px; line-height: 61px; letter-spacing: 0.05em">ORE</span>
+<span data-campo="ora" style="margin-top: 2px; font-weight: 700; font-size: 100px; line-height: 100px">[00:00]</span>
+</div>
+<div data-ostacolo style="position: absolute; left: 40px; right: 40px; top: 1000px; font-weight: 500; font-size: 51px; line-height: 86px">
+<div data-campo="luogo">[LUOGO E INDIRIZZO]</div>
+<div data-campo="convocazione">[PRIMA O SECONDA CONVOCAZIONE]</div>
+</div>
+<div data-ostacolo style="position: absolute; left: 0; right: 0; top: 1207px; display: flex; justify-content: center">
+<span data-campo="nota" data-riquadro style="display: inline-flex; align-items: center; height: 56px; padding: 0 30px; border-radius: 12px; background: #FFFFFF; color: #1B396F; font-weight: 500; font-size: 36px; line-height: 1; white-space: nowrap">Tutti i dettagli nel post e su misericordia-ariccia.it</span>
+</div>
+</div>
+</body>
+</html>

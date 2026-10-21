@@ -1,0 +1,11 @@
+{
+  "modello": "carosello-invito.html",
+  "campi": {
+    "tema-1": "COSA",
+    "tema-2": "FACCIAMO",
+    "domanda": "VUOI ESSERCI\nANCHE TU?",
+    "invito": "DIVENTA VOLONTARIO.",
+    "contatto": "Chiamaci o scrivici su WhatsApp al 348 4068657",
+    "sito": "www.misericordia-ariccia.it"
+  }
+}

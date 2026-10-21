@@ -1,0 +1,14 @@
+{
+  "modello": "carosello-copertina.html",
+  "bozza": true,
+  "campi": {
+    "tema-1": "COSA",
+    "tema-2": "FACCIAMO",
+    "titolo-1": "Cosa fa la",
+    "pillola": "Misericordia",
+    "titolo-2": "di Ariccia e come<br>puoi esserci anche <span class=\"finale\">Tu</span>.",
+    "foto": "../foto-prova/piazza-di-corte.jpg",
+    "foto-posizione": "72% 50%",
+    "foto-alt": "Ambulanza della Misericordia di Ariccia in piazza di Corte, davanti alla Collegiata"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "modello": "post-con-fascia.html",
+  "bozza": true,
+  "campi": {
+    "fascia": "Servizio civile",
+    "evidenziato": "Un anno",
+    "titolo": "per gli altri. E per te.",
+    "sottotitolo": "Alla Misericordia di Ariccia, per chi ha tra i 18 e i 28 anni.",
+    "foto": "../foto-prova/piazza-di-corte.jpg",
+    "foto-posizione": "68% 50%",
+    "foto-alt": "Due volontari della Misericordia di Ariccia, di spalle, in piazza di Corte accanto all'ambulanza"
+  }
+}

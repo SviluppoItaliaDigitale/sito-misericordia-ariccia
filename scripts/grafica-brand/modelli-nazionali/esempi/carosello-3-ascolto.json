@@ -1,0 +1,11 @@
+{
+  "modello": "carosello-elenco.html",
+  "campi": {
+    "tema-1": "COSA",
+    "tema-2": "FACCIAMO",
+    "titolo": "Non solo ambulanze...",
+    "introduzione": "ci trovi anche qui:",
+    "voci": "Centro di Ascolto\nBanco Alimentare\ncorsi di primo soccorso\nServizio Civile Universale",
+    "chiusura": "Trovi tutto su misericordia-ariccia.it."
+  }
+}

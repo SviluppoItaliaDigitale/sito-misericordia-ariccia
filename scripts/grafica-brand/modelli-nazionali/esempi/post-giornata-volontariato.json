@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia-due-righe.html",
+  "campi": {
+    "fascia": "Giornata internazionale\ndel volontariato",
+    "evidenziato": "Grazie",
+    "titolo": "a chi sceglie di esserci, ogni giorno.",
+    "sottotitolo": "Le volontarie e i volontari della Misericordia di Ariccia, dal 1994.",
+    "foto": "../../../../static/img/ambulanza.jpg",
+    "foto-posizione": "4% 50%",
+    "foto-alt": "Volontarie e volontari della Misericordia di Ariccia in divisa accanto a un'ambulanza"
+  }
+}

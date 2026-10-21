@@ -195,6 +195,9 @@ serve, domenica all'1:55 con il «recupero notturno»): scheda in
   + `scripts/controlla_giallo_ciano.py`): i numeri nuovi vengono aggiunti da
   soli (online col rebuild notturno) e segnalati con una issue GitHub; i link
   rotti aprono la issue «Giallo Ciano: link da controllare».
+- **Modelli grafici nazionali** (webinar sulla comunicazione del 2026): rifatti
+  identici in `scripts/grafica-brand/modelli-nazionali/`; quando si usano lo dice
+  § «2. Grafica brand».
 - **8xmille alla Chiesa cattolica**: riquadro in `/sostienici/` e nel footer,
   logo ufficiale in `static/img/loghi/8xmille-chiesa-cattolica*.svg`, link a
   https://5xmille.8xmille.it/ («Due firme che fanno bene»).
@@ -253,38 +256,51 @@ debba rispiegarlo:
 
 ### 2. Grafica brand (1080×1350, per articolo e social)
 
-Ricetta consolidata (vedi gli esempi in questa sessione: lancio sito e
-Velletri Moda):
+**Un solo stile, quello nazionale (dal 21/10/2026).** Istruzioni di Alessandro:
+«facciamole identiche», «le grafiche in automatico devono essere utilizzate sia
+da te che da altre AI», «deve essere tutto coerente». Lo stile della casa era
+nato quando mancava un riferimento nazionale; ora c'è, con i webinar sulla
+comunicazione della Confederazione pubblicati su YouTube.
 
-- **Palette**: navy `#1b223f` (fondo), ciano `#00a5dc`, giallo `#f2e433`.
-- **Font locali** (`static/fonts/`, via `@font-face` con `file://`):
-  Playfair Display 600 per i titoli, Jost per il resto.
-- **Struttura**: badge giallo a pillola con evento/data → titolo Playfair
-  (parole chiave in giallo) → foto dentro cornice ciano arrotondata con
-  `object-fit: cover` + `transform: scale(1.1-1.25)` per **tagliare le
-  bande bianche** delle foto WhatsApp → cartiglio sfumato con didascalia →
-  eventuale fascia di ringraziamento → piede bianco con logo
-  (`static/img/loghi/mise-triangolo.png`) e `www.misericordia-ariccia.it`.
-- **Cornice (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: ogni grafica social ha la
-  cornice della confraternita, **sobria** (Alessandro: niente di pacchiano): doppio filetto
-  dorato, due volute e il giglio di Firenze in ogni angolo, la stessa della «Parola della
-  domenica». Blocco pronto: `scripts/grafica-brand/cornice.html` (contenuti ad almeno 100 px
-  da lati e alto, lontani dagli angoli).
-- **Filigrane (SEMPRE, dal 9/10/2026, richiesta di Alessandro)**: in ogni grafica per
-  i social (articoli, avvisi, eventi…) lo **stemma FM della confraternita** e il
-  **giglio di Firenze** in trasparenza, dietro ai testi e sul fondo navy (mai sopra la
-  foto), con le scritte ben leggibili. Blocco pronto da copiare:
-  `scripts/grafica-brand/filigrane.html` (il contenitore vuole `position:relative;
-  isolation:isolate`). Giglio: `static/img/loghi/giglio-firenze-bianco.svg`
-  (Wikimedia Commons, pubblico dominio).
-- **Render**: HTML nello scratchpad → screenshot con Playwright
-  (`playwright-core` + Chromium in `/opt/pw-browsers/chromium-*/chrome-linux/chrome`,
-  attendere `document.fonts.ready`). NON usare lo screenshot CLI di
-  Chromium (scatta prima del caricamento font/immagini).
-- **Export**: JPEG qualità ~88 in `static/img/news/` (deve essere JPEG:
-  è l'immagine che va anche su Instagram).
-- **Controllare sempre il render** (Read del PNG) prima di pubblicare:
-  contenuto che trabocca, testi tagliati, contrasti.
+- **Modelli**: i modelli grafici della Confederazione, rifatti identici per
+  Ariccia in `scripts/grafica-brand/modelli-nazionali/` (catalogo in
+  `LEGGIMI.md`): post con foto e fascia, anche come grafica delle news; storia;
+  testimonianza; carosello; Save the date; assemblea dei soci; biglietto da
+  visita; carta intestata. Si riempiono e si salvano con la skill
+  `grafiche-modelli-nazionali` (`python3 .claude/skills/grafiche-modelli-nazionali/rendi.py`),
+  che controlla testi, loghi, caratteri, segnaposti e foto di prova. Si usano
+  identici: niente cornice, filigrane o altri loghi, colori e caratteri del modello.
+- **Se nessun modello va bene**: si parte dal modello più vicino e si usano
+  solo gli elementi del kit nazionale, cioè i colori (blu `#003F85`, giallo
+  `#FCEB0C`, azzurro `#009FE3`, evidenziatore `#013C7C`), il carattere
+  Montserrat, la fascia blu con il filo giallo e lo stemma, il triangolo nei
+  caroselli e sulla carta, con i loghi ufficiali della cartella dei modelli.
+- **Foto in bianco e nero solo per un lutto** (Alessandro, 21/10/2026: «quelle in
+  bianco e nero sui social vengono utilizzate per commemorare la morte di
+  qualcuno»). Di regola le foto restano a colori. In bianco e nero vanno solo
+  nelle grafiche in ricordo di una persona morta: confratelli e consorelle,
+  volontari, benefattori, chi ha fatto parte della vita della Misericordia e i
+  personaggi pubblici che le sono stati vicini, dal Papa in giù; anche
+  anniversari della morte, vittime di una tragedia, commemorazione dei defunti
+  del 2 novembre. Si chiede con `"lutto": true` nei dati: diventa grigia solo
+  la foto, mentre fascia, colori, stemma e testi restano istituzionali.
+  `rendi.py` si ferma se il testo ricorda una persona morta e il dato manca.
+- **5×1000**: le grafiche ufficiali della Confederazione già compilate per
+  Ariccia (`static/img/news/5x1000-*.jpg`), così come sono.
+- **Grafica di una news**: `static/img/news/AAAA-MM-GG-<slug>-grafica.jpg`, JPEG
+  qualità 88 (deve essere JPEG: va anche su Instagram), poi
+  `python3 scripts/ottimizza-immagini.py static/img/news`. È la prima immagine
+  dell'articolo e l'anteprima sui social.
+- **Render** solo con Playwright, dopo `document.fonts.ready` (lo fa `rendi.py`);
+  mai lo screenshot da riga di comando di Chromium, che scatta prima che
+  caratteri e immagini siano caricati.
+- **Controllare sempre il render** aprendolo prima di pubblicare: testi
+  tagliati, ritaglio della foto, contrasti.
+- **Stile precedente**, fino al 20/10/2026: navy `#1b223f`, Playfair Display e
+  Jost, cornice dorata e filigrane (blocchi in `scripts/grafica-brand/cornice.html`
+  e `filigrane.html`). Resta nelle grafiche già pubblicate e, finché non passa
+  allo stile nazionale, nella «Parola della domenica». Non si usa per grafiche
+  nuove.
 
 ### 3. Social: pubblicazione AUTOMATICA (dal 30/09/2026)
 
