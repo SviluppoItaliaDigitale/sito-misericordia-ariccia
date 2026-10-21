@@ -86,7 +86,9 @@ lo accetta:
   tra virgolette; l'ultima rimanda alle letture su
   misericordia-ariccia.it/liturgia-del-giorno.
 - **Limite**: 1000 caratteri, il massimo di Instagram; un testo più lungo si
-  accorcia a frasi intere.
+  accorcia a frasi intere. Dal 22/10/2026 si contano in unità UTF-16, come nel
+  generatore delle grafiche della Protezione Civile e in `social-pc-genzano`:
+  un'emoji o un altro carattere fuori dal piano di base vale 2.
 - **Se Meta rifiuta il parametro** del testo alternativo, il post si rifà
   subito una volta senza, e se così esce, per il resto dell'esecuzione il
   parametro non si manda più: un post non salta mai per il testo alternativo.

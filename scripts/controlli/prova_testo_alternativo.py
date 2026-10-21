@@ -212,7 +212,7 @@ for f in sorted((REPO / ".github/social/parola").glob("*.json")):
     s = json.loads(f.read_text(encoding="utf-8"))
     testi = ps.alt_parola(s)
     attesa(len(testi) == len(ps.immagini_parola(s)), f"{f.name}: i testi non sono uno per pagina")
-    attesa(all(0 < len(t) <= ps.LIMITE_ALT for t in testi), f"{f.name}: testo vuoto o oltre {ps.LIMITE_ALT} caratteri")
+    attesa(all(0 < ps.lunghezza_alt(t) <= ps.LIMITE_ALT for t in testi), f"{f.name}: testo vuoto o oltre {ps.LIMITE_ALT} caratteri")
     attesa(not any(re.search(r"\bimmagine\s+di\b", t, re.I) for t in testi), f"{f.name}: «immagine di» in un testo")
     attesa(testi[-1].endswith(" Tutte le letture di oggi sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno."),
            f"{f.name}: l'ultima pagina non rimanda alle letture: «{testi[-1][-90:]}»")
@@ -233,7 +233,20 @@ for illustra, atteso in (("Prima lettura, Es 22,20-26", "la prima lettura, Es 22
 # 10. un testo troppo lungo si accorcia a frasi intere
 lungo = " ".join(f"Frase numero {i} del testo alternativo, con qualche parola in più per allungarla." for i in range(40))
 corto = ps.testo_alt(lungo)
-attesa(len(corto) <= 1000 and corto.endswith("allungarla.") and lungo.startswith(corto), f"testo lungo accorciato male: {len(corto)}")
+attesa(ps.lunghezza_alt(corto) <= 1000 and corto.endswith("allungarla.") and lungo.startswith(corto), f"testo lungo accorciato male: {ps.lunghezza_alt(corto)}")
+
+# 12. si conta in unità UTF-16 (22/10/2026): un'emoji vale 2, come nel generatore della Protezione Civile e in
+# social-pc-genzano. 971 caratteri, 108 dei quali emoji, sono 1079 unità: il testo si accorcia a frasi intere.
+attesa(ps.lunghezza_alt("a🙂b") == 4 and ps.lunghezza_alt("città") == 5, "conteggio UTF-16 sbagliato")
+con_emoji = " ".join("Frase con emoji 🙂🙂🙂🙂 fra le parole." for _ in range(27))
+attesa(len(con_emoji) <= 1000 < ps.lunghezza_alt(con_emoji), f"prova costruita male: {len(con_emoji)}, {ps.lunghezza_alt(con_emoji)}")
+corto = ps.testo_alt(con_emoji)
+attesa(ps.lunghezza_alt(corto) <= 1000 and corto.endswith("parole.") and con_emoji.startswith(corto),
+       f"testo con emoji accorciato male: {ps.lunghezza_alt(corto)} unità")
+una_frase = "Parola🙂 " * 200
+corto = ps.testo_alt(una_frase)
+attesa(ps.lunghezza_alt(corto) <= 1000 and corto.endswith("…") and not corto[:-1].endswith(" "),
+       f"frase unica con emoji tagliata male: {ps.lunghezza_alt(corto)} unità, «{corto[-12:]}»")
 
 # 11. feed compilato da Hugo: ogni news ha l'alt della sua immagine (partial news-immagine-alt.html)
 if len(sys.argv) > 1:
@@ -259,4 +272,4 @@ if falliti:
         print(f"  - {f}")
     sys.exit(1)
 print("Prova del testo alternativo superata: news con immagine, social_alt, Reel, news senza alt, post con link, "
-      "album e carosello della Parola, parametro rifiutato, testi della Parola, testo lungo.")
+      "album e carosello della Parola, parametro rifiutato, testi della Parola, testo lungo, conteggio UTF-16.")
