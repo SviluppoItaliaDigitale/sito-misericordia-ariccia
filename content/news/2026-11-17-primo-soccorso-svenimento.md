@@ -1,6 +1,6 @@
 ---
 title: "Svenimento: sdraiato e gambe su"
-titoloSeo: "Svenimento: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Svenimento: cosa fare passo passo, primo soccorso"
 date: 2026-11-17
 slug: "primo-soccorso-svenimento"
 description: "I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112."
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [NHS, Fainting](https://www.nhs.uk/conditions/fainting/) (segni prima dello svenimento, sdraiato con le gambe sollevate, quando chiamare i soccorsi); [Istituto Auxologico Italiano, Sincope](https://www.auxologico.it/malattia/sincope-svenimento) (pallore e sudore, sdraiarsi, contromanovre, rialzarsi piano); [American Heart Association, contromanovre fisiche raccomandate](https://cpr.heart.org/en/resuscitation-science/first-aid-guidelines/first-aid/description-of-recommended-physical-counterpressure-maneuvers) (incrociare le gambe stringendo i muscoli, accovacciarsi); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (se non respira normalmente, rianimazione).*

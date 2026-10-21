@@ -1,6 +1,6 @@
 ---
 title: "Se un anziano cade: cosa fare"
-titoloSeo: "Cadute degli anziani: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Cadute degli anziani: cosa fare passo passo, primo soccorso"
 date: 2026-12-15
 slug: "primo-soccorso-cadute-anziani"
 description: "Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura."
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, prevenzione); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*

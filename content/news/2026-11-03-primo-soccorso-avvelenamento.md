@@ -1,6 +1,6 @@
 ---
 title: "Avvelenamento: niente rimedi fai da te"
-titoloSeo: "Avvelenamento: cosa fare passo passo (linee guida IRC 2025)"
+titoloSeo: "Avvelenamento: cosa fare passo passo, primo soccorso"
 date: 2026-11-03
 slug: "primo-soccorso-avvelenamento"
 description: "Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa."
@@ -70,4 +70,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [Croce Rossa Italiana, Avvelenamenti](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/avvelenamenti/) (non far vomitare, perché un corrosivo risalendo fa altri danni, niente da bere senza il Centro Antiveleni, cosa, quanto e quando, la confezione); [Centro Antiveleni di Milano, Casalinghi](https://www.centroantiveleni.org/alimentari-2/) (niente latte, pelle e occhi da lavare con acqua, prodotti chiusi e nelle confezioni originali); [Centro Antiveleni di Careggi, Intossicazione dei bambini](https://www.aou-careggi.toscana.it/internet/diagnosi-e-cura/strutture-cliniche/crr-centri-di-riferimento-regionale/centro-antiveleni/intossicazione-dei-bambini/) (incidenti in casa, bambini più a rischio, mai travasare in altre bottiglie); [Istituto Superiore di Sanità, Centri Antiveleni](https://www.iss.it/-/cnsc-cav) (i numeri di Roma); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (gas e fumi: aprire porte e finestre).*

@@ -1,6 +1,6 @@
 ---
 title: "Batterie a bottone e calamite: un'emergenza"
-titoloSeo: "Batterie a bottone e calamite: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Batterie a bottone e calamite: cosa fare passo passo, primo soccorso"
 date: 2026-12-11
 slug: "primo-soccorso-batterie"
 description: "Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire."
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*

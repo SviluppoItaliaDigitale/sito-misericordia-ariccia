@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (prevenzione dell'ipotermia: riparo, vestiti bagnati tolti, coperte, isolamento dal pavimento; rianimazione); [Croce Rossa Italiana, Ipotermia](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/ipotermia/) (segni, bevanda calda e zuccherata senza alcol, niente calore diretto, non strofinare); [NHS, Hypothermia](https://www.nhs.uk/conditions/hypothermia/) (coprire anche la testa, anziani soli più a rischio); [NHS, Frostbite](https://www.nhs.uk/conditions/frostbite/) (congelamento: non strofinare, niente fuoco o stufe, scaldare con il corpo, ospedale).*
