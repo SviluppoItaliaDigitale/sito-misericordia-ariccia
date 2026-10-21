@@ -47,8 +47,9 @@ script, cercate nei sorgenti del sito e nei generatori di video, grafiche e post
 `scripts/`, i sottotitoli in `static/` e le schede social, news programmate comprese): per esempio il motto si scrive
 con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo e nel glossario del
 sito, mai «Che Dio…»; le schede della Parola della domenica hanno `preparata_da`
-«Alessandro Cuollo, AAAA-MM-GG», mai il nome di uno strumento (21/10/2026). Quando si corregge un errore che potrebbe ripresentarsi, si
-aggiunge la sua forma all'elenco. Nello stesso workflow `scripts/controlli/prova_letture.py`
+esattamente «Alessandro Cuollo, AAAA-MM-GG», mai il nome di uno strumento (21/10/2026). Quando si corregge un errore che potrebbe ripresentarsi, si
+aggiunge la sua forma all'elenco, con i suoi esempi in `scripts/controlli/prova_forme.py`
+(la prova del controllo, che gira con lui). Nello stesso workflow `scripts/controlli/prova_letture.py`
 prova con un server locale i tentativi sulle fonti delle letture (`scarica()` in
 `scripts/liturgia_cei.py`: 403, connessione chiusa, 404), usati da Liturgia del giorno e
 Parola della domenica.

@@ -98,6 +98,11 @@ jobs:
       - name: Prova dei tentativi delle letture
         run: python3 scripts/controlli/prova_letture.py
 
+      # Forme da non usare (FORME_SBAGLIATE in controlla_sito.py): esempi che il controllo deve
+      # segnalare e forme giuste che deve lasciar passare. Se un caso non va, il job fallisce.
+      - name: Prova delle forme da non usare
+        run: python3 scripts/controlli/prova_forme.py
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |
