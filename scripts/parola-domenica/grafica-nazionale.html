@@ -1,0 +1,164 @@
+<!doctype html>
+<!-- Carosello «La Parola della domenica» nello stile nazionale delle Misericordie (approvato da Alessandro il
+     21/10/2026, in uso da domenica 25/10/2026). Pagine 1080×1350, le riempie rendi.js (grafica predefinita).
+     Parte dai modelli del carosello della Confederazione (scripts/grafica-brand/modelli-nazionali/):
+     copertina blu come carosello-copertina, con l'opera intera al posto della foto velata; pagine dei versetti
+     chiare come carosello-pagina; fascia, triangolo, caratteri, colori, evidenziatore e frecce del kit.
+     Niente cornici decorative, filigrane o altri loghi. Come in tutti i modelli (regola del 21/10/2026), ogni pagina
+     ha la firma «Misericordia di Ariccia» in basso a sinistra (data-firma) e rendi.js aggiunge la cornice di microtesto. -->
+<html lang="it"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../grafica-brand/modelli-nazionali/base.css">
+<style>
+*{box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;position:relative;font-family:Montserrat,sans-serif}
+[hidden]{display:none!important}
+.tavola{position:absolute;inset:0;overflow:hidden}
+/* fascia con il tema e triangolo, come nei modelli del carosello */
+.fascia{position:absolute;left:0;right:0;top:118px;height:98px}
+.tema{position:absolute;right:72px;top:118px;height:98px;display:flex;align-items:center;font-size:42px;line-height:1;letter-spacing:.01em;white-space:nowrap}
+.tema b{font-weight:700}.tema span{font-weight:400}
+.logo{position:absolute;left:99px;top:97px;width:162px;height:auto}
+.frecce{position:absolute;right:101px;bottom:71px}
+/* copertina: fondo blu dell'invito, opera intera senza velo */
+#copertina{background:radial-gradient(90% 70% at 50% 45%,#0A4793 0%,var(--blu) 60%,#00387A 100%);color:#fff}
+#copertina .fascia{background:#fff}
+#copertina .tema{color:#233B74}
+.testa{position:absolute;left:99px;right:99px;top:262px;display:flex;flex-direction:column;gap:8px}
+.giorno{font-weight:800;font-size:44px;line-height:1.15}
+.data{font-weight:400;font-size:36px;line-height:1.2}
+.opera{position:absolute;left:99px;display:block;object-fit:contain}
+.sotto{position:absolute;left:99px;right:240px;bottom:60px;display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.nowrap{white-space:nowrap}
+.etichetta{display:inline-block;padding:10px 18px 9px;background:var(--giallo);color:#233B74;font-weight:800;font-size:36px;line-height:1}
+.scena{margin:0;font-weight:400;font-size:32px;line-height:43px}
+.credito{margin:0;font-weight:400;font-size:22px;line-height:30px;color:rgba(255,255,255,.82)}
+.credito i{font-style:italic}
+/* pagina del versetto: fondo chiaro di carosello-pagina */
+#pagina{background:radial-gradient(60% 45% at 12% 6%,#F2DCE8 0%,rgba(242,220,232,0) 100%),radial-gradient(55% 45% at 92% 30%,#D9E3F4 0%,rgba(217,227,244,0) 100%),radial-gradient(60% 45% at 10% 92%,#D3E0EE 0%,rgba(211,224,238,0) 100%),radial-gradient(55% 40% at 92% 96%,#EEE3EE 0%,rgba(238,227,238,0) 100%),#EEF0F8;color:#233B74}
+#pagina .fascia{background:var(--blu)}
+#pagina .tema{color:#fff}
+.lettura{position:absolute;left:99px;right:110px;top:330px}
+.lettura h2{margin:0;font-weight:800;font-size:70px;line-height:1.08}
+.lettura p{margin:14px 0 0;font-weight:400;font-size:40px;line-height:1.2}
+.parola{position:absolute;left:99px;right:110px;top:520px;bottom:250px;display:flex;flex-direction:column;justify-content:center}
+.versetto{margin:0;font-weight:500;font-size:62px;line-height:1.3;text-wrap:pretty}
+.versetto .evidenzia{font-weight:700}
+.rif{margin:30px 0 0;font-weight:700;font-size:44px;line-height:1;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:9px}
+.rimando{position:absolute;left:99px;right:99px;bottom:153px;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.rimando p{margin:0;font-weight:400;font-size:36px;line-height:1.2}
+.pillola{display:inline-flex;align-items:center;height:78px;padding:0 34px;border:3px solid #233B74;border-radius:999px;font-weight:700;font-size:31px;line-height:1;white-space:nowrap}
+</style></head>
+<body>
+<section class="tavola" id="copertina" hidden>
+  <div class="fascia"></div>
+  <div class="tema"><span>LA PAROLA</span>&nbsp;<b>DELLA DOMENICA</b></div>
+  <img class="logo" src="../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+  <div class="testa" id="c-testa"><div class="giorno" id="c-giorno"></div><div class="data" id="c-data"></div></div>
+  <img class="opera" id="c-img" alt="">
+  <div class="sotto" id="c-sotto">
+    <span class="etichetta" id="c-illustra"></span>
+    <p class="scena" id="c-scena"></p>
+    <p class="credito" id="c-credito"></p>
+    <div class="firma" data-firma style="position: static; color: #FFFFFF">Misericordia di Ariccia</div>
+  </div>
+  <svg class="frecce" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+</section>
+<section class="tavola" id="pagina" hidden>
+  <div class="fascia"></div>
+  <div class="tema"><span>LA PAROLA</span>&nbsp;<b>DELLA DOMENICA</b></div>
+  <img class="logo" src="../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+  <div class="lettura"><h2 id="p-nome"></h2><p id="p-libro"></p></div>
+  <div class="parola"><p class="versetto" id="p-versetto"></p><p class="rif" id="p-rif"></p></div>
+  <svg class="frecce" id="p-frecce" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+  <div class="firma" data-firma style="left: 99px; bottom: 99px; color: #233B74">Misericordia di Ariccia</div>
+  <div class="rimando" id="p-rimando" hidden><p>Tutte le letture di oggi sul nostro sito:</p><span class="pillola">misericordia-ariccia.it/liturgia-del-giorno</span></div>
+</section>
+<script>
+const esc = t => String(t).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+const data = s => { const [a, m, g] = s.data.split('-').map(Number); return `${g} ${MESI[m - 1]} ${a}`; };
+const $ = id => document.getElementById(id);
+const maiuscola = t => t.charAt(0).toUpperCase() + t.slice(1);
+
+// Nessuna scritta deve toccare logo, frecce o opera, né uscire dalla tavola; il tema non deve arrivare al triangolo.
+const controlli = (pagina) => {
+  const testi = [], grafica = [], trovate = [];
+  const vis = el => el.getClientRects().length > 0;
+  pagina.querySelectorAll('.tema,.giorno,.data,.etichetta,.scena,.credito,.firma,.lettura,.versetto,.rif,.rimando').forEach(el => {
+    if (!vis(el)) return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) { if (!w.currentNode.textContent.trim()) continue;
+      const r = document.createRange(); r.selectNodeContents(w.currentNode);
+      for (const q of r.getClientRects()) testi.push({ q, nome: w.currentNode.textContent.trim().slice(0, 30) }); }
+  });
+  pagina.querySelectorAll('.logo,.frecce,.opera').forEach(el => { if (vis(el)) grafica.push({ q: el.getBoundingClientRect(), nome: el.classList[0] }); });
+  const tocca = (a, b, m = 6) => a.left < b.right + m && b.left < a.right + m && a.top < b.bottom + m && b.top < a.bottom + m;
+  for (const t of testi) {
+    for (const g of grafica) if (tocca(t.q, g.q)) trovate.push(`«${t.nome}» tocca ${g.nome}`);
+    if (t.q.left < 0 || t.q.right > 1080 || t.q.top < 0 || t.q.bottom > 1350) trovate.push(`«${t.nome}» esce dalla tavola`);
+  }
+  // due scritte diverse non si sovrappongono (righe dello stesso testo escluse)
+  for (let a = 0; a < testi.length; a++) for (let b = a + 1; b < testi.length; b++) {
+    const x = testi[a], y = testi[b];
+    if (x.nome !== y.nome && tocca(x.q, y.q, -2)) trovate.push(`«${x.nome}» si sovrappone a «${y.nome}»`);
+  }
+  return [...new Set(trovate)];
+};
+
+// Copertina: l'opera INTERA (mai ritagliata), più grande possibile nello spazio tra la data e le scritte sotto.
+window.copertina = async (s, immagine, n) => {
+  const p = $('copertina'); p.hidden = false;
+  $('c-giorno').textContent = s.giorno_liturgico;
+  $('c-data').textContent = data(s);
+  const o = s.opera;
+  $('c-illustra').textContent = o.illustra;
+  $('c-scena').textContent = maiuscola(o.scena);
+  const pezzi = [`${esc(o.autore)}, <i>${esc(o.titolo)}</i>`];
+  if (o.anno) pezzi[0] += `, <span class="nowrap">${esc(o.anno)}</span>`;
+  if (o.luogo) pezzi.push(`<span class="nowrap">${esc(o.luogo)}</span>`);
+  pezzi.push('<span class="nowrap">pubblico dominio</span>');
+  $('c-credito').innerHTML = pezzi.join(' · ');
+  const img = $('c-img'); img.src = immagine; await img.decode();
+  await document.fonts.ready;
+  // spazio dell'opera: 40 px sotto il giorno e la data, 40 px sopra le scritte in fondo (a 60 px dal bordo)
+  const sopra = $('c-testa').getBoundingClientRect().bottom + 40;
+  const sotto = $('c-sotto').getBoundingClientRect().top - 40;
+  const maxL = 882, maxA = sotto - sopra, r = img.naturalWidth / img.naturalHeight;
+  const l = Math.min(maxL, maxA * r), a = l / r;
+  img.style.width = l + 'px'; img.style.height = a + 'px';
+  img.style.left = (99 + (maxL - l) / 2) + 'px';
+  img.style.top = (sopra + (maxA - a) / 2) + 'px';
+  return { corpo: 0, trabocca: maxA < 360, sovrapposizioni: controlli(p) };
+};
+
+// Pagina del versetto: si capisce subito da quale lettura viene; l'ultima rimanda alle letture complete.
+window.versetto = async (s, i, n, primo) => {
+  const p = $('pagina'); p.hidden = false;
+  const v = s.pagine[i];
+  $('p-nome').textContent = v.lettura;
+  $('p-libro').textContent = v.fonte_lettura;
+  // le parole di una o due lettere («di», «io», «il»…) restano attaccate alla parola dopo: niente «verso di / me»
+  const NB = String.fromCharCode(160);  // spazio che non va a capo
+  const corta = new RegExp(`(?<=^|[ ${NB}])([^ ${NB}’']{1,2}) `, 'g');
+  const lega = x => x.replace(corta, `$1${NB}`);
+  let t = lega(esc(v.versetto));
+  const e = v.evidenza ? lega(esc(v.evidenza)) : '';
+  if (e) t = t.replace(e, `<span class="evidenzia">${e}</span>`);
+  $('p-versetto').innerHTML = t;
+  $('p-rif').textContent = v.riferimento;
+  const ultima = primo + i === n;
+  $('p-rimando').hidden = !ultima;
+  $('p-frecce').style.display = ultima ? 'none' : '';
+  await document.fonts.ready;
+  // il versetto si rimpicciolisce finché sta nel suo spazio (minimo 44 px); nell'ultima pagina lo spazio finisce
+  // 24 px sopra il rimando alle letture, che sta sopra la firma
+  const box = document.querySelector('.parola'), el = $('p-versetto');
+  box.style.bottom = ultima ? (1350 - $('p-rimando').getBoundingClientRect().top + 24) + 'px' : '';
+  let px = parseFloat(getComputedStyle(el).fontSize);
+  while (box.scrollHeight > box.clientHeight + 1 && px > 44) { px -= 2; el.style.fontSize = px + 'px'; }
+  const problemi = controlli(p);
+  if (e && !el.querySelector('.evidenzia')) problemi.push(`l'evidenza «${v.evidenza}» non si trova nel versetto`);
+  return { corpo: px, trabocca: box.scrollHeight > box.clientHeight + 1, sovrapposizioni: problemi };
+};
+</script>
+</body></html>

@@ -1,7 +1,8 @@
 // Carosello della Parola della domenica: node rendi.js SCHEDA.json CARTELLA_USCITA [OPERA.jpg]
 // Crea AAAA-MM-GG-1.jpg … (JPEG 1080×1350, qualità 88): con l'opera la 1 è la copertina,
-// poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra
-// o se una scritta tocca ornamenti, stemma, filetti o opera; si rifiuta se manca il Vangelo.
+// poi una pagina per ogni versetto della scheda. Esce con errore se un testo non entra,
+// se una scritta tocca opera, triangolo o frecce o un'altra scritta, o se esce dalla pagina
+// (nello stile precedente: ornamenti, stemma, filetti o opera); si rifiuta se manca il Vangelo.
 // Dal 21/10/2026 (richiesta di Alessandro: «metti in ogni slide … sempre Misericordia di Ariccia!
 // Altrimenti ci rubano la grafica!!») ogni pagina deve portare la firma «Misericordia di Ariccia»
 // (elemento data-firma, ben visibile) ed esce con la cornice di microtesto lungo i bordi, fatta dal
@@ -22,14 +23,17 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
   fs.mkdirSync(cartella, { recursive: true });
   const b = await chromium.launch({ executablePath: chrome, args: ['--allow-file-access-from-files'] });
   let errori = 0;
+  // Dal 25/10/2026 la grafica è quella nello stile nazionale (approvata da Alessandro il 21/10/2026).
+  // GRAFICA=grafica.html rende ancora lo stile precedente, solo per rifare una pagina già pubblicata.
+  const grafica = process.env.GRAFICA || 'grafica-nazionale.html';
   for (let k = 0; k < n; k++) {
     const p = await b.newPage({ viewport: { width: 1080, height: 1350 } });
-    await p.goto('file://' + path.join(__dirname, 'grafica.html'));
+    await p.goto('file://' + path.join(__dirname, grafica));
     const esito = k < conOpera
       ? await p.evaluate(([s, img, n]) => window.copertina(s, img, n), [s, 'file://' + path.resolve(opera), n])
       : await p.evaluate(([s, i, n, primo]) => window.versetto(s, i, n, primo), [s, k - conOpera, n, conOpera + 1]);
     const firma = await p.evaluate(() => {
-      const f = document.querySelector('[data-firma]');
+      const f = [...document.querySelectorAll('[data-firma]')].find(el => el.getClientRects().length > 0);
       if (!f) return null;
       const cs = getComputedStyle(f), r = f.getBoundingClientRect();
       let opacita = 1;
@@ -43,7 +47,8 @@ const chrome = process.env.CHROME || ['/opt/pw-browsers/chromium-1194/chrome-lin
     const motore = await b.newPage();
     await motore.goto('file://' + path.join(__dirname, '..', 'grafica-brand', 'firma-e-cornice.html'));
     const fatta = await motore.evaluate(([dati, o]) => window.firmaECornice(dati, o),
-      ['data:image/png;base64,' + png.toString('base64'), { formato: 'jpeg', qualita: 0.88, angoli: 80 }]);
+      // grafica.html ha i gigli negli angoli: la cornice lascia liberi gli 80 px di ogni angolo
+      ['data:image/png;base64,' + png.toString('base64'), { formato: 'jpeg', qualita: 0.88, angoli: grafica === 'grafica.html' ? 80 : 0 }]);
     await motore.close();
     const file = path.join(cartella, `${s.data}-${k + 1}.jpg`);
     fs.writeFileSync(file, Buffer.from(fatta.dati.split(',')[1], 'base64'));
