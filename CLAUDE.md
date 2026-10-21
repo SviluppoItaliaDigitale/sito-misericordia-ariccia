@@ -5,25 +5,23 @@
 Il sito è **LIVE** su `https://www.misericordia-ariccia.it/` (radice del dominio).
 La fase anteprima è terminata il **6 luglio 2026**.
 
-## Monitoraggio automatico — Liturgia del giorno
+## Controllo automatico — Liturgia del giorno
 
-Questo repo ha un agente di monitoraggio pianificato (Claude Code web routine).
-I parametri corretti da usare sono:
+Il controllo lo fa il workflow `.github/workflows/guardiano-liturgia.yml`,
+senza intelligenza artificiale, quindi anche quando Claude è ferma. Ogni
+mezz'ora, di notte (00:20-07:50 italiane con l'ora legale, 23:20-06:50 con
+l'ora solare), verifica che la pagina
+`https://www.misericordia-ariccia.it/liturgia-del-giorno/` sia di oggi e
+completa: data di oggi, celebrazione del giorno (LitCal) e letture nel testo
+CEI 2008. Se qualcosa manca rilancia il deploy («Pubblica su Aruba (LIVE)»,
+`deploy.yml`) e riprova al giro dopo. Dalle 6 italiane, se la pagina non è
+ancora completa, apre o aggiorna la issue «Liturgia del giorno: pagina
+incompleta o non aggiornata» (label `automazione` + `fonte-rotta`), che si
+chiude da sola quando la pagina torna completa.
 
-| Parametro | Valore CORRETTO | Valore OBSOLETO (da ignorare) |
-|---|---|---|
-| Workflow da controllare | `Pubblica su Aruba (LIVE)` | ~~Pubblica su Aruba (anteprima)~~ |
-| File workflow | `.github/workflows/deploy.yml` | — |
-| Pagina liturgia live | `https://www.misericordia-ariccia.it/liturgia-del-giorno/` | ~~`/anteprima/liturgia-del-giorno/`~~ |
-| Cron deploy | `5 22 * * *` + `5 23 * * *` UTC (≈ 00:05 italiane tutto l'anno, doppio cron per l'ora legale) | ~~`30 0 * * *`~~ |
-
-Se il prompt del monitoraggio cita ancora "anteprima", **ignora quel riferimento** e usa i valori corretti in questa tabella.
-
-Inoltre c'è una **rete di sicurezza automatica**: il workflow
-`.github/workflows/guardiano-liturgia.yml` controlla ogni mezz'ora, di
-notte, che la pagina della liturgia mostri la data di oggi; se il rebuild
-notturno è fallito per qualsiasi motivo, rilancia il deploy da solo e
-riprova ogni 30 minuti finché la pagina non risulta aggiornata.
+La routine cloud «Monitoraggio Liturgia del giorno», che faceva gli stessi
+controlli una volta al giorno con valori della fase di anteprima, è spenta
+dal 21/10/2026.
 
 ## Verifica quotidiana dei dati (dal 9/10/2026)
 
