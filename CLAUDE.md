@@ -310,7 +310,7 @@ comunicazione della Confederazione pubblicati su YouTube.
   caroselli e sulla carta, con i loghi ufficiali della cartella dei modelli.
 - **Foto in bianco e nero solo per un lutto** (Alessandro, 21/10/2026: «quelle in
   bianco e nero sui social vengono utilizzate per commemorare la morte di
-  qualcuno»). Di regola le foto restano a colori. In bianco e nero vanno solo
+  qualcuno»). Le foto a colori restano a colori. In bianco e nero vanno solo
   nelle grafiche in ricordo di una persona morta: confratelli e consorelle,
   volontari, benefattori, chi ha fatto parte della vita della Misericordia e i
   personaggi pubblici che le sono stati vicini, dal Papa in giù; anche
@@ -318,6 +318,7 @@ comunicazione della Confederazione pubblicati su YouTube.
   del 2 novembre. Si chiede con `"lutto": true` nei dati: diventa grigia solo
   la foto, mentre fascia, colori, stemma e testi restano istituzionali.
   `rendi.py` si ferma se il testo ricorda una persona morta e il dato manca.
+  Le foto nate in bianco e nero, come quelle d'archivio, restano come sono.
 - **5×1000**: le grafiche ufficiali della campagna nazionale, già compilate per
   Ariccia, così come sono. Quelle della campagna 2026 («Non servono superpoteri.
   Servi Tu.») sono `static/img/news/5x1000-ambulanza.jpg`, `-compagnia.jpg`,
