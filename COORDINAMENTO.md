@@ -21,6 +21,16 @@ Claude (Claude Code) e ChatGPT (chat con connettore GitHub, Codex) lavorano sugl
 - Le regole del repository (`CLAUDE.md`, `.claude/rules/`, `AGENTS.md`) valgono per entrambe: chi lavora le segue anche quando l'altra non c'è.
 - **Dubbi → domande** (istruzione di Alessandro del 13/10/2026: «se hai dubbi sei obbligato a fare domande a me per chiarimenti»). Quando una scelta cambia davvero l'esito e la risposta non è nei file, nelle regole o nelle fonti, non si indovina: si chiede ad Alessandro — in chat se c'è, altrimenti in «Domande» qui sotto — e intanto si fa il resto. Per le scelte ordinarie coperte dalle regole si procede e si riporta (regola `.claude/rules/autonomia.md`).
 
+### Quando Claude è ferma: ChatGPT prende il suo posto (dal 21/10/2026)
+
+Istruzioni di Alessandro del 21/10/2026, dopo tre giorni senza Claude per i crediti finiti: *«Se tu sei fuori servizio devo avere al 100% la stessa operatività con altra AI!»*, *«Utilizza ChatGPT come prima AI, e utilizza il cervello che abbiamo creato o il file coordinamento per le consegne dei lavori»*.
+
+- **Chi fa che cosa.** Quando Claude non risponde o le sue routine falliscono, ChatGPT (Codex) è la prima riserva e lavora come Claude, con le stesse regole e la stessa autonomia fino alla pubblicazione (§ «Che cosa fa ChatGPT quando Alessandro scrive «guarda la bacheca»»): riprende i «Lavori in corso», prende anche le richieste indirizzate a Claude e, quando Alessandro lo chiede, fa le routine del giorno dai testi scritti nei repository (elenco in `assistente-personale/ROUTINE.md`). Gemini viene dopo, solo se anche ChatGPT è fermo. Le istruzioni operative per ChatGPT sono in `AGENTS.md`, § «Quando Claude è fermo, lavori tu al suo posto», uguale in tutti i repository.
+- **Consegna continua.** I crediti finiscono senza preavviso e una sessione interrotta non può più scrivere la consegna. Per questo chi lavora (Claude o ChatGPT) scrive in «Lavori in corso» ogni lavoro che dura più di un passaggio **appena lo comincia**: che cosa, ramo, PR, prossimo passo, documenti del Cervello coinvolti. Lo aggiorna a ogni tappa e lo toglie quando il lavoro è pubblicato.
+- **Dove passano le consegne.** Lavori sui repository: questa bacheca. Lavori fuori dai repository (lettere, email, appuntamenti, documenti degli enti): il Cervello su Google Drive, nel documento dell'ente o del progetto oppure in «Note rapide». ChatGPT lo legge e lo aggiorna con l'app Google Drive; Codex, che il Cervello non lo vede, lascia la nota in questa bacheca e chi ha l'accesso la riporta nel Cervello.
+- **Firma e controlli non cambiano.** Valgono `.claude/rules/firma-dei-lavori.md` e `.claude/rules/qualita.md`: identità di Alessandro Cuollo, nessun nome di strumenti, tutti i controlli eseguiti, merge squash con messaggio scritto.
+- **Quando Claude torna.** Per prima cosa legge questa bacheca e controlla il lavoro fatto da ChatGPT come controlla ogni consegna, correggendo sul ramo se serve. Poi riporta nel Cervello e nella memoria ciò che manca e riprende le routine. Chi prende un lavoro lo segna «preso da …» accanto alla voce, così nessuno rifà il lavoro dell'altro.
+
 ### Che cosa fa ChatGPT quando Alessandro scrive «guarda la bacheca» (o «continua il lavoro»)
 
 ChatGPT lavora **in autonomia fino alla pubblicazione**, senza aspettare Claude:
@@ -95,6 +105,10 @@ Se un lavoro non si può passare (sotto, «Che cosa non si passa»), o non si pu
 ## Questo repository: sito-misericordia-ariccia
 
 Il merge su `main` pubblica il sito LIVE su www.misericordia-ariccia.it in circa un minuto (workflow «Pubblica su Aruba (LIVE)»). Regole complete in `CLAUDE.md` (flusso editoriale, grafica brand, SEO, versione inglese, social) e in `.claude/rules/`.
+
+### Routine di questo repository
+
+I testi delle routine di Claude che lavorano qui sono in `docs/routine/` (indice con orari in `docs/routine/README.md`); l'elenco di tutte le routine di Alessandro è in `ROUTINE.md` del repository `assistente-personale`. Se Claude è ferma, ChatGPT le esegue da quei testi (§ «Quando Claude è ferma: ChatGPT prende il suo posto»).
 
 ### Compiti con immagini: cartella `bacheca/`
 
