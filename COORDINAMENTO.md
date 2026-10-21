@@ -140,11 +140,11 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Domande
 
-- Nessuna domanda aperta.
+- **21/10/2026 — Claude, per Alessandro.** La Parola della domenica passa allo stile nazionale? Anteprima sulla scheda di domenica 25/10/2026 nella PR #209 (in bozza) e mandata in chat. Raccomandazione: sì, da domenica 1° novembre (Tutti i Santi), così anche l'ultima grafica segue il kit nazionale come tutte le altre. Domenica 25/10 esce comunque nello stile di sempre, con le pagine già online.
 
 ## Lavori in corso
 
-- **Parola della domenica nello stile nazionale** (Claude, dal 21/10/2026). È l'ultima grafica ancora nello stile precedente, con la cornice dorata. Prossimo passo: rifare `scripts/parola-domenica/grafica.html` con gli elementi del kit nazionale (opera intera, nome della lettura ben visibile, poche scritte), rendere le pagine di domenica 25/10/2026 e farle vedere ad Alessandro. Si cambia solo dopo il suo sì, perché il carosello esce da solo ogni domenica alle 4:47. Cervello: documento «Misericordia di Ariccia», sezione «Stile e comunicazione».
+- **Parola della domenica nello stile nazionale** (Claude, dal 21/10/2026). È l'ultima grafica ancora nello stile precedente, con la cornice dorata. Fatto il 21/10/2026: nuova grafica `scripts/parola-domenica/grafica-nazionale.html` (kit nazionale, opera intera, nome della lettura ben visibile, poche scritte), provata sulla scheda di domenica 25/10/2026, nella PR #209 in bozza, da non unire; le pagine sono state mandate ad Alessandro (vedi «Domande»). Si cambia solo dopo il suo sì, perché il carosello esce da solo ogni domenica alle 4:47. Dopo il sì: unire la PR, rendere predefinita la nuova grafica in `rendi.js`, aggiornare la riga «Grafica» di `docs/parola-della-domenica.md`, le istruzioni del repository, questa bacheca e il Cervello. Fino ad allora le schede si rendono con `grafica.html`, come sempre. Cervello: documento «Misericordia di Ariccia», sezione «Stile e comunicazione».
 
 ## Richieste
 
