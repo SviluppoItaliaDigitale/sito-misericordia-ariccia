@@ -11,6 +11,7 @@ Uso:
   rendi.py --elenco                                      modelli, misure e campi
   rendi.py --esempi CARTELLA [--anteprima FILE.jpg]      disegna tutti gli esempi e, se chiesto, il foglio d'insieme
   rendi.py --cornice FILE.jpg|.png|.pdf ... [--firma basso-sinistra]  firma e cornice su grafiche già fatte (vedi sotto)
+  rendi.py --segno FILE.jpg ...                          solo il segno, su grafiche con firma e cornice già disegnate
   rendi.py --autotest                                    prova lo script e i controlli
 
 Il formato viene dall'estensione di --uscita: .jpg (qualità 88, per il sito e i social), .png, oppure .pdf per la
@@ -28,6 +29,9 @@ che aggiunge la cornice e, con --firma, la firma su un fondo libero. Funziona co
 aggiornano al loro posto, il PDF di partenza non cambia ed esce FILE-cornice.pdf, con la cornice dei modelli da stampa
 in ogni pagina, solo dove il margine è libero (cornice_pdf.py, accanto a questo script). Un PDF senza «Misericordia di
 Ariccia» nel testo si ferma: il nome va aggiunto, oppure lo scrive --firma.
+--segno è per le grafiche che firma e cornice le hanno già, disegnate da chi le ha fatte con lo stesso motore (le
+copertine dei video della rubrica, tratte da un fotogramma): controlla che ai quattro bordi ci sia la cornice e aggiunge
+solo il commento, senza ricomprimere l'immagine.
 
 Foto in bianco e nero solo per il lutto: sui social il bianco e nero dice che si ricorda una persona morta. Con
 "lutto": true nei dati (oppure --lutto si) la foto diventa in bianco e nero, mentre fascia, colori, loghi e testi
@@ -48,6 +52,7 @@ import argparse
 import base64
 import hashlib
 import html
+import io
 import json
 import re
 import sys
@@ -582,6 +587,57 @@ def cornice_su_file(file: list[Path], uscita: Path | None, firma: dict | None, f
     return 1 if errori else 0
 
 
+SEGNO_MINIMO, SEGNO_RAPPORTO = 8, 1.3   # stacco del testo della cornice dal fondo, e rispetto alla maschera spostata
+
+
+def segno_su_file(file: list[Path], browser=None) -> int:
+    """--segno: solo il segno (commento con MARCATORE) su grafiche che hanno già firma e cornice disegnate da chi le ha
+    fatte con lo stesso motore, per esempio le copertine dei video della rubrica (fotogramma a 1,8 s). Prima controlla
+    che la cornice ci sia su tutti e quattro i lati (verificaCornice del motore, con l'anno in corso o quello prima);
+    poi aggiunge il commento ai byte che ci sono, senza ricomprimere. La firma la controlla chi disegna la grafica (per
+    i video, prova_impaginazione.py della rubrica)."""
+    if browser is None:
+        sync_playwright = importa_playwright()
+        with sync_playwright() as p:
+            b = avvia_browser(p)
+            try:
+                return segno_su_file(file, b)
+            finally:
+                b.close()
+    import datetime as dt
+    errori = 0
+    pagina = browser.new_page()
+    try:
+        pagina.goto(MOTORE.as_uri(), wait_until="load")
+        for f in file:
+            if f.suffix.lower() not in (".jpg", ".jpeg", ".png") or not f.is_file():
+                print(f"PROBLEMI in {f}: serve un file JPEG o PNG esistente")
+                errori += 1
+                continue
+            dati = f.read_bytes()
+            if ha_firma_e_cornice(dati):
+                print(f"già fatta: {f} (ha già il segno)")
+                continue
+            url = f"data:{'image/png' if f.suffix.lower() == '.png' else 'image/jpeg'};base64," + base64.b64encode(dati).decode()
+            anno = dt.date.today().year
+            for a in (anno, anno - 1):
+                lati = pagina.evaluate("([s, o]) => window.verificaCornice(s, o)", [url, {"anno": a}])["lati"]
+                mancano = [k for k, v in lati.items() if v["giusto"] < SEGNO_MINIMO or v["rapporto"] < SEGNO_RAPPORTO]
+                if not mancano:
+                    break
+            if mancano:
+                print(f"PROBLEMI in {f}: non trovo la cornice di microtesto sul lato {', '.join(mancano)}: il segno dice che "
+                      "firma e cornice ci sono, quindi qui non si mette (per aggiungerle: --cornice, con --firma se manca il nome)")
+                errori += 1
+                continue
+            nuovi = base64.b64decode(pagina.evaluate("(s) => window.aggiungiSegno(s)", url).split(",", 1)[1])
+            f.write_bytes(nuovi)
+            print(f"ok: {f} (cornice trovata su tutti i lati, anno {a}; segno aggiunto senza ricomprimere)")
+    finally:
+        pagina.close()
+    return 1 if errori else 0
+
+
 def elenco() -> int:
     for f in sorted(MODELLI.glob("*.html")):
         info = leggi_modello(f)
@@ -772,6 +828,18 @@ def autotest() -> int:
         attesa(cornice_su_file([uniforme], None, None, False, b) == 0 and uniforme.read_bytes() == prima, "--cornice rifatta su una grafica che l'ha già")
         attesa(cornice_su_file([rumore], None, {"posizione": "basso-sinistra"}, False, b) == 1, "--firma accettata sopra un fondo non uniforme")
         attesa(not ha_firma_e_cornice(rumore.read_bytes()), "--firma rifiutata ma il file è stato cambiato lo stesso")
+
+        # --segno: solo su grafiche con la cornice già incisa; il commento si aggiunge senza toccare l'immagine
+        incisa, liscia = t / "incisa.jpg", t / "liscia.jpg"
+        Image.new("RGB", (1080, 1920), (0, 52, 112)).save(liscia, quality=90)
+        dati, _ = firma_e_cornice(b, liscia.read_bytes(), "image/jpeg", "jpeg", {"marcatore": False})
+        incisa.write_bytes(dati)
+        attesa(not ha_firma_e_cornice(dati), "la grafica di prova per --segno ha già il segno")
+        attesa(segno_su_file([liscia], b) == 1 and not ha_firma_e_cornice(liscia.read_bytes()), "--segno accettato senza cornice")
+        attesa(segno_su_file([incisa], b) == 0 and ha_firma_e_cornice(incisa.read_bytes()), "--segno rifiutato su una cornice incisa")
+        attesa(Image.open(incisa).convert("RGB").tobytes() == Image.open(io.BytesIO(dati)).convert("RGB").tobytes(),
+               "--segno ha cambiato i pixel")
+        attesa(segno_su_file([incisa], b) == 0, "--segno ripetuto su un file che l'ha già")
         try:
             disegna(b, post, prepara_campi(post, buoni, t), t / "post.pdf")
             falliti.append("PDF di un post accettato")
@@ -786,7 +854,7 @@ def autotest() -> int:
     print("Autotest superato: esempi, misure, testi lunghi, campi inesistenti, foto di prova, lutto (foto in bianco e nero, "
           "grafica a colori, testi riconosciuti), segnaposti, HTML non ammesso, assemblea, area sicura della storia, PDF A4, "
           "firma «Misericordia di Ariccia» (mancante, piccola, trasparente, coperta) e cornice di microtesto (solo sui bordi, "
-          "nei PDF, su grafiche e PDF già fatti, mai due volte, mai una riga più lunga della sua striscia). Per i PDF già fatti "
+          "nei PDF, su grafiche e PDF già fatti, mai due volte, mai una riga più lunga della sua striscia; segno solo dove la cornice c'è già). Per i PDF già fatti "
           "la prova completa è scripts/controlli/prova_cornice_pdf.py.")
     return 0
 
@@ -819,6 +887,8 @@ def main(argv=None) -> int:
     a.add_argument("--firma-colore", default="auto", help="auto (chiaro sul fondo scuro, scuro sul chiaro) oppure un colore, es. #DFE6F5")
     a.add_argument("--forza", action="store_true", help="con --firma: scrive anche se il fondo sotto la firma non è uniforme; nei PDF "
                    "accetta anche la cornice sui soli lati dove il margine è libero")
+    a.add_argument("--segno", type=Path, nargs="+", metavar="FILE",
+                   help="solo il segno, su grafiche che hanno già firma e cornice disegnate col motore (copertine dei video della rubrica)")
     a.add_argument("--autotest", action="store_true")
     x = a.parse_args(argv)
     if x.autotest:
@@ -827,6 +897,8 @@ def main(argv=None) -> int:
         return elenco()
     if x.esempi:
         return esempi(x.esempi, x.anteprima)
+    if x.segno:
+        return segno_su_file(x.segno)
     if x.cornice:
         firma = None
         if x.firma:
@@ -834,7 +906,7 @@ def main(argv=None) -> int:
             firma.update({k: v for k, v in (("margine", x.firma_margine), ("basso", x.firma_basso), ("corpo", x.firma_corpo)) if v is not None})
         return cornice_su_file(x.cornice, x.uscita, firma, x.forza)
     if not x.dati and not x.modello:
-        a.error("indica un file di dati o --modello (oppure --elenco, --esempi, --cornice, --autotest)")
+        a.error("indica un file di dati o --modello (oppure --elenco, --esempi, --cornice, --segno, --autotest)")
     dati = leggi_dati(x.dati) if x.dati else {"campi": {}}
     info = leggi_modello(trova_modello(x.modello or dati["modello"]))
     da_riga = {}

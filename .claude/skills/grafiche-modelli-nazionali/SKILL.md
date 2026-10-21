@@ -50,7 +50,7 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
    `.jpg` (qualità 88) per il sito e i social, `.pdf` per carta intestata e biglietto da visita, `.png` solo se richiesto. Serve Playwright per Python con Chromium: nell'ambiente di Claude c'è già; altrove `pip install playwright` e `python -m playwright install chromium` (lo fa anche `scripts/ambiente-codex.sh`).
 3. Se lo script esce con PROBLEMI, correggi e rifai: accorcia i testi (il corpo dei caratteri resta quello del modello), sposta il ritaglio della foto, riempi i segnaposti. `--bozza` serve solo a vedere una versione incompleta: una bozza non si pubblica mai.
 4. **Guarda l'immagine** prima di usarla: equilibrio, volti tagliati dal ritaglio, testo leggibile sulla foto, parole giuste, firma leggibile. Ingrandisci un bordo per vedere la cornice: da lontano non si nota, da vicino si legge «MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it…». Il controllo automatico non giudica la foto.
-5. **Non risalvare il file con un altro programma.** Il JPEG o il PNG porta in testa il segno della cornice, che i controlli del sito cercano nelle grafiche delle news e della Parola della domenica: un altro programma lo toglie. Se serve un ritaglio o un'altra misura, si rifà la grafica con `rendi.py`. `scripts/ottimizza-immagini.py` non tocca i file `-grafica.jpg` e crea solo il `.webp` accanto.
+5. **Non risalvare il file con un altro programma.** Il JPEG o il PNG porta in testa il segno della cornice, che i controlli del sito cercano nelle grafiche delle news e della Parola della domenica: un altro programma lo toglie. Se serve un ritaglio o un'altra misura, si rifà la grafica con `rendi.py`. `scripts/ottimizza-immagini.py` non ricomprime i file `-grafica.jpg` né quelli con il segno, e crea solo il `.webp` accanto.
 
 ## Grafiche fatte in altro modo
 
@@ -70,6 +70,7 @@ python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice DOCUMENTO.p
   - La cornice dice «grafica della Confraternita di Misericordia di Ariccia ODV»: va sui documenti fatti dalla Misericordia, non sui moduli ministeriali, sugli avvisi o sugli atti di altri enti.
   - Servono pypdf, pypdfium2 e numpy (`pip install pypdf pypdfium2 numpy`). Prova: `python3 scripts/controlli/prova_cornice_pdf.py`.
 - Un design di Canva o di un altro programma si esporta in JPEG, PNG o PDF e poi passa da qui. Per lettere e biglietti nuovi si usano i modelli da stampa, che la cornice ce l'hanno già.
+- Se firma e cornice ci sono già nei pixel (per esempio il fotogramma di un video della rubrica, che le ha in ogni immagine) manca solo il segno: `rendi.py --segno FILE…` lo scrive senza toccare i pixel, solo dopo aver trovato la cornice su tutti e quattro i lati; se non la trova si ferma, e allora serve `--cornice`. Lo usa `scripts/video-rubrica/copia.sh` per le copertine dei video.
 
 ## Dove va il risultato
 

@@ -221,7 +221,14 @@ serve, domenica all'1:55 con il «recupero notturno»): scheda in
   testi in `contenuti*.py`, disegni in `ill*.js`, `./anteprima.sh`, `./render.sh`,
   `./copia.sh`. Serie 1 (10 video, 6/10–6/11), serie 2 (13 video, 10/11–22/12),
   speciale Giornata del volontariato (5/12). Contenuti sanitari sempre su linee guida
-  ERC/IRC correnti e rivisti da un istruttore.
+  ERC/IRC correnti e rivisti da un istruttore. Dal 21/10/2026 i video in uscita (dal 23/10)
+  sono nello stile nazionale (fascia blu con filo giallo e stemma, Montserrat, colori del
+  kit), con la firma «Misericordia di Ariccia» e la cornice di microtesto in ogni
+  fotogramma: `prova_impaginazione.py` le controlla, `copia.sh` mette nella copertina il
+  segno (`rendi.py --segno`) che «Controlli del sito» cerca nelle copertine dei video in
+  uscita; per rifare solo le immagini di un video già montato, `pipeline.py <chiave>
+  --audio-da <video.mp4>`. Restano come sono i video già pubblicati, quelli dei servizi e
+  il video del 5×1000 (la sua copertina ha firma e cornice, come la grafica delle sue news).
 - **Dossier** `content/dossier/primo-soccorso.md` (23 schede): ogni scheda può avere
   `dal: "AAAA-MM-GG"` → il suo video (`static/video/primo-soccorso-<id>.mp4`) e il link
   all'articolo compaiono da quella data; prima c'è l'avviso «esce il …».
@@ -299,11 +306,13 @@ comunicazione della Confederazione pubblicati su YouTube.
   invisibile da lontano e leggibile ingrandendo; nei PDF da stampa è testo
   vettoriale dentro il margine (`<meta name="microtesto">` del modello). Il
   motore scrive nel file anche un segno che i controlli del sito cercano: lo
-  devono avere le grafiche delle news e le pagine della Parola che escono dal
-  22/10/2026. Per le grafiche fatte in altro modo (copertine dei video, Canva,
-  altre AI) c'è `rendi.py --cornice FILE` (JPEG, PNG e PDF), che aggiunge la cornice e, con
-  `--firma basso-sinistra`, la firma su un fondo libero (si ferma se sotto c'è
-  un disegno o una scritta). Le grafiche già pubblicate restano come sono.
+  devono avere le grafiche delle news, le copertine dei loro video e le pagine
+  della Parola che escono dal 22/10/2026. Per le grafiche fatte in altro modo
+  (copertine di altri video, Canva, altre AI) c'è `rendi.py --cornice FILE` (JPEG,
+  PNG e PDF), che aggiunge la cornice e, con `--firma basso-sinistra`, la firma su
+  un fondo libero (si ferma se sotto c'è un disegno o una scritta); le copertine
+  dei video della rubrica, che hanno già firma e cornice nei pixel, prendono solo il
+  segno con `rendi.py --segno FILE`. Le grafiche già pubblicate restano come sono.
 - **Se nessun modello va bene**: si parte dal modello più vicino e si usano
   solo gli elementi del kit nazionale, cioè i colori (blu `#003F85`, giallo
   `#FCEB0C`, azzurro `#009FE3`, evidenziatore `#013C7C`), il carattere
@@ -340,10 +349,10 @@ comunicazione della Confederazione pubblicati su YouTube.
   tagliati, ritaglio della foto, contrasti.
 - **Stile precedente**, fino al 20/10/2026: navy `#1b223f`, Playfair Display e
   Jost, cornice dorata e filigrane (blocchi in `scripts/grafica-brand/cornice.html`
-  e `filigrane.html`). Resta nelle grafiche già pubblicate, compresa la «Parola
-  della domenica» fino al 18/10/2026 (dal 25/10/2026 è nello stile nazionale),
-  e, finché non passano allo stile nazionale, nei video della rubrica «Primo
-  soccorso passo passo» in programma. Non si usa per grafiche nuove.
+  e `filigrane.html`). Resta nelle grafiche già pubblicate, comprese la «Parola
+  della domenica» fino al 18/10/2026 (dal 25/10/2026 è nello stile nazionale) e i
+  video della rubrica «Primo soccorso passo passo» usciti fino al 20/10/2026 (dal
+  23/10/2026 sono nello stile nazionale). Non si usa per grafiche nuove.
 
 ### 3. Social: pubblicazione AUTOMATICA (dal 30/09/2026)
 
@@ -366,6 +375,17 @@ comunicazione della Confederazione pubblicati su YouTube.
 - Il testo del post è `description`/sommario della news; per un testo
   su misura usare `social_testo:` nel front matter; `social: false` per
   non condividere. 5x1000 quando pertinente: **C.F. 90031910582**.
+- **Testo alternativo delle immagini (dal 21/10/2026)**: i post automatici lo
+  mandano dove Meta lo accetta, cioè su Instagram (grafica delle news, ogni
+  pagina del carosello della Parola) e su Facebook (ogni foto dell'album della
+  Parola); il post con link delle news e i Reel non lo prevedono. Per le news
+  vale `social_alt:` del front matter, altrimenti l'alt dell'immagine
+  pubblicata nell'articolo. Se Meta rifiuta il testo alternativo, o dà un
+  errore di parametro (#100) che non nomina nient'altro, si riprova una volta
+  senza e il post esce lo stesso. Un rifiuto che nomina un altro parametro non
+  fa togliere il testo alternativo: il luogo ha già la sua riprova senza luogo,
+  immagine, indirizzo e gli altri restano errori (PR #221). Guida in
+  `docs/pubblicazione-social.md`, § «Testo alternativo delle immagini».
 
 ### 4. Pubblicazione
 

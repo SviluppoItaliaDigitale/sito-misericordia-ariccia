@@ -9,8 +9,8 @@ Legge la build di Hugo (cartella public/) e il repo, e scrive un rapporto in Mar
   5. forme già corrette che non devono tornare (FORME_SBAGLIATE), cercate nei sorgenti del sito
      e nei generatori di video, grafiche e post (CARTELLE_TESTI), così si vedono anche nelle news
      programmate e prima che un video o una grafica le renda in un file che nessuno rilegge;
-  6. firma «Misericordia di Ariccia» e cornice di microtesto: il segno del motore nelle grafiche delle news e
-     nelle pagine della Parola che escono dal 22/10/2026, la firma in ogni modello grafico;
+  6. firma «Misericordia di Ariccia» e cornice di microtesto: il segno del motore nelle grafiche e nelle copertine
+     dei video delle news e nelle pagine della Parola che escono dal 22/10/2026, la firma in ogni modello grafico;
   7. con --live: pagine principali online e build pubblicata uguale a quella attesa.
 Solo libreria standard. Uso: controlla_sito.py public [--live] [--report out.md] [--csp]
   --csp: stampa gli hash degli script inline da copiare in static/.htaccess ed esce.
@@ -78,8 +78,9 @@ ESTENSIONI_TESTI = (".md", ".html", ".yaml", ".yml", ".json", ".toml", ".py", ".
 # Firma «Misericordia di Ariccia» e cornice di microtesto (richiesta di Alessandro del 21/10/2026: «metti in ogni
 # slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Il motore
 # scripts/grafica-brand/firma-e-cornice.js scrive in testa al JPEG (commento) o al PNG (blocco tEXt) il suo segno:
-# lo devono avere le grafiche delle news e le pagine della Parola che escono da DAL_FIRMA, e ogni modello grafico
-# deve avere la firma (elemento data-firma). La prova di questo controllo è scripts/controlli/prova_cornice.py.
+# lo devono avere le grafiche delle news, le copertine dei loro video e le pagine della Parola che escono da DAL_FIRMA,
+# e ogni modello grafico deve avere la firma (elemento data-firma). La prova di questo controllo è
+# scripts/controlli/prova_cornice.py.
 DAL_FIRMA = dt.date(2026, 10, 22)
 MOTORE_FIRMA = REPO / "scripts/grafica-brand/firma-e-cornice.js"
 MODELLI_FIRMA = ("scripts/grafica-brand/modelli-nazionali/*.html", "scripts/parola-domenica/grafica*.html")
@@ -188,27 +189,49 @@ def ha_segno(dati, segno):
     return False
 
 
-def grafiche_senza_firma():
+def copertine_video(fm, corpo):
+    """Copertine dei video di una news, come percorsi sotto static/: il fotogramma static/img/video/<nome>.jpg del
+    social_video (lo crea scripts/video-rubrica/copia.sh), le locandine (poster="…") del corpo e social_video_copertina
+    quando è un'immagine. Se è un numero, social_video_copertina è il secondo del video usato come copertina del Reel:
+    un fotogramma del video, che nel file non si può controllare."""
+    out = []
+    sv = re.search(r'^social_video:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
+    if sv:
+        out.append("img/video/" + Path(sv.group(1).strip()).stem + ".jpg")
+    cop = re.search(r'^social_video_copertina:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
+    if cop and Path(cop.group(1).strip()).suffix.lower() in (".jpg", ".jpeg", ".png"):
+        out.append(cop.group(1).strip().lstrip("/"))
+    out += [p.lstrip("/") for p in re.findall(r'\sposter="([^"]+)"', corpo)]
+    return list(dict.fromkeys(out))
+
+
+def grafiche_senza_firma(radice=REPO):
     segno = segno_firma()
     if not segno:
         return ["scripts/grafica-brand/firma-e-cornice.js: non trovo il segno (const MARCATORE)"]
-    mancano = []
-    for f in sorted((REPO / "content/news").glob("*.md")):
-        fm = f.read_text(encoding="utf-8").split("---")[1]
+    mancano, senza = [], {}   # senza: immagine -> [tipo, news che la usano]
+    for f in sorted((radice / "content/news").glob("*.md")):
+        parti = f.read_text(encoding="utf-8").split("---", 2)
+        fm, corpo = parti[1], parti[2] if len(parti) > 2 else ""
         d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        if not d or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
         im = re.search(r'^immagine:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
-        if not d or not im or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
-        img = REPO / "static" / im.group(1).strip().lstrip("/")
-        if img.suffix.lower() in (".jpg", ".jpeg", ".png") and img.is_file() and not ha_segno(img.read_bytes()[:65536], segno):
-            mancano.append(f"`{img.relative_to(REPO)}` (news {f.name})")
-    for img in sorted((REPO / "static/img/parola").glob("*.jpg")):
+        controllare = [(im.group(1).strip().lstrip("/"), "news")] if im else []
+        controllare += [(c, "copertina del video, news") for c in copertine_video(fm, corpo)]
+        for percorso, tipo in controllare:
+            img = radice / "static" / percorso
+            if img.suffix.lower() in (".jpg", ".jpeg", ".png") and img.is_file() and not ha_segno(img.read_bytes()[:65536], segno):
+                senza.setdefault(img.relative_to(radice), [tipo, []])[1].append(f.name)
+    for img, (tipo, news) in senza.items():
+        mancano.append(f"`{img}` ({tipo} {', '.join(news[:3])}{f' e altre {len(news) - 3}' if len(news) > 3 else ''})")
+    for img in sorted((radice / "static/img/parola").glob("*.jpg")):
         m = re.match(r"(\d{4}-\d{2}-\d{2})-\d+\.jpg$", img.name)
         if m and dt.date.fromisoformat(m.group(1)) >= DAL_FIRMA and not ha_segno(img.read_bytes()[:65536], segno):
-            mancano.append(f"`{img.relative_to(REPO)}` (Parola della domenica)")
+            mancano.append(f"`{img.relative_to(radice)}` (Parola della domenica)")
     for schema in MODELLI_FIRMA:
-        for modello in sorted(REPO.glob(schema)):
+        for modello in sorted(radice.glob(schema)):
             if "data-firma" not in modello.read_text(encoding="utf-8"):
-                mancano.append(f"`{modello.relative_to(REPO)}`: modello senza la firma (elemento data-firma)")
+                mancano.append(f"`{modello.relative_to(radice)}`: modello senza la firma (elemento data-firma)")
     return mancano
 
 
@@ -293,9 +316,14 @@ def main():
     senza = grafiche_senza_firma()
     righe += ["", "### 🖋️ Firma «Misericordia di Ariccia» e cornice di microtesto: "
               + ("✅ in tutte le grafiche in uscita e in tutti i modelli" if not senza else f"❌ {len(senza)} senza")]
-    righe += [f"- {x}: rifarla con il modello, oppure `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice FILE` "
-              "(con `--firma basso-sinistra` se la grafica non mostra il nome)" if not x.endswith("(elemento data-firma)") else f"- {x}"
-              for x in senza[:30]]
+    def rimedio(x):
+        if x.endswith("(elemento data-firma)"): return f"- {x}"
+        if "(copertina del video" in x:
+            return (f"- {x}: se il video ha già firma e cornice, `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py "
+                    "--segno FILE` (lo fa `scripts/video-rubrica/copia.sh`), altrimenti `rendi.py --cornice FILE`")
+        return (f"- {x}: rifarla con il modello, oppure `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice FILE` "
+                "(con `--firma basso-sinistra` se la grafica non mostra il nome)")
+    righe += [rimedio(x) for x in senza[:30]]
     errori += bool(senza)
 
     fv = fonte_video_sbagliata()

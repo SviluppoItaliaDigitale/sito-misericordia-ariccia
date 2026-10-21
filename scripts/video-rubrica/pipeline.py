@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""Generatore dei video «Primo soccorso passo passo»: voce (Piper) -> tempi -> HTML animato
--> fotogrammi (Chromium) -> musica originale -> MP4 1080x1920. Guida: README.md.
-Uso: pipeline.py chiave [...] [--anteprima] [--sottotitoli]
+"""Generatore dei video «Primo soccorso passo passo»: voce (Kokoro) -> tempi -> HTML animato
+-> fotogrammi (Chromium) -> musica -> MP4 1080x1920. Guida: README.md.
+Uso: pipeline.py chiave [...] [--anteprima] [--sottotitoli] [--audio-da VIDEO.mp4]
   --anteprima: solo un foglio di fotogrammi chiave in out/<chiave>/foglio.png
-  --sottotitoli: solo voce e tempi, poi out/<nome>.vtt con gli stessi sottotitoli che compaiono nel video"""
-import base64, json, os, re, subprocess, sys, wave
+  --sottotitoli: solo voce e tempi, poi out/<nome>.vtt con gli stessi sottotitoli che compaiono nel video
+  --audio-da: rifà solo le immagini e riusa tale e quale l'audio di un video già montato (un solo video per volta);
+    prima controlla che i tempi siano gli stessi: sottotitoli uguali al .vtt accanto al video e durata entro 0,2 s"""
+import base64, os, re, subprocess, sys, wave
 from pathlib import Path
 import numpy as np
 import contenuti
 W = Path(__file__).resolve().parent; REPO = W.parents[1]; OUT = W / 'out'
-sys.path.insert(0, str(W)); from comune import FF
+sys.path.insert(0, str(W)); from comune import FF, pagina
 MODEL = os.environ.get('PIPER_MODEL', str(W / 'voce' / 'it_IT-paola-medium.onnx'))
-F = REPO / 'static' / 'fonts'
 ORD = ['ictus','infarto','emorragia','rianimazione','soffocamento','anafilassi','ustioni','ipoglicemia','avvelenamento','trauma-cranico']
 NUM = 'uno due tre quattro cinque sei sette otto nove dieci undici dodici tredici quattordici quindici sedici diciassette diciotto diciannove venti ventuno ventidue ventitré ventiquattro venticinque ventisei ventisette ventotto ventinove trenta'.split()
 b64 = lambda p: base64.b64encode(Path(p).read_bytes()).decode()
@@ -50,6 +51,9 @@ def numero(i):  # numero pronunciato, sotto 0,42 s
     return trim(rd(p))
 ANTE = '--anteprima' in sys.argv
 SUBS = '--sottotitoli' in sys.argv
+AUDIO_DA = Path(sys.argv[sys.argv.index('--audio-da') + 1]).resolve() if '--audio-da' in sys.argv else None
+CHIAVI = [a for i, a in enumerate(sys.argv[1:], 1) if not a.startswith('--') and sys.argv[i - 1] != '--audio-da']
+if AUDIO_DA and len(CHIAVI) != 1: sys.exit('--audio-da vale per un video solo')
 
 def vtt(v, D, conta, PRE, POST, CODA):
     """Sottotitoli WebVTT con le stesse regole di appro.src.html (spezza, subAt): frase per frase,
@@ -75,7 +79,7 @@ def vtt(v, D, conta, PRE, POST, CODA):
         start += PRE + D[k] + POST + (CODA if k == n - 1 else 0)
     return '\n'.join(righe)
 
-for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
+for key in CHIAVI:
     v = dict(contenuti.V[key]); v.setdefault('num', ORD.index(key) + 1 if key in ORD else 0)
     VOCE = v.get('voce', 'nicola')
     if VOCE == 'paola' and not Path(MODEL).exists():
@@ -115,6 +119,16 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     if SUBS:
         nome = f'primo-soccorso-{key}' if v['num'] else key
         (OUT / f'{nome}.vtt').write_text(vtt(v, D, conta, PRE, POST, CODA)); print('SOTTOTITOLI', nome, T, flush=True); continue
+    if AUDIO_DA:
+        # Stessi tempi del video da cui si prende l'audio: sottotitoli identici e stessa durata.
+        if not AUDIO_DA.is_file(): sys.exit(f'manca {AUDIO_DA}')
+        vtt_vecchio = AUDIO_DA.with_suffix('.vtt')
+        if not vtt_vecchio.is_file() or vtt_vecchio.read_text() != vtt(v, D, conta, PRE, POST, CODA):
+            sys.exit(f'{key}: i tempi non coincidono con {vtt_vecchio.name} (sottotitoli diversi o mancanti): rimonta anche l\'audio')
+        r = subprocess.run([FF, '-i', str(AUDIO_DA)], capture_output=True, text=True)
+        m = re.search(r'Duration: (\d+):(\d+):([\d.]+)', r.stderr)
+        durata = int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3)) if m else -1
+        if abs(durata - T) > 0.2: sys.exit(f'{key}: {AUDIO_DA.name} dura {durata:.2f} s, i tempi calcolati {T:.2f} s')
     track = np.zeros(int(T * SR) + SR); t = 0.0
     for i, a in enumerate(voci):
         s = int((t + PRE) * SR); track[s:s+len(a)] += a
@@ -133,14 +147,7 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     subprocess.run([FF,'-v','error','-y','-i',str(d/'voce.wav'),'-i',str(d/'musica.wav'),'-filter_complex',
         '[0]aresample=44100,asplit[v][vs];[1]volume=0.30[m];[m][vs]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[md];[v][md]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5[o]',
         '-map','[o]','-ar','44100','-ac','1','-b:a','128k',str(d/'audio.mp3')],check=True)
-    s = (W/'appro.src.html').read_text()
-    fonts = (f"@font-face{{font-family:'Playfair Display';font-weight:600;src:url(data:font/woff2;base64,{b64(F/'playfair-600-latin.woff2')}) format('woff2')}}"
-             f"@font-face{{font-family:'Jost';font-weight:100 900;src:url(data:font/woff2;base64,{b64(F/'jost-latin.woff2')}) format('woff2')}}")
-    s = s.replace('/*FONTS*/', fonts).replace('/*LOGO*/','data:image/png;base64,'+b64(REPO / 'static' / 'img' / 'loghi' / 'mise-triangolo.png'))
-    s = s.replace('/*ILL*/', (W/'ill.js').read_text() + '\n' + (W/'ill2.js').read_text() + '\n' + (W/'ill3.js').read_text())
-    s = s.replace('/*DUR*/[]', json.dumps(D)).replace('/*CONTA*/{}', json.dumps(conta)).replace('/*CFG*/{}', json.dumps(v, ensure_ascii=False))
-    s = s.replace('src="/*AUDIO*/"', 'src="data:audio/mpeg;base64,'+b64(d/'audio.mp3')+'"')
-    (d/'video.html').write_text(s)
+    (d/'video.html').write_text(pagina(v, D, conta, 'data:audio/mpeg;base64,' + b64(d/'audio.mp3')))
     env = {**os.environ, 'FF': FF, 'KEY': key, 'PATH': '/opt/node22/bin:' + os.environ.get('PATH', '/usr/bin:/bin')}
     if ANTE:
         r = subprocess.run(['node',str(W/'anteprima.js')],cwd=OUT,env=env,capture_output=True,text=True)
@@ -148,5 +155,8 @@ for key in [a for a in sys.argv[1:] if not a.startswith('--')]:
     r = subprocess.run(['node',str(W/'frames.js')],cwd=OUT,env=env,capture_output=True,text=True)
     if r.returncode: print(r.stderr[-3000:]); sys.exit(1)
     out = OUT / (f'primo-soccorso-{key}.mp4' if v['num'] else f'{key}.mp4')
-    subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(d/'audio.mp3'),'-c:v','copy','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart',str(out)],check=True)
+    if AUDIO_DA:   # audio del video già montato, copiato com'è (nessuna nuova codifica)
+        subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(AUDIO_DA),'-map','0:v','-map','1:a','-c','copy','-shortest','-movflags','+faststart',str(out)],check=True)
+    else:
+        subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(d/'audio.mp3'),'-c:v','copy','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart',str(out)],check=True)
     print('FATTO', key, T, 's', out, flush=True)

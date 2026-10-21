@@ -3,70 +3,79 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Misericordia di Ariccia — Primo soccorso passo passo</title>
 <style>
-/* Impaginazione rivista il 17/10/2026: sottotitoli più in alto e più stretti (fuori dalla
-   fascia e dalla colonna dei comandi di Instagram), riga della serie ed etichette più grandi.
-   Prova senza voce: python3 prova_impaginazione.py <chiave>. */
+/* Stile nazionale della Confederazione dal 21/10/2026 (regola «Un solo stile, quello nazionale», CLAUDE.md § «2. Grafica
+   brand»): fondo blu, fascia blu con il filo giallo e lo stemma, Montserrat, titoli con l'evidenziatore, firma
+   «Misericordia di Ariccia» in ogni scena e cornice di microtesto sui bordi (motore scripts/grafica-brand/firma-e-cornice.js).
+   Fascia, stemma e firma sono disegnati una volta sola sulla tela del fondo (#bg); la cornice è uno strato fisso sopra
+   tutto (#cornice), con il tono che il motore le dà sul fondo. Disegni, voce, sottotitoli, etichette e tempi sono quelli
+   di prima. Zone di Instagram (fascia bassa di 380 px, colonna dei pulsanti a destra):
+   prova senza voce con python3 prova_impaginazione.py <chiave>. */
 /*FONTS*/
-html,body{margin:0;height:100%;background:#0b0f1f;overflow:hidden}
+html,body{margin:0;height:100%;background:#0B2550;overflow:hidden}
 #stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;transform-origin:50% 50%;
-  background:linear-gradient(180deg,#1b223f 0%,#1a2140 60%,#151b36 100%);overflow:hidden;font-family:Jost,sans-serif;color:#fff}
+  background:#0B2550;overflow:hidden;font-family:Montserrat,sans-serif;color:#fff}
 .render #stage{left:0;top:0;transform:none!important}
 canvas{position:absolute;left:0;top:0}
-#serie{position:absolute;left:96px;top:116px;font:600 33px Jost;color:#8f9abb;letter-spacing:.5px}
-#serie b{color:#f2e433;font-weight:700}
-#chip{position:absolute;left:96px;top:186px;height:64px;padding:0 30px;border-radius:32px;background:#f2e433;color:#1b223f;
-  font:600 32px/64px Jost;display:flex;align-items:center;gap:14px;white-space:nowrap}
-#dots{position:absolute;left:auto;right:96px;top:206px;width:330px;height:24px}
-#title{position:absolute;left:96px;top:272px;width:900px;font:600 100px/1.06 "Playfair Display",serif;letter-spacing:-.5px}
-#title .ln{display:block;overflow:hidden;padding:.05em 0 .12em}
-#title .in{display:block}
-#title em{font-style:normal;color:#f2e433}
+#chip{position:absolute;left:56px;top:308px;height:44px;padding:0 14px;background:#FCEB0C;color:#003F85;
+  font:700 26px/44px Montserrat;white-space:nowrap}
+#title{position:absolute;left:56px;top:364px;width:960px;font:500 62px/66px Montserrat;color:#fff}
+#title .ln{display:block;overflow:hidden;height:66px}
+#title .in{display:block;white-space:nowrap}
+/* evidenziatore dei modelli nazionali: fondo blu scuro, giallo, grassetto (le parole *così* dei titoli) */
+#title em{font-style:normal;display:inline-block;height:66px;padding:0 8px;background:#013C7C;color:#FCF10C;font-weight:700}
+#title em.inizio{margin-left:-8px}
 #tags{position:absolute;left:96px;top:1196px;width:820px;display:flex;flex-wrap:wrap;gap:14px 16px}
-.tag{height:64px;padding:0 26px;border-radius:32px;border:3px solid #f2e433;color:#fff;font:500 36px/58px Jost;display:flex;align-items:center;gap:12px;background:rgba(27,34,63,.85)}
-.tag::before{content:"";width:11px;height:11px;border-radius:50%;background:#f2e433}
-.tag.sos{background:#fff;color:#1b223f;border-color:#fff;font-weight:700}.tag.sos::before{background:#1b223f}
+.tag{height:64px;padding:0 24px;border-radius:32px;border:3px solid #FCEB0C;color:#fff;font:600 30px/58px Montserrat;display:flex;align-items:center;gap:12px;background:#003F85}
+.tag::before{content:"";width:11px;height:11px;border-radius:50%;background:#FCEB0C}
+.tag.sos{background:#fff;color:#003F85;border-color:#fff;font-weight:700}.tag.sos::before{background:#003F85}
 #sub{position:absolute;left:96px;width:820px;top:1300px;display:flex;justify-content:center}
-#sub span{background:#0d1226;border-radius:16px;padding:16px 28px;font:500 41px/1.3 Jost;text-align:center;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-#card{position:absolute;left:96px;top:640px;width:888px;height:420px;border-radius:40px;background:#fff;color:#1b223f;overflow:hidden;display:flex;align-items:center;gap:40px;padding:0 56px;box-sizing:border-box}
-#card img{width:180px;height:auto;flex:none}
-#card>div{white-space:nowrap}
-#card .n{font:600 44px "Playfair Display";margin-bottom:8px}
-#card .s{font:500 32px Jost;color:#3b4466}
-#card .tel{font:800 76px/1.1 Jost;letter-spacing:1px;margin:6px 0}
-#card .w{font:600 34px Jost;color:#006d96}
-#card .str{position:absolute;right:-40px;bottom:-60px;width:360px;height:120px;transform:rotate(-28deg);
-  background:linear-gradient(180deg,#00a5dc 0 33%,#fff 33% 42%,#f2e433 42% 80%,#fff 80% 86%,#e8702a 86%)}
-#sos{position:absolute;left:96px;top:1100px;height:78px;padding:0 34px;border-radius:39px;background:#fff;color:#1b223f;font:600 38px/78px Jost;display:flex;align-items:center;gap:16px}
-#sos i{font-style:normal;background:#1b223f;color:#fff;border-radius:22px;padding:0 16px;font:800 38px/56px Jost}
-#motto{position:absolute;left:0;width:1080px;top:1262px;text-align:center;font:600 58px "Playfair Display";color:#f2e433}
-#fonte{position:absolute;left:96px;width:888px;top:1370px;font:500 26px Jost;color:#8f9abb;text-align:center}
-#ui{position:fixed;inset:0;display:grid;place-items:center;background:rgba(10,14,30,.55);color:#fff;font:600 22px Jost;cursor:pointer;z-index:9}
+/* corpi scelti perché righe ed etichette vadano a capo come prima (Montserrat è più larga di Jost): stessi spazi */
+#sub span{background:rgba(0,22,54,.92);padding:16px 28px;font:500 35px/1.3 Montserrat;text-align:center;color:#fff}
+/* scheda finale sul modello del biglietto da visita nazionale: logo triangolare, nome e recapiti in blu, filo giallo */
+#card{position:absolute;left:96px;top:556px;width:888px;height:400px;background:#fff;color:#233B74;overflow:hidden}
+#card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:#FCEB0C}
+#card img{position:absolute;left:52px;top:106px;width:210px;height:auto}
+#card .t{position:absolute;left:300px;right:36px;top:0;bottom:12px;display:flex;flex-direction:column;justify-content:center;white-space:nowrap}
+#card .n{font:700 38px/1.15 Montserrat;color:#003F85}
+#card .s{font:400 27px/1.3 Montserrat;margin-top:8px}
+#card .tel{font:800 70px/1.1 Montserrat;color:#003F85;margin-top:12px;letter-spacing:.5px}
+#card .w{font:600 30px/1.3 Montserrat;color:#003F85;margin-top:8px}
+#sos{position:absolute;left:96px;top:996px;height:78px;padding:0 34px;border-radius:39px;background:#fff;color:#003F85;font:600 36px/78px Montserrat;display:flex;align-items:center;gap:16px}
+#sos i{font-style:normal;background:#003F85;color:#fff;border-radius:22px;padding:0 16px;font:800 38px/56px Montserrat}
+#motto{position:absolute;left:56px;width:968px;top:1128px;text-align:center;font:600 46px/1.2 Montserrat;color:#FCEB0C}
+#fonte{position:absolute;left:96px;width:888px;top:1222px;font:400 25px/1.45 Montserrat;color:#D5DDEB;text-align:center}
+.nobr{white-space:nowrap}
+#ui{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,22,54,.55);color:#fff;font:600 22px Montserrat;cursor:pointer;z-index:9}
 .render #ui{display:none}
 </style></head>
 <body>
 <div id="stage">
   <canvas id="bg" width="1080" height="1920"></canvas>
   <canvas id="cv" width="1080" height="1920"></canvas>
-  <div id="serie"></div>
   <div id="chip"></div>
-  <canvas id="dots" width="330" height="24"></canvas>
   <div id="title"></div>
   <div id="tags"></div>
-  <div id="card"><img id="logo" alt=""><div><div class="n">Misericordia di Ariccia</div><div class="s">Corsi di primo soccorso e BLSD</div><div class="tel">348 4068657</div><div class="w">misericordia-ariccia.it</div></div><div class="str"></div></div>
+  <div id="card"><img id="logo" alt=""><div class="t"><div class="n">Misericordia di Ariccia</div><div class="s">Corsi di primo soccorso e BLSD</div><div class="tel">348 4068657</div><div class="w">misericordia-ariccia.it</div></div></div>
   <div id="sos">In ogni emergenza chiama il <i>112</i></div>
   <div id="motto">Al fianco della comunità, ogni giorno.</div>
   <div id="fonte">Fonte: linee guida IRC 2025 · informazioni generali, non sostituiscono un corso</div>
   <div id="sub"><span></span></div>
   <canvas id="fx" width="1080" height="1920"></canvas>
+  <canvas id="cornice" width="1080" height="1920"></canvas>
 </div>
 <div id="ui">Tocca per avviare (con audio)</div>
 <audio id="aud" src="/*AUDIO*/"></audio>
 <script>
+/*CORNICE*/
+</script>
+<script>
+// Colori dei disegni (invariati: sono gli stessi delle grafiche delle news) e colori del kit nazionale.
 const C = {navy:'#1b223f', ciano:'#00a5dc', giallo:'#f2e433', arancio:'#e8702a', bianco:'#ffffff', terra:'#12182f', tile:'#252e55'};
+const KIT = {blu:'#003F85', giallo:'#FCEB0C', azzurro:'#009FE3', notte:'#0B2550'};
 const DUR = /*DUR*/[];
 const CONTA = /*CONTA*/{};
 const CFG = /*CFG*/{};
-const md = x=>x.replace(/\*([^*]+)\*/g,'<em>$1</em>');
+const md = x=>x.replace(/\*([^*]+)\*([.,:;!?…]*)/g,'<em>$1$2</em>');  // la punteggiatura che segue va nel riquadro
 function spezza(fr){ if(fr.length<=88) return [fr]; const pz=fr.split(/(?<=,)\s+/); const out=[]; let cur='';
   pz.forEach(x=>{ if(cur && (cur+' '+x).length>80){ out.push(cur); cur=x; } else cur=cur?cur+' '+x:x; }); if(cur) out.push(cur); return out; }
 const SCENE = CFG.scene.map(sc=>{ const sub=(sc.sub||sc.voce).split(/(?<=[.?!])\s+/).filter(Boolean).flatMap(spezza);
@@ -88,34 +97,67 @@ const cv=$('cv'), ctx=cv.getContext('2d'), bg=$('bg'), bctx=bg.getContext('2d'),
 function rr(c,x,y,w,h,r){r=Math.min(r,Math.abs(w)/2,Math.abs(h)/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
 const CX=540, CY=850;
 
+// Testata fissa, dalle misure del modello «storia con fascia» nazionale (fascia 1010×102 con il filo giallo, stemma
+// largo 176 px che sporge sopra e sotto), alzata a 150 px dall'alto perché sotto restino titolo e disegno.
+const FASCIA = {y:150, h:102, w:1010, sx:52, dx:240};
+const FIRMA = {x:56, y:266, corpo:30, testo:'Misericordia di Ariccia'};
+const stemma = new Image(); stemma.src='/*STEMMA*/';
+// Riga della serie nella fascia: le parole di sempre su due righe, il numero in giallo.
+function righeSerie(){
+  const serie = CFG.serie || 'Primo soccorso passo passo', num = CFG.num ? `${CFG.num}/${CFG.tot||10}` : '';
+  let r1 = serie, r2 = '';
+  if (serie.startsWith('Primo soccorso ')) { r1 = 'Primo soccorso'; r2 = serie.slice(15); }
+  else if (serie.includes(', ')) { const i = serie.indexOf(', '); r1 = serie.slice(0, i+1); r2 = serie.slice(i+2); }
+  else if (serie.includes(' · ')) { const i = serie.indexOf(' · '); r1 = serie.slice(0, i); r2 = serie.slice(i+3); }
+  return {r1, r2, num};
+}
+function riga(c, pezzi, corpo, x, y){ for(const [testo, peso, colore] of pezzi){ c.font=`${peso} ${corpo}px Montserrat`; c.fillStyle=colore; c.fillText(testo, x, y); x += c.measureText(testo).width; } }
 function drawBg(){
   const c=bctx; c.clearRect(0,0,1080,1920);
-  c.save(); c.translate(1080,1920); c.rotate(-0.52);
-  [['#16325a',0,60],['#1f2a4a',70,40],['#2b2f3f',118,26]].forEach(([col,o,h])=>{c.fillStyle=col;c.fillRect(-900,-360+o,1400,h)});
-  c.restore();
+  // fondo blu dei modelli (come nelle grafiche delle news della rubrica), più scuro in basso sotto i sottotitoli
+  const g=c.createRadialGradient(540,860,40,540,860,1250); g.addColorStop(0,'#0A4793'); g.addColorStop(.45,KIT.blu); g.addColorStop(1,KIT.notte);
+  c.fillStyle=g; c.fillRect(0,0,1080,1920);
+  const a=c.createLinearGradient(0,0,0,660); a.addColorStop(0,'rgba(0,22,54,.72)'); a.addColorStop(.72,'rgba(0,22,54,.55)'); a.addColorStop(1,'rgba(0,22,54,0)');
+  c.fillStyle=a; c.fillRect(0,0,1080,660);
+  const b=c.createLinearGradient(0,1020,0,1920); b.addColorStop(0,'rgba(0,22,54,0)'); b.addColorStop(.42,'rgba(0,22,54,.5)'); b.addColorStop(1,'rgba(0,22,54,.84)');
+  c.fillStyle=b; c.fillRect(0,1020,1080,900);
+  // fascia: filo giallo (rettangolo 1028×92 spostato di 11 px) e fascia blu
+  c.fillStyle=KIT.giallo; c.fillRect(0,FASCIA.y-11,1028,92);
+  c.fillStyle=KIT.blu; c.fillRect(0,FASCIA.y,FASCIA.w,FASCIA.h);
+  const {r1, r2, num} = righeSerie(), libero = FASCIA.w-FASCIA.sx-FASCIA.dx;
+  const p1=[[r1,500,'#FFFFFF']], p2=r2||num ? [[r2,500,'#FFFFFF'], ...(num?[[(r2?' · ':''),500,'#FFFFFF'],[num,700,KIT.giallo]]:[])] : [];
+  const largo=(p,corpo)=>p.reduce((s,[t,peso])=>{ c.font=`${peso} ${corpo}px Montserrat`; return s+c.measureText(t).width; },0);
+  let corpo=46; while(corpo>30 && Math.max(largo(p1,corpo), largo(p2,corpo))>libero) corpo--;
+  c.font=`500 ${corpo}px Montserrat`; const m=c.measureText('Mg'), asc=m.fontBoundingBoxAscent, disc=m.fontBoundingBoxDescent;
+  const L=corpo*1.04, righe=p2.length?2:1, top=FASCIA.y+(FASCIA.h-righe*L)/2, base=k=>top+k*L+(L-asc-disc)/2+asc;
+  c.textBaseline='alphabetic'; riga(c,p1,corpo,FASCIA.sx,base(0)); if(p2.length) riga(c,p2,corpo,FASCIA.sx,base(1));
+  c.drawImage(stemma,786,FASCIA.y-46,176,176*stemma.naturalHeight/stemma.naturalWidth);
+  // firma «Misericordia di Ariccia», come nei modelli nazionali (600, bianca, ombra leggera)
+  c.save(); c.font=`600 ${FIRMA.corpo}px Montserrat`; const f=c.measureText(FIRMA.testo);
+  c.shadowColor='rgba(0,22,54,.6)'; c.shadowBlur=6; c.shadowOffsetY=1; c.fillStyle='#FFFFFF';
+  const fb=FIRMA.y+(FIRMA.corpo-f.fontBoundingBoxAscent-f.fontBoundingBoxDescent)/2+f.fontBoundingBoxAscent;
+  c.fillText(FIRMA.testo,FIRMA.x,fb); c.restore();
+  window.FIRMA_BOX={x:FIRMA.x, y:Math.round(fb-f.actualBoundingBoxAscent), w:Math.round(f.width), h:Math.round(f.actualBoundingBoxAscent+f.actualBoundingBoxDescent), corpo:FIRMA.corpo, colore:'#FFFFFF', fascia:corpo};
+  // cornice di microtesto sui quattro bordi, dal motore delle grafiche: strato fisso sopra tutto, tono preso dal fondo
+  window.CORNICE_ESITO = window.corniceSovrapposta($('cornice'), bg);
 }
 /*ILL*/
-
-const dctx=$('dots').getContext('2d');
-function drawDots(k){ const c=dctx, W=330; c.clearRect(0,0,W,24); const N=SCENE.length, gap=(W-24)/(N-1);
-  c.strokeStyle='rgba(242,228,51,.35)'; c.lineWidth=3; c.beginPath(); c.moveTo(12,12); c.lineTo(W-12,12); c.stroke();
-  c.strokeStyle=C.giallo; c.beginPath(); c.moveTo(12,12); c.lineTo(12+gap*k,12); c.stroke();
-  for(let i=0;i<N;i++){ c.fillStyle=i<=k?C.giallo:'#1b223f'; c.strokeStyle=C.giallo; c.lineWidth=3; c.beginPath(); c.arc(12+gap*i,12,i===k?9:5.5,0,7); c.fill(); c.stroke(); } }
 
 let curK=-1, SUBTOP=1300;
 const SUBMAX=1530; // fondo massimo del sottotitolo: sotto c'è la fascia dei comandi di Instagram (380 px)
 function setScene(k){ curK=k; const s=SCENE[k];
   $('chip').textContent=s.chip;
-  $('title').innerHTML=s.title.map(l=>`<span class="ln"><span class="in">${l}</span></span>`).join('');
+  $('title').innerHTML=s.title.map(l=>`<span class="ln"><span class="in">${l.replace(/^<em>/,'<em class="inizio">')}</span></span>`).join('');
   $('tags').innerHTML=(s.tags||[]).map(t=>`<span class="tag${t[2]?' sos':''}">${t[0]}</span>`).join('');
   const h=(s.tags||[]).length? $('tags').offsetHeight : 0; SUBTOP=Math.max(1300,1196+h+16); $('sub').style.top=SUBTOP+'px';
 }
 function subAt(k,u){ const s=SCENE[k], v=u-PRE; const Dv = s.conta? CONTA.voce : DUR[k];
   if(v<-.1||v>Dv+.4) return ''; const tot=s.w.reduce((a,b)=>a+b,0); let accw=0;
   for(let i=0;i<s.sub.length;i++){ accw+=s.w[i]; if(v<=accw/tot*Dv||i===s.sub.length-1) return s.sub[i]; } return ''; }
+// passaggio alla scheda finale: strisce nei colori del kit (azzurro, bianco, giallo, blu)
 function sweep(t){ const c=fctx; c.clearRect(0,0,1080,1920); const s=START[LAST]; const p=prog(t,s-.55,1.1); if(p<=0||p>=1) return;
   c.save(); c.translate(540,960); c.rotate(-0.55); const x=lerp(-1900,1900,inOut(p));
-  [[C.ciano,0,260],['#fff',260,40],[C.giallo,300,300],['#fff',600,30],[C.arancio,630,90]].forEach(([col,o,w])=>{c.fillStyle=col;c.fillRect(x+o-500,-1600,w,3200)}); c.restore(); }
+  [[KIT.azzurro,0,260],['#fff',260,40],[KIT.giallo,300,300],['#fff',600,30],[KIT.blu,630,90]].forEach(([col,o,w])=>{c.fillStyle=col;c.fillRect(x+o-500,-1600,w,3200)}); c.restore(); }
 
 function render(t){
   t=clamp(t,0,TOTAL-1e-4); let k=0; for(let i=0;i<SCENE.length;i++) if(t>=START[i]) k=i;
@@ -144,7 +186,7 @@ function render(t){
     // dissolvenza in basso: i disegni non toccano le etichette
     ctx.save(); ctx.globalCompositeOperation='destination-out'; const g=ctx.createLinearGradient(0,1120,0,1188); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,1)');
     ctx.fillStyle=g; ctx.fillRect(0,1120,1080,68); ctx.fillStyle='#000'; ctx.fillRect(0,1188,1080,732); ctx.fillRect(0,0,1080,505); ctx.restore(); }
-  drawDots(k); sweep(t);
+  sweep(t);
 }
 window.renderFrame=render;
 
@@ -152,14 +194,19 @@ const isRender=/render=1/.test(location.search); if(isRender) document.body.clas
 function fit(){ if(isRender) return; const s=Math.min(innerWidth/1080,innerHeight/1920); $('stage').style.transform=`translate(-50%,-50%) scale(${s})`; }
 addEventListener('resize',fit); fit();
 $('logo').src='/*LOGO*/';
-$('serie').innerHTML= CFG.num ? `${CFG.serie||'Primo soccorso passo passo'} · <b>${CFG.num}/${CFG.tot||10}</b>` : (CFG.serie||'');
 if(CFG.card){ document.querySelector('#card .s').textContent=CFG.card.s; document.querySelector('#card .tel').textContent=CFG.card.tel; }
 if(CFG.serie && CFG.serie.includes('2ª')) $('fonte').textContent='Fonte: linee guida ERC/IRC 2025 · informazioni generali, non sostituiscono un corso';
 // Argomenti non trattati (o non solo) dalle linee guida IRC/ERC 2025: le fonti vere sono nell'articolo (21/10/2026).
 if(CFG.fonte) $('fonte').textContent=CFG.fonte;
 if(!CFG.num) $('fonte').textContent='Misericordia di Ariccia · Piazzale Aldo Moro 6 · sede@misericordia-ariccia.it';
-Promise.all(['600 20px "Playfair Display"','400 20px Jost','500 20px Jost','600 20px Jost','700 20px Jost','800 20px Jost'].map(f=>document.fonts.load(f)))
- .then(()=>$('logo').decode().catch(()=>{})).then(()=>{ drawBg(); render(0); window.__ready=true; });
+// Email e siti interi sulla stessa riga: «sede@misericordia-» da una parte e «ariccia.it» dall'altra si legge male
+// (succedeva con Montserrat, più larga di Jost; prova_impaginazione.js lo controlla).
+$('fonte').innerHTML=$('fonte').textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])
+  .replace(/\S+@\S+|[\w.-]+\.(?:it|org|com|eu)\b/g,m=>`<span class="nobr">${m}</span>`);
+Promise.all(['600 20px "Playfair Display"','400 20px Jost','500 20px Jost','600 20px Jost','700 20px Jost','800 20px Jost',
+  '300 20px Montserrat','400 20px Montserrat','500 20px Montserrat','600 20px Montserrat','700 20px Montserrat','800 20px Montserrat',
+  '500 20px Montserrat'].map(f=>document.fonts.load(f, 'Aà·ª')))
+ .then(()=>Promise.all([$('logo').decode().catch(()=>{}), stemma.decode().catch(()=>{})])).then(()=>{ drawBg(); render(0); window.__ready=true; });
 let t0=null, playing=false, pausedAt=0; const aud=$('aud');
 function loop(ts){ if(!playing) return; const t=(ts-t0)/1000; if(t>=TOTAL){ render(TOTAL); playing=false; $('ui').style.display='grid'; $('ui').textContent='Tocca per rivedere'; pausedAt=0; return;} render(t); requestAnimationFrame(loop); }
 $('ui').onclick=()=>{ $('ui').style.display='none'; playing=true; aud.currentTime=pausedAt; aud.play().catch(()=>{}); t0=performance.now()-pausedAt*1000; requestAnimationFrame(loop); };
