@@ -46,6 +46,21 @@ CASI = [  # (testo, deve essere segnalato)
     ("Se perde conoscenza, accompagnalo a terra, " + "chiama il 112 e inizia la rianimazione.", True),
     ("Se perde conoscenza, accompagnalo a terra, " + "chiama '+U12+' e inizia la rianimazione.", True),
     ("Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato il 112, chiamalo subito.", False),
+    # rubrica, correzioni del 21/10/2026
+    ("Aspetta 15 minuti. Se non migliora, dagli " + "altro zucchero.", True),
+    ("Aspetta 15 minuti. Se ha ancora i sintomi, dagli altro zucchero. Se non migliora, chiama il 112.", False),
+    ("Spingi per un terzo del torace, circa 4 cm " + "nel lattante, 5 nel bambino.", True),
+    ("circa quattro centimetri " + "nel lattante", True),
+    ("to one third of its depth (about 4 cm " + "in an infant, 5 cm in a child)", True),
+    ("Spingi per almeno un terzo del torace, ma mai più di 6 cm.", False),
+    ("mettigli un cuscino " + "sotto la testa, coprilo", True),
+    ("a cushion " + "under the head, a blanket", True),
+    ("Metti qualcosa di morbido sotto la testa, come una giacca piegata.", False),
+    ("Di solito si riprende in meno " + "di un minuto.", True),
+    ("Di solito si riprende in fretta. Se non si riprende, chiama il 112.", False),
+    ("mettilo in un sacchetto pulito e chiuso, e il sacchetto " + "nel ghiaccio.", True),
+    ("in a clean, sealed bag, and the bag " + "in ice.", True),
+    ("in un sacchetto chiuso, dentro un altro sacchetto con acqua e ghiaccio.", False),
 ]
 
 errori = 0
