@@ -1,6 +1,6 @@
 ---
 title: "Convulsioni: cosa fare e cosa non fare"
-titoloSeo: "Convulsioni: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Convulsioni: cosa fare passo passo, primo soccorso"
 date: 2026-11-10
 slug: "primo-soccorso-convulsioni"
 description: "Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco."
@@ -64,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Lega Italiana Contro l'Epilessia, Guida alle epilessie 2023](https://soci.lice.it/pdf/web_2023_guida_alle_epilessie.pdf) (spazio intorno, non bloccare i movimenti, niente in bocca, qualcosa di morbido sotto la testa, vestiti slacciati, l'orologio, quando chiamare, su un fianco dopo la crisi); [CDC, First Aid for Seizures](https://www.cdc.gov/epilepsy/first-aid-for-seizures/index.html) (chiamare anche per la prima crisi e in gravidanza); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (movimenti simili alle convulsioni all'inizio di un arresto cardiaco, vivavoce, rianimazione).*
