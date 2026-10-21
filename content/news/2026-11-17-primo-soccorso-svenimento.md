@@ -20,25 +20,21 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **3 di 13**: **svenimento**.
 
-{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-svenimento.mp4" poster="img/video/primo-soccorso-svenimento.jpg" verticale="si" titolo="Svenimento: primo soccorso passo passo" descrizione="I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112." data="2026-11-17" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
 ### I segni prima
 
-Prima di svenire spesso si diventa pallidi e sudati, con nausea, vista annebbiata e un ronzio nelle orecchie.
+Prima di svenire spesso si diventa pallidi e sudati, con nausea, capogiri e la vista che si annebbia.
 
 ### Le contromanovre
 
-Se senti che stai per svenire, incrocia le gambe e stringi forte i muscoli, oppure accovacciati. Meglio ancora, sdraiati.
+Se senti che stai per svenire, sdraiati, se puoi con le gambe sollevate. Se non puoi sdraiarti, accovacciati, oppure incrocia le gambe e stringi forte i muscoli.
 
 ### Se sviene
 
 Se sviene, mettilo sdraiato a pancia in su e, se puoi, sollevagli le gambe.
-
-### Aria
-
-Allenta i vestiti stretti, fai spazio intorno e lascia circolare l'aria.
 
 ### Se non si riprende
 
@@ -48,7 +44,7 @@ Di solito si riprende in fretta. Se non si riprende, chiama il 112 e guarda se r
 
 Quando sta meglio, fallo rialzare piano: prima seduto, poi in piedi. Se si alza di colpo, può svenire di nuovo.
 
-### Dal medico
+### Quando chiamare
 
 Chiama il 112 se è svenuto durante uno sforzo, se ha avuto dolore al petto o il cuore che batte forte, o se si è ferito cadendo.
 

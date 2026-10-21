@@ -350,14 +350,24 @@ def testo_avvio(repo: str, ramo: str, titolo: str, data: str, pr: int | str, bri
     )
 
 
+# Ambiente di Codex Cloud in cui si avvia il passaggio: quello col nome del repository, tranne social-pc-genzano,
+# che sta solo in «tutti-i-repository», l'ambiente con tutti e cinque i repository (dal 21/10/2026).
+AMBIENTE_CLOUD = {"social-pc-genzano": "tutti-i-repository"}
+
+
+def ambiente_cloud(repo: str) -> str:
+    nome = repo.rsplit("/", 1)[-1]
+    return AMBIENTE_CLOUD.get(nome, nome)
+
+
 def stampa_avvio(repo: str, ramo: str, pr: int | str, testo: str) -> None:
     """Stampa il testo di avvio e i due gesti di Alessandro (gli unici passaggi a mano del protocollo)."""
-    print("\n==== testo da incollare in Codex Cloud (chatgpt.com/codex) — inizio ====")
+    print("\n==== testo da incollare in Codex Cloud (chatgpt.com/codex/cloud) — inizio ====")
     print(testo.rstrip())
     print("==== testo da incollare in Codex Cloud — fine ====")
     print("---- per Alessandro ----")
-    print(f"1. Avvio: chatgpt.com/codex → ambiente di {repo} → ramo «{ramo}» se il selettore lo "
-          f"offre (altrimenti il principale) → incolla il testo qui sopra → avvia.")
+    print(f"1. Avvio: chatgpt.com/codex/cloud → ambiente «{ambiente_cloud(repo)}» → ramo «{ramo}» se il "
+          f"selettore lo offre (altrimenti il principale) → incolla il testo qui sopra → avvia.")
     print("2. Consegna: quando Codex ha finito, «Create PR» dal task. Nient'altro: non unire.")
     print(f"3. Il resto lo fa la sessione: `passa-a.py stato` riconosce la pull request di consegna #M, "
           f"`passa-a.py chiudi --pr {pr} --consegna M` la porta nel ramo e unisce.")
@@ -369,7 +379,8 @@ def voce_bacheca(data: str, titolo: str, ramo: str, parti: list[tuple[str, str]]
     nota = f"{NOTA_PREPARATA}; PR #{pr}" if pr else f"{NOTA_PREPARATA}; PR in apertura"
     righe = [f"- **{data} — da Claude a ChatGPT — {titolo}** ({nota}; ramo `{ramo}`)"]
     if pr:
-        righe.append(f"  - **Avvio a mano (Alessandro).** In Codex Cloud: ambiente del repository, ramo "
+        righe.append(f"  - **Avvio a mano (Alessandro).** In Codex Cloud: ambiente del repository (per "
+                     f"social-pc-genzano, «tutti-i-repository»), ramo "
                      f"`{ramo}` se il selettore lo offre, poi il testo di avvio (intestazione più le sette "
                      f"parti qui sotto: lo stampa `passa-a.py nuovo`, lo ristampa `passa-a.py riavvia --pr {pr}`). "
                      f"A lavoro finito, «Create PR» dal task: la pull request di consegna la porta nel ramo "

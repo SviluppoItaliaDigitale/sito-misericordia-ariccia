@@ -42,11 +42,11 @@ Metti del ghiaccio avvolto in un panno, mai direttamente sulla pelle, per una ve
 
 ### Frattura esposta
 
-Se l'osso esce dalla pelle, copri con una garza pulita, senza spingerlo dentro, e premi intorno se sanguina.
+Se l'osso esce dalla pelle, non spingerlo dentro. Se sanguina, premi sulla ferita con una garza o un panno pulito, senza premere sull'osso.
 
 ### Quando chiamare
 
-Chiama il 112 per fratture esposte, per l'anca, il femore, la schiena o il collo, se il dolore è fortissimo, o se mano o piede sono freddi e senza sensibilità.
+Chiama il 112 per fratture esposte, per l'anca, il femore, la schiena o il collo, o se il dolore è fortissimo.
 
 ### Distorsione
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Croce Rossa Italiana, Traumi alle ossa, articolazioni, muscoli](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/traumi-ossa-articolazioni-muscoli/) (segni, non rimettere a posto l'osso, tenere ferma la parte, ghiaccio in un panno per al massimo 20 minuti, quando chiamare il 112); [NHS, Broken arm or wrist](https://www.nhs.uk/conditions/broken-arm-or-wrist/) (sciarpa a fascia, fermare il sangue con una garza pulita); [NHS, Broken leg](https://www.nhs.uk/conditions/broken-leg/) (osso che esce dalla pelle: subito i soccorsi); [NHS, Falls](https://www.nhs.uk/conditions/falls/) (anca, schiena o collo: chiamare i soccorsi); [NHS, Sprains and strains](https://www.nhs.uk/conditions/sprains-and-strains/) (distorsione: riposo, ghiaccio, parte sollevata, medico se non migliora).*
+*Fonti: [Croce Rossa Italiana, Traumi alle ossa, articolazioni, muscoli](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/traumi-ossa-articolazioni-muscoli/) (segni, non rimettere a posto l'osso, tenere ferma la parte, ghiaccio in un panno per al massimo 20 minuti, quando chiamare il 112); [NHS, Broken arm or wrist](https://www.nhs.uk/conditions/broken-arm-or-wrist/) (sciarpa a fascia, fermare il sangue con una garza pulita); [NHS, Broken leg](https://www.nhs.uk/conditions/broken-leg/) (osso che esce dalla pelle: subito i soccorsi; fermare il sangue premendo sulla ferita con un panno pulito); [NHS, Falls](https://www.nhs.uk/conditions/falls/) (anca, schiena o collo: chiamare i soccorsi); [NHS, Sprains and strains](https://www.nhs.uk/conditions/sprains-and-strains/) (distorsione: riposo, ghiaccio, parte sollevata, medico se non migliora).*

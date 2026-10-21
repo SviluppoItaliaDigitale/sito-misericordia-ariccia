@@ -56,6 +56,18 @@ FORME_SBAGLIATE = [
     (re.compile(r"e\s+il\s+sacchetto\s+nel\s+ghiaccio|and\s+the\s+bag\s+in\s+ice", re.I),
      "parte amputata: garza bagnata, sacchetto chiuso dentro un altro sacchetto con acqua e ghiaccio, mai a contatto "
      "col ghiaccio, in ospedale con il ferito (IRC 2025, cap. 12)"),
+    # Frasi della rubrica senza fonte o in contrasto con le fonti, tolte o corrette il 21/10/2026 (issue #147).
+    (re.compile(r"porta\s+(?:con\s+te\s+)?la\s+\**confezione\**,?\s+o\s+una\s+batteria\s+uguale|bring\s+the\s+\**packaging\**\s+or\s+an\s+identical\s+battery", re.I),
+     "batterie a bottone: niente cibo né bevande, sopra i 12 mesi il miele mentre si va al pronto soccorso "
+     "(Ospedale Bambino Gesù); la confezione non è nella fonte"),
+    (re.compile(r"apri\s+porte\s+e\s+finestre\s+ed\s+esci|open\s+doors\s+and\s+windows\s+and\s+get\s+out", re.I),
+     "monossido: prima si esce all'aria aperta (NHS); le finestre si aprono solo se si può farlo senza fermarsi (Regione Toscana)"),
+    (re.compile(r"ronzio\s+nelle\s+orecchie|ringing\s+in\s+the\s+ears", re.I),
+     "svenimento: i segni prima sono sudore, nausea, capogiri, vista annebbiata (NHS) e pallore (Auxologico); "
+     "il ronzio non è nelle fonti"),
+    (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
+     "fratture: le estremità fredde non sono un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
+     "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
@@ -238,6 +250,29 @@ def grafiche_senza_firma(radice=REPO, video_in_attesa=VIDEO_IN_ATTESA):
     return mancano
 
 
+def fonte_video_sbagliata():
+    """News della rubrica in uscita che citano fonti diverse da IRC/ERC: il loro video non deve dire
+    «Fonte: linee guida IRC 2025» nella scheda finale, ma rimandare all'articolo (campo fonte in
+    scripts/video-rubrica/contenuti*.py). Errore trovato il 21/10/2026 (issue #147)."""
+    sys.path.insert(0, str(REPO / "scripts/video-rubrica"))
+    try:
+        import contenuti
+    except Exception as e:  # noqa: BLE001
+        return [f"scripts/video-rubrica/contenuti.py non si legge: {e}"]
+    mancano = []
+    for f in sorted((REPO / "content/news").glob("*-primo-soccorso-*.md")):
+        t = f.read_text(encoding="utf-8")
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', t, re.M)
+        v = re.search(r'video/primo-soccorso-([a-z0-9-]+)\.mp4', t)
+        if not d or not v or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
+        fonti = " ".join(re.findall(r"^\*Font[ei]:.*$", t, re.M))
+        altre = [u for u in re.findall(r"\]\((https?://[^)]+)\)", fonti) if not re.search(r"ircouncil\.it|erc\.edu", u)]
+        k = v.group(1)
+        if altre and k in contenuti.V and not contenuti.V[k].get("fonte"):
+            mancano.append(f"`{f.name}`: cita {altre[0]} ma il video «{k}» dice «linee guida IRC 2025» (manca fonte in contenuti*.py)")
+    return mancano
+
+
 def scarica(url, tentativi=4):
     for i in range(tentativi):
         try:
@@ -308,6 +343,11 @@ def main():
         righe.append(f"- ⏳ {len(VIDEO_IN_ATTESA)} video della rubrica ancora nello stile di prima, copertine non controllate "
                      f"(si rifanno dopo la PR #217; `VIDEO_IN_ATTESA` in `controlla_sito.py`): {', '.join(sorted(VIDEO_IN_ATTESA))}")
     errori += bool(senza)
+
+    fv = fonte_video_sbagliata()
+    righe += ["", "### 🎬 Fonte nella scheda finale dei video: " + ("✅ coerente con gli articoli" if not fv else f"❌ {len(fv)} da correggere")]
+    righe += [f"- {x}" for x in fv[:30]]
+    errori += bool(fv)
 
     if "--live" in sys.argv:
         righe += ["", "### 🌐 Sito online"]

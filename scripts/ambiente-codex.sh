@@ -20,18 +20,25 @@ if [ "$PROVA" -eq 0 ] && [ -f scripts/imposta-identita-git.sh ]; then
 fi
 
 # 2. Skill di Alessandro e indice delle routine, prima delle dipendenze: servono anche quelle delle skill.
-#    In assistente-personale sono nel repository. Negli altri serve il token AP_TOKEN (sola lettura del repository
+#    Dove l'ambiente contiene assistente-personale (il suo e «tutti-i-repository», con tutti e cinque i repository)
+#    sono già nel repository: le skill si collegano in ~/.agents/skills e il repository in ~/assistente-personale,
+#    lo stesso percorso del PC. Negli ambienti di un solo sito serve il token AP_TOKEN (sola lettura del repository
 #    assistente-personale) e se ne scaricano solo skill, routine e file della radice, non i dati personali.
 #    Si cancella e si riscarica solo una copia fatta da questo script (segno in .git): mai una copia di lavoro, come quella del PC.
 AP="$HOME/assistente-personale"
 SEGNO="$AP/.git/copia-degli-ambienti"
 [ "$PROVA" -eq 0 ] && mkdir -p "$HOME/.agents"
 if [ "$REPO" = "assistente-personale" ]; then
-  [ "$PROVA" -eq 0 ] && ln -sfn "$PWD/.agents/skills" "$HOME/.agents/skills" && log "skill: $HOME/.agents/skills"
+  if [ "$PROVA" -eq 1 ]; then log "collegherei le skill in $HOME/.agents/skills e, se lì non c'è niente, il repository in $AP"
+  else
+    ln -sfn "$PWD/.agents/skills" "$HOME/.agents/skills" && log "skill: $HOME/.agents/skills"
+    # Solo se lì non c'è niente: una cartella vera, come la copia di lavoro del PC, non si tocca.
+    [ -e "$AP" ] || { ln -sfn "$PWD" "$AP" && log "repository: $AP"; }
+  fi
 elif [ -n "${AP_TOKEN:-}" ]; then
   if [ "$PROVA" -eq 1 ]; then log "clonerei in $AP skill, routine e file della radice di assistente-personale"
   elif [ -e "$AP" ] && [ ! -e "$SEGNO" ]; then
-    log "$AP c'è già e non l'ha creata questo script: la lascio com'è"
+    log "$AP c'è già (copia di lavoro o repository dell'ambiente): la lascio com'è"
     [ -d "$AP/.agents/skills" ] && ln -sfn "$AP/.agents/skills" "$HOME/.agents/skills"
   else
     rm -rf "$AP"

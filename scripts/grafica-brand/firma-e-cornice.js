@@ -14,7 +14,8 @@
      sito cercano (scripts/controlli/controlla_sito.py).
    - corniceVettoriale(opzioni), per i modelli da stampa (biglietto da visita, carta intestata): la stessa
      cornice come testo vettoriale, dentro il margine di stampa, parola per parola chiara sul blu e scura sul
-     bianco, con colori pieni (niente trasparenze in tipografia).
+     bianco, con colori pieni (niente trasparenze in tipografia). Dal 21/10/2026 la usa anche rendi.py --cornice
+     per i PDF già fatti, con i tratti liberi misurati sulla pagina.
    Le usano .claude/skills/grafiche-modelli-nazionali/rendi.py e scripts/parola-domenica/rendi.js, attraverso
    la pagina firma-e-cornice.html (che carica i caratteri). Nessuna libreria esterna. */
 (() => {
@@ -235,9 +236,12 @@
   // ferma prima, con un piccolo stacco, e il testo sta intero e centrato nel tratto che resta. Colori pieni, il
   // tono della cornice raster calcolato su quel fondo. Restituisce le parole scritte, le strisce e le scritte o i
   // loghi che la cornice toccherebbe (devono essere zero: lo controlla rendi.py).
+  // Per i PDF già fatti (rendi.py --cornice FILE.pdf) la pagina non è nel browser: rendi.py misura i tratti liberi
+  // sulla pagina disegnata e li passa in o.strisce ([{lato, inizio, fine, fondo: [R, G, B]}]), con le misure
+  // della tavola in o.larghezza e o.altezza; testo, carattere, tono e posto delle righe restano quelli di qui.
   window.corniceVettoriale = (o) => {
     const tavola = document.querySelector('.tavola'), T = tavola.getBoundingClientRect();
-    const W = tavola.clientWidth, H = tavola.clientHeight, corpo = o.corpo, margine = o.margine;
+    const W = o.larghezza || tavola.clientWidth, H = o.altezza || tavola.clientHeight, corpo = o.corpo, margine = o.margine;
     const lati = o.lati || ['alto', 'basso', 'sinistra', 'destra'];
     const intensita = o.intensita ?? 0.3, s = Math.round(corpo + 4);
     const testo = o.testo || testoBase(o.anno || new Date().getFullYear());
@@ -259,8 +263,26 @@
       destra: { x0: W - margine - s / 2, y0: margine + s, dx: 0, dy: 1, n: lungV },
     };
     const passo = 2, mezzo = s / 2 - 1;
+    // colore pieno della riga su un fondo [R, G, B] (il tono della cornice raster) e posto della striscia. Nelle
+    // strisce verticali tutto il testo è girato (text-orientation:sideways): con l'impostazione predefinita «©» resta
+    // dritto, occupa quasi mezzo corpo in più della misura orizzontale e l'ultima parola usciva dalla striscia.
+    const coloreSu = ([R, G, B]) => {
+      const t = tono(R, G, B);
+      return `rgb(${Math.round(R + (t[0] - R) * intensita)}, ${Math.round(G + (t[1] - G) * intensita)}, ${Math.round(B + (t[2] - B) * intensita)})`;
+    };
+    const postoDi = (lato, g, inizio, lunghezza) => (g.dx
+      ? `left:${g.x0 + inizio}px;top:${g.y0 - s / 2}px;width:${lunghezza}px;height:${s}px`
+      : `left:${g.x0 - s / 2}px;top:${g.y0 + inizio}px;width:${s}px;height:${lunghezza}px;writing-mode:vertical-rl;text-orientation:sideways` + (lato === 'sinistra' ? ';transform:rotate(180deg)' : ''));
     const strisce = [];
-    for (const lato of lati) {
+    if (o.strisce) {
+      for (const st of o.strisce) {
+        const g = geometria[st.lato], lunghezza = st.fine - st.inizio;
+        const testoRiga = g && lunghezza > 0 ? riga(misura, testo, lunghezza) : '';
+        if (!testoRiga) continue;
+        strisce.push({ lato: st.lato, inizio: Math.round(st.inizio), fine: Math.round(st.fine), testoRiga,
+          colore: coloreSu(st.fondo), posto: postoDi(st.lato, g, st.inizio, lunghezza) });
+      }
+    } else for (const lato of lati) {
       const g = geometria[lato];
       if (!g || g.n <= 0) continue;
       // fondo lungo la striscia: tre letture di traverso (bordo, mezzo, bordo); vale solo se coincidono
@@ -288,12 +310,8 @@
       if (a < chiavi.length) fine -= corpo;
       const lunghezza = fine - inizio, testoRiga = riga(misura, testo, lunghezza);
       if (lunghezza <= 0 || !testoRiga) continue;
-      const [R, G, B] = prevalente.split(',').map(Number), t = tono(R, G, B);
-      const colore = `rgb(${Math.round(R + (t[0] - R) * intensita)}, ${Math.round(G + (t[1] - G) * intensita)}, ${Math.round(B + (t[2] - B) * intensita)})`;
-      const posto = g.dx
-        ? `left:${g.x0 + inizio}px;top:${g.y0 - s / 2}px;width:${lunghezza}px;height:${s}px`
-        : `left:${g.x0 - s / 2}px;top:${g.y0 + inizio}px;width:${s}px;height:${lunghezza}px;writing-mode:vertical-rl` + (lato === 'sinistra' ? ';transform:rotate(180deg)' : '');
-      strisce.push({ lato, inizio: Math.round(inizio), fine: Math.round(fine), testoRiga, colore, posto });
+      strisce.push({ lato, inizio: Math.round(inizio), fine: Math.round(fine), testoRiga,
+        colore: coloreSu(prevalente.split(',').map(Number)), posto: postoDi(lato, g, inizio, lunghezza) });
     }
     // scritte (righe di testo, non i loro contenitori) e loghi che la cornice non deve toccare
     const ostacoli = [];
@@ -318,6 +336,16 @@
       strato.append(el);
     }
     tavola.append(strato);
+    // ogni riga sta intera nella sua striscia: se il testo impaginato è più lungo della misura presa sul canvas,
+    // il lato finisce fra le «tagliate» (rendi.py si ferma)
+    const tagliate = [];
+    for (const [i, el] of [...strato.children].entries()) {
+      const r = document.createRange(); r.selectNodeContents(el);
+      const q = r.getBoundingClientRect(), b = el.getBoundingClientRect();
+      const fuori = strisce[i].posto.includes('vertical-rl') ? q.top < b.top - 0.5 || q.bottom > b.bottom + 0.5
+        : q.left < b.left - 0.5 || q.right > b.right + 0.5;
+      if (fuori) tagliate.push(strisce[i].lato);
+    }
     const tocchi = new Set();
     let parole = 0;
     for (const sp of strato.querySelectorAll('span')) {
@@ -326,6 +354,6 @@
       for (const { nome, q } of ostacoli)
         if (Math.min(r.right, q.right) - Math.max(r.left, q.left) > 0 && Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top) > 0) tocchi.add(nome);
     }
-    return { parole, tocchi: [...tocchi], strisce: strisce.map(({ lato, inizio, fine, testoRiga }) => ({ lato, inizio, fine, testo: testoRiga })) };
+    return { parole, tocchi: [...tocchi], tagliate, strisce: strisce.map(({ lato, inizio, fine, testoRiga }) => ({ lato, inizio, fine, testo: testoRiga })) };
   };
 })();

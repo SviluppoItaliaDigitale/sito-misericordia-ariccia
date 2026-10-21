@@ -108,8 +108,58 @@ jobs:
       - name: Prova di firma e cornice delle grafiche
         run: python3 scripts/controlli/prova_cornice.py
 
+      # Testo alternativo dei post automatici (dal 21/10/2026): dove Meta lo accetta e dove no, ripresa senza
+      # il parametro se Meta lo rifiuta, testi della Parola, alt di ogni news nel feed compilato qui sopra.
+      - name: Prova del testo alternativo dei post
+        run: python3 scripts/controlli/prova_testo_alternativo.py public/news/index.json
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |
           echo "::error::Controlli non superati: vedi il rapporto (issue «Stato del sito» o log del passaggio Controlli)."
           exit 1
+
+  # Cornice di microtesto nei PDF (rendi.py --cornice FILE.pdf, dal 21/10/2026) e modelli della skill: sulle PR che
+  # toccano motore, modelli, skill o prova gira la prova dei PDF (rotazioni, campi del modulo, scansioni, margini
+  # occupati, pezzi della cornice che escono dalla striscia) e l'autotest di rendi.py. Serve Chromium: sulle altre
+  # PR il job lo dice e finisce subito.
+  grafiche-pdf:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # HEAD è l'unione della PR con main: HEAD^1 è main
+
+      - name: La PR tocca la grafica?
+        id: tocca
+        run: |
+          if git diff --name-only HEAD^1 HEAD | grep -qE '^(scripts/grafica-brand/|\.claude/skills/grafiche-modelli-nazionali/|scripts/controlli/prova_cornice_pdf\.py$|\.github/workflows/controlli\.yml$)'; then
+            echo "si=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "La PR non tocca motore, modelli, skill o prova della cornice: prova dei PDF e autotest non servono."
+          fi
+
+      - name: Installa Python
+        if: steps.tocca.outputs.si == '1'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Installa le librerie e Chromium
+        if: steps.tocca.outputs.si == '1'
+        run: |
+          pip install -q playwright==1.56.0 pypdf==5.9.0 pypdfium2==5.13.0 numpy==2.5.3 pillow==12.3.0
+          python -m playwright install --with-deps chromium
+
+      - name: Prova della cornice nei PDF
+        if: steps.tocca.outputs.si == '1'
+        run: python3 scripts/controlli/prova_cornice_pdf.py
+
+      - name: Autotest dei modelli
+        if: steps.tocca.outputs.si == '1'
+        run: python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --autotest

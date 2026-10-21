@@ -59,6 +59,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # sempre l'ultima versione di main, non il commit che ha avviato il giro: il 21/10/2026 il
+          # giro di un commit più vecchio, partito 12 secondi dopo quello di #217, l'ha sovrascritto
+          # online rimettendo le schede vecchie del dossier (i giri sono in fila, concurrency qui sopra)
+          ref: main
           # storia completa: serve a Hugo (enableGitInfo) per mostrare
           # la data di ultimo aggiornamento reale di ogni pagina,
           # e al rebase quando si salva il registro dei post social
