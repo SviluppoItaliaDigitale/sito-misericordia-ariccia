@@ -306,11 +306,13 @@ comunicazione della Confederazione pubblicati su YouTube.
   invisibile da lontano e leggibile ingrandendo; nei PDF da stampa è testo
   vettoriale dentro il margine (`<meta name="microtesto">` del modello). Il
   motore scrive nel file anche un segno che i controlli del sito cercano: lo
-  devono avere le grafiche delle news e le pagine della Parola che escono dal
-  22/10/2026. Per le grafiche fatte in altro modo (copertine dei video, Canva,
-  altre AI) c'è `rendi.py --cornice FILE` (JPEG, PNG e PDF), che aggiunge la cornice e, con
-  `--firma basso-sinistra`, la firma su un fondo libero (si ferma se sotto c'è
-  un disegno o una scritta). Le grafiche già pubblicate restano come sono.
+  devono avere le grafiche delle news, le copertine dei loro video e le pagine
+  della Parola che escono dal 22/10/2026. Per le grafiche fatte in altro modo
+  (copertine di altri video, Canva, altre AI) c'è `rendi.py --cornice FILE` (JPEG,
+  PNG e PDF), che aggiunge la cornice e, con `--firma basso-sinistra`, la firma su
+  un fondo libero (si ferma se sotto c'è un disegno o una scritta); le copertine
+  dei video della rubrica, che hanno già firma e cornice nei pixel, prendono solo il
+  segno con `rendi.py --segno FILE`. Le grafiche già pubblicate restano come sono.
 - **Se nessun modello va bene**: si parte dal modello più vicino e si usano
   solo gli elementi del kit nazionale, cioè i colori (blu `#003F85`, giallo
   `#FCEB0C`, azzurro `#009FE3`, evidenziatore `#013C7C`), il carattere
