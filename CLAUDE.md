@@ -349,10 +349,10 @@ comunicazione della Confederazione pubblicati su YouTube.
   tagliati, ritaglio della foto, contrasti.
 - **Stile precedente**, fino al 20/10/2026: navy `#1b223f`, Playfair Display e
   Jost, cornice dorata e filigrane (blocchi in `scripts/grafica-brand/cornice.html`
-  e `filigrane.html`). Resta nelle grafiche già pubblicate, compresa la «Parola
-  della domenica» fino al 18/10/2026 (dal 25/10/2026 è nello stile nazionale),
-  e, finché non passano allo stile nazionale, nei video della rubrica «Primo
-  soccorso passo passo» in programma. Non si usa per grafiche nuove.
+  e `filigrane.html`). Resta nelle grafiche già pubblicate, comprese la «Parola
+  della domenica» fino al 18/10/2026 (dal 25/10/2026 è nello stile nazionale) e i
+  video della rubrica «Primo soccorso passo passo» usciti fino al 20/10/2026 (dal
+  23/10/2026 sono nello stile nazionale). Non si usa per grafiche nuove.
 
 ### 3. Social: pubblicazione AUTOMATICA (dal 30/09/2026)
 
@@ -375,6 +375,17 @@ comunicazione della Confederazione pubblicati su YouTube.
 - Il testo del post è `description`/sommario della news; per un testo
   su misura usare `social_testo:` nel front matter; `social: false` per
   non condividere. 5x1000 quando pertinente: **C.F. 90031910582**.
+- **Testo alternativo delle immagini (dal 21/10/2026)**: i post automatici lo
+  mandano dove Meta lo accetta, cioè su Instagram (grafica delle news, ogni
+  pagina del carosello della Parola) e su Facebook (ogni foto dell'album della
+  Parola); il post con link delle news e i Reel non lo prevedono. Per le news
+  vale `social_alt:` del front matter, altrimenti l'alt dell'immagine
+  pubblicata nell'articolo. Se Meta rifiuta il testo alternativo, o dà un
+  errore di parametro (#100) che non nomina nient'altro, si riprova una volta
+  senza e il post esce lo stesso. Un rifiuto che nomina un altro parametro non
+  fa togliere il testo alternativo: il luogo ha già la sua riprova senza luogo,
+  immagine, indirizzo e gli altri restano errori (PR #221). Guida in
+  `docs/pubblicazione-social.md`, § «Testo alternativo delle immagini».
 
 ### 4. Pubblicazione
 

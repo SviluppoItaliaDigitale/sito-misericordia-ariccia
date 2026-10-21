@@ -144,8 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- **Video della rubrica «Primo soccorso passo passo» nello stile nazionale** (Claude, dal 21/10/2026, ramo `claude/video-rubrica-stile-nazionale`). I 19 video in programma dal 23/10 al 22/12/2026 si rifanno con gli elementi del kit nazionale, la firma «Misericordia di Ariccia» e la cornice di microtesto; testi, voce e contenuti sanitari restano quelli rivisti nella PR #214. Le copertine dei video ricevono il segno della cornice, e «Controlli del sito» lo cercherà. Il video di venerdì 23/10 (anafilassi) deve essere unito entro la sera di giovedì 22/10. I video già pubblicati restano come sono. Alessandro è stato avvisato in chat il 21/10/2026.
-- **Testo alternativo nei post automatici e cornice anche nei PDF** (Claude, dal 21/10/2026, ramo `claude/testo-alternativo-e-cornice-pdf`, approvato da Alessandro il 21/10/2026: «Si fai tutto uniformato»). `scripts/pubblica_social.py` manderà il testo alternativo delle immagini dove l'API di Meta lo accetta: su Instagram la grafica delle news e ogni pagina del carosello della Parola, su Facebook ogni foto dell'album della Parola (il post con link delle news e i Reel non lo prevedono). `rendi.py --cornice` accetterà anche i PDF fatti fuori dai modelli.
+- Nessun lavoro in corso.
 
 ## Richieste
 
@@ -164,4 +163,6 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Archiviati
 
+- **21/10/2026 — Claude — Video della rubrica «Primo soccorso passo passo» nello stile nazionale.** Esito: PR #222. I 19 video in programma dal 23/10 al 22/12/2026 sono rifatti con gli elementi del kit nazionale, la firma «Misericordia di Ariccia» e la cornice di microtesto in ogni fotogramma; audio, sottotitoli, testi, disegni e durate restano quelli già approvati (PR #214 e #217). Le copertine portano il segno della cornice e «Controlli del sito» lo cerca in quelle dei video in uscita. I video usciti fino al 20/10/2026 restano come sono.
+- **21/10/2026 — Claude — Testo alternativo nei post automatici e cornice anche nei PDF.** Esito: PR #220. `scripts/pubblica_social.py` manda il testo alternativo su Instagram (grafica delle news, ogni pagina del carosello della Parola) e su Facebook (ogni foto dell'album della Parola), con una sola riprova senza il campo se Meta rifiuta proprio quello (criterio della PR #221); `rendi.py --cornice` accetta anche i PDF. Guida in `docs/pubblicazione-social.md`, § «Testo alternativo delle immagini».
 - **21/10/2026 — Domanda di Claude ad Alessandro: la Parola della domenica passa allo stile nazionale?** Risposta di Alessandro, 21/10/2026: «Si fai tutto uniformato». Esito: stile nazionale dalla prima domenica utile, 25/10/2026, invece che dal 1° novembre come aveva proposto Claude; PR #209.
