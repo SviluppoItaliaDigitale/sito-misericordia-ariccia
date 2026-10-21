@@ -6,8 +6,7 @@ Il controllo cerca il segno che il motore scripts/grafica-brand/firma-e-cornice.
 nessun segno, un segno diverso o lo stesso testo finito nei dati compressi non passano. Le copertine dei video delle
 news (fotogramma del social_video, locandine nel corpo) si provano su un piccolo sito finto: quella senza segno di
 una news in uscita viene segnalata una volta sola, anche se la usano più news; quella con il segno, quella di una
-news già uscita e quella di un video ancora nello stile di prima (VIDEO_IN_ATTESA) no. Poi si prova sul repository:
-il segno si legge dal motore, il motore lo mette davvero nei JPEG,
+news già uscita no. Poi si prova sul repository: il segno si legge dal motore, il motore lo mette davvero nei JPEG,
 e il controllo trova il segno nelle grafiche e nelle copertine dei video delle news in uscita. Nasce con la regola
 del 21/10/2026 (Alessandro: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia!
 Altrimenti ci rubano la grafica!!»).
@@ -21,8 +20,7 @@ import zlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from controlla_sito import (DAL_FIRMA, REPO, copertine_video, grafiche_senza_firma, ha_segno, in_attesa,  # noqa: E402
-                            segno_firma)
+from controlla_sito import DAL_FIRMA, REPO, copertine_video, grafiche_senza_firma, ha_segno, segno_firma  # noqa: E402
 
 falliti = []
 
@@ -106,19 +104,10 @@ with tempfile.TemporaryDirectory() as cartella:  # piccolo sito finto con quattr
     (sito / "static/img/video/con-segno.jpg").write_bytes(jpeg(APP0, segmento(0xFE, SEGNO)))
     (sito / "static/img/video/senza-segno.jpg").write_bytes(jpeg(APP0))
     (sito / "static/img/video/vecchio.jpg").write_bytes(jpeg(APP0))
-    trovati = grafiche_senza_firma(sito, video_in_attesa=set())
+    trovati = grafiche_senza_firma(sito)
     attesa(len(trovati) == 1 and "senza-segno.jpg" in trovati[0] and "copertina del video" in trovati[0]
            and "b.md" in trovati[0] and "d.md" in trovati[0],
            f"copertine dei video nel sito finto: attesa solo senza-segno.jpg (news b.md e d.md), trovato {trovati}")
-    # Un video ancora nello stile di prima (VIDEO_IN_ATTESA) si salta: la sua copertina non ha il segno
-    trovati = grafiche_senza_firma(sito, video_in_attesa={"senza-segno"})
-    attesa(not trovati, f"copertina di un video in attesa nel sito finto: attesa nessuna segnalazione, trovato {trovati}")
-
-for copertina, video, deve in (("img/video/primo-soccorso-ustioni.jpg", {"ustioni"}, True),
-                               ("img/video/giornata-volontariato.jpg", {"giornata-volontariato"}, True),
-                               ("img/video/primo-soccorso-ustioni.jpg", {"ipoglicemia"}, False),
-                               ("img/video/primo-soccorso-ustioni-bis.jpg", {"ustioni"}, False)):
-    attesa(in_attesa(copertina, video) == deve, f"in_attesa({copertina!r}, {video}): atteso {deve}")
 
 # Il motore mette il segno subito dopo l'intestazione JFIF: lo stesso codice, riscritto qui, deve dare un file valido
 motore = (REPO / "scripts/grafica-brand/firma-e-cornice.js").read_text(encoding="utf-8")

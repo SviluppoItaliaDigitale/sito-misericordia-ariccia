@@ -84,14 +84,6 @@ ESTENSIONI_TESTI = (".md", ".html", ".yaml", ".yml", ".json", ".toml", ".py", ".
 DAL_FIRMA = dt.date(2026, 10, 22)
 MOTORE_FIRMA = REPO / "scripts/grafica-brand/firma-e-cornice.js"
 MODELLI_FIRMA = ("scripts/grafica-brand/modelli-nazionali/*.html", "scripts/parola-domenica/grafica*.html")
-# Video della rubrica (chiavi di scripts/video-rubrica/contenuti*.py) ancora nello stile di prima, la cui copertina
-# non porta il segno e per ora non si controlla. Sono i 12 video che la PR #217 (correzioni sanitarie approvate da
-# Alessandro il 21/10/2026) rifà nello stile vecchio: si rifanno nello stile nazionale, con firma e cornice, solo dopo
-# l'unione della #217, partendo dai suoi testi corretti, perché rifarli prima vorrebbe dire perdere quelle correzioni o
-# avere due versioni diverse degli stessi video. Fino ad allora il controllo li salta, così non fa fallire né main né
-# la #217; il rapporto li elenca a parte, per non dimenticarli. Quando un video è rifatto, si toglie da qui.
-VIDEO_IN_ATTESA = {"ustioni", "avvelenamento", "convulsioni", "incidente-stradale", "svenimento", "fratture",
-                   "freddo", "monossido", "batterie", "cadute-anziani", "botti", "cassetta"}
 
 
 def hash_inline(pub):
@@ -213,13 +205,7 @@ def copertine_video(fm, corpo):
     return list(dict.fromkeys(out))
 
 
-def in_attesa(copertina, video_in_attesa=VIDEO_IN_ATTESA):
-    """Vero se la copertina (percorso sotto static/) è di un video in VIDEO_IN_ATTESA, ancora nello stile di prima."""
-    nome = Path(copertina).stem
-    return nome in video_in_attesa or nome.removeprefix("primo-soccorso-") in video_in_attesa
-
-
-def grafiche_senza_firma(radice=REPO, video_in_attesa=VIDEO_IN_ATTESA):
+def grafiche_senza_firma(radice=REPO):
     segno = segno_firma()
     if not segno:
         return ["scripts/grafica-brand/firma-e-cornice.js: non trovo il segno (const MARCATORE)"]
@@ -231,8 +217,7 @@ def grafiche_senza_firma(radice=REPO, video_in_attesa=VIDEO_IN_ATTESA):
         if not d or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
         im = re.search(r'^immagine:\s*"?([^"\n]+?)"?\s*$', fm, re.M)
         controllare = [(im.group(1).strip().lstrip("/"), "news")] if im else []
-        controllare += [(c, "copertina del video, news") for c in copertine_video(fm, corpo)
-                        if not in_attesa(c, video_in_attesa)]
+        controllare += [(c, "copertina del video, news") for c in copertine_video(fm, corpo)]
         for percorso, tipo in controllare:
             img = radice / "static" / percorso
             if img.suffix.lower() in (".jpg", ".jpeg", ".png") and img.is_file() and not ha_segno(img.read_bytes()[:65536], segno):
@@ -339,9 +324,6 @@ def main():
         return (f"- {x}: rifarla con il modello, oppure `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice FILE` "
                 "(con `--firma basso-sinistra` se la grafica non mostra il nome)")
     righe += [rimedio(x) for x in senza[:30]]
-    if VIDEO_IN_ATTESA:
-        righe.append(f"- ⏳ {len(VIDEO_IN_ATTESA)} video della rubrica ancora nello stile di prima, copertine non controllate "
-                     f"(si rifanno dopo la PR #217; `VIDEO_IN_ATTESA` in `controlla_sito.py`): {', '.join(sorted(VIDEO_IN_ATTESA))}")
     errori += bool(senza)
 
     fv = fonte_video_sbagliata()
