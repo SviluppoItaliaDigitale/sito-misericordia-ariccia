@@ -211,6 +211,29 @@ def grafiche_senza_firma():
     return mancano
 
 
+def fonte_video_sbagliata():
+    """News della rubrica in uscita che citano fonti diverse da IRC/ERC: il loro video non deve dire
+    «Fonte: linee guida IRC 2025» nella scheda finale, ma rimandare all'articolo (campo fonte in
+    scripts/video-rubrica/contenuti*.py). Errore trovato il 21/10/2026 (issue #147)."""
+    sys.path.insert(0, str(REPO / "scripts/video-rubrica"))
+    try:
+        import contenuti
+    except Exception as e:  # noqa: BLE001
+        return [f"scripts/video-rubrica/contenuti.py non si legge: {e}"]
+    mancano = []
+    for f in sorted((REPO / "content/news").glob("*-primo-soccorso-*.md")):
+        t = f.read_text(encoding="utf-8")
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', t, re.M)
+        v = re.search(r'video/primo-soccorso-([a-z0-9-]+)\.mp4', t)
+        if not d or not v or dt.date.fromisoformat(d.group(1)) < DAL_FIRMA: continue
+        fonti = " ".join(re.findall(r"^\*Font[ei]:.*$", t, re.M))
+        altre = [u for u in re.findall(r"\]\((https?://[^)]+)\)", fonti) if not re.search(r"ircouncil\.it|erc\.edu", u)]
+        k = v.group(1)
+        if altre and k in contenuti.V and not contenuti.V[k].get("fonte"):
+            mancano.append(f"`{f.name}`: cita {altre[0]} ma il video «{k}» dice «linee guida IRC 2025» (manca fonte in contenuti*.py)")
+    return mancano
+
+
 def scarica(url, tentativi=4):
     for i in range(tentativi):
         try:
@@ -273,6 +296,11 @@ def main():
               "(con `--firma basso-sinistra` se la grafica non mostra il nome)" if not x.endswith("(elemento data-firma)") else f"- {x}"
               for x in senza[:30]]
     errori += bool(senza)
+
+    fv = fonte_video_sbagliata()
+    righe += ["", "### 🎬 Fonte nella scheda finale dei video: " + ("✅ coerente con gli articoli" if not fv else f"❌ {len(fv)} da correggere")]
+    righe += [f"- {x}" for x in fv[:30]]
+    errori += bool(fv)
 
     if "--live" in sys.argv:
         righe += ["", "### 🌐 Sito online"]
