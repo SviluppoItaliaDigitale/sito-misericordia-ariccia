@@ -1,6 +1,6 @@
 ---
 name: grafiche-modelli-nazionali
-description: Fa le grafiche della Misericordia di Ariccia con i modelli della Confederazione nazionale, identici agli originali (post 4:5 con foto e fascia, storie, testimonianze, caroselli, Save the date, assemblea dei soci, biglietto da visita, carta intestata). Riempie i campi, salva JPEG, PNG o PDF e controlla testi, loghi, caratteri e segnaposti. Usala per ogni grafica, post, storia, carosello, invito, ricordo di un defunto, biglietto o lettera della Misericordia di Ariccia, anche quando la richiesta non nomina i modelli nazionali.
+description: Fa le grafiche della Misericordia di Ariccia con i modelli della Confederazione nazionale, identici agli originali (post 4:5 con foto e fascia, storie, testimonianze, caroselli, Save the date, assemblea dei soci, biglietto da visita, carta intestata). Riempie i campi, salva JPEG, PNG o PDF con la firma «Misericordia di Ariccia» e la cornice di microtesto, e controlla testi, loghi, caratteri e segnaposti. Usala per ogni grafica, post, storia, carosello, invito, ricordo di un defunto, biglietto o lettera della Misericordia di Ariccia, anche quando la richiesta non nomina i modelli nazionali, e per mettere firma e cornice a una grafica fatta in altro modo.
 ---
 
 # Grafiche della Misericordia con i modelli nazionali
@@ -14,7 +14,8 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 2. **Scegli il modello** nel catalogo di `scripts/grafica-brand/modelli-nazionali/LEGGIMI.md`; i campi di ciascuno con `python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --elenco`.
 3. **Testi.** Brevi e nel tono della Misericordia: caldo, concreto, mai retorico. Il testo lungo va nell'articolo o nella didascalia, non nella grafica. Ogni dato ha una fonte: numeri, email e indirizzi da `hugo.toml` (`[params]`), date e luoghi dal documento o dalla persona che li ha dati. Niente frasi attribuite a qualcuno che non le ha dette.
 4. **Foto.** Foto vere della Misericordia, con i permessi. Mai pazienti o persone assistite riconoscibili, mai dati sanitari, targhe, indirizzi o dettagli dei servizi; volontarie e volontari in primo piano solo con il loro consenso; minori mai riconoscibili senza il consenso dei genitori. Le foto di repertorio non devono sembrare attività della Misericordia.
-5. **Lutto.** Le foto restano a colori. Solo quando la grafica ricorda una persona morta (consorelle e confratelli, volontari, benefattori, personaggi pubblici vicini alla Misericordia dal Papa in giù, anniversari della morte, vittime di una tragedia, 2 novembre) la foto va in bianco e nero: sui social il bianco e nero è il segno del lutto. La grafica resta istituzionale e a colori. Per un personaggio pubblico, foto con licenza libera e autore citato nel testo del post.
+5. **Firma e cornice, sempre.** Ogni grafica dice «Misericordia di Ariccia» e ha lungo i bordi una cornice di microtesto (Alessandro, 21/10/2026: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Con i modelli le mette `rendi.py`; per una grafica fatta in altro modo vedi «Grafiche fatte in altro modo» qui sotto.
+6. **Lutto.** Le foto restano a colori. Solo quando la grafica ricorda una persona morta (consorelle e confratelli, volontari, benefattori, personaggi pubblici vicini alla Misericordia dal Papa in giù, anniversari della morte, vittime di una tragedia, 2 novembre) la foto va in bianco e nero: sui social il bianco e nero è il segno del lutto. La grafica resta istituzionale e a colori. Per un personaggio pubblico, foto con licenza libera e autore citato nel testo del post.
 
 ## Fare la grafica
 
@@ -48,7 +49,21 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 
    `.jpg` (qualità 88) per il sito e i social, `.pdf` per carta intestata e biglietto da visita, `.png` solo se richiesto. Serve Playwright per Python con Chromium: nell'ambiente di Claude c'è già; altrove `pip install playwright` e `python -m playwright install chromium` (lo fa anche `scripts/ambiente-codex.sh`).
 3. Se lo script esce con PROBLEMI, correggi e rifai: accorcia i testi (il corpo dei caratteri resta quello del modello), sposta il ritaglio della foto, riempi i segnaposti. `--bozza` serve solo a vedere una versione incompleta: una bozza non si pubblica mai.
-4. **Guarda l'immagine** prima di usarla: equilibrio, volti tagliati dal ritaglio, testo leggibile sulla foto, parole giuste. Il controllo automatico non giudica la foto.
+4. **Guarda l'immagine** prima di usarla: equilibrio, volti tagliati dal ritaglio, testo leggibile sulla foto, parole giuste, firma leggibile. Ingrandisci un bordo per vedere la cornice: da lontano non si nota, da vicino si legge «MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it…». Il controllo automatico non giudica la foto.
+5. **Non risalvare il file con un altro programma.** Il JPEG o il PNG porta in testa il segno della cornice, che i controlli del sito cercano nelle grafiche delle news e della Parola della domenica: un altro programma lo toglie. Se serve un ritaglio o un'altra misura, si rifà la grafica con `rendi.py`. `scripts/ottimizza-immagini.py` non tocca i file `-grafica.jpg` e crea solo il `.webp` accanto.
+
+## Grafiche fatte in altro modo
+
+Per una grafica che non nasce dai modelli (copertina tratta da un video, design di Canva, grafica fatta da un'altra AI):
+
+```
+python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice GRAFICA.jpg [ALTRE.jpg …] [--uscita NUOVA.jpg]
+python3 .claude/skills/grafiche-modelli-nazionali/rendi.py --cornice GRAFICA.jpg --firma basso-sinistra
+```
+
+- Senza `--uscita` aggiorna i file al loro posto; i file che hanno già il segno si saltano.
+- Se la grafica non dice già «Misericordia di Ariccia» in modo leggibile, aggiungi `--firma basso-sinistra` (oppure `basso-centro`, `basso-destra`): la firma va su un fondo uniforme e lo script si ferma se sotto c'è un disegno o una scritta. Si sposta con `--firma-basso` e `--firma-margine` (px), si cambia con `--firma-corpo`, `--firma-carattere` (Montserrat o Jost) e `--firma-colore`; `--forza` solo dopo aver guardato che il fondo va bene così.
+- Un design di Canva o di un altro programma si esporta in JPEG o PNG e poi passa da qui. Un PDF fatto altrove non riceve la cornice: per lettere e biglietti si usano i modelli da stampa, che ce l'hanno già.
 
 ## Dove va il risultato
 
@@ -58,7 +73,8 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 
 ## Controllo prima di consegnare
 
-- [ ] Modello giusto e identico: niente cornice, filigrane, altri loghi, colori o caratteri cambiati.
+- [ ] Modello giusto e identico: niente cornici decorative, filigrane, altri loghi, colori o caratteri cambiati.
+- [ ] «Misericordia di Ariccia» si legge e la cornice di microtesto c'è sui bordi (ingrandendo); il file non è stato risalvato con un altro programma.
 - [ ] Ogni dato ha una fonte, i recapiti sono quelli di `hugo.toml`, niente inventato.
 - [ ] Foto vera e con i permessi; nessuna persona assistita riconoscibile.
 - [ ] Foto a colori; in bianco e nero (`"lutto": true`) solo se la grafica ricorda una persona morta.
