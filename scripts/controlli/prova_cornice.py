@@ -3,19 +3,24 @@
 
 Il controllo cerca il segno che il motore scripts/grafica-brand/firma-e-cornice.js scrive in testa alle grafiche
 (commento nei JPEG, blocco tEXt nei PNG). Qui si prova su file costruiti apposta: il segno nel posto giusto passa;
-nessun segno, un segno diverso o lo stesso testo finito nei dati compressi non passano. Poi si prova sul repository:
-il segno si legge dal motore, il motore lo mette davvero nei JPEG, e il controllo trova il segno nelle grafiche delle
-news in uscita. Nasce con la regola del 21/10/2026 (Alessandro: «metti in ogni slide, documento grafico eccetera
-sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»).
+nessun segno, un segno diverso o lo stesso testo finito nei dati compressi non passano. Le copertine dei video delle
+news (fotogramma del social_video, locandine nel corpo) si provano su un piccolo sito finto: quella senza segno di
+una news in uscita viene segnalata una volta sola, anche se la usano più news; quella con il segno e quella di una
+news già uscita no. Poi si prova sul repository: il segno si legge dal motore, il motore lo mette davvero nei JPEG,
+e il controllo trova il segno nelle grafiche e nelle copertine dei video delle news in uscita. Nasce con la regola
+del 21/10/2026 (Alessandro: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia!
+Altrimenti ci rubano la grafica!!»).
 Esce con 1 se un caso non va come deve. Solo libreria standard. Uso: prova_cornice.py
 """
+import datetime as dt
 import struct
 import sys
+import tempfile
 import zlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from controlla_sito import REPO, grafiche_senza_firma, ha_segno, segno_firma  # noqa: E402
+from controlla_sito import DAL_FIRMA, REPO, copertine_video, grafiche_senza_firma, ha_segno, segno_firma  # noqa: E402
 
 falliti = []
 
@@ -69,17 +74,54 @@ CASI = [  # (nome, file, deve passare)
 for nome, dati, deve in CASI:
     attesa(ha_segno(dati, SEGNO) == deve, f"{nome}: atteso {'passa' if deve else 'non passa'}")
 
+# Copertine dei video di una news: fotogramma del social_video, locandine del corpo, social_video_copertina se è
+# un'immagine (se è un numero è il secondo del video usato per il Reel, e non si controlla nel file)
+CASI_COPERTINE = [  # (front matter, corpo, copertine attese)
+    ('social_video: "/video/primo-soccorso-x.mp4"\nsocial_video_copertina: 1\n', "", ["img/video/primo-soccorso-x.jpg"]),
+    ("social_video: /video/x.mp4\n", '{{< video src="video/x.mp4" poster="img/video/x.jpg" >}}', ["img/video/x.jpg"]),
+    ('social_video_copertina: "/img/video/altra.jpg"\n', "", ["img/video/altra.jpg"]),
+    ('title: "senza video"\n', "testo", []),
+    ("", '{{< video src="video/y.mp4" poster="/img/video/y.jpg" >}}', ["img/video/y.jpg"]),
+]
+for fm, corpo, attese in CASI_COPERTINE:
+    trovate = copertine_video(fm, corpo)
+    attesa(trovate == attese, f"copertine_video({fm!r}, {corpo!r}) = {trovate}, attese {attese}")
+
+with tempfile.TemporaryDirectory() as cartella:  # piccolo sito finto con quattro news video
+    sito = Path(cartella)
+    (sito / "content/news").mkdir(parents=True)
+    (sito / "static/img/video").mkdir(parents=True)
+
+    def news(nome, giorno, video):
+        (sito / "content/news" / nome).write_text(
+            f'---\ntitle: "prova"\ndate: {giorno.isoformat()}\nsocial_video: "/video/{video}.mp4"\nsocial_video_copertina: 1\n'
+            f'---\n{{{{< video src="video/{video}.mp4" poster="img/video/{video}.jpg" >}}}}\n', encoding="utf-8")
+
+    news("a.md", DAL_FIRMA, "con-segno")
+    news("b.md", DAL_FIRMA, "senza-segno")
+    news("c.md", DAL_FIRMA - dt.timedelta(days=1), "vecchio")
+    news("d.md", DAL_FIRMA + dt.timedelta(days=30), "senza-segno")
+    (sito / "static/img/video/con-segno.jpg").write_bytes(jpeg(APP0, segmento(0xFE, SEGNO)))
+    (sito / "static/img/video/senza-segno.jpg").write_bytes(jpeg(APP0))
+    (sito / "static/img/video/vecchio.jpg").write_bytes(jpeg(APP0))
+    trovati = grafiche_senza_firma(sito)
+    attesa(len(trovati) == 1 and "senza-segno.jpg" in trovati[0] and "copertina del video" in trovati[0]
+           and "b.md" in trovati[0] and "d.md" in trovati[0],
+           f"copertine dei video nel sito finto: attesa solo senza-segno.jpg (news b.md e d.md), trovato {trovati}")
+
 # Il motore mette il segno subito dopo l'intestazione JFIF: lo stesso codice, riscritto qui, deve dare un file valido
 motore = (REPO / "scripts/grafica-brand/firma-e-cornice.js").read_text(encoding="utf-8")
 attesa("0xFF, 0xFE" in motore and "'Comment\\0'" in motore, "il motore non scrive più il commento JPEG o il blocco tEXt PNG")
 
-# Sul repository: grafiche delle news in uscita e pagine della Parola dal 22/10/2026, firma in ogni modello
+# Sul repository: grafiche e copertine dei video delle news in uscita e pagine della Parola dal 22/10/2026, firma
+# in ogni modello
 mancano = grafiche_senza_firma()
-attesa(not mancano, "grafiche o modelli senza firma e cornice: " + "; ".join(mancano[:10]))
+attesa(not mancano, "grafiche, copertine o modelli senza firma e cornice: " + "; ".join(mancano[:10]))
 
 if falliti:
     print("PROVA FALLITA:")
     for f in falliti:
         print(f"  - {f}")
     sys.exit(1)
-print(f"Prova di firma e cornice superata: {len(CASI)} file costruiti, motore e grafiche del repository.")
+print(f"Prova di firma e cornice superata: {len(CASI)} file costruiti, {len(CASI_COPERTINE)} casi di copertine dei "
+      "video, sito finto, motore, grafiche e copertine del repository.")

@@ -13,16 +13,30 @@ Cosa fa, SOLO sulle immagini nuove, cioè senza il loro .webp accanto
 (se sostituisci una foto tenendo lo stesso nome, cancella prima il suo .webp):
  - JPEG di foto: ricompressione progressiva q82 (max 1600 px di larghezza /
    2000 di altezza), sovrascritta solo se risparmia almeno il 10%;
- - le grafiche brand (*-grafica.jpg, vanno anche su Instagram a qualità ~88)
-   e static/img/social/ restano intatte: ricevono solo la copia WebP;
+ - le grafiche brand (*-grafica.jpg, vanno anche su Instagram a qualità ~88),
+   static/img/social/ e i JPEG con il segno di firma e cornice (scritto dal
+   motore scripts/grafica-brand/firma-e-cornice.js) restano intatti: ricevono
+   solo la copia WebP (ricomprimere toglierebbe il segno);
  - WebP: copia .webp accanto a ogni jpg/png, scritta solo se più leggera
    dell'originale. Un .webp già esistente non viene MAI cancellato;
  - varianti ridotte dei loghi e favicon, solo se mancano.
 Le immagini già ottimizzate non vengono ritoccate: ricomprimere a ogni giro
 peggiora la qualità e cambia file che non c'era motivo di toccare.
 """
-import os, sys, glob
+import os, re, sys, glob
 from PIL import Image
+
+# Segno di firma e cornice: lo stesso testo che il motore scrive nel commento del JPEG.
+_MOTORE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "grafica-brand", "firma-e-cornice.js")
+_m = re.search(r"const MARCATORE = '([^']+)'", open(_MOTORE, encoding="utf-8").read()) if os.path.exists(_MOTORE) else None
+SEGNO = _m.group(1).encode() if _m else None
+
+def ha_segno(f):
+    """Vero se il file porta in testa il segno del motore (commento JPEG o blocco tEXt PNG)."""
+    if not SEGNO:
+        return False
+    with open(f, "rb") as h:
+        return SEGNO in h.read(65536)
 
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 PROVA = "--prova" in sys.argv
@@ -60,7 +74,7 @@ for f in sorted(glob.glob(os.path.join(ROOT, "**", "*.*"), recursive=True)):
     prima = os.path.getsize(f)
     im = Image.open(f)
     im.load()
-    intoccabile = "/social/" in f or "-grafica." in os.path.basename(f)
+    intoccabile = "/social/" in f or "-grafica." in os.path.basename(f) or ha_segno(f)
     if ext in ("jpg", "jpeg") and not intoccabile:
         rgb = im.convert("RGB")
         w, h = rgb.size

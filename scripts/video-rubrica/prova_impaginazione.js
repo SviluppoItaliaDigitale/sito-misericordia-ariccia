@@ -1,5 +1,6 @@
 // Prova d'impaginazione (vedi prova_impaginazione.py): per ogni scena il fotogramma più a rischio
-// con sovrapposta la zona coperta dai comandi di Instagram, in KEY/prova.png.
+// con sovrapposta la zona coperta dai comandi di Instagram (in rosso) e la firma (in verde), in KEY/prova.png.
+// Esce con 1 se manca la firma o la cornice, o se una scritta o un disegno tocca la firma.
 const { chromium } = require('playwright-core');
 (async () => {
   const K = process.env.KEY;
@@ -25,13 +26,34 @@ const { chromium } = require('playwright-core');
           if(vis&&q.bottom>r.top&&q.top<r.bottom&&q.right>r.left&&q.left<r.right)g.push("sottotitolo sopra un'etichetta");
           if(q.right>930&&q.bottom>1210)g.push('etichetta sotto i pulsanti')});return [...new Set(g)]})()`);
       if (guai.length) console.log('ATTENZIONE scena', k + 1, 'a', t.toFixed(1), 's:', guai.join(', '));
+      // Firma «Misericordia di Ariccia» (regola del 21/10/2026): c'è, è grande abbastanza, sta fuori dalle zone di
+      // Instagram e nessuna scritta o disegno la tocca; il titolo resta sopra la zona dei disegni (505 px).
+      const firma = await p.evaluate(`(()=>{ const g=[], f=window.FIRMA_BOX; if(!f) return ['firma assente'];
+        if(f.corpo<24) g.push('firma più piccola di 24 px'); if(f.y<150) g.push('firma nella fascia alta');
+        if(f.y+f.h>1540) g.push('firma nella fascia bassa di Instagram'); if(f.x+f.w>930&&f.y+f.h>1210) g.push('firma sotto i pulsanti di Instagram');
+        const m=8, fr={l:f.x-m,t:f.y-m,r:f.x+f.w+m,b:f.y+f.h+m};
+        for(const s of ['#chip','#title .in','#tags .tag','#sub span','#card','#sos','#motto','#fonte']) for(const e of document.querySelectorAll(s)){
+          if(!e.offsetParent&&getComputedStyle(e).position!=='fixed') continue; let op=1; for(let x=e;x&&x.nodeType===1;x=x.parentElement) op*=+getComputedStyle(x).opacity; if(op<.05) continue;
+          for(const q of e.getClientRects()) if(q.width>0&&q.height>0&&q.right>fr.l&&q.left<fr.r&&q.bottom>fr.t&&q.top<fr.b) g.push('una scritta tocca la firma ('+s+')'); }
+        const d=cv.getContext('2d').getImageData(f.x-m,f.y-m,f.w+2*m,f.h+2*m).data; for(let i=3;i<d.length;i+=4) if(d[i]>20){ g.push('un disegno tocca la firma'); break; }
+        if(document.getElementById('title').getBoundingClientRect().bottom>505) g.push('titolo nella zona dei disegni (oltre 505 px)');
+        return [...new Set(g)]; })()`);
+      if (firma.length) { console.log('ERRORE scena', k + 1, 'a', t.toFixed(1), 's:', firma.join(', ')); process.exitCode = 1; }
     }
     times.push(migliore);
   }
-  // Zona dei comandi di Instagram (Reels): fascia in basso e colonna dei pulsanti a destra.
+  // Cornice di microtesto: c'è su tutti e quattro i lati (strato #cornice del motore firma-e-cornice.js).
+  const cornice = await p.evaluate(`(()=>{ const e=window.CORNICE_ESITO; if(!e) return 'cornice assente';
+    const c=document.getElementById('cornice').getContext('2d'), W=1080, H=1920, s=e.striscia;
+    const conta=(x,y,w,h)=>{ const d=c.getImageData(x,y,w,h).data; let n=0; for(let i=3;i<d.length;i+=4) if(d[i]>0) n++; return n; };
+    const vuoti=Object.entries({alto:conta(0,0,W,s), basso:conta(0,H-s,W,s), sinistra:conta(0,0,s,H), destra:conta(W-s,0,s,H)}).filter(([,n])=>n<500).map(([k])=>k);
+    return vuoti.length ? 'cornice mancante sul lato '+vuoti.join(', ') : ''; })()`);
+  if (cornice) { console.log('ERRORE', cornice); process.exitCode = 1; }
+  // Zona dei comandi di Instagram (Reels): fascia in basso e colonna dei pulsanti a destra; in verde la firma.
   const zona = `const z=document.createElement('div');z.id='zona-ig';z.style.cssText='position:fixed;left:0;right:0;bottom:0;height:380px;background:rgba(255,60,60,.28);z-index:50;pointer-events:none';
     const c=document.createElement('div');c.style.cssText='position:fixed;right:0;bottom:380px;width:150px;height:330px;background:rgba(255,60,60,.22);z-index:50;pointer-events:none';
-    document.body.append(z,c);`;
+    const f=window.FIRMA_BOX, v=document.createElement('div');v.style.cssText='position:fixed;left:'+(f.x-4)+'px;top:'+(f.y-4)+'px;width:'+(f.w+8)+'px;height:'+(f.h+8)+'px;outline:3px solid #2bd14b;z-index:50;pointer-events:none';
+    document.body.append(z,c,v);`;
   await p.evaluate(zona);
   const shots = [];
   for (const t of times) { await p.evaluate(`window.renderFrame(${t})`); shots.push((await p.screenshot({ type: 'png' })).toString('base64')); }

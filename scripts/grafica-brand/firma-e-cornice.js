@@ -50,11 +50,10 @@
     return r;
   };
 
-  // Cornice raster: maschera del testo sui quattro bordi (angoli liberi), poi tono adattato al fondo.
-  const incidiCornice = (ctx, W, H, o) => {
+  // Maschera del testo sui quattro bordi (angoli liberi): canale alfa del testo, corpo e spessore della striscia.
+  const mascheraCornice = (W, H, o) => {
     const corpo = o.corpo || Math.max(7, Math.round(W * 9 / 1080));
     const s = corpo + 4;                      // spessore della striscia: i primi corpo+4 pixel di ogni bordo
-    const intensita = o.intensita ?? 0.32;
     const testo = o.testo || testoBase(o.anno || new Date().getFullYear());
     const m = document.createElement('canvas'); m.width = W; m.height = H;
     const c = m.getContext('2d');
@@ -68,7 +67,14 @@
     c.fillText(orizzontale, angoli + dO, H - s / 2);                                     // basso
     c.save(); c.translate(s / 2, H - angoli - dV); c.rotate(-Math.PI / 2); c.fillText(verticale, 0, 0); c.restore();  // sinistra, dal basso
     c.save(); c.translate(W - s / 2, angoli + dV); c.rotate(Math.PI / 2); c.fillText(verticale, 0, 0); c.restore();   // destra, dall'alto
-    const immagine = ctx.getImageData(0, 0, W, H), d = immagine.data, maschera = c.getImageData(0, 0, W, H).data;
+    return { maschera: c.getImageData(0, 0, W, H).data, corpo, striscia: s, testo: orizzontale.slice(0, 60) };
+  };
+
+  // Cornice raster: maschera del testo, poi tono adattato al fondo pixel per pixel.
+  const incidiCornice = (ctx, W, H, o) => {
+    const intensita = o.intensita ?? 0.32;
+    const { maschera, corpo, striscia, testo } = mascheraCornice(W, H, o);
+    const immagine = ctx.getImageData(0, 0, W, H), d = immagine.data;
     for (let i = 0; i < d.length; i += 4) {
       const a = maschera[i + 3];
       if (!a) continue;
@@ -76,7 +82,7 @@
       d[i] += (t[0] - d[i]) * k; d[i + 1] += (t[1] - d[i + 1]) * k; d[i + 2] += (t[2] - d[i + 2]) * k;
     }
     ctx.putImageData(immagine, 0, 0);
-    return { corpo, striscia: s, testo: orizzontale.slice(0, 60) };
+    return { corpo, striscia, testo };
   };
 
   // Firma su un'immagine già fatta (per esempio la copertina tratta da un video). Rifiuta di scrivere sopra
@@ -135,6 +141,74 @@
   };
 
   window.MARCATORE_FIRMA_CORNICE = MARCATORE;
+
+  // Solo il segno, senza toccare i pixel (il file non si ricomprime): per le grafiche che hanno già firma e cornice
+  // disegnate da chi le ha fatte, come le copertine tratte dai video della rubrica. Prima si controlla con
+  // verificaCornice che la cornice ci sia davvero (lo fa rendi.py --segno).
+  window.aggiungiSegno = (datiURL) => conMarcatore(datiURL);
+
+  // C'è la cornice di microtesto del motore? Si rifà la maschera con le stesse misure e, lato per lato, si misura
+  // quanto i punti del testo si staccano dal fondo vicino, con la maschera al suo posto e spostata di 3 px lungo il
+  // bordo. Con la cornice il testo al suo posto si stacca molto di più; senza cornice i due valori sono simili.
+  // Restituisce per ogni lato i due valori e il loro rapporto. opzioni: quelle della cornice (anno, corpo, testo).
+  window.verificaCornice = async (sorgente, o = {}) => {
+    await document.fonts.ready;
+    await document.fonts.load(`600 9px ${CARATTERE}`, testoBase(2026));
+    const im = new Image(); im.src = sorgente; await im.decode();
+    const W = im.naturalWidth, H = im.naturalHeight;
+    const tela = document.createElement('canvas'); tela.width = W; tela.height = H;
+    const c = tela.getContext('2d'); c.drawImage(im, 0, 0);
+    const px = c.getImageData(0, 0, W, H).data, { maschera, striscia: s } = mascheraCornice(W, H, o);
+    const L = (x, y) => { const i = (y * W + x) * 4; return luminanza(px[i], px[i + 1], px[i + 2]); };
+    const A = (x, y) => (x < 0 || y < 0 || x >= W || y >= H ? 0 : maschera[(y * W + x) * 4 + 3]);
+    // un lato: punti (u lungo il bordo, v di traverso) → coordinate; finestre di 24 px lungo il bordo
+    const lato = (xy, lunghezza, d) => {
+      let somma = 0, n = 0;
+      for (let u0 = s; u0 < lunghezza - s; u0 += 24) {
+        let fondo = 0, nf = 0;
+        const testo = [];
+        for (let u = u0; u < Math.min(u0 + 24, lunghezza - s); u++) for (let v = 0; v < s; v++) {
+          const [x, y] = xy(u, v), [xm, ym] = xy(u - d, v), a = A(xm, ym);
+          if (a >= 128) testo.push(L(x, y)); else if (!a) { fondo += L(x, y); nf++; }
+        }
+        if (!nf) continue;
+        fondo /= nf;
+        for (const l of testo) { somma += Math.abs(l - fondo); n++; }
+      }
+      return n ? somma / n : 0;
+    };
+    const lati = {
+      alto: (u, v) => [u, v], basso: (u, v) => [u, H - 1 - v],
+      sinistra: (u, v) => [v, u], destra: (u, v) => [W - 1 - v, u],
+    };
+    const esito = {};
+    for (const [nome, xy] of Object.entries(lati)) {
+      const lunghezza = nome === 'alto' || nome === 'basso' ? W : H;
+      const giusto = lato(xy, lunghezza, 0), spostato = lato(xy, lunghezza, 3);
+      esito[nome] = { giusto: Math.round(giusto * 10) / 10, spostato: Math.round(spostato * 10) / 10,
+        rapporto: Math.round((giusto / Math.max(spostato, 0.5)) * 100) / 100 };
+    }
+    return { larghezza: W, altezza: H, lati: esito };
+  };
+
+  // Cornice come strato a sé, per le pagine che si muovono (i video della rubrica, scripts/video-rubrica/appro.src.html):
+  // sulla tela trasparente `tela` ogni punto del testo prende il tono che la cornice incisa avrebbe sulla tela fissa
+  // `fondo`, con la stessa opacità. Messa sopra tutto, sul fondo dà esattamente la cornice incisa e resta visibile
+  // anche dove un disegno arriva al bordo: così è in ogni fotogramma e nella copertina tratta dal video.
+  window.corniceSovrapposta = (tela, fondo, o = {}) => {
+    const W = tela.width, H = tela.height, intensita = o.intensita ?? 0.32;
+    const { maschera, corpo, striscia, testo } = mascheraCornice(W, H, o);
+    const f = fondo.getContext('2d').getImageData(0, 0, W, H).data;
+    const ctx = tela.getContext('2d'), strato = ctx.createImageData(W, H), d = strato.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const a = maschera[i + 3];
+      if (!a) continue;
+      const t = tono(f[i], f[i + 1], f[i + 2]);
+      d[i] = t[0]; d[i + 1] = t[1]; d[i + 2] = t[2]; d[i + 3] = Math.round(a * intensita);
+    }
+    ctx.putImageData(strato, 0, 0);
+    return { corpo, striscia, testo };
+  };
 
   // opzioni: formato 'jpeg' | 'png', qualita (0.88), firma {posizione, margine, basso, corpo, peso, carattere,
   // colore, ombra}, cornice (false per non inciderla: i modelli da stampa hanno quella vettoriale), marcatore

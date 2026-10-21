@@ -220,7 +220,14 @@ serve, domenica all'1:55 con il «recupero notturno»): scheda in
   testi in `contenuti*.py`, disegni in `ill*.js`, `./anteprima.sh`, `./render.sh`,
   `./copia.sh`. Serie 1 (10 video, 6/10–6/11), serie 2 (13 video, 10/11–22/12),
   speciale Giornata del volontariato (5/12). Contenuti sanitari sempre su linee guida
-  ERC/IRC correnti e rivisti da un istruttore.
+  ERC/IRC correnti e rivisti da un istruttore. Dal 21/10/2026 i video in uscita (dal 23/10)
+  sono nello stile nazionale (fascia blu con filo giallo e stemma, Montserrat, colori del
+  kit), con la firma «Misericordia di Ariccia» e la cornice di microtesto in ogni
+  fotogramma: `prova_impaginazione.py` le controlla, `copia.sh` mette nella copertina il
+  segno (`rendi.py --segno`) che «Controlli del sito» cerca nelle copertine dei video in
+  uscita; per rifare solo le immagini di un video già montato, `pipeline.py <chiave>
+  --audio-da <video.mp4>`. Restano come sono i video già pubblicati, quelli dei servizi e
+  il 5×1000.
 - **Dossier** `content/dossier/primo-soccorso.md` (23 schede): ogni scheda può avere
   `dal: "AAAA-MM-GG"` → il suo video (`static/video/primo-soccorso-<id>.mp4`) e il link
   all'articolo compaiono da quella data; prima c'è l'avviso «esce il …».
