@@ -28,6 +28,9 @@ FORME_SBAGLIATE = [
     (re.compile(r"\bche\s+dio\s+(?:te\s+ne|ve\s+ne|gliene)\s+renda\s+merito", re.I),
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),
+    (re.compile(r'"preparata_da"\s*:\s*"(?!(?:Alessandro Cuollo|IU0QVW)\b)[^"]*"'),
+     "le schede della Parola della domenica sono a firma di Alessandro Cuollo («Alessandro Cuollo, "
+     "AAAA-MM-GG»), mai di uno strumento: .claude/rules/firma-dei-lavori.md (21/10/2026)"),
 ]
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
 # (scripts/, schede social). Non i file di governo (CLAUDE.md, COORDINAMENTO.md…), che citano la forma per vietarla.

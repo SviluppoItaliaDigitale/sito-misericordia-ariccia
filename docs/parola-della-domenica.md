@@ -74,7 +74,9 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    frasi fatte o fatti inventati. Chiudere con «Buona domenica!». Versetti, crediti
    dell'opera, link e hashtag li aggiunge lo script.
 5. **Scheda** `.github/social/parola/AAAA-MM-GG.json` (modello: quella del 2026-10-11):
-   - `data`, `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»), `preparata_da`;
+   - `data`, `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»),
+     `preparata_da` («Alessandro Cuollo, AAAA-MM-GG»: i lavori sono sempre a sua firma, mai di uno
+     strumento, e il controllo delle forme da non usare lo verifica);
    - `opera`: `autore`, `titolo` (in italiano), `anno`, `luogo` (museo), `licenza`, `fonte`
      (pagina Commons), `illustra` (es. «Vangelo, Mt 22,1-14»), `scena` (una frase su cosa
      si vede, legata al brano);
