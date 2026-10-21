@@ -144,4 +144,6 @@ I disegni (`ill*.js`) non cambiano: forme, posizioni, scritte e colori restano q
 dei video già pubblicati. `prova_impaginazione.py` controlla firma e cornice in ogni
 scena; `copia.sh` scrive nella copertina il segno che i controlli del sito cercano
 (`rendi.py --segno`, solo se trova la cornice nei pixel). Restano nello stile di prima i
-video già pubblicati, quelli dei servizi (`contenuti3.py`) e il 5×1000.
+video già pubblicati, quelli dei servizi (`contenuti3.py`) e il video del 5×1000; la sua
+copertina (`static/img/video/5x1000.jpg`, che compare anche nelle news del 5×1000 dal 2027)
+ha firma e cornice aggiunte con `rendi.py --cornice`, come la grafica di quelle news.

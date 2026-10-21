@@ -227,7 +227,7 @@ serve, domenica all'1:55 con il «recupero notturno»): scheda in
   segno (`rendi.py --segno`) che «Controlli del sito» cerca nelle copertine dei video in
   uscita; per rifare solo le immagini di un video già montato, `pipeline.py <chiave>
   --audio-da <video.mp4>`. Restano come sono i video già pubblicati, quelli dei servizi e
-  il 5×1000.
+  il video del 5×1000 (la sua copertina ha firma e cornice, come la grafica delle sue news).
 - **Dossier** `content/dossier/primo-soccorso.md` (23 schede): ogni scheda può avere
   `dal: "AAAA-MM-GG"` → il suo video (`static/video/primo-soccorso-<id>.mp4`) e il link
   all'articolo compaiono da quella data; prima c'è l'avviso «esce il …».
