@@ -155,6 +155,8 @@ $('logo').src='/*LOGO*/';
 $('serie').innerHTML= CFG.num ? `${CFG.serie||'Primo soccorso passo passo'} · <b>${CFG.num}/${CFG.tot||10}</b>` : (CFG.serie||'');
 if(CFG.card){ document.querySelector('#card .s').textContent=CFG.card.s; document.querySelector('#card .tel').textContent=CFG.card.tel; }
 if(CFG.serie && CFG.serie.includes('2ª')) $('fonte').textContent='Fonte: linee guida ERC/IRC 2025 · informazioni generali, non sostituiscono un corso';
+// Argomenti non trattati (o non solo) dalle linee guida IRC/ERC 2025: le fonti vere sono nell'articolo (21/10/2026).
+if(CFG.fonte) $('fonte').textContent=CFG.fonte;
 if(!CFG.num) $('fonte').textContent='Misericordia di Ariccia · Piazzale Aldo Moro 6 · sede@misericordia-ariccia.it';
 Promise.all(['600 20px "Playfair Display"','400 20px Jost','500 20px Jost','600 20px Jost','700 20px Jost','800 20px Jost'].map(f=>document.fonts.load(f)))
  .then(()=>$('logo').decode().catch(()=>{})).then(()=>{ drawBg(); render(0); window.__ready=true; });

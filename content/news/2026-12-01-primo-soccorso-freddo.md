@@ -30,7 +30,7 @@ Brividi forti, pelle fredda e pallida, mani impacciate. Poi confusione e sonnole
 
 ### Al riparo
 
-Portalo al riparo, al caldo, muovendolo con delicatezza, senza farlo camminare se è molto debole.
+Portalo al riparo dal vento, al caldo, spostandolo con delicatezza.
 
 ### Vestiti bagnati
 

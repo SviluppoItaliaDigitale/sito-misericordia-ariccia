@@ -3,11 +3,11 @@ title: "La cassetta di primo soccorso di casa e auto"
 titoloSeo: "La cassetta di primo soccorso: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-12-22
 slug: "primo-soccorso-cassetta"
-description: "Cosa mettere nella cassetta di primo soccorso, i numeri utili, cosa tenere in auto, le scadenze, e gli auguri di buone feste."
+description: "Cosa mettere nella cassetta di primo soccorso, cosa tenere in auto, dove tenerla, le scadenze, e gli auguri di buone feste."
 immagine: "/img/news/primo-soccorso-cassetta-grafica.jpg"
 social_video: "/video/primo-soccorso-cassetta.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 2ª serie 13/13 — La cassetta di primo soccorso. Cosa mettere nella cassetta di primo soccorso, i numeri utili, cosa tenere in auto, le scadenze, e gli auguri di buone feste. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 2ª serie 13/13 — La cassetta di primo soccorso. Cosa mettere nella cassetta di primo soccorso, cosa tenere in auto, dove tenerla, le scadenze, e gli auguri di buone feste. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
   **La cassetta di primo soccorso: un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -20,17 +20,13 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **13 di 13**: **la cassetta di primo soccorso**.
 
-{{< video src="video/primo-soccorso-cassetta.mp4" poster="img/video/primo-soccorso-cassetta.jpg" verticale="si" titolo="La cassetta di primo soccorso: primo soccorso passo passo" descrizione="Cosa mettere nella cassetta di primo soccorso, i numeri utili, cosa tenere in auto, le scadenze, e gli auguri di buone feste." data="2026-12-22" didascalia="Il video dura circa 1 minuto e 5 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-cassetta.mp4" poster="img/video/primo-soccorso-cassetta.jpg" verticale="si" titolo="La cassetta di primo soccorso: primo soccorso passo passo" descrizione="Cosa mettere nella cassetta di primo soccorso, cosa tenere in auto, dove tenerla, le scadenze, e gli auguri di buone feste." data="2026-12-22" didascalia="Il video dura circa 55 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
 ### Cosa c'è
 
-Guanti, garze sterili, bende, cerotti, forbici, un disinfettante, il ghiaccio istantaneo e una coperta isotermica.
-
-### I numeri
-
-Aggiungi un foglio con i numeri utili: il 112, il Centro Antiveleni e il tuo medico.
+Guanti, garze sterili, bende, cerotti, forbici, un disinfettante e il ghiaccio istantaneo.
 
 ### In auto
 
@@ -38,11 +34,11 @@ In auto, insieme alla cassetta, tieni sempre il giubbotto catarifrangente e il t
 
 ### Le scadenze
 
-Una volta all'anno controlla le scadenze e rimetti quello che hai usato.
+Controlla regolarmente le scadenze e rimetti quello che hai usato.
 
 ### Dove tenerla
 
-Tienila in un posto facile da raggiungere per gli adulti, ma fuori dalla portata dei bambini. E niente farmaci di altri.
+Tienila in un posto facile da raggiungere per gli adulti, ma fuori dalla portata dei bambini.
 
 ### La cosa più utile
 
@@ -60,4 +56,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (kit di primo soccorso in casa e in auto, triangolo e giubbotto, controlli regolari, coperta isotermica); [Decreto ministeriale 15 luglio 2003, n. 388](https://www.normattiva.it/uri-res/N2Ls?urn:nir:ministero.salute:decreto:2003-07-15;388) (contenuto minimo della cassetta: guanti, garze sterili, cerotti, forbici, disinfettante, ghiaccio pronto uso).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (kit di primo soccorso in casa e in auto, bende, triangolo e giubbotto, controlli regolari); [Decreto ministeriale 15 luglio 2003, n. 388](https://www.normattiva.it/uri-res/N2Ls?urn:nir:ministero.salute:decreto:2003-07-15;388) (contenuto minimo della cassetta: guanti, garze sterili, cerotti, forbici, disinfettante, ghiaccio pronto uso).*
