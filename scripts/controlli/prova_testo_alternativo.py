@@ -30,14 +30,16 @@ def attesa(cond, messaggio):
 class GraphFinta:
     """Registra le chiamate; rifiuta, se richiesto, le richieste con un certo parametro, come farebbe Meta."""
 
-    def __init__(self, rifiuta=None, errore=None):
-        self.chiamate, self.rifiuta, self.errore, self.n = [], rifiuta, errore, 0
+    def __init__(self, rifiuta=None, errore=None, dettaglio=None):
+        self.chiamate, self.rifiuta, self.errore, self.dettaglio, self.n = [], rifiuta, errore, dettaglio, 0
 
     def post(self, percorso, parametri):
         self.chiamate.append((percorso, dict(parametri)))
         if self.rifiuta and self.rifiuta in parametri:
-            raise RuntimeError(f'HTTP 400 su {percorso}: {{"error":{{"message":"(#100) {self.errore}",'
-                               f'"type":"OAuthException","code":100,"fbtrace_id":"prova"}}}}')
+            errore = {"message": f"(#100) {self.errore}", "type": "OAuthException", "code": 100, "fbtrace_id": "prova"}
+            if self.dettaglio:
+                errore["error_user_msg"] = self.dettaglio
+            raise RuntimeError(f"HTTP 400 su {percorso}: {json.dumps({'error': errore})}")
         self.n += 1
         return {"id": f"{self.n}"}
 
@@ -137,6 +139,59 @@ except RuntimeError:
     pass
 attesa(len(g.su("222/media")) == 2 and "alt_text" not in ps._alt_rifiutati,
        f"errore che non dipende dal testo alternativo: riprese sbagliate o alt segnato come rifiutato ({g.su('222/media')})")
+# un «(#100)» che nomina l'immagine, l'indirizzo o il luogo non dipende dal testo alternativo: nessuna ripresa senza
+for errore, dettaglio in (("Invalid image URL", None), ("url should represent a valid URL", None),
+                          ("Invalid parameter", "The image could not be downloaded."),
+                          # titolo e messaggio per l'utente Meta li scrive nella lingua della richiesta
+                          ("Invalid parameter", "Non è stato possibile scaricare l'immagine."),
+                          # messaggio documentato per il codice 100 (sottocodice 2207040)
+                          ("Invalid parameter", "Cannot use more than 20 tags per created media.")):
+    g = GraphFinta(rifiuta="image_url", errore=errore, dettaglio=dettaglio); prepara(g)
+    try:
+        ps.pubblica_instagram(dict(NEWS))
+        falliti.append(f"«(#100) {errore}»: il post risulta uscito")
+    except RuntimeError:
+        pass
+    attesa(len(g.su("222/media")) == 1 and "alt_text" not in ps._alt_rifiutati,
+           f"«(#100) {errore}» ({dettaglio}): ripresa senza testo alternativo ({len(g.su('222/media'))} chiamate)")
+# un «(#100)» su un elemento del carosello che nomina is_carousel_item, un altro parametro della stessa richiesta:
+# nessuna ripresa senza testo alternativo
+g = GraphFinta(rifiuta="is_carousel_item", errore="Param is_carousel_item must be a boolean"); prepara(g)
+try:
+    ps.instagram_carosello(immagini, "testo", alt)
+    falliti.append("«(#100) is_carousel_item»: il carosello risulta uscito")
+except RuntimeError:
+    pass
+attesa(len(g.su("222/media")) == 1 and "alt_text" not in ps._alt_rifiutati,
+       f"«(#100) is_carousel_item»: ripresa senza testo alternativo ({len(g.su('222/media'))} chiamate)")
+# i nomi degli altri parametri della richiesta: un parametro che non è fra le parole fisse
+errore_temporary = RuntimeError('HTTP 400 su 111/photos: {"error":{"message":"(#100) Param temporary must be a '
+                                'boolean","code":100}}')
+attesa(ps.alt_rifiutato(errore_temporary, "alt_text_custom") is True,
+       "«(#100) temporary» senza i parametri della richiesta: dovrebbe riprovare")
+attesa(ps.alt_rifiutato(errore_temporary, "alt_text_custom", {"url": "x", "temporary": "true"}) is False,
+       "«(#100) temporary» con i parametri della richiesta: non dovrebbe riprovare")
+# il testo alternativo nominato solo nel messaggio per l'utente, anche in italiano: si riprova senza
+for dettaglio in ("Alt text is too long.", "Il testo alternativo dell'immagine è troppo lungo."):
+    g = GraphFinta(rifiuta="alt_text", errore="Invalid parameter", dettaglio=dettaglio); prepara(g)
+    attesa(ps.pubblica_instagram(dict(NEWS)) == "2", f"alt nominato nel messaggio per l'utente ({dettaglio}): il post non è uscito")
+    attesa(len(g.su("222/media")) == 2 and "alt_text" in ps._alt_rifiutati,
+           f"alt nominato nel messaggio per l'utente ({dettaglio}): riprese sbagliate ({g.su('222/media')})")
+# il criterio sui testi degli errori: contano messaggio e messaggio per l'utente, non il percorso né le chiavi del JSON
+for errore, atteso in (
+        ('HTTP 400 su 222/media: {"error":{"message":"(#100) Invalid parameter","code":100}}', True),
+        ('HTTP 400 su 111/photos: {"error":{"message":"Invalid parameter","code":100}}', True),
+        ('HTTP 400 su 222/media: {"error":{"message":"Param alt_text is not valid","code":9004}}', True),
+        ('HTTP 400 su 222/media: {"error":{"message":"(#100) Invalid image URL","code":100}}', False),
+        ('HTTP 400 su 111/feed: {"error":{"message":"(#100) Invalid parameter","code":100,'
+         '"error_user_msg":"Invalid place id"}}', False),
+        ('HTTP 400 su 222/media: {"error":{"message":"Invalid parameter","code":100,'
+         '"error_user_msg":"Il testo alternativo dell\'immagine \\u00e8 troppo lungo."}}', True),
+        ('HTTP 400 su 222/media: {"error":{"message":"Invalid parameter","code":100,'
+         '"error_user_msg":"Non \\u00e8 stato possibile scaricare l\'immagine."}}', False),
+        ('HTTP 400 su 222/media: {"error":{"message":"Application request limit reached","code":4}}', False),
+        ("HTTP 500 su 222/media: errore del server", False)):
+    attesa(ps.alt_rifiutato(RuntimeError(errore), "alt_text") is atteso, f"alt_rifiutato({errore!r}) dovrebbe dare {atteso}")
 # un errore che non c'entra non si riprova
 g = GraphFinta(); prepara(g)
 ps.graph_post = lambda p, q: (_ for _ in ()).throw(RuntimeError("HTTP 500 su 222/media: errore del server"))
