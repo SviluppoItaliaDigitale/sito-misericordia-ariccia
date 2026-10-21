@@ -23,6 +23,7 @@ conteggio a voce da 1 a 30, musica allo stesso BPM).
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
 | `anteprima.sh`, `render.sh`, `copia.sh` | scorciatoie: anteprime, montaggio, copia nel sito |
+| `grafica.js` | grafica della news (fotogramma a 1,8 s) **senza sottotitolo**, usata da `copia.sh`: dal 17/10/2026 il sottotitolo sta a 1300 px e finiva tagliato nel ritaglio 1080×1350 |
 | `prova_impaginazione.py` (+ `.js`) | prova senza voce: un fotogramma intero per scena con in rosso la zona coperta dai comandi di Instagram, in `out/<chiave>/prova.png`. Da usare quando si tocca `appro.src.html` o si scrive un video nuovo: titoli, etichette e sottotitoli devono restare fuori dalla zona rossa |
 | `articoli.py`, `articoli2.py` | generano le news programmate dai testi dei video (non sovrascrivono quelle esistenti) |
 | `comune.py` | ffmpeg e scrittura prudente delle news |
@@ -60,7 +61,7 @@ forzare anche `FF=/percorso/ffmpeg` e `PIPER_MODEL=/percorso/voce.onnx`.
 ```bash
 ./anteprima.sh ictus infarto        # foglio con un fotogramma per scena: out/<chiave>/foglio.png
 ./render.sh ictus                   # video completo: out/primo-soccorso-ictus.mp4 (~6 min per video)
-./copia.sh ictus                    # copia in static/video + copertina + grafica + .webp
+./copia.sh ictus                    # copia in static/video + copertina + grafica senza sottotitolo + .webp
 ```
 
 Le chiavi sono quelle di `contenuti.py`/`contenuti2.py` (es. `rianimazione`,
