@@ -28,6 +28,12 @@ FORME_SBAGLIATE = [
     (re.compile(r"\bche\s+dio\s+(?:te\s+ne|ve\s+ne|gliene)\s+renda\s+merito", re.I),
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),
+    (re.compile(r"non\s+migliora\s+e\s+ha\s+una\s+seconda\s+dose|have\s+not\s+improved\s+after\s+\**5\s+minutes\**\s+and\s+have\s+a\s+second\s+dose", re.I),
+     "anafilassi: la seconda dose si usa se i sintomi PERSISTONO dopo 5 minuti, non solo «se non migliora» "
+     "(IRC 2025, cap. 12; corretto il 21/10/2026)"),
+    (re.compile(r"perde\s+conoscenza,\s+accompagnalo\s+a\s+terra,\s+chiama\s+(?:il\s+112|'\+U12\+')\s+e\s+inizia", re.I),
+     "soffocamento: il 112 si chiama subito, quando non riesce più a tossire o a parlare, non solo quando "
+     "perde conoscenza (IRC 2025, cap. 12; corretto il 18/10/2026)"),
 ]
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
 # (scripts/, schede social). Non i file di governo (CLAUDE.md, COORDINAMENTO.md…), che citano la forma per vietarla.
