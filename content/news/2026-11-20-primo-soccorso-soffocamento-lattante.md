@@ -27,7 +27,7 @@ italianoSemplice: |
 
 ### Riconosci
 
-Se il bambino non riesce a piangere, a tossire o a respirare, e diventa blu, l'ostruzione è grave.
+Se il bambino non riesce a piangere o a tossire bene, o fa fatica a respirare, l'ostruzione è grave: non aspettare che diventi blu.
 
 ### Se tossisce
 

@@ -1,6 +1,6 @@
 ---
 title: "Ustioni: cosa fare e cosa non fare"
-titoloSeo: "Ustioni: cosa fare passo passo (linee guida IRC 2025)"
+titoloSeo: "Ustioni: cosa fare passo passo, primo soccorso"
 date: 2026-10-27
 slug: "primo-soccorso-ustioni"
 description: "Fermare il fuoco, 20 minuti di acqua corrente, togliere anelli, coprire con la pellicola, i rimedi da evitare e quando chiamare il 112."
@@ -66,4 +66,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [ILCOR, raffreddamento delle ustioni con acqua corrente](https://costr.ilcor.org/document/duration-of-cooling-with-water-for-thermal-burns-as-a-first-aid-intervention-fa-770-systematic-review) (acqua corrente subito); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (20 minuti). Le linee guida IRC 2025 non trattano più il raffreddamento delle ustioni.*

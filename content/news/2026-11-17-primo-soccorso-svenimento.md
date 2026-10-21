@@ -34,15 +34,15 @@ Se senti che stai per svenire, incrocia le gambe e stringi forte i muscoli, oppu
 
 ### Se sviene
 
-Se sviene, mettilo sdraiato e sollevagli le gambe: il sangue torna alla testa.
+Se sviene, mettilo sdraiato a pancia in su e, se puoi, sollevagli le gambe.
 
 ### Aria
 
 Allenta i vestiti stretti, fai spazio intorno e lascia circolare l'aria.
 
-### Un minuto
+### Se non si riprende
 
-Di solito si riprende in meno di un minuto. Se non si riprende, controlla il respiro e chiama il 112.
+Di solito si riprende in fretta. Se non si riprende, chiama il 112 e guarda se respira normalmente. Se non respira normalmente, inizia la rianimazione.
 
 ### Piano piano
 

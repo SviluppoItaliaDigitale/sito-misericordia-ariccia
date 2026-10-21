@@ -1,6 +1,6 @@
 ---
 title: "Botti di Capodanno: prevenzione e primo soccorso"
-titoloSeo: "Botti di Capodanno: cosa fare passo passo (linee guida ERC/IRC 2025)"
+titoloSeo: "Botti di Capodanno: ustioni, mani e occhi, cosa fare passo passo"
 date: 2026-12-18
 slug: "primo-soccorso-botti"
 description: "Fuochi solo a norma CE, mai raccogliere petardi inesplosi, e cosa fare per ustioni, ferite alla mano, dita staccate e lesioni agli occhi."
@@ -42,7 +42,7 @@ Se la mano sanguina, premi forte con una garza o un panno pulito e chiama il 112
 
 ### Dito staccato
 
-Se un dito si è staccato, mettilo in un sacchetto pulito e chiuso, e il sacchetto nel ghiaccio. Mai il dito a contatto con il ghiaccio.
+Se un dito si è staccato, avvolgilo in una garza bagnata e mettilo in un sacchetto chiuso, dentro un altro sacchetto con acqua e ghiaccio. Mai il dito a contatto con il ghiaccio. Portalo in ospedale con il ferito.
 
 ### Occhio
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (emorragie e dito staccato); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (ustioni, 20 minuti di acqua).*

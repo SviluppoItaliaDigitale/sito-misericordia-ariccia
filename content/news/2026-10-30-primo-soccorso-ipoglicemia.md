@@ -36,11 +36,11 @@ I segni: sudore, tremore, pallore, fame, mal di testa. Poi confusione, o un comp
 
 ### Zucchero
 
-Se è sveglio e riesce a deglutire, dagli subito zucchero: compresse di glucosio, un succo di frutta o una bibita zuccherata, non light, oppure 3-4 zollette.
+Se è sveglio e riesce a deglutire, dagli subito 15-20 g di zucchero: compresse di glucosio, mezzo bicchiere di succo di frutta o di bibita zuccherata, non light, oppure 4 zollette.
 
 ### Dopo 15 minuti
 
-Aspetta 15 minuti. Se non migliora, dagli altro zucchero.
+Aspetta 15 minuti. Se ha ancora i sintomi, dagli altro zucchero. Se non migliora, chiama il 112.
 
 ### Poi
 
@@ -48,7 +48,7 @@ Quando sta meglio, fagli mangiare qualcosa: pane, crackers, o il pasto, se è or
 
 ### Non risponde
 
-Se non risponde o non riesce a deglutire, niente in bocca: rischia di soffocare. Chiama il 112 e, se respira, mettilo in posizione laterale di sicurezza.
+Se non risponde o non riesce a deglutire, niente in bocca: rischia di soffocare. Chiama il 112. Se respira normalmente, mettilo in posizione laterale di sicurezza; se non respira normalmente, inizia la rianimazione.
 
 ## Da ricordare
 

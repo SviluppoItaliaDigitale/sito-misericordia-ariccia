@@ -52,7 +52,7 @@ Per il bernoccolo, ghiaccio avvolto in un panno, mai direttamente sulla pelle.
 
 ### Dal medico
 
-Fallo vedere da un medico anche se sta bene, soprattutto se è anziano o prende anticoagulanti.
+Fallo sempre vedere da un medico, anche se sembra stare bene: i segni possono comparire ore dopo. Ancora di più se è anziano o prende anticoagulanti.
 
 ### Le ore dopo
 

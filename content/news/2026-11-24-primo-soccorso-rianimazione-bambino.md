@@ -29,11 +29,11 @@ italianoSemplice: |
 
 ### Riconosci
 
-Chiamalo e toccalo con delicatezza. Non risponde e non respira normalmente? Devi agire subito.
+Chiamalo e toccalo con delicatezza. Non risponde? Chiama subito il 112 con il vivavoce, e intanto guarda se respira normalmente.
 
-### Chiama
+### L'operatore
 
-Chiama il 112 con il vivavoce: l'operatore ti guida. Se sei solo e senza telefono, fai prima un minuto di rianimazione, poi vai a chiamare.
+L'operatore del 112 ti guida e ti aiuta a capire se iniziare la rianimazione. Se sei solo e senza telefono, fai prima un minuto di rianimazione, poi vai a chiamare.
 
 ### 5 soffi
 
@@ -45,7 +45,7 @@ Nel lattante, circonda il torace con le mani e spingi con i due pollici. Nel bam
 
 ### Compressioni
 
-Spingi per un terzo del torace, circa 4 cm nel lattante, 5 nel bambino. Segui il ritmo.
+Spingi per almeno un terzo del torace, ma mai più di 6 cm. Segui il ritmo.
 
 ### 30 e 2
 

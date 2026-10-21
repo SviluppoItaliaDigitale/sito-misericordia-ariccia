@@ -38,7 +38,7 @@ Resta calmo e aiutalo a respirare lentamente: l'agitazione peggiora la crisi.
 
 ### Lo spray
 
-Se ha il suo spray per la crisi, aiutalo a usarlo, come gli ha spiegato il medico.
+Se ha il suo spray per la crisi, aiutalo a usarlo, con il distanziatore se c'è, come gli ha spiegato il medico.
 
 ### Quando chiamare
 
@@ -46,11 +46,11 @@ Chiama il 112 se lo spray non funziona, se non riesce a parlare, se le labbra di
 
 ### Allergia
 
-Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, può essere anafilassi: serve l'adrenalina.
+Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, può essere anafilassi: chiama subito il 112 e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella coscia.
 
-### Se non respira
+### Se non risponde
 
-Se perde conoscenza e non respira normalmente, inizia la rianimazione.
+Se non risponde, chiama il 112 e guarda se respira normalmente. Se non respira normalmente, inizia la rianimazione.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#asma)**.
 

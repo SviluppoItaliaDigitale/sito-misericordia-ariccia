@@ -26,7 +26,7 @@ italianoSemplice: |
 
 ### Calma
 
-Non tirarlo su di colpo. Prima tranquillizzalo, e chiedigli come sta.
+Non tirarlo su di colpo. Se non risponde, chiama il 112 e guarda se respira normalmente. Se risponde, tranquillizzalo e chiedigli come sta.
 
 ### Le domande
 
@@ -42,7 +42,7 @@ Se sta bene, aiutalo ad alzarsi a tappe: prima su un fianco, poi in ginocchio, p
 
 ### Se non si alza
 
-Se non riesce ad alzarsi, non forzarlo: mettigli un cuscino sotto la testa, coprilo e aspetta i soccorsi.
+Se non riesce ad alzarsi, non forzarlo: coprilo, tienilo al caldo e aspetta i soccorsi. Se ha battuto la testa o ha male al collo, non muovergli la testa.
 
 ### Le ore dopo
 
