@@ -63,6 +63,14 @@ CASI = [  # (testo, deve essere segnalato)
     ("mettilo in un sacchetto pulito e chiuso, e il sacchetto " + "nel ghiaccio.", True),
     ("in a clean, sealed bag, and the bag " + "in ice.", True),
     ("in un sacchetto chiuso, dentro un altro sacchetto con acqua e ghiaccio.", False),
+    ("Porta con te la confezione, o una batteria " + "uguale: aiuta i medici.", True),
+    ("Bring the **packaging** or an identical " + "battery.", True),
+    ("Apri porte e finestre " + "ed esci all'aria aperta.", True),
+    ("Esci subito all'aria aperta. Se puoi farlo senza fermarti, apri le finestre.", False),
+    ("vista annebbiata e un ronzio " + "nelle orecchie", True),
+    ("blurred vision, ringing " + "in the ears", True),
+    ("luci accese " + "di notte, maniglioni in bagno", True),
+    ("niente tappeti e fili, tappetini antiscivolo, maniglioni in bagno", False),
 ]
 
 errori = 0

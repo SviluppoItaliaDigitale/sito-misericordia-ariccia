@@ -34,7 +34,7 @@ Chiedi se ha dolore, se ha battuto la testa, se ricorda cosa è successo, e guar
 
 ### Quando chiamare
 
-Chiama il 112 se ha battuto la testa, se prende anticoagulanti, se ha un dolore forte all'anca o non riesce a muovere una gamba, o se è confuso.
+Chiama il 112 se ha battuto la testa, ancora di più se prende anticoagulanti, se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi, o se è confuso.
 
 ### Se sta bene
 
@@ -50,7 +50,7 @@ Anche se sembra a posto, controllalo nelle ore successive, soprattutto se ha bat
 
 ### Previeni
 
-Per prevenire: via i tappeti scivolosi, luci accese di notte, maniglioni in bagno, scarpe chiuse e un telefono sempre a portata di mano.
+Per prevenire: via i tappeti e i fili in cui si può inciampare, un tappetino antiscivolo nella doccia e nella vasca, e i maniglioni in bagno.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
 

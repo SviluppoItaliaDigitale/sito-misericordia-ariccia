@@ -32,10 +32,6 @@ Fermati in un posto sicuro, accendi le quattro frecce e indossa il giubbotto cat
 
 Metti il triangolo ben prima dell'incidente, ad almeno 50 metri, per avvisare chi arriva.
 
-### Motori spenti
-
-Se puoi farlo senza rischi, spegni il motore delle auto coinvolte. E niente sigarette.
-
 ### Chiama
 
 Chiama il 112: di' dove sei, quanti sono i feriti, e se qualcuno è incastrato.
@@ -46,7 +42,7 @@ Non spostare i feriti, a meno che non ci sia un pericolo immediato, come un ince
 
 ### Il casco
 
-Al motociclista non togliere il casco: si toglie solo se non respira, e meglio se lo fa chi ha imparato come.
+Al motociclista non togliere il casco. Se non respira, segui le indicazioni dell'operatore del 112.
 
 ### Stagli vicino
 

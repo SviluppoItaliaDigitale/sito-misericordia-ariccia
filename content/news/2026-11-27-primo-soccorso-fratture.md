@@ -42,11 +42,11 @@ Metti del ghiaccio avvolto in un panno, mai direttamente sulla pelle, per una ve
 
 ### Frattura esposta
 
-Se l'osso esce dalla pelle, copri con una garza pulita, senza spingerlo dentro, e premi intorno se sanguina.
+Se l'osso esce dalla pelle, non spingerlo dentro. Se sanguina, premi sulla ferita con una garza o un panno pulito.
 
 ### Quando chiamare
 
-Chiama il 112 per fratture esposte, per l'anca, il femore, la schiena o il collo, se il dolore è fortissimo, o se mano o piede sono freddi e senza sensibilità.
+Chiama il 112 per fratture esposte, per l'anca, il femore, la schiena o il collo, o se il dolore è fortissimo.
 
 ### Distorsione
 

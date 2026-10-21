@@ -56,6 +56,17 @@ FORME_SBAGLIATE = [
     (re.compile(r"e\s+il\s+sacchetto\s+nel\s+ghiaccio|and\s+the\s+bag\s+in\s+ice", re.I),
      "parte amputata: garza bagnata, sacchetto chiuso dentro un altro sacchetto con acqua e ghiaccio, mai a contatto "
      "col ghiaccio, in ospedale con il ferito (IRC 2025, cap. 12)"),
+    # Frasi della rubrica senza fonte o in contrasto con le fonti, tolte o corrette il 21/10/2026 (issue #147).
+    (re.compile(r"porta\s+(?:con\s+te\s+)?la\s+\**confezione\**,?\s+o\s+una\s+batteria\s+uguale|bring\s+the\s+\**packaging\**\s+or\s+an\s+identical\s+battery", re.I),
+     "batterie a bottone: niente cibo né bevande, sopra i 12 mesi il miele mentre si va al pronto soccorso "
+     "(Ospedale Bambino Gesù); la confezione non è nella fonte"),
+    (re.compile(r"apri\s+porte\s+e\s+finestre\s+ed\s+esci|open\s+doors\s+and\s+windows\s+and\s+get\s+out", re.I),
+     "monossido: prima si esce all'aria aperta; le finestre si aprono solo se si può farlo senza fermarsi (NHS)"),
+    (re.compile(r"ronzio\s+nelle\s+orecchie|ringing\s+in\s+the\s+ears", re.I),
+     "svenimento: i segni prima sono pallore, sudore, nausea, capogiri, vista annebbiata (NHS, Auxologico); "
+     "il ronzio non è nelle fonti"),
+    (re.compile(r"luci\s+(?:accese\s+)?di\s+notte|night\s+lights", re.I),
+     "cadute: la prevenzione segue l'NHS (niente tappeti e fili, antiscivolo, maniglioni); le luci non sono nella fonte"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post

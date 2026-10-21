@@ -26,19 +26,15 @@ italianoSemplice: |
 
 ### I segni prima
 
-Prima di svenire spesso si diventa pallidi e sudati, con nausea, vista annebbiata e un ronzio nelle orecchie.
+Prima di svenire spesso si diventa pallidi e sudati, con nausea, capogiri e la vista che si annebbia.
 
 ### Le contromanovre
 
-Se senti che stai per svenire, incrocia le gambe e stringi forte i muscoli, oppure accovacciati. Meglio ancora, sdraiati.
+Se senti che stai per svenire, sdraiati. Se non puoi, accovacciati, oppure incrocia le gambe e stringi forte i muscoli.
 
 ### Se sviene
 
 Se sviene, mettilo sdraiato a pancia in su e, se puoi, sollevagli le gambe.
-
-### Aria
-
-Allenta i vestiti stretti, fai spazio intorno e lascia circolare l'aria.
 
 ### Se non si riprende
 
