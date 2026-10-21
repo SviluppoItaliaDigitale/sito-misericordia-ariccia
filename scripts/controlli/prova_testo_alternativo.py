@@ -143,7 +143,9 @@ attesa(len(g.su("222/media")) == 2 and "alt_text" not in ps._alt_rifiutati,
 for errore, dettaglio in (("Invalid image URL", None), ("url should represent a valid URL", None),
                           ("Invalid parameter", "The image could not be downloaded."),
                           # titolo e messaggio per l'utente Meta li scrive nella lingua della richiesta
-                          ("Invalid parameter", "Non è stato possibile scaricare l'immagine.")):
+                          ("Invalid parameter", "Non è stato possibile scaricare l'immagine."),
+                          # messaggio documentato per il codice 100 (sottocodice 2207040)
+                          ("Invalid parameter", "Cannot use more than 20 tags per created media.")):
     g = GraphFinta(rifiuta="image_url", errore=errore, dettaglio=dettaglio); prepara(g)
     try:
         ps.pubblica_instagram(dict(NEWS))
@@ -152,6 +154,23 @@ for errore, dettaglio in (("Invalid image URL", None), ("url should represent a 
         pass
     attesa(len(g.su("222/media")) == 1 and "alt_text" not in ps._alt_rifiutati,
            f"«(#100) {errore}» ({dettaglio}): ripresa senza testo alternativo ({len(g.su('222/media'))} chiamate)")
+# un «(#100)» su un elemento del carosello che nomina is_carousel_item, un altro parametro della stessa richiesta:
+# nessuna ripresa senza testo alternativo
+g = GraphFinta(rifiuta="is_carousel_item", errore="Param is_carousel_item must be a boolean"); prepara(g)
+try:
+    ps.instagram_carosello(immagini, "testo", alt)
+    falliti.append("«(#100) is_carousel_item»: il carosello risulta uscito")
+except RuntimeError:
+    pass
+attesa(len(g.su("222/media")) == 1 and "alt_text" not in ps._alt_rifiutati,
+       f"«(#100) is_carousel_item»: ripresa senza testo alternativo ({len(g.su('222/media'))} chiamate)")
+# i nomi degli altri parametri della richiesta: un parametro che non è fra le parole fisse
+errore_temporary = RuntimeError('HTTP 400 su 111/photos: {"error":{"message":"(#100) Param temporary must be a '
+                                'boolean","code":100}}')
+attesa(ps.alt_rifiutato(errore_temporary, "alt_text_custom") is True,
+       "«(#100) temporary» senza i parametri della richiesta: dovrebbe riprovare")
+attesa(ps.alt_rifiutato(errore_temporary, "alt_text_custom", {"url": "x", "temporary": "true"}) is False,
+       "«(#100) temporary» con i parametri della richiesta: non dovrebbe riprovare")
 # il testo alternativo nominato solo nel messaggio per l'utente, anche in italiano: si riprova senza
 for dettaglio in ("Alt text is too long.", "Il testo alternativo dell'immagine è troppo lungo."):
     g = GraphFinta(rifiuta="alt_text", errore="Invalid parameter", dettaglio=dettaglio); prepara(g)

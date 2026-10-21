@@ -91,13 +91,20 @@ lo accetta:
   subito una volta senza, e se così esce, per il resto dell'esecuzione il
   parametro non si manda più: un post non salta mai per il testo alternativo.
   Il log lo scrive. Si riprova senza quando il rifiuto nomina il testo
-  alternativo, oppure quando è il generico «(#100) Invalid parameter» e non
-  nomina un altro parametro, perché a volte Meta non dice quale parametro
-  rifiuta. Un «(#100)» che nomina l'immagine, l'indirizzo o il luogo non
-  riguarda il testo alternativo e non si riprova senza (il luogo rifiutato lo
-  gestisce la ripresa senza luogo). Il controllo legge anche titolo e messaggio
-  per l'utente, che Meta scrive nella lingua della richiesta, e riconosce le
-  parole in inglese e in italiano.
+  alternativo, oppure quando è un «(#100) Invalid parameter» che non nomina né
+  un altro parametro della stessa richiesta né un'altra causa (immagine,
+  indirizzo, luogo, didascalia, programmazione, carosello, tag). Un «(#100)»
+  che nomina l'immagine, l'indirizzo o il luogo non riguarda il testo
+  alternativo e non si riprova senza (il luogo rifiutato lo gestisce la ripresa
+  senza luogo). È una regola prudente nostra, non un comportamento descritto da
+  Meta: il [riferimento dei codici di errore della Graph API di Instagram](https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/error-codes)
+  usa il codice 100 per problemi diversi (tipo di contenuto, carosello con meno
+  di 2 o più di 10 elementi, tag), ciascuno con un messaggio che lo nomina, e
+  nessuno riguarda il testo alternativo. Le prove usano risposte simulate, non
+  risposte vere di Meta. Il controllo legge anche titolo e messaggio per
+  l'utente, che Meta scrive nella lingua della richiesta
+  ([guida «Handling Errors»](https://developers.facebook.com/docs/graph-api/guides/error-handling)),
+  e riconosce le parole in inglese e in italiano.
 - **In prova** (`DRY_RUN=1` o "Social: solo prova") il log mostra il testo
   alternativo di ogni immagine e da dove viene.
 
