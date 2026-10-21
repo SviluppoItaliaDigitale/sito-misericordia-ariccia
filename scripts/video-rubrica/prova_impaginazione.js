@@ -1,6 +1,7 @@
 // Prova d'impaginazione (vedi prova_impaginazione.py): per ogni scena il fotogramma più a rischio
 // con sovrapposta la zona coperta dai comandi di Instagram (in rosso) e la firma (in verde), in KEY/prova.png.
-// Esce con 1 se manca la firma o la cornice, o se una scritta o un disegno tocca la firma.
+// Esce con 1 se manca la firma o la cornice, se una scritta o un disegno tocca la firma, o se un'email o un sito va a
+// capo a metà.
 const { chromium } = require('playwright-core');
 (async () => {
   const K = process.env.KEY;
@@ -42,6 +43,15 @@ const { chromium } = require('playwright-core');
     }
     times.push(migliore);
   }
+  // Email e siti interi sulla stessa riga, nella chiusura con tutto in vista (il 21/10/2026 la fonte della Giornata del
+  // volontariato andava a capo dentro «sede@misericordia-ariccia.it»).
+  await p.evaluate('window.renderFrame(TOTAL-0.05)');
+  const spezzati = await p.evaluate(`(()=>{ const out=[], w=document.createTreeWalker(document.getElementById('stage'),NodeFilter.SHOW_TEXT); let n;
+    while((n=w.nextNode())){ const re=/\\S+@\\S+|[\\w.-]+\\.(?:it|org|com|eu)\\b/g; let m;
+      while((m=re.exec(n.data))){ const r=document.createRange(); r.setStart(n,m.index); r.setEnd(n,m.index+m[0].length);
+        if(new Set([...r.getClientRects()].filter(q=>q.width>0).map(q=>Math.round(q.top))).size>1) out.push(m[0]); } }
+    return out; })()`);
+  if (spezzati.length) { console.log('ERRORE indirizzo spezzato a capo:', spezzati.join(', ')); process.exitCode = 1; }
   // Cornice di microtesto: c'è su tutti e quattro i lati (strato #cornice del motore firma-e-cornice.js).
   const cornice = await p.evaluate(`(()=>{ const e=window.CORNICE_ESITO; if(!e) return 'cornice assente';
     const c=document.getElementById('cornice').getContext('2d'), W=1080, H=1920, s=e.striscia;

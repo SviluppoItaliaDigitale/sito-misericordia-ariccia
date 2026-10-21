@@ -44,6 +44,7 @@ canvas{position:absolute;left:0;top:0}
 #sos i{font-style:normal;background:#003F85;color:#fff;border-radius:22px;padding:0 16px;font:800 38px/56px Montserrat}
 #motto{position:absolute;left:56px;width:968px;top:1128px;text-align:center;font:600 46px/1.2 Montserrat;color:#FCEB0C}
 #fonte{position:absolute;left:96px;width:888px;top:1222px;font:400 25px/1.45 Montserrat;color:#D5DDEB;text-align:center}
+.nobr{white-space:nowrap}
 #ui{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,22,54,.55);color:#fff;font:600 22px Montserrat;cursor:pointer;z-index:9}
 .render #ui{display:none}
 </style></head>
@@ -198,6 +199,10 @@ if(CFG.serie && CFG.serie.includes('2ª')) $('fonte').textContent='Fonte: linee 
 // Argomenti non trattati (o non solo) dalle linee guida IRC/ERC 2025: le fonti vere sono nell'articolo (21/10/2026).
 if(CFG.fonte) $('fonte').textContent=CFG.fonte;
 if(!CFG.num) $('fonte').textContent='Misericordia di Ariccia · Piazzale Aldo Moro 6 · sede@misericordia-ariccia.it';
+// Email e siti interi sulla stessa riga: «sede@misericordia-» da una parte e «ariccia.it» dall'altra si legge male
+// (succedeva con Montserrat, più larga di Jost; prova_impaginazione.js lo controlla).
+$('fonte').innerHTML=$('fonte').textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c])
+  .replace(/\S+@\S+|[\w.-]+\.(?:it|org|com|eu)\b/g,m=>`<span class="nobr">${m}</span>`);
 Promise.all(['600 20px "Playfair Display"','400 20px Jost','500 20px Jost','600 20px Jost','700 20px Jost','800 20px Jost',
   '300 20px Montserrat','400 20px Montserrat','500 20px Montserrat','600 20px Montserrat','700 20px Montserrat','800 20px Montserrat',
   '500 20px Montserrat'].map(f=>document.fonts.load(f, 'Aà·ª')))
