@@ -37,6 +37,15 @@ CASI = [  # (testo, deve essere segnalato)
     (firma(""), True),
     (firma("Alessandro Cuollo, 2026-10-21"), False),
     (f"{Q}preparata_da{Q}:{Q}Alessandro Cuollo, 2026-10-09{Q}", False),
+    # anafilassi (21/10/2026): la seconda dose si usa se i sintomi persistono
+    ("Se dopo 5 minuti non " + "migliora e ha una seconda dose, si può ripetere.", True),
+    ("If they have not " + "improved after **5 minutes** and have a second dose, it can be repeated.", True),
+    ("Se dopo 5 minuti ha ancora i sintomi, anche se va un po' meglio, e ha una seconda dose, usala.", False),
+    ("If symptoms are still present after **5 minutes**, even if slightly better, and they have a second dose, use it.", False),
+    # soffocamento (18/10/2026): il 112 si chiama subito, non solo quando perde conoscenza
+    ("Se perde conoscenza, accompagnalo a terra, " + "chiama il 112 e inizia la rianimazione.", True),
+    ("Se perde conoscenza, accompagnalo a terra, " + "chiama '+U12+' e inizia la rianimazione.", True),
+    ("Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato il 112, chiamalo subito.", False),
 ]
 
 errori = 0

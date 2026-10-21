@@ -87,7 +87,7 @@ argomenti:
     fare:
       - "Call **112**."
       - "If the person has an **adrenaline auto-injector**, help them use it in the outer thigh as soon as possible."
-      - "If they have not improved after **5 minutes** and have a second dose, it can be repeated."
+      - "If symptoms are still present after **5 minutes**, even if slightly better, and they have a second dose, use it."
     nonfare:
       - "Don't let them stand up suddenly: if they feel faint, have them lie down."
       - "Don't wait for the symptoms to get worse."
