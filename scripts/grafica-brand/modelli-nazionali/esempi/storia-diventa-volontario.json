@@ -1,0 +1,13 @@
+{
+  "modello": "storia-con-fascia.html",
+  "bozza": true,
+  "campi": {
+    "fascia": "Volontariato",
+    "evidenziato": "C'è un posto",
+    "titolo": "anche per te.",
+    "sottotitolo": "Scegli tu come esserci: chiamaci o scrivici su WhatsApp al 348 4068657.",
+    "foto": "../foto-prova/piazza-di-corte.jpg",
+    "foto-posizione": "58% 50%",
+    "foto-alt": "Due volontari della Misericordia di Ariccia, di spalle, in piazza di Corte accanto all'ambulanza"
+  }
+}

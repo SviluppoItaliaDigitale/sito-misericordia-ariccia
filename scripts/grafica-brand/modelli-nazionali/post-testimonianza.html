@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Post testimonianza</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Post testimonianza, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Testimonianza: solo con il consenso scritto di chi parla.
+Campi (attributo data-campo):
+  foto           foto    PNG scontornato di chi parla, di spalle o con il suo consenso scritto; senza foto resta il segnaposto (solo bozza)
+  frase          html    la frase, al massimo cinque righe; HTML ammesso (<strong> per le prime parole)
+  qualifica      testo   chi è, in poche parole
+  nome           testo   nome e cognome (scritti in maiuscolo dal modello)
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: radial-gradient(85% 65% at 42% 48%, #0A4A96 0%, var(--blu) 58%, #00336F 100%); font-family: Montserrat, sans-serif; color: #FFFFFF">
+<div style="position: absolute; left: 0; top: 0; width: 281px; height: 232px; background: var(--giallo)"></div>
+<div style="position: absolute; left: 110px; top: 336px; width: 226px; height: 116px; background: var(--giallo)"></div>
+<div data-segnaposto-di="foto" style="position: absolute; left: 196px; top: 62px; width: 640px; height: 712px; box-sizing: border-box; border: 3px dashed rgba(255, 255, 255, 0.42); border-bottom: none; border-radius: 320px 320px 0 0; display: flex; justify-content: center; align-items: flex-end; padding: 0 70px 222px; text-align: center; font-size: 28px; line-height: 1.4; color: rgba(255, 255, 255, 0.85)">[Foto scontornata: volontaria o volontario di spalle, in divisa]</div>
+<img data-campo="foto" hidden alt="" style="position: absolute; left: 196px; top: 62px; width: 640px; height: 712px; object-fit: contain; object-position: 50% 100%">
+<div style="position: absolute; left: 659px; top: 555px; width: 220px; height: 183px; background: var(--giallo); overflow: hidden">
+<span style="position: absolute; left: 0; right: 0; top: 18px; text-align: center; font-weight: 800; font-size: 330px; line-height: 1; color: #009FE3">“</span>
+</div>
+<div style="position: absolute; left: 220px; top: 797px; width: 762px; height: 4px; background: #FFFFFF"></div>
+<div style="position: absolute; left: 978px; top: 797px; width: 4px; height: 130px; background: #FFFFFF"></div>
+<div style="position: absolute; left: 116px; top: 1037px; width: 4px; height: 138px; background: #FFFFFF"></div>
+<div style="position: absolute; left: 116px; top: 1171px; width: 738px; height: 4px; background: #FFFFFF"></div>
+<span style="position: absolute; left: 136px; top: 768px; font-weight: 800; font-size: 120px; line-height: 1; color: var(--giallo)">“</span>
+<span style="position: absolute; left: 876px; top: 1140px; font-weight: 800; font-size: 120px; line-height: 1; color: var(--giallo)">”</span>
+<p data-campo="frase" data-html data-riquadro style="position: absolute; left: 150px; right: 114px; top: 846px; max-height: 270px; margin: 0; text-align: center; font-weight: 400; font-size: 36px; line-height: 54px"><strong>[Una frase vera</strong>, detta da chi fa servizio: perché ha scelto di esserci e che cosa ha ricevuto in cambio. Massimo cinque righe.]</p>
+<span data-campo="qualifica" style="position: absolute; left: 116px; top: 1200px; font-weight: 400; font-size: 21px; line-height: 1; color: rgba(255, 255, 255, 0.85)">[Volontaria o volontario dal 20XX]</span>
+<span data-campo="nome" style="position: absolute; left: 116px; top: 1230px; font-weight: 600; font-size: 44px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase">[Nome Cognome]</span>
+<img data-logo src="loghi/stemma-misericordie.png" alt="Stemma della Confederazione Nazionale delle Misericordie d'Italia" style="position: absolute; left: 786px; top: 88px; width: 176px; height: auto">
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Carosello, copertina</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Carosello, copertina, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Prima pagina del carosello «Cosa facciamo».
+Campi (attributo data-campo):
+  foto           foto    foto di fondo, coperta dal velo blu; foto-posizione e foto-zoom per il ritaglio, foto-alt per la descrizione
+  tema-1         testo   prima parola del tema del carosello, in chiaro
+  tema-2         testo   seconda parte del tema, in grassetto
+  titolo-1       testo   prima riga del titolo
+  pillola        testo   la parola nella pillola bianca con la lente (una sola parola)
+  titolo-2       html    resto del titolo; HTML ammesso: <br> va a capo, <span class="finale"> sottolinea in giallo
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--blu); font-family: Montserrat, sans-serif; color: #FFFFFF">
+<img data-campo="foto" data-prova src="foto-prova/piazza-di-corte.jpg" alt="[Descrizione della foto]" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+<div style="position: absolute; inset: 0; background: linear-gradient(205deg, rgba(0, 63, 133, 0.5) 0%, rgba(0, 63, 133, 0.86) 42%, rgba(0, 58, 125, 0.95) 100%)"></div>
+<div style="position: absolute; left: 0; right: 0; top: 118px; height: 98px; background: #FFFFFF"></div>
+<div style="position: absolute; right: 72px; top: 118px; height: 98px; display: flex; align-items: center; font-size: 42px; line-height: 1; letter-spacing: 0.01em; color: #233B74; white-space: nowrap"><span data-campo="tema-1" style="font-weight: 400">COSA</span>&nbsp;<span data-campo="tema-2" style="font-weight: 700">FACCIAMO</span></div>
+<img data-logo src="loghi/triangolo-misericordie.png" alt="Logo delle Misericordie" style="position: absolute; left: 99px; top: 97px; width: 162px; height: auto">
+<div data-riquadro style="position: absolute; left: 155px; top: 452px; width: 760px; height: 690px; font-weight: 800; font-size: 72px; line-height: 77px">
+<div data-campo="titolo-1">[Prima riga]</div>
+<div style="display: inline-flex; align-items: center; gap: 26px; margin: 12px 0 12px -58px; padding: 0 44px 0 58px; height: 121px; border-radius: 999px; background: #FFFFFF; color: #233B74; font-size: 92px; line-height: 1; white-space: nowrap"><span data-campo="pillola">[Parola]</span><svg aria-hidden="true" width="62" height="62" viewBox="0 0 24 24" fill="none" stroke="#233B74" stroke-width="2.8" stroke-linecap="round"><circle cx="10" cy="10" r="6.5"></circle><path d="M15 15l6 6"></path></svg></div>
+<div data-campo="titolo-2" data-html>[Seconda parte del titolo,<br>con la <span class="finale">parola</span> finale]</div>
+</div>
+<svg aria-hidden="true" style="position: absolute; right: 101px; bottom: 71px" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="var(--giallo)" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+</div>
+</body>
+</html>

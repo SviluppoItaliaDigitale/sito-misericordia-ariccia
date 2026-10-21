@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Carosello, pagina con elenco</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Carosello, pagina con elenco, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Pagina interna del carosello con un elenco.
+Campi (attributo data-campo):
+  tema-1         testo   prima parola del tema del carosello, in chiaro
+  tema-2         testo   seconda parte del tema, in grassetto
+  titolo         testo   titolo della pagina, breve
+  introduzione   testo   una riga prima dell'elenco
+  voci           elenco  una voce per riga, in grassetto con il pallino
+  chiusura       testo   una riga dopo l'elenco
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: radial-gradient(60% 45% at 12% 6%, #F2DCE8 0%, rgba(242, 220, 232, 0) 100%), radial-gradient(55% 45% at 92% 30%, #D9E3F4 0%, rgba(217, 227, 244, 0) 100%), radial-gradient(60% 45% at 10% 92%, #D3E0EE 0%, rgba(211, 224, 238, 0) 100%), radial-gradient(55% 40% at 92% 96%, #EEE3EE 0%, rgba(238, 227, 238, 0) 100%), #EEF0F8; font-family: Montserrat, sans-serif; color: #233B74">
+<div style="position: absolute; left: 0; right: 0; top: 118px; height: 98px; background: var(--blu)"></div>
+<div style="position: absolute; right: 72px; top: 118px; height: 98px; display: flex; align-items: center; font-size: 42px; line-height: 1; letter-spacing: 0.01em; color: #FFFFFF; white-space: nowrap"><span data-campo="tema-1" style="font-weight: 400">COSA</span>&nbsp;<span data-campo="tema-2" style="font-weight: 700">FACCIAMO</span></div>
+<img data-logo src="loghi/triangolo-misericordie.png" alt="Logo delle Misericordie" style="position: absolute; left: 99px; top: 97px; width: 162px; height: auto">
+<div data-riquadro style="position: absolute; left: 99px; right: 110px; top: 330px; height: 830px; display: flex; flex-direction: column; gap: 40px">
+<h2 data-campo="titolo" style="margin: 0; font-weight: 800; font-size: 70px; line-height: 1.08">[Titolo della pagina...]</h2>
+<div style="display: flex; flex-direction: column; gap: 30px; font-size: 46px; line-height: 58px">
+<p data-campo="introduzione" style="margin: 0; font-weight: 400">[introduzione all'elenco:]</p>
+<ul data-campo="voci" data-elenco style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-weight: 700">
+<li style="display: flex; gap: 18px"><span aria-hidden="true">•</span><span data-voce>[prima voce]</span></li>
+<li style="display: flex; gap: 18px"><span aria-hidden="true">•</span><span data-voce>[seconda voce]</span></li>
+<li style="display: flex; gap: 18px"><span aria-hidden="true">•</span><span data-voce>[terza voce]</span></li>
+</ul>
+<p data-campo="chiusura" style="margin: 0; font-weight: 400">[Riga di chiusura.]</p>
+</div>
+</div>
+<svg aria-hidden="true" style="position: absolute; right: 101px; bottom: 71px" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+</div>
+</body>
+</html>

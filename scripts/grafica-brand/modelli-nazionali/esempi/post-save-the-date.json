@@ -1,0 +1,10 @@
+{
+  "modello": "post-save-the-date.html",
+  "campi": {
+    "evidenziato": "Ariccia ti aspetta.",
+    "foto": "../foto-prova/piazza-di-corte.jpg",
+    "foto-posizione": "2% 50%",
+    "foto-alt": "Piazza di Corte ad Ariccia con la Collegiata"
+  },
+  "bozza": true
+}

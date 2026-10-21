@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Carosello, invito finale</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Carosello, invito finale, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Ultima pagina del carosello: l'invito.
+Campi (attributo data-campo):
+  tema-1         testo   prima parola del tema del carosello, in chiaro
+  tema-2         testo   seconda parte del tema, in grassetto
+  domanda        testo   la domanda in maiuscolo, due righe al massimo (\n va a capo)
+  invito         testo   l'invito sul fondo giallo, in una riga
+  contatto       testo   telefono o canale, con i numeri del sito (hugo.toml)
+  sito           testo   indirizzo nella pillola (di solito resta questo)
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: radial-gradient(90% 70% at 50% 45%, #0A4793 0%, var(--blu) 60%, #00387A 100%); font-family: Montserrat, sans-serif; color: #FFFFFF; text-align: center">
+<div style="position: absolute; left: 0; right: 0; top: 118px; height: 98px; background: #FFFFFF"></div>
+<div style="position: absolute; right: 72px; top: 118px; height: 98px; display: flex; align-items: center; font-size: 42px; line-height: 1; letter-spacing: 0.01em; color: #233B74; white-space: nowrap"><span data-campo="tema-1" style="font-weight: 400">COSA</span>&nbsp;<span data-campo="tema-2" style="font-weight: 700">FACCIAMO</span></div>
+<img data-logo src="loghi/triangolo-misericordie.png" alt="Logo delle Misericordie" style="position: absolute; left: 99px; top: 97px; width: 162px; height: auto">
+<div data-riquadro style="position: absolute; left: 80px; right: 80px; top: 478px; height: 430px; display: flex; flex-direction: column; align-items: center; gap: 28px">
+<p data-campo="domanda" style="margin: 0; font-weight: 800; font-size: 80px; line-height: 88px">[DOMANDA<br>SU DUE RIGHE?]</p>
+<span data-campo="invito" style="font-weight: 800; font-size: 66px; line-height: 1; padding: 16px 22px 14px; background: var(--giallo); color: #233B74; white-space: nowrap">[INVITO.]</span>
+</div>
+<div data-riquadro style="position: absolute; left: 110px; right: 110px; top: 950px; height: 260px; display: flex; flex-direction: column; align-items: center; gap: 40px">
+<p data-campo="contatto" style="margin: 0; font-weight: 400; font-size: 46px; line-height: 58px">[Come contattarci]</p>
+<span data-campo="sito" style="display: inline-flex; align-items: center; height: 97px; padding: 0 44px; border: 3px solid #FFFFFF; border-radius: 999px; font-weight: 700; font-size: 46px; line-height: 1; white-space: nowrap">www.misericordia-ariccia.it</span>
+</div>
+</div>
+</body>
+</html>

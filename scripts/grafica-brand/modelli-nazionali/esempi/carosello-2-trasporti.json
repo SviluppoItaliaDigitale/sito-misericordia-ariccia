@@ -1,0 +1,9 @@
+{
+  "modello": "carosello-pagina.html",
+  "campi": {
+    "tema-1": "COSA",
+    "tema-2": "FACCIAMO",
+    "titolo": "Trasporti e soccorso...",
+    "testo": "<p><strong>Accompagniamo chi ha bisogno di muoversi</strong>: persone malate e con disabilità.</p>\n<p>Agli eventi del territorio garantiamo l'<span class=\"evidenzia\">ASSISTENZA SANITARIA.</span></p>\n<p class=\"sottolinea\">Dietro ogni servizio ci sono le nostre volontarie e i nostri volontari.</p>"
+  }
+}

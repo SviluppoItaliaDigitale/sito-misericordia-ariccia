@@ -120,7 +120,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 - Build con Hugo 0.154.5 extended senza errori (`hugo --minify`).
 - Il workflow «Controlli del sito» sulla PR verde (`scripts/controlli/controlla_sito.py`: link, immagini, video, CSP, registro dei dati, revisione sanitaria, news in uscita).
-- Immagini nuove: `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`); grafiche con cornice e filigrane come da `CLAUDE.md`, renderizzate e guardate prima di usarle.
+- Immagini nuove: `python3 scripts/ottimizza-immagini.py static/img/news` (crea i `.webp`). Grafiche nello stile nazionale: dai modelli, con la skill `grafiche-modelli-nazionali` (`rendi.py` chiude con «ok», senza «BOZZA»), oppure, se nessun modello va bene, con gli stessi elementi del kit nazionale (`CLAUDE.md`, § «2. Grafica brand»); sempre guardate prima di usarle.
 - News: front matter completo (`description` specifica, `italianoSemplice`), fonti citate, link interni, data non futura se deve uscire subito.
 - Dato aggiornabile nuovo (numeri, importi, leggi, contatti): aggiungilo a `data/dati_da_verificare.yaml`.
 - Se cambi uno script inline, ricalcola gli hash della CSP (`hugo --minify` poi `python3 scripts/controlli/controlla_sito.py public --csp`).
@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- **21/10/2026 — Claude — Modelli grafici nazionali nel repository.** Che cosa: i modelli grafici della Confederazione nazionale mostrati nei webinar del 2026 (post con fascia, storia, testimonianza, carosello «Cosa facciamo», Save the date, assemblea dei soci, biglietto da visita, carta intestata), rifatti identici per Ariccia, vanno in `scripts/grafica-brand/modelli-nazionali/` (cartella che non va online) con la skill `grafiche-modelli-nazionali`, che riempie i campi e salva l'immagine con i controlli; poi i richiami in `CLAUDE.md` (§ «2. Grafica brand»), in `AGENTS.md` e qui in «Questo repository». Ramo `claude/modelli-grafici-nazionali`, PR da aprire. Prossimo passo: modelli, istruzioni, prova di tutti gli esempi, PR, controlli verdi, merge (il merge pubblica il sito ma non cambia pagine). Cervello: documento della Misericordia di Ariccia, «Registro aggiornamenti»; i riassunti dei webinar sono già nel Cervello. Disegni di partenza: tavole «Grafiche Misericordia di Ariccia» nel canvas di Alessandro.
+- **Parola della domenica nello stile nazionale** (Claude, dal 21/10/2026). È l'ultima grafica ancora nello stile precedente, con la cornice dorata. Prossimo passo: rifare `scripts/parola-domenica/grafica.html` con gli elementi del kit nazionale (opera intera, nome della lettura ben visibile, poche scritte), rendere le pagine di domenica 25/10/2026 e farle vedere ad Alessandro. Si cambia solo dopo il suo sì, perché il carosello esce da solo ogni domenica alle 4:47. Cervello: documento «Misericordia di Ariccia», sezione «Stile e comunicazione».
 
 ## Richieste
 
@@ -152,6 +152,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Avvisi
 
+- **21/10/2026 — Claude.** Da oggi le grafiche della Misericordia si fanno con i modelli grafici nazionali, identici agli originali: `scripts/grafica-brand/modelli-nazionali/` (catalogo in `LEGGIMI.md`) e la skill `grafiche-modelli-nazionali` (in `.claude/skills/`, per ChatGPT in `.agents/skills/`), che riempie i campi, salva JPEG o PDF e controlla il risultato. Lo stile è uno solo: lo stile della casa, con cornice dorata e filigrane, non si usa più per grafiche nuove e resta per ora solo nella Parola della domenica, finché non passa allo stile nazionale (`CLAUDE.md`, § «2. Grafica brand»). Foto in bianco e nero solo nelle grafiche che ricordano una persona morta (`"lutto": true`): sui social il bianco e nero è il segno del lutto, e la grafica resta istituzionale.
 - **18/10/2026 — ChatGPT, PR #197.** Su richiesta diretta di Alessandro, preparata la prima uscita della campagna volontari «Esci dal post. Entra nella squadra»: news, grafica illustrata con identità ufficiale, testo per pubblicazione automatica Facebook/Instagram e collegamento del recapito al registro esistente. Build e controlli locali superati; prova social senza invii e grafica controllata visivamente. La pubblicazione segue il merge della PR; verificare pagina live e registro dei due social.
 
 - **14/10/2026 — Claude.** Protocollo aggiornato in tutti e cinque i repository (§ «Passaggio a ChatGPT» del protocollo comune): il passaggio è «preparato da Claude, avviato da Alessandro, chiuso da Claude», perché il canale `@codex` sulle pull request resta muto per il suo account. `passa-a.py nuovo` non manda più il commento di avvio (resta con `--con-codex`, per riprovare il canale senza spese) e stampa il testo di avvio, con la richiesta intera, da incollare in Codex Cloud; a lavoro finito Alessandro preme «Create PR» nel task; `stato` riconosce la pull request di consegna, `chiudi --consegna M` la porta nel ramo e la chiude, e `chiudi` archivia da sé la voce di bacheca con l'esito. Codex non tocca più la bacheca.

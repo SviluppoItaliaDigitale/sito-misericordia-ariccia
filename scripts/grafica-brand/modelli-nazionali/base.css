@@ -1,0 +1,60 @@
+/* Caratteri, colori e classi comuni dei modelli grafici nazionali (vedi LEGGIMI.md).
+   Caratteri locali, così il disegno è uguale su ogni computer: Montserrat (The Montserrat Project Authors)
+   e Roboto Condensed (The Roboto Project Authors), licenza SIL Open Font License 1.1, testi in font/OFL-*.txt. */
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(font/montserrat-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(font/montserrat-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(font/roboto-condensed-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url(font/roboto-condensed-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Colori del kit nazionale: blu delle fasce e dei fondi, giallo del filo, dei titoli e dell'evidenziatore.
+   La cancelleria usa il blu di stampa #003F8A (lo imposta il modello). */
+:root {
+  --blu: #003F85;
+  --giallo: #FCEB0C;
+}
+
+body { margin: 0; background: #FFFFFF; }
+/* Lutto ("lutto": true nei dati di rendi.py): in bianco e nero vanno solo le foto, la grafica resta istituzionale.
+   Sui social il bianco e nero ricorda una persona morta: senza lutto le foto restano a colori. */
+body.lutto img[data-campo] { filter: grayscale(1); }
+[hidden] { display: none !important; }
+
+/* Campi con HTML (attributo data-html): paragrafi senza margini, grassetto pieno. */
+[data-campo] p { margin: 0; }
+[data-campo] strong { font-weight: 700; }
+
+/* Evidenziatore giallo dentro un testo (carosello). */
+.evidenzia { background: var(--giallo); font-weight: 700; padding: 0 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+/* Riga di chiusura sottolineata (carosello). */
+.sottolinea { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+/* Ultima parola del titolo della copertina del carosello, gialla e sottolineata. */
+.finale { color: var(--giallo); text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 10px; }

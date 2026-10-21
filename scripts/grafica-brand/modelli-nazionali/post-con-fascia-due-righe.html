@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="1080x1350">
+<title>Post con fascia su due righe</title>
+<link rel="stylesheet" href="base.css">
+</head>
+<body>
+<!--
+Post con fascia su due righe, 1080×1350 px. Modello della Confederazione Nazionale delle Misericordie d'Italia,
+rifatto identico per la Misericordia di Ariccia. Fascia su due righe per i temi lunghi.
+Campi (attributo data-campo):
+  foto           foto    foto vera della Misericordia; foto-posizione per il ritaglio (es. 70% 50%), foto-zoom da 1 a 2 per tagliare bande bianche, foto-alt per la descrizione
+  fascia         testo   tema del post, due righe brevi (\n va a capo)
+  evidenziato    testo   le prime parole del titolo, sul fondo blu scuro (stanno in una riga)
+  titolo         testo   il resto del titolo
+  sottotitolo    testo   una frase sotto il titolo
+Si compila e si salva con .claude/skills/grafiche-modelli-nazionali/rendi.py: istruzioni in LEGGIMI.md.
+-->
+<div class="tavola" style="width: 1080px; height: 1350px; position: relative; overflow: hidden; background: #0B2550; font-family: Montserrat, sans-serif">
+<img data-campo="foto" data-prova src="foto-prova/piazza-di-corte.jpg" alt="[Descrizione della foto]" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 700px; background: linear-gradient(180deg, rgba(0, 22, 54, 0) 0%, rgba(0, 22, 54, 0.5) 42%, rgba(0, 22, 54, 0.84) 100%)"></div>
+<div style="position: absolute; left: 0; top: 123px; width: 1028px; height: 92px; background: var(--giallo)"></div>
+<div data-riquadro data-ostacolo style="position: absolute; left: 0; top: 134px; width: 1010px; height: 102px; box-sizing: border-box; padding: 0 240px 0 52px; background: var(--blu); display: flex; align-items: center">
+<span data-campo="fascia" style="font-weight: 500; font-size: 46px; line-height: 1.04; color: #FFFFFF">[Tema del post<br>su due righe]</span>
+</div>
+<img data-logo src="loghi/stemma-misericordie.png" alt="Stemma della Confederazione Nazionale delle Misericordie d'Italia" style="position: absolute; left: 786px; top: 88px; width: 176px; height: auto">
+<div data-riquadro style="position: absolute; left: 56px; right: 70px; bottom: 118px; max-height: 560px; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-weight: 500; font-size: 71px; line-height: 76px; color: #FFFFFF"><span data-campo="evidenziato" style="display: inline-block; height: 76px; padding: 0 8px; margin-left: -8px; background: #013C7C; color: #FCF10C; font-weight: 700; white-space: nowrap">[Prime parole]</span> <span data-campo="titolo">[resto del titolo]</span></p>
+<p data-campo="sottotitolo" style="margin: 0; font-weight: 300; font-size: 48px; line-height: 55px; color: #FFFFFF">[Una frase: chi, che cosa, come esserci]</p>
+</div>
+</div>
+</body>
+</html>
