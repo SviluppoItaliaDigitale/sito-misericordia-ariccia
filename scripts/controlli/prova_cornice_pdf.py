@@ -6,9 +6,10 @@ cornice cambia solo le quattro strisce del margine; il testo di ogni striscia è
 esce dalla sua striscia (il difetto delle strisce verticali con «©», trovato il 21/10/2026, e il controllo del motore
 che lo ferma); il tono sul bianco è quello dei modelli; il segno sta nel dizionario Info, letto con pypdf e cercato nei
 byte come fa controlla_sito.py; il PDF di partenza non cambia. Prova i rifiuti (nome mancante, scritta o campo del
-modulo nel margine, firma su un fondo non libero, PDF protetto) e i casi da accettare (ornamento d'angolo, granello di
-polvere, pagina ruotata, rifilo, PDF con struttura, nome solo in un campo del modulo, firma solo nelle pagine senza
-nome e chiara sul fondo scuro, linguetta al vivo, cornice già fatta). Infine i modelli da stampa veri: carta intestata e biglietto.
+modulo nel margine, firma su un fondo non libero, PDF protetto o con una firma digitale) e i casi da accettare
+(ornamento d'angolo, granello di polvere, pagina ruotata, rifilo, PDF con struttura, nome solo in un campo del modulo,
+firma solo nelle pagine senza nome e chiara sul fondo scuro, linguetta al vivo, cornice già fatta). Infine i modelli da
+stampa veri: carta intestata e biglietto.
 Serve: Playwright con Chromium, pypdf, pypdfium2, numpy. Esce con 1 se un caso non va come deve.
 Uso: prova_cornice_pdf.py [--tieni CARTELLA]   (con --tieni i PDF della prova restano lì, da guardare)
 """
@@ -28,7 +29,7 @@ import cornice_pdf  # noqa: E402
 import rendi  # noqa: E402
 
 np, pypdf, pdfium = cornice_pdf.librerie()
-from pypdf.generic import (ArrayObject, DecodedStreamObject, DictionaryObject, FloatObject,  # noqa: E402
+from pypdf.generic import (ArrayObject, ByteStringObject, DecodedStreamObject, DictionaryObject, FloatObject,  # noqa: E402
                            NameObject, NumberObject, TextStringObject)
 
 MM_PT = cornice_pdf.MM_PT
@@ -450,6 +451,27 @@ def casi_pdf(browser, t: Path) -> int:
         w.write(f)
     esito, msg = cornice(protetto, browser=browser)
     prova_esito("PDF protetto", protetto, esito, msg, 1, "protetto", uscita=t / "protetto-cornice.pdf")
+    n += 1
+
+    # 15-bis. PDF con una firma digitale (campo /Sig compilato): rifiutato, la cornice la renderebbe non più valida
+    firmato = t / "firmato.pdf"
+    w = pypdf.PdfWriter(clone_from=str(lettera))
+    valore = w._add_object(DictionaryObject({
+        NameObject("/Type"): NameObject("/Sig"), NameObject("/Filter"): NameObject("/Adobe.PPKLite"),
+        NameObject("/SubFilter"): NameObject("/adbe.pkcs7.detached"), NameObject("/Contents"): ByteStringObject(b"\0" * 16),
+        NameObject("/ByteRange"): ArrayObject([NumberObject(0)] * 4)}))
+    campo = w._add_object(DictionaryObject({
+        NameObject("/FT"): NameObject("/Sig"), NameObject("/T"): TextStringObject("Firma"), NameObject("/V"): valore,
+        NameObject("/Type"): NameObject("/Annot"), NameObject("/Subtype"): NameObject("/Widget"),
+        NameObject("/Rect"): ArrayObject([NumberObject(0)] * 4), NameObject("/P"): w.pages[0].indirect_reference}))
+    w.pages[0][NameObject("/Annots")] = ArrayObject([campo])
+    w._root_object[NameObject("/AcroForm")] = DictionaryObject({NameObject("/Fields"): ArrayObject([campo]),
+                                                               NameObject("/SigFlags"): NumberObject(3)})
+    with open(firmato, "wb") as f:
+        w.write(f)
+    prima = impronta(firmato)
+    esito, msg = cornice(firmato, browser=browser)
+    prova_esito("PDF con firma digitale", firmato, esito, msg, 1, "firma digitale", uscita=t / "firmato-cornice.pdf", prima=prima)
     n += 1
 
     # 16. il controllo del motore: una riga che esce dalla sua striscia ferma il lavoro (lettere più larghe del previsto)
