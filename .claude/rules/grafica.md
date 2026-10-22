@@ -14,7 +14,7 @@ Vale in tutti i progetti per siti, landing, pagine, locandine e post. Obiettivo:
 - Testi: "Scopri di più", "Il futuro di…", "non solo X, ma Y", elenchi sempre in terzine, trattini lunghi a raffica.
 
 ## Come dare personalità
-- **Modelli ufficiali prima di tutto**: se la realtà ha modelli grafici ufficiali da usare identici, si usano quelli e non si reinventano. Misericordia di Ariccia, dal 21/10/2026: modelli nazionali della Confederazione nel repository del sito (`direzione-visiva.md` della realtà), e in ogni grafica la firma «Misericordia di Ariccia» con la cornice di microtesto ai bordi. Le indicazioni di questa sezione valgono per ciò che i modelli non coprono, senza contraddirli.
+- **Modelli ufficiali prima di tutto**: se la realtà ha modelli grafici ufficiali da usare identici, si usano quelli e non si reinventano. Misericordia di Ariccia, dal 21/10/2026: modelli nazionali della Confederazione nel repository del sito (`direzione-visiva.md` della realtà). Le indicazioni di questa sezione valgono per ciò che i modelli non coprono, senza contraddirli.
 - **Parti dalla realtà vera**: logo, colori istituzionali, foto reali, luoghi, mezzi, divise, documenti, storia. Il dettaglio specifico (la sede, il territorio dei Castelli, il nominativo IQ0AP) vale più di qualsiasi effetto.
 - **Dichiara una direzione** prima del codice, in una riga con un riferimento concreto (es. "manifesto tipografico svizzero", "giornale locale anni '60", "segnaletica d'emergenza", "quaderno di caccia scout", "rivista tecnica radioamatoriale"). Deve essere diversa da progetto a progetto.
 - **Tipografia scelta, non di default**: abbinamenti meno battuti, gerarchie forti, titoli con carattere. Se il brand impone i font (es. Misericordia Montserrat, AGESCI Roboto), la personalità arriva da composizione, scala, foto e colore, non cambiando font.
@@ -61,9 +61,16 @@ Sui social il bianco e nero dice che si ricorda una persona morta (Alessandro, 2
 - Per un personaggio pubblico serve una foto con una licenza che ne permetta l'uso (per esempio Wikimedia Commons), con l'autore citato.
 - Misericordia di Ariccia: lo fa `rendi.py` dei modelli nazionali con `"lutto": true`, e si ferma se il testo sembra un ricordo e il dato manca.
 
+## Nome dell'ente e cornice di microtesto (dal 21/10/2026)
+Ogni grafica, slide o documento grafico di ogni realtà porta il nome dell'ente, ben leggibile, e lungo i bordi una cornice di microtesto (nome, sito o, dove manca, account social, anno) che da lontano non si vede e ingrandendo si legge: chi copia la grafica si porta dietro il nome (Alessandro, 21/10/2026: «Altrimenti ci rubano la grafica!!», poi «fai tutto uniformato»). La firma non si toglie e la cornice non si copre; le grafiche già pubblicate restano come sono.
+- **Misericordia di Ariccia:** modelli nazionali e `rendi.py` nel repository del sito; per una grafica fatta in altro modo, `rendi.py --cornice`.
+- **Protezione Civile di Genzano:** `scripts/microtesto_cornice.py` nel repository del sito (`sito-pc-genzano`), su copertine e immagini social; la firma è la fascia del Gruppo. Per una grafica fatta in altro modo, dal 22/10/2026, `python3 scripts/microtesto_cornice.py GRAFICA.png`, che scrive `GRAFICA-cornice.png` accanto all'originale; la firma deve esserci già.
+- **Cooprimavera:** il logo sulla fascia chiara in basso; la cornice la mettono i generatori di grafiche e video nel repository `cooprimavera` (`social/grafiche/genera.js` e `social/video/genera.js`, motore `social/grafiche/cornice.js`) e la controlla `scripts/controlla-cornice.py`; per una grafica fatta in altro modo, `node social/grafiche/genera.js --cornice FILE.jpg`.
+- **ARI Castelli Romani e AGESCI Genzano 2:** i modelli in `associazioni/*/modelli/` del repository `assistente-personale`, con il motore `strumenti/firma-e-cornice.js`; per una grafica fatta in altro modo, `strumenti/cornice-su-immagine.py --ente ari|agesci`, con `--firma` se il nome manca.
+
 ## Limiti che restano
 - Accessibilità (contrasto, struttura titoli, tastiera, `prefers-reduced-motion`), prestazioni e brand ufficiali vengono prima dell'originalità.
 - Niente dati, foto o testimonianze inventati: segnaposto evidenti dove mancano.
 
 ## Controllo prima di consegnare
-Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto. Controlla anche le foto: nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto.
+Rileggi il lavoro con questa domanda: "se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?". Se trovi due o più segni dell'elenco sopra senza una ragione di brand, correggi prima di consegnare, e indica in una riga quale direzione hai scelto. Controlla anche le foto: nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto. E la firma: il nome dell'ente si legge e la cornice di microtesto corre lungo i bordi.

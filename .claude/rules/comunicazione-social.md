@@ -43,7 +43,7 @@ Vale in tutti i repository di Alessandro per chi prepara testi, grafiche, foto e
 - Per cercare volontari presentare tutte le attività in cui si può dare una mano: molti pensano che fare il volontario voglia dire solo guidare l'ambulanza (W4 0:13:43).
 - Raccontare con testimonianze vere e risultati concreti: servizi attivi, persone aiutate, progetti realizzati. L'autenticità conta più della perfezione (W4 0:09:43, 0:35:08, 0:35:55).
 - Far capire il tema al primo sguardo e chiudere con un invito all'azione preciso: se si parla di 5×1000 il 5×1000 si deve vedere, poi «dona il tuo 5 per mille» o «iscriviti ora» (W4 0:33:42).
-- Scrivere il testo alternativo per ogni immagine e non lasciare mai un'informazione solo dentro la grafica. Dove la pubblicazione automatica non invia ancora il testo alternativo, si prepara lo stesso e ciò che dice la grafica va anche nella didascalia (Disabilità).
+- Scrivere il testo alternativo per ogni immagine e non lasciare mai un'informazione solo dentro la grafica: il testo alternativo va con l'immagine dove il canale lo riceve; dove una pubblicazione, automatica o a mano, non lo invia, ciò che dice la grafica va anche nella didascalia (Disabilità).
 - Scrivere gli hashtag con le iniziali maiuscole (#ProtezioneCivile), che i lettori di schermo leggono meglio, e usare poche emoji, perché vengono lette una per una (Disabilità).
 - In un'emergenza pubblicare solo informazioni verificate o ufficiali, senza dettagli sulle persone coinvolte, d'accordo con chi coordina (W3).
 
@@ -98,8 +98,8 @@ Vale in tutti i repository di Alessandro per chi prepara testi, grafiche, foto e
 - [ ] Il formato è giusto: 1080×1350 per post e caroselli, 1080×1920 per storie e reel (W3 0:08:04).
 - [ ] Il messaggio si capisce al primo sguardo, nella grafica c'è poco testo e, fuori dai modelli ufficiali, scritte e logo stanno ad almeno 100 px dai bordi (W1 0:56:23; W3 0:26:21).
 - [ ] Il logo è il file originale, non modificato e ben visibile; il contrasto regge anche per chi è daltonico (W1 0:35:31, 1:04:41).
-- [ ] Nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto; per la Misericordia, «Misericordia di Ariccia» leggibile e cornice di microtesto ai bordi.
+- [ ] Nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto; il nome dell'ente leggibile e la cornice di microtesto ai bordi (regola `grafica.md`).
 - [ ] Nessuna persona assistita riconoscibile, nessun dato sanitario, targa, indirizzo o dettaglio del servizio; consensi e liberatorie ci sono (W2; W3).
 - [ ] Le parole su disabilità e fragilità seguono la sezione dedicata (Disabilità).
-- [ ] Le immagini hanno il testo alternativo e, finché la pubblicazione automatica non lo invia, la didascalia dice anche ciò che dice la grafica; i video hanno i sottotitoli ricontrollati, la musica una licenza verificata (Disabilità; W3 0:56:51).
+- [ ] Le immagini hanno il testo alternativo e, dove la pubblicazione non lo invia, la didascalia dice anche ciò che dice la grafica; i video hanno i sottotitoli ricontrollati, la musica una licenza verificata (Disabilità; W3 0:56:51).
 - [ ] Gli originali sono in archivio con un nome di file chiaro (W3 0:22:30; W4 0:17:13).
