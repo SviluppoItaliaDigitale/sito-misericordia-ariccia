@@ -88,7 +88,7 @@ pip_metti() {
 }
 
 # 3. Moduli Python usati da script, workflow e skill (modulo:pacchetto).
-for coppia in yaml:pyyaml requests:requests PIL:pillow fitz:pymupdf pymupdf:pymupdf pypdf:pypdf bs4:beautifulsoup4 feedparser:feedparser \
+for coppia in yaml:pyyaml requests:requests PIL:pillow fitz:pymupdf pymupdf:pymupdf pypdf:pypdf pypdfium2:pypdfium2 bs4:beautifulsoup4 feedparser:feedparser \
               segno:segno weasyprint:weasyprint playwright:playwright spylls:spylls yt_dlp:yt-dlp boto3:boto3 pptx:python-pptx \
               fontTools:fonttools brotli:brotli nacl:pynacl openpyxl:openpyxl docx:python-docx lxml:lxml numpy:numpy \
               matplotlib:matplotlib cartopy:cartopy netCDF4:netCDF4 rasterio:rasterio imageio_ffmpeg:imageio-ffmpeg \
