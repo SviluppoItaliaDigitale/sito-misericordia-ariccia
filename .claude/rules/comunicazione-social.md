@@ -71,12 +71,18 @@ Vale in tutti i repository di Alessandro per chi prepara testi, grafiche, foto e
 ## Persone nelle foto
 
 - Mettere il servizio prima della foto: nel dubbio non scattare, e smettere se qualcuno chiede di non essere ripreso (W2).
-- **Mai pazienti o persone assistite riconoscibili**: né volto, né voce, né segni particolari, nemmeno sullo sfondo o di spalle se il contesto le identifica (W2 1:09:26; W3).
+- **Volti: quando si oscurano** (istruzione di Alessandro del 22/10/2026, prevale sui consigli dei webinar):
+  - **soccorritori** al lavoro (volontari, vigili del fuoco, forze dell'ordine, personale sanitario e degli enti): volti in chiaro, non si oscurano;
+  - **minorenni**: volto in chiaro solo con il consenso scritto e preventivo di tutti coloro che esercitano la responsabilità genitoriale (di norma entrambi i genitori, anche con l'affidamento condiviso; il solo genitore o il tutore quando la responsabilità è solo loro), informato e specifico per quella pubblicazione e per il canale (sito, social): una liberatoria generica non basta (istruzione di Alessandro del 22/10/2026); senza quel consenso, volto oscurato anche quando sono solo sullo sfondo. Mai il nome accanto al volto (W2; W3; Garante per la protezione dei dati personali, provvedimento del 29/04/2026, doc. web 10251841);
+  - **persone in stato di necessità** (pazienti, persone assistite, trasportate o soccorse, sfollati, vittime, chi è in difficoltà): volto oscurato, e niente voce, segni particolari o contesto che le identifichino, nemmeno sullo sfondo o di spalle (W2 1:09:26; W3);
+  - **foto fatte apposta per far conoscere un servizio o un bene** (foto in posa, campagne, presentazione di un mezzo, di una sede o di un corso): nulla si oscura, tranne i volti di minorenni senza il consenso dei genitori e di persone in stato di necessità: le due tutele sopra valgono anche qui.
 - Mai dati sanitari (monitor, referti, schede, farmaci), targhe, indirizzi, numeri civici, citofoni o dettagli del servizio come luogo, ora e motivo della chiamata. Controllare anche gli sfondi: schermi, fogli, nomi sulle divise (W2; W3).
-- Volontari in primo piano solo con il loro consenso e una liberatoria scritta che dica dove si useranno le immagini. Per un primo piano riconoscibile il luogo pubblico non basta (W2 1:17:29).
-- Minori mai riconoscibili senza il consenso preventivo di tutti coloro che esercitano la responsabilità genitoriale, di norma entrambi i genitori anche con l'affidamento condiviso, e mai il loro nome accanto al volto (W2; W3; Garante per la protezione dei dati personali, provvedimento del 29/04/2026, doc. web 10251841).
 - Preferire il dettaglio, come mani al lavoro, stemma, attrezzatura, ruote del mezzo: racconta il servizio senza mostrare chi viene aiutato (W2 0:28:05).
-- Ritoccare solo l'aspetto: togliere un telefono che spunta da una tasca va bene, cambiare il senso di una scena no (W3 0:19:29).
+- **Fotomontaggi: togliere sì, aggiungere no** (istruzione di Alessandro del 22/10/2026). Ritoccare solo l'aspetto, mai il senso della scena (W3 0:19:29):
+  - **si può togliere** ciò che distrae o non va: una sigaretta, una cartaccia, un telefono che spunta da una tasca, un oggetto fuori posto; si possono anche completare dettagli neutri, come il cielo o un pezzo di sfondo dopo un ritaglio;
+  - **non si aggiunge** nulla che non c'era: persone, mezzi, attrezzature, scritte e soprattutto **DPI** (caschi, guanti, stivali, gilet, occhiali). Una foto di servizio documenta come si è lavorato, e un DPI aggiunto direbbe una cosa falsa sulla sicurezza dei volontari;
+  - se in una foto mancano i DPI, non si pubblica: si sceglie un'altra foto della serie o si ritaglia sul dettaglio che conta, lasciando fuori la persona;
+  - oscurare volti e targhe secondo le regole sopra non è un fotomontaggio e resta sempre dovuto.
 - Non far passare un'immagine generata per un servizio vero: presentarla come illustrativa (W2).
 
 ## Solo per la Misericordia di Ariccia
@@ -99,7 +105,8 @@ Vale in tutti i repository di Alessandro per chi prepara testi, grafiche, foto e
 - [ ] Il messaggio si capisce al primo sguardo, nella grafica c'è poco testo e, fuori dai modelli ufficiali, scritte e logo stanno ad almeno 100 px dai bordi (W1 0:56:23; W3 0:26:21).
 - [ ] Il logo è il file originale, non modificato e ben visibile; il contrasto regge anche per chi è daltonico (W1 0:35:31, 1:04:41).
 - [ ] Nessuna foto a colori portata in bianco e nero, salvo una grafica di lutto; il nome dell'ente leggibile e la cornice di microtesto ai bordi (regola `grafica.md`).
-- [ ] Nessuna persona assistita riconoscibile, nessun dato sanitario, targa, indirizzo o dettaglio del servizio; consensi e liberatorie ci sono (W2; W3).
+- [ ] Nessun fotomontaggio che aggiunge qualcosa (DPI, persone, mezzi, scritte); tolte solo le distrazioni.
+- [ ] Volti oscurati solo dove serve: minorenni senza il consenso scritto, specifico per la pubblicazione, di chi esercita la responsabilità genitoriale e persone in stato di necessità, anche nelle foto in posa; soccorritori in chiaro; nessun dato sanitario, targa, indirizzo o dettaglio del servizio (W2; W3).
 - [ ] Le parole su disabilità e fragilità seguono la sezione dedicata (Disabilità).
 - [ ] Le immagini hanno il testo alternativo e, dove la pubblicazione non lo invia, la didascalia dice anche ciò che dice la grafica; i video hanno i sottotitoli ricontrollati, la musica una licenza verificata (Disabilità; W3 0:56:51).
 - [ ] Gli originali sono in archivio con un nome di file chiaro (W3 0:22:30; W4 0:17:13).
