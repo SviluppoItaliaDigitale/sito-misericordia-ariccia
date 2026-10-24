@@ -50,7 +50,9 @@ tema o navbar.
    Banana", video Veo) o indica stock gratuito (Pexels/Pixabay). La pagina
    deve prevedere lo slot (`PHOTOS`/`VIDEO_SRC` a inizio script) per il
    drop-in successivo.
-5. **QA finale obbligatoria** (sezione sotto), poi consegna un solo file
+5. **Guarda la pagina**: screenshot a 1280×800, 768×1024 e 375×812 px e critica con
+   `references/critica.md` (passate, voto, al massimo tre giri di correzione).
+6. **QA finale obbligatoria** (sezione sotto), poi consegna un solo file
    `.html` + eventuale nota di 3-5 righe su cosa manca (asset, testi da
    validare).
 
@@ -99,5 +101,8 @@ di questa skill, per qualunque realtà (note e future):
 - `references/brand.md` — profili brand pronti (PC Genzano, Misericordia di
   Ariccia, Cooprimavera: palette, font, tono, CTA, storie) + procedura
   «Nuove realtà» (direzione visiva propria, niente palette di ripiego).
+- `references/critica.md` — come giudicare la pagina sugli screenshot: 14
+  passate, voto pesato, tetti, rapporto di ogni giro, ordine delle correzioni
+  (adattato da taste-skill v2, licenza MIT).
 - `references/prompt-pack.md` — prompt pronti per immagini (Gemini/Nano
   Banana) e video (Veo) per le scene ricorrenti, più fonti stock gratuite.
