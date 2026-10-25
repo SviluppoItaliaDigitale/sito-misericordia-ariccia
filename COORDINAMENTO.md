@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- **25/10/2026 — Corso BLSD, PBLSD e disostruzione — preso da ChatGPT, in pubblicazione.** Richiesta diretta di Alessandro: articolo e social sul corso in svolgimento per alcuni volontari e tutti i giovani del Servizio Civile. Ramo `chatgpt/corso-blsd-pblsd-20261025`; articolo, due foto scelte con copie WebP e grafica nazionale pronti. Superati: compilazione Hugo 0.154.5, controllo del sito, prova dei testi alternativi e prova senza pubblicazione dei post; verificata la pagina su telefono e desktop, senza scorrimento orizzontale. Cronaca associativa, senza nuove istruzioni sanitarie. Alessandro ha chiesto di riprovare dopo la richiesta relativa al repository pubblico. Il terminale non ha credenziali per il push: caricamento tramite il collegamento GitHub autorizzato. Prossimo passo: PR, controlli automatici, merge e verifica di sito, Facebook e Instagram.
+- Nessun lavoro in corso.
 
 ## Richieste
 
@@ -162,6 +162,8 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 - **11/10/2026 — Claude.** Da oggi ChatGPT lavora fino alla pubblicazione anche sui file del sito, non solo in `bacheca/`, seguendo il protocollo comune qui sopra. `AGENTS.md`, `bacheca/LEGGIMI.md` e `CLAUDE.md` sono stati allineati.
 
 ## Archiviati
+
+- **25/10/2026 — Corso BLSD, PBLSD e disostruzione — fatto da ChatGPT, PR #229.** Articolo di cronaca sul corso per alcuni volontari e tutti i giovani del Servizio Civile Universale; due fotografie della giornata, grafica nazionale, copie WebP e testo per la condivisione automatica su Facebook e Instagram. Superati compilazione Hugo 0.154.5, controllo del sito, prova dei testi alternativi e simulazione dei post; pagina verificata su telefono e desktop. Non introduce istruzioni sanitarie. Pubblicazione tramite il deploy automatico della PR; verifica di pagina e registro dei post alla sua conclusione.
 
 - **21/10/2026 — Claude — Video della rubrica «Primo soccorso passo passo» nello stile nazionale.** Esito: PR #222. I 19 video in programma dal 23/10 al 22/12/2026 sono rifatti con gli elementi del kit nazionale, la firma «Misericordia di Ariccia» e la cornice di microtesto in ogni fotogramma; audio, sottotitoli, testi, disegni e durate restano quelli già approvati (PR #214 e #217). Le copertine portano il segno della cornice e «Controlli del sito» lo cerca in quelle dei video in uscita. I video usciti fino al 20/10/2026 restano come sono.
 - **21/10/2026 — Claude — Testo alternativo nei post automatici e cornice anche nei PDF.** Esito: PR #220. `scripts/pubblica_social.py` manda il testo alternativo su Instagram (grafica delle news, ogni pagina del carosello della Parola) e su Facebook (ogni foto dell'album della Parola), con una sola riprova senza il campo se Meta rifiuta proprio quello (criterio della PR #221); `rendi.py --cornice` accetta anche i PDF. Guida in `docs/pubblicazione-social.md`, § «Testo alternativo delle immagini».
