@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- Nessun lavoro in corso.
+- **25/10/2026 — Corso BLSD, PBLSD e disostruzione — preso da ChatGPT, in pubblicazione.** Richiesta diretta di Alessandro: articolo e social sul corso in svolgimento per alcuni volontari e tutti i giovani del Servizio Civile. Ramo `chatgpt/corso-blsd-pblsd-20261025`; articolo, due foto scelte con copie WebP e grafica nazionale pronti. Superati: compilazione Hugo 0.154.5, controllo del sito, prova dei testi alternativi e prova senza pubblicazione dei post; verificata la pagina su telefono e desktop, senza scorrimento orizzontale. Cronaca associativa, senza nuove istruzioni sanitarie. Alessandro ha chiesto di riprovare dopo la richiesta relativa al repository pubblico. Il terminale non ha credenziali per il push: caricamento tramite il collegamento GitHub autorizzato. Prossimo passo: PR, controlli automatici, merge e verifica di sito, Facebook e Instagram.
 
 ## Richieste
 

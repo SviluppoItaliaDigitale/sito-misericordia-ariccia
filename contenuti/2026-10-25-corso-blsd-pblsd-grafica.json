@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Formazione",
+    "evidenziato": "Formarsi",
+    "titolo": "per aiutare.",
+    "sottotitolo": "BLSD, PBLSD e disostruzione.\nVolontari e giovani del Servizio Civile insieme.\n25 ottobre 2026",
+    "foto": "../static/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-aula.jpg",
+    "foto-posizione": "50% 65%",
+    "foto-alt": "Volontari della Misericordia di Ariccia seguono la lezione in aula durante il corso del 25 ottobre 2026"
+  }
+}
