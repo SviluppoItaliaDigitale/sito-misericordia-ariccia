@@ -1,6 +1,6 @@
 # Inventario dei dati del sito che invecchiano (numeri, norme, importi, date, recapiti, link ufficiali).
 # Lo usa l'agente automatico che ogni giorno li ricontrolla sulla fonte ufficiale e aggiorna il sito o apre una segnalazione.
-aggiornato: "2026-10-21"
+aggiornato: "2026-10-26"
 dati:
 - id: "nue-112-lazio"
   cosa: "Il 112 è il Numero Unico di Emergenza nel Lazio: gratuito, 24 ore su 24, per ambulanza, forze dell'ordine e vigili del fuoco; i vecchi 113, 115, 118 rispondono tramite la centrale del 112."
@@ -51,7 +51,7 @@ dati:
   tipo: "emergenza"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Voce generale: compare in quasi tutte le pagine (anche annunci e layout). Cambia solo se cambia l'organizzazione regionale dell'emergenza."
 - id: "nue-112-attivo-dal"
   cosa: "Nel Lazio il 112 è attivo dal 18 novembre 2015."
@@ -170,7 +170,7 @@ dati:
   tipo: "emergenza"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Confermato sul comunicato regionale (attivo dal 24/08/2026, risponde ARES 118, h24, anche multilingue)."
 - id: "guardia-medica-orari"
   cosa: "La guardia medica (continuità assistenziale) è attiva tutte le notti dalle 20 alle 8 e nei giorni prefestivi e festivi."
@@ -419,7 +419,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Confermato: terza fase sperimentale dal 1/3/2026 con Roma (art. 7 DL 19/2026; messaggio INPS 637/2026)."
 - id: "invalidita-riforma-nazionale-2027"
   cosa: "Dal 1° gennaio 2027 la riforma della disabilità vale in tutta Italia."
@@ -430,7 +430,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Confermato (DL 202/2024: sperimentazione fino al 31/12/2026). A gennaio 2027 riscrivere la scheda: non più «sperimentazione» ma regola nazionale; controllare eventuali nuovi rinvii."
 - id: "invalidita-tempi"
   cosa: "Tempi previsti per la valutazione di base: 90 giorni, 15 per le malattie oncologiche, 30 per i minori."
@@ -950,7 +950,7 @@ dati:
   tipo: "vaccini"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Confermato: circolare del Ministero della Salute del 23/06/2026 (offerta gratuita dai 60 anni, gravidanza, 6 mesi-6 anni, cronici). Verificare la data di avvio della campagna nel Lazio e a settembre 2027 sostituire con la circolare 2027-2028."
 - id: "bollettino-ondate-calore"
   cosa: "Il Ministero della Salute pubblica d'estate il bollettino sulle ondate di calore per 27 città (Roma compresa), livelli 0-3; nel 2026 dal 25 maggio al 20 settembre, lunedì-venerdì."
@@ -1207,7 +1207,7 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Al 9/10/2026 aperto solo il bando straordinario (agricolo, ambientale, digitale; 3.767 posti, scadenza 6/11/2026): non riguarda l'assistenza. Controllare ogni settimana l'uscita del bando ordinario 2027."
 - id: "scu-tabella-bandi"
   cosa: "Tabella dei giovani impiegati per bando e totale «oltre 35» giovani dal 2015."
@@ -1374,7 +1374,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Controllato ogni sera dal workflow. Al 9/10/2026 il n. 3/2023 sul sito nazionale punta ancora al PDF del 2/2023: resta il rimando all'archivio."
 - id: "vestizione-20-gennaio"
   cosa: "Molte Misericordie celebrano la vestizione dei nuovi confratelli nella festa del proprio patrono, spesso San Sebastiano (20 gennaio)."
@@ -1828,7 +1828,7 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-10-17"
+  verificato: "2026-10-26"
   note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). Date dalla stampa (La Nazione, gonews), manca una pagina ufficiale dell'Archivio. Dal 7/2/2027 volgere la frase al passato."
 - id: "speciale-volontariato-dicembre-2026"
   cosa: "Video e news della Giornata internazionale del volontariato (5 dicembre 2026) e callout in home dal 5 al 31 dicembre 2026."
