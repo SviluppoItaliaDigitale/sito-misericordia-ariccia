@@ -48,6 +48,9 @@ social_video_copertina: 16       # secondo del video da usare come copertina del
   in `static/video/`) Instagram pubblica un **Reel** e Facebook un **video** sulla
   pagina, col testo della news e il link all'articolo. L'immagine della news resta
   l'anteprima per Google e per chi condivide il link.
+- **Video oltre i 90 secondi**: il Reel di Facebook con la Reels API dura da 3 a 90 s.
+  Per un video più lungo si aggiunge `social_reel_facebook: false`: su Facebook esce
+  solo il post con il link all'articolo (dove c'è il video intero), su Instagram il Reel.
 
 - **Post in ritardo**: se il post esce *dopo* la data della news, il testo
   si apre con la data dell'evento (es. «📅 Sabato 26 settembre 2026»), così

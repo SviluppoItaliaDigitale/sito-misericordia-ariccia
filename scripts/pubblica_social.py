@@ -704,7 +704,10 @@ def main():
     # dalla più vecchia alla più recente, così sui social escono in ordine
     for n in sorted(news, key=lambda x: (x["data"], x["id"])):
         voce = reg.get(n["id"], {})
-        mancanti = [r for r in reti if r not in voce and (r != "facebook_reel" or n.get("video"))]
+        # Reel di Facebook solo per le news con video che non lo escludono: la Reels API accetta
+        # da 3 a 90 secondi, e per i video più lunghi resta il post con il link (social_reel_facebook: false)
+        mancanti = [r for r in reti if r not in voce
+                    and (r != "facebook_reel" or (n.get("video") and n.get("reel_facebook", True)))]
         if not mancanti:
             continue
         if not n.get("social", True):

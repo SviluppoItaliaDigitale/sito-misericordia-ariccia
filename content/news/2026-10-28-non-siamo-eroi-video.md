@@ -7,6 +7,7 @@ description: "In tre minuti il video della Misericordia di Ariccia racconta i tr
 immagine: "/img/news/2026-10-28-non-siamo-eroi-video-grafica.jpg"
 social_video: "/video/non-siamo-eroi.mp4"
 social_video_copertina: 1
+social_reel_facebook: false
 social_testo: "Non siamo eroi. Siamo persone come te. Abbiamo un lavoro, una famiglia, mille impegni, ma abbiamo scelto di donare un po' del nostro tempo a chi soffre: accompagniamo chi deve curarsi, siamo alle gare e alle feste del paese con l'ambulanza, insegniamo a salvare una vita e ci sediamo accanto a chi ha bisogno di essere ascoltato. Dai 16 agli 80 anni c'è un posto anche per te; se hai tra i 18 e i 28 anni, con noi puoi fare il Servizio Civile Universale. 📞 Chiamaci o scrivici su WhatsApp: 348 4068657. Che Iddio ve ne renda merito. Musica: «Born of the Sky» di Scott Buckley, licenza CC BY 4.0. Foto: Misericordia di Ariccia e Confederazione Nazionale delle Misericordie d'Italia."
 italianoSemplice: |
   **Un video sui volontari della Misericordia di Ariccia.**
