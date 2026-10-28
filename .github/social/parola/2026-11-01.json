@@ -1,0 +1,40 @@
+{
+  "data": "2026-11-01",
+  "giorno_liturgico": "Tutti i Santi, solennità",
+  "opera": {
+    "autore": "James Tissot",
+    "titolo": "Il discorso delle Beatitudini",
+    "anno": "1886-1894",
+    "luogo": "Brooklyn Museum, New York",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_The_Sermon_of_the_Beatitudes_(La_sermon_des_b%C3%A9atitudes)_-_James_Tissot.jpg",
+    "illustra": "Vangelo, Mt 5,1-12a",
+    "scena": "Gesù, sul monte, parla a una folla immensa che si stringe attorno a lui."
+  },
+  "pagine": [
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla prima lettera di san Giovanni apostolo",
+      "riferimento": "1Gv 3,1",
+      "versetto": "Carissimi, vedete quale grande amore ci ha dato il Padre per essere chiamati figli di Dio, e lo siamo realmente!",
+      "evidenza": "quale grande amore"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 5,7",
+      "versetto": "Beati i misericordiosi, perché troveranno misericordia.",
+      "evidenza": "troveranno misericordia"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 5,9",
+      "versetto": "Beati gli operatori di pace, perché saranno chiamati figli di Dio.",
+      "evidenza": "operatori di pace"
+    }
+  ],
+  "testo_social": "Oggi la Chiesa ricorda tutti i Santi, la moltitudine immensa che nessuno può contare. San Giovanni ci ricorda che siamo già figli di Dio, amati dal Padre. Nel Vangelo Gesù indica la strada con le Beatitudini: beati i misericordiosi e beati gli operatori di pace. Essere misericordiosi con chi è nel bisogno è il modo più semplice di camminare verso la santità, e il servizio di ogni giorno delle Misericordie. Buona domenica!",
+  "preparata_da": "Alessandro Cuollo, 2026-10-28",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
