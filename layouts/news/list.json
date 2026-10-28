@@ -17,6 +17,7 @@
       "data_evento" (.Params.data_evento | default "")
       "video" $video
       "video_copertina" (.Params.social_video_copertina | default "")
+      "reel_facebook" (cond (eq .Params.social_reel_facebook false) false true)
     ) -}}
 {{- end -}}
 {{- dict "news" $voci | jsonify (dict "indent" "  ") -}}
