@@ -62,7 +62,9 @@ cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py p
 Istruzione di Alessandro: «gli errori 404 e simili non devono mai essere ignorati e devono
 essere risolti». Due controlli aprono issue in-place con label `automazione` + `fonte-rotta`,
 che si chiudono da sole al rientro: **«Link rotti sul sito»** (`controllo-link.yml`, ogni
-mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante) e **«Salute del
+mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante; nello stesso
+workflow, dal 30/10/2026, la issue «Parole dei Papi: fonte Vatican News non leggibile» per la
+sezione usata dalla Parola della domenica) e **«Salute del
 sito: automazioni in errore»** (`salute-sito.yml`, ogni giorno, workflow con l'ultimo run su
 main fallito). Chi trova una di queste issue ripara la causa: URL nuovo solo se verificato con
 una richiesta reale sulla fonte, altrimenti domanda ad Alessandro.
@@ -123,7 +125,9 @@ Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, 
 le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
 di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
-versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 25/10/2026
+versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 30/10/2026 il testo del post riporta anche un brano
+breve delle «Parole dei Papi» di Vatican News (campo `parole_papi` della scheda, copiato identico e
+controllato con `letture.py --controlla`), senza pagine in più. Dal 25/10/2026
 il carosello è nello stile nazionale, come tutte le grafiche
 (`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara il mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
 serve, domenica all'1:55 con il «recupero notturno»): scheda in

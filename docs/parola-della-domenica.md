@@ -3,7 +3,8 @@
 Ogni domenica alle **4:47** esce su Facebook (album) e Instagram (carosello) un
 **carosello**: in copertina **una sola opera d'arte, intera**, con scritto quale lettura
 illustra; poi **una pagina per ogni versetto** scelto tra prima lettura, seconda lettura e
-Vangelo, ognuna con il nome della lettura ben visibile. Sul sito non c'è una pagina: il
+Vangelo, ognuna con il nome della lettura ben visibile. Nel testo del post, dal 30/10/2026, c'è
+anche un brano breve delle **«Parole dei Papi»** di Vatican News, senza pagine in più. Sul sito non c'è una pagina: il
 post e l'ultima pagina del carosello rimandano a leggere le letture complete sulla
 [Liturgia del giorno](https://www.misericordia-ariccia.it/liturgia-del-giorno/) del nostro sito.
 
@@ -69,11 +70,34 @@ Di domenica `letture.py` senza data prende le letture di oggi.
      scrivere l'artista vero leggendo la descrizione o le firme incise.
    - Se non c'è un'opera adatta: `"opera": null` (niente copertina, il carosello parte dal
      primo versetto).
-4. **Testo del post** (`testo_social`): 3-5 frasi semplici che legano i versetti e, se viene
+4. **Le parole dei Papi** (dal 30/10/2026, facoltative; richiesta di Alessandro: «integrare questa
+   sezione nelle letture della domenica, non facendo altre slide, ma soltanto il testo per i social»).
+   È la sezione «Le Parole dei Papi» della pagina [Vangelo del giorno di Vatican News](https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html),
+   già linkata dalla Liturgia del giorno del sito: un commento di un Papa alle letture di quel giorno,
+   pubblicato con giorni di anticipo. `letture.py` la stampa in `parole_dei_papi` (testo intero, fonte,
+   indirizzo). Nella scheda va **solo un brano breve**, che esce nel testo del post su Facebook e
+   Instagram dopo i versetti, con la fonte; **nessuna pagina in più nel carosello**.
+   - Da 2 a 4 frasi che si capiscono da sole e parlano del brano della domenica, al massimo **500
+     caratteri**, copiate **identiche** da Vatican News; ogni taglio si segna con «(…)», come fa
+     Vatican News. Niente parole cambiate o aggiunte.
+   - `fonte`: la parentesi finale di Vatican News, identica (es. «Papa Leone XIV, Omelia, 1° novembre 2025»).
+   - Se il commento cita un brano diverso da quello letto la domenica (Vatican News a volte riprende
+     l'Angelus su un passo parallelo di un altro evangelista, come il 25/10/2026: Mc 12 invece di Mt 22),
+     scegliere frasi senza quel riferimento; se non ce ne sono, o Vatican News non risponde, il campo
+     non si mette (se `letture.py` scrive «GUASTO», si dice nel riepilogo).
+   - La fonte è sorvegliata: ogni mercoledì alle 6:23 il workflow «Controllo link del sito» lancia
+     `letture.py --fonte-papi` sulla domenica che viene; se la sezione non si legge il run diventa
+     rosso e si apre la issue «Parole dei Papi: fonte Vatican News non leggibile» (label
+     `automazione` + `fonte-rotta`), che si chiude da sola al rientro.
+   - **Controllo obbligatorio**: `python3 scripts/parola-domenica/letture.py --controlla SCHEDA.json`
+     (esce con errore se un pezzo non è identico, se la fonte è diversa o se il brano supera 500 caratteri).
+5. **Testo del post** (`testo_social`): 3-5 frasi semplici che legano i versetti e, se viene
    naturale, il servizio della Misericordia (prossimità, cura, gratuità). Niente prediche,
-   frasi fatte o fatti inventati. Chiudere con «Buona domenica!». Versetti, crediti
-   dell'opera, link e hashtag li aggiunge lo script.
-5. **Scheda** `.github/social/parola/AAAA-MM-GG.json` (modello: quella del 2026-10-11):
+   frasi fatte o fatti inventati. Chiudere con «Buona domenica!». Versetti, «Le parole dei Papi»,
+   crediti dell'opera, link e hashtag li aggiunge lo script. Il post Instagram ha un limite di 2200
+   caratteri: se lo supera, lo script lascia fuori il brano dei Papi (mai link e hashtag), e la prova
+   «Testo alternativo nei post» dei controlli di ogni PR si ferma.
+6. **Scheda** `.github/social/parola/AAAA-MM-GG.json` (modello: quella del 2026-10-11):
    - `data`, `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»),
      `preparata_da` (esattamente «Alessandro Cuollo, AAAA-MM-GG», con la data di preparazione: i lavori
      sono sempre a sua firma, mai di uno strumento, e il controllo delle forme da non usare lo verifica);
@@ -83,8 +107,9 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    - `pagine`: per ogni versetto `lettura` (Prima lettura / Seconda lettura / Vangelo),
      `fonte_lettura` (formula della Messa: «Dal libro del profeta Isaia», «Dalla lettera di
      san Paolo apostolo ai Filippesi», «Dal Vangelo secondo Matteo»…), `riferimento`
-     (abbreviazioni CEI: Mt, Mc, Lc, Gv, Is, Fil…), `versetto`, `evidenza`.
-6. **Grafica**: `cd scripts/parola-domenica && npm ci` (la prima volta), poi
+     (abbreviazioni CEI: Mt, Mc, Lc, Gv, Is, Fil…), `versetto`, `evidenza`;
+   - `parole_papi` (facoltativo, passo 4): `testo` (il brano) e `fonte`.
+7. **Grafica**: `cd scripts/parola-domenica && npm ci` (la prima volta), poi
    `node scripts/parola-domenica/rendi.js SCHEDA.json static/img/parola OPERA.jpg`
    (senza opera: senza l'ultimo argomento). **Aprire ogni JPEG e guardarlo**: opera intera
    e leggibile, testi non tagliati, lettura giusta su ogni pagina. Se un testo non entra o una
@@ -95,8 +120,8 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    bordo del JPEG si legge «MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it…». I JPEG
    non si risalvano con altri programmi: perderebbero il segno della cornice, che «Controlli
    del sito» cerca nelle pagine in uscita.
-7. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
-8. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
+8. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
+9. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
    online le immagini). La domenica alle 4:47 il workflow pubblica da solo.
 
 ## Domeniche e feste particolari

@@ -222,6 +222,25 @@ for f in sorted((REPO / ".github/social/parola").glob("*.json")):
         o = s["opera"]
         attesa(all(x in testi[0] for x in ("La Parola della domenica", s["giorno_liturgico"], o["titolo"], o["autore"])),
                f"{f.name}: copertina senza giorno, titolo o autore: «{testi[0]}»")
+# 10. testo dei post della Parola: Instagram entro 2200 caratteri con link e hashtag; «Le parole dei Papi»
+# (dal 30/10/2026) brevi, con la fonte, in tutti e due i post; se il testo è troppo lungo escono solo da Instagram
+for f in sorted((REPO / ".github/social/parola").glob("*.json")):
+    s = json.loads(f.read_text(encoding="utf-8"))
+    ig, fb = ps.testo_parola(s, "instagram"), ps.testo_parola(s, "facebook")
+    attesa(len(ig) <= 2200 and ig.endswith(ps.HASHTAG_PAROLA), f"{f.name}: post Instagram di {len(ig)} caratteri o senza hashtag")
+    p = s.get("parole_papi")
+    if p:
+        attesa(len(p["testo"]) <= 500, f"{f.name}: «Le parole dei Papi» di {len(p['testo'])} caratteri (al massimo 500)")
+        for testo in (ig, fb):
+            attesa(f"«{p['testo'].strip()}»\n({p['fonte'].strip()}; fonte: Vatican News)" in testo,
+                   f"{f.name}: «Le parole dei Papi» o la fonte mancano nel post")
+lungo = dict(scheda, parole_papi={"testo": "parola " * 400, "fonte": "Papa Francesco, Angelus, 1° gennaio 2020"})
+ig = ps.testo_parola(lungo, "instagram")
+attesa(len(ig) <= 2200 and "Le parole dei Papi" not in ig and ig.endswith(ps.HASHTAG_PAROLA),
+       "brano dei Papi troppo lungo: Instagram non l'ha lasciato fuori o ha perso gli hashtag")
+attesa("Le parole dei Papi" in ps.testo_parola(lungo, "facebook"), "brano dei Papi tolto anche da Facebook")
+attesa("Le parole dei Papi" not in ps.testo_parola(scheda, "facebook"), "brano dei Papi in una scheda che non lo ha")
+
 copertina = ps.alt_parola(scheda)[0]
 attesa("25 ottobre 2026" in copertina and "illustra il Vangelo, Mt 22,34-40" in copertina and "(1886-1894)" in copertina,
        f"copertina del 25/10/2026: data, lettura o anno mancanti: «{copertina}»")

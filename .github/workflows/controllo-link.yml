@@ -113,3 +113,46 @@ jobs:
             gh issue edit "$num" --body-file corpo.md
             gh issue close "$num" --comment "Nessun link rotto al controllo del $(TZ=Europe/Rome date '+%d/%m/%Y'): chiusa da sola."
           fi
+
+  # «Le parole dei Papi» della Parola della domenica (dal 30/10/2026): la sezione della pagina
+  # Vangelo del giorno di Vatican News per la domenica che viene. Se non si legge (404, errori
+  # dopo i tentativi, sezione sparita o cambiata) il run diventa rosso e si apre o aggiorna la
+  # issue «Parole dei Papi: fonte Vatican News non leggibile», che si chiude da sola al rientro.
+  # Gira il mercoledì prima della preparazione della Parola (08:55).
+  parole-papi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TITOLO: "Parole dei Papi: fonte Vatican News non leggibile"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Controlla la sezione e aggiorna la issue
+        run: |
+          rc=0
+          esito=$(python3 scripts/parola-domenica/letture.py --fonte-papi 2>&1) || rc=$?
+          echo "$esito"
+          {
+            echo "$esito"
+            echo
+            echo "Pagina generale: https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html"
+            echo "Procedura: docs/parola-della-domenica.md, passo 4. Finché il guasto resta, la Parola della domenica esce senza «Le parole dei Papi»."
+            echo
+            echo "Ultimo controllo: [run ${GITHUB_RUN_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}), $(TZ=Europe/Rome date '+%d/%m/%Y %H:%M') ora italiana."
+          } > corpo.md
+          num=$(gh issue list --state open --label fonte-rotta --search "in:title \"$TITOLO\"" \
+                --json number,title --jq "map(select(.title == \"$TITOLO\")) | .[0].number // empty")
+          if [ "$rc" -ne 0 ]; then
+            if [ -n "$num" ]; then
+              gh issue edit "$num" --body-file corpo.md
+            else
+              gh issue create --title "$TITOLO" --label automazione --label fonte-rotta --body-file corpo.md
+            fi
+            echo "::error::$TITOLO: vedi la issue."
+            exit 1
+          elif [ -n "$num" ]; then
+            gh issue edit "$num" --body-file corpo.md
+            gh issue close "$num" --comment "Fonte di nuovo leggibile al controllo del $(TZ=Europe/Rome date '+%d/%m/%Y'): chiusa da sola."
+          fi
