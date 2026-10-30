@@ -62,7 +62,9 @@ cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py p
 Istruzione di Alessandro: «gli errori 404 e simili non devono mai essere ignorati e devono
 essere risolti». Due controlli aprono issue in-place con label `automazione` + `fonte-rotta`,
 che si chiudono da sole al rientro: **«Link rotti sul sito»** (`controllo-link.yml`, ogni
-mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante) e **«Salute del
+mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante; nello stesso
+workflow, dal 30/10/2026, la issue «Parole dei Papi: fonte Vatican News non leggibile» per la
+sezione usata dalla Parola della domenica) e **«Salute del
 sito: automazioni in errore»** (`salute-sito.yml`, ogni giorno, workflow con l'ultimo run su
 main fallito). Chi trova una di queste issue ripara la causa: URL nuovo solo se verificato con
 una richiesta reale sulla fonte, altrimenti domanda ad Alessandro.

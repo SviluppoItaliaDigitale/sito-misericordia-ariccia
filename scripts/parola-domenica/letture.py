@@ -11,6 +11,10 @@ e come riserva se la pagina CEI non risponde.
   letture.py --controlla .github/social/parola/2026-11-01.json
                             → controlla che il brano «Le parole dei Papi» della scheda sia copiato
                               esatto da Vatican News, con la fonte giusta (esce con 1 se no)
+  letture.py --fonte-papi [AAAA-MM-GG]
+                            → controlla che Vatican News dia «Le Parole dei Papi» della domenica
+                              che viene (esce con 1 se no: lo usa il controllo settimanale
+                              in controllo-link.yml, che apre la issue «fonte-rotta»)
 
 Stampa un JSON: titolo liturgico; in "parole_dei_papi" il commento di un Papa alle letture
 che Vatican News pubblica nella pagina del Vangelo del giorno (testo intero, fonte e indirizzo:
@@ -114,7 +118,25 @@ def controlla(file_scheda):
     return errori
 
 
+def domenica_che_viene():
+    oggi = dt.date.today()
+    return oggi + dt.timedelta(days=6 - oggi.weekday())  # di domenica è oggi
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--fonte-papi":
+        giorno = dt.date.fromisoformat(sys.argv[2]) if len(sys.argv) > 2 else domenica_che_viene()
+        url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
+        try:
+            p = parole_dei_papi(giorno)
+        except Exception as e:  # noqa: BLE001 — dopo i tentativi di scarica(): guasto vero
+            print(f"Vatican News non leggibile per il {giorno}: {e} ({url})")
+            sys.exit(1)
+        if not p or len(p["testo"]) < 100:
+            print(f"Vatican News: sezione «Le Parole dei Papi» assente o cambiata per il {giorno} ({url})")
+            sys.exit(1)
+        print(f"Vatican News: «Le Parole dei Papi» del {giorno} ok ({p['fonte']}, {len(p['testo'])} caratteri)")
+        return
     if len(sys.argv) > 2 and sys.argv[1] == "--controlla":
         errori = controlla(sys.argv[2])
         for e in errori:
@@ -124,8 +146,7 @@ def main():
     if len(sys.argv) > 1:
         giorno = dt.date.fromisoformat(sys.argv[1])
     else:
-        oggi = dt.date.today()
-        giorno = oggi + dt.timedelta(days=6 - oggi.weekday())  # di domenica è oggi
+        giorno = domenica_che_viene()
     d = giorno.strftime("%Y%m%d")
     esito = {"data": giorno.isoformat(), "giorno_liturgico": leggi(URL.format(d=d, t="liturgic_t")).strip(),
              "letture": []}
@@ -150,9 +171,14 @@ def main():
         print("ATTENZIONE: testo CEI 2008 non trovato", file=sys.stderr)
     try:
         esito["parole_dei_papi"] = parole_dei_papi(giorno)
+        if not esito["parole_dei_papi"]:
+            print("ATTENZIONE: sezione «Le Parole dei Papi» non trovata su Vatican News", file=sys.stderr)
     except Exception as e:  # noqa: BLE001 — facoltative: il carosello si fa lo stesso
+        # il guasto persistente lo segnala il controllo settimanale (letture.py --fonte-papi in
+        # controllo-link.yml), che fa diventare rosso il run e apre la issue «fonte-rotta»
         esito["parole_dei_papi"] = None
-        print(f"ATTENZIONE: Vatican News non raggiungibile ({e}): niente «Le parole dei Papi»", file=sys.stderr)
+        print(f"GUASTO: Vatican News non raggiungibile ({e}): niente «Le parole dei Papi», "
+              "da scrivere nel riepilogo", file=sys.stderr)
     print(json.dumps(esito, ensure_ascii=False, indent=1))
 
 

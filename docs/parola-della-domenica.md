@@ -84,7 +84,11 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    - Se il commento cita un brano diverso da quello letto la domenica (Vatican News a volte riprende
      l'Angelus su un passo parallelo di un altro evangelista, come il 25/10/2026: Mc 12 invece di Mt 22),
      scegliere frasi senza quel riferimento; se non ce ne sono, o Vatican News non risponde, il campo
-     non si mette.
+     non si mette (se `letture.py` scrive «GUASTO», si dice nel riepilogo).
+   - La fonte è sorvegliata: ogni mercoledì alle 6:23 il workflow «Controllo link del sito» lancia
+     `letture.py --fonte-papi` sulla domenica che viene; se la sezione non si legge il run diventa
+     rosso e si apre la issue «Parole dei Papi: fonte Vatican News non leggibile» (label
+     `automazione` + `fonte-rotta`), che si chiude da sola al rientro.
    - **Controllo obbligatorio**: `python3 scripts/parola-domenica/letture.py --controlla SCHEDA.json`
      (esce con errore se un pezzo non è identico, se la fonte è diversa o se il brano supera 500 caratteri).
 5. **Testo del post** (`testo_social`): 3-5 frasi semplici che legano i versetti e, se viene
