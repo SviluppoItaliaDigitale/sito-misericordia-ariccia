@@ -123,7 +123,9 @@ Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, 
 le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
 di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
-versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 25/10/2026
+versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 30/10/2026 il testo del post riporta anche un brano
+breve delle «Parole dei Papi» di Vatican News (campo `parole_papi` della scheda, copiato identico e
+controllato con `letture.py --controlla`), senza pagine in più. Dal 25/10/2026
 il carosello è nello stile nazionale, come tutte le grafiche
 (`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara il mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
 serve, domenica all'1:55 con il «recupero notturno»): scheda in

@@ -8,8 +8,13 @@ e come riserva se la pagina CEI non risponde.
 
   letture.py                → la domenica che viene (di domenica: oggi, per il recupero notturno)
   letture.py 2026-10-11     → quel giorno
+  letture.py --controlla .github/social/parola/2026-11-01.json
+                            → controlla che il brano «Le parole dei Papi» della scheda sia copiato
+                              esatto da Vatican News, con la fonte giusta (esce con 1 se no)
 
-Stampa un JSON: titolo liturgico; in "cei_2008" le letture col testo da copiare; in
+Stampa un JSON: titolo liturgico; in "parole_dei_papi" il commento di un Papa alle letture
+che Vatican News pubblica nella pagina del Vangelo del giorno (testo intero, fonte e indirizzo:
+nella scheda va solo un brano breve, copiato esatto); in "cei_2008" le letture col testo da copiare; in
 "letture" il testo Evangelizo riga per riga (una riga = un versetto). "versetto_stimato" numera le righe a partire dal
 primo versetto del riferimento: è solo un aiuto, il riferimento esatto va controllato.
 Solo libreria standard.
@@ -25,6 +30,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from liturgia_cei import letture as letture_del_giorno, scarica  # noqa: E402  (stesso lettore della Liturgia del giorno)
 
+VATICAN_NEWS = "https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno/{a}/{m:02d}/{g:02d}.html"
+LIMITE_PAPI = 500  # caratteri del brano nella scheda: il post Instagram ha un limite di 2200
 URL = "https://feed.evangelizo.org/v2/reader.php?date={d}&lang=IT&type={t}"
 LETTURE = {"FR": "Prima lettura", "PS": "Salmo responsoriale", "SR": "Seconda lettura", "GSP": "Vangelo"}
 
@@ -61,7 +68,59 @@ def letture_cei(d):
             for x in letture_del_giorno(d) if x["sezione"] in ("Prima lettura", "Seconda lettura", "Vangelo")]
 
 
+def parole_dei_papi(giorno):
+    """Sezione «Le Parole dei Papi» della pagina Vatican News del giorno: testo, fonte (l'ultima
+    parentesi, es. «Papa Leone XIV, Omelia, 1° novembre 2025») e indirizzo. None se la sezione manca."""
+    url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
+    pagina = scarica(url, "Mozilla/5.0 (compatible; MisericordiaAriccia-ParolaDomenica/1.0)")
+    m = re.search(r"<h2>\s*Le Parole dei Papi\s*</h2>(.*?)</section>", pagina, re.S | re.I)
+    if not m:
+        return None
+    testo_intero = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", m.group(1))).split())
+    f = re.search(r"\(([^()]*\d{4})\)\s*$", testo_intero)
+    if not f:
+        return None
+    return {"testo": testo_intero[:f.start()].strip(), "fonte": " ".join(f.group(1).split()), "url": url}
+
+
+def normalizza(s):
+    """Confronto del brano: spazi unici, apostrofi e virgolette uniformi."""
+    s = s.replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
+    return " ".join(s.split())
+
+
+def controlla(file_scheda):
+    """Errori del brano «Le parole dei Papi» della scheda rispetto a Vatican News (lista vuota: va bene)."""
+    s = json.loads(Path(file_scheda).read_text(encoding="utf-8"))
+    p = s.get("parole_papi")
+    if not p:
+        return []
+    errori = []
+    testo = (p.get("testo") or "").strip()
+    if not testo or not (p.get("fonte") or "").strip():
+        return ["parole_papi: servono «testo» e «fonte»"]
+    if len(testo) > LIMITE_PAPI:
+        errori.append(f"parole_papi: brano di {len(testo)} caratteri, al massimo {LIMITE_PAPI}")
+    ufficiale = parole_dei_papi(dt.date.fromisoformat(s["data"]))
+    if not ufficiale:
+        return errori + ["Vatican News: sezione «Le Parole dei Papi» non trovata per questa data"]
+    if normalizza(p["fonte"]) != normalizza(ufficiale["fonte"]):
+        errori.append(f"parole_papi: fonte «{p['fonte']}», su Vatican News «{ufficiale['fonte']}»")
+    intero = normalizza(ufficiale["testo"])
+    # i tagli si segnano con «(…)», come fa Vatican News: ogni pezzo deve essere identico all'originale
+    for pezzo in re.split(r"\s*\((?:…|\.\.\.)\)\s*", testo):
+        if pezzo and normalizza(pezzo) not in intero:
+            errori.append(f"parole_papi: questo pezzo non è identico a Vatican News: «{pezzo[:80]}…»")
+    return errori
+
+
 def main():
+    if len(sys.argv) > 2 and sys.argv[1] == "--controlla":
+        errori = controlla(sys.argv[2])
+        for e in errori:
+            print("ERRORE:", e, file=sys.stderr)
+        print("parole dei Papi: ok" if not errori else f"parole dei Papi: {len(errori)} errori")
+        sys.exit(1 if errori else 0)
     if len(sys.argv) > 1:
         giorno = dt.date.fromisoformat(sys.argv[1])
     else:
@@ -89,6 +148,11 @@ def main():
               file=sys.stderr)
     if not esito["cei_2008"]:
         print("ATTENZIONE: testo CEI 2008 non trovato", file=sys.stderr)
+    try:
+        esito["parole_dei_papi"] = parole_dei_papi(giorno)
+    except Exception as e:  # noqa: BLE001 — facoltative: il carosello si fa lo stesso
+        esito["parole_dei_papi"] = None
+        print(f"ATTENZIONE: Vatican News non raggiungibile ({e}): niente «Le parole dei Papi»", file=sys.stderr)
     print(json.dumps(esito, ensure_ascii=False, indent=1))
 
 

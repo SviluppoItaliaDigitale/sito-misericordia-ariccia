@@ -531,9 +531,20 @@ def alt_parola(s):
     return testi
 
 
-def testo_parola(s, rete):
+def blocco_papi(s):
+    """«Le parole dei Papi» (dal 30/10/2026, facoltative): un brano breve del commento alle letture che Vatican News
+    pubblica nella pagina del Vangelo del giorno, copiato esatto e con la fonte. Solo testo, nessuna pagina in più."""
+    p = s.get("parole_papi") or {}
+    if not (p.get("testo") or "").strip() or not (p.get("fonte") or "").strip():
+        return ""
+    return f"🕊️ Le parole dei Papi\n«{p['testo'].strip()}»\n({p['fonte'].strip()}; fonte: Vatican News)"
+
+
+def testo_parola(s, rete, con_papi=True):
     righe = [f"📖 La Parola della domenica · {s['giorno_liturgico']}"]
     righe += [f"«{v['versetto']}»\n({v['lettura']}, {v['riferimento']})" for v in s["pagine"]]
+    if con_papi and blocco_papi(s):
+        righe.append(blocco_papi(s))
     if s.get("testo_social"):
         righe.append(s["testo_social"])
     o = s.get("opera")
@@ -543,7 +554,13 @@ def testo_parola(s, rete):
     if rete == "instagram":
         righe.append("📖 Tutte le letture della domenica sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno")
         righe.append(HASHTAG_PAROLA)
-        return "\n\n".join(righe)[:2200]
+        testo = "\n\n".join(righe)
+        if len(testo) > 2200 and con_papi and blocco_papi(s):
+            # oltre il limite di Instagram il brano dei Papi si lascia fuori, mai link e hashtag
+            # (letture.py --controlla e la prova dei controlli lo segnalano già in preparazione)
+            print("instagram: testo oltre 2200 caratteri, esce senza «Le parole dei Papi»", file=sys.stderr)
+            return testo_parola(s, rete, con_papi=False)
+        return testo[:2200]
     righe.append(f"📖 Leggi tutte le letture della domenica sul nostro sito:\n👉 {LITURGIA}")
     return "\n\n".join(righe)
 
