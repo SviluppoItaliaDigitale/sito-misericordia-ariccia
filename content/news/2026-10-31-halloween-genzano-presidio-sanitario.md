@@ -1,6 +1,6 @@
 ---
 title: "Halloween a Genzano di Roma: il nostro presidio sanitario fino a mezzanotte"
-titoloSeo: "Halloween a Genzano di Roma, presidio sanitario — Misericordia di Ariccia"
+titoloSeo: "Halloween a Genzano di Roma: presidio sanitario fino a mezzanotte"
 date: 2026-10-31T21:00:00+01:00
 slug: "halloween-genzano-presidio-sanitario"
 description: "Oggi, 31 ottobre 2026, la Misericordia di Ariccia garantisce il presidio sanitario alla festa di Halloween di Genzano di Roma, insieme alla Protezione Civile di Genzano."
