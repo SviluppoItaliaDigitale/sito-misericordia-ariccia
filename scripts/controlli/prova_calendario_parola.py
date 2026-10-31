@@ -42,19 +42,20 @@ NOTI = {
     "2028-03-20": cal.FESTA,              # San Giuseppe spostato: il 19 è una domenica di Quaresima
 }
 for data, titolo in NOTI.items():
-    if dt.date.fromisoformat(data) > cal.copertura(c):
+    if int(data[:4]) not in c["anni"]:  # anno non (più) nel calendario: niente da controllare
         continue
     g = cal.giorno_della_parola(dt.date.fromisoformat(data), c)
     attesa(g and g["titolo"] == titolo, f"{data}: atteso «{titolo}», trovato {g}")
 for data in ("2026-11-03", "2027-03-24", "2027-03-29", "2027-03-27"):  # feria, Settimana santa, Ottava, Veglia
-    attesa(cal.giorno_della_parola(dt.date.fromisoformat(data), c) is None, f"{data}: non è un giorno della Parola")
+    if int(data[:4]) in c["anni"]:
+        attesa(cal.giorno_della_parola(dt.date.fromisoformat(data), c) is None, f"{data}: non è un giorno della Parola")
 attesa(all(dt.date.fromisoformat(d).isoweekday() != 7 for d in c["feste"]), "una festa di domenica in calendario.json")
 
 for f in sorted((REPO / ".github/social/parola").glob("*.json")):
     s = json.loads(f.read_text(encoding="utf-8"))
     giorno = dt.date.fromisoformat(s["data"])
     attesa(f.stem == s["data"], f"{f.name}: la data della scheda è {s['data']}")
-    if giorno.year < min(c["anni"]):
+    if giorno.year not in c["anni"]:
         continue
     g = cal.giorno_della_parola(giorno, c)
     attesa(g is not None, f"{f.name}: il {giorno} non è un giorno della Parola")

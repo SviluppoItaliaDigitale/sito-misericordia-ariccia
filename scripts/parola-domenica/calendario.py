@@ -8,7 +8,8 @@ LitCal (stessa fonte della Liturgia del giorno), che applica già gli spostament
 del 2027 passa al 5 aprile). Le feste sono salvate in calendario.json accanto a questo file, così il
 workflow di pubblicazione non dipende dalla rete; le domeniche si contano da sole.
 
-  calendario.py aggiorna [ANNO …]   → riscrive calendario.json (senza anni: quest'anno e i due dopo)
+  calendario.py aggiorna [ANNO …]   → rifà da LitCal quegli anni in calendario.json (senza anni: quest'anno
+                                      e i due dopo); gli altri anni già presenti restano
   calendario.py oggi [AAAA-MM-GG]   → stampa il giorno della Parola ed esce con 0, con 1 se non lo è
   calendario.py prossimi [GIORNI]   → i giorni della Parola da oggi ai prossimi GIORNI (7), in JSON
   calendario.py copertura           → ultimo giorno coperto da calendario.json
@@ -81,10 +82,14 @@ def oggi_roma():
 def main():
     comando = sys.argv[1] if len(sys.argv) > 1 else "prossimi"
     if comando == "aggiorna":
-        anni = [int(a) for a in sys.argv[2:]] or [oggi_roma().year + k for k in range(3)]
-        feste = {}
-        for anno in anni:
+        nuovi = [int(a) for a in sys.argv[2:]] or [oggi_roma().year + k for k in range(3)]
+        # gli anni già nel file restano (le schede passate devono continuare a cadere in un giorno della
+        # Parola); quelli chiesti si rifanno da LitCal
+        vecchio = carica() if FILE.exists() else {"anni": [], "feste": {}}
+        feste = {d: f for d, f in vecchio["feste"].items() if int(d[:4]) not in nuovi}
+        for anno in nuovi:
             feste.update(feste_litcal(anno))
+        anni = sorted(set(vecchio["anni"]) | set(nuovi))
         cal = {"nota": "Generato da scripts/parola-domenica/calendario.py aggiorna: non modificare a mano.",
                "fonte": LITCAL.format(anno="AAAA"), "aggiornato": oggi_roma().isoformat(),
                "anni": anni, "feste": dict(sorted(feste.items()))}
