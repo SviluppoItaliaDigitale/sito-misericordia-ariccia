@@ -5,6 +5,11 @@ data/liturgia_cei.json, che il template legge alla compilazione.
 
   liturgia_cei.py              → oggi (ora italiana), scrive data/liturgia_cei.json
   liturgia_cei.py 2026-10-11   → quel giorno, stampa il JSON senza scrivere
+  liturgia_cei.py --papi [AAAA-MM-GG]
+                               → «Le parole dei Papi» di Vatican News (dal 31/10/2026, scelta di
+                                 Alessandro): senza data scrive data/parole_papi.json per la pagina,
+                                 con la data stampa il JSON. Se la sezione non si legge cancella il
+                                 file e la pagina non la mostra.
 
 Se la pagina CEI non risponde o cambia forma non scrive nulla (o cancella il file
 vecchio) e il template torna al testo Evangelizo. Uso consentito dalle note legali di
@@ -25,6 +30,8 @@ from pathlib import Path
 
 URL = "https://www.chiesacattolica.it/liturgia-del-giorno/?data-liturgia={d}"
 USCITA = Path(__file__).resolve().parent.parent / "data" / "liturgia_cei.json"
+VATICAN_NEWS = "https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno/{a}/{m:02d}/{g:02d}.html"
+USCITA_PAPI = USCITA.with_name("parole_papi.json")
 # Titoli delle sezioni, confrontati in minuscolo (la Veglia pasquale li scrive in maiuscolo)
 TITOLI = {f"{n} lettura": f"{n.capitalize()} lettura"
           for n in ("prima", "seconda", "terza", "quarta", "quinta", "sesta", "settima")}
@@ -101,6 +108,32 @@ def letture(d):
     return esito if "Prima lettura" in nomi and "Vangelo" in nomi else []
 
 
+def parole_dei_papi(giorno):
+    """Sezione «Le Parole dei Papi» della pagina Vangelo del giorno di Vatican News: paragrafi, testo intero
+    (su una riga), fonte (l'ultima parentesi, es. «Papa Leone XIV, Omelia, 1° novembre 2025») e indirizzo.
+    None se la sezione manca o cambia forma; gli errori di rete arrivano a chi chiama."""
+    url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
+    pagina = scarica(url, "Mozilla/5.0 (compatible; MisericordiaAriccia-Liturgia/1.0)")
+    m = re.search(r"<h2>\s*Le Parole dei Papi\s*</h2>(.*?)</section>", pagina, re.S | re.I)
+    if not m:
+        return None
+    paragrafi = []
+    for pezzo in re.split(r"</p\s*>", m.group(1), flags=re.I):
+        pezzo = re.sub(r"<br\s*/?>", " ", pezzo, flags=re.I)
+        testo = " ".join(html.unescape(re.sub(r"<[^>]+>", "", pezzo)).split())
+        if testo:
+            paragrafi.append(testo)
+    if not paragrafi:
+        return None
+    f = re.search(r"\(([^()]*\d{4})\)\s*$", paragrafi[-1])
+    if not f:
+        return None
+    paragrafi[-1] = paragrafi[-1][:f.start()].strip()
+    paragrafi = [x for x in paragrafi if x]
+    return {"data": giorno.isoformat(), "paragrafi": paragrafi, "testo": " ".join(paragrafi),
+            "fonte": " ".join(f.group(1).split()), "url": url}
+
+
 def oggi_roma():
     try:
         from zoneinfo import ZoneInfo
@@ -109,7 +142,29 @@ def oggi_roma():
         return (dt.datetime.utcnow() + dt.timedelta(hours=1)).date()
 
 
+def main_papi(argomenti):
+    giorno = dt.date.fromisoformat(argomenti[0]) if argomenti else oggi_roma()
+    try:
+        dati = parole_dei_papi(giorno)
+    except Exception as e:  # noqa: BLE001 — la pagina si fa lo stesso; il guasto persistente lo segnala
+        # il controllo settimanale (letture.py --fonte-papi in controllo-link.yml)
+        print(f"::warning::Parole dei Papi non scaricate ({e}): la pagina non le mostra")
+        dati = None
+    if argomenti:
+        print(json.dumps(dati, ensure_ascii=False, indent=1))
+        return 0
+    if not dati:
+        print("::warning::Sezione «Le Parole dei Papi» non trovata su Vatican News: la pagina non la mostra")
+        USCITA_PAPI.unlink(missing_ok=True)
+        return 0
+    USCITA_PAPI.write_text(json.dumps(dati, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"Parole dei Papi del {giorno}: {dati['fonte']}, {len(dati['testo'])} caratteri")
+    return 0
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--papi":
+        return main_papi(sys.argv[2:])
     giorno = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else oggi_roma()
     try:
         sezioni = letture(giorno.strftime("%Y%m%d"))

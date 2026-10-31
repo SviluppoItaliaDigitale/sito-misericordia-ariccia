@@ -33,9 +33,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from liturgia_cei import letture as letture_del_giorno, scarica  # noqa: E402  (stesso lettore della Liturgia del giorno)
+import liturgia_cei  # noqa: E402
+from liturgia_cei import letture as letture_del_giorno, parole_dei_papi, scarica  # noqa: E402, F401  (stessi lettori della Liturgia del giorno)
 
-VATICAN_NEWS = "https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno/{a}/{m:02d}/{g:02d}.html"
 LIMITE_PAPI = 500  # caratteri del brano nella scheda: il post Instagram ha un limite di 2200
 URL = "https://feed.evangelizo.org/v2/reader.php?date={d}&lang=IT&type={t}"
 LETTURE = {"FR": "Prima lettura", "PS": "Salmo responsoriale", "SR": "Seconda lettura", "GSP": "Vangelo"}
@@ -71,21 +71,6 @@ def letture_cei(d):
     return [{"lettura": x["sezione"], "titoletto": x["titoletto"], "fonte_lettura": x["fonte_lettura"],
              "riferimento": x["riferimento"], "testo": " ".join(x["righe"])}
             for x in letture_del_giorno(d) if x["sezione"] in ("Prima lettura", "Seconda lettura", "Vangelo")]
-
-
-def parole_dei_papi(giorno):
-    """Sezione «Le Parole dei Papi» della pagina Vatican News del giorno: testo, fonte (l'ultima
-    parentesi, es. «Papa Leone XIV, Omelia, 1° novembre 2025») e indirizzo. None se la sezione manca."""
-    url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
-    pagina = scarica(url, "Mozilla/5.0 (compatible; MisericordiaAriccia-ParolaDomenica/1.0)")
-    m = re.search(r"<h2>\s*Le Parole dei Papi\s*</h2>(.*?)</section>", pagina, re.S | re.I)
-    if not m:
-        return None
-    testo_intero = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", m.group(1))).split())
-    f = re.search(r"\(([^()]*\d{4})\)\s*$", testo_intero)
-    if not f:
-        return None
-    return {"testo": testo_intero[:f.start()].strip(), "fonte": " ".join(f.group(1).split()), "url": url}
 
 
 def normalizza(s):
@@ -129,7 +114,7 @@ def prossimo_giorno():
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--fonte-papi":
         giorno = dt.date.fromisoformat(sys.argv[2]) if len(sys.argv) > 2 else prossimo_giorno()
-        url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
+        url = liturgia_cei.VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
         try:
             p = parole_dei_papi(giorno)
         except Exception as e:  # noqa: BLE001 — dopo i tentativi di scarica(): guasto vero

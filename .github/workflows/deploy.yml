@@ -80,6 +80,13 @@ jobs:
         continue-on-error: true
         run: python3 scripts/liturgia_cei.py
 
+      - name: Le parole dei Papi del giorno
+        # Scrive data/parole_papi.json (Vatican News) per /liturgia-del-giorno/; se la
+        # sezione non si legge la pagina non la mostra. Il guasto persistente lo segnala
+        # il controllo settimanale «Parole dei Papi» in controllo-link.yml.
+        continue-on-error: true
+        run: python3 scripts/liturgia_cei.py --papi
+
       - name: Compila il sito
         run: hugo --minify
 

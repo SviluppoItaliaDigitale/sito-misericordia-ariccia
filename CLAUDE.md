@@ -64,7 +64,7 @@ essere risolti». Due controlli aprono issue in-place con label `automazione` + 
 che si chiudono da sole al rientro: **«Link rotti sul sito»** (`controllo-link.yml`, ogni
 mercoledì, lychee su tutti i link; run rosso per ogni 404/410 o file mancante; nello stesso
 workflow, dal 30/10/2026, la issue «Parole dei Papi: fonte Vatican News non leggibile» per la
-sezione usata dalla Parola della domenica) e **«Salute del
+sezione usata dalla Parola della domenica e, dal 31/10/2026, dalla Liturgia del giorno) e **«Salute del
 sito: automazioni in errore»** (`salute-sito.yml`, ogni giorno, workflow con l'ultimo run su
 main fallito). Chi trova una di queste issue ripara la causa: URL nuovo solo se verificato con
 una richiesta reale sulla fonte, altrimenti domanda ad Alessandro.
@@ -154,6 +154,14 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
   Uso consentito dalle note legali CEI (scopo formativo, non commerciale, testo integrale, fonte citata).
 - **Letture (ripiego, CEI 1974)** (Evangelizo): `https://feed.evangelizo.org/v2/reader.php?date=AAAAMMGG&type=all&lang=IT`
   — usate solo se la CEI non risponde.
+- **Le parole dei Papi** (Vatican News, dal 31/10/2026): sezione «Le Parole dei Papi» di
+  `https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno/AAAA/MM/GG.html`, scaricata al
+  deploy da `scripts/liturgia_cei.py --papi` in `data/parole_papi.json` (non versionato) e mostrata per
+  intero sotto le letture, con autore, occasione, data e link alla fonte; se non si legge la sezione
+  non compare. Le note legali di Vatican News chiedono un'autorizzazione scritta del Dicastero per la
+  Comunicazione per riprodurre i testi: Alessandro ha scelto il 31/10/2026 di pubblicare subito il
+  testo intero e di chiedere l'autorizzazione (bozza in Gmail). Se il Dicastero chiede di toglierlo,
+  basta togliere il passo «Le parole dei Papi del giorno» da `deploy.yml`.
 - **Calendario liturgico** (LitCal): `https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/AAAA?year_type=CIVIL`
 
 > Nota: questi feed sono bloccati dal proxy dell'ambiente di monitoraggio cloud.
