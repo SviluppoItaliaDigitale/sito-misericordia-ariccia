@@ -118,9 +118,11 @@ costi, bandi). I push che toccano solo la bacheca (`bacheca/`, `AGENTS.md`,
   di strumenti in commit, PR, commenti e file pubblicati; squash merge con
   messaggio scritto).
 
-## Parola della domenica sui social (dal 9/10/2026)
+## Parola della domenica e delle feste sui social (dal 9/10/2026; feste dal 31/10/2026)
 
-Ogni domenica alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
+Ogni domenica e nelle feste principali (feste di precetto, Ceneri, Giovedì e Venerdì santo, Defunti,
+Santo Stefano e solennità in settimana: `scripts/parola-domenica/calendario.json`, da LitCal, scelta di
+Alessandro del 31/10/2026) alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
 Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, poi iniziano
 le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
 di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
@@ -129,8 +131,9 @@ versetti più significativi delle letture, con il nome della lettura ben visibil
 breve delle «Parole dei Papi» di Vatican News (campo `parole_papi` della scheda, copiato identico e
 controllato con `letture.py --controlla`), senza pagine in più. Dal 25/10/2026
 il carosello è nello stile nazionale, come tutte le grafiche
-(`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara il mercoledì la routine cloud «Parola della domenica» (che riprova da giovedì a sabato e, se
-serve, domenica all'1:55 con il «recupero notturno»): scheda in
+(`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara la routine cloud «Parola della domenica e delle feste», ogni giorno alle 8:55 per
+i giorni della Parola dei prossimi 7 giorni (`calendario.py prossimi 7`), con il «recupero notturno»
+ogni notte all'1:55 se la scheda di oggi manca: scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
 

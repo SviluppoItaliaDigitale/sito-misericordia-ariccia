@@ -6,14 +6,15 @@ Testo da usare: CEI 2008, quello letto a Messa, dal sito ufficiale della CEI
 giorno del sito) usa ancora la traduzione CEI 1974: serve solo per i numeri dei versetti
 e come riserva se la pagina CEI non risponde.
 
-  letture.py                → la domenica che viene (di domenica: oggi, per il recupero notturno)
+  letture.py                → il prossimo giorno della Parola, domenica o festa, oggi compreso
+                              (calendario.py; di domenica o in una festa è oggi, per il recupero notturno)
   letture.py 2026-10-11     → quel giorno
   letture.py --controlla .github/social/parola/2026-11-01.json
                             → controlla che il brano «Le parole dei Papi» della scheda sia copiato
                               esatto da Vatican News, con la fonte giusta (esce con 1 se no)
   letture.py --fonte-papi [AAAA-MM-GG]
-                            → controlla che Vatican News dia «Le Parole dei Papi» della domenica
-                              che viene (esce con 1 se no: lo usa il controllo settimanale
+                            → controlla che Vatican News dia «Le Parole dei Papi» del prossimo
+                              giorno della Parola (esce con 1 se no: lo usa il controllo settimanale
                               in controllo-link.yml, che apre la issue «fonte-rotta»)
 
 Stampa un JSON: titolo liturgico; in "parole_dei_papi" il commento di un Papa alle letture
@@ -118,14 +119,16 @@ def controlla(file_scheda):
     return errori
 
 
-def domenica_che_viene():
-    oggi = dt.date.today()
-    return oggi + dt.timedelta(days=6 - oggi.weekday())  # di domenica è oggi
+def prossimo_giorno():
+    """Il prossimo giorno della Parola (domenica o festa del calendario), oggi compreso."""
+    from calendario import giorno_della_parola, oggi_roma  # noqa: PLC0415 — stesso cartella
+    oggi = oggi_roma()
+    return next(oggi + dt.timedelta(days=k) for k in range(8) if giorno_della_parola(oggi + dt.timedelta(days=k)))
 
 
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "--fonte-papi":
-        giorno = dt.date.fromisoformat(sys.argv[2]) if len(sys.argv) > 2 else domenica_che_viene()
+        giorno = dt.date.fromisoformat(sys.argv[2]) if len(sys.argv) > 2 else prossimo_giorno()
         url = VATICAN_NEWS.format(a=giorno.year, m=giorno.month, g=giorno.day)
         try:
             p = parole_dei_papi(giorno)
@@ -146,7 +149,7 @@ def main():
     if len(sys.argv) > 1:
         giorno = dt.date.fromisoformat(sys.argv[1])
     else:
-        giorno = domenica_che_viene()
+        giorno = prossimo_giorno()
     d = giorno.strftime("%Y%m%d")
     esito = {"data": giorno.isoformat(), "giorno_liturgico": leggi(URL.format(d=d, t="liturgic_t")).strip(),
              "letture": []}

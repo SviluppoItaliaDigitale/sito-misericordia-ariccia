@@ -1,0 +1,237 @@
+{
+ "nota": "Generato da scripts/parola-domenica/calendario.py aggiorna: non modificare a mano.",
+ "fonte": "https://litcal.johnromanodorazio.com/api/dev/calendar/nation/IT/AAAA?year_type=CIVIL",
+ "aggiornato": "2026-10-31",
+ "anni": [
+  2026,
+  2027,
+  2028
+ ],
+ "feste": {
+  "2026-01-01": {
+   "chiave": "MaryMotherOfGod",
+   "nome": "Maria Ss.ma Madre di Dio",
+   "titolo": "La Parola della festa"
+  },
+  "2026-01-06": {
+   "chiave": "Epiphany",
+   "nome": "Epifania",
+   "titolo": "La Parola della festa"
+  },
+  "2026-02-18": {
+   "chiave": "AshWednesday",
+   "nome": "Mercoledì delle Ceneri",
+   "titolo": "La Parola del giorno"
+  },
+  "2026-03-19": {
+   "chiave": "StJoseph",
+   "nome": "San Giuseppe Sposo della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2026-03-25": {
+   "chiave": "Annunciation",
+   "nome": "Annunciazione del Signore",
+   "titolo": "La Parola della festa"
+  },
+  "2026-04-02": {
+   "chiave": "HolyThurs",
+   "nome": "Giovedì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2026-04-03": {
+   "chiave": "GoodFri",
+   "nome": "Venerdì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2026-06-12": {
+   "chiave": "SacredHeart",
+   "nome": "Sacratissimo Cuore di Gesù",
+   "titolo": "La Parola della festa"
+  },
+  "2026-06-24": {
+   "chiave": "NativityJohnBaptist",
+   "nome": "Natività di San Giovanni Battista",
+   "titolo": "La Parola della festa"
+  },
+  "2026-06-29": {
+   "chiave": "StsPeterPaulAp",
+   "nome": "Santi Pietro e Paolo, Apostoli",
+   "titolo": "La Parola della festa"
+  },
+  "2026-08-15": {
+   "chiave": "Assumption",
+   "nome": "Assunzione della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2026-11-02": {
+   "chiave": "AllSouls",
+   "nome": "Commemorazione di tutti i defunti",
+   "titolo": "La Parola del giorno"
+  },
+  "2026-12-08": {
+   "chiave": "ImmaculateConception",
+   "nome": "Immacolata Concezione della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2026-12-25": {
+   "chiave": "Christmas",
+   "nome": "Natale",
+   "titolo": "La Parola della festa"
+  },
+  "2026-12-26": {
+   "chiave": "StStephenProtomartyr",
+   "nome": "Santo Stefano, protomartire",
+   "titolo": "La Parola della festa"
+  },
+  "2027-01-01": {
+   "chiave": "MaryMotherOfGod",
+   "nome": "Maria Ss.ma Madre di Dio",
+   "titolo": "La Parola della festa"
+  },
+  "2027-01-06": {
+   "chiave": "Epiphany",
+   "nome": "Epifania",
+   "titolo": "La Parola della festa"
+  },
+  "2027-02-10": {
+   "chiave": "AshWednesday",
+   "nome": "Mercoledì delle Ceneri",
+   "titolo": "La Parola del giorno"
+  },
+  "2027-03-19": {
+   "chiave": "StJoseph",
+   "nome": "San Giuseppe Sposo della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2027-03-25": {
+   "chiave": "HolyThurs",
+   "nome": "Giovedì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2027-03-26": {
+   "chiave": "GoodFri",
+   "nome": "Venerdì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2027-04-05": {
+   "chiave": "Annunciation",
+   "nome": "Annunciazione del Signore",
+   "titolo": "La Parola della festa"
+  },
+  "2027-06-04": {
+   "chiave": "SacredHeart",
+   "nome": "Sacratissimo Cuore di Gesù",
+   "titolo": "La Parola della festa"
+  },
+  "2027-06-24": {
+   "chiave": "NativityJohnBaptist",
+   "nome": "Natività di San Giovanni Battista",
+   "titolo": "La Parola della festa"
+  },
+  "2027-06-29": {
+   "chiave": "StsPeterPaulAp",
+   "nome": "Santi Pietro e Paolo, Apostoli",
+   "titolo": "La Parola della festa"
+  },
+  "2027-11-01": {
+   "chiave": "AllSaints",
+   "nome": "Tutti i Santi",
+   "titolo": "La Parola della festa"
+  },
+  "2027-11-02": {
+   "chiave": "AllSouls",
+   "nome": "Commemorazione di tutti i defunti",
+   "titolo": "La Parola del giorno"
+  },
+  "2027-12-08": {
+   "chiave": "ImmaculateConception",
+   "nome": "Immacolata Concezione della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2027-12-25": {
+   "chiave": "Christmas",
+   "nome": "Natale",
+   "titolo": "La Parola della festa"
+  },
+  "2028-01-01": {
+   "chiave": "MaryMotherOfGod",
+   "nome": "Maria Ss.ma Madre di Dio",
+   "titolo": "La Parola della festa"
+  },
+  "2028-01-06": {
+   "chiave": "Epiphany",
+   "nome": "Epifania",
+   "titolo": "La Parola della festa"
+  },
+  "2028-03-01": {
+   "chiave": "AshWednesday",
+   "nome": "Mercoledì delle Ceneri",
+   "titolo": "La Parola del giorno"
+  },
+  "2028-03-20": {
+   "chiave": "StJoseph",
+   "nome": "San Giuseppe Sposo della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2028-03-25": {
+   "chiave": "Annunciation",
+   "nome": "Annunciazione del Signore",
+   "titolo": "La Parola della festa"
+  },
+  "2028-04-13": {
+   "chiave": "HolyThurs",
+   "nome": "Giovedì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2028-04-14": {
+   "chiave": "GoodFri",
+   "nome": "Venerdì Santo",
+   "titolo": "La Parola del giorno"
+  },
+  "2028-06-23": {
+   "chiave": "SacredHeart",
+   "nome": "Sacratissimo Cuore di Gesù",
+   "titolo": "La Parola della festa"
+  },
+  "2028-06-24": {
+   "chiave": "NativityJohnBaptist",
+   "nome": "Natività di San Giovanni Battista",
+   "titolo": "La Parola della festa"
+  },
+  "2028-06-29": {
+   "chiave": "StsPeterPaulAp",
+   "nome": "Santi Pietro e Paolo, Apostoli",
+   "titolo": "La Parola della festa"
+  },
+  "2028-08-15": {
+   "chiave": "Assumption",
+   "nome": "Assunzione della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2028-11-01": {
+   "chiave": "AllSaints",
+   "nome": "Tutti i Santi",
+   "titolo": "La Parola della festa"
+  },
+  "2028-11-02": {
+   "chiave": "AllSouls",
+   "nome": "Commemorazione di tutti i defunti",
+   "titolo": "La Parola del giorno"
+  },
+  "2028-12-08": {
+   "chiave": "ImmaculateConception",
+   "nome": "Immacolata Concezione della Beata Vergine Maria",
+   "titolo": "La Parola della festa"
+  },
+  "2028-12-25": {
+   "chiave": "Christmas",
+   "nome": "Natale",
+   "titolo": "La Parola della festa"
+  },
+  "2028-12-26": {
+   "chiave": "StStephenProtomartyr",
+   "nome": "Santo Stefano, protomartire",
+   "titolo": "La Parola della festa"
+  }
+ }
+}

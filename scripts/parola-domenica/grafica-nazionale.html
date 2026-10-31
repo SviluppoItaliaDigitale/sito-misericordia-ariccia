@@ -51,7 +51,7 @@ body{width:1080px;height:1350px;overflow:hidden;position:relative;font-family:Mo
 <body>
 <section class="tavola" id="copertina" hidden>
   <div class="fascia"></div>
-  <div class="tema"><span>LA PAROLA</span>&nbsp;<b>DELLA DOMENICA</b></div>
+  <div class="tema"><span>LA PAROLA</span>&nbsp;<b class="tema-giorno">DELLA DOMENICA</b></div>
   <img class="logo" src="../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
   <div class="testa" id="c-testa"><div class="giorno" id="c-giorno"></div><div class="data" id="c-data"></div></div>
   <img class="opera" id="c-img" alt="">
@@ -65,7 +65,7 @@ body{width:1080px;height:1350px;overflow:hidden;position:relative;font-family:Mo
 </section>
 <section class="tavola" id="pagina" hidden>
   <div class="fascia"></div>
-  <div class="tema"><span>LA PAROLA</span>&nbsp;<b>DELLA DOMENICA</b></div>
+  <div class="tema"><span>LA PAROLA</span>&nbsp;<b class="tema-giorno">DELLA DOMENICA</b></div>
   <img class="logo" src="../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
   <div class="lettura"><h2 id="p-nome"></h2><p id="p-libro"></p></div>
   <div class="parola"><p class="versetto" id="p-versetto"></p><p class="rif" id="p-rif"></p></div>
@@ -79,6 +79,10 @@ const MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','
 const data = s => { const [a, m, g] = s.data.split('-').map(Number); return `${g} ${MESI[m - 1]} ${a}`; };
 const $ = id => document.getElementById(id);
 const maiuscola = t => t.charAt(0).toUpperCase() + t.slice(1);
+// Dal 31/10/2026 la Parola esce anche nelle feste: «titolo» della scheda (da calendario.py) è
+// «La Parola della domenica», «La Parola della festa» o «La Parola del giorno»; senza, domenica.
+const tema = s => { const fine = (s.titolo || 'La Parola della domenica').replace(/^La Parola\s+/i, '').toUpperCase();
+  document.querySelectorAll('.tema-giorno').forEach(b => { b.textContent = fine; }); };
 
 // Nessuna scritta deve toccare logo, frecce o opera, né uscire dalla tavola; il tema non deve arrivare al triangolo.
 const controlli = (pagina) => {
@@ -108,6 +112,7 @@ const controlli = (pagina) => {
 // Copertina: l'opera INTERA (mai ritagliata), più grande possibile nello spazio tra la data e le scritte sotto.
 window.copertina = async (s, immagine, n) => {
   const p = $('copertina'); p.hidden = false;
+  tema(s);
   $('c-giorno').textContent = s.giorno_liturgico;
   $('c-data').textContent = data(s);
   const o = s.opera;
@@ -133,6 +138,7 @@ window.copertina = async (s, immagine, n) => {
 
 // Pagina del versetto: si capisce subito da quale lettura viene; l'ultima rimanda alle letture complete.
 window.versetto = async (s, i, n, primo) => {
+  tema(s);
   const p = $('pagina'); p.hidden = false;
   const v = s.pagine[i];
   $('p-nome').textContent = v.lettura;
