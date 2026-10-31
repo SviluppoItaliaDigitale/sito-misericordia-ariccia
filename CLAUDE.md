@@ -129,7 +129,9 @@ di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola oper
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
 versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 30/10/2026 il testo del post riporta anche un brano
 breve delle «Parole dei Papi» di Vatican News (campo `parole_papi` della scheda, copiato identico e
-controllato con `letture.py --controlla`), senza pagine in più. Dal 25/10/2026
+controllato con `letture.py --controlla`), senza pagine in più: **sempre**, in ogni scheda (Alessandro,
+31/10/2026: «ricordati sempre la parola dei Papi»); senza brano solo se Vatican News è guasto, con
+`parole_papi_motivo`, e la prova del calendario lo verifica. Dal 25/10/2026
 il carosello è nello stile nazionale, come tutte le grafiche
 (`scripts/parola-domenica/grafica-nazionale.html`). Lo prepara la routine cloud «Parola della domenica e delle feste», ogni giorno alle 8:55 per
 i giorni della Parola dei prossimi 7 giorni (`calendario.py prossimi 7`), con il «recupero notturno»

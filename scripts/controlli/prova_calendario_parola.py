@@ -4,7 +4,7 @@
 Controlla che scripts/parola-domenica/calendario.json copra almeno i prossimi 180 giorni (se no:
 «calendario.py aggiorna»), che dia le date giuste in casi noti verificati su LitCal (spostamenti
 compresi), che ogni scheda in .github/social/parola/ cada in un giorno della Parola con il titolo
-giusto e che il testo dei post di una festa non parli di «domenica». Esce con 1 se un caso non va.
+giusto e con «Le parole dei Papi» (dal 1/11/2026), e che il testo dei post di una festa non parli di «domenica». Esce con 1 se un caso non va.
 Solo libreria standard.
 """
 import datetime as dt
@@ -60,6 +60,13 @@ for f in sorted((REPO / ".github/social/parola").glob("*.json")):
     attesa(g is not None, f"{f.name}: il {giorno} non è un giorno della Parola")
     if g:
         attesa(ps.titolo_parola(s) == g["titolo"], f"{f.name}: titolo «{ps.titolo_parola(s)}», in calendario «{g['titolo']}»")
+    # «Le parole dei Papi» sempre (Alessandro, 31/10/2026), salvo guasto di Vatican News dichiarato
+    if giorno >= dt.date(2026, 11, 1):
+        p = s.get("parole_papi") or {}
+        ha_brano = bool((p.get("testo") or "").strip() and (p.get("fonte") or "").strip())
+        motivo = (s.get("parole_papi_motivo") or "").strip()
+        attesa(ha_brano or motivo, f"{f.name}: mancano «Le parole dei Papi» (o «parole_papi_motivo» se Vatican News è guasto)")
+        attesa(not (ha_brano and motivo), f"{f.name}: c'è il brano dei Papi, togliere «parole_papi_motivo»")
 
 festa = {"data": "2026-12-08", "titolo": cal.FESTA, "giorno_liturgico": "Immacolata Concezione della Beata Vergine Maria",
          "testo_social": "Prova.", "opera": None,

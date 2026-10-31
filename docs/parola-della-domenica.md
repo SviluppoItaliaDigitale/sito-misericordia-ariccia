@@ -107,7 +107,7 @@ essere pronto entro la mattina presto del suo giorno):
      scrivere l'artista vero leggendo la descrizione o le firme incise.
    - Se non c'è un'opera adatta: `"opera": null` (niente copertina, il carosello parte dal
      primo versetto).
-4. **Le parole dei Papi** (dal 30/10/2026, facoltative; richiesta di Alessandro: «integrare questa
+4. **Le parole dei Papi** (dal 30/10/2026, **obbligatorie dal 31/10/2026**: «ricordati sempre la parola dei Papi»; richiesta di Alessandro: «integrare questa
    sezione nelle letture della domenica, non facendo altre slide, ma soltanto il testo per i social»).
    È la sezione «Le Parole dei Papi» della pagina [Vangelo del giorno di Vatican News](https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html),
    già linkata dalla Liturgia del giorno del sito: un commento di un Papa alle letture di quel giorno,
@@ -120,8 +120,13 @@ essere pronto entro la mattina presto del suo giorno):
    - `fonte`: la parentesi finale di Vatican News, identica (es. «Papa Leone XIV, Omelia, 1° novembre 2025»).
    - Se il commento cita un brano diverso da quello letto la domenica (Vatican News a volte riprende
      l'Angelus su un passo parallelo di un altro evangelista, come il 25/10/2026: Mc 12 invece di Mt 22),
-     scegliere frasi senza quel riferimento; se non ce ne sono, o Vatican News non risponde, il campo
-     non si mette (se `letture.py` scrive «GUASTO», si dice nel riepilogo).
+     scegliere frasi senza quel riferimento: un brano adatto si trova sempre.
+   - **Ci sono in ogni scheda.** L'unica eccezione è Vatican News che non risponde o non ha la
+     sezione (`letture.py` scrive «GUASTO» o «non trovata»): allora `"parole_papi": null` e
+     `"parole_papi_motivo"` con il motivo e la data, e si dice nel riepilogo. La routine di ogni giorno
+     ricontrolla le schede dei prossimi 7 giorni e, appena la fonte torna, aggiunge il brano e toglie
+     il motivo. La prova `prova_calendario_parola.py` si ferma su ogni scheda dal 1/11/2026 senza
+     brano e senza motivo.
    - La fonte è sorvegliata: ogni mercoledì alle 6:23 il workflow «Controllo link del sito» lancia
      `letture.py --fonte-papi` sul prossimo giorno della Parola; se la sezione non si legge il run diventa
      rosso e si apre la issue «Parole dei Papi: fonte Vatican News non leggibile» (label
@@ -146,7 +151,8 @@ essere pronto entro la mattina presto del suo giorno):
      `fonte_lettura` (formula della Messa: «Dal libro del profeta Isaia», «Dalla lettera di
      san Paolo apostolo ai Filippesi», «Dal Vangelo secondo Matteo»…), `riferimento`
      (abbreviazioni CEI: Mt, Mc, Lc, Gv, Is, Fil…), `versetto`, `evidenza`;
-   - `parole_papi` (facoltativo, passo 4): `testo` (il brano) e `fonte`.
+   - `parole_papi` (obbligatorio, passo 4): `testo` (il brano) e `fonte`; solo se Vatican News non
+     risponde, `null` con `parole_papi_motivo`.
 7. **Grafica**: `cd scripts/parola-domenica && npm ci` (la prima volta), poi
    `node scripts/parola-domenica/rendi.js SCHEDA.json static/img/parola OPERA.jpg`
    (senza opera: senza l'ultimo argomento). **Aprire ogni JPEG e guardarlo**: opera intera

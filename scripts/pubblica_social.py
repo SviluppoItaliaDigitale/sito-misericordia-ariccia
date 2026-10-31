@@ -550,7 +550,7 @@ def alt_parola(s):
 
 
 def blocco_papi(s):
-    """«Le parole dei Papi» (dal 30/10/2026, facoltative): un brano breve del commento alle letture che Vatican News
+    """«Le parole dei Papi» (dal 30/10/2026, obbligatorie dal 31/10/2026 salvo guasto di Vatican News): un brano breve del commento alle letture che Vatican News
     pubblica nella pagina del Vangelo del giorno, copiato esatto e con la fonte. Solo testo, nessuna pagina in più."""
     p = s.get("parole_papi") or {}
     if not (p.get("testo") or "").strip() or not (p.get("fonte") or "").strip():
