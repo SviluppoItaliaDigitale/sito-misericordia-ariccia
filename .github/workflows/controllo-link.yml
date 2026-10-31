@@ -138,7 +138,7 @@ jobs:
             echo "$esito"
             echo
             echo "Pagina generale: https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html"
-            echo "Procedura: docs/parola-della-domenica.md, passo 4. Finché il guasto resta, la Parola della domenica esce senza «Le parole dei Papi»."
+            echo "Procedura: docs/parola-della-domenica.md, passo 4. Finché il guasto resta, la Parola esce senza «Le parole dei Papi» e la Liturgia del giorno del sito non le mostra."
             echo
             echo "Ultimo controllo: [run ${GITHUB_RUN_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}), $(TZ=Europe/Rome date '+%d/%m/%Y %H:%M') ora italiana."
           } > corpo.md

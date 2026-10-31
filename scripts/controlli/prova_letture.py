@@ -7,7 +7,9 @@ dal feed Evangelizo, connessione chiusa dalla pagina CEI) e la prova controlla c
      (3 e 6 secondi; qui le attese si registrano, non si aspetta davvero);
   2. un 404 arrivi subito a chi chiama, senza altri tentativi;
   3. un 403 che non passa arrivi a chi chiama dopo cinque tentativi (attese 3, 6, 12, 24);
-  4. liturgia_cei.py (Liturgia del giorno) e letture.py (Parola della domenica) usino scarica().
+  4. liturgia_cei.py (Liturgia del giorno) e letture.py (Parola della domenica) usino scarica();
+  5. la sezione «Le Parole dei Papi» di Vatican News (dal 31/10/2026) si legga a paragrafi, con la
+     fonte tolta dal testo, e una pagina senza la sezione dia None.
 Esce con 1 se un caso non va come deve. Solo libreria standard. Uso: prova_letture.py
 """
 import http.server
@@ -36,7 +38,10 @@ class Fonte(http.server.BaseHTTPRequestHandler):
             self.close_connection = True
             self.connection.shutdown(socket.SHUT_RDWR)
             return
-        corpo = b"ok" if codice == 200 else b""
+        if isinstance(codice, str):  # pagina HTML di prova, servita con 200
+            codice, corpo = 200, codice.encode("utf-8")
+        else:
+            corpo = b"ok" if codice == 200 else b""
         self.send_response(codice)
         self.send_header("Content-Length", str(len(corpo)))
         self.end_headers()
@@ -97,11 +102,27 @@ def main():
         testo = letture.leggi(base + "/feed")
         return testo == "ok" and richieste["/feed"] == 2, f"{richieste['/feed']} richieste"
 
+    def parole_papi():
+        import datetime as dt
+        pagina = ("<html><section><div class=\"section__head\"><h2>Le Parole dei Papi</h2></div>"
+                  "<div class=\"section__content\"><p style=\"x\">Primo paragrafo con <em>corsivo</em> e perch&eacute;.</p>"
+                  "<p>Secondo paragrafo, la gioia<br/>del Vangelo. (Papa Leone XIV, Angelus, 2 novembre 2025)</p></div>"
+                  "</section><section>altro</section></html>")
+        risposte["/vn/2026/11/02.html"] = [503, pagina]
+        risposte["/vn/2026/11/03.html"] = ["<html><h2>Altro</h2></html>"]
+        liturgia_cei.VATICAN_NEWS = base + "/vn/{a}/{m:02d}/{g:02d}.html"
+        p = liturgia_cei.parole_dei_papi(dt.date(2026, 11, 2))
+        attese_ok = p and p["paragrafi"] == ["Primo paragrafo con corsivo e perché.", "Secondo paragrafo, la gioia del Vangelo."] \
+            and p["fonte"] == "Papa Leone XIV, Angelus, 2 novembre 2025" and "Leone" not in p["testo"]
+        assente = liturgia_cei.parole_dei_papi(dt.date(2026, 11, 3)) is None
+        return bool(attese_ok and assente), f"{p} / sezione assente → None: {assente}"
+
     casi = [("403 e connessione chiusa, poi 200: lo scarico riesce, con attese crescenti", passeggero),
             ("404: arriva subito a chi chiama, senza altri tentativi", sparito),
             ("403 che non passa: arriva a chi chiama dopo cinque tentativi", sempre403),
             ("liturgia_cei.py riprova sulla pagina CEI", pagina_cei),
-            ("letture.py riprova sul feed Evangelizo", feed_evangelizo)]
+            ("letture.py riprova sul feed Evangelizo", feed_evangelizo),
+            ("Le parole dei Papi: paragrafi, fonte e sezione assente", parole_papi)]
     falliti = 0
     for nome, caso in casi:
         try:

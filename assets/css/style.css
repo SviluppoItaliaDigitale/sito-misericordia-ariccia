@@ -1043,6 +1043,10 @@ a:hover { color: var(--mise-navy); }
 .lit-fonte { font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy); margin-bottom: .6rem; }
 .lit-rif { font-weight: 400; color: var(--mise-ciano-testo); margin-left: .3rem; }
 .lit-r { color: var(--mise-ciano-testo); }
+.contenuto .lit-papi-testo { font-style: normal; margin: .8rem 0 0; padding: 1rem 1.2rem; background: var(--mise-ciano-velo); border-left: 4px solid var(--mise-giallo); border-radius: .6rem; line-height: 1.8; }
+.contenuto .lit-papi-testo p { margin: 0 0 .8rem; }
+.contenuto .lit-papi-testo footer { font-family: "Jost", sans-serif; font-weight: 600; color: var(--mise-navy); }
+.contenuto .lit-papi-testo cite { font-style: normal; }
 .lit-chiusura { font-style: italic; color: var(--mise-navy); }
 @media (max-width: 575.98px) { .lit-vn-link { grid-template-columns: 1fr; } }
 
