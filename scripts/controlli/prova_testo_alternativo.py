@@ -220,14 +220,14 @@ for f in sorted((REPO / ".github/social/parola").glob("*.json")):
         attesa(t.startswith(f"{v['lettura']}, {v['riferimento']}: «{v['versetto'].strip()}»"), f"{f.name}: versetto non intero in «{t[:60]}»")
     if s.get("opera"):
         o = s["opera"]
-        attesa(all(x in testi[0] for x in ("La Parola della domenica", s["giorno_liturgico"], o["titolo"], o["autore"])),
+        attesa(all(x in testi[0] for x in (ps.titolo_parola(s), s["giorno_liturgico"], o["titolo"], o["autore"])),
                f"{f.name}: copertina senza giorno, titolo o autore: «{testi[0]}»")
 # 10. testo dei post della Parola: Instagram entro 2200 caratteri con link e hashtag; «Le parole dei Papi»
 # (dal 30/10/2026) brevi, con la fonte, in tutti e due i post; se il testo è troppo lungo escono solo da Instagram
 for f in sorted((REPO / ".github/social/parola").glob("*.json")):
     s = json.loads(f.read_text(encoding="utf-8"))
     ig, fb = ps.testo_parola(s, "instagram"), ps.testo_parola(s, "facebook")
-    attesa(len(ig) <= 2200 and ig.endswith(ps.HASHTAG_PAROLA), f"{f.name}: post Instagram di {len(ig)} caratteri o senza hashtag")
+    attesa(len(ig) <= 2200 and ig.endswith(ps.hashtag_parola(s)), f"{f.name}: post Instagram di {len(ig)} caratteri o senza hashtag")
     p = s.get("parole_papi")
     if p:
         attesa(len(p["testo"]) <= 500, f"{f.name}: «Le parole dei Papi» di {len(p['testo'])} caratteri (al massimo 500)")

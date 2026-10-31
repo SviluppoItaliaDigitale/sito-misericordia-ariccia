@@ -113,6 +113,11 @@ jobs:
       - name: Prova del testo alternativo dei post
         run: python3 scripts/controlli/prova_testo_alternativo.py public/news/index.json
 
+      # Calendario della Parola (domeniche e feste, dal 31/10/2026): copertura di almeno 180 giorni,
+      # date note verificate su LitCal, schede nei giorni giusti con il titolo giusto, testi delle feste.
+      - name: Prova del calendario della Parola
+        run: python3 scripts/controlli/prova_calendario_parola.py
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

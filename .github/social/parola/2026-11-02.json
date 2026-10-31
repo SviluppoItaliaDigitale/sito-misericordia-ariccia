@@ -1,0 +1,45 @@
+{
+  "data": "2026-11-02",
+  "titolo": "La Parola del giorno",
+  "giorno_liturgico": "Commemorazione di tutti i fedeli defunti",
+  "opera": {
+    "autore": "James Tissot",
+    "titolo": "Gesù insegna nelle sinagoghe",
+    "anno": "1886-1894",
+    "luogo": "Brooklyn Museum, New York",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_Jesus_Teaches_in_the_Synagogues_(J%C3%A9sus_enseigne_dans_les_synagogues)_-_James_Tissot.jpg",
+    "illustra": "Vangelo, Gv 6,37-40",
+    "scena": "Gesù insegna in una sinagoga, come a Cafàrnao, dove promette di non perdere nessuno di quelli che il Padre gli ha dato."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro di Giobbe",
+      "riferimento": "Gb 19,25",
+      "versetto": "Io so che il mio redentore è vivo e che, ultimo, si ergerà sulla polvere!",
+      "evidenza": "il mio redentore è vivo"
+    },
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla lettera di san Paolo apostolo ai Romani",
+      "riferimento": "Rm 5,5",
+      "versetto": "La speranza non delude, perché l'amore di Dio è stato riversato nei nostri cuori per mezzo dello Spirito Santo che ci è stato dato.",
+      "evidenza": "La speranza non delude"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Giovanni",
+      "riferimento": "Gv 6,40",
+      "versetto": "Questa infatti è la volontà del Padre mio: che chiunque vede il Figlio e crede in lui abbia la vita eterna; e io lo risusciterò nell'ultimo giorno.",
+      "evidenza": "abbia la vita eterna"
+    }
+  ],
+  "parole_papi": {
+    "testo": "La risurrezione dai morti di Gesù, il Crocifisso, in questi giorni di inizio novembre illumina il destino di ognuno di noi. (…) Da quell’annuncio sorge la speranza che nessuno andrà perduto. La visita al cimitero, in cui il silenzio interrompe la frenesia del fare, sia dunque per tutti noi un invito alla memoria e all’attesa.",
+    "fonte": "Papa Leone XIV, Angelus, 2 novembre 2025"
+  },
+  "testo_social": "Oggi la Chiesa ricorda tutti i fedeli defunti. Giobbe, nel dolore, dice con forza che il suo redentore è vivo. San Paolo ci assicura che la speranza non delude, perché nasce dall'amore di Dio. Nel Vangelo Gesù promette di non perdere nessuno di quelli che il Padre gli ha affidato. Nella preghiera ricordiamo i nostri cari, i confratelli e le consorelle che ci hanno preceduto e tutte le persone che abbiamo assistito.",
+  "preparata_da": "Alessandro Cuollo, 2026-10-31",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}

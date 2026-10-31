@@ -1,6 +1,6 @@
-# La Parola della domenica (solo social)
+# La Parola della domenica e delle feste (solo social)
 
-Ogni domenica alle **4:47** esce su Facebook (album) e Instagram (carosello) un
+Ogni domenica e nelle feste principali (dal 31/10/2026, § «Domeniche e feste») alle **4:47** esce su Facebook (album) e Instagram (carosello) un
 **carosello**: in copertina **una sola opera d'arte, intera**, con scritto quale lettura
 illustra; poi **una pagina per ogni versetto** scelto tra prima lettura, seconda lettura e
 Vangelo, ognuna con il nome della lettura ben visibile. Nel testo del post, dal 30/10/2026, c'è
@@ -14,33 +14,70 @@ essere chiaro **a quale lettura si riferisce**; basta **una sola opera**.
 
 | Cosa | Dove |
 |---|---|
-| Scheda della domenica | `.github/social/parola/AAAA-MM-GG.json` |
+| Scheda del giorno | `.github/social/parola/AAAA-MM-GG.json` |
 | Pagine del carosello (online col deploy) | `static/img/parola/AAAA-MM-GG-1.jpg`, `-2.jpg`… |
-| Grafica | **stile nazionale delle Misericordie, da domenica 25/10/2026** (approvato da Alessandro il 21/10/2026: «fai tutto uniformato»), costruito con gli elementi dei modelli del carosello della Confederazione (`scripts/grafica-brand/modelli-nazionali/`): **copertina** blu con la fascia bianca «LA PAROLA DELLA DOMENICA» e il triangolo, giorno liturgico e data, l'**opera intera** (mai ritagliata), l'etichetta gialla con la lettura che illustra, la scena e i crediti; **pagine dei versetti** chiare con la fascia blu, il nome della lettura grande e il libro, il versetto con l'evidenza gialla e il riferimento sottolineato; nell'**ultima pagina** il rimando a «misericordia-ariccia.it/liturgia-del-giorno» al posto delle frecce. Colori, Montserrat, fascia, triangolo, evidenziatore e frecce sono quelli del kit; niente cornici decorative, filigrane o altri loghi. Ogni pagina ha la firma «Misericordia di Ariccia» in basso a sinistra (elemento `data-firma`) e una **cornice di microtesto** lungo i bordi (nome, sito, «grafica della Confraternita di Misericordia di Ariccia ODV», anno), incisa da `rendi.js` con il motore `scripts/grafica-brand/firma-e-cornice.js`: invisibile da lontano, leggibile ingrandendo. Le scritte non toccano mai opera, triangolo e frecce, non si sovrappongono fra loro e non escono dalla pagina: `rendi.js` lo controlla da solo. Lo stile precedente (cornice dorata, gigli di Firenze, simbolo in filigrana a rotazione) resta solo nelle pagine già pubblicate fino al 18/10/2026 |
-| Strumenti | `scripts/parola-domenica/` (`letture.py`, `opera.py`, `grafica-nazionale.html`, `rendi.js`); `grafica.html` è lo stile precedente e si usa solo per rifare una pagina già pubblicata (`GRAFICA=grafica.html`) |
-| Pubblicazione | workflow «Parola della domenica (social)» → `pubblica_social.py --parola` |
+| Grafica | **stile nazionale delle Misericordie, da domenica 25/10/2026** (approvato da Alessandro il 21/10/2026: «fai tutto uniformato»), costruito con gli elementi dei modelli del carosello della Confederazione (`scripts/grafica-brand/modelli-nazionali/`): **copertina** blu con la fascia bianca «LA PAROLA DELLA DOMENICA» (nelle feste «DELLA FESTA» o «DEL GIORNO», dal campo `titolo`) e il triangolo, giorno liturgico e data, l'**opera intera** (mai ritagliata), l'etichetta gialla con la lettura che illustra, la scena e i crediti; **pagine dei versetti** chiare con la fascia blu, il nome della lettura grande e il libro, il versetto con l'evidenza gialla e il riferimento sottolineato; nell'**ultima pagina** il rimando a «misericordia-ariccia.it/liturgia-del-giorno» al posto delle frecce. Colori, Montserrat, fascia, triangolo, evidenziatore e frecce sono quelli del kit; niente cornici decorative, filigrane o altri loghi. Ogni pagina ha la firma «Misericordia di Ariccia» in basso a sinistra (elemento `data-firma`) e una **cornice di microtesto** lungo i bordi (nome, sito, «grafica della Confraternita di Misericordia di Ariccia ODV», anno), incisa da `rendi.js` con il motore `scripts/grafica-brand/firma-e-cornice.js`: invisibile da lontano, leggibile ingrandendo. Le scritte non toccano mai opera, triangolo e frecce, non si sovrappongono fra loro e non escono dalla pagina: `rendi.js` lo controlla da solo. Lo stile precedente (cornice dorata, gigli di Firenze, simbolo in filigrana a rotazione) resta solo nelle pagine già pubblicate fino al 18/10/2026 |
+| Strumenti | `scripts/parola-domenica/` (`calendario.py` con `calendario.json`, `letture.py`, `opera.py`, `grafica-nazionale.html`, `rendi.js`); `grafica.html` è lo stile precedente e si usa solo per rifare una pagina già pubblicata (`GRAFICA=grafica.html`) |
+| Pubblicazione | workflow «Parola della domenica e delle feste (social)» (`parola-domenica.yml`) → `pubblica_social.py --parola` |
 | Registro dei post | `.github/social/pubblicati.json`, chiave `parola-AAAA-MM-GG` |
 
-## Procedura settimanale (la routine del mercoledì, con recuperi)
+## Domeniche e feste (dal 31/10/2026)
 
-Si prepara **la domenica che viene**. Se la scheda c'è già, non si fa nulla.
+Scelta di Alessandro del 31/10/2026: la Parola esce **ogni domenica e nelle feste più importanti**
+che cadono in settimana:
+- le feste di precetto: Maria Madre di Dio (1/1), Epifania (6/1), Assunta (15/8), Tutti i Santi
+  (1/11), Immacolata (8/12), Natale (25/12);
+- Mercoledì delle Ceneri, Giovedì santo, Venerdì santo;
+- Commemorazione dei defunti (2/11) e Santo Stefano (26/12);
+- tutte le solennità: San Giuseppe, Annunciazione, Sacro Cuore, Natività di San Giovanni
+  Battista, Santi Pietro e Paolo.
 
-**Se mercoledì salta il lavoro si recupera da soli** (regola di Alessandro: il carosello deve
-essere pronto entro domenica mattina presto):
-- la routine «Parola della domenica» gira **da mercoledì a sabato alle 8:55**: se la scheda della
-  domenica c'è già esce subito, altrimenti la prepara;
-- la routine «Parola della domenica — recupero notturno» gira **domenica all'1:55**: se manca
-  ancora, prepara la scheda di **oggi** e la mette online prima delle 4:47 (il deploy dura ~1 minuto);
-- **dalla mezzanotte alle 4:47** il workflow controlla ogni mezz'ora che scheda e pagine siano online; dalle 4:00 una mancanza fa fallire il giro e GitHub avvisa Alessandro per email;
+Le date vengono dal calendario liturgico italiano di **LitCal**, che applica già gli spostamenti
+(per esempio l'Annunciazione del 2027 va al 5 aprile, San Giuseppe del 2028 al 20 marzo). Sono
+salvate in `scripts/parola-domenica/calendario.json`, così il workflow di pubblicazione non dipende
+dalla rete; le domeniche si contano da sole. Comandi di `calendario.py`:
+- `prossimi 7`: i giorni della Parola da oggi ai prossimi 7 giorni, con il **titolo**;
+- `oggi [AAAA-MM-GG]`: esce con 0 se è un giorno della Parola, con 1 se no;
+- `aggiorna`: rifà `calendario.json` per quest'anno e i due dopo (la routine lo fa da sola
+  quando la copertura scende sotto un anno; la prova dei controlli si ferma sotto i 180 giorni).
+
+Il **titolo** va nella scheda (campo `titolo`) ed è quello di `calendario.py`: «La Parola della
+domenica»; «La Parola della festa» nelle feste e nelle solennità; «La Parola del giorno» il
+Mercoledì delle Ceneri, il Giovedì e il Venerdì santo e il 2 novembre, dove non si parla di festa.
+Cambia la fascia della grafica («DELLA FESTA», «DEL GIORNO»), l'inizio del post, il rimando
+(«le letture di oggi») e l'hashtag (`#VangeloDelGiorno` invece di `#VangeloDellaDomenica`). Se una
+solennità cade di domenica vale la domenica. La prova `scripts/controlli/prova_calendario_parola.py`,
+nei controlli di ogni PR, verifica date note, copertura, titoli delle schede e testi delle feste.
+
+Note per le feste:
+- **Natale** (e le altre feste con più Messe): si usano le letture della **Messa del giorno**.
+- **Giovedì santo**: le letture della Messa *in Coena Domini*, non della Messa del Crisma.
+- **Venerdì santo**: la Passione è lunghissima; si sceglie un versetto breve che si capisce da solo.
+- Nelle feste `giorno_liturgico` è il nome della festa (si correggono gli errori di battitura del
+  feed, come «Commemoriazione» del 2/11/2026).
+
+## Procedura (la routine di ogni giorno, con recuperi)
+
+Si prepara **ogni giorno della Parola dei prossimi 7 giorni** che non ha ancora la scheda, dal più
+vicino; se ce l'hanno tutti, non si fa nulla. Così una festa a metà settimana è pronta come la
+domenica, e quando due giorni sono vicini (domenica 1 e lunedì 2 novembre) si preparano insieme.
+
+**Se un giorno salta il lavoro si recupera da soli** (regola di Alessandro: il carosello deve
+essere pronto entro la mattina presto del suo giorno):
+- la routine «Parola della domenica e delle feste — preparazione» gira **ogni giorno alle 8:55**:
+  un giorno della Parola ha quindi sette occasioni per essere preparato;
+- la routine «… — recupero notturno» gira **ogni notte all'1:55**: se oggi è un giorno della
+  Parola e la scheda manca ancora, la prepara e la mette online prima delle 4:47 (il deploy dura ~1 minuto);
+- il workflow gira ogni notte ma lavora solo nei giorni della Parola: **dalla mezzanotte alle 4:47** controlla ogni mezz'ora che scheda e pagine siano online; dalle 4:00 una mancanza fa fallire il giro e GitHub avvisa Alessandro per email;
 - **dalle 4:47 alle 7:00** pubblica, ogni mezz'ora, ciò che ancora manca nel registro (i giri successivi a quello riuscito non fanno nulla). Tanti giri perché GitHub non garantisce gli avvii a orario: il 18/10/2026 ha saltato i due delle 4:47;
-- **dopo le 7:00 non si pubblica più** (regola di Alessandro del 18/10/2026: poi iniziano le Messe e non ha più senso): l'ultimo avvio utile è alle 6:50, anche a mano (l'avvio manuale rifiuta la pubblicazione vera fuori dalla finestra), e lo script ricontrolla l'ora prima di ogni social (`PAROLA_ENTRO`), così un giro lento non pubblica dopo le 7. A mano, entro le 7: Actions → «Parola della domenica (social)» → Run workflow con `prova` **tolta** (di default l'avvio manuale è solo una prova).
+- **dopo le 7:00 non si pubblica più** (regola di Alessandro del 18/10/2026: poi iniziano le Messe e non ha più senso): l'ultimo avvio utile è alle 6:50, anche a mano (l'avvio manuale rifiuta la pubblicazione vera fuori dalla finestra), e lo script ricontrolla l'ora prima di ogni social (`PAROLA_ENTRO`), così un giro lento non pubblica dopo le 7. A mano, entro le 7: Actions → «Parola della domenica e delle feste (social)» → Run workflow con `prova` **tolta** (di default l'avvio manuale è solo una prova).
 
-Di domenica `letture.py` senza data prende le letture di oggi.
+`letture.py` senza data prende il prossimo giorno della Parola, oggi compreso; la routine passa sempre la data.
 
-1. **Letture**: `python3 scripts/parola-domenica/letture.py` (oppure `letture.py AAAA-MM-GG`).
+1. **Letture**: `python3 scripts/parola-domenica/letture.py AAAA-MM-GG`.
    Dà il giorno liturgico e le letture riga per riga, con un numero di versetto
    **stimato** (tiene conto dei salti come «4,12-14.19-20»): controllarlo sempre.
-2. **Versetti** (da 1 a 4, di solito 2-3): i più belli e significativi della domenica, da
+2. **Versetti** (da 1 a 4, di solito 2-3): i più belli e significativi del giorno, da
    prima lettura, seconda lettura e Vangelo (il Salmo no). Non serve uno per lettura, ma il
    **Vangelo è obbligatorio**: almeno un versetto del Vangelo c'è sempre (`rendi.js` si
    rifiuta di creare il carosello senza).
@@ -70,7 +107,7 @@ Di domenica `letture.py` senza data prende le letture di oggi.
      scrivere l'artista vero leggendo la descrizione o le firme incise.
    - Se non c'è un'opera adatta: `"opera": null` (niente copertina, il carosello parte dal
      primo versetto).
-4. **Le parole dei Papi** (dal 30/10/2026, facoltative; richiesta di Alessandro: «integrare questa
+4. **Le parole dei Papi** (dal 30/10/2026, **obbligatorie dal 31/10/2026**: «ricordati sempre la parola dei Papi»; richiesta di Alessandro: «integrare questa
    sezione nelle letture della domenica, non facendo altre slide, ma soltanto il testo per i social»).
    È la sezione «Le Parole dei Papi» della pagina [Vangelo del giorno di Vatican News](https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html),
    già linkata dalla Liturgia del giorno del sito: un commento di un Papa alle letture di quel giorno,
@@ -83,22 +120,28 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    - `fonte`: la parentesi finale di Vatican News, identica (es. «Papa Leone XIV, Omelia, 1° novembre 2025»).
    - Se il commento cita un brano diverso da quello letto la domenica (Vatican News a volte riprende
      l'Angelus su un passo parallelo di un altro evangelista, come il 25/10/2026: Mc 12 invece di Mt 22),
-     scegliere frasi senza quel riferimento; se non ce ne sono, o Vatican News non risponde, il campo
-     non si mette (se `letture.py` scrive «GUASTO», si dice nel riepilogo).
+     scegliere frasi senza quel riferimento: un brano adatto si trova sempre.
+   - **Ci sono in ogni scheda.** L'unica eccezione è Vatican News che non risponde o non ha la
+     sezione (`letture.py` scrive «GUASTO» o «non trovata»): allora `"parole_papi": null` e
+     `"parole_papi_motivo"` con il motivo e la data, e si dice nel riepilogo. La routine di ogni giorno
+     ricontrolla le schede dei prossimi 7 giorni e, appena la fonte torna, aggiunge il brano e toglie
+     il motivo. La prova `prova_calendario_parola.py` si ferma su ogni scheda dal 1/11/2026 senza
+     brano e senza motivo.
    - La fonte è sorvegliata: ogni mercoledì alle 6:23 il workflow «Controllo link del sito» lancia
-     `letture.py --fonte-papi` sulla domenica che viene; se la sezione non si legge il run diventa
+     `letture.py --fonte-papi` sul prossimo giorno della Parola; se la sezione non si legge il run diventa
      rosso e si apre la issue «Parole dei Papi: fonte Vatican News non leggibile» (label
      `automazione` + `fonte-rotta`), che si chiude da sola al rientro.
    - **Controllo obbligatorio**: `python3 scripts/parola-domenica/letture.py --controlla SCHEDA.json`
      (esce con errore se un pezzo non è identico, se la fonte è diversa o se il brano supera 500 caratteri).
 5. **Testo del post** (`testo_social`): 3-5 frasi semplici che legano i versetti e, se viene
    naturale, il servizio della Misericordia (prossimità, cura, gratuità). Niente prediche,
-   frasi fatte o fatti inventati. Chiudere con «Buona domenica!». Versetti, «Le parole dei Papi»,
+   frasi fatte o fatti inventati. Chiudere con «Buona domenica!» (nelle feste un saluto adatto, come «Buona festa!» o «Buon Natale!»; il Venerdì santo e il 2 novembre nessun «buona»). Versetti, «Le parole dei Papi»,
    crediti dell'opera, link e hashtag li aggiunge lo script. Il post Instagram ha un limite di 2200
    caratteri: se lo supera, lo script lascia fuori il brano dei Papi (mai link e hashtag), e la prova
    «Testo alternativo nei post» dei controlli di ogni PR si ferma.
 6. **Scheda** `.github/social/parola/AAAA-MM-GG.json` (modello: quella del 2026-10-11):
-   - `data`, `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»),
+   - `data`, `titolo` (da `calendario.py`: «La Parola della domenica», «… della festa» o «… del giorno»),
+     `giorno_liturgico` (dal feed), `testo_social`, `traduzione` («CEI 2008 (chiesacattolica.it)»),
      `preparata_da` (esattamente «Alessandro Cuollo, AAAA-MM-GG», con la data di preparazione: i lavori
      sono sempre a sua firma, mai di uno strumento, e il controllo delle forme da non usare lo verifica);
    - `opera`: `autore`, `titolo` (in italiano), `anno`, `luogo` (museo), `licenza`, `fonte`
@@ -108,7 +151,8 @@ Di domenica `letture.py` senza data prende le letture di oggi.
      `fonte_lettura` (formula della Messa: «Dal libro del profeta Isaia», «Dalla lettera di
      san Paolo apostolo ai Filippesi», «Dal Vangelo secondo Matteo»…), `riferimento`
      (abbreviazioni CEI: Mt, Mc, Lc, Gv, Is, Fil…), `versetto`, `evidenza`;
-   - `parole_papi` (facoltativo, passo 4): `testo` (il brano) e `fonte`.
+   - `parole_papi` (obbligatorio, passo 4): `testo` (il brano) e `fonte`; solo se Vatican News non
+     risponde, `null` con `parole_papi_motivo`.
 7. **Grafica**: `cd scripts/parola-domenica && npm ci` (la prima volta), poi
    `node scripts/parola-domenica/rendi.js SCHEDA.json static/img/parola OPERA.jpg`
    (senza opera: senza l'ultimo argomento). **Aprire ogni JPEG e guardarlo**: opera intera
@@ -122,14 +166,13 @@ Di domenica `letture.py` senza data prende le letture di oggi.
    del sito» cerca nelle pagine in uscita.
 8. **Prova del testo**: `DRY_RUN=1 python3 scripts/pubblica_social.py --parola AAAA-MM-GG`.
 9. **Pubblicazione**: commit di scheda e pagine, PR, merge su `main` (il deploy mette
-   online le immagini). La domenica alle 4:47 il workflow pubblica da solo.
+   online le immagini). Il giorno stesso alle 4:47 il workflow pubblica da solo.
 
-## Domeniche e feste particolari
+## Domeniche che coincidono con una festa
 
 - Se la domenica coincide con una solennità (es. Ognissanti, Natale), le letture del feed
   sono già quelle giuste: usare il `giorno_liturgico` che dà il feed.
-- Le solennità infrasettimanali (Natale di mercoledì, Epifania…) non sono previste:
-  solo le domeniche.
+- Le feste che cadono in settimana sono previste dal 31/10/2026: § «Domeniche e feste».
 
 ## Se qualcosa va storto
 
@@ -146,8 +189,8 @@ Di domenica `letture.py` senza data prende le letture di oggi.
     `"traduzione": "CEI 1974 (Evangelizo)"`. Al deploy, `liturgia_cei.py` toglie il file delle letture
     CEI e la pagina Liturgia del giorno mostra il testo Evangelizo.
 
-- La domenica senza scheda il workflow fallisce con l'avviso «Nessuna Parola della
-  domenica»: si può preparare la scheda a mano e lanciare il workflow da Actions con
+- In un giorno della Parola senza scheda il workflow fallisce con l'avviso «Nessuna Parola
+  per il …»: si può preparare la scheda a mano e lanciare il workflow da Actions con
   `data` e `prova` tolta.
 - Pagine non online (deploy non andato): il workflow si ferma senza pubblicare.
 - Un post sbagliato si corregge o elimina con «🛠️ Gestione social».

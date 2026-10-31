@@ -16,8 +16,9 @@ Regole di sicurezza:
 Credenziali (secrets GitHub): META_PAGE_ID, META_PAGE_TOKEN, META_IG_USER_ID.
 Vedi docs/pubblicazione-social.md.
 
-Con --parola pubblica invece la «Parola della domenica» di oggi (solo social,
-nessuna pagina sul sito): scheda in .github/social/parola/AAAA-MM-GG.json e
+Con --parola pubblica invece la «Parola» di oggi, della domenica o di una festa
+(dal 31/10/2026; calendario in scripts/parola-domenica/calendario.json), solo social,
+nessuna pagina sul sito: scheda in .github/social/parola/AAAA-MM-GG.json e
 grafica già online in /img/parola/AAAA-MM-GG.jpg. Vedi docs/parola-della-domenica.md.
 
 Testo alternativo (dal 21/10/2026): le immagini di Instagram (news e carosello
@@ -479,6 +480,23 @@ SITO = "https://www.misericordia-ariccia.it"
 PAROLA_DIR = RADICE / ".github/social/parola"
 LITURGIA = SITO + "/liturgia-del-giorno/"
 HASHTAG_PAROLA = "#ParolaDiDio #VangeloDellaDomenica #MisericordiaAriccia #Misericordie #Ariccia"
+HASHTAG_PAROLA_FESTA = "#ParolaDiDio #VangeloDelGiorno #MisericordiaAriccia #Misericordie #Ariccia"
+PAROLA_DOMENICA = "La Parola della domenica"
+
+
+def titolo_parola(s):
+    """«La Parola della domenica», «La Parola della festa» o «La Parola del giorno» (campo «titolo» della
+    scheda, dal calendario; senza, la domenica come prima del 31/10/2026)."""
+    return (s.get("titolo") or PAROLA_DOMENICA).strip()
+
+
+def hashtag_parola(s):
+    return HASHTAG_PAROLA if titolo_parola(s) == PAROLA_DOMENICA else HASHTAG_PAROLA_FESTA
+
+
+def letture_di(s):
+    """«della domenica» o «di oggi», per il rimando alle letture complete."""
+    return "della domenica" if titolo_parola(s) == PAROLA_DOMENICA else "di oggi"
 
 
 def oggi_roma():
@@ -521,7 +539,7 @@ def alt_parola(s):
         scena = (o.get("scena") or "").strip()
         opera += f": {scena}" if scena else ""
         opera += "" if opera[-1] in ".!?…" else "."
-        testi.append(testo_alt(f"La Parola della domenica: {s['giorno_liturgico']}, "
+        testi.append(testo_alt(f"{titolo_parola(s)}: {s['giorno_liturgico']}, "
                                f"{g.day} {MESI[g.month - 1]} {g.year}. {opera}"))
     for i, v in enumerate(s["pagine"]):
         t = f"{v['lettura']}, {v['riferimento']}: «{v['versetto'].strip()}»"
@@ -532,7 +550,7 @@ def alt_parola(s):
 
 
 def blocco_papi(s):
-    """«Le parole dei Papi» (dal 30/10/2026, facoltative): un brano breve del commento alle letture che Vatican News
+    """«Le parole dei Papi» (dal 30/10/2026, obbligatorie dal 31/10/2026 salvo guasto di Vatican News): un brano breve del commento alle letture che Vatican News
     pubblica nella pagina del Vangelo del giorno, copiato esatto e con la fonte. Solo testo, nessuna pagina in più."""
     p = s.get("parole_papi") or {}
     if not (p.get("testo") or "").strip() or not (p.get("fonte") or "").strip():
@@ -541,7 +559,7 @@ def blocco_papi(s):
 
 
 def testo_parola(s, rete, con_papi=True):
-    righe = [f"📖 La Parola della domenica · {s['giorno_liturgico']}"]
+    righe = [f"📖 {titolo_parola(s)} · {s['giorno_liturgico']}"]
     righe += [f"«{v['versetto']}»\n({v['lettura']}, {v['riferimento']})" for v in s["pagine"]]
     if con_papi and blocco_papi(s):
         righe.append(blocco_papi(s))
@@ -552,8 +570,8 @@ def testo_parola(s, rete, con_papi=True):
         righe.append(f"🎨 In copertina: {o['autore']}, {o['titolo']}" + (f" ({o['anno']})" if o.get("anno") else "")
                      + (f", {o['luogo']}" if o.get("luogo") else "") + f" · illustra {o['illustra']} · pubblico dominio")
     if rete == "instagram":
-        righe.append("📖 Tutte le letture della domenica sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno")
-        righe.append(HASHTAG_PAROLA)
+        righe.append(f"📖 Tutte le letture {letture_di(s)} sul nostro sito: misericordia-ariccia.it/liturgia-del-giorno")
+        righe.append(hashtag_parola(s))
         testo = "\n\n".join(righe)
         if len(testo) > 2200 and con_papi and blocco_papi(s):
             # oltre il limite di Instagram il brano dei Papi si lascia fuori, mai link e hashtag
@@ -561,7 +579,7 @@ def testo_parola(s, rete, con_papi=True):
             print("instagram: testo oltre 2200 caratteri, esce senza «Le parole dei Papi»", file=sys.stderr)
             return testo_parola(s, rete, con_papi=False)
         return testo[:2200]
-    righe.append(f"📖 Leggi tutte le letture della domenica sul nostro sito:\n👉 {LITURGIA}")
+    righe.append(f"📖 Leggi tutte le letture {letture_di(s)} sul nostro sito:\n👉 {LITURGIA}")
     return "\n\n".join(righe)
 
 
@@ -611,7 +629,7 @@ def pubblica_parola(giorno=None):
     giorno = giorno or oggi_roma().date().isoformat()
     file = PAROLA_DIR / f"{giorno}.json"
     if not file.exists():
-        print(f"::warning::Nessuna Parola della domenica per il {giorno} ({file.relative_to(RADICE)} manca)")
+        print(f"::warning::Nessuna Parola per il {giorno} ({file.relative_to(RADICE)} manca)")
         return 1
     s = json.loads(file.read_text(encoding="utf-8"))
     immagini = immagini_parola(s)
