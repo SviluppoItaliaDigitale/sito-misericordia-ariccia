@@ -1,0 +1,45 @@
+{
+  "data": "2026-11-08",
+  "titolo": "La Parola della domenica",
+  "giorno_liturgico": "XXXII Domenica del Tempo Ordinario",
+  "opera": {
+    "autore": "Hieronymus Francken II",
+    "titolo": "La parabola delle vergini sagge e stolte",
+    "anno": "1616 circa",
+    "luogo": "Museo dell'Ermitage, San Pietroburgo",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Francken,_Hieronymus_the_Younger_-_Parable_of_the_Wise_and_Foolish_Virgins_-_c._1616.jpg",
+    "illustra": "Vangelo, Mt 25,1-13",
+    "scena": "Le vergini stolte si distraggono tra musica e banchetto, mentre le sagge pregano e vegliano."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro della Sapienza",
+      "riferimento": "Sap 6,12",
+      "versetto": "La sapienza è splendida e non sfiorisce, facilmente si lascia vedere da coloro che la amano e si lascia trovare da quelli che la cercano.",
+      "evidenza": "si lascia trovare da quelli che la cercano"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 25,4",
+      "versetto": "Le sagge invece, insieme alle loro lampade, presero anche l’olio in piccoli vasi.",
+      "evidenza": "presero anche l’olio"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 25,13",
+      "versetto": "Vegliate dunque, perché non sapete né il giorno né l’ora.",
+      "evidenza": "Vegliate dunque"
+    }
+  ],
+  "parole_papi": {
+    "testo": "Vera sapienza è approfittare della vita mortale per compiere opere di misericordia, perché, dopo la morte, ciò non sarà più possibile. (…) E questo amore è dono di Cristo, effuso in noi dallo Spirito Santo.",
+    "fonte": "Papa Benedetto XVI, Angelus, 6 novembre 2011"
+  },
+  "testo_social": "Dieci ragazze aspettano lo sposo: cinque hanno portato l'olio per le lampade, cinque no. Gesù ci invita a vegliare e a non farci trovare impreparati. La sapienza si lascia trovare da chi la cerca, e l'olio è l'amore che si pratica ogni giorno nelle opere. È quello che proviamo a fare anche noi, accanto a chi ha bisogno. Buona domenica!",
+  "preparata_da": "Alessandro Cuollo, 2026-11-01",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
