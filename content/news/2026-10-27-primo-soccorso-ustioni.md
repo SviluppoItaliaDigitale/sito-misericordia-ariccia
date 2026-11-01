@@ -52,7 +52,7 @@ Raffredda la ferita, ma tieni al caldo il resto del corpo, soprattutto nei bambi
 
 ### Quando chiamare
 
-Chiama il 112 se l'ustione è più grande del palmo della sua mano, se è sul viso, sulle mani o sui genitali, se è elettrica o chimica, se ha respirato fumo, o se è un bambino o un anziano.
+Chiama il 112 se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, se ha respirato fumo, o se è un bambino. Per un anziano, o se hai dubbi, fallo vedere da un medico.
 
 ## Da ricordare
 
@@ -66,4 +66,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [ILCOR, raffreddamento delle ustioni con acqua corrente](https://costr.ilcor.org/document/duration-of-cooling-with-water-for-thermal-burns-as-a-first-aid-intervention-fa-770-systematic-review) (acqua corrente subito); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (20 minuti, anelli e vestiti attaccati, pellicola senza avvolgere, niente creme, oli o burro, bolle da non bucare, viso e genitali, ustioni chimiche ed elettriche); [Croce Rossa Italiana, Ustioni](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/ustioni/) (almeno 20 minuti di acqua fresca, niente ghiaccio, pellicola senza stringere, 112 per bambini, mani e viso). Le linee guida IRC 2025 non trattano più il raffreddamento delle ustioni.*
+*Fonti: [ILCOR, raffreddamento delle ustioni con acqua corrente](https://costr.ilcor.org/document/duration-of-cooling-with-water-for-thermal-burns-as-a-first-aid-intervention-fa-770-systematic-review) (acqua corrente subito); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (20 minuti, anelli e vestiti attaccati, pellicola senza avvolgere, niente creme, oli o burro, bolle da non bucare, viso e genitali, ustioni chimiche ed elettriche); [Croce Rossa Italiana, Ustioni](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/ustioni/) (almeno 20 minuti di acqua fresca, niente ghiaccio, pellicola senza stringere, 112 per bambini, mani, piedi e viso); [Linee guida ERC/IRC 2021, cap. 8 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf), pp. 14-15 (acqua fresca, non ghiacciata, per almeno 20 minuti; attenzione all'ipotermia nei bambini piccoli); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Burns», pp. 288-291 (112 per ustioni grandi o profonde, vicino a viso, bocca, gola o genitali, da fiamme, elettriche o chimiche; dal medico per un bambino piccolo o una persona fragile). Le linee guida IRC 2025 non trattano più il raffreddamento delle ustioni.*

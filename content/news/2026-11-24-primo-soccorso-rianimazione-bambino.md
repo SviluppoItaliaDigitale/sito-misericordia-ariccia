@@ -67,4 +67,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 9 «BLS pediatrico»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf), pp. 21-28 (112 subito con il vivavoce, 1 minuto di rianimazione se si è soli e senza telefono, 5 soffi, almeno un terzo del torace e mai oltre 6 cm, 100-120 al minuto, 30 e 2 o 15 e 2, DAE anche nei bambini).*

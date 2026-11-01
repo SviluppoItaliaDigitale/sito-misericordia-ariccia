@@ -26,7 +26,7 @@ italianoSemplice: |
 
 ### Calma
 
-Non tirarlo su di colpo. Se non risponde, chiama il 112 e guarda se respira normalmente. Se risponde, tranquillizzalo e chiedigli come sta.
+Non tirarlo su di colpo. Se non risponde, chiama il 112 e guarda se respira normalmente: se non respira normalmente, inizia la rianimazione. Se risponde, tranquillizzalo e chiedigli come sta.
 
 ### Le domande
 

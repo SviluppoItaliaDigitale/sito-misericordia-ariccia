@@ -66,4 +66,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 14 (scala per riconoscere l'ictus, 112 subito) e pp. 8-9 (posizione laterale di sicurezza se non risponde ma respira normalmente); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Stroke», p. 368 (vista, equilibrio, mal di testa improvviso e fortissimo, 112 subito, ora di inizio, cure mediche anche se i segni passano).*

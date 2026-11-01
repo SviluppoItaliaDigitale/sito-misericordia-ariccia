@@ -12,9 +12,9 @@ CAL = [('ictus','2026-10-06'),('infarto','2026-10-09'),('emorragia','2026-10-13'
 D = {a['id']: a for a in yaml.safe_load((REPO/'content/dossier/primo-soccorso.md').read_text().split('---')[1])['argomenti']}
 EXTRA = {
  'ictus': ("Ictus: riconoscerlo e cosa fare", "Viso, braccia, parola e gli altri segni improvvisi: come riconoscere un ictus, perché chiamare subito il 112 e cosa non dare alla persona."),
- 'infarto': ("Infarto: i segni e cosa fare", "Dolore o peso al centro del petto, i segni più sfumati in donne, anziani e diabetici, perché chiamare il 112 e non andare in ospedale in auto."),
- 'emorragia': ("Emorragia grave: premi e non mollare", "Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."),
- 'rianimazione': ("Arresto cardiaco: la rianimazione passo passo", "Nella Giornata mondiale della rianimazione: sicurezza, coscienza, respiro, 112 e DAE, e la simulazione del massaggio cardiaco a tempo, 110 compressioni al minuto."),
+ 'infarto': ("Infarto: i segni e cosa fare", "Dolore o peso al centro del petto, i segni più sfumati in donne, anziani e diabetici, perché chiamare subito il 112, l'aspirina da masticare e perché non andare in ospedale in auto."),
+ 'emorragia': ("Emorragia grave: premi e non mollare", "Guanti, pressione diretta senza mollare fino ai soccorsi, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."),
+ 'rianimazione': ("Arresto cardiaco: la rianimazione passo passo", "Nella Giornata mondiale della rianimazione: sicurezza, coscienza, 112 subito, respiro e DAE, e la simulazione del massaggio cardiaco a tempo, fra 100 e 120 compressioni al minuto."),
  'soffocamento': ("Soffocamento: 5 colpi e 5 compressioni", "Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza."),
  'anafilassi': ("Anafilassi: riconoscerla e usare l'adrenalina", "Le cause, i segni della reazione allergica grave, come usare l'autoiniettore di adrenalina e in che posizione mettere la persona."),
  'ustioni': ("Ustioni: cosa fare e cosa non fare", "Fermare il fuoco, 20 minuti di acqua corrente, togliere anelli, coprire con la pellicola, i rimedi da evitare e quando chiamare il 112."),

@@ -28,6 +28,10 @@ italianoSemplice: |
 
 Brividi forti, pelle fredda e pallida, mani impacciate. Poi confusione e sonnolenza. Se smette di tremare, è grave.
 
+### Quando chiamare
+
+Se pensi che sia in ipotermia, chiama il 112. Se è confuso, sonnolento o non trema più, è grave: muovilo il meno possibile. Se non respira normalmente, inizia la rianimazione.
+
 ### Al riparo
 
 Portalo al riparo dal vento, al caldo, spostandolo con delicatezza.
@@ -39,10 +43,6 @@ Togli i vestiti bagnati, asciugalo e coprilo con coperte asciutte, anche la test
 ### Da bere
 
 Se è sveglio e riesce a deglutire, dagli una bevanda calda e zuccherata. Niente alcol: fa perdere ancora più calore.
-
-### Quando chiamare
-
-Se è confuso, sonnolento o non trema più, chiama il 112 e tienilo sdraiato. Se non respira normalmente, inizia la rianimazione.
 
 ### Congelamento
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (prevenzione dell'ipotermia: riparo, vestiti bagnati tolti, coperte, isolamento dal pavimento; rianimazione); [Croce Rossa Italiana, Ipotermia](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/ipotermia/) (segni, bevanda calda e zuccherata senza alcol, niente calore diretto, non strofinare); [NHS, Hypothermia](https://www.nhs.uk/conditions/hypothermia/) (coprire anche la testa, anziani soli più a rischio); [NHS, Frostbite](https://www.nhs.uk/conditions/frostbite/) (congelamento: non strofinare, niente fuoco o stufe, scaldare con il corpo, ospedale).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (prevenzione dell'ipotermia: riparo, vestiti bagnati tolti, coperte, isolamento dal pavimento; rianimazione); [Croce Rossa Italiana, Ipotermia](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/ipotermia/) (segni, bevanda calda e zuccherata senza alcol, niente calore diretto, non strofinare); [NHS, Hypothermia](https://www.nhs.uk/conditions/hypothermia/) (coprire anche la testa, anziani soli più a rischio); [NHS, Frostbite](https://www.nhs.uk/conditions/frostbite/) (congelamento: non strofinare, niente fuoco o stufe, scaldare con il corpo, ospedale); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Hypothermia» e «Frostbite», pp. 461-468 (112 per ogni sospetta ipotermia, muoverla il meno possibile, bevanda calda e zuccherata se è sveglia, niente fuoco sul congelamento).*

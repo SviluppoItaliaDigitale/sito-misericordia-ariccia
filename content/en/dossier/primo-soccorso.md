@@ -3,15 +3,15 @@ tema: "guide"
 traduzione: "/dossier/primo-soccorso"
 title: "First aid step by step: 23 emergencies"
 titoloSeo: "First aid: what to do in 23 emergencies, from stroke and heart attack to choking and CPR in children"
-description: "The Misericordia di Ariccia first-aid dossier: how to recognise and what to do in case of stroke, heart attack, severe bleeding, cardiac arrest, choking in adults, anaphylaxis, burns, hypoglycaemia, poisoning and head injury, seizures, road accidents, fainting, choking and CPR in infants and children, fractures, cold, carbon monoxide, asthma, button batteries, falls in older people, fireworks and the first-aid kit, following the ERC/IRC 2025 guidelines."
+description: "The Misericordia di Ariccia first-aid dossier: how to recognise and what to do in case of stroke, heart attack, severe bleeding, cardiac arrest, choking in adults, anaphylaxis, burns, hypoglycaemia, poisoning and head injury, seizures, road accidents, fainting, choking and CPR in infants and children, fractures, cold, carbon monoxide, asthma, button batteries, falls in older people, fireworks and the first-aid kit, following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."
 type: "dossier"
 layout: "primo-soccorso"
 # Data dell'ultimo controllo delle fonti (ERC/IRC) da parte della verifica dati; revisione_istruttore: chi rivede i contenuti sanitari (dal 9/10/2026 il responsabile sanitario)
-fonti_controllate: "2026-10-09"
+fonti_controllate: "2026-11-01"
 revisione_istruttore_en: "the Misericordia di Ariccia's health officer"
 occhiello: "Dossier · First aid"
-sottotitolo: "Twenty-three emergencies, one card for each: how to recognise them, what to do in the first few minutes and what never to do. Following the ERC/IRC 2025 guidelines."
-summary: "A practical dossier on 23 emergencies, from children to older people: how to recognise them, what to do and what not to do, with an in-depth video for each one, following the ERC/IRC 2025 guidelines."
+sottotitolo: "Twenty-three emergencies, one card for each: how to recognise them, what to do in the first few minutes and what never to do. Following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."
+summary: "A practical dossier on 23 emergencies, from children to older people: how to recognise them, what to do and what not to do, with an in-depth video for each one, following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."
 lettura: "20 minutes"
 serie2_da: "convulsioni"
 cover_cta:
@@ -35,8 +35,9 @@ argomenti:
     motto: "Time is life"
     riconosci: "Pain, heaviness or tightness **in the centre of the chest**, which may spread to the arm (often the left), jaw, back or stomach. Often with cold sweats, nausea or shortness of breath. In women, older people and people with diabetes the signs may be less obvious."
     fare:
-      - "If the pain **does not go away after a few minutes**, call **112** immediately."
+      - "With these signs call **112 straight away**, even if the pain has only lasted a few minutes or comes and goes."
       - "Help the person sit or lie down in whatever position is most comfortable for them, and reassure them."
+      - "If they are not allergic and have not already taken it, help them **chew an aspirin** (150–500 mg); if they have an angina spray, help them use it."
       - "Stay with them until help arrives and follow the operator's instructions."
     nonfare:
       - "Don't drive them to hospital yourself and don't let them drive: the ambulance starts treatment during the journey."
@@ -52,6 +53,7 @@ argomenti:
       - "On an arm or leg, if pressure is not enough, someone who is trained can apply a **tourniquet** as soon as possible, noting the time."
     nonfare:
       - "Don't release the pressure to «check» whether the bleeding has stopped."
+      - "Don't loosen or remove a tourniquet: only healthcare staff should do that."
       - "Don't remove objects embedded in the wound: press around them."
   - id: "rianimazione"
     titolo: "Cardiac arrest"
@@ -68,11 +70,11 @@ argomenti:
   - id: "soffocamento"
     titolo: "Choking"
     motto: "5 blows, 5 thrusts"
-    riconosci: "While eating, the person brings their hands to their throat, **cannot speak or cough**, is struggling to breathe or is not breathing."
+    riconosci: "While eating, the person brings their hands to their throat, **cannot speak or cough**, is struggling to breathe or is not breathing. Ask: «Are you choking?»"
     fare:
       - "If they are coughing, **encourage them to keep coughing**: it is the best way to clear the obstruction."
       - "If they can no longer cough or speak, **call 112 straight away** (or have someone nearby call) and put the phone on speaker."
-      - "Meanwhile lean them forwards and give **up to 5** firm **back blows** with the heel of your hand **between the shoulder blades**."
+      - "Meanwhile stand behind them, slightly to one side, lean them forwards and give **up to 5** firm **back blows** with the heel of your hand **between the shoulder blades**."
       - "If that doesn't work: **up to 5 abdominal thrusts** (Heimlich manoeuvre): fist above the navel, pull sharply inwards and upwards."
       - "**Alternate** 5 back blows and 5 abdominal thrusts until the object comes out."
       - "If they become unresponsive: lower them to the ground and start **CPR**; if nobody has called **112** yet, call now."
@@ -83,7 +85,7 @@ argomenti:
   - id: "anafilassi"
     titolo: "Anaphylaxis"
     motto: "Adrenaline and 112"
-    riconosci: "After a food, a medicine or an insect sting: swelling of the lips, tongue or face, difficulty breathing, widespread hives, sudden feeling of being unwell."
+    riconosci: "After a food, a medicine or an insect sting: swelling of the lips, tongue or face, difficulty breathing, widespread hives, sudden feeling of being unwell, sometimes abdominal pain, vomiting or diarrhoea."
     fare:
       - "Call **112**."
       - "If the person has an **adrenaline auto-injector**, help them use it in the outer thigh as soon as possible."
@@ -99,7 +101,7 @@ argomenti:
       - "Cool immediately under **cool running water** (not ice-cold) for **at least 20 minutes**."
       - "Remove rings, bracelets and watches before the area swells."
       - "Cover with a clean dressing or with cling film, without wrapping it tightly."
-      - "Large burns, or burns to the face, hands or genitals, or in children: call **112**."
+      - "Large or deep burns, burns to the face, hands, feet or genitals, burns from flames, electricity or chemicals, or burns in a child: call **112**."
     nonfare:
       - "No ice, toothpaste, butter, oil or other home remedies."
       - "Don't pull off clothing stuck to the skin and don't burst blisters."
@@ -123,9 +125,10 @@ argomenti:
       - "Call **112** or a **Poison Control Centre** (Centro Antiveleni) and follow their instructions."
       - "Keep the product's **packaging** (or a photo of the label) to hand."
       - "If it is gas or fumes, move the person into the fresh air **without putting yourself in danger**."
+      - "If they do not respond and are not breathing normally: **112** and **CPR**; if the product is around their mouth, chest compressions only."
     nonfare:
       - "Don't make them vomit."
-      - "Don't give milk, oil or anything else to drink unless healthcare professionals tell you to."
+      - "Don't give milk, water, oil or anything else to drink unless the Poison Control Centre or 112 tells you to."
   - id: "trauma-cranico"
     titolo: "Head injury"
     motto: "Mind the head"
@@ -160,7 +163,7 @@ argomenti:
       - "Stop in a safe place, switch on your **hazard lights** and put on your **high-visibility vest**."
       - "Place the **warning triangle** at least 50 metres away."
       - "Call **112**: where you are, how many are injured, whether anyone is trapped."
-      - "Talk to the injured, reassure them and keep them covered. If someone is not breathing normally, start CPR."
+      - "Talk to the injured, reassure them, tell them to **keep still** and keep them covered. If someone is not responding and not breathing normally, start CPR."
     nonfare:
       - "Don't move the injured, unless there is an immediate danger such as a fire."
       - "Don't remove a motorcyclist's helmet. If they are not breathing, follow the 112 operator's instructions."
@@ -168,11 +171,11 @@ argomenti:
     titolo: "Fainting"
     motto: "Down, and legs up"
     dal: "2026-11-17"
-    riconosci: "Beforehand: pallor, sweating, nausea, dizziness, blurred vision. Then a brief loss of consciousness, usually less than a minute."
+    riconosci: "Beforehand: pallor, sweating, nausea, dizziness, blurred vision. Then a brief loss of consciousness, **usually a few seconds**."
     fare:
       - "If you feel you are about to faint: **lie down**, with your legs raised if you can; if you can't, squat, or **cross your legs and tense your muscles**."
-      - "If they faint: **lying on their back**, with legs raised if you can."
-      - "If they don't come round quickly, call **112** and check whether they are breathing normally: if not, start **CPR**."
+      - "If they faint: **lying on their back**, with legs raised if you can; if she is pregnant, **on her left side**."
+      - "If they don't come round straight away, call **112** and check whether they are breathing normally: if they are, and did not hit themselves hard when falling, put them **on their side**; if they are not breathing normally, start **CPR**."
       - "Once they feel better, help them up slowly: first sitting, then standing."
     nonfare:
       - "Don't let them get up suddenly."
@@ -187,10 +190,10 @@ argomenti:
       - "Have someone call **112**, or call on speakerphone."
       - "**5 back blows** between the shoulder blades: face down along your forearm, head lower than the body, supporting the chin."
       - "**5 chest thrusts**: face up, head down, with **two thumbs** in the centre of the chest."
-      - "Alternate 5 and 5. If they become unresponsive: **5 rescue breaths** into the mouth and nose, then CPR."
+      - "Alternate 5 and 5 until they cry, cough or breathe again. If they become unresponsive: **5 rescue breaths** into the mouth and nose, then CPR."
     nonfare:
       - "Don't put your fingers blindly into their mouth."
-      - "Don't give round foods whole: cut grapes, cherry tomatoes and olives into quarters, lengthways."
+      - "Don't give round foods whole: cut grapes, cherry tomatoes and olives **into small pieces, about 5 mm**, with seeds and stones removed."
   - id: "rianimazione-bambino"
     titolo: "CPR in children"
     motto: "First, 5 breaths"
@@ -201,7 +204,7 @@ argomenti:
       - "Give **5 rescue breaths** (in an infant over the mouth and nose), until the chest rises."
       - "Compressions in the centre of the chest, to **at least one third of its depth**, but **never more than 6 cm**, **100–120 a minute**: in an infant with **two thumbs** encircling the chest, in a child with one or two hands."
       - "Then **30 compressions and 2 breaths** (15 and 2 if you have done a paediatric course)."
-      - "Use the **AED**: under 25 kg in paediatric mode, if available, with one pad on the front and one on the back."
+      - "Use the **AED**: under 25 kg in paediatric mode, if available, otherwise in adult mode, with one pad on the front and one on the back."
     nonfare:
       - "Don't stop until help arrives or the child is breathing normally."
       - "If you can't give breaths, don't stand still: at least do the compressions."
@@ -212,9 +215,10 @@ argomenti:
     riconosci: "Severe pain, swelling, bruising, an odd shape of the limb or a part that cannot be moved."
     fare:
       - "Support the part **in the position you find it** (hands, a cushion, an arm sling)."
-      - "**Ice wrapped in a cloth**, for about 20 minutes."
+      - "**Ice wrapped in a cloth**, for no more than 20 minutes at a time."
       - "Open fracture: don't push the bone back in; if it is bleeding, **press on the wound** with a clean gauze or cloth, without pressing on the bone."
-      - "Call **112** for open fractures, fractures of the hip, thigh bone, back or neck, or very severe pain."
+      - "Call **112** for open fractures or a deformed limb, fractures of the hip, thigh bone, back or neck, very severe pain, or if they are pale, cold and sweaty."
+      - "Sprain: rest, ice in a cloth, keep the part raised. **If in doubt, treat it as a fracture** and see a doctor."
     nonfare:
       - "Don't straighten the limb and don't let them move it."
       - "Don't push the bone back in and don't put ice directly on the skin."
@@ -224,10 +228,10 @@ argomenti:
     dal: "2026-12-01"
     riconosci: "Intense shivering, cold pale skin, clumsy hands, then confusion and drowsiness. **If they stop shivering, it is serious.** Frostbite: white, numb fingers, ears or nose."
     fare:
+      - "If you think they have hypothermia, call **112**. If they are confused, drowsy or no longer shivering, it is serious: move them as little as possible. If they are not breathing normally, start CPR."
       - "Get them out of the wind and somewhere warm, **moving them gently**."
       - "Remove wet clothing, dry them and cover them with dry blankets, **including the head**."
       - "If they are awake and can swallow, a **warm, sweet drink**."
-      - "If they are confused, drowsy or no longer shivering, call **112**. If they are not breathing normally, start CPR."
     nonfare:
       - "No alcohol: it makes the body lose even more heat."
       - "On frostbite, don't rub and don't warm it with fire or heaters."
@@ -243,6 +247,7 @@ argomenti:
       - "Prevention: **annual servicing** of boilers, stoves and flues, and a **carbon monoxide detector**."
     nonfare:
       - "Don't enter a room full of gas if you would be putting yourself at risk too."
+      - "Don't go back inside until the emergency services or an engineer tell you it is safe."
       - "Never use braziers or generators indoors, never use a gas oven for heating, never leave an engine running in a closed garage."
   - id: "asma"
     titolo: "Asthma attack"
@@ -251,20 +256,20 @@ argomenti:
     riconosci: "Shortness of breath, **wheezing**, coughing, chest tightness. In severe cases they cannot speak."
     fare:
       - "Have them **sit up, leaning slightly forwards**, with their arms resting on something."
-      - "Stay calm and help them breathe slowly."
+      - "Stay calm, reassure them and loosen any tight clothing."
       - "If they have **their own reliever inhaler**, help them use it, with a spacer if there is one, as their doctor has explained."
-      - "Call **112** if the inhaler isn't enough, they cannot speak, their lips are blue or they are drowsy."
+      - "Call **112** if they have no inhaler, the inhaler isn't enough, they cannot speak, their lips are blue or they are drowsy."
     nonfare:
       - "Don't make them lie down."
-      - "Don't underestimate swelling of the lips or tongue: it may be anaphylaxis. Call **112** straight away and, if they have an adrenaline auto-injector, help them use it in the thigh."
+      - "Don't underestimate swelling of the lips or tongue: it may be anaphylaxis. Call **112** straight away and, if they have an adrenaline auto-injector, help them use it in the outer thigh."
   - id: "batterie"
     titolo: "Button batteries and magnets"
     motto: "Suspicion is enough"
     dal: "2026-12-11"
-    riconosci: "A child may have swallowed a button battery or magnets. **Often there are no signs at first**; sometimes coughing, drooling, pain, vomiting or refusing food."
+    riconosci: "A child may have swallowed a button battery or magnets. **Often there are no signs at first**; sometimes coughing, drooling, vomiting or difficulty swallowing."
     fare:
       - "Even if you only suspect it: call **112** or go **straight to A&E** (pronto soccorso)."
-      - "Over one year old, if they can swallow and it was swallowed less than 12 hours ago: **honey**, 10 ml (2 teaspoons) every 10 minutes, up to 6 times, **on the way to A&E**, without losing any time."
+      - "Batteries only: over one year old, if they can swallow and it was swallowed less than 12 hours ago: **honey**, 10 ml (2 teaspoons) every 10 minutes, up to 6 times, **on the way to A&E**, without losing any time."
       - "Prevention: toys with a **screw-fastened battery compartment**, new and used batteries kept away from children."
     nonfare:
       - "Don't wait for symptoms: within a few hours the battery can burn the oesophagus."
@@ -276,7 +281,7 @@ argomenti:
     riconosci_tit: "What to look for"
     riconosci: "Pain, a knock to the head, confusion, a leg that won't move or a very painful hip."
     fare:
-      - "If they do not respond, call **112** and check whether they are breathing normally."
+      - "If they do not respond, call **112** and check whether they are breathing normally; if they are not, start **CPR**."
       - "If they respond, reassure them and ask where it hurts, whether they hit their head, whether they remember what happened."
       - "Call **112** if they hit their head (all the more if they take anticoagulants, blood thinners), have pain in the back, neck or hip, cannot get up or are confused."
       - "If they are fine, get up **in stages**: onto one side, onto the knees, then using a sturdy chair."
@@ -293,9 +298,9 @@ argomenti:
     riconosci: "Every year burns, hand injuries and eye injuries, often from illegal or unexploded firecrackers."
     fare:
       - "Only fireworks with the **CE mark**, bought from authorised shops."
-      - "Burn: **cool running water for at least 20 minutes**, then cling film or clean gauze."
+      - "Burn: **cool running water for at least 20 minutes**, then cling film or clean gauze; if it is on the hand or face, or large, call **112**."
       - "Bleeding hand: **press hard** and call **112**."
-      - "Severed finger: wrapped in **damp gauze**, in a **sealed bag** placed inside another bag with water and ice; it goes to hospital with the injured person."
+      - "Severed finger: wrapped in **damp gauze**, in a **sealed bag** placed inside another bag with water and ice; it goes to hospital with the injured person. Write the name and time on the bag."
       - "Injured eye: cover it without pressing and call **112**."
     nonfare:
       - "Don't pick up or relight an unexploded firecracker."

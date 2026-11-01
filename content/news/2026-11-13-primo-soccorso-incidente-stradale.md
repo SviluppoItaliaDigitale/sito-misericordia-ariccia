@@ -46,7 +46,7 @@ Al motociclista non togliere il casco. Se non respira, segui le indicazioni dell
 
 ### Stagli vicino
 
-Parla con i feriti, rassicurali e coprili per tenerli al caldo, finché arrivano i soccorsi.
+Parla con i feriti, rassicurali, di' loro di stare fermi, e coprili per tenerli al caldo, finché arrivano i soccorsi.
 
 ### Se non respira
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Regione del Veneto, Un'altra strada: le 5 cose da fare in caso di incidente](https://www.unaltrastrada.it/informazioni-utili/article/le-5-cose-da-fare-per-affrontare-al-meglio-un-incidente) (quattro frecce, giubbotto, triangolo, chiamare i soccorsi, non spostare i feriti se non c'è un pericolo immediato, non togliere il casco, stare vicino ai feriti); [Polizia Locale Unione Bassa Reggiana, Sinistri stradali](https://polizialocale.bassareggiana.it/Servizi/Sinistri-stradali-Cosa-fare) (triangolo almeno 50 metri prima); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (sospetta lesione del collo negli incidenti stradali, rianimazione con le istruzioni dell'operatore).*
+*Fonti: [Regione del Veneto, Un'altra strada: le 5 cose da fare in caso di incidente](https://www.unaltrastrada.it/informazioni-utili/article/le-5-cose-da-fare-per-affrontare-al-meglio-un-incidente) (quattro frecce, giubbotto, triangolo, chiamare i soccorsi, non spostare i feriti se non c'è un pericolo immediato, non togliere il casco, stare vicino ai feriti); [Regolamento del Codice della strada, d.P.R. 495/1992, art. 357](https://www.normattiva.it/uri-res/N2Ls?urn:nir:presidente.repubblica:decreto:1992-12-16;495) (triangolo ad almeno 50 metri, visibile da 100 metri); [Codice della strada, art. 162](https://aci.gov.it/codice-della-strada/art-162/) (giubbotto prima di scendere); [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 15 (negli incidenti stradali si sospetta una lesione del collo: il ferito sveglio va incoraggiato a stare fermo) e p. 9 (non muovere la persona se non c'è un pericolo; coperte), e [cap. 4 «BLS adulto»](https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf), p. 5 (rianimazione con le istruzioni dell'operatore); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), p. 307 (stare il più fermi possibile).*

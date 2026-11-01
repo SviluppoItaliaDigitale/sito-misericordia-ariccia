@@ -30,7 +30,7 @@ La batteria si ferma nell'esofago e, in poche ore, può bruciarlo dall'interno.
 
 ### I segni
 
-Spesso all'inizio non ci sono segni. A volte tosse, bava, dolore, vomito, o rifiuta di mangiare.
+Spesso all'inizio non ci sono segni. A volte tosse, bava, vomito, o fatica a deglutire.
 
 ### Anche il dubbio
 

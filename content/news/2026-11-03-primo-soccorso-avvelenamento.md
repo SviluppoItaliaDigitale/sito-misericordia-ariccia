@@ -52,7 +52,7 @@ Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corre
 
 ### Gas e fumi
 
-Gas o fumi, come il monossido di carbonio: porta la persona all'aria aperta, solo se non rischi anche tu. Le finestre aprile solo se puoi farlo senza fermarti.
+Gas o fumi, come il monossido di carbonio: porta la persona all'aria aperta, solo se non rischi anche tu. Apri le finestre solo se puoi farlo senza fermarti.
 
 ### Previeni
 

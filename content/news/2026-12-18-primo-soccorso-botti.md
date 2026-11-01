@@ -34,7 +34,7 @@ Non raccogliere mai un petardo inesploso e non riaccenderlo: può scoppiare in m
 
 ### Ustione
 
-Per un'ustione, acqua corrente fresca per almeno 20 minuti, poi copri con pellicola o garza pulita.
+Per un'ustione, acqua corrente fresca per almeno 20 minuti, poi copri con pellicola o garza pulita. Se è sulla mano o sul viso, o è estesa, chiama il 112.
 
 ### Mano ferita
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (emorragie e dito staccato); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (ustioni, 20 minuti di acqua).*
+*Fonti: [Polizia di Stato, Botti di Capodanno: i consigli degli esperti (29/12/2025)](https://www.poliziadistato.it/articolo/botti-di-capodanno--i-consigli-degli-esperti-della-polizia) (marchio CE, rivenditori autorizzati, istruzioni, botti inesplosi da non raccogliere né riaccendere); [Polizia di Stato, Festeggia in sicurezza con i consigli degli artificieri](https://www.poliziadistato.it/articolo/festeggia-in-sicurezza-con-i-consigli-degli-artificieri) (bambini a distanza); [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), pp. 15-16 (emorragie e dito staccato); [Linee guida ERC/IRC 2021, cap. 8 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf), p. 15, e [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), p. 290 (ustioni: almeno 20 minuti di acqua, pellicola, 112 per mani, viso, ustioni estese o da fiamme); [NHS, Burns and scalds](https://www.nhs.uk/conditions/burns-and-scalds/) (ustioni, 20 minuti di acqua).*

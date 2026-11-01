@@ -47,7 +47,7 @@ Se non basta, giralo a pancia in su, sempre con la testa in basso. Con i due pol
 
 ### Alterna
 
-Continua alternando cinque pacche e cinque compressioni, finché l'oggetto non esce o arrivano i soccorsi.
+Continua alternando cinque pacche e cinque compressioni, finché non torna a piangere, tossire o respirare, o arrivano i soccorsi.
 
 ### Se non risponde
 
@@ -55,7 +55,7 @@ Se perde conoscenza, mettilo su un piano rigido, dai cinque soffi nella bocca e 
 
 ### Previeni
 
-Per prevenire: tieni lontani gli oggetti piccoli, e taglia per lungo in quattro parti gli alimenti tondi come uva, pomodorini e olive.
+Per prevenire: tieni lontani gli oggetti piccoli, e taglia gli alimenti tondi, come uva, pomodorini e olive, in pezzi piccoli, di mezzo centimetro, senza semi né noccioli.
 
 Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento-lattante)**.
 
@@ -65,4 +65,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 9 «BLS pediatrico»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf), p. 29 (riconoscere l'ostruzione grave, 112 subito, pacche e compressioni con i due pollici, fermarsi appena torna a piangere, tossire o respirare, 5 soffi e rianimazione se perde conoscenza); [Ministero della Salute, Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica, 2017](https://www.salute.gov.it/imgs/C_17_pubblicazioni_2618_allegato.pdf), Tabella 1, p. 9 (alimenti tondi in pezzi piccoli, di circa 5 mm, senza semi né noccioli; [copia integrale sul sito del Comune di Firenze](https://educazione.comune.fi.it/system/files/2023-08/Linee%20Indirizzo%20Anti%20soffocamento.pdf)).*

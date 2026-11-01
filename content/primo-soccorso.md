@@ -64,8 +64,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <details class="faq-item">
 <summary>Svenimento</summary>
 
-1. **Sdraia** la persona a pancia in su e, se puoi, **solleva le gambe**.
-2. Se **non si riprende** in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**.
+1. **Sdraia** la persona a pancia in su e, se puoi, **solleva le gambe**; se è incinta, mettila invece **sul fianco sinistro**.
+2. Se **non si riprende** subito, chiama il **112** e guarda se respira normalmente: se respira normalmente e non ha battuto forte cadendo, mettila **su un fianco**; se non respira normalmente, inizia la **rianimazione**.
 3. Quando sta meglio, falla rialzare **piano**: prima seduta, poi in piedi.
 4. Chiama il **112** anche se è svenuta durante uno sforzo, con dolore al petto o palpitazioni, o se si è fatta male cadendo.
 
@@ -87,7 +87,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**.
 2. **Togli** anelli, orologi o vestiti solo se **non sono attaccati** alla pelle.
 3. **Non** applicare ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi, e non rompere le bolle.
-4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è estesa o profonda, se è sul viso, sulle mani o sui genitali, o se riguarda un bambino.
+4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se riguarda un bambino.
 
 </details>
 
@@ -115,4 +115,4 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 **Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
 
-*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per ustioni e convulsioni, che le linee guida 2025 non trattano, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*
+*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per ustioni, svenimento e convulsioni, che le linee guida 2025 non trattano o trattano solo in parte, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*

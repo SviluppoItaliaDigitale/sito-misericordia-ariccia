@@ -34,7 +34,7 @@ Fallo stare seduto, leggermente in avanti, con le braccia appoggiate. Non farlo 
 
 ### La calma
 
-Resta calmo e aiutalo a respirare lentamente: l'agitazione peggiora la crisi.
+Resta calmo e rassicuralo: la calma lo aiuta a respirare meglio. Allentagli i vestiti stretti.
 
 ### Lo spray
 
@@ -42,11 +42,11 @@ Se ha il suo spray per la crisi, aiutalo a usarlo, con il distanziatore se c'è,
 
 ### Quando chiamare
 
-Chiama il 112 se lo spray non funziona, se non riesce a parlare, se le labbra diventano blu, o se è molto stanco o sonnolento.
+Chiama il 112 se non ha lo spray, se lo spray non basta, se non riesce a parlare, se le labbra diventano blu, o se è molto stanco o sonnolento.
 
 ### Allergia
 
-Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, può essere anafilassi: chiama subito il 112 e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella coscia.
+Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, può essere anafilassi: chiama subito il 112 e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella parte esterna della coscia.
 
 ### Se non risponde
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), pp. 11-12 (spray con il distanziatore, anafilassi e adrenalina nella parte esterna della coscia); [cap. 4 «BLS adulto»](https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf), p. 15 (rianimazione); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Asthma», pp. 245-248 (segni, seduto in avanti con le braccia appoggiate, calma, vestiti larghi, 112 se non ha lo spray o se lo spray non basta); [NHS, Asthma attack](https://www.nhs.uk/conditions/asthma/asthma-attack/) (seduto e calmo, 112 se non ha lo spray).*

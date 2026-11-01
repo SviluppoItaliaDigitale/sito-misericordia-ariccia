@@ -2,10 +2,10 @@
 tema: "guide"
 title: "Primo soccorso passo passo: 23 emergenze"
 titoloSeo: "Primo soccorso: cosa fare in 23 emergenze, da ictus e infarto a soffocamento e rianimazione nel bambino"
-description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025."
+description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
 layout: "primo-soccorso"
 # Data dell'ultimo controllo delle fonti (ERC/IRC) da parte della verifica dati; revisione_istruttore: chi rivede i contenuti sanitari (dal 9/10/2026 il responsabile sanitario)
-fonti_controllate: "2026-10-09"
+fonti_controllate: "2026-11-01"
 revisione_istruttore: "responsabile sanitario della Misericordia di Ariccia"
 italianoSemplice: |
   **Questa pagina spiega cosa fare in 23 emergenze.**
@@ -16,8 +16,8 @@ italianoSemplice: |
 
   Queste informazioni non sostituiscono un corso. Puoi imparare con i nostri corsi di primo soccorso.
 occhiello: "Dossier · Primo soccorso"
-sottotitolo: "Ventitré emergenze, una scheda per ognuna: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida ERC/IRC 2025."
-summary: "Un dossier pratico su 23 emergenze, dai bambini agli anziani: come riconoscerle, cosa fare e cosa non fare, con un video di approfondimento per ognuna, secondo le linee guida ERC/IRC 2025."
+sottotitolo: "Ventitré emergenze, una scheda per ognuna: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
+summary: "Un dossier pratico su 23 emergenze, dai bambini agli anziani: come riconoscerle, cosa fare e cosa non fare, con un video di approfondimento per ognuna, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
 lettura: "20 minuti"
 serie2_da: "convulsioni"
 # 3ª serie (gennaio-giugno 2027): schede con revisione: "da fare" nascoste finché il responsabile sanitario non le approva
@@ -43,8 +43,9 @@ argomenti:
     motto: "Il tempo è vita"
     riconosci: "Dolore, peso o oppressione **al centro del petto**, che può andare verso braccio (spesso il sinistro), mandibola, schiena o stomaco. Spesso con sudore freddo, nausea o fiato corto. Nelle donne, negli anziani e in chi ha il diabete i segni possono essere più sfumati."
     fare:
-      - "Se il dolore **non passa dopo pochi minuti**, chiama subito il **112**."
+      - "Con questi segni chiama **subito il 112**, anche se il dolore dura da pochi minuti o va e viene."
       - "Fai sedere o sdraiare la persona nella posizione per lei più comoda e rassicurala."
+      - "Se non è allergica e non l'ha già presa, aiutala a **masticare un'aspirina** (150-500 mg); se ha uno spray per l'angina, aiutala a usarlo."
       - "Resta accanto a lei fino all'arrivo dei soccorsi e segui le indicazioni dell'operatore."
     nonfare:
       - "Non accompagnarla in ospedale in auto e non lasciarla guidare: l'ambulanza inizia le cure già durante il viaggio."
@@ -60,6 +61,7 @@ argomenti:
       - "Su un braccio o una gamba, se la pressione non basta, chi è addestrato può applicare un **laccio emostatico** il prima possibile, annotando l'ora."
     nonfare:
       - "Non togliere la pressione per «controllare» se il sangue si è fermato."
+      - "Non allentare e non togliere il laccio emostatico: lo fa solo il personale sanitario."
       - "Non estrarre oggetti conficcati nella ferita: premi intorno."
   - id: "rianimazione"
     titolo: "Arresto cardiaco"
@@ -76,11 +78,11 @@ argomenti:
   - id: "soffocamento"
     titolo: "Soffocamento"
     motto: "5 colpi, 5 spinte"
-    riconosci: "Mentre mangia, la persona si porta le mani alla gola, **non riesce a parlare né a tossire**, respira male o non respira."
+    riconosci: "Mentre mangia, la persona si porta le mani alla gola, **non riesce a parlare né a tossire**, respira male o non respira. Chiedile: «Stai soffocando?»"
     fare:
       - "Se tossisce, **incoraggiala a tossire**: è il modo migliore per liberarsi."
       - "Se non riesce più a tossire né a parlare, **chiama subito il 112** (o fallo chiamare da chi è vicino) e metti il vivavoce."
-      - "Intanto piegala in avanti e dai **fino a 5 colpi** forti con il palmo **tra le scapole**."
+      - "Intanto mettiti dietro di lei, un po' di lato, piegala in avanti e dai **fino a 5 colpi** forti con il palmo **tra le scapole**."
       - "Se non basta: **fino a 5 compressioni addominali** (manovra di Heimlich): pugno sopra l'ombelico, spingi in dentro e in su."
       - "**Alterna** 5 colpi e 5 compressioni finché il corpo estraneo esce."
       - "Se perde conoscenza: accompagnala a terra e inizia la **rianimazione**; se nessuno ha ancora chiamato il **112**, chiamalo subito."
@@ -91,7 +93,7 @@ argomenti:
   - id: "anafilassi"
     titolo: "Anafilassi"
     motto: "Adrenalina e 112"
-    riconosci: "Dopo un cibo, un farmaco o una puntura d'insetto: gonfiore di labbra, lingua o viso, fatica a respirare, orticaria diffusa, malessere improvviso."
+    riconosci: "Dopo un cibo, un farmaco o una puntura d'insetto: gonfiore di labbra, lingua o viso, fatica a respirare, orticaria diffusa, malessere improvviso, a volte dolore alla pancia, vomito o diarrea."
     fare:
       - "Chiama il **112**."
       - "Se la persona ha l'**autoiniettore di adrenalina**, aiutala a usarlo nella parte esterna della coscia, il prima possibile."
@@ -107,7 +109,7 @@ argomenti:
       - "Raffredda subito sotto **acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**."
       - "Togli anelli, braccialetti e orologi prima che la parte si gonfi."
       - "Copri con una medicazione pulita o con pellicola trasparente per alimenti, senza stringere."
-      - "Ustioni estese, sul viso, sulle mani, sui genitali o nei bambini: chiama il **112**."
+      - "Ustioni grandi o profonde, sul viso, sulle mani, sui piedi o sui genitali, da fiamme, elettriche o chimiche, o in un bambino: chiama il **112**."
     nonfare:
       - "Niente ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi."
       - "Non staccare i vestiti attaccati alla pelle e non rompere le bolle."
@@ -131,9 +133,10 @@ argomenti:
       - "Chiama il **112** o un **Centro Antiveleni** e segui le loro indicazioni."
       - "Tieni a portata di mano la **confezione** del prodotto (o una foto dell'etichetta)."
       - "Se si tratta di gas o fumi, porta la persona all'aria aperta **senza metterti in pericolo**."
+      - "Se non risponde e non respira normalmente: **112** e **rianimazione**; se ha il prodotto intorno alla bocca, solo compressioni."
     nonfare:
       - "Non provocare il vomito."
-      - "Non dare latte, olio o altro da bere se non te lo dicono i sanitari."
+      - "Non dare latte, acqua, olio o altro da bere se non te lo dice il Centro Antiveleni o il 112."
   - id: "trauma-cranico"
     titolo: "Trauma cranico"
     motto: "Attenti alla testa"
@@ -168,7 +171,7 @@ argomenti:
       - "Fermati in un posto sicuro, accendi le **quattro frecce** e indossa il **giubbotto catarifrangente**."
       - "Metti il **triangolo** ad almeno 50 metri."
       - "Chiama il **112**: dove sei, quanti feriti, se qualcuno è incastrato."
-      - "Parla con i feriti, rassicurali e coprili. Se uno non respira normalmente, inizia la rianimazione."
+      - "Parla con i feriti, rassicurali, di' loro di **stare fermi** e coprili. Se uno non risponde e non respira normalmente, inizia la rianimazione."
     nonfare:
       - "Non spostare i feriti, salvo un pericolo immediato come un incendio."
       - "Non togliere il casco al motociclista. Se non respira, segui le indicazioni dell'operatore del 112."
@@ -176,11 +179,11 @@ argomenti:
     titolo: "Svenimento"
     motto: "Giù, e gambe su"
     dal: "2026-11-17"
-    riconosci: "Prima: pallore, sudore, nausea, capogiri, vista annebbiata. Poi una breve perdita di coscienza, di solito meno di un minuto."
+    riconosci: "Prima: pallore, sudore, nausea, capogiri, vista annebbiata. Poi una breve perdita di coscienza, **di solito pochi secondi**."
     fare:
       - "Se senti che stai per svenire: **sdraiati**, se puoi con le gambe sollevate; se non puoi, accovacciati, oppure **incrocia le gambe stringendo i muscoli**."
-      - "Se sviene: **sdraiata a pancia in su**, se puoi con le gambe sollevate."
-      - "Se non si riprende in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**."
+      - "Se sviene: **sdraiata a pancia in su**, se puoi con le gambe sollevate; se è incinta, **sul fianco sinistro**."
+      - "Se non si riprende subito, chiama il **112** e guarda se respira normalmente: se respira e non ha battuto forte cadendo, mettila **su un fianco**; se non respira normalmente, inizia la **rianimazione**."
       - "Quando sta meglio, falla rialzare piano: prima seduta, poi in piedi."
     nonfare:
       - "Non farla alzare di colpo."
@@ -195,10 +198,10 @@ argomenti:
       - "Fai chiamare il **112**, o chiama con il vivavoce."
       - "**5 pacche** tra le scapole: a pancia in giù sul tuo avambraccio, con la testa più in basso, sostenendo il mento."
       - "**5 compressioni sul torace**: a pancia in su, testa in basso, con i **due pollici** al centro del torace."
-      - "Alterna 5 e 5. Se perde conoscenza: **5 soffi** nella bocca e nel naso, poi rianimazione."
+      - "Alterna 5 e 5 finché non torna a piangere, tossire o respirare. Se perde conoscenza: **5 soffi** nella bocca e nel naso, poi rianimazione."
     nonfare:
       - "Non infilare le dita in bocca alla cieca."
-      - "Non dare alimenti tondi interi: taglia uva, pomodorini e olive in quattro, per lungo."
+      - "Non dare alimenti tondi interi: taglia uva, pomodorini e olive **in pezzi piccoli, di circa mezzo centimetro**, senza semi né noccioli."
   - id: "rianimazione-bambino"
     titolo: "Rianimazione nel bambino"
     motto: "Prima 5 soffi"
@@ -209,7 +212,7 @@ argomenti:
       - "Dai **5 soffi** (nel lattante su bocca e naso), finché il torace si alza."
       - "Compressioni al centro del torace, per **almeno un terzo della sua profondità**, ma **mai più di 6 cm**, **100-120 al minuto**: nel lattante con i **due pollici** che circondano il torace, nel bambino con una o due mani."
       - "Poi **30 compressioni e 2 soffi** (15 e 2 se hai fatto un corso pediatrico)."
-      - "Usa il **DAE**: sotto i 25 kg in modalità pediatrica, se c'è, con le piastre una davanti e una dietro."
+      - "Usa il **DAE**: sotto i 25 kg in modalità pediatrica, se c'è, altrimenti in quella per adulti, con le piastre una davanti e una dietro."
     nonfare:
       - "Non fermarti finché non arrivano i soccorsi o il bambino non respira normalmente."
       - "Se non riesci a soffiare, non restare fermo: fai almeno le compressioni."
@@ -220,9 +223,10 @@ argomenti:
     riconosci: "Dolore forte, gonfiore, livido, una forma strana dell'arto o la parte che non si riesce a muovere."
     fare:
       - "Sostieni la parte **nella posizione in cui si trova** (mani, cuscino, fascia per il braccio)."
-      - "**Ghiaccio avvolto in un panno**, per circa 20 minuti."
+      - "**Ghiaccio avvolto in un panno**, per non più di 20 minuti alla volta."
       - "Frattura esposta: non spingere dentro l'osso; se sanguina, **premi sulla ferita** con una garza o un panno pulito, senza premere sull'osso."
-      - "Chiama il **112** per fratture esposte, di anca, femore, schiena o collo, o dolore fortissimo."
+      - "Chiama il **112** per fratture esposte o con l'arto deformato, di anca, femore, schiena o collo, per dolore fortissimo o se è pallida, fredda e sudata."
+      - "Distorsione: riposo, ghiaccio nel panno, parte sollevata. **Nel dubbio è una frattura**: fatti vedere da un medico."
     nonfare:
       - "Non raddrizzare l'arto e non farlo muovere."
       - "Non spingere dentro l'osso e non mettere il ghiaccio direttamente sulla pelle."
@@ -232,10 +236,10 @@ argomenti:
     dal: "2026-12-01"
     riconosci: "Brividi forti, pelle fredda e pallida, mani impacciate, poi confusione e sonnolenza. **Se smette di tremare è grave.** Congelamento: dita, orecchie o naso bianchi e insensibili."
     fare:
+      - "Se pensi che sia in ipotermia, chiama il **112**. Se è confusa, sonnolenta o non trema più è grave: muovila il meno possibile. Se non respira normalmente, rianimazione."
       - "Portala al riparo dal vento e al caldo, **spostandola con delicatezza**."
       - "Togli i vestiti bagnati, asciugala e coprila con coperte asciutte, **anche la testa**."
       - "Se è sveglia e deglutisce, una **bevanda calda e zuccherata**."
-      - "Se è confusa, sonnolenta o non trema più, chiama il **112**. Se non respira normalmente, rianimazione."
     nonfare:
       - "Niente alcol: fa perdere ancora più calore."
       - "Sul congelamento non strofinare e non scaldare con fuoco o stufe."
@@ -251,6 +255,7 @@ argomenti:
       - "Previeni: **controllo annuale** di caldaia, stufe e canne fumarie e un **rilevatore di monossido**."
     nonfare:
       - "Non entrare in un ambiente pieno di gas se rischi anche tu."
+      - "Non rientrare in casa finché i soccorritori o un tecnico non ti dicono che puoi farlo."
       - "Mai bracieri o generatori in casa, mai il forno a gas per scaldarsi, mai il motore acceso in garage chiuso."
   - id: "asma"
     titolo: "Crisi d'asma"
@@ -259,20 +264,20 @@ argomenti:
     riconosci: "Fiato corto, **fischi nel respiro**, tosse, oppressione al petto. Nei casi gravi non riesce a parlare."
     fare:
       - "Fallo stare **seduto, leggermente in avanti**, con le braccia appoggiate."
-      - "Resta calmo e aiutalo a respirare lentamente."
+      - "Resta calmo, rassicuralo e allentagli i vestiti stretti."
       - "Se ha il **suo spray** per la crisi, aiutalo a usarlo, con il distanziatore se c'è, come gli ha spiegato il medico."
-      - "Chiama il **112** se lo spray non basta, non riesce a parlare, ha le labbra blu o è sonnolento."
+      - "Chiama il **112** se non ha lo spray, se lo spray non basta, se non riesce a parlare, ha le labbra blu o è sonnolento."
     nonfare:
       - "Non farlo sdraiare."
-      - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi. Chiama subito il **112** e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella coscia."
+      - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi. Chiama subito il **112** e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella parte esterna della coscia."
   - id: "batterie"
     titolo: "Batterie a bottone e calamite"
     motto: "Basta il dubbio"
     dal: "2026-12-11"
-    riconosci: "Un bambino può aver ingoiato una batteria a bottone o delle calamite. **Spesso all'inizio non ci sono segni**; a volte tosse, bava, dolore, vomito o rifiuto del cibo."
+    riconosci: "Un bambino può aver ingoiato una batteria a bottone o delle calamite. **Spesso all'inizio non ci sono segni**; a volte tosse, bava, vomito o fatica a deglutire."
     fare:
       - "Anche solo il dubbio: chiama il **112** o vai **subito al pronto soccorso**."
-      - "Sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore: **miele**, 10 ml (2 cucchiaini) ogni 10 minuti, fino a 6 volte, **mentre lo porti al pronto soccorso**, senza perdere tempo."
+      - "Solo per le batterie: sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore, **miele**, 10 ml (2 cucchiaini) ogni 10 minuti, fino a 6 volte, **mentre lo porti al pronto soccorso**, senza perdere tempo."
       - "Previeni: giocattoli con il **vano batterie a vite**, batterie nuove e scariche lontane dai bambini."
     nonfare:
       - "Non aspettare i sintomi: in poche ore la batteria può bruciare l'esofago."
@@ -284,7 +289,7 @@ argomenti:
     riconosci_tit: "Cosa osservare"
     riconosci: "Dolore, un colpo alla testa, confusione, una gamba che non si muove o un'anca molto dolorante."
     fare:
-      - "Se non risponde, chiama il **112** e guarda se respira normalmente."
+      - "Se non risponde, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**."
       - "Se risponde, tranquillizzalo e chiedi dove ha male, se ha battuto la testa, se ricorda cosa è successo."
       - "Chiama il **112** se ha battuto la testa (ancora di più se prende anticoagulanti), se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi o se è confuso."
       - "Se sta bene, rialzarsi **a tappe**: su un fianco, in ginocchio, poi con una sedia robusta."
@@ -301,9 +306,9 @@ argomenti:
     riconosci: "Ogni anno ustioni, ferite alle mani e lesioni agli occhi, spesso da petardi illegali o inesplosi."
     fare:
       - "Solo fuochi con **marchio CE**, comprati nei negozi autorizzati."
-      - "Ustione: **acqua corrente fresca per almeno 20 minuti**, poi pellicola o garza pulita."
+      - "Ustione: **acqua corrente fresca per almeno 20 minuti**, poi pellicola o garza pulita; se è sulla mano o sul viso, o è estesa, chiama il **112**."
       - "Mano che sanguina: **premi forte** e chiama il **112**."
-      - "Dito staccato: avvolto in una **garza bagnata**, in un **sacchetto chiuso** dentro un altro sacchetto con acqua e ghiaccio; va in ospedale con il ferito."
+      - "Dito staccato: avvolto in una **garza bagnata**, in un **sacchetto chiuso** dentro un altro sacchetto con acqua e ghiaccio; va in ospedale con il ferito. Scrivi sul sacchetto nome e ora."
       - "Occhio colpito: coprilo senza premere e chiama il **112**."
     nonfare:
       - "Non raccogliere né riaccendere un petardo inesploso."

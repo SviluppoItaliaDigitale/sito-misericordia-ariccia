@@ -62,4 +62,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), pp. 12-13 (15-20 g di zucchero se è sveglia e deglutisce, di nuovo dopo 15 minuti se ha ancora i sintomi, 112 se non migliora o non risponde, niente in bocca a chi non risponde, uno spuntino); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Hypoglycaemia», pp. 391-392 (segni, compresi fame, mal di testa e comportamento che sembra ubriachezza; zollette di zucchero); [Associazione Medici Diabetologi, l'ipoglicemia, slide 12](https://aemmedi.it/wp-content/uploads/2020/03/12_Brunato.pdf) (15 g di zucchero sono circa 4 zollette).*
