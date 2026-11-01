@@ -60,7 +60,7 @@ function s6Tanica(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-7
 function s6Fiammifero(x,y,s,u){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); ctx.rotate(.35); box(-8,-40,16,150,6,'#e9cf9a'); fe(0,-46,14,18,'#8a2a1a');
   const f=1+Math.sin(u*14)*.08; ctx.save(); ctx.translate(0,-62); ctx.scale(f,1/f); ctx.fillStyle='#f2a541'; ctx.beginPath(); ctx.moveTo(0,-70); ctx.quadraticCurveTo(34,-20,18,8); ctx.quadraticCurveTo(0,22,-18,8); ctx.quadraticCurveTo(-34,-20,0,-70); ctx.fill();
   ctx.fillStyle=C.giallo; ctx.beginPath(); ctx.moveTo(0,-36); ctx.quadraticCurveTo(16,-8,8,6); ctx.quadraticCurveTo(0,12,-8,6); ctx.quadraticCurveTo(-16,-8,0,-36); ctx.fill(); ctx.restore(); ctx.restore(); }
-// flacone di detersivo con il simbolo di pericolo; o.chiuso = tappo avvitato
+// flacone di detersivo (tappo chiuso) con il simbolo di pericolo
 function s6Pericolo(x,y,r){ ctx.save(); ctx.translate(x,y); ctx.rotate(Math.PI/4); box(-r*.7,-r*.7,r*1.4,r*1.4,4,RED); box(-r*.55,-r*.55,r*1.1,r*1.1,2,'#fff'); ctx.restore(); box(x-r*.09,y-r*.5,r*.18,r*.62,r*.08,'#1a1f36'); fc(x,y+r*.4,r*.11,'#1a1f36'); }
 function s6Flacone(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-80,-90,160,220,34,'#3fa0d8'); arc(52,-40,44,-1.6,1.4,'#3fa0d8',22); box(-36,-140,60,60,10,'#3fa0d8'); box(-44,-160,76,30,10,'#fff');
   box(-62,-20,124,120,14,'#fff'); s6Pericolo(0,40,46); ctx.restore(); }
@@ -208,7 +208,7 @@ dente({u}){
 'occhio-chimico'({u}){
   s6Flacone(-250,30,1.15);
   eye(250,-10,1.25,1);
-  const f=(u*.7)%1; for(let i=0;i<6;i++){ const g=clamp(f*1.3-i*.05); if(g<=0||g>=1) continue; const x=lerp(-200,170,g), y=lerp(-160,-20,g)-Math.sin(g*Math.PI)*170;
+  const f=(u*.7)%1; for(let i=0;i<6;i++){ const g=clamp(f*1.3-i*.05); if(g<=0||g>=1) continue; const x=lerp(-215,165,g), y=lerp(-120,-10,g)-Math.sin(g*Math.PI)*90;
     fc(x,y,13-i*1.4,`rgba(127,214,90,${1-g*.4})`); }
   if(f>.72){ const r=(f-.72)/.28; arc(250,-10,90+r*70,0,TAU,`rgba(242,228,51,${1-r})`,8); }
 },
@@ -218,7 +218,7 @@ dente({u}){
   ctx.save(); ctx.translate(hx,hy); ctx.rotate(th); head(0,0,R,{mouth:'flat'}); fe(R*.36,R*.08,R*.17,R*.13,'#fff'); fc(R*.36,R*.08,R*.09,'#5b8fb9'); fc(R*.36,R*.08,R*.045,'#0d1226'); ctx.restore();
   const P=(lx,ly)=>[hx+lx*Math.cos(th)-ly*Math.sin(th), hy+lx*Math.sin(th)+ly*Math.cos(th)];
   const inn=P(R*.2,R*.04), out=P(R*.56,R*.06), edge=P(R*1.02,R*.2);
-  s6Getto(inn[0],-290,inn[1],u);
+  s6Getto(inn[0],-262,inn[1],u);
   for(let i=0;i<10;i++){ const f=(u*1.3+i/10)%1; let x,y; if(f<.5){ const g=f/.5; x=lerp(inn[0],out[0],g); y=lerp(inn[1],out[1],g)+4; } else { const g=(f-.5)/.5; x=lerp(out[0],edge[0],g)+g*20; y=lerp(out[1],edge[1],g)+g*g*120; }
     fe(x,y,7,10,`rgba(0,165,220,${f<.8?.85:(1-f)*4})`); }
   const s=A(.8); if(s>0){ const oe=P(-R*.36,R*.08); ctx.save(); ctx.globalAlpha*=clamp(s); arc(oe[0],oe[1],46,0,TAU,C.giallo,7); ctx.restore(); spunta(oe[0]-70,oe[1]-80,36,s); }
@@ -241,19 +241,20 @@ protezioni({u,A}){
   grp(-300,-140,1,A(.2),()=>{ fc(0,0,120,C.tile); s6Guanto(0,20,.48,-.15); });
   grp(-300,140,1,A(.35),()=>{ fc(0,0,120,C.tile); s6Occhiali(0,0,.58); });
   grp(170,0,1,A(.7),()=>{
-    box(-40,-150,340,22,8,'#cfd6e8'); ln([[-20,-128],[20,-90]],'#aab3cc',10);       // mensola in alto
-    s6Flacone(130,-242,.58);
-    ctx.save(); ctx.translate(30,190); stick(0,-40,1.15,{shirt:'#f2a541',legs:80}); ctx.restore();
-    ctx.save(); ctx.setLineDash([12,10]); ln([[90,40],[120,-110]],'rgba(242,228,51,.75)',5); ctx.restore(); vieto(110,-30,50,1); });
+    box(-40,-110,340,22,8,'#cfd6e8'); ln([[250,-88],[290,-50]],'#aab3cc',10);       // mensola in alto, il flacone chiuso sopra
+    s6Flacone(130,-200,.55);
+    ctx.save(); ctx.translate(30,190); stick(0,-40,1.15,{shirt:'#f2a541',legs:80}); ctx.restore(); });
 },
 // ---------- Zecche ----------
 zecca({u}){
   const z=1+Math.min(u,8)*.025; ctx.save(); ctx.scale(z,z);
   const fili=[[-340,.18],[-250,-.1],[-140,.06],[-40,-.04],[90,.12],[200,-.08],[310,.1],[390,-.14]];
   fili.forEach(([x,c],i)=>{ const sw=Math.sin(u*1.3+i)*10; ctx.fillStyle=i%2?S6_ERBA:S6_ERBA2; ctx.beginPath(); ctx.moveTo(x-16,260); ctx.quadraticCurveTo(x+c*300,40,x+c*500+sw,-240-hash(i)*60); ctx.quadraticCurveTo(x+c*300+10,40,x+16,260); ctx.fill(); });
-  const t=clamp((u%9)/8); const x0=-40, sw=Math.sin(u*1.3+3)*10;
-  const bx=x0+(-.04)*500*t*.0+(-.04*300)*t, by=lerp(200,-150,t);
-  s6Zecca(bx+sw*t,by,.75,Math.PI,{cammina:u*8});
+  // la zecca sale lungo il quarto filo (x=-40): punto e direzione della curva del filo
+  const x0=-40, c0=-.04, sw=Math.sin(u*1.3+3)*10, top=-240-hash(3)*60, t=lerp(.08,.72,clamp(u/8));
+  const B=(q,a,b,d)=>(1-q)*(1-q)*a+2*(1-q)*q*b+q*q*d;
+  const bx=B(t,x0,x0+c0*300,x0+c0*500+sw), by=B(t,260,40,top), bx2=B(t+.01,x0,x0+c0*300,x0+c0*500+sw), by2=B(t+.01,260,40,top);
+  s6Zecca(bx,by,.62,Math.atan2(by2-by,bx2-bx)-Math.PI/2,{cammina:u*8});
   ctx.restore();
 },
 'zecca-vestiti'({u,A}){
@@ -297,8 +298,8 @@ zecca({u}){
   s6Pelle(y0); if(tent>0){ fe(-20,y0,40,tent,SK); }
   s6Zecca(-20,y0-62-up-tent,1.15,0);
   s6Pinzetta(-20,y0+6-up-tent,.95,0,1);
-  const a=A(.35); if(a>0){ ctx.save(); ctx.globalAlpha*=clamp(a); const f=(u*.5)%1; arrow(-200,y0-40-f*40,-200,y0-200-f*40,C.giallo,10); ctx.restore(); }
-  grp(310,-150,1,A(.8),()=>{ fc(0,0,110,C.tile); s6Zecca(0,20,.8,0,{sx:1.35,sy:.7}); s6Pinzetta(0,4,Math.PI/2,0,.4); vieto(0,0,100,A(.86)); });
+  const a=A(.35); if(a>0){ ctx.save(); ctx.globalAlpha*=clamp(a); const f=(u*.5)%1; arrow(-175,y0-40-f*40,-175,y0-200-f*40,C.giallo,10); ctx.restore(); }
+  grp(-330,-140,1,A(.8),()=>{ fc(0,0,110,C.tile); s6Zecca(0,20,.8,0,{sx:1.35,sy:.7}); s6Pinzetta(0,4,Math.PI/2,0,.4); vieto(0,0,100,A(.86)); });
 },
 'zecca-no'({u,A}){
   const it=[[-330,.15,()=>s6Alcol(0,10,.7)],[-110,.35,()=>s6Olio(0,10,.8)],[110,.55,()=>s6Tanica(0,20,.75)],[330,.85,()=>s6Fiammifero(0,40,.85,u)]];
@@ -306,7 +307,7 @@ zecca({u}){
   ctx.save(); ctx.beginPath(); ctx.arc(0,170,90,0,TAU); ctx.clip(); fc(0,170,90,SK); ctx.restore(); s6Zecca(0,150,.5,0); arc(0,170,90,0,TAU,'rgba(255,255,255,.4)',4);
 },
 'zecca-dopo'({u,A}){
-  grp(-250,-130,1,A(.2),()=>{ box(-170,-120,340,240,40,C.tile); s6Lavamani(0,20,1,u); });
+  grp(-250,-130,1,A(.2),()=>{ box(-170,-120,340,240,40,C.tile); s6Lavamani(0,-6,1.05,u); });
   grp(130,-150,1,A(.5),()=>{ fc(0,0,100,C.tile); ctx.save(); ctx.globalAlpha*=.9; box(-38,-40,76,110,18,'rgba(255,255,255,.35)'); box(-32,0,64,64,14,'rgba(223,238,248,.6)'); box(-16,-72,32,34,6,'rgba(255,255,255,.5)'); box(-20,-88,40,18,6,'#fff'); ctx.restore(); spunta(70,-70,34,A(.56)); });
   grp(340,-150,1,A(.55),()=>{ fc(0,0,90,C.tile); box(-30,-20,60,80,14,'#7a3412'); box(-12,-48,24,30,6,'#5a2a10'); box(-20,-62,40,16,6,'#3a1a08'); vieto(0,0,82,A(.6)); });
   grp(220,140,1,A(.85),()=>{ box(-200,-90,400,180,40,C.tile); ctx.save(); ctx.beginPath(); ctx.arc(-100,0,70,0,TAU); ctx.clip(); fc(-100,0,70,SK); ctx.restore(); fc(-100,0,7,S6_ZECCAD); arc(-100,0,26,0,TAU,C.giallo,5);
@@ -323,7 +324,7 @@ calendario({u,D,A}){
   if(a>0){ const g=clamp(a)*(.6+.4*clamp((u-PRE)/4)); const R=60+120*g; ctx.lineWidth=R*.32; ctx.strokeStyle='rgba(217,71,61,.55)'; ctx.beginPath(); ctx.arc(-200,0,R*.82,0,TAU); ctx.stroke(); fc(-200,0,R*.32,'rgba(217,71,61,.35)'); }
   fc(-200,0,8,'#8a2a1a'); ctx.restore(); arc(-200,0,200,0,TAU,'rgba(255,255,255,.35)',5);
   grp(140,-150,1,A(.4),()=>{ fc(0,0,100,C.tile); s6Termo(0,-6,.55,.75); });
-  grp(350,-150,1,A(.6),()=>{ fc(0,0,100,C.tile); ln([[-50,-60],[0,10],[-30,80]],SK,30); fc(0,10,20,SK);
+  grp(350,-150,1,A(.6),()=>{ fc(0,0,100,C.tile); ln([[-70,-30],[0,10]],PANT,40); ln([[0,10],[-24,80]],SK,30); fe(-36,88,24,12,'#1a1f36'); fc(4,8,22,SK);
     for(let i=0;i<3;i++){ const ang=-1.2+i*.9; const f=(Math.sin(u*6)+1)/2; ln([[Math.cos(ang)*(30+f*6),10+Math.sin(ang)*(30+f*6)],[Math.cos(ang)*(56+f*6),10+Math.sin(ang)*(56+f*6)]],C.giallo,7); } });
   grp(250,120,1,A(.9),()=>{ fc(0,0,115,C.tile); s6Scatola(0,0,.85); vieto(0,0,106,A(.95)); });
 },

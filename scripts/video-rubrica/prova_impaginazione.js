@@ -17,6 +17,13 @@ const { chromium } = require('playwright-core');
   // a parità quello che scende di più: è il caso peggiore da confrontare con la zona di Instagram e con le etichette.
   const times = [];
   const n = await p.evaluate('SCENE.length');
+// Email, siti e numeri di telefono (3 cifre, spazio, 6-7 cifre) devono stare su una riga: il 1/11/2026 il sottotitolo
+// della campagna volontari andava a capo dentro «348 4068657». Si controlla in ogni scena e nella chiusura.
+const SPEZZATI = `(()=>{ const out=[], w=document.createTreeWalker(document.getElementById('stage'),NodeFilter.SHOW_TEXT); let n;
+    while((n=w.nextNode())){ const re=/\\S+@\\S+|[\\w.-]+\\.(?:it|org|com|eu)\\b|\\b\\d{3}[ \\u00a0]\\d{6,7}\\b/g; let m;
+      while((m=re.exec(n.data))){ const r=document.createRange(); r.setStart(n,m.index); r.setEnd(n,m.index+m[0].length);
+        if(new Set([...r.getClientRects()].filter(q=>q.width>0).map(q=>Math.round(q.top))).size>1) out.push(m[0]); } }
+    return out; })()`;
   for (let k = 0; k < n; k++) {
     const prove = await p.evaluate(`(()=>{const k=${k},Dv=SCENE[k].conta?CONTA.voce:DUR[k];return [...Array(10)].map((_,i)=>START[k]+PRE+Dv*(i+.5)/10)})()`);
     let migliore = prove[prove.length - 1], fondo = -1;
@@ -31,6 +38,8 @@ const { chromium } = require('playwright-core');
           if(vis&&q.bottom>r.top&&q.top<r.bottom&&q.right>r.left&&q.left<r.right)g.push("sottotitolo sopra un'etichetta");
           if(q.right>930&&q.bottom>1210)g.push('etichetta sotto i pulsanti')});return [...new Set(g)]})()`);
       if (guai.length) console.log('ATTENZIONE scena', k + 1, 'a', t.toFixed(1), 's:', guai.join(', '));
+      const rotti = await p.evaluate(SPEZZATI);
+      if (rotti.length) { console.log('ERRORE scena', k + 1, 'a', t.toFixed(1), 's: indirizzo o numero spezzato a capo:', [...new Set(rotti)].join(', ')); process.exitCode = 1; }
       // Firma «Misericordia di Ariccia» (regola del 21/10/2026): c'è, è grande abbastanza, sta fuori dalle zone di
       // Instagram e nessuna scritta o disegno la tocca; il titolo resta sopra la zona dei disegni (505 px).
       const firma = await p.evaluate(`(()=>{ const g=[], f=window.FIRMA_BOX; if(!f) return ['firma assente'];
@@ -50,12 +59,8 @@ const { chromium } = require('playwright-core');
   // Email e siti interi sulla stessa riga, nella chiusura con tutto in vista (il 21/10/2026 la fonte della Giornata del
   // volontariato andava a capo dentro «sede@misericordia-ariccia.it»).
   await p.evaluate('window.renderFrame(TOTAL-0.05)');
-  const spezzati = await p.evaluate(`(()=>{ const out=[], w=document.createTreeWalker(document.getElementById('stage'),NodeFilter.SHOW_TEXT); let n;
-    while((n=w.nextNode())){ const re=/\\S+@\\S+|[\\w.-]+\\.(?:it|org|com|eu)\\b/g; let m;
-      while((m=re.exec(n.data))){ const r=document.createRange(); r.setStart(n,m.index); r.setEnd(n,m.index+m[0].length);
-        if(new Set([...r.getClientRects()].filter(q=>q.width>0).map(q=>Math.round(q.top))).size>1) out.push(m[0]); } }
-    return out; })()`);
-  if (spezzati.length) { console.log('ERRORE indirizzo spezzato a capo:', spezzati.join(', ')); process.exitCode = 1; }
+  const spezzati = await p.evaluate(SPEZZATI);
+  if (spezzati.length) { console.log('ERRORE indirizzo o numero spezzato a capo:', spezzati.join(', ')); process.exitCode = 1; }
   // Cornice di microtesto: c'è su tutti e quattro i lati (strato #cornice del motore firma-e-cornice.js).
   const cornice = await p.evaluate(`(()=>{ const e=window.CORNICE_ESITO; if(!e) return 'cornice assente';
     const c=document.getElementById('cornice').getContext('2d'), W=1080, H=1920, s=e.striscia;

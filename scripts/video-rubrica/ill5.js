@@ -54,21 +54,23 @@ function s5PlsPose(st){ const r=st.roll||0, kn=st.knee||0, fx=st.fix||0, fa=st.f
   let knee=L2([275,-38],[212,-60],kn), ank=L2([432,-38],[290,-40],kn);
   knee=L2(knee,[185,122],r); ank=L2(ank,[330,132],r); knee=L2(knee,[118,168],fx); ank=L2(ank,[300,168],fx);
   P.knee=knee; P.ank=ank; P.kneeR=30+12*kn*(1-r);
-  P.shN=[-232,lerp(78,64,r)]; const a=na*Math.PI/2; P.handN=[P.shN[0]+Math.cos(a)*245,P.shN[1]+Math.sin(a)*245];
-  P.shF=[-232,lerp(-78,-8,r)];
-  let el=L2([-108,-96],[-116,12],fa), hd=L2([24,-100],[-304,50],fa);
+  P.shN=[-232,lerp(90,64,r)]; const a=na*Math.PI/2; P.handN=[P.shN[0]+Math.cos(a)*245,P.shN[1]+Math.sin(a)*245];
+  P.shF=[-232,lerp(-90,-8,r)];
+  let el=L2([-108,-104],[-116,12],fa), hd=L2([24,-106],[-304,50],fa);
   if(fa>0&&fa<1){ el[1]-=Math.sin(fa*Math.PI)*36; hd[1]-=Math.sin(fa*Math.PI)*60; }
   P.elF=L2(el,[-136,86],r); P.handF=L2(hd,[-318,74],r);
   return P; }
 function s5Pls(x,y,s,st){ const P=s5PlsPose(st), r=st.roll||0;
   ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
-  // braccio vicino (sotto il corpo quando rotola)
-  ln([P.shN,P.handN],VSD,52); ln([P.shN,P.handN],VS,44); fc(P.handN[0],P.handN[1],25,SKD); fc(P.handN[0],P.handN[1],22,SK);
+  // braccio vicino: sopra il tronco a pancia in su, sotto quando rotola sul fianco
+  const armN=()=>{ ln([P.shN,P.handN],VSD,52); ln([P.shN,P.handN],VS,44); fc(P.handN[0],P.handN[1],25,SKD); fc(P.handN[0],P.handN[1],22,SK); };
+  if(r>.5) armN();
   // gamba vicina, distesa
   ln([P.hipNear,[432,P.hipNear[1]+4]],PANT,58); fe(452,P.hipNear[1]+4,24,30,'#1a1f36');
   // bacino e tronco
   box(18,lerp(-82,-16,r),126,lerp(164,116,r),50,PANT);
   box(-286,P.tTop,330,P.tH,lerp(60,46,r),VS);
+  if(r<=.5) armN();
   // gamba lontana (di sopra)
   const sa=Math.atan2(P.ank[1]-P.knee[1],P.ank[0]-P.knee[0]);
   fe(P.ank[0]+Math.cos(sa)*22,P.ank[1]+Math.sin(sa)*22,32,21,'#1a1f36',sa);
@@ -120,8 +122,10 @@ Object.assign(ILL, {
 'dae-intro'({u}){
   s5Cartello(-230,-175,140);
   daeBox(-230,105,1.05,{on:true,u});
+  const ph=(u*.8)%1, on=ph<.3, k=on?Math.sin(ph/.3*Math.PI):0;
+  if(on) fc(210,-10,60+k*110,`rgba(242,228,51,${.22*k})`);
   const b=1+Math.max(0,Math.sin(u*7))*.07; ctx.save(); ctx.translate(210,10); ctx.scale(b,b); ctx.fillStyle=RED; heartP(0,0,1.55); ctx.fill(); ctx.restore();
-  const ph=(u*.8)%1; if(ph<.3){ const k=Math.sin(ph/.3*Math.PI); fc(210,-10,60+k*90,`rgba(242,228,51,${.25*k})`); bolt(210,-10,2.3,C.giallo); }
+  if(on) bolt(210,-10,2.3,C.giallo);
 },
 // il DAE parla: altoparlante con le onde e fumetto con tre puntini; la legge 116/2021 con la spunta
 'dae-voce'({u,A}){
@@ -207,9 +211,9 @@ Object.assign(ILL, {
   const hf=s5Pt(S5P.x,S5P.y,S5P.s,P.handF); s5ManoSu(hf[0]+8,hf[1]+30,.36,.15);
   const g=A(.3); if(g>0){ const th=[lerp(P.hipFar[0],P.knee[0],.72),lerp(P.hipFar[1],P.knee[1],.72)], w=s5Pt(S5P.x,S5P.y,S5P.s,th); grp(w[0],w[1]+26,1,g,()=>s5ManoSu(0,0,.36,-.25)); }
   // riquadro di lato: la gamba si piega e il piede resta a terra
-  grp(320,-210,1,A(.3),()=>{ fc(0,0,92,C.tile); ln([[-78,48],[78,48]],'rgba(143,154,187,.8)',5);
+  grp(315,-195,1.2,A(.3),()=>{ fc(0,0,88,C.tile); ln([[-78,48],[78,48]],'rgba(143,154,187,.8)',5);
     const hip=[-56,30], k=[lerp(8,-6,kn),lerp(30,-36,kn)], an=[lerp(58,30,kn),30];
-    ln([hip,k],PANT,22); ln([k,an],'#3a4580',20); box(an[0]-8,34,40,14,7,'#1a1f36');
+    ln([hip,k],'#5664a6',22); ln([k,an],'#6f7cc0',20); box(an[0]-8,34,40,14,7,'#0d1226'); fc(hip[0],hip[1],14,'#5664a6');
     const f=A(.75); if(f>0){ const q=(u*1.3)%1; ctx.save(); ctx.globalAlpha*=clamp(f); arc(an[0]+12,42,18+q*14,0,TAU,`rgba(242,228,51,${1-q})`,5); ctx.restore(); } });
 },
 // 4 · tenendo la mano sulla guancia, tira la gamba e fallo rotolare verso di te; poi anca e ginocchio a 90°
@@ -217,7 +221,7 @@ Object.assign(ILL, {
   const r=inOut(clamp((p-.18)/.36)), fx=inOut(clamp((p-.62)/.2));
   const P=s5Pls(S5P.x,S5P.y,S5P.s,{near:1,far:1,knee:1,roll:r,fix:fx});
   const hf=s5Pt(S5P.x,S5P.y,S5P.s,P.handF); s5ManoSu(hf[0]+8,hf[1]+30,.36,.15);
-  const kp=s5Pt(S5P.x,S5P.y,S5P.s,P.knee); s5ManoSu(kp[0]+6,kp[1]+28,.36,-.2);
+  const kp=s5Pt(S5P.x,S5P.y,S5P.s,P.knee), gp=s5Pt(S5P.x,S5P.y,S5P.s,[lerp(P.hipFar[0],P.knee[0],.62),lerp(P.hipFar[1],P.knee[1],.62)]); if(fx<1){ ctx.save(); ctx.globalAlpha*=1-fx; s5ManoSu(gp[0]+4,gp[1]+26+fx*60,.36,-.2); ctx.restore(); }
   const v=A(.5); if(v>0){ const k=Math.sin(u*4)*6; ctx.save(); ctx.globalAlpha*=clamp(v)*(1-clamp((p-.62)/.1)); ctx.strokeStyle=C.giallo; ctx.lineWidth=10; ctx.lineCap='round'; ctx.beginPath(); ctx.arc(-120,-60,110,-Math.PI*.85,-Math.PI*.15); ctx.stroke(); ctx.restore(); }
   const ar=A(.25); if(ar>0&&p<.62){ ctx.save(); ctx.globalAlpha*=clamp(ar); const f=(u*1.4)%1; arrow(kp[0]+60,kp[1]-50+f*16,kp[0]+60,kp[1]+30+f*16,C.giallo,9); ctx.restore(); }
   if(v>0&&p<.62){ ctx.save(); ctx.globalAlpha*=clamp(v); arrow(-20,-170,-20,-95,C.giallo,10); ctx.restore(); }
@@ -234,7 +238,7 @@ naso({u}){
 // seduto, testa leggermente in avanti: il sangue esce dal naso, in avanti, nel fazzoletto
 'naso-avanti'({u,p,A}){
   const fw=clamp(A(.6)), tilt=.06+.26*fw, lean=.06+.06*fw;
-  ctx.save(); ctx.translate(-40,0);
+  ctx.save(); ctx.translate(-30,48); ctx.scale(.82,.82);
   const se=A(.2);
   box(-240,100,210,24,10,se>.5?'#8b95b6':'#6b7491'); box(-252,-120,24,244,10,'#6b7491'); ln([[-222,124],[-222,245]],'#6b7491',14); ln([[-52,124],[-52,245]],'#6b7491',14);
   if(se>0){ ctx.save(); ctx.globalAlpha*=clamp(se); ln([[-236,96],[-36,96]],C.giallo,6); ctx.restore(); }
@@ -256,7 +260,7 @@ naso({u}){
   const n=s5Profilo(-250,-40,95,{tilt:-.5,mouth:'flat'});
   ctx.save(); ctx.setLineDash([10,10]); ctx.strokeStyle=RED; ctx.lineWidth=7; ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(n[0]-6,n[1]); ctx.quadraticCurveTo(n[0]-60,n[1]+10,-262,62); ctx.lineTo(-268,118); ctx.stroke(); ctx.restore();
   vieto(-225,-15,175,A(.3));
-  lying(260,120,.4,{}); vieto(225,-15,175,A(.7));
+  lying(205,105,.38,{}); vieto(225,-15,175,A(.7));
 },
 // pollice e indice stringono la parte morbida, sotto l'osso (tratteggio); si respira con la bocca
 'naso-stringi'({u,A}){
@@ -273,7 +277,7 @@ naso({u}){
     fin([[X+R*.6,Y+R*1.15],[X+R*.5,Y+R*.75],[X+ax,tipY]],R*.17);
     fin([[X+R*.2,Y+R*1.2],[X-R*.42,Y+R*.82],[X-ax,tipY]],R*.19);
     fe(X+ax+R*.02,tipY,R*.05,R*.06,'#f3d9c6'); ctx.restore(); }
-  const b=A(.8); if(b>0){ for(let i=0;i<3;i++){ const f=(u*1.1+i/3)%1; arc(X,Y+R*.68,R*(.24+f*.42),Math.PI*.3,Math.PI*.7,`rgba(255,255,255,${(1-f)*clamp(b)})`,6); } }
+  const b=A(.8); if(b>0){ for(let i=0;i<3;i++){ const f=(u*1.1+i/3)%1; arc(X,Y+R*.68,R*(.24+f*.5),Math.PI*.28,Math.PI*.72,`rgba(255,255,255,${(1-f*.7)*clamp(b)})`,9); } }
 },
 // niente cotone, garze o fazzoletti nel naso
 'naso-no-cotone'({u,A}){
@@ -287,7 +291,7 @@ naso({u}){
     ctx.save(); ctx.beginPath(); ctx.arc(0,0,128,0,TAU); ctx.clip();
     fe(0,-60,120,110,SK); fc(-44,-6,30,SKD); fc(44,-6,30,SKD); fc(-42,-8,27,SK); fc(42,-8,27,SK); fe(0,-14,40,34,SK);
     fe(-20,14,14,8,'#8a5444'); fe(20,14,14,8,'#8a5444'); ctx.restore();
-    const k=Math.sin(u*2.4)*8; ctx.save(); ctx.translate(-20,80+k); item[i](); ctx.restore();
+    const k=Math.sin(u*2.4)*8; ctx.save(); ctx.translate(0,78+k); ctx.scale(1.3,1.3); item[i](); ctx.restore();
     vieto(0,0,118,A(t+.06)); }));
 },
 // per un giorno: niente naso soffiato con forza, niente sforzi, niente bevande calde

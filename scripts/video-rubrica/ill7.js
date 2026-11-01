@@ -122,8 +122,8 @@ vipera({u,A}){
     [330,.8,()=>{ cube(0,-4,1.5,'#dff3fb'); }],
   ];
   it.forEach(([x,t,f])=>grp(x,-90,1,A(t),()=>{ s7Tondo(100,f); vieto(0,0,90,A(t+.06)); }));
-  grp(0,145,1,A(.9),()=>{ fc(0,0,82,C.tile); ctx.rotate(-.25); box(-40,-46,80,96,30,'#e8702a'); box(-14,-66,28,24,6,'#c25a1e'); ln([[-24,-14],[24,-14]],'rgba(255,255,255,.4)',5); ln([[-24,8],[24,8]],'rgba(255,255,255,.4)',5);
-    ctx.rotate(.25); s7Calore(-36,-50,72,40,u,3,'rgba(255,170,110,.9)'); vieto(0,0,72,A(.96)); });
+  grp(0,145,1,A(.9),()=>{ s7Tondo(82,()=>{ ctx.save(); ctx.translate(-14,18); ctx.rotate(-.25); box(-34,-40,68,82,26,'#e8702a'); box(-12,-58,24,20,6,'#c25a1e'); ln([[-20,-10],[20,-10]],'rgba(255,255,255,.4)',5); ln([[-20,8],[20,8]],'rgba(255,255,255,.4)',5); ctx.restore();
+    s7Calore(28,-10,30,40,u,2,'rgba(255,170,110,.95)'); }); vieto(0,0,72,A(.96)); });
 },
 siero({u,A}){
   // ospedale: il siero c'è, decide il medico
@@ -157,7 +157,6 @@ sentiero({u,A}){
 'termometro-caldo'({u}){
   s7Sole(-230,-150,95,u); s7Calore(-400,230,320,110,u,5);
   const r=outCubic(clamp(u/2.6)), top=-240, bot=150, h=lerp(40,bot-top,r);
-  fc(150,-10,230,'rgba(217,71,61,'+(.12+.1*r)+')');
   box(110,-270,80,430,40,'#fff'); box(126,-254,48,90,20,'rgba(217,71,61,.25)'); fc(150,180,80,'#fff'); fc(150,180,60,RED);
   box(130,bot-h,40,h+30,20,RED);
   for(let i=0;i<9;i++) ln([[190,-230+i*40],[220,-230+i*40]],i<3?RED:'#cfd6e8',5);
@@ -178,7 +177,7 @@ ombra({u,p,A}){
   ground(226);
   s7Sole(-330,-190,70,u); fe(-260,226,200,16,'rgba(242,228,51,.25)');
   fe(190,226,260,22,'rgba(8,20,50,.45)');
-  box(345,-60,56,290,14,S7_LEGNO); [[300,-170,120],[400,-200,110],[350,-90,110],[240,-90,90],[440,-110,80]].forEach(([x,y,r],i)=>fc(x,y,r,i%2?'#3fa35f':'#2f8a4f'));
+  box(315,-60,56,290,14,S7_LEGNO); [[280,-170,115],[370,-200,100],[335,-90,100],[230,-90,85],[405,-110,70]].forEach(([x,y,r],i)=>fc(x,y,r,i%2?'#3fa35f':'#2f8a4f'));
   const t=inOut(clamp((p-.08)/.24)), x=lerp(-240,120,t), s=.55;
   if(t>0&&t<1){ ctx.save(); ctx.setLineDash([14,12]); arrow(-120,120,40,120,'rgba(242,228,51,.7)',7); ctx.restore(); }
   lying(x,226,s,{});
@@ -190,12 +189,14 @@ ombra({u,p,A}){
   grp(-180,212,1,A(.75),()=>{ box(-70,-22,120,30,10,'#8a5a3a'); box(-60,-34,100,16,8,'#6f4729'); box(64,-14,56,24,10,'#1a1f36'); box(84,-6,56,24,10,'#1a1f36'); });
 },
 'vasca-fredda'({u,p,A}){
-  // vasca: si vede solo la testa, il corpo è sott'acqua dal collo in giù
+  // vasca in sezione: la testa fuori, il corpo sott'acqua dal collo in giù
   const b=Math.sin(u*1.5)*3;
-  head(-300,-38+b,62,{mouth:'flat'});
-  box(-420,30,560,190,40,'#f4f6fb'); box(-410,212,40,24,8,'#cfd6e8'); box(90,212,40,24,8,'#cfd6e8');
-  box(-404,14,528,28,12,S7_ACQUAL); box(-420,30,560,14,7,'#e3e7f1');
-  for(let i=0;i<4;i++) cube(-200+i*80,16+Math.sin(u*2+i)*3,.45,'#eef9fd');
+  box(-404,40,528,166,30,'#e3e7f1');
+  box(-330,10+b,40,40,10,SKD); box(-300,30+b,240,70,34,VS); ln([[-80,64+b],[110,40],[110,150]],PANT,52); box(84,150,52,30,12,SK);
+  head(-310,-34+b,58,{mouth:'flat'});
+  ctx.save(); ctx.globalAlpha*=.62; box(-404,16,528,190,30,S7_ACQUAL); ctx.restore();
+  sbox(-412,10,544,204,36,'#f4f6fb',16); box(-410,212,40,24,8,'#cfd6e8'); box(90,212,40,24,8,'#cfd6e8');
+  for(let i=0;i<4;i++) cube(-200+i*80,14+Math.sin(u*2+i)*3,.45,'#eef9fd');
   const n=A(.35); if(n>0){ ctx.save(); ctx.globalAlpha*=clamp(n); ctx.setLineDash([14,10]); ln([[-440,12],[160,12]],C.giallo,6); ctx.restore(); arrow(170,0,170,110,C.giallo,9); }
   // la doccia fredda, in alternativa
   grp(310,-150,1,A(.75),()=>{ fc(0,0,120,C.tile); ln([[60,-90],[60,-70],[20,-70]],'#cfd6e8',10); fe(10,-66,30,12,'#cfd6e8');
@@ -211,9 +212,9 @@ raffredda({u,p,k,A}){
   lying(X,Y,S,{rise:Math.sin(u*2)*3});
   const a1=due?1:A(.2), a2=due?1:A(.45), a3=due?1:A(.7), a4=due?1:A(.9);
   ctx.save(); ctx.translate(X,Y); ctx.scale(S,S); s7Panno(-180,-146,260,34,u,a1); s7Panno(270,-104,190,28,u,a1); ctx.restore();
-  const P=[L(-236,-92),L(-160,-52),L(190,-82)];
+  const P=[L(-205,-98),L(-160,-52),L(190,-82)];
   if(a3>0){ const f=(u*1.2)%1; P.forEach(([x,y])=>{ ctx.save(); ctx.globalAlpha*=clamp(a3)*(1-f); arc(x,y,40+f*40,0,TAU,C.giallo,6); ctx.restore(); }); }
-  P.forEach(([x,y],i)=>grp(x,y,1,a2,()=>s7Impacco(0,0,.8)));
+  P.forEach(([x,y],i)=>grp(x,y,1,a2,()=>s7Impacco(0,0,i?.8:.62)));
   grp(-60,due?20:-60,1,a4,()=>{ s7Ventaglio(0,0,due?.75:1,u); for(let i=0;i<3;i++){ const f=(u*1.5+i/3)%1; ctx.save(); ctx.globalAlpha*=1-f; ln([[-50+i*50,30+f*60],[-40+i*50,60+f*60]],'#fff',5); ctx.restore(); } });
   if(due){
     grp(-330,-185,1,A(.2),()=>{ fc(0,0,88,C.tile); phone(0,0,.36,{num:'112',ring:true,u}); });
@@ -226,7 +227,7 @@ raffredda({u,p,k,A}){
   grp(-200,-140,1,A(.15),()=>{ fc(0,0,115,C.tile); clockFace(0,0,78,7,0); arc(0,0,92,Math.PI*.5,Math.PI*.83,C.ciano,12); arc(0,0,92,-Math.PI*.5,-Math.PI*.17,C.ciano,12); });
   grp(200,-140,1,A(.35),()=>{ fc(0,0,115,C.tile); box(-36,-60,72,130,22,'rgba(159,216,240,.85)'); box(-36,-10,72,80,20,'#5fb7e5'); box(-18,-86,36,30,8,'#fff'); box(-36,-40,72,26,4,'#fff'); });
   grp(-200,115,1,A(.6),()=>{ fc(0,0,115,C.tile); phone(-42,4,.3,{num:'',label:'',ring:true,u}); head(42,-6,36,{hairCol:GRAYH,glasses:true}); box(10,30,64,60,24,'#bfc8de'); });
-  grp(200,115,1,A(.9),()=>{ fc(0,0,115,C.tile); s7Sole(55,-55,22,u); car(-10,25,.45,'#cfd6e8'); fc(-12,-2,13,SK); ctx.fillStyle='#8a6a4a'; ctx.beginPath(); ctx.arc(-12,-4,14,Math.PI,0); ctx.fill(); vieto(0,0,100,A(.95)); });
+  grp(200,115,1,A(.9),()=>{ fc(0,0,115,C.tile); s7Sole(52,-58,22,u); car(-25,42,.5,'#cfd6e8'); fc(-44,2,12,SK); ctx.fillStyle='#8a6a4a'; ctx.beginPath(); ctx.arc(-44,0,13,Math.PI,0); ctx.fill(); vieto(0,0,100,A(.95)); });
 },
 // ---------- Annegamento ----------
 annega({u}){
@@ -265,17 +266,17 @@ salvagente({u,p,A}){
   ctx.save(); ctx.setLineDash([10,8]); ctx.strokeStyle='#e9d3a8'; ctx.lineWidth=5; ctx.beginPath(); ctx.moveTo(hand[0],hand[1]); ctx.quadraticCurveTo((hand[0]+sx)/2,Math.max(hand[1],sy)+40,sx,sy); ctx.stroke(); ctx.restore();
   fc(hand[0],hand[1],13,SK);
   const bob=t>=1?Math.sin(u*2.4)*5:0; s7Salvagente(sx,sy+bob,32,q*6);
-  grp(130,-200,1,A(.55),()=>{ fc(0,0,90,C.tile); ctx.save(); ctx.beginPath(); ctx.arc(0,0,84,0,TAU); ctx.clip();
+  grp(135,-195,1,A(.55),()=>{ fc(0,0,100,C.tile); ctx.save(); ctx.beginPath(); ctx.arc(0,0,96,0,TAU); ctx.clip(); ctx.scale(1.12,1.12);
     box(-60,-34+Math.sin(u*2)*3,64,70,10,'#f4f6fb'); box(-44,-50,22,18,4,'#f4f6fb'); fc(38,4+Math.sin(u*2+1)*3,30,C.giallo); ln([[10,4],[66,4]],'#e8702a',5); s7Acqua(-90,90,24,90,u); ctx.restore(); });
-  grp(345,-200,1,A(.85),()=>{ fc(0,0,90,C.tile); ctx.save(); ctx.beginPath(); ctx.arc(0,0,84,0,TAU); ctx.clip();
+  grp(350,-195,1,A(.85),()=>{ fc(0,0,100,C.tile); ctx.save(); ctx.beginPath(); ctx.arc(0,0,96,0,TAU); ctx.clip(); ctx.scale(1.12,1.12);
     ln([[-80,-50],[50,30]],S7_LEGNO,10); head(56,22,20,{mouth:'flat'}); s7Acqua(-90,90,40,90,u); arc(-40,40,22,0,TAU,'#e9d3a8',6); arc(-40,40,12,0,TAU,'#e9d3a8',5); ctx.restore(); });
 },
 'acqua-sicura'({u,A}){
   const T=(x,y,t,fn,no)=>grp(x,y,1,A(t),()=>{ box(-200,-115,400,230,26,C.tile); ctx.save(); rr(ctx,-200,-115,400,230,26); ctx.clip(); fn(); ctx.restore(); if(no) vieto(0,0,100,A(t+.06)); });
   // bambino in acqua con un adulto vicino, piscina con la recinzione
   T(-215,-150,.2,()=>{ for(let i=0;i<9;i++) ln([[-180+i*45,-100],[-180+i*45,-10]],'#cfd6e8',6); ln([[-200,-90],[200,-90]],'#cfd6e8',6); ln([[-200,-40],[200,-40]],'#cfd6e8',6);
-    stick(-20,-30,.62,{shirt:'#f2a541'}); s7Testa(70,30,24,u,{mouth:'smile',hairCol:'#8a6a4a',amp:3}); s7Acqua(-30,200,44,115,u);
-    ctx.save(); ctx.setLineDash([8,8]); ln([[4,-36],[54,12]],C.giallo,5); ctx.restore(); });
+    box(-200,44,170,80,0,'#cfd6e8'); stick(-105,-34,.75,{shirt:'#f2a541'}); s7Testa(20,26,26,u,{mouth:'smile',hairCol:'#8a6a4a',amp:3}); s7Acqua(-30,200,44,115,u);
+    ctx.save(); ctx.setLineDash([8,8]); ln([[-72,-30],[-6,10]],C.giallo,5); ctx.restore(); });
   // mai da soli: due nuotatori insieme
   T(215,-150,.45,()=>{ [[-60,0],[60,.9]].forEach(([x,ph])=>{ const a=u*3+ph; ln([[x,20],[x+Math.cos(a)*54,20-Math.abs(Math.sin(a))*50]],SK,14); s7Testa(x,10,26,u,{mouth:'smile',amp:3}); });
     s7Acqua(-200,200,34,115,u); });

@@ -9,7 +9,7 @@ SER = 'Esci dal post · Entra nella squadra'
 CARD = dict(s='Diventa volontario · WhatsApp', tel='348 4068657')
 SCRIVI = S('Scrivici', ['Il primo passo:', 'un *messaggio*.'],
            'Il primo passo è un messaggio. Scrivi «volontario» su WhatsApp al ' + TEL + '.', 'prenota', [['348 4068657', .6, 1]],
-           sub='Il primo passo è un messaggio. Scrivi VOLONTARIO su WhatsApp al 348 4068657.')
+           sub='Il primo passo è un messaggio. Scrivi VOLONTARIO su WhatsApp al 348\u00a04068657.')  # spazio che non va a capo
 FINE = dict(chip='Esci dal post', title=['Entra nella', '*squadra*.'],
             voce='Esci dal post. Entra nella squadra della Misericordia di Ariccia.', ill='fine', tags=[])
 CHI_PUO = S('Chi può', ['Dai 16', 'agli *80 anni*.'],
