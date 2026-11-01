@@ -6,6 +6,8 @@ slug: "primo-soccorso-dae"
 description: "Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo."
 immagine: "/img/news/2027-01-12-primo-soccorso-dae-grafica.jpg"
 social_video: "/video/primo-soccorso-dae.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 3ª serie 1/10 — Il defibrillatore (DAE). Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -20,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **1 di 10**: **il defibrillatore (DAE)**.
 
-{{< video src="video/primo-soccorso-dae.mp4" poster="img/video/primo-soccorso-dae.jpg" verticale="si" titolo="Il defibrillatore (DAE): primo soccorso passo passo" descrizione="Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo." data="2027-01-12" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-dae.mp4" poster="img/video/primo-soccorso-dae.jpg" verticale="si" titolo="Il defibrillatore (DAE): primo soccorso passo passo" descrizione="Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo." data="2027-01-12" didascalia="Il video dura circa 1 minuto e 40 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

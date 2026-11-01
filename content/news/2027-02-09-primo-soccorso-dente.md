@@ -6,6 +6,8 @@ slug: "primo-soccorso-dente"
 description: "Un dente uscito per un colpo si può salvare: come prenderlo, dove conservarlo (latte o soluzione fisiologica), perché un dente da latte non va rimesso e quando correre dal dentista o al pronto soccorso."
 immagine: "/img/news/2027-02-09-primo-soccorso-dente-grafica.jpg"
 social_video: "/video/primo-soccorso-dente.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 3ª serie 5/10 — Dente caduto o rotto. Un dente uscito per un colpo si può salvare: come prenderlo, dove conservarlo (latte o soluzione fisiologica), perché un dente da latte non va rimesso e quando correre dal dentista o al pronto soccorso. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -20,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **5 di 10**: **dente caduto o rotto**.
 
-{{< video src="video/primo-soccorso-dente.mp4" poster="img/video/primo-soccorso-dente.jpg" verticale="si" titolo="Dente caduto o rotto: primo soccorso passo passo" descrizione="Un dente uscito per un colpo si può salvare: come prenderlo, dove conservarlo (latte o soluzione fisiologica), perché un dente da latte non va rimesso e quando correre dal dentista o al pronto soccorso." data="2027-02-09" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-dente.mp4" poster="img/video/primo-soccorso-dente.jpg" verticale="si" titolo="Dente caduto o rotto: primo soccorso passo passo" descrizione="Un dente uscito per un colpo si può salvare: come prenderlo, dove conservarlo (latte o soluzione fisiologica), perché un dente da latte non va rimesso e quando correre dal dentista o al pronto soccorso." data="2027-02-09" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **4 di 10**: **ferite e tagli**.
 
-{{< video src="video/primo-soccorso-ferite.mp4" poster="img/video/primo-soccorso-ferite.jpg" verticale="si" titolo="Ferite e tagli: primo soccorso passo passo" descrizione="Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica." data="2027-02-02" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ferite.mp4" poster="img/video/primo-soccorso-ferite.jpg" verticale="si" titolo="Ferite e tagli: primo soccorso passo passo" descrizione="Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica." data="2027-02-02" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
