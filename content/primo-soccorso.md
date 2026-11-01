@@ -1,7 +1,7 @@
 ---
 title: "Primo soccorso: cosa fare"
 titoloSeo: "Primo soccorso: cosa fare in caso di emergenza (guida pratica)"
-description: "Guida di primo soccorso della Misericordia di Ariccia: cosa fare in caso di soffocamento, arresto cardiaco, malore, emorragia, ustione e colpo di calore. In emergenza chiama sempre il 112."
+description: "Guida di primo soccorso della Misericordia di Ariccia: cosa fare in caso di soffocamento, arresto cardiaco, svenimento, emorragia, ustione, colpo di calore e convulsioni. In emergenza chiama sempre il 112."
 italianoSemplice: |
   **Cosa fare in caso di emergenza.**
 
@@ -9,7 +9,7 @@ italianoSemplice: |
 
   Poi resta vicino alla persona e segui le indicazioni dell'operatore al telefono.
 
-  - Se una persona **soffoca**: dai colpi tra le spalle e spingi sulla pancia (manovra di Heimlich).
+  - Se una persona **soffoca**: dai colpi tra le spalle e spingi sulla pancia (manovra di Heimlich). Nei bambini sotto un anno è diverso: colpi sulla schiena e spinte sul petto, mai sulla pancia.
   - Se una persona **sviene**: sdraiala e solleva le gambe.
   - Se c'è una **ferita che sanguina**: premi forte sulla ferita con un panno pulito.
   - Se c'è una **ustione**: metti la parte sotto l'acqua fresca per almeno 20 minuti.
@@ -33,13 +33,15 @@ Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indic
 4. **Resta con lei** e continua a parlarle finché arrivano i soccorsi.
 
 <details class="faq-item">
-<summary>Arresto cardiaco: la persona non risponde e non respira</summary>
+<summary>Arresto cardiaco: la persona non risponde e non respira normalmente</summary>
 
-1. Chiama subito il **112** e chiedi un **defibrillatore (DAE)**.
-2. Inizia le **compressioni toraciche**: al centro del petto, spingi forte e veloce (circa 100-120 al minuto), lasciando risalire il torace.
+Se fa respiri rari, rumorosi o affannosi, **non** è un respiro normale: è un arresto cardiaco.
+
+1. Chiama subito il **112**, metti il **vivavoce** e fatti portare un **defibrillatore (DAE)**.
+2. Inizia le **compressioni toraciche**: mani al centro del petto, braccia tese, spingi forte (**5-6 cm**) e veloce (**100-120 al minuto**), lasciando risalire il torace.
 3. Se sei formato, alterna **30 compressioni e 2 respirazioni**; se non te la senti, fai solo le compressioni senza fermarti.
 4. Appena arriva il **DAE**, accendilo e **segui le istruzioni vocali**: è pensato per guidarti passo passo.
-5. Continua senza interruzioni fino all'arrivo dei soccorsi.
+5. Continua senza interruzioni fino all'arrivo dei soccorsi o finché la persona riprende a respirare normalmente.
 
 </details>
 
@@ -49,21 +51,23 @@ Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indic
 Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respirare, parlare o tossire**:
 
 1. **Chiama subito il 112** (o fallo chiamare da chi è vicino) e metti il vivavoce.
-2. Dai **5 colpi tra le scapole** con il palmo della mano, inclinando la persona in avanti.
-3. Se non basta, esegui la **manovra di Heimlich**: 5 compressioni decise sulla pancia, tra ombelico e sterno.
+2. Dai **fino a 5 colpi tra le scapole** con il palmo della mano, inclinando la persona in avanti.
+3. Se non basta, esegui la **manovra di Heimlich**: fino a 5 compressioni decise sulla pancia, tra ombelico e sterno.
 4. **Alterna** 5 colpi dorsali e 5 compressioni finché l'ostruzione si libera. Non infilare le dita in bocca alla cieca.
 5. Se la persona perde coscienza, accompagnala a terra e inizia le compressioni toraciche; se nessuno ha ancora chiamato il **112**, chiamalo subito.
+6. Dopo le compressioni sulla pancia la persona va **sempre fatta vedere da un medico**.
 
 *Nel lattante (meno di 1 anno): 5 pacche dorsali e 5 compressioni sul torace con i due pollici, mai la manovra di Heimlich.*
 
 </details>
 
 <details class="faq-item">
-<summary>Svenimento o malore</summary>
+<summary>Svenimento</summary>
 
-1. **Sdraia** la persona e **solleva le gambe** per favorire il ritorno del sangue alla testa.
-2. Quando riprende conoscenza, falla rialzare **lentamente**.
-3. Se **non si riprende** in poco tempo, non respira bene o si è fatta male cadendo, chiama il **112**.
+1. **Sdraia** la persona a pancia in su e, se puoi, **solleva le gambe**.
+2. Se **non si riprende** in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**.
+3. Quando sta meglio, falla rialzare **piano**: prima seduta, poi in piedi.
+4. Chiama il **112** anche se è svenuta durante uno sforzo, con dolore al petto o palpitazioni, o se si è fatta male cadendo.
 
 </details>
 
@@ -82,18 +86,18 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**.
 2. **Togli** anelli, orologi o vestiti solo se **non sono attaccati** alla pelle.
-3. **Non** applicare ghiaccio, oli, dentifricio o pomate.
-4. Copri con un panno pulito e chiama il **112** se l'ustione è estesa, profonda o su viso, mani o genitali.
+3. **Non** applicare ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi, e non rompere le bolle.
+4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è estesa o profonda, se è sul viso, sulle mani o sui genitali, o se riguarda un bambino.
 
 </details>
 
 <details class="faq-item">
 <summary>Colpo di calore</summary>
 
-1. Sposta la persona **all'ombra o in un luogo fresco**.
-2. **Raffreddala**: togli i vestiti in eccesso, bagnala con acqua fresca, falle aria.
-3. Se è cosciente, falle bere **acqua** a piccoli sorsi.
-4. Chiama il **112** se ha confusione, perde coscienza o la temperatura resta molto alta.
+1. Se ha la pelle molto calda ed è confusa, agitata, ha convulsioni o non risponde, è un colpo di calore: **chiama subito il 112**.
+2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco, togli i vestiti in eccesso e bagnala con **acqua fredda su tutto il corpo, testa esclusa** (meglio una doccia o una vasca fredda); altrimenti panni bagnati freddi, ghiaccio avvolto in un panno su collo, ascelle e inguine, e falle aria. Continua per circa 15 minuti o finché i sintomi passano.
+3. Solo se è ben sveglia e riesce a deglutire, falle bere **acqua** a piccoli sorsi.
+4. Se non risponde e non respira normalmente, inizia la **rianimazione**.
 
 </details>
 
@@ -102,8 +106,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 1. **Proteggi** la persona da urti: allontana oggetti pericolosi e metti qualcosa di morbido sotto la testa.
 2. **Non** immobilizzarla e **non mettere nulla in bocca**.
-3. Quando le scosse finiscono, mettila **sul fianco** (posizione laterale di sicurezza).
-4. Chiama il **112** se la crisi dura più di 5 minuti, si ripete o è la prima volta.
+3. Quando le scosse finiscono, **controlla il respiro**: se respira normalmente, mettila **sul fianco** (posizione laterale di sicurezza) e resta con lei; se non respira normalmente, chiama subito il **112** e inizia la **rianimazione**.
+4. Chiama il **112** se la crisi dura più di 5 minuti, se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende.
 
 </details>
 
@@ -111,4 +115,4 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 **Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
 
-*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per ustioni e convulsioni, che le linee guida 2025 non trattano, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*

@@ -43,6 +43,7 @@ nei 3 giorni prima), pagine online e certificato FTPS. Gira anche su ogni PR.
 Dal 21/10/2026 controlla anche la firma «Misericordia di Ariccia» e la cornice di
 microtesto delle grafiche in uscita e dei modelli (§ «2. Grafica brand»; prova in
 `scripts/controlli/prova_cornice.py`).
+Dal 1/11/2026 controlla anche che immagini e video citati dalle **news programmate** esistano già in `static/` (Hugo non costruisce le news future, e prima un file mancante si scopriva il giorno dell'uscita) e la **revisione sanitaria in attesa**: news con `revisione_sanitaria: "da fare"` (in `draft: true`) e schede del dossier primo soccorso con `revisione: "da fare"`, che il layout nasconde; diventa rosso se una esce entro 30 giorni senza revisione.
 Blocca anche le **forme già corrette che non devono tornare** (`FORME_SBAGLIATE` nello
 script, cercate nei sorgenti del sito e nei generatori di video, grafiche e post, cioè
 `scripts/`, i sottotitoli in `static/` e le schede social, news programmate comprese): per esempio il motto si scrive
@@ -263,9 +264,15 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
   news già programmate ogni anno l'11 maggio (inizio dichiarazioni) e il 15 settembre
   (ultimi giorni del 730), dal 2027 al **2030**, ognuna in evidenza fino a fine mese e
   pubblicata da sola sui social. Prima del 2031 crearne altre sullo stesso modello.
-- **Musica dei video**: brani di Kevin MacLeod (CC BY 4.0) scelti da Alessandro, in `scripts/video-rubrica/musica/`; crediti in `data/musica_video.json` (mostrati sotto il video e nei post social). Solo i video della rianimazione a tempo usano la musica generata. Voce: Kokoro «Nicola» (maschile) in tutti i video; la femminile «Sara» è scartata (legge male, senza intonazione).
+- **Musica dei video**: brani di Kevin MacLeod (CC BY 4.0) scelti da Alessandro, in `scripts/video-rubrica/musica/`; crediti in `data/musica_video.json` (mostrati sotto il video e nei post social). Solo i video della rianimazione a tempo usano la musica generata. Voce: Kokoro «Nicola» (maschile) nei video fino a ottobre 2026; la femminile «Sara» è scartata (legge male, senza intonazione). Dal 1/11/2026 i video nuovi (campagna volontari, 3ª serie) hanno la voce **«Luca – Warm Italian Narrator» di ElevenLabs** e **effetti sonori** leggeri (scelta di Alessandro): frasi in `scripts/video-rubrica/voci-luca/`, generate e salvate con `voce_luca.py`, controllate con un riconoscitore vocale prima del montaggio.
 - **Video dei servizi**: accompagnamento sociale (`/servizi/servizi-sociali/`) e
   «L'ultimo viaggio» (`/trasporto-infermi/`), testi in `contenuti3.py`.
+- **Campagna volontari «Esci dal post. Entra nella squadra»**: prima uscita il 18/10/2026, poi
+  una news con grafica nazionale e video da un minuto ogni giovedì: 12/11 Centro di Ascolto e
+  Banco Alimentare (con la Colletta Alimentare del 14/11), 19/11 tutti i modi di esserci («Non
+  serve guidare l'ambulanza»), 26/11 trasporti, 3/12 formazione ed eventi, poi la Giornata del
+  volontariato del 5/12. Testi dei video in `contenuti4.py`, disegni in `ill4.js`. Invito sempre
+  uguale: «Scrivi VOLONTARIO su WhatsApp al 348 4068657» (`https://wa.me/393484068657?text=VOLONTARIO`).
 - Social: `social_video` + `social_video_copertina` nel front matter → Reel su
   Instagram e video su Facebook; `social_testo` per il testo su misura.
 

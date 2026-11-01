@@ -1,6 +1,6 @@
 # Inventario dei dati del sito che invecchiano (numeri, norme, importi, date, recapiti, link ufficiali).
 # Lo usa l'agente automatico che ogni giorno li ricontrolla sulla fonte ufficiale e aggiorna il sito o apre una segnalazione.
-aggiornato: "2026-10-26"
+aggiornato: "2026-11-01"
 dati:
 - id: "nue-112-lazio"
   cosa: "Il 112 è il Numero Unico di Emergenza nel Lazio: gratuito, 24 ore su 24, per ambulanza, forze dell'ordine e vigili del fuoco; i vecchi 113, 115, 118 rispondono tramite la centrale del 112."
@@ -975,16 +975,18 @@ dati:
   verificato: "2026-10-09"
   note: "Confermato 9/10/2026 sul Piano regionale ondate di calore del Lazio (25-27 °C, farmaci sotto 25-30 °C, niente sole 12-18 con livelli 2-3) e sul vademecum ASL «secondo il Ministero» (ventilatore inutile sopra 32 °C). La pagina del Ministero (salute.gov.it/new/it/tema/ondate-di-calore/) è dietro anti-bot; il decalogo ministeriale indica 11-18 per il sole."
 - id: "colpo-calore"
-  cosa: "Colpo di calore: la temperatura può salire a 40-41 gradi in 10-15 minuti; chiamare il 112 e rinfrescare."
-  valore: "40-41 °C in 10-15 minuti"
+  cosa: "Colpo di calore: la temperatura può salire a 40-41 gradi in 10-15 minuti; chiamare il 112 e raffreddare subito con acqua fredda su tutto il corpo, testa esclusa (vasca o doccia fredda; altrimenti panni bagnati, ghiaccio in un panno su collo, ascelle e inguine, aria), per circa 15 minuti o finché i sintomi passano."
+  valore: "40-41 °C in 10-15 minuti; acqua fredda, testa esclusa; 15 minuti"
   dove:
   - "content/dossier/prevenzione-stagionale.md"
-  fonte: "https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/c/colpo-di-calore-e-insolazione"
+  - "content/primo-soccorso.md"
+  - "content/en/primo-soccorso.md"
+  fonte: "https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf"
   tipo: "sanita"
   delicato: true
   frequenza: "annuale"
-  verificato: "2026-10-09"
-  note: ""
+  verificato: "2026-11-01"
+  note: "Corretto il 1/11/2026 su richiesta di Alessandro: IRC 2025 cap. 12, p. 19 (traduzione di ERC 2025 First Aid) indica immersione di tutto il corpo, testa esclusa, in acqua fredda, o doccia fredda, ghiaccio, ventilazione; senza termometro continuare 15 minuti o fino alla scomparsa dei sintomi. Tolte l'acqua soltanto fresca e le gambe sollevate, che le linee guida non prevedono (forma bloccata in FORME_SBAGLIATE). 40-41 °C in 10-15 minuti resta da ISSalute."
 - id: "cadute-anziani-passi-argento"
   cosa: "Secondo l'ISS (PASSI d'Argento 2023-2024) il 20% degli over 65 è caduto nell'ultimo anno, quasi uno su tre oltre gli 85; più della metà in casa; frattura in quasi un caso su cinque; solo l'11% ha avuto consigli dal medico."
   valore: "20%; 1 su 3 over 85; 11%"
@@ -1396,6 +1398,10 @@ dati:
   dove:
   - "contenuti/campagne/2026-10-18-esci-dal-post/manifesto.html"
   - "content/news/2026-10-18-esci-dal-post-entra-nella-squadra.md"
+  - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
+  - "content/news/2026-11-19-non-serve-guidare-l-ambulanza.md"
+  - "content/news/2026-11-26-accanto-a-chi-deve-curarsi.md"
+  - "content/news/2026-12-03-impari-tutto-con-noi.md"
   - "content/accessibilita.md"
   - "content/ambulanza-privata-castelli-romani.md"
   - "content/assistenza-eventi.md"
@@ -1759,6 +1765,11 @@ dati:
   dove:
   - "content/diventa-volontario.md"
   - "content/news/2026-12-05-giornata-volontariato.md"
+  - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
+  - "content/news/2026-11-19-non-serve-guidare-l-ambulanza.md"
+  - "content/news/2026-11-26-accanto-a-chi-deve-curarsi.md"
+  - "content/news/2026-12-03-impari-tutto-con-noi.md"
+  - "scripts/video-rubrica/contenuti4.py"
   - "layouts/home.html"
   fonte: "https://www.misericordie.it/diventa-volontario/"
   tipo: "confederazione"
@@ -1992,3 +2003,16 @@ dati:
   frequenza: "mensile"
   verificato: "2026-10-09"
   note: "Controllo del 9/10/2026: 288 link, sostituiti i morti (DIN → UNI EN 1789, nsis → Sistema TS, PDF Vaticano → pagina HTML, Medaglia d'oro misericordie.it → Quotidiano Sanità, minori.gov.it → Dipartimento famiglia). Resta morto il PDF Poste del Giubileo 2015 (segnalato nella issue). Bloccano i controlli automatici ma esistono: 112sordi.it, iso.org, eur-lex, prefettura.interno.gov.it/node/652286."
+- id: "colletta-alimentare-2026"
+  cosa: "La 30ª Giornata nazionale della Colletta Alimentare si tiene sabato 14 novembre 2026; la Misericordia di Ariccia è alla Coop di Genzano di Roma, Via Emilia Romagna 102 (punto vendita nell'elenco ufficiale)."
+  valore: "sabato 14 novembre 2026, Coop di Genzano di Roma, Via Emilia Romagna 102"
+  dove:
+  - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
+  - "content/news/2026-11-14-colletta-alimentare-coop-genzano.md"
+  - "scripts/video-rubrica/contenuti4.py"
+  fonte: "https://www.bancoalimentare.it/colletta-alimentare"
+  tipo: "evento"
+  delicato: false
+  frequenza: "settimanale"
+  verificato: "2026-11-01"
+  note: "Letta il 1/11/2026 sulla pagina ufficiale: «Sabato 14 novembre 2026 partecipa alla 30esima Colletta Alimentare»; la Coop di Genzano di Roma, Via Emilia Romagna 102, è nell'elenco dei punti vendita (bancoalimentare.it/colletta-alimentare/punti-vendita). Il punto vendita scelto dalla Misericordia l'ha indicato Alessandro il 1/11/2026. Dopo il 14/11/2026 la voce si può togliere: le news restano datate."

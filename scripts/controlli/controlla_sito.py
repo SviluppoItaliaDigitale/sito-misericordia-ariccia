@@ -68,6 +68,13 @@ FORME_SBAGLIATE = [
     (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
      "fratture: le estremità fredde non sono un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
      "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
+    (re.compile(r"acqua\s+fresca\s*\(?\s*non\s+gelata", re.I),
+     "colpo di calore: si raffredda subito con acqua fredda su tutto il corpo, testa esclusa (vasca o doccia fredda, "
+     "ghiaccio in un panno, aria), per circa 15 minuti (IRC 2025, cap. 12, p. 19), senza gambe sollevate (1/11/2026); "
+     "per le ustioni resta l'acqua corrente fresca, non ghiacciata"),
+    (re.compile(r"non\s+risponde\s+e\s+non\s+respira(?!\s+normalmente)|no\s+response,\s+not\s+breathing\b(?!\s+normally)", re.I),
+     "arresto cardiaco: il criterio è «non risponde e non respira normalmente»; respiri rari, rumorosi o affannosi "
+     "non sono un respiro normale (IRC 2025, cap. 4, pp. 5 e 14; guida rapida corretta il 1/11/2026)"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
@@ -272,6 +279,54 @@ def scarica(url, tentativi=4):
     return "?", ""
 
 
+def file_news_programmate():
+    """File che le news con data futura citano (immagine, social_video, shortcode video e immagini Markdown) e che
+    non esistono in static/: Hugo non costruisce le news future, quindi il controllo dei link non li vede finché la
+    news non esce. Errore che avrebbe potuto sfuggire il 1/11/2026 (video della campagna volontari in montaggio)."""
+    mancano = []
+    for f in sorted((REPO / "content/news").glob("*.md")):
+        t = f.read_text(encoding="utf-8")
+        parti = t.split("---", 2)
+        if len(parti) < 3: continue
+        fm = parti[1]
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        if not d or dt.date.fromisoformat(d.group(1)) <= oggi: continue
+        if re.search(r'^draft:\s*true', fm, re.M): continue   # bozze (es. in attesa di revisione sanitaria): non escono
+        rif = re.findall(r'^(?:immagine|social_video|social_video_copertina_file):\s*"?(/[^"\s]+)"?', fm, re.M)
+        rif += ["/" + x for x in re.findall(r'\{\{<\s*video\s+src="([^"]+)"', t)]
+        rif += ["/" + x for x in re.findall(r'\{\{<\s*video\b[^>]*\bposter="([^"]+)"', t)]
+        rif += re.findall(r'!\[[^\]]*\]\((/[^)\s]+)\)', t)
+        for r in dict.fromkeys(rif):
+            if not (REPO / "static" / r.lstrip("/")).is_file():
+                mancano.append(f"`{f.name}` ({d.group(1)}): manca `static{r}`")
+    return mancano
+
+
+def revisione_in_attesa(giorni=30):
+    """Contenuti sanitari non ancora rivisti dal responsabile sanitario: news con revisione_sanitaria: "da fare"
+    (in bozza, Hugo non le pubblica) e schede del dossier primo soccorso con revisione: "da fare" (nascoste dal layout).
+    Restituisce (elenco, urgenti): urgenti quelli che escono entro `giorni` giorni o con la data già passata, che
+    senza revisione non uscirebbero o uscirebbero in ritardo (3ª serie della rubrica, 1/11/2026)."""
+    elenco, urgenti = [], []
+    for f in sorted((REPO / "content/news").glob("*.md")):
+        fm = f.read_text(encoding="utf-8").split("---")[1]
+        if not re.search(r'^revisione_sanitaria:\s*"da fare"', fm, re.M): continue
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        data = dt.date.fromisoformat(d.group(1)) if d else oggi
+        voce = f"news `{f.name}` (esce il {data.strftime('%d/%m/%Y')})"
+        elenco.append(voce)
+        if (data - oggi).days <= giorni: urgenti.append(voce)
+    ps = (REPO / "content/dossier/primo-soccorso.md").read_text(encoding="utf-8")
+    for m in re.finditer(r'^  - id: "([^"]+)"\n((?:    .*\n)+)', ps, re.M):
+        if re.search(r'^    revisione:\s*"da fare"', m.group(2), re.M):
+            d = re.search(r'^    dal:\s*"(\d{4}-\d{2}-\d{2})"', m.group(2), re.M)
+            data = dt.date.fromisoformat(d.group(1)) if d else oggi
+            voce = f"scheda `{m.group(1)}` del dossier primo soccorso (video dal {data.strftime('%d/%m/%Y')})"
+            elenco.append(voce)
+            if (data - oggi).days <= giorni: urgenti.append(voce)
+    return elenco, urgenti
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     pub = (args[0] if args else "public").rstrip("/")
@@ -325,6 +380,18 @@ def main():
                 "(con `--firma basso-sinistra` se la grafica non mostra il nome)")
     righe += [rimedio(x) for x in senza[:30]]
     errori += bool(senza)
+
+    ra, ru = revisione_in_attesa()
+    righe += ["", "### 🩺 Revisione sanitaria in attesa: " + ("✅ nessun contenuto" if not ra else
+              (f"❌ {len(ru)} in uscita entro 30 giorni senza revisione" if ru else f"⏳ {len(ra)} contenuti, nessuno in uscita nei prossimi 30 giorni"))]
+    if ra: righe.append("- Li rivede il responsabile sanitario; poi si toglie `revisione_sanitaria` e `draft` dalle news e `revisione` dalle schede.")
+    righe += [f"- {x}" for x in (ru or ra)[:30]]
+    errori += bool(ru)
+
+    fm_ = file_news_programmate()
+    righe += ["", "### 🗓️ File delle news programmate: " + ("✅ immagini e video già nel sito" if not fm_ else f"❌ {len(fm_)} mancanti")]
+    righe += [f"- {x}" for x in fm_[:30]]
+    errori += bool(fm_)
 
     fv = fonte_video_sbagliata()
     righe += ["", "### 🎬 Fonte nella scheda finale dei video: " + ("✅ coerente con gli articoli" if not fv else f"❌ {len(fv)} da correggere")]

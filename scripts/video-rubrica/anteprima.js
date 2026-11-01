@@ -2,7 +2,7 @@
 const { chromium } = require('playwright-core');
 (async () => {
   const K = process.env.KEY;
-  const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+  const b = await chromium.launch({ executablePath: require('./chrome')() });
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   const errs=[]; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if(m.type()==='error') errs.push(m.text()); });
   await p.goto('file://' + process.cwd() + '/' + K + '/video.html?render=1'); await p.waitForFunction('window.__ready === true');

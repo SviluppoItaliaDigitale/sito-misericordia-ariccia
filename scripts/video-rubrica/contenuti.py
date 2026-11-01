@@ -149,3 +149,7 @@ FONTE_ARTICOLO = "Fonti nell'articolo su misericordia-ariccia.it · informazioni
 for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'svenimento', 'fratture', 'freddo',
            'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta'):
     V[_k]['fonte'] = FONTE_ARTICOLO
+from contenuti4 import V4
+V.update(V4)
+from contenuti5 import V5
+V.update(V5)

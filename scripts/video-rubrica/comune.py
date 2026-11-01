@@ -36,6 +36,15 @@ def disegni():
     nomi = [n for _, n in trovati]
     if not nomi or nomi[0] != 'ill.js':
         sys.exit(f'manca ill.js, che definisce ILL: trovati {nomi}')
+    # I file finiscono in un solo script: un nome globale ripetuto sovrascrive in silenzio quello di un altro file e
+    # rompe i disegni di altri video (rischio emerso il 1/11/2026 con tre file nuovi scritti in parallelo).
+    visti, doppi = {}, []
+    for n in nomi:
+        for nome in re.findall(r'^(?:function|const|let|var)\s+([A-Za-z_$][\w$]*)', (W / n).read_text(), re.M):
+            if nome in visti: doppi.append(f'{nome} ({visti[nome]} e {n})')
+            visti.setdefault(nome, n)
+    if doppi:
+        sys.exit('nomi globali ripetuti nei disegni: ' + ', '.join(doppi) + ' (usa un prefisso del file, es. s5…)')
     return nomi
 
 def pagina(v, D, conta, audio):

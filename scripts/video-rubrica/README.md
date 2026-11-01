@@ -17,15 +17,18 @@ ogni fotogramma la firma «Misericordia di Ariccia» e la cornice di microtesto
 | `contenuti.py` | testi della 1ª serie (10 video): per ogni scena chip, titolo, voce, sottotitolo, etichette, disegno |
 | `contenuti2.py` | 2ª serie (13 video) + speciale Giornata del volontariato |
 | `contenuti3.py` | video dei servizi: accompagnamento sociale e «L'ultimo viaggio» (voce più lenta con `voce_lenta`, musica `dolce`) |
-| `ill.js`, `ill2.js`, `ill3.js` | libreria dei disegni animati (`ILL[nome]({u, p, D, A})`) |
+| `contenuti4.py` | campagna volontari «Esci dal post. Entra nella squadra» (novembre-dicembre 2026): quattro video da un minuto, uno per ogni uscita del giovedì |
+| `ill.js`, `ill2.js`, `ill3.js`, `ill4.js` | libreria dei disegni animati (`ILL[nome]({u, p, D, A})`); `ill4.js`: disegni della campagna volontari (`ascolto`, `sportello`, `tempo-cuore`) |
 | `riferimenti/livrea-ambulanza-facsimile.jpg` | fac-simile della livrea delle nostre ambulanze: `miseAmbulanza` in `ill3.js` è ricalcata da qui (non inventare livree) |
 | `riferimenti/volontari-divisa.png` | riferimento per i volontari: SOLO la divisa giallo-ciano (blu, quella sanitaria; l'arancione è della protezione civile, settore non attivo: non usarla) con colletto e fasce giallo fluo, filetti argento, triangolo e bandiera (`volunteer()` in `ill3.js`, `bust(…,{divisa:true})` in `ill.js`) |
 | `appro.src.html` | modello della pagina animata nello stile nazionale (fascia blu con filo giallo e stemma, firma, titolo con evidenziatore, sottotitoli, chiusura con la scheda contatti, cornice di microtesto) |
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `musica/` | brani scelti da Alessandro (Kevin MacLeod, incompetech.com, CC BY 4.0): campo `brano` del video (`morning`, `touching-moments-two-higher`); di default `heartwarming`; i video con `bpm=110` (compressioni a tempo) usano `musica.py`. Ogni nuovo video va aggiunto a `data/musica_video.json` per il credito sotto il video e nei post |
 | `kokoro_voce.py` | voce Kokoro scelta da Alessandro: **Nicola** (maschile) in tutti i video. «Sara» è scartata (legge male, senza intonazione); `voce='paola'` torna a Piper |
+| `voce_luca.py`, `voci-luca/` | voce **Luca** di ElevenLabs («Luca – Warm Italian Narrator», `voice_id` 1s5ETcPtsJ9W2cUUQrDb, modello `eleven_multilingual_v2`), scelta di Alessandro il 1/11/2026 per i video con `voce='luca'`: una frase per scena, generata con il connettore ElevenLabs della sessione e salvata con `voce_luca.py salva`; `pipeline.py` la usa solo se il testo salvato coincide con la scena (`voce_luca.py elenco` dice che cosa manca). Prima del montaggio si trascrive ogni frase con faster-whisper e si rigenera quella letta male (es. «Ariccia» con una c). Con `effetti=True` il montaggio aggiunge un fruscio ai cambi di scena e una notifica nella scena del WhatsApp, generati nel codice |
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 (con `--audio-da` rifà solo le immagini) |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
+| `chrome.js` | percorso di Chromium: `CHROME` se c'è, altrimenti il più recente in `/opt/pw-browsers` (la versione cambia da una sessione all'altra) |
 | `anteprima.sh`, `render.sh`, `copia.sh` | scorciatoie: anteprime, montaggio, copia nel sito (con il segno di firma e cornice nella copertina) |
 | `prova_impaginazione.py` (+ `.js`) | prova senza voce: un fotogramma intero per scena con in rosso la zona coperta dai comandi di Instagram e in verde la firma, in `out/<chiave>/prova.png`; si ferma (codice 1) se la firma manca, è sotto i 24 px, è coperta da una scritta o da un disegno, finisce nella zona di Instagram, se manca la cornice su un lato o se un'email o un sito va a capo a metà. Da usare quando si tocca `appro.src.html` o si scrive un video nuovo: titoli, etichette e sottotitoli devono restare fuori dalla zona rossa |
 | `articoli.py`, `articoli2.py` | generano le news programmate dai testi dei video (non sovrascrivono quelle esistenti) |
@@ -64,8 +67,10 @@ ln -sfn "$(kokoro/venv/bin/python -c 'import espeakng_loader as e; print(e.get_d
 export ESPEAK_DATA_PATH=/tmp/esd
 ```
 
-Chromium: nelle sessioni cloud è già in `/opt/pw-browsers/chromium-1194/…`;
-altrove indicare il percorso con `CHROME=/percorso/chrome`. Si possono
+Chromium: nelle sessioni cloud è già in `/opt/pw-browsers/chromium-NNNN/…` e `chrome.js` lo trova da solo
+(la versione cambia: 1194 a ottobre 2026, 1243 a novembre); altrove indicare il percorso con `CHROME=/percorso/chrome`.
+Per le grafiche delle news (`rendi.py` dei modelli nazionali) serve Playwright per Python della stessa versione del
+Playwright già installato, così usa lo stesso Chromium: `pip install "playwright==$(cd /tmp && node -p "require('playwright/package.json').version")"`. Si possono
 forzare anche `FF=/percorso/ffmpeg` e `PIPER_MODEL=/percorso/voce.onnx`.
 
 ## Uso
