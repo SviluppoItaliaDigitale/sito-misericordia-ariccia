@@ -239,7 +239,12 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
   testi in `contenuti*.py`, disegni in `ill*.js`, `./anteprima.sh`, `./render.sh`,
   `./copia.sh`. Serie 1 (10 video, 6/10–6/11), serie 2 (13 video, 10/11–22/12),
   speciale Giornata del volontariato (5/12). Contenuti sanitari sempre su linee guida
-  ERC/IRC correnti e rivisti da un istruttore. Dal 21/10/2026 i video in uscita (dal 23/10)
+  ERC/IRC correnti e rivisti da un istruttore. **Dal 1/11/2026 la revisione sanitaria la fa Claude** (istruzione di
+  Alessandro: «provvedi tu con la documentazione ufficiale più aggiornata di un ente accreditato ufficiale statale
+  possibilmente»): prima le fonti statali italiane più recenti (Ministero della Salute, ISS, AIFA, Gazzetta Ufficiale,
+  Ministero dell'Interno e Vigili del Fuoco, Regione Lazio, ARES 118, Centri Antiveleni di ospedali pubblici), poi
+  ERC/IRC 2025 e IFRC 2025 dove lo Stato non tratta il tema; ogni decisione con fonte, data e pagina nella news
+  e nel registro dei dati. Tutte le serie e la guida rapida verificate così il 1/11/2026. Dal 21/10/2026 i video in uscita (dal 23/10)
   sono nello stile nazionale (fascia blu con filo giallo e stemma, Montserrat, colori del
   kit), con la firma «Misericordia di Ariccia» e la cornice di microtesto in ogni
   fotogramma: `prova_impaginazione.py` le controlla, `copia.sh` mette nella copertina il
