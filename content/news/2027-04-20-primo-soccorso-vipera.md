@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **8 di 10**: **morso di vipera**.
 
-{{< video src="video/primo-soccorso-vipera.mp4" poster="img/video/primo-soccorso-vipera.jpg" verticale="si" titolo="Morso di vipera: primo soccorso passo passo" descrizione="Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio." data="2027-04-20" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-vipera.mp4" poster="img/video/primo-soccorso-vipera.jpg" verticale="si" titolo="Morso di vipera: primo soccorso passo passo" descrizione="Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio." data="2027-04-20" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

@@ -6,6 +6,8 @@ slug: "primo-soccorso-colpo-calore"
 description: "Colpo di calore: i segni, perché chiamare subito il 112 e intanto raffreddare bagnando il corpo con acqua fresca o teli bagnati e facendo aria, cosa non fare e come prevenirlo."
 immagine: "/img/news/2027-06-01-primo-soccorso-colpo-calore-grafica.jpg"
 social_video: "/video/primo-soccorso-colpo-calore.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 3ª serie 9/10 — Colpo di calore. Colpo di calore: i segni, perché chiamare subito il 112 e intanto raffreddare bagnando il corpo con acqua fresca o teli bagnati e facendo aria, cosa non fare e come prevenirlo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -20,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **9 di 10**: **colpo di calore**.
 
-{{< video src="video/primo-soccorso-colpo-calore.mp4" poster="img/video/primo-soccorso-colpo-calore.jpg" verticale="si" titolo="Colpo di calore: primo soccorso passo passo" descrizione="Colpo di calore: i segni, perché chiamare subito il 112 e intanto raffreddare bagnando il corpo con acqua fresca o teli bagnati e facendo aria, cosa non fare e come prevenirlo." data="2027-06-01" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-colpo-calore.mp4" poster="img/video/primo-soccorso-colpo-calore.jpg" verticale="si" titolo="Colpo di calore: primo soccorso passo passo" descrizione="Colpo di calore: i segni, perché chiamare subito il 112 e intanto raffreddare bagnando il corpo con acqua fresca o teli bagnati e facendo aria, cosa non fare e come prevenirlo." data="2027-06-01" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 

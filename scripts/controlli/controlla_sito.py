@@ -259,6 +259,9 @@ def news_programmate(giorni=14):
     return out
 
 
+VIDEO_OUT = REPO / "scripts/video-rubrica/out"
+
+
 def forme_sbagliate():
     file = [REPO / nome for nome in FILE_TESTI]
     for cartella in CARTELLE_TESTI:
@@ -266,6 +269,8 @@ def forme_sbagliate():
     trovate = []
     for f in file:
         if not f.is_file() or f.suffix not in ESTENSIONI_TESTI or "node_modules" in f.parts: continue
+        # out/ del generatore dei video: file di lavoro non versionati (.gitignore), rifatti a ogni montaggio
+        if VIDEO_OUT in f.parents: continue
         testo = f.read_text(encoding="utf-8", errors="replace")
         for rx, regola in FORME_SBAGLIATE:
             for m in rx.finditer(testo):

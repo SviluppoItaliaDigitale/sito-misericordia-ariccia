@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **7 di 10**: **zecche**.
 
-{{< video src="video/primo-soccorso-zecche.mp4" poster="img/video/primo-soccorso-zecche.jpg" verticale="si" titolo="Zecche: primo soccorso passo passo" descrizione="Zecche nei prati e nei boschi: come prevenirle, come toglierle con la pinzetta, cosa non usare mai, come disinfettare e quali segni osservare nel mese dopo." data="2027-04-13" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-zecche.mp4" poster="img/video/primo-soccorso-zecche.jpg" verticale="si" titolo="Zecche: primo soccorso passo passo" descrizione="Zecche nei prati e nei boschi: come prevenirle, come toglierle con la pinzetta, cosa non usare mai, come disinfettare e quali segni osservare nel mese dopo." data="2027-04-13" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
