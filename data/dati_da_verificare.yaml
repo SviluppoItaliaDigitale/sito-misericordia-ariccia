@@ -2002,14 +2002,15 @@ dati:
   verificato: "2026-10-09"
   note: "Controllo del 9/10/2026: 288 link, sostituiti i morti (DIN → UNI EN 1789, nsis → Sistema TS, PDF Vaticano → pagina HTML, Medaglia d'oro misericordie.it → Quotidiano Sanità, minori.gov.it → Dipartimento famiglia). Resta morto il PDF Poste del Giubileo 2015 (segnalato nella issue). Bloccano i controlli automatici ma esistono: 112sordi.it, iso.org, eur-lex, prefettura.interno.gov.it/node/652286."
 - id: "colletta-alimentare-2026"
-  cosa: "La 30ª Giornata nazionale della Colletta Alimentare si tiene sabato 14 novembre 2026."
-  valore: "sabato 14 novembre 2026"
+  cosa: "La 30ª Giornata nazionale della Colletta Alimentare si tiene sabato 14 novembre 2026; la Misericordia di Ariccia è alla Coop di Genzano di Roma, Via Emilia Romagna 102 (punto vendita nell'elenco ufficiale)."
+  valore: "sabato 14 novembre 2026, Coop di Genzano di Roma, Via Emilia Romagna 102"
   dove:
   - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
+  - "content/news/2026-11-14-colletta-alimentare-coop-genzano.md"
   - "scripts/video-rubrica/contenuti4.py"
   fonte: "https://www.bancoalimentare.it/colletta-alimentare"
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
   verificato: "2026-11-01"
-  note: "Letta il 1/11/2026 sulla pagina ufficiale: «Sabato 14 novembre 2026 partecipa alla 30esima Colletta Alimentare». Dopo il 14/11/2026 la voce si può togliere: la news resta datata 12/11."
+  note: "Letta il 1/11/2026 sulla pagina ufficiale: «Sabato 14 novembre 2026 partecipa alla 30esima Colletta Alimentare»; la Coop di Genzano di Roma, Via Emilia Romagna 102, è nell'elenco dei punti vendita (bancoalimentare.it/colletta-alimentare/punti-vendita). Il punto vendita scelto dalla Misericordia l'ha indicato Alessandro il 1/11/2026. Dopo il 14/11/2026 la voce si può togliere: le news restano datate."

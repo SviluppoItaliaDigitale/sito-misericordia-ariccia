@@ -3,7 +3,7 @@ title: "Anche ascoltare è un servizio"
 titoloSeo: "Volontari al Centro di Ascolto e al Banco Alimentare: Misericordia di Ariccia"
 date: 2026-11-12
 slug: "anche-ascoltare-e-un-servizio"
-description: "Alla Misericordia di Ariccia si fa volontariato anche al Centro di Ascolto e al Banco Alimentare. Sabato 14 novembre c'è la Colletta Alimentare. Scrivi VOLONTARIO al 348 4068657."
+description: "Alla Misericordia di Ariccia si fa volontariato anche al Centro di Ascolto e al Banco Alimentare. Sabato 14 novembre ci trovi alla Coop di Genzano di Roma per la Colletta Alimentare."
 immagine: "/img/news/2026-11-12-anche-ascoltare-e-un-servizio-grafica.jpg"
 controllo_editoriale: "2026-11-01"
 social_video: "/video/squadra-ascolto.mp4"
@@ -14,7 +14,7 @@ social_testo: |-
 
   Al Centro di Ascolto della Misericordia di Ariccia i volontari accolgono chi è in difficoltà e lo aiutano a orientarsi: bollette, questioni legali, aiuti alimentari. Nelle giornate del Centro, in sede c'è anche uno psicologo. Con il Banco Alimentare distribuiamo beni di prima necessità.
 
-  🛒 Sabato 14 novembre torna in tutta Italia la Colletta Alimentare: nei supermercati si dona la spesa per chi è in difficoltà.
+  🛒 Sabato 14 novembre torna in tutta Italia la Colletta Alimentare: nei supermercati si dona la spesa per chi è in difficoltà. Noi saremo alla Coop di Genzano di Roma, in via Emilia Romagna 102: vieni a trovarci!
 
   Per dare una mano servono un po' di tempo e la voglia di stare accanto agli altri. La formazione la facciamo insieme.
 
@@ -29,7 +29,7 @@ italianoSemplice: |
 
   Con il Banco Alimentare diamo cibo e cose utili a chi è in difficoltà.
 
-  Sabato 14 novembre c'è la Colletta Alimentare nei supermercati.
+  Sabato 14 novembre c'è la Colletta Alimentare. Ci trovi alla Coop di Genzano di Roma, in via Emilia Romagna 102.
 
   Per diventare volontario scrivi **VOLONTARIO** su WhatsApp al **348 4068657**.
 ---
@@ -46,7 +46,7 @@ Al **Centro di Ascolto** i nostri volontari accolgono chi si rivolge a noi e lo 
 
 ## Il Banco Alimentare e la Colletta
 
-Con il **Banco Alimentare** distribuiamo beni di prima necessità alle persone in difficoltà, e ogni anno partecipiamo alla **Colletta Alimentare** nei supermercati del territorio. Quest'anno la Giornata nazionale della Colletta Alimentare, la trentesima, è **sabato 14 novembre**: nei supermercati si dona la spesa per chi è in difficoltà.
+Con il **Banco Alimentare** distribuiamo beni di prima necessità alle persone in difficoltà, e ogni anno partecipiamo alla **Colletta Alimentare** nei supermercati del territorio. Quest'anno la Giornata nazionale della Colletta Alimentare, la trentesima, è **sabato 14 novembre**: nei supermercati si dona la spesa per chi è in difficoltà. **La Misericordia di Ariccia sarà alla Coop di Genzano di Roma, in via Emilia Romagna 102**: passa a trovarci e dona anche tu.
 
 Trovi tutti i servizi nella pagina dei **[servizi sociali](/servizi/servizi-sociali/)**.
 
@@ -60,4 +60,4 @@ Non servono capacità speciali: servono un po' di tempo e la voglia di stare acc
 
 **Esci dal post. Entra nella squadra.**
 
-*Fonti: [Servizi sociali](/servizi/servizi-sociali/) per Centro di Ascolto e Banco Alimentare; [Diventa volontario](/diventa-volontario/) per età, percorso e recapiti; [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026. Informazioni verificate il 1° novembre 2026.*
+*Fonti: [Servizi sociali](/servizi/servizi-sociali/) per Centro di Ascolto e Banco Alimentare; [Diventa volontario](/diventa-volontario/) per età, percorso e recapiti; [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026 e l'elenco dei punti vendita, dove c'è la Coop di Genzano di Roma. Informazioni verificate il 1° novembre 2026.*

@@ -1,6 +1,8 @@
 # Campagna volontari «Esci dal post. Entra nella squadra» (novembre-dicembre 2026): quattro video da un minuto,
 # uno per ogni uscita del giovedì. Fatti presi solo dal sito: Diventa volontario, Servizi sociali, Formazione,
-# trasporti; Colletta Alimentare del 14/11/2026 da bancoalimentare.it/colletta-alimentare (verificata il 1/11/2026).
+# trasporti; Colletta Alimentare del 14/11/2026 da bancoalimentare.it/colletta-alimentare, con la Coop di Genzano di Roma
+# (Via Emilia Romagna 102) nell'elenco ufficiale dei punti vendita (verificata il 1/11/2026; la Coop è la scelta della
+# Misericordia, Alessandro 1/11/2026). Voce Luca (ElevenLabs) e effetti sonori, scelta di Alessandro del 1/11/2026.
 from contenuti import S
 TEL = 'tre quattro otto, quattro zero sei, otto sei cinque sette'
 SER = 'Esci dal post · Entra nella squadra'
@@ -15,7 +17,7 @@ CHI_PUO = S('Chi può', ['Dai 16', 'agli *80 anni*.'],
             'persone', [['Dai 16 agli 80 anni', .3], ['Impari con noi', .8]],
             sub='Possono entrare in squadra donne e uomini dai 16 agli 80 anni. Non servono capacità speciali: impari tutto con noi.')
 def C(nome, scene, **kw):
-    return dict(nome=nome, num=0, serie=SER, brano='morning', card=CARD, scene=scene, **kw)
+    return dict(nome=nome, num=0, serie=SER, brano='morning', voce='luca', effetti=True, card=CARD, scene=scene, **kw)
 
 V4 = {
 # 1 · giovedì 12/11/2026, prima della Colletta Alimentare di sabato 14/11
@@ -30,9 +32,9 @@ V4 = {
   S('Banco Alimentare', ['La spesa per chi', '*non ce la fa*.'],
     'Con il Banco Alimentare distribuiamo beni di prima necessità alle persone in difficoltà.', 'spesa', [['Beni di prima necessità', .7]]),
   S('Colletta Alimentare', ['Sabato', '*14 novembre*.'],
-    'Sabato quattordici novembre torna in tutta Italia la Colletta Alimentare: nei supermercati si dona la spesa per chi è in difficoltà. Noi partecipiamo ogni anno.',
-    'supermercato', [['Colletta Alimentare', .35], ['Dona la spesa', .7]],
-    sub='Sabato 14 novembre torna in tutta Italia la Colletta Alimentare: nei supermercati si dona la spesa per chi è in difficoltà. Noi partecipiamo ogni anno.'),
+    'Sabato quattordici novembre torna in tutta Italia la Colletta Alimentare. Noi saremo alla Coop di Genzano di Roma, in via Emilia Romagna: vieni a donare la spesa per chi è in difficoltà.',
+    'supermercato', [['Colletta Alimentare', .2], ['Coop di Genzano di Roma', .55], ['Dona la spesa', .85]],
+    sub='Sabato 14 novembre torna in tutta Italia la Colletta Alimentare. Noi saremo alla Coop di Genzano di Roma, in via Emilia Romagna: vieni a donare la spesa per chi è in difficoltà.'),
   S('Cosa serve', ['Tempo', 'e *cuore*.'],
     'Per dare una mano servono un po\' di tempo e la voglia di stare accanto agli altri. La formazione la facciamo insieme.',
     'tempo-cuore', [['Un po\' di tempo', .3], ['Formazione insieme', .85]]),

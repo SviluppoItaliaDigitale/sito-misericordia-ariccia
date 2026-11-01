@@ -49,6 +49,21 @@ def numero(i):  # numero pronunciato, sotto 0,42 s
             if L <= 0.44: break
             ls *= 0.42 / L
     return trim(rd(p))
+def fruscio(dur=0.55, vol=0.07):
+    """Fruscio morbido di passaggio: rumore filtrato con il filtro che si apre e si richiude, generato qui (nessuna licenza)."""
+    n = int(dur * SR); rng = np.random.default_rng(7); x = rng.standard_normal(n)
+    env = np.sin(np.linspace(0, np.pi, n)) ** 2; cut = 0.02 + 0.10 * np.sin(np.linspace(0, np.pi, n))
+    y = np.zeros(n); acc = 0.0
+    for k in range(n): acc += cut[k] * (x[k] - acc); y[k] = acc
+    return y / (np.abs(y).max() or 1) * env * vol
+def notifica(vol=0.10):
+    """Due note brevi, come l'arrivo di un messaggio, generate qui (nessuna licenza)."""
+    out = np.zeros(int(0.5 * SR))
+    for t0, f in ((0.0, 1318.5), (0.11, 1760.0)):
+        n = int(0.32 * SR); tt = np.arange(n) / SR
+        nota = (np.sin(2*np.pi*f*tt) + 0.3*np.sin(2*np.pi*2*f*tt)) * np.exp(-tt * 11)
+        s0 = int(t0 * SR); out[s0:s0+n] += nota
+    return out / np.abs(out).max() * vol
 ANTE = '--anteprima' in sys.argv
 SUBS = '--sottotitoli' in sys.argv
 AUDIO_DA = Path(sys.argv[sys.argv.index('--audio-da') + 1]).resolve() if '--audio-da' in sys.argv else None
@@ -84,8 +99,13 @@ for key in CHIAVI:
     VOCE = v.get('voce', 'nicola')
     if VOCE == 'paola' and not Path(MODEL).exists():
         sys.exit(f'Manca la voce Piper: {MODEL}\nScaricala come spiegato in README.md (it_IT-paola-medium.onnx e .onnx.json).')
-    if VOCE != 'paola' and not Path(KOKORO_PY).exists():
+    if VOCE not in ('paola', 'luca') and not Path(KOKORO_PY).exists():
         sys.exit('Manca Kokoro: prepara kokoro/ come spiegato in README.md.')
+    if VOCE == 'luca':   # voce ElevenLabs: frasi già generate in voci-luca/ (voce_luca.py), con il testo identico
+        import voce_luca
+        manca = [str(i) for i, sc, ok in voce_luca.stato(key) if not ok]
+        if manca: sys.exit(f'{key}: mancano le frasi della voce Luca {", ".join(manca)} (python3 voce_luca.py elenco {key})')
+        if any(sc.get('conta') for sc in v['scene']): sys.exit(f'{key}: la voce Luca non ha ancora i numeri del conteggio a tempo')
     d = OUT / key; d.mkdir(parents=True, exist_ok=True)
     bpm = v.get('bpm', 88); beat = 60 / bpm
     PRE, POST, CODA = 0.3, 0.45, 2.5
@@ -94,7 +114,15 @@ for key in CHIAVI:
     for i, sc in enumerate(v['scene']):
         wav = d / f'v{i}.wav'
         tf = d / f'v{i}.txt'
-        if not wav.exists() or not tf.exists() or tf.read_text() != VOCE + '|' + pron(sc['voce']):
+        if VOCE == 'luca':
+            src = W / 'voci-luca' / key / f'{i}.mp3'
+            if not wav.exists() or not tf.exists() or tf.read_text() != 'luca|' + sc['voce'].strip():
+                subprocess.run([FF,'-v','error','-y','-i',str(src),'-ar',str(SR),'-ac','1',str(wav)], check=True)
+                a0 = trim(rd(wav), 0.01)   # niente silenzi lunghi in testa e in coda: i tempi li danno PRE e POST
+                with wave.open(str(wav), 'wb') as w:
+                    w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(a0, -1, 1) * 32767).astype(np.int16).tobytes())
+                tf.write_text('luca|' + sc['voce'].strip())
+        elif not wav.exists() or not tf.exists() or tf.read_text() != VOCE + '|' + pron(sc['voce']):
             piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(VOCE + '|' + pron(sc['voce']))
         a = rd(wav); Dv = len(a) / SR
         if sc.get('conta'):
@@ -133,6 +161,12 @@ for key in CHIAVI:
     for i, a in enumerate(voci):
         s = int((t + PRE) * SR); track[s:s+len(a)] += a
         t += PRE + D[i] + POST + (CODA if i == len(voci) - 1 else 0)
+    if v.get('effetti'):   # effetti sonori leggeri (Alessandro, 1/11/2026): fruscio ai cambi di scena, notifica sul WhatsApp
+        t = 0.0
+        for i, sc in enumerate(v['scene']):
+            if i: s0 = int((t - 0.22) * SR); fx = fruscio(); track[s0:s0+len(fx)] += fx
+            if sc['ill'] == 'prenota': s0 = int((t + PRE + 0.15) * SR); fx = notifica(); track[s0:s0+len(fx)] += fx
+            t += PRE + D[i] + POST + (CODA if i == len(v['scene']) - 1 else 0)
     track = np.clip(track[:int(T * SR)], -1, 1)
     with wave.open(str(d / 'voce.wav'), 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((track * 32767).astype(np.int16).tobytes())

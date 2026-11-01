@@ -272,6 +272,28 @@ def scarica(url, tentativi=4):
     return "?", ""
 
 
+def file_news_programmate():
+    """File che le news con data futura citano (immagine, social_video, shortcode video e immagini Markdown) e che
+    non esistono in static/: Hugo non costruisce le news future, quindi il controllo dei link non li vede finché la
+    news non esce. Errore che avrebbe potuto sfuggire il 1/11/2026 (video della campagna volontari in montaggio)."""
+    mancano = []
+    for f in sorted((REPO / "content/news").glob("*.md")):
+        t = f.read_text(encoding="utf-8")
+        parti = t.split("---", 2)
+        if len(parti) < 3: continue
+        fm = parti[1]
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        if not d or dt.date.fromisoformat(d.group(1)) <= oggi: continue
+        rif = re.findall(r'^(?:immagine|social_video|social_video_copertina_file):\s*"?(/[^"\s]+)"?', fm, re.M)
+        rif += ["/" + x for x in re.findall(r'\{\{<\s*video\s+src="([^"]+)"', t)]
+        rif += ["/" + x for x in re.findall(r'\{\{<\s*video\b[^>]*\bposter="([^"]+)"', t)]
+        rif += re.findall(r'!\[[^\]]*\]\((/[^)\s]+)\)', t)
+        for r in dict.fromkeys(rif):
+            if not (REPO / "static" / r.lstrip("/")).is_file():
+                mancano.append(f"`{f.name}` ({d.group(1)}): manca `static{r}`")
+    return mancano
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     pub = (args[0] if args else "public").rstrip("/")
@@ -325,6 +347,11 @@ def main():
                 "(con `--firma basso-sinistra` se la grafica non mostra il nome)")
     righe += [rimedio(x) for x in senza[:30]]
     errori += bool(senza)
+
+    fm_ = file_news_programmate()
+    righe += ["", "### 🗓️ File delle news programmate: " + ("✅ immagini e video già nel sito" if not fm_ else f"❌ {len(fm_)} mancanti")]
+    righe += [f"- {x}" for x in fm_[:30]]
+    errori += bool(fm_)
 
     fv = fonte_video_sbagliata()
     righe += ["", "### 🎬 Fonte nella scheda finale dei video: " + ("✅ coerente con gli articoli" if not fv else f"❌ {len(fv)} da correggere")]
