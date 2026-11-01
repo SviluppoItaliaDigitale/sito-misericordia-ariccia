@@ -404,7 +404,31 @@ def file_news_programmate():
         for r in dict.fromkeys(rif):
             if not (REPO / "static" / r.lstrip("/")).is_file():
                 mancano.append(f"`{f.name}` ({d.group(1)}): manca `static{r}`")
+        # Reel di Facebook: la Reels API accetta al massimo 90 s; un video più lungo va escluso con
+        # social_reel_facebook: false, altrimenti la pubblicazione automatica fallisce il giorno dell'uscita (1/11/2026).
+        sv = re.search(r'^social_video:\s*"?(/[^"\s]+\.mp4)"?', fm, re.M)
+        if sv and not re.search(r'^social_reel_facebook:\s*false', fm, re.M):
+            durata = durata_mp4(REPO / "static" / sv.group(1).lstrip("/"))
+            if durata and durata > 90:
+                mancano.append(f"`{f.name}` ({d.group(1)}): video di {durata:.0f} s, oltre i 90 s dei Reel di Facebook: "
+                               "aggiungi `social_reel_facebook: false`")
     return mancano
+
+
+def durata_mp4(f):
+    """Durata in secondi di un MP4 letta dall'intestazione (box mvhd), senza ffmpeg; None se non si legge."""
+    try:
+        b = f.read_bytes()
+    except OSError:
+        return None
+    i = b.find(b"mvhd")
+    if i < 0: return None
+    v = b[i + 4]
+    if v == 1:
+        scala, dur = int.from_bytes(b[i + 24:i + 28], "big"), int.from_bytes(b[i + 28:i + 36], "big")
+    else:
+        scala, dur = int.from_bytes(b[i + 16:i + 20], "big"), int.from_bytes(b[i + 20:i + 24], "big")
+    return dur / scala if scala else None
 
 
 def revisione_in_attesa(giorni=30):

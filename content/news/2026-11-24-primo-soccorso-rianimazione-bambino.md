@@ -7,6 +7,8 @@ in_evidenza_fino: "2026-12-04"
 description: "Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni."
 immagine: "/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg"
 social_video: "/video/primo-soccorso-rianimazione-bambino.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 2ª serie 5/13 — Rianimazione nel bambino. Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |

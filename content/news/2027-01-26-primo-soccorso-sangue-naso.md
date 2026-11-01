@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **3 di 10**: **sangue dal naso**.
 
-{{< video src="video/primo-soccorso-sangue-naso.mp4" poster="img/video/primo-soccorso-sangue-naso.jpg" verticale="si" titolo="Sangue dal naso: primo soccorso passo passo" descrizione="Sangue dal naso: perché la testa va in avanti e non indietro, dove e per quanto stringere il naso, cosa non mettere nel naso e quando andare dal medico o chiamare il 112." data="2027-01-26" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-sangue-naso.mp4" poster="img/video/primo-soccorso-sangue-naso.jpg" verticale="si" titolo="Sangue dal naso: primo soccorso passo passo" descrizione="Sangue dal naso: perché la testa va in avanti e non indietro, dove e per quanto stringere il naso, cosa non mettere nel naso e quando andare dal medico o chiamare il 112." data="2027-01-26" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
