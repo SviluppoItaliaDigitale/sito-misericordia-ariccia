@@ -1,28 +1,26 @@
 ---
 title: "10 cose di primo soccorso che possono salvare una vita"
-titoloSeo: "Primo soccorso: 10 cose da sapere, in un video secondo le linee guida IRC 2025"
+titoloSeo: "Primo soccorso: 10 cose da sapere secondo le linee guida IRC 2025"
 date: 2026-10-02
 slug: "primo-soccorso-10-cose"
-description: "Ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico: le 10 cose di primo soccorso da sapere in un video di 90 secondi, secondo le linee guida IRC 2025 e le altre fonti ufficiali citate nell'articolo."
+description: "Ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico: le 10 cose di primo soccorso da sapere, secondo le linee guida IRC 2025 e le altre fonti ufficiali citate nell'articolo."
 immagine: "/img/news/primo-soccorso-10-cose-grafica.jpg"
-social_video: "/video/primo-soccorso-10-cose.mp4"
-social_video_copertina: 1
 social_testo: "🩺 10 cose di primo soccorso che possono salvare una vita, in 90 secondi: ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico. Secondo le linee guida IRC 2025 e le altre fonti ufficiali citate sul sito. 📞 In ogni emergenza chiama il 112. Vuoi imparare davvero? Vieni ai nostri corsi di primo soccorso e BLSD: 348 4068657."
 italianoSemplice: |
-  **Abbiamo fatto un video con 10 consigli di primo soccorso.**
+  **Ecco 10 consigli di primo soccorso.**
 
-  Ti spiega cosa fare in caso di ictus, infarto, sangue che esce forte, cuore che si ferma, soffocamento, allergia grave, ustioni, zucchero basso, veleno e colpo alla testa.
+  Ti spieghiamo cosa fare in caso di ictus, infarto, sangue che esce forte, cuore che si ferma, soffocamento, allergia grave, ustioni, zucchero basso, veleno e colpo alla testa.
 
   In ogni emergenza chiama il **112**.
 
   Puoi imparare meglio con i nostri corsi di primo soccorso.
 ---
 
-![10 cose di primo soccorso: una scena del video della Misericordia di Ariccia sulla rianimazione cardiopolmonare](/img/news/primo-soccorso-10-cose-grafica.jpg)
+![10 cose di primo soccorso: una grafica della Misericordia di Ariccia sulla rianimazione cardiopolmonare](/img/news/primo-soccorso-10-cose-grafica.jpg)
 
-Bastano pochi gesti giusti, fatti subito, per cambiare il finale di un'emergenza. Abbiamo raccolto **le 10 cose di primo soccorso che tutti dovrebbero conoscere** in un video di novanta secondi, verificate sulle **linee guida RCP 2025** dell'[Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e, per i temi che queste non trattano, sulle altre fonti ufficiali citate in fondo.
+Bastano pochi gesti giusti, fatti subito, per cambiare il finale di un'emergenza. Abbiamo raccolto **le 10 cose di primo soccorso che tutti dovrebbero conoscere** verificate sulle **linee guida RCP 2025** dell'[Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e, per i temi che queste non trattano, sulle altre fonti ufficiali citate in fondo.
 
-{{< video src="video/primo-soccorso-10-cose.mp4" poster="img/video/primo-soccorso-10-cose.jpg" verticale="si" titolo="10 cose di primo soccorso che possono salvare una vita" descrizione="Ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico: cosa fare in 90 secondi, secondo le linee guida IRC/ERC 2025 e le altre fonti ufficiali." durata="PT1M27S" data="2026-10-02" didascalia="Il video dura un minuto e mezzo, con la voce narrante e i sottotitoli." >}}
+*Il video che accompagnava questa pagina è stato tolto il 1° novembre 2026: alcune indicazioni non erano più in linea con le linee guida ufficiali. Le 10 cose qui sotto sono aggiornate, e per ognuna trovi la scheda e il video nel dossier [Primo soccorso passo passo](/dossier/primo-soccorso/).*
 
 ## Le 10 cose, in breve
 
