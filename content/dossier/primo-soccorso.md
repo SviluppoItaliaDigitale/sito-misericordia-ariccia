@@ -199,7 +199,7 @@ argomenti:
       - "Se tossisce o piange, lascialo tossire e tienilo d'occhio."
       - "Fai chiamare il **112**, o chiama con il vivavoce."
       - "**5 pacche** tra le scapole: a pancia in giù sul tuo avambraccio, con la testa più in basso, sostenendo il mento."
-      - "**5 compressioni sul torace**: a pancia in su, testa in basso, con i **due pollici** al centro del torace."
+      - "**5 compressioni sul torace**: a pancia in su, appoggiato sulle tue ginocchia, con i **due pollici** al centro del torace, più decise che nella rianimazione."
       - "Alterna 5 e 5 finché non torna a piangere, tossire o respirare. Se perde conoscenza: **5 soffi** nella bocca e nel naso, poi rianimazione."
     nonfare:
       - "Non infilare le dita in bocca alla cieca."

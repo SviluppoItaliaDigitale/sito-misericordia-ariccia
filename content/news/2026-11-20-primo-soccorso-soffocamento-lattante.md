@@ -43,7 +43,7 @@ Mettilo a pancia in giù sul tuo avambraccio, con la testa più in basso, sosten
 
 ### 5 compressioni
 
-Se non basta, giralo a pancia in su, sempre con la testa in basso. Con i due pollici al centro del torace, fai fino a cinque compressioni.
+Se non basta, giralo a pancia in su e appoggialo sulle tue ginocchia. Con i due pollici al centro del torace, fai fino a cinque compressioni, più decise che nella rianimazione.
 
 ### Alterna
 

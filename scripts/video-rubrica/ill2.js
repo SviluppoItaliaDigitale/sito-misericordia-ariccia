@@ -74,7 +74,7 @@ lattante({u}){ babyFace(0,-20,190); const f=(u*.8)%1; heartP(250,-200,.5); ctx.f
   const hy=hit?-90:-90-80*Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI); ctx.save(); ctx.translate(-20,hy); hand(0,-40,.55,Math.PI); ctx.restore();
   if(hit){ const r=ph/.18; arc(-20,-80,30+r*40,0,TAU,`rgba(242,228,51,${1-r})`,8); } ctx.restore();
   const n=Math.floor(Math.max(0,u-PRE)*1.1)%5+1; grp(360,-180,1,A(.8),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); }); },
-'lattante-torace'({u,A}){ const ph=(u*1.0)%1, d=ph<.3?Math.sin(ph/.3*Math.PI)*14:0; ctx.save(); ctx.translate(0,40); ctx.rotate(-.18);
+'lattante-torace'({u,A}){ const ph=(u*1.0)%1, d=ph<.3?Math.sin(ph/.3*Math.PI)*14:0; ctx.save(); ctx.translate(0,40); ctx.rotate(0); // 1/11/2026: sulle ginocchia, non più a testa in giù (IRC 2025, cap. 9, p. 29)
   ln([[-380,70],[260,70]],PANT,120); babyLying(0,30,1.3,d);
   ctx.save(); ctx.translate(-10,-90+d*1.3); box(-80,-30,160,70,30,SK); box(-90,-20,30,90,15,SKD); box(60,-20,30,90,15,SKD); fe(-18,30,14,20,SK); fe(18,30,14,20,SK); ctx.restore(); ctx.restore();
   if(d>3) arrow(-10,-260,-10,-200,C.giallo,9);

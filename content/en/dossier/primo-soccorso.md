@@ -191,7 +191,7 @@ argomenti:
       - "If they are coughing or crying, let them cough and keep a close eye on them."
       - "Have someone call **112**, or call on speakerphone."
       - "**5 back blows** between the shoulder blades: face down along your forearm, head lower than the body, supporting the chin."
-      - "**5 chest thrusts**: face up, head down, with **two thumbs** in the centre of the chest."
+      - "**5 chest thrusts**: face up, resting on your knees, with **two thumbs** in the centre of the chest, pressing more firmly than in CPR."
       - "Alternate 5 and 5 until they cry, cough or breathe again. If they become unresponsive: **5 rescue breaths** into the mouth and nose, then CPR."
     nonfare:
       - "Don't put your fingers blindly into their mouth."
