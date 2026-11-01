@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- Nessun lavoro in corso.
+- **01/11/2026 — Claude — campagna volontari e 3ª serie della rubrica primo soccorso.** Ramo `ccr-efaca265-5c6vh2`. (1) Campagna «Esci dal post. Entra nella squadra»: quattro news del giovedì (12/11, 19/11, 26/11, 3/12) con grafica nazionale e video da un minuto (`scripts/video-rubrica/contenuti4.py`, `ill4.js`); prossimo passo: video montati e copiati, build, PR, merge. (2) 3ª serie «Primo soccorso passo passo» (10 video da gennaio 2027): testi in preparazione sulle fonti ERC/IRC 2025; prima dell'uscita li deve rivedere il responsabile sanitario.
 
 ## Richieste
 

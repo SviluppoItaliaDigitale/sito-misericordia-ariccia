@@ -266,6 +266,12 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
 - **Musica dei video**: brani di Kevin MacLeod (CC BY 4.0) scelti da Alessandro, in `scripts/video-rubrica/musica/`; crediti in `data/musica_video.json` (mostrati sotto il video e nei post social). Solo i video della rianimazione a tempo usano la musica generata. Voce: Kokoro «Nicola» (maschile) in tutti i video; la femminile «Sara» è scartata (legge male, senza intonazione).
 - **Video dei servizi**: accompagnamento sociale (`/servizi/servizi-sociali/`) e
   «L'ultimo viaggio» (`/trasporto-infermi/`), testi in `contenuti3.py`.
+- **Campagna volontari «Esci dal post. Entra nella squadra»**: prima uscita il 18/10/2026, poi
+  una news con grafica nazionale e video da un minuto ogni giovedì: 12/11 Centro di Ascolto e
+  Banco Alimentare (con la Colletta Alimentare del 14/11), 19/11 tutti i modi di esserci («Non
+  serve guidare l'ambulanza»), 26/11 trasporti, 3/12 formazione ed eventi, poi la Giornata del
+  volontariato del 5/12. Testi dei video in `contenuti4.py`, disegni in `ill4.js`. Invito sempre
+  uguale: «Scrivi VOLONTARIO su WhatsApp al 348 4068657» (`https://wa.me/393484068657?text=VOLONTARIO`).
 - Social: `social_video` + `social_video_copertina` nel front matter → Reel su
   Instagram e video su Facebook; `social_testo` per il testo su misura.
 

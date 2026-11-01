@@ -2,7 +2,7 @@
 const { chromium } = require('playwright-core'); const { spawn } = require('child_process');
 (async () => {
   const K = process.env.KEY;
-  const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args:['--force-color-profile=srgb','--font-render-hinting=none','--disable-lcd-text'] });
+  const b = await chromium.launch({ executablePath: require('./chrome')(), args:['--force-color-profile=srgb','--font-render-hinting=none','--disable-lcd-text'] });
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   p.on('pageerror', e => console.error('ERR', e.message));
   await p.goto('file://' + process.cwd() + '/' + K + '/video.html?render=1'); await p.waitForFunction('window.__ready === true');
