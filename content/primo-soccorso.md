@@ -95,8 +95,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <summary>Colpo di calore</summary>
 
 1. Se ha la pelle molto calda ed è confusa, agitata, ha convulsioni o non risponde, è un colpo di calore: **chiama subito il 112**.
-2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco, togli i vestiti in eccesso e bagnala con **acqua fredda su tutto il corpo, testa esclusa** (meglio una doccia o una vasca fredda); altrimenti panni bagnati freddi, ghiaccio avvolto in un panno su collo, ascelle e inguine, e falle aria. Continua per circa 15 minuti o finché i sintomi passano.
-3. Solo se è ben sveglia e riesce a deglutire, falle bere **acqua** a piccoli sorsi.
+2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco e togli più vestiti possibile; se ha le vertigini falla stare sdraiata, se ha nausea mettila su un fianco. **Bagnala tutta con acqua fresca** o avvolgila in teli bagnati e **falle aria di continuo**, cambiando la parte del corpo esposta; quando i teli si asciugano, bagnali di nuovo. Continua finché arrivano i soccorsi. Niente vasca, doccia fredda o ghiaccio.
+3. Solo se è ben sveglia, non ha nausea e riesce a deglutire, falle bere **acqua** a piccoli sorsi. Niente alcol sulla pelle e niente farmaci per la febbre.
 4. Se non risponde e non respira normalmente, inizia la **rianimazione**.
 
 </details>
@@ -115,4 +115,4 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 **Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
 
-*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per ustioni, svenimento e convulsioni, che le linee guida 2025 non trattano o trattano solo in parte, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*
+*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per il colpo di calore le [linee di indirizzo del Ministero della Salute (luglio 2026)](https://www.salute.gov.it/new/sites/default/files/2026-07/LG%20CALDO%20INQUINAMENTO%20AGG%202026_0.pdf); per ustioni, svenimento e convulsioni, che le linee guida 2025 non trattano o trattano solo in parte, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*

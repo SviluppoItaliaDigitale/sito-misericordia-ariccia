@@ -1,16 +1,16 @@
 ---
-title: "Il defibrillatore (DAE): chiunque può usarlo"
+title: "Il defibrillatore (DAE): puoi usarlo anche tu"
 titoloSeo: "Defibrillatore (DAE): come si usa, dove si trova e chi può usarlo (linee guida ERC/IRC 2025 e legge 116/2021)"
 date: 2027-01-12
 draft: true
 # In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
 revisione_sanitaria: "da fare"
 slug: "primo-soccorso-dae"
-description: "Cos'è il DAE, perché per la legge 116 del 2021 chiunque può usarlo se non c'è nessuno formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo."
+description: "Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo."
 immagine: "/img/news/2027-01-12-primo-soccorso-dae-grafica.jpg"
 social_video: "/video/primo-soccorso-dae.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 3ª serie 1/10 — Il defibrillatore (DAE). Cos'è il DAE, perché per la legge 116 del 2021 chiunque può usarlo se non c'è nessuno formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 3ª serie 1/10 — Il defibrillatore (DAE). Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
   **Il defibrillatore (DAE): un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -23,13 +23,13 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **1 di 10**: **il defibrillatore (DAE)**.
 
-{{< video src="video/primo-soccorso-dae.mp4" poster="img/video/primo-soccorso-dae.jpg" verticale="si" titolo="Il defibrillatore (DAE): primo soccorso passo passo" descrizione="Cos'è il DAE, perché per la legge 116 del 2021 chiunque può usarlo se non c'è nessuno formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo." data="2027-01-12" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-dae.mp4" poster="img/video/primo-soccorso-dae.jpg" verticale="si" titolo="Il defibrillatore (DAE): primo soccorso passo passo" descrizione="Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo." data="2027-01-12" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
-### Chiunque
+### Anche tu
 
-Non serve un corso: il DAE ti guida con la voce, passo passo. La legge 116 del 2021 lo dice chiaro: se non c'è nessuno formato, chiunque può usarlo per soccorrere una persona in arresto cardiaco.
+Anche se non hai fatto un corso, il DAE ti guida con la voce, passo passo. Lo dice la legge 116 del 2021: se non c'è personale formato, anche chi non è formato può usarlo in caso di sospetto arresto cardiaco, senza rischiare di essere punito.
 
 ### Dove si trova
 
@@ -67,4 +67,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), cap. 4 Basic Life Support (chiunque può usare un DAE, come trovarlo, accenderlo, piastre sul torace nudo, nessuno tocchi la persona durante analisi e scarica, riprendere subito le compressioni, nuova analisi ogni 2 minuti); [ERC Guidelines 2025 Executive Summary](https://doi.org/10.1016/j.resuscitation.2025.110770) (i cartelli devono dire che chiunque può usarlo e che non serve formazione; il servizio di emergenza dovrebbe indicare il DAE più vicino); [Legge 4 agosto 2021, n. 116](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2021-08-04;116) (art. 3: uso consentito anche a chi non è formato, in assenza di personale formato, con l'applicazione dell'art. 54 del codice penale; art. 2: segnaletica secondo la codificazione internazionale; artt. 1, 4 e 6: luoghi pubblici, impianti sportivi, registrazione presso il 118; art. 7: istruzioni e localizzazione del DAE durante la chiamata, ove possibile); [ILCOR, cartello universale del DAE](https://ilcor.org/data/AED_Sign_letter_ILCOR_AED_sign_final_V20101102.pdf) (quadrato verde con cuore e fulmine).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), cap. 4 Basic Life Support (anche chi non è formato può usare un DAE, come trovarlo, accenderlo, piastre sul torace nudo, nessuno tocchi la persona durante analisi e scarica, riprendere subito le compressioni, nuova analisi ogni 2 minuti); [ERC Guidelines 2025 Executive Summary](https://doi.org/10.1016/j.resuscitation.2025.110770) (i cartelli devono invitare a usarlo anche senza formazione; il servizio di emergenza dovrebbe indicare il DAE più vicino); [Legge 4 agosto 2021, n. 116](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2021-08-04;116) (art. 3: uso consentito anche a chi non è formato, in assenza di personale formato, con l'applicazione dell'art. 54 del codice penale; art. 2: segnaletica secondo la codificazione internazionale; artt. 1, 4 e 6: luoghi pubblici, impianti sportivi, registrazione presso il 118; art. 7: istruzioni e localizzazione del DAE durante la chiamata, ove possibile); [ILCOR, cartello universale del DAE](https://ilcor.org/data/AED_Sign_letter_ILCOR_AED_sign_final_V20101102.pdf) (quadrato verde con cuore e fulmine).*

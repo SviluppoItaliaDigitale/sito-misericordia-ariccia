@@ -68,10 +68,31 @@ FORME_SBAGLIATE = [
     (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
      "fratture: le estremità fredde non sono un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
      "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
-    (re.compile(r"acqua\s+fresca\s*\(?\s*non\s+gelata", re.I),
-     "colpo di calore: si raffredda subito con acqua fredda su tutto il corpo, testa esclusa (vasca o doccia fredda, "
-     "ghiaccio in un panno, aria), per circa 15 minuti (IRC 2025, cap. 12, p. 19), senza gambe sollevate (1/11/2026); "
-     "per le ustioni resta l'acqua corrente fresca, non ghiacciata"),
+    # Colpo di calore: il Ministero della Salute (Linee di indirizzo caldo, luglio 2026, p. 14) scrive che l'acqua fredda
+    # «non è ottimale» e preferisce il raffreddamento per evaporazione. Si bloccano l'immersione e la doccia fredda come
+    # consiglio ai cittadini; restano libere le ustioni («acqua corrente fresca, non ghiacciata») e il divieto
+    # «Niente vasca, doccia fredda o ghiaccio». Il gruppo (?:\s|\d|:|\.|-->)+ salta il passaggio fra due sottotitoli.
+    (re.compile(r"acqua(?:\s|\d|:|\.|-->)+fredda(?:\s|\d|:|\.|-->)+su(?:\s|\d|:|\.|-->)+tutto(?:\s|\d|:|\.|-->)+il(?:\s|\d|:|\.|-->)+corpo"
+                r"|(?:vasca|doccia),?(?:\s|\d|:|\.|-->)+o(?:\s|\d|:|\.|-->)+(?:sotto\s+)?(?:una\s+)?(?:vasca|doccia)\s+fredda"
+                r"|immergil[oa]\s+(?:\w+\s+){0,2}in\s+acqua\s+fredda|\['Vasca\s+o\s+doccia'|'vasca-fredd[a]'"
+                r"|cold\s+(?:shower|bath)\s+or\s+(?:shower|bath)|(?:with|in)\s+cold\s+water\s+\((?:a\s+)?cold"
+                r"|whole\s+body\s+except\s+the\s+head\s+with\s+cold\s+water|immerse\s+(?:them|the\s+person)\s+in\s+cold\s+water", re.I),
+     "colpo di calore: si raffredda per evaporazione, bagnando il corpo con acqua fresca o avvolgendolo in teli bagnati e "
+     "facendo aria di continuo; niente vasca, doccia fredda o ghiaccio, perché l'acqua fredda «non è ottimale» (Ministero "
+     "della Salute, Linee di indirizzo per la prevenzione degli effetti del caldo, luglio 2026, p. 14; corretto il 1/11/2026)"),
+    # Altre correzioni della 3ª serie del 1/11/2026, sulle fonti statali più aggiornate.
+    (re.compile(r"chiunque\s+può\s+usarlo|può\s+usarlo\s+chiunque|anyone\s+can\s+use\s+it|\['Chiunque',\s*'può", re.I),
+     "DAE: la legge 116/2021 (art. 3) lo consente a chi non è formato se non c'è personale formato, in caso di sospetto "
+     "arresto cardiaco; si scrive «Puoi usarlo anche tu» o la formula della legge, non la frase senza condizioni "
+     "(formula approvata da Alessandro il 9/10/2026; corretto il 1/11/2026)"),
+    (re.compile(r"avvolgilo\s+nella\s+pellicola|latte\s+o\s+pellicola|\['Pellicol[a]',|wrap\s+it\s+in\s+cling\s*film", re.I),
+     "dente caduto: nel latte o nella soluzione fisiologica, se non c'è altro nella saliva; la pellicola non è nella fonte "
+     "statale (Ministero della Salute, Linee guida traumi dentali 2018, pp. 13 e 17; corretto il 1/11/2026)"),
+    (re.compile(r"Continua\s+a\s+lungo,\s+(?:dieci,\s+venti|10-20)\s+minuti|\['10-20\s+minuti',|per\s+\**10-20\s+minuti\**,\s+senza\s+far\s+colare", re.I),
+     "occhi: si sciacqua per almeno 15 minuti (Centro Antiveleni dell'AOU Careggi, 24/02/2026; corretto il 1/11/2026)"),
+    (re.compile(r"(?:richiamo|dose)[^.\n]{0,40}?di\s+più\s+di\s+(?:10|dieci)\s+anni\s+fa|Richiamo\s+oltre\s+10\s+anni", re.I),
+     "antitetanica: per ferite profonde, sporche, punture e morsi si va dal medico se l'ultima dose è di più di 5 anni fa "
+     "(Ministero della Salute, circolare del 3/7/2018; corretto il 1/11/2026)"),
     (re.compile(r"non\s+risponde\s+e\s+non\s+respira(?!\s+normalmente)|no\s+response,\s+not\s+breathing\b(?!\s+normally)", re.I),
      "arresto cardiaco: il criterio è «non risponde e non respira normalmente»; respiri rari, rumorosi o affannosi "
      "non sono un respiro normale (IRC 2025, cap. 4, pp. 5 e 14; guida rapida corretta il 1/11/2026)"),

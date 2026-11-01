@@ -23,6 +23,11 @@ function s6Dentista(x,y,r){ fc(x,y,r,C.tile); ctx.save(); ctx.translate(x,y); ct
   ctx.fillStyle='#fff'; ctx.beginPath(); ctx.moveTo(-62,-30); ctx.bezierCurveTo(-70,-90,-20,-90,0,-66); ctx.bezierCurveTo(20,-90,70,-90,62,-30);
   ctx.bezierCurveTo(58,10,48,30,40,80); ctx.quadraticCurveTo(30,96,20,80); ctx.lineTo(8,30); ctx.quadraticCurveTo(0,22,-8,30); ctx.lineTo(-20,80); ctx.quadraticCurveTo(-30,96,-40,80); ctx.bezierCurveTo(-48,30,-58,10,-62,-30); ctx.fill();
   cross(70,-70,.32,C.giallo); ctx.restore(); }
+// fialetta monodose di soluzione fisiologica (plastica trasparente, tappo da svitare, etichetta 0,9%)
+function s6Fiala(x,y,s,rot=0){ ctx.save(); ctx.translate(x,y); ctx.rotate(rot); ctx.scale(s,s);
+  box(-34,-70,68,150,22,'rgba(235,246,252,.95)'); box(-28,-10,56,84,16,'rgba(159,216,240,.75)');
+  box(-12,-96,24,30,6,'rgba(235,246,252,.95)'); box(-30,-128,60,34,10,'#e3e7f1'); ln([[-22,-111],[22,-111]],'#cfd6e8',4);
+  box(-34,-46,68,40,4,'#fff'); s6Tx('0,9%',0,-26,22,C.ciano,'800'); fe(-16,30,6,22,'rgba(255,255,255,.7)'); ctx.restore(); }
 // cronometro che corre
 function s6Crono(x,y,r,u){ box(x-r*.18,y-r*1.28,r*.36,r*.24,6,'#cfd6e8'); fc(x,y,r,'#fff'); arc(x,y,r-6,0,TAU,C.navy,8);
   for(let i=0;i<12;i++){ const a=i/12*TAU; ln([[x+Math.cos(a)*r*.72,y+Math.sin(a)*r*.72],[x+Math.cos(a)*r*.84,y+Math.sin(a)*r*.84]],C.navy,4); }
@@ -135,7 +140,7 @@ antitetanica({u,p,D,A}){
     for(let i=0;i<5;i++){ box(-150,-110+i*48,120,12,6,'#cfd6e8'); box(20,-110+i*48,130-(i%2)*30,12,6,'#cfd6e8'); }
     const h=A(.6); if(h>0){ ctx.save(); ctx.globalAlpha*=clamp(h); box(12,-2+48*0,146,40,8,'rgba(242,228,51,.55)'); ctx.restore(); box(20,10,130,12,6,'#aab3cc'); }
     const q=A(.85); if(q>0) grp(85,16,1,q,()=>{ fc(0,0,46,C.giallo); s6Tx('?',0,3,58,C.navy,'800'); }); });
-  const c=A(.6); if(c>0){ const n=Math.floor(clamp((u-PRE-.6*D)/1.4)*10); grp(310,-120,1,c,()=>{ timer(0,0,110,n/10,String(Math.max(1,n)),{sub:'anni',size:62}); }); }
+  const c=A(.6); if(c>0){ const n=Math.floor(clamp((u-PRE-.6*D)/1.4)*5); grp(310,-120,1,c,()=>{ timer(0,0,110,n/5,String(Math.max(1,n)),{sub:'anni',size:62}); }); }
 },
 'ferita-infetta'({u,p,A}){
   forearm(100);
@@ -181,8 +186,7 @@ dente({u}){
     ctx.save(); ctx.beginPath(); ctx.rect(-200,-400,400,400+lv); ctx.clip(); s6Dente(0,dy,.42,.3); ctx.restore();
     glass(0,40,1.25,.62,'rgba(246,243,234,.9)');
     ctx.save(); ctx.beginPath(); ctx.rect(-200,lv,400,300); ctx.clip(); ctx.globalAlpha*=.35; s6Dente(0,dy,.42,.3); ctx.restore(); });
-  grp(30,-90,1,A(.5),()=>{ fc(0,0,120,C.tile); box(-80,-34,160,68,30,'#e3e7f1'); fe(-80,0,16,34,'#cfd6e8'); fe(80,0,16,34,'#fff'); fc(80,0,8,'#aab3cc');
-    ctx.fillStyle='rgba(220,240,255,.45)'; ctx.beginPath(); ctx.moveTo(-70,34); ctx.lineTo(70,34); ctx.lineTo(90,100); ctx.lineTo(-50,96); ctx.closePath(); ctx.fill(); });
+  grp(30,-90,1,A(.5),()=>{ fc(0,0,120,C.tile); s6Fiala(-34,10,.78,-.12); s6Fiala(36,4,.78,.1); });
   grp(300,60,1,A(.8),()=>{ fc(0,0,120,C.tile); glass(0,8,.75,.7,S6_ACQUA); vieto(0,0,110,A(.86)); });
 },
 'dente-saliva'({u,p,A}){
@@ -222,7 +226,7 @@ dente({u}){
   for(let i=0;i<10;i++){ const f=(u*1.3+i/10)%1; let x,y; if(f<.5){ const g=f/.5; x=lerp(inn[0],out[0],g); y=lerp(inn[1],out[1],g)+4; } else { const g=(f-.5)/.5; x=lerp(out[0],edge[0],g)+g*20; y=lerp(out[1],edge[1],g)+g*g*120; }
     fe(x,y,7,10,`rgba(0,165,220,${f<.8?.85:(1-f)*4})`); }
   const s=A(.8); if(s>0){ const oe=P(-R*.36,R*.08); ctx.save(); ctx.globalAlpha*=clamp(s); arc(oe[0],oe[1],46,0,TAU,C.giallo,7); ctx.restore(); spunta(oe[0]-70,oe[1]-80,36,s); }
-  grp(310,-130,1,A(.35),()=>timer(0,0,110,p,Math.min(20,Math.floor(p*20)+1)+'′',{sub:'minuti',size:58}));
+  grp(310,-130,1,A(.35),()=>timer(0,0,110,p,Math.min(15,Math.floor(p*15)+1)+'′',{sub:'minuti',size:58}));
 },
 lenti({u,p,A}){
   eye(-80,20,1.5,1);

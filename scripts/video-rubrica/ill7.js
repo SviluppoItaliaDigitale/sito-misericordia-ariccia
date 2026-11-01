@@ -53,9 +53,10 @@ function s7Testa(x,y,r,u,o={}){ const b=Math.sin(u*(o.vel||2.4))*(o.amp??8); hea
 function s7Cerchi(x,y,u,n=3,w=150){ for(let i=0;i<n;i++){ const f=(u*.5+i/n)%1; ctx.strokeStyle=`rgba(255,255,255,${.7*(1-f)})`; ctx.lineWidth=5; ctx.beginPath(); ctx.ellipse(x,y,30+f*w,8+f*w*.18,0,0,TAU); ctx.stroke(); } }
 // salvagente bianco e rosso
 function s7Salvagente(x,y,r,rot=0){ ctx.save(); ctx.translate(x,y); ctx.rotate(rot); for(let i=0;i<8;i++) arc(0,0,r,i*TAU/8,(i+1)*TAU/8,i%2?'#fff':RED,r*.55); ctx.restore(); }
-// impacco: ghiaccio avvolto in un panno
-function s7Impacco(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s); box(-46,-26,92,52,22,'#f4f6fb'); ctx.globalAlpha*=.9; cube(0,-6,.5,'#dff3fb'); ctx.globalAlpha=1;
-  ctx.strokeStyle='rgba(27,34,63,.18)'; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(-40,-6); ctx.lineTo(-20,20); ctx.moveTo(40,-6); ctx.lineTo(20,20); ctx.stroke(); ctx.restore(); }
+// spruzzino d'acqua fresca: ugello a sinistra, (x,y) = centro del flacone
+function s7Spruzzino(x,y,s){ ctx.save(); ctx.translate(x,y); ctx.scale(s,s);
+  box(-30,-20,60,110,16,'rgba(159,216,240,.92)'); box(-30,30,60,60,14,'#5fb7e5'); box(-16,-44,32,26,6,'#fff');
+  box(-44,-82,72,40,12,'#fff'); box(-64,-72,24,16,5,'#cfd6e8'); ln([[-10,-42],[-26,-8]],'#fff',9); ctx.restore(); }
 // panno bagnato che gocciola
 function s7Panno(x,y,w,h,u,a=1){ if(a<=0) return; ctx.save(); ctx.globalAlpha*=clamp(a); box(x,y,w,h,h/2.4,S7_PANNO); ln([[x+14,y+h*.35],[x+w-14,y+h*.35]],'rgba(0,131,176,.35)',4);
   for(let i=0;i<3;i++){ const f=(u*1.3+i/3)%1; drop(x+w*(.25+i*.25),y+h+6+f*34,.22,`rgba(0,165,220,${1-f})`); } ctx.restore(); }
@@ -188,34 +189,22 @@ ombra({u,p,A}){
   ctx.restore();
   grp(-180,212,1,A(.75),()=>{ box(-70,-22,120,30,10,'#8a5a3a'); box(-60,-34,100,16,8,'#6f4729'); box(64,-14,56,24,10,'#1a1f36'); box(84,-6,56,24,10,'#1a1f36'); });
 },
-'vasca-fredda'({u,p,A}){
-  // vasca in sezione: la testa fuori, il corpo sott'acqua dal collo in giù
-  const b=Math.sin(u*1.5)*3;
-  box(-404,40,528,166,30,'#e3e7f1');
-  box(-330,10+b,40,40,10,SKD); box(-300,30+b,240,70,34,VS); ln([[-80,64+b],[110,40],[110,150]],PANT,52); box(84,150,52,30,12,SK);
-  head(-310,-34+b,58,{mouth:'flat'});
-  ctx.save(); ctx.globalAlpha*=.62; box(-404,16,528,190,30,S7_ACQUAL); ctx.restore();
-  sbox(-412,10,544,204,36,'#f4f6fb',16); box(-410,212,40,24,8,'#cfd6e8'); box(90,212,40,24,8,'#cfd6e8');
-  for(let i=0;i<4;i++) cube(-200+i*80,14+Math.sin(u*2+i)*3,.45,'#eef9fd');
-  const n=A(.35); if(n>0){ ctx.save(); ctx.globalAlpha*=clamp(n); ctx.setLineDash([14,10]); ln([[-440,12],[160,12]],C.giallo,6); ctx.restore(); arrow(170,0,170,110,C.giallo,9); }
-  // la doccia fredda, in alternativa
-  grp(310,-150,1,A(.75),()=>{ fc(0,0,120,C.tile); ln([[60,-90],[60,-70],[20,-70]],'#cfd6e8',10); fe(10,-66,30,12,'#cfd6e8');
-    for(let i=0;i<9;i++){ const yy=-50+((u*200+i*25)%110); fe(-10+((i%3)-1)*16,yy,4,9,S7_ACQUAL); } stick(-6,10,.65,{}); });
-  // termometro che scende
-  ctx.save(); ctx.translate(320,120); ctx.scale(.42,.42);
-  const r=clamp(p*1.1), h=lerp(330,110,r); box(-40,-260,80,400,40,'#fff'); fc(0,170,80,'#fff'); fc(0,170,60,r>.6?C.ciano:RED); box(-20,140-h,40,h+30,20,r>.6?C.ciano:RED);
-  arrow(110,-160,110,40,C.ciano,16); ctx.restore();
-},
 raffredda({u,p,k,A}){
-  const due=((SCENE[k]&&SCENE[k].tags)||[]).some(t=>/operatore/i.test(t[0]));
-  const X=-40, Y=228, S=.78, L=(lx,ly)=>[X+lx*S,Y+ly*S];
+  // raffreddamento per evaporazione (Ministero della Salute, linee di indirizzo caldo, luglio 2026): corpo bagnato
+  // con acqua fresca o teli bagnati, e aria di continuo, cambiando la parte del corpo esposta; niente ghiaccio né vasca
+  const tg=((SCENE[k]&&SCENE[k].tags)||[]).map(t=>t[0]);
+  const due=tg.some(t=>/operatore/i.test(t)), ancora=tg.some(t=>/di nuovo/i.test(t));
+  const X=-40, Y=228, S=.78;
   lying(X,Y,S,{rise:Math.sin(u*2)*3});
-  const a1=due?1:A(.2), a2=due?1:A(.45), a3=due?1:A(.7), a4=due?1:A(.9);
-  ctx.save(); ctx.translate(X,Y); ctx.scale(S,S); s7Panno(-180,-146,260,34,u,a1); s7Panno(270,-104,190,28,u,a1); ctx.restore();
-  const P=[L(-205,-98),L(-160,-52),L(190,-82)];
-  if(a3>0){ const f=(u*1.2)%1; P.forEach(([x,y])=>{ ctx.save(); ctx.globalAlpha*=clamp(a3)*(1-f); arc(x,y,40+f*40,0,TAU,C.giallo,6); ctx.restore(); }); }
-  P.forEach(([x,y],i)=>grp(x,y,1,a2,()=>s7Impacco(0,0,i?.8:.62)));
-  grp(-60,due?20:-60,1,a4,()=>{ s7Ventaglio(0,0,due?.75:1,u); for(let i=0;i<3;i++){ const f=(u*1.5+i/3)%1; ctx.save(); ctx.globalAlpha*=1-f; ln([[-50+i*50,30+f*60],[-40+i*50,60+f*60]],'#fff',5); ctx.restore(); } });
+  const aW=due?0:(ancora?A(.3):A(.25)), aT=due?1:(ancora?.45+.55*clamp(A(.3)):A(.5)), aV=due?1:(ancora?1:A(.85));
+  ctx.save(); ctx.translate(X,Y); ctx.scale(S,S); s7Panno(-180,-146,260,34,u,aT); s7Panno(270,-104,190,28,u,aT); ctx.restore();
+  // acqua fresca spruzzata sul corpo (in «Ancora»: di nuovo sui teli che si asciugano)
+  if(aW>0){ const bx=ancora?330:lerp(150,360,(Math.sin(u*1.1)+1)/2), by=-170;
+    grp(bx,by,1,aW,()=>{ s7Spruzzino(0,0,.9);
+      for(let i=0;i<9;i++){ const f=(u*1.1+i/9)%1, x=-60-f*(40+(i%3)*40), y=-60+f*270; ctx.save(); ctx.globalAlpha*=1-f*f*.7; drop(x,y,.2,'rgba(0,165,220,.9)'); ctx.restore(); } }); }
+  // aria di continuo; in «Ancora» il ventaglio si sposta lungo il corpo
+  const m=ancora?clamp(A(.75)):0, fx=-60+m*Math.sin(u*1.4)*220;
+  grp(fx,due?20:-60,1,aV,()=>{ s7Ventaglio(0,0,due?.75:1,u); for(let i=0;i<3;i++){ const f=(u*1.5+i/3)%1; ctx.save(); ctx.globalAlpha*=1-f; ln([[-50+i*50,30+f*60],[-40+i*50,60+f*60]],'#fff',5); ctx.restore(); } });
   if(due){
     grp(-330,-185,1,A(.2),()=>{ fc(0,0,88,C.tile); phone(0,0,.36,{num:'112',ring:true,u}); });
     grp(-110,-185,1,A(.5),()=>{ fc(0,0,88,C.tile); glass(0,0,.62,.55); });
