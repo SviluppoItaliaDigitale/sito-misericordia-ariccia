@@ -90,10 +90,10 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <details class="faq-item">
 <summary>Colpo di calore</summary>
 
-1. Sposta la persona **all'ombra o in un luogo fresco**.
-2. **Raffreddala**: togli i vestiti in eccesso, bagnala con acqua fresca, falle aria.
-3. Se è cosciente, falle bere **acqua** a piccoli sorsi.
-4. Chiama il **112** se ha confusione, perde coscienza o la temperatura resta molto alta.
+1. Se ha la pelle molto calda ed è confusa, agitata, ha convulsioni o non risponde, è un colpo di calore: **chiama subito il 112**.
+2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco, togli i vestiti in eccesso e bagnala con **acqua fredda su tutto il corpo, testa esclusa** (meglio una doccia o una vasca fredda); altrimenti panni bagnati freddi, ghiaccio avvolto in un panno su collo, ascelle e inguine, e falle aria. Continua per circa 15 minuti o finché i sintomi passano.
+3. Solo se è ben sveglia e riesce a deglutire, falle bere **acqua** a piccoli sorsi.
+4. Se non risponde e non respira normalmente, inizia la **rianimazione**.
 
 </details>
 

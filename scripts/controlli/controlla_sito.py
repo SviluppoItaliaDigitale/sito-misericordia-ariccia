@@ -68,6 +68,10 @@ FORME_SBAGLIATE = [
     (re.compile(r"mano\s+o\s+piede\s+(?:sono\s+)?freddi|hand\s+or\s+foot\s+that\s+is\s+cold", re.I),
      "fratture: le estremità fredde non sono un motivo per il 112 nelle fonti (per l'NHS il formicolio è da 111); "
      "si chiama per frattura esposta, anca, femore, schiena, collo o dolore fortissimo"),
+    (re.compile(r"acqua\s+fresca\s*\(?\s*non\s+gelata", re.I),
+     "colpo di calore: si raffredda subito con acqua fredda su tutto il corpo, testa esclusa (vasca o doccia fredda, "
+     "ghiaccio in un panno, aria), per circa 15 minuti (IRC 2025, cap. 12, p. 19), senza gambe sollevate (1/11/2026); "
+     "per le ustioni resta l'acqua corrente fresca, non ghiacciata"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post

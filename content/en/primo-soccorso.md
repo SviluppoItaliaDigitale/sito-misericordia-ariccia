@@ -25,6 +25,6 @@ Knowing **what to do in the first few minutes** can make the difference. Here ar
 - **Fainting:** lay the person down and **raise their legs**; if they don't recover quickly, call 112.
 - **Severe bleeding:** press firmly on the wound with a clean cloth; don't remove it if soaked — add another on top; call 112 for heavy bleeding.
 - **Burn:** cool under **running cool water for at least 20 minutes**; don't apply ice, oil or creams; cover with a clean cloth; call 112 if extensive or deep.
-- **Heatstroke:** move to shade/cool place, cool the body, give small sips of water if conscious; call 112 if confused or unconscious.
+- **Heatstroke:** very hot skin with confusion, agitation, seizures or unresponsiveness: call 112 and cool them at once. Move them to shade or a cool place, remove excess clothing and cool the whole body except the head with cold water (a cold shower or bath is best); otherwise wet cold cloths, ice wrapped in a cloth on the neck, armpits and groin, and fanning. Keep going for about 15 minutes or until the symptoms ease. Small sips of water only if fully awake; if they don't respond and aren't breathing normally, start CPR.
 
 **Want to be truly ready?** We run First Aid, BLSD and paediatric-BLSD courses open to citizens: call **+39 348 4068657**.

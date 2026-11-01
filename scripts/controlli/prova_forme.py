@@ -72,6 +72,11 @@ CASI = [  # (testo, deve essere segnalato)
     ("o se mano o piede " + "sono freddi e senza sensibilità", True),
     ("or a hand or foot " + "that is cold and numb", True),
     ("una luce notturna verso il bagno, pantofole chiuse", False),
+    # colpo di calore (1/11/2026): acqua fredda, non «fresca, non gelata»; per le ustioni resta «non ghiacciata»
+    ("rinfrescala con acqua fresca (non " + "gelata) e panni bagnati", True),
+    ("bagnala con acqua fresca non " + "gelata", True),
+    ("bagnala con acqua fredda su tutto il corpo, testa esclusa", False),
+    ("sotto acqua corrente fresca (non ghiacciata) per almeno 20 minuti", False),
 ]
 
 errori = 0
