@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- **01/11/2026 — Claude — campagna volontari e 3ª serie della rubrica primo soccorso.** Ramo `ccr-efaca265-5c6vh2`. (1) Campagna «Esci dal post. Entra nella squadra»: quattro news del giovedì (12/11, 19/11, 26/11, 3/12) con grafica nazionale e video da un minuto (`scripts/video-rubrica/contenuti4.py`, `ill4.js`); prossimo passo: video montati e copiati, build, PR, merge. (2) 3ª serie «Primo soccorso passo passo» (10 video da gennaio 2027): testi in preparazione sulle fonti ERC/IRC 2025; prima dell'uscita li deve rivedere il responsabile sanitario.
+- **01/11/2026 — Claude — 3ª serie della rubrica primo soccorso e correzioni dei video già pubblicati.** La campagna volontari, il colpo di calore e la guida rapida vanno online con la PR del ramo `ccr-efaca265-5c6vh2`. Restano: (1) 3ª serie (10 video da gennaio 2027): testi, disegni (`ill5-7.js`) e voce Luca pronti, da montare; news in bozza e schede nascoste finché il responsabile sanitario non le rivede (Controlli del sito: «Revisione sanitaria in attesa»). (2) Correzioni dei 23 video già fatti secondo le linee guida ufficiali (verifica del 1/11/2026, rapporti in scratchpad della sessione: emorragia «almeno 10 minuti», svenimento, freddo, asma, batterie, infarto e altri): testi, schede IT/EN, news e video da rimontare, in una PR successiva.
 
 ## Richieste
 
