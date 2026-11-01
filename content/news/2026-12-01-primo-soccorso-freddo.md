@@ -52,7 +52,7 @@ Dita, orecchie o naso bianchi e insensibili? Non strofinare e non scaldare con f
 
 Anziani soli, persone senza casa, chi ha bevuto. Se vedi qualcuno in difficoltà al freddo, non tirare dritto: chiama il 112.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#freddo)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#freddo)**.
 
 ## Impara con noi
 

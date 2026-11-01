@@ -2,9 +2,6 @@
 title: "Il defibrillatore (DAE): puoi usarlo anche tu"
 titoloSeo: "Defibrillatore (DAE): come si usa, dove si trova e chi può usarlo (linee guida ERC/IRC 2025 e legge 116/2021)"
 date: 2027-01-12
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-dae"
 description: "Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo."
 immagine: "/img/news/2027-01-12-primo-soccorso-dae-grafica.jpg"

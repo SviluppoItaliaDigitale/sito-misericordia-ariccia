@@ -52,7 +52,7 @@ Anche le piccole calamite sono pericolose: se ne ingoia due o più, si attraggon
 
 Scegli giocattoli con il vano batterie chiuso a vite, e tieni batterie nuove e scariche fuori dalla portata dei bambini.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#batterie)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#batterie)**.
 
 ## Impara con noi
 

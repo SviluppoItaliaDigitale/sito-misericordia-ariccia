@@ -1,16 +1,15 @@
 ---
 tema: "guide"
-title: "Primo soccorso passo passo: 23 emergenze"
-titoloSeo: "Primo soccorso: cosa fare in 23 emergenze, da ictus e infarto a soffocamento e rianimazione nel bambino"
-description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
+title: "Primo soccorso passo passo: 33 emergenze"
+titoloSeo: "Primo soccorso: cosa fare in 33 emergenze, da ictus e infarto a soffocamento e rianimazione nel bambino"
+description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti, cassetta di primo soccorso, defibrillatore, posizione laterale di sicurezza, sangue dal naso, ferite, dente rotto, prodotti chimici negli occhi, zecche, morso di vipera, colpo di calore e annegamento, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
 layout: "primo-soccorso"
-# Data dell'ultimo controllo delle fonti (ERC/IRC) da parte della verifica dati; revisione_istruttore: chi rivede i contenuti sanitari (dal 9/10/2026 il responsabile sanitario)
-# Aggiornamenti sanitari non ancora rivisti: si toglie dopo la revisione del responsabile sanitario
-revisione_in_attesa: "aggiornamenti del 1° novembre 2026 secondo le linee guida ufficiali in attesa della sua revisione"
+# fonti_controllate: data dell'ultimo controllo delle fonti; verifica_sanitaria: come e quando sono stati verificati i contenuti sanitari
+# (dal 1/11/2026 la revisione si fa sulle fonti statali italiane più recenti, poi ERC/IRC 2025 e IFRC 2025: CLAUDE.md, «Rubrica»)
 fonti_controllate: "2026-11-01"
-revisione_istruttore: "responsabile sanitario della Misericordia di Ariccia"
+verifica_sanitaria: "verificati il 1° novembre 2026 sulle fonti ufficiali dello Stato (Ministero della Salute, Istituto Superiore di Sanità, AIFA, Vigili del Fuoco, Regione Lazio) e, dove lo Stato non tratta il tema, sulle linee guida ERC/IRC 2025 e IFRC 2025"
 italianoSemplice: |
-  **Questa pagina spiega cosa fare in 23 emergenze.**
+  **Questa pagina spiega cosa fare in 33 emergenze.**
 
   Per ogni emergenza trovi: come riconoscerla, cosa fare, cosa non fare e un video con i disegni.
 
@@ -18,11 +17,11 @@ italianoSemplice: |
 
   Queste informazioni non sostituiscono un corso. Puoi imparare con i nostri corsi di primo soccorso.
 occhiello: "Dossier · Primo soccorso"
-sottotitolo: "Ventitré emergenze, una scheda per ognuna: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
-summary: "Un dossier pratico su 23 emergenze, dai bambini agli anziani: come riconoscerle, cosa fare e cosa non fare, con un video di approfondimento per ognuna, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
+sottotitolo: "Trentatré emergenze, una scheda per ognuna: come riconoscerle, cosa fare nei primi minuti e cosa non fare mai. Secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
+summary: "Un dossier pratico su 33 emergenze, dai bambini agli anziani: come riconoscerle, cosa fare e cosa non fare, con un video di approfondimento per ognuna, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
 lettura: "20 minuti"
 serie2_da: "convulsioni"
-# 3ª serie (gennaio-giugno 2027): schede con revisione: "da fare" nascoste finché il responsabile sanitario non le approva
+# 3ª serie (gennaio-giugno 2027): dalla scheda serie3_da in poi. Una scheda con revisione: "da fare" resta nascosta finché non è verificata sulle fonti
 serie3_da: "dae"
 cover_cta:
   testo: "Inizia dalle schede"
@@ -335,7 +334,6 @@ argomenti:
     titolo: "Il defibrillatore (DAE)"
     motto: "Puoi usarlo anche tu"
     dal: "2027-01-12"
-    revisione: "da fare"
     riconosci_tit: "Quando serve"
     riconosci: "La persona **non risponde** e **non respira normalmente**: è un arresto cardiaco. Il DAE si riconosce dal **cartello verde con un cuore e un fulmine**."
     fare:
@@ -352,7 +350,6 @@ argomenti:
     titolo: "Posizione laterale di sicurezza"
     motto: "Su un fianco, respiro libero"
     dal: "2027-01-19"
-    revisione: "da fare"
     riconosci_tit: "Quando serve"
     riconosci: "La persona **non risponde** ma **respira normalmente**, e non ha avuto un trauma."
     fare:
@@ -369,7 +366,6 @@ argomenti:
     titolo: "Sangue dal naso"
     motto: "Testa in avanti"
     dal: "2027-01-26"
-    revisione: "da fare"
     riconosci: "Sangue che esce da una o da tutte e due le narici, da solo o dopo un colpo."
     fare:
       - "Fai **sedere** la persona con la **testa leggermente in avanti**."
@@ -385,7 +381,6 @@ argomenti:
     titolo: "Ferite e tagli"
     motto: "Pulisci e copri"
     dal: "2027-02-02"
-    revisione: "da fare"
     riconosci: "Tagli, graffi e sbucciature piccole, che sanguinano poco."
     fare:
       - "Lavati le mani e, se li hai, indossa i guanti."
@@ -402,7 +397,6 @@ argomenti:
     titolo: "Dente caduto o rotto"
     motto: "Nel latte, e dal dentista"
     dal: "2027-02-09"
-    revisione: "da fare"
     riconosci: "Un dente uscito del tutto dopo un colpo, o un dente scheggiato o rotto."
     fare:
       - "Ferma il sangue premendo una **garza pulita** sul punto da cui è uscito il dente."
@@ -419,7 +413,6 @@ argomenti:
     titolo: "Sostanze chimiche negli occhi"
     motto: "Acqua, subito e a lungo"
     dal: "2027-02-16"
-    revisione: "da fare"
     riconosci: "Uno schizzo di detersivo, candeggina o altri prodotti chimici negli occhi o sulla pelle: di solito brucia e fa male subito."
     fare:
       - "**Sciacqua subito** l'occhio con acqua corrente pulita, a palpebre aperte, **per almeno 15 minuti**, senza far colare l'acqua nell'altro occhio."
@@ -434,7 +427,6 @@ argomenti:
     titolo: "Zecche"
     motto: "Toglila subito, poi osserva"
     dal: "2027-04-13"
-    revisione: "da fare"
     riconosci: "Un puntino attaccato alla pelle dopo una passeggiata nel verde, spesso su testa, collo, dietro le ginocchia o sui fianchi. Il morso di solito non fa male."
     fare:
       - "Toglila **il prima possibile**, con i guanti se li hai, con una **pinzetta a punte sottili** (o l'apposito strumento), presa **vicino alla pelle**; tira dolcemente, senza strappi."
@@ -450,7 +442,6 @@ argomenti:
     titolo: "Morso di vipera"
     motto: "Calma, e fermo"
     dal: "2027-04-20"
-    revisione: "da fare"
     riconosci: "Due puntini vicini (a volte uno solo), poi dolore forte, gonfiore e un livido intorno al morso."
     fare:
       - "Chiama subito il **112**: anche se sembra stare bene, deve essere visto in ospedale, perché i sintomi possono comparire dopo ore."
@@ -466,7 +457,6 @@ argomenti:
     titolo: "Colpo di calore"
     motto: "Raffredda, subito"
     dal: "2027-06-01"
-    revisione: "da fare"
     riconosci: "Con il caldo forte o dopo uno sforzo: pelle molto calda, mal di testa, nausea, poi **confusione**, agitazione, discorsi strani, convulsioni o perdita di coscienza."
     fare:
       - "Chiama subito il **112** e intanto **inizia a raffreddare**."
@@ -482,7 +472,6 @@ argomenti:
     titolo: "Annegamento"
     motto: "Resta a riva, poi rianima"
     dal: "2027-06-08"
-    revisione: "da fare"
     riconosci: "Una persona in acqua che non riesce a tenere la testa fuori, annaspa o non si muove. Spesso è **silenziosa**: non chiama aiuto e non si sbraccia."
     fare:
       - "Chiama aiuto e il **112**; da terra **lancia un salvagente** o qualcosa che galleggia, o tendi un'asta o una corda."
@@ -498,6 +487,6 @@ argomenti:
 
 In un'emergenza i primi minuti sono quelli che contano di più, e spesso chi è vicino non è un medico: è un familiare, un collega, un passante. **Sapere cosa fare, e cosa non fare, può cambiare il finale.**
 
-In questo dossier trovi **ventitré schede**: le dieci emergenze più comuni e altre tredici, dai neonati agli anziani, dal freddo ai botti di Capodanno. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di approfondimento con disegni animati** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e dell'[European Resuscitation Council](https://www.erc.edu/) e, dove queste non trattano il tema, sulle fonti ufficiali indicate in ogni articolo. Le schede nuove si arricchiscono del loro video man mano che esce, fino al 22 dicembre.
+In questo dossier trovi **trentatré schede**: le dieci emergenze più comuni e altre ventitré, dai neonati agli anziani, dal freddo ai botti di Capodanno, dal defibrillatore al morso di vipera. Per ognuna: come riconoscerla, cosa fare passo per passo, gli errori da evitare e un **video di approfondimento con disegni animati** da guardare e condividere. Tutti i contenuti sono verificati sulle [linee guida RCP 2025 dell'Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e dell'[European Resuscitation Council](https://www.erc.edu/) e, dove queste non trattano il tema, sulle fonti ufficiali indicate in ogni articolo. Le schede nuove si arricchiscono del loro video man mano che esce, fino all'8 giugno 2027.
 
 **In ogni emergenza, il primo gesto è chiamare il [112](tel:112)**: l'operatore ti guida finché arrivano i soccorsi.

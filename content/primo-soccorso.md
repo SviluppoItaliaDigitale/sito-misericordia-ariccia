@@ -23,7 +23,7 @@ italianoSemplice: |
 
 Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indicazioni essenziali per le emergenze più comuni. Per acquisire competenze reali, partecipa a un [corso di primo soccorso e BLSD](/servizi/formazione/) della Misericordia.
 
-**Vuoi approfondire?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**, con una scheda e un video per 23 emergenze, dai neonati agli anziani, secondo le linee guida ERC/IRC 2025.
+**Vuoi approfondire?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**, con una scheda e un video per 33 emergenze, dai neonati agli anziani, secondo le linee guida ERC/IRC 2025 e le fonti ufficiali dello Stato.
 
 ## Le regole d'oro
 

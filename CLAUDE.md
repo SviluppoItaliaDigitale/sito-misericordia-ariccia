@@ -238,7 +238,7 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
 - **Video**: generatore in `scripts/video-rubrica/` (guida nel suo `README.md`):
   testi in `contenuti*.py`, disegni in `ill*.js`, `./anteprima.sh`, `./render.sh`,
   `./copia.sh`. Serie 1 (10 video, 6/10–6/11), serie 2 (13 video, 10/11–22/12),
-  speciale Giornata del volontariato (5/12). Contenuti sanitari sempre su linee guida
+  speciale Giornata del volontariato (5/12), serie 3 (10 video, 12/1–8/6/2027, `contenuti5.py`, `ill5-7.js`). Contenuti sanitari sempre su linee guida
   ERC/IRC correnti e rivisti da un istruttore. **Dal 1/11/2026 la revisione sanitaria la fa Claude** (istruzione di
   Alessandro: «provvedi tu con la documentazione ufficiale più aggiornata di un ente accreditato ufficiale statale
   possibilmente»): prima le fonti statali italiane più recenti (Ministero della Salute, ISS, AIFA, Gazzetta Ufficiale,
@@ -252,7 +252,7 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
   uscita; per rifare solo le immagini di un video già montato, `pipeline.py <chiave>
   --audio-da <video.mp4>`. Restano come sono i video già pubblicati, quelli dei servizi e
   il video del 5×1000 (la sua copertina ha firma e cornice, come la grafica delle sue news).
-- **Dossier** `content/dossier/primo-soccorso.md` (23 schede): ogni scheda può avere
+- **Dossier** `content/dossier/primo-soccorso.md` (33 schede; la pagina inglese ne ha 23, senza la serie 3): ogni scheda può avere
   `dal: "AAAA-MM-GG"` → il suo video (`static/video/primo-soccorso-<id>.mp4`) e il link
   all'articolo compaiono da quella data; prima c'è l'avviso «esce il …».
   `riconosci_tit` cambia il titolo «Come riconoscerlo».

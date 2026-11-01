@@ -457,10 +457,10 @@ def main():
                (oggi - dt.date.fromisoformat(v["verificato"])).days > FREQ.get(v.get("frequenza"), 365)]
     sanitari = [v for v in voci if v.get("tipo") == "sanita"]
     ps = (REPO / "content/dossier/primo-soccorso.md").read_text(encoding="utf-8")
-    rev = re.search(r'^revisione_istruttore:\s*"(.+)"', ps, re.M)
+    rev = re.search(r'^verifica_sanitaria:\s*"(.+)"', ps, re.M)
     righe += ["", "### 📋 Registro dei dati",
               f"- Voci nel registro: {len(voci)} · scadute (oltre la loro frequenza): **{len(scadute)}**" + (f" ({', '.join(scadute[:12])}{'…' if len(scadute) > 12 else ''})" if scadute else ""),
-              f"- Contenuti sanitari: {len(sanitari)} voci · revisione di un istruttore sul dossier primo soccorso: " + (f"✅ {rev.group(1)}" if rev else "⚠️ **non ancora registrata** (`revisione_istruttore` in content/dossier/primo-soccorso.md)")]
+              f"- Contenuti sanitari: {len(sanitari)} voci · verifica sanitaria del dossier primo soccorso: " + (f"✅ {rev.group(1)}" if rev else "⚠️ **non ancora registrata** (`verifica_sanitaria` in content/dossier/primo-soccorso.md)")]
 
     np_ = news_programmate()
     righe += ["", f"### 📅 News in uscita nei prossimi 14 giorni: {len(np_)}"]

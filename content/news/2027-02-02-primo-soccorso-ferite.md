@@ -2,9 +2,6 @@
 title: "Ferite e tagli: pulisci e copri"
 titoloSeo: "Ferite e tagli: come pulirli e medicarli, quando andare al pronto soccorso e l'antitetanica"
 date: 2027-02-02
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-ferite"
 description: "Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica."
 immagine: "/img/news/2027-02-02-primo-soccorso-ferite-grafica.jpg"

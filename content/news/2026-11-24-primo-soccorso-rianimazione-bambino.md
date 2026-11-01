@@ -59,7 +59,7 @@ Il defibrillatore si usa anche nei bambini. Sotto i 25 kg, se c'è, scegli la mo
 
 Non fermarti finché non arrivano i soccorsi, o finché il bambino non si sveglia e respira normalmente.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#rianimazione-bambino)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#rianimazione-bambino)**.
 
 ## Impara con noi
 

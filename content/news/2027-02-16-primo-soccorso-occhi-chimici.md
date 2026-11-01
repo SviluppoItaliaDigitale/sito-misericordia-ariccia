@@ -2,9 +2,6 @@
 title: "Prodotti chimici negli occhi: acqua, subito e a lungo"
 titoloSeo: "Sostanze chimiche negli occhi o sulla pelle: cosa fare passo passo, primo soccorso"
 date: 2027-02-16
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-occhi-chimici"
 description: "Detersivi e candeggina negli occhi o sulla pelle: sciacquare subito con acqua corrente per almeno 15 minuti, togliere le lenti se si riesce facilmente, niente colliri, chiamare il 112 o un Centro Antiveleni e andare al pronto soccorso."
 immagine: "/img/news/2027-02-16-primo-soccorso-occhi-chimici-grafica.jpg"

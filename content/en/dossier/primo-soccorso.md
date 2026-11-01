@@ -6,11 +6,9 @@ titoloSeo: "First aid: what to do in 23 emergencies, from stroke and heart attac
 description: "The Misericordia di Ariccia first-aid dossier: how to recognise and what to do in case of stroke, heart attack, severe bleeding, cardiac arrest, choking in adults, anaphylaxis, burns, hypoglycaemia, poisoning and head injury, seizures, road accidents, fainting, choking and CPR in infants and children, fractures, cold, carbon monoxide, asthma, button batteries, falls in older people, fireworks and the first-aid kit, following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."
 type: "dossier"
 layout: "primo-soccorso"
-# Data dell'ultimo controllo delle fonti (ERC/IRC) da parte della verifica dati; revisione_istruttore: chi rivede i contenuti sanitari (dal 9/10/2026 il responsabile sanitario)
+# fonti_controllate: data dell'ultimo controllo delle fonti; verifica_sanitaria_en: come e quando sono stati verificati i contenuti sanitari (come nella pagina italiana)
 fonti_controllate: "2026-11-01"
-revisione_istruttore_en: "the Misericordia di Ariccia's health officer"
-# Aggiornamenti sanitari non ancora rivisti: si toglie dopo la revisione del responsabile sanitario
-revisione_in_attesa_en: "updates of 1 November 2026 following the official guidelines awaiting their review"
+verifica_sanitaria_en: "checked on 1 November 2026 against official Italian government sources (Ministry of Health, Istituto Superiore di Sanità, AIFA, Fire and Rescue Service, Lazio Region) and, where these do not cover the topic, the ERC/IRC 2025 and IFRC 2025 guidelines"
 occhiello: "Dossier · First aid"
 sottotitolo: "Twenty-three emergencies, one card for each: how to recognise them, what to do in the first few minutes and what never to do. Following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."
 summary: "A practical dossier on 23 emergencies, from children to older people: how to recognise them, what to do and what not to do, with an in-depth video for each one, following the ERC/IRC 2025 guidelines and the other official sources cited in the articles."

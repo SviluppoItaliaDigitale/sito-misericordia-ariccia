@@ -52,7 +52,7 @@ Se colpisce un occhio, non toccarlo, non strofinarlo e non togliere frammenti. C
 
 I bambini guardano da lontano: niente botti in mano ai più piccoli.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#botti)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#botti)**.
 
 ## Impara con noi
 

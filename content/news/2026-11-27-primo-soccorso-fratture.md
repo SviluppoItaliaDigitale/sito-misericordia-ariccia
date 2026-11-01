@@ -52,7 +52,7 @@ Chiama il 112 se l'osso esce dalla pelle, se l'arto è deformato, per l'anca, il
 
 Per una distorsione: riposo, ghiaccio nel panno e parte sollevata. Nel dubbio, trattala come una frattura e fatti vedere da un medico.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#fratture)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#fratture)**.
 
 ## Impara con noi
 

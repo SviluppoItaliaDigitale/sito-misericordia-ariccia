@@ -2,9 +2,6 @@
 title: "Colpo di calore: raffredda, subito"
 titoloSeo: "Colpo di calore: come riconoscerlo e raffreddare subito, primo soccorso (Ministero della Salute 2026)"
 date: 2027-06-01
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-colpo-calore"
 description: "Colpo di calore: i segni, perché chiamare subito il 112 e intanto raffreddare bagnando il corpo con acqua fresca o teli bagnati e facendo aria, cosa non fare e come prevenirlo."
 immagine: "/img/news/2027-06-01-primo-soccorso-colpo-calore-grafica.jpg"

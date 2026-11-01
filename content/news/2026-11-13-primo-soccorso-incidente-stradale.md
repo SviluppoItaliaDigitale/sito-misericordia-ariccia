@@ -52,7 +52,7 @@ Parla con i feriti, rassicurali, di' loro di stare fermi, e coprili per tenerli 
 
 Se un ferito non risponde e non respira normalmente, inizia la rianimazione, seguendo l'operatore del 112.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#incidente-stradale)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#incidente-stradale)**.
 
 ## Impara con noi
 

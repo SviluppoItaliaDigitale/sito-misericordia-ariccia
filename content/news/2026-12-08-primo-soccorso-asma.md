@@ -52,7 +52,7 @@ Se la crisi arriva con gonfiore di labbra o lingua dopo un cibo o una puntura, p
 
 Se non risponde, chiama il 112 e guarda se respira normalmente. Se non respira normalmente, inizia la rianimazione.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#asma)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#asma)**.
 
 ## Impara con noi
 

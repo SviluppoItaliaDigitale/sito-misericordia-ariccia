@@ -2,9 +2,6 @@
 title: "Annegamento: prima la sicurezza, poi la rianimazione"
 titoloSeo: "Annegamento: come soccorrere senza rischi e quando iniziare la rianimazione (linee guida ERC/IRC 2025)"
 date: 2027-06-08
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-annegamento"
 description: "Annegamento: perché non entrare in acqua se non sei addestrato, cosa lanciare da terra, come rianimare (compressioni subito, 5 soffi iniziali se sei formato), il DAE sul torace asciutto e come prevenire."
 immagine: "/img/news/2027-06-08-primo-soccorso-annegamento-grafica.jpg"

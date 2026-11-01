@@ -52,7 +52,7 @@ Fai controllare ogni anno caldaia, stufe e canne fumarie, e installa un rilevato
 
 Mai bracieri o generatori in casa, mai il forno a gas per scaldarsi, mai il motore acceso in garage chiuso.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#monossido)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#monossido)**.
 
 ## Impara con noi
 

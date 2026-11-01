@@ -2,9 +2,6 @@
 title: "Zecche: come toglierle e cosa osservare dopo"
 titoloSeo: "Zecche: come toglierle bene, cosa non fare e quando andare dal medico (ISS)"
 date: 2027-04-13
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-zecche"
 description: "Zecche nei prati e nei boschi: come prevenirle, come toglierle con la pinzetta, cosa non usare mai, come disinfettare e quali segni osservare nel mese dopo."
 immagine: "/img/news/2027-04-13-primo-soccorso-zecche-grafica.jpg"

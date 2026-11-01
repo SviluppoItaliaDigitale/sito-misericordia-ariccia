@@ -56,7 +56,7 @@ Quando i movimenti finiscono, controlla il respiro. Se respira normalmente, mett
 
 Se dopo i movimenti non risponde e non respira normalmente, può essere un arresto cardiaco: chiama subito il 112, con il vivavoce, e inizia la rianimazione.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
 
 ## Impara con noi
 

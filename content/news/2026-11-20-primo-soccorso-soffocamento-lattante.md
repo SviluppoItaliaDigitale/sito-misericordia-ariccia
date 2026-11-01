@@ -57,7 +57,7 @@ Se perde conoscenza, mettilo su un piano rigido, dai cinque soffi nella bocca e 
 
 Per prevenire: tieni lontani gli oggetti piccoli, e taglia gli alimenti tondi, come uva, pomodorini e olive, in pezzi piccoli, di mezzo centimetro, senza semi né noccioli.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento-lattante)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento-lattante)**.
 
 ## Impara con noi
 

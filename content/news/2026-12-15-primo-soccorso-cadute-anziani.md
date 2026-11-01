@@ -52,7 +52,7 @@ Anche se sembra a posto, controllalo nelle ore successive, soprattutto se ha bat
 
 Per prevenire: via i tappeti e i fili in cui si può inciampare, antiscivolo e maniglioni in bagno, una luce notturna verso il bagno, pantofole chiuse con la suola antiscivolo e un telefono vicino al letto.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cadute-anziani)**.
 
 ## Impara con noi
 

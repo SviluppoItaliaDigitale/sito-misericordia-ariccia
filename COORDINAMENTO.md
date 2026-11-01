@@ -144,7 +144,7 @@ Dal 13/10/2026 vale solo per i compiti già aperti in `bacheca/compiti/`: le imm
 
 ## Lavori in corso
 
-- **01/11/2026 — Claude — 3ª serie della rubrica primo soccorso e correzioni dei video già pubblicati.** La campagna volontari, il colpo di calore e la guida rapida vanno online con la PR del ramo `ccr-efaca265-5c6vh2`. Restano: (1) 3ª serie (10 video da gennaio 2027): testi, disegni (`ill5-7.js`) e voce Luca pronti, da montare; news in bozza e schede nascoste finché il responsabile sanitario non le rivede (Controlli del sito: «Revisione sanitaria in attesa»). (2) Correzioni dei 23 video già fatti secondo le linee guida ufficiali (verifica del 1/11/2026, rapporti in scratchpad della sessione: emorragia «almeno 10 minuti», svenimento, freddo, asma, batterie, infarto e altri): testi, schede IT/EN, news e video da rimontare, in una PR successiva.
+- **01/11/2026 — Claude — 3ª serie della rubrica primo soccorso e correzioni dei video già pubblicati.** Con la PR del ramo `ccr-efaca265-5c6vh2`: campagna volontari, colpo di calore, guida rapida, 3ª serie (10 news programmate da gennaio 2027, schede nel dossier) e i 23 video delle serie 1 e 2 rimontati secondo le fonti statali (verifica sanitaria del 1/11/2026 sulle fonti dello Stato, poi ERC/IRC 2025 e IFRC 2025). Resta da decidere con Alessandro se rifare il video «10 cose» (tolto il 1/11/2026).
 
 ## Richieste
 

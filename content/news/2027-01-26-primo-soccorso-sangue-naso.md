@@ -2,9 +2,6 @@
 title: "Sangue dal naso: testa in avanti e naso stretto"
 titoloSeo: "Sangue dal naso (epistassi): cosa fare passo passo, primo soccorso"
 date: 2027-01-26
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-sangue-naso"
 description: "Sangue dal naso: perché la testa va in avanti e non indietro, dove e per quanto stringere il naso, cosa non mettere nel naso e quando andare dal medico o chiamare il 112."
 immagine: "/img/news/2027-01-26-primo-soccorso-sangue-naso-grafica.jpg"
