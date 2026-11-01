@@ -77,6 +77,11 @@ CASI = [  # (testo, deve essere segnalato)
     ("bagnala con acqua fresca non " + "gelata", True),
     ("bagnala con acqua fredda su tutto il corpo, testa esclusa", False),
     ("sotto acqua corrente fresca (non ghiacciata) per almeno 20 minuti", False),
+    # arresto cardiaco (1/11/2026): «non respira normalmente», non solo «non respira»
+    ("Arresto cardiaco: la persona non risponde e non " + "respira", True),
+    ("Cardiac arrest (no response, not " + "breathing):", True),
+    ("la persona non risponde e non respira normalmente", False),
+    ("Cardiac arrest (no response, not breathing normally):", False),
 ]
 
 errori = 0

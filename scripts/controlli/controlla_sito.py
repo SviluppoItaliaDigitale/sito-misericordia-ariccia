@@ -72,6 +72,9 @@ FORME_SBAGLIATE = [
      "colpo di calore: si raffredda subito con acqua fredda su tutto il corpo, testa esclusa (vasca o doccia fredda, "
      "ghiaccio in un panno, aria), per circa 15 minuti (IRC 2025, cap. 12, p. 19), senza gambe sollevate (1/11/2026); "
      "per le ustioni resta l'acqua corrente fresca, non ghiacciata"),
+    (re.compile(r"non\s+risponde\s+e\s+non\s+respira(?!\s+normalmente)|no\s+response,\s+not\s+breathing\b(?!\s+normally)", re.I),
+     "arresto cardiaco: il criterio è «non risponde e non respira normalmente»; respiri rari, rumorosi o affannosi "
+     "non sono un respiro normale (IRC 2025, cap. 4, pp. 5 e 14; guida rapida corretta il 1/11/2026)"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
