@@ -4,8 +4,11 @@
      static/video/primo-soccorso-<id>.mp4 e compare (con il link all'articolo) solo dalla data "dal",
      a mezzanotte italiana: il rebuild notturno lo fa uscire insieme alla news. */ -}}
 {{ $en := eq (partial "lingua.html" .) "en" }}
-{{ $arg := .Params.argomenti }}
+{{- /* Le schede con revisione: "da fare" (contenuti sanitari non ancora rivisti dal responsabile sanitario) non
+     compaiono da nessuna parte: né nella pagina, né nell'indice, né nei conteggi. */ -}}
+{{ $arg := slice }}{{ range .Params.argomenti }}{{ if ne .revisione "da fare" }}{{ $arg = $arg | append . }}{{ end }}{{ end }}
 {{ $s2 := .Params.serie2_da }}
+{{ $s3 := .Params.serie3_da }}
 {{ $nvideo := 0 }}
 {{ range $arg }}{{ if or (not .dal) (not ((time.AsTime .dal "Europe/Rome").After now)) }}{{ $nvideo = add $nvideo 1 }}{{ end }}{{ end }}
 <article class="dossier dossier-ps" data-dossier>
@@ -54,6 +57,7 @@
       {{ $poster := printf "img/video/primo-soccorso-%s.jpg" $a.id }}
       {{ $uscito := or (not $a.dal) (not ((time.AsTime $a.dal "Europe/Rome").After now)) }}
       {{ if eq $a.id $s2 }}<h2 class="ps-gruppo">{{ cond $en "More emergencies: from newborns to older people" "Altre emergenze: dai neonati agli anziani" }}</h2>{{ end }}
+      {{ if eq $a.id $s3 }}<h2 class="ps-gruppo">{{ cond $en "Even more: from the defibrillator to summer emergencies" "Ancora di più: dal defibrillatore alle emergenze d'estate" }}</h2>{{ end }}
       <section id="{{ $a.id }}" class="ps-scheda" aria-labelledby="titolo-{{ $a.id }}">
         <div class="ps-scheda-testo">
           <p class="ps-num" aria-hidden="true">{{ add $i 1 }}</p>

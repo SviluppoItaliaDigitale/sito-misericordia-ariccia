@@ -193,4 +193,8 @@ for key in CHIAVI:
         subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(AUDIO_DA),'-map','0:v','-map','1:a','-c','copy','-shortest','-movflags','+faststart',str(out)],check=True)
     else:
         subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(d/'audio.mp3'),'-c:v','copy','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart',str(out)],check=True)
+    # Il video deve decodificarsi per intero senza errori: il 1/11/2026 due catture rimaste vive dopo un'interruzione
+    # hanno scritto sullo stesso frames.mp4 e il file montato era rovinato pur sembrando a posto.
+    err = subprocess.run([FF, '-v', 'error', '-i', str(out), '-f', 'null', '-'], capture_output=True, text=True).stderr.strip()
+    if err: print(err[-1500:]); sys.exit(f'{key}: {out.name} non si decodifica (catture sovrapposte? ferma le vecchie con pkill -f frames.js e rimonta)')
     print('FATTO', key, T, 's', out, flush=True)

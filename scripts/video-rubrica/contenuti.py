@@ -151,3 +151,5 @@ for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'sve
     V[_k]['fonte'] = FONTE_ARTICOLO
 from contenuti4 import V4
 V.update(V4)
+from contenuti5 import V5
+V.update(V5)

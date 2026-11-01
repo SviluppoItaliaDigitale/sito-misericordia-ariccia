@@ -284,6 +284,7 @@ def file_news_programmate():
         fm = parti[1]
         d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
         if not d or dt.date.fromisoformat(d.group(1)) <= oggi: continue
+        if re.search(r'^draft:\s*true', fm, re.M): continue   # bozze (es. in attesa di revisione sanitaria): non escono
         rif = re.findall(r'^(?:immagine|social_video|social_video_copertina_file):\s*"?(/[^"\s]+)"?', fm, re.M)
         rif += ["/" + x for x in re.findall(r'\{\{<\s*video\s+src="([^"]+)"', t)]
         rif += ["/" + x for x in re.findall(r'\{\{<\s*video\b[^>]*\bposter="([^"]+)"', t)]
@@ -292,6 +293,31 @@ def file_news_programmate():
             if not (REPO / "static" / r.lstrip("/")).is_file():
                 mancano.append(f"`{f.name}` ({d.group(1)}): manca `static{r}`")
     return mancano
+
+
+def revisione_in_attesa(giorni=30):
+    """Contenuti sanitari non ancora rivisti dal responsabile sanitario: news con revisione_sanitaria: "da fare"
+    (in bozza, Hugo non le pubblica) e schede del dossier primo soccorso con revisione: "da fare" (nascoste dal layout).
+    Restituisce (elenco, urgenti): urgenti quelli che escono entro `giorni` giorni o con la data già passata, che
+    senza revisione non uscirebbero o uscirebbero in ritardo (3ª serie della rubrica, 1/11/2026)."""
+    elenco, urgenti = [], []
+    for f in sorted((REPO / "content/news").glob("*.md")):
+        fm = f.read_text(encoding="utf-8").split("---")[1]
+        if not re.search(r'^revisione_sanitaria:\s*"da fare"', fm, re.M): continue
+        d = re.search(r'^date:\s*"?(\d{4}-\d{2}-\d{2})', fm, re.M)
+        data = dt.date.fromisoformat(d.group(1)) if d else oggi
+        voce = f"news `{f.name}` (esce il {data.strftime('%d/%m/%Y')})"
+        elenco.append(voce)
+        if (data - oggi).days <= giorni: urgenti.append(voce)
+    ps = (REPO / "content/dossier/primo-soccorso.md").read_text(encoding="utf-8")
+    for m in re.finditer(r'^  - id: "([^"]+)"\n((?:    .*\n)+)', ps, re.M):
+        if re.search(r'^    revisione:\s*"da fare"', m.group(2), re.M):
+            d = re.search(r'^    dal:\s*"(\d{4}-\d{2}-\d{2})"', m.group(2), re.M)
+            data = dt.date.fromisoformat(d.group(1)) if d else oggi
+            voce = f"scheda `{m.group(1)}` del dossier primo soccorso (video dal {data.strftime('%d/%m/%Y')})"
+            elenco.append(voce)
+            if (data - oggi).days <= giorni: urgenti.append(voce)
+    return elenco, urgenti
 
 
 def main():
@@ -347,6 +373,13 @@ def main():
                 "(con `--firma basso-sinistra` se la grafica non mostra il nome)")
     righe += [rimedio(x) for x in senza[:30]]
     errori += bool(senza)
+
+    ra, ru = revisione_in_attesa()
+    righe += ["", "### 🩺 Revisione sanitaria in attesa: " + ("✅ nessun contenuto" if not ra else
+              (f"❌ {len(ru)} in uscita entro 30 giorni senza revisione" if ru else f"⏳ {len(ra)} contenuti, nessuno in uscita nei prossimi 30 giorni"))]
+    if ra: righe.append("- Li rivede il responsabile sanitario; poi si toglie `revisione_sanitaria` e `draft` dalle news e `revisione` dalle schede.")
+    righe += [f"- {x}" for x in (ru or ra)[:30]]
+    errori += bool(ru)
 
     fm_ = file_news_programmate()
     righe += ["", "### 🗓️ File delle news programmate: " + ("✅ immagini e video già nel sito" if not fm_ else f"❌ {len(fm_)} mancanti")]
