@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **10 di 10**: **annegamento**.
 
-{{< video src="video/primo-soccorso-annegamento.mp4" poster="img/video/primo-soccorso-annegamento.jpg" verticale="si" titolo="Annegamento: primo soccorso passo passo" descrizione="Annegamento: perché non entrare in acqua se non sei addestrato, cosa lanciare da terra, come rianimare (compressioni subito, 5 soffi iniziali se sei formato), il DAE sul torace asciutto e come prevenire." data="2027-06-08" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-annegamento.mp4" poster="img/video/primo-soccorso-annegamento.jpg" verticale="si" titolo="Annegamento: primo soccorso passo passo" descrizione="Annegamento: perché non entrare in acqua se non sei addestrato, cosa lanciare da terra, come rianimare (compressioni subito, 5 soffi iniziali se sei formato), il DAE sul torace asciutto e come prevenire." data="2027-06-08" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
