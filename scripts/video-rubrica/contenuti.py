@@ -143,10 +143,13 @@ from contenuti3 import V3
 V.update(V3)
 
 # Scheda finale: per gli argomenti che le linee guida IRC/ERC 2025 non trattano (o non solo) la fonte non è
-# «linee guida IRC 2025»: le fonti vere sono citate nell'articolo (21/10/2026, issue #147).
+# «linee guida IRC 2025»: le fonti vere sono citate nell'articolo (21/10/2026, issue #147; il 1/11/2026 aggiunti
+# ictus, infarto, emorragia, rianimazione, anafilassi, ipoglicemia, trauma cranico, soffocamento del lattante e asma, le cui
+# news citano anche IFRC, CRI, NHS, AMD o il Ministero della Salute).
 FONTE_ARTICOLO = "Fonti nell'articolo su misericordia-ariccia.it · informazioni generali, non sostituiscono un corso"
 for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'svenimento', 'fratture', 'freddo',
-           'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta'):
+           'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta', 'ictus', 'infarto', 'emorragia', 'rianimazione',
+           'anafilassi', 'ipoglicemia', 'trauma-cranico', 'soffocamento-lattante', 'asma'):
     V[_k]['fonte'] = FONTE_ARTICOLO
 from contenuti4 import V4
 V.update(V4)

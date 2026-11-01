@@ -5,6 +5,8 @@ titoloSeo: "Primo soccorso: cosa fare in 23 emergenze, da ictus e infarto a soff
 description: "Il dossier della Misericordia di Ariccia sul primo soccorso: come riconoscere e cosa fare in caso di ictus, infarto, emorragia, arresto cardiaco, soffocamento nell'adulto, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico, convulsioni, incidente stradale, svenimento, soffocamento e rianimazione nel bambino, fratture, freddo, monossido, asma, batterie a bottone, cadute degli anziani, botti e cassetta di primo soccorso, secondo le linee guida ERC/IRC 2025 e le altre fonti ufficiali citate negli articoli."
 layout: "primo-soccorso"
 # Data dell'ultimo controllo delle fonti (ERC/IRC) da parte della verifica dati; revisione_istruttore: chi rivede i contenuti sanitari (dal 9/10/2026 il responsabile sanitario)
+# Aggiornamenti sanitari non ancora rivisti: si toglie dopo la revisione del responsabile sanitario
+revisione_in_attesa: "aggiornamenti del 1° novembre 2026 secondo le linee guida ufficiali in attesa della sua revisione"
 fonti_controllate: "2026-11-01"
 revisione_istruttore: "responsabile sanitario della Misericordia di Ariccia"
 italianoSemplice: |

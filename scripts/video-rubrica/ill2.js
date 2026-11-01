@@ -88,8 +88,10 @@ lattante({u}){ babyFace(0,-20,190); const f=(u*.8)%1; heartP(250,-200,.5); ctx.f
   grp(300,-120,1,A(.4),()=>clockFace(0,0,100,(u*2)%12,(u*60)%60)); },
 trasporti({u,A}){ ln([[-440,170],[440,170]],'#3a4570',10); for(let i=0;i<6;i++){ const x=((i*180-u*400)%1080+1080)%1080-540; ln([[x,200],[x+80,200]],'rgba(255,255,255,.35)',8); }
   grp(80,90,1,1,()=>ambulance(0,0,1.05,u)); grp(-310,-150,1,A(.75),()=>{ fc(0,0,90,C.tile); fc(0,-30,22,'#fff'); ln([[0,-8],[0,40]],'#fff',16); arc(0,50,36,.2,2.9,'#fff',10); }); },
-uva({u,A}){ const s=A(.75); const cx=-170; for(let i=0;i<4;i++){ const a=i*Math.PI/2+Math.PI/4, off=clamp(s)*22; ctx.save(); ctx.translate(cx+Math.cos(a)*off,Math.sin(a)*off); ctx.fillStyle='#7cc46a'; ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,110,a-Math.PI/4,a+Math.PI/4); ctx.closePath(); ctx.fill(); ctx.restore(); }
-  fe(cx-30,-40,20,12,'rgba(255,255,255,.4)'); tx('pezzi da 5 mm',cx,170,30,'#fff','700');
+uva({u,A}){ const s=clamp(A(.75)); const cx=-170; // 1/11/2026: pezzi piccoli di circa 5 mm (Ministero della Salute 2017), non l'acino in quattro
+  ctx.globalAlpha*=1-s; fc(cx,0,110,'#7cc46a'); fe(cx-35,-40,22,13,'rgba(255,255,255,.4)'); ctx.globalAlpha=1;
+  if(s>0){ for(let r=0;r<4;r++) for(let c=0;c<5;c++){ const k=(r*5+c)/20; if(s<k*.6) continue; const x=cx-120+c*60+(r%2)*14, y=-90+r*55; box(x-17,y-17,34,34,10,'#7cc46a'); fe(x-7,y-8,6,4,'rgba(255,255,255,.4)'); } }
+  if(s>0){ ctx.globalAlpha*=s; tx('pezzi da 5 mm',cx,170,30,'#fff','700'); ctx.globalAlpha=1; }
   grp(220,0,1,A(.25),()=>{ fc(0,0,140,C.tile); fc(-40,-30,30,'#cfd6e8'); fc(40,-20,22,'#e0b84a'); box(-20,30,50,30,8,RED); vieto(0,0,125,1); }); },
 'bimbo-cuore'({u}){ stick(-150,60,2,{shirt:'#f2a541',hairCol:'#8a6a4a'}); const b=1+Math.max(0,Math.sin(u*7))*.06; ctx.strokeStyle=C.giallo; ctx.lineWidth=14; heartP(190,-30,1.3*b); ctx.stroke(); },
 'respiro-bimbo'({u,p,A}){ ctx.save(); ctx.scale(.9,.9); babyLying(-60,230,1.5,0); ctx.restore(); const s=Math.min(10,Math.floor(p*14)+1); timer(300,-120,110,p*1.4,s+'″',{size:64}); eye(-150,-130,.5,1); },

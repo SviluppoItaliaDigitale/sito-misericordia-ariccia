@@ -75,6 +75,68 @@ FORME_SBAGLIATE = [
     (re.compile(r"non\s+risponde\s+e\s+non\s+respira(?!\s+normalmente)|no\s+response,\s+not\s+breathing\b(?!\s+normally)", re.I),
      "arresto cardiaco: il criterio è «non risponde e non respira normalmente»; respiri rari, rumorosi o affannosi "
      "non sono un respiro normale (IRC 2025, cap. 4, pp. 5 e 14; guida rapida corretta il 1/11/2026)"),
+    # Revisione sanitaria della rubrica del 1/11/2026 («anche gli altri video devono essere in linea con le linee guida
+    # ufficiali»). Il gruppo (?:\s|\d|:|\.|-->)* salta il passaggio fra due sottotitoli di un .vtt (riga vuota e tempi),
+    # dove una frase si spezza.
+    (re.compile(r"(?:pressione|premere|premi)[^.\n]{0,40}?almeno\s+(?:10|dieci)\s+minuti|\['Almeno',\s*'\*10\s+minuti\*\.'\]"
+                r"|pressure[^.\n]{0,40}?at\s+least\s+10\s+minutes", re.I),
+     "emorragia grave: si preme senza mollare finché arrivano i soccorsi; nessuna fonte dà un tempo minimo, che fa credere "
+     "di poter smettere prima (Croce Rossa Italiana, Emorragie; IRC 2025, cap. 12, p. 15; corretto il 1/11/2026)"),
+    (re.compile(r"dura\s+più\s+di\s+qualche\s+minuto|non\s+passa\s+dopo\s+pochi\s+minuti|does\s+not\s+go\s+away\s+after\s+a\s+few\s+minutes", re.I),
+     "infarto: con i segni si chiama SUBITO il 112, anche se il dolore dura da pochi minuti o va e viene (IFRC 2025, p. 358; "
+     "corretto il 1/11/2026)"),
+    (re.compile(r"Medicine\s+solo\s+se\s+lo\s+dice\s+l\\?'operatore|Farmaci:\s+chiedi\s+al\s+112", re.I),
+     "infarto: se non è allergica e non l'ha già presa, si aiuta la persona a masticare un'aspirina da 150-500 mg, e a usare "
+     "il suo spray se ha un'angina nota (IRC 2025, cap. 12, p. 12; corretto il 1/11/2026)"),
+    (re.compile(r"in\s+quattro(?:\s+parti)?,?\s+per\s+lungo|per\s+lungo\s+in\s+quattro|into\s+quarters,?\s+lengthways|tagliata\s+in\s+4"
+                r"|in\s+4,\s+per\s+lungo", re.I),
+     "prevenzione del soffocamento nei bambini: gli alimenti tondi si tagliano in pezzi piccoli, di circa 5 mm, senza semi "
+     "né noccioli (Ministero della Salute, Linee di indirizzo 2017, Tabella 1; corretto il 1/11/2026)"),
+    (re.compile(r"se\s+non\s+riesce\s+a\s+tossire,(?:\s|\d|:|\.|-->)*(?:cinque|5)\s+colpi"
+                r"|Se\s+perde\s+conoscenza,\s+\**112\**\s+e\s+rianimazione", re.I),
+     "soffocamento: se non riesce più a tossire si chiama SUBITO il 112, poi colpi e compressioni; non solo quando perde "
+     "conoscenza (IRC 2025, cap. 12, p. 11; news «10 cose» corretta il 1/11/2026)"),
+    (re.compile(r"non\s+si\s+riprende[^.\n]{0,60}guarda\s+se\s+respira\s+normalmente[:.](?:\s|\d|:|\.|-->)*se\s+non\s+respira"
+                r"|come\s+round[^.\n]{0,60}breathing\s+normally:\s+if\s+not,?\s+start"
+                r"|come\s+round[^.\n]{0,60}check\s+their\s+breathing:\s+if\s+it\s+is\s+not\s+normal", re.I),
+     "svenimento: se non si riprende ma respira normalmente (e non ha battuto forte cadendo) va messo su un fianco; "
+     "se non respira normalmente, rianimazione (IRC 2025, cap. 12, p. 8; corretto il 1/11/2026)"),
+    (re.compile(r"di\s+solito\s+meno\s+di\s+un\s+minuto|usually\s+less\s+than\s+a\s+minute", re.I),
+     "svenimento: la perdita di coscienza dura di solito pochi secondi (IFRC 2025, p. 401; NHS); «meno di un minuto» "
+     "invita ad aspettare (corretto il 1/11/2026)"),
+    (re.compile(r"confus[oa],\s+sonnolent[oa]\s+o\s+non\s+trema\s+più,\s+chiama|tienilo\s+sdraiato"
+                r"|confused,\s+drowsy\s+or\s+no\s+longer\s+shivering,\s+call", re.I),
+     "ipotermia: il 112 si chiama per OGNI sospetta ipotermia, non solo quando è grave; se è grave si muove il meno "
+     "possibile (IFRC 2025, pp. 461 e 463; Croce Rossa Italiana; corretto il 1/11/2026)"),
+    (re.compile(r"per\s+una\s+ventina\s+di\s+minuti|(?:ghiaccio|ice)[^.\n]{0,70}?(?:circa\s+20\s+minuti|about\s+20\s+minutes)", re.I),
+     "fratture: il ghiaccio si tiene per NON PIÙ di 20 minuti alla volta, oltre si danneggia la pelle (IFRC 2025, p. 301; "
+     "Croce Rossa Italiana; corretto il 1/11/2026)"),
+    (re.compile(r"aiutalo\s+a\s+respirare\s+lentamente|help\s+them\s+breathe\s+slowly"
+                r"|Chiama\s+(?:il\s+\**112\**|'\+U12\+')\s+se\s+lo\s+spray\s+non\s+(?:funziona|basta)"
+                r"|Call\s+\**112\**\s+if\s+the\s+inhaler\s+isn't\s+enough|usarlo\s+nella\s+coscia|use\s+it\s+in\s+the\s+thigh", re.I),
+     "asma: 112 anche se non ha lo spray; calma e vestiti larghi, non «respiri lenti» (IFRC 2025, pp. 245-247); adrenalina "
+     "nella parte esterna della coscia (IRC 2025, cap. 12, p. 11; corretto il 1/11/2026)"),
+    (re.compile(r"guarda\s+se\s+respira\s+normalmente\.(?:\s|\d|:|\.|-->)*Se\s+risponde"
+                r"|Se\s+non\s+risponde,\s+chiama\s+il\s+\*\*112\*\*\s+e\s+guarda\s+se\s+respira\s+normalmente\.\""
+                r"|do\s+not\s+respond,\s+call\s+\*\*112\*\*\s+and\s+check\s+whether\s+they\s+are\s+breathing\s+normally\.\"", re.I),
+     "cadute: dopo «guarda se respira normalmente» va detto che cosa fare: se non respira normalmente, rianimazione "
+     "(IRC 2025, cap. 4, p. 15; corretto il 1/11/2026)"),
+    (re.compile(r"rifiuta\s+di\s+mangiare|rifiuto\s+del\s+cibo|rifiuta\s+il\s+cibo|refusing\s+food", re.I),
+     "batterie a bottone: i segni della fonte sono tosse, bava, vomito e fatica a deglutire (Ospedale Bambino Gesù, 2026; "
+     "corretto il 1/11/2026)"),
+    (re.compile(r"finestre\s+aprile", re.I),
+     "avvelenamento: «aprile» si confonde con il mese; si scrive «Apri le finestre» (corretto il 1/11/2026)"),
+    (re.compile(r"più\s+grande\s+del\s+palmo", re.I),
+     "ustioni: si chiama il 112 per ustioni grandi o profonde, su viso, mani, piedi o genitali, da fiamme, elettriche o "
+     "chimiche, o in un bambino; il «palmo» non è nelle fonti (IFRC 2025, p. 290; corretto il 1/11/2026)"),
+    (re.compile(r"finché\s+l\\?'oggetto\s+non\s+esce\s+o\s+arrivano", re.I),
+     "soffocamento del lattante: ci si ferma appena torna a piangere, tossire o respirare, anche se l'oggetto non si vede "
+     "uscire (IRC 2025, cap. 9, p. 29; corretto il 1/11/2026)"),
+    (re.compile(r"finché\s+non\s+si\s+sveglia\.", re.I),
+     "rianimazione: si smette se si sveglia E respira normalmente (IFRC 2025, p. 162; corretto il 1/11/2026)"),
+    (re.compile(r"sole\s+tra\s+le\s+12\s+e\s+le\s+18|tra\s+\**25\s+e\s+27\s+gradi", re.I),
+     "caldo: ore più fresche fino alle 11 e dopo le 18, condizionatore intorno a 25-26 gradi (ISSalute, aggiornata il "
+     "4/11/2025; corretto il 1/11/2026)"),
 ]
 # La prova di queste regole (esempi da segnalare e forme giuste) è scripts/controlli/prova_forme.py.
 # Dove si cercano: sorgenti del sito, sottotitoli e pagine in static/, generatori di video, grafiche e post
