@@ -671,7 +671,10 @@ allarme({u,A}){
   for(let i=0;i<3;i++){ const ff=(u*.6+i/3)%1; tx('z',150+ff*90,-40-ff*120,40+ff*20,`rgba(255,255,255,${1-ff})`,'700'); }
 },
 pupille({u,A}){
-  eye(-190,-60,1,1); eye(190,-60,1,clamp(1+1.4*A(.6),1,2.4));
+  // vista disturbata (ISSalute, Commozione cerebrale; IFRC 2025, p. 312): gli occhi si sdoppiano, vede male o doppio
+  const dv=clamp(A(.6)), dx=dv*(34+Math.sin(u*2.2)*12);
+  if(dv>0){ ctx.save(); ctx.globalAlpha*=.55*dv; eye(-190+dx,-60-dx*.3,1,1); eye(190+dx,-60-dx*.3,1,1); ctx.restore(); }
+  eye(-190,-60,1,1); eye(190,-60,1,1);
   grp(0,180,1,A(.3),()=>{ ctx.fillStyle=SK; ctx.beginPath(); ctx.moveTo(-40,-80); ctx.quadraticCurveTo(-10,30,-70,60); ctx.quadraticCurveTo(0,90,70,60); ctx.quadraticCurveTo(10,30,40,-80); ctx.fill(); const f=(u*.8)%1; drop(-40,80+f*60,.5,`rgba(217,71,61,${1-f})`); });
 },
 'non-muovere'({u,A}){

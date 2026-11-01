@@ -59,6 +59,8 @@ Se perde conoscenza e non respira normalmente, inizia la rianimazione.
 
 Dopo un cibo, un farmaco o una puntura d'insetto: gonfiore di labbra, lingua o viso, fatica a respirare, orticaria diffusa, malessere improvviso, a volte dolore alla pancia, vomito o diarrea.
 
+Se non ha l'autoiniettore ma ha uno **spray nasale di adrenalina** prescritto dal medico, aiutalo a usarlo.
+
 Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#anafilassi)**.
 
 ## Impara con noi
@@ -67,4 +69,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 11 (segni, compresi dolore addominale, vomito e diarrea; 112; autoiniettore nella parte esterna della coscia; seconda dose se i sintomi persistono dopo 5 minuti) e p. 27 (seduto se respira male, sdraiato con le gambe sollevate se è debole); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), p. 378 (autoiniettore anche sopra i vestiti, se non sono spessi).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 11 (segni, compresi dolore addominale, vomito e diarrea; 112; autoiniettore nella parte esterna della coscia; seconda dose se i sintomi persistono dopo 5 minuti; se manca l'autoiniettore, dispositivo intranasale) e p. 27 (seduto se respira male, sdraiato con le gambe sollevate se è debole); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), p. 378 (autoiniettore anche sopra i vestiti, se non sono spessi); [AIFA, banca dati dei farmaci](https://medicinali.aifa.gov.it/it/) (adrenalina spray nasale Eurneffy autorizzata e in commercio in Italia, con prescrizione medica; consultata il 1/11/2026).*

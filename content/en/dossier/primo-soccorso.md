@@ -31,7 +31,7 @@ argomenti:
       - "Even one sign: **call 112 immediately** and **note the time** the symptoms started (or the last time the person was well)."
     nonfare:
       - "Don't wait for it to pass, even if the symptoms seem to improve."
-      - "Don't give food, drink or medicines."
+      - "Don't give food, drink or medicines, **not even aspirin**."
   - id: "infarto"
     titolo: "Heart attack"
     motto: "Time is life"
@@ -52,7 +52,7 @@ argomenti:
       - "If you have gloves, put them on."
       - "Press hard **directly on the wound** with a sterile gauze or a clean cloth, and **keep up the pressure without letting go**."
       - "Call **112**."
-      - "On an arm or leg, if pressure is not enough, someone who is trained can apply a **tourniquet** as soon as possible, noting the time."
+      - "On an arm or leg, if pressure is not enough and you have a **tourniquet**, apply it as soon as possible, 5–7 cm above the wound, and note the time."
     nonfare:
       - "Don't release the pressure to «check» whether the bleeding has stopped."
       - "Don't loosen or remove a tourniquet: only healthcare staff should do that."
@@ -91,6 +91,7 @@ argomenti:
     fare:
       - "Call **112**."
       - "If the person has an **adrenaline auto-injector**, help them use it in the outer thigh as soon as possible."
+      - "If they have no auto-injector but do have a prescribed **adrenaline nasal spray**, help them use it."
       - "If symptoms are still present after **5 minutes**, even if slightly better, and they have a second dose, use it."
     nonfare:
       - "Don't let them stand up suddenly: if they feel faint, have them lie down."
@@ -103,9 +104,9 @@ argomenti:
       - "Cool immediately under **cool running water** (not ice-cold) for **at least 20 minutes**."
       - "Remove rings, bracelets and watches before the area swells."
       - "Cover with a clean dressing or with cling film, without wrapping it tightly."
-      - "Large or deep burns, burns to the face, hands, feet or genitals, burns from flames, electricity or chemicals, or burns in a child: call **112**."
+      - "Large or deep burns, burns to the face, hands, feet or genitals, burns from flames, electricity or chemicals, or burns in a child: call **112**. For an older person, or if in doubt, have it seen by a doctor."
     nonfare:
-      - "No ice, toothpaste, butter, oil or other home remedies."
+      - "No ice, butter, oil, creams or other home remedies."
       - "Don't pull off clothing stuck to the skin and don't burst blisters."
   - id: "ipoglicemia"
     titolo: "Hypoglycaemia"
@@ -137,7 +138,7 @@ argomenti:
     riconosci: "After a blow to the head: headache, dizziness, nausea, blurred or disturbed vision, confusion, difficulty remembering, drowsiness."
     fare:
       - "Have the person **stop immediately**: no sport or exertion."
-      - "Call **112** if they lose consciousness, vomit repeatedly, are confused, very drowsy or have seizures."
+      - "Call **112** if they lose consciousness, vomit repeatedly, are confused, very drowsy or have seizures, have blood or clear fluid coming from the nose or ears, have blurred or double vision, or an arm or leg is weak."
       - "Even if they seem fine, have them seen by a doctor and don't leave them alone in the following hours."
     nonfare:
       - "Don't let them go back to playing or training on the same day."
@@ -151,7 +152,7 @@ argomenti:
       - "Move dangerous objects away and **clear the space around** the person."
       - "Put something **soft under their head** and loosen their collar."
       - "**Check the time**: if it lasts more than 5 minutes, call **112**."
-      - "Also call 112 if it is their first seizure, if they are injured, if they are pregnant, if the seizures recur or if they do not come round."
+      - "Also call 112 if it is their first seizure, if they are injured, pregnant or have recently given birth, have diabetes or a high fever, have been drinking or taking drugs, if the seizures recur, if they do not come round, and **whenever in doubt**."
       - "Once the movements stop, **check their breathing**: if they are breathing normally, put them **on their side** and stay with them. If they are not breathing normally, call **112** straight away and start **CPR**."
     nonfare:
       - "Don't restrain their movements."
@@ -233,10 +234,12 @@ argomenti:
       - "If you think they have hypothermia, call **112**. If they are confused, drowsy or no longer shivering, it is serious: move them as little as possible. If they are not breathing normally, start CPR."
       - "Get them out of the wind and somewhere warm, **moving them gently**."
       - "Remove wet clothing, dry them and cover them with dry blankets, **including the head**."
+      - "If you can, also warm them with **lukewarm cloths**, no warmer than the body (37 °C)."
       - "If they are awake and can swallow, a **warm, sweet drink**."
     nonfare:
       - "No alcohol: it makes the body lose even more heat."
       - "On frostbite, don't rub and don't warm it with fire or heaters."
+      - "If you can't get to hospital straight away, warm the part in **lukewarm water, 37–39 °C**, for about 30 minutes, but only if it won't freeze again."
   - id: "monossido"
     titolo: "Carbon monoxide"
     motto: "The gas you can't detect"
@@ -260,7 +263,7 @@ argomenti:
       - "Have them **sit up, leaning slightly forwards**, with their arms resting on something."
       - "Stay calm, reassure them and loosen any tight clothing."
       - "If they have **their own reliever inhaler**, help them use it, with a spacer if there is one, as their doctor has explained."
-      - "Call **112** if they have no inhaler, the inhaler isn't enough, they cannot speak, their lips are blue or they are drowsy."
+      - "Call **112** if they have no inhaler, the inhaler isn't enough or the attack gets worse, they cannot speak, their lips are blue or they are drowsy."
     nonfare:
       - "Don't make them lie down."
       - "Don't underestimate swelling of the lips or tongue: it may be anaphylaxis. Call **112** straight away and, if they have an adrenaline auto-injector, help them use it in the outer thigh."
@@ -271,6 +274,7 @@ argomenti:
     riconosci: "A child may have swallowed a button battery or magnets. **Often there are no signs at first**; sometimes coughing, drooling, vomiting or difficulty swallowing."
     fare:
       - "Even if you only suspect it: call **112** or go **straight to A&E** (pronto soccorso)."
+      - "Even if they have swallowed **just one magnet**, go straight to A&E (pronto soccorso)."
       - "Batteries only: over one year old, if they can swallow and it was swallowed less than 12 hours ago: **honey**, 10 ml (2 teaspoons) every 10 minutes, up to 6 times, **on the way to A&E**, without losing any time."
       - "Prevention: toys with a **screw-fastened battery compartment**, new and used batteries kept away from children."
     nonfare:
@@ -285,7 +289,7 @@ argomenti:
     fare:
       - "If they do not respond, call **112** and check whether they are breathing normally; if they are not, start **CPR**."
       - "If they respond, reassure them and ask where it hurts, whether they hit their head, whether they remember what happened."
-      - "Call **112** if they hit their head (all the more if they take anticoagulants, blood thinners), have pain in the back, neck or hip, cannot get up or are confused."
+      - "Call **112** if they cannot get up, have pain in the back, neck or hip, are confused, or after the knock to the head they vomit, are very drowsy or their headache gets worse. If they hit their head and take **anticoagulants** (blood thinners), they must be seen **straight away at A&E** (pronto soccorso), even if they seem fine."
       - "If they are fine, get up **in stages**: onto one side, onto the knees, then using a sturdy chair."
       - "If they cannot get up: a blanket, keep them warm, and wait for help. If they hit their head or have neck pain, **don't move their head**."
       - "Prevention: no rugs or loose wires to trip over, non-slip mats and grab rails in the bathroom, a night light, closed non-slip slippers, a phone by the bed."
@@ -303,7 +307,7 @@ argomenti:
       - "Burn: **cool running water for at least 20 minutes**, then cling film or clean gauze; if it is on the hand or face, or large, call **112**."
       - "Bleeding hand: **press hard** and call **112**."
       - "Severed finger: wrapped in **damp gauze**, in a **sealed bag** placed inside another bag with water and ice; it goes to hospital with the injured person. Write the name and time on the bag."
-      - "Injured eye: cover it without pressing and call **112**."
+      - "Injured eye: don't touch it, and call **112**."
     nonfare:
       - "Don't pick up or relight an unexploded firecracker."
       - "Don't rub the eye, don't remove fragments, don't let the finger touch the ice directly."

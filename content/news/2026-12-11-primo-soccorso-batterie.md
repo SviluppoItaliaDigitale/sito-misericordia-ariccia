@@ -46,7 +46,7 @@ Sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore, p
 
 ### Calamite
 
-Anche le piccole calamite sono pericolose: se ne ingoia due o più, si attraggono attraverso l'intestino e lo danneggiano.
+Anche le piccole calamite sono pericolose: se ne ingoia due o più, si attraggono attraverso l'intestino e lo danneggiano. Anche per una sola, portalo subito al pronto soccorso.
 
 ### Previeni
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare né dare altri cibi o bevande, il miele sopra i 12 mesi, se deglutisce, entro 12 ore senza ritardare il pronto soccorso, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino).*
+*Fonti: [Ospedale Pediatrico Bambino Gesù, Batterie a bottone (agosto 2026)](https://www.ospedalebambinogesu.it/batterie-a-bottone-in-tre-mesi-6-ricoveri-al-bambino-gesu-per-gravi-lesioni-all-esofago-il-triplo-del-2025-182024/) (lesioni dell'esofago in poche ore, segni, anche solo il sospetto: subito al pronto soccorso, non far vomitare né dare altri cibi o bevande, il miele sopra i 12 mesi, se deglutisce, entro 12 ore senza ritardare il pronto soccorso, vani chiusi a vite, batterie fuori dalla portata dei bambini); [Ospedale Pediatrico Bambino Gesù, Ami, monete, magneti](https://www.ospedalebambinogesu.it/ami-monete-magneti-ecco-cosa-finisce-nella-pancia-dei-bambini-salvadanaio--78454/) (calamite che si attraggono e perforano l'intestino); [Alder Hey Children's Hospital (NHS), Swallowed something](https://www.alderhey.nhs.uk/conditions/symptoms-checker/swallowed-something/) (revisione del 25/09/2025: per una o più calamite ingoiate, subito in pronto soccorso); [GOV.UK, Office for Product Safety and Standards, Hidden danger in your home: button batteries and powerful magnets](https://www.gov.uk/government/news/hidden-danger-in-your-home-button-batteries-and-powerful-magnets) (4/4/2022: se pensi che abbia ingoiato calamite o batterie, subito in pronto soccorso).*

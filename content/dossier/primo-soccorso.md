@@ -39,7 +39,7 @@ argomenti:
       - "Anche un solo segno: **chiama subito il 112** e **segna l'ora** in cui sono iniziati i sintomi (o l'ultima volta che la persona stava bene)."
     nonfare:
       - "Non aspettare che passi, anche se i sintomi sembrano migliorare."
-      - "Non dare da mangiare, da bere o farmaci."
+      - "Non dare da mangiare, da bere o farmaci, **nemmeno l'aspirina**."
   - id: "infarto"
     titolo: "Infarto"
     motto: "Il tempo è vita"
@@ -60,7 +60,7 @@ argomenti:
       - "Se li hai, indossa i guanti."
       - "Premi forte **direttamente sulla ferita**, con una garza sterile o un panno pulito, e **mantieni la pressione senza mollare**."
       - "Chiama il **112**."
-      - "Su un braccio o una gamba, se la pressione non basta, chi è addestrato può applicare un **laccio emostatico** il prima possibile, annotando l'ora."
+      - "Su un braccio o una gamba, se la pressione non basta e hai un **laccio emostatico**, mettilo il prima possibile, da 5 a 7 cm sopra la ferita, e annota l'ora."
     nonfare:
       - "Non togliere la pressione per «controllare» se il sangue si è fermato."
       - "Non allentare e non togliere il laccio emostatico: lo fa solo il personale sanitario."
@@ -99,6 +99,7 @@ argomenti:
     fare:
       - "Chiama il **112**."
       - "Se la persona ha l'**autoiniettore di adrenalina**, aiutala a usarlo nella parte esterna della coscia, il prima possibile."
+      - "Se non ha l'autoiniettore ma ha uno **spray nasale di adrenalina** prescritto dal medico, aiutala a usarlo."
       - "Se dopo **5 minuti** ha ancora i sintomi, anche se va un po' meglio, e ha una seconda dose, usala."
     nonfare:
       - "Non farla alzare in piedi di colpo: se si sente svenire, falla sdraiare."
@@ -111,9 +112,9 @@ argomenti:
       - "Raffredda subito sotto **acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**."
       - "Togli anelli, braccialetti e orologi prima che la parte si gonfi."
       - "Copri con una medicazione pulita o con pellicola trasparente per alimenti, senza stringere."
-      - "Ustioni grandi o profonde, sul viso, sulle mani, sui piedi o sui genitali, da fiamme, elettriche o chimiche, o in un bambino: chiama il **112**."
+      - "Ustioni grandi o profonde, sul viso, sulle mani, sui piedi o sui genitali, da fiamme, elettriche o chimiche, o in un bambino: chiama il **112**. Per un anziano, o se hai dubbi, fallo vedere da un medico."
     nonfare:
-      - "Niente ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi."
+      - "Niente ghiaccio, burro, olio, creme o altri rimedi casalinghi."
       - "Non staccare i vestiti attaccati alla pelle e non rompere le bolle."
   - id: "ipoglicemia"
     titolo: "Ipoglicemia"
@@ -145,7 +146,7 @@ argomenti:
     riconosci: "Dopo un colpo alla testa: mal di testa, vertigini, nausea, vista disturbata, confusione, difficoltà a ricordare, sonnolenza."
     fare:
       - "Fai **fermare subito** la persona: niente sport né sforzi."
-      - "Chiama il **112** se perde conoscenza, vomita più volte, è confusa, molto assonnata o ha convulsioni."
+      - "Chiama il **112** se perde conoscenza, vomita più volte, è confusa, molto assonnata o ha convulsioni, se le esce sangue o liquido chiaro dal naso o dalle orecchie, se vede male o doppio, o se un braccio o una gamba sono deboli."
       - "Anche se sembra stare bene, falla vedere da un medico e non lasciarla sola nelle ore successive."
     nonfare:
       - "Non farla tornare a giocare o ad allenarsi lo stesso giorno."
@@ -159,7 +160,7 @@ argomenti:
       - "Allontana gli oggetti pericolosi e fai **spazio intorno**."
       - "Metti qualcosa di **morbido sotto la testa** e allenta il colletto."
       - "**Guarda l'ora**: se dura più di 5 minuti chiama il **112**."
-      - "Chiama il 112 anche se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende."
+      - "Chiama il 112 anche se è la prima crisi, se si è ferita, se è incinta o ha partorito da poco, se ha il diabete o la febbre alta, se ha bevuto alcol o preso droghe, se le crisi si ripetono, se non si riprende, e **nel dubbio**."
       - "Finiti i movimenti, **controlla il respiro**: se respira normalmente mettila **su un fianco** e resta con lei. Se non respira normalmente, chiama subito il **112** e inizia la **rianimazione**."
     nonfare:
       - "Non trattenere i movimenti."
@@ -241,10 +242,12 @@ argomenti:
       - "Se pensi che sia in ipotermia, chiama il **112**. Se è confusa, sonnolenta o non trema più è grave: muovila il meno possibile. Se non respira normalmente, rianimazione."
       - "Portala al riparo dal vento e al caldo, **spostandola con delicatezza**."
       - "Togli i vestiti bagnati, asciugala e coprila con coperte asciutte, **anche la testa**."
+      - "Se puoi, scaldala anche con **panni tiepidi**, non più caldi del corpo (37 gradi)."
       - "Se è sveglia e deglutisce, una **bevanda calda e zuccherata**."
     nonfare:
       - "Niente alcol: fa perdere ancora più calore."
       - "Sul congelamento non strofinare e non scaldare con fuoco o stufe."
+      - "Se non puoi andare subito in ospedale, scalda la parte in **acqua tiepida, tra 37 e 39 gradi**, per circa 30 minuti, ma solo se non rischia di congelarsi di nuovo."
   - id: "monossido"
     titolo: "Monossido di carbonio"
     motto: "Il gas che non si sente"
@@ -268,7 +271,7 @@ argomenti:
       - "Fallo stare **seduto, leggermente in avanti**, con le braccia appoggiate."
       - "Resta calmo, rassicuralo e allentagli i vestiti stretti."
       - "Se ha il **suo spray** per la crisi, aiutalo a usarlo, con il distanziatore se c'è, come gli ha spiegato il medico."
-      - "Chiama il **112** se non ha lo spray, se lo spray non basta, se non riesce a parlare, ha le labbra blu o è sonnolento."
+      - "Chiama il **112** se non ha lo spray, se lo spray non basta o la crisi peggiora, se non riesce a parlare, ha le labbra blu o è sonnolento."
     nonfare:
       - "Non farlo sdraiare."
       - "Non sottovalutare gonfiore di labbra o lingua: può essere anafilassi. Chiama subito il **112** e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo nella parte esterna della coscia."
@@ -279,6 +282,7 @@ argomenti:
     riconosci: "Un bambino può aver ingoiato una batteria a bottone o delle calamite. **Spesso all'inizio non ci sono segni**; a volte tosse, bava, vomito o fatica a deglutire."
     fare:
       - "Anche solo il dubbio: chiama il **112** o vai **subito al pronto soccorso**."
+      - "Anche se ha ingoiato **una sola calamita**, vai subito al pronto soccorso."
       - "Solo per le batterie: sopra l'anno di età, se riesce a deglutire e l'ha ingoiata da meno di 12 ore, **miele**, 10 ml (2 cucchiaini) ogni 10 minuti, fino a 6 volte, **mentre lo porti al pronto soccorso**, senza perdere tempo."
       - "Previeni: giocattoli con il **vano batterie a vite**, batterie nuove e scariche lontane dai bambini."
     nonfare:
@@ -293,7 +297,7 @@ argomenti:
     fare:
       - "Se non risponde, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**."
       - "Se risponde, tranquillizzalo e chiedi dove ha male, se ha battuto la testa, se ricorda cosa è successo."
-      - "Chiama il **112** se ha battuto la testa (ancora di più se prende anticoagulanti), se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi o se è confuso."
+      - "Chiama il **112** se non riesce ad alzarsi, se ha male alla schiena, al collo o all'anca, se è confuso, o se dopo il colpo alla testa vomita, ha molto sonno o il mal di testa peggiora. Se ha battuto la testa e prende **anticoagulanti**, va visto **subito in pronto soccorso**, anche se sembra stare bene."
       - "Se sta bene, rialzarsi **a tappe**: su un fianco, in ginocchio, poi con una sedia robusta."
       - "Se non riesce ad alzarsi: coperta, al caldo, e aspetta i soccorsi. Se ha battuto la testa o ha male al collo, **non muovergli la testa**."
       - "Previeni: niente tappeti e fili in cui inciampare, antiscivolo e maniglioni in bagno, una luce notturna, pantofole chiuse antiscivolo, un telefono vicino al letto."
@@ -311,7 +315,7 @@ argomenti:
       - "Ustione: **acqua corrente fresca per almeno 20 minuti**, poi pellicola o garza pulita; se è sulla mano o sul viso, o è estesa, chiama il **112**."
       - "Mano che sanguina: **premi forte** e chiama il **112**."
       - "Dito staccato: avvolto in una **garza bagnata**, in un **sacchetto chiuso** dentro un altro sacchetto con acqua e ghiaccio; va in ospedale con il ferito. Scrivi sul sacchetto nome e ora."
-      - "Occhio colpito: coprilo senza premere e chiama il **112**."
+      - "Occhio colpito: non toccarlo e chiama il **112**."
     nonfare:
       - "Non raccogliere né riaccendere un petardo inesploso."
       - "Non strofinare l'occhio, non togliere frammenti, non mettere il dito a contatto con il ghiaccio."

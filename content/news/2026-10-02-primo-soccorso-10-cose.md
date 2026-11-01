@@ -30,7 +30,7 @@ Bastano pochi gesti giusti, fatti subito, per cambiare il finale di un'emergenza
 4. **Rianimazione.** Non risponde e non respira normalmente? Chiama il **112**, fatti portare un **defibrillatore (DAE)** e spingi al centro del petto: 5-6 cm, **100-120 volte al minuto**.
 5. **Soffocamento.** Se tossisce, lascialo tossire. Se non ci riesce, chiama subito il **112** (o fallo chiamare), poi **5 colpi tra le scapole e 5 compressioni addominali**, alternati. Se perde conoscenza, rianimazione.
 6. **Anafilassi.** Gonfiore e fatica a respirare dopo un contatto con un allergene: chiama il **112** e, se ha l'autoiniettore di adrenalina, aiutalo a usarlo.
-7. **Ustioni.** Acqua corrente fresca per **almeno 20 minuti**. Niente ghiaccio, dentifricio o burro.
+7. **Ustioni.** Acqua corrente fresca per **almeno 20 minuti**. Niente ghiaccio, burro o creme.
 8. **Ipoglicemia.** Se è sveglio e riesce a deglutire, **zucchero o un succo** (15-20 g). Se non risponde, niente in bocca: chiama il 112.
 9. **Avvelenamento.** **Non provocare il vomito.** Chiama il 112 o un Centro Antiveleni e tieni la confezione.
 10. **Trauma cranico.** Svenimento, vomito ripetuto, confusione o sonnolenza dopo un colpo alla testa: chiama il **112**.

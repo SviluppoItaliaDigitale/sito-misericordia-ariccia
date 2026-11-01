@@ -93,6 +93,28 @@ FORME_SBAGLIATE = [
     (re.compile(r"(?:richiamo|dose)[^.\n]{0,40}?di\s+più\s+di\s+(?:10|dieci)\s+anni\s+fa|Richiamo\s+oltre\s+10\s+anni", re.I),
      "antitetanica: per ferite profonde, sporche, punture e morsi si va dal medico se l'ultima dose è di più di 5 anni fa "
      "(Ministero della Salute, circolare del 3/7/2018; corretto il 1/11/2026)"),
+    # Serie 1 e 2, seconda revisione del 1/11/2026 sulle fonti statali più aggiornate.
+    (re.compile(r"(?:u[s]tion|scottatur|b[u]rn)[^\n]{0,150}?(?:d[e]ntifricio|t[o]othpaste)|(?:d[e]ntifricio|t[o]othpaste)[^\n]{0,150}?(?:u[s]tion|scottatur|b[u]rn)"
+                r"|(?:ghiaccio|burro|olio),?\s+(?:o\s+)?d[e]ntifricio|d[e]ntifricio,\s+burro|(?:ice|butter|oil),?\s+(?:or\s+)?t[o]othpaste|t[o]othpaste,\s+butter", re.I),
+     "ustioni: niente ghiaccio, burro, olio o creme; la pasta per i denti non è in nessuna fonte ufficiale (CRI, Ustioni; NHS, "
+     "Burns and scalds, 31/03/2026; IFRC 2025, pp. 290 e 292; corretto il 1/11/2026)"),
+    (re.compile(r"se\s+ha\s+respirato\s+fumo,\s+o\s+se\s+è\s+un\s+bambino|\['Fumo',\s*\.56\]", re.I),
+     "ustioni: fra i motivi del 112 non c'è il fumo respirato, che non è nelle fonti (IFRC 2025, p. 290); i fumi hanno le schede "
+     "avvelenamento e monossido (corretto il 1/11/2026)"),
+    (re.compile(r"chi\s+è\s+addestrato\s+può\s+(?:usare|applicare)\s+un\s+\**laccio|someone\s+who\s+is\s+trained\s+can\s+apply\s+a\s+\**tourniquet"
+                r"|\['Solo\s+se\s+addestrato'", re.I),
+     "laccio emostatico: se la pressione non basta, lo mette chi ne ha uno, senza limiti di addestramento (IRC 2025, cap. 12, "
+     "pp. 15 e 35; IFRC 2025, p. 256; corretto il 1/11/2026)"),
+    (re.compile(r"le\s+pupille\s+sono\s+diverse|\['Pupille\s+diverse'|unequal\s+pupils|pupils\s+(?:are\s+)?(?:of\s+)?different\s+sizes?", re.I),
+     "trauma cranico: il segno delle fonti è «vede male o doppio», non le pupille diverse (ISSalute, Commozione cerebrale; IFRC "
+     "2025, p. 312; corretto il 1/11/2026)"),
+    (re.compile(r"coprilo\s+senza\s+premere|cover\s+it\s+without\s+pressing|\['Copri\s+senza\s+premere'", re.I),
+     "occhio colpito da un petardo: non toccarlo, non strofinarlo, non togliere frammenti e chiama il 112; «coprilo» non è in "
+     "nessuna fonte (NHS, Eye injuries, 12/03/2026; corretto il 1/11/2026)"),
+    (re.compile(r"Chiama\s+(?:il\s+\**112\**|'\+U12\+')\s+se\s+ha\s+battuto\s+la\s+testa,?\s+\(?ancora\s+di\s+più"
+                r"|Call\s+\**112\**\s+if\s+they\s+hit\s+their\s+head\s+\(all\s+the\s+more", re.I),
+     "cadute degli anziani: 112 per i segni d'allarme dopo il colpo alla testa, non per ogni colpo; chi prende anticoagulanti va "
+     "subito in pronto soccorso (ISSalute, Commozione cerebrale; IFRC 2025, pp. 312-314; corretto il 1/11/2026)"),
     (re.compile(r"non\s+risponde\s+e\s+non\s+respira(?!\s+normalmente)|no\s+response,\s+not\s+breathing\b(?!\s+normally)", re.I),
      "arresto cardiaco: il criterio è «non risponde e non respira normalmente»; respiri rari, rumorosi o affannosi "
      "non sono un respiro normale (IRC 2025, cap. 4, pp. 5 e 14; guida rapida corretta il 1/11/2026)"),

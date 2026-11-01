@@ -77,7 +77,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. **Premi con forza direttamente sulla ferita** con una garza o un panno pulito, e **non mollare**.
 2. **Non togliere** il panno se si inzuppa: aggiungine un altro sopra e continua a premere.
 3. Chiama il **112** per le emorragie abbondanti o che non si fermano.
-4. Su un braccio o una gamba, se la pressione non basta, chi è addestrato può usare un **laccio emostatico**.
+4. Su un braccio o una gamba, se la pressione non basta e hai un **laccio emostatico**, mettilo il prima possibile, sopra la ferita, e segna l'ora.
 
 </details>
 
@@ -86,8 +86,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**.
 2. **Togli** anelli, orologi o vestiti solo se **non sono attaccati** alla pelle.
-3. **Non** applicare ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi, e non rompere le bolle.
-4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se riguarda un bambino.
+3. **Non** applicare ghiaccio, burro, olio, creme o altri rimedi casalinghi, e non rompere le bolle.
+4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se riguarda un bambino. Per un anziano, o se hai dubbi, falla vedere da un medico.
 
 </details>
 
@@ -107,7 +107,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. **Proteggi** la persona da urti: allontana oggetti pericolosi e metti qualcosa di morbido sotto la testa.
 2. **Non** immobilizzarla e **non mettere nulla in bocca**.
 3. Quando le scosse finiscono, **controlla il respiro**: se respira normalmente, mettila **sul fianco** (posizione laterale di sicurezza) e resta con lei; se non respira normalmente, chiama subito il **112** e inizia la **rianimazione**.
-4. Chiama il **112** se la crisi dura più di 5 minuti, se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende.
+4. Chiama il **112** se la crisi dura più di 5 minuti, se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende. Nel dubbio, chiama.
 
 </details>
 

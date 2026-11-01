@@ -44,7 +44,7 @@ Poi copri con pellicola trasparente per alimenti, senza stringere, o con una gar
 
 ### Cosa non fare
 
-Niente ghiaccio, burro, olio o dentifricio. E non bucare le bolle.
+Niente ghiaccio, burro, olio o creme. E non bucare le bolle.
 
 ### Al caldo
 
@@ -52,7 +52,7 @@ Raffredda la ferita, ma tieni al caldo il resto del corpo, soprattutto nei bambi
 
 ### Quando chiamare
 
-Chiama il 112 se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, se ha respirato fumo, o se è un bambino. Per un anziano, o se hai dubbi, fallo vedere da un medico.
+Chiama il 112 se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se è un bambino. Per un anziano, o se hai dubbi, fallo vedere da un medico.
 
 ## Da ricordare
 

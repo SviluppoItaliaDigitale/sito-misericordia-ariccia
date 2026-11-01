@@ -40,7 +40,7 @@ Chiama il 112 se ha perso conoscenza, vomita più volte, è confuso o molto asso
 
 ### Altri segnali
 
-E anche se esce sangue o liquido chiaro dal naso o dalle orecchie, se le pupille sono diverse, o se un braccio o una gamba sono deboli.
+E anche se esce sangue o liquido chiaro dal naso o dalle orecchie, se vede male o doppio, o se un braccio o una gamba sono deboli.
 
 ### Collo e schiena
 
@@ -70,4 +70,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 36 («nel dubbio, fuori dal campo», sempre dal medico) e pp. 9 e 15 (collo e schiena: non muoverlo); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Head injury and concussion», pp. 312-313 (quando chiamare il 112); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (ghiaccio in un panno, 24 ore con un adulto vicino, niente alcol né guida, anticoagulanti).*
+*Fonti: [ISSalute, Commozione cerebrale](https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/c/commozione-cerebrale) (subito al pronto soccorso o 112 con sangue dal naso o dalle orecchie, disturbi della visione, debolezza, vomito ripetuto, sonnolenza, confusione); [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 36 («nel dubbio, fuori dal campo», sempre dal medico) e pp. 9 e 15 (collo e schiena: non muoverlo); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Head injury and concussion», pp. 312-313 (quando chiamare il 112: vista offuscata o doppia, sangue o liquido chiaro dal naso o dalle orecchie); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (ghiaccio in un panno, 24 ore con un adulto vicino, niente alcol né guida, anticoagulanti).*

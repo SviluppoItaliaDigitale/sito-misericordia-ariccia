@@ -179,7 +179,10 @@ petardo({u}){ ctx.save(); ctx.rotate(-.5); box(-50,-180,100,300,20,RED); box(-50
 ce({u,A}){ fc(-160,0,170,'#fff'); tx('CE',-160,10,140,C.navy,'800'); grp(210,0,1,A(.6),()=>{ box(-150,-120,300,240,16,'#55607f'); box(-150,-150,300,50,10,C.ciano); for(let i=0;i<3;i++) box(-110+i*80,-60,50,110,8,[RED,C.giallo,'#7cc46a'][i]); }); },
 'petardo-vieto'({u,A}){ ground(160); ctx.save(); ctx.translate(-60,130); ctx.rotate(1.4); box(-30,-90,60,180,14,RED); ctx.restore(); grp(80,-20,1,A(.3),()=>{ hand(0,0,.7,2.6); }); vieto(0,40,180,A(.35)); },
 amputazione({u,A}){ fe(0,150,260,70,'#cfd6e8'); for(let i=0;i<8;i++) cube(-200+i*58,120+(i%2)*20,.55,'#dff3fb'); grp(0,-40,1,A(.3),()=>{ bag(0,0,1,'rgba(207,233,245,.85)'); box(-40,-10,80,30,14,SK); }); grp(300,-160,1,A(.85),()=>{ fc(0,0,60,C.tile); tx('!',0,4,70,C.giallo,'800','P'); }); },
-'occhio-ferito'({u,A}){ eye(-180,-20,1.2); grp(-180,-200,1,A(.2),()=>{ hand(0,0,.5,Math.PI); vieto(0,30,90,1); }); grp(230,0,1,A(.7),()=>{ fe(0,0,140,100,'#fff'); fe(0,0,110,76,'#eef2f8'); ln([[-150,0],[-260,-30]],'#cfd6e8',14); ln([[150,0],[260,-30]],'#cfd6e8',14); }); },
+'occhio-ferito'({u,A}){ eye(-180,-20,1.2); grp(-180,-200,1,A(.2),()=>{ hand(0,0,.5,Math.PI); vieto(0,30,90,1); });
+  // niente pinzette sui frammenti (NHS, Eye injuries), poi il 112
+  grp(230,-150,1,A(.65),()=>{ fc(0,0,110,C.tile); ln([[-62,62],[28,-38]],'#cfd6e8',10); ln([[-48,72],[42,-26]],'#aab3cc',10); fc(50,-46,11,'#7d8496'); vieto(0,0,100,A(.7)); });
+  grp(230,150,1,A(.88),()=>{ fc(0,0,110,C.tile); phone(0,0,.4,{num:'112',ring:true,u}); }); },
 'bimbi-lontano'({u,A}){ for(let i=0;i<3;i++){ const f=(u*.6+i/3)%1, x=150+i*110, y=-180+i*30; for(let j=0;j<12;j++){ const a=j/12*TAU; ln([[x+Math.cos(a)*f*20,y+Math.sin(a)*f*20],[x+Math.cos(a)*f*90,y+Math.sin(a)*f*90]],[C.giallo,C.ciano,ORANGE][i]+'',5); } }
   ground(200); stick(-300,80,1.3,{shirt:'#f2a541',hairCol:'#8a6a4a'}); stick(-200,80,1.7,{shirt:RS}); const a=A(.5); if(a>0){ ctx.save(); ctx.globalAlpha*=clamp(a); arrow(-120,140,120,140,C.giallo,8); arrow(120,140,-120,140,C.giallo,8); ctx.restore(); } },
 cassetta({u}){ const o=clamp(u/1.5); box(-220,-60,440,280,30,'#fff'); cross(0,80,1,RED); ctx.save(); ctx.translate(-220,-60); ctx.rotate(-o*.5); box(0,-60,440,70,24,'#e3e7f1'); ctx.restore(); box(-60,-110,120,40,14,'#6b7491'); },

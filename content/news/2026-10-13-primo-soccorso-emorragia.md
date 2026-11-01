@@ -53,7 +53,7 @@ Chiama il 112, o fallo chiamare, e metti il vivavoce: così puoi continuare a pr
 
 ### Laccio emostatico
 
-Se il sangue da un braccio o da una gamba non si ferma, chi è addestrato può usare un laccio emostatico, da 5 a 7 cm sopra la ferita, mai su un'articolazione. Segna l'ora, e non allentarlo più: lo toglie solo il personale sanitario.
+Se il sangue da un braccio o da una gamba non si ferma con la pressione, e hai un laccio emostatico, mettilo da 5 a 7 cm sopra la ferita, mai su un'articolazione. Segna l'ora, e non allentarlo più: lo toglie solo il personale sanitario.
 
 ### Shock
 
@@ -71,4 +71,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 15 (pressione diretta, laccio emostatico il prima possibile), p. 35 (laccio da 5 a 7 cm sopra la ferita, mai su un'articolazione, ora annotata, da non allentare né togliere: lo toglie solo il personale sanitario) e pp. 9 e 24 (shock: sdraiato e coperto); [Croce Rossa Italiana, Emorragie](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/emorragie/) (pressione costante fino all'arrivo dei soccorsi, altro materiale sopra senza togliere il primo, laccio solo per chi è addestrato); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Severe bleeding», pp. 256-257 (guanti, seconda garza sopra la prima, pressione intorno all'oggetto conficcato, tenerlo al caldo).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 15 (pressione diretta; laccio emostatico il prima possibile se la pressione non basta, senza limiti di addestramento), p. 35 (laccio da 5 a 7 cm sopra la ferita, mai su un'articolazione, ora annotata, da non allentare né togliere: lo toglie solo il personale sanitario) e pp. 9 e 24 (shock: sdraiato e coperto); [Croce Rossa Italiana, Emorragie](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/emorragie/) (pressione costante fino all'arrivo dei soccorsi, altro materiale sopra senza togliere il primo); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Severe bleeding», pp. 256-257 (chi presta il primo soccorso può usare un laccio, guanti, seconda garza sopra la prima, pressione intorno all'oggetto conficcato, tenerlo al caldo).*

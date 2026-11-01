@@ -34,7 +34,7 @@ Chiedi se ha dolore, se ha battuto la testa, se ricorda cosa è successo, e guar
 
 ### Quando chiamare
 
-Chiama il 112 se ha battuto la testa, ancora di più se prende anticoagulanti, se ha male alla schiena, al collo o all'anca, se non riesce ad alzarsi, o se è confuso.
+Chiama il 112 se non riesce ad alzarsi, se ha male alla schiena, al collo o all'anca, se è confuso, o se dopo il colpo alla testa vomita, ha molto sonno o il mal di testa peggiora. Se ha battuto la testa e prende anticoagulanti, va visto subito in pronto soccorso, anche se sembra stare bene.
 
 ### Se sta bene
 
@@ -60,4 +60,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, tappeti, fili, antiscivolo e maniglioni); [ASL Roma 3, Piano Regionale della Prevenzione del Lazio, Prevenire gli incidenti domestici](https://www.aslroma3.it/wp-content/uploads/2025/12/articolo-PP5-incidenti-domestici-anziani.pdf) (luce notturna, pantofole chiuse con la suola antiscivolo, telefono sul comodino); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (anticoagulanti); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*
+*Fonti: [ISSalute, Commozione cerebrale](https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/c/commozione-cerebrale) (112 o pronto soccorso se dopo il colpo alla testa compaiono vomito ripetuto, sonnolenza, confusione o mal di testa che peggiora); [NHS, Falls](https://www.nhs.uk/conditions/falls/) (non tirarlo su, quando chiamare, alzarsi a tappe, tenerlo al caldo se non si alza, tappeti, fili, antiscivolo e maniglioni); [ASL Roma 3, Piano Regionale della Prevenzione del Lazio, Prevenire gli incidenti domestici](https://www.aslroma3.it/wp-content/uploads/2025/12/articolo-PP5-incidenti-domestici-anziani.pdf) (luce notturna, pantofole chiuse con la suola antiscivolo, telefono sul comodino); [NHS, Head injury and concussion](https://www.nhs.uk/conditions/head-injury-and-concussion/) (chi prende anticoagulanti va fatto vedere subito anche senza segni); [Croce Rossa Italiana, Trauma cranico e commozione cerebrale](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/trauma-cranico/) (confusione, sorvegliarlo nelle ore successive); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (commozione cerebrale, testa e collo fermi, rianimazione).*
