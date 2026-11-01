@@ -20,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **6 di 10**: **sostanze chimiche negli occhi**.
 
-{{< video src="video/primo-soccorso-occhi-chimici.mp4" poster="img/video/primo-soccorso-occhi-chimici.jpg" verticale="si" titolo="Sostanze chimiche negli occhi: primo soccorso passo passo" descrizione="Detersivi e candeggina negli occhi o sulla pelle: sciacquare subito con acqua corrente per almeno 15 minuti, togliere le lenti se si riesce facilmente, niente colliri, chiamare il 112 o un Centro Antiveleni e andare al pronto soccorso." data="2027-02-16" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-occhi-chimici.mp4" poster="img/video/primo-soccorso-occhi-chimici.jpg" verticale="si" titolo="Sostanze chimiche negli occhi: primo soccorso passo passo" descrizione="Detersivi e candeggina negli occhi o sulla pelle: sciacquare subito con acqua corrente per almeno 15 minuti, togliere le lenti se si riesce facilmente, niente colliri, chiamare il 112 o un Centro Antiveleni e andare al pronto soccorso." data="2027-02-16" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
