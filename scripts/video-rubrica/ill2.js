@@ -74,7 +74,7 @@ lattante({u}){ babyFace(0,-20,190); const f=(u*.8)%1; heartP(250,-200,.5); ctx.f
   const hy=hit?-90:-90-80*Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI); ctx.save(); ctx.translate(-20,hy); hand(0,-40,.55,Math.PI); ctx.restore();
   if(hit){ const r=ph/.18; arc(-20,-80,30+r*40,0,TAU,`rgba(242,228,51,${1-r})`,8); } ctx.restore();
   const n=Math.floor(Math.max(0,u-PRE)*1.1)%5+1; grp(360,-180,1,A(.8),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); }); },
-'lattante-torace'({u,A}){ const ph=(u*1.0)%1, d=ph<.3?Math.sin(ph/.3*Math.PI)*14:0; ctx.save(); ctx.translate(0,40); ctx.rotate(-.18);
+'lattante-torace'({u,A}){ const ph=(u*1.0)%1, d=ph<.3?Math.sin(ph/.3*Math.PI)*14:0; ctx.save(); ctx.translate(0,40); ctx.rotate(0); // 1/11/2026: sulle ginocchia, non più a testa in giù (IRC 2025, cap. 9, p. 29)
   ln([[-380,70],[260,70]],PANT,120); babyLying(0,30,1.3,d);
   ctx.save(); ctx.translate(-10,-90+d*1.3); box(-80,-30,160,70,30,SK); box(-90,-20,30,90,15,SKD); box(60,-20,30,90,15,SKD); fe(-18,30,14,20,SK); fe(18,30,14,20,SK); ctx.restore(); ctx.restore();
   if(d>3) arrow(-10,-260,-10,-200,C.giallo,9);
@@ -88,8 +88,10 @@ lattante({u}){ babyFace(0,-20,190); const f=(u*.8)%1; heartP(250,-200,.5); ctx.f
   grp(300,-120,1,A(.4),()=>clockFace(0,0,100,(u*2)%12,(u*60)%60)); },
 trasporti({u,A}){ ln([[-440,170],[440,170]],'#3a4570',10); for(let i=0;i<6;i++){ const x=((i*180-u*400)%1080+1080)%1080-540; ln([[x,200],[x+80,200]],'rgba(255,255,255,.35)',8); }
   grp(80,90,1,1,()=>ambulance(0,0,1.05,u)); grp(-310,-150,1,A(.75),()=>{ fc(0,0,90,C.tile); fc(0,-30,22,'#fff'); ln([[0,-8],[0,40]],'#fff',16); arc(0,50,36,.2,2.9,'#fff',10); }); },
-uva({u,A}){ const s=A(.75); const cx=-170; for(let i=0;i<4;i++){ const a=i*Math.PI/2+Math.PI/4, off=clamp(s)*22; ctx.save(); ctx.translate(cx+Math.cos(a)*off,Math.sin(a)*off); ctx.fillStyle='#7cc46a'; ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,110,a-Math.PI/4,a+Math.PI/4); ctx.closePath(); ctx.fill(); ctx.restore(); }
-  fe(cx-30,-40,20,12,'rgba(255,255,255,.4)'); tx('in 4, per lungo',cx,170,30,'#fff','700');
+uva({u,A}){ const s=clamp(A(.75)); const cx=-170; // 1/11/2026: pezzi piccoli di circa 5 mm (Ministero della Salute 2017), non l'acino in quattro
+  ctx.globalAlpha*=1-s; fc(cx,0,110,'#7cc46a'); fe(cx-35,-40,22,13,'rgba(255,255,255,.4)'); ctx.globalAlpha=1;
+  if(s>0){ for(let r=0;r<4;r++) for(let c=0;c<5;c++){ const k=(r*5+c)/20; if(s<k*.6) continue; const x=cx-120+c*60+(r%2)*14, y=-90+r*55; box(x-17,y-17,34,34,10,'#7cc46a'); fe(x-7,y-8,6,4,'rgba(255,255,255,.4)'); } }
+  if(s>0){ ctx.globalAlpha*=s; tx('pezzi da 5 mm',cx,170,30,'#fff','700'); ctx.globalAlpha=1; }
   grp(220,0,1,A(.25),()=>{ fc(0,0,140,C.tile); fc(-40,-30,30,'#cfd6e8'); fc(40,-20,22,'#e0b84a'); box(-20,30,50,30,8,RED); vieto(0,0,125,1); }); },
 'bimbo-cuore'({u}){ stick(-150,60,2,{shirt:'#f2a541',hairCol:'#8a6a4a'}); const b=1+Math.max(0,Math.sin(u*7))*.06; ctx.strokeStyle=C.giallo; ctx.lineWidth=14; heartP(190,-30,1.3*b); ctx.stroke(); },
 'respiro-bimbo'({u,p,A}){ ctx.save(); ctx.scale(.9,.9); babyLying(-60,230,1.5,0); ctx.restore(); const s=Math.min(10,Math.floor(p*14)+1); timer(300,-120,110,p*1.4,s+'″',{size:64}); eye(-150,-130,.5,1); },
@@ -156,7 +158,7 @@ polmoni({u}){ const b=1+Math.sin(u*2)*.05; ctx.save(); ctx.scale(b,b); [-1,1].fo
 'seduto-avanti'({u,A}){ box(60,40,320,24,10,'#6b7491'); ln([[340,64],[340,250]],'#6b7491',16); box(-200,90,200,24,10,'#6b7491'); ln([[-180,114],[-180,250]],'#6b7491',14); ln([[-20,114],[-20,250]],'#6b7491',14);
   ln([[-60,80],[90,90],[90,240]],PANT,56); ctx.save(); ctx.translate(-80,80); ctx.rotate(.45); box(-60,-280,124,300,52,VS); fc(-6,-340,66,SK); ctx.fillStyle=HAIR; ctx.beginPath(); ctx.arc(-6,-340,68,Math.PI*1.25,Math.PI*.45); ctx.fill(); ctx.restore();
   ln([[0,-120],[150,20],[260,30]],VSD,44); ln([[0,-120],[150,20],[260,30]],VS,38); spunta(-300,-200,50,A(.3)); },
-'respira-calmo'({u}){ const ph=(Math.sin(u*1.1)+1)/2; fc(0,0,120+ph*90,'rgba(0,165,220,.25)'); fc(0,0,100+ph*70,'rgba(0,165,220,.45)'); tx(ph>.5?'inspira':'espira',0,4,50,'#fff','700'); },
+'respira-calmo'({u}){ const ph=(Math.sin(u*1.1)+1)/2; fc(0,0,120+ph*90,'rgba(0,165,220,.25)'); fc(0,0,100+ph*70,'rgba(0,165,220,.45)'); tx('calma',0,4,50,'#fff','700'); },
 inalatore({u,A}){ ctx.save(); ctx.translate(-60,0); ctx.rotate(-.2); box(-60,-200,120,260,30,C.ciano); box(-70,40,200,90,30,'#3a8ac0'); box(-40,-240,80,60,14,'#2b6c99'); ctx.restore(); const a=A(.3); if(a>0){ for(let i=0;i<5;i++){ const f=(u*1.4+i/5)%1; fc(170+f*160,60-f*30+Math.sin(i)*20,10+f*24,`rgba(220,240,255,${(1-f)*.8})`); } } },
 batteria({u}){ fc(0,0,180,'#aab3cc'); fc(0,0,150,'#cfd6e8'); fe(-50,-60,60,30,'rgba(255,255,255,.6)',-.5); tx('+',0,10,140,'#6b7491','800'); tx('3V',0,120,40,'#6b7491','800'); },
 esofago({u,A}){ ctx.save(); ctx.translate(-80,0); fc(0,-140,110,SK); ctx.fillStyle='#8a6a4a'; ctx.beginPath(); ctx.arc(0,-140,112,Math.PI*1.1,Math.PI*1.95); ctx.fill(); box(-50,-40,100,280,40,SK); ln([[-10,-80],[-10,260]],'#d98a7a',28); const g=A(.6); fc(-10,80,24,'#aab3cc'); if(g>0){ fc(-10,80,40+Math.sin(u*6)*8,`rgba(217,71,61,${.45*clamp(g)})`); } ctx.restore(); grp(260,-60,1,A(.6),()=>timer(0,0,110,clamp(u/4),'ore',{size:48})); },
@@ -177,7 +179,10 @@ petardo({u}){ ctx.save(); ctx.rotate(-.5); box(-50,-180,100,300,20,RED); box(-50
 ce({u,A}){ fc(-160,0,170,'#fff'); tx('CE',-160,10,140,C.navy,'800'); grp(210,0,1,A(.6),()=>{ box(-150,-120,300,240,16,'#55607f'); box(-150,-150,300,50,10,C.ciano); for(let i=0;i<3;i++) box(-110+i*80,-60,50,110,8,[RED,C.giallo,'#7cc46a'][i]); }); },
 'petardo-vieto'({u,A}){ ground(160); ctx.save(); ctx.translate(-60,130); ctx.rotate(1.4); box(-30,-90,60,180,14,RED); ctx.restore(); grp(80,-20,1,A(.3),()=>{ hand(0,0,.7,2.6); }); vieto(0,40,180,A(.35)); },
 amputazione({u,A}){ fe(0,150,260,70,'#cfd6e8'); for(let i=0;i<8;i++) cube(-200+i*58,120+(i%2)*20,.55,'#dff3fb'); grp(0,-40,1,A(.3),()=>{ bag(0,0,1,'rgba(207,233,245,.85)'); box(-40,-10,80,30,14,SK); }); grp(300,-160,1,A(.85),()=>{ fc(0,0,60,C.tile); tx('!',0,4,70,C.giallo,'800','P'); }); },
-'occhio-ferito'({u,A}){ eye(-180,-20,1.2); grp(-180,-200,1,A(.2),()=>{ hand(0,0,.5,Math.PI); vieto(0,30,90,1); }); grp(230,0,1,A(.7),()=>{ fe(0,0,140,100,'#fff'); fe(0,0,110,76,'#eef2f8'); ln([[-150,0],[-260,-30]],'#cfd6e8',14); ln([[150,0],[260,-30]],'#cfd6e8',14); }); },
+'occhio-ferito'({u,A}){ eye(-180,-20,1.2); grp(-180,-200,1,A(.2),()=>{ hand(0,0,.5,Math.PI); vieto(0,30,90,1); });
+  // niente pinzette sui frammenti (NHS, Eye injuries), poi il 112
+  grp(230,-150,1,A(.65),()=>{ fc(0,0,110,C.tile); ln([[-62,62],[28,-38]],'#cfd6e8',10); ln([[-48,72],[42,-26]],'#aab3cc',10); fc(50,-46,11,'#7d8496'); vieto(0,0,100,A(.7)); });
+  grp(230,150,1,A(.88),()=>{ fc(0,0,110,C.tile); phone(0,0,.4,{num:'112',ring:true,u}); }); },
 'bimbi-lontano'({u,A}){ for(let i=0;i<3;i++){ const f=(u*.6+i/3)%1, x=150+i*110, y=-180+i*30; for(let j=0;j<12;j++){ const a=j/12*TAU; ln([[x+Math.cos(a)*f*20,y+Math.sin(a)*f*20],[x+Math.cos(a)*f*90,y+Math.sin(a)*f*90]],[C.giallo,C.ciano,ORANGE][i]+'',5); } }
   ground(200); stick(-300,80,1.3,{shirt:'#f2a541',hairCol:'#8a6a4a'}); stick(-200,80,1.7,{shirt:RS}); const a=A(.5); if(a>0){ ctx.save(); ctx.globalAlpha*=clamp(a); arrow(-120,140,120,140,C.giallo,8); arrow(120,140,-120,140,C.giallo,8); ctx.restore(); } },
 cassetta({u}){ const o=clamp(u/1.5); box(-220,-60,440,280,30,'#fff'); cross(0,80,1,RED); ctx.save(); ctx.translate(-220,-60); ctx.rotate(-o*.5); box(0,-60,440,70,24,'#e3e7f1'); ctx.restore(); box(-60,-110,120,40,14,'#6b7491'); },

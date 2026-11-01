@@ -23,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **5 di 10**: **soffocamento**. *5 colpi, 5 spinte.*
 
-{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto e 20 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento.mp4" poster="img/video/primo-soccorso-soffocamento.jpg" verticale="si" titolo="Soffocamento: primo soccorso passo passo" descrizione="Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza." data="2026-10-20" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -37,7 +37,7 @@ Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla g
 
 ### 5 colpi
 
-Mettiti di lato, sostienilo con una mano sul petto e piegalo in avanti. Con il palmo dell'altra mano, dai fino a cinque colpi forti tra le scapole.
+Mettiti dietro di lui, un po' di lato, sostienilo con una mano sul petto e piegalo in avanti. Con il palmo dell'altra mano, dai fino a cinque colpi forti tra le scapole.
 
 ### 5 compressioni
 
@@ -67,4 +67,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 11 (tosse, 112 subito, fino a 5 colpi e 5 compressioni addominali, niente dita in bocca alla cieca, rianimazione, medico dopo le compressioni) e p. 28 (stare dietro la persona, colpi tra le scapole).*

@@ -281,8 +281,8 @@ sudore({u,A}){
   grp(300,40,1,A(.42),()=>{ bust(0,40,.55,{head:{mouth:'flat'},shirt:'#9fd8c0',shirtD:'#6fb89a'}); box(70,90,90,120,16,'#fff'); box(82,104,66,44,8,'#24305c'); tx('LO',115,126,26,C.giallo,'800'); });
 },
 'telefono-timer'({u,p,A}){
-  const m=Math.min(5,Math.floor(p*9)); timer(-190,0,150,p*1.6,m+'′',{sub:'minuti'});
-  grp(200,0,1,A(.55),()=>phone(0,0,.95,{ring:true,u}));
+  const m=Math.min(2,Math.floor(p*3)); timer(-190,0,150,p*1.6,m+'′',{sub:'minuti'});
+  grp(200,0,1,A(.2),()=>phone(0,0,.95,{ring:true,u}));
 },
 ambulanza({u,A}){
   ln([[-440,170],[440,170]],'#3a4570',10); for(let i=0;i<6;i++){ const x=((i*180-u*400)%1080+1080)%1080-540; ln([[x,200],[x+80,200]],'rgba(255,255,255,.35)',8); }
@@ -328,8 +328,7 @@ premi({u,p,A}){
 },
 'premi-timer'({u,p,A}){
   ctx.save(); ctx.translate(-170,40); ctx.scale(.7,.7); forearm(120); gauze(60,100,170,110); handTop(60,98+Math.sin(u*5)*6,1); ctx.restore();
-  timer(250,-20,150,p,Math.min(10,Math.floor(p*10)+1)+'′',{sub:'minuti'});
-  vieto(250,-20,0,0);
+  grp(250,-40,1,A(.3),()=>ambulance(0,0,.7,u));
 },
 garze({u,p,A}){
   forearm(120); gauze(60,100,170,110); ctx.save(); ctx.globalAlpha*=clamp(p*3); fe(60,100,50+p*40,30+p*20,'rgba(217,71,61,.55)'); ctx.restore();
@@ -672,7 +671,10 @@ allarme({u,A}){
   for(let i=0;i<3;i++){ const ff=(u*.6+i/3)%1; tx('z',150+ff*90,-40-ff*120,40+ff*20,`rgba(255,255,255,${1-ff})`,'700'); }
 },
 pupille({u,A}){
-  eye(-190,-60,1,1); eye(190,-60,1,clamp(1+1.4*A(.6),1,2.4));
+  // vista disturbata (ISSalute, Commozione cerebrale; IFRC 2025, p. 312): gli occhi si sdoppiano, vede male o doppio
+  const dv=clamp(A(.6)), dx=dv*(34+Math.sin(u*2.2)*12);
+  if(dv>0){ ctx.save(); ctx.globalAlpha*=.55*dv; eye(-190+dx,-60-dx*.3,1,1); eye(190+dx,-60-dx*.3,1,1); ctx.restore(); }
+  eye(-190,-60,1,1); eye(190,-60,1,1);
   grp(0,180,1,A(.3),()=>{ ctx.fillStyle=SK; ctx.beginPath(); ctx.moveTo(-40,-80); ctx.quadraticCurveTo(-10,30,-70,60); ctx.quadraticCurveTo(0,90,70,60); ctx.quadraticCurveTo(10,30,40,-80); ctx.fill(); const f=(u*.8)%1; drop(-40,80+f*60,.5,`rgba(217,71,61,${1-f})`); });
 },
 'non-muovere'({u,A}){

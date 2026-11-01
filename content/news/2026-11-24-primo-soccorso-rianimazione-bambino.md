@@ -7,6 +7,8 @@ in_evidenza_fino: "2026-12-04"
 description: "Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni."
 immagine: "/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg"
 social_video: "/video/primo-soccorso-rianimazione-bambino.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 2ª serie 5/13 — Rianimazione nel bambino. Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -59,7 +61,7 @@ Il defibrillatore si usa anche nei bambini. Sotto i 25 kg, se c'è, scegli la mo
 
 Non fermarti finché non arrivano i soccorsi, o finché il bambino non si sveglia e respira normalmente.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#rianimazione-bambino)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#rianimazione-bambino)**.
 
 ## Impara con noi
 
@@ -67,4 +69,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 9 «BLS pediatrico»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf), pp. 21-28 (112 subito con il vivavoce, 1 minuto di rianimazione se si è soli e senza telefono, 5 soffi, almeno un terzo del torace e mai oltre 6 cm, 100-120 al minuto, 30 e 2 o 15 e 2, DAE anche nei bambini).*

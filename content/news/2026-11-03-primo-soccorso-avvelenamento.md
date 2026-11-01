@@ -3,6 +3,7 @@ title: "Avvelenamento: niente rimedi fai da te"
 titoloSeo: "Avvelenamento: cosa fare passo passo, primo soccorso"
 date: 2026-11-03
 slug: "primo-soccorso-avvelenamento"
+controllo_editoriale: "2026-11-01"
 description: "Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa."
 immagine: "/img/news/primo-soccorso-avvelenamento-grafica.jpg"
 social_video: "/video/primo-soccorso-avvelenamento.mp4"
@@ -52,7 +53,7 @@ Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corre
 
 ### Gas e fumi
 
-Gas o fumi, come il monossido di carbonio: porta la persona all'aria aperta, solo se non rischi anche tu. Le finestre aprile solo se puoi farlo senza fermarti.
+Gas o fumi, come il monossido di carbonio: porta la persona all'aria aperta, solo se non rischi anche tu. Apri le finestre solo se puoi farlo senza fermarti.
 
 ### Previeni
 

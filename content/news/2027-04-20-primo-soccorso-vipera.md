@@ -2,9 +2,6 @@
 title: "Morso di vipera: calma, e fermo"
 titoloSeo: "Morso di vipera: cosa fare e cosa non fare, primo soccorso (linee guida ERC/IRC 2025)"
 date: 2027-04-20
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-vipera"
 description: "Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio."
 immagine: "/img/news/2027-04-20-primo-soccorso-vipera-grafica.jpg"
@@ -23,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **8 di 10**: **morso di vipera**.
 
-{{< video src="video/primo-soccorso-vipera.mp4" poster="img/video/primo-soccorso-vipera.jpg" verticale="si" titolo="Morso di vipera: primo soccorso passo passo" descrizione="Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio." data="2027-04-20" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-vipera.mp4" poster="img/video/primo-soccorso-vipera.jpg" verticale="si" titolo="Morso di vipera: primo soccorso passo passo" descrizione="Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio." data="2027-04-20" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -33,7 +30,7 @@ Di solito si vedono due puntini vicini, a volte uno solo. Poi dolore forte, gonf
 
 ### Chiama
 
-Chiama subito il 112 e di' che è stato un morso di serpente.
+Chiama subito il 112 e di' che è stato un morso di serpente. Anche se sembra stare bene, deve essere visto in ospedale.
 
 ### Fermo
 
@@ -67,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), cap. 12 Primo soccorso (chiamare i soccorsi, calma e riposo, arto immobile, togliere anelli e orologi; niente bendaggi compressivi, ghiaccio, caldo, lacci, tagli o aspirazione del veleno); [ERC Guidelines 2025 First Aid](https://doi.org/10.1016/j.resuscitation.2025.110752); [Centro Antiveleni di Milano, Punture e morsi di animali](https://win.centroantiveleni.org/PUNTURE%20E%20MORSI%20DI%20ANIMALI.pdf) e [scheda vipera](https://win.centroantiveleni.org/P%20vipera2.pdf) (le vipere sono gli unici serpenti velenosi in Italia, due puntini a 6-8 mm, arto fermo come in una frattura, siero solo in ospedale e solo se serve, prevenzione); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), capitolo Snakebites (non camminare, non catturare o uccidere il serpente); [Croce Rossa Italiana, Punture di insetti e morsi di animali](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/punture-insetti-morsi-animali/) (chiamare subito il 112, niente ghiaccio, lacci o tagli).*
+*Fonti: [Ministero della Salute, Bollettino d'informazione sui farmaci n. 4-5/2001, «… del morso di vipera»](https://www.salute.gov.it/new/sites/default/files/imported/C_17_pubblicazioni_217_allegato.pdf), p. 205 (il bendaggio compressivo richiede addestramento e bende specifiche; osservazione in ospedale per 8-12 ore anche nel solo sospetto; siero solo in casi selezionati); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), cap. 12 Primo soccorso (chiamare i soccorsi, calma e riposo, arto immobile, togliere anelli e orologi; niente bendaggi compressivi, ghiaccio, caldo, lacci, tagli o aspirazione del veleno); [ERC Guidelines 2025 First Aid](https://doi.org/10.1016/j.resuscitation.2025.110752); [Centro Antiveleni di Milano, Punture e morsi di animali](https://win.centroantiveleni.org/PUNTURE%20E%20MORSI%20DI%20ANIMALI.pdf) e [scheda vipera](https://win.centroantiveleni.org/P%20vipera2.pdf) (le vipere sono gli unici serpenti velenosi in Italia, due puntini a 6-8 mm, arto fermo come in una frattura, siero solo in ospedale e solo se serve, prevenzione); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), capitolo Snakebites (non camminare, non catturare o uccidere il serpente); [Croce Rossa Italiana, Punture di insetti e morsi di animali](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/punture-insetti-morsi-animali/) (chiamare subito il 112, niente ghiaccio, lacci o tagli).*

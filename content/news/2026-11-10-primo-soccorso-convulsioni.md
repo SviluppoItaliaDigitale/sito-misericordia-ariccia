@@ -56,7 +56,7 @@ Quando i movimenti finiscono, controlla il respiro. Se respira normalmente, mett
 
 Se dopo i movimenti non risponde e non respira normalmente, può essere un arresto cardiaco: chiama subito il 112, con il vivavoce, e inizia la rianimazione.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#convulsioni)**.
 
 ## Impara con noi
 
@@ -64,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Lega Italiana Contro l'Epilessia, Guida alle epilessie 2023](https://soci.lice.it/pdf/web_2023_guida_alle_epilessie.pdf) (spazio intorno, non bloccare i movimenti, niente in bocca, qualcosa di morbido sotto la testa, vestiti slacciati, l'orologio, quando chiamare, su un fianco dopo la crisi); [CDC, First Aid for Seizures](https://www.cdc.gov/epilepsy/first-aid-for-seizures/index.html) (chiamare anche per la prima crisi e in gravidanza); [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) (movimenti simili alle convulsioni all'inizio di un arresto cardiaco, vivavoce, rianimazione).*
+*Fonti: [Lega Italiana Contro l'Epilessia, Guida alle epilessie 2023](https://soci.lice.it/pdf/web_2023_guida_alle_epilessie.pdf) (spazio intorno, non bloccare i movimenti, niente in bocca, qualcosa di morbido sotto la testa, vestiti slacciati, l'orologio, quando chiamare, su un fianco dopo la crisi); [CDC, First Aid for Seizures](https://www.cdc.gov/epilepsy/first-aid-for-seizures/index.html) (chiamare anche per la prima crisi e in gravidanza); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Seizure», pp. 396-398 (spazio intorno, qualcosa di morbido sotto la testa, colletto allentato, niente in bocca, quando chiamare il 112, anche in gravidanza, su un fianco se respira normalmente); [Linee guida RCP 2025, Italian Resuscitation Council, cap. 4 «BLS adulto»](https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf), p. 5 (movimenti simili alle convulsioni all'inizio di un arresto cardiaco: finita la crisi si guarda il respiro; vivavoce, rianimazione).*

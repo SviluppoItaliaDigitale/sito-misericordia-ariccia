@@ -7,6 +7,8 @@ in_evidenza_fino: "2026-11-23"
 description: "Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati."
 immagine: "/img/news/primo-soccorso-soffocamento-lattante-grafica.jpg"
 social_video: "/video/primo-soccorso-soffocamento-lattante.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 2ª serie 4/13 — Soffocamento nel lattante. Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -21,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **4 di 13**: **soffocamento nel lattante**.
 
-{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -43,11 +45,11 @@ Mettilo a pancia in giù sul tuo avambraccio, con la testa più in basso, sosten
 
 ### 5 compressioni
 
-Se non basta, giralo a pancia in su, sempre con la testa in basso. Con i due pollici al centro del torace, fai fino a cinque compressioni.
+Se non basta, giralo a pancia in su e appoggialo sulle tue ginocchia. Con i due pollici al centro del torace, fai fino a cinque compressioni, più decise che nella rianimazione.
 
 ### Alterna
 
-Continua alternando cinque pacche e cinque compressioni, finché l'oggetto non esce o arrivano i soccorsi.
+Continua alternando cinque pacche e cinque compressioni, finché non torna a piangere, tossire o respirare, o arrivano i soccorsi.
 
 ### Se non risponde
 
@@ -55,9 +57,9 @@ Se perde conoscenza, mettilo su un piano rigido, dai cinque soffi nella bocca e 
 
 ### Previeni
 
-Per prevenire: tieni lontani gli oggetti piccoli, e taglia per lungo in quattro parti gli alimenti tondi come uva, pomodorini e olive.
+Per prevenire: tieni lontani gli oggetti piccoli, e taglia gli alimenti tondi, come uva, pomodorini e olive, in pezzi piccoli, di mezzo centimetro, senza semi né noccioli.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento-lattante)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#soffocamento-lattante)**.
 
 ## Impara con noi
 
@@ -65,4 +67,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) ed [European Resuscitation Council](https://www.erc.edu/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 9 «BLS pediatrico»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf), p. 29 (riconoscere l'ostruzione grave, 112 subito, pacche e compressioni con i due pollici, fermarsi appena torna a piangere, tossire o respirare, 5 soffi e rianimazione se perde conoscenza); [Ministero della Salute, Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica, 2017](https://www.salute.gov.it/imgs/C_17_pubblicazioni_2618_allegato.pdf), Tabella 1, p. 9 (alimenti tondi in pezzi piccoli, di circa 5 mm, senza semi né noccioli; [copia integrale sul sito del Comune di Firenze](https://educazione.comune.fi.it/system/files/2023-08/Linee%20Indirizzo%20Anti%20soffocamento.pdf)).*

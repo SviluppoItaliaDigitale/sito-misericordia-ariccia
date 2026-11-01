@@ -24,25 +24,24 @@ V = {
   S('Il dolore', ['Un peso al','*centro* del petto.'], 'Il segno tipico è un dolore, un peso o una morsa al centro del petto. Può andare verso un braccio, il collo, la mandibola, la schiena o lo stomaco.', 'dolore', [['Braccio', .55], ['Mandibola', .65], ['Schiena', .75], ['Stomaco', .85]]),
   S('Gli altri segni', ['Sudore, nausea,','*fiato* corto.'], 'Spesso arrivano anche sudore freddo, nausea, fiato corto e una forte debolezza.', 'sudore', [['Sudore freddo', .2], ['Nausea', .4], ['Fiato corto', .6]]),
   S('Attenzione', ['Segni','*sfumati*.'], 'Nelle donne, negli anziani e in chi ha il diabete i segni possono essere più sfumati: stanchezza, fiato corto, nausea. Non sottovalutarli.', 'tre-persone', [['Donne', .2], ['Anziani', .3], ['Diabete', .42]]),
-  S('Non aspettare', ['Chiama','il *112*.'], 'Se il dolore dura più di qualche minuto, o va e viene, chiama subito '+U12+'. Non aspettare che passi da solo.', 'telefono-timer', [['Chiama il 112', .6, 1]],
-    sub='Se il dolore dura più di qualche minuto, o va e viene, chiama subito il 112. Non aspettare che passi da solo.'),
+  S('Non aspettare', ['Chiama','il *112*.'], 'Con questi segni chiama subito '+U12+', anche se il dolore dura da pochi minuti o va e viene. Non aspettare che passi da solo.', 'telefono-timer', [['Chiama subito il 112', .35, 1], ['Anche se dura poco', .75]],
+    sub='Con questi segni chiama subito il 112, anche se il dolore dura da pochi minuti o va e viene. Non aspettare che passi da solo.'),
   S('Niente auto', ['Meglio','l\'*ambulanza*.'], 'Non accompagnarlo in auto: l\'ambulanza inizia le cure già durante il viaggio e lo porta nell\'ospedale giusto.', 'ambulanza', [['Niente auto', .2], ['Cure già in viaggio', .6]]),
-  S('Mentre aspetti', ['Seduto','e a *riposo*.'], 'Fallo stare seduto o semiseduto, a riposo, e allenta i vestiti stretti. Medicine solo se lo dice l\'operatore del '+U12[3:]+'.', 'seduto', [['Seduto', .15], ['Vestiti allentati', .45], ['Farmaci: chiedi al 112', .85]],
-    sub='Fallo stare seduto o semiseduto, a riposo, e allenta i vestiti stretti. Medicine solo se lo dice l\'operatore del 112.'),
+  S('Mentre aspetti', ['Seduto','e a *riposo*.'], 'Fallo stare seduto o semiseduto, a riposo. Se non è allergico e non l\'ha già presa, aiutalo a masticare un\'aspirina, da centocinquanta a cinquecento milligrammi. Se ha uno spray per l\'angina, aiutalo a usarlo.', 'seduto', [['Seduto', .12], ['Aspirina da masticare', .5], ['Il suo spray per l\'angina', .88]],
+    sub='Fallo stare seduto o semiseduto, a riposo. Se non è allergico e non l\'ha già presa, aiutalo a masticare un\'aspirina, da 150 a 500 mg. Se ha uno spray per l\'angina, aiutalo a usarlo.'),
   S('Se peggiora', ['Pronto alla','*rianimazione*.'], 'Se perde conoscenza e non respira normalmente, inizia subito la rianimazione e fatti portare un defibrillatore.', 'rcp-mini', [['Rianimazione', .45], ['Defibrillatore', .8]]),
   FINE]),
 'emorragia': dict(nome='Emorragia', scene=[
   S('Emorragia', ['Ogni secondo','*conta*.'], 'Emorragia grave: ogni secondo conta.', 'goccia'),
   S('Proteggiti', ['Prima','i *guanti*.'], 'Prima di tutto, proteggi te stesso: se hai i guanti, indossali.', 'guanti', [['Guanti', .6]]),
   S('Premi', ['Premi','*forte*.'], 'Metti una garza, o un panno pulito, direttamente sulla ferita, e premi forte con la mano.', 'premi', [['Garza o panno pulito', .3], ['Pressione diretta', .75]]),
-  S('Non mollare', ['Almeno','*10 minuti*.'], 'Mantieni la pressione per almeno dieci minuti, senza sollevare la garza per controllare.', 'premi-timer', [['Non sollevare', .75]],
-    sub='Mantieni la pressione per almeno 10 minuti, senza sollevare la garza per controllare.'),
+  S('Non mollare', ['Fino ai','*soccorsi*.'], 'Continua a premere, senza mollare, finché arrivano i soccorsi. Non sollevare la garza per controllare.', 'premi-timer', [['Non mollare', .4], ['Non sollevare', .8]]),
   S('Se passa', ['Aggiungi,','non *togliere*.'], 'Se il sangue passa, non togliere la garza: aggiungine un\'altra sopra e continua a premere.', 'garze', [['Garza sopra garza', .6]]),
   S('Oggetti', ['Non','*estrarre*.'], 'Se nella ferita c\'è un oggetto conficcato, non toglierlo: premi ai lati.', 'oggetto', [['Lascialo dov\'è', .45], ['Premi ai lati', .8]]),
   S('Chiama', ['Chiama','il *112*.'], 'Chiama '+U12+', o fallo chiamare, e metti il vivavoce: così puoi continuare a premere.', 'telefono-premi', [['Chiama il 112', .2, 1], ['Vivavoce', .65]],
     sub='Chiama il 112, o fallo chiamare, e metti il vivavoce: così puoi continuare a premere.'),
-  S('Laccio emostatico', ['Se non','si *ferma*.'], 'Se il sangue da un braccio o da una gamba non si ferma, chi è addestrato può usare un laccio emostatico: cinque o sette centimetri sopra la ferita, segnando l\'ora.', 'laccio', [['Solo se addestrato', .3], ['5-7 cm sopra', .7], ['Segna l\'ora', .9]],
-    sub='Se il sangue da un braccio o da una gamba non si ferma, chi è addestrato può usare un laccio emostatico: 5-7 cm sopra la ferita, segnando l\'ora.'),
+  S('Laccio emostatico', ['Se non','si *ferma*.'], 'Se il sangue da un braccio o da una gamba non si ferma con la pressione, e hai un laccio emostatico, mettilo da cinque a sette centimetri sopra la ferita, mai su un\'articolazione. Segna l\'ora, e non allentarlo più: lo toglie solo il personale sanitario.', 'laccio', [['Se ce l\'hai', .2], ['5-7 cm sopra', .42], ['Segna l\'ora', .62], ['Non allentarlo', .88]],
+    sub='Se il sangue da un braccio o da una gamba non si ferma con la pressione, e hai un laccio emostatico, mettilo da 5 a 7 cm sopra la ferita, mai su un\'articolazione. Segna l\'ora, e non allentarlo più: lo toglie solo il personale sanitario.'),
   S('Shock', ['Sdraiato','e al *caldo*.'], 'Se è pallido, sudato e confuso, potrebbe essere in shock: fallo stare sdraiato e coprilo, per tenerlo al caldo.', 'coperta', [['Sdraiato', .6], ['Coperto', .85]]),
   FINE]),
 'rianimazione': dict(nome='Rianimazione', bpm=110, scene=[
@@ -58,15 +57,15 @@ V = {
   S('7 · Ventilazioni', ['Compressioni','e *ventilazioni*.'], 'Se sai farlo, dopo trenta compressioni dai due ventilazioni. Altrimenti, continua solo con le compressioni, senza fermarti.', 'ventila', [['Se sai farlo: 30 e 2', .3], ['Se no: solo compressioni', .8]],
     sub='Se sai farlo, dopo 30 compressioni dai 2 ventilazioni. Altrimenti, continua solo con le compressioni, senza fermarti.'),
   S('8 · Il DAE', ['Segui','la sua *voce*.'], 'Quando arriva il defibrillatore, accendilo e segui la sua voce. Attacca le piastre come nel disegno. Durante l\'analisi e la scarica, nessuno deve toccare la persona.', 'dae', [['Accendilo', .15], ['Piastre', .45], ['Nessuno lo tocchi', .85, 1]]),
-  S('9 · Non fermarti', ['Fino ai','*soccorsi*.'], 'Poi riprendi subito le compressioni, e non fermarti finché non arrivano i soccorsi o finché non si sveglia. Se siete in due, datevi il cambio ogni due minuti.', 'cambio', [['Riprendi subito', .2], ['Cambio ogni 2 minuti', .85]],
-    sub='Poi riprendi subito le compressioni, e non fermarti finché non arrivano i soccorsi o finché non si sveglia. Se siete in due, datevi il cambio ogni 2 minuti.'),
+  S('9 · Non fermarti', ['Fino ai','*soccorsi*.'], 'Poi riprendi subito le compressioni, e non fermarti finché non arrivano i soccorsi, o finché non si sveglia e respira normalmente. Se siete in due, datevi il cambio ogni due minuti.', 'cambio', [['Riprendi subito', .2], ['Cambio ogni 2 minuti', .85]],
+    sub='Poi riprendi subito le compressioni, e non fermarti finché non arrivano i soccorsi, o finché non si sveglia e respira normalmente. Se siete in due, datevi il cambio ogni 2 minuti.'),
   FINE]),
 'soffocamento': dict(nome='Soffocamento', scene=[
   S('Soffocamento', ['Cosa fare','in un *adulto*.'], 'Soffocamento in un adulto: cosa fare, passo passo.', 'gola'),
   S('Tossisce?', ['Lascialo','*tossire*.'], 'Se tossisce e riesce a parlare, incoraggialo a tossire forte, e resta con lui.', 'tosse', [['Incoraggia la tosse', .55]]),
   S('Ostruzione grave', ['Non parla,','non *respira*.'], 'Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito: chiama '+U12+', o fallo chiamare, e metti il vivavoce.', 'gola', [['Mani alla gola', .3], ['Chiama subito il 112', .6, 1], ['Vivavoce', .85]],
     sub='Se non riesce più a tossire, a parlare o a respirare, e si porta le mani alla gola, devi agire subito: chiama il 112, o fallo chiamare, e metti il vivavoce.'),
-  S('5 colpi', ['Tra le','*scapole*.'], 'Mettiti di lato, sostienilo con una mano sul petto e piegalo in avanti. Con il palmo dell\'altra mano, dai fino a cinque colpi forti tra le scapole.', 'colpi', [['Piegato in avanti', .35], ['Fino a 5 colpi', .8]]),
+  S('5 colpi', ['Tra le','*scapole*.'], 'Mettiti dietro di lui, un po\' di lato, sostienilo con una mano sul petto e piegalo in avanti. Con il palmo dell\'altra mano, dai fino a cinque colpi forti tra le scapole.', 'colpi', [['Piegato in avanti', .35], ['Fino a 5 colpi', .8]]),
   S('5 compressioni', ['Spingi','*dentro* e in su.'], 'Se non basta, mettiti dietro di lui: pugno appena sopra l\'ombelico, coperto dall\'altra mano. Tira con forza verso di te e verso l\'alto, fino a cinque volte.', 'addome', [['Sopra l\'ombelico', .35], ['Dentro e in su', .7], ['Fino a 5 volte', .9]]),
   S('Alterna', ['5 e 5,','senza *fermarti*.'], 'Continua alternando cinque colpi e cinque compressioni, finché l\'oggetto non esce. Non infilare le dita in bocca alla cieca.', 'alterna', [['Alterna 5 e 5', .4], ['Niente dita in bocca', .85]]),
   S('Se sviene', ['A terra e','*rianimazione*.'], 'Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato '+U12+', chiamalo subito.', 'rcp-mini', [['Rianimazione', .4], ['112, se non l\'hai già chiamato', .85, 1]],
@@ -76,10 +75,10 @@ V = {
 'anafilassi': dict(nome='Anafilassi', scene=[
   S('Anafilassi', ['L\'allergia','*grave*.'], 'Anafilassi: la reazione allergica grave. Agire in fretta salva la vita.', 'adrenalina'),
   S('Le cause', ['In pochi','*minuti*.'], 'Può arrivare in pochi minuti, dopo un cibo, una puntura d\'insetto o un farmaco.', 'cause', [['Cibo', .4], ['Puntura', .6], ['Farmaco', .8]]),
-  S('I segni', ['Riconosci','i *segni*.'], 'Gonfiore di labbra, lingua o gola. Fatica a respirare, voce rauca, fischi. Orticaria. Pallore, debolezza, svenimento.', 'corpo-segni', [['Gonfiore', .1], ['Respiro', .35], ['Orticaria', .6], ['Svenimento', .85]]),
+  S('I segni', ['Riconosci','i *segni*.'], 'Gonfiore di labbra, lingua o gola. Fatica a respirare, voce rauca, fischi. Orticaria. Pallore, debolezza, svenimento. A volte mal di pancia, vomito o diarrea.', 'corpo-segni', [['Gonfiore', .1], ['Respiro', .28], ['Orticaria', .47], ['Svenimento', .66], ['Mal di pancia, vomito', .88]]),
   S('Chiama', ['Chiama','il *112*.'], 'Chiama subito '+U12+', e di\' che sospetti una reazione allergica grave.', 'telefono', [['Chiama il 112', .3, 1], ['Allergia grave', .75]],
     sub='Chiama subito il 112, e di\' che sospetti una reazione allergica grave.'),
-  S('Adrenalina', ['L\'autoiniettore','sulla *coscia*.'], 'Se ha l\'autoiniettore di adrenalina, aiutalo a usarlo: sulla parte esterna della coscia, anche sopra i vestiti, tenendolo premuto per il tempo indicato.', 'penna', [['Esterno coscia', .4], ['Anche sui vestiti', .6], ['Il tempo indicato', .88]]),
+  S('Adrenalina', ['L\'autoiniettore','sulla *coscia*.'], 'Se ha l\'autoiniettore di adrenalina, aiutalo a usarlo: sulla parte esterna della coscia, anche sopra i vestiti, se non sono spessi, tenendolo premuto per il tempo indicato.', 'penna', [['Esterno coscia', .35], ['Sui vestiti, se non spessi', .6], ['Il tempo indicato', .88]]),
   S('La posizione', ['Seduto','o *sdraiato*.'], 'Se respira male, fallo stare seduto. Se è debole o pallido, sdraiato con le gambe sollevate. Non farlo alzare in piedi all\'improvviso.', 'posizioni', [['Respira male: seduto', .2], ['Debole: gambe su', .55], ['Non alzarlo', .85]]),
   S('Dopo 5 minuti', ['La seconda','*dose*.'], 'Se dopo cinque minuti ha ancora i sintomi, anche se va un po\' meglio, e ha una seconda dose, usala.', 'penna-timer', [['Seconda dose dopo 5 minuti', .7]],
     sub='Se dopo 5 minuti ha ancora i sintomi, anche se va un po\' meglio, e ha una seconda dose, usala.'),
@@ -92,10 +91,10 @@ V = {
     sub='Metti subito la parte sotto acqua corrente fresca, non ghiacciata, per almeno 20 minuti.'),
   S('Anelli', ['Via anelli','e *orologi*.'], 'Togli anelli, orologi e braccialetti prima che la parte si gonfi. Non staccare i vestiti attaccati alla pelle.', 'anelli', [['Via anelli', .25], ['Vestiti attaccati: lasciali', .8]]),
   S('Copri', ['Pellicola,','*senza* stringere.'], 'Poi copri con pellicola trasparente per alimenti, senza stringere, o con una garza pulita che non si attacca.', 'pellicola', [['Pellicola per alimenti', .4], ['Senza stringere', .6]]),
-  S('Cosa non fare', ['Niente','*rimedi*.'], 'Niente ghiaccio, burro, olio o dentifricio. E non bucare le bolle.', 'no-rimedi', [['Niente ghiaccio', .15], ['Niente burro', .3], ['Bolle: non bucarle', .8]]),
+  S('Cosa non fare', ['Niente','*rimedi*.'], 'Niente ghiaccio, burro, olio o creme. E non bucare le bolle.', 'no-rimedi', [['Niente ghiaccio', .15], ['Niente burro', .3], ['Bolle: non bucarle', .8]]),
   S('Al caldo', ['Raffredda la ferita,','*scalda* lui.'], 'Raffredda la ferita, ma tieni al caldo il resto del corpo, soprattutto nei bambini.', 'coperta-braccio', [['Il corpo al caldo', .5], ['Attenzione ai bambini', .85]]),
-  S('Quando chiamare', ['Chiama','il *112*.'], 'Chiama '+U12+' se l\'ustione è più grande del palmo della sua mano, se è sul viso, sulle mani o sui genitali, se è elettrica o chimica, se ha respirato fumo, o se è un bambino o un anziano.', 'palmo', [['Più grande del palmo', .2], ['Viso, mani', .35], ['Elettrica o chimica', .55], ['Fumo', .7], ['Bambini e anziani', .88]],
-    sub='Chiama il 112 se l\'ustione è più grande del palmo della sua mano, se è sul viso, sulle mani o sui genitali, se è elettrica o chimica, se ha respirato fumo, o se è un bambino o un anziano.'),
+  S('Quando chiamare', ['Chiama','il *112*.'], 'Chiama '+U12+' se l\'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se è un bambino. Per un anziano, o se hai dubbi, fallo vedere da un medico.', 'telefono', [['Grande o profonda', .12], ['Viso, mani, piedi', .3], ['Fiamme, elettrica, chimica', .5], ['Bambini', .68], ['Anziani: dal medico', .88]],
+    sub='Chiama il 112 se l\'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se è un bambino. Per un anziano, o se hai dubbi, fallo vedere da un medico.'),
   FINE]),
 'ipoglicemia': dict(nome='Ipoglicemia', scene=[
   S('Ipoglicemia', ['Lo zucchero','è *troppo* basso.'], 'Ipoglicemia: quando lo zucchero nel sangue scende troppo.', 'zucchero'),
@@ -120,7 +119,7 @@ V = {
     sub='A Roma, giorno e notte: Gemelli 06 305 4343 · Umberto I 06 4997 8000 · per i bambini, Bambino Gesù 06 6859 3726.'),
   S('La confezione', ['Tienila','in *mano*.'], 'Tieni a portata di mano la confezione, e di\' cosa ha preso, quanto e quando.', 'confezione', [['Cosa', .55], ['Quanto', .7], ['Quando', .85]]),
   S('Pelle e occhi', ['Sciacqua','a *lungo*.'], 'Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corrente.', 'occhi', [['Via i vestiti', .35], ['Acqua corrente', .8]]),
-  S('Gas e fumi', ['Aria','*aperta*.'], 'Gas o fumi, come il monossido di carbonio: porta la persona all\'aria aperta, solo se non rischi anche tu. Le finestre aprile solo se puoi farlo senza fermarti.', 'finestra', [['Aria aperta', .3], ['Senza rischi per te', .6], ['Finestre, senza fermarti', .88]]),
+  S('Gas e fumi', ['Aria','*aperta*.'], 'Gas o fumi, come il monossido di carbonio: porta la persona all\'aria aperta, solo se non rischi anche tu. Apri le finestre solo se puoi farlo senza fermarti.', 'finestra', [['Aria aperta', .3], ['Senza rischi per te', .6], ['Finestre, senza fermarti', .88]]),
   S('Previeni', ['Lontano','dai *bambini*.'], 'Per prevenire: prodotti nelle confezioni originali, chiusi e in alto, lontano dai bambini. Mai in bottiglie da bibita.', 'armadietto', [['Confezioni originali', .2], ['In alto', .45], ['Mai nelle bottiglie', .85]]),
   FINE]),
 'trauma-cranico': dict(nome='Trauma cranico', scene=[
@@ -129,7 +128,7 @@ V = {
   S('Osserva', ['Risponde?','*Ricorda*?'], 'Osserva bene la persona: risponde? Sa dove si trova? Ricorda cosa è successo?', 'domande', [['Risponde?', .2], ['Dove si trova?', .45], ['Ricorda?', .75]]),
   S('Segnali d\'allarme', ['Quando chiamare','il *112*.'], 'Chiama '+U12+' se ha perso conoscenza, vomita più volte, è confuso o molto assonnato, se il mal di testa peggiora o se ha convulsioni.', 'allarme', [['Svenimento', .25], ['Vomito ripetuto', .4], ['Sonnolenza', .58], ['Mal di testa che peggiora', .75], ['Convulsioni', .92]],
     sub='Chiama il 112 se ha perso conoscenza, vomita più volte, è confuso o molto assonnato, se il mal di testa peggiora o se ha convulsioni.'),
-  S('Altri segnali', ['Guarda','anche *qui*.'], 'E anche se esce sangue o liquido chiaro dal naso o dalle orecchie, se le pupille sono diverse, o se un braccio o una gamba sono deboli.', 'pupille', [['Naso e orecchie', .3], ['Pupille diverse', .6], ['Debolezza', .85]]),
+  S('Altri segnali', ['Guarda','anche *qui*.'], 'E anche se esce sangue o liquido chiaro dal naso o dalle orecchie, se vede male o doppio, o se un braccio o una gamba sono deboli.', 'pupille', [['Naso e orecchie', .3], ['Vede doppio', .6], ['Debolezza', .85]]),
   S('Collo e schiena', ['Non','*muoverlo*.'], 'Se pensi che si sia fatto male al collo o alla schiena, non muoverlo, a meno che non sia in pericolo.', 'non-muovere', [['Non muoverlo', .55]]),
   S('Il bernoccolo', ['Ghiaccio','nel *panno*.'], 'Per il bernoccolo, ghiaccio avvolto in un panno, mai direttamente sulla pelle.', 'ghiaccio', [['Mai sulla pelle', .75]]),
   S('Dal medico', ['Sempre','dal *medico*.'], 'Fallo sempre vedere da un medico, anche se sembra stare bene: i segni possono comparire ore dopo. Ancora di più se è anziano o prende anticoagulanti.', 'medico', [['Anche se sta bene', .3], ['Anziani', .75], ['Anticoagulanti', .9]]),
@@ -144,10 +143,13 @@ from contenuti3 import V3
 V.update(V3)
 
 # Scheda finale: per gli argomenti che le linee guida IRC/ERC 2025 non trattano (o non solo) la fonte non è
-# «linee guida IRC 2025»: le fonti vere sono citate nell'articolo (21/10/2026, issue #147).
+# «linee guida IRC 2025»: le fonti vere sono citate nell'articolo (21/10/2026, issue #147; il 1/11/2026 aggiunti
+# ictus, infarto, emorragia, rianimazione, anafilassi, ipoglicemia, trauma cranico, soffocamento del lattante e asma, le cui
+# news citano anche IFRC, CRI, NHS, AMD o il Ministero della Salute).
 FONTE_ARTICOLO = "Fonti nell'articolo su misericordia-ariccia.it · informazioni generali, non sostituiscono un corso"
 for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'svenimento', 'fratture', 'freddo',
-           'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta'):
+           'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta', 'ictus', 'infarto', 'emorragia', 'rianimazione',
+           'anafilassi', 'ipoglicemia', 'trauma-cranico', 'soffocamento-lattante', 'asma'):
     V[_k]['fonte'] = FONTE_ARTICOLO
 from contenuti4 import V4
 V.update(V4)

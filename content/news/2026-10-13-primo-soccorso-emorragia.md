@@ -4,11 +4,11 @@ titoloSeo: "Emorragia grave: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-13
 slug: "primo-soccorso-emorragia"
 controllo_editoriale: "2026-10-10"
-description: "Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."
+description: "Guanti, pressione diretta senza mollare fino ai soccorsi, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."
 immagine: "/img/news/primo-soccorso-emorragia-grafica.jpg"
 social_video: "/video/primo-soccorso-emorragia.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 3/10 — Emorragia grave. Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 3/10 — Emorragia grave. Guanti, pressione diretta senza mollare fino ai soccorsi, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
 italianoSemplice: |
   **Emorragia grave: un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -23,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **3 di 10**: **emorragia grave**. *Premi e non mollare.*
 
-{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso passo passo" descrizione="Guanti, pressione diretta per almeno 10 minuti, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo." data="2026-10-13" didascalia="Il video dura circa 1 minuto e 10 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-emorragia.mp4" poster="img/video/primo-soccorso-emorragia.jpg" verticale="si" titolo="Emorragia grave: primo soccorso passo passo" descrizione="Guanti, pressione diretta senza mollare fino ai soccorsi, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo." data="2026-10-13" didascalia="Il video dura circa 1 minuto e 15 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -37,7 +37,7 @@ Metti una garza, o un panno pulito, direttamente sulla ferita, e premi forte con
 
 ### Non mollare
 
-Mantieni la pressione per almeno 10 minuti, senza sollevare la garza per controllare.
+Continua a premere, senza mollare, finché arrivano i soccorsi. Non sollevare la garza per controllare.
 
 ### Se passa
 
@@ -53,7 +53,7 @@ Chiama il 112, o fallo chiamare, e metti il vivavoce: così puoi continuare a pr
 
 ### Laccio emostatico
 
-Se il sangue da un braccio o da una gamba non si ferma, chi è addestrato può usare un laccio emostatico: 5-7 cm sopra la ferita, segnando l'ora.
+Se il sangue da un braccio o da una gamba non si ferma con la pressione, e hai un laccio emostatico, mettilo da 5 a 7 cm sopra la ferita, mai su un'articolazione. Segna l'ora, e non allentarlo più: lo toglie solo il personale sanitario.
 
 ### Shock
 
@@ -71,4 +71,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonte: [Linee guida RCP 2025, Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).*
+*Fonti: [Linee guida RCP 2025, Italian Resuscitation Council, cap. 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), p. 15 (pressione diretta; laccio emostatico il prima possibile se la pressione non basta, senza limiti di addestramento), p. 35 (laccio da 5 a 7 cm sopra la ferita, mai su un'articolazione, ora annotata, da non allentare né togliere: lo toglie solo il personale sanitario) e pp. 9 e 24 (shock: sdraiato e coperto); [Croce Rossa Italiana, Emorragie](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/emorragie/) (pressione costante fino all'arrivo dei soccorsi, altro materiale sopra senza togliere il primo); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), «Severe bleeding», pp. 256-257 (chi presta il primo soccorso può usare un laccio, guanti, seconda garza sopra la prima, pressione intorno all'oggetto conficcato, tenerlo al caldo).*

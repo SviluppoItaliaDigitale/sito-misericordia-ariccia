@@ -2,9 +2,6 @@
 title: "Ferite e tagli: pulisci e copri"
 titoloSeo: "Ferite e tagli: come pulirli e medicarli, quando andare al pronto soccorso e l'antitetanica"
 date: 2027-02-02
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-ferite"
 description: "Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica."
 immagine: "/img/news/2027-02-02-primo-soccorso-ferite-grafica.jpg"
@@ -23,7 +20,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **4 di 10**: **ferite e tagli**.
 
-{{< video src="video/primo-soccorso-ferite.mp4" poster="img/video/primo-soccorso-ferite.jpg" verticale="si" titolo="Ferite e tagli: primo soccorso passo passo" descrizione="Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica." data="2027-02-02" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-ferite.mp4" poster="img/video/primo-soccorso-ferite.jpg" verticale="si" titolo="Ferite e tagli: primo soccorso passo passo" descrizione="Piccole ferite: lavare con acqua corrente, il disinfettante giusto, il cerotto, quando serve il pronto soccorso e quando controllare l'antitetanica." data="2027-02-02" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
@@ -53,7 +50,7 @@ Vai al pronto soccorso se il sangue non si ferma, se la ferita è profonda o ha 
 
 ### Antitetanica
 
-Se la ferita è profonda o sporca di terra, e l'ultimo richiamo dell'antitetanica è di più di 10 anni fa, o non lo ricordi, vai dal tuo medico o al pronto soccorso.
+Se la ferita è profonda, sporca di terra o è un morso, e l'ultimo richiamo dell'antitetanica è di più di 5 anni fa, o non lo ricordi, vai dal tuo medico o al pronto soccorso, il prima possibile.
 
 ### Infezione
 
@@ -67,4 +64,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), capitolo Cuts and grazes (pulire con acqua corrente del rubinetto, coprire, alcol e acqua ossigenata sconsigliati, segni di infezione, tetano); [Ospedale Pediatrico Bambino Gesù, Medicazione delle ferite superficiali](https://www.ospedalebambinogesu.it/medicazione-delle-ferite-superficiali-181395/) (mani lavate e guanti, acqua corrente, disinfettante a base acquosa, niente cotone né alcol, cambiare la medicazione se sporca o bagnata, morsi e ferite sporche dal medico); [ISSalute, Tetano](https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/t/tetano) (richiamo ogni dieci anni; ferita sporca o profonda e richiamo di più di dieci anni fa o mai fatto: medico o pronto soccorso); [Humanitas, Tagli e ferite: quando recarsi in pronto soccorso](https://www.humanitas.it/news/tagli-ferite-recarsi-pronto-soccorso/) e [NHS, Cuts and grazes](https://www.nhs.uk/conditions/cuts-and-grazes/) (conferma: quando andare al pronto soccorso).*
+*Fonti: [Ministero della Salute, circolare del 3 luglio 2018 sulla vaccinazione anti-tetanica](https://www.fimmgag.org/wp-content/uploads/2020/10/tetanocircolaremin.pdf) (ferite sporche, profonde, punture e morsi: vaccino se l'ultima dose risale a più di 5 anni o se la storia vaccinale non è nota); [IFRC, International First Aid, Resuscitation and Education Guidelines 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025), capitolo Cuts and grazes (pulire con acqua corrente del rubinetto, coprire, alcol e acqua ossigenata sconsigliati, segni di infezione, tetano); [Ospedale Pediatrico Bambino Gesù, Medicazione delle ferite superficiali](https://www.ospedalebambinogesu.it/medicazione-delle-ferite-superficiali-181395/) (mani lavate e guanti, acqua corrente, disinfettante a base acquosa, niente cotone né alcol, cambiare la medicazione se sporca o bagnata, morsi e ferite sporche dal medico); [ISSalute, Tetano](https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/t/tetano) (richiamo ogni dieci anni nella popolazione generale); [Humanitas, Tagli e ferite: quando recarsi in pronto soccorso](https://www.humanitas.it/news/tagli-ferite-recarsi-pronto-soccorso/) e [NHS, Cuts and grazes](https://www.nhs.uk/conditions/cuts-and-grazes/) (conferma: quando andare al pronto soccorso).*

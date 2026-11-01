@@ -95,7 +95,7 @@ An email with legal value, like a registered letter: it is the official channel 
 <details class="faq-item">
 <summary>DAE — Defibrillatore semiAutomatico Esterno (AED, automated external defibrillator)</summary>
 
-The device that can restart a heart in cardiac arrest: you switch it on, attach the pads and **it guides the rescuer with voice prompts**. Anyone can use it, and using it early saves lives.
+The device that can restart a heart in cardiac arrest: you switch it on, attach the pads and **it guides the rescuer with voice prompts**. Even someone without training can use it if no trained person is present, and using it early saves lives.
 
 </details>
 

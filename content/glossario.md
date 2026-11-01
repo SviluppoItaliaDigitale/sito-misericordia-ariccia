@@ -99,7 +99,7 @@ Un'email con valore legale, come una raccomandata: è il canale ufficiale per co
 <details class="faq-item">
 <summary>DAE — Defibrillatore semiAutomatico Esterno</summary>
 
-L'apparecchio che può far ripartire un cuore in arresto: si accende, si applicano le piastre e **guida chi soccorre con istruzioni vocali**. Può usarlo chiunque, e usarlo presto salva la vita.
+L'apparecchio che può far ripartire un cuore in arresto: si accende, si applicano le piastre e **guida chi soccorre con istruzioni vocali**. Può usarlo anche chi non ha fatto un corso, se non c'è personale formato, e usarlo presto salva la vita.
 
 </details>
 

@@ -23,7 +23,7 @@ italianoSemplice: |
 
 Sapere **cosa fare nei primi minuti** può fare la differenza. Ecco alcune indicazioni essenziali per le emergenze più comuni. Per acquisire competenze reali, partecipa a un [corso di primo soccorso e BLSD](/servizi/formazione/) della Misericordia.
 
-**Vuoi approfondire?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**, con una scheda e un video per 23 emergenze, dai neonati agli anziani, secondo le linee guida ERC/IRC 2025.
+**Vuoi approfondire?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**, con una scheda e un video per 33 emergenze, dai neonati agli anziani, secondo le linee guida ERC/IRC 2025 e le fonti ufficiali dello Stato.
 
 ## Le regole d'oro
 
@@ -64,8 +64,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <details class="faq-item">
 <summary>Svenimento</summary>
 
-1. **Sdraia** la persona a pancia in su e, se puoi, **solleva le gambe**.
-2. Se **non si riprende** in fretta, chiama il **112** e guarda se respira normalmente: se non respira normalmente, inizia la **rianimazione**.
+1. **Sdraia** la persona a pancia in su e, se puoi, **solleva le gambe**; se è incinta, mettila invece **sul fianco sinistro**.
+2. Se **non si riprende** subito, chiama il **112** e guarda se respira normalmente: se respira normalmente e non ha battuto forte cadendo, mettila **su un fianco**; se non respira normalmente, inizia la **rianimazione**.
 3. Quando sta meglio, falla rialzare **piano**: prima seduta, poi in piedi.
 4. Chiama il **112** anche se è svenuta durante uno sforzo, con dolore al petto o palpitazioni, o se si è fatta male cadendo.
 
@@ -77,7 +77,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. **Premi con forza direttamente sulla ferita** con una garza o un panno pulito, e **non mollare**.
 2. **Non togliere** il panno se si inzuppa: aggiungine un altro sopra e continua a premere.
 3. Chiama il **112** per le emorragie abbondanti o che non si fermano.
-4. Su un braccio o una gamba, se la pressione non basta, chi è addestrato può usare un **laccio emostatico**.
+4. Su un braccio o una gamba, se la pressione non basta e hai un **laccio emostatico**, mettilo il prima possibile, sopra la ferita, e segna l'ora.
 
 </details>
 
@@ -86,8 +86,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 1. Metti subito la parte ustionata **sotto acqua corrente fresca** (non ghiacciata) per **almeno 20 minuti**.
 2. **Togli** anelli, orologi o vestiti solo se **non sono attaccati** alla pelle.
-3. **Non** applicare ghiaccio, dentifricio, burro, olio o altri rimedi casalinghi, e non rompere le bolle.
-4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è estesa o profonda, se è sul viso, sulle mani o sui genitali, o se riguarda un bambino.
+3. **Non** applicare ghiaccio, burro, olio, creme o altri rimedi casalinghi, e non rompere le bolle.
+4. Copri senza stringere con **pellicola trasparente per alimenti** o una medicazione pulita. Chiama il **112** se l'ustione è grande o profonda, se è sul viso, sulle mani, sui piedi o sui genitali, se è da fiamme, elettrica o chimica, o se riguarda un bambino. Per un anziano, o se hai dubbi, falla vedere da un medico.
 
 </details>
 
@@ -95,8 +95,8 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 <summary>Colpo di calore</summary>
 
 1. Se ha la pelle molto calda ed è confusa, agitata, ha convulsioni o non risponde, è un colpo di calore: **chiama subito il 112**.
-2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco, togli i vestiti in eccesso e bagnala con **acqua fredda su tutto il corpo, testa esclusa** (meglio una doccia o una vasca fredda); altrimenti panni bagnati freddi, ghiaccio avvolto in un panno su collo, ascelle e inguine, e falle aria. Continua per circa 15 minuti o finché i sintomi passano.
-3. Solo se è ben sveglia e riesce a deglutire, falle bere **acqua** a piccoli sorsi.
+2. Intanto **raffreddala subito**: portala all'ombra o in un luogo fresco e togli più vestiti possibile; se ha le vertigini falla stare sdraiata, se ha nausea mettila su un fianco. **Bagnala tutta con acqua fresca** o avvolgila in teli bagnati e **falle aria di continuo**, cambiando la parte del corpo esposta; quando i teli si asciugano, bagnali di nuovo. Continua finché arrivano i soccorsi. Niente vasca, doccia fredda o ghiaccio.
+3. Solo se è ben sveglia, non ha nausea e riesce a deglutire, falle bere **acqua** a piccoli sorsi. Niente alcol sulla pelle e niente farmaci per la febbre.
 4. Se non risponde e non respira normalmente, inizia la **rianimazione**.
 
 </details>
@@ -107,7 +107,7 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 1. **Proteggi** la persona da urti: allontana oggetti pericolosi e metti qualcosa di morbido sotto la testa.
 2. **Non** immobilizzarla e **non mettere nulla in bocca**.
 3. Quando le scosse finiscono, **controlla il respiro**: se respira normalmente, mettila **sul fianco** (posizione laterale di sicurezza) e resta con lei; se non respira normalmente, chiama subito il **112** e inizia la **rianimazione**.
-4. Chiama il **112** se la crisi dura più di 5 minuti, se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende.
+4. Chiama il **112** se la crisi dura più di 5 minuti, se è la prima crisi, se si è ferita, se è incinta, se le crisi si ripetono o se non si riprende. Nel dubbio, chiama.
 
 </details>
 
@@ -115,4 +115,4 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 **Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
 
-*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per ustioni e convulsioni, che le linee guida 2025 non trattano, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*
+*Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per il colpo di calore le [linee di indirizzo del Ministero della Salute (luglio 2026)](https://www.salute.gov.it/new/sites/default/files/2026-07/LG%20CALDO%20INQUINAMENTO%20AGG%202026_0.pdf); per ustioni, svenimento e convulsioni, che le linee guida 2025 non trattano o trattano solo in parte, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*

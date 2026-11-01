@@ -48,7 +48,7 @@ Lo strumento più utile però sei tu: sapere cosa fare, e chiamare subito il 112
 
 Grazie per averci seguito. Buon Natale e buon anno dalla Misericordia di Ariccia.
 
-Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cassetta)**.
+Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#cassetta)**.
 
 ## Impara con noi
 

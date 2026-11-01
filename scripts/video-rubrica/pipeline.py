@@ -8,6 +8,7 @@ Uso: pipeline.py chiave [...] [--anteprima] [--sottotitoli] [--audio-da VIDEO.mp
     prima controlla che i tempi siano gli stessi: sottotitoli uguali al .vtt accanto al video e durata entro 0,2 s"""
 import base64, os, re, subprocess, sys, wave
 from pathlib import Path
+import hashlib
 import numpy as np
 import contenuti
 W = Path(__file__).resolve().parent; REPO = W.parents[1]; OUT = W / 'out'
@@ -116,12 +117,15 @@ for key in CHIAVI:
         tf = d / f'v{i}.txt'
         if VOCE == 'luca':
             src = W / 'voci-luca' / key / f'{i}.mp3'
-            if not wav.exists() or not tf.exists() or tf.read_text() != 'luca|' + sc['voce'].strip():
+            # La cache vale per quel testo e per quel file: una frase rigenerata con lo stesso testo (per una pronuncia
+            # sbagliata) deve sostituire la vecchia (rilievo della revisione automatica sulla PR #240).
+            firma = 'luca|' + hashlib.sha256(src.read_bytes()).hexdigest()[:16] + '|' + sc['voce'].strip()
+            if not wav.exists() or not tf.exists() or tf.read_text() != firma:
                 subprocess.run([FF,'-v','error','-y','-i',str(src),'-ar',str(SR),'-ac','1',str(wav)], check=True)
                 a0 = trim(rd(wav), 0.01)   # niente silenzi lunghi in testa e in coda: i tempi li danno PRE e POST
                 with wave.open(str(wav), 'wb') as w:
                     w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(a0, -1, 1) * 32767).astype(np.int16).tobytes())
-                tf.write_text('luca|' + sc['voce'].strip())
+                tf.write_text(firma)
         elif not wav.exists() or not tf.exists() or tf.read_text() != VOCE + '|' + pron(sc['voce']):
             piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(VOCE + '|' + pron(sc['voce']))
         a = rd(wav); Dv = len(a) / SR

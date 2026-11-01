@@ -2,13 +2,12 @@
 title: "Posizione laterale di sicurezza: quando e come"
 titoloSeo: "Posizione laterale di sicurezza: quando usarla e come farla passo passo (linee guida ERC/IRC 2025)"
 date: 2027-01-19
-draft: true
-# In bozza finché il responsabile sanitario non ha rivisto testi e video (controlla_sito.py: «Revisione sanitaria»).
-revisione_sanitaria: "da fare"
 slug: "primo-soccorso-pls"
 description: "Per chi non risponde ma respira normalmente: quando usare la posizione laterale di sicurezza, i passaggi per girare la persona su un fianco, cosa controllare e quando non usarla."
 immagine: "/img/news/2027-01-19-primo-soccorso-pls-grafica.jpg"
 social_video: "/video/primo-soccorso-pls.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 3ª serie 2/10 — Posizione laterale di sicurezza. Per chi non risponde ma respira normalmente: quando usare la posizione laterale di sicurezza, i passaggi per girare la persona su un fianco, cosa controllare e quando non usarla. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -23,7 +22,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **2 di 10**: **la posizione laterale di sicurezza**.
 
-{{< video src="video/primo-soccorso-pls.mp4" poster="img/video/primo-soccorso-pls.jpg" verticale="si" titolo="Posizione laterale di sicurezza: primo soccorso passo passo" descrizione="Per chi non risponde ma respira normalmente: quando usare la posizione laterale di sicurezza, i passaggi per girare la persona su un fianco, cosa controllare e quando non usarla." data="2027-01-19" didascalia="Il video dura circa DURATA-DA-AGGIORNARE, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-pls.mp4" poster="img/video/primo-soccorso-pls.jpg" verticale="si" titolo="Posizione laterale di sicurezza: primo soccorso passo passo" descrizione="Per chi non risponde ma respira normalmente: quando usare la posizione laterale di sicurezza, i passaggi per girare la persona su un fianco, cosa controllare e quando non usarla." data="2027-01-19" didascalia="Il video dura circa 1 minuto e 35 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
