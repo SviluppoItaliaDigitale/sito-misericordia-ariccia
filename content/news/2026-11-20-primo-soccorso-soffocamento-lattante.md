@@ -7,6 +7,8 @@ in_evidenza_fino: "2026-11-23"
 description: "Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati."
 immagine: "/img/news/primo-soccorso-soffocamento-lattante-grafica.jpg"
 social_video: "/video/primo-soccorso-soffocamento-lattante.mp4"
+# Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
+social_reel_facebook: false
 social_video_copertina: 1
 social_testo: "🩺 Primo soccorso passo passo · 2ª serie 4/13 — Soffocamento nel lattante. Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
 italianoSemplice: |
@@ -21,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **4 di 13**: **soffocamento nel lattante**.
 
-{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 25 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-soffocamento-lattante.mp4" poster="img/video/primo-soccorso-soffocamento-lattante.jpg" verticale="si" titolo="Soffocamento nel lattante: primo soccorso passo passo" descrizione="Nella Giornata dei diritti dell'infanzia: come riconoscere il soffocamento in un bambino sotto l'anno e le manovre giuste, mostrate con i disegni animati." data="2026-11-20" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
 
 ## Passo passo
 
