@@ -32,3 +32,7 @@ Le date si verificano sulla fonte (ONU, Santa Sede, Ministeri) prima di preparar
 | Data | Giornata | Fonte | Stato |
 |---|---|---|---|
 | 2/11/2026 | Commemorazione dei defunti | calendario liturgico | pubblicato |
+| 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | pronto |
+| 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | pronto |
+| 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pronto |
+| 3/12/2026 | Giornata internazionale delle persone con disabilità (tema ONU 2026 non ancora pubblicato al 2/11/2026: non citato) | [ONU](https://www.un.org/en/observances/day-of-persons-with-disabilities) | pronto |
