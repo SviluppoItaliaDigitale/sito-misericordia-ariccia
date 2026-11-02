@@ -11,7 +11,7 @@ luogo: "Firenze · 1877"
 pillola_titolo: "Nottanti, mutanti e «stracciafoglie»"
 pillola_testo: "Nel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli."
 fonte_breve: "S. e J. Horner, *Walks in Florence* (1877)"
-social_testo: "💡 Lo sapevi che… Nottanti, mutanti e «stracciafoglie»\n\nNel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli. Ogni mestiere ha le sue parole. Quelle della Misericordia di Firenze nel 1877 erano davvero speciali.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Nottanti, mutanti e «stracciafoglie»\n\nNel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli. Ogni mestiere ha le sue parole. Quelle della Misericordia di Firenze nel 1877 erano davvero speciali.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 

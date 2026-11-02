@@ -11,7 +11,7 @@ luogo: "Castelfiorentino · 1580"
 pillola_titolo: "La portantina del 1580 e la «volantina»"
 pillola_testo: "La Misericordia di Castelfiorentino conserva la sua più antica portantina a mano, del 1580, un carro funebre a cavalli e la «volantina», un carro senza ruote. Nell'ottobre 2024 l'alluvione dell'Elsa ha raggiunto anche questi cimeli."
 fonte_breve: "La Nazione, ottobre 2024"
-social_testo: "💡 Lo sapevi che… La portantina del 1580 e la «volantina»\n\nLa Misericordia di Castelfiorentino conserva la sua più antica portantina a mano, del 1580, un carro funebre a cavalli e la «volantina», un carro senza ruote. Nell'ottobre 2024 l'alluvione dell'Elsa ha raggiunto anche questi cimeli. Quattro secoli e mezzo di soccorsi in una sola sede. E un'alluvione che li ha messi alla prova.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… La portantina del 1580 e la «volantina»\n\nLa Misericordia di Castelfiorentino conserva la sua più antica portantina a mano, del 1580, un carro funebre a cavalli e la «volantina», un carro senza ruote. Nell'ottobre 2024 l'alluvione dell'Elsa ha raggiunto anche questi cimeli. Quattro secoli e mezzo di soccorsi in una sola sede. E un'alluvione che li ha messi alla prova.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 

@@ -11,7 +11,7 @@ luogo: "Pisa · 1848 · ancora oggi"
 pillola_titolo: "«Iddio gliene renda merito» – «Vada in pace»"
 pillola_testo: "Al cambio sotto la barella, chi prendeva il posto diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace». È l'antenato del motto che i confratelli usano ancora oggi: «Che Iddio te ne renda merito»."
 fonte_breve: "Regolamento disciplinare della Misericordia di Pisa (1848), artt. 31 e 36"
-social_testo: "💡 Lo sapevi che… «Iddio gliene renda merito» – «Vada in pace»\n\nAl cambio sotto la barella, chi prendeva il posto diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace». È l'antenato del motto che i confratelli usano ancora oggi: «Che Iddio te ne renda merito». La frase più bella della Misericordia nasce sotto una barella.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… «Iddio gliene renda merito» – «Vada in pace»\n\nAl cambio sotto la barella, chi prendeva il posto diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace». È l'antenato del motto che i confratelli usano ancora oggi: «Che Iddio te ne renda merito». La frase più bella della Misericordia nasce sotto una barella.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 

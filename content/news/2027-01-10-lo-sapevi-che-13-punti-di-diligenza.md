@@ -11,7 +11,7 @@ luogo: "Pisa · 1848"
 pillola_titolo: "La raccolta punti della carità"
 pillola_testo: "A Pisa ogni servizio valeva «punti di diligenza»: uno in città, due nei sobborghi, tre oltre un miglio dalle mura. Con mille punti si poteva diventare capo di guardia. E chi non sapeva leggere? Diventava capo di guardia onorario."
 fonte_breve: "Regolamento della Misericordia di Pisa (1848)"
-social_testo: "💡 Lo sapevi che… La raccolta punti della carità\n\nA Pisa ogni servizio valeva «punti di diligenza»: uno in città, due nei sobborghi, tre oltre un miglio dalle mura. Con mille punti si poteva diventare capo di guardia. E chi non sapeva leggere? Diventava capo di guardia onorario. Nel 1848 a Pisa la carità aveva la sua raccolta punti. E contava il servizio, non l'istruzione.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… La raccolta punti della carità\n\nA Pisa ogni servizio valeva «punti di diligenza»: uno in città, due nei sobborghi, tre oltre un miglio dalle mura. Con mille punti si poteva diventare capo di guardia. E chi non sapeva leggere? Diventava capo di guardia onorario. Nel 1848 a Pisa la carità aveva la sua raccolta punti. E contava il servizio, non l'istruzione.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 

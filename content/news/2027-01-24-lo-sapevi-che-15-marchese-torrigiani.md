@@ -20,7 +20,7 @@ italianoSemplice: |
   Faceva il volontario della Misericordia come tutti. Si è ammalato durante il servizio ed è morto nel 1865.
 ---
 
-![Lo sapevi che… n. 15: Il marchese morto in servizio](/img/news/lo-sapevi-che-15-marchese-torrigiani-grafica.jpg)
+![Lo sapevi che… Firenze, 1865. Il marchese: morto in servizio. Carlo Torrigiani faceva servizio come giornante, con la stessa veste di tutti. Sullo sfondo, una foto degli anni 1858-1863: confratelli della Misericordia di Firenze in cappa nera e cappuccio portano un cataletto coperto](/img/news/lo-sapevi-che-15-marchese-torrigiani-grafica.jpg)
 
 Tra i confratelli della Misericordia di Firenze c'erano nobili, banchieri e professori, tutti con la stessa veste nera e la stessa buffa. Uno dei più amati era il marchese **Carlo Torrigiani**, che i fiorentini chiamavano «il Federigo Borromeo di Firenze» per la sua carità.
 

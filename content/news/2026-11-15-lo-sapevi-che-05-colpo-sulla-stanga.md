@@ -20,7 +20,7 @@ italianoSemplice: |
   Quando uno era stanco, batteva la mano sulla barella. Così gli altri capivano che dovevano cambiarsi, senza parlare.
 ---
 
-![Lo sapevi che… n. 5: Il cambio sotto la barella? Un colpo sulla stanga](/img/news/lo-sapevi-che-05-colpo-sulla-stanga-grafica.jpg)
+![Lo sapevi che… Pisa, 1848. Cambio sotto la barella: un colpo sulla stanga. Chi era stanco batteva la mano sulla stanga e la squadra si fermava per il cambio. Sullo sfondo, un disegno ottocentesco: confratelli della Misericordia, con la veste e il cappuccio, portano a spalla una barella coperta davanti al Battistero di Firenze](/img/news/lo-sapevi-che-05-colpo-sulla-stanga-grafica.jpg)
 
 Il regolamento della Misericordia di Pisa del 1848 descrive ogni gesto della squadra. Le barelle si portavano a spalla, anche per chilometri. Quando un fratello era stanco **non chiedeva il cambio a voce**: batteva la mano sulla stanga, e la squadra si fermava per darsi il cambio «nel più grande silenzio».
 

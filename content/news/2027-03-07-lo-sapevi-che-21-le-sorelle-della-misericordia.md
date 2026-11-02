@@ -11,7 +11,7 @@ luogo: "Pisa 1848 · Firenze 1971"
 pillola_titolo: "Le «Sorelle» della Misericordia"
 pillola_testo: "Nel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971."
 fonte_breve: "Regolamento della Misericordia di Pisa (1848); Wikipedia, *Misericordia di Firenze*"
-social_testo: "💡 Lo sapevi che… Le «Sorelle» della Misericordia\n\nNel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971. Alla vigilia dell'8 marzo: le Sorelle della Misericordia di Pisa erano già lì nel 1848.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Le «Sorelle» della Misericordia\n\nNel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971. Alla vigilia dell'8 marzo: le Sorelle della Misericordia di Pisa erano già lì nel 1848.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 

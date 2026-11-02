@@ -11,7 +11,7 @@ luogo: "Prato · 1588"
 pillola_titolo: "Trenta pellegrini di ritorno da Loreto"
 pillola_testo: "Il 22 luglio 1588 trenta pratesi tornano da un pellegrinaggio alla Santa Casa di Loreto. Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato."
 fonte_breve: "La Nazione, 2026"
-social_testo: "💡 Lo sapevi che… Trenta pellegrini di ritorno da Loreto\n\nIl 22 luglio 1588 trenta pratesi tornano da un pellegrinaggio alla Santa Casa di Loreto. Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato. Alcune Misericordie sono nate da un'epidemia. Quella di Prato da un pellegrinaggio.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Trenta pellegrini di ritorno da Loreto\n\nIl 22 luglio 1588 trenta pratesi tornano da un pellegrinaggio alla Santa Casa di Loreto. Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato. Alcune Misericordie sono nate da un'epidemia. Quella di Prato da un pellegrinaggio.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 
