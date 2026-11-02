@@ -11,7 +11,7 @@ luogo: "Firenze · 1877"
 pillola_titolo: "Nottanti, mutanti e «stracciafoglie»"
 pillola_testo: "Nel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli."
 fonte_breve: "S. e J. Horner, *Walks in Florence* (1877)"
-social_testo: "💡 Lo sapevi che… Nottanti, mutanti e «stracciafoglie»\n\nNel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli. Ogni mestiere ha le sue parole. Quelle della Misericordia di Firenze nel 1877 erano davvero speciali.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Nottanti, mutanti e «stracciafoglie»\n\nNel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli. Ogni mestiere ha le sue parole. Quelle della Misericordia di Firenze nel 1877 erano davvero speciali.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 
@@ -20,7 +20,7 @@ italianoSemplice: |
   I nottanti stavano con i malati di notte. I nuovi volontari si chiamavano stracciafoglie.
 ---
 
-![Lo sapevi che… n. 16: Nottanti, mutanti e «stracciafoglie»](/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg)
+![Lo sapevi che… Firenze, 1877. Le parole del servizio: nottanti, mutanti e «stracciafoglie». Nella Misericordia di Firenze chi vegliava i malati di notte era un «nottante». Sullo sfondo, Alloggiare i pellegrini del Maestro di Alkmaar (1504): viandanti accolti alla porta di una casa](/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg)
 
 Ogni mestiere ha le sue parole. Nel **1877** una guida inglese descrive la Misericordia di Firenze: **72 capi di guardia** e una cinquantina di **giornanti** in servizio ogni giorno.
 

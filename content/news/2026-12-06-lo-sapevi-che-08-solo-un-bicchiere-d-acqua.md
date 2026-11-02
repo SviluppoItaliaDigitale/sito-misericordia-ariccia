@@ -11,7 +11,7 @@ luogo: "Firenze · Ottocento"
 pillola_titolo: "Nemmeno un caffè: solo un bicchiere d'acqua"
 pillola_testo: "I confratelli che assistevano i malati in casa non potevano accettare denaro, né mangiare o bere qualcosa. Era concesso al massimo un bicchiere d'acqua. Lo raccontano Charles Dickens nel 1846 e una guida inglese del 1877."
 fonte_breve: "C. Dickens, *Pictures from Italy* (1846); S. e J. Horner, *Walks in Florence* (1877)"
-social_testo: "💡 Lo sapevi che… Nemmeno un caffè: solo un bicchiere d'acqua\n\nI confratelli che assistevano i malati in casa non potevano accettare denaro, né mangiare o bere qualcosa. Era concesso al massimo un bicchiere d'acqua. Lo raccontano Charles Dickens nel 1846 e una guida inglese del 1877. La regola che stupì Charles Dickens: il servizio era gratis, davvero.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Nemmeno un caffè: solo un bicchiere d'acqua\n\nI confratelli che assistevano i malati in casa non potevano accettare denaro, né mangiare o bere qualcosa. Era concesso al massimo un bicchiere d'acqua. Lo raccontano Charles Dickens nel 1846 e una guida inglese del 1877. La regola che stupì Charles Dickens: il servizio era gratis, davvero.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 
@@ -20,7 +20,7 @@ italianoSemplice: |
   Niente soldi e niente cibo. Potevano solo bere un bicchiere d'acqua.
 ---
 
-![Lo sapevi che… n. 8: Nemmeno un caffè: solo un bicchiere d'acqua](/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg)
+![Lo sapevi che… Firenze, Ottocento. Nemmeno un caffè: solo un bicchiere d'acqua. Chi assisteva i malati in casa non poteva accettare denaro, né mangiare o bere. Sullo sfondo, Dar da bere agli assetati del Maestro di Alkmaar (1504): un uomo versa da bere ai poveri in fila](/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg)
 
 I viaggiatori stranieri che passavano da Firenze restavano colpiti dai confratelli con la buffa nera. **Charles Dickens**, nel 1846, scrive che chi assisteva un malato non poteva accettare niente in cambio: né denaro, né cibo, né da bere.
 

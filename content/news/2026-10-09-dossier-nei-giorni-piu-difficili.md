@@ -14,7 +14,7 @@ italianoSemplice: |
   In ogni emergenza i volontari delle Misericordie hanno aiutato le persone.
 ---
 
-![Nei giorni più difficili: confratelli della Misericordia con la buffa portano una lettiga davanti al Battistero di Firenze](/img/news/dossier-giorni-difficili-grafica.jpg)
+![Grafica del dossier «La nostra storia»: confratelli della Misericordia di Firenze con la buffa portano una lettiga coperta, fotografia del 1860 circa (Rijksmuseum, CC0, Wikimedia Commons), con la scritta «Nei giorni più difficili: le Misericordie nelle emergenze. Peste, colera, terremoti, guerre, alluvioni, Covid: otto secoli di storia nel nuovo dossier»](/img/news/dossier-giorni-difficili-grafica.jpg)
 
 Le Misericordie sono nate per le emergenze di tutti i giorni. Ma la loro storia si capisce davvero guardando i **giorni più difficili**: pestilenze, epidemie, guerre, terremoti, alluvioni. Le raccontiamo nel nuovo dossier **[Nei giorni più difficili](/dossier/nei-giorni-piu-difficili/)**, con tutte le fonti.
 

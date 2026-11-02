@@ -20,7 +20,7 @@ italianoSemplice: |
   Sotto la Madonna si vede la città di Firenze. È il disegno di Firenze più antico che conosciamo.
 ---
 
-![Lo sapevi che… n. 10: Il primo ritratto di Firenze è in un affresco della Misericordia](/img/news/lo-sapevi-che-10-prima-veduta-di-firenze-grafica.jpg)
+![Lo sapevi che… Firenze, Trecento. Il primo ritratto di Firenze: è in un affresco della Misericordia. È la Madonna della Misericordia del Museo del Bigallo, in piazza San Giovanni. Sullo sfondo, la Loggia del Bigallo in una fotografia d'epoca](/img/news/lo-sapevi-che-10-prima-veduta-di-firenze-grafica.jpg)
 
 Nel **Museo del Bigallo**, in piazza San Giovanni, c'è un affresco del **Trecento**, della cerchia di Bernardo Daddi, con la **Madonna della Misericordia**: la Vergine apre il mantello e accoglie sotto di sé i fiorentini.
 

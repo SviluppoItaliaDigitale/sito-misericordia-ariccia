@@ -19,7 +19,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Arresto cardiaco: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-rianimazione-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un cuore e il tracciato del battito. Scritta: «Arresto cardiaco: la rianimazione passo passo». Tu puoi salvarlo.](/img/news/primo-soccorso-rianimazione-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **4 di 10**: **arresto cardiaco**. *Tu puoi fare la differenza.*
 

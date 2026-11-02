@@ -14,7 +14,7 @@ italianoSemplice: |
   In casa: togli i tappeti per non cadere.
 ---
 
-![Caldo, freddo, casa sicura: la prevenzione. I volontari della Misericordia di Ariccia durante un trasporto a domicilio](/img/news/guida-prevenzione-grafica.jpg)
+![Grafica della guida pratica «Prevenzione»: due volontari della Misericordia di Ariccia salgono le scale durante un trasporto a domicilio, con la scritta «Caldo, freddo, casa sicura: la prevenzione. Stagione per stagione, i consigli ufficiali per anziani, bambini e chi vive solo»](/img/news/guida-prevenzione-grafica.jpg)
 
 D'estate gli anziani disidratati, d'inverno le influenze e le intossicazioni da stufa, tutto l'anno le cadute in casa: molte di queste situazioni si possono **prevenire**. Abbiamo raccolto i consigli ufficiali nella guida **[Prevenzione stagionale](/dossier/prevenzione-stagionale/)**.
 

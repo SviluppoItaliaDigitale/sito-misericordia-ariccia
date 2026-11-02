@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Sostanze chimiche negli occhi: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-02-16-primo-soccorso-occhi-chimici-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un flacone con il simbolo di pericolo e un occhio. Scritta: «Prodotti negli occhi: cosa fare». Acqua corrente, subito e a lungo, poi il 112 o un Centro Antiveleni.](/img/news/2027-02-16-primo-soccorso-occhi-chimici-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **6 di 10**: **sostanze chimiche negli occhi**.
 

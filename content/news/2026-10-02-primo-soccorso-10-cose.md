@@ -16,7 +16,7 @@ italianoSemplice: |
   Puoi imparare meglio con i nostri corsi di primo soccorso.
 ---
 
-![10 cose di primo soccorso: una grafica della Misericordia di Ariccia sulla rianimazione cardiopolmonare](/img/news/primo-soccorso-10-cose-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: due mani al centro del petto e il simbolo della scarica del defibrillatore. Scritta: «10 cose di primo soccorso che possono salvare una vita». Spingi al centro del petto, da 100 a 120 volte al minuto.](/img/news/primo-soccorso-10-cose-grafica.jpg)
 
 Bastano pochi gesti giusti, fatti subito, per cambiare il finale di un'emergenza. Abbiamo raccolto **le 10 cose di primo soccorso che tutti dovrebbero conoscere** verificate sulle **linee guida RCP 2025** dell'[Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/) e, per i temi che queste non trattano, sulle altre fonti ufficiali citate in fondo.
 

@@ -21,7 +21,7 @@ italianoSemplice: |
 
 Ci sono sere in cui essere della Misericordia significa due cose insieme. **Sabato 25 luglio**, alla **Solenne Processione di Santa Apollonia**, Patrona di Ariccia, c'eravamo con **l'ambulanza e i volontari in servizio di assistenza sanitaria** — e c'eravamo da **Confraternita**, sfilando dietro la Santa con il nostro **stendardo**, quello ricamato che accompagna la nostra storia dal 1996.
 
-![Grafica della Misericordia di Ariccia: il confratello con lo stendardo della Confraternita in Piazza di Corte, tra i volontari in divisa, prima della processione di Santa Apollonia](/img/news/apollonia-2026-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Festa di Santa Apollonia»: lo stendardo della Confraternita in Piazza di Corte tra i volontari in divisa e il titolo «In processione: con il nostro stendardo». Assistenza sanitaria e rappresentanza per la Patrona di Ariccia](/img/news/apollonia-2026-grafica.jpg)
 
 ## Una sera di fede e di popolo
 

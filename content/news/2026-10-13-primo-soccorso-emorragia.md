@@ -19,7 +19,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Emorragia grave: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-emorragia-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una goccia di sangue. Scritta: «Emorragia grave: premi e non mollare». Ogni secondo conta.](/img/news/primo-soccorso-emorragia-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **3 di 10**: **emorragia grave**. *Premi e non mollare.*
 

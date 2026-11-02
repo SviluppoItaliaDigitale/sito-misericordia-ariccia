@@ -20,7 +20,7 @@ italianoSemplice: |
 
 Ci sono mattinate che ti ricordano perché fai il volontario. **Sabato 18 luglio**, nel giardino della casa di riposo **Villa La Rocca** di Rocca di Papa, siamo stati accanto ai nonni e agli ospiti per la presentazione del libro **«Qui dove la vita continua» di Riccardo La Rosa**: storie di vita, ricordi e speranze *«che continuano a illuminare il domani»*, come dice la sua copertina.
 
-![Grafica della Misericordia di Ariccia: il nostro volontario in divisa tra il pubblico della presentazione del libro nel giardino di Villa La Rocca, con anziani e ospiti seduti sotto gli ombrelloni](/img/news/qui-dove-la-vita-continua-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Presentazione del libro»: il nostro volontario in divisa tra il pubblico nel giardino di Villa La Rocca e il titolo «Villa La Rocca: una mattinata con gli ospiti». «Qui dove la vita continua» di Riccardo La Rosa, Rocca di Papa, 18 luglio](/img/news/qui-dove-la-vita-continua-grafica.jpg)
 
 ## Una festa di memoria e futuro
 

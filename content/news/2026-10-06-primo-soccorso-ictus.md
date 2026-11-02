@@ -18,7 +18,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Ictus: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-ictus-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: il disegno di un cervello e un cronometro. Scritta: «Ictus: riconoscerlo e cosa fare». Ogni minuto conta.](/img/news/primo-soccorso-ictus-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **1 di 10**: **ictus**. *Il tempo è cervello.*
 

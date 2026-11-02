@@ -16,7 +16,7 @@ italianoSemplice: |
   Alla fine c'è anche la nostra, nata ad Ariccia nel 1994.
 ---
 
-![Le Misericordie d'Italia nei secoli: la Madonna della Misericordia del Bigallo con la più antica veduta di Firenze](/img/news/dossier-misericordie-italia-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la Madonna della Misericordia del Bigallo, a Firenze (foto Sailko, CC BY 3.0, Wikimedia Commons), con la scritta «Le Misericordie d'Italia: nei secoli. Da Firenze 1244 alla Sicilia: le città, le date e le storie che hanno fatto nascere le Misericordie»](/img/news/dossier-misericordie-italia-grafica.jpg)
 
 La storia delle Misericordie comincia a **Firenze nel 1244**, ma non resta lì. In pochi secoli, in Toscana e poi in tutta Italia, nascono altre confraternite con lo stesso spirito: portare i malati, assistere i poveri, seppellire i morti. Le raccontiamo nel nuovo dossier **[Le Misericordie d'Italia](/dossier/misericordie-d-italia/)**, in ordine di nascita e con tutte le fonti.
 

@@ -14,7 +14,7 @@ italianoSemplice: |
   È pensata per chi vive ad Ariccia e nei Castelli Romani.
 ---
 
-![Invalidità, Legge 104, trasporti: i tuoi diritti. I mezzi dei servizi sociali della Misericordia di Ariccia](/img/news/guida-diritti-grafica.jpg)
+![Grafica della guida pratica «Diritti»: un'auto dei servizi sociali della Misericordia di Ariccia, con la scritta «Invalidità, 104, trasporti: i tuoi diritti. Le regole spiegate semplici e a chi rivolgersi ad Ariccia e nei Castelli Romani»](/img/news/guida-diritti-grafica.jpg)
 
 Quando in famiglia arriva una malattia lunga o una disabilità, alla fatica di ogni giorno si aggiunge quella delle pratiche. Ogni giorno, nei nostri trasporti, incontriamo persone che non sapevano di avere un diritto, o non sapevano a chi chiederlo. Per questo abbiamo scritto la **[Guida ai diritti socio-sanitari](/dossier/guida-ai-diritti/)**.
 

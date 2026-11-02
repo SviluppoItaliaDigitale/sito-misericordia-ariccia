@@ -20,7 +20,7 @@ italianoSemplice: |
   Per tenerla dritta, ognuno sceglieva un compagno alto come lui. Le calze colorate erano vietate.
 ---
 
-![Lo sapevi che… n. 24: Un compagno della stessa altezza e niente calze colorate](/img/news/lo-sapevi-che-24-compagno-della-stessa-altezza-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pisa, 1848: «Il compagno di barella: della stessa altezza». Sotto: Ogni confratello sceglieva un compagno «di eguale altezza», così la barella restava dritta. Vietate le calze colorate. Sullo sfondo una fotografia Alinari del 1889 circa con confratelli incappucciati che portano a spalla un cataletto](/img/news/lo-sapevi-che-24-compagno-della-stessa-altezza-grafica.jpg)
 
 Portare un malato a spalla per le strade, magari per chilometri, richiedeva organizzazione. Il regolamento della Misericordia di **Pisa** del 1848 stabilisce che ogni fratello, appena vestito, si scelga un compagno **«di eguale altezza»**: due spalle alla stessa altezza tengono la barella dritta e il malato non scivola.
 

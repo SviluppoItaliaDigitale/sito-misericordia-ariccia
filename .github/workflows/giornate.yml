@@ -1,0 +1,72 @@
+name: Giornate e ricorrenze (social)
+
+# Post delle ricorrenze e delle giornate (Defunti, Tutti i Santi, giornate internazionali), come quelli
+# della Confederazione: richiesta di Alessandro del 2/11/2026. La scheda del giorno è in
+# .github/social/giornate/AAAA-MM-GG.json (testo, immagine, alt, hashtag) e la grafica, fatta con il
+# modello nazionale post-giornata, in static/img/giornate/ (già online col deploy).
+# Ogni mattina alle 8:31 italiane pubblica la scheda di oggi, se c'è e non è nel registro; i giri
+# delle 9:31 e 10:31 sono la riserva (GitHub non garantisce gli orari). I cron coprono ora legale e
+# ora solare; il passo «Orario» tiene solo quelli tra le 8:00 e le 11:59 italiane.
+# Procedura: docs/giornate.md
+on:
+  schedule:
+    - cron: "31 6,7,8,9 * * *"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Giorno da pubblicare (AAAA-MM-GG, vuoto = oggi)"
+        type: string
+        default: ""
+      prova:
+        description: "Solo prova (mostra cosa pubblicherebbe)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: giornate
+  cancel-in-progress: false
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Orario
+        id: ora
+        env:
+          EVENTO: ${{ github.event_name }}
+        run: |
+          H=$((10#$(TZ=Europe/Rome date +%H)))
+          OGGI=$(TZ=Europe/Rome date +%F)
+          echo "Ora italiana: $(TZ=Europe/Rome date '+%A %d/%m %H:%M')"
+          if [ "$EVENTO" = "schedule" ] && { [ "$H" -lt 8 ] || [ "$H" -ge 12 ]; }; then
+            echo "Fuori dalla finestra 8:00-11:59: niente da fare."; echo "salta=1" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENTO" = "schedule" ] && [ ! -f ".github/social/giornate/$OGGI.json" ]; then
+            echo "Oggi nessuna giornata in calendario."; echo "salta=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pubblica sui social
+        if: steps.ora.outputs.salta != '1'
+        env:
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
+          DRY_RUN: ${{ inputs.prova && '1' || '' }}
+          DATA: ${{ inputs.data }}
+        run: python3 scripts/pubblica_social.py --giornata $DATA
+
+      - name: Salva il registro dei post social
+        if: always() && steps.ora.outputs.salta != '1'
+        run: |
+          git diff --quiet -- .github/social/ && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add .github/social/
+          git commit -m "Social: registro giornate [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -18,7 +18,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Infarto: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-infarto-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un cuore con il tracciato del battito. Scritta: «Infarto: i segni e cosa fare». Il tempo è cuore.](/img/news/primo-soccorso-infarto-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **2 di 10**: **infarto**. *Il tempo è vita.*
 

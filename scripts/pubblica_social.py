@@ -682,9 +682,76 @@ def pubblica_parola(giorno=None):
     return 1 if errori else 0
 
 
+# ---------------------------------------------------------------- giornate
+
+GIORNATE_DIR = RADICE / ".github/social/giornate"
+HASHTAG_GIORNATA = "#MisericordiaAriccia #Misericordie #Ariccia"
+
+
+def testo_giornata(g):
+    """Testo del post della giornata: il testo della scheda e gli hashtag (quelli della scheda prima)."""
+    tag = " ".join(x for x in (g.get("hashtag", "").strip(), HASHTAG_GIORNATA) if x)
+    testo = f"{g['testo'].strip()}\n\n{tag}"
+    if len(testo) > 2200:  # limite delle didascalie di Instagram: la scheda è troppo lunga
+        raise ValueError(f"testo della giornata troppo lungo ({len(testo)} caratteri, massimo 2200)")
+    return testo
+
+
+def pubblica_giornata(giorno=None):
+    """Post di una ricorrenza o giornata (dal 2/11/2026, come i post nazionali): una grafica con il
+    modello post-giornata, foto su Facebook e post su Instagram, una volta sola. Scheda in
+    .github/social/giornate/AAAA-MM-GG.json (testo, immagine, alt, hashtag facoltativi)."""
+    giorno = giorno or oggi_roma().date().isoformat()
+    file = GIORNATE_DIR / f"{giorno}.json"
+    if not file.exists():
+        print(f"Nessuna giornata il {giorno}: niente da pubblicare.")
+        return 0
+    g = json.loads(file.read_text(encoding="utf-8"))
+    immagine = SITO + g["immagine"]
+    try:
+        with urllib.request.urlopen(urllib.request.Request(immagine, method="HEAD"), timeout=30) as r:
+            if not r.headers.get("Content-Type", "").startswith("image/jpeg"):
+                raise RuntimeError(f"tipo {r.headers.get('Content-Type')}")
+    except Exception as e:  # noqa: BLE001
+        if not DRY_RUN:
+            print(f"ERRORE: la grafica {immagine} non è online ({e}): serve il deploy", file=sys.stderr)
+            return 1
+        print(f"(prova) non ancora online: {immagine}")
+    chiave = f"giornata-{giorno}"
+    reg = carica_registro()
+    voce = reg.get(chiave, {})
+    prova = DRY_RUN or not (PAGE_ID and PAGE_TOKEN)
+    testo = testo_giornata(g)
+    alt = testo_alt(g.get("alt", ""))
+    errori = 0
+    for rete in ("facebook", "instagram"):
+        if rete in voce:
+            print(f"{rete}: già pubblicata ({voce[rete]})")
+            continue
+        if prova:
+            print(f"{rete}: pubblicherebbe {immagine} con il testo →\n" + "\n".join("   " + r for r in testo.splitlines()))
+            print(f"{rete}: testo alternativo → {alt}")
+            continue
+        if rete == "instagram" and not IG_USER_ID:
+            continue
+        try:
+            pid = (facebook_album([immagine], testo, [alt]) if rete == "facebook"
+                   else instagram_carosello([immagine], testo, [alt]))
+            reg.setdefault(chiave, {})[rete] = pid
+            salva_registro(reg)
+            print(f"{rete}: pubblicata (id {pid})")
+        except Exception as e:  # noqa: BLE001
+            errori += 1
+            print(f"{rete}: ERRORE — {e}", file=sys.stderr)
+    return 1 if errori else 0
+
+
 # ---------------------------------------------------------------- main
 
 def main():
+    if "--giornata" in sys.argv:
+        resto = [a for a in sys.argv[1:] if a != "--giornata"]
+        return pubblica_giornata(resto[0] if resto else None)
     if "--parola" in sys.argv:
         resto = [a for a in sys.argv[1:] if a != "--parola"]
         return pubblica_parola(resto[0] if resto else None)

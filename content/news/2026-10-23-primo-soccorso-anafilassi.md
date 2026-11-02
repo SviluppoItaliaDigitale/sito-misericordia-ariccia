@@ -19,7 +19,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Anafilassi: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-anafilassi-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un autoiniettore di adrenalina. Scritta: «Anafilassi: riconoscerla e usare l'adrenalina». I segni e come usare l'autoiniettore.](/img/news/primo-soccorso-anafilassi-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **6 di 10**: **anafilassi**. *Adrenalina e 112.*
 

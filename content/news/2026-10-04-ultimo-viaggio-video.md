@@ -18,7 +18,7 @@ italianoSemplice: |
   Per informazioni chiama il **348 4068657**.
 ---
 
-![L'ultimo viaggio: una scena del video della Misericordia di Ariccia, il mare al tramonto](/img/news/ultimo-viaggio-grafica.jpg)
+![Grafica della Misericordia di Ariccia: l'ambulanza della Misericordia su un prato, con la scritta «Servizi. L'ultimo viaggio: perché nessun desiderio resti un sogno. Rivedere il mare, tornare al paese natale: ti portiamo in ambulanza, con i volontari accanto. Info al 348 4068657»](/img/news/ultimo-viaggio-grafica.jpg)
 
 C'è un momento in cui il tempo diventa prezioso. E un desiderio, l'ultimo, non può più aspettare. Per chi è malato e non può più muoversi da solo, a volte basta poco per un grande regalo: **rivedere un luogo amato, esserci in un giorno importante**. Lo chiamiamo **«L'ultimo viaggio»**.
 

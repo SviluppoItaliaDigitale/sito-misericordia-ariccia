@@ -21,7 +21,7 @@ italianoSemplice: |
   Chiama o scrivi su WhatsApp al **348 4068657**.
 ---
 
-![Volontarie e volontari della Misericordia di Ariccia con la divisa azzurra cantano insieme durante il pellegrinaggio ad Assisi, con la scritta «Non siamo eroi. Siamo persone come te.»](/img/news/2026-10-28-non-siamo-eroi-video-grafica.jpg)
+![Grafica della Misericordia di Ariccia: volontarie e volontari con la divisa azzurra cantano insieme durante il pellegrinaggio ad Assisi, con la scritta «Volontariato. Non siamo eroi: siamo persone come te. Guarda il video: dai 16 agli 80 anni c'è un posto anche per te. Chiamaci o scrivici su WhatsApp al 348 4068657»](/img/news/2026-10-28-non-siamo-eroi-video-grafica.jpg)
 
 **Non siamo eroi. Siamo persone come te.** Abbiamo un lavoro, una famiglia, mille impegni, ma abbiamo scelto di donare un po' del nostro tempo a chi soffre. In questo video di circa tre minuti raccontiamo che cosa facciamo ogni giorno ad Ariccia, e perché c'è un posto anche per te.
 

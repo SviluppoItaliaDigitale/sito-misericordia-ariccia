@@ -18,7 +18,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Colpo di calore: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-06-01-primo-soccorso-colpo-calore-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona sdraiata rinfrescata con teli bagnati e un ventaglio. Scritta: «Colpo di calore: raffredda, subito». Chiama il 112 e intanto acqua fresca, teli bagnati e aria.](/img/news/2027-06-01-primo-soccorso-colpo-calore-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **9 di 10**: **colpo di calore**.
 

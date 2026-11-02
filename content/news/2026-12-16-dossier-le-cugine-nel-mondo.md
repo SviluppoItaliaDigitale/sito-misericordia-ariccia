@@ -5,7 +5,7 @@ date: 2026-12-16
 slug: "dossier-le-cugine-nel-mondo"
 description: "Le Santas Casas de Misericórdia del Portogallo e del Brasile, Macao, i confratelli giapponesi di Nagasaki, e le nuove Misericordie italiane a Betlemme, in Albania e in Ucraina: il dossier sulle «cugine» nel mondo."
 immagine: "/img/news/dossier-cugine-mondo-grafica.jpg"
-social_testo: "🌍 Nuovo dossier: Le cugine nel mondo. Lo sapevi che nel 1583 a Nagasaki c'era una Misericordia con cento confratelli giapponesi vestiti di nero? Che in Portogallo le Misericórdias sono 388 e in Brasile le Santas Casas sono il solo ospedale in 800 comuni? E che oggi ci sono Misericordie italiane a Betlemme, in Albania e in Ucraina? Un viaggio in quattro continenti, con una precisazione onesta: un legame documentato tra Firenze e Lisbona non c'è."
+social_testo: "🌍 Nuovo dossier: Le cugine nel mondo. Lo sapevi che nel 1583 a Nagasaki c'era una Misericordia con cento confratelli giapponesi vestiti di nero? Che in Portogallo le Misericórdias sono 388 e in Brasile le Santas Casas sono il solo ospedale in 800 comuni? E che oggi ci sono Misericordie italiane a Betlemme, in Albania e in Ucraina? Un viaggio in quattro continenti, con una precisazione onesta: un legame documentato tra Firenze e Lisbona non c'è.\n\nFoto: Bahnfrend, CC BY-SA 4.0, Wikimedia Commons."
 italianoSemplice: |
   **Abbiamo pubblicato un nuovo dossier sulle confraternite simili alle Misericordie negli altri Paesi.**
 
@@ -14,7 +14,7 @@ italianoSemplice: |
   Oggi ci sono Misericordie italiane anche a Betlemme, in Albania e in Ucraina.
 ---
 
-![Le cugine nel mondo: la Santa Casa da Misericórdia di Macao](/img/news/dossier-cugine-mondo-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la facciata della Santa Casa da Misericórdia di Macao (foto Bahnfrend, CC BY-SA 4.0, Wikimedia Commons), con la scritta «Le cugine nel mondo: lo stesso nome, le stesse opere. Portogallo, Brasile, Macao, Giappone e le nuove Misericordie italiane all'estero»](/img/news/dossier-cugine-mondo-grafica.jpg)
 
 Le Misericordie sono nate a Firenze nel 1244, ma confraternite con lo stesso nome e le stesse opere hanno fatto il giro del mondo. Lo raccontiamo nel nuovo dossier **[Le cugine nel mondo](/dossier/le-cugine-nel-mondo/)**.
 

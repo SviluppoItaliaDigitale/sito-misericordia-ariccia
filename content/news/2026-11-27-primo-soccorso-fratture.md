@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Fratture e distorsioni: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-fratture-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un osso con una frattura. Scritta: «Fratture e distorsioni: ferma, non raddrizzare». Il ghiaccio nel panno e quando chiamare il 112.](/img/news/primo-soccorso-fratture-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **6 di 13**: **fratture e distorsioni**.
 

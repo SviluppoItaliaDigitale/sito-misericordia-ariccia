@@ -24,7 +24,7 @@ italianoSemplice: |
 
 Mercoledì sera la **Chiesa di Santa Maria Assunta in Cielo**, in Piazza di Corte, era piena per la **festa di San Pio da Pietrelcina**. Una celebrazione speciale, [come vi avevamo annunciato](/news/festa-san-pio-2026/): a presiedere la Santa Messa è venuto ad Ariccia il **Nunzio Apostolico in Italia e nella Repubblica di San Marino, Mons. Edgar Peña Parra**, insieme al vescovo di Albano **Mons. Vincenzo Viva** e al nostro parroco e Correttore spirituale **don Antonio Salimbeni**.
 
-![Grafica della Misericordia di Ariccia «Una sera di fede con San Pio»: la foto di gruppo davanti all'altare di Santa Maria Assunta in Cielo con i celebranti, le parrocchiane e i volontari della Misericordia in divisa, dopo la Messa presieduta dal Nunzio Apostolico con la reliquia di Padre Pio](/img/news/san-pio-2026-resoconto-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Festa di San Pio»: la foto di gruppo davanti all'altare di Santa Maria Assunta in Cielo con i celebranti, le parrocchiane e i volontari in divisa, e il titolo «Una sera di fede: con il Nunzio e la reliquia». Grazie a chi ha pregato con noi](/img/news/san-pio-2026-resoconto-grafica.jpg)
 
 ## La reliquia di Padre Pio
 

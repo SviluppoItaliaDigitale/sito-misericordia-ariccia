@@ -20,7 +20,7 @@ italianoSemplice: |
   Era rumorosa e faceva sobbalzare. D'estate i volontari andavano anche in bicicletta.
 ---
 
-![Lo sapevi che… n. 17: L'ambulanza «sbuffante e traballante» e i soccorritori in bicicletta](/img/news/lo-sapevi-che-17-ambulanza-sbuffante-viareggio-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Viareggio, 1920: «La prima ambulanza: «sbuffante e traballante»». Sotto: Un medico la ricorda come «un carro angoloso e rozzo». D'estate c'era anche il «Plotone ciclistico». Sullo sfondo una fotografia d'epoca di un'autoambulanza della Misericordia di Pisa degli anni Venti](/img/news/lo-sapevi-che-17-ambulanza-sbuffante-viareggio-grafica.jpg)
 
 Dopo secoli di barelle a spalla e lettighe a ruote, arrivano i motori. A **Viareggio** la prima **ambulanza a motore** della Misericordia entra in servizio il **5 dicembre 1920**.
 

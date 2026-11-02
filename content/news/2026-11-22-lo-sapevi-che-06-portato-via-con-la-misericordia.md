@@ -20,7 +20,7 @@ italianoSemplice: |
   Si dice: «L'hanno portato all'ospedale con la Misericordia».
 ---
 
-![Lo sapevi che… n. 6: «L'hanno portato all'ospedale con la Misericordia»](/img/news/lo-sapevi-che-06-portato-via-con-la-misericordia-grafica.jpg)
+![Lo sapevi che… La lingua italiana. La parola Misericordia: anche la sede e l'ambulanza. «L'hanno portato all'ospedale con la Misericordia», registra il vocabolario Treccani. Sullo sfondo, una foto Alinari di fine Ottocento: confratelli incappucciati della Misericordia di Firenze portano a spalla un malato sulla barella coperta](/img/news/lo-sapevi-che-06-portato-via-con-la-misericordia-grafica.jpg)
 
 In Toscana e in tante altre zone d'Italia la Misericordia è diventata una parola di tutti i giorni. Il **vocabolario Treccani** registra «misericordia» anche come la sede, l'ambulatorio o l'ambulanza della confraternita: si dice «andare alla Misericordia» e «l'hanno portato all'ospedale con la Misericordia».
 

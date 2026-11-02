@@ -26,7 +26,7 @@ italianoSemplice: |
 
 **Sabato 26 settembre 2026** la Misericordia di Ariccia sarà ai **Campi di Annibale di Rocca di Papa** con la propria [assistenza sanitaria](/assistenza-eventi/) alla camminata solidale **«Un Passo alla Volta»**, organizzata dall'associazione **Libere di Camminare ETS** per raccogliere fondi a sostegno di **Loto OdV**, l'associazione nazionale impegnata da oltre dieci anni al fianco delle donne colpite da tumori ginecologici e nella lotta contro il **carcinoma ovarico**.
 
-![Grafica della Misericordia di Ariccia per la camminata solidale «Un Passo alla Volta» del 26 settembre 2026 a Rocca di Papa: l'ambulanza, le mani che reggono il logo delle Misericordie e il logo dell'evento con il nastro viola](/img/news/camminata-solidale-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Eventi»: la nostra ambulanza e i volontari sul prato dei Campi di Annibale e il titolo «Un Passo alla Volta: la Misericordia c'è». Sabato 26 settembre, assistenza sanitaria alla camminata per Loto OdV](/img/news/camminata-solidale-grafica.jpg)
 
 ## Un passo alla volta, insieme
 

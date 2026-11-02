@@ -20,7 +20,7 @@ italianoSemplice: |
   Serviva per aiutare le persone senza farsi riconoscere. Così nessuno doveva dire grazie a una persona precisa.
 ---
 
-![Lo sapevi che… n. 3: Il cappuccio nero per fare il bene senza farsi riconoscere](/img/news/lo-sapevi-che-03-la-buffa-grafica.jpg)
+![Grafica di «Lo sapevi che…», Firenze, dal Medioevo: la veste nera con la buffa esposta al Museo della Misericordia di Firenze (foto Sailko, CC BY 3.0, Wikimedia Commons), con la scritta «La buffa: fare il bene senza farsi riconoscere. Un cappuccio nero con due fori per gli occhi. Dal Vangelo: non sappia la tua sinistra quello che fa la tua destra»](/img/news/lo-sapevi-che-03-la-buffa-grafica.jpg)
 
 Il cappuccio che copre il volto dei confratelli, con due soli fori per gli occhi, si chiama **buffa**. Insieme a guanti e ghette serviva a una cosa sola: che nessuno potesse riconoscere chi stava aiutando. Il nobile e il facchino, sotto la buffa, erano uguali, e chi riceveva aiuto non doveva sentirsi in debito con nessuno.
 

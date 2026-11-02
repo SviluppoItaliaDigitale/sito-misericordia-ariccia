@@ -11,7 +11,7 @@ luogo: "Pisa 1848 · Firenze 1971"
 pillola_titolo: "Le «Sorelle» della Misericordia"
 pillola_testo: "Nel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971."
 fonte_breve: "Regolamento della Misericordia di Pisa (1848); Wikipedia, *Misericordia di Firenze*"
-social_testo: "💡 Lo sapevi che… Le «Sorelle» della Misericordia\n\nNel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971. Alla vigilia dell'8 marzo: le Sorelle della Misericordia di Pisa erano già lì nel 1848.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito."
+social_testo: "💡 Lo sapevi che… Le «Sorelle» della Misericordia\n\nNel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971. Alla vigilia dell'8 marzo: le Sorelle della Misericordia di Pisa erano già lì nel 1848.\n\nOgni domenica una curiosità dalla storia delle Misericordie: le trovi tutte nella rubrica «Lo sapevi che…» del nostro sito.\n\nImmagine: Maestro di Alkmaar, Le sette opere di misericordia (1504), Rijksmuseum, pubblico dominio."
 italianoSemplice: |
   **Lo sapevi che… è la nostra rubrica di curiosità sulla storia della Misericordia.**
 
@@ -20,7 +20,7 @@ italianoSemplice: |
   A Firenze le donne sono entrate nel 1971.
 ---
 
-![Lo sapevi che… n. 21: Le «Sorelle» della Misericordia](/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pisa 1848, Firenze 1971: «Le «Sorelle»: le donne nella Misericordia». Sotto: Nel 1848 a Pisa le «Sorelle» sono già tra i membri. A Firenze le donne entrano in Misericordia nel 1971. Sullo sfondo il pannello «Dar da mangiare agli affamati» del Maestro di Alkmaar (1504), con una donna che distribuisce il pane](/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg)
 
 Alla vigilia della Festa della donna, una storia di Sorelle. Nel regolamento della Misericordia di **Pisa** del **1848** le **«Sorelle»** fanno già parte della confraternita, senza limiti di ceto o di età, con una festa tutta loro e le loro preghiere di suffragio.
 

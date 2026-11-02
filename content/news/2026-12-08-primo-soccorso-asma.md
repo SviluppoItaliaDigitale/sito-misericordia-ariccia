@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Crisi d'asma: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-asma-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: uno spray per l'asma. Scritta: «Crisi d'asma: cosa fare». La posizione giusta, lo spray e quando chiamare il 112.](/img/news/primo-soccorso-asma-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **9 di 13**: **crisi d'asma**.
 

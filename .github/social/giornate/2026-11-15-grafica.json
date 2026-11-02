@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata.html",
+  "lutto": false,
+  "campi": {
+    "giornata": "Giornata mondiale",
+    "giornata-resto": "\ndei poveri",
+    "evidenziato": "Il Signore è il rifugio",
+    "titolo": "del povero",
+    "sottotitolo": "Papa Leone XIV ci ricorda che la Chiesa è chiamata a essere rifugio per i poveri.",
+    "foto": "../../../scripts/grafica-brand/opere-misericordia/alkmaar-dar-da-mangiare.jpg",
+    "foto-posizione": "50% 55%",
+    "foto-alt": "«Dar da mangiare agli affamati», pannello delle Sette opere di misericordia del Maestro di Alkmaar (1504): sulla porta di casa una donna porge un cesto di pane e un uomo lo distribuisce ai poveri, tra cui un uomo seduto a terra e una madre con il bambino"
+  }
+}

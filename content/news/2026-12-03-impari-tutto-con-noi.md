@@ -33,7 +33,7 @@ italianoSemplice: |
   Puoi diventare volontario se hai tra 16 e 80 anni. Scrivi **VOLONTARIO** su WhatsApp al **348 4068657**.
 ---
 
-![Grafica della campagna «Esci dal post. Entra nella squadra»: volontari della Misericordia di Ariccia, di spalle, seguono una lezione in aula davanti allo schermo, con la scritta «Impari tutto con noi».](/img/news/2026-12-03-impari-tutto-con-noi-grafica.jpg)
+![Grafica della campagna «Esci dal post. Entra nella squadra», fascia «Volontariato»: volontari della Misericordia di Ariccia, di spalle, seguono una lezione in aula davanti allo schermo, con la scritta «Formazione: impari tutto con noi. Prima la formazione, poi il servizio, sempre in squadra. Scrivi VOLONTARIO su WhatsApp al 348 4068657».](/img/news/2026-12-03-impari-tutto-con-noi-grafica.jpg)
 
 **Non sai niente di primo soccorso? Va benissimo: si comincia tutti così.** In questa tappa di **«Esci dal post. Entra nella squadra»**, due giorni prima della Giornata internazionale del volontariato, ti raccontiamo come si impara a fare servizio alla Misericordia di Ariccia.
 

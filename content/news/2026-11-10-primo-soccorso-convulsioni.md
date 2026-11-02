@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Convulsioni: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-convulsioni-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona sdraiata a terra durante una crisi convulsiva. Scritta: «Convulsioni: cosa fare e cosa non fare». Spazio intorno, niente in bocca, guarda l'orologio.](/img/news/primo-soccorso-convulsioni-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **1 di 13**: **convulsioni**.
 

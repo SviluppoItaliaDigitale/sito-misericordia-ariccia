@@ -19,7 +19,7 @@ italianoSemplice: |
   Chiama il **328 8105399**.
 ---
 
-![Giornata internazionale del volontariato: una scena del video della Misericordia di Ariccia](/img/news/giornata-volontariato-grafica.jpg)
+![Grafica della Giornata internazionale del volontariato: volontarie e volontari della Misericordia di Ariccia in divisa nella piazza di Ariccia, sotto lo stendardo, con la scritta «Grazie: e c'è posto anche per te. Con la Misericordia di Ariccia, dai 16 agli 80 anni»](/img/news/giornata-volontariato-grafica.jpg)
 
 Il **5 dicembre** è la **Giornata internazionale del volontariato**. Per noi è l'occasione per dire una parola semplice: **grazie**. Grazie ai volontari della Misericordia di Ariccia, che ogni giorno regalano il loro tempo a chi ha bisogno.
 

@@ -14,7 +14,7 @@ italianoSemplice: |
   Spiega anche cosa fare mentre aspetti l'ambulanza.
 ---
 
-![Cosa succede quando chiami il 112: l'ambulanza della Misericordia di Ariccia](/img/news/guida-112-grafica.jpg)
+![Grafica della guida pratica «Emergenze»: l'ambulanza della Misericordia di Ariccia con i volontari, con la scritta «Quando chiami il 112: che cosa succede. Chi risponde, che cosa ti chiede, che cosa fare mentre l'ambulanza arriva»](/img/news/guida-112-grafica.jpg)
 
 I minuti più importanti di un'emergenza, spesso, sono quelli della **telefonata**. Per questo abbiamo preparato la guida **[Cosa succede quando chiami il 112](/dossier/chiamare-il-112/)**: da leggere oggi, con calma, per sapere cosa fare domani, se servirà.
 

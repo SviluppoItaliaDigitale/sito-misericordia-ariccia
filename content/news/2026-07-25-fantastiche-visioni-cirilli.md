@@ -21,7 +21,7 @@ Ci sono servizi che finiscono con un sorriso doppio: quello del pubblico e quell
 
 E a fine serata, il regalo più bello: **il selfie di Cirilli con le nostre volontarie**, con l'ambulanza a fare capolino tra gli alberi del parco.
 
-![Grafica della Misericordia di Ariccia: il selfie di Gabriele Cirilli con quattro nostre volontarie nell'arena del Parco Chigi a fine serata, con l'ambulanza sullo sfondo](/img/news/fantastiche-visioni-cirilli-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Eventi»: il selfie di Gabriele Cirilli con le nostre volontarie al Parco Chigi e il titolo «Fantastiche Visioni: una serata di risate con Cirilli». «Ciri Rider» al Parco Chigi, e noi in servizio di assistenza sanitaria](/img/news/fantastiche-visioni-cirilli-grafica.jpg)
 
 ## Il nostro servizio
 

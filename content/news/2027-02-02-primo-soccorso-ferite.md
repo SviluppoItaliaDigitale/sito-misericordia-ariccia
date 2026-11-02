@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Ferite e tagli: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-02-02-primo-soccorso-ferite-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un braccio con un cerotto e, nel tondo, la ferita lavata con l'acqua e coperta. Scritta: «Ferite e tagli: cosa fare». Lava con acqua corrente, copri e controlla l’antitetanica.](/img/news/2027-02-02-primo-soccorso-ferite-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **4 di 10**: **ferite e tagli**.
 

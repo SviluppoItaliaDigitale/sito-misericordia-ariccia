@@ -20,7 +20,7 @@ italianoSemplice: |
   Alla fine della corsa c'erano i volontari della Misericordia con le barelle, pronti ad aiutare i feriti.
 ---
 
-![Lo sapevi che… n. 14: Al Palio, le barelle aspettavano dietro i tendoni](/img/news/lo-sapevi-che-14-palio-dei-barberi-grafica.jpg)
+![Lo sapevi che… Firenze, Ottocento. Al Palio dei Barberi: le barelle aspettavano dietro i tendoni. Alla Porta alla Croce aspettavano i cataletti della Misericordia. Sullo sfondo, una foto Alinari di fine Ottocento: confratelli incappucciati della Misericordia di Firenze accanto al cataletto](/img/news/lo-sapevi-che-14-palio-dei-barberi-grafica.jpg)
 
 Il **Palio dei Barberi** era una corsa di cavalli senza fantino lungo le strade di Firenze. Il traguardo era alla **Porta alla Croce**: lì alcuni uomini dovevano fermare i cavalli lanciati al galoppo.
 

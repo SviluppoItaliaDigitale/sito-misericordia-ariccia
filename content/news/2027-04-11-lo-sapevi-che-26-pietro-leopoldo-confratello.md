@@ -20,7 +20,7 @@ italianoSemplice: |
   Ma la Misericordia di Firenze no: anche lui ne faceva parte.
 ---
 
-![Lo sapevi che… n. 26: Il granduca che chiuse le confraternite ma salvò la Misericordia](/img/news/lo-sapevi-che-26-pietro-leopoldo-confratello-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Firenze, 1785: «Il granduca: che salvò la Misericordia». Sotto: Pietro Leopoldo soppresse quasi tutte le confraternite della Toscana. Ma era iscritto alla Misericordia di Firenze, e la protesse. Sullo sfondo il ritratto del granduca Pietro Leopoldo di Lorena dipinto da Martin van Meytens](/img/news/lo-sapevi-che-26-pietro-leopoldo-confratello-grafica.jpg)
 
 Negli anni Ottanta del Settecento il granduca di Toscana **Pietro Leopoldo di Lorena** riformò lo Stato da cima a fondo. Tra le riforme c'era la **soppressione di quasi tutte le confraternite** del granducato, i cui beni passarono ad altri usi.
 

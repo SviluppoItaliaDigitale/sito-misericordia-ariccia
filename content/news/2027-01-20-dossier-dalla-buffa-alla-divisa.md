@@ -5,7 +5,7 @@ date: 2027-01-20
 slug: "dossier-dalla-buffa-alla-divisa"
 description: "Il nuovo dossier della Misericordia di Ariccia sull'abito dei confratelli: la veste rossa del 1244, la cappa nera con la buffa dal 1495, la fascia al braccio, la divisa giallo-ciano delle Misericordie d'Italia e la cerimonia della Vestizione."
 immagine: "/img/news/dossier-divise-grafica.jpg"
-social_testo: "🟨🟦 Perché i volontari della Misericordia vestono di giallo e ciano?\n\nAll'inizio la veste era rossa. Dal 1495 diventa nera, con la buffa: il cappuccio con due fori per gli occhi, perché chi fa il bene resti anonimo. Negli anni Novanta arriva la divisa giallo-ciano, uguale in tutta Italia, che si vede da lontano sulla strada.\n\nOggi, 20 gennaio, è San Sebastiano, patrono della Misericordia di Firenze: ed è spesso nella festa del patrono che le Misericordie consegnano la veste ai nuovi confratelli. Otto secoli di abiti nel nuovo dossier sul nostro sito."
+social_testo: "🟨🟦 Perché i volontari della Misericordia vestono di giallo e ciano?\n\nAll'inizio la veste era rossa. Dal 1495 diventa nera, con la buffa: il cappuccio con due fori per gli occhi, perché chi fa il bene resti anonimo. Negli anni Novanta arriva la divisa giallo-ciano, uguale in tutta Italia, che si vede da lontano sulla strada.\n\nOggi, 20 gennaio, è San Sebastiano, patrono della Misericordia di Firenze: ed è spesso nella festa del patrono che le Misericordie consegnano la veste ai nuovi confratelli. Otto secoli di abiti nel nuovo dossier sul nostro sito.\n\nFoto: Sailko, CC BY 3.0, Wikimedia Commons."
 italianoSemplice: |
   **Abbiamo scritto la storia dei vestiti dei volontari della Misericordia.**
 
@@ -16,7 +16,7 @@ italianoSemplice: |
   La veste antica si usa ancora nelle feste.
 ---
 
-![Dalla buffa alla divisa: la cappa nera con la buffa e l'antica veste rossa al Museo della Misericordia di Firenze](/img/news/dossier-divise-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la cappa nera con la buffa e l'antica veste rossa al Museo della Misericordia di Firenze (foto Sailko, CC BY 3.0, Wikimedia Commons), con la scritta «Dalla buffa alla divisa: otto secoli di abiti. La veste rossa, la cappa nera, la fascia al braccio, il giallo-ciano»](/img/news/dossier-divise-grafica.jpg)
 
 Il primo scopo dell'abito dei confratelli è sempre stato renderli **uguali**: sotto la veste nessuno doveva distinguersi, e chi riceveva aiuto non doveva sapere da chi. Poi è arrivato un secondo scopo: farsi **vedere** sulla strada. Lo raccontiamo nel nuovo dossier **[Dalla buffa alla divisa](/dossier/dalla-buffa-alla-divisa/)**.
 

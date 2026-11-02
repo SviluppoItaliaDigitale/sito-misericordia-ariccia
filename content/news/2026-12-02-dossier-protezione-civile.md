@@ -14,7 +14,7 @@ italianoSemplice: |
   Spiega anche come si organizzano oggi.
 ---
 
-![Le Misericordie nella protezione civile: un mezzo di protezione civile della Misericordia di Firenze](/img/news/dossier-protezione-civile-grafica.jpg)
+![Grafica del dossier «Nelle emergenze»: un mezzo di protezione civile della Misericordia di Firenze, con la scritta «Le Misericordie: nella protezione civile. Dal Friuli 1976 alle alluvioni di oggi: colonna mobile, moduli, volontari da tutta Italia»](/img/news/dossier-protezione-civile-grafica.jpg)
 
 Le Misericordie sono nate per portare i malati in barella. In cinquant'anni sono diventate una delle forze nazionali di **protezione civile**. Lo raccontiamo nel nuovo dossier **[Le Misericordie nella protezione civile](/dossier/protezione-civile/)**.
 

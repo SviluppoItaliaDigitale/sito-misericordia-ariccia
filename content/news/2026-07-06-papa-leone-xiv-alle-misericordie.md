@@ -20,7 +20,7 @@ italianoSemplice: |
   Vuoi aiutare anche tu? Puoi diventare volontario.
 ---
 
-![Grafica: la frase di Papa Leone XIV «Siate sempre messaggeri di speranza, di carità e di pace» e le tre radici delle Misericordie: spiritualità, carità, attenzione ai bisogni di oggi](/img/news/papa-leone-xiv-grafica.jpg)
+![Grafica della Misericordia di Ariccia con la fascia «Papa Leone XIV»: il Papa sorridente, in abito bianco, durante un'udienza, con la scritta «Alle Misericordie: messaggeri di speranza» e la frase «Siate sempre messaggeri di speranza, di carità e di pace», udienza del 14 febbraio 2026](/img/news/papa-leone-xiv-grafica.jpg)
 
 Ci sono parole che restano, e che vale la pena custodire. Lo scorso **14 febbraio**, in Vaticano, **Papa Leone XIV** ha ricevuto in udienza la **Confederazione Nazionale delle Misericordie d'Italia** — la grande famiglia di cui anche la nostra Confraternita fa parte — e ha consegnato al Movimento un messaggio che sentiamo rivolto a ciascuno di noi.
 
@@ -41,3 +41,5 @@ Per la Misericordia di Ariccia queste parole sono la conferma della strada perco
 Se anche tu vuoi essere «messaggero di speranza», [c'è un posto per te tra i nostri volontari](/diventa-volontario/).
 
 *Fonte: [ACI Stampa, 14 febbraio 2026](https://www.acistampa.com/story/33799/papa-leone-xiv-alle-misericordie-siate-sempre-messaggeri-di-speranza-di-carita-e-di-pace).*
+
+*Foto di Papa Leone XIV: Edgar Beltrán, The Pillar, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pope_Leo_XIV_3_(3x4_cropped).jpg), licenza CC BY-SA 4.0.*

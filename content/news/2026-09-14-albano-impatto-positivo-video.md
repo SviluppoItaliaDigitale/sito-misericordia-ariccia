@@ -17,7 +17,7 @@ italianoSemplice: |
 
 Quattro minuti per raccontare chi fa del bene, ogni giorno, sul nostro territorio. Il reportage **«Albano Laziale, impatto positivo»** presenta due realtà dei Castelli Romani: l'istituto di formazione professionale **Formalba** e la **Misericordia di Ariccia**. Lo pubblichiamo integralmente: la nostra parte inizia al minuto 2:23, ma vale la pena guardarlo tutto.
 
-![Grafica della Misericordia di Ariccia per il video «Albano Laziale, impatto positivo»: la Governatrice Maddalena Basili in pettorina gialla parla davanti ai volontari seduti nella sede, con un pulsante play al centro e il titolo «La Misericordia raccontata in video»](/img/news/albano-impatto-positivo-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Chi siamo»: la Governatrice Maddalena Basili in pettorina gialla parla davanti ai volontari nella sede, e il titolo «Albano, impatto positivo: la Misericordia in un video». Trasporti, Centro di Ascolto e volontariato raccontati dalla Governatrice e dal fondatore](/img/news/albano-impatto-positivo-grafica.jpg)
 
 {{< video src="video/albano-impatto-positivo.mp4" poster="img/video/albano-impatto-positivo.jpg" titolo="Albano Laziale, impatto positivo: la Misericordia di Ariccia" descrizione="Reportage realizzato da PMG sulle realtà che fanno bene al territorio dei Castelli Romani: l'istituto Formalba e la Misericordia di Ariccia, con la Governatrice Maddalena Basili e il fondatore Fernando Nasoni." durata="PT4M16S" data="2026-09-14" didascalia="Il reportage completo (4 minuti e 16 secondi), realizzato da PMG. Il video si scarica solo quando premi play." >}}
 

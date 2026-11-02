@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![La cassetta di primo soccorso: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-cassetta-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una cassetta di primo soccorso aperta. Scritta: «La cassetta di primo soccorso di casa e auto». Che cosa metterci, dove tenerla e quando controllarla.](/img/news/primo-soccorso-cassetta-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **13 di 13**: **la cassetta di primo soccorso**.
 

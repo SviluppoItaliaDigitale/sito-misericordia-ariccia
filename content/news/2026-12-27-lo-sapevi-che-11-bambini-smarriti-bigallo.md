@@ -20,7 +20,7 @@ italianoSemplice: |
   Tanto tempo fa lì si portavano i bambini che si erano persi. Così i genitori potevano trovarli.
 ---
 
-![Lo sapevi che… n. 11: Sotto la loggia, i bambini smarriti aspettavano la famiglia](/img/news/lo-sapevi-che-11-bambini-smarriti-bigallo-grafica.jpg)
+![Lo sapevi che… Firenze, dal 1525. Sotto la loggia: i bambini smarriti aspettavano la famiglia. Al Bigallo si mostravano perché qualcuno li riconoscesse. Sullo sfondo, la Loggia del Bigallo in piazza del Duomo, in una fotografia d'epoca](/img/news/lo-sapevi-che-11-bambini-smarriti-bigallo-grafica.jpg)
 
 La **Loggia del Bigallo**, davanti al Battistero di Firenze, fu costruita per la Misericordia negli anni Cinquanta del Trecento. Le confraternite non soccorrevano solo i malati: si occupavano anche dei bambini abbandonati.
 

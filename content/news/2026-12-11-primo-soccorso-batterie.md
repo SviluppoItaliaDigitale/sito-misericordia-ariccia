@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Batterie a bottone e calamite: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-batterie-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una batteria a bottone da 3 volt. Scritta: «Batterie a bottone e calamite: un'emergenza». Basta il dubbio per correre in ospedale.](/img/news/primo-soccorso-batterie-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **10 di 13**: **batterie a bottone e calamite**.
 

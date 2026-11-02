@@ -15,7 +15,7 @@ italianoSemplice: |
   Il dossier è una piccola guida per chi vuole andare a vederli.
 ---
 
-![I tesori delle Misericordie: la pala di Andrea della Robbia nella chiesa della Misericordia di Firenze](/img/news/dossier-tesori-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la pala di Andrea della Robbia nella chiesa della Misericordia di Firenze (foto Sailko, CC BY-SA 3.0, Wikimedia Commons), con la scritta «I tesori delle Misericordie: musei, sedi e opere d'arte. Della Robbia, Piero della Francesca, Vasari, Caravaggio: una piccola guida nel nuovo dossier»](/img/news/dossier-tesori-grafica.jpg)
 
 Le Misericordie sono nate per servire i poveri, ma nei secoli hanno raccolto anche un patrimonio d'arte straordinario. Lo raccontiamo nel nuovo dossier **[I tesori delle Misericordie](/dossier/tesori-delle-misericordie/)**, pensato anche come piccola guida per chi vuole visitarli.
 

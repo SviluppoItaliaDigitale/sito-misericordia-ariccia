@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Svenimento: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-svenimento-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona sdraiata con le gambe sollevate. Scritta: «Svenimento: sdraiato e gambe su». I segni che lo annunciano e cosa fare se succede.](/img/news/primo-soccorso-svenimento-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **3 di 13**: **svenimento**.
 

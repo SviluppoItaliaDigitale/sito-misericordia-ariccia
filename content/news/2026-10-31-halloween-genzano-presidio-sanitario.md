@@ -37,7 +37,7 @@ italianoSemplice: |
 
 Oggi, **sabato 31 ottobre 2026**, il centro di **Genzano di Roma** è in festa per **Halloween**, con l'iniziativa promossa dalla Pro Loco. Tra maschere, decorazioni e famiglie in piazza ci siamo anche noi: la **Misericordia di Ariccia** garantisce il **presidio sanitario** dal primo pomeriggio **fino a mezzanotte**.
 
-![Grafica della Misericordia di Ariccia con la foto della squadra in piazza e il messaggio «Halloween a Genzano: ci siamo fino a mezzanotte»: presidio sanitario con medici, infermieri e volontari, insieme alla Protezione Civile di Genzano di Roma.](/img/news/2026-10-31-halloween-genzano-presidio-sanitario-grafica.jpg)
+![Grafica della Misericordia di Ariccia con la foto della squadra in piazza e la scritta «Eventi. Halloween a Genzano: ci siamo fino a mezzanotte. Presidio sanitario con medici, infermieri e volontari, insieme alla Protezione Civile di Genzano di Roma».](/img/news/2026-10-31-halloween-genzano-presidio-sanitario-grafica.jpg)
 
 ## Medici, infermieri e volontari in piazza
 

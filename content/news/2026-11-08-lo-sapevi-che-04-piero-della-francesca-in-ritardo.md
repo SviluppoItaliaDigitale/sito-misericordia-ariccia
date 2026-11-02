@@ -20,7 +20,7 @@ italianoSemplice: |
   La Misericordia di Sansepolcro gli ha chiesto un dipinto da finire in tre anni. Lui ci ha messo più di quindici anni.
 ---
 
-![Lo sapevi che… n. 4: Tre anni di contratto, più di quindici per finire](/img/news/lo-sapevi-che-04-piero-della-francesca-in-ritardo-grafica.jpg)
+![Lo sapevi che… Sansepolcro, 1445. Tre anni di contratto: più di quindici per finire. La Misericordia di Sansepolcro commissiona un polittico a Piero della Francesca. Sullo sfondo, un particolare della sua Madonna della Misericordia: fedeli in preghiera, tra cui un confratello incappucciato](/img/news/lo-sapevi-che-04-piero-della-francesca-in-ritardo-grafica.jpg)
 
 L'**11 gennaio 1445** la Compagnia della Misericordia di Sansepolcro firma un contratto con un pittore del posto, **Piero della Francesca**. Gli chiede un grande polittico per il suo altare, da finire in **tre anni**, dipinto tutto di sua mano.
 

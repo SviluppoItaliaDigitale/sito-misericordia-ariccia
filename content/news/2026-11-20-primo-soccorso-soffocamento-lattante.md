@@ -19,7 +19,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Soffocamento nel lattante: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-soffocamento-lattante-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un lattante a pancia in giù sull'avambraccio e la mano che dà le pacche sulla schiena. Scritta: «Soffocamento nel lattante: 5 pacche e 5 compressioni». Le manovre giuste per un bambino sotto l'anno.](/img/news/primo-soccorso-soffocamento-lattante-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **4 di 13**: **soffocamento nel lattante**.
 

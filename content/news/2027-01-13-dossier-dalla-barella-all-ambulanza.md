@@ -5,7 +5,7 @@ date: 2027-01-13
 slug: "dossier-dalla-barella-all-ambulanza"
 description: "Il nuovo dossier della Misericordia di Ariccia sulla storia delle ambulanze: dalle zane di vimini al cataletto del 1478, dal carro-lettiga del 1903 alla prima autoambulanza di Firenze nel 1911, fino al 118 e ai mezzi di oggi."
 immagine: "/img/news/dossier-ambulanze-grafica.jpg"
-social_testo: "🚑 Prima delle ambulanze c'erano le spalle dei confratelli.\n\nNel 1478 la Misericordia di Firenze introduce il cataletto, una barella di legno portata a spalla: resterà in servizio per più di quattro secoli. Poi arrivano le lettighe a ruote, le ambulanze a cavalli, il carro-lettiga del 1903 e, il 28 maggio 1911, la prima autoambulanza: una Fiat con la carrozzeria in legno.\n\nOtto secoli di mezzi di soccorso, fino alle ambulanze di oggi, nel nuovo dossier sul nostro sito."
+social_testo: "🚑 Prima delle ambulanze c'erano le spalle dei confratelli.\n\nNel 1478 la Misericordia di Firenze introduce il cataletto, una barella di legno portata a spalla: resterà in servizio per più di quattro secoli. Poi arrivano le lettighe a ruote, le ambulanze a cavalli, il carro-lettiga del 1903 e, il 28 maggio 1911, la prima autoambulanza: una Fiat con la carrozzeria in legno.\n\nOtto secoli di mezzi di soccorso, fino alle ambulanze di oggi, nel nuovo dossier sul nostro sito.\n\nFoto: Sailko, CC BY 3.0, Wikimedia Commons."
 italianoSemplice: |
   **Abbiamo scritto la storia dei mezzi per portare i malati.**
 
@@ -16,7 +16,7 @@ italianoSemplice: |
   La prima ambulanza a motore della Misericordia di Firenze è del 1911.
 ---
 
-![Dalla barella all'ambulanza: il carro-lettiga del 1903 esposto alla Misericordia di Settignano](/img/news/dossier-ambulanze-grafica.jpg)
+![Grafica del dossier «La nostra storia»: il carro-lettiga del 1903 esposto alla Misericordia di Settignano (foto Sailko, CC BY 3.0, Wikimedia Commons), con la scritta «Dalla barella all'ambulanza: otto secoli di mezzi di soccorso. Ceste, cataletti, carri a mano, cavalli, motori: per portare i malati»](/img/news/dossier-ambulanze-grafica.jpg)
 
 Prima delle ambulanze c'erano **le spalle dei confratelli**. Nel nuovo dossier **[Dalla barella all'ambulanza](/dossier/dalla-barella-all-ambulanza/)** raccontiamo otto secoli di mezzi per portare i malati, con lo stesso gesto di sempre.
 

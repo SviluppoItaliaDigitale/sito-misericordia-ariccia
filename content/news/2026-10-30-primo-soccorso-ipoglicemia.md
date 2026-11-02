@@ -18,7 +18,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Ipoglicemia: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-ipoglicemia-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: zollette di zucchero e un bicchiere di succo. Scritta: «Ipoglicemia: serve zucchero». Quanto zucchero dare e la regola dei 15 minuti.](/img/news/primo-soccorso-ipoglicemia-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **8 di 10**: **ipoglicemia**. *Serve zucchero.*
 
