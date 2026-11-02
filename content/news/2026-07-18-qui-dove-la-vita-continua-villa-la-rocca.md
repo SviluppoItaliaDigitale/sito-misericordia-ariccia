@@ -1,5 +1,5 @@
 ---
-title: "«Qui dove la vita continua»: una mattinata con i nonni di Villa La Rocca"
+title: "«Qui dove la vita continua»: una mattinata con gli ospiti di Villa La Rocca"
 date: 2026-07-18
 slug: "qui-dove-la-vita-continua-villa-la-rocca"
 social_testo: "Sabato 18 luglio 2026, la Misericordia di Ariccia alla presentazione del libro di Riccardo La Rosa alla casa di riposo Villa La Rocca di Rocca di Papa: storie di vita, ricordi e speranze insieme agli anziani."
@@ -13,12 +13,12 @@ italianoSemplice: |
 
   Il libro racconta le storie e i ricordi delle persone anziane.
 
-  C'era anche la musica. I nonni erano contenti.
+  C'era anche la musica. Gli ospiti erano contenti.
 
   I nostri volontari erano lì per aiutare.
 ---
 
-Ci sono mattinate che ti ricordano perché fai il volontario. **Sabato 18 luglio**, nel giardino della casa di riposo **Villa La Rocca** di Rocca di Papa, siamo stati accanto ai nonni e agli ospiti per la presentazione del libro **«Qui dove la vita continua» di Riccardo La Rosa**: storie di vita, ricordi e speranze *«che continuano a illuminare il domani»*, come dice la sua copertina.
+Ci sono mattinate che ti ricordano perché fai il volontario. **Sabato 18 luglio**, nel giardino della casa di riposo **Villa La Rocca** di Rocca di Papa, siamo stati accanto agli ospiti per la presentazione del libro **«Qui dove la vita continua» di Riccardo La Rosa**: storie di vita, ricordi e speranze *«che continuano a illuminare il domani»*, come dice la sua copertina.
 
 ![Grafica della Misericordia di Ariccia, fascia «Presentazione del libro»: il nostro volontario in divisa tra il pubblico nel giardino di Villa La Rocca e il titolo «Villa La Rocca: una mattinata con gli ospiti». «Qui dove la vita continua» di Riccardo La Rosa, Rocca di Papa, 18 luglio](/img/news/qui-dove-la-vita-continua-grafica.jpg)
 
