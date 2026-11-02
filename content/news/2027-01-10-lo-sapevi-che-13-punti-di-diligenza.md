@@ -20,7 +20,7 @@ italianoSemplice: |
   Con mille punti un volontario poteva diventare capo squadra.
 ---
 
-![Lo sapevi che… n. 13: La raccolta punti della carità](/img/news/lo-sapevi-che-13-punti-di-diligenza-grafica.jpg)
+![Lo sapevi che… Pisa, 1848. La raccolta punti: della carità. Ogni servizio valeva «punti di diligenza»: con mille si diventava capo di guardia. Sullo sfondo, Vestire gli ignudi del Maestro di Alkmaar (1504): poveri in attesa davanti a una casa](/img/news/lo-sapevi-che-13-punti-di-diligenza-grafica.jpg)
 
 Altro che tessere del supermercato. Nella Misericordia di Pisa del 1848 ogni servizio valeva dei **punti di diligenza**: **uno** per un servizio in città, **due** nei sobborghi, **tre** oltre un miglio dalle mura.
 

@@ -20,7 +20,7 @@ italianoSemplice: |
   Dal 1783 organizza la lotteria del Portogallo. Con i soldi aiuta i malati e i poveri.
 ---
 
-![Lo sapevi che… n. 9: Le «cugine» portoghesi che gestiscono la lotteria](/img/news/lo-sapevi-che-09-lisbona-lotteria-grafica.jpg)
+![Lo sapevi che… Lisbona, dal 1783. Le «cugine» portoghesi: gestiscono la lotteria. Dal 1783 la Santa Casa da Misericórdia di Lisbona gestisce la lotteria del Portogallo. Sullo sfondo, la regina Eleonora sul trono, nel dipinto di José Malhoa](/img/news/lo-sapevi-che-09-lisbona-lotteria-grafica.jpg)
 
 Nel **1498** la regina **Eleonora** fonda a Lisbona la **Santa Casa da Misericórdia**. Una tradizione la collega a Firenze, ma mancano documenti che lo provino. Di certo, dal Portogallo le «Misericórdias» si diffusero in Brasile, in Africa e in Asia.
 

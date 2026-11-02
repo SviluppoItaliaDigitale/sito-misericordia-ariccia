@@ -24,7 +24,7 @@ italianoSemplice: |
 
 Una mattina di sole, un bosco, tante magliette bianche con il nastro rosa. **Sabato 26 settembre** la Misericordia di Ariccia era ai **Campi di Annibale di Rocca di Papa** per la camminata solidale **«Un Passo alla Volta – Camminiamo insieme per la speranza»**, [come vi avevamo annunciato](/news/camminata-solidale-un-passo-alla-volta/): con l'**ambulanza** e i soccorritori per l'[assistenza sanitaria](/assistenza-eventi/), e con i **volontari in divisa** in cammino accanto ai partecipanti.
 
-![Grafica della Misericordia di Ariccia «Un passo alla volta, insieme per la speranza»: un volontario in divisa e una partecipante con la maglietta dell'evento davanti alla scultura in legno Flora, sulla Via Sacra di Monte Cavo, il 26 settembre 2026](/img/news/camminata-2026-resoconto-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Un Passo alla Volta»: un volontario in divisa e una partecipante davanti alla scultura in legno Flora, e il titolo «Sulla Via Sacra: insieme per la speranza». Assistenza sanitaria e volontari in cammino con Loto OdV, contro il tumore ovarico](/img/news/camminata-2026-resoconto-grafica.jpg)
 
 ## Per le donne che combattono il tumore ovarico
 

@@ -20,7 +20,7 @@ italianoSemplice: |
   I nottanti stavano con i malati di notte. I nuovi volontari si chiamavano stracciafoglie.
 ---
 
-![Lo sapevi che… n. 16: Nottanti, mutanti e «stracciafoglie»](/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg)
+![Lo sapevi che… Firenze, 1877. Le parole del servizio: nottanti, mutanti e «stracciafoglie». Nella Misericordia di Firenze chi vegliava i malati di notte era un «nottante». Sullo sfondo, Alloggiare i pellegrini del Maestro di Alkmaar (1504): viandanti accolti alla porta di una casa](/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg)
 
 Ogni mestiere ha le sue parole. Nel **1877** una guida inglese descrive la Misericordia di Firenze: **72 capi di guardia** e una cinquantina di **giornanti** in servizio ogni giorno.
 

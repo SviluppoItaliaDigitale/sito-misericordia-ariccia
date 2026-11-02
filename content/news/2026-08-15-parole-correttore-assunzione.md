@@ -21,7 +21,7 @@ italianoSemplice: |
 
 Oggi, **15 agosto**, Ariccia celebra la sua chiesa madre: la **Basilica Collegiata di Santa Maria Assunta in Cielo**, in Piazza di Corte, dedicata proprio al mistero che la Chiesa festeggia in questo giorno. Per l'occasione il nostro parroco e **Correttore** della Confraternita, **don Antonio Salimbeni**, ha scritto un pensiero a tutta la comunità: lo pubblichiamo qui integralmente.
 
-![Grafica della Misericordia di Ariccia per il 15 agosto: l'immagine dell'Assunta in una cornice azzurra, il titolo «Le parole del nostro Correttore» e la citazione di don Antonio «Siamo chiamati a realizzare cose veramente grandi, perché radicate nell'Amore»](/img/news/2026-08-15-parole-correttore-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Festa dell'Assunzione di Maria»: la chiesa di Santa Maria Assunta in Cielo in Piazza di Corte e il titolo «Le parole del Correttore: cose grandi, radicate nell'Amore». Il pensiero di don Antonio, parroco di Santa Maria Assunta in Cielo, per il 15 agosto](/img/news/2026-08-15-parole-correttore-grafica.jpg)
 
 ## Il messaggio di don Antonio
 

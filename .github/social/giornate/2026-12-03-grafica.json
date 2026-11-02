@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata.html",
+  "lutto": false,
+  "campi": {
+    "giornata": "Giornata internazionale",
+    "giornata-resto": "\ndelle persone con disabilità",
+    "evidenziato": "Muoversi liberamente:",
+    "titolo": "un diritto di tutti",
+    "sottotitolo": "Con i nostri mezzi attrezzati accompagniamo a visite, scuola, lavoro e tempo libero.",
+    "foto": "foto/2026-12-03-mezzo-servizi-sociali.jpg",
+    "foto-posizione": "50% 100%",
+    "foto-alt": "Il mezzo dei servizi sociali della Misericordia di Ariccia, con i simboli dell'accessibilità sul lunotto, parcheggiato su una strada di mare sotto una rupe, con il cielo azzurro"
+  }
+}

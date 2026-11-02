@@ -24,7 +24,7 @@ italianoSemplice: |
 
 Oggi, **mercoledì 23 settembre**, la Chiesa ricorda **San Pio da Pietrelcina**, il frate cappuccino che tutti conoscono come **Padre Pio**. Per l'occasione, alle **18:30**, nella **Chiesa di Santa Maria Assunta in Cielo** in Piazza di Corte si celebra la **Santa Messa**: la Misericordia di Ariccia ha dato la propria adesione e sarà presente con i suoi volontari, in divisa, accanto alla comunità parrocchiale.
 
-![Grafica della Misericordia di Ariccia per la festa di San Pio del 23 settembre 2026: la statua in bronzo di San Pio con le braccia aperte, la Santa Messa delle 18:30 nella Chiesa di Santa Maria Assunta in Cielo e l'assistenza sanitaria dei volontari](/img/news/festa-san-pio-2026-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Festa di San Pio»: la statua in bronzo di San Pio con le braccia aperte e il titolo «Mercoledì 23 settembre: con San Pio, al servizio di Ariccia». Santa Messa alle 18:30 a Santa Maria Assunta in Cielo e assistenza sanitaria ai fedeli](/img/news/festa-san-pio-2026-grafica.jpg)
 
 ## Due modi di esserci
 

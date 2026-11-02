@@ -23,7 +23,7 @@ italianoSemplice: |
 
 **Sabato 26 settembre** le Misericordie e i Gruppi **Fratres** di tutta Italia si sono dati appuntamento ad **Assisi** per il **Pellegrinaggio Nazionale**, nell'anno dell'**ottavo centenario della morte di San Francesco**. Migliaia di confratelli, consorelle, volontari e ragazzi del Servizio Civile, con le divise gialle e azzurre, hanno camminato insieme sulle orme del Poverello. A rappresentare la **Misericordia di Ariccia** c'era il nostro Custode spirituale **Marco Caroli**.
 
-![Grafica della Misericordia di Ariccia «In cammino con San Francesco»: i volontari delle Misericordie in divisa azzurra pregano con i fogli dei canti davanti alle mura in pietra di Assisi, durante il Pellegrinaggio nazionale del 26 settembre 2026](/img/news/assisi-2026-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Pellegrinaggio nazionale»: i volontari delle Misericordie in divisa pregano davanti alle mura di Assisi, e il titolo «Ad Assisi: in cammino con San Francesco». Misericordie e Fratres da tutta Italia, il 26 settembre; per noi c'era Marco Caroli](/img/news/assisi-2026-grafica.jpg)
 
 ## «Dove la preghiera si fa servizio e dono»
 

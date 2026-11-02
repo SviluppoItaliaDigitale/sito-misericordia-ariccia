@@ -20,7 +20,7 @@ italianoSemplice: |
   Faceva parte della Misericordia di Viareggio. Nella sede c'è ancora un suo pianoforte.
 ---
 
-![Lo sapevi che… n. 12: Giacomo Puccini, confratello a Viareggio](/img/news/lo-sapevi-che-12-puccini-confratello-grafica.jpg)
+![Lo sapevi che… Viareggio, 1924. Giacomo Puccini: confratello a Viareggio. Quando morì, la Misericordia fece celebrare una messa solenne da Requiem. Sullo sfondo, un ritratto fotografico di Giacomo Puccini a braccia conserte, nel 1908](/img/news/lo-sapevi-che-12-puccini-confratello-grafica.jpg)
 
 La Misericordia di Viareggio ricorda ancora oggi «il confratello M° **Giacomo Puccini**». Il compositore di *La bohème*, *Tosca* e *Madama Butterfly* viveva a Torre del Lago, a pochi chilometri, ed era iscritto alla confraternita.
 

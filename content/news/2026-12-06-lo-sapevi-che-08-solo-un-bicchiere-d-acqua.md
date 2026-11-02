@@ -20,7 +20,7 @@ italianoSemplice: |
   Niente soldi e niente cibo. Potevano solo bere un bicchiere d'acqua.
 ---
 
-![Lo sapevi che… n. 8: Nemmeno un caffè: solo un bicchiere d'acqua](/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg)
+![Lo sapevi che… Firenze, Ottocento. Nemmeno un caffè: solo un bicchiere d'acqua. Chi assisteva i malati in casa non poteva accettare denaro, né mangiare o bere. Sullo sfondo, Dar da bere agli assetati del Maestro di Alkmaar (1504): un uomo versa da bere ai poveri in fila](/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg)
 
 I viaggiatori stranieri che passavano da Firenze restavano colpiti dai confratelli con la buffa nera. **Charles Dickens**, nel 1846, scrive che chi assisteva un malato non poteva accettare niente in cambio: né denaro, né cibo, né da bere.
 

@@ -20,7 +20,7 @@ italianoSemplice: |
 
 C'è un momento, ogni estate, in cui Ariccia si ritrova tutta insieme: la **Festa di Santa Apollonia**, la nostra Patrona. Quest'anno i festeggiamenti culminano **sabato 25 e domenica 26 luglio**, con il triduo di preparazione già dal 22 — e come sempre **i volontari della Misericordia saranno in servizio**, per vegliare su una festa che è anche la nostra.
 
-![Grafica della Misericordia di Ariccia per la Festa di Santa Apollonia 2026: l'ambulanza in Piazza di Corte davanti alla chiesa di Santa Maria Assunta, con gli sbandieratori sullo sfondo](/img/news/festa-santa-apollonia-2026-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Festa della Patrona»: un nostro volontario in divisa lungo le vie del centro durante la processione di Santa Apollonia, e il titolo «Santa Apollonia: Ariccia in festa, 25 e 26 luglio». Processione, cannacciata, giochi antichi e fuochi sul ponte](/img/news/festa-santa-apollonia-2026-grafica.jpg)
 
 ## Il programma religioso
 

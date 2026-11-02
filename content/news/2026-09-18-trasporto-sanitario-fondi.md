@@ -19,7 +19,7 @@ italianoSemplice: |
 
 Non tutti i trasporti finiscono a due passi da casa. Il **18 settembre 2026** due volontari della Misericordia di Ariccia sono partiti di buon'ora con il mezzo dei **Servizi Sociali** per accompagnare una persona fragile fino a **Fondi**, sul litorale pontino: oltre cento chilometri all'andata e altrettanti al ritorno, con la stessa cura che mettiamo nei viaggi di ogni giorno.
 
-![Grafica della Misericordia di Ariccia per il trasporto sanitario a Fondi: i due volontari in polo gialla e azzurra sul lungomare, con il titolo «In viaggio per chi ha bisogno»](/img/news/trasporto-fondi-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Trasporti»: il mezzo dei Servizi Sociali sotto la rupe di Fondi e il titolo «Fino a Fondi: in viaggio per chi ha bisogno». Il 18 settembre i nostri volontari hanno accompagnato una persona sul litorale pontino](/img/news/trasporto-fondi-grafica.jpg)
 
 ## Il viaggio
 

@@ -18,7 +18,7 @@ italianoSemplice: |
   Vuoi imparare? Fai un corso con noi. Chiama il **348 4068657**.
 ---
 
-![Grafica: arresto cardiaco, i primi minuti salvano la vita. Tre passi: chiama subito il 112, premi forte e veloce al centro del petto, usa subito il DAE](/img/news/linee-guida-rcp-2025-grafica.jpg)
+![Grafica della Misericordia di Ariccia, fascia «Formazione»: volontari in divisa a una lezione di primo soccorso in aula e il titolo «Arresto cardiaco: i primi minuti salvano la vita». Chiama il 112, premi forte e veloce al centro del petto, usa subito il DAE](/img/news/linee-guida-rcp-2025-grafica.jpg)
 
 L'**European Resuscitation Council (ERC)** ha presentato a Rotterdam, il 22 ottobre 2025, le nuove **Linee Guida 2025-2030 sulla rianimazione cardiopolmonare**: il riferimento scientifico che per i prossimi cinque anni guiderà in tutta Europa la formazione e la pratica del soccorso, dal cittadino ai professionisti.
 

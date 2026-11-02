@@ -20,7 +20,7 @@ italianoSemplice: |
   Ogni anno poteva liberare un condannato. Ne faceva parte anche Michelangelo.
 ---
 
-![Lo sapevi che… n. 7: Michelangelo e il condannato liberato ogni anno](/img/news/lo-sapevi-che-07-michelangelo-san-giovanni-decollato-grafica.jpg)
+![Lo sapevi che… Roma, dal 1540. Liberato ogni anno: un condannato a morte. A Roma, nella «cugina» della Misericordia dove era iscritto anche Michelangelo. Sullo sfondo, il ritratto di Michelangelo dipinto da Daniele da Volterra](/img/news/lo-sapevi-che-07-michelangelo-san-giovanni-decollato-grafica.jpg)
 
 Nel **1488** i fiorentini che vivevano a Roma fondarono una confraternita con un compito durissimo: confortare i condannati a morte e accompagnarli fino al patibolo, poi seppellirli. È l'**Arciconfraternita di San Giovanni Decollato**, detta anche «della Misericordia dei fiorentini».
 
