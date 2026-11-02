@@ -21,6 +21,9 @@ Azioni (variabile AZIONE, o campo "azione" del file comando):
   rispondi-messaggio  risponde in una conversazione (RETE, ID della conversazione, TESTO)
   cerca-foto          cerca nei post di Facebook e Instagram le parole di TESTO (separate da |)
                       e salva le loro foto in .github/social/foto/ (massimo 60), con l'elenco
+  osserva-ig          ultimi post pubblici di un altro account Instagram aziendale (ID = nome
+                      utente, TESTO = da AAAA-MM-GG, facoltativo): testi e immagini salvati in
+                      .github/social/foto/ (API ufficiale business_discovery)
 
 Limiti della piattaforma, non dello strumento: su Instagram la didascalia di un
 post pubblicato non si modifica (si elimina e si ripubblica); su Facebook si
@@ -360,13 +363,51 @@ def a_cerca_foto(testo, **_):
     scrivi(f"Foto salvate: {n}")
 
 
+def a_osserva_ig(ident, testo, **_):
+    nome = (ident or "").strip().lstrip("@")
+    if not nome:
+        esci("ID mancante: il nome utente Instagram da osservare")
+    dal = (testo or "").strip()
+    cartella = Path(".github/social/foto")
+    cartella.mkdir(parents=True, exist_ok=True)
+    campi = ("business_discovery.username(%s){username,media_count,media.limit(50)"
+             "{id,timestamp,caption,media_type,media_url,permalink,children{media_type,media_url}}}") % nome
+    r = chiama("GET", ig_id(), fields=campi)
+    if "errore" in r:
+        esci(f"Instagram: {r['errore']}")
+    media = (((r.get("business_discovery") or {}).get("media")) or {}).get("data", [])
+    scrivi(f"### Instagram @{nome} — {len(media)} post letti" + (f", dal {dal}" if dal else ""))
+    n = 0
+    for x in media:
+        data = x.get("timestamp", "")[:10]
+        if dal and data < dal:
+            continue
+        figli = (x.get("children") or {}).get("data", []) or [x]
+        img = [c["media_url"] for c in figli if c.get("media_type") == "IMAGE" and c.get("media_url")]
+        if not img and x.get("media_url") and x.get("media_type") == "IMAGE":
+            img = [x["media_url"]]
+        scrivi(f"\n#### {data} {x.get('media_type', '')} {x.get('permalink', '')}")
+        scrivi((x.get("caption") or "").strip())
+        for u in img[:10]:
+            if n >= 80:
+                break
+            n += 1
+            f = f"{data}-{nome}-{n:02d}.jpg"
+            try:
+                with urllib.request.urlopen(u, timeout=60) as resp:
+                    (cartella / f).write_bytes(resp.read())
+                scrivi(f"- immagine `{f}`")
+            except Exception as e:  # una immagine che non scarica non ferma le altre
+                scrivi(f"- immagine non scaricata: {e}")
+
+
 AZIONI = {
     "prova": a_prova, "elenco": a_elenco, "statistiche": a_statistiche,
     "pubblica": a_pubblica, "modifica": a_modifica, "elimina": a_elimina,
     "commenti": a_commenti, "rispondi-commento": a_rispondi_commento,
     "nascondi-commento": a_nascondi_commento, "elimina-commento": a_elimina_commento,
     "messaggi": a_messaggi, "rispondi-messaggio": a_rispondi_messaggio,
-    "cerca-foto": a_cerca_foto,
+    "cerca-foto": a_cerca_foto, "osserva-ig": a_osserva_ig,
 }
 
 
