@@ -20,7 +20,7 @@ italianoSemplice: |
   L'altro rispondeva: «Vada in pace». Ancora oggi i volontari dicono: «Che Iddio te ne renda merito».
 ---
 
-![Lo sapevi che… n. 23: «Iddio gliene renda merito» – «Vada in pace»](/img/news/lo-sapevi-che-23-iddio-gliene-renda-merito-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pisa 1848, ancora oggi: ««Iddio gliene renda merito»: «Vada in pace»». Sotto: Così si parlavano i confratelli al cambio sotto la barella. È l'antenato del nostro motto: «Che Iddio te ne renda merito». Sullo sfondo il pannello «Vestire gli ignudi» del Maestro di Alkmaar (1504)](/img/news/lo-sapevi-che-23-iddio-gliene-renda-merito-grafica.jpg)
 
 Nel regolamento della Misericordia di **Pisa** del 1848 c'è anche la frase da dire al cambio sotto la barella. Chi prendeva il posto diceva «**Iddio gliene renda merito**», e chi lasciava rispondeva «**Vada in pace**».
 

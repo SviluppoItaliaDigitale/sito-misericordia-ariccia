@@ -20,7 +20,7 @@ italianoSemplice: |
   È successo a Pistoia, in due giorni. Oggi le Misericordie in Italia sono quasi 700.
 ---
 
-![Lo sapevi che… n. 28: Un movimento nazionale nato in due giorni](/img/news/lo-sapevi-che-28-pistoia-1899-in-due-giorni-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pistoia, 1899: «Un movimento nazionale: nato in due giorni». Sotto: Il 24 e 25 settembre 1899, al primo congresso di Pistoia, nacque la Federazione da cui viene la Confederazione nazionale. Sullo sfondo una fotografia d'epoca di un'autoambulanza della Misericordia di Pisa degli anni Dieci del Novecento](/img/news/lo-sapevi-che-28-pistoia-1899-in-due-giorni-grafica.jpg)
 
 Per sei secoli ogni Misericordia era rimasta indipendente: ognuna con le sue regole, i suoi colori, le sue usanze. A metà Ottocento erano già un centinaio, quasi tutte in Toscana.
 

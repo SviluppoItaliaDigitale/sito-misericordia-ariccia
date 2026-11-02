@@ -20,7 +20,7 @@ italianoSemplice: |
   Il granduca, che comandava la Toscana, quando sentiva la campana della Misericordia lasciava il pranzo e andava ad aiutare.
 ---
 
-![Lo sapevi che… n. 18: Il granduca che si alzava da tavola al suono della campana](/img/news/lo-sapevi-che-18-granduca-a-tavola-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Firenze, Ottocento: «Il granduca: si alzava da tavola». Sotto: Lo racconta Charles Dickens, con un «si dice»: al suono della campana usciva in silenzio per rispondere alla chiamata. Sullo sfondo una fotografia Alinari del 1889 circa con confratelli fiorentini in cappa nera e buffa](/img/news/lo-sapevi-che-18-granduca-a-tavola-grafica.jpg)
 
 Nel suo libro di viaggio *Pictures from Italy* (1846) **Charles Dickens** racconta i confratelli di Firenze con la veste nera e il cappuccio. E scrive che anche il **granduca di Toscana** era iscritto alla Misericordia.
 

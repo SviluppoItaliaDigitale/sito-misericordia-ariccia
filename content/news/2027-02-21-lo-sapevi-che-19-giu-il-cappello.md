@@ -20,7 +20,7 @@ italianoSemplice: |
   Era un segno di rispetto. Oggi il rispetto è lasciar passare l'ambulanza.
 ---
 
-![Lo sapevi che… n. 19: Passa la Misericordia: giù il cappello](/img/news/lo-sapevi-che-19-giu-il-cappello-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Firenze e Pisa, Ottocento: «Passa la Misericordia: giù il cappello». Sotto: Quando passavano i confratelli con la barella, i fiorentini si toglievano il cappello. Sullo sfondo una fotografia Alinari del 1889 circa con confratelli incappucciati che portano a spalla un cataletto](/img/news/lo-sapevi-che-19-giu-il-cappello-grafica.jpg)
 
 Un tempo, quando per le strade di Firenze passava una squadra della Misericordia con la barella, **i passanti si toglievano il cappello**. Era un gesto di rispetto per il malato e per chi lo portava. Nel 1877 una guida inglese nota che l'uso stava già scomparendo.
 

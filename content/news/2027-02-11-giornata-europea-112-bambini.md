@@ -14,7 +14,7 @@ italianoSemplice: |
   Sul nostro sito c'è un quiz per i bambini.
 ---
 
-![Pollice, pollice, due pollici: 1-1-2. L'ambulanza della Misericordia di Ariccia con i volontari](/img/news/bambini-112-grafica.jpg)
+![Grafica della Giornata europea del 112: l'ambulanza della Misericordia di Ariccia con i volontari, con la scritta «Pollice, pollice, due pollici: 1-1-2. Come insegnarlo ai bambini senza fare paura, con il quiz del piccolo soccorritore»](/img/news/bambini-112-grafica.jpg)
 
 Oggi, **11 febbraio**, cioè l'11/2, è la **Giornata europea del 112**. È il giorno giusto per insegnarlo ai bambini, senza fare paura.
 

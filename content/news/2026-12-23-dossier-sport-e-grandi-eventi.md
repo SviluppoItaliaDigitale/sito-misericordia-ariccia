@@ -14,7 +14,7 @@ italianoSemplice: |
   Anche noi facciamo assistenza agli eventi ad Ariccia e nei Castelli Romani.
 ---
 
-![Lo sport e i grandi eventi: i volontari della Misericordia di Ariccia in servizio a una camminata](/img/news/dossier-sport-eventi-grafica.jpg)
+![Grafica del dossier «In servizio»: l'ambulanza della Misericordia di Ariccia in servizio a una camminata, con la scritta «Lo sport e i grandi eventi: dove c'è una folla, c'è un'ambulanza. Dal Palio di Siena alle Olimpiadi, dal Calcio storico al Giubileo»](/img/news/dossier-sport-eventi-grafica.jpg)
 
 Partite, corse, feste, pellegrinaggi: dove c'è una folla, c'è un'ambulanza pronta. Lo raccontiamo nel nuovo dossier **[Le Misericordie, lo sport e i grandi eventi](/dossier/sport-e-grandi-eventi/)**.
 

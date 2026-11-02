@@ -20,7 +20,7 @@ italianoSemplice: |
   Hanno deciso di aiutare i malati. Così è nata la Misericordia di Prato.
 ---
 
-![Lo sapevi che… n. 20: Trenta pellegrini di ritorno da Loreto](/img/news/lo-sapevi-che-20-pellegrini-di-loreto-prato-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Prato, 1588: «Trenta pellegrini: di ritorno da Loreto». Sotto: Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato. Sullo sfondo il pannello «Alloggiare i pellegrini» del Maestro di Alkmaar (1504)](/img/news/lo-sapevi-che-20-pellegrini-di-loreto-prato-grafica.jpg)
 
 Molte Misericordie sono nate da un'epidemia o da una disgrazia. Quella di **Prato** è nata da un viaggio.
 

@@ -14,7 +14,7 @@ italianoSemplice: |
   Ci sono anche fotografie molto antiche.
 ---
 
-![Le Misericordie nei libri e nell'arte: confratelli incappucciati trasportano un malato in una fotografia degli Alinari del 1889](/img/news/dossier-libri-arte-grafica.jpg)
+![Grafica del dossier «La nostra storia»: confratelli incappucciati trasportano un malato in una fotografia dei Fratelli Alinari, Firenze, 1889 circa, con la scritta «Nei libri e nell'arte: il cappuccio nero dei confratelli. Dickens, De Amicis, Trollope, Emma Perodi e le prime fotografie di Firenze»](/img/news/dossier-libri-arte-grafica.jpg)
 
 Il cappuccio nero dei confratelli ha colpito scrittori, viaggiatori, pittori e fotografi. Lo raccontiamo nel nuovo dossier **[Le Misericordie nei libri e nell'arte](/dossier/nei-libri-e-nell-arte/)**, con ogni citazione controllata sul testo originale.
 

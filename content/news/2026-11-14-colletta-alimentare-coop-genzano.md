@@ -21,7 +21,7 @@ italianoSemplice: |
   Fai la spesa e dona qualcosa per chi è in difficoltà.
 ---
 
-![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie e volontari in divisa nella piazza di Ariccia, con la scritta «Oggi ci trovi alla Coop di Genzano. Sabato 14 novembre, via Emilia Romagna 102: dona la spesa per chi è in difficoltà».](/img/news/2026-11-14-colletta-alimentare-coop-genzano-grafica.jpg)
+![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie e volontari della Misericordia nella Coop di Genzano durante la Colletta Alimentare 2025, con la scritta «Sabato 14 novembre: ci trovi alla Coop di Genzano. Via Emilia Romagna 102: dona la spesa per chi è in difficoltà».](/img/news/2026-11-14-colletta-alimentare-coop-genzano-grafica.jpg)
 
 **Oggi, sabato 14 novembre, è la Giornata nazionale della Colletta Alimentare**, la trentesima. In tutta Italia, nei supermercati che partecipano, si dona la spesa per chi è in difficoltà.
 

@@ -36,7 +36,7 @@ italianoSemplice: |
   Puoi iniziare se hai tra 16 e 80 anni. Scrivi **VOLONTARIO** su WhatsApp al **348 4068657**.
 ---
 
-![Grafica della campagna «Esci dal post. Entra nella squadra»: volontarie della Misericordia di Ariccia in divisa camminano sul basolato della Via Sacra nel bosco, con la scritta «Non serve guidare l'ambulanza».](/img/news/2026-11-19-non-serve-guidare-l-ambulanza-grafica.jpg)
+![Grafica della campagna «Esci dal post. Entra nella squadra», fascia «Volontariato»: volontarie della Misericordia di Ariccia in divisa camminano sul basolato della Via Sacra nel bosco, con la scritta «Non serve guidare l'ambulanza: scegli tu come esserci. Trasporti, ascolto, eventi, formazione. Scrivi VOLONTARIO su WhatsApp al 348 4068657».](/img/news/2026-11-19-non-serve-guidare-l-ambulanza-grafica.jpg)
 
 **Molti pensano che fare il volontario voglia dire guidare l'ambulanza. Non è così: ci sono tanti modi per esserci.** Con questa tappa di **«Esci dal post. Entra nella squadra»** ti raccontiamo tutti i servizi in cui puoi dare una mano alla Misericordia di Ariccia.
 

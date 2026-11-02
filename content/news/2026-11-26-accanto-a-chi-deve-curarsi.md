@@ -30,7 +30,7 @@ italianoSemplice: |
   Puoi diventare volontario se hai tra 16 e 80 anni. Scrivi **VOLONTARIO** su WhatsApp al **348 4068657**.
 ---
 
-![Grafica della campagna «Esci dal post. Entra nella squadra»: volontari della Misericordia di Ariccia accanto a un'ambulanza dell'associazione, sul prato, con la scritta «Accanto a chi deve curarsi».](/img/news/2026-11-26-accanto-a-chi-deve-curarsi-grafica.jpg)
+![Grafica della campagna «Esci dal post. Entra nella squadra», fascia «Volontariato»: volontari della Misericordia di Ariccia accanto a un'ambulanza dell'associazione, sul prato, con la scritta «Trasporti: accanto a chi deve curarsi. In ambulanza, in auto e con i mezzi con la pedana. Scrivi VOLONTARIO su WhatsApp al 348 4068657».](/img/news/2026-11-26-accanto-a-chi-deve-curarsi-grafica.jpg)
 
 **C'è chi deve fare la dialisi tre volte a settimana, e da solo non ci può arrivare.** Per questa tappa di **«Esci dal post. Entra nella squadra»** ti raccontiamo il servizio che ogni giorno porta i nostri volontari sulle strade dei Castelli Romani: i trasporti.
 

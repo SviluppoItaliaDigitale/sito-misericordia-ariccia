@@ -20,7 +20,7 @@ italianoSemplice: |
   Avevano mezz'ora di tempo. A Firenze controllavano il tempo con una clessidra.
 ---
 
-![Lo sapevi che… n. 22: Mezz'ora per un malato, un quarto d'ora per un morto](/img/news/lo-sapevi-che-22-mezz-ora-per-arrivare-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pisa, 1848: «Mezz'ora per un malato: un quarto d'ora per un morto». Sotto: Dopo il suono della campana i confratelli avevano un tempo fisso per presentarsi. Per un ferito si partiva «al più presto possibile». Sullo sfondo il dipinto di Eleuterio Pagliano «L'origine della Compagnia della Misericordia in Firenze» (1857)](/img/news/lo-sapevi-che-22-mezz-ora-per-arrivare-grafica.jpg)
 
 Anche senza cronometro, la Misericordia contava i minuti. Il regolamento di **Pisa** del 1848 stabilisce quanto tempo hanno i fratelli per arrivare in sede dopo la campana: **mezz'ora** per trasportare un malato, **un quarto d'ora** per un defunto.
 

@@ -20,7 +20,7 @@ italianoSemplice: |
   I nomi erano chiusi dentro piccole ghiande di legno.
 ---
 
-![Lo sapevi che… n. 25: Il sorteggio con la ghianda](/img/news/lo-sapevi-che-25-sorteggio-con-la-ghianda-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Firenze, Ottocento: «Il sorteggio: con la ghianda». Sotto: Quando moriva un confratello, si tirava a sorte chi doveva pagare le candele del funerale. Sullo sfondo una fotografia del 1860 circa con confratelli in cappa nera e buffa che portano una bara coperta a Firenze](/img/news/lo-sapevi-che-25-sorteggio-con-la-ghianda-grafica.jpg)
 
 Una guida inglese di Firenze del 1877 racconta un'usanza curiosa. Quando moriva un fratello della Misericordia, bisognava decidere chi avrebbe pagato le **candele** per il funerale. Si decideva a sorte.
 

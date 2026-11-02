@@ -1319,7 +1319,7 @@ dati:
   delicato: true
   frequenza: "annuale"
   verificato: "2026-10-09"
-  note: "Dopo il 2030 vanno create nuove news sullo stesso modello (vedi CLAUDE.md). Dal 2/11/2026 la grafica di queste news è una delle grafiche ufficiali della campagna nazionale 2026 («Non servono superpoteri. Servi Tu.», 5x1000-ambulanza/-compagnia/-spesa/-emporio.jpg): ogni anno, prima dell'11 maggio, controllare se la Confederazione ha pubblicato la campagna di quell'anno e, se sì, usare quella cambiando solo il codice fiscale."
+  note: "Dopo il 2030 vanno create nuove news sullo stesso modello (vedi CLAUDE.md). Dal 2/11/2026 la grafica di queste news è una delle grafiche ufficiali della campagna nazionale 2026 («Non servono superpoteri. Servi Tu.», 5x1000-campagna-ambulanza/-compagnia/-spesa/-emporio.jpg, copie con la cornice di microtesto): ogni anno, prima dell'11 maggio, controllare se la Confederazione ha pubblicato la campagna di quell'anno e, se sì, usare quella cambiando solo il codice fiscale."
 - id: "rendicontazione-5x1000"
   cosa: "La trasparenza pubblica le rendicontazioni del 5x1000 fino a quella dell'anno finanziario 2022/2023 (contributo percepito nel 2024)."
   valore: "ultima: 2022/2023 (percepito 2024)"

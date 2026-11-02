@@ -20,7 +20,7 @@ italianoSemplice: |
   Serviva per portare i malati. Nel 2024 un'alluvione ha bagnato anche questi oggetti antichi.
 ---
 
-![Lo sapevi che… n. 27: La portantina del 1580 e la «volantina»](/img/news/lo-sapevi-che-27-portantina-di-castelfiorentino-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Castelfiorentino, 1580: «La portantina: e la «volantina»». Sotto: La Misericordia di Castelfiorentino conserva la sua portantina a mano più antica, del 1580, e un carro senza ruote. Sullo sfondo il pannello «Seppellire i morti» del Maestro di Alkmaar (1504), con uomini incappucciati che portano una bara](/img/news/lo-sapevi-che-27-portantina-di-castelfiorentino-grafica.jpg)
 
 Alcune Misericordie custodiscono veri musei dei soccorsi. Quella di **Castelfiorentino**, in Valdelsa, conserva la sua **portantina a mano più antica, del 1580**, un **carro funebre a cavalli** e uno strano mezzo chiamato **«volantina»**: un carro senza ruote.
 

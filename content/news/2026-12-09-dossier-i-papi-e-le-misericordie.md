@@ -5,14 +5,14 @@ date: 2026-12-09
 slug: "dossier-i-papi-e-le-misericordie"
 description: "Un futuro Papa tra i Capi di Guardia di Firenze, l'Angelus di Paolo VI, le udienze di Giovanni Paolo II, Benedetto XVI, Francesco e Leone XIV: le parole dei Papi per le Misericordie, dai testi ufficiali della Santa Sede."
 immagine: "/img/news/dossier-papi-grafica.jpg"
-social_testo: "🕊️ Nuovo dossier: I Papi e le Misericordie. Lo sapevi che nel 1726 un cardinale fiorentino entrò tra i Capi di Guardia della Misericordia di Firenze e quattro anni dopo divenne Papa Clemente XII? In quarant'anni cinque udienze dedicate solo alle Misericordie, e cinque parole che le raccontano: «civiltà dell'amore» (Giovanni Paolo II), «premurosa concretezza», «vangelo vissuto» (Benedetto XVI), «dare il cuore ai miseri» (Francesco), «camminare con» (Leone XIV)."
+social_testo: "🕊️ Nuovo dossier: I Papi e le Misericordie. Lo sapevi che nel 1726 un cardinale fiorentino entrò tra i Capi di Guardia della Misericordia di Firenze e quattro anni dopo divenne Papa Clemente XII? In quarant'anni cinque udienze dedicate solo alle Misericordie, e cinque parole che le raccontano: «civiltà dell'amore» (Giovanni Paolo II), «premurosa concretezza», «vangelo vissuto» (Benedetto XVI), «dare il cuore ai miseri» (Francesco), «camminare con» (Leone XIV).\n\nFoto: Korea.net / Jeon Han, CC BY-SA 2.0, Wikimedia Commons."
 italianoSemplice: |
   **Abbiamo pubblicato un nuovo dossier sui Papi che hanno incontrato le Misericordie.**
 
   Ci sono le loro parole più belle per i volontari.
 ---
 
-![I Papi e le Misericordie: Papa Francesco sorridente nel 2014](/img/news/dossier-papi-grafica.jpg)
+![Grafica del dossier «La nostra storia»: Papa Francesco sorridente nel 2014 (foto Korea.net, Jeon Han, CC BY-SA 2.0, Wikimedia Commons), con la scritta «I Papi e le Misericordie: cinque secoli di parole. Da un futuro Papa Capo di Guardia a Firenze alle udienze in Vaticano»](/img/news/dossier-papi-grafica.jpg)
 
 Le Misericordie sono confraternite di laici, ma il loro legame con i Papi è antico. Lo raccontiamo nel nuovo dossier **[I Papi e le Misericordie](/dossier/i-papi-e-le-misericordie/)**, con le parole riportate dai testi ufficiali della Santa Sede.
 

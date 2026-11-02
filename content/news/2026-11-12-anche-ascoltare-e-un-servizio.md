@@ -34,7 +34,7 @@ italianoSemplice: |
   Per diventare volontario scrivi **VOLONTARIO** su WhatsApp al **348 4068657**.
 ---
 
-![Grafica della campagna «Esci dal post. Entra nella squadra»: un volontario della Misericordia di Ariccia, di spalle, in mezzo alla gente durante la processione di Santa Apollonia, con la scritta «Anche ascoltare è un servizio».](/img/news/2026-11-12-anche-ascoltare-e-un-servizio-grafica.jpg)
+![Grafica della campagna «Esci dal post. Entra nella squadra», fascia «Volontariato»: un volontario della Misericordia di Ariccia, di spalle, in mezzo alla gente durante la processione di Santa Apollonia, con la scritta «Centro di Ascolto: anche ascoltare è un servizio. Centro di Ascolto e Banco Alimentare. Scrivi VOLONTARIO su WhatsApp al 348 4068657».](/img/news/2026-11-12-anche-ascoltare-e-un-servizio-grafica.jpg)
 
 **Non tutti hanno bisogno di un'ambulanza. Qualcuno ha bisogno, prima di tutto, di essere ascoltato.** È la nuova tappa di **«Esci dal post. Entra nella squadra»**, la campagna con cui la Misericordia di Ariccia ti invita a conoscere i suoi volontari e a entrare in squadra.
 

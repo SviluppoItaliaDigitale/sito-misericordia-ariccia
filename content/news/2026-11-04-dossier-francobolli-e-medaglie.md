@@ -15,7 +15,7 @@ italianoSemplice: |
   Ci sono anche medaglie antiche e una medaglia d'oro data nel 2023.
 ---
 
-![Francobolli, monete e medaglie: la Madonna della Misericordia di Piero della Francesca](/img/news/dossier-francobolli-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la Madonna della Misericordia di Piero della Francesca che apre il mantello sui confratelli, con la scritta «Francobolli e medaglie: piccoli oggetti, una grande storia. Dalla medaglia per il colera del 1835 al francobollo del 1994 per i 750 anni di Firenze»](/img/news/dossier-francobolli-grafica.jpg)
 
 A volte la storia la conservano oggetti piccolissimi. Nel nuovo dossier **[Francobolli, monete e medaglie](/dossier/francobolli-e-medaglie/)** mettiamo insieme una piccola collezione dedicata alle Misericordie.
 

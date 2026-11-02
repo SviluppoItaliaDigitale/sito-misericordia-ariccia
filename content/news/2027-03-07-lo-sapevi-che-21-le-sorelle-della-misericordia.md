@@ -20,7 +20,7 @@ italianoSemplice: |
   A Firenze le donne sono entrate nel 1971.
 ---
 
-![Lo sapevi che… n. 21: Le «Sorelle» della Misericordia](/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg)
+![Grafica della rubrica «Lo sapevi che…», Pisa 1848, Firenze 1971: «Le «Sorelle»: le donne nella Misericordia». Sotto: Nel 1848 a Pisa le «Sorelle» sono già tra i membri. A Firenze le donne entrano in Misericordia nel 1971. Sullo sfondo il pannello «Dar da mangiare agli affamati» del Maestro di Alkmaar (1504), con una donna che distribuisce il pane](/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg)
 
 Alla vigilia della Festa della donna, una storia di Sorelle. Nel regolamento della Misericordia di **Pisa** del **1848** le **«Sorelle»** fanno già parte della confraternita, senza limiti di ceto o di età, con una festa tutta loro e le loro preghiere di suffragio.
 
