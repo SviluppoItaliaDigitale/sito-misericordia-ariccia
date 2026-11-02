@@ -17,6 +17,10 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
 5. **Firma e cornice, sempre.** Ogni grafica dice «Misericordia di Ariccia» e ha lungo i bordi una cornice di microtesto (Alessandro, 21/10/2026: «metti in ogni slide, documento grafico eccetera sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!!»). Con i modelli le mette `rendi.py`; per una grafica fatta in altro modo vedi «Grafiche fatte in altro modo» qui sotto.
 6. **Lutto.** Le foto a colori restano a colori; quelle nate in bianco e nero, come quelle d'archivio, restano come sono. Solo quando la grafica ricorda una persona morta (consorelle e confratelli, volontari, benefattori, personaggi pubblici vicini alla Misericordia dal Papa in giù, anniversari della morte, vittime di una tragedia, 2 novembre) la foto va in bianco e nero: sui social il bianco e nero è il segno del lutto. La grafica resta istituzionale e a colori. Per un personaggio pubblico, foto con licenza libera e autore citato nel testo del post.
 
+## Stile dei post nazionali (dal 2/11/2026)
+
+Alessandro, 2/11/2026: «tutte le grafiche devono uniformarsi da oggi in poi a quelle del nazionale». I post con foto (`post-con-fascia`, `post-con-fascia-due-righe`, `storia-con-fascia`, `post-giornata`) hanno caratteri e misure dei post nazionali del 2026: carattere Mulish, fascia con il tema in giallo (su due righe: prima riga gialla, seconda bianca), titolo su due righe con la prima evidenziata e chiusa dai due punti (`"evidenziato": "Il bene compiuto:"`, `"titolo": "continua a vivere"`), frase sotto. Per ricorrenze e giornate si usa `post-giornata`; come immagine, prima una foto nostra, poi le opere di misericordia di `scripts/grafica-brand/opere-misericordia/`, e solo se manca tutto un'immagine dei post nazionali.
+
 ## Fare la grafica
 
 1. Copia un esempio di `scripts/grafica-brand/modelli-nazionali/esempi/` nella cartella di lavoro e riempi i campi:
@@ -26,8 +30,8 @@ Origine: skill scritta per Alessandro Cuollo il 21/10/2026 insieme ai modelli (s
      "modello": "post-con-fascia",
      "campi": {
        "fascia": "Volontariato",
-       "evidenziato": "C'è un posto",
-       "titolo": "anche per te.",
+       "evidenziato": "C'è un posto:",
+       "titolo": "anche per te",
        "sottotitolo": "Scegli tu come esserci: chiamaci o scrivici su WhatsApp al 348 4068657.",
        "foto": "foto-evento.jpg",
        "foto-posizione": "70% 50%",

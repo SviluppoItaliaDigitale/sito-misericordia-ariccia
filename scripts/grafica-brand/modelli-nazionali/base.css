@@ -82,3 +82,6 @@ body.lutto img[data-campo] { filter: grayscale(1); }
 .sottolinea { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; }
 /* Ultima parola del titolo della copertina del carosello, gialla e sottolineata. */
 .finale { color: var(--giallo); text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 10px; }
+
+/* Fascia su due righe dei post nazionali del 2026: prima riga gialla, seconda bianca (post-con-fascia-due-righe.html). */
+.fascia-due-colori::first-line { color: var(--giallo); }

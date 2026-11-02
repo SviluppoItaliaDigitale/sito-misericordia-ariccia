@@ -321,6 +321,13 @@ comunicazione della Confederazione pubblicati su YouTube.
   identici: colori e caratteri del modello, niente cornici decorative, filigrane
   o altri loghi. L'unica aggiunta è la firma con la cornice di microtesto (punto
   qui sotto).
+- **Come i post nazionali di oggi (dal 2/11/2026).** Alessandro: «tutte le grafiche devono uniformarsi da
+  oggi in poi a quelle del nazionale! Di ogni post che pubblichi». I modelli con foto (`post-con-fascia`,
+  `post-con-fascia-due-righe`, `storia-con-fascia` e il nuovo `post-giornata` per ricorrenze e giornate) hanno
+  caratteri e misure dei post nazionali del 2026: Mulish, tema in giallo nella fascia, titolo su due righe con la
+  prima evidenziata e chiusa dai due punti, frase sotto. Per le giornate: prima foto nostre, poi le Sette opere di
+  misericordia del Maestro di Alkmaar (`scripts/grafica-brand/opere-misericordia/`), solo in mancanza le immagini
+  dei post nazionali. I post nazionali si leggono con «Gestione social» → `osserva-ig` (ID `misericordieitalia`).
 - **Firma «Misericordia di Ariccia» e cornice di microtesto in ogni grafica (dal
   21/10/2026).** Alessandro: «metti in ogni slide, documento grafico eccetera
   sempre Misericordia di Ariccia! Altrimenti ci rubano la grafica!! e se riesci
