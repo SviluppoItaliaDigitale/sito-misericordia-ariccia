@@ -19,6 +19,8 @@ Azioni (variabile AZIONE, o campo "azione" del file comando):
   elimina-commento    elimina un commento (RETE, ID) — CONFERMA=ELIMINA
   messaggi            ultime conversazioni Messenger (fb) o Direct (ig)
   rispondi-messaggio  risponde in una conversazione (RETE, ID della conversazione, TESTO)
+  cerca-foto          cerca nei post di Facebook e Instagram le parole di TESTO (separate da |)
+                      e salva le loro foto in .github/social/foto/ (massimo 60), con l'elenco
 
 Limiti della piattaforma, non dello strumento: su Instagram la didascalia di un
 post pubblicato non si modifica (si elimina e si ripubblica); su Facebook si
@@ -289,12 +291,82 @@ def a_rispondi_messaggio(rete, ident, testo, **_):
     esito(r, f"Messaggio inviato: `{r.get('message_id')}`")
 
 
+def _immagini_fb(post: dict) -> list[str]:
+    url = []
+    for a in (post.get("attachments") or {}).get("data", []):
+        subs = (a.get("subattachments") or {}).get("data", []) or [a]
+        for x in subs:
+            src = ((x.get("media") or {}).get("image") or {}).get("src")
+            if src:
+                url.append(src)
+    if not url and post.get("full_picture"):
+        url.append(post["full_picture"])
+    return url
+
+
+def a_cerca_foto(testo, **_):
+    parole = [p.strip().lower() for p in (testo or "").split("|") if p.strip()]
+    if not parole:
+        esci("TESTO mancante: le parole da cercare, separate da |")
+    cartella = Path(".github/social/foto")
+    cartella.mkdir(parents=True, exist_ok=True)
+    trovati: list[tuple[str, str, str, list[str]]] = []
+    percorso, param = f"{PAGE_ID}/posts", dict(
+        fields="id,created_time,message,permalink_url,full_picture,"
+               "attachments{media,subattachments.limit(50){media}}", limit=100)
+    for _ in range(15):
+        r = chiama("GET", percorso, **param)
+        if "errore" in r:
+            scrivi(f"errore Facebook: {r['errore']}")
+            break
+        for x in r.get("data", []):
+            if any(p in (x.get("message") or "").lower() for p in parole):
+                trovati.append(("fb", x.get("created_time", "")[:10], x.get("permalink_url", ""), _immagini_fb(x)))
+        dopo = ((r.get("paging") or {}).get("cursors") or {}).get("after")
+        if not dopo or not (r.get("paging") or {}).get("next"):
+            break
+        param["after"] = dopo
+    percorso, param = f"{ig_id()}/media", dict(
+        fields="id,timestamp,caption,permalink,media_type,media_url,children{media_type,media_url}", limit=100)
+    for _ in range(10):
+        r = chiama("GET", percorso, **param)
+        if "errore" in r:
+            scrivi(f"errore Instagram: {r['errore']}")
+            break
+        for x in r.get("data", []):
+            if any(p in (x.get("caption") or "").lower() for p in parole):
+                figli = (x.get("children") or {}).get("data", []) or [x]
+                img = [c["media_url"] for c in figli if c.get("media_type") == "IMAGE" and c.get("media_url")]
+                trovati.append(("ig", x.get("timestamp", "")[:10], x.get("permalink", ""), img))
+        dopo = ((r.get("paging") or {}).get("cursors") or {}).get("after")
+        if not dopo or not (r.get("paging") or {}).get("next"):
+            break
+        param["after"] = dopo
+    scrivi(f"### Post trovati per «{' | '.join(parole)}»: {len(trovati)}")
+    n = 0
+    for rete, data, link, img in trovati:
+        scrivi(f"- {rete} {data} {link} — {len(img)} foto")
+        for i, u in enumerate(img, 1):
+            if n >= 60:
+                break
+            nome = f"{data}-{rete}-{n + 1:02d}.jpg"
+            try:
+                with urllib.request.urlopen(u, timeout=60) as resp:
+                    (cartella / nome).write_bytes(resp.read())
+                scrivi(f"  - `{nome}`")
+                n += 1
+            except Exception as e:  # una foto che non scarica non ferma le altre
+                scrivi(f"  - foto {i} non scaricata: {e}")
+    scrivi(f"Foto salvate: {n}")
+
+
 AZIONI = {
     "prova": a_prova, "elenco": a_elenco, "statistiche": a_statistiche,
     "pubblica": a_pubblica, "modifica": a_modifica, "elimina": a_elimina,
     "commenti": a_commenti, "rispondi-commento": a_rispondi_commento,
     "nascondi-commento": a_nascondi_commento, "elimina-commento": a_elimina_commento,
     "messaggi": a_messaggi, "rispondi-messaggio": a_rispondi_messaggio,
+    "cerca-foto": a_cerca_foto,
 }
 
 

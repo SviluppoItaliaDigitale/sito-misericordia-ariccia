@@ -15,7 +15,7 @@ on:
         description: "Cosa fare"
         required: true
         type: choice
-        options: [elenco, statistiche, commenti, messaggi, pubblica, modifica, elimina, rispondi-commento, nascondi-commento, elimina-commento, rispondi-messaggio, prova]
+        options: [elenco, statistiche, commenti, messaggi, pubblica, modifica, elimina, rispondi-commento, nascondi-commento, elimina-commento, rispondi-messaggio, cerca-foto, prova]
       rete:
         description: "Facebook o Instagram"
         required: true
@@ -76,5 +76,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
           git add .github/social/esito.md
+          [ -d .github/social/foto ] && git add .github/social/foto
           git commit -m "Gestione social: esito" || exit 0
           git push origin "HEAD:${GITHUB_REF_NAME}"
