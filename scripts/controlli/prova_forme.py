@@ -24,7 +24,7 @@ def firma(valore):
 
 CASI = [  # (testo, deve essere segnalato)
     # vecchio fisso sul mezzo dei servizi sociali (2/11/2026)
-    ("Chiama lo 06." + "87729139", True),
+    ("Chiama lo 06." + "8772" + "9139", True),
     ("06 8772" + "9139", True),
     ("Sede 06 933 3717, servizi 348 4068657", False),
     ("Che " + "Dio ve ne " + MOTTO, True),
