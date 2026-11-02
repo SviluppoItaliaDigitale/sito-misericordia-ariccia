@@ -6,7 +6,7 @@ slug: "colletta-alimentare-cerchiamo-volontari"
 description: "Sabato 14 novembre la Misericordia di Ariccia è alla Coop di Genzano di Roma per la Colletta Alimentare: cerchiamo volontari per i turni 8-12, 12-16 e 16-20, anche non iscritti e minorenni con il permesso di un genitore."
 immagine: "/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg"
 controllo_editoriale: "2026-11-02"
-social_alt: "Grafica della Misericordia di Ariccia: una volontaria con la pettorina arancione della Colletta Alimentare accanto agli scatoloni del Banco Alimentare, con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, sede 06 933 3717»."
+social_alt: "Grafica della Misericordia di Ariccia: volontarie e un volontario della Misericordia di Ariccia in divisa alla Coop di Genzano durante la Colletta Alimentare 2025, con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, sede 06 933 3717»."
 social_testo: |-
   🛒 Cerchiamo volontari per la Colletta Alimentare!
   Sabato 14 novembre siamo alla Coop di Genzano di Roma, in via Emilia Romagna 102, per la 30ª Giornata nazionale della Colletta Alimentare.
@@ -24,8 +24,6 @@ social_testo: |-
   👉 https://wa.me/393484068657?text=COLLETTA
 
   Grazie a chi ci darà una mano. Che Iddio ve ne renda merito.
-
-  Foto: Banco Alimentare del Veneto, Colletta Alimentare 2025 (pubblico dominio, Wikimedia Commons).
 italianoSemplice: |
   **Sabato 14 novembre c'è la Colletta Alimentare.**
 
@@ -38,7 +36,7 @@ italianoSemplice: |
   Chiama il **348 4068657** (anche WhatsApp, scrivi **COLLETTA**) o la sede al **06 933 3717** e di' quale turno scegli.
 ---
 
-![Grafica della Misericordia di Ariccia per la Colletta Alimentare: una volontaria con la pettorina arancione accanto agli scatoloni del Banco Alimentare in un supermercato (foto di una Colletta del 2025 in Veneto), con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, sede 06 933 3717».](/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg)
+![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie e un volontario della Misericordia di Ariccia in divisa alla Coop di Genzano durante la Colletta Alimentare 2025, con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, sede 06 933 3717».](/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg)
 
 **Sabato 14 novembre è la Giornata nazionale della Colletta Alimentare**, la trentesima. Nei supermercati di tutta Italia chi fa la spesa può donarne una parte per le persone in difficoltà. **La Misericordia di Ariccia sarà, come sempre, alla Coop di Genzano di Roma, in via Emilia Romagna 102.**
 
@@ -69,4 +67,4 @@ Se non puoi esserci come volontario, passa a trovarci alla Coop sabato 14 e dona
 
 Grazie a chi ci darà una mano: **«Che Iddio ve ne renda merito»**.
 
-*Fonti: [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026 e l'[elenco dei punti vendita](https://www.bancoalimentare.it/colletta-alimentare/punti-vendita), dove c'è la Coop di Genzano di Roma; turni e condizioni di partecipazione dalla Misericordia di Ariccia; recapiti dalla pagina [Contatti](/contatti/). Foto della grafica: volontari della Colletta Alimentare 2025 in Veneto, di [Banco Alimentare del Veneto](https://commons.wikimedia.org/wiki/File:Giornata_Nazionale_della_Colletta_Alimentare_-_04.jpg), pubblico dominio, da Wikimedia Commons. Informazioni verificate il 2 novembre 2026.*
+*Fonti: [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026 e l'[elenco dei punti vendita](https://www.bancoalimentare.it/colletta-alimentare/punti-vendita), dove c'è la Coop di Genzano di Roma; turni e condizioni di partecipazione dalla Misericordia di Ariccia; recapiti dalla pagina [Contatti](/contatti/). Foto della grafica: i nostri volontari alla Coop di Genzano nella Colletta Alimentare del 2025. Informazioni verificate il 2 novembre 2026.*
