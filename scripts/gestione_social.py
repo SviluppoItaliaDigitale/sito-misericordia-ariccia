@@ -382,7 +382,11 @@ def salva_esito() -> None:
 def main() -> None:
     cmd = {}
     f = os.environ.get("COMANDO_FILE")
-    if f and Path(f).exists():
+    if f and not Path(f).exists():
+        # push che ha tolto il file del comando (pulizia del ramo): niente da fare
+        print("Nessun comando: il file è stato tolto, nulla da eseguire.")
+        return
+    if f:
         cmd = json.loads(Path(f).read_text(encoding="utf-8"))
     val = lambda k: str(cmd.get(k) or os.environ.get(k.upper()) or "").strip()  # noqa: E731
     azione = val("azione")
