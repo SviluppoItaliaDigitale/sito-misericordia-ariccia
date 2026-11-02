@@ -6,7 +6,7 @@ slug: "colletta-alimentare-cerchiamo-volontari"
 description: "Sabato 14 novembre la Misericordia di Ariccia è alla Coop di Genzano di Roma per la Colletta Alimentare: cerchiamo volontari per i turni 8-12, 12-16 e 16-20, anche non iscritti e minorenni con il permesso di un genitore."
 immagine: "/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg"
 controllo_editoriale: "2026-11-02"
-social_alt: "Grafica della Misericordia di Ariccia: volontarie in divisa in piazza ad Ariccia e la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. WhatsApp 348 4068657»."
+social_alt: "Grafica della Misericordia di Ariccia: volontarie in divisa in piazza ad Ariccia e la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, 328 8105399, 06 933 3717»."
 social_testo: |-
   🛒 Cerchiamo volontari per la Colletta Alimentare!
   Sabato 14 novembre siamo alla Coop di Genzano di Roma, in via Emilia Romagna 102, per la 30ª Giornata nazionale della Colletta Alimentare.
@@ -18,7 +18,10 @@ social_testo: |-
 
   Possono partecipare tutti, anche chi non è iscritto alla Misericordia. Per l'assicurazione ti chiederemo nome e cognome, codice fiscale, indirizzo di residenza ed email. Anche i minorenni sono i benvenuti, con l'autorizzazione di un genitore: il modulo te lo mandiamo noi.
 
-  📲 Scrivi COLLETTA e il turno su WhatsApp al 348 4068657, il prima possibile.
+  Dacci la tua disponibilità il prima possibile, dicendoci il turno:
+  📲 348 4068657 (anche WhatsApp: scrivi COLLETTA)
+  📞 328 8105399
+  ☎️ 06 933 3717
   👉 https://wa.me/393484068657?text=COLLETTA
 
   Grazie a chi ci darà una mano. Che Iddio ve ne renda merito.
@@ -31,10 +34,10 @@ italianoSemplice: |
 
   Puoi venire anche se non sei iscritto alla Misericordia. Anche i ragazzi sotto i 18 anni possono venire, se un genitore firma il permesso.
 
-  Scrivi **COLLETTA** e il turno su WhatsApp al **348 4068657**.
+  Chiama il **348 4068657** (anche WhatsApp, scrivi **COLLETTA**), il **328 8105399** o il **06 933 3717** e di' quale turno scegli.
 ---
 
-![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie in divisa in piazza ad Ariccia, con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. WhatsApp 348 4068657».](/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg)
+![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie in divisa in piazza ad Ariccia, con la scritta «Cerchiamo volontari per la Colletta. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. Chiamaci: 348 4068657, 328 8105399, 06 933 3717».](/img/news/2026-11-02-colletta-alimentare-cerchiamo-volontari-grafica.jpg)
 
 **Sabato 14 novembre è la Giornata nazionale della Colletta Alimentare**, la trentesima. Nei supermercati di tutta Italia chi fa la spesa può donarne una parte per le persone in difficoltà. **La Misericordia di Ariccia sarà, come sempre, alla Coop di Genzano di Roma, in via Emilia Romagna 102.**
 
@@ -56,10 +59,14 @@ Scegli il turno che preferisci: accogliamo chi entra, spieghiamo la Colletta e r
 
 ## Come dare la tua disponibilità
 
-**[Scrivi COLLETTA su WhatsApp al 348 4068657](https://wa.me/393484068657?text=COLLETTA)** e indica il turno che scegli. Fallo **il prima possibile**, così possiamo organizzare bene i turni.
+Dacci la tua disponibilità **il prima possibile**, dicendoci il turno che scegli, così possiamo organizzare bene i turni:
+
+- **[348 4068657](tel:+393484068657)**, anche su WhatsApp: **[scrivi COLLETTA](https://wa.me/393484068657?text=COLLETTA)**
+- **[328 8105399](tel:+393288105399)**
+- **[06 933 3717](tel:+39069333717)**, telefono della sede
 
 Se non puoi esserci come volontario, passa a trovarci alla Coop sabato 14 e dona anche tu. Con il Banco Alimentare distribuiamo beni di prima necessità alle persone in difficoltà per tutto l'anno: trovi come funziona nella pagina dei **[servizi sociali](/servizi/servizi-sociali/)**. E se dopo la Colletta vuoi restare in squadra, leggi **[Diventa volontario](/diventa-volontario/)**.
 
 Grazie a chi ci darà una mano: **«Che Iddio ve ne renda merito»**.
 
-*Fonti: [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026 e l'[elenco dei punti vendita](https://www.bancoalimentare.it/colletta-alimentare/punti-vendita), dove c'è la Coop di Genzano di Roma; turni e condizioni di partecipazione dalla Misericordia di Ariccia. Informazioni verificate il 2 novembre 2026.*
+*Fonti: [Fondazione Banco Alimentare](https://www.bancoalimentare.it/colletta-alimentare) per la data della Colletta Alimentare 2026 e l'[elenco dei punti vendita](https://www.bancoalimentare.it/colletta-alimentare/punti-vendita), dove c'è la Coop di Genzano di Roma; turni e condizioni di partecipazione dalla Misericordia di Ariccia; recapiti dalla pagina [Contatti](/contatti/). Informazioni verificate il 2 novembre 2026.*
