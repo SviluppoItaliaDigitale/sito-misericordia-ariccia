@@ -1,2 +1,2 @@
-## Gestione social — pubblica (2026-11-02 17:11 UTC)
-Pubblicato su Facebook: `623665131108377_1577155781109125`
+## Gestione social — pubblica (2026-11-02 17:12 UTC)
+Pubblicato su Instagram: `17925341421216791` https://www.instagram.com/p/DfP0IykF2un/
