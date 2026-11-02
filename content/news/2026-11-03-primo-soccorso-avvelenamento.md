@@ -19,7 +19,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Avvelenamento: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-avvelenamento-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una bottiglia e un cartello di pericolo. Scritta: «Avvelenamento: niente rimedi fai da te». Non far vomitare, niente latte: chiama il Centro Antiveleni.](/img/news/primo-soccorso-avvelenamento-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **9 di 10**: **avvelenamento**. *Niente rimedi fai da te.*
 

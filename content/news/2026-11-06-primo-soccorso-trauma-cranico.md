@@ -18,7 +18,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Trauma cranico: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-trauma-cranico-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una testa con un bernoccolo e le stelline. Scritta: «Colpo alla testa: i segnali d'allarme». Che cosa osservare e quando chiamare il 112.](/img/news/primo-soccorso-trauma-cranico-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **10 di 10**: **trauma cranico**. *Attenti alla testa.*
 

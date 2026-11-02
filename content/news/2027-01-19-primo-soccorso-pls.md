@@ -18,7 +18,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Posizione laterale di sicurezza: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-01-19-primo-soccorso-pls-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona girata su un fianco nella posizione laterale di sicurezza. Scritta: «Posizione laterale: quando e come». Per chi non risponde ma respira normalmente: i passaggi per girarlo su un fianco.](/img/news/2027-01-19-primo-soccorso-pls-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **2 di 10**: **la posizione laterale di sicurezza**.
 

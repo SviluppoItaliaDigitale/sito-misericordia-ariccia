@@ -18,7 +18,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Il defibrillatore (DAE): una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-01-12-primo-soccorso-dae-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: il cartello verde del defibrillatore, un DAE giallo e un cuore rosso. Scritta: «Il defibrillatore: puoi usarlo anche tu». Dove trovarlo, come si accende e cosa fare con piastre, analisi e scarica.](/img/news/2027-01-12-primo-soccorso-dae-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **1 di 10**: **il defibrillatore (DAE)**.
 

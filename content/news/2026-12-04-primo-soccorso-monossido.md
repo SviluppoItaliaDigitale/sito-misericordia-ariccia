@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Monossido di carbonio: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-monossido-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una casa con la sigla CO del monossido di carbonio. Scritta: «Monossido di carbonio: il pericolo che non si sente». Stufe, camini e caldaie: controlli e rilevatore.](/img/news/primo-soccorso-monossido-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **8 di 13**: **monossido di carbonio**.
 

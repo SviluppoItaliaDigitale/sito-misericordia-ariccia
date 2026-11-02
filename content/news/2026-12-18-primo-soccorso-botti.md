@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Botti di Capodanno: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-botti-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un petardo con la miccia accesa. Scritta: «Botti di Capodanno: prevenzione e primo soccorso». Solo fuochi a norma CE, mai raccogliere petardi inesplosi.](/img/news/primo-soccorso-botti-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **12 di 13**: **botti di capodanno**.
 

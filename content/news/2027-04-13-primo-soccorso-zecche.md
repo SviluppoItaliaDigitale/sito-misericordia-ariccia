@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Zecche: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-04-13-primo-soccorso-zecche-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una pinzetta che afferra una zecca vicino alla pelle e un cronometro. Scritta: «Zecche: come toglierle». La pinzetta vicino alla pelle, poi tieni d'occhio il punto per un mese.](/img/news/2027-04-13-primo-soccorso-zecche-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **7 di 10**: **zecche**.
 

@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Annegamento: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-06-08-primo-soccorso-annegamento-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona dalla riva lancia un salvagente a chi è in acqua; nei tondi, oggetti che galleggiano e un bastone da porgere. Scritta: «Annegamento: cosa fare». Non entrare in acqua se non sei addestrato: lancia qualcosa che galleggia e chiama il 112.](/img/news/2027-06-08-primo-soccorso-annegamento-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **10 di 10**: **annegamento**.
 

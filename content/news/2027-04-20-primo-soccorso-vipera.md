@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Morso di vipera: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-04-20-primo-soccorso-vipera-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una vipera fra i sassi e, ingrandito, il suo occhio. Scritta: «Morso di vipera: cosa fare». Chiama il 112, calma e arto fermo. Niente lacci, tagli o ghiaccio.](/img/news/2027-04-20-primo-soccorso-vipera-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **8 di 10**: **morso di vipera**.
 

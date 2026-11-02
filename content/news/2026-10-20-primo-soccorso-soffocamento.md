@@ -19,7 +19,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Soffocamento: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-soffocamento-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona che si porta le mani alla gola. Scritta: «Soffocamento: 5 colpi e 5 compressioni». Cosa fare in un adulto.](/img/news/primo-soccorso-soffocamento-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **5 di 10**: **soffocamento**. *5 colpi, 5 spinte.*
 

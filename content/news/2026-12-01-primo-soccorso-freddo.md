@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Ipotermia e congelamento: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-freddo-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un termometro con la temperatura bassa fra i fiocchi di neve. Scritta: «Ipotermia e congelamento: cosa fare». Scaldare la persona in modo sicuro, niente alcol.](/img/news/primo-soccorso-freddo-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **7 di 13**: **ipotermia e congelamento**.
 

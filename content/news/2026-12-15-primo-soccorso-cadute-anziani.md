@@ -18,7 +18,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Cadute degli anziani: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-cadute-anziani-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: una persona anziana a terra e il suo bastone. Scritta: «Se un anziano cade: cosa fare». Non tirarlo su subito: prima le domande giuste.](/img/news/primo-soccorso-cadute-anziani-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **11 di 13**: **cadute degli anziani**.
 

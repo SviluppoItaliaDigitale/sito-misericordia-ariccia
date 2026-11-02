@@ -18,7 +18,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Dente caduto o rotto: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-02-09-primo-soccorso-dente-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un dente in un bicchiere di latte, un rotolo di garza e un bicchiere d'acqua barrato. Scritta: «Dente caduto: cosa fare». Prendilo per la corona, mettilo nel latte e corri dal dentista.](/img/news/2027-02-09-primo-soccorso-dente-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **5 di 10**: **dente caduto o rotto**.
 

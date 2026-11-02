@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Sangue dal naso: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/2027-01-26-primo-soccorso-sangue-naso-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un volto che si stringe la parte morbida del naso. Scritta: «Sangue dal naso: cosa fare». Testa in avanti, mai indietro, e la parte morbida del naso ben stretta.](/img/news/2027-01-26-primo-soccorso-sangue-naso-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **terza serie**: dieci video di approfondimento con disegni animati, da gennaio a giugno. Oggi il numero **3 di 10**: **sangue dal naso**.
 

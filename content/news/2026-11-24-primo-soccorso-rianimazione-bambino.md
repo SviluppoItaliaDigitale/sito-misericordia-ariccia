@@ -19,7 +19,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Rianimazione nel bambino: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: le compressioni sul torace di un bambino, il contatore «30 di 30» e il ritmo di 110 al minuto. Scritta: «Rianimazione nel bambino e nel lattante». Cinque soffi, poi 30 compressioni e 2 soffi.](/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **5 di 13**: **rianimazione nel bambino**.
 

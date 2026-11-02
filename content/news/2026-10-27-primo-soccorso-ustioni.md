@@ -18,7 +18,7 @@ italianoSemplice: |
   Tutti i consigli sono nella pagina del dossier sul primo soccorso.
 ---
 
-![Ustioni: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-ustioni-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: un braccio sotto l'acqua corrente del rubinetto e un timer di 20 minuti. Scritta: «Ustioni: cosa fare e cosa non fare». 20 minuti di acqua corrente, poi la pellicola.](/img/news/primo-soccorso-ustioni-grafica.jpg)
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **7 di 10**: **ustioni**. *20 minuti di acqua.*
 

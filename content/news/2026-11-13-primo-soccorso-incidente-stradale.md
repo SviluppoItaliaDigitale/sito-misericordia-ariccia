@@ -16,7 +16,7 @@ italianoSemplice: |
   In ogni emergenza chiama il **112**.
 ---
 
-![Incidente stradale: una scena del video «Primo soccorso passo passo» della Misericordia di Ariccia](/img/news/primo-soccorso-incidente-stradale-grafica.jpg)
+![Grafica della rubrica «Primo soccorso passo passo» della Misericordia di Ariccia: due auto che si scontrano. Scritta: «Incidente stradale: come aiutare in sicurezza». Quattro frecce, giubbotto, triangolo e 112.](/img/news/primo-soccorso-incidente-stradale-grafica.jpg)
 
 **Primo soccorso passo passo** torna con la **seconda serie**: tredici video di approfondimento con disegni animati, fino a Natale. Oggi il numero **2 di 13**: **incidente stradale**.
 
