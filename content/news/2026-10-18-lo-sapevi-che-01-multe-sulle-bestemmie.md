@@ -21,7 +21,7 @@ italianoSemplice: |
   Ogni parolaccia costava una multa. Con quei soldi hanno comprato le prime barelle per i malati.
 ---
 
-![Lo sapevi che… n. 1: Le prime barelle comprate con le multe sulle bestemmie](/img/news/lo-sapevi-che-01-multe-sulle-bestemmie-grafica.jpg)
+![Grafica di «Lo sapevi che…», Firenze, intorno al 1240: il dipinto ottocentesco di Eleuterio Pagliano sull'origine della Compagnia della Misericordia (pubblico dominio), con la scritta «Le prime barelle: comprate con le multe sulle bestemmie. Secondo la tradizione, i facchini pagavano una multa per ogni bestemmia: con quei soldi, sei zane per portare i malati»](/img/news/lo-sapevi-che-01-multe-sulle-bestemmie-grafica.jpg)
 
 La tradizione la racconta così, ed è la storia più famosa sulle origini della Misericordia di Firenze. I facchini si ritrovavano alla «Buca degli Adimari» e, fra un bicchiere e l'altro, bestemmiavano. Piero di Luca Borsi propose a tutti una piccola multa per ogni bestemmia; una guida inglese del 1877 aggiunge che il denaro finiva in una cassetta appesa al muro.
 

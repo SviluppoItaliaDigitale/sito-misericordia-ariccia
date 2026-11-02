@@ -15,7 +15,7 @@ italianoSemplice: |
   Alcune Misericordie hanno costruito cimiteri molto belli, con statue e dipinti. Ci sono sepolte anche persone famose.
 ---
 
-![I cimiteri delle Misericordie: la Pietà di Giovanni Duprè nel camposanto della Misericordia di Siena](/img/news/dossier-cimiteri-grafica.jpg)
+![Grafica del dossier «La nostra storia»: la Pietà di Giovanni Duprè nel camposanto della Misericordia di Siena (foto Sailko, CC BY 3.0, Wikimedia Commons), con la scritta «Seppellire i morti: i cimiteri delle Misericordie. Da un dovere antico, camposanti che oggi sono musei a cielo aperto»](/img/news/dossier-cimiteri-grafica.jpg)
 
 Tra le sette opere di misericordia corporali, l'ultima è **«seppellire i morti»**. Da questo dovere antico, nell'Ottocento, sono nati cimiteri che oggi sono veri musei a cielo aperto. Li raccontiamo nel nuovo dossier **[I cimiteri delle Misericordie](/dossier/cimiteri-delle-misericordie/)**.
 

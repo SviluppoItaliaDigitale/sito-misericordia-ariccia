@@ -8,7 +8,7 @@ immagine: "/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-grafica.jpg"
 data_evento: "2026-10-25"
 controllo_editoriale: "2026-10-25"
 social: true
-social_alt: "Volontari della Misericordia di Ariccia seguono la lezione in aula davanti a uno schermo. Grafica nazionale blu e gialla: Formazione; Formarsi per aiutare. BLSD, PBLSD e disostruzione. Volontari e giovani del Servizio Civile insieme, oggi 25 ottobre 2026."
+social_alt: "Volontari della Misericordia di Ariccia seguono la lezione in aula davanti a uno schermo. Grafica nazionale blu e gialla: Formazione; Formarsi per aiutare: BLSD, PBLSD e disostruzione. Volontari e giovani del Servizio Civile insieme, 25 ottobre 2026."
 social_testo: |
   Prendersi cura degli altri comincia anche da qui: dal tempo dedicato a imparare.
 
@@ -39,7 +39,7 @@ italianoSemplice: |
 
 Oggi, **domenica 25 ottobre 2026**, alcuni dei nostri volontari partecipano al **corso di formazione BLSD, PBLSD e disostruzione delle vie aeree**, in svolgimento presso le strutture messe a disposizione della Misericordia di Ariccia. Insieme a loro ci sono **tutte le ragazze e tutti i ragazzi del nostro Servizio Civile Universale**.
 
-![Grafica della Misericordia di Ariccia con una foto della lezione e il messaggio «Formarsi per aiutare»: formazione BLSD, PBLSD e disostruzione per volontari e giovani del Servizio Civile, 25 ottobre 2026.](/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-grafica.jpg)
+![Grafica della Misericordia di Ariccia con una foto della lezione in aula davanti allo schermo e la scritta «Formazione. Formarsi per aiutare: BLSD, PBLSD e disostruzione. Volontari e giovani del Servizio Civile insieme, 25 ottobre 2026».](/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-grafica.jpg)
 
 ## La preparazione fa parte del servizio
 

@@ -20,7 +20,7 @@ italianoSemplice: |
   Per prenotare chiama il **348 4068657**, qualche giorno prima.
 ---
 
-![Le cose di ogni giorno: una scena del video sull'accompagnamento sociale della Misericordia di Ariccia](/img/news/accompagnamento-sociale-grafica.jpg)
+![Grafica della Misericordia di Ariccia: il mezzo dei servizi sociali della Misericordia parcheggiato sotto una rupe, con la scritta «Servizi sociali. La spesa, la posta, il medico: ti accompagniamo noi. Per chi non può muoversi da solo, anche in carrozzina. Prenota al 348 4068657»](/img/news/accompagnamento-sociale-grafica.jpg)
 
 Per chi è anziano, solo, ha una disabilità o semplicemente non guida, **le cose più semplici possono diventare le più difficili**: fare la spesa, ritirare la pensione, prendere le medicine. Per questo, oltre ai trasporti sanitari, facciamo anche **accompagnamento sociale**: ti portiamo dove devi andare nella vita di tutti i giorni. Lo abbiamo raccontato in un video.
 

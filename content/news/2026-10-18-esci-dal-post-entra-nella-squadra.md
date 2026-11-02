@@ -30,7 +30,7 @@ italianoSemplice: |
   Leggi la pagina [Diventa volontario](/diventa-volontario/).
 ---
 
-![Illustrazione della campagna della Misericordia di Ariccia «Esci dal post. Entra nella squadra»: tre volontari disegnati e una mano tesa che supera la cornice di un post.](/img/news/2026-10-18-esci-dal-post-grafica.jpg)
+![Grafica della Misericordia di Ariccia: un selfie di volontarie e volontari in divisa in piazza di Corte ad Ariccia, con la scritta «Volontariato. Esci dal post: entra nella squadra. Il prossimo volontario potresti essere tu. Scrivi VOLONTARIO su WhatsApp al 348 4068657»](/img/news/2026-10-18-esci-dal-post-grafica.jpg)
 
 **Hai mai pensato: «Vorrei fare qualcosa per gli altri»? Il primo passo può essere un messaggio.**
 

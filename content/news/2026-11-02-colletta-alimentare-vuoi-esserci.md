@@ -6,7 +6,7 @@ slug: "colletta-alimentare-vuoi-esserci"
 description: "Sabato 14 novembre la Misericordia di Ariccia è alla Coop di Genzano di Roma per la Colletta Alimentare: chi vuole partecipare, anche se non è iscritto, può unirsi a noi in uno dei turni 8-12, 12-16 e 16-20."
 immagine: "/img/news/2026-11-02-colletta-alimentare-vuoi-esserci-grafica.jpg"
 controllo_editoriale: "2026-11-02"
-social_alt: "Grafica della Misericordia di Ariccia: volontarie e volontari della Misericordia nel supermercato Coop di Genzano durante la Colletta Alimentare 2025, con la scritta «Vuoi esserci? Ti accogliamo. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. 348 4068657, sede 06 933 3717»."
+social_alt: "Grafica della Misericordia di Ariccia: volontarie e volontari della Misericordia nel supermercato Coop di Genzano durante la Colletta Alimentare 2025, con la scritta «Colletta Alimentare. Colletta del 14 novembre: vuoi esserci? Ti accogliamo. Coop di Genzano, turni 8-12, 12-16, 16-20. 348 4068657, sede 06 933 3717»."
 social_testo: |-
   🛒 Colletta Alimentare: vuoi esserci anche tu?
   Sabato 14 novembre, come ogni anno, la Misericordia di Ariccia è alla Coop di Genzano di Roma, in via Emilia Romagna 102, per la 30ª Giornata nazionale della Colletta Alimentare.
@@ -36,7 +36,7 @@ italianoSemplice: |
   Chiama il **348 4068657** (anche WhatsApp, scrivi **COLLETTA**) o la sede al **06 933 3717** e di' quale turno scegli.
 ---
 
-![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie e volontari della Misericordia nel supermercato Coop di Genzano durante la Colletta Alimentare 2025, con i carrelli e gli scaffali alle spalle, e la scritta «Vuoi esserci? Ti accogliamo. Sabato 14 novembre, Coop di Genzano. Turni 8-12, 12-16, 16-20. 348 4068657, sede 06 933 3717».](/img/news/2026-11-02-colletta-alimentare-vuoi-esserci-grafica.jpg)
+![Grafica della Misericordia di Ariccia per la Colletta Alimentare: volontarie e volontari della Misericordia nel supermercato Coop di Genzano durante la Colletta Alimentare 2025, con i carrelli e gli scaffali alle spalle, e la scritta «Colletta Alimentare. Colletta del 14 novembre: vuoi esserci? Ti accogliamo. Coop di Genzano, turni 8-12, 12-16, 16-20. 348 4068657, sede 06 933 3717».](/img/news/2026-11-02-colletta-alimentare-vuoi-esserci-grafica.jpg)
 
 **Sabato 14 novembre è la Giornata nazionale della Colletta Alimentare**, la trentesima. Nei supermercati di tutta Italia chi fa la spesa può donarne una parte per le persone in difficoltà. **La Misericordia di Ariccia sarà, come ogni anno, alla Coop di Genzano di Roma, in via Emilia Romagna 102.**
 

@@ -22,7 +22,7 @@ italianoSemplice: |
   Puoi diventare volontario dai 16 agli 80 anni. Chiama o scrivi al **348 4068657**.
 ---
 
-![Diventa volontario della Misericordia di Ariccia, dai 16 agli 80 anni: chiama o scrivi su WhatsApp al 348 4068657](/img/news/diventa-volontario-video-grafica.jpg)
+![Grafica della Misericordia di Ariccia: volontarie e volontari in divisa in piazza di Corte ad Ariccia, accanto allo stendardo, con la scritta «Volontariato. Nessuno resta solo: diventa volontario. Dai 16 agli 80 anni, anche senza esperienza. Chiama o scrivi su WhatsApp al 348 4068657»](/img/news/diventa-volontario-video-grafica.jpg)
 
 Squilla il telefono. Qualcuno, qui ad Ariccia, deve raggiungere l'ospedale per curarsi. Comincia così, quasi ogni giorno, il servizio dei nostri volontari, e comincia così anche il **video** che abbiamo preparato per raccontarlo in quaranta secondi.
 

@@ -15,7 +15,7 @@ italianoSemplice: |
   Sotto la buffa erano tutti uguali agli altri volontari.
 ---
 
-![I confratelli illustri: ritratto del granduca Ferdinando II de' Medici](/img/news/dossier-confratelli-grafica.jpg)
+![Grafica del dossier «La nostra storia»: ritratto del granduca Ferdinando II de' Medici di Justus Sustermans (pubblico dominio), con la scritta «I confratelli illustri: granduchi, papi e Puccini. Chi ha indossato la buffa, e quali nomi famosi circolano senza prove»](/img/news/dossier-confratelli-grafica.jpg)
 
 A Firenze la Misericordia è guidata da 72 Capi di Guardia, che possono essere «di qualsiasi ordine»: per questo, nei secoli, sotto la buffa sono passati anche granduchi, cardinali e principi. Li raccontiamo nel nuovo dossier **[I confratelli illustri](/dossier/confratelli-illustri/)**, distinguendo i fatti dalle leggende.
 

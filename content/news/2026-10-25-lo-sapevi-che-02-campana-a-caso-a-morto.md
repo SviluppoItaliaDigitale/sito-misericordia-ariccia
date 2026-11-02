@@ -20,7 +20,7 @@ italianoSemplice: |
   Due colpi volevano dire: c'è un ferito. Tre colpi volevano dire: c'è un morto.
 ---
 
-![Lo sapevi che… n. 2: Due rintocchi «a caso», tre «a morto»](/img/news/lo-sapevi-che-02-campana-a-caso-a-morto-grafica.jpg)
+![Grafica di «Lo sapevi che…», Firenze e Pisa, Ottocento: fotografia dei Fratelli Alinari, confratelli incappucciati della Misericordia portano una lettiga a Firenze, 1889 circa (pubblico dominio), con la scritta «Due rintocchi a caso: tre a morto. La campana della Misericordia chiamava i confratelli anche di notte. Chi aveva un familiare fuori casa restava in ansia»](/img/news/lo-sapevi-che-02-campana-a-caso-a-morto-grafica.jpg)
 
 Prima del telefono, i confratelli venivano chiamati con la **campana**. A Firenze, racconta Giuseppe Conti nel suo *Firenze vecchia*, la campana della Misericordia suonava a qualsiasi ora. Due colpi volevano dire «a caso», cioè una disgrazia: un ferito per strada, un incidente sul lavoro. Tre colpi volevano dire «a morto»: un annegato in Arno, un muratore caduto da un'impalcatura.
 

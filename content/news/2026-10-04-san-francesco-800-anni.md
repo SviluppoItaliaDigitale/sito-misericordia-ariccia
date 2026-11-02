@@ -28,7 +28,7 @@ italianoSemplice: |
 
 Oggi, **4 ottobre**, la Chiesa festeggia **San Francesco d'Assisi**, patrono d'Italia. Quest'anno la festa ha un sapore speciale: Francesco morì alla Porziuncola la sera del 3 ottobre **1226**, e il 2026 è l'anno dell'**ottavo centenario** della sua morte. Lo abbiamo vissuto anche noi, pochi giorni fa, con il [pellegrinaggio nazionale delle Misericordie ad Assisi](/news/pellegrinaggio-assisi-misericordie-2026/).
 
-![Grafica della Misericordia di Ariccia per il 4 ottobre: la frase di San Francesco «Il Signore mi condusse tra loro e usai con essi misericordia» sopra una foto dei volontari delle Misericordie in divisa azzurra che cantano con i fogli in mano davanti alle mura di Assisi, il 26 settembre 2026](/img/news/san-francesco-2026-grafica.jpg)
+![Grafica della Misericordia di Ariccia per il 4 ottobre: volontari delle Misericordie in divisa azzurra cantano con i fogli in mano davanti alle mura di Assisi, il 26 settembre 2026, con la scritta «San Francesco d'Assisi, 800 anni dalla morte. Patrono d'Italia: 800 anni di misericordia» e la frase del Testamento «Il Signore mi condusse tra loro e usai con essi misericordia»](/img/news/san-francesco-2026-grafica.jpg)
 
 ## La parola che ci dà il nome
 

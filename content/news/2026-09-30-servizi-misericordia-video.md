@@ -20,7 +20,7 @@ italianoSemplice: |
   Per prenotare chiama o scrivi al **348 4068657**. Per le emergenze chiama il **112**.
 ---
 
-![Sali con la carrozzina: furgone con pedana, carrozzina in prestito e stampelle. Una scena del video della Misericordia di Ariccia](/img/news/servizi-video-grafica.jpg)
+![Grafica della Misericordia di Ariccia: un'ambulanza della Misericordia davanti a un ospedale, con la scritta «Servizi. I nostri servizi: da casa all'ospedale e ritorno. Furgone con pedana, carrozzina e stampelle in prestito, assistenza alle manifestazioni. Info al 348 4068657»](/img/news/servizi-video-grafica.jpg)
 
 Ci sono giorni in cui una visita in ospedale diventa un problema: non hai un mezzo adatto, oppure non hai nessuno a cui chiedere un passaggio. È lì che entriamo in gioco noi. Abbiamo raccontato **tutti i nostri servizi in un video di un minuto**.
 
