@@ -12,6 +12,7 @@ La cartella non va online: Hugo non pubblica `scripts/`. Quando usarli e come si
 |---|---|---|
 | `post-con-fascia.html` | 1080×1350 | Post su un tema (volontariato, Servizio civile, un servizio, un corso): foto piena, fascia blu con il tema e lo stemma, titolo in basso con le prime parole evidenziate |
 | `post-con-fascia-due-righe.html` | 1080×1350 | Lo stesso, con il tema su due righe (giornate mondiali e nazionali) |
+| `post-giornata.html` | 1080×1350 | Post di una ricorrenza o di una giornata (Defunti, Tutti i Santi, giornate internazionali), come quelli nazionali dal 2026: nome della giornata in giallo e bianco nella fascia, titolo su due righe con la prima evidenziata e i due punti, una frase sotto |
 | `storia-con-fascia.html` | 1080×1920 | Storia di Instagram e Facebook con gli stessi elementi |
 | `post-testimonianza.html` | 1080×1350 | Una frase vera di chi fa servizio, con la sua foto scontornata |
 | `carosello-copertina.html` | 1080×1350 | Prima pagina di un carosello («Cosa facciamo» o un altro tema) |

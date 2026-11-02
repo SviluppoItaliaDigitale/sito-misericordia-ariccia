@@ -4,7 +4,7 @@
   "lutto": true,
   "campi": {
     "fascia": "In ricordo",
-    "evidenziato": "[Nome Cognome]",
+    "evidenziato": "[Nome Cognome]:",
     "titolo": "[una frase per ricordarlo o ricordarla]",
     "sottotitolo": "[Chi era per la Misericordia, in una frase]"
   }

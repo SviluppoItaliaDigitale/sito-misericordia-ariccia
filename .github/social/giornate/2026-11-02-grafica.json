@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata.html",
+  "lutto": true,
+  "campi": {
+    "giornata": "Commemorazione",
+    "giornata-resto": "dei defunti",
+    "evidenziato": "Il bene compiuto:",
+    "titolo": "continua a vivere",
+    "sottotitolo": "Oggi ricordiamo nella preghiera i nostri cari, i confratelli e le consorelle che ci hanno preceduto.",
+    "foto": "../../../scripts/grafica-brand/opere-misericordia/alkmaar-seppellire-i-morti.jpg",
+    "foto-posizione": "50% 78%",
+    "foto-alt": "«Seppellire i morti», pannello delle Sette opere di misericordia del Maestro di Alkmaar (1504): i confratelli portano una bara verso la sepoltura, accompagnati da due sacerdoti"
+  }
+}

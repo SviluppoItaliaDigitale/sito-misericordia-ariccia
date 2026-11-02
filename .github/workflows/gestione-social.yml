@@ -15,7 +15,7 @@ on:
         description: "Cosa fare"
         required: true
         type: choice
-        options: [elenco, statistiche, commenti, messaggi, pubblica, modifica, elimina, rispondi-commento, nascondi-commento, elimina-commento, rispondi-messaggio, cerca-foto, prova]
+        options: [elenco, statistiche, commenti, messaggi, pubblica, modifica, elimina, rispondi-commento, nascondi-commento, elimina-commento, rispondi-messaggio, cerca-foto, osserva-ig, prova]
       rete:
         description: "Facebook o Instagram"
         required: true
