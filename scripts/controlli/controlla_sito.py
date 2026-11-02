@@ -28,6 +28,9 @@ FREQ = {"giornaliera": 1, "settimanale": 7, "mensile": 30, "annuale": 365}
 oggi = dt.datetime.now(dt.timezone(dt.timedelta(hours=1))).date()  # data italiana (± l'ora legale basta)
 # Errori già corretti che non devono tornare (regola qualità, punto 5): espressione e forma giusta.
 FORME_SBAGLIATE = [
+    (re.compile(r"\b(?:06[\s.]?)?87\s?72\s?91\s?39\b"),
+     "06 87729139 è il vecchio numero fisso scritto sul mezzo dei servizi sociali: non è più attivo (Alessandro, "
+     "2/11/2026). I recapiti sono quelli di hugo.toml: sede 06 933 3717, servizi 348 4068657"),
     (re.compile(r"\bche\s+dio\s+(?:te\s+ne|ve\s+ne|gliene)\s+renda\s+merito", re.I),
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),
