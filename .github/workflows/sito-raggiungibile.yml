@@ -1,0 +1,93 @@
+name: Sito raggiungibile (ogni ora)
+
+# Controlla ogni ora, giorno e notte, che il sito risponda: home e robots.txt
+# con HTTP 200 e il nome «Misericordia» nella home. Nasce il 4/11/2026: il
+# sito non rispondeva più in HTTPS (il server Aruba accettava la connessione
+# e poi taceva) e se n'è accorto Alessandro, perché il guardiano della
+# Liturgia gira solo di notte e «Controlli del sito» solo dopo un deploy
+# (regola guasti.md, punto 7).
+#
+# Se il sito non risponde dopo 3 tentativi distanziati, apre o aggiorna la
+# issue «Sito irraggiungibile» (label automazione + fonte-rotta, al massimo un
+# commento ogni tre ore), che si chiude da sola al primo controllo in cui il
+# sito torna a rispondere. Il run resta verde: gira 24 volte al giorno e una
+# run rossa a ogni giro sarebbe solo rumore (guasti.md, punto 1). Non rilancia
+# il deploy: se il server non risponde, ripubblicare gli stessi file non serve;
+# un 404 su una pagina lo vede già il controllo dei link.
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+concurrency:
+  group: sito-raggiungibile
+  cancel-in-progress: false
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITO: https://www.misericordia-ariccia.it
+      TITOLO_ISSUE: "Sito irraggiungibile"
+    steps:
+      - name: Il sito risponde?
+        id: check
+        run: |
+          STATO="ko"; DETTAGLIO=""
+          # 3 tentativi: i 503 intermittenti sono l'anti-bot di Aruba
+          for i in 1 2 3; do
+            HOME_CODICE=$(curl -sL -o home.html -w '%{http_code}' --max-time 30 "$SITO/" || true)
+            ROBOTS_CODICE=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 30 "$SITO/robots.txt" || true)
+            HTTP_CODICE=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "http://www.misericordia-ariccia.it/" || true)
+            DETTAGLIO="home HTTPS: $HOME_CODICE, robots.txt: $ROBOTS_CODICE, HTTP (proxy Aruba): $HTTP_CODICE"
+            echo "Tentativo $i: $DETTAGLIO"
+            if [ "$HOME_CODICE" = "200" ] && [ "$ROBOTS_CODICE" = "200" ] && grep -q 'Misericordia' home.html; then
+              STATO="ok"; break
+            fi
+            sleep 30
+          done
+          echo "stato=$STATO" >> "$GITHUB_OUTPUT"
+          echo "dettaglio=$DETTAGLIO" >> "$GITHUB_OUTPUT"
+
+      - name: Issue di segnalazione (si chiude da sola)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATO: ${{ steps.check.outputs.stato }}
+          DETTAGLIO: ${{ steps.check.outputs.dettaglio }}
+        run: |
+          R="$GITHUB_REPOSITORY"
+          APERTA=$(gh api "repos/$R/issues?state=open&labels=fonte-rotta&per_page=100" \
+            --jq ".[] | select(.title == \"$TITOLO_ISSUE\") | \"\(.number) \(.updated_at)\"" | head -1)
+          NUM="${APERTA%% *}"
+          if [ "$STATO" = "ok" ]; then
+            echo "Il sito risponde."
+            if [ -n "$NUM" ]; then
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y') il sito risponde di nuovo ($DETTAGLIO). La chiudo."
+              gh api -X PATCH "repos/$R/issues/$NUM" -f state=closed -f state_reason=completed >/dev/null
+              echo "Issue #$NUM chiusa."
+            fi
+            exit 0
+          fi
+          # Codice 000 = nessuna risposta entro 30 secondi.
+          CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s' \
+            "Controllo delle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y'): il sito $SITO/ non risponde dopo 3 tentativi ($DETTAGLIO; 000 = nessuna risposta entro 30 secondi)." \
+            "Se il proxy Aruba in HTTP risponde (301) e l'HTTPS no, il guasto è sul server web di Aruba, non nei file del sito: il deploy FTPS può riuscire lo stesso. Che cosa fare: controllare https://status.aruba.it e aprire una richiesta di assistenza dall'area clienti Aruba (hosting www.misericordia-ariccia.it). Se invece risponde con 500 o 403, guardare l'ultimo deploy e .htaccess." \
+            "Il controllo gira ogni ora; la issue si chiude da sola quando il sito torna a rispondere." \
+            "Run: $GITHUB_SERVER_URL/$R/actions/runs/$GITHUB_RUN_ID")
+          if [ -z "$NUM" ]; then
+            gh api -X POST "repos/$R/issues" -f title="$TITOLO_ISSUE" -f body="$CORPO" \
+              -f "labels[]=automazione" -f "labels[]=fonte-rotta" --jq '"Aperta la issue #\(.number)"'
+            exit 0
+          fi
+          AGGIORNATA="${APERTA#* }"
+          ETA=$(( $(date -u +%s) - $(date -u -d "$AGGIORNATA" +%s) ))
+          if [ "$ETA" -lt 10800 ]; then
+            echo "Issue #$NUM aggiornata meno di tre ore fa: nessun commento nuovo."
+          else
+            gh api -X POST "repos/$R/issues/$NUM/comments" -f body="$CORPO" >/dev/null
+            echo "Commento aggiunto alla issue #$NUM."
+          fi
