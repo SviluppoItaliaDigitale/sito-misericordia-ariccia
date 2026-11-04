@@ -70,6 +70,15 @@ sito: automazioni in errore»** (`salute-sito.yml`, ogni giorno, workflow con l'
 main fallito). Chi trova una di queste issue ripara la causa: URL nuovo solo se verificato con
 una richiesta reale sulla fonte, altrimenti domanda ad Alessandro.
 
+## Sito raggiungibile (dal 4/11/2026)
+
+Il workflow `sito-raggiungibile.yml` controlla **ogni ora** che il sito risponda in HTTPS
+(home e `robots.txt` con 200). Se non risponde apre la issue «Sito irraggiungibile»
+(`automazione` + `fonte-rotta`), che si chiude da sola al rientro. Il 4/11/2026 il server
+web di Aruba accettava la connessione HTTPS e poi non rispondeva (anche per i file
+statici), mentre il proxy HTTP e l'FTPS funzionavano: un guasto così non si ripara dal
+repository, serve una richiesta di assistenza dall'area clienti Aruba.
+
 ## Bacheca Claude ⇄ ChatGPT (dal 9/10/2026)
 
 La bacheca è `COORDINAMENTO.md` nella cartella principale (protocollo comune,
