@@ -40,12 +40,18 @@ jobs:
           STATO="ko"; DETTAGLIO=""
           # 3 tentativi: i 503 intermittenti sono l'anti-bot di Aruba
           for i in 1 2 3; do
-            HOME_CODICE=$(curl -sL -o home.html -w '%{http_code}' --max-time 30 "$SITO/" || true)
-            ROBOTS_CODICE=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 30 "$SITO/robots.txt" || true)
+            # Conta anche l'uscita di curl: un 200 con la risposta troncata o
+            # bloccata a metà (uscita 18, 28...) non è un sito che funziona.
+            rm -f home.html
+            HOME_ESITO=0; ROBOTS_ESITO=0
+            HOME_CODICE=$(curl -sL -o home.html -w '%{http_code}' --max-time 30 "$SITO/") || HOME_ESITO=$?
+            ROBOTS_CODICE=$(curl -sL -o /dev/null -w '%{http_code}' --max-time 30 "$SITO/robots.txt") || ROBOTS_ESITO=$?
             HTTP_CODICE=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "http://www.misericordia-ariccia.it/" || true)
-            DETTAGLIO="home HTTPS: $HOME_CODICE, robots.txt: $ROBOTS_CODICE, HTTP (proxy Aruba): $HTTP_CODICE"
+            DETTAGLIO="home HTTPS: $HOME_CODICE (curl $HOME_ESITO), robots.txt: $ROBOTS_CODICE (curl $ROBOTS_ESITO), HTTP (proxy Aruba): $HTTP_CODICE"
             echo "Tentativo $i: $DETTAGLIO"
-            if [ "$HOME_CODICE" = "200" ] && [ "$ROBOTS_CODICE" = "200" ] && grep -q 'Misericordia' home.html; then
+            if [ "$HOME_ESITO" = "0" ] && [ "$ROBOTS_ESITO" = "0" ] \
+               && [ "$HOME_CODICE" = "200" ] && [ "$ROBOTS_CODICE" = "200" ] \
+               && grep -q 'Misericordia' home.html; then
               STATO="ok"; break
             fi
             sleep 30
