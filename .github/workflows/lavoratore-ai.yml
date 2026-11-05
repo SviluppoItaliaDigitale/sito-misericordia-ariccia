@@ -4,6 +4,9 @@ name: "🤝 AI automatiche: richieste della bacheca"
 # indirizzate a loro: ChatGPT automatico (Codex con l'accesso ChatGPT di Alessandro), Gemini automatico (chiave
 # gratuita della Gemini API), DeepSeek, GLM, Kimi e Qwen automatici (modelli gratuiti di Ollama Cloud). Lavorano su
 # un ramo auto/… e consegnano una PR in bozza; unire resta a chi controlla (protocollo comune, § «AI automatiche»).
+# Se il servizio è occupato lo script prova fino a tre modelli, in due giri; se nessuno lavora toglie il ramo e la
+# richiesta riparte al giro dopo. Se GitHub Actions non può aprire la PR (impostazione di base dei repository personali)
+# il lavoro resta sul ramo, il run è verde e la PR la apre chi controlla, anche dal cellulare (passa-a.py chiudi --ramo).
 #
 # Segreti del repository, messi dal PC con scripts/collega-ai-automatiche.sh: CHATGPT_ACCESSO, GEMINI_API_KEY,
 # OLLAMA_API_KEY. Senza il segreto che serve, la richiesta resta aperta e il run è rosso (lo vede la sorveglianza
@@ -53,6 +56,7 @@ jobs:
         id: trova
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE: ${{ github.event.repository.default_branch }}
           HA_CHATGPT_ACCESSO: ${{ secrets.CHATGPT_ACCESSO != '' }}
           HA_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY != '' }}
           HA_OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY != '' }}
@@ -80,7 +84,7 @@ jobs:
       - name: "🪪 Identità dei commit (Alessandro Cuollo)"
         run: bash scripts/imposta-identita-git.sh
 
-      - name: "📌 Prende la richiesta: ramo, voce di bacheca, PR in bozza"
+      - name: "📌 Prende la richiesta: ramo, voce di bacheca, PR in bozza (se il repository lo permette)"
         id: prendi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
