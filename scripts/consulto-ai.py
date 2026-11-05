@@ -9,8 +9,11 @@ Opzioni: --file F (aggiunge il testo di F alla domanda), --json (uscita completa
 Chiavi gratuite, mai nel repository: OLLAMA_API_KEY (ollama.com/settings/keys) e GEMINI_API_KEY (aistudio.google.com);
 sul PC anche in ~/.config/consulto-ai/ollama e ~/.config/gemini-api/chiave. Si sceglie sempre il modello più nuovo che
 il servizio elenca. 🔴 Mai dati personali, sanitari, di minori o riservati: lo script toglie comunque email, telefoni,
-codici fiscali, IBAN e numeri di carta. Ollama dichiara di non usare i testi per addestrare i modelli; il piano gratuito
-della Gemini API sì. Uscite: 0 c'è almeno una risposta; 2 errore d'uso; 3 nessuna AI raggiungibile.
+codici fiscali, IBAN e numeri di carta. Ollama dichiara di non usare i testi per addestrare i modelli. Per la Gemini API
+la pagina dei prezzi dice che sul piano gratuito i testi servono a migliorare i prodotti di Google (le condizioni del
+17/10/2025, l'ultima versione leggibile, fanno eccezione per lo Spazio economico europeo, la Svizzera e il Regno Unito);
+in ogni caso a Gemini non vanno dati personali o riservati: non riceve i file (--file) di un repository privato, o di cui
+non si sa se lo sia, e con «tutti» resta fuori da solo. Uscite: 0 c'è almeno una risposta; 2 errore d'uso; 3 nessuna AI raggiungibile.
 """
 
 import concurrent.futures as cf
@@ -18,6 +21,7 @@ import json
 import os
 import pathlib
 import re
+import subprocess
 import sys
 import threading
 import time
@@ -70,6 +74,33 @@ def togli_dati_personali(testo):
         testo, n = regola.subn(sostituto, testo)
         tolti += n
     return testo, tolti
+
+
+def file_riservato(percorso):
+    """True se il file sta in un repository GitHub privato, oppure se non si riesce a saperlo: nel dubbio, riservato."""
+    try:
+        url = subprocess.run(["git", "-C", str(pathlib.Path(percorso).resolve().parent), "remote", "get-url", "origin"],
+                             capture_output=True, text=True, timeout=20).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return True
+    m = (re.search(r"github\.com[:/]+([^/]+/[^/]+?)(?:\.git)?/?$", url)
+         or re.search(r"/git/([^/]+/[^/]+?)(?:\.git)?/?$", url))
+    if not m:   # fuori da un repository GitHub riconoscibile
+        return True
+    try:   # con gh (PC e sessioni): risponde anche per i repository privati
+        r = subprocess.run(["gh", "api", f"repos/{m[1]}", "--jq", ".private"], capture_output=True, text=True,
+                           timeout=30)
+        if r.returncode == 0 and r.stdout.strip() in ("true", "false"):
+            return r.stdout.strip() == "true"
+    except (OSError, subprocess.SubprocessError):
+        pass
+    try:   # senza gh: un repository privato, senza credenziali, non si vede (404)
+        richiesta = urllib.request.Request(f"https://api.github.com/repos/{m[1]}",
+                                           headers={"Accept": "application/vnd.github+json", "User-Agent": "consulto-ai"})
+        with urllib.request.urlopen(richiesta, timeout=30) as r:
+            return json.loads(r.read() or b"{}").get("private") is not False
+    except Exception:
+        return True
 
 
 def leggi_chiave(variabile, *file_pc):
@@ -330,6 +361,14 @@ def main(argv=None):
     if not domanda.strip():
         print("Manca la domanda.")
         return 2
+    riservati = [f for f in a.file if file_riservato(f)]
+    perche = ("a Gemini non vanno dati personali o riservati, e "
+              + (f"{riservati[0]} è in un repository privato, o non si sa se lo sia" if len(riservati) == 1
+                 else f"{', '.join(riservati)} sono in repository privati, o non si sa se lo siano"))
+    if riservati and chi == "gemini":
+        print(f"Gemini non riceve {'questo file' if len(riservati) == 1 else 'questi file'}: {perche}. Chiedi a "
+              "deepseek, qwen, glm o kimi, oppure a «tutti», che lascia fuori Gemini da solo.")
+        return 2
     domanda, tolti = togli_dati_personali(domanda)
     if tolti:
         print(f"[tolti {tolti} dati personali dalla domanda prima di inviarla]", file=sys.stderr)
@@ -348,6 +387,12 @@ def main(argv=None):
     if sconosciute:
         print(f"AI sconosciute: {', '.join(sconosciute)}")
         return 2
+    if riservati and "gemini" in scelte:
+        scelte = [x for x in scelte if x != "gemini"]
+        print(f"[Gemini resta fuori dal consulto: {perche}]", file=sys.stderr)
+        if not scelte:
+            print("Senza Gemini non resta nessuna AI: scegli anche deepseek, qwen, glm o kimi.")
+            return 2
     esito = consulto(squadra, domanda, scelte, max(1, a.giri))
     if a.json:
         print(json.dumps(esito, ensure_ascii=False, indent=1))
