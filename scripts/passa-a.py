@@ -26,7 +26,9 @@ Comandi
                                 risposte dello strumento, canale muto, crediti esauriti, controlli;
                                 in fondo le altre PR aperte di ChatGPT o Gemini, che non sono
                                 passaggi (rami chatgpt/* senza il commit «Bacheca: PR #…», rami
-                                codex/* e gemini/* che nessun passaggio riconosce come consegna)
+                                codex/* e gemini/* che nessun passaggio riconosce come consegna),
+                                e i rami auto/* delle AI automatiche rimasti senza PR (consegne
+                                da chiudere con --ramo, tentativi non riusciti da lasciare)
   riavvia --pr N [--con-codex]  ristampa il testo di avvio di una PR già aperta (e, con
                                 --con-codex, rimanda il commento di avvio)
   chiudi --pr N [--consegna M] [--attesa-minuti 40] [--attesa-deploy-minuti 30]
@@ -46,6 +48,12 @@ Comandi
                                 «Richieste»; aggiorna la copia locale del ramo (se non è quella
                                 in uso) e stampa i passi per correggere sul ramo, poi si
                                 rilancia `chiudi` (anche con lo stesso --consegna)
+  chiudi --ramo auto/… [--titolo "…"] [--messaggio "…"] [stesse opzioni]
+                                per una consegna delle AI automatiche rimasta senza PR (GitHub
+                                Actions non ha potuto aprirla): apre la PR in bozza a nome di chi
+                                lancia lo script, scrive «PR #N» nella voce della bacheca sul ramo
+                                e prosegue come `chiudi --pr N --qualsiasi`. Funziona da ogni
+                                sessione, anche dal cellulare
 
 Solo libreria standard; GitHub via `gh api` (REST: in sessione cloud GraphQL non c'è);
 git solo con oggetti e riferimenti (commit-tree, update-ref): nessun checkout, la cartella
@@ -739,8 +747,120 @@ def cmd_stato(args) -> None:
               "da una richiesta della bacheca. Controllarlo come una consegna; se va bene, "
               f"`chiudi --pr {n}{opzione} --titolo \"…\" --messaggio \"…\"`; se un controllo è rosso, "
               "correggerlo sul ramo")
-    if not mostrate and not fuori:
+    senza_pr = [] if args.tutte else _rami_auto_senza_pr(repo, aperte)
+    if senza_pr:
+        print("\nRami delle AI automatiche senza pull request (GitHub Actions non ha potuto aprirla):")
+    base = ramo_principale(radice, None)
+    for nome, sha in senza_pr:
+        print(f"\nramo {nome} · https://github.com/{repo}/tree/{nome}")
+        if _tentativo_fallito(repo, base, sha):
+            print("  => TENTATIVO NON RIUSCITO, nessun file toccato: non si chiude. Lo toglie da solo il giro dopo delle "
+                  "AI automatiche, che riprova la richiesta; se non riesce per giorni, il lavoro lo fa chi controlla")
+            continue
+        print("  => CONSEGNA SENZA PR: controllarla come una consegna (richiesta ed esito sono nella voce della bacheca "
+              f"sul ramo), poi `chiudi --ramo {nome} --titolo \"…\" --messaggio \"…\"`: apre la PR e fa il resto, "
+              "anche da una sessione sul cellulare. Il permesso perché la apra GitHub Actions lo accende da solo l'avvio "
+              "di una sessione sul PC (scripts/collega-ai-automatiche.sh)")
+    if not mostrate and not fuori and not senza_pr:
         info("nessuna PR aperta sui rami chatgpt/*, codex/* o gemini/*")
+
+
+def _rami_auto_senza_pr(repo: str, aperte: list) -> list:
+    """Rami auto/* (AI automatiche) che non hanno una PR, né aperta né chiusa: [(nome, sha)]. La consegna c'è ma
+    nessuno la vedrebbe: succede quando il repository non permette a GitHub Actions di aprire pull request."""
+    con_pr = {p["head"]["ref"] for p in aperte}
+    # Senza «/» finale (alcuni intermediari rifiutano il percorso): il filtro sul prefisso si fa qui sotto.
+    rami = gh_api(f"repos/{repo}/git/matching-refs/heads/auto", tollerante=True) or []
+    if isinstance(rami, tuple):   # errore di rete o di permessi: lo si dice, senza fermare lo stato
+        info(f"rami auto/* non letti: {rami[1]}")
+        return []
+    proprietario = repo.split("/", 1)[0]
+    senza = []
+    for r in rami:
+        if not r["ref"].startswith("refs/heads/auto/"):
+            continue
+        nome = r["ref"].removeprefix("refs/heads/")
+        if nome in con_pr:
+            continue
+        chiuse = gh_api(f"repos/{repo}/pulls?state=closed&head={proprietario}:{nome}&per_page=1", tollerante=True)
+        if chiuse and not isinstance(chiuse, tuple):
+            continue
+        senza.append((nome, (r.get("object") or {}).get("sha", "")))
+    return senza
+
+
+def _tentativo_fallito(repo: str, base: str, sha: str) -> bool:
+    """Ramo auto/* di un giro che non ha lavorato: solo la bacheca, con l'esito «lavoro non riuscito» e nessun file
+    toccato. Lo toglie da solo il giro dopo delle AI automatiche (lavoratore-ai.py), che riprova la richiesta."""
+    if not sha:
+        return False
+    confronto = gh_api(f"repos/{repo}/compare/{base}...{sha}", tollerante=True)
+    if not confronto or isinstance(confronto, tuple):
+        return False
+    file = confronto.get("files") or []
+    if {f.get("filename") for f in file} - {BACHECA}:
+        return False
+    patch = "".join(f.get("patch") or "" for f in file)
+    return "lavoro non riuscito" in patch and "File toccati: nessuno" in patch
+
+
+def voce_del_ramo(testo: str, ramo: str):
+    """La testa della voce di bacheca presa da un'AI automatica sul ramo `ramo`: match con anno, mese, giorno e
+    titolo nei gruppi 1-4, oppure None. Il formato è quello che scrive scripts/lavoratore-ai.py."""
+    return re.search(rf"^- \*\*(\d{{4}})-(\d{{2}})-(\d{{2}}) — da .+? a .+? — (.+?)\*\*.*\bramo {re.escape(ramo)}\b.*$",
+                     testo, re.MULTILINE)
+
+
+def segna_pr_in_bacheca(testo: str, ramo: str, n: int) -> str:
+    """Nella voce della bacheca sul ramo, «PR #n» al posto di «ramo …, pull request da aprire (…)» e «nella PR #n» al
+    posto di «sul ramo … (la pull request la apre chi controlla)» nell'esito: così `chiudi` la riconosce e la archivia."""
+    nuovo = re.sub(rf"\bramo {re.escape(ramo)}, pull request da aprire(?: \([^)\n]*\))?", f"PR #{n}", testo)
+    return re.sub(rf"\bsul ramo {re.escape(ramo)}(?: \(la pull request la apre chi controlla\)|, PR da aprire)",
+                  f"nella PR #{n}", nuovo)
+
+
+def _apri_pr_del_ramo(radice: Path, repo: str, ramo: str, base: str, titolo_scelto: str | None) -> int:
+    """Per un ramo auto/* consegnato senza PR: apre la PR in bozza a nome di chi lancia lo script e, nella voce della
+    bacheca sul ramo, scrive «PR #N» al posto di «pull request da aprire», così `chiudi` la archivia come le altre."""
+    proprietario = repo.split("/", 1)[0]
+    aperte = gh_api(f"repos/{repo}/pulls?state=open&head={proprietario}:{ramo}&per_page=5") or []
+    if aperte:
+        info(f"il ramo {ramo} ha già la PR #{aperte[0]['number']}: uso quella")
+        return aperte[0]["number"]
+    fetch_rami(radice, ramo)
+    sha = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
+    if _tentativo_fallito(repo, base, sha):
+        # Unirlo porterebbe sul ramo principale una richiesta segnata come chiusa senza nessun lavoro fatto.
+        die(f"sul ramo {ramo} c'è solo un tentativo non riuscito, senza file toccati: non si unisce. Lo toglie il "
+            "giro dopo delle AI automatiche, che riprova; se non riesce per giorni, il lavoro lo fa chi controlla")
+    testo = run(["git", "show", f"{sha}:{BACHECA}"], cwd=str(radice), check=False).stdout
+    voce = voce_del_ramo(testo, ramo)
+    titolo = titolo_scelto
+    if not titolo and voce:
+        titolo = voce.group(4).strip()
+        if VIETATE.search(titolo) or VIETATE_SIGLE.search(titolo):   # titolo pubblico: senza nomi di strumenti
+            titolo = f"Richiesta della bacheca del {voce.group(3)}/{voce.group(2)}/{voce.group(1)}"
+    if not titolo:
+        die(f"nessuna voce della bacheca sul ramo {ramo} porta il suo nome: serve --titolo")
+    controlla_vietate(titolo, "il titolo della PR")
+    # Testo pubblico: niente nome del ramo, che contiene la sigla dello strumento.
+    data = f" del {voce.group(3)}/{voce.group(2)}/{voce.group(1)}" if voce else ""
+    corpo = (f"Lavoro sulla richiesta{data} della bacheca di coordinamento (COORDINAMENTO.md, sezione «Richieste»). "
+             "La pull request la apre chi controlla, perché GitHub Actions non ha potuto aprirla. La voce della "
+             "bacheca su questo ramo riporta la richiesta, l'esito, i controlli eseguiti e i dubbi.")
+    controlla_vietate(corpo, "la descrizione della PR")
+    pr = gh_api(f"repos/{repo}/pulls", "POST", {"title": titolo, "head": ramo, "base": base, "draft": True,
+                                               "body": corpo})
+    n = pr["number"]
+    info(f"PR #{n} aperta in bozza dal ramo {ramo}: {pr.get('html_url', '')}")
+    nuovo = segna_pr_in_bacheca(testo, ramo, n)
+    if nuovo != testo:
+        albero = albero_con_file(radice, sha, BACHECA, nuovo)
+        c = commit_tree(radice, albero, [sha], f"Bacheca: PR #{n}, consegna da controllare")
+        run(["git", "push", "-q", f"--force-with-lease={ramo}:{sha}", "origin", f"{c}:refs/heads/{ramo}"],
+            cwd=str(radice))
+        info(f"voce della bacheca sul ramo aggiornata con «PR #{n}» ({c[:7]})")
+    return n
 
 
 def _messaggio_pulito(body: str) -> str:
@@ -1188,6 +1308,15 @@ def _archivia_voce(radice: Path, ramo: str, n: int, base: str) -> bool:
 def cmd_chiudi(args) -> None:
     radice = radice_repo()
     repo = owner_repo(radice)
+    if args.ramo:
+        # Consegna delle AI automatiche rimasta senza PR (Actions non ha potuto aprirla): la PR la apre chi lancia
+        # lo script, da qualunque sessione, anche dal cellulare, poi il resto è uguale a `chiudi --pr`.
+        if args.consegna:
+            die("--consegna vale solo con --pr")
+        if not args.ramo.startswith("auto/") and not args.qualsiasi:
+            die(f"--ramo serve per i rami auto/* delle AI automatiche ({args.ramo}); usa --qualsiasi se è voluto")
+        args.qualsiasi = True
+        args.pr = _apri_pr_del_ramo(radice, repo, args.ramo, ramo_principale(radice, None), args.titolo)
     n = args.pr
     pr = gh_api(f"repos/{repo}/pulls/{n}")
     if pr["state"] != "open":
@@ -1290,7 +1419,10 @@ def main() -> None:
     pr_.set_defaults(fn=cmd_riavvia)
 
     pc = sub.add_parser("chiudi", help="riscrive gli autori, archivia la voce, segna pronta, aspetta i controlli, unisce")
-    pc.add_argument("--pr", type=int, required=True)
+    quale = pc.add_mutually_exclusive_group(required=True)
+    quale.add_argument("--pr", type=int, help="la pull request da chiudere")
+    quale.add_argument("--ramo", metavar="auto/…",
+                       help="ramo delle AI automatiche consegnato senza PR: apre la PR in bozza e la chiude come le altre")
     pc.add_argument("--consegna", type=int, metavar="M",
                     help="pull request di consegna aperta dallo strumento dal suo ramo: la porta nel ramo e la chiude")
     pc.add_argument("--titolo", help="titolo del commit di merge (predefinito: titolo della PR)")
