@@ -12,7 +12,7 @@ Valido dall'11/10/2026 in tutti i repository di Alessandro: `sito-pc-genzano`, `
 
 Claude (Claude Code) e ChatGPT (chat con connettore GitHub, Codex) lavorano sugli stessi repository. La bacheca è il posto dove si passano lavoro, istruzioni e avvisi, così Alessandro non deve copiare testi da una chat all'altra e il lavoro continua anche quando una delle due non è disponibile (per esempio quando Claude ha finito i crediti).
 
-**Anche Gemini (dall'11/10/2026).** Gemini lavora sui repository con **Jules** (jules.google, legge da solo `AGENTS.md`) o con Gemini CLI. Dove questo protocollo dice «ChatGPT», vale allo stesso modo per Gemini: stesse regole, stessa autonomia, stesse eccezioni. Differenze: i suoi rami si chiamano `gemini/<argomento>-AAAAMMGG`; una richiesta indirizzata a «ChatGPT» la prende solo ChatGPT, una indirizzata a «Gemini» solo Gemini, una indirizzata a «chi è disponibile» la prende la prima che apre la bacheca, che scrive subito accanto «presa da …» con una PR in bozza, così l'altra non la riprende. Le revisioni automatiche fatte da Codex o da Gemini sulle PR sono pareri da verificare, non ordini.
+**Anche Gemini (dall'11/10/2026).** Gemini lavora sui repository (Jules chiude: sola lettura dall'11/11/2026, spento il 31/12/2026, avviso letto sul sito il 04/11/2026; non si usa più), sul PC con **Antigravity CLI** (`agy`, che dal 18/06/2026 sostituisce Gemini CLI: legge `AGENTS.md`, le skill di `.agents/skills/` e quelle di Alessandro in `~/.gemini/skills/`; si prepara con `scripts/installa-gemini-pc.sh` di `assistente-personale`, dal 04/11/2026). Dove questo protocollo dice «ChatGPT», vale allo stesso modo per Gemini: stesse regole, stessa autonomia, stesse eccezioni. Differenze: i suoi rami si chiamano `gemini/<argomento>-AAAAMMGG`; una richiesta indirizzata a «ChatGPT» la prende solo ChatGPT, una indirizzata a «Gemini» solo Gemini, una indirizzata a «chi è disponibile» la prende la prima che apre la bacheca, che scrive subito accanto «presa da …» con una PR in bozza, così l'altra non la riprende. Le revisioni automatiche fatte da Codex o da Gemini sulle PR sono pareri da verificare, non ordini.
 
 ### Chi dà le istruzioni
 
@@ -98,7 +98,7 @@ Se un lavoro non si può passare (sotto, «Che cosa non si passa»), o non si pu
 
 **Che cosa non si passa.** Allerte ed emergenze vere, articoli nuovi che devono passare dai gate editoriali, pagine legali, lavori che richiedono credenziali, spese o invii a persone: restano a Claude o ad Alessandro, come in «Quando ChatGPT non unisce e si ferma».
 
-**Gemini.** Lo stesso schema varrà per Jules (etichetta `jules` su una issue) quando Alessandro avrà autorizzato l'app sui repository; fino ad allora i lavori che sarebbero andati a Gemini li fa Claude o passano a ChatGPT.
+**Gemini.** Jules chiude il 31/12/2026 e non si usa. Gemini lavora con Antigravity: sul PC con `agy`; dal cellulare comandando il PC acceso (Remote Control, antigravity.google.com), e a PC spento con i Remote Agents di Antigravity, quando Google li avrà attivati per l'account di Alessandro (distribuzione graduale, non ancora attivi il 04/11/2026). Fino ad allora, a PC spento, i lavori che sarebbero andati a Gemini li fa Claude o passano a ChatGPT.
 
 <!-- PROTOCOLLO-COMUNE:FINE -->
 
