@@ -18,7 +18,7 @@ name: "🧹 Togli la firma dello strumento dai testi su GitHub"
 #     con un'ora di pausa, perché GitHub limita le scritture.
 #
 # Pull request chiuse (dal 14/10/2026): quando si chiude una PR su un ramo
-# chatgpt/…, codex/… o gemini/… (passaggi e lavori degli strumenti), toglie il
+# chatgpt/…, codex/…, gemini/… o auto/… (passaggi e lavori degli strumenti), toglie il
 # commento di avvio «@codex …», i commenti degli strumenti e il ramo, che
 # `passa-a.py chiudi` dalle sessioni cloud non può cancellare (il canale di
 # GitHub risponde 403); quando si unisce una PR da un ramo di lavoro claude/…,
@@ -91,7 +91,7 @@ jobs:
       github.event_name == 'pull_request' && github.event.action == 'closed' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       (startsWith(github.event.pull_request.head.ref, 'chatgpt/') || startsWith(github.event.pull_request.head.ref, 'codex/') ||
-       startsWith(github.event.pull_request.head.ref, 'gemini/') ||
+       startsWith(github.event.pull_request.head.ref, 'gemini/') || startsWith(github.event.pull_request.head.ref, 'auto/') ||
        (startsWith(github.event.pull_request.head.ref, 'claude/') && github.event.pull_request.merged))
     runs-on: ubuntu-latest
     timeout-minutes: 15
