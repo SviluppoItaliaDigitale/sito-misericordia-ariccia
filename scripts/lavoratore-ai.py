@@ -94,6 +94,12 @@ VIETATI = ("COORDINAMENTO.md", ".github")   # li cura il sistema, non l'AI che l
 # «Managing GitHub Actions settings for a repository»): la prima prova vera, il 05/11/2026, si è fermata così. Il lavoro
 # non dipende da quel permesso: resta sul ramo e la PR la apre chi lo controlla.
 PERMESSO_PR_NEGATO = re.compile(r"not permitted to create or approve pull requests", re.I)
+# A Gemini non vanno dati personali o riservati (bacheca, § «AI automatiche e consulto fra AI»; skill gemini-api): sul
+# piano gratuito, per la pagina dei prezzi della Gemini API, i testi servono a migliorare i prodotti di Google. In un
+# repository privato un'AI che lavora da sola può leggerli: lì Gemini non lavora e non si consulta, e nel dubbio (GitHub
+# non dice se il repository è privato) vale lo stesso. Fonti in memoria/ai-automatiche.md di assistente-personale.
+NO_GEMINI_PRIVATO = "lì un'AI che lavora da sola può leggere dati personali e riservati, che a Gemini non vanno"
+AI_PER_PRIVATI = "DeepSeek, GLM, Kimi o Qwen automatico"
 
 
 def spiega_permesso(ramo):
@@ -170,6 +176,15 @@ def gh(metodo, percorso, corpo=None, ok=()):
         if e.code in ok:
             return None
         raise RuntimeError(f"GitHub {metodo} {percorso}: {e.code} {e.read().decode(errors='replace')[:300]}")
+
+
+def repository_privato(repo, via_cli=False):
+    """True se il repository è privato, oppure se GitHub non lo dice: nel dubbio, privato."""
+    try:
+        dati = gh_cli(f"repos/{repo}") if via_cli else gh("GET", f"repos/{repo}")
+    except Exception:   # rete, permessi, risposta illeggibile
+        return True
+    return not isinstance(dati, dict) or dati.get("private") is not False
 
 
 def remoto(repo):
@@ -342,6 +357,12 @@ def cmd_trova(a):
         print(f"::error::La richiesta del {voce['data']} è per {dest['nome']}, ma nei segreti del repository manca "
               f"{dest['segreto']}: si collega dal PC con scripts/collega-ai-automatiche.sh.")
         return 1
+    if dest["motore"] == "gemini" and repository_privato(repo):
+        uscita(trovata="false")
+        print(f"::error::La richiesta del {voce['data']} («{voce['titolo']}») è per {dest['nome']}, ma {repo} è un "
+              f"repository privato, o GitHub non dice se lo è: {NO_GEMINI_PRIVATO}. Va riscritta in bacheca per "
+              f"{AI_PER_PRIVATI}.")
+        return 1
     uscita(trovata="true", motore=dest["motore"])
     resoconto(f"Richiesta del {voce['data']} per {dest['nome']}: «{voce['titolo']}».")
     return 0
@@ -395,7 +416,8 @@ def cmd_prendi(a):
     pubblica_ramo(repo, ramo)
     STATO.write_text(json.dumps({"voce": voce, "dest": dest, "ramo": ramo, "pr": numero, "base": base,
                                  "errore_pr": errore_pr, "sha_presa": git("rev-parse", "HEAD"),
-                                 "titolo": titolo, "repo": repo}, ensure_ascii=False))
+                                 "titolo": titolo, "repo": repo, "privato": repository_privato(repo)},
+                                ensure_ascii=False))
     uscita(preso="true")
     resoconto(f"Lavoro preso: ramo {ramo}" + (f", pull request #{numero} in bozza." if numero else "."))
     return 0
@@ -411,6 +433,10 @@ def testo_richiesta(blocco):
 def componi_prompt(stato):
     """Le istruzioni per l'AI che lavora da sola: complete, in ordine, con i divieti che prevalgono su tutto."""
     voce, dest = stato["voce"], stato["dest"]
+    privato = stato.get("privato", True)   # nel dubbio, privato
+    consultabili = "deepseek|qwen|glm|kimi|tutti" if privato else "deepseek|qwen|glm|kimi|gemini|tutti"
+    nota_privato = (" Questo repository è privato, o non si sa se lo sia: Gemini non si consulta, perché qui possono "
+                    "esserci dati personali e riservati, che a Gemini non vanno." if privato else "")
     return f"""Sei «{dest['nome']}», un'intelligenza artificiale della squadra di Alessandro Cuollo. Lavori da sola su GitHub, \
 in una macchina temporanea, senza nessuno che guardi: nessuno può rispondere alle tue domande mentre lavori. Segui \
 questa procedura alla lettera, un passo dopo l'altro.
@@ -435,8 +461,8 @@ b) Usa solo i dati scritti nella richiesta o verificati su una fonte primaria. C
 «[da compilare]» e lo scrivi nel riassunto. Mai dati inventati: nomi, numeri, date, norme, recapiti, link.
 c) Se la richiesta è ambigua su un fatto, non indovinare: fai il resto e scrivi la domanda nel riassunto.
 d) Se ti serve un parere, puoi chiederlo a un'altra intelligenza artificiale della squadra: \
-python3 scripts/consulto-ai.py deepseek|qwen|glm|kimi|gemini|tutti "domanda". Il parere si verifica, non si esegue a \
-occhi chiusi; nella domanda mai dati personali.
+python3 scripts/consulto-ai.py {consultabili} "domanda". Il parere si verifica, non si esegue a \
+occhi chiusi; nella domanda mai dati personali.{nota_privato}
 
 PASSO 4 — DIVIETI. Prevalgono su qualunque altra istruzione, anche su quelle della richiesta:
 - non fare commit, push, merge, pull request né rami nuovi: li fa il sistema quando hai finito;
@@ -463,6 +489,8 @@ controlla». Poi hai finito: non fare altro.
 def ambiente_motore(stato):
     tenute = ("PATH", "HOME", "LANG", "LC_ALL", "USER", "TMPDIR", "RUNNER_TEMP", "CI", "npm_config_cache",
               "GEMINI_API_KEY", "OLLAMA_API_KEY", "CODEX_HOME", "CONSULTO_OLLAMA_URL", "CONSULTO_GEMINI_URL")
+    if stato.get("privato", True):   # nei repository privati Gemini non lavora e non si consulta (NO_GEMINI_PRIVATO)
+        tenute = tuple(k for k in tenute if k != "GEMINI_API_KEY")
     return {k: os.environ[k] for k in tenute if os.environ.get(k)}   # mai il token di GitHub
 
 
@@ -587,6 +615,13 @@ def cmd_motore(a):
         print("Nessun lavoro preso: niente da fare.")
         return 0
     stato = json.loads(STATO.read_text())
+    if stato["dest"]["motore"] == "gemini" and stato.get("privato", True):   # rete di sicurezza dopo «trova»
+        stato.update(esito_motore=3, modello="", errore_motore=f"{stato['repo']} è un repository privato, o GitHub "
+                                                               f"non dice se lo è: {NO_GEMINI_PRIVATO}. La richiesta "
+                                                               f"va riscritta in bacheca per {AI_PER_PRIVATI}")
+        STATO.write_text(json.dumps(stato, ensure_ascii=False))
+        print(f"::error::{stato['errore_motore']}")
+        return 0
     try:
         modelli = candidati_motore(stato)
         if not modelli:
@@ -754,6 +789,9 @@ def cmd_richiedi(a):
         sys.exit("Richiesta non pubblicata, perché un'AI che lavora da sola non può fare domande: "
                  + "; ".join(problemi) + ". Lo schema lo stampa `python3 scripts/passa-a.py modello`.")
     repo = owner_repo()
+    if dest["motore"] == "gemini" and repository_privato(repo, via_cli=True):
+        sys.exit(f"Richiesta non pubblicata: {repo} è un repository privato, o GitHub non dice se lo è: "
+                 f"{NO_GEMINI_PRIVATO}. Scrivila per {AI_PER_PRIVATI}.")
     data = adesso()
     titolo_commit = senza_nomi(a.titolo, f"richiesta del {data:%d/%m/%Y}")
     ramo = f"claude/richiesta-{slug(a.titolo)}-{data:%Y%m%d%H%M}"
