@@ -4,9 +4,10 @@ name: "🤝 AI automatiche: richieste della bacheca"
 # indirizzate a loro: ChatGPT automatico (Codex con l'accesso ChatGPT di Alessandro), Gemini automatico (chiave
 # gratuita della Gemini API), DeepSeek, GLM, Kimi e Qwen automatici (modelli gratuiti di Ollama Cloud). Lavorano su
 # un ramo auto/… e consegnano una PR in bozza; unire resta a chi controlla (protocollo comune, § «AI automatiche»).
-# Se il servizio è occupato lo script prova fino a tre modelli, in due giri; se nessuno lavora toglie il ramo e la
-# richiesta riparte al giro dopo. Se GitHub Actions non può aprire la PR (impostazione di base dei repository personali)
-# il lavoro resta sul ramo, il run è verde e la PR la apre chi controlla, anche dal cellulare (passa-a.py chiudi --ramo).
+# Se il servizio è occupato lo script prova fino a tre modelli, in due giri (se la quota gratuita di un modello è finita,
+# il successivo); se nessuno lavora toglie il ramo e la richiesta riparte al giro dopo. Se GitHub Actions non può aprire
+# la PR (impostazione di base dei repository personali) il lavoro resta sul ramo, il run è verde e la PR la apre chi
+# controlla, anche dal cellulare (passa-a.py chiudi --ramo).
 #
 # Segreti del repository, messi dal PC con scripts/collega-ai-automatiche.sh: CHATGPT_ACCESSO, GEMINI_API_KEY,
 # OLLAMA_API_KEY. Senza il segreto che serve, la richiesta resta aperta e il run è rosso (lo vede la sorveglianza
@@ -23,7 +24,10 @@ on:
     branches: [main]
     paths: [COORDINAMENTO.md]
   schedule:
-    - cron: "23 5 * * *"   # rete di sicurezza: richieste rimaste indietro, chiavi collegate dopo, accesso da tenere vivo
+    # Rete di sicurezza: richieste rimaste indietro, chiavi collegate dopo, accesso da tenere vivo. Alle 08:23 UTC (09:23
+    # italiane d'inverno, 10:23 d'estate) le quote giornaliere gratuite di Gemini, che si azzerano a mezzanotte del
+    # Pacifico, sono già nuove: una richiesta fermata dalla quota il giorno prima riparte con la quota piena.
+    - cron: "23 8 * * *"
   workflow_dispatch:
 
 permissions:

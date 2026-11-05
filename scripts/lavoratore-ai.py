@@ -5,9 +5,10 @@ Destinatari: «ChatGPT automatico» (Codex con l'accesso ChatGPT di Alessandro),
 gratuita), «DeepSeek automatico», «GLM automatico», «Kimi automatico», «Qwen automatico» (Claude Code con i modelli
 gratuiti di Ollama Cloud). Lo usa .github/workflows/lavoratore-ai.yml (trova, prendi, motore, consegna); da una sessione
 `richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola; `elenco` mostra destinatari e chiavi.
-Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri; se nessuno lavora toglie il
-ramo e la richiesta riparte al giro dopo; se GitHub Actions non può aprire la PR il lavoro resta sul ramo e la PR la apre
-chi controlla, da qualunque sessione (`passa-a.py chiudi --ramo`).
+Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri; se la quota gratuita di un
+modello è finita passa al successivo, senza secondo giro; se nessuno lavora toglie il ramo e la richiesta riparte al giro
+dopo; se GitHub Actions non può aprire la PR il lavoro resta sul ramo e la PR la apre chi controlla, da qualunque sessione
+(`passa-a.py chiudi --ramo`).
 """
 
 import argparse
@@ -42,9 +43,15 @@ PAUSA = int(os.environ.get("LAVORATORE_PAUSA", str(5 * 60)))   # fra i due giri,
 VECCHIO = 3 * 3600   # un ramo senza esito fermo da più di 3 ore: il giro che lo aveva preso si è interrotto
 # Il programma dell'AI riprova da sé quando il servizio è occupato (Gemini CLI fino a dieci volte, il 05/11/2026 per
 # 514 secondi senza riuscire): dopo tre «occupato», se non ha ancora toccato nulla, si passa al modello successivo.
-OCCUPATO = re.compile(r"\b(?:503|529)\b|UNAVAILABLE|high demand|overloaded", re.I)
+OCCUPATO = re.compile(r"\b(?:429|503|529)\b|UNAVAILABLE|RESOURCE_EXHAUSTED|high demand|overloaded|rate.?limit", re.I)
 RIPROVA = re.compile(r"\battempt \d+\b|\bretrying\b|\bretry \d+\b", re.I)
 SEGNALI_OCCUPATO = 3
+# Quota gratuita finita (Gemini CLI: «TerminalQuotaError … exhausted your daily quota»; API di Google: «exceeded your
+# current quota»; Codex e Ollama: «usage limit»): il programma si ferma da solo. Non serve un secondo giro, perché la
+# quota non torna in cinque minuti (quelle di Gemini al giorno si azzerano a mezzanotte, ora del Pacifico: pagina
+# «Rate limits» della Gemini API, letta il 05/11/2026); ogni modello ha la sua, quindi si prova il successivo.
+QUOTA = re.compile(r"TerminalQuotaError|exhausted your (?:daily )?quota|exceeded your current quota|insufficient_quota"
+                   r"|hit your usage limit|reached your (?:\w+ )?(?:usage )?limit", re.I)
 ROMA = dt.timezone(dt.timedelta(hours=1))
 try:
     from zoneinfo import ZoneInfo
@@ -496,20 +503,23 @@ def ferma_processo(p):
 
 
 def esegui_motore(cmd, env, tempo, registro, sha):
-    """Un tentativo con un modello: (codice, occupato). Se il servizio risponde «occupato» tre volte prima che l'AI
-    abbia toccato un file, il tentativo si ferma subito (codice 75) invece di aspettare tutti i tentativi del programma."""
-    segnali, fermato, scaduto = 0, threading.Event(), threading.Event()
+    """Un tentativo con un modello: (codice, occupato, quota). Se il servizio risponde «occupato» tre volte prima che
+    l'AI abbia toccato un file, il tentativo si ferma subito (codice 75) invece di aspettare tutti i tentativi del
+    programma. «quota» è vero se il programma ha scritto che la quota gratuita del modello è finita."""
+    segnali, quota, fermato, scaduto = 0, False, threading.Event(), threading.Event()
     try:
         p = subprocess.Popen(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
                              stdin=subprocess.DEVNULL, start_new_session=True)
     except OSError as e:
         registro.write(f"programma non avviato: {e}\n")
-        return 127, False
+        return 127, False, False
     sveglia = threading.Timer(max(tempo, 1), lambda: (scaduto.set(), ferma_processo(p)))
     sveglia.start()
     for riga in p.stdout:
         sys.stdout.write(riga)
         registro.write(riga)
+        if QUOTA.search(riga):
+            quota = True
         if RIPROVA.search(riga) and OCCUPATO.search(riga):
             segnali += 1
             if segnali >= SEGNALI_OCCUPATO and not fermato.is_set() and albero_pulito(sha):
@@ -520,8 +530,8 @@ def esegui_motore(cmd, env, tempo, registro, sha):
     codice = p.wait()
     sveglia.cancel()
     if fermato.is_set():
-        return 75, True
-    return (124 if scaduto.is_set() else codice), segnali > 0
+        return 75, True, quota
+    return (124 if scaduto.is_set() else codice), segnali > 0, quota
 
 
 def motivo_fallimento(tentativi):
@@ -529,6 +539,8 @@ def motivo_fallimento(tentativi):
     provati = (f" (modelli provati: {', '.join(modelli)}" + (", in due giri" if len(tentativi) > len(modelli) else "")
                + ")") if modelli else ""
     ultimo = tentativi[-1]["codice"]
+    if tentativi[-1].get("quota"):   # prima di «occupato»: il 05/11/2026 la quota è finita dopo due 503
+        return "quota gratuita del modello finita" + provati
     if all(t["occupato"] for t in tentativi):
         return "servizio occupato" + provati
     if ultimo == 124:
@@ -542,6 +554,9 @@ def comando_motore(stato, prompt, modello, env):
     motore = stato["dest"]["motore"]
     if os.environ.get("LAVORATORE_PROVA_MOTORE"):   # solo per scripts/prova-lavoratore-ai.py
         return shlex.split(os.environ["LAVORATORE_PROVA_MOTORE"]) + [prompt]
+    # Il riassunto (passo 7) va in TEMP, fuori dal repository: ogni programma deve poterci scrivere. Codex lavora senza
+    # recinto; Gemini CLI e Claude Code scrivono solo nelle cartelle di lavoro, quindi TEMP si aggiunge a quelle. Il
+    # 05/11/2026 Gemini CLI ha risposto «Path not in workspace» e il riassunto è arrivato solo dal registro.
     if motore == "codex":
         return ["npx", "--yes", PROGRAMMI["codex"], "exec", "--dangerously-bypass-approvals-and-sandbox",
                 "--ephemeral", "-c", "project_doc_max_bytes=131072", "-o", str(TEMP / "ultimo-messaggio.txt"), prompt]
@@ -555,7 +570,7 @@ def comando_motore(stato, prompt, modello, env):
             "privacy": {"usageStatisticsEnabled": False},
         }))
         return ["npx", "--yes", PROGRAMMI["gemini"], "-p", prompt, "--approval-mode", "yolo", "--skip-trust",
-                "-m", modello, "-o", "text"]
+                "--include-directories", str(RIASSUNTO.parent), "-m", modello, "-o", "text"]
     # Claude Code come banco di lavoro, con un modello gratuito di Ollama Cloud al posto di Claude.
     env.update({"ANTHROPIC_BASE_URL": os.environ.get("CONSULTO_OLLAMA_URL", "https://ollama.com"),
                 "ANTHROPIC_AUTH_TOKEN": env.get("OLLAMA_API_KEY", ""), "ANTHROPIC_API_KEY": "",
@@ -564,7 +579,7 @@ def comando_motore(stato, prompt, modello, env):
                 "ANTHROPIC_DEFAULT_FABLE_MODEL": modello, "CLAUDE_CODE_SUBAGENT_MODEL": modello,
                 "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1", "DISABLE_AUTOUPDATER": "1", "DISABLE_TELEMETRY": "1"})
     return ["npx", "--yes", PROGRAMMI["claude"], "-p", prompt, "--dangerously-skip-permissions", "--model", modello,
-            "--max-turns", "80", "--output-format", "text"]
+            "--add-dir", str(RIASSUNTO.parent), "--max-turns", "80", "--output-format", "text"]
 
 
 def cmd_motore(a):
@@ -598,13 +613,15 @@ def cmd_motore(a):
             print(f"Motore: {stato['dest']['motore']}" + (f", modello {modello}" if modello else "")
                   + (f" (tentativo {len(tentativi) + 1})" if tentativi else ""), flush=True)
             partenza = time.time()
-            codice, occupato = esegui_motore(cmd, env, restante, registro, stato["sha_presa"])
-            tentativi.append({"modello": modello, "codice": codice, "occupato": occupato,
+            codice, occupato, quota = esegui_motore(cmd, env, restante, registro, stato["sha_presa"])
+            tentativi.append({"modello": modello, "codice": codice, "occupato": occupato, "quota": quota,
                               "durata": int(time.time() - partenza)})
-            print(f"Tentativo finito con codice {codice} in {tentativi[-1]['durata']} s.", flush=True)
+            print(f"Tentativo finito con codice {codice} in {tentativi[-1]['durata']} s"
+                  + (" (quota gratuita del modello finita)." if quota and codice else "."), flush=True)
             if codice == 0 or not albero_pulito(stato["sha_presa"]):
                 break   # finito, oppure l'AI ha lavorato: un altro modello non riparte sopra un lavoro a metà
-            if not coda and not secondo_giro and any(t["occupato"] for t in tentativi) \
+            # Il secondo giro serve solo ai modelli occupati: una quota finita non torna dopo la pausa.
+            if not coda and not secondo_giro and any(t["occupato"] and not t["quota"] for t in tentativi) \
                     and TEMPO_MOTORE - (time.time() - inizio) >= PAUSA + TEMPO_MINIMO:
                 secondo_giro, coda = True, list(modelli)
                 print(f"Tutti i modelli occupati: riprovo fra {PAUSA} secondi.", flush=True)
