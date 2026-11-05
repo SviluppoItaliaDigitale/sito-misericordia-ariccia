@@ -1,0 +1,250 @@
+name: "🤝 AI automatiche: richieste della bacheca"
+
+# Le AI automatiche della squadra prendono da sole le richieste della bacheca (COORDINAMENTO.md, «Richieste»)
+# indirizzate a loro: ChatGPT automatico (Codex con l'accesso ChatGPT di Alessandro), Gemini automatico (chiave
+# gratuita della Gemini API), DeepSeek, GLM, Kimi e Qwen automatici (modelli gratuiti di Ollama Cloud). Lavorano su
+# un ramo auto/… e consegnano una PR in bozza; unire resta a chi controlla (protocollo comune, § «AI automatiche»).
+#
+# Segreti del repository, messi dal PC con scripts/collega-ai-automatiche.sh: CHATGPT_ACCESSO, GEMINI_API_KEY,
+# OLLAMA_API_KEY. Senza il segreto che serve, la richiesta resta aperta e il run è rosso (lo vede la sorveglianza
+# dei guasti). Il programma dell'AI lavora senza il token di GitHub e senza poter fare push: commit, push e PR li fa
+# scripts/lavoratore-ai.py dopo, e .github/ e COORDINAMENTO.md li cura solo lui. L'accesso ChatGPT si rinnova a
+# ogni uso: la copia rinnovata si salva cifrata nella cache (scripts/riserva-credenziale.sh, come la riserva), e
+# ogni 6 giorni il giro del mattino lo tiene vivo anche senza lavori.
+#
+# Nasce il 05/11/2026 (Alessandro: «Fai in modo che tra AI si parlino in autonomia», «Parlino e aiutino»,
+# «Non riesci a forzare l'avvio di codex di chatgpt?»).
+
+on:
+  push:
+    branches: [main]
+    paths: [COORDINAMENTO.md]
+  schedule:
+    - cron: "23 5 * * *"   # rete di sicurezza: richieste rimaste indietro, chiavi collegate dopo, accesso da tenere vivo
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lavoratore-ai   # un lavoro per volta: l'accesso ChatGPT si rinnova e va salvato in fila
+  cancel-in-progress: false
+
+jobs:
+  trova:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      trovata: ${{ steps.trova.outputs.trovata }}
+      motore: ${{ steps.trova.outputs.motore }}
+      accesso: ${{ steps.trova.outputs.accesso }}
+    steps:
+      - name: "📥 Bacheca e script dal ramo principale"
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          sparse-checkout: |
+            COORDINAMENTO.md
+            scripts/lavoratore-ai.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: "🔎 Richieste per le AI automatiche"
+        id: trova
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HA_CHATGPT_ACCESSO: ${{ secrets.CHATGPT_ACCESSO != '' }}
+          HA_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY != '' }}
+          HA_OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY != '' }}
+        run: |
+          echo "accesso=$HA_CHATGPT_ACCESSO" >> "$GITHUB_OUTPUT"
+          python3 scripts/lavoratore-ai.py trova
+
+  lavora:
+    needs: trova
+    if: needs.trova.outputs.trovata == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write   # per togliere dalla cache le copie vecchie dell'accesso ChatGPT
+    steps:
+      - name: "📥 Checkout (senza credenziali salvate: il programma dell'AI non può fare push)"
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: "🪪 Identità dei commit (Alessandro Cuollo)"
+        run: bash scripts/imposta-identita-git.sh
+
+      - name: "📌 Prende la richiesta: ramo, voce di bacheca, PR in bozza"
+        id: prendi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: python3 scripts/lavoratore-ai.py prendi
+
+      - name: "🔐 Accesso ChatGPT: copia cifrata in cache"
+        if: needs.trova.outputs.motore == 'codex' && steps.prendi.outputs.preso == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/chatgpt-cache
+          key: chatgpt-${{ github.run_id }}
+          restore-keys: chatgpt-
+
+      - name: "🔐 Accesso ChatGPT"
+        if: needs.trova.outputs.motore == 'codex' && steps.prendi.outputs.preso == 'true'
+        env:
+          SEME: ${{ secrets.CHATGPT_ACCESSO }}
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+          RISERVA_CACHE: ${{ runner.temp }}/chatgpt-cache
+          NOME_SEGRETO: CHATGPT_ACCESSO
+        run: bash scripts/riserva-credenziale.sh ripristina
+
+      - name: "🤖 Lavoro dell'AI"
+        if: steps.prendi.outputs.preso == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+        run: |
+          node --version
+          python3 scripts/lavoratore-ai.py motore
+
+      - name: "🔐 Accesso ChatGPT aggiornato, salvato cifrato"
+        id: salva
+        if: always() && needs.trova.outputs.motore == 'codex' && steps.prendi.outputs.preso == 'true'
+        env:
+          SEME: ${{ secrets.CHATGPT_ACCESSO }}
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+          RISERVA_CACHE: ${{ runner.temp }}/chatgpt-cache
+          NOME_SEGRETO: CHATGPT_ACCESSO
+        run: bash scripts/riserva-credenziale.sh salva
+
+      - name: "🔐 Accesso ChatGPT in cache"
+        if: always() && steps.salva.outputs.cambiato == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/chatgpt-cache
+          key: chatgpt-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: "🔐 Copie vecchie dell'accesso"
+        if: always() && steps.salva.outputs.cambiato == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          CACHE_PREFISSO: chatgpt-
+        run: bash scripts/riserva-credenziale.sh sfoltisci
+
+      - name: "📦 Consegna: commit, esito in bacheca, PR aggiornata"
+        if: always() && steps.prendi.outputs.preso == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/lavoratore-ai.py consegna
+
+      - name: "🧽 Pulizia"
+        if: always()
+        env:
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+        run: |
+          bash scripts/riserva-credenziale.sh pulisci
+          rm -rf "$HOME/.gemini"
+
+  mantieni:
+    # Ogni 6 giorni una domanda minima tiene vivo l'accesso ChatGPT anche senza lavori (senza rinnovo scade).
+    needs: trova
+    if: github.event_name == 'schedule' && needs.trova.outputs.accesso == 'true' && needs.trova.outputs.trovata != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: "📥 Script dell'accesso"
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          sparse-checkout: scripts/riserva-credenziale.sh
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: "🔐 Accesso ChatGPT: copia cifrata in cache"
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/chatgpt-cache
+          key: chatgpt-${{ github.run_id }}
+          restore-keys: chatgpt-
+
+      - name: "🗓️ Serve un rinnovo?"
+        id: serve
+        env:
+          CACHE: ${{ runner.temp }}/chatgpt-cache
+        run: |
+          python3 - <<'PY'
+          import datetime as dt, json, os, pathlib
+          f = pathlib.Path(os.environ["CACHE"]) / "stato.json"
+          try:
+              ultimo = dt.date.fromisoformat(json.loads(f.read_text())["rinnovato"])
+              giorni = (dt.date.today() - ultimo).days
+          except Exception:
+              giorni = 999
+          print(f"Ultimo rinnovo: {giorni} giorni fa")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as o:
+              o.write(f"rinnova={'true' if giorni >= 6 else 'false'}\n")
+          PY
+
+      - name: "🔐 Accesso ChatGPT"
+        if: steps.serve.outputs.rinnova == 'true'
+        env:
+          SEME: ${{ secrets.CHATGPT_ACCESSO }}
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+          RISERVA_CACHE: ${{ runner.temp }}/chatgpt-cache
+          NOME_SEGRETO: CHATGPT_ACCESSO
+        run: bash scripts/riserva-credenziale.sh ripristina
+
+      - name: "💬 Domanda minima"
+        if: steps.serve.outputs.rinnova == 'true'
+        env:
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+          CACHE: ${{ runner.temp }}/chatgpt-cache
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          npx --yes @openai/codex@0.166.0 exec --skip-git-repo-check --ephemeral "Rispondi solo: OK" > /dev/null
+          mkdir -p "$CACHE"
+          printf '{"rinnovato": "%s"}\n' "$(date -u +%F)" > "$CACHE/stato.json"
+          echo "Accesso ChatGPT rinnovato."
+
+      - name: "🔐 Accesso ChatGPT aggiornato, salvato cifrato"
+        id: salva
+        if: always() && steps.serve.outputs.rinnova == 'true'
+        env:
+          SEME: ${{ secrets.CHATGPT_ACCESSO }}
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+          RISERVA_CACHE: ${{ runner.temp }}/chatgpt-cache
+          NOME_SEGRETO: CHATGPT_ACCESSO
+        run: bash scripts/riserva-credenziale.sh salva
+
+      - name: "🔐 Accesso ChatGPT in cache"
+        if: always() && steps.salva.outputs.cambiato == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/chatgpt-cache
+          key: chatgpt-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: "🔐 Copie vecchie dell'accesso"
+        if: always() && steps.salva.outputs.cambiato == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          CACHE_PREFISSO: chatgpt-
+        run: bash scripts/riserva-credenziale.sh sfoltisci
+
+      - name: "🧽 Pulizia"
+        if: always()
+        env:
+          CODEX_HOME: ${{ runner.temp }}/casa-codex
+        run: bash scripts/riserva-credenziale.sh pulisci

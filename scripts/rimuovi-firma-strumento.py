@@ -85,7 +85,7 @@ RIGHE_FIRMA = [
 RIGA_SEPARATORE = re.compile(r"^(?:-{3,}|\*{3,}|_{3,})$")
 
 # Pull request dei passaggi e account degli strumenti: gli stessi criteri di `passa-a.py`.
-RAMO_PASSAGGIO = re.compile(r"^(?:chatgpt|codex|gemini)/")
+RAMO_PASSAGGIO = re.compile(r"^(?:chatgpt|codex|gemini|auto)/")
 # Rami di lavoro delle sessioni: dopo il merge non servono più e il loro nome resterebbe in vista.
 RAMO_SESSIONE = re.compile(r"^claude/")
 BOT_STRUMENTO = re.compile(r"codex|chatgpt|openai|claude|anthropic|gemini|jules|copilot", re.IGNORECASE)
@@ -206,7 +206,7 @@ class Contatore:
 
 
 def pulisci_passaggio(pr: dict, c: Contatore) -> None:
-    """Pull request chiusa su un ramo chatgpt/*, codex/* o gemini/*: toglie il commento di avvio «@codex …»
+    """Pull request chiusa su un ramo chatgpt/*, codex/*, gemini/* o auto/*: toglie il commento di avvio «@codex …»
     dell'account, i commenti degli strumenti e il ramo. Pull request unita da un ramo claude/*: solo
     il ramo. Il ramo resta se un'altra PR aperta lo usa o se ha commit arrivati dopo la chiusura."""
     n = pr["number"]
