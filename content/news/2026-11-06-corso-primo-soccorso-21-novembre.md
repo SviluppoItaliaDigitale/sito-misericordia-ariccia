@@ -4,11 +4,11 @@ titoloSeo: "Corso di primo soccorso ad Ariccia dal 21 novembre 2026 — Miserico
 date: 2026-11-06T03:30:00+01:00
 slug: "corso-primo-soccorso-21-novembre"
 description: "Nuovo corso di primo soccorso alla Misericordia di Ariccia: si parte sabato 21 novembre 2026 alle 10, in sede in Viale Antonietta Chigi 46. Quota 50 €, iscrizione compresa. Info 328 8105399."
-immagine: "/img/news/2026-11-06-corso-primo-soccorso-21-novembre-grafica.jpg"
+immagine: "/img/news/2026-11-06-corso-primo-soccorso-21-novembre-locandina.jpg"
 data_evento: "2026-11-21"
 controllo_editoriale: "2026-11-06"
 social: true
-social_alt: "Volontari della Misericordia di Ariccia accanto all'ambulanza. Grafica nazionale blu e gialla: Formazione; Corso di primo soccorso: si parte sabato 21 novembre. Ore 10, in sede in Viale Antonietta Chigi 46. Quota 50 euro, iscrizione compresa. Info e iscrizioni 328 8105399."
+social_alt: "Locandina della Misericordia di Ariccia con i volontari accanto all'ambulanza: Entra nel mondo della Misericordia, dal 1244. Corso di primo soccorso. Si parte sabato 21 novembre, ore 10, in Via A. Chigi 46, sede della Misericordia. Quota 50 euro, iscrizione alla Misericordia compresa. Info e iscrizioni 328 810 5399."
 social_testo: |
   🩹 Corso di primo soccorso: si parte sabato 21 novembre!
 
@@ -37,7 +37,7 @@ italianoSemplice: |
   Per informazioni e per iscriverti chiama il **328 8105399**.
 ---
 
-![Grafica della Misericordia di Ariccia con i volontari accanto all'ambulanza e la scritta «Formazione. Corso di primo soccorso: si parte sabato 21 novembre. Ore 10, in sede: Viale Antonietta Chigi 46. Quota 50 €, iscrizione compresa. Info e iscrizioni: 328 8105399».](/img/news/2026-11-06-corso-primo-soccorso-21-novembre-grafica.jpg)
+![Locandina del corso di primo soccorso della Misericordia di Ariccia: «Entra nel mondo della Misericordia, dal 1244. Corso di primo soccorso. Si parte sabato 21 novembre, ore 10, in Via A. Chigi 46, sede della Misericordia. Quota 50 €, iscrizione alla Misericordia compresa. Info e iscrizioni 328 810 5399».](/img/news/2026-11-06-corso-primo-soccorso-21-novembre-locandina.jpg)
 
 **Entra nel mondo della Misericordia.** Sabato **21 novembre 2026** parte il nuovo **corso di primo soccorso** della Misericordia di Ariccia.
 
@@ -52,8 +52,6 @@ Con questo corso impari a **riconoscere un'emergenza**, a **chiamare il 112** e 
 ## Info e iscrizioni
 
 Per informazioni e per iscriverti chiama il **[328 8105399](tel:+393288105399)**, oppure scrivi a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it).
-
-![Locandina del corso di primo soccorso della Misericordia di Ariccia: «Entra nel mondo della Misericordia, dal 1244. Corso di primo soccorso. Si parte sabato 21 novembre, ore 10, in Via A. Chigi 46, sede della Misericordia. Quota 50 €, iscrizione alla Misericordia compresa. Info e iscrizioni 328 810 5399».](/img/news/2026-11-06-corso-primo-soccorso-21-novembre-locandina.jpg)
 
 ## E dopo il corso?
 
