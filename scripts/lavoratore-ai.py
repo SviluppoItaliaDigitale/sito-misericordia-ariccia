@@ -860,19 +860,30 @@ def leggi_esito():
     def intero(x, riserva=1):
         return x if isinstance(x, int) and not isinstance(x, bool) and -1000 < x < 1000 else riserva
 
-    tentativi = [{"modello": nome(t.get("modello")), "codice": intero(t.get("codice")),
+    valori, sospetti = valori_segreti(), []   # anche i dati dell'esito finiscono in bacheca: niente chiavi neanche lì
+
+    def senza_chiavi(x, campo):
+        if x and contiene_segreto(x, valori):
+            sospetti.append(campo)
+            return ""
+        return x
+
+    tentativi = [{"modello": senza_chiavi(nome(t.get("modello")), "tentativi"), "codice": intero(t.get("codice")),
                   "occupato": t.get("occupato") is True, "quota": t.get("quota") is True}
                  for t in (dati.get("tentativi") if isinstance(dati.get("tentativi"), list) else [])[:12]
                  if isinstance(t, dict)]
     annullati = [p for p in (dati.get("annullati") if isinstance(dati.get("annullati"), list) else [])[:30]
                  if isinstance(p, str) and re.fullmatch(r"[\w./@+ -]{1,200}", p)
-                 and any(p == v or p.startswith(v + "/") for v in VIETATI)]
+                 and any(p == v or p.startswith(v + "/") for v in VIETATI) and senza_chiavi(p, "annullati")]
     errore = dati.get("errore_motore") if isinstance(dati.get("errore_motore"), str) else ""
-    errore = re.sub(r"[*`<>\[\]\r\n]+", " ", errore).strip()[:300]
+    errore = senza_chiavi(re.sub(r"[*`<>\[\]\r\n]+", " ", errore).strip()[:300], "errore")   # si toglie e basta
+    modello = senza_chiavi(nome(dati.get("modello")), "modello")
     blocco = dati.get("blocco") or ""
     if not isinstance(blocco, str) or (blocco and blocco not in BLOCCHI):   # un blocco che non si riconosce, blocca
         blocco = "sconosciuto"
-    return {"esito_motore": intero(dati.get("esito_motore")), "modello": nome(dati.get("modello")),
+    if any(c != "errore" for c in sospetti):   # una chiave dove ci va il nome di un modello o di un file: non si pubblica
+        blocco = "segreto"
+    return {"esito_motore": intero(dati.get("esito_motore")), "modello": modello,
             "tentativi": tentativi, "annullati": annullati, "errore_motore": errore, "blocco": blocco,
             "riassunto_tolto": dati.get("riassunto_tolto") is True}
 
@@ -906,12 +917,14 @@ def applica_lavoro(sha, valori):
         print(f"::warning::Patch non applicata: {r.stderr.decode(errors='replace').strip()[:300]}")
         return "patch", [], []
     annullati = ripristina_vietati(sha)
+    if contiene_segreto("\n".join(annullati), valori):   # i nomi dei file vanno in bacheca, anche quelli binari
+        return "segreto", [], []
     git("add", "-A")
     modi = git("diff", "--cached", "--raw", "--no-renames", sha)
     if any(r.split()[1] in ("120000", "160000") for r in modi.splitlines() if r.startswith(":")):
         return "collegamento", [], annullati
     toccati = [p for p in git("diff", "--cached", "--name-only", "--no-renames", sha).splitlines() if p]
-    if segreto_nei_file(toccati, valori):
+    if contiene_segreto("\n".join(toccati), valori) or segreto_nei_file(toccati, valori):
         return "segreto", [], annullati
     return "", toccati, annullati
 
