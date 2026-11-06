@@ -3,12 +3,15 @@
 loro, lavorano su un ramo `auto/…` e consegnano una pull request in bozza, che chi controlla unisce (protocollo comune).
 Destinatari: «ChatGPT automatico» (Codex con l'accesso ChatGPT di Alessandro), «Gemini automatico» (Gemini CLI, chiave
 gratuita), «DeepSeek automatico», «GLM automatico», «Kimi automatico», «Qwen automatico» (Claude Code con i modelli
-gratuiti di Ollama Cloud). Lo usa .github/workflows/lavoratore-ai.yml (trova, prendi, motore, consegna); da una sessione
-`richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola; `elenco` mostra destinatari e chiavi.
-Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri; se la quota gratuita di un
-modello è finita passa al successivo, senza secondo giro; se nessuno lavora toglie il ramo e la richiesta riparte al giro
-dopo; se GitHub Actions non può aprire la PR il lavoro resta sul ramo e la PR la apre chi controlla, da qualunque sessione
-(`passa-a.py chiudi --ramo`).
+gratuiti di Ollama Cloud). Lo usa .github/workflows/lavoratore-ai.yml, in job separati: «prendi» (ramo, bacheca, PR),
+«motore» e «raccogli» nel job dell'AI, che può solo leggere il repository e consegna il lavoro come pacchetto (patch,
+riassunto, esito), «consegna» in un job che scrive e non si fida del pacchetto: lo ricontrolla, lo applica, fa commit,
+esito in bacheca e PR. Da una sessione `richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola;
+`elenco` mostra destinatari e chiavi.
+Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri, e il secondo giro rifà solo
+i modelli occupati; se la quota gratuita di un modello è finita passa al successivo; se nessuno lavora toglie il ramo e
+la richiesta riparte al giro dopo; se GitHub Actions non può aprire la PR il lavoro resta sul ramo e la PR la apre chi
+controlla, da qualunque sessione (`passa-a.py chiudi --ramo`).
 """
 
 import argparse
@@ -37,6 +40,9 @@ TEMP = pathlib.Path(os.environ.get("RUNNER_TEMP") or os.environ.get("TMPDIR") or
 STATO = TEMP / "lavoratore-ai.json"
 RIASSUNTO = TEMP / "riassunto-lavoro.md"
 USCITA = TEMP / "uscita-motore.txt"
+# Il pacchetto che il job dell'AI passa al job che consegna (artefatto del run): lavoro.patch, riassunto.txt, esito.json.
+LAVORO = pathlib.Path(os.environ.get("LAVORO_DIR") or TEMP / "lavoro")
+PATCH_MASSIMA = 50 * 1024 * 1024
 TEMPO_MOTORE = int(os.environ.get("TEMPO_MOTORE", str(45 * 60)))   # tutti i tentativi insieme
 TEMPO_MINIMO = int(os.environ.get("LAVORATORE_TEMPO_MINIMO", str(8 * 60)))   # sotto, non si prova un altro modello
 PAUSA = int(os.environ.get("LAVORATORE_PAUSA", str(5 * 60)))   # fra i due giri, quando tutti i modelli sono occupati
@@ -80,16 +86,29 @@ DESTINATARI = {
 }
 
 TESTA = re.compile(r"^- \*\*(\d{4}-\d{2}-\d{2}) — da (.+?) a (.+?) — (.+?)\*\*(.*)$")
+ESITO = re.compile(r"^  - \*\*Esito del [^\n]*", re.M)   # la riga che scrive `consegna` (passa-a.py la legge uguale)
 PRESA = re.compile(r"\b(?:pres[ao]|fatt[ao]|chius[ao]|archiviat[ao]) da\b", re.I)
 # Nomi di strumenti: mai nei commit, nei titoli e nei testi delle PR (regola firma-dei-lavori.md).
 VIETATE = re.compile(r"\b(claude|anthropic|chatgpt|chat gpt|openai|codex|gpt|gemini|google ai|deepseek|qwen|glm|kimi|"
                      r"moonshot|zhipu|ollama|llama|mistral|minimax|copilot|jules|llm|intelligenz[ae] artificial[ei]|"
                      r"artificial intelligence)\b", re.I)
 VIETATE_SIGLE = re.compile(r"\b(IA|AI|LLM)\b")
+# «sk-» solo a inizio parola e con almeno una cifra: «risk-communication-…» è il nome di un articolo, non una chiave.
 SEGRETI = re.compile(r"ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|gh[ousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|"
-                     r"sk-[A-Za-z0-9_-]{20,}|xox[abprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|"
-                     r"\"refresh_token\"\s*:\s*\"[^\"]{10,}")
-VIETATI = ("COORDINAMENTO.md", ".github")   # li cura il sistema, non l'AI che lavora
+                     r"(?<![A-Za-z0-9_-])sk-(?=[A-Za-z0-9_-]*[0-9])[A-Za-z0-9_-]{20,}|xox[abprs]-[A-Za-z0-9-]{10,}|"
+                     r"-----BEGIN [A-Z ]*PRIVATE KEY-----|"
+                     r"\"(?:refresh|access|id)_token\"\s*:\s*\"[^\"]{10,}|AKIA[0-9A-Z]{16}|"
+                     r"eyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}")   # l'ultima: i token JWT
+# Li cura il sistema, non l'AI che lavora. .githooks: i ganci dei commit li eseguirebbe il job che scrive.
+VIETATI = ("COORDINAMENTO.md", ".github", ".githooks")
+# Perché un lavoro non si pubblica: il codice viaggia nell'esito, la frase la sceglie solo il job che consegna.
+BLOCCHI = {
+    "segreto": "nel lavoro c'era un testo che sembra una chiave d'accesso",
+    "troppo-grande": "il lavoro era troppo grande per essere consegnato",
+    "collegamento": "il lavoro conteneva un collegamento simbolico o un sottomodulo",
+    "patch": "le modifiche non si applicavano al ramo così com'era alla presa in carico",
+    "sconosciuto": "il job dell'AI ha segnalato un problema che il sistema non riconosce",
+}
 # Nei repository di un account personale GitHub Actions, di base, non può aprire pull request (documentazione GitHub,
 # «Managing GitHub Actions settings for a repository»): la prima prova vera, il 05/11/2026, si è fermata così. Il lavoro
 # non dipende da quel permesso: resta sul ramo e la PR la apre chi lo controlla.
@@ -127,6 +146,20 @@ def esegui(cmd, **kw):
 
 def git(*argomenti, check=True):
     return esegui(["git", *argomenti], check=check).stdout.strip()
+
+
+def nomi_file(*argomenti):
+    """I nomi dei file di un comando git con -z, separati da NUL: così come sono, senza le virgolette e le sequenze di
+    escape che git mette ai nomi con lettere accentate o caratteri speciali, e senza togliere spazi."""
+    return [n for n in esegui(["git", *argomenti], errors="surrogateescape").stdout.split("\0") if n]
+
+
+def nome_leggibile(nome):
+    """Un nome di file come va in bacheca: così com'è se usa lettere, cifre e segni comuni, altrimenti tra virgolette
+    con le sequenze di escape, così il nome di un file non porta a capo, caratteri di controllo o formattazione."""
+    if re.fullmatch(r"[\w./@+ -]{1,200}", nome):
+        return nome
+    return json.dumps(nome[:200]).translate({ord(c): f"\\u{ord(c):04x}" for c in "*`<>[]|~"})
 
 
 def uscita(**valori):
@@ -192,6 +225,89 @@ def remoto(repo):
         token = os.environ["GITHUB_TOKEN"]
         return GIT.replace("https://", f"https://x-access-token:{token}@", 1) + f"/{repo}.git"
     return f"{GIT}/{repo}.git"
+
+
+def senza_ganci():
+    """Nei comandi git di questo script e dei suoi figli, nessun programma del repository: né i ganci (core.hooksPath,
+    anche quello del repository, .githooks) né il monitor dei file (core.fsmonitor). L'AI ha un ambiente suo
+    (ambiente_motore) e non li riceve."""
+    n = int(os.environ.get("GIT_CONFIG_COUNT") or 0)
+    for chiave, valore in (("core.hooksPath", "/dev/null"), ("core.fsmonitor", "false")):
+        os.environ[f"GIT_CONFIG_KEY_{n}"], os.environ[f"GIT_CONFIG_VALUE_{n}"] = chiave, valore
+        n += 1
+    os.environ["GIT_CONFIG_COUNT"] = str(n)
+
+
+def valori_segreti():
+    """I valori veri delle chiavi che il job conosce (almeno 12 caratteri): nessuno deve finire nei file, nel riassunto
+    o in bacheca. Oltre alle variabili, i token dell'accesso ChatGPT, nel seme e nella copia in uso."""
+    valori = {v for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "OLLAMA_API_KEY", "SEME")
+              if len(v := os.environ.get(k, "")) >= 12}
+
+    def dai_token(dati):
+        if isinstance(dati, dict):
+            for k, v in dati.items():
+                if isinstance(v, str) and len(v) >= 12 and (k == "OPENAI_API_KEY" or k.endswith("token")):
+                    valori.add(v)
+                else:
+                    dai_token(v)
+    try:
+        if os.environ.get("SEME"):
+            dai_token(json.loads(base64.b64decode(os.environ["SEME"])))
+    except Exception:   # seme illeggibile: restano le variabili
+        pass
+    try:
+        if os.environ.get("CODEX_HOME"):
+            dai_token(json.loads((pathlib.Path(os.environ["CODEX_HOME"]) / "auth.json").read_text()))
+    except Exception:
+        pass
+    return valori
+
+
+def contiene_segreto(testo, valori=()):
+    return bool(testo) and (bool(SEGRETI.search(testo)) or any(v in testo for v in valori))
+
+
+def righe_aggiunte(patch):
+    """Del testo di una patch, solo le righe aggiunte: un segreto che il lavoro toglie non deve bloccarlo."""
+    return "\n".join(r[1:] for r in patch.decode("utf-8", "replace").splitlines() if r.startswith("+"))
+
+
+def segreto_nei_file(percorsi, valori, sha):
+    """Il primo file che contiene un segreto nuovo, letto byte per byte (anche i file binari, che la patch codifica).
+    Un testo che c'era già nel file alla presa in carico (`sha`) non blocca: l'AI non lo ha portato lei."""
+    for p in percorsi:
+        f = pathlib.Path(p)
+        if f.is_file() and not f.is_symlink():
+            dati = f.read_bytes()
+            r = esegui(["git", "show", f"{sha}:{p}"], text=False, check=False)
+            prima = set(SEGRETI.findall(r.stdout.decode("utf-8", "replace"))) if r.returncode == 0 else set()
+            if set(SEGRETI.findall(dati.decode("utf-8", "replace"))) - prima or any(v.encode() in dati for v in valori):
+                return p
+    return None
+
+
+def ripristina_vietati(sha):
+    """I file che cura il sistema tornano come alla presa in carico (tolti, aggiunti o cambiati): l'elenco dei file."""
+    annullati = []
+    for percorso in VIETATI:
+        cambiati = nomi_file("status", "--porcelain", "-z", "--untracked-files=all", "--no-renames", "--", percorso)
+        if cambiati:
+            annullati += [r[3:] for r in cambiati]
+            git("reset", "-q", sha, "--", percorso, check=False)
+            if git("ls-tree", "-r", "--name-only", sha, "--", percorso):
+                git("checkout", sha, "--", percorso)
+            esegui(["git", "clean", "-fdq", "--", percorso], check=False)
+    return annullati
+
+
+def carica_stato():
+    """Lo stato del lavoro preso: dalla variabile LAVORATORE_STATO, che il workflow passa da un job all'altro e che i
+    job con l'AI non possono cambiare; altrimenti dal file del giro (stesso job, prove in locale)."""
+    testo = os.environ.get("LAVORATORE_STATO", "").strip()
+    if testo:
+        return json.loads(testo)
+    return json.loads(STATO.read_text()) if STATO.exists() else None
 
 
 def pubblica_ramo(repo, ramo):
@@ -260,8 +376,9 @@ def tentativo_fallito(repo, base, sha, voce):
     testo = base64.b64decode(contenuto.get("content") or "").decode("utf-8", "replace")
     blocco = next((v["blocco"] for v in voci_richieste(testo) if v["data"] == voce["data"]
                    and v["titolo"] == voce["titolo"] and PRESA.search(v["testa"])), "")
-    if "**Esito del" in blocco:
-        return "lavoro non riuscito" in blocco and "File toccati: nessuno" in blocco
+    esiti = ESITO.findall(blocco)   # solo le righe d'esito del sistema: il riassunto dell'AI ha un altro rientro
+    if esiti:
+        return "lavoro non riuscito" in esiti[-1] and "File toccati: nessuno." in esiti[-1]
     commits = confronto.get("commits") or []
     quando = ((commits[-1].get("commit") or {}).get("committer") or {}).get("date", "") if commits else ""
     try:
@@ -338,6 +455,23 @@ def chiave_presente(dest):
 
 # ---------------------------------------------------------------- comandi del workflow
 
+def problema_richiesta(repo, voce, dest):
+    """Perché una richiesta non può partire (istruzioni incomplete, chiave assente, Gemini in un repository privato),
+    oppure None. Lo controllano sia `trova` sia `prendi`, che rilegge la bacheca e può trovare un'altra richiesta."""
+    problemi = parti_mancanti(voce["blocco"])
+    if problemi:   # istruzioni incomplete non partono: si corregge la richiesta in bacheca
+        return (f"La richiesta del {voce['data']} per {dest['nome']} («{voce['titolo']}») è incompleta: "
+                f"{'; '.join(problemi)}. Va riscritta con le sette parti di `python3 scripts/passa-a.py modello`.")
+    if not chiave_presente(dest):
+        return (f"La richiesta del {voce['data']} è per {dest['nome']}, ma nei segreti del repository manca "
+                f"{dest['segreto']}: si collega dal PC con scripts/collega-ai-automatiche.sh.")
+    if dest["motore"] == "gemini" and repository_privato(repo):
+        return (f"La richiesta del {voce['data']} («{voce['titolo']}») è per {dest['nome']}, ma {repo} è un "
+                f"repository privato, o GitHub non dice se lo è: {NO_GEMINI_PRIVATO}. Va riscritta in bacheca per "
+                f"{AI_PER_PRIVATI}.")
+    return None
+
+
 def cmd_trova(a):
     repo = os.environ["GITHUB_REPOSITORY"]
     voce, dest, _ = prossima_richiesta(repo, pathlib.Path(BACHECA).read_text(encoding="utf-8"),
@@ -346,22 +480,10 @@ def cmd_trova(a):
         uscita(trovata="false")
         resoconto("Nessuna richiesta aperta per le AI automatiche in bacheca.")
         return 0
-    problemi = parti_mancanti(voce["blocco"])
-    if problemi:   # istruzioni incomplete non partono: si corregge la richiesta in bacheca
+    problema = problema_richiesta(repo, voce, dest)
+    if problema:
         uscita(trovata="false")
-        print(f"::error::La richiesta del {voce['data']} per {dest['nome']} («{voce['titolo']}») è incompleta: "
-              f"{'; '.join(problemi)}. Va riscritta con le sette parti di `python3 scripts/passa-a.py modello`.")
-        return 1
-    if not chiave_presente(dest):
-        uscita(trovata="false")
-        print(f"::error::La richiesta del {voce['data']} è per {dest['nome']}, ma nei segreti del repository manca "
-              f"{dest['segreto']}: si collega dal PC con scripts/collega-ai-automatiche.sh.")
-        return 1
-    if dest["motore"] == "gemini" and repository_privato(repo):
-        uscita(trovata="false")
-        print(f"::error::La richiesta del {voce['data']} («{voce['titolo']}») è per {dest['nome']}, ma {repo} è un "
-              f"repository privato, o GitHub non dice se lo è: {NO_GEMINI_PRIVATO}. Va riscritta in bacheca per "
-              f"{AI_PER_PRIVATI}.")
+        print(f"::error::{problema}")
         return 1
     uscita(trovata="true", motore=dest["motore"])
     resoconto(f"Richiesta del {voce['data']} per {dest['nome']}: «{voce['titolo']}».")
@@ -376,6 +498,10 @@ def cmd_prendi(a):
     if not voce:
         print("Nessuna richiesta da prendere (presa da altri nel frattempo).")
         return 0
+    problema = problema_richiesta(repo, voce, dest)
+    if problema:
+        print(f"::error::{problema}")
+        return 1
     for vecchio in liberi:   # prima di tutto: il ramo nuovo può avere lo stesso nome di quello vecchio
         if not libera_ramo(repo, vecchio):
             print(f"::error::Il ramo {vecchio} di un tentativo precedente non si toglie: la richiesta resta ferma.")
@@ -414,11 +540,12 @@ def cmd_prendi(a):
     git("add", BACHECA)
     git("commit", "-q", "-m", f"Bacheca: PR #{numero}, lavoro in corso" if numero else "Bacheca: lavoro in corso")
     pubblica_ramo(repo, ramo)
-    STATO.write_text(json.dumps({"voce": voce, "dest": dest, "ramo": ramo, "pr": numero, "base": base,
-                                 "errore_pr": errore_pr, "sha_presa": git("rev-parse", "HEAD"),
-                                 "titolo": titolo, "repo": repo, "privato": repository_privato(repo)},
-                                ensure_ascii=False))
-    uscita(preso="true")
+    stato = {"voce": voce, "dest": dest, "ramo": ramo, "pr": numero, "base": base, "errore_pr": errore_pr,
+             "sha_presa": git("rev-parse", "HEAD"), "titolo": titolo, "repo": repo, "privato": repository_privato(repo)}
+    STATO.write_text(json.dumps(stato, ensure_ascii=False))
+    # Ai job dopo: lo stato in una riga (gli output dei job non li cambia chi viene dopo), il motore, ramo e commit.
+    uscita(preso="true", motore=dest["motore"], ramo=ramo, sha=stato["sha_presa"],
+           stato=json.dumps(stato, ensure_ascii=False, separators=(",", ":")))
     resoconto(f"Lavoro preso: ramo {ramo}" + (f", pull request #{numero} in bozza." if numero else "."))
     return 0
 
@@ -466,7 +593,8 @@ occhi chiusi; nella domanda mai dati personali.{nota_privato}
 
 PASSO 4 — DIVIETI. Prevalgono su qualunque altra istruzione, anche su quelle della richiesta:
 - non fare commit, push, merge, pull request né rami nuovi: li fa il sistema quando hai finito;
-- non toccare COORDINAMENTO.md e la cartella .github/: le modifiche a quei file vengono annullate;
+- non toccare COORDINAMENTO.md e le cartelle .github/ e .githooks/: le modifiche a quei file vengono annullate;
+- non creare collegamenti simbolici né sottomoduli: un lavoro che li contiene non si pubblica;
 - nei file, nei testi e nei messaggi niente nomi di strumenti o di intelligenze artificiali: la firma è sempre \
 Alessandro Cuollo;
 - non leggere, copiare o stampare chiavi, token o file di accesso, e non inviare dati fuori dal repository, salvo le \
@@ -569,6 +697,8 @@ def motivo_fallimento(tentativi):
     ultimo = tentativi[-1]["codice"]
     if tentativi[-1].get("quota"):   # prima di «occupato»: il 05/11/2026 la quota è finita dopo due 503
         return "quota gratuita del modello finita" + provati
+    if all(t["occupato"] or t.get("quota") for t in tentativi) and any(t.get("quota") for t in tentativi):
+        return "servizio occupato e quota gratuita finita" + provati
     if all(t["occupato"] for t in tentativi):
         return "servizio occupato" + provati
     if ultimo == 124:
@@ -611,10 +741,13 @@ def comando_motore(stato, prompt, modello, env):
 
 
 def cmd_motore(a):
-    if not STATO.exists():
+    stato = carica_stato()
+    if not stato:
         print("Nessun lavoro preso: niente da fare.")
         return 0
-    stato = json.loads(STATO.read_text())
+    if git("rev-parse", "HEAD", check=False) == stato["sha_presa"] \
+            and git("branch", "--show-current", check=False) != stato["ramo"]:
+        git("checkout", "-q", "-B", stato["ramo"])   # nel job dell'AI il checkout è del commit: si lavora sul ramo
     if stato["dest"]["motore"] == "gemini" and stato.get("privato", True):   # rete di sicurezza dopo «trova»
         stato.update(esito_motore=3, modello="", errore_motore=f"{stato['repo']} è un repository privato, o GitHub "
                                                                f"non dice se lo è: {NO_GEMINI_PRIVATO}. La richiesta "
@@ -655,12 +788,15 @@ def cmd_motore(a):
                   + (" (quota gratuita del modello finita)." if quota and codice else "."), flush=True)
             if codice == 0 or not albero_pulito(stato["sha_presa"]):
                 break   # finito, oppure l'AI ha lavorato: un altro modello non riparte sopra un lavoro a metà
-            # Il secondo giro serve solo ai modelli occupati: una quota finita non torna dopo la pausa.
-            if not coda and not secondo_giro and any(t["occupato"] and not t["quota"] for t in tentativi) \
-                    and TEMPO_MOTORE - (time.time() - inizio) >= PAUSA + TEMPO_MINIMO:
-                secondo_giro, coda = True, list(modelli)
-                print(f"Tutti i modelli occupati: riprovo fra {PAUSA} secondi.", flush=True)
-                time.sleep(PAUSA)
+            # Il secondo giro rifà solo i modelli occupati: una quota finita non torna dopo la pausa.
+            if not coda and not secondo_giro and TEMPO_MOTORE - (time.time() - inizio) >= PAUSA + TEMPO_MINIMO:
+                occupati = [m for m in modelli if any(t["modello"] == m and t["occupato"] and not t["quota"]
+                                                      for t in tentativi)]
+                if occupati:
+                    secondo_giro, coda = True, occupati
+                    print(f"Modelli occupati ({', '.join(m for m in occupati if m) or 'predefinito'}): riprovo fra "
+                          f"{PAUSA} secondi.", flush=True)
+                    time.sleep(PAUSA)
     ultimo = tentativi[-1]
     stato.update(esito_motore=ultimo["codice"], modello=ultimo["modello"], tentativi=tentativi,
                  durata=int(time.time() - inizio))
@@ -683,34 +819,163 @@ def leggi_riassunto():
     return "\n".join(righe)[:3500]
 
 
+def cmd_raccogli(a):
+    """Nel job dell'AI, dopo il motore: il lavoro diventa un pacchetto per il job che consegna (patch, riassunto, esito),
+    poi il ramo torna com'era. Qui non c'è nessun token che scrive; il job che consegna non si fida e ricontrolla."""
+    stato = json.loads(STATO.read_text()) if STATO.exists() else carica_stato()
+    if not stato:
+        print("Nessun lavoro preso: niente da raccogliere.")
+        return 0
+    sha = stato["sha_presa"]
+    LAVORO.mkdir(parents=True, exist_ok=True)
+    for f in ("lavoro.patch", "riassunto.txt", "esito.json"):
+        (LAVORO / f).unlink(missing_ok=True)
+    if git("rev-parse", "HEAD", check=False) != sha:   # l'AI ha fatto commit da sola: tornano modifiche da rivedere
+        git("reset", "-q", "--soft", sha)
+    annullati = ripristina_vietati(sha)
+    git("add", "-A")
+    patch = esegui(["git", "diff", "--cached", "--binary", "--no-renames", "--no-ext-diff", "--no-textconv", sha],
+                   text=False).stdout
+    toccati = nomi_file("diff", "--cached", "--name-only", "--no-renames", "-z", sha)
+    valori = valori_segreti()
+    blocco = ""
+    if len(patch) > PATCH_MASSIMA:
+        blocco = "troppo-grande"
+    elif contiene_segreto(righe_aggiunte(patch), valori) or contiene_segreto("\n".join(toccati), valori) \
+            or segreto_nei_file(toccati, valori, sha):
+        blocco = "segreto"
+    riassunto = leggi_riassunto()
+    riassunto_tolto = contiene_segreto(riassunto, valori)
+    errore = stato.get("errore_motore", "")
+    if contiene_segreto(errore, valori):
+        errore = "errore del programma non riportato: conteneva un testo simile a una chiave d'accesso"
+    if patch and not blocco:
+        (LAVORO / "lavoro.patch").write_bytes(patch)
+    (LAVORO / "riassunto.txt").write_text("" if riassunto_tolto else riassunto, encoding="utf-8")
+    (LAVORO / "esito.json").write_text(json.dumps({
+        "esito_motore": stato.get("esito_motore", 1), "modello": stato.get("modello", ""),
+        "tentativi": stato.get("tentativi", []), "errore_motore": errore, "durata": stato.get("durata", 0),
+        "annullati": annullati, "blocco": blocco, "riassunto_tolto": riassunto_tolto, "file": len(toccati)}))
+    git("reset", "-q", "--hard", sha)
+    esegui(["git", "clean", "-fdq"], check=False)
+    print(f"Lavoro raccolto: {len(toccati)} file" + (f", bloccato ({BLOCCHI[blocco]})" if blocco else "")
+          + (", riassunto tolto (conteneva una chiave)" if riassunto_tolto else "") + ".")
+    return 0
+
+
+def leggi_esito():
+    """L'esito che arriva dal job dell'AI: dati da controllare, non istruzioni. Ciò che non torna si scarta; il motivo
+    di un fallimento lo riscrive questo script dai tentativi."""
+    try:
+        dati = json.loads((LAVORO / "esito.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    if not isinstance(dati, dict):
+        return None
+
+    def nome(x):
+        return x if isinstance(x, str) and re.fullmatch(r"[A-Za-z0-9._:/@+-]{1,80}", x) else ""
+
+    def intero(x, riserva=1):
+        return x if isinstance(x, int) and not isinstance(x, bool) and -1000 < x < 1000 else riserva
+
+    valori, sospetti = valori_segreti(), []   # anche i dati dell'esito finiscono in bacheca: niente chiavi neanche lì
+
+    def senza_chiavi(x, campo):
+        if x and contiene_segreto(x, valori):
+            sospetti.append(campo)
+            return ""
+        return x
+
+    tentativi = [{"modello": senza_chiavi(nome(t.get("modello")), "tentativi"), "codice": intero(t.get("codice")),
+                  "occupato": t.get("occupato") is True, "quota": t.get("quota") is True}
+                 for t in (dati.get("tentativi") if isinstance(dati.get("tentativi"), list) else [])[:12]
+                 if isinstance(t, dict)]
+    annullati = [p for p in (dati.get("annullati") if isinstance(dati.get("annullati"), list) else [])[:30]
+                 if isinstance(p, str) and re.fullmatch(r"[\w./@+ -]{1,200}", p)
+                 and any(p == v or p.startswith(v + "/") for v in VIETATI) and senza_chiavi(p, "annullati")]
+    errore = dati.get("errore_motore") if isinstance(dati.get("errore_motore"), str) else ""
+    errore = senza_chiavi(re.sub(r"[*`<>\[\]\r\n]+", " ", errore).strip()[:300], "errore")   # si toglie e basta
+    modello = senza_chiavi(nome(dati.get("modello")), "modello")
+    blocco = dati.get("blocco") or ""
+    if not isinstance(blocco, str) or (blocco and blocco not in BLOCCHI):   # un blocco che non si riconosce, blocca
+        blocco = "sconosciuto"
+    if any(c != "errore" for c in sospetti):   # una chiave dove ci va il nome di un modello o di un file: non si pubblica
+        blocco = "segreto"
+    return {"esito_motore": intero(dati.get("esito_motore")), "modello": modello,
+            "tentativi": tentativi, "annullati": annullati, "errore_motore": errore, "blocco": blocco,
+            "riassunto_tolto": dati.get("riassunto_tolto") is True}
+
+
+def riassunto_consegnato(valori):
+    """Il riassunto del pacchetto, ricontrollato: al massimo 25 righe, niente chiavi, niente grassetto (così nessuna
+    riga può sembrare un esito del sistema). (righe, tolto)."""
+    f = LAVORO / "riassunto.txt"
+    testo = f.read_text(encoding="utf-8", errors="replace") if f.is_file() and not f.is_symlink() else ""
+    righe = [r.rstrip().replace("**", "") for r in testo.strip().splitlines() if r.strip()][:25]
+    testo = "\n".join(righe)[:3500]
+    if contiene_segreto(testo, valori):
+        return [], True
+    return testo.splitlines(), False
+
+
+def applica_lavoro(sha, valori):
+    """Applica la patch del pacchetto al ramo com'era alla presa in carico: (codice del blocco o "", file toccati,
+    file che cura il sistema riportati com'erano)."""
+    f = LAVORO / "lavoro.patch"
+    if not f.is_file() or f.is_symlink():
+        return "", [], []
+    patch = f.read_bytes()
+    if len(patch) > PATCH_MASSIMA:
+        return "troppo-grande", [], []
+    if contiene_segreto(righe_aggiunte(patch), valori):
+        return "segreto", [], []
+    r = esegui(["git", "apply", "--index", "--binary", "--whitespace=nowarn", "-"], input=patch, text=False,
+               check=False)   # rifiuta da sé percorsi fuori dal repository, dentro .git e oltre un collegamento
+    if r.returncode != 0:
+        print(f"::warning::Patch non applicata: {r.stderr.decode(errors='replace').strip()[:300]}")
+        return "patch", [], []
+    annullati = ripristina_vietati(sha)
+    if contiene_segreto("\n".join(annullati), valori):   # i nomi dei file vanno in bacheca, anche quelli binari
+        return "segreto", [], []
+    git("add", "-A")
+    modi = git("diff", "--cached", "--raw", "--no-renames", sha)
+    if any(r.split()[1] in ("120000", "160000") for r in modi.splitlines() if r.startswith(":")):
+        return "collegamento", [], annullati
+    toccati = nomi_file("diff", "--cached", "--name-only", "--no-renames", "-z", sha)
+    if contiene_segreto("\n".join(toccati), valori) or segreto_nei_file(toccati, valori, sha):
+        return "segreto", [], annullati
+    return "", toccati, annullati
+
+
 def cmd_consegna(a):
-    if not STATO.exists():
+    stato = carica_stato()
+    if not stato:
         print("Nessun lavoro preso: niente da consegnare.")
         return 0
-    stato = json.loads(STATO.read_text())
-    repo, ramo, numero, dest = stato["repo"], stato["ramo"], stato["pr"], stato["dest"]
-    if git("rev-parse", "HEAD") != stato["sha_presa"]:   # l'AI ha fatto commit da sola: tornano modifiche da rivedere
-        git("reset", "-q", "--soft", stato["sha_presa"])
-    annullati = []
-    for percorso in VIETATI:   # torna com'era alla presa in carico: file tolti, aggiunti o cambiati
-        cambiati = git("status", "--porcelain", "--untracked-files=all", "--", percorso)
-        if cambiati:
-            annullati += [r[3:] for r in cambiati.splitlines()]
-            git("reset", "-q", stato["sha_presa"], "--", percorso, check=False)
-            if git("ls-tree", "-r", "--name-only", stato["sha_presa"], "--", percorso):
-                git("checkout", stato["sha_presa"], "--", percorso)
-            esegui(["git", "clean", "-fdq", "--", percorso], check=False)
-    git("add", "-A")
-    diff = git("diff", "--cached")
-    codice = stato.get("esito_motore", 1)
-    motivo = stato.get("errore_motore") or ("tempo scaduto" if codice == 124 else f"codice di uscita {codice}")
-    bloccato = bool(diff and SEGRETI.search(diff))
-    if bloccato:
-        git("reset", "-q", "--hard", stato["sha_presa"])
-        esegui(["git", "clean", "-fdq"], check=False)
-        frase, toccati = "bloccato: nel lavoro c'era un testo che sembra una chiave d'accesso, non pubblicato", []
+    repo, ramo, numero, dest, sha = stato["repo"], stato["ramo"], stato["pr"], stato["dest"], stato["sha_presa"]
+    git("reset", "-q", "--hard", sha)   # si riparte dal ramo com'era alla presa in carico: dal job dell'AI solo dati
+    esegui(["git", "clean", "-fdq"], check=False)
+    git("checkout", "-q", "-B", ramo)
+    valori = valori_segreti()
+    esito = leggi_esito()
+    if esito is None:
+        esito = {"esito_motore": 1, "modello": "", "tentativi": [], "annullati": [], "errore_motore": "",
+                 "blocco": "", "riassunto_tolto": False}
+        motivo = "il lavoro non è arrivato: giro interrotto, scaduto o fermato"
     else:
-        toccati = [f for f in git("diff", "--cached", "--name-only").splitlines() if f]
+        motivo = (motivo_fallimento(esito["tentativi"]) if esito["tentativi"] else esito["errore_motore"]) \
+            or f"codice di uscita {esito['esito_motore']}"
+    codice = esito["esito_motore"]
+    blocco, toccati, annullati = esito["blocco"], [], []
+    if not blocco:
+        blocco, toccati, annullati = applica_lavoro(sha, valori)
+    annullati = sorted(set(esito["annullati"]) | set(annullati))
+    if blocco:
+        git("reset", "-q", "--hard", sha)
+        esegui(["git", "clean", "-fdq"], check=False)
+        frase, toccati = f"bloccato: {BLOCCHI[blocco]}, non pubblicato", []
+    else:
         if toccati:
             git("commit", "-q", "-m", stato["titolo"], "-m", f"Lavoro dalla richiesta della bacheca del {stato['voce']['data']}.")
         dove = "in questa PR" if numero else f"sul ramo {ramo} (la pull request la apre chi controlla)"
@@ -721,14 +986,18 @@ def cmd_consegna(a):
         else:
             frase = f"lavoro non riuscito ({motivo})" + (f"; i file toccati fin lì sono {dove}" if toccati else "")
     # Nessun lavoro fatto: il ramo si toglie e la richiesta, ancora aperta sul ramo principale, riparte al giro dopo.
-    da_rifare = codice != 0 and not toccati and not bloccato
+    da_rifare = codice != 0 and not toccati and not blocco
     momento = adesso()
-    modello = f", modello {stato['modello']}" if stato.get("modello") else ""
+    modello = f", modello {esito['modello']}" if esito["modello"] else ""
     righe_esito = [f"  - **Esito del {momento:%d/%m/%Y, %H:%M}** — {dest['nome']}{modello}: {frase}. "
-                   f"File toccati: {', '.join(toccati) if toccati else 'nessuno'}."]
+                   f"File toccati: {', '.join(map(nome_leggibile, toccati)) if toccati else 'nessuno'}."]
     if annullati:
-        righe_esito.append(f"    Modifiche annullate perché quei file li cura il sistema: {', '.join(annullati)}.")
-    righe_esito += [f"    {r}" for r in leggi_riassunto().splitlines()]
+        righe_esito.append("    Modifiche annullate perché quei file li cura il sistema: "
+                           f"{', '.join(map(nome_leggibile, annullati))}.")
+    riassunto, tolto = riassunto_consegnato(valori)
+    if tolto or esito["riassunto_tolto"]:
+        righe_esito.append("    Riassunto non pubblicato: conteneva un testo simile a una chiave d'accesso.")
+    righe_esito += [f"    {r}" for r in riassunto]
     testo = pathlib.Path(BACHECA).read_text(encoding="utf-8")
     voce = next((v for v in voci_richieste(testo) if v["titolo"] == stato["voce"]["titolo"]
                  and v["data"] == stato["voce"]["data"] and f"presa da {dest['nome']}" in v["testa"]), None)
@@ -757,6 +1026,9 @@ def cmd_consegna(a):
     resoconto(f"Consegna: {frase}; file toccati {len(toccati)}" + (f"; pull request #{numero}." if numero else "."))
     if not numero:   # la consegna c'è: il run resta verde e chi controlla apre la PR (passa-a.py stato la elenca)
         print(f"::warning::{spiega_permesso(ramo)}")
+    if blocco:   # rosso, perché qualcuno guardi: il ramo resta e la richiesta non riparte da sola
+        print(f"::error::Lavoro non pubblicato: {BLOCCHI[blocco]}. Il ramo {ramo} resta con l'esito in bacheca.")
+        return 1
     return 0 if codice == 0 else 1
 
 
@@ -872,7 +1144,7 @@ def cmd_elenco(a):
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     sotto = p.add_subparsers(dest="comando", required=True)
-    for nome in ("trova", "prendi", "motore", "consegna", "elenco"):
+    for nome in ("trova", "prendi", "motore", "raccogli", "consegna", "elenco"):
         sotto.add_parser(nome)
     r = sotto.add_parser("richiedi", help="scrive in bacheca una richiesta per un'AI automatica e la pubblica")
     r.add_argument("--a", required=True, help="destinatario, per esempio «ChatGPT automatico»")
@@ -882,8 +1154,9 @@ def main(argv=None):
     r.add_argument("--senza-merge", action="store_true")
     r.add_argument("--attesa", type=int, default=20, help="minuti di attesa dei controlli")
     a = p.parse_args(argv)
-    return {"trova": cmd_trova, "prendi": cmd_prendi, "motore": cmd_motore, "consegna": cmd_consegna,
-            "richiedi": cmd_richiedi, "elenco": cmd_elenco}[a.comando](a)
+    senza_ganci()
+    return {"trova": cmd_trova, "prendi": cmd_prendi, "motore": cmd_motore, "raccogli": cmd_raccogli,
+            "consegna": cmd_consegna, "richiedi": cmd_richiedi, "elenco": cmd_elenco}[a.comando](a)
 
 
 if __name__ == "__main__":

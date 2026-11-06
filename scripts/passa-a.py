@@ -63,6 +63,8 @@ Titolo e descrizione della PR non possono nominare strumenti: lo script si ferma
 from __future__ import annotations
 
 import argparse
+import base64
+import collections
 import datetime as dt
 import json
 import os
@@ -743,6 +745,10 @@ def cmd_stato(args) -> None:
         if n in possibili_di:
             print("  forse è la consegna della PR " + ", ".join(f"#{x}" for x in possibili_di[n])
                   + " (vedi sopra): se lo è, si chiude con quella; se non lo è, vale il giudizio qui sotto")
+        if ramo.startswith("auto/"):   # AI automatiche: che cosa dice l'esito scritto nella bacheca del ramo
+            stato_ramo, altri = _esito_ramo_auto(repo, pr["base"]["ref"], pr["head"]["sha"])
+            print(f"  => {_giudizio_auto(stato_ramo, altri, f'chiudi --pr {n}{opzione}')}")
+            continue
         print("  => NON È UN PASSAGGIO (né un passaggio preparato né la sua consegna certa): lavoro fatto in riserva o "
               "da una richiesta della bacheca. Controllarlo come una consegna; se va bene, "
               f"`chiudi --pr {n}{opzione} --titolo \"…\" --messaggio \"…\"`; se un controllo è rosso, "
@@ -751,23 +757,21 @@ def cmd_stato(args) -> None:
     if senza_pr:
         print("\nRami delle AI automatiche senza pull request (GitHub Actions non ha potuto aprirla):")
     base = ramo_principale(radice, None)
-    for nome, sha in senza_pr:
+    for nome, sha, nota in senza_pr:
         print(f"\nramo {nome} · https://github.com/{repo}/tree/{nome}")
-        if _tentativo_fallito(repo, base, sha):
-            print("  => TENTATIVO NON RIUSCITO, nessun file toccato: non si chiude. Lo toglie da solo il giro dopo delle "
-                  "AI automatiche, che riprova la richiesta; se non riesce per giorni, il lavoro lo fa chi controlla")
-            continue
-        print("  => CONSEGNA SENZA PR: controllarla come una consegna (richiesta ed esito sono nella voce della bacheca "
-              f"sul ramo), poi `chiudi --ramo {nome} --titolo \"…\" --messaggio \"…\"`: apre la PR e fa il resto, "
-              "anche da una sessione sul cellulare. Il permesso perché la apra GitHub Actions lo accende da solo l'avvio "
-              "di una sessione sul PC (scripts/collega-ai-automatiche.sh)")
+        if nota:
+            print(f"  {nota}")
+        stato_ramo, altri = _esito_ramo_auto(repo, base, sha)
+        print(f"  => {_giudizio_auto(stato_ramo, altri, f'chiudi --ramo {nome}')}")
     if not mostrate and not fuori and not senza_pr:
         info("nessuna PR aperta sui rami chatgpt/*, codex/* o gemini/*")
 
 
 def _rami_auto_senza_pr(repo: str, aperte: list) -> list:
-    """Rami auto/* (AI automatiche) che non hanno una PR, né aperta né chiusa: [(nome, sha)]. La consegna c'è ma
-    nessuno la vedrebbe: succede quando il repository non permette a GitHub Actions di aprire pull request."""
+    """Rami auto/* (AI automatiche) senza una PR aperta: [(nome, sha, nota)]. La consegna c'è ma nessuno la vedrebbe:
+    succede quando il repository non permette a GitHub Actions di aprire pull request. Un ramo si salta solo se una PR
+    chiusa aveva come ultimo commit proprio quello del ramo: lo stesso nome torna con un nuovo tentativo dello stesso
+    giorno, e una PR chiusa del tentativo prima non deve nascondere la consegna di quello dopo."""
     con_pr = {p["head"]["ref"] for p in aperte}
     # Senza «/» finale (alcuni intermediari rifiutano il percorso): il filtro sul prefisso si fa qui sotto.
     rami = gh_api(f"repos/{repo}/git/matching-refs/heads/auto", tollerante=True) or []
@@ -782,26 +786,129 @@ def _rami_auto_senza_pr(repo: str, aperte: list) -> list:
         nome = r["ref"].removeprefix("refs/heads/")
         if nome in con_pr:
             continue
-        chiuse = gh_api(f"repos/{repo}/pulls?state=closed&head={proprietario}:{nome}&per_page=1", tollerante=True)
-        if chiuse and not isinstance(chiuse, tuple):
+        sha = (r.get("object") or {}).get("sha", "")
+        chiuse = gh_api(f"repos/{repo}/pulls?state=closed&head={proprietario}:{nome}&per_page=100", tollerante=True)
+        if isinstance(chiuse, tuple):   # nel dubbio il ramo si mostra: meglio una riga in più che una consegna persa
+            senza.append((nome, sha, f"PR chiuse del ramo non lette ({chiuse[1][:120]}): guardare la pagina del ramo"))
             continue
-        senza.append((nome, (r.get("object") or {}).get("sha", "")))
+        if sha and any(((p.get("head") or {}).get("sha")) == sha for p in chiuse or []):
+            continue
+        senza.append((nome, sha, ""))
     return senza
 
 
-def _tentativo_fallito(repo: str, base: str, sha: str) -> bool:
-    """Ramo auto/* di un giro che non ha lavorato: solo la bacheca, con l'esito «lavoro non riuscito» e nessun file
-    toccato. Lo toglie da solo il giro dopo delle AI automatiche (lavoratore-ai.py), che riprova la richiesta."""
+ESITO_RIGA = re.compile(r"^  - \*\*Esito del [^\n]*", re.M)   # come in lavoratore-ai.py, che la scrive
+ESITO_AGGIUNTO = re.compile(r"^\+(  - \*\*Esito del [^\n]*)", re.M)
+VECCHIO_AUTO = 3 * 3600   # un ramo senza esito fermo da più di 3 ore: il giro che lo aveva preso si è interrotto
+
+
+def _righe_esito(repo: str, ref: str):
+    """Le righe d'esito della bacheca a `ref`, in ordine; None se GitHub non la dà."""
+    c = gh_api(f"repos/{repo}/contents/{BACHECA}?ref={ref}", tollerante=True)
+    if not c or isinstance(c, tuple) or not c.get("content"):
+        return None
+    return ESITO_RIGA.findall(base64.b64decode(c["content"]).decode("utf-8", "replace"))
+
+
+def _esito_ramo_auto(repo: str, base: str, sha: str) -> tuple:
+    """Che cosa dice l'ultimo esito che il sistema ha scritto sul ramo auto/*: (stato, altri_file). Stato è «lavoro»,
+    «parziale» (non riuscito, con file toccati), «nessun-file», «fallito» (non riuscito, nessun file), «bloccato»
+    (fermato dal controllo della consegna), «in-corso» o «interrotto» (nessun esito, da meno o da più di 3 ore),
+    «illeggibile» (GitHub non risponde o esito di un formato sconosciuto). altri_file: il ramo cambia anche file oltre
+    la bacheca, per esempio perché chi controlla ha completato il lavoro sul ramo."""
     if not sha:
-        return False
+        return "illeggibile", False
     confronto = gh_api(f"repos/{repo}/compare/{base}...{sha}", tollerante=True)
     if not confronto or isinstance(confronto, tuple):
-        return False
+        return "illeggibile", False
     file = confronto.get("files") or []
-    if {f.get("filename") for f in file} - {BACHECA}:
-        return False
-    patch = "".join(f.get("patch") or "" for f in file)
-    return "lavoro non riuscito" in patch and "File toccati: nessuno" in patch
+    altri = bool({f.get("filename") for f in file} - {BACHECA})
+    bacheca = next((f for f in file if f.get("filename") == BACHECA), None)
+    if bacheca is None:
+        esiti = []
+    elif bacheca.get("patch") is not None:
+        esiti = ESITO_AGGIUNTO.findall(bacheca["patch"])
+    else:   # GitHub non dà la patch (differenza troppo grande): righe del ramo meno quelle della base comune
+        comune = (confronto.get("merge_base_commit") or {}).get("sha") or base
+        prima, dopo = _righe_esito(repo, comune), _righe_esito(repo, sha)
+        if prima is None or dopo is None:
+            return "illeggibile", altri
+        resto, esiti = collections.Counter(prima), []
+        for riga in dopo:
+            if resto[riga]:
+                resto[riga] -= 1
+            else:
+                esiti.append(riga)
+    if not esiti:
+        commits = confronto.get("commits") or []
+        quando = ((commits[-1].get("commit") or {}).get("committer") or {}).get("date", "") if commits else ""
+        try:
+            eta = time.time() - dt.datetime.fromisoformat(quando.replace("Z", "+00:00")).timestamp()
+        except ValueError:
+            return "illeggibile", altri
+        return ("interrotto" if eta > VECCHIO_AUTO else "in-corso"), altri
+    ultimo = esiti[-1]
+    if "bloccato:" in ultimo and "non pubblicato" in ultimo:
+        return "bloccato", altri
+    if "lavoro non riuscito" in ultimo:
+        return ("fallito" if "File toccati: nessuno." in ultimo else "parziale"), altri
+    if "nessun file modificato" in ultimo:
+        return "nessun-file", altri
+    if "lavoro consegnato" in ultimo:
+        return "lavoro", altri
+    return "illeggibile", altri
+
+
+# Che cosa fare di un ramo auto/* secondo il suo esito. Nei testi, {comando} è `chiudi --ramo …` o `chiudi --pr …`.
+GIUDIZI_AUTO = {
+    "lavoro": ("CONSEGNA: controllarla come una consegna (richiesta ed esito sono nella voce della bacheca sul ramo), "
+               "poi `{comando} --titolo \"…\" --messaggio \"…\"`, anche da una sessione sul cellulare. Il permesso "
+               "perché GitHub Actions apra da sé le PR lo accende l'avvio di una sessione sul PC "
+               "(scripts/collega-ai-automatiche.sh)"),
+    "parziale": ("LAVORO A METÀ: l'AI si è fermata (motivo nell'esito della voce sul ramo), ma i file toccati fin lì "
+                 "sono sul ramo. Controllarli: se si completano, finire il lavoro sul ramo e poi `{comando} --titolo "
+                 "\"…\" --messaggio \"…\"`; se non servono, il lavoro lo rifà chi controlla"),
+    "nessun-file": ("NESSUN FILE MODIFICATO: l'AI ha concluso che non c'era nulla da cambiare. Verificarlo sulla "
+                    "richiesta: se è vero, `{comando} --titolo \"…\" --messaggio \"…\"` porta l'esito nella "
+                    "bacheca e chiude la richiesta; se non lo è, il lavoro lo fa chi controlla"),
+    "fallito": ("TENTATIVO NON RIUSCITO, nessun file toccato: non si chiude. Lo toglie da solo il giro dopo delle AI "
+                "automatiche, che riprova la richiesta; se non riesce per giorni, il lavoro lo fa chi controlla"),
+    "bloccato": ("BLOCCATO DAL CONTROLLO DELLA CONSEGNA (motivo nell'esito della voce sul ramo): non si unisce e non "
+                 "riparte da solo. Il lavoro lo fa chi controlla, sul ramo o da capo; poi si toglie il ramo"),
+    "interrotto": ("GIRO INTERROTTO PRIMA DELLA CONSEGNA (nessun esito da oltre 3 ore): non si chiude. Lo toglie da "
+                   "solo il giro dopo delle AI automatiche, che riprova la richiesta"),
+    "in-corso": "LAVORO IN CORSO (nessun esito ancora): aspettare la fine del giro delle AI automatiche",
+    "illeggibile": ("ESITO NON LETTO (GitHub non ha risposto, o l'esito ha un formato che lo script non conosce): "
+                    "leggere la voce della bacheca sul ramo prima di decidere"),
+}
+
+
+def _giudizio_auto(stato: str, altri: bool, comando: str) -> str:
+    testo = GIUDIZI_AUTO[stato].format(comando=comando)
+    if altri and stato in ("fallito", "bloccato", "interrotto", "illeggibile"):
+        testo += (". Sul ramo però ci sono file oltre la bacheca (lavoro aggiunto dopo?): se sono il lavoro completato, "
+                  f"controllarlo e `{comando} --titolo \"…\" --messaggio \"…\"`")
+    return testo
+
+
+def _controlla_esito_auto(repo: str, base: str, ramo: str, sha: str, solo_avviso: bool = False) -> None:
+    """Prima di aprire o unire la PR di un ramo auto/*: si ferma se l'esito dice che non c'è niente da unire (tentativo
+    non riuscito, lavoro bloccato, giro interrotto, esito non letto), salvo file aggiunti sul ramo da chi controlla; si
+    ferma sempre se il lavoro è ancora in corso. Con `solo_avviso` (correzioni sul ramo) avvisa e basta."""
+    stato, altri = _esito_ramo_auto(repo, base, sha)
+    if stato == "in-corso":
+        die(f"sul ramo {ramo} il lavoro è ancora in corso (nessun esito): aspettare la fine del giro delle AI automatiche")
+    giudizio = GIUDIZI_AUTO[stato].format(comando="chiudi")
+    if stato in ("fallito", "bloccato", "interrotto", "illeggibile"):
+        if altri:
+            info(f"attenzione, ramo {ramo}: {giudizio}. Sul ramo ci sono file oltre la bacheca: si procede, ma unire "
+                 "solo dopo averli controllati")
+        elif solo_avviso:
+            info(f"attenzione, ramo {ramo}: {giudizio}")
+        else:
+            die(f"ramo {ramo}: {giudizio}")
+    elif stato in ("parziale", "nessun-file"):
+        info(f"attenzione, ramo {ramo}: {giudizio}")
 
 
 def voce_del_ramo(testo: str, ramo: str):
@@ -819,20 +926,20 @@ def segna_pr_in_bacheca(testo: str, ramo: str, n: int) -> str:
                   f"nella PR #{n}", nuovo)
 
 
-def _apri_pr_del_ramo(radice: Path, repo: str, ramo: str, base: str, titolo_scelto: str | None) -> int:
+def _apri_pr_del_ramo(radice: Path, repo: str, ramo: str, base: str, titolo_scelto: str | None,
+                      solo_avviso: bool = False) -> int:
     """Per un ramo auto/* consegnato senza PR: apre la PR in bozza a nome di chi lancia lo script e, nella voce della
     bacheca sul ramo, scrive «PR #N» al posto di «pull request da aprire», così `chiudi` la archivia come le altre."""
     proprietario = repo.split("/", 1)[0]
     aperte = gh_api(f"repos/{repo}/pulls?state=open&head={proprietario}:{ramo}&per_page=5") or []
-    if aperte:
+    if aperte:   # anche la PR che c'è già passa dal giudizio sull'esito, come con --pr
+        _controlla_esito_auto(repo, base, ramo, (aperte[0].get("head") or {}).get("sha", ""), solo_avviso)
         info(f"il ramo {ramo} ha già la PR #{aperte[0]['number']}: uso quella")
         return aperte[0]["number"]
     fetch_rami(radice, ramo)
     sha = run(["git", "rev-parse", f"origin/{ramo}"], cwd=str(radice)).stdout.strip()
-    if _tentativo_fallito(repo, base, sha):
-        # Unirlo porterebbe sul ramo principale una richiesta segnata come chiusa senza nessun lavoro fatto.
-        die(f"sul ramo {ramo} c'è solo un tentativo non riuscito, senza file toccati: non si unisce. Lo toglie il "
-            "giro dopo delle AI automatiche, che riprova; se non riesce per giorni, il lavoro lo fa chi controlla")
+    # Unire un ramo senza lavoro porterebbe sul ramo principale una richiesta segnata come chiusa e non fatta.
+    _controlla_esito_auto(repo, base, ramo, sha, solo_avviso)
     testo = run(["git", "show", f"{sha}:{BACHECA}"], cwd=str(radice), check=False).stdout
     voce = voce_del_ramo(testo, ramo)
     titolo = titolo_scelto
@@ -1316,7 +1423,8 @@ def cmd_chiudi(args) -> None:
         if not args.ramo.startswith("auto/") and not args.qualsiasi:
             die(f"--ramo serve per i rami auto/* delle AI automatiche ({args.ramo}); usa --qualsiasi se è voluto")
         args.qualsiasi = True
-        args.pr = _apri_pr_del_ramo(radice, repo, args.ramo, ramo_principale(radice, None), args.titolo)
+        args.pr = _apri_pr_del_ramo(radice, repo, args.ramo, ramo_principale(radice, None), args.titolo,
+                                    args.senza_merge)
     n = args.pr
     pr = gh_api(f"repos/{repo}/pulls/{n}")
     if pr["state"] != "open":
@@ -1325,6 +1433,8 @@ def cmd_chiudi(args) -> None:
     base = pr["base"]["ref"]
     if not ramo.startswith(PREFISSO_RAMO) and not args.qualsiasi:
         die(f"la PR #{n} non è su un ramo chatgpt/* ({ramo}); usa --qualsiasi se è voluto")
+    if ramo.startswith("auto/") and not args.ramo:   # con --ramo l'esito l'ha già guardato _apri_pr_del_ramo
+        _controlla_esito_auto(repo, base, ramo, pr["head"]["sha"], args.senza_merge)
     titolo = args.titolo or pr["title"]
     controlla_vietate(titolo, "il titolo del merge")
     io_login = (gh_api("user") or {}).get("login", "")
