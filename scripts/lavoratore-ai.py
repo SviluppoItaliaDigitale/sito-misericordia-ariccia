@@ -93,8 +93,10 @@ VIETATE = re.compile(r"\b(claude|anthropic|chatgpt|chat gpt|openai|codex|gpt|gem
                      r"moonshot|zhipu|ollama|llama|mistral|minimax|copilot|jules|llm|intelligenz[ae] artificial[ei]|"
                      r"artificial intelligence)\b", re.I)
 VIETATE_SIGLE = re.compile(r"\b(IA|AI|LLM)\b")
+# «sk-» solo a inizio parola e con almeno una cifra: «risk-communication-…» è il nome di un articolo, non una chiave.
 SEGRETI = re.compile(r"ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|gh[ousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,}|"
-                     r"sk-[A-Za-z0-9_-]{20,}|xox[abprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|"
+                     r"(?<![A-Za-z0-9_-])sk-(?=[A-Za-z0-9_-]*[0-9])[A-Za-z0-9_-]{20,}|xox[abprs]-[A-Za-z0-9-]{10,}|"
+                     r"-----BEGIN [A-Z ]*PRIVATE KEY-----|"
                      r"\"(?:refresh|access|id)_token\"\s*:\s*\"[^\"]{10,}|AKIA[0-9A-Z]{16}|"
                      r"eyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}")   # l'ultima: i token JWT
 # Li cura il sistema, non l'AI che lavora. .githooks: i ganci dei commit li eseguirebbe il job che scrive.
@@ -144,6 +146,20 @@ def esegui(cmd, **kw):
 
 def git(*argomenti, check=True):
     return esegui(["git", *argomenti], check=check).stdout.strip()
+
+
+def nomi_file(*argomenti):
+    """I nomi dei file di un comando git con -z, separati da NUL: così come sono, senza le virgolette e le sequenze di
+    escape che git mette ai nomi con lettere accentate o caratteri speciali, e senza togliere spazi."""
+    return [n for n in esegui(["git", *argomenti], errors="surrogateescape").stdout.split("\0") if n]
+
+
+def nome_leggibile(nome):
+    """Un nome di file come va in bacheca: così com'è se usa lettere, cifre e segni comuni, altrimenti tra virgolette
+    con le sequenze di escape, così il nome di un file non porta a capo, caratteri di controllo o formattazione."""
+    if re.fullmatch(r"[\w./@+ -]{1,200}", nome):
+        return nome
+    return json.dumps(nome[:200]).translate({ord(c): f"\\u{ord(c):04x}" for c in "*`<>[]|~"})
 
 
 def uscita(**valori):
@@ -257,13 +273,16 @@ def righe_aggiunte(patch):
     return "\n".join(r[1:] for r in patch.decode("utf-8", "replace").splitlines() if r.startswith("+"))
 
 
-def segreto_nei_file(percorsi, valori):
-    """Il primo file che contiene un segreto, letto byte per byte (anche i file binari, che la patch codifica)."""
+def segreto_nei_file(percorsi, valori, sha):
+    """Il primo file che contiene un segreto nuovo, letto byte per byte (anche i file binari, che la patch codifica).
+    Un testo che c'era già nel file alla presa in carico (`sha`) non blocca: l'AI non lo ha portato lei."""
     for p in percorsi:
         f = pathlib.Path(p)
         if f.is_file() and not f.is_symlink():
             dati = f.read_bytes()
-            if SEGRETI.search(dati.decode("utf-8", "replace")) or any(v.encode() in dati for v in valori):
+            r = esegui(["git", "show", f"{sha}:{p}"], text=False, check=False)
+            prima = set(SEGRETI.findall(r.stdout.decode("utf-8", "replace"))) if r.returncode == 0 else set()
+            if set(SEGRETI.findall(dati.decode("utf-8", "replace"))) - prima or any(v.encode() in dati for v in valori):
                 return p
     return None
 
@@ -272,9 +291,9 @@ def ripristina_vietati(sha):
     """I file che cura il sistema tornano come alla presa in carico (tolti, aggiunti o cambiati): l'elenco dei file."""
     annullati = []
     for percorso in VIETATI:
-        cambiati = git("status", "--porcelain", "--untracked-files=all", "--no-renames", "--", percorso)
+        cambiati = nomi_file("status", "--porcelain", "-z", "--untracked-files=all", "--no-renames", "--", percorso)
         if cambiati:
-            annullati += [r[3:] for r in cambiati.splitlines()]
+            annullati += [r[3:] for r in cambiati]
             git("reset", "-q", sha, "--", percorso, check=False)
             if git("ls-tree", "-r", "--name-only", sha, "--", percorso):
                 git("checkout", sha, "--", percorso)
@@ -817,12 +836,13 @@ def cmd_raccogli(a):
     git("add", "-A")
     patch = esegui(["git", "diff", "--cached", "--binary", "--no-renames", "--no-ext-diff", "--no-textconv", sha],
                    text=False).stdout
-    toccati = [f for f in git("diff", "--cached", "--name-only", "--no-renames", sha).splitlines() if f]
+    toccati = nomi_file("diff", "--cached", "--name-only", "--no-renames", "-z", sha)
     valori = valori_segreti()
     blocco = ""
     if len(patch) > PATCH_MASSIMA:
         blocco = "troppo-grande"
-    elif contiene_segreto(righe_aggiunte(patch), valori) or segreto_nei_file(toccati, valori):
+    elif contiene_segreto(righe_aggiunte(patch), valori) or contiene_segreto("\n".join(toccati), valori) \
+            or segreto_nei_file(toccati, valori, sha):
         blocco = "segreto"
     riassunto = leggi_riassunto()
     riassunto_tolto = contiene_segreto(riassunto, valori)
@@ -835,8 +855,7 @@ def cmd_raccogli(a):
     (LAVORO / "esito.json").write_text(json.dumps({
         "esito_motore": stato.get("esito_motore", 1), "modello": stato.get("modello", ""),
         "tentativi": stato.get("tentativi", []), "errore_motore": errore, "durata": stato.get("durata", 0),
-        "annullati": annullati, "blocco": blocco, "riassunto_tolto": riassunto_tolto, "file": len(toccati)},
-        ensure_ascii=False))
+        "annullati": annullati, "blocco": blocco, "riassunto_tolto": riassunto_tolto, "file": len(toccati)}))
     git("reset", "-q", "--hard", sha)
     esegui(["git", "clean", "-fdq"], check=False)
     print(f"Lavoro raccolto: {len(toccati)} file" + (f", bloccato ({BLOCCHI[blocco]})" if blocco else "")
@@ -923,8 +942,8 @@ def applica_lavoro(sha, valori):
     modi = git("diff", "--cached", "--raw", "--no-renames", sha)
     if any(r.split()[1] in ("120000", "160000") for r in modi.splitlines() if r.startswith(":")):
         return "collegamento", [], annullati
-    toccati = [p for p in git("diff", "--cached", "--name-only", "--no-renames", sha).splitlines() if p]
-    if contiene_segreto("\n".join(toccati), valori) or segreto_nei_file(toccati, valori):
+    toccati = nomi_file("diff", "--cached", "--name-only", "--no-renames", "-z", sha)
+    if contiene_segreto("\n".join(toccati), valori) or segreto_nei_file(toccati, valori, sha):
         return "segreto", [], annullati
     return "", toccati, annullati
 
@@ -971,9 +990,10 @@ def cmd_consegna(a):
     momento = adesso()
     modello = f", modello {esito['modello']}" if esito["modello"] else ""
     righe_esito = [f"  - **Esito del {momento:%d/%m/%Y, %H:%M}** — {dest['nome']}{modello}: {frase}. "
-                   f"File toccati: {', '.join(toccati) if toccati else 'nessuno'}."]
+                   f"File toccati: {', '.join(map(nome_leggibile, toccati)) if toccati else 'nessuno'}."]
     if annullati:
-        righe_esito.append(f"    Modifiche annullate perché quei file li cura il sistema: {', '.join(annullati)}.")
+        righe_esito.append("    Modifiche annullate perché quei file li cura il sistema: "
+                           f"{', '.join(map(nome_leggibile, annullati))}.")
     riassunto, tolto = riassunto_consegnato(valori)
     if tolto or esito["riassunto_tolto"]:
         righe_esito.append("    Riassunto non pubblicato: conteneva un testo simile a una chiave d'accesso.")

@@ -932,7 +932,8 @@ def _apri_pr_del_ramo(radice: Path, repo: str, ramo: str, base: str, titolo_scel
     bacheca sul ramo, scrive «PR #N» al posto di «pull request da aprire», così `chiudi` la archivia come le altre."""
     proprietario = repo.split("/", 1)[0]
     aperte = gh_api(f"repos/{repo}/pulls?state=open&head={proprietario}:{ramo}&per_page=5") or []
-    if aperte:
+    if aperte:   # anche la PR che c'è già passa dal giudizio sull'esito, come con --pr
+        _controlla_esito_auto(repo, base, ramo, (aperte[0].get("head") or {}).get("sha", ""), solo_avviso)
         info(f"il ramo {ramo} ha già la PR #{aperte[0]['number']}: uso quella")
         return aperte[0]["number"]
     fetch_rami(radice, ramo)
@@ -1432,7 +1433,7 @@ def cmd_chiudi(args) -> None:
     base = pr["base"]["ref"]
     if not ramo.startswith(PREFISSO_RAMO) and not args.qualsiasi:
         die(f"la PR #{n} non è su un ramo chatgpt/* ({ramo}); usa --qualsiasi se è voluto")
-    if ramo.startswith("auto/") and not args.ramo:   # con --ramo l'esito l'ha già guardato chi ha aperto la PR
+    if ramo.startswith("auto/") and not args.ramo:   # con --ramo l'esito l'ha già guardato _apri_pr_del_ramo
         _controlla_esito_auto(repo, base, ramo, pr["head"]["sha"], args.senza_merge)
     titolo = args.titolo or pr["title"]
     controlla_vietate(titolo, "il titolo del merge")
