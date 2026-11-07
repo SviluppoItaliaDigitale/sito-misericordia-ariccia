@@ -76,18 +76,18 @@ qualsiasi realtà o progetto nuovo.
   validate.
 - **Fatti verificati utilizzabili**: dal 2006 (20 anni di esperienza);
   9 servizi a catalogo, 23 specialistici; opera a Roma e Castelli Romani
-  (14 comuni elencati sul sito); servizi: pulizie professionali,
+  (18 comuni elencati sul sito: Roma e tutti i 17 dei Castelli Romani, ognuno con la sua pagina); servizi: pulizie professionali,
   giardinaggio, portierato, sanificazioni, disinfestazioni, allestimenti
   per eventi, noleggio sedie, moquette per eventi, forniture igieniche.
 - **CTA tipiche**: «Richiedi un preventivo gratuito» → /preventivo/;
-  WhatsApp 06 63 46 70; tel. 331 777 1888. Contatti sempre dal sito, mai
+  tel. e WhatsApp 06 63 46 70 (il cellulare non è più attivo dal 06/11/2026). Contatti sempre dal sito, mai
   inventati.
 - **Storie candidate** (proposte, non ancora approvate dal committente):
   vetrina scura premium dei 9 servizi con CTA preventivo; exploded view del
   carrello pulizie professionale o dell'allestimento evento (palco/sedie/
   moquette che si compongono); scrollytelling "Una giornata in cooperativa"
   (alba → cantieri → persone, con la missione sociale come chiusura);
-  sciame di cubi per la rete dei 14 comuni serviti.
+  sciame di cubi per la rete dei 18 comuni serviti.
 
 ## Nuove realtà e progetti futuri — procedura
 
