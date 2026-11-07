@@ -3,7 +3,21 @@
   "includeCoAuthoredBy": false,
   "hooks": {
     "SessionStart": [
-      {"hooks": [{"type": "command", "command": "bash scripts/imposta-identita-git.sh", "timeout": 10}]}
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/imposta-identita-git.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
+  },
+  "enabledPlugins": {
+    "session-report@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   }
 }
