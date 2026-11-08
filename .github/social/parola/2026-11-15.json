@@ -1,0 +1,44 @@
+{
+  "data": "2026-11-15",
+  "titolo": "La Parola della domenica",
+  "giorno_liturgico": "XXXIII Domenica del Tempo Ordinario",
+  "opera": {
+    "autore": "Willem de Poorter",
+    "titolo": "La parabola dei talenti",
+    "anno": "XVII secolo",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Willem_de_Poorter's_The_Parable_of_The_Talents_or_Minas.png",
+    "illustra": "Vangelo, Mt 25,14-30",
+    "scena": "Il servo fedele consegna al padrone i talenti guadagnati."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro dei Proverbi",
+      "riferimento": "Prv 31,20",
+      "versetto": "Apre le sue palme al misero, stende la mano al povero.",
+      "evidenza": "stende la mano al povero"
+    },
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla prima lettera di san Paolo apostolo ai Tessalonicesi",
+      "riferimento": "1Ts 5,5",
+      "versetto": "Infatti siete tutti figli della luce e figli del giorno; noi non apparteniamo alla notte, né alle tenebre.",
+      "evidenza": "figli della luce e figli del giorno"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 25,21",
+      "versetto": "Sei stato fedele nel poco, ti darò potere su molto; prendi parte alla gioia del tuo padrone.",
+      "evidenza": "prendi parte alla gioia del tuo padrone"
+    }
+  ],
+  "parole_papi": {
+    "testo": "Fratelli e sorelle, questo è il bivio che abbiamo davanti a Dio: paura o fiducia. O tu hai paura davanti a Dio o tu hai fiducia nel Signore. (…) Non dimenticare questo: la fiducia libera, sempre, la paura paralizza.",
+    "fonte": "Papa Francesco, Angelus 19 novembre 2023"
+  },
+  "testo_social": "Un padrone affida i suoi beni ai servi: chi li fa fruttare viene lodato, chi li nasconde per paura resta con niente. I talenti che abbiamo ricevuto non sono fatti per essere tenuti al sicuro, ma per essere messi in gioco. Anche le nostre mani possono aprirsi al povero, come quelle della donna dei Proverbi. È quello che proviamo a fare ogni giorno con chi ha bisogno. Buona domenica!",
+  "preparata_da": "Alessandro Cuollo, 2026-11-08",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
