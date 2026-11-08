@@ -3,15 +3,18 @@
 loro, lavorano su un ramo `auto/…` e consegnano una pull request in bozza, che chi controlla unisce (protocollo comune).
 Destinatari: «ChatGPT automatico» (Codex con l'accesso ChatGPT di Alessandro), «Gemini automatico» (Gemini CLI, chiave
 gratuita), «DeepSeek automatico», «GLM automatico», «Kimi automatico», «Qwen automatico» (Claude Code con i modelli
-gratuiti di Ollama Cloud). Lo usa .github/workflows/lavoratore-ai.yml, in job separati: «prendi» (ramo, bacheca, PR),
-«motore» e «raccogli» nel job dell'AI, che può solo leggere il repository e consegna il lavoro come pacchetto (patch,
-riassunto, esito), «consegna» in un job che scrive e non si fida del pacchetto: lo ricontrolla, lo applica, fa commit,
-esito in bacheca e PR. Da una sessione `richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola;
+di Ollama Cloud, che dal 07/11/2026 chiede di pagare: restano spenti finché non torna una quota gratuita).
+Lo usa .github/workflows/lavoratore-ai.yml, in job separati: «prendi» (ramo, bacheca, PR), «motore» e «raccogli» nel
+job dell'AI, che può solo leggere il repository e consegna il lavoro come pacchetto (patch, riassunto, esito),
+«consegna» in un job che scrive e non si fida del pacchetto: lo ricontrolla, lo applica, fa commit, esito in bacheca e
+PR. Da una sessione `richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola;
 `elenco` mostra destinatari e chiavi.
 Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri, e il secondo giro rifà solo
-i modelli occupati; se la quota gratuita di un modello è finita passa al successivo; se nessuno lavora toglie il ramo e
-la richiesta riparte al giro dopo; se GitHub Actions non può aprire la PR il lavoro resta sul ramo e la PR la apre chi
-controlla, da qualunque sessione (`passa-a.py chiudi --ramo`).
+i modelli occupati (anche quelli fermati dal limite di richieste al minuto, che non è una quota finita); se la quota
+gratuita del giorno di un modello è finita passa al successivo; se il servizio rifiuta la chiave o chiede di pagare si
+ferma subito e lo scrive; se nessuno lavora toglie il ramo e la richiesta riparte al giro dopo; se GitHub Actions non
+può aprire la PR il lavoro resta sul ramo e la PR la apre chi controlla, da qualunque sessione
+(`passa-a.py chiudi --ramo`).
 """
 
 import argparse
@@ -58,6 +61,23 @@ SEGNALI_OCCUPATO = 3
 # «Rate limits» della Gemini API, letta il 05/11/2026); ogni modello ha la sua, quindi si prova il successivo.
 QUOTA = re.compile(r"TerminalQuotaError|exhausted your (?:daily )?quota|exceeded your current quota|insufficient_quota"
                    r"|hit your usage limit|reached your (?:\w+ )?(?:usage )?limit", re.I)
+# «You exceeded your current quota» la Gemini API lo scrive anche per il limite al minuto (il 07/11/2026: «input tokens
+# per minute limit exceeded», «requests per minute», «Please retry in 27s»), e Gemini CLI aspetta da sé il tempo
+# suggerito e riprova. Quel limite non è una quota finita: non ferma il modello e il modello rientra nel secondo giro.
+# La quota è finita se c'è un segno del giorno (TerminalQuotaError, «daily», «per day») o se manca ogni segno del minuto.
+QUOTA_MINUTO = re.compile(r"per minute|PerMinute|Suggested retry after \d", re.I)
+QUOTA_GIORNO = re.compile(r"TerminalQuotaError|daily quota|per day|PerDay|insufficient_quota|hit your usage limit"
+                          r"|reached your (?:\w+ )?(?:usage )?limit", re.I)
+# Chiave rifiutata dal servizio. Il 07/11/2026 Claude Code con Ollama Cloud ha scritto «Failed to authenticate. API
+# Error: 401 Unauthorized» con tre modelli, per dieci minuti: gli altri modelli usano la stessa chiave, quindi non si
+# provano, e il motivo scritto lo dice. La chiave si rifà sul sito del servizio e si rimette nei segreti dal PC.
+CHIAVE_RIFIUTATA = re.compile(r"Failed to authenticate|API Error: 401|401 Unauthorized|API key not valid"
+                              r"|invalid[ _-]?(?:x-)?api[ _-]?key|authentication_error", re.I)
+# Servizio che chiede di pagare. Dal 07/11/2026 Ollama Cloud risponde 402 «Add usage credits or subscribe» a ogni modello
+# del cloud, anche con una chiave valida (memoria/ai-automatiche.md): come per la chiave rifiutata, gli altri modelli non
+# si provano e il motivo lo dice. Crediti non se ne comprano (zero spese): la richiesta va passata a un'AI gratuita.
+A_PAGAMENTO = re.compile(r"API Error: 402|402 Payment Required|Add usage credits|PAYMENT_METHOD_REQUIRED"
+                         r"|payment method is required", re.I)
 ROMA = dt.timezone(dt.timedelta(hours=1))
 try:
     from zoneinfo import ZoneInfo
@@ -659,16 +679,20 @@ def ferma_processo(p):
 
 
 def esegui_motore(cmd, env, tempo, registro, sha):
-    """Un tentativo con un modello: (codice, occupato, quota). Se il servizio risponde «occupato» tre volte prima che
+    """Un tentativo con un modello: (codice, occupato, quota, chiave, pagamento). Se il servizio risponde «occupato» tre
+    volte prima che
     l'AI abbia toccato un file, il tentativo si ferma subito (codice 75) invece di aspettare tutti i tentativi del
-    programma. «quota» è vero se il programma ha scritto che la quota gratuita del modello è finita."""
-    segnali, quota, fermato, scaduto = 0, False, threading.Event(), threading.Event()
+    programma. «quota» è vero se il programma ha scritto che la quota gratuita del giorno del modello è finita; il limite
+    al minuto rende il tentativo «occupato», così il secondo giro lo rifà. «chiave» è vero se il servizio ha
+    rifiutato la chiave, «pagamento» se ha chiesto di pagare (402)."""
+    segnali, quota, giorno, minuto, chiave, pagamento = 0, False, False, False, False, False
+    fermato, scaduto = threading.Event(), threading.Event()
     try:
         p = subprocess.Popen(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
                              stdin=subprocess.DEVNULL, start_new_session=True)
     except OSError as e:
         registro.write(f"programma non avviato: {e}\n")
-        return 127, False, False
+        return 127, False, False, False, False
     sveglia = threading.Timer(max(tempo, 1), lambda: (scaduto.set(), ferma_processo(p)))
     sveglia.start()
     for riga in p.stdout:
@@ -676,7 +700,12 @@ def esegui_motore(cmd, env, tempo, registro, sha):
         registro.write(riga)
         if QUOTA.search(riga):
             quota = True
-        if RIPROVA.search(riga) and OCCUPATO.search(riga):
+        giorno = giorno or bool(QUOTA_GIORNO.search(riga))
+        minuto = minuto or bool(QUOTA_MINUTO.search(riga))
+        chiave = chiave or bool(CHIAVE_RIFIUTATA.search(riga))
+        pagamento = pagamento or bool(A_PAGAMENTO.search(riga))
+        # Le attese per una quota le decide il programma, che riprova dopo il tempo suggerito: non sono «occupato».
+        if RIPROVA.search(riga) and OCCUPATO.search(riga) and not QUOTA.search(riga):
             segnali += 1
             if segnali >= SEGNALI_OCCUPATO and not fermato.is_set() and albero_pulito(sha):
                 fermato.set()
@@ -685,9 +714,10 @@ def esegui_motore(cmd, env, tempo, registro, sha):
                 ferma_processo(p)
     codice = p.wait()
     sveglia.cancel()
+    finita = giorno or (quota and not minuto)
     if fermato.is_set():
-        return 75, True, quota
-    return (124 if scaduto.is_set() else codice), segnali > 0, quota
+        return 75, True, finita, chiave, pagamento
+    return (124 if scaduto.is_set() else codice), segnali > 0 or (minuto and not finita), finita, chiave, pagamento
 
 
 def motivo_fallimento(tentativi):
@@ -695,6 +725,11 @@ def motivo_fallimento(tentativi):
     provati = (f" (modelli provati: {', '.join(modelli)}" + (", in due giri" if len(tentativi) > len(modelli) else "")
                + ")") if modelli else ""
     ultimo = tentativi[-1]["codice"]
+    if tentativi[-1].get("pagamento"):   # prima di tutto: un servizio a pagamento non lavora con nessun modello
+        return ("il servizio chiede crediti a pagamento (402), che non si comprano: la richiesta va passata a un'AI "
+                "gratuita" + provati)
+    if tentativi[-1].get("chiave"):   # e lo stesso con la chiave rifiutata
+        return "chiave del servizio rifiutata: va rifatta e rimessa nei segreti dal PC" + provati
     if tentativi[-1].get("quota"):   # prima di «occupato»: il 05/11/2026 la quota è finita dopo due 503
         return "quota gratuita del modello finita" + provati
     if all(t["occupato"] or t.get("quota") for t in tentativi) and any(t.get("quota") for t in tentativi):
@@ -781,13 +816,20 @@ def cmd_motore(a):
             print(f"Motore: {stato['dest']['motore']}" + (f", modello {modello}" if modello else "")
                   + (f" (tentativo {len(tentativi) + 1})" if tentativi else ""), flush=True)
             partenza = time.time()
-            codice, occupato, quota = esegui_motore(cmd, env, restante, registro, stato["sha_presa"])
+            codice, occupato, quota, chiave, pagamento = esegui_motore(cmd, env, restante, registro, stato["sha_presa"])
             tentativi.append({"modello": modello, "codice": codice, "occupato": occupato, "quota": quota,
+                              "chiave": chiave, "pagamento": pagamento,
                               "durata": int(time.time() - partenza)})
             print(f"Tentativo finito con codice {codice} in {tentativi[-1]['durata']} s"
-                  + (" (quota gratuita del modello finita)." if quota and codice else "."), flush=True)
+                  + (" (il servizio chiede di pagare)." if pagamento and codice else
+                     " (chiave rifiutata dal servizio)." if chiave and codice else
+                     " (quota gratuita del modello finita)." if quota and codice else "."), flush=True)
             if codice == 0 or not albero_pulito(stato["sha_presa"]):
                 break   # finito, oppure l'AI ha lavorato: un altro modello non riparte sopra un lavoro a metà
+            if chiave or pagamento:
+                print("Il servizio " + ("chiede di pagare" if pagamento else "ha rifiutato la chiave")
+                      + ": gli altri modelli passano dallo stesso servizio, non li provo.", flush=True)
+                break
             # Il secondo giro rifà solo i modelli occupati: una quota finita non torna dopo la pausa.
             if not coda and not secondo_giro and TEMPO_MOTORE - (time.time() - inizio) >= PAUSA + TEMPO_MINIMO:
                 occupati = [m for m in modelli if any(t["modello"] == m and t["occupato"] and not t["quota"]
@@ -888,7 +930,8 @@ def leggi_esito():
         return x
 
     tentativi = [{"modello": senza_chiavi(nome(t.get("modello")), "tentativi"), "codice": intero(t.get("codice")),
-                  "occupato": t.get("occupato") is True, "quota": t.get("quota") is True}
+                  "occupato": t.get("occupato") is True, "quota": t.get("quota") is True,
+                  "chiave": t.get("chiave") is True, "pagamento": t.get("pagamento") is True}
                  for t in (dati.get("tentativi") if isinstance(dati.get("tentativi"), list) else [])[:12]
                  if isinstance(t, dict)]
     annullati = [p for p in (dati.get("annullati") if isinstance(dati.get("annullati"), list) else [])[:30]
