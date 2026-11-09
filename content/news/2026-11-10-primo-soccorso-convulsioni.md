@@ -3,6 +3,7 @@ title: "Convulsioni: cosa fare e cosa non fare"
 titoloSeo: "Convulsioni: cosa fare passo passo, primo soccorso"
 date: 2026-11-10
 slug: "primo-soccorso-convulsioni"
+controllo_editoriale: "2026-11-09"
 description: "Crisi convulsiva: spazio intorno, niente in bocca, proteggere la testa, guardare l'orologio e quando chiamare il 112. Poi, su un fianco."
 immagine: "/img/news/primo-soccorso-convulsioni-grafica.jpg"
 social_video: "/video/primo-soccorso-convulsioni.mp4"

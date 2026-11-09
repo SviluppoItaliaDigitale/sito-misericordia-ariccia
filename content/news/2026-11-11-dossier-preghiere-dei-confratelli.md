@@ -3,6 +3,7 @@ title: "Le preghiere dei confratelli: il motto, il ritorno dal servizio, i patro
 titoloSeo: "Le preghiere dei confratelli della Misericordia | Dossier"
 date: 2026-11-11
 slug: "dossier-preghiere-dei-confratelli"
+controllo_editoriale: "2026-11-09"
 description: "Un dossier sulla spiritualità delle Misericordie: il motto «Che Iddio te ne renda merito», il Pater, Ave e Requiem recitati al ritorno dal servizio, il cambio sotto la barella, San Sebastiano, la Madonna della Misericordia e la differenza con la Divina Misericordia."
 immagine: "/img/news/dossier-preghiere-grafica.jpg"
 social_testo: "🙏 Nuovo dossier: Le preghiere dei confratelli. Perché un volontario della Misericordia, quando lo ringrazi, risponde «Che Iddio te ne renda merito»? Perché per noi è chi aiuta a dover ringraziare. Nel dossier: il cambio sotto la barella nella Pisa del 1848 («Iddio gliene renda merito» – «Vada in pace»), il Pater, Ave e Requiem recitati ancora oggi a Firenze al ritorno dal servizio, San Sebastiano e la Madonna della Misericordia. E una differenza che molti confondono: Misericordie e Divina Misericordia non sono la stessa cosa.\n\nFoto: Fabio Meliciani, CC BY-SA 4.0, Wikimedia Commons."

@@ -1,6 +1,6 @@
 # Inventario dei dati del sito che invecchiano (numeri, norme, importi, date, recapiti, link ufficiali).
 # Lo usa l'agente automatico che ogni giorno li ricontrolla sulla fonte ufficiale e aggiorna il sito o apre una segnalazione.
-aggiornato: "2026-11-02"
+aggiornato: "2026-11-09"
 dati:
 - id: "nue-112-lazio"
   cosa: "Il 112 è il Numero Unico di Emergenza nel Lazio: gratuito, 24 ore su 24, per ambulanza, forze dell'ordine e vigili del fuoco; i vecchi 113, 115, 118 rispondono tramite la centrale del 112."
@@ -51,7 +51,7 @@ dati:
   tipo: "emergenza"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Voce generale: compare in quasi tutte le pagine (anche annunci e layout). Cambia solo se cambia l'organizzazione regionale dell'emergenza."
 - id: "nue-112-attivo-dal"
   cosa: "Nel Lazio il 112 è attivo dal 18 novembre 2015."
@@ -130,7 +130,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Verificare che l'app esista ancora con questo nome e sia ancora consigliata (a volte vengono sostituite da app nazionali)."
 - id: "112-sordi"
   cosa: "Per le persone sorde c'è 112 Sordi, servizio gratuito del Ministero dell'Interno con l'ENS, con registrazione su 112sordi.it."
@@ -141,7 +141,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "112sordi.it blocca i controlli automatici (403). Fonte di riserva: comunicato Polizia di Stato 30/07/2021 https://poliziadistato.it/articolo/pdf/1661042f51ede78271144095 (servizio gratuito Ministero dell'Interno-ENS)."
 - id: "procurato-allarme-658"
   cosa: "Il procurato allarme (art. 658 del Codice penale) prevede l'arresto fino a sei mesi o un'ammenda."
@@ -170,7 +170,7 @@ dati:
   tipo: "emergenza"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Confermato sul comunicato regionale (attivo dal 24/08/2026, risponde ARES 118, h24, anche multilingue)."
 - id: "guardia-medica-orari"
   cosa: "La guardia medica (continuità assistenziale) è attiva tutte le notti dalle 20 alle 8 e nei giorni prefestivi e festivi."
@@ -181,7 +181,7 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Confermato su ARES 118 (9/10/2026): notti 20-8 tutti i giorni, prefestivi 10-20, festivi 8-20."
 - id: "ares-118"
   cosa: "Nel Lazio la Centrale operativa del 118 è gestita da ARES 118 (Azienda Regionale Emergenza Sanitaria); i formatori BLSD della Misericordia sono abilitati ARES 118."
@@ -209,7 +209,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "numero-114"
   cosa: "Il 114 Emergenza infanzia è gratuito, attivo 24 ore su 24, anche in chat, per segnalare bambini e ragazzi in pericolo."
@@ -223,7 +223,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Confermato 9/10/2026 (avviso Dipartimento politiche della famiglia, luglio 2026: gratuito, h24, gestito da Telefono Azzurro per il 2026-2029). Il vecchio link minori.gov.it dava 500: sostituito anche in bambini-e-scuole.md."
 - id: "telefono-azzurro"
   cosa: "Telefono Azzurro risponde al 1.96.96, gratis, 24 ore su 24."
@@ -235,7 +235,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "protezione-civile-lazio-803555"
   cosa: "La Sala operativa della Protezione Civile della Regione Lazio risponde al numero verde 803 555."
@@ -247,7 +247,7 @@ dati:
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Confermato sulla pagina regionale (SOR h24, numero verde 803.555)."
 - id: "centri-antiveleni-roma"
   cosa: "A Roma rispondono giorno e notte i Centri Antiveleni del Gemelli, dell'Umberto I e, per i bambini, del Bambino Gesù."
@@ -298,8 +298,8 @@ dati:
   tipo: "asl"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
-  note: "Indirizzo confermato (DCA Regione Lazio U00499/2018 e altre fonti). In progetti.md compare come «Nuovo Ospedale dei Castelli» (progetto 2020, storico)."
+  verificato: "2026-11-09"
+  note: "Indirizzo confermato (DCA Regione Lazio U00499/2018 e altre fonti). In progetti.md compare come «Nuovo Ospedale dei Castelli» (progetto 2020, storico). Al 9/11/2026 aslroma6.it non risponde: indirizzo confermato sul DCA U00499 del 12/12/2018 della Regione Lazio."
 - id: "asl-roma-6"
   cosa: "Ariccia è nella ASL Roma 6 (sito aslroma6.it); con la ASL la Misericordia effettua trasferimenti ospedalieri."
   valore: "ASL Roma 6 — https://www.aslroma6.it/"
@@ -315,8 +315,8 @@ dati:
   tipo: "asl"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
-  note: "aslroma6.it irraggiungibile dai controlli automatici (reset/503) il 9/10/2026; nome «ASL Roma 6» confermato su fonti regionali 2026, nessun riordino trovato."
+  verificato: "2026-11-09"
+  note: "aslroma6.it irraggiungibile dai controlli automatici (reset/503) il 9/10/2026; nome «ASL Roma 6» confermato su fonti regionali 2026, nessun riordino trovato. Al 9/11/2026 aslroma6.it non risponde ai controlli automatici (connessione chiusa, 502/503): nome e competenze confermati sul comunicato della Regione Lazio del 3/4/2026 sulle Case della Comunità."
 - id: "distretto-rm-6-2"
   cosa: "Ariccia fa parte del distretto socio-sanitario RM 6.2 (sul sito ASL ancora «Distretto H2 – Albano Laziale») con Albano Laziale, Castel Gandolfo, Genzano di Roma, Lanuvio e Nemi."
   valore: "Distretto RM 6.2 (ex H2 Albano)"
@@ -326,7 +326,7 @@ dati:
   tipo: "asl"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Composizione del distretto confermata (Albano capofila, con Ariccia, Castel Gandolfo, Genzano, Lanuvio, Nemi; sito www.distrettorm6-2.it). Controllare se l'ASL rinomina il distretto da H2 a 6.2."
 - id: "pua-ariccia"
   cosa: "Il PUA (Punto Unico di Accesso) per Ariccia è quello del Distretto H2; sedi e orari su aslroma6.it. Al PUA si chiede anche il riconoscimento di caregiver."
@@ -338,7 +338,7 @@ dati:
   tipo: "asl"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). La guida ai diritti ora indica il PUA nella Casa della Comunità di Ariccia (comunicato regionale 3/4/2026)."
 - id: "tribunale-velletri"
   cosa: "Il tribunale competente per Ariccia (anche per l'amministratore di sostegno) è quello di Velletri."
@@ -361,7 +361,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Sito privato: valutare se sostituirlo con il servizio ufficiale (Federfarma Roma / Salute Lazio) se smette di funzionare."
 - id: "salute-lazio-medico"
   cosa: "Il medico di famiglia o il pediatra si sceglie e si cambia sul portale Salute Lazio con SPID, CIE o CNS, o allo sportello ASL; le esenzioni si vedono su Salute Lazio."
@@ -372,7 +372,7 @@ dati:
   tipo: "sanita"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Corretto il 9/10/2026 con l'ok di Alessandro: online (FSE) si cambia il medico di famiglia, il pediatra si sceglie allo sportello ASL."
 - id: "fse-referti-1-ottobre-2026"
   cosa: "Dal 1° ottobre 2026 il Fascicolo sanitario elettronico è l'unico posto online dove vedere i referti di laboratorio; delega per gli anziani all'ASL."
@@ -384,7 +384,7 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Confermato 9/10/2026 su Salute Lazio: «A partire dal 1° ottobre 2026» i referti di laboratorio si consultano nel FSE."
 - id: "numero-regionale-06-99500"
   cosa: "Per assistenza sul FSE c'è il numero regionale 06 99 500, dal lunedì al venerdì."
@@ -395,7 +395,7 @@ dati:
   tipo: "sanita"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Confermato 9/10/2026: 06 99 500, lunedì-venerdì 8-17.30 (piede di regione.lazio.it)."
 - id: "asl-trasferimenti-convenzione"
   cosa: "La Misericordia effettua trasferimenti ospedalieri in convenzione/con la ASL Roma 6."
@@ -419,8 +419,8 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-11-02"
-  note: "Confermato: terza fase sperimentale dal 1/3/2026 con Roma (art. 7 DL 19/2026; messaggio INPS 637/2026)."
+  verificato: "2026-11-09"
+  note: "Confermato: terza fase sperimentale dal 1/3/2026 con Roma (art. 7 DL 19/2026; messaggio INPS 637/2026). 9/11/2026: per chi ha 70 anni o più, anche a Roma, vale ancora la procedura precedente fino alla riforma per gli anziani (messaggio INPS 1750 del 27/5/2026, in vigore dal 1/6/2026): domanda amministrativa entro 90 giorni se ci sono patologie croniche e perdita di autonomia. Il sito non lo dice: proposta nella issue #147."
 - id: "invalidita-riforma-nazionale-2027"
   cosa: "Dal 1° gennaio 2027 la riforma della disabilità vale in tutta Italia."
   valore: "1° gennaio 2027"
@@ -430,7 +430,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Confermato (DL 202/2024: sperimentazione fino al 31/12/2026). A gennaio 2027 riscrivere la scheda: non più «sperimentazione» ma regola nazionale; controllare eventuali nuovi rinvii."
 - id: "invalidita-tempi"
   cosa: "Tempi previsti per la valutazione di base: 90 giorni, 15 per le malattie oncologiche, 30 per i minori."
@@ -441,7 +441,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "indennita-accompagnamento"
   cosa: "L'indennità di accompagnamento (legge 18/1980) non dipende dal reddito; l'importo cambia ogni anno (sito rimanda alle comunicazioni INPS)."
@@ -464,7 +464,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "dialisi-dca-u00441-2014"
   cosa: "Nel Lazio il trasporto per la dialisi segue il DCA U00441/2014: contributo per le spese di viaggio, trasporto con mezzi idonei entro 7 giorni lavorativi, ambulanza entro 24 ore, contributo per seduta delegabile all'associazione; importi fissati nel 2014."
@@ -475,7 +475,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Controllare se la Regione ha aggiornato importi o regole (nuovi DCA/DGR su nefropatie e dialisi)."
 - id: "cude-contrassegno"
   cosa: "Il CUDE (contrassegno unificato disabili europeo, DPR 151/2012) è legato alla persona, si chiede al Comune con certificato della Medicina legale ASL, dura 5 anni se la condizione è permanente."
@@ -500,7 +500,7 @@ dati:
   verificato: "2026-10-09"
   note: "Soglia confermata da più fonti (anche guide 2026). Esistono anche E05 e E24, non citati sul sito."
 - id: "ausili-nomenclatore"
-  cosa: "Gli ausili del nomenclatore (allegato 5 del DPCM LEA 2017) sono gratuiti con prescrizione di uno specialista pubblico; le tariffe nazionali sono in fase di revisione."
+  cosa: "Gli ausili del nomenclatore (allegato 5 del DPCM LEA 2017) sono gratuiti con prescrizione di uno specialista pubblico; le nuove tariffe nazionali (DM Salute 7/8/2026, GU n. 218 del 19/9/2026) sono in vigore dal 21/09/2026."
   valore: "DPCM 12/01/2017 all. 5; nuove tariffe dal 21/09/2026 (DM 7/8/2026)"
   dove:
   - "content/dossier/guida-ai-diritti.md"
@@ -508,7 +508,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Aggiornato il 9/10/2026 con l'ok di Alessandro: DM Salute 7/8/2026 (GU n. 218 del 19/09/2026), tariffe in vigore dal 21/09/2026."
 - id: "caregiver-lr-5-2024"
   cosa: "Nel Lazio il caregiver familiare è riconosciuto dalla legge regionale 5/2024: domanda al PUA, tesserino «Card Giver», formazione, sostituzioni, contributi."
@@ -519,7 +519,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "amministratore-sostegno"
   cosa: "Amministratore di sostegno (legge 6/2004): ricorso al Giudice tutelare (Tribunale di Velletri), avvocato non obbligatorio, niente contributo unificato, decisione entro 60 giorni."
@@ -542,7 +542,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Quando una qualsiasi voce della guida ai diritti viene aggiornata, aggiornare anche questa data (meta e introduzione)."
 - id: "legge-116-2021-dae"
   cosa: "La legge 116/2021 sui defibrillatori: formazione al primo soccorso a scuola (rianimazione, DAE, disostruzione); se non c'è personale formato, anche chi non è formato può usare un DAE in caso di sospetto arresto cardiaco, senza rischiare di essere punito (art. 3, che sostituisce l'art. 1, c. 1, della legge 120/2001, con il rinvio all'art. 54 del codice penale); il 16 ottobre Giornata mondiale della RCP. Forma breve: «Puoi usarlo anche tu», mai la frase senza condizioni di ERC/IRC 2025."
@@ -676,7 +676,7 @@ dati:
   tipo: "legge"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Codice della strada (D.Lgs. 285/1992, modificato dalla L. 177/2024): verificare i decreti attuativi su casco e targa dei monopattini."
 - id: "linee-guida-erc-irc-2025"
   cosa: "Contenuti di primo soccorso e corsi allineati alle Linee Guida ERC 2025-2030, tradotte da IRC (link ircouncil.it/linee-guida-rcp-2025/)."
@@ -713,7 +713,7 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Le linee guida ERC si rinnovano ogni 5 anni (prossima edizione attesa nel 2030), ma ERC/IRC pubblicano aggiornamenti intermedi (CoSTR ILCOR): controllare se cambiano raccomandazioni citate nelle schede."
 - id: "rcp-adulto-parametri"
   cosa: "Rianimazione nell'adulto (IRC 2025, cap. 4): se non risponde si chiama SUBITO il 112 e il respiro si guarda mentre si aspetta l'operatore (non più prima di chiamare, senza il vecchio limite dei 10 secondi; nel dubbio è arresto cardiaco); compressioni al centro del torace di 5-6 cm, 100-120 al minuto; se formati 30 compressioni e 2 respirazioni, altrimenti solo compressioni; DAE appena disponibile. Ordine verificato dopo l'errore del 13/10/2026 (news e video dicevano respiro, poi 112)."
@@ -791,7 +791,7 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "rcp-bambino-parametri"
   cosa: "Rianimazione nel bambino (IRC 2025, cap. 9): se non risponde si chiama SUBITO il 112 con il vivavoce e il respiro si guarda mentre si aspetta l'operatore; 5 soffi iniziali; compressioni di almeno un terzo del torace, mai più di 6 cm (non più i 4 cm del lattante e i 5 del bambino, valori del 2021), 100-120 al minuto; 30:2 (15:2 se formati PBLS); soccorritore solo senza telefono: 1 minuto di RCP prima di chiamare. Corretto il 21/10/2026."
@@ -1053,7 +1053,7 @@ dati:
   tipo: "vaccini"
   delicato: true
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Confermato: circolare del Ministero della Salute del 23/06/2026 (offerta gratuita dai 60 anni, gravidanza, 6 mesi-6 anni, cronici). Verificare la data di avvio della campagna nel Lazio e a settembre 2027 sostituire con la circolare 2027-2028."
 - id: "bollettino-ondate-calore"
   cosa: "Il Ministero della Salute pubblica d'estate il bollettino sulle ondate di calore per 27 città (Roma compresa), livelli 0-3; nel 2026 dal 25 maggio al 20 settembre, lunedì-venerdì."
@@ -1353,7 +1353,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Funziona (blocca i client senza User-Agent da browser): pagina «Due firme che fanno bene» attiva il 9/10/2026."
 - id: "scu-assegno-mensile"
   cosa: "Assegno mensile del Servizio Civile Universale: 519,47 euro nel bando 2026."
@@ -1393,7 +1393,7 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Al 9/10/2026 aperto solo il bando straordinario (agricolo, ambientale, digitale; 3.767 posti, scadenza 6/11/2026): non riguarda l'assistenza. Controllare ogni settimana l'uscita del bando ordinario 2027."
 - id: "scu-tabella-bandi"
   cosa: "Tabella dei giovani impiegati per bando e totale «oltre 35» giovani dal 2015."
@@ -1427,7 +1427,7 @@ dati:
   tipo: "confederazione"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Allineato il 9/10/2026 al Bilancio sociale 2024 (aprile 2026, pag. 19: «le Misericordie attive sono 774, di cui 646 sedi e 128 sezioni»): «oltre 800» → «oltre 770». Le pagine che dicono «quasi 700 sedi» (comunicato udienza 14/02/2026) sono coerenti. La home di misericordie.it ha ancora il vecchio testo «più di 800»."
 - id: "confederazione-soci"
   cosa: "Numero di soci/iscritti delle Misericordie."
@@ -1445,7 +1445,7 @@ dati:
   tipo: "confederazione"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "confederazione-volontari-attivi"
   cosa: "Numero di volontari attivi delle Misericordie."
@@ -1464,7 +1464,7 @@ dati:
   tipo: "confederazione"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Allineato il 9/10/2026 (80.000 → oltre 100.000) al Bilancio sociale 2024 (pag. 19: «oltre 100.000 volontari attivi») e al comunicato per l'udienza del 14/02/2026."
 - id: "confederazione-ente-protezione-civile"
   cosa: "La Confederazione è ente nazionale di protezione civile e struttura operativa del Servizio nazionale; sala nazionale a Pistoia; la Misericordia di Ariccia oggi non ha un gruppo di protezione civile."
@@ -1560,7 +1560,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Controllato ogni sera dal workflow. Al 9/10/2026 il n. 3/2023 sul sito nazionale punta ancora al PDF del 2/2023: resta il rimando all'archivio."
 - id: "vestizione-20-gennaio"
   cosa: "Molte Misericordie celebrano la vestizione dei nuovi confratelli nella festa del proprio patrono, spesso San Sebastiano (20 gennaio)."
@@ -1658,7 +1658,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue). Se cambia, va cambiato in hugo.toml e in tutte le pagine, i layout (link tel: e wa.me) e i dati strutturati di baseof.html."
 - id: "tel-fisso"
   cosa: "Telefono fisso della sede operativa."
@@ -1679,7 +1679,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "tel-amministrazione"
   cosa: "Cellulare per amministrazione, iscrizioni e Servizio Civile."
@@ -1703,7 +1703,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "email-sede"
   cosa: "Email della sede."
@@ -1751,7 +1751,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "pec"
   cosa: "PEC dell'associazione."
@@ -1791,7 +1791,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "sede-amministrativa"
   cosa: "Indirizzo della sede amministrativa."
@@ -1810,7 +1810,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "sede-legale"
   cosa: "Indirizzo della sede legale."
@@ -1840,7 +1840,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "I link rispondono (le pagine chiedono il login ai controlli automatici)."
 - id: "runts-iscrizione"
   cosa: "Iscritta al RUNTS dal 28 marzo 2023; ODV nel registro regionale dal 1998, personalità giuridica dal 2011; statuto vigente registrato il 28 maggio 2022."
@@ -1865,7 +1865,7 @@ dati:
   tipo: "associazione"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Governatore Maddalena Basili confermata sulla scheda RUNTS il 9/10/2026."
 - id: "parco-mezzi"
   cosa: "Parco mezzi: 2 ambulanze di tipo A, un mezzo con pedana per carrozzine, automezzi per i servizi sociali; carrozzine e stampelle in prestito."
@@ -1941,7 +1941,7 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Dal 1° gennaio 2027 l'anno è superato: aggiornare a 2027 o togliere l'anno (data/annunci.yaml)."
 - id: "volontari-eta-16-80"
   cosa: "Il Movimento accoglie volontari dai 16 agli 80 anni."
@@ -1999,7 +1999,7 @@ dati:
   tipo: "associazione"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue). Spostare tra i progetti passati quelli che si concludono."
 - id: "contatti-solo-appuntamento"
   cosa: "In sede si riceve solo su appuntamento telefonico; entrambe le sedi senza scale e con parcheggio."
@@ -2012,7 +2012,7 @@ dati:
   tipo: "associazione"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "mostra-alluvione-firenze-2026"
   cosa: "Per i 60 anni dell'alluvione di Firenze, dal 4 novembre 2026 al 6 febbraio 2027 l'Archivio di Stato di Firenze dedica la mostra «Ri-Emergere»."
@@ -2023,7 +2023,7 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). Date dalla stampa (La Nazione, gonews), manca una pagina ufficiale dell'Archivio (cultura.gov.it risponde 503 al 2/11/2026). Gonews, nel programma, indica il finissage il 5/2/2027: se una fonte ufficiale dà il 5, correggere la data. Dal 7/2/2027 volgere la frase al passato."
 - id: "speciale-volontariato-dicembre-2026"
   cosa: "Video e news della Giornata internazionale del volontariato (5 dicembre 2026) e callout in home dal 5 al 31 dicembre 2026."
@@ -2071,7 +2071,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "link-ircouncil"
   cosa: "Link alle linee guida RCP 2025 di IRC e al sito ERC."
@@ -2108,7 +2108,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "link-regione-112"
   cosa: "Link alla pagina della Regione Lazio sul 112."
@@ -2120,7 +2120,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "link-fami"
   cosa: "Link al sito del Fondo Asilo Migrazione e Integrazione (progetto FAMI 2021)."
@@ -2157,7 +2157,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: ""
 - id: "link-fonti-dossier"
   cosa: "Liste «fonti» con link esterni nei dossier e nella pagina bambini e scuole (Normattiva, INPS, Regione Lazio, ISS, ISTAT, stampa)."
@@ -2185,7 +2185,7 @@ dati:
   tipo: "link"
   delicato: false
   frequenza: "mensile"
-  verificato: "2026-10-09"
+  verificato: "2026-11-09"
   note: "Controllo del 9/10/2026: 288 link, sostituiti i morti (DIN → UNI EN 1789, nsis → Sistema TS, PDF Vaticano → pagina HTML, Medaglia d'oro misericordie.it → Quotidiano Sanità, minori.gov.it → Dipartimento famiglia). Resta morto il PDF Poste del Giubileo 2015 (segnalato nella issue). Bloccano i controlli automatici ma esistono: 112sordi.it, iso.org, eur-lex, prefettura.interno.gov.it/node/652286."
 - id: "colletta-alimentare-2026"
   cosa: "La 30ª Giornata nazionale della Colletta Alimentare si tiene sabato 14 novembre 2026; la Misericordia di Ariccia è alla Coop di Genzano di Roma, Via Emilia Romagna 102 (punto vendita nell'elenco ufficiale)."
@@ -2199,5 +2199,5 @@ dati:
   tipo: "evento"
   delicato: false
   frequenza: "settimanale"
-  verificato: "2026-11-02"
+  verificato: "2026-11-09"
   note: "Riletta il 2/11/2026 sulla pagina ufficiale: data confermata. Turni dei volontari (8-12, 12-16, 16-20), partecipazione aperta ai non iscritti con i dati per l'assicurazione e ai minorenni con l'autorizzazione di un genitore: dal messaggio della Misericordia girato da Alessandro il 2/11/2026. Letta il 1/11/2026 sulla pagina ufficiale: «Sabato 14 novembre 2026 partecipa alla 30esima Colletta Alimentare»; la Coop di Genzano di Roma, Via Emilia Romagna 102, è nell'elenco dei punti vendita (bancoalimentare.it/colletta-alimentare/punti-vendita). Il punto vendita scelto dalla Misericordia l'ha indicato Alessandro il 1/11/2026. Dopo il 14/11/2026 la voce si può togliere: le news restano datate."

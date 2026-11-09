@@ -5,7 +5,7 @@ date: 2026-11-12
 slug: "anche-ascoltare-e-un-servizio"
 description: "Alla Misericordia di Ariccia si fa volontariato anche al Centro di Ascolto e al Banco Alimentare. Sabato 14 novembre ci trovi alla Coop di Genzano di Roma per la Colletta Alimentare."
 immagine: "/img/news/2026-11-12-anche-ascoltare-e-un-servizio-grafica.jpg"
-controllo_editoriale: "2026-11-01"
+controllo_editoriale: "2026-11-09"
 social_video: "/video/squadra-ascolto.mp4"
 social_video_copertina: 1
 social_testo: |-
