@@ -24,7 +24,7 @@ Istruzioni di Alessandro del 21/10/2026, dopo tre giorni senza Claude per i cred
 
 ## Grok Bot (dal 09/11/2026)
 
-Grok Bot è un **aiutante in parallelo**: non sostituisce Claude né la catena di riserva (ChatGPT prima, Gemini seconda). Lavora con il connettore GitHub dell'account di Alessandro e, come Gemini, **solo nei repository pubblici** (`cooprimavera`, `sito-misericordia-ariccia`, `sito-pc-genzano`): mai su `assistente-personale` e `social-pc-genzano`, mai dati personali, mai il Cervello su Drive (decisione di Alessandro dell'11/11/2026). Ogni lavoro va su un ramo `grok/<argomento>-AAAAMMGG` con una pull request, mai commit diretti su `main`; la pull request la chiude chi controlla, sempre con squash e messaggio scritto. Niente nomi di AI nei contenuti pubblici; niente segreti nel repository. Protocollo completo: `COORDINAMENTO.md`, § «Grok».
+Grok Bot è una **riserva quando Claude è ferma** (crediti finiti), accanto a ChatGPT e Gemini: lo avvia Alessandro dall'app di Grok quando serve (decisione dell'11/11/2026). Legge e aggiorna il Cervello su Google Drive (scheda «Grok Bot») e lavora con il connettore GitHub dell'account di Alessandro su tutti i repository. Ogni lavoro va su un ramo `grok/<argomento>-AAAAMMGG` con una pull request, mai commit diretti su `main`; la pull request la chiude chi controlla, sempre con squash e messaggio scritto. Niente dati personali nei contenuti pubblici, niente nomi di AI nei contenuti pubblici, niente segreti nel repository. Protocollo completo: `COORDINAMENTO.md`, § «Grok».
 
 ## Qualità e guasti: regole per ogni intelligenza artificiale (dal 17/10/2026)
 
