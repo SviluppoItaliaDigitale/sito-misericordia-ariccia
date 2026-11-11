@@ -20,6 +20,11 @@ name: "🤝 AI automatiche: richieste della bacheca"
 # rinnovata si salva cifrata nella cache (scripts/riserva-credenziale.sh, come la riserva), e ogni 6 giorni il giro
 # del mattino lo tiene vivo anche senza lavori. Correzione del 06/11/2026: prima l'AI lavorava nel job che scriveva.
 #
+# Riserva (dall'11/11/2026, decisione di Alessandro): quando le routine quotidiane di Claude sono ferme, il giro
+# programmato scrive da sé, al massimo una volta al giorno, la richiesta «Routine di oggi del … (riserva automatica)»
+# per Claude automatico (passo «Routine ferme?» di «trova», `lavoratore-ai.py riserva`); in assistente-personale la
+# scrive la riserva automatica (riserva-automatica.yml), che poi avvia questo workflow con workflow_dispatch.
+#
 # Nasce il 05/11/2026 (Alessandro: «Fai in modo che tra AI si parlino in autonomia», «Parlino e aiutino»,
 # «Non riesci a forzare l'avvio di codex di chatgpt?»).
 
@@ -45,6 +50,9 @@ jobs:
   trova:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: write   # solo per la richiesta di riserva del giro programmato (passo «Routine ferme?»)
+      issues: read
     outputs:
       trovata: ${{ steps.trova.outputs.trovata }}
       motore: ${{ steps.trova.outputs.motore }}
@@ -57,8 +65,29 @@ jobs:
           sparse-checkout: |
             COORDINAMENTO.md
             scripts/lavoratore-ai.py
+            scripts/imposta-identita-git.sh
+            scripts/riserva-automatica.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
+
+      # Solo nel giro programmato: se le routine quotidiane sono ferme (due giri di fila della rassegna di
+      # sito-pc-genzano senza il segno dell'account di Alessandro, lo stesso segnale della riserva automatica di
+      # assistente-personale) e c'è la chiave dei crediti, scrive sul ramo principale, al massimo una volta al giorno,
+      # la richiesta delle routine di oggi per Claude automatico (solo ciò che si fa con i file del repository: niente
+      # connettori, niente social, niente routine segnate 🔴); il passo dopo la prende nello stesso giro. In
+      # assistente-personale la scrive la riserva automatica e qui non si fa nulla. Decisione di Alessandro
+      # dell'11/11/2026. È un passo di «trova» e non un job a parte: un job saltato prima di «trova» farebbe saltare
+      # anche i job dopo. Se non riesce, il run continua (le altre richieste non si fermano) e lo dice l'avviso.
+      - name: "🛟 Routine ferme? Richiesta delle routine di oggi"
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE: ${{ github.event.repository.default_branch }}
+          HA_CLAUDE_CREDITI_API_KEY: ${{ secrets.CLAUDE_CREDITI_API_KEY != '' }}
+        run: |
+          bash scripts/imposta-identita-git.sh
+          python3 scripts/lavoratore-ai.py riserva
 
       - name: "🔎 Richieste per le AI automatiche"
         id: trova
