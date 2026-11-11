@@ -10,7 +10,8 @@ Lo usa .github/workflows/lavoratore-ai.yml, in job separati: «prendi» (ramo, b
 job dell'AI, che può solo leggere il repository e consegna il lavoro come pacchetto (patch, riassunto, esito),
 «consegna» in un job che scrive e non si fida del pacchetto: lo ricontrolla, lo applica, fa commit, esito in bacheca e
 PR. Da una sessione `richiedi` scrive la richiesta in bacheca e la pubblica, così l'AI parte da sola;
-`elenco` mostra destinatari e chiavi.
+`elenco` mostra destinatari e chiavi; `riserva` (dall'11/11/2026), quando le routine quotidiane sono ferme, scrive da sé
+sul ramo principale la richiesta delle routine di oggi per Claude automatico, una volta al giorno.
 Pensato per non fermarsi: se il servizio è occupato prova fino a tre modelli, in due giri, e il secondo giro rifà solo
 i modelli occupati (anche quelli fermati dal limite di richieste al minuto, che non è una quota finita); se la quota
 gratuita del giorno di un modello è finita passa al successivo; se il servizio rifiuta la chiave o chiede di pagare si
@@ -1100,6 +1101,217 @@ def cmd_consegna(a):
     return 0 if codice == 0 else 1
 
 
+# ---------------------------------------------------------------- riserva: le routine di oggi quando Claude è ferma
+
+# Quando le routine quotidiane di Claude sono ferme (limiti del piano finiti), Claude automatico fa le routine di oggi
+# che si fanno con i soli file del repository (decisione di Alessandro dell'11/11/2026). In assistente-personale la
+# richiesta la scrive la riserva automatica (scripts/riserva-automatica.py, che lancia `riserva --ferme`); negli altri
+# repository il giro programmato di questo workflow, con lo stesso segnale: due giri di fila della rassegna di
+# sito-pc-genzano (pubblico) senza il segno dell'account di Alessandro. Le regole del segnale sono copiate da
+# scripts/riserva-automatica.py, e scripts/prova-ai-automatiche.py controlla che le due copie diano la stessa risposta.
+# Differenza voluta: la pausa della riserva (la sua issue chiusa a mano) vive nel repository privato e qui non si vede.
+REPO_SEGNI = "SviluppoItaliaDigitale/sito-pc-genzano"
+ACCOUNT_SEGNI = "SviluppoItaliaDigitale"
+GIRI_RASSEGNA = ((7, 52), (12, 52), (19, 52))
+FINESTRA_GIRO = dt.timedelta(minutes=75)
+TETTO_GIRO = {(12, 52): (14, 0)}
+MARGINE_GIRO = dt.timedelta(minutes=10)
+RE_SOSTITUTI = re.compile(r"codex|chatgpt|openai|gemini", re.I)
+RE_CHIUSURA = re.compile(r"^\W*(chius[aoe]\s+(come|perch[eé])\s+)?(duplicat|superat)", re.I)
+TITOLO_RISERVA = "Routine di oggi del {:%d/%m/%Y} (riserva automatica)"
+DA_RISERVA = "Riserva automatica"
+
+
+def _ora_github(testo):
+    testo = re.sub(r"(\.\d{6})\d+", r"\1", testo.strip().replace("Z", "+00:00"))
+    return dt.datetime.fromisoformat(testo).astimezone(dt.timezone.utc)
+
+
+def _iso_github(ora):
+    return ora.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _pagine(percorso, massimo=30):
+    sep = "&" if "?" in percorso else "?"
+    tutto = []
+    for n in range(1, massimo + 1):
+        blocco = gh("GET", f"{percorso}{sep}per_page=100&page={n}") or []
+        tutto += blocco
+        if len(blocco) < 100:
+            return tutto
+    raise RuntimeError(f"più di {massimo} pagine per {percorso}")
+
+
+def _rassegna(titolo):
+    titolo = (titolo or "").strip()
+    return titolo.lower().startswith("rassegna") or titolo.startswith("Novità normative PC")
+
+
+def _da_sostituto(x):
+    return bool(RE_SOSTITUTI.search((x.get("performed_via_github_app") or {}).get("slug") or ""))
+
+
+def segni_rassegna(da, fino):
+    """Le ore dei segni dell'account di Alessandro sulle issue della rassegna (come `segni` della riserva automatica)."""
+    issues = _pagine(f"repos/{REPO_SEGNI}/issues?state=all&sort=created&direction=desc&since={_iso_github(da)}")
+    per_numero = {i["number"]: i for i in issues}
+    ore = []
+    for i in issues:
+        if ("pull_request" in i or i["user"]["login"] != ACCOUNT_SEGNI or not _rassegna(i["title"])
+                or "<!-- riserva" in (i.get("body") or "") or _da_sostituto(i)):
+            continue
+        if da <= (ora := _ora_github(i["created_at"])) <= fino:
+            ore.append(ora)
+    for c in _pagine(f"repos/{REPO_SEGNI}/issues/comments?sort=created&direction=asc&since={_iso_github(da)}"):
+        if c["user"]["login"] != ACCOUNT_SEGNI or _da_sostituto(c):
+            continue
+        if not da <= (ora := _ora_github(c["created_at"])) <= fino:
+            continue
+        numero = int(c["issue_url"].rsplit("/", 1)[1])
+        if numero not in per_numero:
+            per_numero[numero] = gh("GET", f"repos/{REPO_SEGNI}/issues/{numero}")
+        i, corpo = per_numero[numero], c.get("body") or ""
+        if "pull_request" in i or not _rassegna(i["title"]) or "<!-- riserva" in corpo or RE_CHIUSURA.match(corpo):
+            continue
+        ore.append(ora)
+    return sorted(ore)
+
+
+def routine_ferme(ora=None):
+    """(ferme, primo giro di oggi già passato): ferme se gli ultimi due giri scaduti della rassegna non hanno segno."""
+    ora = (ora or dt.datetime.now(dt.timezone.utc)).astimezone(dt.timezone.utc)
+    da = ora - dt.timedelta(days=3)
+    ore = segni_rassegna(da, ora)
+    giorno, ultimo, giri = da.astimezone(ROMA).date(), ora.astimezone(ROMA).date(), []
+    while giorno <= ultimo:
+        for h, m in GIRI_RASSEGNA:
+            inizio = dt.datetime(giorno.year, giorno.month, giorno.day, h, m, tzinfo=ROMA)
+            fine = inizio + FINESTRA_GIRO
+            if (h, m) in TETTO_GIRO:
+                fine = min(fine, dt.datetime(giorno.year, giorno.month, giorno.day, *TETTO_GIRO[(h, m)], tzinfo=ROMA))
+            if fine + MARGINE_GIRO <= ora:
+                giri.append((inizio, fine))
+        giorno += dt.timedelta(days=1)
+    giri.sort(reverse=True)
+    con_segno = [any(i <= s <= f for s in ore) for i, f in giri]
+    ferme = len(giri) >= 2 and not con_segno[0] and not con_segno[1]
+    oggi = ora.astimezone(ROMA).date()
+    return ferme, any(i.astimezone(ROMA).date() == oggi for i, _ in giri)
+
+
+def guasti_aperti(repo):
+    """Le issue aperte dei controlli automatici del repository (autore github-actions[bot]): «- #N titolo (link)»."""
+    try:
+        issues = gh("GET", f"repos/{repo}/issues?state=open&labels=automazione&per_page=50") or []
+    except RuntimeError as e:
+        print(f"::warning::Issue dei guasti non lette: {e}")
+        return ["- (le issue dei guasti non si sono potute leggere al momento della richiesta)"]
+    righe = [f"- #{i['number']} {i['title']} ({i['html_url']})" for i in issues
+             if "pull_request" not in i and (i.get("user") or {}).get("login") == "github-actions[bot]"]
+    return righe or ["- nessuna issue di guasto aperta"]
+
+
+def brief_riserva(repo, giorno, guasti):
+    """La richiesta per Claude automatico, nelle sette parti di `passa-a.py modello`."""
+    elenco = "\n".join(f"   {g}" for g in guasti)
+    return f"""## 1. Obiettivo
+Le routine quotidiane di Claude sono ferme: gli ultimi due giri della rassegna di sito-pc-genzano non hanno il loro segno. Fai le routine di oggi ({giorno:%d/%m/%Y}) di {repo} che si possono fare solo con i file del repository, così oggi non restano scoperte; le altre le fa chi lavora con i connettori.
+
+## 2. File
+- Indice delle routine: in assistente-personale `ROUTINE.md` (con `routine/README.md`); negli altri repository il `README.md` della cartella delle routine indicata in `COORDINAMENTO.md`, sezione «Routine di questo repository», o in `AGENTS.md`.
+- Si cambiano solo i file che i testi delle routine eseguite indicano per quel lavoro, e i file da riparare per i guasti del punto 3. Mai `COORDINAMENTO.md`, `.github/`, `.githooks/`.
+
+## 3. Che cosa fare
+1. Leggi l'indice delle routine e, se c'è, `ROUTINE.md` § «Che cosa vuol dire "fai le routine di oggi"»: prendi le routine di questo repository che toccano oggi.
+2. Per ognuna guarda il segno di oggi scritto nell'indice: se si verifica con i file del repository e c'è, passa oltre.
+3. Fai solo le routine, o le loro parti, che si fanno con i file del repository e con pagine web pubbliche, seguendo il loro testo con le sostituzioni scritte nell'intestazione per chi lavora al posto di Claude. Salta quelle che chiedono connettori o accessi (Drive, Gmail, Calendar, Metricool, Canva, segreti), quelle che lavorano su più repository e quelle segnate 🔴 o che pubblicano sui social.
+4. Guasti aperti dei controlli automatici di questo repository, letti al momento della richiesta:
+{elenco}
+   Se un guasto si ripara con i file del repository, riparalo come dice `.claude/rules/guasti.md` (causa, tutte le copie, indirizzo nuovo solo se verificato con una richiesta reale).
+5. Ordine: prima ciò che scade nelle prossime ore, poi i guasti, poi la manutenzione.
+6. Se oggi con i soli file non c'è nulla da fare, non cambiare nessun file e scrivilo nel riassunto: è un esito valido.
+
+## 4. Vincoli
+- Valgono `AGENTS.md`, `CLAUDE.md`, `.claude/rules/` e la sezione «Questo repository» di `COORDINAMENTO.md`, come per chi lavora al posto di Claude.
+- Fatti, numeri, date e norme solo da fonti primarie verificate; ciò che non verifichi resta «[da compilare]» e va nel riassunto.
+- Niente nomi di strumenti nei file e nei testi; la firma è Alessandro Cuollo.
+
+## 5. Controlli
+I controlli che i testi delle routine eseguite chiedono e quelli della sezione «Questo repository» di `COORDINAMENTO.md` per i file toccati, eseguiti fino all'esito verde. Se un controllo non si può eseguire, scrivi nel riassunto il comando e l'errore.
+
+## 6. Consegna
+Il lavoro resta sul ramo di questa richiesta, con la pull request in bozza che apre il sistema. Nel riassunto: routine fatte (con i file cambiati), routine già fatte da Claude, routine saltate e perché (connettori, social, più repository), guasti riparati e guasti rimasti.
+
+## 7. Che cosa non fare
+- Non pubblicare né programmare nulla sui social e non eseguire le routine segnate 🔴, nemmeno in parte.
+- Non usare connettori, Drive, Gmail, Calendar, Metricool, Canva, chiavi o accessi.
+- Non unire, non pubblicare il sito, non scrivere issue o commenti.
+- Non rifare un lavoro che una pull request aperta (rami `chatgpt/`, `codex/`, `auto/`) contiene già, quando la puoi vedere; non inventare dati.
+"""
+
+
+def riserva_gia_scritta(repo, testo, titolo):
+    """Vero se la richiesta di oggi c'è già: nella bacheca del ramo principale o come ramo di lavoro."""
+    if any(v["titolo"] == titolo for v in voci_richieste(testo)):
+        return True
+    return bool(gia_al_lavoro(repo, prefisso_ramo(DESTINATARI["claude automatico"], {"titolo": titolo})))
+
+
+def cmd_riserva(a):
+    """Scrive sul ramo principale, al massimo una volta al giorno, la richiesta delle routine di oggi per Claude
+    automatico. Senza la chiave dei crediti non fa nulla; senza --ferme decide da sé con il segnale della rassegna.
+    Un push fatto con il token di GitHub Actions non fa partire altri workflow: chi chiama avvia poi «trova» (nello
+    stesso giro programmato) o il workflow delle richieste (la riserva automatica, con workflow_dispatch)."""
+    repo = os.environ["GITHUB_REPOSITORY"]
+    dest = DESTINATARI["claude automatico"]
+    if not chiave_presente(dest):
+        uscita(richiesta="niente")
+        resoconto(f"Riserva: manca {dest['segreto']}, nessuna richiesta per {dest['nome']}.")
+        return 0
+    if not a.ferme and pathlib.Path("scripts/riserva-automatica.py").exists():
+        uscita(richiesta="niente")
+        resoconto("Riserva: in questo repository la richiesta la scrive la riserva automatica.")
+        return 0
+    oggi = adesso()
+    titolo = TITOLO_RISERVA.format(oggi)
+    if not a.ferme:
+        try:
+            ferme, scaduto = routine_ferme()
+        except (RuntimeError, OSError, ValueError, KeyError, TypeError) as e:
+            uscita(richiesta="niente")
+            print(f"::warning::Segni della rassegna non letti ({e}): nessuna richiesta di riserva in questo giro. "
+                  "La riserva automatica di assistente-personale sorveglia la stessa fonte.")
+            return 0
+        if not ferme or not scaduto:
+            uscita(richiesta="niente")
+            resoconto("Riserva: routine attive." if not ferme else "Riserva: primo giro di oggi non ancora passato.")
+            return 0
+    base = os.environ.get("BASE") or "main"
+    for _ in (1, 2):
+        testo = pathlib.Path(BACHECA).read_text(encoding="utf-8")
+        if riserva_gia_scritta(repo, testo, titolo):
+            uscita(richiesta="gia", titolo=titolo)
+            resoconto(f"Riserva: la richiesta «{titolo}» c'è già.")
+            return 0
+        brief = brief_riserva(repo, oggi, guasti_aperti(repo))
+        if parti_mancanti(brief):   # non succede con lo schema qui sopra: se cambia, ci si ferma invece di scrivere male
+            sys.exit(f"Richiesta di riserva incompleta: {'; '.join(parti_mancanti(brief))}")
+        pathlib.Path(BACHECA).write_text(inserisci_voce(testo, oggi, DA_RISERVA, dest["nome"], titolo, brief),
+                                         encoding="utf-8")
+        git("add", BACHECA)
+        git("commit", "-q", "-m", f"Bacheca: nuova richiesta «{titolo}»")
+        r = esegui(["git", "push", "-q", remoto(repo), f"HEAD:refs/heads/{base}"], check=False)
+        if r.returncode == 0:
+            uscita(richiesta="scritta", titolo=titolo)
+            resoconto(f"Riserva: richiesta «{titolo}» scritta in bacheca per {dest['nome']}.")
+            return 0
+        print(f"::warning::Push della richiesta non riuscito ({r.stderr.strip()[:200]}): riprovo dal ramo aggiornato.")
+        git("fetch", "-q", remoto(repo), base)
+        git("reset", "-q", "--hard", "FETCH_HEAD")
+    print("::error::La richiesta di riserva non si è potuta scrivere sul ramo principale.")
+    return 1
+
+
 # ---------------------------------------------------------------- da una sessione
 
 def owner_repo():
@@ -1147,10 +1359,10 @@ def cmd_richiedi(a):
         esegui(["git", "worktree", "remove", "--force", str(cartella)], check=False)
 
 
-def _pubblica_richiesta(a, dest, repo, data, titolo_commit, ramo, brief):
-    testo = pathlib.Path(BACHECA).read_text(encoding="utf-8")
-    voce = [f"- **{data:%Y-%m-%d} — da {a.da} a {dest['nome']} — {a.titolo}**"] + [f"  {r}" if r.strip() else ""
-                                                                                    for r in brief.splitlines()]
+def inserisci_voce(testo, data, da, nome, titolo, brief):
+    """La bacheca con la richiesta nuova in cima alla sezione «Richieste» (al posto di «Nessuna richiesta», se c'è)."""
+    voce = [f"- **{data:%Y-%m-%d} — da {da} a {nome} — {titolo}**"] + [f"  {r}" if r.strip() else ""
+                                                                         for r in brief.splitlines()]
     righe = testo.split("\n")
     inizio = next((k for k, r in enumerate(righe) if r.strip().startswith("## Richieste")), None)
     if inizio is None:
@@ -1162,7 +1374,12 @@ def _pubblica_richiesta(a, dest, repo, data, titolo_commit, ramo, brief):
         righe[k:k + 1] = voce
     else:
         righe[k:k] = voce + [""]
-    pathlib.Path(BACHECA).write_text("\n".join(righe), encoding="utf-8")
+    return "\n".join(righe)
+
+
+def _pubblica_richiesta(a, dest, repo, data, titolo_commit, ramo, brief):
+    testo = pathlib.Path(BACHECA).read_text(encoding="utf-8")
+    pathlib.Path(BACHECA).write_text(inserisci_voce(testo, data, a.da, dest["nome"], a.titolo, brief), encoding="utf-8")
     git("add", BACHECA)
     git("commit", "-q", "-m", f"Bacheca: nuova richiesta «{titolo_commit}»")
     git("push", "-q", "origin", f"HEAD:refs/heads/{ramo}")
@@ -1223,10 +1440,12 @@ def main(argv=None):
     r.add_argument("--da", default="Claude")
     r.add_argument("--senza-merge", action="store_true")
     r.add_argument("--attesa", type=int, default=20, help="minuti di attesa dei controlli")
+    q = sotto.add_parser("riserva", help="routine ferme: scrive la richiesta delle routine di oggi per Claude automatico")
+    q.add_argument("--ferme", action="store_true", help="la decisione l'ha già presa la riserva automatica")
     a = p.parse_args(argv)
     senza_ganci()
     return {"trova": cmd_trova, "prendi": cmd_prendi, "motore": cmd_motore, "raccogli": cmd_raccogli,
-            "consegna": cmd_consegna, "richiedi": cmd_richiedi, "elenco": cmd_elenco,
+            "consegna": cmd_consegna, "richiedi": cmd_richiedi, "elenco": cmd_elenco, "riserva": cmd_riserva,
             "programma": lambda a: print(PROGRAMMI[a.nome]) or 0}[a.comando](a)
 
 
