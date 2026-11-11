@@ -2,7 +2,8 @@ name: "🤝 AI automatiche: richieste della bacheca"
 
 # Le AI automatiche della squadra prendono da sole le richieste della bacheca (COORDINAMENTO.md, «Richieste»)
 # indirizzate a loro: ChatGPT automatico (Codex con l'accesso ChatGPT di Alessandro), Gemini automatico (chiave
-# gratuita della Gemini API), DeepSeek, GLM, Kimi e Qwen automatici (modelli gratuiti di Ollama Cloud). Lavorano su
+# gratuita della Gemini API), DeepSeek, GLM, Kimi e Qwen automatici (Ollama Cloud), Claude automatico (Agent SDK con i
+# crediti API del piano Ultra, dall'11/11/2026: i crediti coprono l'Agent SDK, non il programma Claude Code). Lavorano su
 # un ramo auto/… e consegnano una PR in bozza; unire resta a chi controlla (protocollo comune, § «AI automatiche»).
 # Se il servizio è occupato lo script prova fino a tre modelli, in due giri (se la quota gratuita di un modello è finita,
 # il successivo); se nessuno lavora toglie il ramo e la richiesta riparte al giro dopo. Se GitHub Actions non può aprire
@@ -10,8 +11,10 @@ name: "🤝 AI automatiche: richieste della bacheca"
 # controlla, anche dal cellulare (passa-a.py chiudi --ramo).
 #
 # Segreti del repository, messi dal PC con scripts/collega-ai-automatiche.sh: CHATGPT_ACCESSO, GEMINI_API_KEY,
-# OLLAMA_API_KEY. Senza il segreto che serve, la richiesta resta aperta e il run è rosso (lo vede la sorveglianza
-# dei guasti). Il programma dell'AI lavora in un job che può solo leggere il repository (lavora, lavora-chatgpt):
+# OLLAMA_API_KEY, CLAUDE_CREDITI_API_KEY (solo nei passi di Claude automatico: il motore la passa all'agente come
+# ANTHROPIC_API_KEY nel solo processo dell'agente, mai nell'ambiente del job; «raccogli» e «consegna» la ricevono per
+# controllare che non finisca nel lavoro). Senza il segreto che serve, la richiesta resta aperta e il run è rosso (lo
+# vede la sorveglianza dei guasti). Il programma dell'AI lavora in un job che può solo leggere il repository (lavora, lavora-chatgpt):
 # commit, push, bacheca e PR li fanno «prendi» e «consegna», job senza l'AI, e .github/, .githooks/ e COORDINAMENTO.md
 # li cura solo lo script. L'accesso ChatGPT lo riceve solo il job di ChatGPT; si rinnova a ogni uso: la copia
 # rinnovata si salva cifrata nella cache (scripts/riserva-credenziale.sh, come la riserva), e ogni 6 giorni il giro
@@ -65,6 +68,7 @@ jobs:
           HA_CHATGPT_ACCESSO: ${{ secrets.CHATGPT_ACCESSO != '' }}
           HA_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY != '' }}
           HA_OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY != '' }}
+          HA_CLAUDE_CREDITI_API_KEY: ${{ secrets.CLAUDE_CREDITI_API_KEY != '' }}
         run: |
           echo "accesso=$HA_CHATGPT_ACCESSO" >> "$GITHUB_OUTPUT"
           python3 scripts/lavoratore-ai.py trova
@@ -104,11 +108,12 @@ jobs:
           HA_CHATGPT_ACCESSO: ${{ secrets.CHATGPT_ACCESSO != '' }}
           HA_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY != '' }}
           HA_OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY != '' }}
+          HA_CLAUDE_CREDITI_API_KEY: ${{ secrets.CLAUDE_CREDITI_API_KEY != '' }}
         run: python3 scripts/lavoratore-ai.py prendi
 
   lavora:
-    # Il lavoro di Gemini, DeepSeek, GLM, Kimi o Qwen. Il job può solo leggere il repository e non riceve l'accesso
-    # ChatGPT: il programma dell'AI non ha nulla con cui scrivere su GitHub. Consegna un pacchetto (artefatto del run)
+    # Il lavoro di Gemini, DeepSeek, GLM, Kimi, Qwen o Claude automatico. Il job può solo leggere il repository e non
+    # riceve l'accesso ChatGPT: il programma dell'AI non ha nulla con cui scrivere su GitHub. Consegna un pacchetto (artefatto del run)
     # che il job «consegna» ricontrolla. Gli script girano da una copia presa prima dell'AI.
     needs: prendi
     if: needs.prendi.outputs.preso == 'true' && needs.prendi.outputs.motore != 'codex'
@@ -128,13 +133,24 @@ jobs:
         run: |
           bash scripts/imposta-identita-git.sh
           mkdir -p "$RUNNER_TEMP/fidati"
-          cp scripts/lavoratore-ai.py scripts/consulto-ai.py "$RUNNER_TEMP/fidati/"
+          cp scripts/lavoratore-ai.py scripts/consulto-ai.py scripts/motore-agentsdk.py "$RUNNER_TEMP/fidati/"
+
+      - name: "🧩 Agent SDK (solo Claude automatico), alla versione fissata nello script"
+        if: needs.prendi.outputs.motore == 'agentsdk'
+        run: |
+          python3 -m venv "$RUNNER_TEMP/agentsdk"
+          "$RUNNER_TEMP/agentsdk/bin/pip" install --quiet --disable-pip-version-check \
+            "$(python3 "$RUNNER_TEMP/fidati/lavoratore-ai.py" programma agentsdk)"
+          echo "AGENTSDK_PYTHON=$RUNNER_TEMP/agentsdk/bin/python" >> "$GITHUB_ENV"
 
       - name: "🤖 Lavoro dell'AI"
         env:
           LAVORATORE_STATO: ${{ needs.prendi.outputs.stato }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          CLAUDE_CREDITI_API_KEY: ${{ needs.prendi.outputs.motore == 'agentsdk' && secrets.CLAUDE_CREDITI_API_KEY || '' }}
+          CLAUDE_AUTOMATICO_MODELLO: ${{ vars.CLAUDE_AUTOMATICO_MODELLO || 'sonnet' }}
+          CLAUDE_AUTOMATICO_BUDGET_USD: ${{ vars.CLAUDE_AUTOMATICO_BUDGET_USD || '10' }}
         run: |
           node --version
           python3 "$RUNNER_TEMP/fidati/lavoratore-ai.py" motore
@@ -145,6 +161,7 @@ jobs:
           LAVORATORE_STATO: ${{ needs.prendi.outputs.stato }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          CLAUDE_CREDITI_API_KEY: ${{ needs.prendi.outputs.motore == 'agentsdk' && secrets.CLAUDE_CREDITI_API_KEY || '' }}
         run: python3 "$RUNNER_TEMP/fidati/lavoratore-ai.py" raccogli
 
       - name: "📤 Pacchetto al job che consegna"
@@ -159,7 +176,7 @@ jobs:
 
       - name: "🧽 Pulizia"
         if: always()
-        run: rm -rf "$HOME/.gemini"
+        run: rm -rf "$HOME/.gemini" "$HOME/.claude" "$RUNNER_TEMP/agentsdk"
 
   lavora-chatgpt:
     # Il lavoro di ChatGPT automatico: come «lavora», con in più l'accesso ChatGPT (copia cifrata in cache).
@@ -293,6 +310,7 @@ jobs:
           LAVORO_DIR: ${{ runner.temp }}/lavoro
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+          CLAUDE_CREDITI_API_KEY: ${{ needs.prendi.outputs.motore == 'agentsdk' && secrets.CLAUDE_CREDITI_API_KEY || '' }}
         run: python3 "$RUNNER_TEMP/fidati/lavoratore-ai.py" consegna
 
       - name: "🔐 Copie vecchie dell'accesso ChatGPT"

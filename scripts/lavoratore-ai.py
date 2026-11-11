@@ -3,7 +3,9 @@
 loro, lavorano su un ramo `auto/…` e consegnano una pull request in bozza, che chi controlla unisce (protocollo comune).
 Destinatari: «ChatGPT automatico» (Codex con l'accesso ChatGPT di Alessandro), «Gemini automatico» (Gemini CLI, chiave
 gratuita), «DeepSeek automatico», «GLM automatico», «Kimi automatico», «Qwen automatico» (Claude Code con i modelli
-di Ollama Cloud, che dal 07/11/2026 chiede di pagare: restano spenti finché non torna una quota gratuita).
+di Ollama Cloud, che dal 07/11/2026 chiede di pagare: restano spenti finché non torna una quota gratuita), «Claude
+automatico» (dall'11/11/2026: l'Agent SDK con i crediti API del piano Ultra, scripts/motore-agentsdk.py; i crediti
+coprono l'Agent SDK e non il programma Claude Code, quindi qui non si lancia `claude`).
 Lo usa .github/workflows/lavoratore-ai.yml, in job separati: «prendi» (ramo, bacheca, PR), «motore» e «raccogli» nel
 job dell'AI, che può solo leggere il repository e consegna il lavoro come pacchetto (patch, riassunto, esito),
 «consegna» in un job che scrive e non si fida del pacchetto: lo ricontrolla, lo applica, fa commit, esito in bacheca e
@@ -77,7 +79,11 @@ CHIAVE_RIFIUTATA = re.compile(r"Failed to authenticate|API Error: 401|401 Unauth
 # del cloud, anche con una chiave valida (memoria/ai-automatiche.md): come per la chiave rifiutata, gli altri modelli non
 # si provano e il motivo lo dice. Crediti non se ne comprano (zero spese): la richiesta va passata a un'AI gratuita.
 A_PAGAMENTO = re.compile(r"API Error: 402|402 Payment Required|Add usage credits|PAYMENT_METHOD_REQUIRED"
-                         r"|payment method is required", re.I)
+                         r"|payment method is required|credit balance is too low|Credit balance too low", re.I)
+# Crediti API del mese finiti per «Claude automatico»: la pagina dei crediti del piano (platform.claude.com, «API credits
+# for Max, Ultra, and Team plans», letta l'11/11/2026) dice che le richieste si fermano con «Your credit balance is too
+# low…» fino ai crediti del mese dopo. scripts/motore-agentsdk.py esce con questo codice; la riga la legge A_PAGAMENTO.
+CODICE_CREDITI = 76
 ROMA = dt.timezone(dt.timedelta(hours=1))
 try:
     from zoneinfo import ZoneInfo
@@ -91,7 +97,12 @@ PROGRAMMI = {
     "codex": "@openai/codex@0.166.0",
     "gemini": "@google/gemini-cli@0.67.0",
     "claude": "@anthropic-ai/claude-code@2.1.318",
+    # Pacchetto Python ufficiale dell'Agent SDK (PyPI claude-agent-sdk, licenza MIT, 0.2.180 del 09/11/2026), con il suo
+    # programma incluso: lo installa il workflow in un ambiente a parte (python3 scripts/lavoratore-ai.py programma agentsdk).
+    "agentsdk": "claude-agent-sdk==0.2.180",
 }
+# Claude automatico: famiglia del modello (l'ultima versione la sceglie il motore) e tetto di spesa di ogni lavoro.
+MODELLO_CLAUDE = os.environ.get("CLAUDE_AUTOMATICO_MODELLO", "sonnet")   # «opus» per i lavori delicati
 
 DESTINATARI = {
     "chatgpt automatico": {"nome": "ChatGPT automatico", "sigla": "chatgpt", "motore": "codex",
@@ -103,6 +114,9 @@ DESTINATARI = {
     "glm automatico": {"nome": "GLM automatico", "sigla": "glm", "motore": "ollama", "segreto": "OLLAMA_API_KEY"},
     "kimi automatico": {"nome": "Kimi automatico", "sigla": "kimi", "motore": "ollama", "segreto": "OLLAMA_API_KEY"},
     "qwen automatico": {"nome": "Qwen automatico", "sigla": "qwen", "motore": "ollama", "segreto": "OLLAMA_API_KEY"},
+    # Crediti API del piano Ultra (200 $ al mese): anche nei repository privati, i dati restano in Anthropic come oggi.
+    "claude automatico": {"nome": "Claude automatico", "sigla": "claude", "motore": "agentsdk",
+                          "segreto": "CLAUDE_CREDITI_API_KEY"},
 }
 
 TESTA = re.compile(r"^- \*\*(\d{4}-\d{2}-\d{2}) — da (.+?) a (.+?) — (.+?)\*\*(.*)$")
@@ -261,7 +275,7 @@ def senza_ganci():
 def valori_segreti():
     """I valori veri delle chiavi che il job conosce (almeno 12 caratteri): nessuno deve finire nei file, nel riassunto
     o in bacheca. Oltre alle variabili, i token dell'accesso ChatGPT, nel seme e nella copia in uso."""
-    valori = {v for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "OLLAMA_API_KEY", "SEME")
+    valori = {v for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "OLLAMA_API_KEY", "CLAUDE_CREDITI_API_KEY", "SEME")
               if len(v := os.environ.get(k, "")) >= 12}
 
     def dai_token(dati):
@@ -639,6 +653,8 @@ def ambiente_motore(stato):
               "GEMINI_API_KEY", "OLLAMA_API_KEY", "CODEX_HOME", "CONSULTO_OLLAMA_URL", "CONSULTO_GEMINI_URL")
     if stato.get("privato", True):   # nei repository privati Gemini non lavora e non si consulta (NO_GEMINI_PRIVATO)
         tenute = tuple(k for k in tenute if k != "GEMINI_API_KEY")
+    if stato["dest"]["motore"] == "agentsdk":   # la chiave dei crediti solo al motore di Claude automatico, che la passa
+        tenute += ("CLAUDE_CREDITI_API_KEY", "CLAUDE_AUTOMATICO_BUDGET_USD")   # all'agente e la toglie da sé
     return {k: os.environ[k] for k in tenute if os.environ.get(k)}   # mai il token di GitHub
 
 
@@ -661,6 +677,8 @@ def candidati_motore(stato):
         return carica_consulto().Gemini().candidati()[:3]
     if dest["motore"] == "ollama":
         return carica_consulto().Ollama().candidati(dest["sigla"])[:3]
+    if dest["motore"] == "agentsdk":   # una famiglia: l'ultima versione la sceglie scripts/motore-agentsdk.py
+        return [MODELLO_CLAUDE]
     return [""]   # Codex: il modello predefinito del piano ChatGPT
 
 
@@ -725,6 +743,9 @@ def motivo_fallimento(tentativi):
     provati = (f" (modelli provati: {', '.join(modelli)}" + (", in due giri" if len(tentativi) > len(modelli) else "")
                + ")") if modelli else ""
     ultimo = tentativi[-1]["codice"]
+    if tentativi[-1].get("pagamento") and ultimo == CODICE_CREDITI:   # Claude automatico
+        return ("crediti API del mese finiti: le richieste ripartono con i crediti del mese dopo, crediti non se ne "
+                "comprano; intanto la richiesta va passata a un'altra AI" + provati)
     if tentativi[-1].get("pagamento"):   # prima di tutto: un servizio a pagamento non lavora con nessun modello
         return ("il servizio chiede crediti a pagamento (402), che non si comprano: la richiesta va passata a un'AI "
                 "gratuita" + provati)
@@ -753,6 +774,10 @@ def comando_motore(stato, prompt, modello, env):
     if motore == "codex":
         return ["npx", "--yes", PROGRAMMI["codex"], "exec", "--dangerously-bypass-approvals-and-sandbox",
                 "--ephemeral", "-c", "project_doc_max_bytes=131072", "-o", str(TEMP / "ultimo-messaggio.txt"), prompt]
+    if motore == "agentsdk":   # Agent SDK con i crediti API: mai il programma `claude`, che i crediti non coprono
+        return [os.environ.get("AGENTSDK_PYTHON") or sys.executable,
+                str(pathlib.Path(__file__).with_name("motore-agentsdk.py")), "--modello", modello or MODELLO_CLAUDE,
+                "--cartella", os.getcwd(), "--riassunto-dir", str(RIASSUNTO.parent), "--turni", "80", prompt]
     if motore == "gemini":
         impostazioni = pathlib.Path(env["HOME"]) / ".gemini" / "settings.json"
         impostazioni.parent.mkdir(parents=True, exist_ok=True)
@@ -1189,6 +1214,8 @@ def main(argv=None):
     sotto = p.add_subparsers(dest="comando", required=True)
     for nome in ("trova", "prendi", "motore", "raccogli", "consegna", "elenco"):
         sotto.add_parser(nome)
+    sotto.add_parser("programma", help="stampa la versione fissata di un programma (per il workflow)").add_argument(
+        "nome", choices=sorted(PROGRAMMI))
     r = sotto.add_parser("richiedi", help="scrive in bacheca una richiesta per un'AI automatica e la pubblica")
     r.add_argument("--a", required=True, help="destinatario, per esempio «ChatGPT automatico»")
     r.add_argument("--titolo", required=True)
@@ -1199,7 +1226,8 @@ def main(argv=None):
     a = p.parse_args(argv)
     senza_ganci()
     return {"trova": cmd_trova, "prendi": cmd_prendi, "motore": cmd_motore, "raccogli": cmd_raccogli,
-            "consegna": cmd_consegna, "richiedi": cmd_richiedi, "elenco": cmd_elenco}[a.comando](a)
+            "consegna": cmd_consegna, "richiedi": cmd_richiedi, "elenco": cmd_elenco,
+            "programma": lambda a: print(PROGRAMMI[a.nome]) or 0}[a.comando](a)
 
 
 if __name__ == "__main__":
