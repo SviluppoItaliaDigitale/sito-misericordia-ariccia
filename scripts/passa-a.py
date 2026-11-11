@@ -26,7 +26,7 @@ Comandi
                                 risposte dello strumento, canale muto, crediti esauriti, controlli;
                                 in fondo le altre PR aperte di ChatGPT o Gemini, che non sono
                                 passaggi (rami chatgpt/* senza il commit «Bacheca: PR #…», rami
-                                codex/* e gemini/* che nessun passaggio riconosce come consegna),
+                                codex/*, gemini/* e grok/* che nessun passaggio riconosce come consegna),
                                 e i rami auto/* delle AI automatiche rimasti senza PR (consegne
                                 da chiudere con --ramo, tentativi non riusciti da lasciare)
   riavvia --pr N [--con-codex]  ristampa il testo di avvio di una PR già aperta (e, con
@@ -87,7 +87,7 @@ NOMI_OK = {NOME_OK.lower(), "github"}
 BACHECA = "COORDINAMENTO.md"
 PREFISSO_RAMO = "chatgpt/"
 # Rami degli strumenti che possono contenere lavoro fuori dai passaggi (in riserva o da una richiesta della bacheca).
-RAMI_FUORI_PASSAGGIO = ("codex/", "gemini/", "auto/")   # auto/: AI automatiche (lavoratore-ai.py)
+RAMI_FUORI_PASSAGGIO = ("codex/", "gemini/", "grok/", "auto/")   # auto/: AI automatiche (lavoratore-ai.py)
 COMMENTO_AVVIO = "@codex esegui la richiesta nella descrizione"
 COMMENTO_AVVIO_CODA = (
     "\n\nLavora su questo ramo e fai push qui: non aprire altre pull request, non unire e "
@@ -764,7 +764,7 @@ def cmd_stato(args) -> None:
         stato_ramo, altri = _esito_ramo_auto(repo, base, sha)
         print(f"  => {_giudizio_auto(stato_ramo, altri, f'chiudi --ramo {nome}')}")
     if not mostrate and not fuori and not senza_pr:
-        info("nessuna PR aperta sui rami chatgpt/*, codex/* o gemini/*")
+        info("nessuna PR aperta sui rami chatgpt/*, codex/*, gemini/* o grok/*")
 
 
 def _rami_auto_senza_pr(repo: str, aperte: list) -> list:
@@ -1480,7 +1480,7 @@ def cmd_chiudi(args) -> None:
          "(autore: il profilo GitHub di Alessandro, cioè Alessandro Cuollo o IU0QVW)")
     esito = gh_api(f"repos/{repo}/git/refs/heads/{ramo}", "DELETE", ok_se=("422", "404"), tollerante=True)
     if isinstance(esito, tuple):
-        if ramo.startswith(("chatgpt/", "codex/", "gemini/", "auto/", "claude/")):
+        if ramo.startswith(("chatgpt/", "codex/", "gemini/", "grok/", "auto/", "claude/")):
             info(f"ramo {ramo} non cancellato da qui (il canale di questa sessione non lo permette): "
                  "lo toglie il workflow «Togli la firma dello strumento» alla chiusura della PR")
         else:

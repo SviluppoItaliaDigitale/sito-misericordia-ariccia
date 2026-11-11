@@ -4,7 +4,7 @@ File interno: Hugo non lo pubblica. Lo usano Claude e ChatGPT per passarsi lavor
 
 <!-- PROTOCOLLO-COMUNE:INIZIO — testo identico in tutti i repository di Alessandro. Copia di riferimento: assistente-personale/COORDINAMENTO.md. Se lo cambi, cambialo in tutti e cinque i repository nello stesso lavoro. -->
 
-## Protocollo comune Claude ⇄ ChatGPT ⇄ Gemini (uguale in tutti i repository)
+## Protocollo comune Claude ⇄ ChatGPT ⇄ Gemini ⇄ Grok (uguale in tutti i repository)
 
 Valido dall'11/10/2026 in tutti i repository di Alessandro: `sito-pc-genzano`, `social-pc-genzano`, `sito-misericordia-ariccia`, `cooprimavera`, `assistente-personale`. Il file si chiama sempre `COORDINAMENTO.md` e sta sempre nella cartella principale del repository. Questa prima parte è identica ovunque; la seconda parte, «Questo repository», cambia da repository a repository.
 
@@ -99,6 +99,8 @@ Se un lavoro non si può passare (sotto, «Che cosa non si passa»), o non si pu
 **Che cosa non si passa.** Allerte ed emergenze vere, articoli nuovi che devono passare dai gate editoriali, pagine legali, lavori che richiedono credenziali, spese o invii a persone: restano a Claude o ad Alessandro, come in «Quando ChatGPT non unisce e si ferma».
 
 **Gemini.** Jules chiude il 31/12/2026 e non si usa. Gemini lavora con Antigravity: sul PC con `agy`; dal cellulare comandando il PC acceso (Remote Control, antigravity.google.com), e a PC spento con i Remote Agents di Antigravity, quando Google li avrà attivati per l'account di Alessandro (distribuzione graduale, non ancora attivi il 04/11/2026). Fino ad allora, a PC spento, i lavori che sarebbero andati a Gemini li fa Claude o passano a ChatGPT, oppure a «Gemini automatico» (sotto).
+
+**Grok (dal 09/11/2026; regole dell'11/11/2026).** Grok Bot è un aiutante in parallelo: non sostituisce Claude e non entra nella catena di riserva (ChatGPT, poi Gemini). Lavora sui repository con il connettore GitHub dell'account di Alessandro e, come Gemini, **solo nei repository pubblici** (`cooprimavera`, `sito-misericordia-ariccia`, `sito-pc-genzano`): mai su `assistente-personale` e `social-pc-genzano`, mai dati personali, mai il Cervello su Drive. Ogni suo lavoro va su un ramo `grok/<argomento>-AAAAMMGG` con una pull request, mai su `main`; la chiude chi controlla (Claude o chi la sostituisce) con `passa-a.py chiudi --pr N --qualsiasi`, sempre con squash e messaggio scritto. I filtri della firma (`imposta-identita-git.sh`, `.githooks/commit-msg`) e il workflow «Togli la firma dello strumento» riconoscono Grok e i rami `grok/…`. Gli si passano lavori ben specificati, nelle sette parti di `passa-a.py modello`, e seconde letture; non gli si passa ciò che non si passa a ChatGPT (§ «Che cosa non si passa»).
 
 ### AI automatiche e consulto fra AI (dal 05/11/2026)
 

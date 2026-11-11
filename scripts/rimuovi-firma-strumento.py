@@ -17,7 +17,7 @@ Il resto del testo resta identico.
 
 Pull request dei passaggi (dal 14/10/2026). Quando si chiude una pull request
 su un ramo `chatgpt/…` (passaggio preparato con `passa-a.py nuovo` o lavoro di
-ChatGPT), `gemini/…` (lavoro di Gemini) o `codex/…` (consegna aperta dal task),
+ChatGPT), `gemini/…` (lavoro di Gemini), `grok/…` (lavoro di Grok, dall'11/11/2026) o `codex/…` (consegna aperta dal task),
 toglie quello che `passa-a.py chiudi` dovrebbe togliere e che dalle sessioni
 cloud non può cancellare (il canale di GitHub risponde 403): il commento di avvio «@codex …» dell'account, i commenti degli
 account degli strumenti (i rapporti di github-actions[bot] restano) e il ramo.
@@ -85,10 +85,10 @@ RIGHE_FIRMA = [
 RIGA_SEPARATORE = re.compile(r"^(?:-{3,}|\*{3,}|_{3,})$")
 
 # Pull request dei passaggi e account degli strumenti: gli stessi criteri di `passa-a.py`.
-RAMO_PASSAGGIO = re.compile(r"^(?:chatgpt|codex|gemini|auto)/")
+RAMO_PASSAGGIO = re.compile(r"^(?:chatgpt|codex|gemini|grok|auto)/")
 # Rami di lavoro delle sessioni: dopo il merge non servono più e il loro nome resterebbe in vista.
 RAMO_SESSIONE = re.compile(r"^claude/")
-BOT_STRUMENTO = re.compile(r"codex|chatgpt|openai|claude|anthropic|gemini|jules|copilot", re.IGNORECASE)
+BOT_STRUMENTO = re.compile(r"codex|chatgpt|openai|claude|anthropic|gemini|jules|grok|xai|copilot", re.IGNORECASE)
 
 
 def pulisci(testo: str) -> str:
@@ -206,7 +206,7 @@ class Contatore:
 
 
 def pulisci_passaggio(pr: dict, c: Contatore) -> None:
-    """Pull request chiusa su un ramo chatgpt/*, codex/*, gemini/* o auto/*: toglie il commento di avvio «@codex …»
+    """Pull request chiusa su un ramo chatgpt/*, codex/*, gemini/*, grok/* o auto/*: toglie il commento di avvio «@codex …»
     dell'account, i commenti degli strumenti e il ramo. Pull request unita da un ramo claude/*: solo
     il ramo. Il ramo resta se un'altra PR aperta lo usa o se ha commit arrivati dopo la chiusura."""
     n = pr["number"]
@@ -325,7 +325,7 @@ def modo_tutti(dal: str, massimo: int, prova: bool) -> tuple[int, int]:
         elif dell_account(o):
             c.correggi("PATCH", f"{base}/issues/{n}", "body", o.get("body") or "", f"descrizione issue #{n}")
 
-    print("Pull request chiuse: rami chatgpt/*, codex/* e gemini/* e rami di lavoro claude/* uniti")
+    print("Pull request chiuse: rami chatgpt/*, codex/*, gemini/* e grok/* e rami di lavoro claude/* uniti")
     for pagina in range(1, 51):
         lotto = chiama("GET", f"{base}/pulls?state=closed&sort=updated&direction=desc"
                               f"&per_page=100&page={pagina}") or []
