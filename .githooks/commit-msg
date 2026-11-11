@@ -25,8 +25,8 @@ PRIMA=$(mktemp); cp "$MSG_FILE" "$PRIMA"
 
 # Righe bandite: rimando di sessione, QUALSIASI co-autore (nei repository di Alessandro
 # ogni lavoro e' a sua firma: un trailer Co-authored-by e' sempre uno strumento — Claude,
-# Codex/ChatGPT, Gemini/Jules, Copilot…), firme dei generatori.
-grep -viE '^[[:space:]]*(Claude-Session|Co-?authored-by[[:space:]]*:|Generated (with|by)|🤖|Made with[[:space:]].*(Claude|Codex|ChatGPT|Gemini|Copilot))' \
+# Codex/ChatGPT, Gemini/Jules, Grok, Copilot…), firme dei generatori.
+grep -viE '^[[:space:]]*(Claude-Session|Co-?authored-by[[:space:]]*:|Generated (with|by)|🤖|Made with[[:space:]].*(Claude|Codex|ChatGPT|Gemini|Grok|Copilot))' \
   "$PRIMA" > "$MSG_FILE"
 
 # Via le righe vuote accumulate in fondo.
