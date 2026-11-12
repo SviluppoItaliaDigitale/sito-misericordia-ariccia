@@ -198,6 +198,7 @@ if(CFG.card){ document.querySelector('#card .s').textContent=CFG.card.s; documen
 if(CFG.serie && CFG.serie.includes('2ª')) $('fonte').textContent='Fonte: linee guida ERC/IRC 2025 · informazioni generali, non sostituiscono un corso';
 // Argomenti non trattati (o non solo) dalle linee guida IRC/ERC 2025: le fonti vere sono nell'articolo (21/10/2026).
 if(CFG.fonte) $('fonte').textContent=CFG.fonte;
+if(CFG.motto) $('motto').textContent=CFG.motto;   // frase finale diversa dal motto di sempre (es. «Che Iddio te ne renda merito.»)
 if(!CFG.num) $('fonte').textContent='Misericordia di Ariccia · Piazzale Aldo Moro 6 · sede@misericordia-ariccia.it';
 // Email e siti interi sulla stessa riga: «sede@misericordia-» da una parte e «ariccia.it» dall'altra si legge male
 // (succedeva con Montserrat, più larga di Jost; prova_impaginazione.js lo controlla).

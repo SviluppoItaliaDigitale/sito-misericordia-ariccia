@@ -26,8 +26,8 @@ def pron(text):
 # Voce: 'nicola' o 'sara' (Kokoro, scelte da Alessandro) oppure 'paola' (Piper). Si sceglie col campo «voce» del video.
 VOCE = 'nicola'
 KOKORO_PY = os.environ.get('KOKORO_PY', str(W / 'kokoro' / 'venv' / 'bin' / 'python'))
-def piper(text, out, ls=1.0, sil=0.25):
-    text = pron(text)
+def piper(text, out, ls=1.0, sil=0.25, voce=None):
+    text = pron(text); VOCE = voce or globals()['VOCE']
     if VOCE == 'paola':
         subprocess.run(['python3','-m','piper','-m',MODEL,'--length-scale',str(ls),'--sentence-silence',str(sil),'-f',str(out)], input=text, text=True, capture_output=True, check=True)
         return
@@ -67,6 +67,11 @@ def notifica(vol=0.10):
     return out / np.abs(out).max() * vol
 ANTE = '--anteprima' in sys.argv
 SUBS = '--sottotitoli' in sys.argv
+# --bozza: per i video con le voci ElevenLabs non ancora generate (crediti finiti), monta una bozza con le voci Kokoro
+# («sara» per la voce femminile, «nicola» per le altre) in out/<chiave>-bozza.mp4. Serve a vedere testi, disegni e ritmo:
+# non si pubblica.
+BOZZA = '--bozza' in sys.argv
+BOZZA_VOCI = {'angelina': 'sara'}
 AUDIO_DA = Path(sys.argv[sys.argv.index('--audio-da') + 1]).resolve() if '--audio-da' in sys.argv else None
 CHIAVI = [a for i, a in enumerate(sys.argv[1:], 1) if not a.startswith('--') and sys.argv[i - 1] != '--audio-da']
 if AUDIO_DA and len(CHIAVI) != 1: sys.exit('--audio-da vale per un video solo')
@@ -100,9 +105,9 @@ for key in CHIAVI:
     VOCE = v.get('voce', 'nicola')
     if VOCE == 'paola' and not Path(MODEL).exists():
         sys.exit(f'Manca la voce Piper: {MODEL}\nScaricala come spiegato in README.md (it_IT-paola-medium.onnx e .onnx.json).')
-    if VOCE not in ('paola', 'luca') and not Path(KOKORO_PY).exists():
+    if (VOCE not in ('paola', 'luca') or BOZZA) and not Path(KOKORO_PY).exists():
         sys.exit('Manca Kokoro: prepara kokoro/ come spiegato in README.md.')
-    if VOCE == 'luca':   # voce ElevenLabs: frasi già generate in voci-luca/ (voce_luca.py), con il testo identico
+    if VOCE == 'luca' and not BOZZA:   # voce ElevenLabs: frasi già generate in voci-luca/ (voce_luca.py), con il testo identico
         import voce_luca
         manca = [str(i) for i, sc, ok in voce_luca.stato(key) if not ok]
         if manca: sys.exit(f'{key}: mancano le frasi della voce Luca {", ".join(manca)} (python3 voce_luca.py elenco {key})')
@@ -115,7 +120,11 @@ for key in CHIAVI:
     for i, sc in enumerate(v['scene']):
         wav = d / f'v{i}.wav'
         tf = d / f'v{i}.txt'
-        if VOCE == 'luca':
+        if VOCE == 'luca' and BOZZA:
+            vk = BOZZA_VOCI.get(sc.get('voce_di'), 'nicola'); firma = 'bozza|' + vk + '|' + pron(sc['voce'])
+            if not wav.exists() or not tf.exists() or tf.read_text() != firma:
+                piper(sc['voce'], wav, 1.0, 0.45, voce=vk); tf.write_text(firma)
+        elif VOCE == 'luca':
             src = W / 'voci-luca' / key / f'{i}.mp3'
             # La cache vale per quel testo e per quel file: una frase rigenerata con lo stesso testo (per una pronuncia
             # sbagliata) deve sostituire la vecchia (rilievo della revisione automatica sulla PR #240).
@@ -128,7 +137,9 @@ for key in CHIAVI:
                 tf.write_text(firma)
         elif not wav.exists() or not tf.exists() or tf.read_text() != VOCE + '|' + pron(sc['voce']):
             piper(sc['voce'], wav, v.get('voce_lenta', 1.0), 0.6 if v.get('voce_lenta') else 0.25); tf.write_text(VOCE + '|' + pron(sc['voce']))
-        a = rd(wav); Dv = len(a) / SR
+        a = rd(wav)
+        if sc.get('pausa'): a = np.concatenate([a, np.zeros(int(sc['pausa'] * SR), np.float32)])   # silenzio voluto dopo la battuta
+        Dv = len(a) / SR
         if sc.get('conta'):
             n = sc['conta']; b = 60 / bpm
             t_abs = acc + PRE + Dv + 0.5
@@ -148,6 +159,7 @@ for key in CHIAVI:
             voci.append(a); D.append(round(Dv, 3))
         acc += PRE + D[-1] + POST + (CODA if i == len(v['scene']) - 1 else 0)
     T = round(acc, 2)
+    if T > 90 and not v['num']: print(f'ATTENZIONE {key}: dura {T} s, oltre i 90 s che la Reels API di Facebook accetta (CLAUDE.md, § «3. Social»): accorciare', flush=True)
     if SUBS:
         nome = f'primo-soccorso-{key}' if v['num'] else key
         (OUT / f'{nome}.vtt').write_text(vtt(v, D, conta, PRE, POST, CODA)); print('SOTTOTITOLI', nome, T, flush=True); continue
@@ -192,7 +204,8 @@ for key in CHIAVI:
         print(r.stdout[-2000:], r.stderr[-2000:], flush=True); print('ANTEPRIMA', key, T, flush=True); continue
     r = subprocess.run(['node',str(W/'frames.js')],cwd=OUT,env=env,capture_output=True,text=True)
     if r.returncode: print(r.stderr[-3000:]); sys.exit(1)
-    out = OUT / (f'primo-soccorso-{key}.mp4' if v['num'] else f'{key}.mp4')
+    # La bozza ha sempre il suo nome, anche per i video numerati: non deve sovrascrivere un video finito né finire in copia.sh.
+    out = OUT / ((f'primo-soccorso-{key}' if v['num'] else key) + ('-bozza' if BOZZA else '') + '.mp4')
     if AUDIO_DA:   # audio del video già montato, copiato com'è (nessuna nuova codifica)
         subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(AUDIO_DA),'-map','0:v','-map','1:a','-c','copy','-shortest','-movflags','+faststart',str(out)],check=True)
     else:
