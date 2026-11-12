@@ -16,6 +16,8 @@ Vale in tutti i repository di Alessandro, per ogni sessione (PC, cellulare, clou
 Gemini lavora solo nei repository pubblici (`cooprimavera`, `sito-misericordia-ariccia`, `sito-pc-genzano`), non riceve dati personali e non legge il Cervello su Drive. Grok, riserva quando Claude è ferma, lavora su tutti i repository e legge e aggiorna il Cervello, senza mettere dati personali nei contenuti pubblici (11/11/2026).
 
 ## Eccezione
+Dal 12/11/2026 i crediti che una licenza obbliga a dare (musica CC BY, dati del rilievo, licenza della voce di riserva) si scrivono nella descrizione del video sul sito e nei post social, mai dentro il video: `comunicazione-social.md`, § «Voce, musica ed effetti dei video».
+
 I file di governo interni non pubblicati (`CLAUDE.md`, `AGENTS.md`, `COORDINAMENTO.md`, `.claude/`, `memoria/`, manuali operativi interni) parlano necessariamente degli strumenti.
 
 ## Controllo prima di dichiarare chiuso un lavoro

@@ -51,8 +51,15 @@ Per testi, grafiche, foto e video dei social di Misericordia di Ariccia, PC Genz
 - «Dal 1244 al fianco del prossimo» non si adatta da soli: varianti concordate con la Confraternita (W1).
 - Mezzo appena comprato: mai «finanziato dal Ministero»; si può dire che si chiederà il contributo previsto dal Codice del Terzo settore; logo del Ministero mai senza autorizzazione (Contributi).
 
+## Voce, musica ed effetti dei video (12/11/2026)
+- **Ordine delle voci:** prima sempre **Luca** (ElevenLabs) finché ci sono crediti; se mancano, **Damien** (gratuita e senza limiti, `assistente-personale/strumenti/voce-riserva/voce_riserva.py`); dove Damien non è ammesso, **Serena** (terza voce, skill `colonna-sonora`); quarta, **Paola** (la voce dei primissimi video di settembre 2026, Piper `it_IT-paola-medium`). Prima di usare una riserva si riprova Luca con una frase: una richiesta rifiutata non costa.
+- **Damien solo per video non commerciali e non finanziati:** sì Protezione Civile, Misericordia (non raccolte fondi né 5 per mille), ARI, AGESCI; no Cooprimavera, canali monetizzati, progetti pagati da contributi pubblici (licenza Coqui Public Model License).
+- **Crediti:** dentro il video nulla di esterno ai lavori dell'ente. Nella descrizione sul sito e nei post social dove il video compare: credito della musica, attribuzione del rilievo (video 3D) e, con Damien, «Voce sintetica: modello distribuito con licenza Coqui Public Model License (coqui.ai/cpml).». È l'unica eccezione a `firma-dei-lavori.md`, perché la chiede la licenza.
+- **Come si legge (12/11/2026, dopo l'ascolto di Alessandro):** il 112 si dice sempre «uno, uno, due», mai «centododici» (a schermo e nei sottotitoli resta «112»); con le voci di riserva le parole accentate male si scrivono con l'accento grafico («mèteo») e la ripresa si fa ascoltare ad Alessandro prima del render.
+- Cambiare voce vuol dire rifare il video: le scene durano quanto le frasi.
+
 ## Controllo prima di pubblicare
 - [ ] Obiettivo, pubblico, invito all'azione; formato giusto; messaggio chiaro, poco testo, 100 px dai bordi fuori dai modelli ufficiali.
 - [ ] Logo originale e intatto; contrasto anche per daltonici; nome dell'ente e cornice; bianco e nero solo per il lutto; nessun fotomontaggio che aggiunge.
 - [ ] Volti e dati come in «Persone nelle foto»; parole su disabilità e fragilità come sopra.
-- [ ] Testo alternativo o didascalia equivalente; sottotitoli ricontrollati; musica con licenza; originali archiviati con nomi chiari.
+- [ ] Testo alternativo o didascalia equivalente; sottotitoli ricontrollati; musica con licenza; voce e crediti come in «Voce, musica ed effetti dei video»; originali archiviati con nomi chiari.
