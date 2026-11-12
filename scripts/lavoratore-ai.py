@@ -135,7 +135,10 @@ SEGRETI = re.compile(r"ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|gh[ousr
                      r"\"(?:refresh|access|id)_token\"\s*:\s*\"[^\"]{10,}|AKIA[0-9A-Z]{16}|"
                      r"eyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}")   # l'ultima: i token JWT
 # Li cura il sistema, non l'AI che lavora. .githooks: i ganci dei commit li eseguirebbe il job che scrive.
-VIETATI = ("COORDINAMENTO.md", ".github", ".githooks")
+# Impostazioni e ganci delle sessioni (.claude/settings*.json, .claude/hooks, .mcp.json, .codex): si eseguono da soli
+# all'avvio di ogni sessione, anche sul PC con le sue credenziali; un'AI automatica non li cambia mai.
+VIETATI = ("COORDINAMENTO.md", ".github", ".githooks", ".claude/settings.json", ".claude/settings.local.json",
+           ".claude/hooks", ".mcp.json", ".codex")
 # Perché un lavoro non si pubblica: il codice viaggia nell'esito, la frase la sceglie solo il job che consegna.
 BLOCCHI = {
     "segreto": "nel lavoro c'era un testo che sembra una chiave d'accesso",

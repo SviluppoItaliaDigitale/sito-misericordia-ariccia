@@ -37,7 +37,7 @@ jobs:
       TITOLO: "Link rotti sul sito"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Installa Hugo
         uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3.2.1
@@ -49,7 +49,7 @@ jobs:
         run: hugo --minify
 
       - name: Ripristina la cache di lychee
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: .lycheecache
           key: cache-lychee-${{ github.sha }}
@@ -127,7 +127,7 @@ jobs:
       TITOLO: "Parole dei Papi: fonte Vatican News non leggibile"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Controlla la sezione e aggiorna la issue
         run: |
