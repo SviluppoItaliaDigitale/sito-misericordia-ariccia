@@ -18,6 +18,7 @@ ogni fotogramma la firma «Misericordia di Ariccia» e la cornice di microtesto
 | `contenuti2.py` | 2ª serie (13 video) + speciale Giornata del volontariato |
 | `contenuti3.py` | video dei servizi: accompagnamento sociale e «L'ultimo viaggio» (voce più lenta con `voce_lenta`, musica `dolce`) |
 | `contenuti4.py` | campagna volontari «Esci dal post. Entra nella squadra» (novembre-dicembre 2026): quattro video da un minuto, uno per ogni uscita del giovedì |
+| `contenuti6.py`, `ill8.js` | «Che cosa le ha insegnato la vita?» (chiave `ascoltami`): intervista **immaginata**, e dichiarata tale nel video, fra Matteo, giovane volontario, e Maria, 87 anni, per invitare al volontariato dell'ascolto. Tre voci ElevenLabs (campo `voce_di` della scena: `andrea`, `angelina`, senza campo Luca), `regia` con le indicazioni di recitazione fra parentesi quadre per il modello `eleven_v4`, `pausa` per il silenzio dopo una battuta. Le voci vanno ancora generate: il 12/11/2026 i crediti ElevenLabs del mese erano finiti |
 | `ill.js`, `ill2.js`, `ill3.js`, `ill4.js` | libreria dei disegni animati (`ILL[nome]({u, p, D, A})`); `ill4.js`: disegni della campagna volontari (`ascolto`, `sportello`, `tempo-cuore`) |
 | `riferimenti/livrea-ambulanza-facsimile.jpg` | fac-simile della livrea delle nostre ambulanze: `miseAmbulanza` in `ill3.js` è ricalcata da qui (non inventare livree) |
 | `riferimenti/volontari-divisa.png` | riferimento per i volontari: SOLO la divisa giallo-ciano (blu, quella sanitaria; l'arancione è della protezione civile, settore non attivo: non usarla) con colletto e fasce giallo fluo, filetti argento, triangolo e bandiera (`volunteer()` in `ill3.js`, `bust(…,{divisa:true})` in `ill.js`) |
@@ -25,7 +26,7 @@ ogni fotogramma la firma «Misericordia di Ariccia» e la cornice di microtesto
 | `musica.py` | base musicale originale: `musica.py DURATA out.wav [BPM] [base\|dolce]` (`dolce`: La min, senza percussioni) |
 | `musica/` | brani scelti da Alessandro (Kevin MacLeod, incompetech.com, CC BY 4.0): campo `brano` del video (`morning`, `touching-moments-two-higher`); di default `heartwarming`; i video con `bpm=110` (compressioni a tempo) usano `musica.py`. Ogni nuovo video va aggiunto a `data/musica_video.json` per il credito sotto il video e nei post |
 | `kokoro_voce.py` | voce Kokoro scelta da Alessandro: **Nicola** (maschile) in tutti i video. «Sara» è scartata (legge male, senza intonazione); `voce='paola'` torna a Piper |
-| `voce_luca.py`, `voci-luca/` | voce **Luca** di ElevenLabs («Luca – Warm Italian Narrator», `voice_id` 1s5ETcPtsJ9W2cUUQrDb, modello `eleven_multilingual_v2`), scelta di Alessandro il 1/11/2026 per i video con `voce='luca'`: una frase per scena, generata con il connettore ElevenLabs della sessione e salvata con `voce_luca.py salva`; `pipeline.py` la usa solo se il testo salvato coincide con la scena (`voce_luca.py elenco` dice che cosa manca). Prima del montaggio si trascrive ogni frase con faster-whisper e si rigenera quella letta male (es. «Ariccia» con una c). Con `effetti=True` il montaggio aggiunge un fruscio ai cambi di scena e una notifica nella scena del WhatsApp, generati nel codice |
+| `voce_luca.py`, `voci-luca/` | voce **Luca** di ElevenLabs («Luca – Warm Italian Narrator», `voice_id` 1s5ETcPtsJ9W2cUUQrDb, modello `eleven_multilingual_v2`), scelta di Alessandro il 1/11/2026 per i video con `voce='luca'`: una frase per scena, generata con il connettore ElevenLabs della sessione e salvata con `voce_luca.py salva`; `pipeline.py` la usa solo se il testo salvato coincide con la scena (`voce_luca.py elenco` dice che cosa manca). Prima del montaggio si trascrive ogni frase con faster-whisper e si rigenera quella letta male (es. «Ariccia» con una c). Per i video a più voci la tabella `VOCI` di `voce_luca.py` dà voce e modello di ogni battuta, e `elenco` li scrive accanto al testo da far leggere. Con `effetti=True` il montaggio aggiunge un fruscio ai cambi di scena e una notifica nella scena del WhatsApp, generati nel codice |
 | `pipeline.py` | regia: voce → tempi → HTML → fotogrammi → mix audio → MP4 (con `--audio-da` rifà solo le immagini) |
 | `frames.js`, `anteprima.js`, `shot.js` | cattura con Chromium (video completo, foglio di anteprima, singoli fotogrammi) |
 | `disegno.js` | solo il disegno di una scena, senza scritte e senza la fascia del video, ritagliato 1080×1350: è la foto della grafica della news nel modello nazionale «post con fascia due righe» (fascia «Primo soccorso / passo passo»). Uso da `out/`: `KEY=dae S=0 F=0.9 node ../disegno.js` → `out/dae/disegno.png` |
@@ -95,6 +96,10 @@ python3 pipeline.py anafilassi --audio-da ../../static/video/primo-soccorso-anaf
 Prima di montare controlla che i tempi siano gli stessi (sottotitoli calcolati uguali al
 `.vtt` accanto al video, durata entro 0,2 s), poi copia l'audio del video così com'è,
 senza ricodificarlo. Un video per volta.
+
+Se le voci ElevenLabs non si possono generare (crediti del mese finiti), `python3 pipeline.py <chiave> --bozza` monta
+`out/<chiave>-bozza.mp4` con le voci Kokoro al loro posto: serve a guardare testi, disegni e ritmo, **non si pubblica**.
+Un video senza numero che supera i 90 secondi fa scrivere un avviso: oltre quella durata la Reels API di Facebook lo rifiuta.
 
 Per un singolo fotogramma di controllo (dopo un'anteprima o un render):
 `cd out && KEY=ictus T=2:0.6,5:0.9 node ../shot.js` → `out/ictus/s0.png`, `s1.png`.

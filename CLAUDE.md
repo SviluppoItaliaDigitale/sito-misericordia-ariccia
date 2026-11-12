@@ -287,6 +287,13 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
   serve guidare l'ambulanza»), 26/11 trasporti, 3/12 formazione ed eventi, poi la Giornata del
   volontariato del 5/12. Testi dei video in `contenuti4.py`, disegni in `ill4.js`. Invito sempre
   uguale: «Scrivi VOLONTARIO su WhatsApp al 348 4068657» (`https://wa.me/393484068657?text=VOLONTARIO`).
+- **«Che cosa le ha insegnato la vita?»** (richiesta di Alessandro del 12/11/2026): video per il volontariato dell'ascolto
+  accanto a persone anziane o con disabilità, un'intervista **immaginata** fra Matteo, giovane volontario, e Maria, 87 anni.
+  Il video dice due volte che la storia è immaginata (etichetta all'inizio, voce alla fine): non si toglie. Testi in
+  `contenuti6.py` (chiave `ascoltami`), disegni in `ill8.js`, tre voci ElevenLabs con la recitazione scritta nel campo
+  `regia`. **Da finire**: le voci (il 12/11/2026 i crediti ElevenLabs del mese erano a zero; `python3 voce_luca.py elenco
+  ascoltami` dà le undici battute con voce e modello), poi montaggio, `copia.sh`, `data/musica_video.json`, news e grafica.
+  Nel frattempo `pipeline.py ascoltami --bozza` monta una bozza con voci provvisorie, da non pubblicare.
 - Social: `social_video` + `social_video_copertina` nel front matter → Reel su
   Instagram e video su Facebook; `social_testo` per il testo su misura.
 

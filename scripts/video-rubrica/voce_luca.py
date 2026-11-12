@@ -16,11 +16,19 @@ import contenuti
 
 VOICE_ID = '1s5ETcPtsJ9W2cUUQrDb'
 MODELLO = 'eleven_multilingual_v2'
+# Voci dei video a più voci (campo «voce_di» della scena; senza, parla Luca): nome, voice_id e modello. Con eleven_v4 la
+# scena può avere «regia», il testo con le indicazioni di recitazione fra parentesi quadre ([softly], [elderly voice]…).
+VOCI = {'luca': (VOICE_ID, MODELLO),
+        'andrea': ('ERE9g4sDsfBwzFT0GvPh', 'eleven_v4'),     # «Andrea, calm and warm vlogger»: il giovane volontario
+        'angelina': ('MLpDWJvrjFIdb63xbJp8', 'eleven_v4')}   # «Angelina - Storyteller»: la signora anziana
 CARTELLA = W / 'voci-luca'
 
 
 def testo(sc):
-    return sc['voce'].strip()
+    """Che cosa è stato fatto leggere: per Luca il testo della scena (come sempre); per le altre voci anche chi parla
+    e la regia, così una battuta va rigenerata se cambia la voce o la recitazione."""
+    if not sc.get('voce_di') and not sc.get('regia'): return sc['voce'].strip()
+    return f"{sc.get('voce_di', 'luca')}\n{(sc.get('regia') or sc['voce']).strip()}"
 
 
 def stato(key):
@@ -37,8 +45,10 @@ if __name__ == '__main__':
         mancano = 0
         for key in sys.argv[2:]:
             for i, sc, ok in stato(key):
-                if not ok: mancano += 1; print(f'{key}\t{i}\t{testo(sc)}')
-        print(f'# {mancano} frasi da generare (voice_id {VOICE_ID}, modello {MODELLO})', file=sys.stderr)
+                if ok: continue
+                chi = sc.get('voce_di', 'luca'); vid, mod = VOCI[chi]; mancano += 1
+                print(f"{key}\t{i}\t{chi} {vid} {mod}\t{(sc.get('regia') or sc['voce']).strip()}")
+        print(f'# {mancano} frasi da generare (voce, voice_id e modello accanto a ogni frase)', file=sys.stderr)
     else:
         key, i, url = sys.argv[2], int(sys.argv[3]), sys.argv[4]
         sc = contenuti.V[key]['scene'][i]

@@ -155,3 +155,5 @@ from contenuti4 import V4
 V.update(V4)
 from contenuti5 import V5
 V.update(V5)
+from contenuti6 import V6
+V.update(V6)
