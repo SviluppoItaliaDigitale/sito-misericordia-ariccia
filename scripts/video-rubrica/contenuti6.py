@@ -5,6 +5,8 @@
 # narrante alla fine («Maria è un personaggio di fantasia»). Maria e Matteo non esistono: niente testimonianze inventate
 # presentate come vere (.claude/rules/grafica.md, § «Limiti che restano»). I fatti sul servizio vengono dal sito
 # (Diventa volontario, Servizi sociali), come negli altri video della campagna (contenuti4.py).
+# Si chiude con il motto delle Misericordie (Alessandro, 12/11/2026): lo dice Maria a Matteo come ultimo grazie, come
+# nel glossario del sito («il motto con cui le Misericordie salutano e ringraziano»), e resta scritto nella scheda finale.
 # Tre voci ElevenLabs (voce_luca.py, tabella VOCI): Matteo = «andrea», Maria = «angelina», chiusura = «luca».
 # «regia» è il testo mandato alla voce, con le indicazioni di recitazione fra parentesi quadre (modello eleven_v4);
 # «pausa» aggiunge secondi di silenzio dopo la battuta. Niente fruscii ai cambi di scena: qui serve il silenzio.
@@ -18,7 +20,7 @@ def A(title, voce, regia, ill, tags=None, **kw):   # Maria, 87 anni: risponde
 
 V6 = {
 'ascoltami': dict(nome='Che cosa le ha insegnato la vita?', num=0, serie=SER, brano='touching-moments-two-higher', voce='luca',
-  card=CARD, scene=[
+  card=CARD, motto='Che Iddio te ne renda merito.', scene=[
   M(['Che cosa le ha', 'insegnato la *vita*?'], 'Maria, lei ha ottantasette anni. Che cosa le ha insegnato la vita?',
     '[softly] [curious] Maria, lei ha ottantasette anni. [short pause] Che cosa le ha insegnato la vita?',
     tags=[['Una storia immaginata', .02]], sub='Maria, lei ha 87 anni. Che cosa le ha insegnato la vita?'),
@@ -38,9 +40,9 @@ V6 = {
     'tavola-due', pausa=1.0),
   M(['Di che cosa', 'ha *bisogno*?'], 'E oggi, di che cosa ha bisogno?', '[softly] [warmly] E oggi, di che cosa ha bisogno?'),
   A(['Mi hai dato', '*tutto*.'],
-    'Di niente, figlio mio. Solo di qualcuno che si sieda qui, e mi ascolti. Tu oggi non mi hai portato niente. Eppure mi hai dato tutto.',
-    '[elderly voice] [warmly] [slowly] Di niente, figlio mio. [short pause] Solo di qualcuno che si sieda qui, e mi ascolti. [pause] [trembling voice] Tu oggi non mi hai portato niente. [short pause] Eppure mi hai dato tutto.',
-    'insieme', [['Qualcuno che ascolti', .4]], pausa=0.8),
+    'Di niente, figlio mio. Solo di qualcuno che si sieda qui, e mi ascolti. Tu oggi non mi hai portato niente. Eppure mi hai dato tutto. Che Iddio te ne renda merito.',
+    '[elderly voice] [warmly] [slowly] Di niente, figlio mio. [short pause] Solo di qualcuno che si sieda qui, e mi ascolti. [pause] [trembling voice] Tu oggi non mi hai portato niente. [short pause] Eppure mi hai dato tutto. [pause] [warmly] Che Iddio te ne renda merito.',
+    'insieme', [['Qualcuno che ascolti', .3], ['Che Iddio te ne renda merito', .88]], pausa=0.6),
   S('Una storia immaginata', ['La solitudine', 'è *vera*.'], 'Maria è un personaggio di fantasia. La sua solitudine, no.', 'finestra-accesa'),
   S('Scrivici', ['Il primo passo:', 'un *messaggio*.'],
     'Tante persone anziane, o con disabilità, aspettano solo qualcuno che le ascolti. Scrivi «volontario» su WhatsApp al ' + TEL + '.',
