@@ -204,7 +204,8 @@ for key in CHIAVI:
         print(r.stdout[-2000:], r.stderr[-2000:], flush=True); print('ANTEPRIMA', key, T, flush=True); continue
     r = subprocess.run(['node',str(W/'frames.js')],cwd=OUT,env=env,capture_output=True,text=True)
     if r.returncode: print(r.stderr[-3000:]); sys.exit(1)
-    out = OUT / (f'primo-soccorso-{key}.mp4' if v['num'] else f'{key}-bozza.mp4' if BOZZA else f'{key}.mp4')
+    # La bozza ha sempre il suo nome, anche per i video numerati: non deve sovrascrivere un video finito né finire in copia.sh.
+    out = OUT / ((f'primo-soccorso-{key}' if v['num'] else key) + ('-bozza' if BOZZA else '') + '.mp4')
     if AUDIO_DA:   # audio del video già montato, copiato com'è (nessuna nuova codifica)
         subprocess.run([FF,'-v','error','-y','-i',str(d/'frames.mp4'),'-i',str(AUDIO_DA),'-map','0:v','-map','1:a','-c','copy','-shortest','-movflags','+faststart',str(out)],check=True)
     else:

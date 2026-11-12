@@ -98,7 +98,7 @@ Prima di montare controlla che i tempi siano gli stessi (sottotitoli calcolati u
 senza ricodificarlo. Un video per volta.
 
 Se le voci ElevenLabs non si possono generare (crediti del mese finiti), `python3 pipeline.py <chiave> --bozza` monta
-`out/<chiave>-bozza.mp4` con le voci Kokoro al loro posto: serve a guardare testi, disegni e ritmo, **non si pubblica**.
+`out/<nome del video>-bozza.mp4` con le voci Kokoro al loro posto: serve a guardare testi, disegni e ritmo, **non si pubblica**.
 Un video senza numero che supera i 90 secondi fa scrivere un avviso: oltre quella durata la Reels API di Facebook lo rifiuta.
 
 Per un singolo fotogramma di controllo (dopo un'anteprima o un render):
