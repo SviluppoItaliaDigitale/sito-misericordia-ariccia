@@ -73,7 +73,9 @@
       {{ end }}
       {{ with $letture }}
       <h2 class="lit-letture-titolo">Le letture di oggi</h2>
-      <div class="messale">{{ . | safeHTML }}</div>
+      {{/* Il testo arriva da un sito di terzi: se ne tiene solo il testo, con gli a capo.
+           Mai HTML altrui dentro la pagina (uno script nel feed finirebbe sul sito). */}}
+      <div class="messale">{{ range split (replaceRE `(?i)<br\s*/?>` "\n" (replaceRE `[\r\n]+` " " .)) "\n" }}{{ . | plainify | htmlUnescape }}<br>{{ end }}</div>
       <p class="lit-credit">Testo delle letture per gentile concessione di <a href="https://www.evangelizo.org" rel="noopener" target="_blank">Evangelizo.org</a>. Per la versione ufficiale e l'omelia fa fede <a href="https://www.vaticannews.va/it/vangelo-del-giorno-e-parola-del-giorno.html" rel="noopener" target="_blank">Vatican News</a>.</p>
       {{ end }}
       {{ with $papi }}

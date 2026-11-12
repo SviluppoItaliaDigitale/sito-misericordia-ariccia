@@ -59,7 +59,7 @@ jobs:
       accesso: ${{ steps.trova.outputs.accesso }}
     steps:
       - name: "📥 Bacheca e script dal ramo principale"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ github.event.repository.default_branch }}
           sparse-checkout: |
@@ -120,7 +120,7 @@ jobs:
       stato: ${{ steps.prendi.outputs.stato }}
     steps:
       - name: "📥 Checkout del ramo principale"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
@@ -152,7 +152,7 @@ jobs:
       contents: read
     steps:
       - name: "📥 Checkout del ramo di lavoro (senza credenziali salvate)"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ needs.prendi.outputs.sha }}
           fetch-depth: 0
@@ -195,7 +195,7 @@ jobs:
 
       - name: "📤 Pacchetto al job che consegna"
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lavoro
           path: ${{ runner.temp }}/lavoro
@@ -219,7 +219,7 @@ jobs:
       cambiato: ${{ steps.salva.outputs.cambiato }}
     steps:
       - name: "📥 Checkout del ramo di lavoro (senza credenziali salvate)"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ needs.prendi.outputs.sha }}
           fetch-depth: 0
@@ -232,7 +232,7 @@ jobs:
           cp scripts/lavoratore-ai.py scripts/consulto-ai.py scripts/riserva-credenziale.sh "$RUNNER_TEMP/fidati/"
 
       - name: "🔐 Accesso ChatGPT: copia cifrata in cache"
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ runner.temp }}/chatgpt-cache
           key: chatgpt-${{ github.run_id }}
@@ -268,7 +268,7 @@ jobs:
 
       - name: "🔐 Accesso ChatGPT in cache"
         if: always() && steps.salva.outputs.cambiato == 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ runner.temp }}/chatgpt-cache
           key: chatgpt-${{ github.run_id }}-${{ github.run_attempt }}
@@ -285,7 +285,7 @@ jobs:
 
       - name: "📤 Pacchetto al job che consegna"
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: lavoro
           path: ${{ runner.temp }}/lavoro
@@ -313,7 +313,7 @@ jobs:
       actions: write   # per togliere dalla cache le copie vecchie dell'accesso ChatGPT
     steps:
       - name: "📥 Checkout del ramo di lavoro (senza credenziali salvate)"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ needs.prendi.outputs.sha }}
           fetch-depth: 0
@@ -327,7 +327,7 @@ jobs:
 
       - name: "📥 Pacchetto del lavoro"
         continue-on-error: true   # se manca, la consegna lo dice e la richiesta riparte
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           name: lavoro
           path: ${{ runner.temp }}/lavoro
@@ -361,7 +361,7 @@ jobs:
       actions: write
     steps:
       - name: "📥 Script dell'accesso"
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: ${{ github.event.repository.default_branch }}
           sparse-checkout: scripts/riserva-credenziale.sh
@@ -369,7 +369,7 @@ jobs:
           persist-credentials: false
 
       - name: "🔐 Accesso ChatGPT: copia cifrata in cache"
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ runner.temp }}/chatgpt-cache
           key: chatgpt-${{ github.run_id }}
@@ -427,7 +427,7 @@ jobs:
 
       - name: "🔐 Accesso ChatGPT in cache"
         if: always() && steps.salva.outputs.cambiato == 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ${{ runner.temp }}/chatgpt-cache
           key: chatgpt-${{ github.run_id }}-${{ github.run_attempt }}

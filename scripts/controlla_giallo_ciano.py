@@ -25,6 +25,9 @@ RADICE = Path(__file__).resolve().parent.parent
 DATI = RADICE / "data/giallo_ciano.json"
 AVVISI = RADICE / "giallo_ciano_avvisi.md"
 PAGINA = "https://www.misericordie.it/giallo-ciano/"
+# I link si prendono solo da questi siti: la pagina nazionale è di terzi, e un link verso un
+# altro host (o con uno schema diverso da https) non si pubblica da solo: finisce nella issue.
+HOST_AMMESSI = {"www.misericordie.it", "misericordie.it", "www.flipbookpdf.net", "flipbookpdf.net"}
 UA = {"User-Agent": "Mozilla/5.0 (controllo link sito Misericordia di Ariccia)"}
 MESI = "gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre".split()
 
@@ -42,6 +45,11 @@ def scarica(url, tentativi=3):
             errore = type(e).__name__
         time.sleep(10 * (i + 1))
     return errore, b""
+
+
+def link_ammesso(link):
+    u = urllib.parse.urlsplit(link)
+    return u.scheme == "https" and (u.hostname or "").lower() in HOST_AMMESSI and not u.username
 
 
 def testo(frammento):
@@ -69,6 +77,12 @@ def main():
     if not nazionali:
         avvisi.append(f"- ⚠️ Non riesco a leggere l'elenco dei numeri da {PAGINA} (risposta: {stato}). "
                       "Forse la pagina è cambiata: va controllata a mano.")
+
+    estranei = [(u, l) for u, _, l in nazionali if not link_ammesso(l)]
+    nazionali = [x for x in nazionali if link_ammesso(x[2])]
+    for uscita, link in estranei:
+        avvisi.append(f"- ⚠️ **{uscita}**: il sito nazionale punta a un indirizzo fuori dai siti previsti, "
+                      f"non aggiunto da solo: va controllato a mano → `{link[:200]}`")
 
     nostri = {n["uscita"]: n for n in dati["numeri"]}
     usati = {}
@@ -101,6 +115,9 @@ def main():
     dati["numeri"].sort(key=lambda x: (int(x["uscita"].split()[1]), MESI.index(x["uscita"].split()[0].lower())), reverse=True)
 
     for n in dati["numeri"]:
+        if not link_ammesso(n["link"]):
+            avvisi.append(f"- ❌ **{n['uscita']}**: link fuori dai siti previsti, non controllato → `{n['link'][:200]}`")
+            continue
         stato, _ = scarica(n["link"])
         if stato != 200:
             avvisi.append(f"- ❌ **{n['uscita']}**: il link non funziona (risposta {stato}) → {n['link']}")

@@ -267,15 +267,22 @@ def a_elimina_commento(rete, ident, conf, **_):
 def a_messaggi(rete, **_):
     piatt = "instagram" if rete == "ig" else "messenger"
     r = chiama("GET", f"{PAGE_ID}/conversations", platform=piatt, limit=10,
-               fields="id,updated_time,participants,messages.limit(3){message,from,created_time}")
+               fields="id,updated_time,messages.limit(3){created_time}")
     if "errore" in r:
         esci(r["errore"])
+    # Questo repository è pubblico: riepilogo e registro dell'esecuzione li legge
+    # chiunque, e l'esito finisce in un file del ramo. Nomi e testo dei messaggi
+    # privati (che possono contenere dati personali, anche sulla salute) non si
+    # scrivono mai qui: si leggono in Meta Business Suite. Restano l'identificativo
+    # della conversazione, che serve per rispondere, la data e quanti messaggi ha.
     for c in r.get("data", []):
-        nomi = ", ".join(p.get("name") or p.get("username") or p.get("id", "") for p in (c.get("participants") or {}).get("data", []))
-        scrivi(f"#### `{c['id']}` — {nomi} ({c.get('updated_time', '')[:16]})")
-        for m in reversed((c.get("messages") or {}).get("data", [])):
-            chi = (m.get("from") or {}).get("name") or (m.get("from") or {}).get("username", "")
-            scrivi(f"- {m.get('created_time', '')[:16]} {chi}: {corto(m.get('message'), 200)}")
+        quanti = len((c.get("messages") or {}).get("data", []))
+        scrivi(f"- `{c['id']}` — aggiornata il {c.get('updated_time', '')[:16]}, "
+               f"ultimi messaggi: {quanti}")
+    if r.get("data"):
+        scrivi("")
+        scrivi("Il testo dei messaggi non si riporta qui, perché questo registro è pubblico: "
+               "si legge in Meta Business Suite, nella Posta.")
     if not r.get("data"):
         scrivi("Nessuna conversazione.")
 

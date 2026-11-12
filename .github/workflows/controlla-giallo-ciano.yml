@@ -25,7 +25,7 @@ jobs:
   controlla:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Confronta con il sito nazionale e controlla i link
         run: python3 scripts/controlla_giallo_ciano.py
@@ -50,8 +50,8 @@ jobs:
             CORPO="$2
 
           _Controllo automatico del $(TZ=Europe/Rome date '+%d/%m/%Y'): .github/workflows/controlla-giallo-ciano.yml_"
-            APERTA=$(gh issue list --state open --search "\"$1\" in:title" --json number,title \
-                     --jq ".[] | select(.title == \"$1\") | .number" | head -1)
+            APERTA=$(gh issue list --state open --search "\"$1\" in:title" --json number,title,author \
+                     --jq ".[] | select(.title == \"$1\" and ((.author.login | test(\"^(app/)?github-actions\")) or .author.login == env.GITHUB_REPOSITORY_OWNER)) | .number" | head -1)
             if [ -n "$APERTA" ]; then
               ULTIMO=$(gh issue view "$APERTA" --json body,comments --jq '[.body] + [.comments[].body] | last')
               [ "${ULTIMO%%_Controllo*}" = "${CORPO%%_Controllo*}" ] || gh issue comment "$APERTA" --body "$CORPO"

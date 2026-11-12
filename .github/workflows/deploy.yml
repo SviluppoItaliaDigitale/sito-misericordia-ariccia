@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           # sempre l'ultima versione di main, non il commit che ha avviato il giro: il 21/10/2026 il
           # giro di un commit più vecchio, partito 12 secondi dopo quello di #217, l'ha sovrascritto
@@ -69,7 +69,7 @@ jobs:
           fetch-depth: 0
 
       - name: Installa Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@2752ce1d29631191ea3f27c23495fa06139a5b78 # v3
         with:
           hugo-version: "0.154.5"
           extended: true
@@ -91,7 +91,7 @@ jobs:
         run: hugo --minify
 
       - name: Pubblica via FTPS su Aruba
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
