@@ -1,14 +1,16 @@
 ---
-title: "Colletta Alimentare: grazie a chi ha donato alla Coop di Genzano"
+title: "Colletta Alimentare: 1.177 kg di spesa donata alla Coop di Genzano. Grazie!"
 titoloSeo: "Colletta Alimentare 2026: il grazie della Misericordia di Ariccia dalla Coop di Genzano di Roma"
 date: 2026-11-14
 slug: "colletta-alimentare-grazie"
-description: "Si è chiusa la giornata della Colletta Alimentare alla Coop di Genzano di Roma: il grazie della Misericordia di Ariccia a chi ha donato la spesa e ai volontari dei turni dalle 8 alle 20."
+description: "Alla Coop di Genzano di Roma la Colletta Alimentare 2026 ha raccolto 1.177 kg di spesa in 114 scatole: il grazie della Misericordia di Ariccia a chi ha donato e ai volontari dei turni dalle 8 alle 20."
 immagine: "/img/news/2026-11-14-colletta-alimentare-grazie-grafica.jpg"
-social_alt: "Grafica della Misericordia di Ariccia: selfie di volontarie e volontari della Misericordia all'ingresso della Coop di Genzano, con la scritta «Colletta Alimentare. Grazie di cuore: a chi ha donato. Alla Coop di Genzano, dalle 8 alle 20, insieme per chi è in difficoltà»."
+social_alt: "Grafica della Misericordia di Ariccia: selfie di volontarie e volontari della Misericordia all'ingresso della Coop di Genzano, con la scritta «Colletta Alimentare. 1.177 kg di spesa: grazie di cuore. 114 scatole donate alla Coop di Genzano per chi è in difficoltà»."
 social_testo: |-
   🛒 Colletta Alimentare: grazie di cuore!
   Si è chiusa la giornata della Colletta Alimentare alla Coop di Genzano di Roma. Dalle 8 alle 20 i volontari della Misericordia di Ariccia, insieme ai volontari del Banco Alimentare, hanno accolto chi entrava e raccolto la spesa donata per le persone in difficoltà.
+
+  Il risultato: 1.177 kg di spesa, in 114 scatole. 📦
 
   Grazie a chi ha donato, a chi si è fermato a salutarci e a chi ha dato qualche ora del suo sabato.
 
@@ -20,14 +22,16 @@ italianoSemplice: |
 
   Tante persone hanno donato una parte della spesa per chi è in difficoltà.
 
+  Abbiamo raccolto 1.177 chili di cibo, in 114 scatole.
+
   Grazie a tutti!
 ---
 
-![Grafica della Misericordia di Ariccia per la Colletta Alimentare: selfie di volontarie e volontari della Misericordia all'ingresso della Coop di Genzano, con la scritta «Grazie di cuore: a chi ha donato. Alla Coop di Genzano, dalle 8 alle 20, insieme per chi è in difficoltà».](/img/news/2026-11-14-colletta-alimentare-grazie-grafica.jpg)
+![Grafica della Misericordia di Ariccia per la Colletta Alimentare: selfie di volontarie e volontari della Misericordia all'ingresso della Coop di Genzano, con la scritta «1.177 kg di spesa: grazie di cuore. 114 scatole donate alla Coop di Genzano per chi è in difficoltà».](/img/news/2026-11-14-colletta-alimentare-grazie-grafica.jpg)
 
 **Si è chiusa la giornata della Colletta Alimentare.** Oggi, sabato 14 novembre, i volontari della Misericordia di Ariccia sono stati alla **Coop di Genzano di Roma**, in via Emilia Romagna 102, dalle 8 alle 20, in tre turni.
 
-Insieme ai volontari del Banco Alimentare abbiamo accolto chi entrava, spiegato la Colletta e raccolto nei sacchetti arancioni la spesa donata. Tutto quello che è stato raccolto va al Banco Alimentare, che lo distribuisce alle realtà che aiutano le persone in difficoltà.
+Insieme ai volontari del Banco Alimentare abbiamo accolto chi entrava, spiegato la Colletta e raccolto nei sacchetti arancioni la spesa donata. **Il risultato: 1.177 kg di spesa donata, in 114 scatole.** Tutto quello che è stato raccolto va al Banco Alimentare, che lo distribuisce alle realtà che aiutano le persone in difficoltà.
 
 ![Cinque volontari della Misericordia di Ariccia in divisa davanti all'ingresso della Coop di Genzano](/img/news/2026-11-14-colletta-alimentare-grazie-2.jpg)
 
@@ -48,5 +52,7 @@ Insieme ai volontari del Banco Alimentare abbiamo accolto chi entrava, spiegato 
 ## Il nostro aiuto continua tutto l'anno
 
 La Colletta è un giorno, ma l'aiuto alle persone in difficoltà va avanti ogni settimana: con il Banco Alimentare distribuiamo beni di prima necessità, come spieghiamo nella pagina dei **[servizi sociali](/servizi/servizi-sociali/)**. Se vuoi esserci anche tu, leggi **[Anche ascoltare è un servizio](/news/anche-ascoltare-e-un-servizio/)** e la pagina **[Diventa volontario](/diventa-volontario/)**, oppure scrivi **VOLONTARIO** su WhatsApp al **[348 4068657](https://wa.me/393484068657?text=VOLONTARIO)**.
+
+*Fonte dei dati: riepilogo del punto vendita B005207 (Coop di via Emilia Romagna 102, Genzano di Roma) nel sistema di raccolta della Colletta Alimentare, sabato 14 novembre 2026 alle 20:48.*
 
 A tutti, con l'antico motto delle Misericordie: **«Che Iddio ve ne renda merito»**.
