@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Tempo",
+    "giornata-resto": "\ndi Quaresima",
+    "evidenziato": "Dividere il pane:",
+    "titolo": "è il digiuno che piace a Dio",
+    "sottotitolo": "Le sette opere di misericordia corporale, verso la Pasqua del 28 marzo.",
+    "foto": "../../scripts/grafica-brand/opere-misericordia/alkmaar-dar-da-mangiare.jpg",
+    "foto-posizione": "50% 62%",
+    "foto-alt": "Maestro di Alkmaar, Dar da mangiare agli affamati (1504): un giovane distribuisce il pane da un cesto a persone povere davanti a una casa"
+  }
+}

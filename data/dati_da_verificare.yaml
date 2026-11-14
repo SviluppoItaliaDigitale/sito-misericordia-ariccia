@@ -1580,6 +1580,11 @@ dati:
   cosa: "Cellulare per servizi e trasporti (anche WhatsApp)."
   valore: "348 4068657"
   dove:
+  - "content/news/2027-02-17-quaresima-opere-di-misericordia.md"
+  - "content/news/2027-02-25-che-cos-e-una-confraternita.md"
+  - "content/news/2027-03-04-trasporto-sociale-come-si-chiede.md"
+  - "content/news/2027-03-11-in-primavera-diventa-volontario.md"
+  - "content/news/2027-03-22-giornata-mondiale-acqua.md"
   - "contenuti/campagne/2026-10-18-esci-dal-post/manifesto.html"
   - "content/news/2026-10-18-esci-dal-post-entra-nella-squadra.md"
   - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
@@ -1685,6 +1690,8 @@ dati:
   cosa: "Cellulare per amministrazione, iscrizioni e Servizio Civile."
   valore: "328 8105399"
   dove:
+  - "content/news/2027-02-25-che-cos-e-una-confraternita.md"
+  - "content/news/2027-03-11-in-primavera-diventa-volontario.md"
   - "content/contatti.md"
   - "content/diventa-volontario.md"
   - "content/en/contatti.md"
@@ -1947,6 +1954,8 @@ dati:
   cosa: "Il Movimento accoglie volontari dai 16 agli 80 anni."
   valore: "16-80 anni"
   dove:
+  - "content/news/2027-02-25-che-cos-e-una-confraternita.md"
+  - "content/news/2027-03-11-in-primavera-diventa-volontario.md"
   - "content/diventa-volontario.md"
   - "content/news/2026-12-05-giornata-volontariato.md"
   - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"

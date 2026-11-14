@@ -1,0 +1,15 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Settimana",
+    "giornata-resto": "\nSanta",
+    "evidenziato": "Vi ho dato un esempio:",
+    "titolo": "dalle Palme alla Pasqua",
+    "sottotitolo": "La Parola dei giorni santi,\nsui nostri social e sul sito.",
+    "foto": "../../static/img/news/assisi-2026-volontari.jpg",
+    "foto-posizione": "0% 45%",
+    "foto-alt": "Volontari delle Misericordie in divisa cantano e pregano con i libretti davanti alle mura di Assisi",
+    "foto-zoom": 1.3
+  }
+}

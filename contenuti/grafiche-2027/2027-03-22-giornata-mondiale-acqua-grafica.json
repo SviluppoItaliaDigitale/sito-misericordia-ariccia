@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Giornata mondiale",
+    "giornata-resto": "\ndell'acqua",
+    "evidenziato": "Dar da bere agli assetati:",
+    "titolo": "un gesto antico, ancora oggi",
+    "sottotitolo": "Con il Banco Alimentare e il Centro di Ascolto, accanto a chi manca dell'essenziale.",
+    "foto": "../../scripts/grafica-brand/opere-misericordia/alkmaar-dar-da-bere.jpg",
+    "foto-posizione": "50% 62%",
+    "foto-alt": "Maestro di Alkmaar, Dar da bere agli assetati (1504): un uomo sui gradini di casa versa da bere nelle ciotole dei poveri"
+  }
+}
