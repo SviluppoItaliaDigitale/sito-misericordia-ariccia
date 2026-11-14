@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Volontariato",
+    "evidenziato": "In primavera:",
+    "titolo": "un posto anche per te",
+    "sottotitolo": "Trasporti, ascolto, Banco Alimentare, eventi.\nScrivi VOLONTARIO al 348 4068657.",
+    "foto": "../../static/img/news/camminata-2026-via-sacra-volontarie.jpg",
+    "foto-posizione": "50% 55%",
+    "foto-alt": "Tre volontarie della Misericordia in divisa azzurra camminano sul basolato della Via Sacra, nel bosco di Monte Cavo"
+  }
+}

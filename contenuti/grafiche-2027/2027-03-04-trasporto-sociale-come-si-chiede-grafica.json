@@ -1,0 +1,13 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Servizi sociali",
+    "evidenziato": "Ti accompagniamo noi:",
+    "titolo": "basta una telefonata",
+    "sottotitolo": "Visite, spesa, posta, medico.\nChiama il 348 4068657, ti richiamiamo noi.",
+    "foto": "../../static/img/news/trasporto-fondi-berlingo.jpg",
+    "foto-posizione": "100% 70%",
+    "foto-alt": "Il mezzo dei Servizi Sociali della Misericordia di Ariccia parcheggiato lungo una strada sotto una parete di roccia",
+    "foto-zoom": 1.7
+  }
+}

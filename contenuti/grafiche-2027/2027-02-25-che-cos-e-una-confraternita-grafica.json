@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Chi siamo",
+    "evidenziato": "Una Confraternita:",
+    "titolo": "fratelli e sorelle insieme",
+    "sottotitolo": "Confratelli e consorelle,\nvolontari ad Ariccia dal 1994.",
+    "foto": "../../static/img/news/apollonia-2026-stendardo.jpg",
+    "foto-posizione": "50% 40%",
+    "foto-alt": "Lo stendardo della Confraternita in Piazza di Corte ad Ariccia, con i volontari della Misericordia in divisa"
+  }
+}
