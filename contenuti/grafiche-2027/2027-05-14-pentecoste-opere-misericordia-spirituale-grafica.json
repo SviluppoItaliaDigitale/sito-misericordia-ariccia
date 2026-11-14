@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Pentecoste",
+    "giornata-resto": "\n16 maggio",
+    "evidenziato": "Consolare e perdonare:",
+    "titolo": "le opere per l'animo",
+    "sottotitolo": "Le sette opere di misericordia spirituale.",
+    "foto": "../../static/img/storia/piero-madonna-misericordia.jpg",
+    "foto-posizione": "50% 30%",
+    "foto-alt": "Piero della Francesca, Madonna della Misericordia: la Madonna apre il mantello sopra i confratelli inginocchiati"
+  }
+}

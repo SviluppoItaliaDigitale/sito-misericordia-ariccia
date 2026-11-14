@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Estate",
+    "evidenziato": "Arriva l'estate:",
+    "titolo": "nessun anziano lasciato solo",
+    "sottotitolo": "Spesa, farmacia, medico: ti accompagniamo.\nPrenota al 348 4068657.",
+    "foto": "../../static/img/news/camminata-2026-occhialone-laghi.jpg",
+    "foto-posizione": "50% 50%",
+    "foto-alt": "La vista dall'alto sui boschi e sulla pianura dei Castelli Romani in una giornata di sole"
+  }
+}

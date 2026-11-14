@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Giornata internazionale",
+    "giornata-resto": "\ndelle famiglie",
+    "evidenziato": "Chi si prende cura:",
+    "titolo": "non è solo",
+    "sottotitolo": "Trasporti, accompagnamento e ascolto per le famiglie che assistono un familiare.",
+    "foto": "../../scripts/grafica-brand/opere-misericordia/alkmaar-alloggiare-i-pellegrini.jpg",
+    "foto-posizione": "50% 62%",
+    "foto-alt": "Maestro di Alkmaar, Alloggiare i pellegrini (1504): sulla porta di casa si accolgono dei viandanti"
+  }
+}
