@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Festa",
+    "giornata-resto": "\ndella mamma",
+    "evidenziato": "Domenica 9 maggio:",
+    "titolo": "la accompagniamo noi",
+    "sottotitolo": "A messa, dal parrucchiere, a trovare chi ama.\nPrenota al 348 4068657.",
+    "foto": "../../static/img/news/camminata-2026-selfie-ambulanza.jpg",
+    "foto-posizione": "50% 40%",
+    "foto-alt": "Tre volontarie della Misericordia in divisa sorridono accanto all'ambulanza"
+  }
+}

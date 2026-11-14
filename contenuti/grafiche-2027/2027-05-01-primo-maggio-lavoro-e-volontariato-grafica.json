@@ -1,0 +1,14 @@
+{
+  "modello": "post-giornata",
+  "lutto": false,
+  "campi": {
+    "giornata": "Primo",
+    "giornata-resto": "\nmaggio",
+    "evidenziato": "Dopo il lavoro:",
+    "titolo": "un turno per gli altri",
+    "sottotitolo": "Anche poche ore al mese fanno la differenza.\nScrivi VOLONTARIO al 348 4068657.",
+    "foto": "../../static/img/news/camminata-2026-ambulanza.jpg",
+    "foto-posizione": "30% 50%",
+    "foto-alt": "Volontarie e volontari della Misericordia in divisa accanto all'ambulanza, su un prato"
+  }
+}

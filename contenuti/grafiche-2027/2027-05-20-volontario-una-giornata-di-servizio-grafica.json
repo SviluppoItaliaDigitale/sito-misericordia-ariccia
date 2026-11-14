@@ -1,0 +1,12 @@
+{
+  "modello": "post-con-fascia",
+  "campi": {
+    "fascia": "Volontariato",
+    "evidenziato": "Ognuno il suo servizio:",
+    "titolo": "c'è un posto anche per te",
+    "sottotitolo": "Trasporti, ascolto, eventi.\nScrivi VOLONTARIO al 348 4068657.",
+    "foto": "../../static/img/news/apollonia-2026-processione.jpg",
+    "foto-posizione": "50% 45%",
+    "foto-alt": "Un volontario della Misericordia in divisa, di spalle, segue una processione in una via del centro storico"
+  }
+}
