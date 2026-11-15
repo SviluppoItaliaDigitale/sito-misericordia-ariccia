@@ -1,0 +1,45 @@
+{
+  "data": "2026-11-22",
+  "titolo": "La Parola della domenica",
+  "giorno_liturgico": "Nostro Signore Gesù Cristo Re dell'universo, solennità",
+  "opera": {
+    "autore": "William de Brailes",
+    "titolo": "Il Giudizio universale",
+    "anno": "1250 circa",
+    "luogo": "Walters Art Museum, Baltimora",
+    "licenza": "Pubblico dominio",
+    "fonte": "https://commons.wikimedia.org/wiki/File:William de Brailes - The Last Judgment (Matthew 25 -31-46) - Walters W10623R - Full Page.jpg",
+    "illustra": "Vangelo, Mt 25,31-46",
+    "scena": "Cristo re siede in trono tra gli angeli e separa i benedetti dai maledetti, come il pastore separa le pecore dalle capre."
+  },
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro del profeta Ezechiele",
+      "riferimento": "Ez 34,16",
+      "versetto": "Andrò in cerca della pecora perduta e ricondurrò all'ovile quella smarrita, fascerò quella ferita e curerò quella malata, avrò cura della grassa e della forte; le pascerò con giustizia.",
+      "evidenza": "fascerò quella ferita e curerò quella malata"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 25,35-36",
+      "versetto": "Ho avuto fame e mi avete dato da mangiare, ho avuto sete e mi avete dato da bere, ero straniero e mi avete accolto, nudo e mi avete vestito, malato e mi avete visitato.",
+      "evidenza": "ero straniero e mi avete accolto"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Matteo",
+      "riferimento": "Mt 25,40",
+      "versetto": "In verità io vi dico: tutto quello che avete fatto a uno solo di questi miei fratelli più piccoli, l'avete fatto a me.",
+      "evidenza": "l'avete fatto a me"
+    }
+  ],
+  "parole_papi": {
+    "testo": "Decisivo nel Vangelo è il criterio del giudizio. E questo criterio del Giudice giusto è l’amore, la carità concreta nei confronti del prossimo, in particolare dei \"piccoli\", delle persone in maggiore difficoltà: affamati, assetati, stranieri, nudi, malati, carcerati. (…) Sta a noi rispondergli, non con le parole, ma con i fatti: scegliendo la via dell’amore fattivo e generoso verso il prossimo, noi permettiamo a Lui di estendere la sua signoria nel tempo e nello spazio.",
+    "fonte": "Papa Benedetto XVI, Discorso ai partecipanti al pellegrinaggio dell’ arcidiocesi di Amalfi – Cava de’ Tireni, 22 novembre 2008"
+  },
+  "testo_social": "Oggi la Chiesa celebra Cristo Re, un re che si fa pastore: cerca la pecora perduta, fascia chi è ferito, cura chi è malato. Alla fine ci chiederà conto di una cosa sola: l'amore concreto verso chi ha fame, sete, è straniero o è solo. Il suo regno passa dalle nostre mani. È la strada che cerchiamo di percorrere ogni giorno, accanto a chi ha bisogno. Buona domenica!",
+  "preparata_da": "Alessandro Cuollo, 2026-11-15",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
