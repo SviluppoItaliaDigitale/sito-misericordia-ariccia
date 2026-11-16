@@ -23,7 +23,7 @@ italianoSemplice: |
 
 **Primo soccorso passo passo** è la nostra rubrica: dieci video di approfondimento con disegni animati, uno per ogni emergenza tra le più comuni. Oggi il numero **9 di 10**: **avvelenamento**. *Niente rimedi fai da te.*
 
-{{< video src="video/primo-soccorso-avvelenamento.mp4" poster="img/video/primo-soccorso-avvelenamento.jpg" verticale="si" titolo="Avvelenamento: primo soccorso passo passo" descrizione="Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa." data="2026-11-03" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli." >}}
+{{< video src="video/primo-soccorso-avvelenamento.mp4" poster="img/video/primo-soccorso-avvelenamento.jpg" verticale="si" titolo="Avvelenamento: primo soccorso passo passo" descrizione="Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa." data="2026-11-03" didascalia="Il video dura circa 1 minuto e 30 secondi, con disegni animati, voce narrante e sottotitoli. Voce sintetica: modello distribuito con licenza Coqui Public Model License (huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt)." >}}
 
 ## Passo passo
 
@@ -49,7 +49,7 @@ Tieni a portata di mano la confezione, e di' cosa ha preso, quanto e quando.
 
 ### Pelle e occhi
 
-Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corrente.
+Su pelle o occhi: togli i vestiti contaminati e sciacqua con acqua tiepida per almeno 10-15 minuti.
 
 ### Gas e fumi
 
@@ -71,4 +71,4 @@ Queste sono informazioni generali e **non sostituiscono un corso**: le manovre s
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
-*Fonti: [Croce Rossa Italiana, Avvelenamenti](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/avvelenamenti/) (non far vomitare, perché un corrosivo risalendo fa altri danni, niente da bere senza il Centro Antiveleni, cosa, quanto e quando, la confezione); [Centro Antiveleni di Milano, Casalinghi](https://www.centroantiveleni.org/alimentari-2/) (niente latte, pelle e occhi da lavare con acqua, prodotti chiusi e nelle confezioni originali); [Centro Antiveleni di Careggi, Intossicazione dei bambini](https://www.aou-careggi.toscana.it/internet/diagnosi-e-cura/strutture-cliniche/crr-centri-di-riferimento-regionale/centro-antiveleni/intossicazione-dei-bambini/) (incidenti in casa, bambini più a rischio, mai travasare in altre bottiglie); [Istituto Superiore di Sanità, Centri Antiveleni](https://www.iss.it/-/cnsc-cav) (i numeri di Roma); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (gas e fumi: aprire le finestre).*
+*Fonti: [Croce Rossa Italiana, Avvelenamenti](https://cri.it/cosa-facciamo/salute/primo-soccorso/pillole-di-primo-soccorso/avvelenamenti/) (non far vomitare, perché un corrosivo risalendo fa altri danni, niente da bere senza il Centro Antiveleni, cosa, quanto e quando, la confezione); [Ospedale Pediatrico Bambino Gesù, Centro Antiveleni, le cose da sapere](https://www.ospedalebambinogesu.it/centro-antiveleni-le-cose-da-sapere-128569/) (togliere subito i vestiti e lavare con acqua tiepida per almeno 10-15 minuti, niente da mangiare né da bere prima di aver sentito il Centro Antiveleni, il numero per i bambini); [Policlinico Gemelli, Centro Antiveleni](https://www.policlinicogemelli.it/en/centers/poison-center/) (numero e orario); [Centro Antiveleni di Milano, Casalinghi](https://www.centroantiveleni.org/alimentari-2/) (niente latte, pelle e occhi da lavare con acqua, prodotti chiusi e nelle confezioni originali); [Centro Antiveleni di Careggi, Intossicazione dei bambini](https://www.aou-careggi.toscana.it/internet/diagnosi-e-cura/strutture-cliniche/crr-centri-di-riferimento-regionale/centro-antiveleni/intossicazione-dei-bambini/) (incidenti in casa, bambini più a rischio, mai travasare in altre bottiglie); [Istituto Superiore di Sanità, Centri Antiveleni](https://www.iss.it/-/cnsc-cav) (i numeri di Roma); [Regione Toscana, Monossido di carbonio](https://www.regione.toscana.it/-/monossido-di-carbonio-il-killer-invisibile) (gas e fumi: aprire le finestre).*

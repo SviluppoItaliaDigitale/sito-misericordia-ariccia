@@ -111,6 +111,10 @@ Per un singolo fotogramma di controllo (dopo un'anteprima o un render):
 Attenzione: se la news è **già uscita sui social**, il video pubblicato su
 Facebook/Instagram resta quello vecchio (il sito si aggiorna, i post no).
 
+## Voce di un video rifatto senza la voce originale
+
+`avvelenamento` (9/10) ha `voce='luca'` ma le frasi in `voci-luca/avvelenamento/` sono di **Damien** (XTTS, `strumenti/voce-riserva/voce_riserva.py` di `assistente-personale`, riprese scelte con `voce.py scegli` della skill `colonna-sonora`), perché il 16/11/2026 Luca non aveva crediti e Kokoro («Nicola», voce del montaggio originale) non si installava (Python 3.14 sul PC: `kokoro-onnx` vuole <3.14; scaricare il modello da Hugging Face andava a circa 10 KB/s). Con Damien la riga «Voce sintetica: … Coqui Public Model License …» va nella descrizione del video sul sito e nei post (`comunicazione-social.md`). Se tornano crediti o Kokoro, si rifà con quella voce togliendo `V['avvelenamento']['voce']` in `contenuti.py` (e la riga Coqui dall'articolo).
+
 ## Una nuova serie
 
 Aggiungere un `contenutiN.py` sul modello di `contenuti2.py` (campi `serie`, `num`,

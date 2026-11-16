@@ -620,7 +620,7 @@ casa({u,A}){
 cav({u,p,A}){
   phone(-230,0,.95,{num:'112',ring:true,u,label:'o Centro Antiveleni'});
   grp(200,0,1,A(.45),()=>{ box(-170,-200,340,400,40,'#fff'); cross(0,-160,.3,RED); tx('Centri Antiveleni',0,-120,34,C.navy,'700','P'); tx('Roma · 24 ore su 24',0,-80,24,'#006d96','700');
-    [['Gemelli','06 3054343',.55],['Umberto I','06 49978000',.7],['Bambino Gesù','06 68593726',.88]].forEach(([n,t,f],i)=>{ ctx.save(); ctx.globalAlpha*=clamp(A(f)); tx(n,0,-20+i*72,24,GREY,'600'); tx(t,0,6+i*72,32,C.navy,'800'); ctx.restore(); }); });
+    [['Gemelli','06 305 4343',.55],['Bambino Gesù (bambini)','06 6859 3726',.8]].forEach(([n,t,f],i)=>{ ctx.save(); ctx.globalAlpha*=clamp(A(f)); tx(n,0,-20+i*72,24,GREY,'600'); tx(t,0,6+i*72,32,C.navy,'800'); ctx.restore(); }); });
 },
 confezione({u,A}){
   bottle(-150,40,1.3,'#3a8d6c','#fff'); ctx.save(); ctx.translate(-150,40); ctx.scale(1.3,1.3); for(let i=0;i<3;i++) box(-36,-10+i*14,72-i*16,8,4,'#aab3cc'); ctx.restore();
