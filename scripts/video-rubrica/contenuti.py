@@ -115,10 +115,11 @@ V = {
   S('Niente da bere', ['Niente','*latte*.'], 'Non dare latte, acqua o altro da bere, se non lo dice il Centro Antiveleni.', 'no-latte', [['Niente latte', .2], ['Niente acqua', .35]]),
   S('Chiama', ['112 o','*Antiveleni*.'], 'Chiama '+U12+' o un Centro Antiveleni: rispondono giorno e notte.', 'cav', [['Chiama il 112', .15, 1], ['Centro Antiveleni', .5]],
     sub='Chiama il 112 o un Centro Antiveleni: rispondono giorno e notte.'),
-  S('A Roma', ['I numeri','da *salvare*.'], 'A Roma: Gemelli, zero sei, tre zero cinque, quattro tre quattro tre. Umberto primo, zero sei, quattro nove nove sette, otto zero zero zero. Per i bambini, Bambino Gesù, zero sei, sei otto cinque nove, tre sette due sei.', 'cav', [['Gemelli 06 305 4343', .1], ['Umberto I 06 4997 8000', .4], ['Bambino Gesù 06 6859 3726', .7]],
-    sub='A Roma, giorno e notte: Gemelli 06 305 4343 · Umberto I 06 4997 8000 · per i bambini, Bambino Gesù 06 6859 3726.'),
+  S('A Roma', ['I numeri','da *salvare*.'], 'A Roma, giorno e notte: Gemelli, zero sei, tre zero cinque, quattro tre quattro tre, e, per i bambini, Bambino Gesù, zero sei, sei otto cinque nove, tre sette due sei.', 'cav', [['Gemelli 06 305 4343', .1], ['Bambino Gesù 06 6859 3726', .55]],
+    sub='A Roma, giorno e notte: Gemelli 06 305 4343 e, per i bambini, Bambino Gesù 06 6859 3726.'),
   S('La confezione', ['Tienila','in *mano*.'], 'Tieni a portata di mano la confezione, e di\' cosa ha preso, quanto e quando.', 'confezione', [['Cosa', .55], ['Quanto', .7], ['Quando', .85]]),
-  S('Pelle e occhi', ['Sciacqua','a *lungo*.'], 'Su pelle o occhi: togli i vestiti contaminati e sciacqua a lungo con acqua corrente.', 'occhi', [['Via i vestiti', .35], ['Acqua corrente', .8]]),
+  S('Pelle e occhi', ['Sciacqua con','*acqua tiepida*.'], 'Su pelle o occhi: togli i vestiti contaminati e sciacqua con acqua tiepida per almeno dieci, quindici minuti.', 'occhi', [['Via i vestiti', .3], ['Acqua tiepida, 10-15 minuti', .75]],
+    sub='Su pelle o occhi: togli i vestiti contaminati e sciacqua con acqua tiepida per almeno 10-15 minuti.'),
   S('Gas e fumi', ['Aria','*aperta*.'], 'Gas o fumi, come il monossido di carbonio: porta la persona all\'aria aperta, solo se non rischi anche tu. Apri le finestre solo se puoi farlo senza fermarti.', 'finestra', [['Aria aperta', .3], ['Senza rischi per te', .6], ['Finestre, senza fermarti', .88]]),
   S('Previeni', ['Lontano','dai *bambini*.'], 'Per prevenire: prodotti nelle confezioni originali, chiusi e in alto, lontano dai bambini. Mai in bottiglie da bibita.', 'armadietto', [['Confezioni originali', .2], ['In alto', .45], ['Mai nelle bottiglie', .85]]),
   FINE]),
@@ -147,10 +148,14 @@ V.update(V3)
 # ictus, infarto, emorragia, rianimazione, anafilassi, ipoglicemia, trauma cranico, soffocamento del lattante e asma, le cui
 # news citano anche IFRC, CRI, NHS, AMD o il Ministero della Salute).
 FONTE_ARTICOLO = "Fonti nell'articolo su misericordia-ariccia.it · informazioni generali, non sostituiscono un corso"
+FONTE_AVVELENAMENTO = 'Fonti: Croce Rossa Italiana, Bambino Gesù, Gemelli, Centri Antiveleni di Milano e Careggi, ISS, Regione Toscana · informazioni generali, non sostituiscono un corso'
 for _k in ('ustioni', 'avvelenamento', 'convulsioni', 'incidente-stradale', 'svenimento', 'fratture', 'freddo',
            'monossido', 'batterie', 'cadute-anziani', 'botti', 'cassetta', 'ictus', 'infarto', 'emorragia', 'rianimazione',
            'anafilassi', 'ipoglicemia', 'trauma-cranico', 'soffocamento-lattante', 'asma'):
     V[_k]['fonte'] = FONTE_ARTICOLO
+# Avvelenamento: stesse fonti dell'articolo (video e pagina coincidono; controlla_sito.py, «Fonte nella scheda finale»).
+V['avvelenamento']['fonte'] = FONTE_AVVELENAMENTO
+V['avvelenamento']['voce'] = 'luca'   # modalità «voci-luca/»: rifatto il 16/11/2026 con Damien (XTTS) perché Luca (ElevenLabs) senza crediti e la voce Kokoro «Nicola» non disponibile; le frasi sono in voci-luca/avvelenamento/
 from contenuti4 import V4
 V.update(V4)
 from contenuti5 import V5
