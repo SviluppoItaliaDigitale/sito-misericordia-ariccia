@@ -3,6 +3,7 @@ title: "Cosa succede quando chiami il 112: la nostra guida"
 titoloSeo: "Cosa succede quando chiami il 112 nel Lazio | Guida della Misericordia di Ariccia"
 date: 2026-11-18
 slug: "guida-chiamare-il-112"
+controllo_editoriale: "2026-11-16"
 description: "Chi ti risponde quando chiami il 112, come ti localizza, quali domande ti fanno l'operatore e il 118, cosa fare e cosa non fare mentre arriva l'ambulanza e quando chiamare invece il 116117: la guida pratica della Misericordia di Ariccia."
 immagine: "/img/news/guida-112-grafica.jpg"
 social_testo: "📞 Sai cosa succede quando chiami il 112? Ti risponde una centrale unica, che trova la tua posizione e passa la chiamata al 118. Le domande che ti fanno non fanno perdere tempo: servono a mandarti l'aiuto giusto, e intanto l'ambulanza può essere già partita. Non riattaccare per primo, resta in linea e segui le istruzioni. E se il problema non è urgente, chiama il 116117, attivo in tutto il Lazio. Leggi la guida completa sul nostro sito: è una di quelle cose che è meglio sapere prima."
