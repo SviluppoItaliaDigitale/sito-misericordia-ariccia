@@ -20,7 +20,7 @@ italianoSemplice: |
   Tieni detersivi e medicine in alto o chiusi a chiave.
 ---
 
-![Una nonna in una cucina dei Castelli Romani posa la borsa della spesa accanto a un barattolo bianco: una scena del video «Tu cosa faresti? Una caramella colorata» della Misericordia di Ariccia](/img/news/tu-cosa-faresti-caramella-colorata-grafica.jpg)
+![Una nonna in una cucina dei Castelli Romani posa sul tavolo la borsa della spesa con il pane: una scena del video «Tu cosa faresti? Una caramella colorata» della Misericordia di Ariccia](/img/news/tu-cosa-faresti-caramella-colorata-grafica.jpg)
 
 Pomeriggio dai nonni. Sul tavolo c'è il detersivo in capsule. Leo ha due anni e quella capsula colorata sembra una caramella. La nonna si gira un attimo, e quando torna la capsula è rotta e Leo piange. **E tu, cosa faresti?**
 
