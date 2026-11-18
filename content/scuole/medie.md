@@ -27,7 +27,6 @@ materiali:
     file: "/documenti/scuole/medie/slide-primi-gesti.pdf"
     pptx: true
     pagine: 11
-    revisione: "da fare"
     descrizione: "Che cosa può fare chiunque nei primi minuti, senza manovre: la sicurezza, riconoscere un'emergenza, chiamare il 112, restare accanto alla persona. Soffocamento e arresto cardiaco solo come anticipazione di un corso con un istruttore."
   - titolo: "Simulazione di chiamata in classe"
     tipo: "scheda"
@@ -96,7 +95,6 @@ fonti:
     verificata: "18/11/2026"
 ---
 
-> Le slide **«Primi gesti: riconoscere e chiamare»**, citate nella guida, saranno disponibili a breve: le sta rivedendo il nostro responsabile sanitario, come facciamo per tutti i contenuti sul primo soccorso.
 
 Questi materiali sono pensati per le insegnanti e gli insegnanti della **scuola secondaria di primo grado**, con ragazze e ragazzi dagli **11 ai 13 anni**. Raccontano il **112** e la **catena dei soccorsi** nel Lazio: chi risponde, che cosa dire, che cosa fare mentre arrivano i soccorsi. Poi la **prevenzione**, in casa, in strada, nel terremoto e nell'alluvione.
 
@@ -159,7 +157,7 @@ Il percorso è di **tre incontri di circa un'ora**, da adattare alla classe.
 | Incontro | Tema | Durata | Materiali | Spazio |
 |---|---|---|---|---|
 | 1 | Il 112 e la catena dei soccorsi | Circa 60' | Slide 1-13; simulazione, scenario A; compito: imparare il proprio indirizzo completo | Aula con LIM o proiettore, banchi a gruppi da tre |
-| 2 | Prevenire e restare accanto | Circa 60' | Slide 14-18; slide «Primi gesti» (quando saranno disponibili); a scelta il fumetto «L'attimo decisivo» | Aula con LIM o proiettore |
+| 2 | Prevenire e restare accanto | Circa 60' | Slide 14-18; slide «Primi gesti»; a scelta il fumetto «L'attimo decisivo» | Aula con LIM o proiettore |
 | 3 | Mettersi alla prova | Circa 60' | Simulazione, scenari B e C con i ruoli scambiati; schede di verifica da correggere insieme | Aula, banchi a gruppi da tre; se volete, con i nostri volontari |
 
 ## I materiali, uno per uno
@@ -170,7 +168,7 @@ Diciotto slide da proiettare. Si parte da una domanda alla classe, «Chi ha mai 
 
 ### Slide «Primi gesti: riconoscere e chiamare»
 
-Undici slide su che cosa può fare chiunque nei primi minuti, senza manovre: prima la sicurezza, riconoscere un'emergenza con quattro domande (risponde? respira? sanguina? ha dolore?), chiamare o far chiamare il 112, restare accanto alla persona. Soffocamento e arresto cardiaco compaiono solo come anticipazione di un corso con un istruttore. Sono in revisione sanitaria: le pubblichiamo appena pronte.
+Undici slide su che cosa può fare chiunque nei primi minuti, senza manovre: prima la sicurezza, riconoscere un'emergenza con quattro domande (risponde? respira? sanguina? ha dolore?), chiamare o far chiamare il 112, restare accanto alla persona. Soffocamento e arresto cardiaco compaiono solo come anticipazione di un corso con un istruttore.
 
 ### Simulazione di chiamata in classe
 
