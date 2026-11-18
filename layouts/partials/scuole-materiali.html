@@ -14,9 +14,23 @@
         <h3 class="h5">{{ .titolo }}</h3>
         <p>{{ .descrizione }}</p>
         <p class="sc-scarica">
-          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>Scarica il PDF</a>
-          {{ if .pptx }}<a class="btn btn-ciano" href="{{ replaceRE `\.pdf$` ".pptx" .file | relURL }}" download>PowerPoint</a>{{ end }}
+          {{ if eq .tipo "slide" }}
+          {{ $b := replaceRE `\.pdf$` "" .file }}
+          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>PDF 16:9</a>
+          <a class="btn btn-ciano" href="{{ printf "%s.pptx" $b | relURL }}" download>PowerPoint 16:9</a>
         </p>
+        <details class="sc-lim">
+          <summary>Altri formati per la LIM</summary>
+          <ul>
+            <li><a href="{{ printf "%s-4k.pdf" $b | relURL }}" download>PDF 16:9 in 4K</a> (3840×2160, per le lavagne e i monitor 4K)</li>
+            <li><a href="{{ printf "%s-16x10.pdf" $b | relURL }}" download>PDF 16:10</a> (1920×1200)</li>
+            <li><a href="{{ printf "%s-4x3.pdf" $b | relURL }}" download>PDF 4:3</a> e <a href="{{ printf "%s-4x3.pptx" $b | relURL }}" download>PowerPoint 4:3</a> (per le LIM più vecchie, con il proiettore)</li>
+          </ul>
+        </details>
+          {{ else }}
+          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>Scarica il PDF</a>
+        </p>
+          {{ end }}
       </div>
     </li>
     {{ end }}

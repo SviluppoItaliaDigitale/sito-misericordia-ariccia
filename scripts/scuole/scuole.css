@@ -94,3 +94,16 @@ body.slide { width: 1920px; }
 .nota-adulti { font-size: 11px; line-height: 15px; color: #5A6686; }
 .note-relatore { display: none; } /* le note per chi presenta stanno nella guida per l'insegnante */
 .diapo.copertina .contenuto h1, .diapo.copertina .contenuto .sotto, .diapo.copertina .contenuto p { color: #FFFFFF; }
+
+/* ---- Testo sui fondi blu (18/11/2026, Alessandro: «il testo su sfondo blu non si vede»): sempre bianco,
+   il giallo solo per le parole evidenziate. Vale per copertine, riquadri blu, piede e ogni elemento con .fondo-blu. */
+.diapo.copertina, .diapo.copertina *, .riquadro.blu, .riquadro.blu *, .fondo-blu, .fondo-blu *, .pagina > .piede, .pagina > .piede * { color: #FFFFFF; }
+.diapo.copertina .finale, .riquadro.blu .finale, .fondo-blu .finale { color: var(--giallo); }
+.diapo.copertina .evidenzia, .riquadro.blu .evidenzia, .fondo-blu .evidenzia { background: var(--giallo); color: #233B74; }
+.diapo.copertina > .tema, .diapo.copertina > .tema * { color: #233B74; } /* sulla fascia bianca della copertina */
+
+/* ---- Slide per le LIM in più formati (18/11/2026): la larghezza resta 1920 px, l'altezza cambia con il formato
+   (1080 per il 16:9, 1200 per il 16:10, 1440 per il 4:3); fascia in alto e firma in basso restano dove sono,
+   il contenuto prende lo spazio in più. rendi_pdf.py imposta --h su <html>. */
+.diapo { height: var(--h, 1080px); }
+.diapo.copertina > .contenuto { top: 230px; bottom: 150px; justify-content: center; }

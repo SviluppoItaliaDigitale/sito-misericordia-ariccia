@@ -1320,6 +1320,9 @@ a:hover { color: var(--mise-navy); }
 .sc-materiale h3 { color: var(--mise-navy); margin-bottom: .4rem; }
 .sc-scarica { display: flex; flex-wrap: wrap; gap: .6rem; margin: .75rem 0 0; }
 .sc-scarica .btn::after { content: " ↓"; }
+.sc-lim { margin-top: .6rem; font-size: .95rem; }
+.sc-lim summary { cursor: pointer; font-weight: 600; color: var(--mise-ciano-testo); }
+.sc-lim ul { margin: .5rem 0 0; padding-left: 1.2rem; }
 .sc-verifica { color: #5a6275; font-size: .9rem; }
 @media (max-width: 575.98px) {
   .sc-materiale, .sc-materiale.sc-slide { grid-template-columns: 1fr; }

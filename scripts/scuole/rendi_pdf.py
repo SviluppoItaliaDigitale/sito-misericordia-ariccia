@@ -42,6 +42,77 @@ def copertina(uscita: Path, prima) -> None:
     im.save(dest, quality=86, optimize=True, progressive=True)
 
 
+# Formati delle slide per le LIM (lavagne interattive): (suffisso del file, altezza CSS a 1920 di larghezza,
+# fattore di scala dei pixel, PowerPoint sì/no). Il file senza suffisso è il 16:9 Full HD.
+FORMATI_SLIDE = [("", 1080, 1, True), ("-4k", 1080, 2, False), ("-16x10", 1200, 1, False), ("-4x3", 1440, 1, True)]
+
+
+def rendi_slide(browser, sorgente: Path, html: str, uscita: Path, anteprime: Path | None) -> bool:
+    """Slide in tutti i formati di FORMATI_SLIDE: immagini con la cornice incisa, PDF e, dove previsto, .pptx."""
+    if uscita.suffix != ".pdf":
+        sys.exit(f"{sorgente}: l'uscita delle slide deve finire in .pdf")
+    from PIL import Image
+    from pptx import Presentation
+    from pptx.util import Emu
+    sys.path.insert(0, str(RENDI.parent))
+    import cornice_pdf  # segno di firma e cornice nel dizionario Info, come nei PDF dei modelli
+    titolo = re.search(r"<title>([^<]+)</title>", html).group(1)
+    for suff, alt, scala, con_pptx in FORMATI_SLIDE:
+        dest = uscita.with_name(uscita.stem + suff + ".pdf")
+        pagina = browser.new_page(viewport={"width": 1920, "height": alt}, device_scale_factor=scala)
+        pagina.goto(sorgente.resolve().as_uri())
+        pagina.evaluate(f"document.documentElement.style.setProperty('--h', '{alt}px')")
+        pagina.evaluate("document.fonts.ready")
+        pagina.wait_for_load_state("networkidle")
+        fuori = pagina.evaluate("""() => { const out = [];
+          document.querySelectorAll('.diapo').forEach((p, i) => { const b = p.getBoundingClientRect();
+            p.querySelectorAll('*').forEach(e => { if (e.closest('.note-relatore')) return; const r = e.getBoundingClientRect();
+              if (r.width && (r.bottom > b.bottom + 1 || r.right > b.right + 1)) out.push(`slide ${i + 1}: «${(e.textContent || '').trim().slice(0, 40)}» esce`); });
+            const c = p.querySelector('.contenuto'); if (c && c.scrollHeight > c.clientHeight + 2) out.push(`slide ${i + 1}: il contenuto è più alto del suo spazio`); });
+          return out.slice(0, 20); }""")
+        if fuori:
+            for f in fuori:
+                print(f"PROBLEMA {sorgente.name} ({1920 * scala}×{alt * scala}): {f}")
+            pagina.close()
+            return False
+        testi = pagina.evaluate("[...document.querySelectorAll('.diapo')].map(d => { const c = d.cloneNode(true); c.querySelectorAll('.note-relatore').forEach(n => n.remove()); document.body.appendChild(c); const t = c.innerText; c.remove(); return t; })")
+        note = pagina.evaluate("[...document.querySelectorAll('.diapo')].map(d => { const n = d.querySelector('.note-relatore'); return n ? n.textContent.trim() : ''; })")
+        with tempfile.TemporaryDirectory() as tmp:
+            png = []
+            for i, el in enumerate(pagina.query_selector_all(".diapo")):
+                f = Path(tmp) / f"slide-{i + 1:02d}.png"
+                el.screenshot(path=str(f))
+                png.append(f)
+            pagina.close()
+            r = subprocess.run([sys.executable, str(RENDI), "--cornice", *map(str, png)], capture_output=True, text=True)
+            if r.returncode:
+                print(f"PROBLEMA {sorgente.name}: cornice non applicata\n{r.stdout.strip()}\n{r.stderr.strip()}")
+                return False
+            imm = [Image.open(f).convert("RGB") for f in png]
+            imm[0].save(dest, save_all=True, append_images=imm[1:], resolution=72.0 * scala, quality=90,
+                        title=titolo, author="Confraternita di Misericordia di Ariccia ODV")
+            cornice_pdf.marca(dest)
+            if con_pptx:
+                pres = Presentation()
+                pres.slide_width = Emu(12192000)
+                pres.slide_height = Emu(round(12192000 * alt / 1920))
+                for f, t, nr in zip(png, testi, note):
+                    sl = pres.slides.add_slide(pres.slide_layouts[6])
+                    sl.shapes.add_picture(str(f), 0, 0, width=pres.slide_width, height=pres.slide_height)
+                    sl.notes_slide.notes_text_frame.text = (nr + "\n\n" if nr else "") + "Testo della slide: " + " ".join(t.split())
+                pres.core_properties.author = "Confraternita di Misericordia di Ariccia ODV"
+                pres.core_properties.title = titolo
+                pres.save(dest.with_suffix(".pptx"))
+            if suff == "":
+                copertina(uscita, imm[0])
+            if anteprime and scala == 1:
+                anteprime.mkdir(parents=True, exist_ok=True)
+                for i, im in enumerate(imm):
+                    im.save(anteprime / f"{dest.stem}-{i + 1}.png")
+        print(f"ok {dest.relative_to(RADICE)}{' e .pptx' if con_pptx else ''} ({len(imm)} slide, {1920 * scala}×{alt * scala})")
+    return True
+
+
 def rendi(browser, sorgente: Path, anteprime: Path | None) -> bool:
     html = sorgente.read_text(encoding="utf-8")
     formato, uscita = meta(html, "formato"), RADICE / meta(html, "uscita")
@@ -73,42 +144,8 @@ def rendi(browser, sorgente: Path, anteprime: Path | None) -> bool:
     n = pagina.evaluate(f"document.querySelectorAll('{sel}').length")
     uscita.parent.mkdir(parents=True, exist_ok=True)
     if formato == "slide":
-        if uscita.suffix != ".pdf":
-            sys.exit(f"{sorgente}: l'uscita delle slide deve finire in .pdf (accanto esce il .pptx)")
-        testi = pagina.evaluate("[...document.querySelectorAll('.diapo')].map(d => (d.querySelector('.note-relatore') ? '' : '') + d.innerText.replace(/\\n{2,}/g, '\\n'))")
-        note = pagina.evaluate("[...document.querySelectorAll('.diapo')].map(d => { const n = d.querySelector('.note-relatore'); return n ? n.textContent.trim() : ''; })")
-        with tempfile.TemporaryDirectory() as tmp:
-            png = []
-            for i, el in enumerate(pagina.query_selector_all(".diapo")):
-                f = Path(tmp) / f"slide-{i + 1:02d}.png"
-                el.screenshot(path=str(f))
-                png.append(f)
-            pagina.close()
-            r = subprocess.run([sys.executable, str(RENDI), "--cornice", *map(str, png)], capture_output=True, text=True)
-            if r.returncode:
-                print(f"PROBLEMA {sorgente.name}: cornice non applicata\n{r.stdout.strip()}\n{r.stderr.strip()}")
-                return False
-            from PIL import Image
-            imm = [Image.open(f).convert("RGB") for f in png]
-            imm[0].save(uscita, save_all=True, append_images=imm[1:], resolution=144.0, quality=92)
-            from pptx import Presentation
-            from pptx.util import Emu
-            pres = Presentation()
-            pres.slide_width, pres.slide_height = Emu(12192000), Emu(6858000)  # 16:9
-            for f, t, nr in zip(png, testi, note):
-                sl = pres.slides.add_slide(pres.slide_layouts[6])
-                sl.shapes.add_picture(str(f), 0, 0, width=pres.slide_width, height=pres.slide_height)
-                sl.notes_slide.notes_text_frame.text = (nr + "\n\n" if nr else "") + "Testo della slide: " + " ".join(t.split())
-            pres.core_properties.author = "Confraternita di Misericordia di Ariccia ODV"
-            pres.core_properties.title = re.search(r"<title>([^<]+)</title>", html).group(1)
-            pres.save(uscita.with_suffix(".pptx"))
-            copertina(uscita, imm[0])
-            if anteprime:
-                anteprime.mkdir(parents=True, exist_ok=True)
-                for i, im in enumerate(imm):
-                    im.save(anteprime / f"{uscita.stem}-{i + 1}.png")
-        print(f"ok {uscita.relative_to(RADICE)} e .pptx ({n} slide)")
-        return True
+        pagina.close()
+        return rendi_slide(browser, sorgente, html, uscita, anteprime)
     with tempfile.TemporaryDirectory() as tmp:
         grezzo = Path(tmp) / "grezzo.pdf"
         pagina.pdf(path=str(grezzo), width="210mm", height="297mm", print_background=True, prefer_css_page_size=False)
