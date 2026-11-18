@@ -36,8 +36,8 @@ La Confraternita è guidata dal **Magistrato**, eletto dall'assemblea dei confra
 ## 5x1000 — rendicontazione
 
 - **Anno finanziario 2022/2023** (contributo percepito nel 2024) — [rendicontazione](/documenti/rendicontazione-5x1000-2024.pdf)
-- **Anno finanziario 2023** — [rendicontazione](/documenti/rendicontazione-5x1000-2023.pdf)
-- **Anno finanziario 2022** — [rendicontazione](/documenti/rendicontazione-5x1000-2022.pdf)
+- **Anno finanziario 2022-2021** (contributo ricevuto nel 2023) — [rendicontazione](/documenti/rendicontazione-5x1000-2023.pdf)
+- **Anno finanziario 2021** (contributo percepito nel 2022) — [rendicontazione](/documenti/rendicontazione-5x1000-2022.pdf)
 
 Vuoi destinarci il tuo 5x1000? Trovi le istruzioni nella pagina [Sostienici](/sostienici/).
 
