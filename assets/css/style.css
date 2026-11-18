@@ -1253,3 +1253,35 @@ a:hover { color: var(--mise-navy); }
 @media (max-width: 767.98px) {
   #whatsapp-flot { left: auto; right: 1.2rem; bottom: calc(1.2rem + 2.9rem + .7rem); }
 }
+
+/* ---- Assistente «Diventa volontario» (shortcode assistente-volontari) ---- */
+.assistente-volontari {
+  background: var(--mise-ciano-velo); border-left: 5px solid var(--mise-giallo);
+  border-radius: .75rem; padding: 1.25rem 1.25rem 1rem; margin: 2rem 0;
+}
+.assistente-volontari .av-intro { margin-bottom: 1rem; }
+.av-chat { display: flex; flex-direction: column; gap: .6rem; padding-bottom: .75rem; }
+.av-msg { max-width: 88%; padding: .65rem .9rem; border-radius: 16px; overflow-wrap: anywhere; white-space: pre-line; }
+.av-bot { align-self: flex-start; background: #fff; color: var(--mise-inchiostro); border: 1px solid #cfdde4; border-bottom-left-radius: 4px; }
+.av-io { align-self: flex-end; background: var(--mise-navy); color: #fff; border-bottom-right-radius: 4px; }
+.av-scelte { display: flex; flex-wrap: wrap; gap: .5rem; }
+.av-scelta {
+  min-height: 44px; padding: .5rem .9rem; border-radius: 50rem; font: inherit; cursor: pointer;
+  background: #fff; color: var(--mise-navy); border: 2px solid var(--mise-ciano-testo);
+}
+.av-scelta:hover { background: var(--mise-giallo-soft); }
+.av-scelta[aria-pressed="true"] { background: var(--mise-navy); color: #fff; border-color: var(--mise-navy); }
+.av-scelta[aria-pressed="true"]::before { content: "✓ "; }
+.av-btn { min-height: 44px; border-radius: 50rem; font-weight: 600; background: var(--mise-ciano-testo); color: #fff; border: 2px solid var(--mise-ciano-testo); }
+.av-btn:hover, .av-btn:focus-visible { background: var(--mise-navy); border-color: var(--mise-navy); color: #fff; }
+.av-btn[disabled] { opacity: .55; cursor: not-allowed; }
+.av-btn-chiaro { background: #fff; color: var(--mise-navy); }
+.av-scelta:focus-visible, .av-btn:focus-visible, .av-barra input:focus, .av-anteprima:focus { outline: 3px solid var(--mise-navy); outline-offset: 2px; }
+.av-barra { display: flex; gap: .5rem; margin-top: .5rem; }
+.av-barra[hidden] { display: none; }
+.av-barra input { flex: 1; min-width: 0; min-height: 44px; padding: .5rem .75rem; border: 2px solid var(--mise-ciano-testo); border-radius: .5rem; font: inherit; }
+.av-anteprima {
+  white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font-size: .95rem;
+  background: #fff; border: 1px dashed var(--mise-ciano-testo); border-radius: .5rem; padding: .75rem; margin: 0;
+}
+@media (prefers-reduced-motion: reduce) { .av-btn, .av-scelta { transition: none; } }
