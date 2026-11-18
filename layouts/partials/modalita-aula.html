@@ -1,0 +1,10 @@
+{{- /* Modalità Aula (dal sito della Protezione Civile di Genzano, 18/11/2026): pulsante che apre la pagina come
+       sequenza di schermate a tutto schermo da proiettare sulla LIM (static/js/modalita-aula.js).
+       Parametri: page, selector (il contenitore del testo, i cui figli h2 diventano schermate).
+       Il pulsante resta nascosto finché lo script non trova almeno due h2. */ -}}
+{{- $v := readFile "static/js/modalita-aula.js" | hash.FNV32a -}}
+<button type="button" class="btn-modalita-aula" hidden data-aula-sorgente="{{ .selector }}">
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="1"/><path d="M8 21l4-5 4 5"/></svg>
+  Modalità Aula: proietta questa pagina
+</button>
+<script src="{{ "js/modalita-aula.js" | relURL }}?v={{ $v }}" defer></script>

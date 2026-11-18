@@ -29,6 +29,7 @@
       <p class="bb-nota">Il trucco viene dalla Commissione europea. L'11 febbraio, cioè l'11/2, è la Giornata europea del 112.</p>
     </section>
 
+    {{ partial "lim-pronto.html" (dict "page" . "aula" ".bb-testo") }}
     <div class="contenuto bb-testo mb-5">{{ .Content }}</div>
 
     {{ with .Params.numeri }}

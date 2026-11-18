@@ -1320,11 +1320,103 @@ a:hover { color: var(--mise-navy); }
 .sc-materiale h3 { color: var(--mise-navy); margin-bottom: .4rem; }
 .sc-scarica { display: flex; flex-wrap: wrap; gap: .6rem; margin: .75rem 0 0; }
 .sc-scarica .btn::after { content: " ↓"; }
-.sc-lim { margin-top: .6rem; font-size: .95rem; }
-.sc-lim summary { cursor: pointer; font-weight: 600; color: var(--mise-ciano-testo); }
-.sc-lim ul { margin: .5rem 0 0; padding-left: 1.2rem; }
+.sc-lim { margin-top: .9rem; border: 2px solid var(--mise-ciano-testo); border-radius: .5rem; padding: .75rem .9rem; background: #f3f9fc; }
+.sc-lim-tit { margin: 0 0 .55rem; font-weight: 600; color: var(--mise-navy); }
+.sc-lim-eti { display: inline-block; background: var(--mise-navy); color: #fff; font-size: .8rem; font-weight: 700; padding: .15rem .5rem; border-radius: .25rem; margin-right: .35rem; }
+.sc-lim-elenco { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; }
+.sc-lim-btn { display: inline-flex; flex-direction: column; min-width: 8.5rem; min-height: 44px; padding: .45rem .75rem; border: 1px solid var(--mise-ciano-testo); border-radius: .4rem; background: #fff; color: var(--mise-navy); text-decoration: none; line-height: 1.25; }
+.sc-lim-btn:hover, .sc-lim-btn:focus-visible { background: var(--mise-navy); color: #fff; border-color: var(--mise-navy); }
+.sc-lim-btn span { font-size: .8rem; color: #5a6275; }
+.sc-lim-btn:hover span, .sc-lim-btn:focus-visible span { color: #dfe6f5; }
 .sc-verifica { color: #5a6275; font-size: .9rem; }
 @media (max-width: 575.98px) {
   .sc-materiale, .sc-materiale.sc-slide { grid-template-columns: 1fr; }
   .sc-materiale img { max-width: 14rem; }
 }
+
+/* ==========================================================================
+ * MODALITÀ AULA (18/11/2026, dal sito della Protezione Civile di Genzano) — la pagina come
+ * sequenza di schermate da proiettare sulla LIM (static/js/modalita-aula.js, partial
+ * modalita-aula.html). Fondo bianco, testo #1a1a1a, titoli blu #003F85 del kit nazionale, nessuna animazione.
+ * ========================================================================== */
+html.aula-aperta, html.aula-aperta body { overflow: hidden; }
+/* i pulsanti fissi del sito (accessibilità, WhatsApp, torna su, barra di lettura) coprirebbero la schermata:
+   in aula non servono, tornano all'uscita */
+html.aula-aperta #a11y-apri, html.aula-aperta .a11y-pannello, html.aula-aperta #a11y-guida,
+html.aula-aperta .barra-lettura, html.aula-aperta #torna-su, html.aula-aperta #whatsapp-flot { display: none !important; }
+.aula {
+  --aula-scala: 1;
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; flex-direction: column;
+  background: #fff; color: #1a1a1a;
+}
+.aula-barra, .aula-navigazione {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .75rem 1.5rem; background: #f4f7fb; border-bottom: 1px solid #d9dfe6;
+}
+.aula-navigazione { border-bottom: 0; border-top: 1px solid #d9dfe6; }
+.aula-contatore { font-weight: 600; color: #003F85; }
+.aula-annuncio { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.aula-comandi { display: flex; gap: .5rem; }
+.aula-btn {
+  min-height: 44px; min-width: 44px; padding: .4rem .9rem;
+  border: 2px solid #003F85; border-radius: 6px; background: #fff; color: #003F85;
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+}
+.aula-btn:hover { background: #e8eef8; }
+.aula-btn:focus-visible { outline: 3px solid #ffbe2e; outline-offset: 2px; }
+.aula-btn:disabled { opacity: .45; cursor: default; }
+.aula-btn-grande { font-size: 1.25rem; padding: .6rem 1.6rem; }
+.aula-btn-avanti { background: #003F85; color: #fff; }
+.aula-btn-avanti:hover { background: #002f63; }
+/* schermo della classe (Proietta): solo la schermata e il contatore */
+.aula-schermo .aula-comandi, .aula-schermo .aula-navigazione { display: none; }
+.aula-btn-proietta[aria-pressed="true"] { background: #003F85; color: #fff; }
+.aula-contatore { white-space: nowrap; }
+.aula-tasto { font-size: .75rem; border: 1px solid currentColor; border-radius: 3px; padding: 0 .3rem; margin-left: .3rem; }
+.aula-schermata {
+  flex: 1; overflow: auto;
+  padding: clamp(1.5rem, 4vw, 4rem) clamp(1.5rem, 8vw, 10rem);
+  font-size: calc(clamp(1.35rem, 2.4vw, 2.1rem) * var(--aula-scala));
+  line-height: 1.5;
+}
+.aula-schermata > * { max-width: 46ch; }
+.aula-schermata table, .aula-schermata figure { max-width: 100%; }
+.aula-schermata p, .aula-schermata li, .aula-schermata dd, .aula-schermata dt,
+.aula-schermata blockquote, .aula-schermata summary, .aula-schermata td,
+.aula-schermata th { font-size: inherit; line-height: inherit; }
+.aula-schermata h3 { font-size: 1.15em; color: #003F85; }
+.aula-schermata h4 { font-size: 1em; color: #003F85; }
+.aula-titolo:focus, .aula-titolo:focus-visible, .aula-titolo.focus--keyboard { outline: none !important; box-shadow: none !important; }   /* fuoco dato dallo script per gli screen reader, non un comando */
+.aula-titolo { color: #003F85; font-size: 1.6em; font-weight: 700; margin: 0 0 1.2rem; line-height: 1.2; }
+.aula-apertura { display: flex; flex-direction: column; justify-content: center; }
+.aula-apertura .aula-titolo { font-size: 2.2em; }
+.aula-segue { font-size: .5em; font-weight: 400; color: #4d5a66; }
+.aula-schermata figure { margin: 0; text-align: center; }
+.aula-figura img { max-height: 62vh; width: auto; max-width: 100%; }
+.aula-schermata figcaption { font-size: .7em; color: #4d5a66; }
+.aula-schermata table { font-size: .7em; }
+.aula-schermata details { border: 2px solid #003F85; border-radius: 8px; padding: .6em 1em; margin-bottom: 1em; }
+.aula-schermata summary { cursor: pointer; font-weight: 700; color: #003F85; }
+.aula-fine { margin-top: 2em; font-size: .7em; color: #4d5a66; }
+@media (max-width: 575.98px) {
+  .aula-barra, .aula-navigazione { padding: .5rem .75rem; }
+  .aula-contatore-parola { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .aula-btn-grande { font-size: 1rem; padding: .5rem 1rem; }
+  .aula-tasto { display: none; }   /* sul telefono non c'è il tasto Esc */
+  .aula-comandi { gap: .35rem; }
+  .aula-btn-proietta .aula-btn-testo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }   /* sul telefono solo l'icona: il testo resta per gli screen reader */
+}
+@media print { .btn-modalita-aula, .aula { display: none !important; } }
+
+.btn-modalita-aula { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: .5rem 1.1rem;
+  border: 2px solid #003F85; border-radius: 50rem; background: #fff; color: #003F85; font-weight: 700; cursor: pointer; }
+.btn-modalita-aula:hover, .btn-modalita-aula:focus-visible { background: #003F85; color: #fff; }
+
+/* Riquadro «Pronto per la LIM» (partial lim-pronto.html, pagina /lim/), come sul sito della Protezione Civile. */
+.lim-pronto { display: flex; align-items: flex-start; gap: .75rem; background: #eef3fa; color: #1a1a1a;
+  border-left: 4px solid #003F85; border-radius: 6px; padding: .75rem 1rem; margin: 0 0 1.25rem; font-size: .95rem; line-height: 1.5; }
+.lim-pronto svg { flex: none; color: #003F85; margin-top: .15rem; }
+.lim-pronto a { color: #003F85; font-weight: 600; text-decoration: underline; display: inline-flex; align-items: center; min-height: 44px; }
+.lim-pronto-azioni { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .25rem; }
+@media print { .lim-pronto { display: none !important; } }

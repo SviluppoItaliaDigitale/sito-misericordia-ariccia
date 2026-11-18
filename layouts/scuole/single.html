@@ -18,6 +18,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
+    {{ partial "lim-pronto.html" (dict "page" . "aula" "article.sc-guida") }}
     {{ partial "scuole-materiali.html" . }}
     <article class="contenuto sc-guida mt-5" data-anim-group>
       {{ .Content }}
