@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{- /* Pagina di una fascia d'età dei materiali per le scuole (content/scuole/*.md).
+       Front matter: fascia, eta, materiali (titolo, tipo scheda|slide|guida, file PDF, pptx, pagine,
+       descrizione, revisione), fonti. Un materiale con revisione: "da fare" (contenuti sanitari non ancora
+       rivisti dal responsabile sanitario) non compare. I PDF si fanno con scripts/scuole/rendi_pdf.py. */ -}}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Materiali per le scuole · {{ .Params.eta }}</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        {{ with .Parent }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    {{ partial "scuole-materiali.html" . }}
+    <article class="contenuto sc-guida mt-5" data-anim-group>
+      {{ .Content }}
+    </article>
+    {{ with .Params.fonti }}
+    <section class="contenuto sc-fonti mt-5">
+      <h2>Fonti</h2>
+      <ul>{{ range . }}<li><a href="{{ .url }}" rel="noopener" target="_blank">{{ .titolo }}</a>{{ with .verificata }} <span class="sc-verifica">(verificata il {{ . }})</span>{{ end }}</li>{{ end }}</ul>
+    </section>
+    {{ end }}
+    {{ partial "condividi.html" . }}
+    {{ partial "aggiornamento.html" . }}
+  </div>
+</div>
+{{ end }}

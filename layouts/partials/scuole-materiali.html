@@ -1,0 +1,25 @@
+{{- /* Schede dei materiali scaricabili di una pagina di content/scuole/ (vedi layouts/scuole/single.html). */ -}}
+{{ $vis := slice }}{{ range .Params.materiali }}{{ if ne .revisione "da fare" }}{{ $vis = $vis | append . }}{{ end }}{{ end }}
+{{ with $vis }}
+<section aria-labelledby="sc-mat-tit" class="sc-materiali">
+  <h2 id="sc-mat-tit" class="h3 mb-3">Da scaricare e stampare</h2>
+  <ul class="list-unstyled sc-elenco">
+    {{ range . }}
+    {{ $tipo := index (dict "scheda" "Scheda da stampare" "slide" "Slide per la lezione" "guida" "Guida per l'insegnante") .tipo }}
+    {{ $img := replaceRE `^/documenti/(.*)\.pdf$` "/img/$1.jpg" .file }}
+    <li class="sc-materiale sc-{{ .tipo }}">
+      <img src="{{ $img | relURL }}" alt="" loading="lazy" decoding="async" width="{{ cond (eq .tipo "slide") 640 453 }}" height="{{ cond (eq .tipo "slide") 360 640 }}">
+      <div class="sc-testo">
+        <p class="sc-tipo">{{ $tipo }}{{ with .pagine }} · {{ . }} {{ cond (eq . 1) "pagina" "pagine" }}{{ end }}</p>
+        <h3 class="h5">{{ .titolo }}</h3>
+        <p>{{ .descrizione }}</p>
+        <p class="sc-scarica">
+          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>Scarica il PDF</a>
+          {{ if .pptx }}<a class="btn btn-ciano" href="{{ replaceRE `\.pdf$` ".pptx" .file | relURL }}" download>PowerPoint</a>{{ end }}
+        </p>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

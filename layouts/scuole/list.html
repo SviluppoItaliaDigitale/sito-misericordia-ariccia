@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{- /* Materiali per le scuole: introduzione (contenuto di content/scuole/_index.md) e una scheda per fascia d'età,
+       in ordine di weight. */ -}}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1" data-anim="fade-up">Per insegnanti, educatori e famiglie</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+    {{ with .Content }}<div class="contenuto sc-intro mb-5" data-anim-group>{{ . }}</div>{{ end }}
+    <ol class="list-unstyled sc-fasce">
+      {{ range .Pages.ByWeight }}
+      {{ $n := 0 }}{{ range .Params.materiali }}{{ if ne .revisione "da fare" }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+      <li class="sc-fascia">
+        <p class="sc-eta">{{ .Params.eta }}</p>
+        <h2 class="h4"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Description }}</p>
+        <p class="sc-conta">{{ $n }} {{ cond (eq $n 1) "materiale" "materiali" }} da scaricare</p>
+      </li>
+      {{ end }}
+    </ol>
+    {{ partial "aggiornamento.html" . }}
+  </div>
+</div>
+{{ end }}

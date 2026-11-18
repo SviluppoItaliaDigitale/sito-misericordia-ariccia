@@ -1303,3 +1303,25 @@ a:hover { color: var(--mise-navy); }
   background: #fff; border: 2px dashed #003F85; border-radius: .5rem; padding: .75rem; margin: 0;
 }
 @media (prefers-reduced-motion: reduce) { .av-btn, .av-scelta { transition: none; } }
+
+/* ---- Materiali per le scuole (layouts/scuole/, content/scuole/) ---- */
+.sc-intro, .sc-guida { max-width: 48rem; }
+.sc-fasce { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); margin: 0; }
+.sc-fascia { border-top: 6px solid var(--mise-navy); background: #fff; padding: 1.25rem 1.25rem 1rem; }
+.sc-fascia h2 a { color: var(--mise-navy); text-decoration: none; }
+.sc-fascia h2 a:hover { text-decoration: underline; }
+.sc-eta { font-weight: 700; color: var(--mise-ciano-testo); margin-bottom: .25rem; }
+.sc-conta { font-size: .92rem; color: #5a6275; margin: 0; }
+.sc-elenco { display: grid; gap: 1.5rem; margin: 0; }
+.sc-materiale { display: grid; grid-template-columns: 9rem 1fr; gap: 1.25rem; align-items: start; border-bottom: 1px solid #d9e1e8; padding-bottom: 1.5rem; }
+.sc-materiale.sc-slide { grid-template-columns: 14rem 1fr; }
+.sc-materiale img { width: 100%; height: auto; border: 1px solid #d9e1e8; background: #fff; }
+.sc-tipo { font-size: .85rem; font-weight: 700; color: var(--mise-ciano-testo); margin-bottom: .2rem; }
+.sc-materiale h3 { color: var(--mise-navy); margin-bottom: .4rem; }
+.sc-scarica { display: flex; flex-wrap: wrap; gap: .6rem; margin: .75rem 0 0; }
+.sc-scarica .btn::after { content: " ↓"; }
+.sc-verifica { color: #5a6275; font-size: .9rem; }
+@media (max-width: 575.98px) {
+  .sc-materiale, .sc-materiale.sc-slide { grid-template-columns: 1fr; }
+  .sc-materiale img { max-width: 14rem; }
+}
