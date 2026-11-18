@@ -11,6 +11,8 @@ italianoSemplice: |
   Cosa puoi fare: trasporti, Centro di Ascolto, Banco Alimentare, aiuto alle feste.
 
   Per iniziare vieni in sede o chiama il **348 4068657**. Per le iscrizioni: **328 8105399**.
+
+  Puoi anche rispondere alle domande dell'assistente in questa pagina. Alla fine mandi tu il messaggio su WhatsApp o per email.
 description: "Se hai un cuore grande e il desiderio di aiutare chi ha bisogno, c'è un posto anche per te alla Misericordia di Ariccia. Nessuna competenza richiesta: la formazione la facciamo insieme."
 ---
 
@@ -42,6 +44,8 @@ Alla Misericordia di Ariccia ogni volontario trova il servizio più adatto al pr
 1. **Contattaci o passa a trovarci** — in sede, per telefono o su WhatsApp: ti raccontiamo chi siamo e cosa facciamo.
 2. **Presenta la domanda di ammissione** — basta una domanda scritta: puoi scaricare il [modulo di iscrizione](/documenti/modulo-iscrizione-socio.pdf).
 3. **Inizia il percorso** — la formazione la facciamo insieme, passo dopo passo, fino a quando sarai pronto per il servizio.
+
+{{< assistente-volontari >}}
 
 La sola ricompensa del volontario è nella coscienza del dovere compiuto, salutata dall'antico motto delle Misericordie: **«Che Iddio te ne renda merito»**.
 

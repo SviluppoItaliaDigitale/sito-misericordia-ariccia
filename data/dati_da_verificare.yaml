@@ -1,6 +1,6 @@
 # Inventario dei dati del sito che invecchiano (numeri, norme, importi, date, recapiti, link ufficiali).
 # Lo usa l'agente automatico che ogni giorno li ricontrolla sulla fonte ufficiale e aggiorna il sito o apre una segnalazione.
-aggiornato: "2026-11-16"
+aggiornato: "2026-11-18"
 dati:
 - id: "nue-112-lazio"
   cosa: "Il 112 è il Numero Unico di Emergenza nel Lazio: gratuito, 24 ore su 24, per ambulanza, forze dell'ordine e vigili del fuoco; i vecchi 113, 115, 118 rispondono tramite la centrale del 112."
@@ -2000,6 +2000,7 @@ dati:
   - "content/news/2027-02-25-che-cos-e-una-confraternita.md"
   - "content/news/2027-03-11-in-primavera-diventa-volontario.md"
   - "content/diventa-volontario.md"
+  - "static/js/assistente-volontari-dati.js"
   - "content/news/2026-12-05-giornata-volontariato.md"
   - "content/news/2026-11-12-anche-ascoltare-e-un-servizio.md"
   - "content/news/2026-11-19-non-serve-guidare-l-ambulanza.md"
@@ -2239,3 +2240,14 @@ dati:
   frequenza: "mensile"
   verificato: "2026-11-09"
   note: "Controllo del 9/10/2026: 288 link, sostituiti i morti (DIN → UNI EN 1789, nsis → Sistema TS, PDF Vaticano → pagina HTML, Medaglia d'oro misericordie.it → Quotidiano Sanità, minori.gov.it → Dipartimento famiglia). Resta morto il PDF Poste del Giubileo 2015 (segnalato nella issue). Bloccano i controlli automatici ma esistono: 112sordi.it, iso.org, eur-lex, prefettura.interno.gov.it/node/652286."
+- id: "patente-guida-ambulanza"
+  cosa: "Per guidare l'ambulanza della Misericordia basta la patente B; prepara alla guida il formatore interno per gli autisti."
+  valore: "patente B, formatore interno"
+  dove:
+  - "static/js/assistente-volontari-dati.js"
+  fonte: "Dato interno dell'associazione (indicazione di Alessandro Cuollo del 18/11/2026)"
+  tipo: "associazione"
+  delicato: false
+  frequenza: "annuale"
+  verificato: "2026-11-18"
+  note: "Se cambiano i requisiti di guida o il formatore, aggiornare la domanda sulla patente dell'assistente."
