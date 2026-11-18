@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/medie/schede-verifica.pdf">
+<title>Schede di verifica sul 112 per la scuola media</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Schede di verifica della scuola media: esercizi su 112 e catena dei soccorsi, soluzioni nell'ultima pagina. */
+.campi { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; font-size: 12px; color: #233B74; font-weight: 700; }
+.campi div { border-bottom: 1.5px solid #5A6686; padding-bottom: 3px; }
+.es { display: flex; flex-direction: column; gap: 8px; }
+.es h2 { display: flex; align-items: baseline; gap: 10px; }
+.es h2 .num { background: var(--blu); color: #FFFFFF; font-size: 15px; line-height: 1; padding: 5px 9px; }
+.consegna { color: #233B74; }
+.vf div { display: grid; grid-template-columns: 22px 1fr 34px 34px; gap: 10px; align-items: center; border-bottom: 1px solid #C9D3E6; padding: 2px 0; }
+.vf .n { font-weight: 800; color: #233B74; }
+.vf i { font-style: normal; font-weight: 800; font-size: 12px; color: #233B74; border: 2px solid #233B74; height: 21px; display: flex; align-items: center; justify-content: center; }
+.dialogo { display: flex; flex-direction: column; gap: 7px; }
+.battuta { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: end; }
+.battuta .chi { font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .02em; color: #233B74; padding-bottom: 3px; }
+.battuta .op { background: #EEF0F8; padding: 6px 12px; color: #233B74; }
+.battuta .io { border-bottom: 1.5px solid #5A6686; height: 28px; }
+.scenario { border-left: 6px solid var(--giallo); padding: 4px 0 4px 14px; }
+.mappa { display: grid; grid-template-columns: 150px 26px 170px 26px 1fr; align-items: center; gap: 0; }
+.nodo { border: 2px solid #233B74; padding: 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12.5px; line-height: 17px; background: #FFFFFF; }
+.nodo .vuoto { display: block; width: 100%; height: 22px; border-bottom: 1.5px solid #5A6686; }
+.rami { display: flex; flex-direction: column; gap: 10px; }
+.rami .nodo { flex-direction: row; text-align: left; gap: 12px; padding: 8px 10px; }
+.rami .nodo .t { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.banca { display: flex; flex-wrap: wrap; gap: 8px; }
+.banca span { border: 1.5px dashed #233B74; padding: 3px 10px; font-weight: 700; color: #233B74; font-size: 12.5px; }
+.scelta div { display: grid; grid-template-columns: 22px 1fr 64px 64px; gap: 10px; align-items: center; border-bottom: 1px solid #C9D3E6; padding: 4px 0; }
+.scelta .n { font-weight: 800; color: #233B74; }
+.scelta i { font-style: normal; font-weight: 800; font-size: 11.5px; color: #233B74; border: 2px solid #233B74; height: 24px; display: flex; align-items: center; justify-content: center; }
+.soluzioni { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 30px; }
+.soluzioni ol { gap: 3px; }
+.soluzioni h3 { margin-bottom: 4px; }
+.ok { font-weight: 800; color: #233B74; }
+.pagina > .contenuto { gap: 10px; }
+.righe { gap: 26px; }
+</style>
+</head>
+<body class="a4">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <symbol id="s-telefono" viewBox="0 0 200 340">
+    <rect x="8" y="6" width="184" height="328" rx="26" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <rect x="28" y="40" width="144" height="236" rx="6" fill="#EEF0F8" stroke="#233B74" stroke-width="4"/>
+    <circle cx="100" cy="306" r="13" fill="none" stroke="#233B74" stroke-width="5"/>
+    <rect x="78" y="20" width="44" height="7" rx="3.5" fill="#233B74"/>
+    <text x="100" y="138" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="62" fill="#233B74">112</text>
+    <circle cx="100" cy="210" r="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <path d="M86 198c3-4 8-4 10 0l3 6c1 3 0 5-2 7l-3 2c3 6 7 10 13 13l2-3c2-2 4-3 7-2l6 3c4 2 4 7 0 10-6 5-15 4-23-2-8-6-14-13-17-21-2-6-1-10 4-13z" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-operatore" viewBox="0 0 260 260">
+    <circle cx="130" cy="96" r="54" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M40 250c0-58 40-92 90-92s90 34 90 92" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M66 100c0-44 28-70 64-70s64 26 64 70" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round"/>
+    <rect x="52" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <rect x="182" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M70 128c4 26 24 40 50 42" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="124" cy="170" r="8" fill="#233B74"/>
+    <path d="M110 100h0M150 100h0" stroke="#233B74" stroke-width="10" stroke-linecap="round"/>
+    <path d="M114 122c10 8 22 8 32 0" fill="none" stroke="#233B74" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="s-ambulanza" viewBox="0 0 320 180">
+    <path d="M14 140V46c0-8 6-14 14-14h170v108z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M198 58h56c6 0 11 3 14 8l32 46c2 3 3 6 3 10v18H198z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 72h38l26 38h-64z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="14" y="92" width="289" height="16" fill="#009FE3"/>
+    <rect x="14" y="108" width="289" height="10" fill="#FCEB0C"/>
+    <rect x="90" y="16" width="44" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="76" y="48" width="28" height="28" fill="#FFFFFF" stroke="#233B74" stroke-width="5"/>
+    <rect x="114" y="48" width="58" height="28" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <circle cx="72" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="244" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="72" cy="146" r="7" fill="#233B74"/><circle cx="244" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-pompieri" viewBox="0 0 320 180">
+    <path d="M14 140V60h170v80z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M184 52h62c6 0 10 3 13 8l30 50v30H184z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M200 66h42l24 40h-66z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M24 44l150-14M24 54l150-14" stroke="#233B74" stroke-width="5"/>
+    <path d="M44 51l-2-19M74 48l-2-19M104 45l-2-19M134 42l-2-19M164 39l-2-19" stroke="#233B74" stroke-width="4"/>
+    <rect x="14" y="98" width="275" height="14" fill="#233B74"/>
+    <rect x="200" y="36" width="34" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <circle cx="70" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="236" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="70" cy="146" r="7" fill="#233B74"/><circle cx="236" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-auto" viewBox="0 0 320 160">
+    <path d="M16 118V92c0-8 5-14 12-16l40-10 34-34c4-4 9-6 15-6h86c6 0 11 2 15 7l30 33 40 10c8 2 12 8 12 16v26z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M86 66l26-26h44v26zM170 66V40h28l24 26z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="130" y="12" width="50" height="14" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="16" y="84" width="288" height="12" fill="#233B74"/>
+    <circle cx="80" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="240" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="80" cy="124" r="7" fill="#233B74"/><circle cx="240" cy="124" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-posizione" viewBox="0 0 300 300">
+    <path d="M20 250l80-30 100 30 80-30V60l-80 30-100-30-80 30z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M100 60v160M200 90v160" stroke="#233B74" stroke-width="5"/>
+    <path d="M40 170c40-10 70 20 110 0s70-30 110-10" fill="none" stroke="#009FE3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M150 196c-34-40-52-68-52-94a52 52 0 0 1 104 0c0 26-18 54-52 94z" fill="#FCEB0C" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="150" cy="102" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-citofono" viewBox="0 0 220 300">
+    <rect x="20" y="10" width="180" height="280" rx="10" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <circle cx="110" cy="56" r="26" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <path d="M96 50h28M96 60h28" stroke="#233B74" stroke-width="4"/>
+    <g fill="#FFFFFF" stroke="#233B74" stroke-width="5"><rect x="46" y="104" width="128" height="32"/><rect x="46" y="148" width="128" height="32"/><rect x="46" y="192" width="128" height="32"/><rect x="46" y="236" width="128" height="32" fill="#FCEB0C"/></g>
+    <g fill="#233B74"><circle cx="160" cy="120" r="6"/><circle cx="160" cy="164" r="6"/><circle cx="160" cy="208" r="6"/><circle cx="160" cy="252" r="6"/></g>
+    <g stroke="#233B74" stroke-width="5" stroke-linecap="round"><path d="M60 120h66M60 164h50M60 208h72M60 252h58"/></g>
+  </symbol>
+  <symbol id="s-coperta" viewBox="0 0 340 220">
+    <path d="M30 170c40-12 240-12 280 0" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="72" cy="128" r="28" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M96 116c40-30 120-36 200-8 10 4 12 30 4 46-60 16-150 18-204 6z" fill="#009FE3" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M130 112l20 46M180 104l18 54M230 104l16 52" stroke="#FFFFFF" stroke-width="5"/>
+    <path d="M240 60c-4-22 20-36 34-20 12-16 40-4 32 18-4 12-20 22-34 32-14-10-28-18-32-30z" fill="#FCEB0C" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="s-casa" viewBox="0 0 300 260">
+    <path d="M30 120L150 24l120 96" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56 104v134h188V104" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <rect x="124" y="160" width="52" height="78" fill="#EEF0F8" stroke="#233B74" stroke-width="6"/>
+    <rect x="76" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="190" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="200" y="40" width="22" height="44" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-strada" viewBox="0 0 300 260">
+    <path d="M110 250L136 20h28l26 230z" fill="#EEF0F8" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M150 40v26M150 92v34M150 152v40M150 216v30" stroke="#FCEB0C" stroke-width="9"/>
+    <path d="M222 250l-26-88h54z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 230l8-28 8 28z" fill="#FCEB0C"/>
+    <rect x="30" y="140" width="56" height="74" rx="6" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M30 168h56M30 190h56" stroke="#FFFFFF" stroke-width="6"/>
+    <circle cx="58" cy="116" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+</defs>
+</svg>
+
+<!-- Pagina 1 -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola media</b></div>
+<div class="contenuto">
+  <h1>Verifica: il 112 e la catena dei soccorsi</h1>
+  <div class="campi"><div>Nome e cognome</div><div>Classe</div><div>Data</div></div>
+  <div class="es">
+    <h2><span class="num">1</span> Vero o falso? <span style="font-size:13.5px; font-weight:400">Cerchia V o F.</span></h2>
+    <div class="vf">
+      <div><span class="n">1</span><span>Il 112 si può chiamare anche da un telefono senza credito o senza SIM.</span><i>V</i><i>F</i></div>
+      <div><span class="n">2</span><span>Il 112 funziona solo in Italia.</span><i>V</i><i>F</i></div>
+      <div><span class="n">3</span><span>L'operatore della Centrale Unica di Risposta è un medico.</span><i>V</i><i>F</i></div>
+      <div><span class="n">4</span><span>Da Ariccia la chiamata al 112 arriva alla Centrale Unica di Risposta di via Laurentina, a Roma.</span><i>V</i><i>F</i></div>
+      <div><span class="n">5</span><span>Se chiamo dal cellulare non serve dire l'indirizzo: il telefono manda la posizione da solo.</span><i>V</i><i>F</i></div>
+      <div><span class="n">6</span><span>Il 113, il 115 e il 118 non funzionano più.</span><i>V</i><i>F</i></div>
+      <div><span class="n">7</span><span>Mentre aspetto l'ambulanza, do da bere alla persona per farla stare meglio.</span><i>V</i><i>F</i></div>
+      <div><span class="n">8</span><span>Quando la chiamata finisce, è meglio lasciare libero quel telefono.</span><i>V</i><i>F</i></div>
+      <div><span class="n">9</span><span>Per sapere quale farmacia è di turno si chiama il 112.</span><i>V</i><i>F</i></div>
+      <div><span class="n">10</span><span>Annunciare un'emergenza che non esiste è un reato.</span><i>V</i><i>F</i></div>
+    </div>
+  </div>
+  <div class="es">
+    <h2><span class="num">2</span> Completa la telefonata</h2>
+    <p class="scenario">Sei al campo sportivo della scuola. Durante la partita un compagno cade male: ha molto dolore alla caviglia e non riesce ad alzarsi. Risponde e respira. Scrivi che cosa diresti.</p>
+    <div class="dialogo">
+      <div class="battuta"><span class="chi">Operatore 112</span><span class="op">«112, che cosa è successo?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io"></span></div>
+      <div class="battuta"><span class="chi">Operatore 112</span><span class="op">«Dove vi trovate? Come ti chiami?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io"></span></div>
+      <div class="battuta"><span class="chi">Operatore 118</span><span class="op">«Sono il 118: il 112 mi ha passato la chiamata. Il tuo compagno risponde? Respira? Sanguina?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io"></span></div>
+      <div class="battuta"><span class="chi">Operatore 118</span><span class="op">«L'ambulanza sta arrivando. Che cosa fai mentre aspetti?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io"></span></div>
+    </div>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- Pagina 2 -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola media</b></div>
+<div class="contenuto">
+  <div class="es">
+    <h2><span class="num">3</span> La mappa della catena dei soccorsi</h2>
+    <p class="consegna">Completa la mappa con le parole del riquadro.</p>
+    <div class="banca"><span>112</span><span>Unica</span><span>Risposta</span><span>118</span><span>Vigili del fuoco</span><span>Carabinieri</span><span>Polizia</span></div>
+    <div class="mappa">
+      <div class="nodo"><svg width="56" height="95" role="img" aria-label="Cellulare"><use href="#s-telefono"/></svg>Tu chiami il<span class="vuoto"></span></div>
+      <svg width="26" height="24" viewBox="0 0 94 86" fill="none" stroke="#009FE3" stroke-width="15" aria-hidden="true"><path d="M8 8l34 35-34 35"/><path d="M48 8l34 35-34 35"/></svg>
+      <div class="nodo"><svg width="80" height="80" role="img" aria-label="Operatore con la cuffia"><use href="#s-operatore"/></svg>Centrale<span class="vuoto"></span>di<span class="vuoto"></span></div>
+      <svg width="26" height="24" viewBox="0 0 94 86" fill="none" stroke="#009FE3" stroke-width="15" aria-hidden="true"><path d="M8 8l34 35-34 35"/><path d="M48 8l34 35-34 35"/></svg>
+      <div class="rami">
+        <div class="nodo"><svg width="90" height="51" role="img" aria-label="Ambulanza"><use href="#s-ambulanza"/></svg><span class="t">Per un malore: il<span class="vuoto"></span></span></div>
+        <div class="nodo"><svg width="90" height="51" role="img" aria-label="Camion dei Vigili del fuoco"><use href="#s-pompieri"/></svg><span class="t">Per un incendio: i<span class="vuoto"></span></span></div>
+        <div class="nodo"><svg width="90" height="45" role="img" aria-label="Auto delle forze dell'ordine"><use href="#s-auto"/></svg><span class="t">Per un furto in corso: i<span class="vuoto"></span>o la<span class="vuoto"></span></span></div>
+      </div>
+    </div>
+    <p class="consegna">Perché, secondo te, conviene un solo numero per tutte le emergenze?</p>
+    <div class="righe"><span></span></div>
+  </div>
+  <div class="es">
+    <h2><span class="num">4</span> 112 o 116117?</h2>
+    <p class="consegna">Il 112 è per un pericolo per la vita o la sicurezza; il 116117 per i problemi di salute non urgenti. Segna il numero giusto.</p>
+    <div class="scelta">
+      <div><span class="n">a</span><span>Un compagno cade dalle scale e non risponde quando lo chiami.</span><i>112</i><i>116117</i></div>
+      <div><span class="n">b</span><span>È notte, tuo fratello ha la febbre da due giorni e la mamma vuole un consiglio del medico.</span><i>112</i><i>116117</i></div>
+      <div><span class="n">c</span><span>Vedi uscire del fumo nero dalla serranda di un garage.</span><i>112</i><i>116117</i></div>
+      <div><span class="n">d</span><span>Un'auto urta un ciclista, che resta a terra.</span><i>112</i><i>116117</i></div>
+      <div><span class="n">e</span><span>Di domenica la nonna ha mal di gola e vuole sapere dov'è la guardia medica.</span><i>112</i><i>116117</i></div>
+    </div>
+  </div>
+  <div class="es">
+    <h2><span class="num">5</span> Rispondi</h2>
+    <p class="consegna">Il cellulare invia la posizione alla centrale. Perché l'operatore ti chiede comunque l'indirizzo?</p>
+    <div class="righe"><span></span><span></span></div>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- Pagina 3: soluzioni -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per l'<b>insegnante</b></div>
+<div class="contenuto">
+  <h1>Soluzioni</h1>
+  <p class="sotto">Le risposte vengono dalla guida «Cosa succede quando chiami il 112» del nostro sito e dalla pagina Emergenza 112 della Regione Lazio.</p>
+  <div class="soluzioni">
+    <div>
+      <h3>1. Vero o falso</h3>
+      <ol>
+        <li><span class="ok">V</span>. Anche senza credito, senza SIM o con il telefono bloccato.</li>
+        <li><span class="ok">F</span>. È il numero di emergenza in tutti gli Stati dell'Unione europea.</li>
+        <li><span class="ok">F</span>. Non è un medico né un poliziotto: è il primo filtro, che passa la chiamata all'ente giusto.</li>
+        <li><span class="ok">V</span>. Vale per tutti i comuni con prefisso 06.</li>
+        <li><span class="ok">F</span>. La posizione (sistema AML) a volte è approssimativa; scala, piano e citofono li sai solo tu.</li>
+        <li><span class="ok">F</span>. Funzionano ancora, ma risponde sempre la centrale del 112.</li>
+        <li><span class="ok">F</span>. Non si dà da mangiare né da bere.</li>
+        <li><span class="ok">V</span>. La centrale potrebbe richiamare.</li>
+        <li><span class="ok">F</span>. Il 112 è solo per le emergenze.</li>
+        <li><span class="ok">V</span>. È il procurato allarme, articolo 658 del Codice penale.</li>
+      </ol>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <div>
+        <h3>2. La telefonata</h3>
+        <p>Una risposta completa contiene: che cosa è successo («un compagno è caduto, ha male alla caviglia e non si alza»); dove (indirizzo della scuola, ingresso del campo, un punto di riferimento); il proprio nome; le risposte alle domande (risponde, respira, non sanguina); che cosa fa in attesa: lo copre, lo rassicura, <strong>non lo sposta</strong>, non gli dà da bere, manda qualcuno incontro all'ambulanza, <strong>resta in linea</strong>.</p>
+      </div>
+      <div>
+        <h3>3. La mappa</h3>
+        <p>112; Centrale <strong>Unica</strong> di <strong>Risposta</strong>; malore: il <strong>118</strong>; incendio: i <strong>Vigili del fuoco</strong>; furto in corso: i <strong>Carabinieri</strong> o la <strong>Polizia</strong>. Domanda aperta: una sola chiamata può attivare più soccorsi insieme, e non serve ricordare tanti numeri.</p>
+      </div>
+      <div>
+        <h3>4. 112 o 116117</h3>
+        <p>a <strong>112</strong> · b <strong>116117</strong> · c <strong>112</strong> · d <strong>112</strong> · e <strong>116117</strong>. Se durante una chiamata al 116117 emerge un'emergenza, la telefonata passa in automatico al 118.</p>
+      </div>
+      <div>
+        <h3>5. Perché l'indirizzo</h3>
+        <p>La posizione del telefono a volte è approssimativa, e la scala, il piano o il nome sul citofono li sa solo chi chiama.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/primaria/cartellino-112.pdf">
+<title>Il cartellino del 112 da appendere al frigorifero</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Quattro cartellini da ritagliare, uguali: 112, trucco dei pollici, indirizzo e nome da scrivere a casa. */
+.cartellini { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; flex: 1; }
+.cart { border: 1.5px dashed #5A6686; padding: 8px; display: flex; flex-direction: column; }
+.cart-in { border: 2.5px solid #003F85; flex: 1; display: flex; flex-direction: column; }
+.cart .testa { background: #003F85; color: #FFFFFF; font-weight: 800; font-size: 14px; letter-spacing: .04em; text-align: center; padding: 6px 0; }
+.cart .numero { font-size: 54px; line-height: 60px; font-weight: 800; color: #233B74; text-align: center; margin-top: 2px; }
+.cart .numero span { text-decoration: underline; text-decoration-color: #FCEB0C; text-decoration-thickness: 7px; text-underline-offset: 3px; }
+.cart .gratis { text-align: center; font-size: 10.5px; line-height: 14px; color: #233B74; margin-top: 4px; }
+.pollici { display: flex; justify-content: center; align-items: flex-end; gap: 14px; margin-top: 4px; }
+.pollici figure { display: flex; flex-direction: row; align-items: center; gap: 4px; font-size: 14px; font-weight: 800; color: #233B74; }
+.cart .trucco { text-align: center; font-size: 10.5px; font-weight: 700; color: #233B74; }
+.cart .dati { padding: 4px 12px 0; display: flex; flex-direction: column; gap: 3px; font-size: 10.5px; color: #233B74; font-weight: 700; }
+.cart .dati div { border-bottom: 1.2px solid #5A6686; height: 20px; display: flex; align-items: flex-end; padding-bottom: 1px; }
+.cart .regola { margin: auto 12px 0; padding: 5px 0 5px; font-size: 10px; line-height: 13px; color: #233B74; text-align: center; border-top: 1px solid #C9D3E6; }
+.cart .firma-c { font-size: 9px; font-weight: 700; color: #233B74; text-align: center; padding-bottom: 5px; }
+</style>
+</head>
+<body class="a4">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="pollice" viewBox="0 0 50 64">
+      <g fill="#FFFFFF" stroke="#233B74" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="6" y="3" width="15" height="34" rx="7.5"/>
+        <rect x="6" y="25" width="39" height="35" rx="9"/>
+        <path d="M24 35 H45 M24 44 H45 M24 52 H43"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>Il cartellino del 112</h1>
+  <p class="sotto">Ritaglia un cartellino lungo la linea tratteggiata. A casa, con un adulto, scrivi il tuo indirizzo e il tuo nome, poi appendilo sul frigorifero. Gli altri sono per i nonni o per chi vuoi tu.</p>
+  <div class="cartellini">
+    <!-- quattro cartellini identici -->
+    <div class="cart"><div class="cart-in">
+      <div class="testa fondo-blu">IN EMERGENZA CHIAMA</div>
+      <div class="numero"><span>112</span></div>
+      <div class="gratis">gratis, 24 ore su 24, anche senza credito</div>
+      <div class="pollici">
+        <figure><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg>1</figure>
+        <figure><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg>1</figure>
+        <figure><span style="display:flex; gap:2px"><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg></span>2</figure>
+      </div>
+      <div class="trucco">pollice, pollice, due pollici</div>
+      <div class="dati"><div>Abito in via</div><div>n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</div><div>Mi chiamo</div></div>
+      <div class="regola">Di' <strong>che cosa è successo</strong> e <strong>dove sei</strong>.<br>Rispondi alle domande. <strong>Non riattaccare.</strong></div>
+      <div class="firma-c">Misericordia di Ariccia</div>
+    </div></div>
+    <div class="cart"><div class="cart-in">
+      <div class="testa fondo-blu">IN EMERGENZA CHIAMA</div>
+      <div class="numero"><span>112</span></div>
+      <div class="gratis">gratis, 24 ore su 24, anche senza credito</div>
+      <div class="pollici">
+        <figure><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg>1</figure>
+        <figure><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg>1</figure>
+        <figure><span style="display:flex; gap:2px"><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg></span>2</figure>
+      </div>
+      <div class="trucco">pollice, pollice, due pollici</div>
+      <div class="dati"><div>Abito in via</div><div>n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</div><div>Mi chiamo</div></div>
+      <div class="regola">Di' <strong>che cosa è successo</strong> e <strong>dove sei</strong>.<br>Rispondi alle domande. <strong>Non riattaccare.</strong></div>
+      <div class="firma-c">Misericordia di Ariccia</div>
+    </div></div>
+    <div class="cart"><div class="cart-in">
+      <div class="testa fondo-blu">IN EMERGENZA CHIAMA</div>
+      <div class="numero"><span>112</span></div>
+      <div class="gratis">gratis, 24 ore su 24, anche senza credito</div>
+      <div class="pollici">
+        <figure><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg>1</figure>
+        <figure><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg>1</figure>
+        <figure><span style="display:flex; gap:2px"><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg></span>2</figure>
+      </div>
+      <div class="trucco">pollice, pollice, due pollici</div>
+      <div class="dati"><div>Abito in via</div><div>n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</div><div>Mi chiamo</div></div>
+      <div class="regola">Di' <strong>che cosa è successo</strong> e <strong>dove sei</strong>.<br>Rispondi alle domande. <strong>Non riattaccare.</strong></div>
+      <div class="firma-c">Misericordia di Ariccia</div>
+    </div></div>
+    <div class="cart"><div class="cart-in">
+      <div class="testa fondo-blu">IN EMERGENZA CHIAMA</div>
+      <div class="numero"><span>112</span></div>
+      <div class="gratis">gratis, 24 ore su 24, anche senza credito</div>
+      <div class="pollici">
+        <figure><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg>1</figure>
+        <figure><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg>1</figure>
+        <figure><span style="display:flex; gap:2px"><svg width="26" height="33" aria-hidden="true"><use href="#pollice"/></svg><svg width="26" height="33" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg></span>2</figure>
+      </div>
+      <div class="trucco">pollice, pollice, due pollici</div>
+      <div class="dati"><div>Abito in via</div><div>n.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a</div><div>Mi chiamo</div></div>
+      <div class="regola">Di' <strong>che cosa è successo</strong> e <strong>dove sei</strong>.<br>Rispondi alle domande. <strong>Non riattaccare.</strong></div>
+      <div class="firma-c">Misericordia di Ariccia</div>
+    </div></div>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+</body>
+</html>

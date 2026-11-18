@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/scuole/medie/slide-112-catena-soccorsi.pdf">
+<title>Il 112 e la catena dei soccorsi: slide per la scuola media</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Slide della scuola media sul 112. Disegni al tratto #233B74, accenti giallo e azzurro del kit nazionale. */
+.due { display: grid; grid-template-columns: 1.3fr .7fr; gap: 70px; align-items: center; flex: 1; }
+.due.pari { grid-template-columns: 1fr 1fr; align-items: start; }
+.disegno { display: flex; justify-content: center; align-items: center; }
+.disegno svg { display: block; max-width: 100%; height: auto; }
+.lista { list-style: none; padding-left: 0 !important; gap: 18px !important; }
+.lista li { position: relative; padding-left: 46px; }
+.lista li::before { content: ""; position: absolute; left: 0; top: 17px; width: 22px; height: 22px; background: var(--giallo); border: 3px solid #233B74; }
+.lista.no li::before { background: #FFFFFF; border-color: #233B74; transform: rotate(45deg); width: 18px; height: 18px; top: 18px; left: 3px; }
+.piccolo { font-size: 32px; line-height: 42px; }
+.titoletto { font-weight: 800; font-size: 40px; line-height: 48px; margin-bottom: 14px; }
+.cifra { font-weight: 800; font-size: 210px; line-height: .9; letter-spacing: -.02em; color: var(--blu); }
+.cifra small { display: block; font-size: 34px; line-height: 40px; letter-spacing: 0; font-weight: 700; color: #233B74; margin-top: 18px; }
+.catena { display: grid; grid-template-columns: 300px 70px 330px 70px 1fr; align-items: center; flex: 1; }
+.anello { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; font-size: 30px; line-height: 38px; }
+.anello b { font-size: 36px; line-height: 42px; font-weight: 800; }
+.freccina { display: flex; justify-content: center; }
+.rami { display: flex; flex-direction: column; gap: 26px; }
+.ramo { display: grid; grid-template-columns: 170px 1fr; gap: 26px; align-items: center; font-size: 30px; line-height: 38px; }
+.ramo b { display: block; font-size: 34px; font-weight: 800; }
+.domande { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.domanda { background: #FFFFFF; border-top: 10px solid var(--azzurro); padding: 26px 26px 30px; font-weight: 800; font-size: 40px; line-height: 46px; }
+.passo { display: grid; grid-template-columns: 92px 1fr; gap: 28px; align-items: start; }
+.passo .n { width: 92px; height: 92px; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 54px; display: flex; align-items: center; justify-content: center; }
+.passo p b { font-weight: 800; }
+.colonna h3 { padding-bottom: 12px; border-bottom: 5px solid #233B74; margin-bottom: 22px; }
+.fonte { font-size: 24px; line-height: 30px; color: #5A6686; margin-top: auto; }
+.confronto { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: stretch; }
+.confronto > div { padding: 34px 40px; }
+.confronto .num { font-size: 96px; line-height: 1; font-weight: 800; margin-bottom: 18px; }
+.chiusura { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+.chiusura > div { border-left: 10px solid var(--giallo); padding: 10px 0 10px 32px; display: flex; flex-direction: column; gap: 10px; }
+.chiusura svg { margin-bottom: 14px; }
+.chiusura .n { font-size: 90px; line-height: 1; font-weight: 800; color: var(--blu); }
+</style>
+</head>
+<body class="slide">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <symbol id="s-telefono" viewBox="0 0 200 340">
+    <rect x="8" y="6" width="184" height="328" rx="26" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <rect x="28" y="40" width="144" height="236" rx="6" fill="#EEF0F8" stroke="#233B74" stroke-width="4"/>
+    <circle cx="100" cy="306" r="13" fill="none" stroke="#233B74" stroke-width="5"/>
+    <rect x="78" y="20" width="44" height="7" rx="3.5" fill="#233B74"/>
+    <text x="100" y="138" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="62" fill="#233B74">112</text>
+    <circle cx="100" cy="210" r="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <path d="M86 198c3-4 8-4 10 0l3 6c1 3 0 5-2 7l-3 2c3 6 7 10 13 13l2-3c2-2 4-3 7-2l6 3c4 2 4 7 0 10-6 5-15 4-23-2-8-6-14-13-17-21-2-6-1-10 4-13z" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-operatore" viewBox="0 0 260 260">
+    <circle cx="130" cy="96" r="54" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M40 250c0-58 40-92 90-92s90 34 90 92" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M66 100c0-44 28-70 64-70s64 26 64 70" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round"/>
+    <rect x="52" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <rect x="182" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M70 128c4 26 24 40 50 42" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="124" cy="170" r="8" fill="#233B74"/>
+    <path d="M110 100h0M150 100h0" stroke="#233B74" stroke-width="10" stroke-linecap="round"/>
+    <path d="M114 122c10 8 22 8 32 0" fill="none" stroke="#233B74" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="s-ambulanza" viewBox="0 0 320 180">
+    <path d="M14 140V46c0-8 6-14 14-14h170v108z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M198 58h56c6 0 11 3 14 8l32 46c2 3 3 6 3 10v18H198z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 72h38l26 38h-64z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="14" y="92" width="289" height="16" fill="#009FE3"/>
+    <rect x="14" y="108" width="289" height="10" fill="#FCEB0C"/>
+    <rect x="90" y="16" width="44" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="76" y="48" width="28" height="28" fill="#FFFFFF" stroke="#233B74" stroke-width="5"/>
+    <rect x="114" y="48" width="58" height="28" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <circle cx="72" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="244" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="72" cy="146" r="7" fill="#233B74"/><circle cx="244" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-pompieri" viewBox="0 0 320 180">
+    <path d="M14 140V60h170v80z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M184 52h62c6 0 10 3 13 8l30 50v30H184z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M200 66h42l24 40h-66z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M24 44l150-14M24 54l150-14" stroke="#233B74" stroke-width="5"/>
+    <path d="M44 51l-2-19M74 48l-2-19M104 45l-2-19M134 42l-2-19M164 39l-2-19" stroke="#233B74" stroke-width="4"/>
+    <rect x="14" y="98" width="275" height="14" fill="#233B74"/>
+    <rect x="200" y="36" width="34" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <circle cx="70" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="236" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="70" cy="146" r="7" fill="#233B74"/><circle cx="236" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-auto" viewBox="0 0 320 160">
+    <path d="M16 118V92c0-8 5-14 12-16l40-10 34-34c4-4 9-6 15-6h86c6 0 11 2 15 7l30 33 40 10c8 2 12 8 12 16v26z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M86 66l26-26h44v26zM170 66V40h28l24 26z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="130" y="12" width="50" height="14" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="16" y="84" width="288" height="12" fill="#233B74"/>
+    <circle cx="80" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="240" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="80" cy="124" r="7" fill="#233B74"/><circle cx="240" cy="124" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-posizione" viewBox="0 0 300 300">
+    <path d="M20 250l80-30 100 30 80-30V60l-80 30-100-30-80 30z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M100 60v160M200 90v160" stroke="#233B74" stroke-width="5"/>
+    <path d="M40 170c40-10 70 20 110 0s70-30 110-10" fill="none" stroke="#009FE3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M150 196c-34-40-52-68-52-94a52 52 0 0 1 104 0c0 26-18 54-52 94z" fill="#FCEB0C" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="150" cy="102" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-citofono" viewBox="0 0 220 300">
+    <rect x="20" y="10" width="180" height="280" rx="10" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <circle cx="110" cy="56" r="26" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <path d="M96 50h28M96 60h28" stroke="#233B74" stroke-width="4"/>
+    <g fill="#FFFFFF" stroke="#233B74" stroke-width="5"><rect x="46" y="104" width="128" height="32"/><rect x="46" y="148" width="128" height="32"/><rect x="46" y="192" width="128" height="32"/><rect x="46" y="236" width="128" height="32" fill="#FCEB0C"/></g>
+    <g fill="#233B74"><circle cx="160" cy="120" r="6"/><circle cx="160" cy="164" r="6"/><circle cx="160" cy="208" r="6"/><circle cx="160" cy="252" r="6"/></g>
+    <g stroke="#233B74" stroke-width="5" stroke-linecap="round"><path d="M60 120h66M60 164h50M60 208h72M60 252h58"/></g>
+  </symbol>
+  <symbol id="s-coperta" viewBox="0 0 340 220">
+    <path d="M30 170c40-12 240-12 280 0" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="72" cy="128" r="28" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M96 116c40-30 120-36 200-8 10 4 12 30 4 46-60 16-150 18-204 6z" fill="#009FE3" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M130 112l20 46M180 104l18 54M230 104l16 52" stroke="#FFFFFF" stroke-width="5"/>
+    <path d="M240 60c-4-22 20-36 34-20 12-16 40-4 32 18-4 12-20 22-34 32-14-10-28-18-32-30z" fill="#FCEB0C" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="s-casa" viewBox="0 0 300 260">
+    <path d="M30 120L150 24l120 96" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56 104v134h188V104" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <rect x="124" y="160" width="52" height="78" fill="#EEF0F8" stroke="#233B74" stroke-width="6"/>
+    <rect x="76" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="190" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="200" y="40" width="22" height="44" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-strada" viewBox="0 0 300 260">
+    <path d="M110 250L136 20h28l26 230z" fill="#EEF0F8" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M150 40v26M150 92v34M150 152v40M150 216v30" stroke="#FCEB0C" stroke-width="9"/>
+    <path d="M222 250l-26-88h54z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 230l8-28 8 28z" fill="#FCEB0C"/>
+    <rect x="30" y="140" width="56" height="74" rx="6" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M30 168h56M30 190h56" stroke="#FFFFFF" stroke-width="6"/>
+    <circle cx="58" cy="116" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+</defs>
+</svg>
+
+<!-- 1. Copertina -->
+<section class="diapo copertina">
+<div class="banda"></div>
+<div class="tema">Per la&nbsp;<b>scuola media</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h1>Il <span class="finale">112</span> e la catena<br>dei soccorsi</h1>
+  <p class="sotto">Chi ti risponde, che cosa dire, che cosa fare mentre arrivano i soccorsi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentazione: siamo la Misericordia di Ariccia. Oggi parliamo del numero che tutti dovremmo conoscere, il 112, e di che cosa succede dal momento in cui lo chiamiamo a quando arrivano i soccorsi. Chiedete alla classe: chi ha mai visto o chiamato un'ambulanza? Che numero si fa?</div>
+</section>
+
+<!-- 2. Che cos'è il 112 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Un solo numero per tutte le emergenze</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Il <strong>112</strong> è il <strong>Numero Unico di Emergenza europeo</strong>: funziona in tutti gli Stati dell'Unione europea.</li>
+      <li>È <span class="evidenzia">gratis</span> e risponde <strong>24 ore su 24</strong>, dal fisso o dal cellulare.</li>
+      <li>Funziona <strong>anche senza credito, senza SIM o con il telefono bloccato</strong>.</li>
+      <li>I vecchi 113, 115 e 118 funzionano ancora, ma risponde sempre la centrale del 112.</li>
+    </ul>
+    <div class="disegno"><svg width="300" height="510" role="img" aria-label="Disegno di un cellulare con il 112 sullo schermo"><use href="#s-telefono"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Nel Lazio il 112 è attivo dal 18 novembre 2015. Sottolineate che funziona anche da un telefono senza SIM o bloccato: per questo anche i telefoni vecchi, che a volte i ragazzi usano per giocare, chiamano davvero il 112. Fonti: Regione Lazio, Emergenza 112; Ministero dell'Interno.</div>
+</section>
+
+<!-- 3. Quando si chiama -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Quando si chiama il 112?</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Sì: c'è un pericolo</h3>
+      <ul class="lista">
+        <li>Un <strong>malore grave</strong></li>
+        <li>Un <strong>incidente</strong></li>
+        <li>Un <strong>incendio</strong></li>
+        <li>Un <strong>reato in corso</strong></li>
+      </ul>
+      <p class="piccolo" style="margin-top:22px">Quando c'è un pericolo per la vita o per la sicurezza di qualcuno.</p>
+    </div>
+    <div class="colonna">
+      <h3>No: non è un'emergenza</h3>
+      <ul class="lista no">
+        <li>Chiedere informazioni</li>
+        <li>Orari dei servizi o farmacie di turno</li>
+        <li>Prenotazioni e ricoveri programmati</li>
+        <li>Scherzi e prove «per vedere che succede»</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fate un piccolo sondaggio: leggete alcune situazioni e chiedete «112 sì o no?». Per esempio: un amico cade dalla bici e non riesce ad alzarsi; voglio sapere a che ora apre la farmacia; vedo del fumo uscire da una finestra. Il 112 attiva Polizia, Carabinieri, Vigili del fuoco ed emergenza sanitaria. Fonte: Regione Lazio, Emergenza 112.</div>
+</section>
+
+<!-- 4. La catena -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>La catena dei soccorsi</h2>
+  <div class="catena">
+    <div class="anello"><svg width="150" height="255" role="img" aria-label="Cellulare"><use href="#s-telefono"/></svg><b>Tu</b><span>chiami il 112</span></div>
+    <div class="freccina"><svg width="60" height="56" viewBox="0 0 94 86" fill="none" stroke="#009FE3" stroke-width="15"><path d="M8 8l34 35-34 35"/><path d="M48 8l34 35-34 35"/></svg></div>
+    <div class="anello"><svg width="230" height="230" role="img" aria-label="Operatore con la cuffia"><use href="#s-operatore"/></svg><b>Centrale Unica<br>di Risposta</b><span>capisce che aiuto serve</span></div>
+    <div class="freccina"><svg width="60" height="56" viewBox="0 0 94 86" fill="none" stroke="#009FE3" stroke-width="15"><path d="M8 8l34 35-34 35"/><path d="M48 8l34 35-34 35"/></svg></div>
+    <div class="rami">
+      <div class="ramo"><svg width="170" height="96" role="img" aria-label="Ambulanza"><use href="#s-ambulanza"/></svg><span><b>118</b>emergenza sanitaria (ARES 118)</span></div>
+      <div class="ramo"><svg width="170" height="96" role="img" aria-label="Camion dei Vigili del fuoco"><use href="#s-pompieri"/></svg><span><b>Vigili del fuoco</b>incendi, crolli, fughe di gas</span></div>
+      <div class="ramo"><svg width="170" height="85" role="img" aria-label="Auto delle forze dell'ordine"><use href="#s-auto"/></svg><span><b>Carabinieri e Polizia</b>sicurezza e reati</span></div>
+    </div>
+  </div>
+  <p class="piccolo">Se serve, l'operatore li attiva <span class="evidenzia">tutti insieme</span>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">È la slide centrale. Tutte le telefonate arrivano a una Centrale Unica di Risposta: l'operatore individua l'esigenza e passa la chiamata alla centrale operativa competente. Per un problema di salute è la Centrale operativa del 118, gestita nel Lazio da ARES 118, con personale sanitario. In un incidente con un'auto in fiamme possono partire insieme ambulanza, Vigili del fuoco e forze dell'ordine. Fonti: Regione Lazio; ARES 118.</div>
+</section>
+
+<!-- 5. Ti risponde la centrale -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Chi ti risponde, da Ariccia</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Da Ariccia, come da tutti i comuni con prefisso 06, la chiamata arriva alla <strong>Centrale Unica di Risposta di via Laurentina, a Roma</strong>.</li>
+      <li>Risponde un operatore formato per capire subito che tipo di aiuto serve: <strong>non è un medico né un poliziotto</strong>, è il primo filtro.</li>
+      <li>Se non parli italiano, ci sono <strong>interpreti in 16 lingue</strong>.</li>
+    </ul>
+    <div class="cifra">2,8<small>secondi: il tempo medio di risposta indicato dalla Regione Lazio nel 2021</small></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le 16 lingue sono: albanese, arabo, bengalese, ceco, cinese, filippino, francese, greco, inglese, polacco, portoghese, rumeno, russo, spagnolo, tedesco, ucraino. Il dato di 2,8 secondi è del comunicato della Regione Lazio del 2021, l'ultimo pubblicato sui tempi. Fonti: Regione Lazio, comunicato del 17/09/2021 e pagina Emergenza 112.</div>
+</section>
+
+<!-- 6. Ti trova -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Come fa il 112 a trovarti</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Se chiami da un cellulare, il sistema <strong>AML</strong> (Advanced Mobile Location) invia in automatico alla centrale la tua posizione, anche fuori città.</li>
+      <li>Ma l'operatore ti chiederà comunque <strong>l'indirizzo</strong>: la posizione del telefono a volte è approssimativa.</li>
+      <li><span class="evidenzia">La scala, il piano o il nome sul citofono</span> li sai solo tu.</li>
+    </ul>
+    <div class="disegno" style="gap:30px"><svg width="300" height="300" role="img" aria-label="Disegno di una mappa con il segnaposto"><use href="#s-posizione"/></svg><svg width="150" height="205" role="img" aria-label="Disegno di un citofono"><use href="#s-citofono"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Compito da dare: ognuno sappia a memoria il proprio indirizzo completo, compresi scala, piano e nome sul citofono, e quello della scuola. Fonte: Regione Lazio, Emergenza 112 (sistema AML).</div>
+</section>
+
+<!-- 7. Che cosa dire -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Che cosa dire all'operatore</h2>
+  <div class="passo"><span class="n">1</span><p><b>Nome e cognome.</b></p></div>
+  <div class="passo"><span class="n">2</span><p><b>Indirizzo preciso:</b> comune, via, numero civico, scala, piano e nome sul citofono.</p></div>
+  <div class="passo"><span class="n">3</span><p><b>Se sei in strada:</b> la direzione, il chilometro o un punto di riferimento (una farmacia, una chiesa, un supermercato).</p></div>
+  <div class="passo"><span class="n">4</span><p><b>Chi ha bisogno di aiuto e che cosa è successo.</b></p></div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fate provare: «Siete nel cortile della scuola: che punto di riferimento dareste?». Ogni informazione che fa arrivare prima i soccorsi è utile. Con la scheda «Simulazione di chiamata in classe» si può provare la telefonata a ruoli. Fonte: Regione Lazio, Emergenza 112.</div>
+</section>
+
+<!-- 8. Il passaggio al 118 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Le domande del 118 non fanno perdere tempo</h2>
+  <p>L'ente giusto riceve una scheda con i tuoi dati e la posizione e <strong>parla direttamente con te</strong>: non devi ripetere tutto da capo. Per un problema di salute ti chiederà:</p>
+  <div class="domande">
+    <div class="domanda">Risponde?</div>
+    <div class="domanda">Respira?</div>
+    <div class="domanda">Sanguina?</div>
+    <div class="domanda">Ha dolore?</div>
+  </div>
+  <p>Queste domande servono a dare il <strong>codice di gravità</strong> e a mandare il mezzo giusto: <span class="evidenzia">mentre parli, l'ambulanza può essere già partita</span>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il sanitario chiede anche il numero di telefono, quante persone sono coinvolte e se ci sono situazioni particolari: un bambino piccolo, una gravidanza, una persona anziana, malattie note come cuore, asma, diabete, epilessia. Rispondere con calma è il modo più veloce. Fonti: ARES 118, Contattare il 118; Regione Lazio, comunicato del 2021.</div>
+</section>
+
+<!-- 9. Resta in linea -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Non riattaccare per primo</h2>
+  <div class="due">
+    <ul class="lista">
+      <li><strong>Resta al telefono finché l'operatore te lo chiede</strong> e segui le sue istruzioni.</li>
+      <li>Se ti dà istruzioni da seguire con le mani, metti il <strong>vivavoce</strong> e appoggia il telefono vicino a te.</li>
+      <li>Quando la chiamata finisce, <strong>lascia libero quel telefono</strong>: la centrale potrebbe richiamarti.</li>
+    </ul>
+    <div class="riquadro blu" style="font-size:42px; line-height:54px; font-weight:700; padding:44px 48px">Hai chiamato per sbaglio?<br><span style="font-weight:400">Non riattaccare: di' all'operatore che è stato un errore.</span></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Chiedete: perché non si deve riattaccare per primi? L'operatore può avere ancora bisogno di informazioni o voler dare istruzioni. Fonti: guida del sito «Cosa succede quando chiami il 112», basata su Regione Lazio e ARES 118.</div>
+</section>
+
+<!-- 10. Mentre aspetti -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Mentre aspetti i soccorsi</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Che cosa fare</h3>
+      <ul class="lista piccolo">
+        <li><strong>Copri</strong> la persona e proteggila dal freddo, dal sole o dalla pioggia.</li>
+        <li><strong>Rassicurala</strong> e parlale.</li>
+        <li>Se c'è stato un incidente, avvisa chi passa del pericolo e <strong>non bloccare la strada</strong> ai soccorsi.</li>
+        <li>Chi è con te può andare incontro all'ambulanza.</li>
+      </ul>
+    </div>
+    <div class="colonna">
+      <h3>Che cosa non fare</h3>
+      <ul class="lista no piccolo">
+        <li><strong>Non spostare</strong> chi ha avuto un trauma, a meno che non ci sia un pericolo immediato come gas, fuoco o crollo.</li>
+        <li><strong>Non dare</strong> da mangiare né da bere.</li>
+        <li><strong>Non dare farmaci</strong>, se non te lo dice l'operatore.</li>
+        <li><strong>Non farti prendere dal panico.</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Questi gesti non richiedono manovre: li può fare chiunque. Ricordate ai ragazzi che, se possono, devono anche chiamare un adulto vicino. Fonti: guida del sito «Cosa succede quando chiami il 112» (Regione Lazio, ARES 118, Ministero della Salute).</div>
+</section>
+
+<!-- 11. App e 112 Sordi -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Quando non puoi parlare o non senti</h2>
+  <div class="due pari">
+    <div class="riquadro tenue">
+      <p class="titoletto">App 112 Where ARE U</p>
+      <p class="piccolo">App gratuita per Android e iPhone, consigliata dalla Regione Lazio. Quando chiami il 112 dall'app, la tua <strong>posizione GPS</strong> arriva in automatico all'operatore. Permette anche la <strong>chiamata muta</strong>, per quando non puoi parlare.</p>
+    </div>
+    <div class="riquadro tenue">
+      <p class="titoletto">112 Sordi</p>
+      <p class="piccolo">Servizio pubblico gratuito per le persone sorde. Ci si registra gratis su <strong>112sordi.it</strong>; in emergenza si chiama l'<strong>800 800 112</strong> dal cellulare registrato, con la connessione dati attiva, e l'operatore apre una <strong>chat</strong>.</p>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Buona occasione per parlare di inclusione: il soccorso è per tutti. 112 Sordi è riservato a chi, per condizione fisica, non può parlare o udire in una telefonata di emergenza; non ci sono limiti di età. Fonti: Regione Lazio, Emergenza 112 (app Where ARE U); portale 112sordi.it.</div>
+</section>
+
+<!-- 12. Non è un gioco -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Il 112 non è un gioco</h2>
+  <div class="due">
+    <div style="display:flex; flex-direction:column; gap:30px">
+      <p>Nel Lazio <strong>6 chiamate al 112 su 10</strong> sono scherzi, errori o richieste di informazioni. Ognuna tiene occupato un operatore mentre qualcuno potrebbe averne bisogno davvero.</p>
+      <p class="piccolo">Annunciare un'emergenza che non esiste è un reato: il <strong>procurato allarme</strong> (articolo 658 del Codice penale).</p>
+    </div>
+    <svg width="460" height="230" viewBox="0 0 460 230" role="img" aria-label="Dieci telefoni: sei sono chiamate sbagliate, quattro sono vere emergenze">
+      <g font-family="Montserrat" font-weight="800" font-size="30" text-anchor="middle">
+        <g stroke="#233B74" stroke-width="5">
+          <rect x="8" y="8" width="70" height="96" rx="10" fill="#FFFFFF"/><rect x="98" y="8" width="70" height="96" rx="10" fill="#FFFFFF"/><rect x="188" y="8" width="70" height="96" rx="10" fill="#FFFFFF"/><rect x="278" y="8" width="70" height="96" rx="10" fill="#FFFFFF"/><rect x="368" y="8" width="70" height="96" rx="10" fill="#FFFFFF"/>
+          <rect x="8" y="126" width="70" height="96" rx="10" fill="#FFFFFF"/><rect x="98" y="126" width="70" height="96" rx="10" fill="#FCEB0C"/><rect x="188" y="126" width="70" height="96" rx="10" fill="#FCEB0C"/><rect x="278" y="126" width="70" height="96" rx="10" fill="#FCEB0C"/><rect x="368" y="126" width="70" height="96" rx="10" fill="#FCEB0C"/>
+        </g>
+        <g stroke="#5A6686" stroke-width="6" stroke-linecap="round"><path d="M28 40l30 30M58 40l-30 30M118 40l30 30M148 40l-30 30M208 40l30 30M238 40l-30 30M298 40l30 30M328 40l-30 30M388 40l30 30M418 40l-30 30M28 158l30 30M58 158l-30 30"/></g>
+        <g fill="#233B74"><text x="133" y="186">!</text><text x="223" y="186">!</text><text x="313" y="186">!</text><text x="403" y="186">!</text></g>
+      </g>
+    </svg>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Nel disegno, dieci chiamate: sei grigie e barrate sono scherzi, errori o richieste di informazioni, quattro gialle sono emergenze. Il procurato allarme prevede l'arresto fino a sei mesi o un'ammenda. Discutete: che cosa succede alla persona che sta male davvero mentre la linea è occupata da uno scherzo? Fonti: Regione Lazio, Emergenza 112; Codice penale, art. 658 (Normattiva).</div>
+</section>
+
+<!-- 13. 112 o 116117 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>112 o 116117?</h2>
+  <div class="confronto">
+    <div class="riquadro blu">
+      <p class="num">112</p>
+      <p>Quando c'è un <strong>pericolo per la vita o per la sicurezza</strong>: un malore grave, un incidente, un incendio, un reato in corso.</p>
+    </div>
+    <div class="riquadro tenue">
+      <p class="num" style="color:var(--blu)">116117</p>
+      <p>Per i problemi di salute <strong>non urgenti</strong>: un consiglio sanitario o la guardia medica. Gratuito, in tutto il Lazio dal 24 agosto 2026.</p>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Al 116117 risponde il personale di ARES 118. La guardia medica (continuità assistenziale) è attiva tutte le notti dalle 20 alle 8 e nei giorni prefestivi e festivi. Se durante la chiamata emerge un'emergenza, la telefonata passa in automatico al 118. Fonti: Regione Lazio (26/08/2026); ARES 118.</div>
+</section>
+
+<!-- 14. I volontari -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Chi siamo: la Misericordia di Ariccia</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Un'associazione di volontariato <strong>attiva dal 1994</strong>, parte della Confederazione delle Misericordie d'Italia.</li>
+      <li>I volontari sono <strong>persone comuni, dai 16 agli 80 anni</strong>, con la divisa giallo-ciano.</li>
+      <li>Facciamo <strong>trasporti sanitari e sociali programmati</strong>, assistenza agli eventi e corsi di primo soccorso.</li>
+      <li>Non sostituiamo il soccorso pubblico: <span class="evidenzia">in emergenza si chiama sempre il 112</span>, non il nostro numero.</li>
+    </ul>
+    <div class="disegno"><svg width="420" height="236" role="img" aria-label="Disegno di un'ambulanza"><use href="#s-ambulanza"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le Misericordie stanno accanto a chi soffre da quasi otto secoli; quella di Ariccia è nata nel 1994. Chi ha tra i 18 e i 28 anni può fare con noi il Servizio Civile Universale. Fonti: pagine «Chi siamo», «Diventa volontario» e «Le Misericordie nella protezione civile» del sito.</div>
+</section>
+
+<!-- 15. Che cosa fa un'ambulanza della Misericordia -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Che cosa fa la nostra ambulanza</h2>
+  <div class="griglia-2" style="gap:34px 60px">
+    <div><h3>Trasporti programmati</h3><p class="piccolo">Porta malati, anziani e persone con disabilità a visite, esami e cure, e a casa dopo un ricovero.</p></div>
+    <div><h3>Trasferimenti tra ospedali</h3><p class="piccolo">In convenzione con la ASL Roma 6.</p></div>
+    <div><h3>Assistenza agli eventi</h3><p class="piccolo">Ambulanza e soccorritori a gare sportive, sagre, concerti e manifestazioni.</p></div>
+    <div><h3>«L'ultimo viaggio»</h3><p class="piccolo">Porta chi è malato a realizzare un ultimo desiderio, con i volontari accanto.</p></div>
+  </div>
+  <div style="display:flex; align-items:center; gap:50px; margin-top:10px"><svg width="300" height="169" role="img" aria-label="Disegno di un'ambulanza"><use href="#s-ambulanza"/></svg><p class="piccolo">A bordo ci sono <strong>soccorritori formati</strong>: i nostri volontari si formano ogni anno.</p></div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">La Misericordia di Ariccia ha due ambulanze e mezzi con pedana per la carrozzina. Spiegate la differenza: l'ambulanza del 118 la manda la centrale in emergenza; i nostri mezzi fanno servizi programmati e presidi agli eventi. Fonti: pagine «Servizi sanitari», «Trasporto infermi e disabili» e «Chi siamo» del sito.</div>
+</section>
+
+<!-- 16. Sicurezza in casa e in strada -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Prevenire: in casa e in strada</h2>
+  <div class="due pari">
+    <div style="display:grid; grid-template-columns: 170px 1fr; gap:30px; align-items:start">
+      <svg width="170" height="147" role="img" aria-label="Disegno di una casa"><use href="#s-casa"/></svg>
+      <ul class="lista piccolo">
+        <li>Impara dove sono e come si chiudono i <strong>rubinetti di gas e acqua</strong> e l'<strong>interruttore generale della luce</strong>.</li>
+        <li>Medicine e detersivi possono essere velenosi: lontani dai più piccoli.</li>
+      </ul>
+    </div>
+    <div style="display:grid; grid-template-columns: 170px 1fr; gap:30px; align-items:start">
+      <svg width="170" height="147" role="img" aria-label="Disegno di una strada con un triangolo e un giubbotto catarifrangente"><use href="#s-strada"/></svg>
+      <ul class="lista piccolo">
+        <li>In un incidente il <strong>primo pericolo è per chi si ferma ad aiutare</strong>: resta in un posto sicuro.</li>
+        <li>Gli adulti accendono le quattro frecce, indossano il giubbotto catarifrangente e mettono il triangolo.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Collegamento con le Linee guida per l'educazione civica (D.M. 183/2024): conoscere i fattori di rischio e adottare comportamenti che salvaguardano la salute e la sicurezza proprie e altrui. Il triangolo va messo ad almeno 50 metri. Fonti: Io non rischio (terremoto, cosa fare); dossier del sito «Primo soccorso passo passo», scheda Incidente stradale.</div>
+</section>
+
+<!-- 17. Rischi naturali -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Terremoto e alluvione: Io non rischio</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Durante il terremoto</h3>
+      <ul class="lista piccolo">
+        <li>Al chiuso: mettiti vicino a una parete portante o sotto una trave, oppure sotto un letto o un tavolo resistente.</li>
+        <li><strong>Non precipitarti fuori</strong>: attendi la fine della scossa.</li>
+        <li>All'aperto: allontanati da edifici, alberi, lampioni, linee elettriche.</li>
+      </ul>
+    </div>
+    <div class="colonna">
+      <h3>Durante l'alluvione</h3>
+      <ul class="lista piccolo">
+        <li><strong>Non scendere</strong> in cantine, seminterrati o garage: sali ai piani superiori.</li>
+        <li>All'aperto: allontanati dalla zona allagata. <strong>Anche pochi centimetri d'acqua</strong> possono farti cadere.</li>
+        <li>Evita sottopassi, argini e ponti.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="fonte">Dalla campagna nazionale «Io non rischio» del Dipartimento della Protezione civile: iononrischio.protezionecivile.gov.it</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dopo il terremoto: chiudere gas, acqua e luce, indossare le scarpe, evitare l'ascensore, limitare l'uso del telefono e raggiungere le aree di attesa del Piano di protezione civile del Comune. Per approfondire con la classe c'è il fumetto «L'attimo decisivo», distribuito dal 2023 nelle scuole secondarie di primo grado. Fonte: Io non rischio, pagine «Cosa fare» per terremoto e alluvione.</div>
+</section>
+
+<!-- 18. Chiusura -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il 112&nbsp;<b>e i soccorsi</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Tre cose da ricordare</h2>
+  <div class="chiusura">
+    <div><svg width="100" height="170" role="img" aria-label="Cellulare"><use href="#s-telefono"/></svg><p class="n">112</p><p>Gratis, sempre, anche senza credito.</p></div>
+    <div><svg width="170" height="170" role="img" aria-label="Mappa con segnaposto"><use href="#s-posizione"/></svg><p class="n">Dove</p><p>Di' <strong>dove sei</strong> e <strong>che cosa è successo</strong>.</p></div>
+    <div><svg width="170" height="170" role="img" aria-label="Operatore con la cuffia"><use href="#s-operatore"/></svg><p class="n">Resta</p><p>Non riattaccare finché l'operatore non te lo dice.</p></div>
+  </div>
+  <p class="piccolo" style="margin-top:auto">Per saperne di più: <strong>www.misericordia-ariccia.it/dossier/chiamare-il-112/</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Chiudete con le schede di verifica. Per un incontro con i volontari della Misericordia di Ariccia: sede@misericordia-ariccia.it o la pagina Contatti del sito.</div>
+</section>
+</body>
+</html>

@@ -14,8 +14,21 @@ REPO = Path(__file__).resolve().parents[2]
 MARCATORE = re.search(r"const MARCATORE = '([^']+)'",
                       (REPO / "scripts/grafica-brand/firma-e-cornice.js").read_text(encoding="utf-8")).group(1)
 errori = []
+avvisi = []
+
+
+def ha_segno(dati: bytes) -> bool:
+    """Vero se il dizionario Info del PDF ha /FirmaECornice uguale al segno del motore. pypdf scrive la stringa
+    con le sequenze ottali (\\055 per «-», \\056 per «.»): si decodificano prima di confrontare."""
+    m = re.search(rb"/FirmaECornice\s*\(((?:\\.|[^\\)])*)\)", dati)
+    if not m:
+        return False
+    testo = re.sub(rb"\\([0-7]{1,3})", lambda x: bytes([int(x.group(1), 8)]), m.group(1))
+    testo = re.sub(rb"\\(.)", rb"\1", testo)
+    return testo.decode("latin-1") == MARCATORE
 
 elencati = set()
+nascosti = set()  # PDF di materiali con revisione: "da fare" (contenuti sanitari non ancora rivisti)
 for pagina in sorted((REPO / "content/scuole").glob("*.md")):
     if pagina.name == "_index.md":
         continue
@@ -35,10 +48,13 @@ for pagina in sorted((REPO / "content/scuole").glob("*.md")):
         elencati.add(pdf)
         if not re.fullmatch(r"/documenti/scuole/[a-z]+/[a-z0-9-]+\.pdf", rel):
             errori.append(f"{pagina.name}: percorso non valido {rel}")
+        nascosto = re.search(r'revisione:\s*"da fare"', voce)
+        if nascosto:
+            nascosti.add(pdf)
         if not pdf.exists():
-            errori.append(f"{pagina.name}: manca {rel}")
+            (avvisi if nascosto else errori).append(f"{pagina.name}: manca {rel}" + (" (materiale nascosto in attesa di revisione)" if nascosto else ""))
             continue
-        if MARCATORE.encode() not in pdf.read_bytes():
+        if not ha_segno(pdf.read_bytes()):
             errori.append(f"{rel}: senza il segno di firma e cornice (rifarlo con scripts/scuole/rendi_pdf.py)")
         img = REPO / "static/img" / Path(rel.lstrip("/")).relative_to("documenti").with_suffix(".jpg")
         if not img.exists():
@@ -49,7 +65,8 @@ for pagina in sorted((REPO / "content/scuole").glob("*.md")):
                 altro = pdf.with_name(pdf.stem + suff)
                 elencati.add(altro)
                 if not altro.exists():
-                    errori.append(f"{rel}: manca il formato per la LIM {altro.name}")
+                    # la pagina mostra solo i formati che esistono: un formato mancante è un avviso, non un errore
+                    avvisi.append(f"{rel}: formato per la LIM ancora da fare, {altro.name}")
 
 for pdf in sorted(f for f in (REPO / "static/documenti/scuole").rglob("*") if f.suffix in (".pdf", ".pptx")):
     if pdf not in elencati:
@@ -61,8 +78,10 @@ for sorgente in sorted((REPO / "scripts/scuole").glob("*/*.html")):
         errori.append(f"{sorgente.relative_to(REPO)}: manca <meta name=\"uscita\">")
         continue
     if not (REPO / m.group(1)).exists():
-        errori.append(f"{sorgente.relative_to(REPO)}: PDF non ancora fatto ({m.group(1)})")
+        (avvisi if (REPO / m.group(1)) in nascosti else errori).append(f"{sorgente.relative_to(REPO)}: PDF non ancora fatto ({m.group(1)})")
 
+if avvisi:
+    print("Materiali per le scuole: avvisi\n- " + "\n- ".join(avvisi))
 if errori:
     print("Materiali per le scuole: problemi\n- " + "\n- ".join(errori))
     sys.exit(1)

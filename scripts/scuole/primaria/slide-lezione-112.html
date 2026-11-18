@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/scuole/primaria/slide-lezione-112.pdf">
+<title>Il 112 e il piccolo soccorritore: slide per la scuola primaria</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Slide della lezione per la primaria: impaginazione del carosello nazionale, disegni al tratto #233B74 con il giallo come accento.
+   L'altezza della slide cambia con il formato (16:9, 16:10, 4:3): il contenuto è centrato nel suo spazio, niente posizioni fisse. */
+.diapo > .contenuto { justify-content: center; }
+.diapo .due { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; }
+.diapo .due.pari { grid-template-columns: 1fr 1fr; }
+.diapo p + p { margin-top: 0; }
+.diapo .testo { display: flex; flex-direction: column; gap: 26px; }
+.diapo .grande { font-size: 46px; line-height: 58px; }
+.diapo .passi { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+.diapo .passi li { display: flex; gap: 26px; align-items: center; }
+.diapo .passi li b.n { flex: none; width: 70px; height: 70px; background: #003F85; color: #FFFFFF; font-size: 40px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.diapo .colonna h3 { padding-bottom: 10px; border-bottom: 5px solid currentColor; margin-bottom: 18px; }
+.diapo .colonna ul { list-style: none; padding: 0; gap: 14px; }
+.diapo .colonna li { display: flex; gap: 18px; align-items: baseline; }
+.diapo .si h3, .diapo .si li::before { color: #1E7B34; } .diapo .no h3, .diapo .no li::before { color: #C8102E; }
+.diapo .si li::before { content: "✓"; font-weight: 800; } .diapo .no li::before { content: "✗"; font-weight: 800; }
+.diapo .numamico { display: flex; flex-direction: column; gap: 14px; padding: 34px 40px; background: rgba(255,255,255,.8); border-left: 14px solid #003F85; }
+.diapo .numamico .cifra { font-size: 110px; line-height: 110px; font-weight: 800; color: #233B74; }
+.diapo .regole { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 50px; }
+.diapo .regola { display: grid; grid-template-columns: 170px 1fr; gap: 26px; align-items: center; font-size: 34px; line-height: 44px; }
+.diapo .regola svg { background: #FFFFFF; border: 3px solid #233B74; }
+.diapo .quiz { display: flex; flex-direction: column; gap: 30px; }
+.diapo .quiz div { display: flex; flex-direction: column; gap: 10px; }
+.diapo .quiz p.q { font-weight: 700; }
+.diapo .quiz p.r { display: flex; gap: 40px; font-size: 34px; }
+.diapo .quiz p.r span b { display: inline-flex; width: 50px; height: 50px; align-items: center; justify-content: center; border: 4px solid #233B74; border-radius: 50%; margin-right: 12px; font-size: 28px; }
+.diapo .foto { width: 760px; height: 440px; overflow: hidden; position: relative; border: 4px solid #FFFFFF; outline: 3px solid #233B74; }
+.diapo .foto img { position: absolute; width: 1200px; max-width: none; left: -360px; top: -150px; }
+.diapo .fatti { list-style: none; padding: 0; gap: 16px; font-size: 34px; line-height: 44px; }
+.diapo .fatti li { padding-left: 34px; position: relative; }
+.diapo .fatti li::before { content: ""; position: absolute; left: 0; top: 14px; width: 16px; height: 16px; background: #FCEB0C; border: 3px solid #233B74; }
+.diapo .fumetto { background: #FFFFFF; border: 4px solid #233B74; padding: 18px 28px; position: relative; }
+.diapo .fumetto.op { background: #003F85; border-color: #003F85; color: #FFFFFF; }
+</style>
+</head>
+<body class="slide">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="telefono" viewBox="0 0 120 200">
+      <rect x="6" y="4" width="108" height="192" rx="16" fill="#FFFFFF" stroke="#233B74" stroke-width="4"/>
+      <rect x="18" y="22" width="84" height="34" rx="4" fill="#EEF0F8" stroke="#233B74" stroke-width="2.5"/>
+      <text x="60" y="47" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="20" fill="#233B74">112</text>
+      <g stroke="#233B74" stroke-width="2">
+        <circle cx="32" cy="80" r="12" fill="#FCEB0C"/><circle cx="60" cy="80" r="12" fill="#FCEB0C"/><circle cx="88" cy="80" r="12" fill="#FFFFFF"/>
+        <circle cx="32" cy="110" r="12" fill="#FFFFFF"/><circle cx="60" cy="110" r="12" fill="#FFFFFF"/><circle cx="88" cy="110" r="12" fill="#FFFFFF"/>
+        <circle cx="32" cy="140" r="12" fill="#FFFFFF"/><circle cx="60" cy="140" r="12" fill="#FFFFFF"/><circle cx="88" cy="140" r="12" fill="#FFFFFF"/>
+        <circle cx="60" cy="170" r="12" fill="#FFFFFF"/>
+      </g>
+      <g font-family="Montserrat" font-weight="700" font-size="13" text-anchor="middle" fill="#233B74">
+        <text x="32" y="85">1</text><text x="60" y="85">2</text><text x="88" y="85">3</text>
+        <text x="32" y="115">4</text><text x="60" y="115">5</text><text x="88" y="115">6</text>
+        <text x="32" y="145">7</text><text x="60" y="145">8</text><text x="88" y="145">9</text>
+        <text x="60" y="175">0</text>
+      </g>
+    </symbol>
+    <symbol id="pollice" viewBox="0 0 50 64">
+      <g fill="#FFFFFF" stroke="#233B74" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="6" y="3" width="15" height="34" rx="7.5"/>
+        <rect x="6" y="25" width="39" height="35" rx="9"/>
+        <path d="M24 35 H45 M24 44 H45 M24 52 H43"/>
+      </g>
+    </symbol>
+    <symbol id="freccia" viewBox="0 0 94 86"><g fill="none" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"/><path d="M48 8l34 35-34 35"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- 1 copertina -->
+<section class="diapo copertina">
+<div class="banda"></div>
+<div class="tema">Per la&nbsp;<b>scuola primaria</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h1>Il 112 e il<br>piccolo <span class="finale">soccorritore</span></h1>
+  <p class="sotto">Chiamare aiuto, sapere dove sei, stare attenti in casa e in strada. Una lezione con i volontari della Misericordia di Ariccia.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#FCEB0C"><use href="#freccia"/></svg>
+<div class="note-relatore">Presentatevi: chi siete, che cosa fate. Dite subito che oggi si impara una cosa da grandi, senza paura: come chiedere aiuto. Chiedete chi conosce già il numero delle emergenze.</div>
+</section>
+
+<!-- 2 che cos'è il 112 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <div class="due">
+    <div class="testo">
+      <h2>Che cos'è il 112?</h2>
+      <p>È il numero delle <strong>emergenze</strong>. Ti risponde una persona gentile, l'operatore, che manda <strong>l'ambulanza, i pompieri, la polizia o i carabinieri</strong>.</p>
+      <p>È <span class="evidenzia">gratis</span>, risponde <strong>24 ore su 24</strong> e funziona anche da un telefono senza credito. Vale in tutta Europa.</p>
+    </div>
+    <div style="display:flex; justify-content:center"><svg width="300" height="500" role="img" aria-label="Disegno di un telefono con il 112 sullo schermo e i tasti 1 e 2 in giallo"><use href="#telefono"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Fate ripetere il numero alla classe. Spiegate che dietro al numero c'è una persona che vuole aiutare. La Regione Lazio ricorda che il 112 si chiama gratis da fisso e cellulare, anche senza SIM, con il telefono bloccato o senza credito.</div>
+</section>
+
+<!-- 3 quando sì e quando no -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Quando si chiama?</h2>
+  <div class="due pari">
+    <div class="colonna si">
+      <h3>Sì, è un pericolo vero</h3>
+      <ul>
+        <li>Una persona non risponde o non respira</li>
+        <li>Qualcuno si è fatto molto male</li>
+        <li>Un incidente</li>
+        <li>Un incendio o tanto fumo</li>
+      </ul>
+    </div>
+    <div class="colonna no">
+      <h3>No, non è un'emergenza</h3>
+      <ul>
+        <li>Per fare uno scherzo</li>
+        <li>Per sapere che tempo farà</li>
+        <li>Per chiedere un'informazione</li>
+        <li>Se ho perso un gioco</li>
+      </ul>
+    </div>
+  </div>
+  <p class="riquadro tenue">Se puoi, prima <strong>chiama un adulto</strong> vicino a te. Se non c'è nessuno, chiama tu il 112.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Chiedete ai bambini altri esempi e fateli votare: sì o no? Insistete sul «pericolo vero». La scheda «Che cosa dico al 112» ha un esercizio uguale da fare dopo.</div>
+</section>
+
+<!-- 4 il 112 non è un gioco -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <div class="due">
+    <div class="testo">
+      <h2>Il 112 non è un gioco</h2>
+      <p>Nel Lazio <strong>6 telefonate su 10</strong> al 112 sono scherzi, errori o domande che non c'entrano. Intanto, chi sta male davvero <strong>aspetta</strong>.</p>
+      <p>Anche un <strong>telefono vecchio</strong>, senza scheda, chiama davvero il 112.</p>
+      <p class="sottolinea">Hai chiamato per sbaglio? Non riattaccare: di' che è stato un errore.</p>
+    </div>
+    <div>
+      <svg width="520" height="380" viewBox="0 0 520 380" role="img" aria-label="Dieci telefoni in fila: sei sono barrati perché sono chiamate inutili, quattro sono emergenze vere">
+        <g stroke="#233B74" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <g fill="#FFFFFF">
+            <rect x="10" y="20" width="80" height="140" rx="12"/><rect x="110" y="20" width="80" height="140" rx="12"/><rect x="210" y="20" width="80" height="140" rx="12"/><rect x="310" y="20" width="80" height="140" rx="12"/><rect x="410" y="20" width="80" height="140" rx="12"/>
+            <rect x="10" y="210" width="80" height="140" rx="12"/>
+          </g>
+          <g fill="#FCEB0C">
+            <rect x="110" y="210" width="80" height="140" rx="12"/><rect x="210" y="210" width="80" height="140" rx="12"/><rect x="310" y="210" width="80" height="140" rx="12"/><rect x="410" y="210" width="80" height="140" rx="12"/>
+          </g>
+          <g stroke="#C8102E" stroke-width="8"><path d="M20 30 L80 150 M80 30 L20 150"/><path d="M120 30 L180 150 M180 30 L120 150"/><path d="M220 30 L280 150 M280 30 L220 150"/><path d="M320 30 L380 150 M380 30 L320 150"/><path d="M420 30 L480 150 M480 30 L420 150"/><path d="M20 220 L80 340 M80 220 L20 340"/></g>
+        </g>
+      </svg>
+      <p style="font-size: 28px; line-height: 36px; margin-top: 10px">In giallo, le chiamate per un pericolo vero.</p>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Il dato «sei telefonate su dieci» è della Regione Lazio. Contate insieme i telefoni barrati. Spiegate che il telefono vecchio senza scheda non è un giocattolo: chiama davvero il 112.</div>
+</section>
+
+<!-- 5 che cosa dico -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Che cosa dico al telefono</h2>
+  <ol class="passi">
+    <li><b class="n">1</b><span><strong>Che cosa è successo</strong> e <strong>dove sei</strong></span></li>
+    <li><b class="n">2</b><span>Il tuo <strong>nome</strong></span></li>
+    <li><b class="n">3</b><span><strong>Rispondi alle domande</strong>: servono a capire meglio</span></li>
+    <li><b class="n">4</b><span><strong>Non riattaccare</strong> finché l'operatore non te lo dice</span></li>
+  </ol>
+  <p class="fumetto">«La nonna è caduta e non si alza. Siamo in via… numero… ad Ariccia.»</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Leggete l'esempio con calma. Ricordate che l'operatore fa domande per aiutare, non per sgridare: non bisogna avere paura di sbagliare.</div>
+</section>
+
+<!-- 6 prova la telefonata -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Proviamo, per finta</h2>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 26px 40px">
+    <p class="fumetto op">«112. Che cosa è successo?»</p>
+    <p class="fumetto">«C'è tanto fumo in cucina!»</p>
+    <p class="fumetto op">«Dove sei?»</p>
+    <p class="fumetto">«In via Roma 10, a Genzano.»</p>
+    <p class="fumetto op">«Come ti chiami?»</p>
+    <p class="fumetto">«Mi chiamo Luca.»</p>
+  </div>
+  <p>Ora tocca a voi: uno fa l'operatore, l'altro chiama, <strong>con un telefono finto</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Gioco di ruolo: il gioco, dicono i servizi 112 europei, aiuta a ricordare senza fare paura. L'indirizzo dell'esempio è di fantasia. Usate un telefono finto o di cartone, mai un telefono vero, nemmeno vecchio.</div>
+</section>
+
+<!-- 7 il mio indirizzo -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il mio&nbsp;<b>indirizzo</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <div class="due">
+    <div class="testo">
+      <h2>Lo sai a memoria?</h2>
+      <p>Per trovarti, i soccorsi hanno bisogno di tre cose:</p>
+      <ol class="passi">
+        <li><b class="n">1</b><span>la <strong>via</strong> o la piazza</span></li>
+        <li><b class="n">2</b><span>il <strong>numero</strong> di casa</span></li>
+        <li><b class="n">3</b><span>il <strong>paese</strong> o la città</span></li>
+      </ol>
+      <p class="sottolinea">Compito: impara il tuo indirizzo con un adulto di casa.</p>
+    </div>
+    <div style="display:flex; justify-content:center">
+      <svg width="440" height="500" viewBox="0 0 220 250" role="img" aria-label="Disegno di una casa con il numero civico accanto al portone">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="34" y="100" width="152" height="136" fill="#FFFFFF"/>
+          <rect x="150" y="44" width="20" height="40" fill="#FFFFFF"/>
+          <path d="M20 110 L110 30 L200 110" fill="#FFFFFF"/>
+          <rect x="52" y="122" width="38" height="34"/><path d="M71 122 V156 M52 139 H90"/>
+          <rect x="130" y="122" width="38" height="34"/><path d="M149 122 V156 M130 139 H168"/>
+          <path d="M88 236 V182 a22 22 0 0 1 44 0 V236"/>
+          <circle cx="124" cy="210" r="2.5" fill="#233B74"/>
+          <path d="M10 236 H210"/>
+        </g>
+        <rect x="140" y="176" width="36" height="26" fill="#003F85"/>
+        <text x="158" y="194" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="15" fill="#FFFFFF">10</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Non chiedete ai bambini di dire il loro indirizzo davanti alla classe: è un dato personale. La scheda «Il mio indirizzo» si completa a casa con un adulto e resta a casa. Ai più grandi potete dire che, se ci sono, servono anche scala, piano e nome sul citofono.</div>
+</section>
+
+<!-- 8 il trucco dei pollici -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Il&nbsp;<b>112</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Il trucco per ricordarlo</h2>
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 40px; align-items: end; text-align: center">
+    <div><svg width="190" height="243" aria-hidden="true"><use href="#pollice"/></svg><p class="grande"><strong>1</strong><br>pollice sinistro</p></div>
+    <div><svg width="190" height="243" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg><p class="grande"><strong>1</strong><br>pollice destro</p></div>
+    <div><span style="display:flex; justify-content:center; gap: 12px"><svg width="190" height="243" aria-hidden="true"><use href="#pollice"/></svg><svg width="190" height="243" aria-hidden="true" style="transform: scaleX(-1)"><use href="#pollice"/></svg></span><p class="grande"><strong>2</strong><br>tutti e due insieme</p></div>
+  </div>
+  <p style="text-align:center">L'<strong>11 febbraio</strong>, cioè l'11/2, è la <span class="evidenzia">giornata del 112</span>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Fate alzare i pollici a tutta la classe, tre volte, dicendo «uno, uno, due». Il trucco viene dalla Commissione europea.</div>
+</section>
+
+<!-- 9 i numeri amici -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">I numeri&nbsp;<b>amici</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Ci sono anche i numeri amici</h2>
+  <div class="due pari">
+    <div class="numamico"><span class="cifra">114</span><strong>Emergenza infanzia</strong><span>Se un bambino o un ragazzo è in pericolo o in difficoltà. Gratis, giorno e notte, anche in chat.</span></div>
+    <div class="numamico"><span class="cifra">1.96.96</span><strong>Telefono Azzurro</strong><span>Se sei triste, hai paura o hai bisogno di parlare con qualcuno. Gratis, 24 ore su 24.</span></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Il 114 è il servizio pubblico del Dipartimento per le politiche della famiglia, gestito da Telefono Azzurro; l'1.96.96 è la linea di ascolto di Telefono Azzurro. Dite che parlare con un adulto di fiducia, a casa o a scuola, è sempre la prima cosa.</div>
+</section>
+
+<!-- 10 sicuri in casa -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Sicuri in&nbsp;<b>casa</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Sicuri in casa</h2>
+  <div class="regole">
+    <div class="regola">
+      <svg width="170" height="140" viewBox="0 0 170 140" aria-hidden="true"><g fill="#FFFFFF" stroke="#233B74" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><rect x="40" y="44" width="34" height="50" rx="5"/><path d="M36 44 H78"/><path d="M48 66 h18 M57 57 v18" stroke-width="3.5"/></g><g fill="#FCEB0C" stroke="#233B74" stroke-width="3"><circle cx="100" cy="88" r="8"/><circle cx="120" cy="82" r="8"/><circle cx="114" cy="100" r="8"/></g><path d="M20 108 H150" stroke="#233B74" stroke-width="4"/></svg>
+      <p><strong>Medicine e detersivi</strong> non si toccano: chiama un adulto.</p>
+    </div>
+    <div class="regola">
+      <svg width="170" height="140" viewBox="0 0 170 140" aria-hidden="true"><g fill="#FFFFFF" stroke="#233B74" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><rect x="30" y="50" width="70" height="50" rx="6"/><path d="M24 50 H106"/><rect x="100" y="60" width="50" height="10" rx="5" fill="#233B74"/><path d="M50 40 q-6 -10 0 -20 M70 40 q-6 -10 0 -20" stroke-width="3"/><path d="M20 112 H140"/></g><path d="M40 112 q5 -10 10 0 M60 112 q5 -10 10 0 M80 112 q5 -10 10 0" fill="#FCEB0C" stroke="#233B74" stroke-width="2.5"/></svg>
+      <p>In cucina, <strong>lontano dai fornelli</strong>. Il manico delle pentole va girato verso il muro.</p>
+    </div>
+    <div class="regola">
+      <svg width="170" height="140" viewBox="0 0 170 140" aria-hidden="true"><g fill="#FFFFFF" stroke="#233B74" stroke-width="4" stroke-linejoin="round"><rect x="55" y="30" width="60" height="80" rx="8"/><circle cx="75" cy="70" r="6" fill="#233B74"/><circle cx="95" cy="70" r="6" fill="#233B74"/></g><path d="M30 30 L140 110" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/></svg>
+      <p>Mai le dita o gli oggetti nelle <strong>prese della corrente</strong>.</p>
+    </div>
+    <div class="regola">
+      <svg width="170" height="140" viewBox="0 0 170 140" aria-hidden="true"><g fill="#FFFFFF" stroke="#233B74" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><rect x="40" y="18" width="90" height="70"/><path d="M85 18 V88 M40 53 H130"/><path d="M34 88 H136"/><path d="M60 102 H110 M64 102 V130 M106 102 V130"/></g><path d="M30 20 L140 128" stroke="#C8102E" stroke-width="8" stroke-linecap="round"/></svg>
+      <p>Non si sale su <strong>sedie e mobili</strong> vicino a finestre e balconi.</p>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">I consigli vengono dalla guida «Casa sicura» pubblicata da EpiCentro, Istituto Superiore di Sanità: prese protette, manico delle pentole verso il muro, medicine e detersivi chiusi e in alto, niente sedie sotto le finestre, fiammiferi e accendini non lasciati in giro. Poi fate la scheda «Trova i pericoli in casa».</div>
+</section>
+
+<!-- 11 sicuri in strada -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Sicuri in&nbsp;<b>strada</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <div class="due">
+    <div class="testo">
+      <h2>Sicuri in strada</h2>
+      <p><strong>A piedi:</strong> si attraversa sulle <strong>strisce pedonali</strong>, dopo essersi fermati a guardare bene da una parte e dall'altra.</p>
+      <p><strong>In macchina:</strong> la <strong>cintura</strong> si allaccia sempre, anche per pochi metri.</p>
+      <p>Finché non sei alto <span class="evidenzia">un metro e mezzo</span>, viaggi sul <strong>seggiolino</strong> o sul <strong>rialzo</strong> giusto per te. Lo dice la legge.</p>
+    </div>
+    <div style="display:flex; justify-content:center">
+      <svg width="380" height="560" viewBox="0 0 190 280" role="img" aria-label="Disegno di un metro da parete con il segno giallo a 150 centimetri">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linecap="round">
+          <rect x="60" y="10" width="54" height="260" fill="#FFFFFF"/>
+          <path d="M60 30 h16 M60 55 h24 M60 80 h16 M60 105 h24 M60 130 h16 M60 155 h24 M60 180 h16 M60 205 h24 M60 230 h16 M60 255 h24" stroke-width="2"/>
+          <path d="M40 40 H134" stroke-width="5"/>
+        </g>
+        <rect x="100" y="20" width="86" height="40" fill="#FCEB0C" stroke="#233B74" stroke-width="2.5"/>
+        <text x="143" y="47" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="20" fill="#233B74">150 cm</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Codice della strada: articolo 190 per i pedoni (si usano gli attraversamenti pedonali), articolo 172 per cinture e seggiolini (sotto 1,50 metri un sistema di ritenuta adatto al peso). Conta la statura, non l'età. La scheda «Sicuri in strada» ha il gioco «Misurati!».</div>
+</section>
+
+<!-- 12 i volontari -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Chi&nbsp;<b>siamo</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>I volontari della Misericordia di Ariccia</h2>
+  <div style="display:grid; grid-template-columns: 760px 1fr; gap: 54px; align-items: center">
+    <div class="foto"><img src="../../../static/img/ambulanza.jpg" alt="Un'ambulanza bianca e gialla della Misericordia di Ariccia parcheggiata su un prato"></div>
+    <ul class="fatti">
+      <li>Dal <strong>1994</strong> aiutiamo chi ha bisogno, ai Castelli Romani.</li>
+      <li>Accompagniamo in <strong>ambulanza</strong> le persone malate e chi ha una disabilità.</li>
+      <li>Diamo <strong>cibo</strong> e ascolto alle famiglie in difficoltà.</li>
+      <li>Insegniamo il <strong>primo soccorso</strong> ai grandi.</li>
+    </ul>
+  </div>
+  <p class="riquadro tenue">In un'emergenza non si chiama noi: si chiama <strong>sempre il 112</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">La Confraternita di Misericordia di Ariccia è un'associazione di volontariato attiva dal 1994: trasporti sanitari e sociali programmati, anche per persone con disabilità, Banco Alimentare e Centro di Ascolto, assistenza sanitaria agli eventi, corsi di primo soccorso. Non fa il soccorso in emergenza: quello lo manda il 112. Se c'è un volontario in classe, può raccontare una giornata di servizio.</div>
+</section>
+
+<!-- 13 quiz lampo -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Quiz&nbsp;<b>lampo</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Chi lo sa? Alzate la mano!</h2>
+  <div class="quiz">
+    <div><p class="q">1. Qual è il numero delle emergenze?</p><p class="r"><span><b>A</b>911</span><span><b>B</b>112</span><span><b>C</b>1-2-3</span></p></div>
+    <div><p class="q">2. Al telefono, che cosa dico per prima cosa?</p><p class="r"><span><b>A</b>Che cosa è successo e dove sono</span><span><b>B</b>Quanti anni ho</span></p></div>
+    <div><p class="q">3. Trovo delle pastiglie colorate sul tavolo. Che cosa faccio?</p><p class="r"><span><b>A</b>Le assaggio</span><span><b>B</b>Non le tocco e chiamo un adulto</span></p></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Risposte: 1 B, 2 A, 3 B. Il quiz completo di dieci domande è nel PDF «Il quiz del piccolo soccorritore» e, da fare alla lavagna, nella pagina «Per bambini e scuole» del sito.</div>
+</section>
+
+<!-- 14 finale -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Piccoli&nbsp;<b>soccorritori</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Bravi! Adesso siete piccoli soccorritori</h2>
+  <p>Tre cose da fare a casa:</p>
+  <ol class="passi">
+    <li><b class="n">1</b><span>Insegna il <strong>trucco dei pollici</strong> a qualcuno di casa</span></li>
+    <li><b class="n">2</b><span>Impara il tuo <strong>indirizzo</strong> a memoria</span></li>
+    <li><b class="n">3</b><span>Appendi il <strong>cartellino del 112</strong> sul frigorifero</span></li>
+  </ol>
+  <p class="sottolinea">Che Iddio ve ne renda merito!</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" width="94" height="86" aria-hidden="true" stroke="#233B74"><use href="#freccia"/></svg>
+<div class="note-relatore">Consegnate l'attestato del piccolo soccorritore, compilato con il nome di ogni bambino, e il cartellino del 112. «Che Iddio ve ne renda merito» è il ringraziamento tradizionale delle Misericordie.</div>
+</section>
+</body>
+</html>

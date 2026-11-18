@@ -96,9 +96,11 @@ def rendi_slide(browser, sorgente: Path, html: str, uscita: Path, anteprime: Pat
                 pres = Presentation()
                 pres.slide_width = Emu(12192000)
                 pres.slide_height = Emu(round(12192000 * alt / 1920))
-                for f, t, nr in zip(png, testi, note):
+                for f, im, t, nr in zip(png, imm, testi, note):
+                    jpg = f.with_suffix(".jpg")  # JPEG nel PowerPoint: un decimo del peso dei PNG
+                    im.save(jpg, "JPEG", quality=90, optimize=True, progressive=True)
                     sl = pres.slides.add_slide(pres.slide_layouts[6])
-                    sl.shapes.add_picture(str(f), 0, 0, width=pres.slide_width, height=pres.slide_height)
+                    sl.shapes.add_picture(str(jpg), 0, 0, width=pres.slide_width, height=pres.slide_height)
                     sl.notes_slide.notes_text_frame.text = (nr + "\n\n" if nr else "") + "Testo della slide: " + " ".join(t.split())
                 pres.core_properties.author = "Confraternita di Misericordia di Ariccia ODV"
                 pres.core_properties.title = titolo

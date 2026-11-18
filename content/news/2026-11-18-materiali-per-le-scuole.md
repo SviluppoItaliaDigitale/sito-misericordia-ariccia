@@ -1,10 +1,10 @@
 ---
 title: "Materiali gratuiti per le scuole: il 112 e il primo soccorso in classe"
 titoloSeo: "Materiali gratuiti per le scuole su 112 e primo soccorso, anche per la LIM | Misericordia di Ariccia"
-date: 2026-11-20
+date: 2026-11-18
 slug: "materiali-per-le-scuole"
 description: "Schede da stampare, slide per la LIM in tutti i formati e guide per l'insegnante, dalla scuola dell'infanzia alle superiori: il 112, la sicurezza in casa e in strada, il primo soccorso. Gratis dalla Misericordia di Ariccia."
-immagine: "/img/news/2026-11-20-materiali-per-le-scuole-grafica.jpg"
+immagine: "/img/news/2026-11-18-materiali-per-le-scuole-grafica.jpg"
 social_testo: "🏫 Insegnanti, educatori, genitori: ci avete chiesto materiale per le scuole, eccolo. Sul nostro sito trovate gratis schede da stampare, slide da proiettare sulla LIM (anche in 4K e in 4:3 per le lavagne più vecchie) e una guida per l'insegnante, per ogni età: scuola dell'infanzia, primaria, medie e superiori. Parlano del 112, di come si chiama e che cosa si dice, della sicurezza in casa e in strada e, per i più grandi, del perché imparare il primo soccorso.\n\nVolete che i nostri volontari vengano in classe? Scriveteci a sede@misericordia-ariccia.it.\n\nFoto di repertorio: Adobe Stock."
 italianoSemplice: |
   **Abbiamo preparato materiali per le scuole.**
@@ -18,7 +18,7 @@ italianoSemplice: |
   Sono gratis.
 ---
 
-![Grafica della Misericordia di Ariccia «Per le scuole. In classe: il 112 e il primo soccorso. Schede, slide per la LIM e guide gratuite, dall'infanzia alle superiori», con la foto di repertorio di una classe vista da dietro e un alunno che alza la mano](/img/news/2026-11-20-materiali-per-le-scuole-grafica.jpg)
+![Grafica della Misericordia di Ariccia «Per le scuole. In classe: il 112 e il primo soccorso. Schede, slide per la LIM e guide gratuite, dall'infanzia alle superiori», con la foto di repertorio di una classe vista da dietro e un alunno che alza la mano](/img/news/2026-11-18-materiali-per-le-scuole-grafica.jpg)
 
 Ce li hanno chiesto insegnanti e genitori, e li abbiamo preparati: nella nuova pagina **[Materiali per le scuole](/scuole/)** ci sono schede da stampare, slide per la lezione e una guida per l'insegnante, divise per età. Sono **gratuiti** e si possono usare in classe così come sono.
 
