@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Scheda 22 — Sudoku 6×6 della sicurezza (9-11 anni)</title>
+  <link rel="canonical" href="https://www.misericordia-ariccia.it/kit/bambini/22-sudoku-tema.html">
+<link rel="stylesheet" href="../comune/print.css">
+<style>
+  .sudoku { display: grid; grid-template-columns: repeat(6, 1fr); width: 110mm; margin: 4mm auto; border: 3px solid #1a1a1a; }
+  .sud-cell { aspect-ratio: 1; border: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: center; font-size: 22pt; font-weight: 700; }
+  .sud-cell.dato { background: #f0f0f0; color: var(--pc-blue); }
+  /* Bordi spessi per gruppi 2x3 */
+  .sud-cell:nth-child(3n) { border-right: 3px solid #1a1a1a; }
+  .sud-cell:nth-child(n+13):nth-child(-n+18),
+  .sud-cell:nth-child(n+25):nth-child(-n+30) { border-bottom: 3px solid #1a1a1a; }
+</style>
+  <!-- Stampa: un 12% in meno su tutto evita un foglio quasi vuoto anche con i
+       caratteri che la scheda trova su Windows con Office, su Mac o su un Linux
+       senza Liberation: senza, la fascia delle affiliazioni o l'ultima riga
+       finivano da sole su un foglio in più (controllo fogli di stampa, 22/10/2026). -->
+  <style>@media print { .scheda { zoom: 0.88; } }</style>
+</head>
+<body>
+<button class="btn-stampa no-print" onclick="window.print()">🖨️ Stampa A4</button>
+<a class="btn-indice no-print" href="./">← Indice</a>
+<article class="scheda">
+  <header class="scheda-header">
+    <img class="logo" src="/kit/comune/triangolo-misericordie.png" alt="Logo delle Misericordie"><div class="brand">Misericordia di Ariccia<small>Confraternita di Misericordia di Ariccia ODV</small></div>
+    <span class="kit-tag">Bambini · 9-11 anni</span>
+  </header>
+  <h1 class="scheda-title">Sudoku della sicurezza 6×6</h1>
+  <span class="scheda-eta">9-11 anni</span>
+  <div class="scheda-istruzione">🔢 <strong>Riempi lo schema</strong> con i numeri da <strong>1 a 6</strong>. Ogni numero deve apparire <strong>una sola volta</strong> in ogni riga, colonna e blocco 2×3.</div>
+  <section class="scheda-attivita">
+    <div class="sudoku"><div class="sud-cell dato">3</div><div class="sud-cell dato">5</div><div class="sud-cell dato">2</div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell dato">4</div><div class="sud-cell dato">6</div><div class="sud-cell dato">2</div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell dato">6</div><div class="sud-cell dato">3</div><div class="sud-cell dato">4</div><div class="sud-cell dato">5</div><div class="sud-cell dato">2</div><div class="sud-cell dato">1</div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell dato">5</div><div class="sud-cell dato">4</div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell dato">5</div><div class="sud-cell dato">6</div><div class="sud-cell"></div><div class="sud-cell"></div><div class="sud-cell dato">1</div><div class="sud-cell dato">3</div><div class="sud-cell"></div><div class="sud-cell"></div></div>
+    <p style="font-size: 11pt; text-align: center; max-width: 130mm; margin: 4mm auto;">💡 <strong>Consiglio</strong>: comincia dalla riga o colonna con più numeri già scritti. Se ti blocchi, fai un respiro e ricomincia da capo.</p>
+    <p style="font-size: 11pt; text-align: center; margin-top: 4mm; color: var(--pc-blue);">Quando hai finito, hai allenato la mente proprio come fanno i volontari quando si preparano alle emergenze: con calma, metodo, e tante prove! 🎯</p>
+  
+  </section>
+  <div class="soluzione-capovolta">
+    <span class="titolo">🔑 Soluzione — gira il foglio sottosopra per leggere</span>
+    <pre>3 5 2 6 1 4
+1 4 6 2 3 5
+6 3 4 5 2 1
+2 1 5 4 6 3
+4 2 3 1 5 6
+5 6 1 3 4 2</pre>
+  </div>
+  <footer class="scheda-footer"><span>Scheda 22 — Sudoku 6×6</span><span class="fonti">Sudoku semplificato. Stimolazione cognitiva: ragionamento logico-deduttivo, concentrazione, perseveranza.</span><span>www.misericordia-ariccia.it · adattato da materiali della Protezione Civile di Genzano di Roma, CC BY-NC-SA 4.0</span></footer>
+</article></body></html>

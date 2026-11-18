@@ -1,0 +1,599 @@
+/* Schede dei kit per le emergenze della Misericordia di Ariccia: adattate dai Kit Calamità della Protezione
+   Civile di Genzano di Roma (CC BY-NC-SA 4.0). Colori e carattere del kit nazionale delle Misericordie. */
+@font-face { font-family: 'Montserrat'; font-weight: 100 900; font-display: swap; src: url(montserrat-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 100 900; font-display: swap; src: url(montserrat-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2C60-2C7F, U+A720-A7FF; }
+/* ============================================================
+   Kit Calamità — CSS condiviso per schede stampabili A4
+   Bianco/nero, alto contrasto, accessibile, ECO-PRINT FRIENDLY.
+
+   Convenzione: ogni scheda è un HTML standalone con questo CSS.
+   La scheda si vede a video (gradevole) e si stampa in B/N A4
+   con consumo inchiostro ridotto (~30% in meno di Arial).
+
+   STRATEGIA ECO-PRINT (in calamità le cartucce/toner sono risorse finite):
+   1. Font URW Gothic L (open-source GPL, equivalente Century Gothic):
+      tracce sottili = ~30% inchiostro in meno di Arial mantenendo
+      leggibilità ottima anche per bambini piccoli e ipovisione.
+   2. Niente fondi pieni colorati: blu istituzionale solo come bordo,
+      non come riempimento.
+   3. Linee sottili (1.5pt) per illustrazioni line-art.
+   4. Niente ombre, niente gradienti, niente texture.
+   5. Modalità "Eco-print" opzionale (.eco-print): tracce ancora più
+      sottili + rimuove accenti grafici accessori.
+   ============================================================ */
+
+:root {
+  --pc-blue: #003F85;
+  --pc-blue-dark: #002f63;
+  --pc-yellow: #ffbe2e;
+  --line: #1a1a1a;
+  --bg-soft: #f4f7fb;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  /* ECO: URW Gothic L (open Linux GPL) ≈ Century Gothic ≈ Avant Garde
+     ~30% inchiostro in meno di Arial/Helvetica grazie a tracce sottili
+     senza compromettere leggibilità. Ecofont Vera Sans NON usata: i
+     buchi visibili compromettono leggibilità per bambini 3-5 anni e
+     ipovisione (priorità inclusione su risparmio assoluto). */
+  /* Misericordia di Ariccia (18/11/2026): Montserrat, il carattere del kit nazionale delle Misericordie
+     (file locali in questa cartella, SIL Open Font License 1.1, OFL-Montserrat.txt). */
+  font-family: 'Montserrat', 'Liberation Sans', sans-serif;
+  color: var(--line);
+  background: #f0f2f5;
+  font-size: 16pt;
+  line-height: 1.5;
+}
+
+/* ── Layout pagina A4 ── */
+.scheda {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 1cm auto;
+  background: #fff;
+  padding: 18mm 18mm 22mm 18mm;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Banda istituzionale in alto ── */
+.scheda-header {
+  border-bottom: 3px solid var(--pc-blue);
+  padding-bottom: 6mm;
+  margin-bottom: 8mm;
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+}
+.scheda-header .logo {
+  width: 20mm;
+  height: auto;   /* il triangolo ufficiale non è quadrato: mai deformarlo */
+  flex-shrink: 0;
+}
+.scheda-header .brand {
+  font-size: 10pt;
+  color: var(--pc-blue);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.scheda-header .brand small {
+  display: block;
+  font-weight: 400;
+  font-size: 8pt;
+  color: var(--line);
+  margin-top: 1mm;
+}
+.scheda-header .kit-tag {
+  margin-left: auto;
+  border: 1px solid var(--pc-blue);
+  color: var(--pc-blue);
+  padding: 1.5mm 3mm;
+  font-size: 8pt;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+}
+
+/* ── Titolo della scheda ── */
+.scheda-title {
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--pc-blue);
+  margin: 0 0 3mm;
+  line-height: 1.15;
+}
+.scheda-subtitle {
+  font-size: 11pt;
+  color: var(--line);
+  margin: 0 0 8mm;
+  font-style: italic;
+}
+.scheda-eta {
+  display: inline-block;
+  background: var(--pc-blue);
+  color: #fff;
+  font-size: 9pt;
+  font-weight: 700;
+  padding: 1.5mm 3mm;
+  border-radius: 3px;
+  margin-bottom: 8mm;
+}
+
+/* ── Istruzione operativa (in alto, prima dell'attività) ── */
+.scheda-istruzione {
+  background: var(--bg-soft);
+  border-left: 4px solid var(--pc-blue);
+  padding: 4mm 5mm;
+  margin-bottom: 8mm;
+  font-size: 13pt;
+  font-weight: 500;
+}
+
+/* ── Area attività (cuore della scheda) ── */
+.scheda-attivita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5mm;
+}
+
+/* ── Footer ── */
+.scheda-footer {
+  margin-top: auto;
+  padding-top: 9mm;       /* +50% spazio dal corpo della scheda */
+  padding-bottom: 2mm;
+  border-top: 1px solid #ccc;
+  font-size: 8.5pt;       /* leggermente più grande per leggibilità */
+  color: #555;            /* contrasto migliorato (era #666) */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;/* allineamento top per testi multi-riga */
+  gap: 6mm;               /* spazio orizzontale tra i 3 blocchi */
+  line-height: 1.45;
+}
+.scheda-footer {
+  flex-wrap: wrap;
+  row-gap: 1mm;
+}
+.scheda-footer > span {
+  flex: 0 0 auto;
+}
+/* ultima riga del piè di pagina (sito e licenza): a capo su tutta la larghezza, così la colonna delle fonti
+   non si stringe e la scheda non passa a un secondo foglio */
+.scheda-footer > span:last-child {
+  flex: 1 1 100%;
+  text-align: center;
+  font-size: 6.8pt;
+}
+.scheda-footer .fonti {
+  flex: 1 1 auto;
+  font-size: 7.8pt;
+  line-height: 1.5;
+  text-align: center;     /* centrato per equilibrio visivo dei 3 blocchi */
+  padding: 0 2mm;
+}
+/* Su stampa il footer è in fondo alla pagina: un filo di aria in più */
+@media print {
+  .scheda-footer { padding-top: 4mm; padding-bottom: 2mm; gap: 5mm; }
+}
+
+/* La banda delle affiliazioni della Protezione Civile di Genzano (Quality Label ESC, FEPIVOL, SNPC) non si usa:
+   riguarda quell'ente, non la Misericordia di Ariccia (18/11/2026). */
+
+/* ── Componenti riusabili ── */
+.box-prompt {
+  border: 1.5px dashed var(--pc-blue);
+  border-radius: 4px;
+  padding: 5mm;
+  width: 100%;
+  background: #fafbfc;
+  min-height: 40mm;
+}
+.box-disegno {
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  width: 100%;
+  min-height: 80mm;
+  background: #fff;
+}
+.linea-scrittura {
+  border: none;
+  border-bottom: 1px solid var(--line);
+  width: 100%;
+  margin: 4mm 0;
+  height: 8mm;
+}
+.linea-scrittura.sottile { border-bottom-style: dashed; }
+
+.griglia-disegno {
+  display: grid;
+  gap: 3mm;
+  width: 100%;
+}
+.griglia-disegno.col-2 { grid-template-columns: 1fr 1fr; }
+.griglia-disegno.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+.griglia-disegno.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+.cella-disegno {
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 2mm;
+}
+.cella-disegno svg, .cella-disegno img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cella-disegno .etichetta {
+  font-size: 9pt;
+  font-weight: 700;
+  text-align: center;
+}
+
+.faccina {
+  width: 25mm;
+  height: 25mm;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28pt;
+}
+
+ul.elenco-pratico {
+  list-style: none;
+  padding-left: 0;
+  margin: 4mm 0;
+}
+ul.elenco-pratico li {
+  padding: 3mm 0 3mm 8mm;
+  border-bottom: 1px dotted #ccc;
+  position: relative;
+}
+ul.elenco-pratico li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  font-size: 14pt;
+  color: var(--pc-blue);
+}
+
+/* ── Print ottimizzato A4 ── */
+@media print {
+  html, body {
+    background: #fff;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+  .scheda {
+    margin: 0;
+    box-shadow: none;
+    width: auto;
+    min-height: auto;
+    padding: 5mm 9mm 5mm 9mm;
+    page-break-after: avoid;
+  }
+  .no-print { display: none !important; }
+  @page {
+    size: A4;
+    /* margin: 5mm invece di 0: alcune stampanti fisiche hanno
+       margini non stampabili e rischiano di tagliare il bordo.
+       Il padding interno della .scheda (5-9mm) compensa la perdita
+       e il contenuto resta centrato. */
+    margin: 4mm;
+  }
+  /* Spazi verticali compatti per stare in A4 singola pagina */
+  .scheda-header { padding-bottom: 3mm; margin-bottom: 3mm; }
+  .scheda-header .logo { width: 14mm; height: auto; }
+  .scheda-header .brand { font-size: 9pt; }
+  .scheda-header .brand small { font-size: 7pt; }
+  .scheda-header .kit-tag { font-size: 7pt; padding: 1mm 2mm; }
+  .scheda-title { font-size: 17pt; margin-bottom: 1mm; line-height: 1.1; }
+  .scheda-subtitle { font-size: 10pt; margin-bottom: 3mm; }
+  .scheda-eta { margin-bottom: 3mm; padding: 0.8mm 2mm; font-size: 8pt; }
+  .scheda-istruzione {
+    padding: 2.5mm 3.5mm;
+    margin-bottom: 3mm;
+    font-size: 10pt;
+    line-height: 1.3;
+  }
+  .scheda-attivita { gap: 2.5mm; }
+  .scheda-footer { padding-top: 7mm; padding-bottom: 3mm; gap: 5mm; font-size: 7.5pt; page-break-inside: avoid; }
+  .scheda-footer .fonti { font-size: 7pt; line-height: 1.4; }
+  /* SVG/immagini al cuore dell'attività: limite di sicurezza A4 */
+  .scheda-attivita > svg,
+  .scheda-attivita > figure > svg,
+  .scheda-attivita > img,
+  .scheda-attivita > figure > img { max-height: 170mm !important; }
+  /* Box riusabili più contenuti */
+  .box-disegno { min-height: 45mm; }
+  .box-prompt { min-height: 22mm; }
+  .linea-scrittura { height: 6mm; margin: 2mm 0; }
+  ul.elenco-pratico li { padding: 1.5mm 0 1.5mm 7mm; }
+  /* Griglie compatte (memory, segnali, simboli) */
+  .griglia-disegno { gap: 2mm; }
+  .cella-disegno { padding: 1mm; }
+  .cella-disegno .etichetta { font-size: 7.5pt; }
+}
+
+/* ── Bottone stampa (solo a video) ── */
+.btn-stampa {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: var(--pc-blue);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,51,102,0.3);
+  z-index: 1000;
+}
+.btn-stampa:hover { background: var(--pc-blue-dark); }
+.btn-stampa:focus-visible {
+  outline: 3px solid var(--pc-yellow);
+  outline-offset: 2px;
+}
+
+/* ── Link "torna all'indice" (solo a video) ── */
+.btn-indice {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  background: #fff;
+  color: var(--pc-blue);
+  border: 2px solid var(--pc-blue);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.btn-indice:hover { background: var(--bg-soft); }
+.btn-indice:focus-visible {
+  outline: 3px solid var(--pc-yellow);
+  outline-offset: 2px;
+}
+
+/* ── Modalità Eco-print (max risparmio inchiostro) ── */
+/* Aggiunge classe .eco-print al <body> per attivare risparmio massimo:
+   rimuove banda istituzionale piena, bordi più sottili, niente accenti
+   visivi. Da usare quando le cartucce sono al minimo. */
+.eco-print .scheda-header {
+  border-bottom-width: 1px;
+}
+.eco-print .scheda-header .kit-tag {
+  border-width: 0.5px;
+}
+.eco-print .scheda-eta {
+  background: transparent;
+  color: var(--pc-blue);
+  border: 1px solid var(--pc-blue);
+}
+.eco-print .scheda-istruzione {
+  background: transparent;
+  border-left-width: 2px;
+}
+.eco-print .scheda-footer {
+  border-top-style: dashed;
+  border-top-width: 0.5px;
+}
+.eco-print .box-prompt,
+.eco-print .box-disegno,
+.eco-print .cella-disegno {
+  border-width: 1px;
+}
+
+/* ── Versione ad alto contrasto (per ipovisione) ── */
+.scheda.alto-contrasto {
+  font-size: 22pt;
+}
+.scheda.alto-contrasto .scheda-title { font-size: 32pt; }
+.scheda.alto-contrasto .scheda-istruzione { font-size: 18pt; }
+.scheda.alto-contrasto .faccina { width: 35mm; height: 35mm; font-size: 38pt; }
+.scheda.alto-contrasto .scheda-istruzione,
+.scheda.alto-contrasto .scheda-header,
+.scheda.alto-contrasto .scheda-footer {
+  border-color: #000;
+  border-width: 3px;
+}
+
+/* ── Reset accessibilità globale ── */
+*:focus-visible {
+  outline: 3px solid var(--pc-yellow);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   CARTA D'IDENTITÀ — Template uniforme per schede compilabili
+   ============================================================
+   Convenzione: ogni "carta d'identità di emergenza" del progetto
+   usa le stesse classi .carta-id-* per garantire spazio di
+   scrittura adeguato a mano (penna + adulto sotto stress).
+   - min-height riga singola: 11mm (ben leggibile, scrivibile)
+   - min-height box libero: 30mm / 45mm / 60mm (small/medio/grande)
+   - sezioni con bordo + h2 azzurro istituzionale
+   - layout block (label sopra, riga sotto) — robusto in stampa
+   ============================================================ */
+.scheda-attivita.carta-id-corpo {
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+.carta-id-sez {
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 4mm 5mm;
+  margin-bottom: 5mm;
+  page-break-inside: avoid;
+  width: 100%;
+}
+.carta-id-sez h2 {
+  color: var(--pc-blue);
+  font-size: 13pt;
+  margin: 0 0 4mm 0;
+  border-bottom: 1.5px solid var(--pc-blue);
+  padding-bottom: 1.5mm;
+  font-weight: 700;
+}
+.carta-id-campo {
+  margin: 4mm 0;
+  display: block;
+}
+.carta-id-campo > label,
+.carta-id-campo > .label {
+  display: block;
+  font-weight: 700;
+  font-size: 10.5pt;
+  margin-bottom: 1.5mm;
+  color: var(--line);
+}
+.carta-id-campo > .riga {
+  display: block;
+  border-bottom: 1.5px solid var(--line);
+  min-height: 11mm;
+  width: 100%;
+}
+.carta-id-coppia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+  margin: 4mm 0;
+}
+.carta-id-tris {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4mm;
+  margin: 4mm 0;
+}
+.carta-id-coppia > .carta-id-campo,
+.carta-id-tris > .carta-id-campo {
+  margin: 0;
+}
+.carta-id-opzioni {
+  margin: 4mm 0;
+  display: block;
+}
+.carta-id-opzioni > .label {
+  display: block;
+  font-weight: 700;
+  font-size: 10.5pt;
+  margin-bottom: 1.5mm;
+}
+.carta-id-opzioni > .opzioni {
+  display: block;
+  font-size: 10.5pt;
+  line-height: 1.9;
+  padding: 1mm 0;
+}
+.carta-id-box {
+  margin: 4mm 0;
+  display: block;
+}
+.carta-id-box > label,
+.carta-id-box > .label {
+  display: block;
+  font-weight: 700;
+  font-size: 10.5pt;
+  margin-bottom: 1.5mm;
+  color: var(--line);
+}
+.carta-id-box > .area {
+  display: block;
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  min-height: 30mm;
+  padding: 2mm;
+  width: 100%;
+}
+.carta-id-box > .area.medio { min-height: 45mm; }
+.carta-id-box > .area.grande { min-height: 60mm; }
+.carta-id-box > .area.righe-orizzontali {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 9mm,
+    #ccc 9mm,
+    #ccc calc(9mm + 0.3mm)
+  );
+}
+.carta-id-nota {
+  border: 1.5px solid #c1121f;
+  background: #fff5f5;
+  padding: 3mm 4mm;
+  border-radius: 4px;
+  font-size: 9.5pt;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+@media print {
+  .carta-id-sez { border-width: 1.5px; }
+  .carta-id-box > .area { border-width: 1px; }
+  .carta-id-nota { background: transparent; border-width: 1px; }
+}
+
+/* ============================================================
+   SOLUZIONE CAPOVOLTA — risposte stampate sotto, ruotate 180°
+   ============================================================
+   Convenzione presa dai giochi enigmistici cartacei: la
+   soluzione è stampata in fondo alla pagina, ruotata di 180°,
+   in modo che chi vuole vederla deve girare fisicamente il
+   foglio. Stessa pagina del gioco, nessun foglio operatore.
+   ============================================================ */
+.soluzione-capovolta {
+  margin: 12mm 0 0;
+  padding: 4mm 5mm;
+  border: 1.5px dashed var(--line);
+  border-radius: 4px;
+  background: #fafbfc;
+  transform: rotate(180deg);
+  transform-origin: center center;
+  font-size: 10pt;
+  line-height: 1.5;
+  page-break-inside: avoid;
+}
+.soluzione-capovolta strong { color: var(--pc-blue); }
+.soluzione-capovolta .titolo {
+  font-weight: 700;
+  color: var(--pc-blue);
+  font-size: 10pt;
+  margin-bottom: 2mm;
+  display: block;
+}
+.soluzione-capovolta pre {
+  font-family: monospace;
+  font-size: 11pt;
+  background: #fff;
+  padding: 2mm;
+  border: 1px solid #ccc;
+  margin: 2mm 0;
+  line-height: 1.5;
+}
+@media print {
+  .soluzione-capovolta {
+    background: transparent;
+    border-width: 1px;
+  }
+}
