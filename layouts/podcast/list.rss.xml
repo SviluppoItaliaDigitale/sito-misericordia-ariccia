@@ -1,0 +1,73 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{- /* Feed del podcast per le app (Apple Podcasts, Spotify e le altre), dal 18/11/2026.
+       Entrano solo le puntate con un file audio. La dichiarazione <?xml?> passa da
+       printf|safeHTML perché altrimenti «<?» verrebbe trasformato in «&lt;?».
+       Copertina quadrata 3000×3000 JPEG; peso del file letto da static/. */ -}}
+{{- $cover := .Params.podcast_cover | default "img/podcast/copertina-podcast.jpg" | absURL -}}
+{{- $autore := .Params.podcast_autore | default "Confraternita di Misericordia di Ariccia ODV" -}}
+{{- $self := "" -}}{{- with .OutputFormats.Get "rss" }}{{ $self = .Permalink }}{{ end -}}
+{{- $episodi := (where .Pages "Params.audio" "!=" nil).ByDate.Reverse }}
+<rss version="2.0"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ .Description }}</description>
+    <language>{{ .Params.podcast_lingua | default "it" }}</language>
+    <copyright>© {{ now.Year }} {{ $autore }}</copyright>
+    {{- with $episodi }}{{ with index . 0 }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}{{ end }}
+    {{- with $self }}
+    <atom:link href="{{ . }}" rel="self" type="application/rss+xml" />
+    {{- end }}
+    <itunes:author>{{ $autore }}</itunes:author>
+    <itunes:summary>{{ .Description }}</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>{{ $autore }}</itunes:name>
+      <itunes:email>{{ site.Params.email }}</itunes:email>
+    </itunes:owner>
+    <itunes:image href="{{ $cover }}" />
+    <itunes:category text="{{ .Params.podcast_categoria | default "Health & Fitness" }}">
+      {{- with .Params.podcast_sottocategoria }}
+      <itunes:category text="{{ . }}" />
+      {{- end }}
+    </itunes:category>
+    <image>
+      <url>{{ $cover }}</url>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+    </image>
+    {{- range $episodi }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <description>{{ .Description }}</description>
+      <content:encoded>{{ .Content | html }}</content:encoded>
+      <itunes:summary>{{ .Description }}</itunes:summary>
+      {{- with .Params.episodio }}
+      <itunes:episode>{{ . }}</itunes:episode>
+      {{- end }}
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      {{- with .Params.durata_secondi }}
+      <itunes:duration>{{ . }}</itunes:duration>
+      {{- end }}
+      {{- with .Params.audio }}
+      {{- $file := printf "static/%s" (strings.TrimPrefix "/" .) -}}
+      {{- $bytes := 0 -}}
+      {{- if fileExists $file }}{{ $bytes = (os.Stat $file).Size }}{{ end -}}
+      {{- $tipo := "audio/mpeg" -}}
+      {{- if strings.HasSuffix . ".m4a" }}{{ $tipo = "audio/x-m4a" }}{{ end }}
+      <enclosure url="{{ strings.TrimPrefix "/" . | absURL }}" length="{{ $bytes }}" type="{{ $tipo }}" />
+      {{- end }}
+    </item>
+    {{- end }}
+  </channel>
+</rss>

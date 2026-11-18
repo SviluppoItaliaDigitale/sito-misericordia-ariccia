@@ -1,0 +1,58 @@
+name: "Podcast: magazzino delle puntate"
+
+# Ogni mattina (dal 18/11/2026, adattato dal sito della Protezione Civile di Genzano)
+# conta le puntate del podcast in calendario (content/podcast/ con data futura) con
+# scripts/podcast-auto/controlla-magazzino.py. Se ne resta meno di una settimana (2)
+# o se un mercoledì o un sabato è saltato, apre o aggiorna la issue «Podcast: poche
+# puntate in calendario» (label automazione + podcast), che arriva per email ad
+# Alessandro; si chiude da sola quando il magazzino torna sufficiente. Gira su
+# GitHub, quindi anche a PC spento. Le puntate nuove si fanno solo sul PC (Chrome e
+# NotebookLM, scripts/podcast-auto/README.md): dal cloud non si ripara.
+
+on:
+  schedule:
+    - cron: "47 5 * * *"   # dopo la ricostruzione di mezzanotte e la salute del sito
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: controllo-podcast
+  cancel-in-progress: false
+
+jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Conta le puntate e aggiorna la issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          TZ=Europe/Rome python3 scripts/podcast-auto/controlla-magazzino.py --minimo 2 --corpo /tmp/podcast.txt
+          esito=$?
+          set -e
+          [ "$esito" -le 1 ] || { echo "Controllo non riuscito (uscita $esito)"; exit 1; }
+          titolo="Podcast: poche puntate in calendario"
+          gh label create automazione --color "B60205" --description "Segnalazioni dei controlli automatici" 2>/dev/null || true
+          gh label create podcast --color "1D76DB" --description "Podcast automatico" 2>/dev/null || true
+          numero=$(gh issue list --state open --label podcast --limit 100 --json number,title \
+            --jq ".[] | select(.title == \"$titolo\") | .number" | head -1)
+          { cat /tmp/podcast.txt; echo; echo "---"; echo "*Issue aperta da \`controllo-podcast.yml\`; si chiude da sola quando il magazzino torna sufficiente. Non si ripara dal cloud: servono il PC acceso e Chrome aperto con l'accesso a Google (\`scripts/podcast-auto/README.md\`).*"; } > /tmp/corpo.md
+          if [ "$esito" = "1" ]; then
+            if [ -n "$numero" ]; then
+              gh issue edit "$numero" --body-file /tmp/corpo.md
+            else
+              gh issue create --title "$titolo" --body-file /tmp/corpo.md --label automazione --label podcast
+            fi
+          elif [ -n "$numero" ]; then
+            gh issue comment "$numero" --body "Il magazzino del podcast è di nuovo sufficiente: chiudo."
+            gh issue close "$numero" --reason completed
+          fi

@@ -1,0 +1,64 @@
+{{ define "main" }}
+{{- /* Elenco del podcast (dal 18/11/2026). Le puntate escono da sole alla loro data
+     col rebuild di mezzanotte: Hugo non pubblica le date future.
+     Puntate dalla più recente; il feed è layouts/podcast/list.rss.xml. */ -}}
+{{- $rss := .OutputFormats.Get "rss" -}}
+{{- $episodi := (where .Pages "Params.audio" "!=" nil).ByDate.Reverse -}}
+<div class="pagina-testata">
+  <div class="container">
+    <h1 data-split="words">{{ .Title }}</h1>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Podcast</li>
+      </ol>
+    </nav>
+
+    <div class="podcast-testa">
+      <img class="podcast-copertina" src="{{ "img/podcast/copertina-podcast-600.jpg" | relURL }}" width="600" height="600" alt="Copertina del podcast: il triangolo delle Misericordie su fondo blu e la scritta «Il podcast della Misericordia di Ariccia»." loading="eager" decoding="async">
+      <div class="contenuto">
+        {{ .Content }}
+      </div>
+    </div>
+
+    <section class="podcast-iscriviti" aria-labelledby="podcast-iscriviti-h">
+      <h2 id="podcast-iscriviti-h">Ascolta le puntate nella tua app</h2>
+      <p>Copia l'indirizzo del feed nella tua app per i podcast: le puntate nuove arrivano da sole.</p>
+      {{- with $rss }}
+      <p class="podcast-feed"><span>Indirizzo del feed:</span> <code>{{ .Permalink }}</code></p>
+      {{- end }}
+      <div class="podcast-azioni">
+        {{- with $rss }}<a class="btn btn-navy" href="{{ .RelPermalink }}">Apri il feed RSS</a>{{ end }}
+        {{- with .Params.podcast_spotify }}<a class="btn btn-ciano" href="{{ . }}" rel="noopener">Spotify</a>{{ end }}
+        {{- with .Params.podcast_apple }}<a class="btn btn-ciano" href="{{ . }}" rel="noopener">Apple Podcasts</a>{{ end }}
+      </div>
+    </section>
+
+    {{- if $episodi }}
+    <h2 class="mt-5 mb-3">Le puntate</h2>
+    <ol class="podcast-lista" reversed>
+      {{- range $episodi }}
+      <li class="podcast-ep">
+        <p class="podcast-ep-meta">
+          {{- with .Params.episodio }}<span class="podcast-ep-num">Puntata {{ . }}</span> · {{ end -}}
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format ":date_long" .Date }}</time>
+          {{- with .Params.durata }} · {{ . }}{{ end -}}
+        </p>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{- with .Description }}<p class="mb-0">{{ . }}</p>{{ end }}
+      </li>
+      {{- end }}
+    </ol>
+    {{- else }}
+    <div class="podcast-attesa" role="note">
+      <p class="mb-0"><strong>Le prime puntate arrivano a breve.</strong> Le trovi qui appena escono, ognuna con il testo completo da leggere. Se ti iscrivi al feed, le ricevi nella tua app.</p>
+    </div>
+    {{- end }}
+    {{ partial "condividi.html" . }}
+  </div>
+</div>
+{{ end }}

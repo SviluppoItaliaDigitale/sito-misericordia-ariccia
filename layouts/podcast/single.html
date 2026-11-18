@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{- /* Puntata del podcast: player, trascrizione completa (il corpo della pagina,
+     con le pagine fonte in fondo) e ritorno all'elenco. */ -}}
+<div class="pagina-testata">
+  <div class="container">
+    <p class="occhiello mb-1">Il podcast della Misericordia di Ariccia</p>
+    <h1 data-split="words">{{ .Title }}</h1>
+    <p class="data-news mt-2 mb-0">
+      {{- with .Params.episodio }}Puntata {{ . }} · {{ end -}}
+      {{ time.Format ":date_long" .Date }}
+      {{- with .Params.durata }} · {{ . }}{{ end -}}
+    </p>
+  </div>
+</div>
+<div class="pagina-corpo">
+  <div class="container py-5">
+    <nav aria-label="Percorso" class="mb-4">
+      <ol class="breadcrumb briciole">
+        <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ "/podcast/" | relURL }}">Podcast</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+      </ol>
+    </nav>
+
+    {{- with .Params.audio }}
+    <div class="podcast-player">
+      <audio controls preload="none" src="{{ . | relURL }}">
+        <a href="{{ . | relURL }}">Scarica la puntata</a>
+      </audio>
+      <p class="podcast-player-nota">
+        <a class="btn btn-ciano" href="{{ . | relURL }}" download>Scarica la puntata (audio M4A)</a>
+        <a class="btn btn-navy" href="{{ "/podcast/" | relURL }}">Tutte le puntate</a>
+      </p>
+    </div>
+    {{- end }}
+
+    <article class="contenuto podcast-trascrizione" aria-labelledby="podcast-trascrizione-h">
+      <h2 id="podcast-trascrizione-h">Il testo della puntata</h2>
+      {{ .Content }}
+    </article>
+
+    {{ partial "condividi.html" . }}
+    {{ partial "aggiornamento.html" . }}
+  </div>
+</div>
+{{ end }}
