@@ -149,6 +149,13 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
 
+## Sedi: quale indirizzo usare (dal 18/11/2026)
+
+Istruzione di Alessandro: *«Quella è la sede legale!! NON VA MAI MENZIONATA NELLE COSE OPERATIVE! LA SEDE STA IN VIA CHIGI»*.
+- **Contenuti operativi** (dove trovarci, Centro di Ascolto, schede, kit, materiali per le scuole, locandine): **Viale Antonietta Chigi, 46 — Ariccia** (`site.Params.indirizzo`).
+- **Sede legale, via Beata Rosa Venerini 6** (`site.Params.sedeLegale`): **solo** atti, privacy e trasparenza (`contatti.md` in nota, `privacy.md`, `trasparenza.md`, dati strutturati come «Sede legale»). Lo controlla `scripts/controlli/prova_sede_legale.py` su ogni PR.
+- Il nome del paese si scrive sempre **«Ariccia»**, in ogni lingua, senza traslitterazioni.
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)

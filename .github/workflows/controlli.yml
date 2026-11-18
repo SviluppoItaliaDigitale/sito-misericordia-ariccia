@@ -125,6 +125,10 @@ jobs:
 
       # Materiali per le scuole (dal 18/11/2026): ogni PDF elencato esiste, ha firma e cornice e l'anteprima,
       # le slide hanno il PowerPoint, nessun file orfano, nessun sorgente senza PDF.
+      # La sede legale solo in atti, privacy e trasparenza, mai nei contenuti operativi (dal 18/11/2026).
+      - name: Sede legale fuori dai contenuti operativi
+        run: python3 scripts/controlli/prova_sede_legale.py
+
       - name: Materiali per le scuole
         run: python3 scripts/controlli/prova_scuole.py
 
