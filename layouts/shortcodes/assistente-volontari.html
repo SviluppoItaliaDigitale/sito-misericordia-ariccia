@@ -3,9 +3,11 @@
        Motore in static/js/assistente-volontari.js, domande in static/js/assistente-volontari-dati.js.
        Uso: {{< assistente-volontari >}} */ -}}
 <section class="assistente-volontari" aria-labelledby="av-titolo">
-  <h2 id="av-titolo" class="h4">Rispondi a poche domande</h2>
-  <p class="av-intro">Un assistente a domande fisse ti chiede che cosa ti piacerebbe fare e quando puoi esserci. Alla fine prepara il messaggio con le tue risposte, che invii tu su WhatsApp o per email: il sito non riceve e non salva niente.</p>
-  <div data-assistente-volontari></div>
+  <div class="av-testata">
+    <h2 id="av-titolo" class="h4">Rispondi a poche domande</h2>
+    <p class="av-intro">Un assistente a domande fisse ti chiede che cosa ti piacerebbe fare e quando puoi esserci. Alla fine prepara il messaggio con le tue risposte, che invii tu su WhatsApp o per email: il sito non riceve e non salva niente.</p>
+  </div>
+  <div class="av-corpo" data-assistente-volontari></div>
   <noscript><p>Per usare l'assistente serve JavaScript. Puoi scrivere VOLONTARIO su <a href="https://wa.me/393484068657?text=VOLONTARIO" rel="noopener">WhatsApp al 348 4068657</a> o chiamare per le iscrizioni il <a href="tel:+393288105399">328 8105399</a>.</p></noscript>
 </section>
 {{- $m := readFile "static/js/assistente-volontari.js" | hash.FNV32a }}
