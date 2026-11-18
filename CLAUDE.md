@@ -411,10 +411,14 @@ comunicazione della Confederazione pubblicati su YouTube.
   ciò che pubblica l'API risulta pubblicato ma lo vedono solo gli amministratori
   dell'app: è successo dal 30/9 al 4/10/2026 (post e Reel invisibili agli altri).
   Se «solo io lo vedo», controllare prima questo.
-- **Facebook, news con video**: post con link all'articolo **più** un Reel
-  caricato con la **Reels API** ufficiale (`/video_reels`, tre fasi; registro
-  `facebook_reel`). Mai `/videos`: quei video diventavano Reel non distribuiti,
-  visibili solo agli amministratori (4/10/2026). Limite Reel via API: 90 s.
+- **Facebook, news con video**: **solo il Reel** (dal 18/11/2026), caricato con
+  la **Reels API** ufficiale (`/video_reels`, tre fasi; registro `facebook_reel`),
+  con il link all'articolo nel testo. Il post con link accanto al Reel, con lo
+  stesso testo, sembrava un doppione a chi segue la pagina: non esce più e i 20
+  già pubblicati sono stati tolti (azione `elimina-doppioni-reel` di «Gestione
+  social»). Il post con link resta per le news senza video e per i video oltre i
+  90 s (`reel_facebook: false`). Mai `/videos`: quei video diventavano Reel non
+  distribuiti, visibili solo agli amministratori (4/10/2026).
 - Tutti i post escono con il luogo **Ariccia** (Facebook `place`, Instagram
   `location_id`; vedi `docs/pubblicazione-social.md`).
 - Il testo del post è `description`/sommario della news; per un testo

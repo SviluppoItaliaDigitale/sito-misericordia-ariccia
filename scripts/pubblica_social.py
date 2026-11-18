@@ -384,10 +384,10 @@ def con_luogo(pubblica, parametri, chiave):
 
 
 def pubblica_facebook(n):
-    # Sempre un post con link: Facebook costruisce l'anteprima da og:title/og:image
-    # e il video si guarda nell'articolo. I video caricati con l'API (/videos)
-    # venivano trasformati in Reel e Facebook non li distribuiva a nessuno
-    # (visibili solo agli amministratori, 4 ottobre 2026): niente più Reel su FB.
+    # Post con link per le news senza Reel (senza video, o con video oltre i 90 s):
+    # Facebook costruisce l'anteprima da og:title/og:image. Le news con Reel non
+    # hanno più questo post (18/11/2026). Mai /videos: quei video diventavano Reel
+    # non distribuiti (visibili solo agli amministratori, 4 ottobre 2026).
     testo = testo_facebook(n)
     if n.get("video"):
         testo = testo.replace("\n\n👉 Leggi tutto:", "\n\n▶️ Guarda il video e leggi tutto:")
@@ -808,8 +808,12 @@ def main():
         voce = reg.get(n["id"], {})
         # Reel di Facebook solo per le news con video che non lo escludono: la Reels API accetta
         # da 3 a 90 secondi, e per i video più lunghi resta il post con il link (social_reel_facebook: false)
+        # Con il Reel il post con link non esce: stesso testo, sembrava un doppione
+        # a chi segue la pagina (18/11/2026). Il link all'articolo è nel testo del Reel.
+        con_reel = bool(n.get("video") and n.get("reel_facebook", True))
         mancanti = [r for r in reti if r not in voce
-                    and (r != "facebook_reel" or (n.get("video") and n.get("reel_facebook", True)))]
+                    and (r != "facebook_reel" or con_reel)
+                    and (r != "facebook" or not con_reel)]
         if not mancanti:
             continue
         if not n.get("social", True):

@@ -17,6 +17,9 @@ Azioni (variabile AZIONE, o campo "azione" del file comando):
   rispondi-commento   risponde a un commento (RETE, ID del commento, TESTO)
   nascondi-commento   nasconde un commento (RETE, ID); con TESTO=mostra lo rende di nuovo visibile
   elimina-commento    elimina un commento (RETE, ID) — CONFERMA=ELIMINA
+  elimina-doppioni-reel  elimina da Facebook i post con link gemelli di un Reel (registro
+                      .github/social/pubblicati.json), solo se il Reel risulta online;
+                      senza CONFERMA=ELIMINA mostra soltanto che cosa farebbe
   messaggi            ultime conversazioni Messenger (fb) o Direct (ig)
   rispondi-messaggio  risponde in una conversazione (RETE, ID della conversazione, TESTO)
   cerca-foto          cerca nei post di Facebook e Instagram le parole di TESTO (separate da |)
@@ -408,6 +411,39 @@ def a_osserva_ig(ident, testo, **_):
                 scrivi(f"- immagine non scaricata: {e}")
 
 
+def a_elimina_doppioni_reel(conf, **_):
+    """Dal 18/11/2026 su Facebook le news con video escono solo come Reel: il post
+    con link accanto, con lo stesso testo, sembrava un doppione. Toglie i gemelli
+    già pubblicati, controllando prima che il Reel sia online."""
+    reg = json.loads(Path(".github/social/pubblicati.json").read_text(encoding="utf-8"))
+    prova = conf != "ELIMINA"
+    scrivi("Modalità prova: nulla viene eliminato" if prova else "Eliminazione dei post gemelli dei Reel")
+    tolti, tenuti = 0, 0
+    for nid, voce in sorted(reg.items()):
+        post, reel = str(voce.get("facebook", "")), str(voce.get("facebook_reel", ""))
+        if "_" not in post or not reel.isdigit():
+            continue
+        r = chiama("GET", reel, fields="status,permalink_url,published")
+        st = r.get("status") or {}
+        if "errore" in r or r.get("published") is False or st.get("video_status") != "ready":
+            tenuti += 1
+            scrivi(f"- {nid}: TENUTO il post `{post}`, Reel `{reel}` non online ({r.get('errore') or st})")
+            continue
+        if prova:
+            scrivi(f"- {nid}: eliminerebbe `{post}` (Reel online `{reel}`)")
+            continue
+        d = chiama("DELETE", post)
+        if d.get("success") is True:
+            tolti += 1
+            scrivi(f"- {nid}: eliminato `{post}` (resta il Reel `{reel}`)")
+        else:
+            tenuti += 1
+            scrivi(f"- {nid}: NON eliminato `{post}` ({d.get('errore') or d})")
+    scrivi(f"Eliminati {tolti}, tenuti {tenuti}.")
+    if tenuti:
+        esci(f"{tenuti} post gemelli non eliminati: vedi sopra")
+
+
 AZIONI = {
     "prova": a_prova, "elenco": a_elenco, "statistiche": a_statistiche,
     "pubblica": a_pubblica, "modifica": a_modifica, "elimina": a_elimina,
@@ -415,6 +451,7 @@ AZIONI = {
     "nascondi-commento": a_nascondi_commento, "elimina-commento": a_elimina_commento,
     "messaggi": a_messaggi, "rispondi-messaggio": a_rispondi_messaggio,
     "cerca-foto": a_cerca_foto, "osserva-ig": a_osserva_ig,
+    "elimina-doppioni-reel": a_elimina_doppioni_reel,
 }
 
 

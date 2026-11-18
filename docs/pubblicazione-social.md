@@ -45,8 +45,9 @@ social_video_copertina: 16       # secondo del video da usare come copertina del
 ```
 
 - **Video**: con `social_video:` (MP4 H.264 verticale 9:16, max 90 s per i Reel,
-  in `static/video/`) Instagram pubblica un **Reel** e Facebook un **video** sulla
-  pagina, col testo della news e il link all'articolo. L'immagine della news resta
+  in `static/video/`) Instagram e Facebook pubblicano un **Reel**, col testo della
+  news e il link all'articolo; su Facebook, dal 18/11/2026, **senza** il post con
+  link accanto (con lo stesso testo sembrava un doppione). L'immagine della news resta
   l'anteprima per Google e per chi condivide il link.
 - **Video oltre i 90 secondi**: il Reel di Facebook con la Reels API dura da 3 a 90 s.
   Per un video più lungo si aggiunge `social_reel_facebook: false`: su Facebook esce
@@ -274,6 +275,6 @@ Controllare che l'app Meta sia in modalità **Live** (developers.facebook.com �
 risultano `published` con privacy «Tutti», ma Facebook li mostra solo alle
 persone con un ruolo nell'app. È successo dal 30 settembre al 4 ottobre 2026;
 per pubblicare servono l'URL dell'informativa privacy e una categoria nelle
-impostazioni di base dell'app. Su Facebook i video escono come post con link
-più Reel (Reels API); i Reel caricati con `/videos` non venivano distribuiti.
+impostazioni di base dell'app. Su Facebook i video escono come Reel (Reels API),
+senza post con link accanto dal 18/11/2026; i Reel caricati con `/videos` non venivano distribuiti.
 
