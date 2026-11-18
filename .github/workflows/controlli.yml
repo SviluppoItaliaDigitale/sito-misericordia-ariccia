@@ -40,6 +40,11 @@ jobs:
           hugo-version: "0.154.5"
           extended: true
 
+      - name: Pacchetti ZIP dei materiali per le scuole
+        # scripts/scuole/pacchetti.py: uno ZIP per fascia con schede, guide e slide (non versionati, .gitignore),
+        # rifatti a ogni build dai file del repository. Solo libreria standard.
+        run: python3 scripts/scuole/pacchetti.py
+
       - name: Compila il sito (come il deploy)
         run: hugo --minify
 

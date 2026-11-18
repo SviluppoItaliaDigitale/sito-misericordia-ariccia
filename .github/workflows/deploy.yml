@@ -87,6 +87,11 @@ jobs:
         continue-on-error: true
         run: python3 scripts/liturgia_cei.py --papi
 
+      - name: Pacchetti ZIP dei materiali per le scuole
+        # scripts/scuole/pacchetti.py: uno ZIP per fascia con schede, guide e slide (non versionati, .gitignore),
+        # rifatti a ogni build dai file del repository. Solo libreria standard.
+        run: python3 scripts/scuole/pacchetti.py
+
       - name: Compila il sito
         run: hugo --minify
 
