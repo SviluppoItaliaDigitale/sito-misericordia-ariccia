@@ -114,7 +114,7 @@ tappe:
   - anno: "1921 – 1963"
     epoca: "Il Novecento"
     titolo: "Squadre per le calamità e donatori di sangue"
-    testo: "Nel **1921** la Federazione crea una **squadra per le calamità**, anticipando la Protezione Civile di molti decenni. Durante la ritirata tedesca del 1944-45 molte sedi vengono saccheggiate. Nel **1947** un nuovo statuto dà al movimento un carattere nazionale, e nel **1963** nasce **Fratres**, il gruppo dei donatori di sangue delle Misericordie."
+    testo: "Nel **1921** la Federazione crea una **squadra per le calamità**, anticipando la Protezione Civile di molti decenni. Durante la ritirata tedesca del 1944-45 molte sedi vengono saccheggiate. Nel **1947** un nuovo statuto dà al movimento un carattere nazionale, e nel **1963** nasce il movimento dei donatori di sangue **Fratres**, che nel 1971, a Lucca, diventa la Consociazione nazionale dei gruppi Fratres delle Misericordie (statuto, [fratres.it](https://www.fratres.it/)). Lo raccontiamo nel dossier [Donare il sangue](/dossier/donare-il-sangue/)."
   - anno: "Anni '90"
     epoca: "Il Centro e il Sud"
     titolo: "Le Misericordie arrivano in tutta Italia"

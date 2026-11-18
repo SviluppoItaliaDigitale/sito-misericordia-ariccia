@@ -24,7 +24,7 @@ La campagna nazionale delle Misericordie quest'anno lo dice così: **"Non servon
 
 ## Come fare
 
-Nel riquadro *"Sostegno del volontariato e degli enti del Terzo Settore"* della dichiarazione dei redditi, **firma e scrivi il nostro codice fiscale**:
+Nel riquadro *"Sostegno degli enti del Terzo settore iscritti nel RUNTS"* della dichiarazione dei redditi, **firma e scrivi il nostro codice fiscale**:
 
 **90031910582**
 
