@@ -1,0 +1,44 @@
+{{- /* Schede dei materiali scaricabili di una pagina di content/scuole/ (vedi layouts/scuole/single.html). */ -}}
+{{ $vis := slice }}{{ range .Params.materiali }}{{ if ne .revisione "da fare" }}{{ $vis = $vis | append . }}{{ end }}{{ end }}
+{{ with $vis }}
+<section aria-labelledby="sc-mat-tit" class="sc-materiali">
+  <h2 id="sc-mat-tit" class="h3 mb-3">Da scaricare e stampare</h2>
+  <ul class="list-unstyled sc-elenco">
+    {{ range . }}
+    {{ $tipo := index (dict "scheda" "Scheda da stampare" "slide" "Slide per la lezione" "guida" "Guida per l'insegnante") .tipo }}
+    {{ $img := replaceRE `^/documenti/(.*)\.pdf$` "/img/$1.jpg" .file }}
+    <li class="sc-materiale sc-{{ .tipo }}">
+      <img src="{{ $img | relURL }}" alt="" loading="lazy" decoding="async" width="{{ cond (eq .tipo "slide") 640 453 }}" height="{{ cond (eq .tipo "slide") 360 640 }}">
+      <div class="sc-testo">
+        <p class="sc-tipo">{{ $tipo }}{{ $t := .tipo }}{{ with .pagine }} · {{ . }} {{ if eq $t "slide" }}slide{{ else }}{{ cond (eq . 1) "pagina" "pagine" }}{{ end }}{{ end }}</p>
+        <h3 class="h5">{{ .titolo }}</h3>
+        <p>{{ .descrizione }}</p>
+        <p class="sc-scarica">
+          {{ if eq .tipo "slide" }}
+          {{ $b := replaceRE `\.pdf$` "" .file }}
+          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>PDF 16:9</a>
+          <a class="btn btn-ciano" href="{{ printf "%s.pptx" $b | relURL }}" download>PowerPoint 16:9</a>
+        </p>
+        {{- /* Formati per la LIM: compaiono solo quelli già fatti (rendi_pdf.py), così nessun link porta a un file mancante. */ -}}
+        {{ $f4k := printf "%s-4k.pdf" $b }}{{ $f1610 := printf "%s-16x10.pdf" $b }}{{ $f43 := printf "%s-4x3.pdf" $b }}{{ $p43 := printf "%s-4x3.pptx" $b }}
+        {{ $ci4k := fileExists (printf "static%s" $f4k) }}{{ $ci1610 := fileExists (printf "static%s" $f1610) }}{{ $ci43 := fileExists (printf "static%s" $f43) }}{{ $cip43 := fileExists (printf "static%s" $p43) }}
+        {{ if or $ci4k $ci1610 $ci43 }}
+        <details class="sc-lim">
+          <summary>Altri formati per la LIM</summary>
+          <ul>
+            {{ if $ci4k }}<li><a href="{{ $f4k | relURL }}" download>PDF 16:9 in 4K</a> (3840×2160, per le lavagne e i monitor 4K)</li>{{ end }}
+            {{ if $ci1610 }}<li><a href="{{ $f1610 | relURL }}" download>PDF 16:10</a> (1920×1200)</li>{{ end }}
+            {{ if $ci43 }}<li><a href="{{ $f43 | relURL }}" download>PDF 4:3</a>{{ if $cip43 }} e <a href="{{ $p43 | relURL }}" download>PowerPoint 4:3</a>{{ end }} (per le LIM più vecchie, con il proiettore)</li>{{ end }}
+          </ul>
+        </details>
+        {{ end }}
+          {{ else }}
+          <a class="btn btn-giallo" href="{{ .file | relURL }}" download>Scarica il PDF</a>
+        </p>
+          {{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

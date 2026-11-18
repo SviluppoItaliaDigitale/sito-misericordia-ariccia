@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/primaria/attestato-piccolo-soccorritore.pdf">
+<title>Attestato del piccolo soccorritore</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Attestato di classe: istituzionale (carta intestata) e festoso (medaglia con il 112, coriandoli nei colori del kit).
+   Lo firmano l'insegnante e la classe, non la Misericordia. */
+.att { align-items: center; text-align: center; }
+.att h1 { font-size: 34px; line-height: 40px; }
+.att .chi { width: 100%; display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.att .linea { width: 470px; border-bottom: 1.5px solid #233B74; height: 34px; }
+.att .piccola { font-size: 13px; color: #233B74; }
+.att ul { list-style: none; padding: 0; text-align: left; display: flex; flex-direction: column; gap: 6px; }
+.att li { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+.att li b.v { width: 20px; height: 20px; border: 2px solid #233B74; display: inline-block; flex: none; }
+.firme { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: auto; text-align: center; }
+.firme div { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; color: #233B74; font-weight: 700; }
+.firme span { border-bottom: 1.5px solid #233B74; height: 48px; }
+</style>
+</head>
+<body class="a4">
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto att">
+  <svg width="300" height="210" viewBox="0 0 300 210" role="img" aria-label="Medaglia blu con il numero 112 e due nastri gialli, fra coriandoli gialli e azzurri">
+    <g fill="#009FE3"><rect x="20" y="40" width="12" height="12" transform="rotate(20 26 46)"/><rect x="262" y="60" width="12" height="12" transform="rotate(-15 268 66)"/><circle cx="48" cy="140" r="6"/><circle cx="250" cy="150" r="6"/><rect x="230" y="14" width="10" height="10" transform="rotate(35 235 19)"/></g>
+    <g fill="#FCEB0C" stroke="#233B74" stroke-width="1.5"><path d="M60 22 l8 14 l-16 0 z"/><path d="M240 104 l8 14 l-16 0 z"/><circle cx="34" cy="96" r="6"/><circle cx="276" cy="20" r="6"/><path d="M14 180 l8 14 l-16 0 z"/></g>
+    <path d="M118 128 L96 204 L120 192 L132 210 L150 140 Z" fill="#FCEB0C" stroke="#233B74" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M182 128 L204 204 L180 192 L168 210 L150 140 Z" fill="#FCEB0C" stroke="#233B74" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="150" cy="86" r="76" fill="#FFFFFF" stroke="#233B74" stroke-width="3"/>
+    <circle cx="150" cy="86" r="64" fill="#003F85"/>
+    <circle cx="150" cy="86" r="56" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3 5"/>
+    <text x="150" y="104" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="50" fill="#FFFFFF">112</text>
+  </svg>
+  <h1>Attestato del<br>piccolo soccorritore</h1>
+  <div class="chi">
+    <p class="piccola">Questo attestato è per</p>
+    <div class="linea"></div>
+    <p class="piccola" style="margin-top:6px">della classe <span class="riga" style="display:inline-block; width:70px; border-bottom:1.5px solid #233B74; height:18px"></span> della scuola <span style="display:inline-block; width:240px; border-bottom:1.5px solid #233B74; height:18px"></span></p>
+  </div>
+  <p class="sotto" style="margin-top:6px">perché ha imparato che:</p>
+  <ul>
+    <li><b class="v"></b><span>in un'emergenza vera si chiama il <strong>112</strong>: pollice, pollice, due pollici;</span></li>
+    <li><b class="v"></b><span>al telefono si dice <strong>che cosa è successo e dove sei</strong>, e non si riattacca;</span></li>
+    <li><b class="v"></b><span>il proprio <strong>indirizzo</strong> si sa a memoria;</span></li>
+    <li><b class="v"></b><span>il 112 <strong>non è un gioco</strong>;</span></li>
+    <li><b class="v"></b><span>in casa e in strada <strong>si sta attenti ai pericoli</strong>.</span></li>
+  </ul>
+  <div class="firme">
+    <div><span></span>Data</div>
+    <div><span></span>L'insegnante</div>
+    <div><span></span>La classe</div>
+  </div>
+  <p class="nota-adulti">Attestato di partecipazione a un'attività didattica sul 112 e sulla prevenzione, con i materiali della Misericordia di Ariccia per le scuole. Non è un attestato di formazione al primo soccorso.</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+</body>
+</html>

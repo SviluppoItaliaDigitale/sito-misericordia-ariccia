@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/scuole/superiori/slide-rianimazione-dae.pdf">
+<title>Rianimazione e defibrillatore: perché impararle</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Slide per le scuole superiori (14-18 anni). Contenuto sanitario: le indicazioni su arresto cardiaco, compressioni,
+defibrillatore e soffocamento sono riprese identiche dalle schede del dossier content/dossier/primo-soccorso.md
+(ERC/IRC 2025). I dati vengono dal capitolo 2 «Epidemiologia» e la catena della sopravvivenza dal capitolo 3
+«Sistemi che salvano vite» delle Linee guida ERC 2025 nella versione IRC; la legge è la 116/2021 letta su Normattiva
+il 18/11/2026. Nella pagina del sito il materiale porta revisione: "da fare" finché il responsabile sanitario non lo rivede.
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo .piccolo { font-size: 28px; line-height: 38px; color: #3D4F7C; }
+.diapo .numeri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.diapo .numeri .cifra { font-size: 92px; line-height: 1; font-weight: 800; color: var(--blu); }
+.diapo .numeri .cifra small { font-size: 46px; }
+.diapo .numeri p { font-size: 32px; line-height: 42px; margin-top: 14px; }
+.diapo .anelli { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 10px; }
+.diapo .anello { position: relative; padding: 0 22px; }
+.diapo .anello .n { width: 110px; height: 110px; border-radius: 50%; border: 10px solid var(--blu); display: flex; align-items: center;
+  justify-content: center; font-size: 56px; font-weight: 800; color: var(--blu); background: #FFFFFF; position: relative; z-index: 1; }
+.diapo .anello.noi .n { background: var(--giallo); }
+.diapo .anello::before { content: ""; position: absolute; left: 0; right: 0; top: 50px; height: 10px; background: var(--blu); }
+.diapo .anello:first-child::before { left: 77px; } .diapo .anello:last-child::before { right: calc(100% - 77px); }
+.diapo .anello h3 { font-size: 36px; line-height: 44px; margin-top: 22px; }
+.diapo .anello p { font-size: 29px; line-height: 38px; margin-top: 8px; }
+.diapo .passi { display: flex; flex-direction: column; gap: 20px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .lato { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: start; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .tag { display: inline-block; background: var(--blu); color: #FFFFFF; font-weight: 700; padding: 0 16px; }
+.diapo .riquadro.blu p { color: #FFFFFF; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 42px; line-height: 56px; }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo > .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo .url { white-space: nowrap; }
+.diapo .cerchi55 { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.diapo .foto { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.diapo .foto img { width: 100%; height: 440px; object-fit: cover; }
+.diapo .foto figcaption { font-size: 22px; line-height: 28px; color: #3D4F7C; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Per le&nbsp;<b>scuole superiori</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M260 420 C150 345 50 270 50 160 C50 95 100 45 165 45 C210 45 242 70 260 105 C278 70 310 45 355 45 C420 45 470 95 470 160 C470 270 370 345 260 420 Z" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M10 230 H150 L185 160 L230 320 L275 120 L315 260 L340 230 H510" stroke="#FCEB0C" stroke-width="14"/>
+</svg>
+<div class="contenuto">
+<h1>Rianimazione e defibrillatore: <span class="finale">perché impararle</span></h1>
+<p class="sotto">Che cosa succede in un arresto cardiaco, che cosa può fare chi è vicino e che cosa dice la legge. Le manovre si imparano poi con un istruttore.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentate la lezione: non è un corso. Oggi si capisce perché la rianimazione riguarda tutti; le manovre si provano solo su un manichino, con un istruttore, in un corso. Chiedete alla classe chi ha già visto un defibrillatore e dove.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cos'è un arresto cardiaco</h2>
+<p>Il cuore smette all'improvviso di funzionare. Si riconosce da due segni:</p>
+<ul>
+<li>la persona <strong>non risponde</strong> quando la chiami e la scuoti delicatamente;</li>
+<li><strong>non respira normalmente</strong>: non respira, oppure fa respiri rari e rumorosi.</li>
+</ul>
+<p class="riquadro tenue">Quei respiri rari e rumorosi <strong>non sono un buon segno</strong>: con chi non risponde e respira così si comincia subito la rianimazione.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">I due segni sono quelli della scheda «Arresto cardiaco» del dossier Primo soccorso passo passo del sito (linee guida ERC/IRC 2025). Non si cerca il polso: bastano «non risponde» e «non respira normalmente».</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Quanto è frequente, in Europa</h2>
+<div class="numeri">
+<div><div class="cifra">55</div><p>arresti cardiaci fuori dall'ospedale <strong>ogni 100.000 abitanti</strong> in un anno, trattati dai soccorsi</p></div>
+<div><div class="cifra">67</div><p>anni: l'<strong>età media</strong> di chi ne è colpito</p></div>
+<div><div class="cifra">58<small>%</small></div><p>dei casi: quanto spesso <strong>chi è presente</strong> comincia la rianimazione (dal 13 all'82% da Paese a Paese)</p></div>
+<div><div class="cifra">7,5<small>%</small></div><p>delle persone colpite <strong>sopravvive</strong> (dal 3,1 al 35% da Paese a Paese)</p></div>
+</div>
+<p class="piccolo">Fonte: Linee guida ERC 2025, versione italiana IRC, capitolo 2 «Epidemiologia» (dati dello studio europeo EuReCa-3, 2022).</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda alla classe prima di mostrare i numeri: «Secondo voi, su cento persone colpite, quante sopravvivono?». Le differenze fra Paesi dipendono molto da quanto spesso chi è presente comincia subito le compressioni e usa il defibrillatore.</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Succede soprattutto in casa</h2>
+<div class="numeri" style="grid-template-columns: 1fr 1fr 1.3fr;">
+<div><div class="cifra">70<small>%</small></div><p>in Europa: gli arresti cardiaci che avvengono <strong>in una casa</strong></p></div>
+<div><div class="cifra">76<small>%</small></div><p>in Italia: <strong>più di tre su quattro</strong> (76,3%)</p></div>
+<div><div class="cifra">2,6–59<small>%</small></div><p>da Paese a Paese: quanto spesso si usa un <strong>defibrillatore prima che arrivino i soccorsi</strong></p></div>
+</div>
+<p class="riquadro blu">Chi si trova accanto è spesso <strong>un familiare</strong>: un nonno, una mamma, un fratello. Per questo conviene che lo sappiano fare tutti, anche voi.</p>
+<p class="piccolo">Fonte: Linee guida ERC 2025, versione italiana IRC, capitolo 2 «Epidemiologia».</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il capitolo indica che circa il 10% degli arresti cardiaci avviene in luoghi pubblici o in strutture per anziani, e percentuali minori in scuole, impianti sportivi e luoghi di lavoro.</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La catena della sopravvivenza</h2>
+<div class="anelli">
+<div class="anello noi"><div class="n">1</div><h3>Riconoscimento precoce e chiamata di aiuto</h3><p>per prevenire l'arresto cardiaco</p></div>
+<div class="anello noi"><div class="n">2</div><h3>Rianimazione e defibrillazione precoce</h3><p>per proteggere il cervello e far ripartire il cuore</p></div>
+<div class="anello"><div class="n">3</div><h3>Supporto avanzato e cure dopo la rianimazione</h3><p>per il cuore e il cervello</p></div>
+<div class="anello"><div class="n">4</div><h3>Sopravvivenza e recupero</h3><p>per ritrovare la qualità della vita</p></div>
+</div>
+<p>I primi due anelli, <span class="evidenzia">in giallo</span>, toccano a chi è presente. Gli altri ai soccorritori, all'ospedale e alla riabilitazione.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le Linee guida ERC 2025 (capitolo 3, «Sistemi che salvano vite», figura 2) mantengono la catena a quattro anelli. I primi due anelli dipendono da chi è presente, prima che arrivino i soccorsi.</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Primo anello: chiama il 112</h2>
+<ol class="passi">
+<li>Chiama il <strong>112</strong> e metti il <strong>vivavoce</strong>: l'operatore ti guida.</li>
+<li>Di' <strong>che cosa è successo</strong> e <strong>dove</strong>: comune, via, numero civico, piano.</li>
+<li><strong>Resta in linea</strong> finché l'operatore te lo chiede e segui le sue istruzioni.</li>
+<li>Fatti portare subito un <strong>defibrillatore (DAE)</strong>: se non sai dov'è, chiedi all'operatore.</li>
+</ol>
+<p class="riquadro tenue">Per la legge 116 del 2021 le centrali del 118 danno al telefono le istruzioni per la rianimazione e per il DAE, e se possono ti dicono dov'è il più vicino.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: scheda «Arresto cardiaco» e scheda «Il defibrillatore» del dossier del sito; guida del sito «Cosa succede quando chiami il 112»; legge 116/2021, articolo 7, comma 3 (Normattiva). Nel Lazio il 112 è gratuito e si chiama anche senza credito.</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Secondo anello: le compressioni</h2>
+<div class="lato" style="grid-template-columns: 1fr 400px; align-items: center;">
+<ul>
+<li>Mani una sull'altra <strong>al centro del torace</strong>, braccia tese.</li>
+<li>Comprimi <strong>5-6 cm</strong>, <strong>100-120 volte al minuto</strong>, con meno interruzioni possibili.</li>
+<li>Continua finché arrivano i soccorsi o la persona riprende a respirare normalmente.</li>
+</ul>
+<svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Schema del torace con il punto delle compressioni al centro" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M40 390 C40 250 70 160 135 130 L175 112 C190 106 210 106 225 112 L265 130 C330 160 360 250 360 390" stroke="#233B74" stroke-width="9"/>
+<path d="M170 112 C172 80 176 60 180 40 M230 112 C228 80 224 60 220 40" stroke="#233B74" stroke-width="9"/>
+<path d="M200 150 V330" stroke="#009FE3" stroke-width="6" stroke-dasharray="4 14"/>
+<path d="M120 200 C150 215 175 218 200 218 C225 218 250 215 280 200" stroke="#009FE3" stroke-width="5"/>
+<circle cx="200" cy="262" r="46" fill="#FCEB0C" stroke="#003F85" stroke-width="9"/>
+<path d="M200 238 V286 M182 268 L200 286 L218 268" stroke="#003F85" stroke-width="9"/>
+</svg>
+</div>
+<p class="no"><strong>Non avere paura di sbagliare:</strong> senza compressioni non c'è possibilità di sopravvivenza. <strong>Non fermarti</strong> per cercare il polso.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Testo identico alla scheda «Arresto cardiaco» del dossier del sito. Il ritmo e la profondità si imparano solo provando su un manichino con un istruttore: oggi non si prova sui compagni.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il defibrillatore (DAE): puoi usarlo anche tu</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px;">
+<ol class="passi">
+<li>Appena arriva, <strong>aprilo e accendilo</strong> e segui la sua voce.</li>
+<li>Attacca le piastre sul <strong>torace nudo</strong>, come nel disegno sulle piastre. Se siete in due, uno continua le compressioni intanto.</li>
+<li>Durante l'analisi e la scarica <strong>nessuno deve toccare la persona</strong>.</li>
+<li>Dopo la scarica, o se non serve, <strong>riprendi subito le compressioni</strong> e continua a seguire il DAE fino all'arrivo dei soccorsi.</li>
+</ol>
+<div>
+<svg viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Il cartello del defibrillatore: un cuore bianco con un fulmine su fondo verde">
+<rect x="10" y="10" width="280" height="280" fill="#1E7B34"/>
+<path d="M150 250 C80 200 40 160 40 110 C40 75 66 52 96 52 C120 52 138 66 150 86 C162 66 180 52 204 52 C234 52 260 75 260 110 C260 160 220 200 150 250 Z" fill="#FFFFFF"/>
+<path d="M162 82 L120 160 H150 L132 222 L184 136 H152 L170 82 Z" fill="#1E7B34"/>
+</svg>
+<p class="piccolo" style="margin-top: 14px;">Si riconosce dal <strong>cartello verde con un cuore e un fulmine</strong>.</p>
+</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Testo identico alla scheda «Il defibrillatore (DAE)» del dossier del sito. Nei bambini sotto i 25 kg, se c'è, si usa la modalità pediatrica; se non c'è, va bene quella per adulti. Il DAE analizza il cuore e dice lui se la scarica serve.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Cosa dice la legge: chiunque può usare il DAE</h2>
+<p>La legge 4 agosto 2021, n. 116 ha cambiato la legge 120 del 2001. Oggi dice che:</p>
+<ul>
+<li>se non c'è personale sanitario o personale formato, in caso di <strong>sospetto arresto cardiaco</strong> il DAE lo può usare <strong>anche chi non ha fatto un corso</strong>;</li>
+<li>chi, senza formazione, usa il DAE o fa la rianimazione per soccorrere una persona è protetto dall'<strong>articolo 54 del Codice penale</strong> (stato di necessità): non rischia di essere punito.</li>
+</ul>
+<p class="riquadro blu">Il DAE non va temuto: è fatto per essere usato da chiunque, e la sua voce ti guida passo per passo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: legge 116/2021, articolo 3, che riscrive l'articolo 1, comma 1, della legge 120/2001 (testo letto su Normattiva il 18/11/2026). Chi ha fatto un corso BLSD resta il primo a dover intervenire, se è presente.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il soffocamento: 5 colpi, 5 spinte</h2>
+<p>Mentre mangia, la persona si porta le mani alla gola, <strong>non riesce a parlare né a tossire</strong>. Chiedile: «Stai soffocando?»</p>
+<div class="lato" style="grid-template-columns: 1fr 360px; align-items: center;">
+<ol class="passi">
+<li>Se tossisce, <strong>incoraggiala a tossire</strong>. Se non ci riesce più, chiama subito il <strong>112</strong> (o fallo chiamare) e metti il vivavoce.</li>
+<li>Dietro di lei, un po' di lato, piegala in avanti: <strong>fino a 5 colpi</strong> forti con il palmo <strong>tra le scapole</strong>.</li>
+<li>Se non basta, <strong>fino a 5 compressioni addominali</strong>: pugno sopra l'ombelico, spingi in dentro e in su. <strong>Alterna</strong> 5 e 5.</li>
+</ol>
+<svg viewBox="0 0 360 460" width="360" height="460" role="img" aria-label="Schema: 5 colpi tra le scapole e 5 compressioni addominali, alternati" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<circle cx="180" cy="100" r="92" fill="#003F85"/>
+<text x="180" y="100" text-anchor="middle" fill="#FFFFFF" font-size="78" font-weight="800">5</text>
+<text x="180" y="146" text-anchor="middle" fill="#FFFFFF" font-size="30" font-weight="700">colpi</text>
+<circle cx="180" cy="360" r="92" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<text x="180" y="360" text-anchor="middle" fill="#233B74" font-size="78" font-weight="800">5</text>
+<text x="180" y="406" text-anchor="middle" fill="#233B74" font-size="30" font-weight="700">spinte</text>
+<path d="M300 140 C345 190 345 270 300 320" stroke="#233B74" stroke-width="9"/><path d="M286 296 L300 322 L326 308" stroke="#233B74" stroke-width="9"/>
+<path d="M60 320 C15 270 15 190 60 140" stroke="#233B74" stroke-width="9"/><path d="M74 164 L60 138 L34 152" stroke="#233B74" stroke-width="9"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Testo della scheda «Soffocamento» del dossier del sito, per l'adulto. Le compressioni addominali sono la manovra di Heimlich. Non si provano sui compagni: si imparano su un manichino in un corso.</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il soffocamento: se le cose cambiano</h2>
+<ul>
+<li>Se <strong>perde conoscenza</strong>: accompagnala a terra e inizia la <strong>rianimazione</strong>; se nessuno ha ancora chiamato il <strong>112</strong>, chiamalo subito.</li>
+<li>Dopo le compressioni addominali la persona va <strong>sempre fatta vedere da un medico</strong>.</li>
+</ul>
+<p class="no"><strong>Non infilare le dita in bocca alla cieca.</strong></p>
+<p class="no"><strong>Nei lattanti e nei bambini piccoli la tecnica è diversa:</strong> si impara nei corsi di disostruzione pediatrica (P-BLSD).</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Ancora la scheda «Soffocamento» del dossier, identica. Molti ragazzi fanno da baby sitter a fratelli o cuginetti: è un buon motivo per fare anche un corso di disostruzione pediatrica.</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La legge 116 del 2021 e la scuola</h2>
+<ul>
+<li>Le iniziative di primo soccorso per gli studenti delle scuole secondarie devono comprendere <strong>la rianimazione di base, l'uso del defibrillatore e la disostruzione delle vie aeree</strong>, con attenzione all'età.</li>
+<li>Sono estese a <strong>docenti e personale</strong> della scuola.</li>
+<li>Le scuole le organizzano in autonomia, <strong>in accordo con le strutture sanitarie e di volontariato</strong>.</li>
+<li>Il <strong>16 ottobre</strong>, Giornata mondiale della rianimazione cardiopolmonare, ogni scuola può dedicarvi iniziative.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: legge 116/2021, articolo 5, che aggiunge tre periodi al comma 10 dell'articolo 1 della legge 107/2015 (Normattiva, 18/11/2026). L'articolo 8 prevede anche una campagna annuale di sensibilizzazione nelle scuole, promossa dai Ministeri della salute e dell'istruzione.</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Kids Save Lives: i ragazzi salvano vite</h2>
+<p>È la campagna mondiale promossa dallo European Resuscitation Council e da altre società scientifiche, con il patrocinio dell'Organizzazione mondiale della sanità. In Italia la sostiene l'Italian Resuscitation Council.</p>
+<p class="riquadro tenue">La raccomandazione: insegnare la rianimazione a scuola <strong>dai 12 anni, o anche prima, per 2 ore all'anno</strong>. Chi impara a scuola lo insegna anche in famiglia, e così cresce il numero di persone pronte ad aiutare.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: Linee guida ERC 2025, versione IRC, capitolo 2, paragrafo su IRC e Kids Save Lives; dichiarazione «Kids save lives» (Böttiger e altri, Resuscitation 2015), riportata nella presentazione IRC «Kids save lives in Italia e in Europa».</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Le manovre si imparano con un istruttore</h2>
+<div class="lato" style="grid-template-columns: 1fr 440px; align-items: center;">
+<div style="display:flex;flex-direction:column;gap:22px;font-size:35px;line-height:46px">
+<p>Queste slide spiegano <strong>perché</strong> imparare. Il <strong>come</strong> si impara solo in un corso, provando su un manichino, con un istruttore che corregge mani, braccia e ritmo.</p>
+<ul>
+<li>Il corso <strong>BLSD</strong> insegna rianimazione e defibrillatore nell'adulto; il <strong>P-BLSD</strong> nel bambino e nel lattante, con la disostruzione.</li>
+<li>Alla Misericordia di Ariccia li tengono formatori abilitati da ARES 118.</li>
+</ul>
+<p class="riquadro blu">Per un corso con la vostra scuola: <strong>sede@misericordia-ariccia.it</strong> <br><span class="url">www.misericordia-ariccia.it/servizi/formazione/</span></p>
+</div>
+<figure class="foto"><img src="../../../static/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-aula.jpg" alt="Volontarie e volontari della Misericordia di Ariccia, di spalle, seguono una lezione di primo soccorso in aula"><figcaption>Foto: Misericordia di Ariccia</figcaption></figure>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dati della pagina Formazione del sito: corsi BLSD e P-BLSD tenuti da formatori abilitati ARES 118, contenuti allineati alle Linee guida ERC 2025. I corsi partono al raggiungimento di un numero minimo di partecipanti.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Parliamone</h2>
+<ul>
+<li>Sapete dove si trova il defibrillatore più vicino alla vostra scuola, alla palestra, a casa?</li>
+<li>Che cosa vi farebbe esitare davanti a una persona a terra? Che cosa vi aiuterebbe a decidere?</li>
+<li>Perché la legge protegge chi prova a soccorrere, anche senza un corso?</li>
+<li>Chi, nella vostra famiglia, vorreste che imparasse queste cose?</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domande aperte, senza risposte giuste o sbagliate. Per l'esitazione e la paura di sbagliare c'è la scheda di riflessione «Cittadinanza attiva»: si può usare subito dopo.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Rianimazione&nbsp;<b>e DAE</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi">
+<li>Non risponde e non respira normalmente: è un <strong>arresto cardiaco</strong>.</li>
+<li>Chiama il <strong>112</strong> con il vivavoce e fatti portare il <strong>DAE</strong>.</li>
+<li><strong>Comprimi</strong> al centro del torace: 5-6 cm, 100-120 volte al minuto.</li>
+<li>Accendi il DAE e <strong>segui la sua voce</strong>.</li>
+</ol>
+<p class="sottolinea">E poi fai un corso: due ore che possono valere una vita.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Riassunto della lezione. Le «due ore» richiamano la raccomandazione di Kids Save Lives (2 ore all'anno). Lasciate la slide proiettata mentre la classe fa domande.</div>
+</section>
+
+</body>
+</html>

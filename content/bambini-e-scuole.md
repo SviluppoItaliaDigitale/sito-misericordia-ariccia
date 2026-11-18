@@ -80,6 +80,8 @@ insegnanti: |
 
   **Attività della Protezione civile.** Per la primaria c'è **«Io non rischio scuola»**, con dieci schede di attività sui rischi naturali; per la secondaria di primo grado il fumetto **«L'attimo decisivo»**; d'estate i campi scuola **«Anch'io sono la protezione civile»** per ragazzi dai 10 ai 16 anni.
 
+  **Materiali da scaricare.** Schede da stampare, slide e guide per l'insegnante, dalla scuola dell'infanzia alle superiori, sono nella pagina [Materiali per le scuole](/scuole/).
+
   **E noi?** La Misericordia di Ariccia tiene [corsi di primo soccorso](/servizi/formazione/). Siete insegnanti e vorreste parlare di 112 e primo soccorso con la vostra classe? [Scriveteci](/contatti/): valuteremo insieme che cosa possiamo fare. Le manovre di rianimazione si imparano solo con un istruttore: nel frattempo, per gli adulti, c'è il dossier [Primo soccorso passo passo](/dossier/primo-soccorso/).
 fonti:
   - titolo: "Commissione europea, il 112 numero di emergenza europeo"

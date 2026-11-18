@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/superiori/scheda-numero-giusto.pdf">
+<title>Il numero giusto al momento giusto</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 per le scuole superiori, 2 pagine: casi pratici (pagina 1) e soluzioni per l'insegnante (pagina 2).
+Dati identici al registro data/dati_da_verificare.yaml (116117-lazio, guardia-medica-orari) e alla guida
+content/dossier/chiamare-il-112.md; ricontrollati il 18/11/2026 su regione.lazio.it e ares118.it.
+-->
+<style>
+.numeri4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.numeri4 > div { border-top: 5px solid var(--blu); padding-top: 8px; font-size: 12px; line-height: 16px; }
+.numeri4 .n { font-size: 24px; line-height: 28px; font-weight: 800; color: #233B74; }
+.casi { display: flex; flex-direction: column; gap: 9px; counter-reset: caso; }
+.caso { display: grid; grid-template-columns: 30px 1fr 160px; gap: 10px; align-items: start; border-bottom: 1px solid var(--linea); padding-bottom: 8px; }
+.caso::before { counter-increment: caso; content: counter(caso); width: 26px; height: 26px; border-radius: 50%; background: var(--blu); color: #FFFFFF;
+  font-weight: 800; font-size: 14px; line-height: 26px; text-align: center; }
+.caso p { font-size: 13px; line-height: 18px; }
+.risp { display: grid; grid-template-columns: 74px 1fr; white-space: nowrap; gap: 3px 6px; font-size: 11px; line-height: 14px; color: #233B74; }
+.risp span::before { content: ""; display: inline-block; width: 10px; height: 10px; border: 1.5px solid #233B74; margin-right: 4px; vertical-align: -1px; }
+.sol { display: flex; flex-direction: column; gap: 7px; }
+.sol p { font-size: 12.5px; line-height: 17px; }
+.sol b.n { display: inline-block; min-width: 22px; color: #FFFFFF; background: var(--blu); text-align: center; margin-right: 6px; }
+</style>
+</head>
+<body class="a4">
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per le <b>scuole superiori</b></div>
+<div class="contenuto">
+<h1>Il numero giusto al momento giusto</h1>
+<p class="sotto">Non tutto è un'emergenza, ma non si deve mai aspettare quando lo è. Leggi ogni caso e segna chi chiameresti, dove andresti o se non serve nessuno. Poi confrontati con i compagni.</p>
+<div class="numeri4">
+<div><div class="n">112</div>Emergenze: pericolo per la vita o la sicurezza. Gratis, 24 ore su 24, anche senza credito.</div>
+<div><div class="n">116117</div>Cure mediche non urgenti, nel Lazio. Gratis, 24 ore su 24. Mette in contatto con la guardia medica.</div>
+<div><div class="n">Medico</div>Il medico di famiglia, nei suoi orari: per i problemi di salute di tutti i giorni.</div>
+<div><div class="n">Farmacia</div>Il farmacista: consigli sui farmaci e sui piccoli disturbi.</div>
+</div>
+<div class="casi">
+<div class="caso"><p>In palestra un compagno cade a terra all'improvviso. Lo chiamate: non risponde e fa respiri rari e rumorosi.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>È domenica sera. Tuo fratello ha la febbre a 38 da ieri, beve e risponde bene, ma i tuoi genitori vorrebbero un consiglio.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>A cena il nonno si porta le mani alla gola: non riesce a parlare né a tossire.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Da una settimana hai mal di gola leggero e vuoi sapere se è il caso di fare una visita. È martedì mattina.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Vedi uscire fumo denso dalla finestra di un appartamento vicino.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Ti serve uno spray per il naso chiuso e vuoi sapere quale va bene.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Una signora, alla fermata del bus, dice all'improvviso parole senza senso e ha metà della bocca storta.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Sono le 23. Tua madre ha preso per sbaglio due volte la sua medicina della sera e non sa se deve preoccuparsi. Sta bene.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+<div class="caso"><p>Un amico, per scherzo, vuole chiamare il 112 dal telefono di un altro.</p><div class="risp"><span>112</span><span>116117</span><span>Medico</span><span>Farmacia</span><span>Nessuno</span></div></div>
+</div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per le <b>scuole superiori</b></div>
+<div class="contenuto">
+<h2>Per l'insegnante: le soluzioni</h2>
+<p>Nei casi veri spesso c'è più di una risposta ragionevole: conta saper motivare la scelta. La regola è una sola: <strong>se c'è un pericolo per la vita o per la sicurezza, si chiama il 112</strong>, subito.</p>
+<div class="sol">
+<p><b class="n">1</b><strong>112.</strong> Non risponde e non respira normalmente: è un arresto cardiaco. Vivavoce, l'operatore guida la rianimazione; fatevi portare il defibrillatore (DAE). I respiri rari e rumorosi non vanno scambiati per un respiro normale.</p>
+<p><b class="n">2</b><strong>116117.</strong> Non è un'emergenza ed è fuori dagli orari del medico di famiglia: il 116117 dà un consiglio sanitario o mette in contatto con la guardia medica. Se i segni peggiorano (non risponde bene, respira male), allora 112.</p>
+<p><b class="n">3</b><strong>112.</strong> Non tossisce e non parla: soffocamento. Chiamare o far chiamare subito il 112 con il vivavoce: l'operatore guida. Le manovre contro il soffocamento si imparano in un corso.</p>
+<p><b class="n">4</b><strong>Medico di famiglia.</strong> È un problema di tutti i giorni, in un giorno feriale: si chiama il medico nei suoi orari. Il 112 non serve per visite, prenotazioni o informazioni.</p>
+<p><b class="n">5</b><strong>112.</strong> Un incendio è un pericolo per la sicurezza: il 112 attiva i Vigili del fuoco. Non entrare, allontanarsi e dire con precisione dove si è.</p>
+<p><b class="n">6</b><strong>Farmacia.</strong> Il farmacista consiglia sui farmaci da banco e sui piccoli disturbi. Per la farmacia di turno non si chiama il 112.</p>
+<p><b class="n">7</b><strong>112.</strong> Parole senza senso e bocca storta all'improvviso possono essere un ictus: si chiama il 112 subito, anche se i segni sembrano passare.</p>
+<p><b class="n">8</b><strong>116117.</strong> È un dubbio su un farmaco, la persona sta bene ed è notte: il 116117 risponde 24 ore su 24 anche sui dubbi sui farmaci. Se compaiono malori, 112.</p>
+<p><b class="n">9</b><strong>Nessuno: il 112 non è un gioco.</strong> Una linea occupata per scherzo può far aspettare chi sta male davvero. Annunciare un'emergenza che non esiste è un reato (procurato allarme, articolo 658 del Codice penale).</p>
+</div>
+<div class="riquadro tenue">
+<h3>Da sapere sul 116117 e sulla guardia medica</h3>
+<p>Il 116117 è attivo <strong>in tutto il Lazio dal 24 agosto 2026</strong>, gratuito, 24 ore su 24; risponde il personale di <strong>ARES 118</strong>. La guardia medica (continuità assistenziale) è attiva tutte le notti dalle 20 alle 8 e nei giorni prefestivi e festivi. Se durante la chiamata emerge un'emergenza, la telefonata passa in automatico al 118.</p>
+</div>
+<p class="nota-adulti">Fonti, verificate il 18/11/2026: Regione Lazio, «Salute, attivo in tutta la regione il numero 116117»; ARES 118, pagina sulla continuità assistenziale; Regione Lazio, Emergenza 112. Approfondimenti sul sito: «Cosa succede quando chiami il 112» (www.misericordia-ariccia.it/dossier/chiamare-il-112/) e «Primo soccorso passo passo» (/dossier/primo-soccorso/).</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+</body>
+</html>

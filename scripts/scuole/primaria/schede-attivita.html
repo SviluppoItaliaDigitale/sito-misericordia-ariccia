@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/primaria/schede-attivita.pdf">
+<title>Schede di attività per la scuola primaria: 112, indirizzo, casa e strada</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Schede di attività della primaria: disegni al tratto blu #233B74 con il giallo del kit come solo accento. */
+.riga { display: inline-block; border-bottom: 1.5px solid #5A6686; height: 18px; vertical-align: bottom; }
+.dialogo { display: flex; flex-direction: column; gap: 6px; }
+.battuta { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: end; }
+.battuta .chi { font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .02em; color: #233B74; padding-bottom: 2px; }
+.battuta .op { background: #EEF0F8; padding: 5px 12px; color: #233B74; }
+.battuta .io { border: 2px solid #233B74; padding: 5px 12px; line-height: 25px; }
+.sino { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 22px; }
+.sino div { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #C9D3E6; padding: 5px 0; }
+.sino span.t { flex: 1; }
+.cerchi { display: flex; gap: 6px; font-weight: 700; font-size: 11.5px; color: #233B74; }
+.cerchi i { font-style: normal; width: 34px; height: 24px; border: 2px solid #233B74; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.campo { display: flex; flex-direction: column; gap: 4px; }
+.campo label { font-weight: 700; color: #233B74; font-size: 13px; }
+.campo .linea { height: 30px; border-bottom: 1.5px solid #5A6686; }
+.giorni { display: flex; gap: 10px; }
+.giorni div { flex: 1; border: 2px solid #233B74; height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4px 0 6px; font-size: 11px; font-weight: 700; color: #233B74; }
+.giorni div b { width: 20px; height: 20px; border: 1.5px solid #233B74; display: block; }
+.vf { display: flex; flex-direction: column; gap: 6px; }
+.vf div { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #C9D3E6; padding: 4px 0; }
+.vf span.n { font-weight: 800; color: #233B74; width: 16px; }
+.vf span.t { flex: 1; }
+.disegno svg { display: block; }
+</style>
+</head>
+<body class="a4">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="telefono" viewBox="0 0 120 200">
+      <rect x="6" y="4" width="108" height="192" rx="16" fill="#FFFFFF" stroke="#233B74" stroke-width="4"/>
+      <rect x="18" y="22" width="84" height="34" rx="4" fill="#EEF0F8" stroke="#233B74" stroke-width="2.5"/>
+      <text x="60" y="47" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="20" fill="#233B74">112</text>
+      <g font-family="Montserrat" font-weight="700" font-size="13" text-anchor="middle" fill="#233B74" stroke="#233B74" stroke-width="2">
+        <circle cx="32" cy="80" r="12" fill="#FCEB0C"/><circle cx="60" cy="80" r="12" fill="#FCEB0C"/><circle cx="88" cy="80" r="12" fill="#FFFFFF"/>
+        <circle cx="32" cy="110" r="12" fill="#FFFFFF"/><circle cx="60" cy="110" r="12" fill="#FFFFFF"/><circle cx="88" cy="110" r="12" fill="#FFFFFF"/>
+        <circle cx="32" cy="140" r="12" fill="#FFFFFF"/><circle cx="60" cy="140" r="12" fill="#FFFFFF"/><circle cx="88" cy="140" r="12" fill="#FFFFFF"/>
+        <circle cx="60" cy="170" r="12" fill="#FFFFFF"/>
+      </g>
+      <g font-family="Montserrat" font-weight="700" font-size="13" text-anchor="middle" fill="#233B74">
+        <text x="32" y="85">1</text><text x="60" y="85">2</text><text x="88" y="85">3</text>
+        <text x="32" y="115">4</text><text x="60" y="115">5</text><text x="88" y="115">6</text>
+        <text x="32" y="145">7</text><text x="60" y="145">8</text><text x="88" y="145">9</text>
+        <text x="60" y="175">0</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ======================================================= 1. Che cosa dico al 112 -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>Che cosa dico al 112</h1>
+  <p class="sotto">Completa la telefonata scrivendo sulle righe. Poi provala con un compagno, con un telefono finto: uno fa l'operatore, l'altro chiama.</p>
+  <div style="display:grid; grid-template-columns: 128px 1fr; gap: 22px; align-items: start; margin-top: 4px">
+    <div class="disegno"><svg width="128" height="214" role="img" aria-label="Disegno di un telefono con il 112 sullo schermo"><use href="#telefono"/></svg></div>
+    <div class="dialogo">
+      <div class="battuta"><span class="chi">Operatore</span><span class="op">«112. Che cosa è successo?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io">«È successo che <span class="riga" style="width:270px"></span><br><span class="riga" style="width:330px"></span>»</span></div>
+      <div class="battuta"><span class="chi">Operatore</span><span class="op">«Dove sei?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io">«Sono in via <span class="riga" style="width:200px"></span> n. <span class="riga" style="width:50px"></span><br>a <span class="riga" style="width:250px"></span>»</span></div>
+      <div class="battuta"><span class="chi">Operatore</span><span class="op">«Come ti chiami?»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io">«Mi chiamo <span class="riga" style="width:300px"></span>»</span></div>
+      <div class="battuta"><span class="chi">Operatore</span><span class="op">«Resta al telefono e rispondi alle mie domande.»</span></div>
+      <div class="battuta"><span class="chi">Io</span><span class="io">«Va bene, <span class="riga" style="width:290px"></span>»</span></div>
+    </div>
+  </div>
+  <h2 style="margin-top: 6px">Quando si chiama il 112? Cerchia SÌ o NO</h2>
+  <div class="sino">
+    <div><span class="t">La cucina si riempie di fumo.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+    <div><span class="t">Ho dimenticato la merenda a casa.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+    <div><span class="t">Il nonno è caduto e non si alza.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+    <div><span class="t">Voglio sapere che tempo farà domani.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+    <div><span class="t">Ho visto un incidente con una persona ferita.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+    <div><span class="t">Un amico vuole fare uno scherzo al 112.</span><span class="cerchi"><i>SÌ</i><i>NO</i></span></div>
+  </div>
+  <div class="riquadro blu" style="margin-top: auto">
+    <h3>Ricorda</h3>
+    <p>Di' <strong>che cosa è successo</strong> e <strong>dove sei</strong>. Rispondi alle domande. <strong>Non riattaccare</strong> finché l'operatore non te lo dice. Se c'è un adulto vicino a te, chiamalo.</p>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- ======================================================= 2. Il mio indirizzo -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>Il mio indirizzo</h1>
+  <p class="sotto">Si completa <strong>a casa, con un adulto</strong>. Se un giorno chiamerai il 112 da casa, l'indirizzo è la prima cosa che serve per trovarti.</p>
+  <div style="display:grid; grid-template-columns: 1fr 220px; gap: 26px; align-items: start">
+    <div style="display:flex; flex-direction:column; gap: 12px">
+      <div class="campo"><label>Mi chiamo</label><div class="linea"></div></div>
+      <div class="campo"><label>Abito in via o piazza</label><div class="linea"></div></div>
+      <div style="display:grid; grid-template-columns: 140px 1fr; gap: 18px">
+        <div class="campo"><label>Numero di casa</label><div class="linea"></div></div>
+        <div class="campo"><label>Paese o città</label><div class="linea"></div></div>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px">
+        <div class="campo"><label>Scala</label><div class="linea"></div></div>
+        <div class="campo"><label>Piano</label><div class="linea"></div></div>
+        <div class="campo"><label>Nome sul citofono</label><div class="linea"></div></div>
+      </div>
+      <p class="nota-adulti">Scala, piano e citofono si scrivono solo se ci sono.</p>
+    </div>
+    <div class="disegno">
+      <svg width="220" height="250" viewBox="0 0 220 250" role="img" aria-label="Disegno di una casa con il numero civico accanto al portone">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M20 110 L110 30 L200 110" />
+          <rect x="34" y="100" width="152" height="136" fill="#FFFFFF"/>
+          <rect x="150" y="44" width="20" height="40" fill="#FFFFFF"/>
+          <path d="M20 110 L110 30 L200 110" />
+          <rect x="52" y="122" width="38" height="34"/><path d="M71 122 V156 M52 139 H90"/>
+          <rect x="130" y="122" width="38" height="34"/><path d="M149 122 V156 M130 139 H168"/>
+          <path d="M88 236 V182 a22 22 0 0 1 44 0 V236"/>
+          <circle cx="124" cy="210" r="2.5" fill="#233B74"/>
+          <path d="M10 236 H210"/>
+        </g>
+        <rect x="140" y="176" width="36" height="26" fill="#003F85"/>
+        <text x="158" y="194" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="15" fill="#FFFFFF">?</text>
+        <rect x="78" y="62" width="64" height="22" fill="#FCEB0C" stroke="#233B74" stroke-width="2"/>
+        <text x="110" y="78" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="11.5" fill="#233B74">CASA MIA</text>
+      </svg>
+    </div>
+  </div>
+  <h2>Lo so a memoria?</h2>
+  <p>Ogni sera dillo ad alta voce a un adulto: via, numero e paese. Se lo dici giusto, fai una crocetta.</p>
+  <div class="giorni">
+    <div>LUNEDÌ<b></b></div><div>MARTEDÌ<b></b></div><div>MERCOLEDÌ<b></b></div><div>GIOVEDÌ<b></b></div><div>VENERDÌ<b></b></div><div>SABATO<b></b></div><div>DOMENICA<b></b></div>
+  </div>
+  <div class="riquadro tenue">
+    <h3>Gioco: dove ti trovo?</h3>
+    <p>Disegna sul retro del foglio la strada di casa tua, con una cosa che si vede da lontano: una chiesa, una piazza, un negozio. Anche questo aiuta i soccorsi a trovarti.</p>
+  </div>
+  <div class="riquadro" style="margin-top: auto">
+    <h3>Nota per i genitori</h3>
+    <p>Questa scheda <strong>resta a casa</strong>: contiene il vostro indirizzo e non va riportata a scuola. Quando si chiama il 112, la Regione Lazio chiede di dire nome e <strong>indirizzo preciso</strong>: comune, via, numero civico e, se ci sono, scala, piano e nome sul citofono. Aiutate il bambino a impararlo e a dirlo con calma. Potete appendere sul frigorifero il <strong>cartellino del 112</strong>, utile anche ai nonni e a chi viene a trovarvi.</p>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- ======================================================= 3. Trova i pericoli in casa -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>Trova i pericoli in casa</h1>
+  <p class="sotto">In questa cucina ci sono <strong>6 pericoli</strong>. Cerchiali con un colore. Poi racconta che cosa si fa per metterli al sicuro.</p>
+  <div class="disegno">
+  <svg width="680" height="470" viewBox="0 0 680 470" role="img" aria-label="Disegno di una cucina con sei pericoli da trovare: fiammiferi e accendino sul piano di lavoro, una pentola sul fuoco con il manico in fuori, un flacone di detersivo aperto per terra, medicine aperte sul tavolino basso, una sedia sotto la finestra aperta, una presa elettrica senza protezione con una mano che si avvicina">
+    <!-- pavimento a piastrelle e piastrelle della parete -->
+    <g fill="none" stroke="#C9D3E6" stroke-width="1.5">
+      <path d="M2 420 H678 M2 448 H678"/>
+      <path d="M60 390 L40 468 M140 390 L128 468 M220 390 L214 468 M300 390 L300 468 M380 390 L386 468 M460 390 L472 468 M540 390 L558 468 M620 390 L644 468"/>
+      <path d="M24 160 H256 M24 190 H256 M24 220 H256 M53 130 V244 M111 130 V244 M169 130 V244 M227 130 V244 M82 130 V244 M140 130 V244 M198 130 V244"/>
+    </g>
+    <ellipse cx="292" cy="394" rx="36" ry="6" fill="#EEF0F8" stroke="#233B74" stroke-width="2"/>
+    <g fill="none" stroke="#233B74" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="1.5" y="1.5" width="677" height="467"/>
+      <path d="M1.5 390 H678.5"/>
+      <!-- pensili chiusi -->
+      <rect x="30" y="40" width="220" height="80" fill="#FFFFFF"/><path d="M140 40 V120"/>
+      <circle cx="131" cy="80" r="3" fill="#233B74"/><circle cx="149" cy="80" r="3" fill="#233B74"/>
+      <!-- mobile della cucina -->
+      <rect x="24" y="244" width="232" height="12" fill="#FFFFFF"/>
+      <rect x="30" y="256" width="220" height="134" fill="#FFFFFF"/>
+      <rect x="42" y="268" width="94" height="110"/><rect x="144" y="268" width="94" height="110"/>
+      <circle cx="126" cy="323" r="3" fill="#233B74"/><circle cx="154" cy="323" r="3" fill="#233B74"/>
+      <!-- 1. fiammiferi e accendino sul piano -->
+      <rect x="40" y="226" width="44" height="18" fill="#FFFFFF"/><path d="M40 238 H84" stroke-width="2"/>
+      <path d="M52 226 L46 206 M60 226 L58 204 M68 226 L72 206" stroke-width="2.2"/>
+      <circle cx="46" cy="205" r="3.2" fill="#233B74"/><circle cx="58" cy="203" r="3.2" fill="#233B74"/><circle cx="72" cy="205" r="3.2" fill="#233B74"/>
+      <rect x="94" y="214" width="16" height="30" rx="3" fill="#FFFFFF"/><rect x="97" y="207" width="10" height="7" fill="#FFFFFF"/>
+      <!-- 2. pentola sul fuoco con il manico in fuori -->
+      <path d="M160 244 q4 -9 8 0 M178 244 q4 -9 8 0 M196 244 q4 -9 8 0 M214 244 q4 -9 8 0" fill="#FCEB0C" stroke-width="2"/>
+      <rect x="152" y="184" width="76" height="54" rx="5" fill="#FFFFFF"/>
+      <path d="M146 184 H234"/><path d="M152 184 q38 -16 76 0"/><rect x="184" y="166" width="12" height="6" rx="2" fill="#233B74"/>
+      <rect x="228" y="194" width="78" height="11" rx="5.5" fill="#233B74"/>
+      <path d="M170 160 q-7 -10 0 -20 q7 -10 0 -20 M190 156 q-7 -10 0 -20 q7 -10 0 -20 M210 160 q-7 -10 0 -20 q7 -10 0 -20" stroke-width="2"/>
+      <!-- 3. detersivo aperto per terra -->
+      <path d="M268 390 V346 q0 -10 10 -12 V324 H292 V334 q10 2 10 12 V390 Z" fill="#FFFFFF"/>
+      <path d="M302 352 h8 q6 0 6 8 V372 q0 6 -6 6 h-8" />
+      <path d="M285 352 q-7 10 0 14 q7 -4 0 -14 Z" fill="#FCEB0C" stroke-width="2"/>
+      <rect x="322" y="380" width="16" height="9" rx="2" fill="#FFFFFF" transform="rotate(-18 330 384)"/>
+      <!-- 4. tavolino basso con medicine aperte -->
+      <rect x="350" y="330" width="130" height="9" fill="#FFFFFF"/><path d="M360 339 V390 M470 339 V390"/>
+      <rect x="364" y="296" width="28" height="34" rx="4" fill="#FFFFFF"/><path d="M368 304 H388"/>
+      <path d="M371 316 h14 M378 309 v14" stroke-width="2"/>
+      <rect x="398" y="322" width="18" height="8" rx="2" fill="#FFFFFF"/>
+      <circle cx="426" cy="325" r="4.2" fill="#FCEB0C"/><circle cx="438" cy="326" r="4.2" fill="#FCEB0C"/><circle cx="450" cy="324" r="4.2" fill="#FCEB0C"/><circle cx="462" cy="326" r="4.2" fill="#FCEB0C"/>
+      <circle cx="488" cy="386" r="4.2" fill="#FCEB0C"/>
+      <!-- orologio (non è un pericolo) -->
+      <circle cx="400" cy="110" r="28" fill="#FFFFFF"/><path d="M400 110 V92 M400 110 H413"/>
+      <!-- 5. finestra aperta e sedia sotto -->
+      <rect x="505" y="50" width="130" height="150" fill="#FFFFFF"/>
+      <path d="M505 50 L478 66 V214 L505 200 Z" fill="#FFFFFF"/><path d="M635 50 L662 66 V214 L635 200 Z" fill="#FFFFFF"/>
+      <path d="M515 168 q28 -40 56 0 q24 -30 54 0" stroke-width="2"/>
+      <circle cx="600" cy="90" r="12" fill="#FCEB0C" stroke-width="2"/>
+      <path d="M498 200 H642 V209 H498 Z" fill="#FFFFFF"/>
+      <rect x="472" y="296" width="76" height="10" fill="#FFFFFF"/>
+      <path d="M478 306 V390 M542 306 V390"/>
+      <rect x="540" y="222" width="9" height="74" fill="#FFFFFF"/><path d="M540 246 H549 M540 270 H549"/>
+      <!-- 6. presa senza protezione e mano che si avvicina -->
+      <rect x="568" y="298" width="30" height="40" rx="4" fill="#FFFFFF"/>
+      <circle cx="578" cy="318" r="3" fill="#233B74"/><circle cx="588" cy="318" r="3" fill="#233B74"/>
+    </g>
+    <g transform="translate(603 314) scale(0.95)" fill="#FFFFFF" stroke="#233B74" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="58" y="-10" width="12" height="44" fill="#009FE3"/>
+      <rect x="26" y="-6" width="34" height="38" rx="10"/>
+      <rect x="0" y="0" width="36" height="10" rx="5"/>
+      <path d="M32 12 h-8 q-5 0 -5 4.5 q0 4.5 5 4.5 h8"/>
+      <path d="M32 21 h-7 q-5 0 -5 4.5 q0 4.5 5 4.5 h7"/>
+      <path d="M34 -6 q0 -9 8 -9 q8 0 8 9"/>
+    </g>
+  </svg>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px">
+    <div class="riquadro">
+      <h3>Quanti ne hai trovati?</h3>
+      <p>Ne ho trovati <span class="riga" style="width:60px"></span> su 6.</p>
+      <p style="margin-top:6px">Un pericolo che c'è anche a casa mia:</p>
+      <div class="righe" style="gap: 24px; padding-top: 6px"><span></span><span></span></div>
+    </div>
+    <div class="riquadro blu">
+      <h3>La regola d'oro</h3>
+      <p>Medicine, detersivi, fiammiferi e accendini <strong>non si toccano</strong>. Se li trovi in giro, lasciali dove sono e <strong>chiama subito un adulto</strong>.</p>
+    </div>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- ======================================================= 4. Sicuri in strada -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>Sicuri in strada</h1>
+  <p class="sotto">A piedi si attraversa sulle strisce pedonali. In macchina si viaggia sempre con la cintura allacciata e, finché non sei alto un metro e mezzo, sul seggiolino o sul rialzo giusto.</p>
+  <div class="disegno">
+  <svg width="680" height="250" viewBox="0 0 680 250" role="img" aria-label="Disegno di una strada con le strisce pedonali, il marciapiede e un'automobile ferma; a destra un metro da parete che arriva a 150 centimetri">
+    <g fill="none" stroke="#233B74" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="0" y="60" width="470" height="140" fill="#EEF0F8" stroke="none"/>
+      <path d="M0 60 H470 M0 200 H470"/>
+      <path d="M0 52 H470 M0 208 H470" stroke-width="1.6"/>
+      <g fill="#FFFFFF"><rect x="250" y="72" width="70" height="14"/><rect x="250" y="96" width="70" height="14"/><rect x="250" y="120" width="70" height="14"/><rect x="250" y="144" width="70" height="14"/><rect x="250" y="168" width="70" height="14"/></g>
+      <path d="M20 130 H60 M100 130 H140 M180 130 H220 M350 130 H390 M430 130 H470" stroke-dasharray="0" stroke-width="2"/>
+      <!-- automobile ferma prima delle strisce -->
+      <g transform="translate(40 52) scale(0.78)">
+      <path d="M60 176 V150 q0 -8 8 -8 H96 l20 -22 H170 l22 22 H210 q10 0 10 10 V176 Z" fill="#FFFFFF"/>
+      <path d="M120 142 l12 -16 H150 V142 Z M158 142 V126 H168 l14 16 Z"/>
+      <circle cx="96" cy="178" r="14" fill="#FFFFFF"/><circle cx="186" cy="178" r="14" fill="#FFFFFF"/>
+      <circle cx="96" cy="178" r="5"/><circle cx="186" cy="178" r="5"/>
+      </g>
+      <!-- metro da parete -->
+      <rect x="540" y="10" width="44" height="230" fill="#FFFFFF"/>
+      <g stroke-width="1.6">
+        <path d="M540 40 h14 M540 70 h20 M540 100 h14 M540 130 h20 M540 160 h14 M540 190 h20 M540 220 h14"/>
+      </g>
+      <path d="M520 34 H604" stroke-width="3.4"/>
+    </g>
+    <rect x="606" y="21" width="70" height="26" fill="#FCEB0C" stroke="#233B74" stroke-width="2"/>
+    <text x="641" y="39" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="14" fill="#233B74">150 cm</text>
+    <text x="562" y="234" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="11" fill="#233B74">0</text>
+    <text x="285" y="236" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="12" fill="#233B74">LE STRISCE PEDONALI</text>
+  </svg>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 230px; gap: 20px; align-items: start">
+    <div>
+      <h2 style="margin-bottom: 6px">Vero o falso? Scrivi V oppure F</h2>
+      <div class="vf">
+        <div><span class="n">1</span><span class="t">Per attraversare la strada uso le strisce pedonali.</span><span class="riga" style="width:34px"></span></div>
+        <div><span class="n">2</span><span class="t">Attraverso di corsa in mezzo alle macchine parcheggiate.</span><span class="riga" style="width:34px"></span></div>
+        <div><span class="n">3</span><span class="t">Prima di attraversare mi fermo e guardo bene da una parte e dall'altra.</span><span class="riga" style="width:34px"></span></div>
+        <div><span class="n">4</span><span class="t">In macchina la cintura si allaccia sempre, anche per un tratto corto.</span><span class="riga" style="width:34px"></span></div>
+        <div><span class="n">5</span><span class="t">Si può viaggiare in braccio alla mamma, se si va piano.</span><span class="riga" style="width:34px"></span></div>
+        <div><span class="n">6</span><span class="t">Finché non sono alto un metro e mezzo viaggio sul seggiolino o sul rialzo adatto a me.</span><span class="riga" style="width:34px"></span></div>
+      </div>
+    </div>
+    <div class="riquadro tenue">
+      <h3>Misurati!</h3>
+      <p>Fatti misurare da un adulto, contro il muro.</p>
+      <p style="margin-top:8px">Sono alto <span class="riga" style="width:54px"></span> cm.</p>
+      <p style="margin-top:8px">Mi mancano <span class="riga" style="width:54px"></span> cm per arrivare a 150.</p>
+      <p class="nota-adulti" style="margin-top:8px">Conta l'altezza, non l'età: il seggiolino giusto si sceglie in base al peso e alla statura del bambino.</p>
+    </div>
+  </div>
+  <div class="riquadro blu" style="margin-top: auto">
+    <p><strong>Cintura allacciata, sempre.</strong> Lo dice la legge, il Codice della strada (articolo 172): sotto un metro e mezzo di altezza i bambini viaggiano su un sistema di ritenuta adatto al loro peso, cioè un seggiolino o un rialzo.</p>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+</body>
+</html>

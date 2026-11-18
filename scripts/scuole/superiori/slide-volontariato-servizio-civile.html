@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/scuole/superiori/slide-volontariato-servizio-civile.pdf">
+<title>Volontariato e Servizio Civile</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Slide per le scuole superiori (14-18 anni). Fatti dalle pagine del sito (dossier storia-delle-misericordie,
+servizi, diventa-volontario, servizio-civile, formazione) e dalle fonti primarie lette il 18/11/2026:
+misericordie.it (la Confederazione), scelgoilserviziocivile.gov.it (requisiti, durata, assegno).
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo .piccolo { font-size: 28px; line-height: 38px; color: #3D4F7C; }
+.diapo .linea { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 6px; }
+.diapo .tappa { position: relative; padding: 0 22px 0 0; }
+.diapo .tappa .anno { font-size: 62px; line-height: 1; font-weight: 800; color: var(--blu); }
+.diapo .tappa .punto { width: 34px; height: 34px; border-radius: 50%; background: var(--giallo); border: 7px solid var(--blu); margin: 18px 0 18px; position: relative; z-index: 1; }
+.diapo .tappa::before { content: ""; position: absolute; left: 0; right: 0; top: 94px; height: 7px; background: var(--blu); }
+.diapo .tappa:last-child::before { right: calc(100% - 20px); }
+.diapo .tappa p { font-size: 30px; line-height: 39px; }
+.diapo .servizi { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 50px; }
+.diapo .servizi div { border-top: 6px solid var(--blu); padding-top: 14px; font-size: 33px; line-height: 43px; }
+.diapo .servizi h3 { font-size: 38px; line-height: 46px; margin-bottom: 6px; }
+.diapo .passi { display: flex; flex-direction: column; gap: 20px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .scheda-scu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.diapo .scheda-scu .cifra { font-size: 78px; line-height: 1; font-weight: 800; color: var(--blu); }
+.diapo .scheda-scu .cifra small { font-size: 40px; }
+.diapo .scheda-scu p { font-size: 31px; line-height: 40px; margin-top: 12px; }
+.diapo .contatti { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 60px; }
+.diapo .contatti h3 { font-size: 34px; line-height: 42px; }
+.diapo .contatti p { font-size: 36px; line-height: 46px; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 42px; line-height: 56px; }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo > .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo .url { white-space: nowrap; }
+.diapo .cerchi55 { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.diapo .foto { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.diapo .foto img { width: 100%; height: 440px; object-fit: cover; }
+.diapo .foto figcaption { font-size: 22px; line-height: 28px; color: #3D4F7C; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Per le&nbsp;<b>scuole superiori</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M260 300 C205 262 160 225 160 172 C160 140 184 116 214 116 C236 116 251 128 260 145 C269 128 284 116 306 116 C336 116 360 140 360 172 C360 225 315 262 260 300 Z" fill="#FCEB0C"/>
+<path d="M40 200 C60 300 130 380 230 400 L260 404" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M480 200 C460 300 390 380 290 400 L260 404" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M40 200 C40 175 75 170 85 195 L120 290" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M480 200 C480 175 445 170 435 195 L400 290" stroke="#FFFFFF" stroke-width="16"/>
+</svg>
+<div class="contenuto">
+<h1>Volontariato e <span class="finale">Servizio Civile</span></h1>
+<p class="sotto">Che cos'è una Misericordia, che cosa fa ad Ariccia e come si può dare una mano: da volontari e, dai 18 ai 28 anni, con il Servizio Civile Universale.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda d'apertura: «Che cosa vi viene in mente se dico volontario?». Di solito si pensa all'ambulanza: in queste slide si vede che i servizi sono molti di più.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cos'è una Misericordia</h2>
+<p>Una <strong>confraternita di volontari</strong>: persone comuni che donano un po' del loro tempo per stare accanto a chi è malato, solo o in difficoltà, ispirate alle <strong>Opere di Misericordia</strong>.</p>
+<p>Le Misericordie sono tra le <strong>più antiche associazioni di volontariato al mondo</strong>. Oggi sono Enti del Terzo Settore, spesso Organizzazioni di Volontariato (ODV), come la Misericordia di Ariccia.</p>
+<p class="riquadro tenue">La Confederazione nazionale riunisce oggi <strong>circa 670.000 iscritti</strong>, con <strong>oltre 100.000 volontari attivi</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: dossier «Otto secoli di carità» del sito; pagina «La Confederazione» di misericordie.it (letta il 18/11/2026). Il Codice del Terzo Settore è il decreto legislativo 117 del 2017.</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Quasi otto secoli di storia</h2>
+<div class="linea">
+<div class="tappa"><div class="anno">1244</div><div class="punto"></div><p>A <strong>Firenze</strong> nasce la prima Misericordia: il frate Pietro da Verona ne scrive le prime regole.</p></div>
+<div class="tappa"><div class="anno">1348</div><div class="punto"></div><p>Nella <strong>peste nera</strong> i confratelli soccorrono i malati quando tutti fuggono.</p></div>
+<div class="tappa"><div class="anno">1495</div><div class="punto"></div><p>La <strong>«buffa»</strong>, la veste che copre il volto, diventa nera: chi aiuta resta anonimo.</p></div>
+<div class="tappa"><div class="anno">1899</div><div class="punto"></div><p>A <strong>Pistoia</strong> le Misericordie si uniscono: nasce la Confederazione.</p></div>
+<div class="tappa"><div class="anno">1994</div><div class="punto"></div><p>Nasce la <strong>Misericordia di Ariccia</strong>, ai Castelli Romani.</p></div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Tappe dal dossier del sito «Otto secoli di carità». La tradizione racconta anche del facchino Piero Borsi e delle sei ceste per portare i malati: storia e leggenda si intrecciano. La buffa era in origine rossa e dal 1495 diventa nera.</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa facciamo ad Ariccia</h2>
+<div class="servizi">
+<div><h3>Trasporti sanitari e sociali</h3>Con due ambulanze, un mezzo con la pedana per le carrozzine e le auto dei servizi sociali.</div>
+<div><h3>Centro di Ascolto e Banco Alimentare</h3>Accogliere e ascoltare le famiglie in difficoltà, distribuire generi alimentari.</div>
+<div><h3>Assistenza agli eventi</h3>Presidio sanitario a gare sportive, feste e sagre del territorio.</div>
+<div><h3>Formazione e Servizio Civile</h3>Corsi di primo soccorso aperti a tutti; un anno di servizio per i giovani.</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Servizi delle pagine «I nostri servizi» e «Diventa volontario» del sito. Il Banco Alimentare e il Centro di Ascolto sono gratuiti.</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>E che cosa non facciamo</h2>
+<p>La Misericordia di Ariccia fa <strong>trasporti programmati</strong>, assistenza agli eventi e corsi: <strong>non sostituisce il soccorso pubblico</strong>.</p>
+<p class="riquadro blu">In un'emergenza si chiama sempre il <strong>112</strong>, non il numero della Misericordia: la centrale manda l'ambulanza giusta, nel posto giusto.</p>
+<p>Anche questo è essere cittadini attivi: sapere <strong>chi fa che cosa</strong> e usare bene i servizi di tutti.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dalla guida del sito «Cosa succede quando chiami il 112», paragrafo «Che cosa facciamo noi, e che cosa no». Per i casi pratici c'è la scheda «Il numero giusto al momento giusto».</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa fa una volontaria, un volontario</h2>
+<p>Non solo l'ambulanza. Si può guidare un mezzo, accompagnare una persona anziana a una visita, ascoltare chi è solo, preparare i pacchi del Banco Alimentare, dare una mano a una festa.</p>
+<p class="riquadro tenue"><strong>Non servono capacità speciali</strong>: la formazione si fa insieme, passo dopo passo. Contano le mani, l'ascolto e la presenza.</p>
+<p class="sottolinea">Persone comuni che, un gesto alla volta, diventano «artigiani di misericordia».</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dalla pagina «Diventa volontario» del sito. L'espressione «artigiani di misericordia» è della stessa pagina.</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Come si diventa volontari</h2>
+<div class="lato" style="display:grid; grid-template-columns: 1fr 440px; gap: 60px; align-items: center;">
+<div style="display:flex;flex-direction:column;gap:22px;font-size:35px;line-height:46px">
+<ol class="passi">
+<li><strong>Contattaci o passa a trovarci</strong>, in sede, per telefono o su WhatsApp: ti raccontiamo chi siamo e che cosa facciamo.</li>
+<li><strong>Presenta la domanda di ammissione</strong>: basta una domanda scritta, con il modulo di iscrizione.</li>
+<li><strong>Inizia il percorso</strong>: la formazione la facciamo insieme, fino a quando sarai pronto per il servizio.</li>
+</ol>
+<p class="riquadro tenue">Il Movimento delle Misericordie accoglie <strong>uomini e donne dai 16 agli 80 anni</strong>. Se hai meno di 18 anni, chiedi in sede quali servizi puoi fare.</p>
+</div>
+<figure class="foto"><img src="../../../static/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-lezione.jpg" alt="Volontarie della Misericordia di Ariccia, di spalle, guardano le slide sul supporto vitale di base durante un corso"><figcaption>Foto: Misericordia di Ariccia</figcaption></figure>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Passi ed età dalla pagina «Diventa volontario» del sito. Il modulo di iscrizione si scarica dalla stessa pagina.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il Servizio Civile Universale</h2>
+<p>Un periodo di servizio alla comunità, in Italia o all'estero, con un progetto di un ente: per chi ha <strong>compiuto 18 anni e non superato i 28</strong>.</p>
+<div class="scheda-scu">
+<div><div class="cifra">8–12</div><p>mesi: la durata dei progetti</p></div>
+<div><div class="cifra">25</div><p>ore alla settimana, oppure un monte ore annuo</p></div>
+<div><div class="cifra">519,47<small>€</small></div><p>l'assegno mensile riconosciuto dallo Stato</p></div>
+<div><div class="cifra">80</div><p>ore di formazione, almeno</p></div>
+</div>
+<p class="piccolo">Possono partecipare cittadini italiani, di altri Paesi dell'Unione europea e di Paesi extra UE regolarmente soggiornanti in Italia. Fonte: scelgoilserviziocivile.gov.it (18/11/2026).</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dati del portale ufficiale del Dipartimento per le politiche giovanili e il Servizio civile universale. «Non superato i 28» vuol dire fino a 28 anni e 364 giorni alla data della domanda. Alla fine si riceve un attestato di partecipazione; le competenze acquisite possono essere riconosciute.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il Servizio Civile con noi</h2>
+<p>Dal <strong>2015</strong> la Misericordia di Ariccia partecipa ai bandi. I nostri progetti aiutano a <strong>combattere la solitudine</strong> delle persone fragili, soprattutto anziani e persone con disabilità, con il sostegno di ogni giorno e l'ascolto.</p>
+<ol class="passi">
+<li>Leggi il bando su <strong>scelgoilserviziocivile.gov.it</strong> e cerca i progetti delle Misericordie del Lazio con sede ad Ariccia.</li>
+<li>Fai la domanda online su <strong>DOL</strong>, con SPID o Carta d'identità elettronica: <strong>una sola domanda</strong>, per un solo progetto.</li>
+<li>Dopo la scadenza c'è il <strong>colloquio di selezione</strong>.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dalla pagina «Servizio Civile Universale» del sito: dal 18 settembre 2026 sono in servizio 2 giovani con il progetto «Misericordie del Lazio unite per la rete 2025»; le candidature per quel progetto sono chiuse. Il nuovo bando viene annunciato sul sito.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Parliamone</h2>
+<ul>
+<li>C'è qualcuno, nel vostro quartiere, che vive solo? Che cosa potrebbe aiutarlo?</li>
+<li>Quante ore alla settimana potreste dedicare agli altri, davvero?</li>
+<li>Che cosa si impara facendo volontariato, che a scuola non si impara?</li>
+<li>Perché, secondo voi, per secoli chi aiutava si copriva il volto?</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">L'ultima domanda riprende la «buffa»: l'anonimato del soccorritore secondo il Vangelo, «non sappia la tua sinistra quello che fa la tua destra» (dossier del sito sulla storia).</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Volontariato&nbsp;<b>e Servizio Civile</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Per saperne di più</h2>
+<div class="contatti">
+<div><h3>Iscrizioni e Servizio Civile</h3><p>328 8105399</p></div>
+<div><h3>Email</h3><p>sede@misericordia-ariccia.it</p></div>
+<div><h3>Sede amministrativa</h3><p>Viale Antonietta Chigi 46, Ariccia</p></div>
+<div><h3>Sul sito</h3><p><span class="url">/diventa-volontario/</span><br><span class="url">/servizio-civile/</span></p></div>
+</div>
+<p class="riquadro blu">«Che Iddio ve ne renda merito»: l'antico motto delle Misericordie, per chi dona il suo tempo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Recapiti dalle pagine Contatti, Diventa volontario e Servizio Civile del sito.</div>
+</section>
+
+</body>
+</html>

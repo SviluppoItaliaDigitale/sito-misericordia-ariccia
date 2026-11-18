@@ -1,0 +1,109 @@
+/* Stile comune dei materiali per le scuole della Misericordia di Ariccia: schede A4 ricalcate sulla carta
+   intestata nazionale (triangolo in alto a sinistra, fascia blu con i recapiti di Ariccia in fondo) e slide 16:9
+   ricalcate sul carosello nazionale (fascia del tema in alto con il triangolo, firma in basso a sinistra, doppia
+   freccia gialla). Solo elementi del kit della Confederazione: Montserrat, blu #003F85, giallo #FCEB0C, azzurro
+   #009FE3, loghi ufficiali di scripts/grafica-brand/modelli-nazionali/loghi/ (vedi LEGGIMI.md lì). */
+
+@font-face { font-family: 'Montserrat'; font-weight: 100 900; font-display: block;
+  src: url(../grafica-brand/modelli-nazionali/font/montserrat-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 100 900; font-display: block;
+  src: url(../grafica-brand/modelli-nazionali/font/montserrat-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+2C60-2C7F, U+A720-A7FF; }
+
+:root {
+  --blu: #003F85; --blu-scuro: #013C7C; --giallo: #FCEB0C; --giallo-testo: #FCF10C;
+  --azzurro: #009FE3; --rosso: #C8102E; --verde: #1E7B34; --grigio: #5A6478; --linea: #C9D3E6;
+  --carta: #FFFFFF; --tenue: #EEF3FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--carta); color: #14213D; font-family: 'Montserrat', sans-serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+img { display: block; max-width: 100%; }
+strong { font-weight: 800; }
+.evidenzia { background: var(--blu-scuro); color: var(--giallo-testo); padding: 0 .18em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+
+/* ================================================================ scheda A4 (794×1123 px = 210×297 mm)
+   Griglia della carta intestata: triangolo a 57 px dal bordo sinistro e 59 px dall'alto, largo 87 px;
+   fascia blu di stampa #003F8A da 1018 a 1073 px con denominazione, sede amministrativa e contatti.
+   Il testo sta fra 57 e 737 px (più largo della lettera, che è a 146 px, perché una scheda ha disegni e righe). */
+@page { margin: 0; size: 210mm 297mm; }
+body.a4 { width: 794px; }
+.pagina { width: 794px; height: 1123px; position: relative; overflow: hidden; background: #FFFFFF; color: #1F2A44;
+  page-break-after: always; break-after: page; --blu-stampa: #003F8A; }
+.pagina:last-child { page-break-after: auto; break-after: auto; }
+.pagina > .logo { position: absolute; left: 57px; top: 59px; width: 87px; height: auto; }
+.pagina > .tema { position: absolute; right: 57px; top: 78px; font-size: 15px; line-height: 1; letter-spacing: .01em;
+  color: #233B74; white-space: nowrap; text-transform: uppercase; }
+.tema b { font-weight: 700; }
+.pagina > .contenuto { position: absolute; left: 57px; right: 57px; top: 175px; bottom: 120px;
+  display: flex; flex-direction: column; gap: 14px; font-size: 13.5px; line-height: 20px; }
+.contenuto h1 { font-size: 30px; line-height: 34px; font-weight: 800; color: #233B74; }
+.contenuto h2 { font-size: 19px; line-height: 24px; font-weight: 800; color: #233B74; }
+.contenuto h3 { font-size: 15px; line-height: 20px; font-weight: 700; color: #233B74; }
+.contenuto .sotto { font-size: 15px; line-height: 21px; color: #233B74; }
+.contenuto ol, .contenuto ul { padding-left: 22px; display: flex; flex-direction: column; gap: 4px; }
+.pagina > .piede { position: absolute; left: 0; right: 0; top: 1018px; height: 55px; background: var(--blu-stampa);
+  color: #FFFFFF; font-size: 9.5px; line-height: 13px; }
+.piede > div { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+.piede .p1 { left: 67px; font-weight: 700; } .piede .p2 { left: 304px; } .piede .p3 { left: 586px; }
+
+/* ================================================================ slide 16:9 (1920×1080 px)
+   Dal carosello nazionale: fondo chiaro con le sfumature del modello, fascia del tema blu in alto,
+   triangolo che la scavalca, firma «Misericordia di Ariccia» in basso a sinistra, doppia freccia in basso a destra. */
+body.slide { width: 1920px; }
+.diapo { width: 1920px; height: 1080px; position: relative; overflow: hidden; color: #233B74;
+  background: radial-gradient(60% 45% at 12% 6%, #F2DCE8 0%, rgba(242,220,232,0) 100%), radial-gradient(55% 45% at 92% 30%, #D9E3F4 0%, rgba(217,227,244,0) 100%), radial-gradient(60% 45% at 10% 92%, #D3E0EE 0%, rgba(211,224,238,0) 100%), radial-gradient(55% 40% at 92% 96%, #EEE3EE 0%, rgba(238,227,238,0) 100%), #EEF0F8;
+  page-break-after: always; break-after: page; }
+.diapo:last-child { page-break-after: auto; break-after: auto; }
+.diapo > .banda { position: absolute; left: 0; right: 0; top: 80px; height: 90px; background: var(--blu); }
+.diapo > .tema { position: absolute; right: 90px; top: 80px; height: 90px; display: flex; align-items: center;
+  font-size: 38px; line-height: 1; letter-spacing: .01em; color: #FFFFFF; white-space: nowrap; text-transform: uppercase; }
+.diapo > .logo { position: absolute; left: 90px; top: 61px; width: 148px; height: auto; }
+.diapo > .contenuto { position: absolute; left: 90px; right: 100px; top: 230px; bottom: 150px;
+  display: flex; flex-direction: column; gap: 30px; font-size: 38px; line-height: 50px; }
+.diapo .contenuto h2 { font-size: 62px; line-height: 68px; font-weight: 800; }
+.diapo .contenuto h3 { font-size: 42px; line-height: 50px; font-weight: 700; }
+.diapo .contenuto ol, .diapo .contenuto ul { padding-left: 50px; display: flex; flex-direction: column; gap: 14px; }
+.diapo > .firma-slide { position: absolute; left: 90px; bottom: 72px; font-weight: 600; font-size: 30px; line-height: 1;
+  letter-spacing: .01em; white-space: nowrap; }
+.diapo > .freccia { position: absolute; right: 92px; bottom: 54px; }
+/* copertina, dal carosello-copertina: fondo blu, fascia bianca del tema */
+.diapo.copertina { background: var(--blu); color: #FFFFFF; }
+.diapo.copertina > .banda { background: #FFFFFF; }
+.diapo.copertina > .tema { color: #233B74; }
+.diapo.copertina > .contenuto { top: 330px; left: 200px; right: 200px; font-weight: 800; }
+.diapo.copertina h1 { font-size: 96px; line-height: 104px; font-weight: 800; }
+.diapo.copertina .sotto { font-size: 40px; line-height: 54px; font-weight: 500; }
+.finale { color: var(--giallo); text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 10px; }
+.sottolinea { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; }
+
+/* ================================================================ elementi comuni */
+.evidenzia { background: var(--giallo); color: #233B74; font-weight: 700; padding: 0 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.riquadro { border: 2px solid #233B74; padding: 12px 16px; }
+.riquadro.tenue { border: 0; background: #EEF0F8; }
+.riquadro.blu { border: 0; background: var(--blu); color: #FFFFFF; }
+.diapo .riquadro { border-width: 4px; padding: 24px 32px; } .diapo .riquadro.tenue { background: rgba(255,255,255,.75); }
+.griglia-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.griglia-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.diapo .griglia-2, .diapo .griglia-3 { gap: 36px; }
+.righe { display: flex; flex-direction: column; gap: 30px; padding-top: 10px; }
+.righe span { display: block; border-bottom: 1px solid #5A6686; }
+.ritaglia { border: 1.5px dashed #5A6686; }
+.nota-adulti { font-size: 11px; line-height: 15px; color: #5A6686; }
+.note-relatore { display: none; } /* le note per chi presenta stanno nella guida per l'insegnante */
+.diapo.copertina .contenuto h1, .diapo.copertina .contenuto .sotto, .diapo.copertina .contenuto p { color: #FFFFFF; }
+
+/* ---- Testo sui fondi blu (18/11/2026, Alessandro: «il testo su sfondo blu non si vede»): sempre bianco,
+   il giallo solo per le parole evidenziate. Vale per copertine, riquadri blu, piede e ogni elemento con .fondo-blu. */
+.diapo.copertina, .diapo.copertina *, .riquadro.blu, .riquadro.blu *, .fondo-blu, .fondo-blu *, .pagina > .piede, .pagina > .piede * { color: #FFFFFF; }
+.diapo.copertina .finale, .riquadro.blu .finale, .fondo-blu .finale { color: var(--giallo); }
+.diapo.copertina .evidenzia, .riquadro.blu .evidenzia, .fondo-blu .evidenzia { background: var(--giallo); color: #233B74; }
+.diapo.copertina > .tema, .diapo.copertina > .tema * { color: #233B74; } /* sulla fascia bianca della copertina */
+
+/* ---- Slide per le LIM in più formati (18/11/2026): la larghezza resta 1920 px, l'altezza cambia con il formato
+   (1080 per il 16:9, 1200 per il 16:10, 1440 per il 4:3); fascia in alto e firma in basso restano dove sono,
+   il contenuto prende lo spazio in più. rendi_pdf.py imposta --h su <html>. */
+.diapo { height: var(--h, 1080px); }
+.diapo.copertina > .contenuto { top: 230px; bottom: 150px; justify-content: center; }

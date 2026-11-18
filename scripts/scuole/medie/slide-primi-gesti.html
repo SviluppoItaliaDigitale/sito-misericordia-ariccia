@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/scuole/medie/slide-primi-gesti.pdf">
+<title>Primi gesti: riconoscere e chiamare. Slide per la scuola media</title>
+<link rel="stylesheet" href="../scuole.css">
+<style>
+/* Slide della scuola media sui primi gesti senza manovre. Le parti su soffocamento e arresto cardiaco riprendono
+   parola per parola le schede del dossier «Primo soccorso passo passo» (verificate su ERC/IRC 2025). */
+.due { display: grid; grid-template-columns: 1.3fr .7fr; gap: 70px; align-items: center; flex: 1; }
+.due.pari { grid-template-columns: 1fr 1fr; align-items: start; }
+.disegno { display: flex; justify-content: center; align-items: center; }
+.lista { list-style: none; padding-left: 0 !important; gap: 18px !important; }
+.lista li { position: relative; padding-left: 46px; }
+.lista li::before { content: ""; position: absolute; left: 0; top: 17px; width: 22px; height: 22px; background: var(--giallo); border: 3px solid #233B74; }
+.lista.no li::before { background: #FFFFFF; transform: rotate(45deg); width: 18px; height: 18px; top: 18px; left: 3px; }
+.piccolo { font-size: 32px; line-height: 42px; }
+.colonna h3 { padding-bottom: 12px; border-bottom: 5px solid #233B74; margin-bottom: 22px; }
+.tre { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; flex: 1; align-items: start; }
+.tre > div { display: flex; flex-direction: column; gap: 18px; }
+.tre .n { font-size: 100px; line-height: 1; font-weight: 800; color: var(--blu); }
+.tre .n.spento { color: #9AA5C0; }
+.tre h3 { font-size: 46px; line-height: 52px; font-weight: 800; }
+.citazione { border-left: 12px solid var(--azzurro); padding: 6px 0 6px 36px; }
+.anticipo { display: inline-block; background: var(--azzurro); color: #FFFFFF; font-weight: 700; font-size: 28px; line-height: 1; padding: 12px 20px; text-transform: uppercase; letter-spacing: .02em; align-self: flex-start; }
+.fonte { font-size: 24px; line-height: 30px; color: #5A6686; margin-top: auto; }
+.domande { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.domanda { background: #FFFFFF; border-top: 10px solid var(--azzurro); padding: 26px 26px 30px; font-weight: 800; font-size: 40px; line-height: 46px; }
+</style>
+</head>
+<body class="slide">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <symbol id="s-telefono" viewBox="0 0 200 340">
+    <rect x="8" y="6" width="184" height="328" rx="26" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <rect x="28" y="40" width="144" height="236" rx="6" fill="#EEF0F8" stroke="#233B74" stroke-width="4"/>
+    <circle cx="100" cy="306" r="13" fill="none" stroke="#233B74" stroke-width="5"/>
+    <rect x="78" y="20" width="44" height="7" rx="3.5" fill="#233B74"/>
+    <text x="100" y="138" text-anchor="middle" font-family="Montserrat" font-weight="800" font-size="62" fill="#233B74">112</text>
+    <circle cx="100" cy="210" r="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <path d="M86 198c3-4 8-4 10 0l3 6c1 3 0 5-2 7l-3 2c3 6 7 10 13 13l2-3c2-2 4-3 7-2l6 3c4 2 4 7 0 10-6 5-15 4-23-2-8-6-14-13-17-21-2-6-1-10 4-13z" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-operatore" viewBox="0 0 260 260">
+    <circle cx="130" cy="96" r="54" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M40 250c0-58 40-92 90-92s90 34 90 92" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M66 100c0-44 28-70 64-70s64 26 64 70" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round"/>
+    <rect x="52" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <rect x="182" y="86" width="26" height="44" rx="10" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M70 128c4 26 24 40 50 42" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="124" cy="170" r="8" fill="#233B74"/>
+    <path d="M110 100h0M150 100h0" stroke="#233B74" stroke-width="10" stroke-linecap="round"/>
+    <path d="M114 122c10 8 22 8 32 0" fill="none" stroke="#233B74" stroke-width="5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="s-ambulanza" viewBox="0 0 320 180">
+    <path d="M14 140V46c0-8 6-14 14-14h170v108z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M198 58h56c6 0 11 3 14 8l32 46c2 3 3 6 3 10v18H198z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 72h38l26 38h-64z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="14" y="92" width="289" height="16" fill="#009FE3"/>
+    <rect x="14" y="108" width="289" height="10" fill="#FCEB0C"/>
+    <rect x="90" y="16" width="44" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="76" y="48" width="28" height="28" fill="#FFFFFF" stroke="#233B74" stroke-width="5"/>
+    <rect x="114" y="48" width="58" height="28" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <circle cx="72" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="244" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="72" cy="146" r="7" fill="#233B74"/><circle cx="244" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-pompieri" viewBox="0 0 320 180">
+    <path d="M14 140V60h170v80z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M184 52h62c6 0 10 3 13 8l30 50v30H184z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M200 66h42l24 40h-66z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M24 44l150-14M24 54l150-14" stroke="#233B74" stroke-width="5"/>
+    <path d="M44 51l-2-19M74 48l-2-19M104 45l-2-19M134 42l-2-19M164 39l-2-19" stroke="#233B74" stroke-width="4"/>
+    <rect x="14" y="98" width="275" height="14" fill="#233B74"/>
+    <rect x="200" y="36" width="34" height="16" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <circle cx="70" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="236" cy="146" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="70" cy="146" r="7" fill="#233B74"/><circle cx="236" cy="146" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-auto" viewBox="0 0 320 160">
+    <path d="M16 118V92c0-8 5-14 12-16l40-10 34-34c4-4 9-6 15-6h86c6 0 11 2 15 7l30 33 40 10c8 2 12 8 12 16v26z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M86 66l26-26h44v26zM170 66V40h28l24 26z" fill="#EEF0F8" stroke="#233B74" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="130" y="12" width="50" height="14" rx="4" fill="#009FE3" stroke="#233B74" stroke-width="5"/>
+    <rect x="16" y="84" width="288" height="12" fill="#233B74"/>
+    <circle cx="80" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="240" cy="124" r="22" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+    <circle cx="80" cy="124" r="7" fill="#233B74"/><circle cx="240" cy="124" r="7" fill="#233B74"/>
+  </symbol>
+  <symbol id="s-posizione" viewBox="0 0 300 300">
+    <path d="M20 250l80-30 100 30 80-30V60l-80 30-100-30-80 30z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M100 60v160M200 90v160" stroke="#233B74" stroke-width="5"/>
+    <path d="M40 170c40-10 70 20 110 0s70-30 110-10" fill="none" stroke="#009FE3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M150 196c-34-40-52-68-52-94a52 52 0 0 1 104 0c0 26-18 54-52 94z" fill="#FCEB0C" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <circle cx="150" cy="102" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-citofono" viewBox="0 0 220 300">
+    <rect x="20" y="10" width="180" height="280" rx="10" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <circle cx="110" cy="56" r="26" fill="#EEF0F8" stroke="#233B74" stroke-width="5"/>
+    <path d="M96 50h28M96 60h28" stroke="#233B74" stroke-width="4"/>
+    <g fill="#FFFFFF" stroke="#233B74" stroke-width="5"><rect x="46" y="104" width="128" height="32"/><rect x="46" y="148" width="128" height="32"/><rect x="46" y="192" width="128" height="32"/><rect x="46" y="236" width="128" height="32" fill="#FCEB0C"/></g>
+    <g fill="#233B74"><circle cx="160" cy="120" r="6"/><circle cx="160" cy="164" r="6"/><circle cx="160" cy="208" r="6"/><circle cx="160" cy="252" r="6"/></g>
+    <g stroke="#233B74" stroke-width="5" stroke-linecap="round"><path d="M60 120h66M60 164h50M60 208h72M60 252h58"/></g>
+  </symbol>
+  <symbol id="s-coperta" viewBox="0 0 340 220">
+    <path d="M30 170c40-12 240-12 280 0" fill="none" stroke="#233B74" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="72" cy="128" r="28" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+    <path d="M96 116c40-30 120-36 200-8 10 4 12 30 4 46-60 16-150 18-204 6z" fill="#009FE3" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M130 112l20 46M180 104l18 54M230 104l16 52" stroke="#FFFFFF" stroke-width="5"/>
+    <path d="M240 60c-4-22 20-36 34-20 12-16 40-4 32 18-4 12-20 22-34 32-14-10-28-18-32-30z" fill="#FCEB0C" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="s-casa" viewBox="0 0 300 260">
+    <path d="M30 120L150 24l120 96" fill="none" stroke="#233B74" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56 104v134h188V104" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <rect x="124" y="160" width="52" height="78" fill="#EEF0F8" stroke="#233B74" stroke-width="6"/>
+    <rect x="76" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="190" y="132" width="34" height="34" fill="#FCEB0C" stroke="#233B74" stroke-width="5"/>
+    <rect x="200" y="40" width="22" height="44" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+  <symbol id="s-strada" viewBox="0 0 300 260">
+    <path d="M110 250L136 20h28l26 230z" fill="#EEF0F8" stroke="#233B74" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M150 40v26M150 92v34M150 152v40M150 216v30" stroke="#FCEB0C" stroke-width="9"/>
+    <path d="M222 250l-26-88h54z" fill="#FFFFFF" stroke="#233B74" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M214 230l8-28 8 28z" fill="#FCEB0C"/>
+    <rect x="30" y="140" width="56" height="74" rx="6" fill="#FCEB0C" stroke="#233B74" stroke-width="6"/>
+    <path d="M30 168h56M30 190h56" stroke="#FFFFFF" stroke-width="6"/>
+    <circle cx="58" cy="116" r="20" fill="#FFFFFF" stroke="#233B74" stroke-width="6"/>
+  </symbol>
+</defs>
+</svg>
+
+<!-- 1. Copertina -->
+<section class="diapo copertina">
+<div class="banda"></div>
+<div class="tema">Per la&nbsp;<b>scuola media</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h1>Primi gesti:<br>riconoscere<br>e <span class="finale">chiamare</span></h1>
+  <p class="sotto">Che cosa può fare chiunque nei primi minuti di un'emergenza, prima che arrivino i soccorsi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Questa lezione non insegna manovre: insegna a riconoscere un'emergenza, a mettersi al sicuro, a chiamare il 112 e a restare accanto alla persona. Le manovre di rianimazione e contro il soffocamento si imparano solo con un istruttore. Meglio presentarla dopo le slide «Il 112 e la catena dei soccorsi».</div>
+</section>
+
+<!-- 2. Chi è vicino -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>I primi minuti contano</h2>
+  <div class="due">
+    <div style="display:flex; flex-direction:column; gap:34px">
+      <p class="citazione">In un'emergenza i primi minuti sono quelli che contano di più, e spesso chi è vicino non è un medico: è un familiare, un collega, un passante.</p>
+      <p>Anche un ragazzo o una ragazza può fare molto: <span class="evidenzia">riconoscere, chiamare, restare accanto</span>.</p>
+    </div>
+    <div class="disegno"><svg width="420" height="272" role="img" aria-label="Disegno di una persona sdraiata coperta con una coperta"><use href="#s-coperta"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Secondo le Linee guida europee 2025 (dati riportati da IRC), in Italia circa tre arresti cardiaci su quattro avvengono in casa: chi è vicino è quasi sempre un familiare. Fonte: dossier del sito «Primo soccorso passo passo»; IRC, Linee guida 2025, cap. 2.</div>
+</section>
+
+<!-- 3. Tre passaggi -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>I passaggi delle linee guida europee</h2>
+  <div class="tre">
+    <div><p class="n">1</p><h3>Controlla</h3><p class="piccolo">È sicuro avvicinarsi? La persona è cosciente?</p></div>
+    <div><p class="n">2</p><h3>Chiama</h3><p class="piccolo">Chiama immediatamente il 112 se la persona non risponde. Se non sei sicuro, l'operatore ti assisterà.</p></div>
+    <div><p class="n spento">3</p><h3>Le manovre</h3><p class="piccolo">La rianimazione si impara <strong>con un istruttore</strong>, in un corso.</p></div>
+  </div>
+  <p class="fonte">Linee guida ERC 2025, Basic Life Support (traduzione Italian Resuscitation Council)</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le Linee guida ERC 2025 indicano a tutti i soccorritori tre passaggi: controlla, chiama, comprimi il torace. In questa lezione ci fermiamo ai primi due: il terzo, la rianimazione cardiopolmonare, si impara in un corso con un istruttore. Fonte: IRC, Linee guida RCP 2025, capitolo 4 «Basic Life Support (Adulto)».</div>
+</section>
+
+<!-- 4. Prima la sicurezza -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Prima la sicurezza</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Prima di avvicinarti chiediti: <strong>è sicuro?</strong> Traffico, fuoco, fumo, gas, crolli.</li>
+      <li>Se c'è un pericolo, <strong>non avvicinarti</strong>: allontanati, chiama il 112 e chiama un adulto.</li>
+      <li>In un incidente stradale il <strong>primo pericolo è per chi si ferma ad aiutare</strong>.</li>
+    </ul>
+    <div class="disegno"><svg width="330" height="286" role="img" aria-label="Disegno di una strada con un triangolo e un giubbotto catarifrangente"><use href="#s-strada"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le linee guida chiedono di garantire la sicurezza propria, della persona e di chi è presente. Un soccorritore che si fa male diventa una seconda persona da soccorrere. Fonti: IRC, Linee guida 2025, cap. 4; dossier «Primo soccorso passo passo», scheda Incidente stradale.</div>
+</section>
+
+<!-- 5. Riconoscere -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Riconoscere un'emergenza</h2>
+  <p>Si chiama il 112 quando ci può essere un <strong>rischio per la vita</strong> di qualcuno: malori, infortuni, traumi, ustioni, avvelenamenti, incidenti, annegamento.</p>
+  <p>Quattro domande da farsi, le stesse che farà il 118:</p>
+  <div class="domande">
+    <div class="domanda">Risponde?</div>
+    <div class="domanda">Respira?</div>
+    <div class="domanda">Sanguina?</div>
+    <div class="domanda">Ha dolore?</div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Per sapere se una persona risponde: chiamarla e scuoterla delicatamente, come dice la scheda del dossier. Fonti: ARES 118, «Quando chiamare il 118 e cosa dire»; dossier del sito «Cosa succede quando chiami il 112».</div>
+</section>
+
+<!-- 6. Chiama -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Chiama il 112, o fallo chiamare</h2>
+  <div class="due">
+    <ul class="lista">
+      <li>Di' <strong>dove sei</strong> e <strong>che cosa è successo</strong>, poi rispondi alle domande.</li>
+      <li>Se c'è qualcuno vicino, chiedigli di chiamare mentre tu resti accanto alla persona.</li>
+      <li>Metti il <strong>vivavoce</strong>: l'operatore ti guida.</li>
+      <li><span class="evidenzia">Non riattaccare</span> finché l'operatore non te lo dice.</li>
+    </ul>
+    <div class="disegno"><svg width="290" height="493" role="img" aria-label="Disegno di un cellulare con il 112 sullo schermo"><use href="#s-telefono"/></svg></div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Ripassate la telefonata delle slide sul 112: nome, indirizzo preciso con scala, piano e citofono, che cosa è successo. Fonti: Regione Lazio, Emergenza 112; dossier «Cosa succede quando chiami il 112».</div>
+</section>
+
+<!-- 7. Mentre aspetti -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Resta accanto, senza manovre</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Che cosa fare</h3>
+      <ul class="lista piccolo">
+        <li><strong>Copri</strong> la persona e proteggila dal freddo, dal sole o dalla pioggia.</li>
+        <li><strong>Rassicurala</strong> e parlale.</li>
+        <li>Allenta con delicatezza cintura, cravatta e vestiti stretti.</li>
+        <li>Se c'è qualcuno con te, può andare incontro all'ambulanza per farle strada.</li>
+      </ul>
+    </div>
+    <div class="colonna">
+      <h3>Che cosa non fare</h3>
+      <ul class="lista no piccolo">
+        <li><strong>Non spostare</strong> una persona che ha subito un trauma, a meno che non ci sia un pericolo immediato come gas, fuoco o crollo.</li>
+        <li><strong>Non dare</strong> da mangiare né da bere.</li>
+        <li><strong>Non dare farmaci</strong>, se non te lo dice l'operatore.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dopo un incidente: parlare con i feriti, dire loro di stare fermi e coprirli; non togliere il casco al motociclista. Fonti: dossier «Cosa succede quando chiami il 112» (cosa fare e non fare mentre aspetti); dossier «Primo soccorso passo passo», scheda Incidente stradale.</div>
+</section>
+
+<!-- 8. Anticipazione: soffocamento -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <span class="anticipo">Un'anticipazione del corso</span>
+  <h2>Il soffocamento</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Come riconoscerlo</h3>
+      <p class="piccolo">Mentre mangia, la persona si porta le mani alla gola, <strong>non riesce a parlare né a tossire</strong>, respira male o non respira. Chiedile: «Stai soffocando?»</p>
+    </div>
+    <div class="colonna">
+      <h3>I primi gesti</h3>
+      <ul class="lista piccolo">
+        <li>Se tossisce, <strong>incoraggiala a tossire</strong>: è il modo migliore per liberarsi.</li>
+        <li>Se non riesce più a tossire né a parlare, <strong>chiama subito il 112</strong> (o fallo chiamare da chi è vicino) e metti il vivavoce.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="piccolo">I colpi tra le scapole e le compressioni addominali («5 colpi, 5 spinte») <span class="evidenzia">si imparano con un istruttore</span>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Testo ripreso parola per parola dalla scheda «Soffocamento» del dossier del sito, verificata sulle linee guida ERC/IRC 2025. Non fate provare le manovre tra compagni: si imparano solo con un istruttore. Nei lattanti e nei bambini piccoli la tecnica è diversa.</div>
+</section>
+
+<!-- 9. Anticipazione: arresto cardiaco -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <span class="anticipo">Un'anticipazione del corso</span>
+  <h2>L'arresto cardiaco</h2>
+  <div class="due pari">
+    <div class="colonna">
+      <h3>Come riconoscerlo</h3>
+      <p class="piccolo">La persona <strong>non risponde</strong> quando la chiami e la scuoti delicatamente, e <strong>non respira normalmente</strong> (non respira, oppure fa respiri rari e rumorosi).</p>
+    </div>
+    <div class="colonna">
+      <h3>I primi gesti</h3>
+      <ul class="lista piccolo">
+        <li>Chiama il <strong>112</strong> e metti il <strong>vivavoce</strong>: l'operatore ti guida.</li>
+        <li>Fatti portare subito un <strong>defibrillatore (DAE)</strong>: accendilo e segui la sua voce.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="piccolo">Le compressioni sul torace <span class="evidenzia">si imparano con un istruttore</span>, in un corso.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Testo ripreso parola per parola dalla scheda «Arresto cardiaco» del dossier del sito (linee guida ERC/IRC 2025). La legge 116 del 2021 stabilisce che anche chi non è formato può usare un defibrillatore, se non c'è personale addestrato, in caso di sospetto arresto cardiaco. Chiedete: sapete dov'è il defibrillatore più vicino alla scuola?</div>
+</section>
+
+<!-- 10. Si impara con un istruttore -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Le manovre si imparano con un istruttore</h2>
+  <ul class="lista">
+    <li><strong>Kids Save Lives</strong>, la campagna dello European Resuscitation Council, chiede due ore l'anno di rianimazione cardiopolmonare a scuola <strong>dai 12 anni</strong>.</li>
+    <li>La <strong>legge 116 del 2021</strong> prevede che la formazione al primo soccorso degli studenti comprenda la rianimazione di base, l'uso del defibrillatore e le manovre contro il soffocamento.</li>
+    <li>La Misericordia di Ariccia tiene <strong>corsi di primo soccorso e BLSD</strong>, con formatori abilitati ARES 118.</li>
+  </ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le scuole organizzano la formazione prevista dalla legge 116/2021 in autonomia, in accordo con le strutture sanitarie e di volontariato, e possono dedicare il 16 ottobre, Giornata mondiale della rianimazione cardiopolmonare, a iniziative sul tema. Fonti: ERC, Kids Save Lives; Legge 4 agosto 2021, n. 116; pagina «Formazione» del sito.</div>
+</section>
+
+<!-- 11. Chiusura -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Primi&nbsp;<b>gesti</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+  <h2>Ricapitoliamo</h2>
+  <div class="tre">
+    <div><p class="n">1</p><h3>Controlla</h3><p class="piccolo">È sicuro? La persona risponde? Respira?</p></div>
+    <div><p class="n">2</p><h3>Chiama</h3><p class="piccolo">112, vivavoce, non riattaccare.</p></div>
+    <div><p class="n">3</p><h3>Resta</h3><p class="piccolo">Copri, rassicura, non spostare, niente cibo, acqua o farmaci.</p></div>
+  </div>
+  <p class="piccolo">Per gli adulti: <strong>www.misericordia-ariccia.it/dossier/primo-soccorso/</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Chiudete ricordando che questi gesti li può fare chiunque, a qualsiasi età. Per un corso o un incontro con i volontari: sede@misericordia-ariccia.it o la pagina Contatti del sito.</div>
+</section>
+</body>
+</html>
