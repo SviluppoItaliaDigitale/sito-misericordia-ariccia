@@ -19,6 +19,21 @@
       </ol>
     </nav>
     {{ partial "lim-pronto.html" (dict "page" . "aula" "article.sc-guida") }}
+    {{- /* Pacchetto completo e indice della pagina, come nei kit per le scuole della Protezione Civile di Genzano
+           (18/11/2026). Il pacchetto lo fa scripts/scuole/pacchetti.py; l'indice viene dai titoli ## e ### del testo. */ -}}
+    {{ $zip := printf "static/documenti/scuole/%s/pacchetto-%s.zip" .File.BaseFileName .File.BaseFileName }}
+    <div class="sc-testa">
+      {{ if fileExists $zip }}{{ $mb := div (float (os.Stat $zip).Size) 1000000 }}
+      <p class="sc-pacchetto"><a class="btn btn-giallo" href="{{ strings.TrimPrefix "static" $zip | relURL }}" download>Scarica tutto il kit (ZIP, {{ lang.FormatNumber 1 $mb }} MB)</a>
+        <span>Schede, guida, slide in PDF 16:9 e 4:3 e PowerPoint, con un foglio di istruzioni.</span></p>
+      {{ end }}
+      {{ with .TableOfContents }}{{ if ne . `<nav id="TableOfContents"></nav>` }}
+      <details class="sc-indice" open>
+        <summary>In questa pagina</summary>
+        {{ . }}
+      </details>
+      {{ end }}{{ end }}
+    </div>
     {{ partial "scuole-materiali.html" . }}
     <article class="contenuto sc-guida mt-5" data-anim-group>
       {{ .Content }}

@@ -1420,3 +1420,16 @@ html.aula-aperta .barra-lettura, html.aula-aperta #torna-su, html.aula-aperta #w
 .lim-pronto a { color: #003F85; font-weight: 600; text-decoration: underline; display: inline-flex; align-items: center; min-height: 44px; }
 .lim-pronto-azioni { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .25rem; }
 @media print { .lim-pronto { display: none !important; } }
+
+/* Testa delle pagine dei kit (pacchetto ZIP e indice), dal 18/11/2026 */
+.sc-testa { display: grid; gap: 1rem; margin-bottom: 2rem; }
+@media (min-width: 992px) { .sc-testa { grid-template-columns: 1fr 1fr; align-items: start; } }
+.sc-pacchetto { margin: 0; display: flex; flex-direction: column; gap: .4rem; }
+.sc-pacchetto .btn { align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; }
+.sc-pacchetto .btn::after { content: " ↓"; }
+.sc-pacchetto span { font-size: .92rem; color: #5a6275; }
+.sc-indice { border: 1px solid #d9e1e8; border-radius: .5rem; padding: .6rem 1rem; background: #fff; }
+.sc-indice summary { font-weight: 700; color: var(--mise-navy); cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+.sc-indice ul { margin: .25rem 0 .25rem; padding-left: 1.1rem; }
+.sc-indice li { margin: .2rem 0; }
+.sc-indice a { display: inline-block; padding: .2rem 0; }
