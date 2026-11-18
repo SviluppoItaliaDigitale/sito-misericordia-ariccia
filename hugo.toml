@@ -29,7 +29,9 @@ enableGitInfo = true
   telefonoInfo = "328 8105399"
   email = "sede@misericordia-ariccia.it"
   pec = "misericordia-ariccia@pec.misericordia-ariccia.it"
-  indirizzo = "Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)"
+  # Indirizzo da usare nei contenuti operativi (dove trovarci, Centro di Ascolto, schede): la sede in viale Antonietta Chigi.
+  # La sede legale (sedeLegale) vale SOLO per atti, privacy e trasparenza: mai nelle cose operative (Alessandro, 18/11/2026).
+  indirizzo = "Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)"
   sedeLegale = "Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)"
   sedeOperativa = "Piazzale Aldo Moro, 6 — 00072 Ariccia (RM)"
   sedeAmministrativa = "Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)"
