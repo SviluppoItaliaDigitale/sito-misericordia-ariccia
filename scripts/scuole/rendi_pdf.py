@@ -32,6 +32,17 @@ def meta(html: str, nome: str) -> str:
     return m.group(1)
 
 
+def attendi(pagina) -> None:
+    """Aspetta che la pagina sia ferma. Con la macchina carica «networkidle» può superare i 30 s anche a pagina
+    pronta (successo più volte il 18/11/2026): si aspetta fino a 90 s e poi si va avanti, perché caratteri e
+    immagini li controllano già document.fonts.ready e il controllo delle immagini non caricate."""
+    try:
+        pagina.wait_for_load_state("networkidle", timeout=90000)
+    except Exception:  # noqa: BLE001
+        print("   avviso: la pagina non è diventata ferma in 90 s, si prosegue")
+    pagina.evaluate("document.fonts.ready")
+
+
 def copertina(uscita: Path, prima) -> None:
     """Anteprima della prima pagina per la pagina del sito: static/img/scuole/<fascia>/<nome>.jpg, 640 px di lato lungo."""
     rel = uscita.relative_to(RADICE / "static/documenti/scuole")
@@ -63,7 +74,7 @@ def rendi_slide(browser, sorgente: Path, html: str, uscita: Path, anteprime: Pat
         pagina.goto(sorgente.resolve().as_uri())
         pagina.evaluate(f"document.documentElement.style.setProperty('--h', '{alt}px')")
         pagina.evaluate("document.fonts.ready")
-        pagina.wait_for_load_state("networkidle")
+        attendi(pagina)
         fuori = pagina.evaluate("""() => { const out = [];
           document.querySelectorAll('.diapo').forEach((p, i) => { const b = p.getBoundingClientRect();
             p.querySelectorAll('*').forEach(e => { if (e.closest('.note-relatore')) return; const r = e.getBoundingClientRect();
@@ -125,7 +136,7 @@ def rendi(browser, sorgente: Path, anteprime: Path | None) -> bool:
     pagina = browser.new_page(viewport={"width": 1920, "height": 1080} if formato == "slide" else {"width": 794, "height": 1123})
     pagina.goto(sorgente.resolve().as_uri())
     pagina.evaluate("document.fonts.ready")
-    pagina.wait_for_load_state("networkidle")
+    attendi(pagina)
     sel = ".diapo" if formato == "slide" else ".pagina"
     # Contenuto che trabocca: un figlio che finisce oltre il bordo inferiore della sua pagina.
     fuori = pagina.evaluate("""sel => {

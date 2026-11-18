@@ -22,7 +22,6 @@ materiali:
     pptx: true
     pagine: 16
     descrizione: "I dati europei sull'arresto cardiaco, la catena della sopravvivenza, come si riconosce, il 112, compressioni, defibrillatore e soffocamento dell'adulto, la legge 116 del 2021 e Kids Save Lives. Con le note per chi presenta."
-    revisione: "da fare"
   - titolo: "Volontariato e Servizio Civile"
     tipo: "slide"
     file: "/documenti/scuole/superiori/slide-volontariato-servizio-civile.pdf"
@@ -88,7 +87,6 @@ fonti:
 
 Questi materiali sono pensati per le insegnanti e gli insegnanti della **scuola secondaria di secondo grado**, per le classi dai **14 ai 18 anni**. Ci sono due serie di **slide** da proiettare, in PDF e in PowerPoint, due **schede** da stampare e una **guida per l'insegnante** con il percorso e le fonti. Parlano di come si riconosce un'emergenza e di quale numero chiamare, di rianimazione e defibrillatore, di responsabilità e cittadinanza attiva, di volontariato e Servizio Civile Universale. Sono gratuiti e si possono usare in classe così come sono.
 
-> Le slide **«Rianimazione e defibrillatore: perché impararle»**, citate nella guida, saranno disponibili a breve: le sta rivedendo il nostro responsabile sanitario, come facciamo per tutti i contenuti sul primo soccorso. Nel frattempo le stesse indicazioni si trovano nel dossier [Primo soccorso passo passo](/dossier/primo-soccorso/), secondo le Linee guida ERC/IRC 2025.
 
 > **Avvertenza pedagogica.** Questi materiali spiegano *perché* imparare a soccorrere, non sostituiscono un corso: le manovre di rianimazione e contro il soffocamento si imparano solo con un istruttore, su un manichino. Non fate provare compressioni o manovre sui compagni. Il tema può toccare esperienze personali, come un lutto in famiglia o un malore a cui si è assistito: lasciate sempre la possibilità di non intervenire nella discussione, e se una ragazza o un ragazzo si mostra turbato parlatene con lei o con lui da soli, dopo la lezione.
 
@@ -151,7 +149,7 @@ La guida propone un percorso in **tre incontri**, che si possono fare anche sepa
 | Incontro | Tema | Durata | Materiali | Spazio |
 |---|---|---|---|---|
 | 1 | Il numero giusto al momento giusto | circa 30' | Scheda dei nove casi, poi correzione insieme | Aula |
-| 2 | Rianimazione e defibrillatore, poi il dibattito | circa 50' + 45' | Slide «Rianimazione e defibrillatore» (in revisione) e scheda «Aiutare, sbagliare, decidere» | Aula con LIM o proiettore |
+| 2 | Rianimazione e defibrillatore, poi il dibattito | circa 50' + 45' | Slide «Rianimazione e defibrillatore» e scheda «Aiutare, sbagliare, decidere» | Aula con LIM o proiettore |
 | 3 | Volontariato e Servizio Civile | circa 40' | Slide «Volontariato e Servizio Civile», meglio con una volontaria o un volontario in classe | Aula con LIM o proiettore |
 
 Prima di un corso pratico con i nostri istruttori si possono usare le slide e le schede, così la classe arriva con le domande giuste.
@@ -164,7 +162,7 @@ Una scheda di due pagine con **nove casi pratici** da risolvere a coppie: un com
 
 ### Rianimazione e defibrillatore: perché impararle
 
-Sedici slide con le note per chi presenta: i dati europei sull'arresto cardiaco, il fatto che in Italia più di tre su quattro avvengono in casa, la catena della sopravvivenza, come si riconosce, la chiamata al 112, compressioni, defibrillatore e soffocamento dell'adulto, la legge 116 del 2021 e la campagna Kids Save Lives. Circa 50 minuti con le domande. **Sono in revisione dal nostro responsabile sanitario** e compariranno in questa pagina appena pronte.
+Sedici slide con le note per chi presenta: i dati europei sull'arresto cardiaco, il fatto che in Italia più di tre su quattro avvengono in casa, la catena della sopravvivenza, come si riconosce, la chiamata al 112, compressioni, defibrillatore e soffocamento dell'adulto, la legge 116 del 2021 e la campagna Kids Save Lives. Circa 50 minuti con le domande.
 
 ### Aiutare, sbagliare, decidere
 
