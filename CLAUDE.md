@@ -156,6 +156,15 @@ Istruzione di Alessandro: *«Quella è la sede legale!! NON VA MAI MENZIONATA NE
 - **Sede legale, via Beata Rosa Venerini 6** (`site.Params.sedeLegale`): **solo** atti, privacy e trasparenza (`contatti.md` in nota, `privacy.md`, `trasparenza.md`, dati strutturati come «Sede legale»). Lo controlla `scripts/controlli/prova_sede_legale.py` su ogni PR.
 - Il nome del paese si scrive sempre **«Ariccia»**, in ogni lingua, senza traslitterazioni.
 
+## Podcast automatico (dal 18/11/2026)
+
+Due puntate a settimana (mercoledì e sabato) a due voci, come il podcast della Protezione Civile
+di Genzano: le fa sul PC il giro di `scripts/podcast-auto/giro-automatico.sh` (crontab, Chrome e
+NotebookLM, blocco comune con la PC), sulle sole pagine del sito già pubblicate, e le mette in
+calendario solo dopo trascrizione e controllo dei fatti. Pagina `/podcast/` (voce «Podcast» nel
+menu), feed `/podcast/index.xml`, issue automatica se il magazzino si svuota
+(`controllo-podcast.yml`). Procedura completa, coda e regole: `scripts/podcast-auto/README.md`.
+
 ## Infrastruttura
 
 - **Generatore**: Hugo 0.154.5 (extended)
