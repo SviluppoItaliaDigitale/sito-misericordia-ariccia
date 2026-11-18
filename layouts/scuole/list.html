@@ -15,6 +15,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>
+    {{ partial "lim-pronto.html" (dict "page" .) }}
     {{ with .Content }}<div class="contenuto sc-intro mb-5" data-anim-group>{{ . }}</div>{{ end }}
     <ol class="list-unstyled sc-fasce">
       {{ range .Pages.ByWeight }}

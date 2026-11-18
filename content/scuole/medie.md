@@ -96,6 +96,10 @@ Sono pensati per un percorso di **tre incontri di circa un'ora**, da adattare al
 
 Le slide si scaricano in PDF e in PowerPoint, nei formati per la LIM; nel PowerPoint ogni slide ha le note per chi presenta. I dati sul 112 sono gli stessi della nostra guida [Cosa succede quando chiami il 112](/dossier/chiamare-il-112/), con le fonti della Regione Lazio, di ARES 118 e del Ministero dell'Interno.
 
+## Due attenzioni
+
 Due attenzioni: **mai comporre davvero il 112 per una prova**, e **niente manovre tra compagni**. Rianimazione, defibrillatore e manovre contro il soffocamento si imparano solo con un istruttore, in un [corso di primo soccorso](/servizi/formazione/). Per gli adulti c'è il dossier [Primo soccorso passo passo](/dossier/primo-soccorso/).
+
+## Un incontro con i volontari
 
 Vorreste che una volontaria o un volontario della Misericordia di Ariccia venisse in classe? [Scriveteci](/contatti/) o mandate una email a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it): valuteremo insieme che cosa possiamo fare.

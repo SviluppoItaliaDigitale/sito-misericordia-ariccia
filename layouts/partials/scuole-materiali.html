@@ -16,22 +16,22 @@
         <p class="sc-scarica">
           {{ if eq .tipo "slide" }}
           {{ $b := replaceRE `\.pdf$` "" .file }}
+          {{- /* Formati per la LIM (18/11/2026, Alessandro: il menu chiuso «non era evidente»): pulsanti sempre visibili.
+                 Compaiono solo i file già fatti da rendi_pdf.py, così nessun link porta a un file mancante. */ -}}
+          {{ $f4k := printf "%s-4k.pdf" $b }}{{ $f1610 := printf "%s-16x10.pdf" $b }}{{ $f43 := printf "%s-4x3.pdf" $b }}{{ $p43 := printf "%s-4x3.pptx" $b }}
           <a class="btn btn-giallo" href="{{ .file | relURL }}" download>PDF 16:9</a>
           <a class="btn btn-ciano" href="{{ printf "%s.pptx" $b | relURL }}" download>PowerPoint 16:9</a>
         </p>
-        {{- /* Formati per la LIM: compaiono solo quelli già fatti (rendi_pdf.py), così nessun link porta a un file mancante. */ -}}
-        {{ $f4k := printf "%s-4k.pdf" $b }}{{ $f1610 := printf "%s-16x10.pdf" $b }}{{ $f43 := printf "%s-4x3.pdf" $b }}{{ $p43 := printf "%s-4x3.pptx" $b }}
-        {{ $ci4k := fileExists (printf "static%s" $f4k) }}{{ $ci1610 := fileExists (printf "static%s" $f1610) }}{{ $ci43 := fileExists (printf "static%s" $f43) }}{{ $cip43 := fileExists (printf "static%s" $p43) }}
-        {{ if or $ci4k $ci1610 $ci43 }}
-        <details class="sc-lim">
-          <summary>Altri formati per la LIM</summary>
-          <ul>
-            {{ if $ci4k }}<li><a href="{{ $f4k | relURL }}" download>PDF 16:9 in 4K</a> (3840×2160, per le lavagne e i monitor 4K)</li>{{ end }}
-            {{ if $ci1610 }}<li><a href="{{ $f1610 | relURL }}" download>PDF 16:10</a> (1920×1200)</li>{{ end }}
-            {{ if $ci43 }}<li><a href="{{ $f43 | relURL }}" download>PDF 4:3</a>{{ if $cip43 }} e <a href="{{ $p43 | relURL }}" download>PowerPoint 4:3</a>{{ end }} (per le LIM più vecchie, con il proiettore)</li>{{ end }}
+        <div class="sc-lim" role="group" aria-label="Formati per la LIM: {{ .titolo }}">
+          <p class="sc-lim-tit"><span class="sc-lim-eti">Pronto per la LIM</span> Scegli il formato della tua lavagna:</p>
+          <ul class="list-unstyled sc-lim-elenco">
+            <li><a class="sc-lim-btn" href="{{ .file | relURL }}" download><strong>16:9</strong> Full HD<span>1920×1080 · PDF</span></a></li>
+            {{ if fileExists (printf "static%s" $f4k) }}<li><a class="sc-lim-btn" href="{{ $f4k | relURL }}" download><strong>16:9</strong> 4K<span>3840×2160 · PDF</span></a></li>{{ end }}
+            {{ if fileExists (printf "static%s" $f1610) }}<li><a class="sc-lim-btn" href="{{ $f1610 | relURL }}" download><strong>16:10</strong><span>1920×1200 · PDF</span></a></li>{{ end }}
+            {{ if fileExists (printf "static%s" $f43) }}<li><a class="sc-lim-btn" href="{{ $f43 | relURL }}" download><strong>4:3</strong> LIM con proiettore<span>1920×1440 · PDF</span></a></li>{{ end }}
+            {{ if fileExists (printf "static%s" $p43) }}<li><a class="sc-lim-btn" href="{{ $p43 | relURL }}" download><strong>4:3</strong> PowerPoint<span>con le note per chi presenta</span></a></li>{{ end }}
           </ul>
-        </details>
-        {{ end }}
+        </div>
           {{ else }}
           <a class="btn btn-giallo" href="{{ .file | relURL }}" download>Scarica il PDF</a>
         </p>
