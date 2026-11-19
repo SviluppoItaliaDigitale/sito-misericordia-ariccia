@@ -55,6 +55,17 @@ fi
 rm -rf "$TMPD"
 echo "Giro avviato $(date)" >>"$LOG"
 
+# Senza l'estensione di Chrome collegata il giro non può produrre nulla: non si
+# segna come fatto e riprova all'ora successiva (guasto del 19/11/2026: il giro
+# delle 8:11 trovò Chrome scollegato, uscì «riuscito» e saltò il resto del giorno).
+CHROME=$(cd "$REPO" && echo "Usa tabs_context_mcp di Claude in Chrome (caricalo con ToolSearch) e rispondi solo «CHROME OK» se risponde, altrimenti «CHROME NO»." \
+  | timeout 300 claude -p --chrome --allowedTools "ToolSearch,mcp__claude-in-chrome__tabs_context_mcp" 2>&1 | grep -v '^Permission allow rule')
+echo "Controllo Chrome: $CHROME" >>"$LOG"
+if ! printf '%s' "$CHROME" | grep -q "CHROME OK"; then
+  echo "Estensione di Chrome non collegata: niente giro, riprovo all'ora successiva." >>"$LOG"
+  exit 0
+fi
+
 # Copia di lavoro pulita, allineata a origin/main.
 if [ -d "$COPIA" ]; then
   git -C "$REPO" worktree remove --force "$COPIA" >>"$LOG" 2>&1 || rm -rf "$COPIA"
@@ -71,10 +82,15 @@ scripts/podcast-auto/README.md (fonti con trova-fonti.py, NotebookLM nel Chrome 
 controllo dei fatti rigoroso, messa in calendario con pubblica-puntata.py, ramo claude/podcast-…, PR, squash merge \
 a controlli verdi, verifica del deploy) finché il magazzino torna a 8, la coda finisce o NotebookLM rifiuta altre \
 generazioni. Una puntata con anche un solo errore non si pubblica. Alla fine scrivi un resoconto breve e, se hai \
-prodotto o scartato qualcosa, manda una notifica ad Alessandro."
+prodotto o scartato qualcosa, manda una notifica ad Alessandro. Se a un certo punto l'estensione di Chrome non \
+risponde più, fermati e scrivi come ultima riga GIRO-SENZA-CHROME."
 
 if echo "$PROMPT" | timeout 5h claude -p --chrome --permission-mode auto >>"$LOG" 2>&1; then
-  touch "$FATTO"
+  if grep -q "GIRO-SENZA-CHROME" "$LOG"; then
+    echo "Chrome si è scollegato durante il giro: riprovo all'ora successiva." >>"$LOG"
+  else
+    touch "$FATTO"
+  fi
 else
   echo "Giro terminato con errore $? (riprova all'ora successiva)" >>"$LOG"
 fi
