@@ -44,6 +44,16 @@ sotto una settimana o un'uscita salta, `controllo-podcast.yml` apre la issue «P
 puntate in calendario» (label `automazione` e `podcast`), che arriva per email; dal cloud non si
 ripara, serve il PC.
 
+## Da telefono, se Chrome non risponde (19/11/2026)
+
+Dal telefono si entra nel PC con Tailscale e Termux (`ssh iu0qvw@100.109.181.116`). Se `--prova` dà
+«CHROME NO» e `/chrome` in `claude --chrome` dice «No browsers are connected», Chrome va riavviato
+nella sessione grafica: `pkill -x chrome`, poi `google-chrome --restore-last-session` con
+`XDG_RUNTIME_DIR`, `DBUS_SESSION_BUS_ADDRESS`, `WAYLAND_DISPLAY=wayland-0`, `DISPLAY=:0` e
+`XAUTHORITY=$(ls -t /run/user/1000/.mutter-Xwaylandauth.* | head -1)` (senza quest'ultima Chrome
+non parte: «Missing X server or $DISPLAY»). Mai `pkill -f chrome`: chiude anche Claude Code avviato
+con `--chrome`. In Termux il tasto Invio dentro Claude può non confermare: si usa CTRL + m.
+
 ## Blocco comune con la Protezione Civile
 
 Chrome e l'account di NotebookLM sono gli stessi dei due podcast: due giri insieme si pestano i
