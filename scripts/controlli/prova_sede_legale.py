@@ -7,7 +7,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 AMMESSI = {"content/contatti.md", "content/privacy.md", "content/trasparenza.md", "hugo.toml", "README.md",
-           "layouts/_default/baseof.html", "data/dati_da_verificare.yaml", "scripts/controlli/prova_sede_legale.py"}
+           "layouts/_default/baseof.html", "data/dati_da_verificare.yaml", "scripts/controlli/prova_sede_legale.py",
+           "scripts/controlli/controlla_fogli_kit.py"}   # i due controlli devono nominarla per cercarla
 CARTELLE = ("content", "layouts", "static", "data", "scripts", "assets", "i18n")
 trovati = []
 for c in CARTELLE:
