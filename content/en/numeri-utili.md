@@ -21,7 +21,7 @@ The numbers to save in your phone and stick on the fridge. You can also **print 
 
 - **Services and transport (WhatsApp too):** [+39 348 4068657](tel:+393484068657)
 - **Operations centre (landline):** [+39 06 933 3717](tel:+39069333717)
-- **Administration, membership and Universal Civil Service:** [+39 328 8105399](tel:+393288105399)
+- **Administration, courses, training, membership and Universal Civil Service:** [+39 328 8105399](tel:+393288105399)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) — **PEC (certified email):** [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
 
 The Misericordia provides **scheduled transport** and social services: it does not replace the public emergency services. To book: [Request a transport](/en/richiedi-trasporto/).

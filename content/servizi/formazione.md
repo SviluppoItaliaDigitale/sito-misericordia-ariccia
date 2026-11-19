@@ -9,7 +9,7 @@ italianoSemplice: |
 
   Formiamo i soccorritori delle ambulanze e insegniamo a usare il defibrillatore (BLSD).
 
-  Per iscriverti chiama il **348 4068657**.
+  Per iscriverti chiama il **328 8105399** o il fisso **06 933 3717**.
 summary: "Corsi di primo soccorso, soccorritore di I e II livello, BLSD e P-BLSD, autisti dei mezzi di emergenza."
 weight: 40
 sezioni:
@@ -30,7 +30,7 @@ sezioni:
     testo: "La formazione del responsabile per la sicurezza."
 contatto:
   label: "Per iscriverti al prossimo corso"
-  tel: "348 4068657"
+  tel: "328 8105399"
   email: "sede@misericordia-ariccia.it"
   documenti:
     - testo: "Manuale del soccorritore"
@@ -57,7 +57,7 @@ Le Misericordie d'Italia sono inoltre **partner nazionale di [VIVA! La settimana
 <details class="faq-item">
 <summary>Quando si tiene il prossimo corso?</summary>
 
-I corsi vengono attivati al raggiungimento di un numero minimo di partecipanti. Lascia il tuo nome al **348 4068657** o a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it): ti avvisiamo appena parte la prossima edizione. Le date vengono pubblicate anche nelle [news](/news/).
+I corsi vengono attivati al raggiungimento di un numero minimo di partecipanti. Lascia il tuo nome al **[328 8105399](tel:+393288105399)** (o al fisso **[06 933 3717](tel:+39069333717)**) o a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it): ti avvisiamo appena parte la prossima edizione. Le date vengono pubblicate anche nelle [news](/news/).
 
 </details>
 
