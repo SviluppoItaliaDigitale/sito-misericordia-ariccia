@@ -9,7 +9,7 @@ social_video: "/video/primo-soccorso-dae.mp4"
 # Video oltre i 90 s: su Facebook resta il post con il link (la Reels API accetta al massimo 90 s)
 social_reel_facebook: false
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 3ª serie 1/10 — Il defibrillatore (DAE). Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 3ª serie 1/10 — Il defibrillatore (DAE). Cos'è il DAE, perché per la legge 116 del 2021 anche chi non è formato può usarlo se non c'è personale formato, come riconoscerlo dal cartello verde e come si usa, piastre, analisi e scarica, passo passo. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 328 8105399."
 italianoSemplice: |
   **Il defibrillatore (DAE): un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -62,7 +62,7 @@ Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccors
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

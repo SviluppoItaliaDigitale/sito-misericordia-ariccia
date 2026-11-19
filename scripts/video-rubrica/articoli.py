@@ -37,7 +37,7 @@ for i, (k, data) in enumerate(CAL, 1):
         passi.append(f"### {h}\n\n{sc.get('sub') or sc['voce']}")
     passi = '\n\n'.join(passi)
     extra_rcp = ("\n\n**Nel video c'è la simulazione del massaggio cardiaco a tempo:** le mani spingono al ritmo giusto, 110 compressioni al minuto, con il conteggio ad alta voce da 1 a 30. Anche la musica di sottofondo va a 110 battiti al minuto: puoi usarla per allenare l'orecchio al ritmo." if k == 'rianimazione' else '')
-    social = f"🩺 Primo soccorso passo passo · {i}/10 — {a['titolo']}. {desc} 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
+    social = f"🩺 Primo soccorso passo passo · {i}/10 — {a['titolo']}. {desc} 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 328 8105399."
     testo = f'''---
 title: "{tit}"
 titoloSeo: "{a['titolo']}: cosa fare passo passo (linee guida IRC 2025)"
@@ -76,7 +76,7 @@ Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

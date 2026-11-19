@@ -13,7 +13,7 @@ italianoSemplice: |
 
   Anche tu puoi imparare: sono manovre semplici che salvano la vita.
 
-  Per informazioni sui corsi chiama il **348 4068657**.
+  Per informazioni sui corsi chiama il **328 8105399**.
 ---
 
 ![Grafica della Misericordia di Ariccia, fascia «VIVA! 2026, Settimana della rianimazione»: volontarie di spalle seguono una lezione sulla rianimazione e il titolo «Dal 12 al 18 ottobre: si impara a far ripartire un cuore». Le Misericordie d'Italia sono partner della campagna, con IRC](/img/news/settimana-viva-2026-grafica.jpg)
@@ -39,6 +39,6 @@ La nostra Confraternita fa formazione al primo soccorso **tutto l'anno**: corsi 
 Nel frattempo:
 
 - ripassa le manovre essenziali nella pagina [Primo soccorso: cosa fare](/primo-soccorso/);
-- scopri i [corsi di formazione](/servizi/formazione/) o chiama il **348 4068657**.
+- scopri i [corsi di formazione](/servizi/formazione/) o chiama il **328 8105399** (fisso **06 933 3717**).
 
 *Fonte: [Settimana VIVA — sito ufficiale](https://www.settimanaviva.it/) · [IRC — Progetto VIVA!](https://www.ircouncil.it/progetti/viva/).*

@@ -113,6 +113,6 @@ Se la persona **tossisce**, incoraggiala a continuare. Se **non riesce a respira
 
 ---
 
-**Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **348 4068657**.
+**Vuoi essere davvero pronto?** I nostri istruttori tengono corsi di **Primo Soccorso, BLSD e P-BLSD** aperti alla cittadinanza: [scopri la formazione](/servizi/formazione/) o chiama il **328 8105399** (fisso **06 933 3717**).
 
 *Le indicazioni di questa pagina seguono le [Linee Guida ERC/IRC 2025 sulla rianimazione e il primo soccorso](https://www.ircouncil.it/linee-guida-rcp-2025/); per il colpo di calore le [linee di indirizzo del Ministero della Salute (luglio 2026)](https://www.salute.gov.it/new/sites/default/files/2026-07/LG%20CALDO%20INQUINAMENTO%20AGG%202026_0.pdf); per ustioni, svenimento e convulsioni, che le linee guida 2025 non trattano o trattano solo in parte, le [linee guida ERC/IRC 2021](https://www.ircouncil.it/wp-content/uploads/2023/05/LG_-ERC_2021_Capitolo_8_PrimoSoccorso.pdf) e le [linee guida internazionali di primo soccorso IFRC 2025](https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025). Ricontrollate il 1° novembre 2026.*

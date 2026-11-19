@@ -31,6 +31,12 @@ FORME_SBAGLIATE = [
     (re.compile(r"\b(?:06[\s.]?)?87\s?72\s?91\s?39\b"),
      "è il vecchio numero fisso scritto sul mezzo dei servizi sociali: non è più attivo (Alessandro, "
      "2/11/2026). I recapiti sono quelli di hugo.toml: sede 06 933 3717, servizi 348 4068657"),
+    # Corsi e formazione si chiamano al 328 8105399 col fisso, non al 348 dei servizi (Alessandro, 19/11/2026).
+    # Restano libere le frasi della campagna volontari (VOLONTARIO, squadra, «posto anche per te»).
+    (re.compile(r"\b(?:cors[oi]|courses?)\b(?:(?!VOLONTARIO|squadra|posto anche per te)[^\n]){0,140}?"
+                r"(?:348[\s.]?406[\s.]?8657|\+393484068657)", re.I),
+     "per corsi, formazione e amministrazione il numero è il 328 8105399, con accanto il fisso 06 933 3717; "
+     "il 348 4068657 è per ambulanze, auto speciali e trasporti (Alessandro, 19/11/2026)"),
     (re.compile(r"\bche\s+dio\s+(?:te\s+ne|ve\s+ne|gliene)\s+renda\s+merito", re.I),
      "il motto si scrive con «Iddio» («Che Iddio te ne renda merito»), come nello statuto tipo delle "
      "Misericordie («Che Iddio gliene renda merito») e nel glossario del sito (21/10/2026)"),

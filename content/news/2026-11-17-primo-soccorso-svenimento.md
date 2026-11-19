@@ -8,7 +8,7 @@ description: "I segni che annunciano uno svenimento, le contromanovre per evitar
 immagine: "/img/news/primo-soccorso-svenimento-grafica.jpg"
 social_video: "/video/primo-soccorso-svenimento.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 2ª serie 3/13 — Svenimento. I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 2ª serie 3/13 — Svenimento. I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112. 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 328 8105399."
 italianoSemplice: |
   **Svenimento: un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -53,7 +53,7 @@ Trovi la scheda riassuntiva, insieme alle altre 32, nel dossier **[Primo soccors
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

@@ -15,7 +15,7 @@ italianoSemplice: |
 
   I primi minuti sono i più importanti.
 
-  Vuoi imparare? Fai un corso con noi. Chiama il **348 4068657**.
+  Vuoi imparare? Fai un corso con noi. Chiama il **328 8105399**.
 ---
 
 ![Grafica della Misericordia di Ariccia, fascia «Formazione»: volontari in divisa a una lezione di primo soccorso in aula e il titolo «Arresto cardiaco: i primi minuti salvano la vita». Chiama il 112, premi forte e veloce al centro del petto, usa subito il DAE](/img/news/linee-guida-rcp-2025-grafica.jpg)
@@ -41,6 +41,6 @@ I nostri corsi di **Primo Soccorso, BLSD e P-BLSD**, tenuti da formatori abilita
 Non serve essere medici per salvare una vita: serve **sapere cosa fare nei primi minuti**.
 
 - Ripassa le manovre essenziali nella nostra pagina [Primo soccorso: cosa fare](/primo-soccorso/).
-- Iscriviti al prossimo [corso di formazione](/servizi/formazione/): chiama il **348 4068657**.
+- Iscriviti al prossimo [corso di formazione](/servizi/formazione/): chiama il **328 8105399** o il fisso **06 933 3717**.
 
 *Fonte: [Italian Resuscitation Council — Linee Guida RCP 2025](https://www.ircouncil.it/linee-guida-rcp-2025/) · [European Resuscitation Council — Guidelines 2025](https://www.erc.edu/science-research/guidelines/guidelines-2025/).*
