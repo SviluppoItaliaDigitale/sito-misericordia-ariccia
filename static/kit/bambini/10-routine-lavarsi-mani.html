@@ -22,7 +22,7 @@ html,body{margin:0;padding:0;background:#eef2f5;color:#111;font-family: 'Montser
 .scheda-footer{display:grid;grid-template-columns:1fr 1.7fr 1fr;gap:3mm;align-items:start;border-top:1.5px solid #c8d5e2;padding-top:2.5mm;font-size:8.4pt;line-height:1.18;color:#333}.scheda-footer span:first-child{font-weight:800;color:#003F85}.scheda-footer span:last-child{text-align:right;font-weight:700;color:#003F85}
 @media print{html,body{width:210mm;height:297mm;background:#fff}.no-print,.btn-stampa,.btn-indice{display:none!important}.scheda-a4{width:210mm;height:297mm;margin:0;padding:8mm;border:0;box-shadow:none;page-break-after:avoid;break-after:avoid}.mani-wrap img{max-height:192mm}}
 </style>
-</head>
+<style>/* cornice di microtesto, 19/11/2026: la scheda stampa con @page margin 0, la cornice sta a 4 mm dal bordo del foglio */@media print{body::before,body::after{top:7mm;bottom:7mm}body::before{left:4mm}body::after{right:4mm}html::before,html::after{position:fixed;left:7mm;right:7mm;height:1.6mm;z-index:2147483647;font: 500 1mm/1.6mm 'Montserrat', 'Liberation Sans', sans-serif; letter-spacing: 0.02mm; color: rgb(182, 190, 202);white-space:nowrap;overflow:hidden;text-align:center;content:"MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026 · MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026"}html::before{top:4mm}html::after{bottom:4mm}}</style></head>
 <body>
 <button class="btn-stampa no-print" onclick="window.print()">Stampa A4</button>
 <a class="btn-indice no-print" href="./">Indice</a>

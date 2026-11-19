@@ -597,3 +597,39 @@ ul.elenco-pratico li::before {
     border-width: 1px;
   }
 }
+
+/* ============================================================
+   CORNICE DI MICROTESTO (19/11/2026)
+   Regola grafica del 21/10/2026: ogni documento grafico porta ai bordi una cornice di microtesto (nome, sito,
+   «grafica della Confraternita di Misericordia di Ariccia ODV», anno), invisibile da lontano e leggibile
+   ingrandendo. Stesso testo, corpo (1 mm, come la carta intestata dei modelli nazionali) e tono (blu scuro del
+   marchio al 30% sul bianco) della cornice di scripts/grafica-brand/firma-e-cornice.js. Solo in stampa, su ogni
+   foglio, a circa 5 mm dal bordo del foglio:
+   - in alto e in basso nei riquadri del margine di pagina (@top-center, @bottom-center). Per far posto, i 5 mm
+     sopra e sotto la scheda passano dal suo margine interno al margine della pagina: sul primo foglio non cambia
+     nulla, e dal secondo foglio il testo non parte più dal bordo dell'area stampabile, dove avrebbe toccato la
+     cornice (30 schede al primo controllo). I browser senza riquadri del margine (Firefox, Safari) stampano solo i
+     due lati;
+   - a sinistra e a destra con due strisce fisse nel margine interno della scheda (9 mm), che non cambia da un
+     foglio all'altro.
+   Una scheda con @page margin 0 (impaginazione propria a foglio fisso) non ha margine di pagina: disegna anche
+   alto e basso con strisce fisse proprie (bambini/10-routine-lavarsi-mani.html). Lo controlla
+   scripts/controlli/controlla_fogli_kit.py: cornice su ogni lato di ogni foglio, nessun testo della scheda che la tocca.
+   ============================================================ */
+@media print {
+  @page {
+    margin: 9mm 4mm;
+    @top-center { content: "MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026 · MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026"; font: 500 1mm/1.6mm 'Montserrat', 'Liberation Sans', sans-serif; letter-spacing: 0.02mm; color: rgb(182, 190, 202); white-space: nowrap; vertical-align: middle; }
+    @bottom-center { content: "MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026 · MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026"; font: 500 1mm/1.6mm 'Montserrat', 'Liberation Sans', sans-serif; letter-spacing: 0.02mm; color: rgb(182, 190, 202); white-space: nowrap; vertical-align: middle; }
+  }
+  .scheda { padding-top: 0; padding-bottom: 0; }
+  body::before, body::after {
+    position: fixed; top: 0; bottom: 0; width: 1.6mm; z-index: 2147483647; pointer-events: none;
+    font: 500 1mm/1.6mm 'Montserrat', 'Liberation Sans', sans-serif; letter-spacing: 0.02mm; color: rgb(182, 190, 202); white-space: nowrap; overflow: hidden; text-align: center;
+    writing-mode: vertical-rl; text-orientation: sideways;
+    content: "MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026 · MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di Misericordia di Ariccia ODV · © 2026 · MISERICORDIA DI ARICCIA";
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body::before { left: 1mm; transform: rotate(180deg); }
+  body::after { right: 1mm; }
+}

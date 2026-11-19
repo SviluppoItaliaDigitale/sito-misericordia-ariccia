@@ -31,7 +31,7 @@ python3 scripts/controlli/prova_scuole.py
 
 Se mancano le librerie: `pip install --break-system-packages playwright==1.56.0 pypdfium2==5.13.0 numpy pillow` e `python3 -m playwright install chromium`. **Mai PyMuPDF** (licenza AGPL): il repository usa pypdfium2.
 
-Lo script blocca: struttura mancante (DOCTYPE, `lang="it"`, titolo, `../comune/print.css`, canonico uguale all'indirizzo vero, `<article class="scheda">` con piè di pagina, `alt`), residui dell'importazione (indirizzi e codici della Protezione Civile, percorsi `kit-calamita`), la **sede legale** (nei contenuti operativi va sempre Viale Antonietta Chigi, 46: `CLAUDE.md` § «Sedi»), errori JavaScript, risorse 404, immagini rotte, Montserrat non caricato, un foglio bianco, un foglio quasi vuoto (sotto l'8%) e un foglio sotto il 20% seguito da un altro (sul primo resta la sola intestazione). Avvisa quando un pezzo della scheda chiede un carattere del computer invece di Montserrat.
+Lo script blocca: struttura mancante (DOCTYPE, `lang="it"`, titolo, `../comune/print.css`, canonico uguale all'indirizzo vero, `<article class="scheda">` con piè di pagina, `alt`), residui dell'importazione (indirizzi e codici della Protezione Civile, percorsi `kit-calamita`), la **sede legale** (nei contenuti operativi va sempre Viale Antonietta Chigi, 46: `CLAUDE.md` § «Sedi»), errori JavaScript, risorse 404, immagini rotte, Montserrat non caricato, la cornice di microtesto assente su un lato di un foglio o toccata da un testo, un foglio bianco, un foglio quasi vuoto (sotto l'8%) e un foglio sotto il 20% seguito da un altro (sul primo resta la sola intestazione). Avvisa quando un pezzo della scheda chiede un carattere del computer invece di Montserrat.
 
 **Come si corregge un foglio quasi vuoto** (in quest'ordine, ogni correzione con il commento `/* controllo fogli di stampa, GG/MM/AAAA: motivo */` nella scheda):
 1. la scala di stampa della sola scheda, `@media print{.scheda{zoom:0.9x}}`, al massimo del 12% (fino a 0,88). Se la scheda ha già un suo `zoom`, si cambia quel valore, non se ne aggiunge un altro dopo: l'ultimo vince. La paginazione non è monotona: prova più valori, anche più grandi di quello attuale;
@@ -46,6 +46,7 @@ Non si cambia `comune/print.css` per una scheda sola: il 19/11/2026 un cambio gl
 ### 1. Struttura e intestazione
 - Intestazione del kit nazionale: triangolo delle Misericordie (`/kit/comune/triangolo-misericordie.png`, file originale, mai modificato), «Misericordia di Ariccia» e «Confraternita di Misericordia di Ariccia ODV», etichetta del kit. Pulsanti «Stampa A4» e «Indice» con `no-print`.
 - Piè di pagina con nome della scheda, fonti e la riga «www.misericordia-ariccia.it · adattato da materiali della Protezione Civile di Genzano di Roma, CC BY-NC-SA 4.0» dove la scheda viene dal kit della PC: l'attribuzione è un obbligo della licenza, non va tolta.
+- **Cornice di microtesto** su ogni foglio (in fondo a `comune/print.css`, regola `grafica.md` del 21/10/2026): non si toglie e non si copre; una scheda con `@page { margin: 0 }` la disegna da sé (`scripts/kit/LEGGIMI.md`).
 - Recapiti: quelli della Misericordia (`hugo.toml`, `site.Params`), mai quelli della PC; nei contenuti operativi la sede di Viale Antonietta Chigi, 46.
 
 ### 2. Immagini

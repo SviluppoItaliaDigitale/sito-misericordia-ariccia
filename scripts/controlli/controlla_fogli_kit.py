@@ -19,6 +19,8 @@ Bloccante (exit 1), per ogni scheda:
   - Montserrat (il carattere del kit nazionale, in comune/) non caricato;
   - foglio completamente bianco, in qualunque posizione;
   - foglio quasi vuoto (meno dell'8% dell'altezza con qualcosa stampato) quando i fogli sono più di uno;
+  - cornice di microtesto (comune/print.css, dal 19/11/2026) assente su un lato di un foglio, o toccata da un
+    testo della scheda; la misura dei fogli ignora i bordi, dove la cornice corre;
   - foglio sotto il 20% seguito da un altro: di solito sul primo resta la sola intestazione e un riquadro che non si
     spezza passa tutto al foglio dopo (trovato il 19/11/2026 in tre schede).
 Avviso (non blocca): un pezzo della scheda che chiede un carattere del computer (URW Gothic, Century Gothic, Arial…)
@@ -103,16 +105,45 @@ def controlli_testo(rel: str, html: str) -> tuple[list[str], list[str]]:
     return err, sorted(set(avv))
 
 
-def riempimento(pdf: bytes) -> list[float]:
+MM = 72 / 25.4                       # punti PDF in un millimetro
+BORDO_MM = 7.5                       # la misura dei fogli ignora i bordi, dove corre la cornice di microtesto
+STRISCIA_MM = (3.5, 7.5)             # dove sta la cornice, dal bordo del foglio: in alto e in basso al centro del margine
+                                     # di 9 mm, sui lati a 4 + 1 mm (4 mm sulla scheda a foglio fisso)
+CORNICE = "graficadellaConfraternitadi"   # pezzo della cornice che ogni lato deve portare intero
+
+
+def compatto(s: str) -> str:
+    return re.sub(r"\s+", "", s)
+
+
+def fogli_pdf(pdf: bytes) -> tuple[list[float], list[str]]:
+    """Per ogni foglio la frazione dell'altezza con qualcosa stampato (bordi esclusi) e i difetti della cornice."""
     import numpy as np
     import pypdfium2 as pdfium
     doc = pdfium.PdfDocument(pdf)
-    esiti = []
+    esiti, cornice = [], []
+    testo_cornice = compatto("MISERICORDIA DI ARICCIA · www.misericordia-ariccia.it · grafica della Confraternita di "
+                             "Misericordia di Ariccia ODV · © 2026 · ") * 4
     for i in range(len(doc)):
-        img = np.asarray(doc[i].render(scale=30 / 72, grayscale=True).to_pil().convert("L"))
-        esiti.append(float((img.min(axis=1) < 235).sum()) / img.shape[0])
+        pag = doc[i]
+        img = np.asarray(pag.render(scale=30 / 72, grayscale=True).to_pil().convert("L"))
+        b = round(BORDO_MM * 30 / 25.4)
+        interno = img[b:-b, b:-b]
+        esiti.append(float((interno.min(axis=1) < 235).sum()) / img.shape[0])
+        w, h = pag.get_size()
+        a, z = STRISCIA_MM[0] * MM, STRISCIA_MM[1] * MM
+        tp = pag.get_textpage()
+        lati = {"in alto": (z, h - z, w - z, h - a), "in basso": (z, a, w - z, z),
+                "a sinistra": (a, z, z, h - z), "a destra": (w - z, z, w - a, h - z)}
+        for lato, (x0, y0, x1, y1) in lati.items():
+            dentro = compatto(tp.get_text_bounded(left=x0, bottom=y0, right=x1, top=y1))
+            if CORNICE not in dentro:
+                cornice.append(f"foglio {i + 1}: manca la cornice di microtesto {lato}")
+            elif dentro not in testo_cornice and dentro[::-1] not in testo_cornice:
+                cornice.append(f"foglio {i + 1}: un testo della scheda tocca la cornice {lato}")
+        tp.close()
     doc.close()
-    return esiti
+    return esiti, cornice
 
 
 def avvia_server(radice: Path) -> tuple[http.server.ThreadingHTTPServer, int]:
@@ -142,7 +173,8 @@ async def stampa(browser, porta: int, rel: str, png: Path | None, sem) -> tuple[
             pdf = await pagina.pdf(format="A4", prefer_css_page_size=True, print_background=True)
         finally:
             await pagina.close()
-        fogli = riempimento(pdf)
+        fogli, difetti_cornice = fogli_pdf(pdf)
+        err += difetti_cornice
         if png:
             import pypdfium2 as pdfium
             doc = pdfium.PdfDocument(pdf)
@@ -216,6 +248,10 @@ def autotest() -> int:
         "sfora.html": ('<div style="height:270mm"></div>', ["quasi vuoto"]),
         "salta.html": ('<div style="height:45mm;border:1px solid #000"></div>'
                        '<div style="height:235mm;break-inside:avoid;border:1px solid #000"></div>', ["blocco dopo"]),
+        "tocca.html": ('<p style="position:fixed;top:60mm;left:0;margin:0;font-size:6pt;writing-mode:vertical-rl">'
+                       'scritta sopra la cornice</p>', ["tocca la cornice a sinistra"]),
+        "senza-cornice.html": ('<style>@page{@bottom-center{content:none}}</style><p>Testo.</p>',
+                               ["manca la cornice di microtesto in basso"]),
         "residui.html": ('<img src="../comune/triangolo-misericordie.png"><p>protezionecivilegenzano.it, '
                          'via Beata Rosa Venerini</p><img src="manca.png" alt="x">',
                          ["immagine senza alt", "residuo", "sede legale", "risorsa 404"]),

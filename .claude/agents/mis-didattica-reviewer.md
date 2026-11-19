@@ -70,7 +70,7 @@ hugo --minify -d /tmp/pub && python3 scripts/controlli/controlla_sito.py /tmp/pu
 
 ## 6. Forma, licenze, sede
 
-- `lang="it"`, un `<h1>`, `alt` su ogni immagine, intestazione del kit nazionale con il triangolo originale e «Misericordia di Ariccia».
+- `lang="it"`, un `<h1>`, `alt` su ogni immagine, intestazione del kit nazionale con il triangolo originale e «Misericordia di Ariccia», cornice di microtesto in stampa (lo controlla `controlla_fogli_kit.py`).
 - Attribuzioni: «adattato da materiali della Protezione Civile di Genzano di Roma, CC BY-NC-SA 4.0» sulle schede che ne derivano; ARASAAC CC BY-NC-SA 4.0 dove ci sono pittogrammi; ISO 7010 per i segnali.
 - Sede operativa **Viale Antonietta Chigi, 46 — Ariccia**; la sede legale mai (`CLAUDE.md` § «Sedi»). «Ariccia» sempre così, in ogni lingua (anche nel frasario multilingue).
 - Niente nomi di persone reali (alunni, assistiti, famiglie); niente conteggi d'inventario («24 schede»); niente nomi di strumenti (`firma-dei-lavori.md`).
