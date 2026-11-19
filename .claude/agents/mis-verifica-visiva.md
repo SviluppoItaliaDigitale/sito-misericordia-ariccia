@@ -46,6 +46,7 @@ Per i materiali per le scuole le anteprime le fa `python3 scripts/scuole/rendi_p
 - **scritte dentro i disegni SVG** (cerchi, etichette, legende) che escono dal loro spazio: succede quando cambia il carattere (dal 19/11/2026 tutte le schede usano Montserrat, più largo dei caratteri di sistema di prima);
 - immagini giganti, deformate, fuori dal riquadro o mancanti;
 - contrasto: testo grigio o blu su blu è un difetto; calcola il rapporto, non giudicare a occhio;
+- **cornice di microtesto** ai quattro bordi di ogni foglio stampato, intera, leggera e che non tocca nulla (ingrandisci un angolo a 400 dpi per leggerla);
 - elementi che devono esserci: intestazione del kit nazionale (triangolo originale, «Misericordia di Ariccia», «Confraternita di Misericordia di Ariccia ODV», etichetta del kit), avvertenze per l'adulto, soluzioni capovolte, piè di pagina con attribuzione e fonti;
 - **stampa**: la scheda sta nei fogli previsti, sul primo foglio non resta la sola intestazione, sull'ultimo non resta il solo piè di pagina, pulsanti nascosti, nota e disegno sullo stesso foglio, pittogrammi ISO 7010 nei loro colori;
 - mobile a 375 px: niente scorrimento orizzontale, pulsanti «Stampa A4» e «Indice» che non coprono il titolo;

@@ -55,7 +55,7 @@ aggiunge la sua forma all'elenco, con i suoi esempi in `scripts/controlli/prova_
 prova con un server locale i tentativi sulle fonti delle letture (`scarica()` in
 `scripts/liturgia_cei.py`: 403, connessione chiusa, 404), usati da Liturgia del giorno e
 Parola della domenica.
-Dal 19/11/2026 le **schede dei kit per le emergenze** (`static/kit/`) hanno la loro prova di stampa: `scripts/controlli/controlla_fogli_kit.py` le stampa con Chromium in A4 e blocca fogli bianchi o quasi vuoti, struttura, residui dell'importazione dalla Protezione Civile, sede legale, risorse e Montserrat (job `fogli-kit` sulle PR che toccano il kit). La usano gli agenti `mis-print-card-qa`, `mis-didattica-reviewer`, `mis-verifica-visiva` e `mis-integrita-tecnica` (`.claude/agents/`), da invocare su ogni scheda o materiale per le scuole nuovo o cambiato; guida del kit in `scripts/kit/LEGGIMI.md`.
+Dal 19/11/2026 le **schede dei kit per le emergenze** (`static/kit/`) hanno la loro prova di stampa: `scripts/controlli/controlla_fogli_kit.py` le stampa con Chromium in A4 e blocca fogli bianchi o quasi vuoti, cornice di microtesto assente o toccata (in fondo a `static/kit/comune/print.css`, dal 19/11/2026), struttura, residui dell'importazione dalla Protezione Civile, sede legale, risorse e Montserrat (job `fogli-kit` sulle PR che toccano il kit). La usano gli agenti `mis-print-card-qa`, `mis-didattica-reviewer`, `mis-verifica-visiva` e `mis-integrita-tecnica` (`.claude/agents/`), da invocare su ogni scheda o materiale per le scuole nuovo o cambiato; guida del kit in `scripts/kit/LEGGIMI.md`.
 `.htaccess` ha una **CSP in sola osservazione** con gli hash degli script inline: se si
 cambia uno script inline, ricalcolarli (`hugo --minify` poi `controlla_sito.py public --csp`).
 
