@@ -21,7 +21,7 @@
         <p class="mb-1">Confraternita di Misericordia di Ariccia ODV</p>
         {{ $pre := cond $en "+39 " "" }}
         <p class="mb-1"><strong>{{ cond $en "Operations base:" "Sede operativa:" }}</strong> {{ site.Params.sedeOperativa }}<br>{{ cond $en "Phone" "Tel." }} <a href="tel:+39{{ replace site.Params.telefonoFisso " " "" }}">{{ $pre }}{{ site.Params.telefonoFisso }}</a> · {{ cond $en "Mobile" "Cell." }} <a href="tel:+39{{ replace site.Params.telefono " " "" }}">{{ $pre }}{{ site.Params.telefono }}</a></p>
-        <p class="mb-1"><strong>{{ cond $en "Administrative office:" "Sede amministrativa:" }}</strong> {{ site.Params.sedeAmministrativa }}<br>{{ cond $en "Administration and Civil Service:" "Amministrazione e Servizio Civile:" }} <a href="tel:+39{{ replace site.Params.telefonoInfo " " "" }}">{{ $pre }}{{ site.Params.telefonoInfo }}</a></p>
+        <p class="mb-1"><strong>{{ cond $en "Administrative office:" "Sede amministrativa:" }}</strong> {{ site.Params.sedeAmministrativa }}<br>{{ cond $en "Administration, courses and training:" "Amministrazione, corsi e formazione:" }} <a href="tel:+39{{ replace site.Params.telefonoInfo " " "" }}">{{ $pre }}{{ site.Params.telefonoInfo }}</a> · {{ cond $en "Landline" "Fisso" }} <a href="tel:+39{{ replace site.Params.telefonoFisso " " "" }}">{{ $pre }}{{ site.Params.telefonoFisso }}</a></p>
         <p class="mb-1"><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
         <p class="mb-0">PEC: <a href="mailto:{{ site.Params.pec }}">{{ site.Params.pec }}</a></p>
       </div>

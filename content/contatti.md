@@ -5,9 +5,8 @@ description: "Sedi e recapiti della Misericordia di Ariccia: telefono 06 933 371
 italianoSemplice: |
   **Come contattare la Misericordia di Ariccia.**
 
-  - Ufficio (sede operativa): **06 933 3717**
-  - Servizi e trasporti: **348 4068657** (anche WhatsApp)
-  - Amministrazione e iscrizioni: **328 8105399**
+  - Ambulanze, trasporti e servizi: **348 4068657** (anche WhatsApp)
+  - Amministrazione, corsi, formazione e iscrizioni: **328 8105399** e il fisso **06 933 3717**
   - Email: **sede@misericordia-ariccia.it**
 
   Sede operativa: Piazzale Aldo Moro 6, Ariccia.
@@ -32,10 +31,8 @@ italianoSemplice: |
 
 ## Come contattarci
 
-- **Amministrazione e Servizio Civile:** cell. [328 8105399](tel:+393288105399)
-- **Iscrizioni (diventa volontario):** cell. [328 8105399](tel:+393288105399)
-- **Per i servizi (trasporti, richieste di aiuto):** cell. [348 4068657](tel:+393484068657) — anche [WhatsApp](https://wa.me/393484068657)
-- **Telefono fisso (sede operativa):** [06 933 3717](tel:+39069333717)
+- **Amministrazione, corsi, formazione, iscrizioni e Servizio Civile** (tutto ciò che non riguarda ambulanze e trasporti): cell. [328 8105399](tel:+393288105399) · telefono fisso [06 933 3717](tel:+39069333717)
+- **Ambulanze, trasporti e richieste di aiuto:** cell. [348 4068657](tel:+393484068657) — anche [WhatsApp](https://wa.me/393484068657)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 - **PEC:** [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
 

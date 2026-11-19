@@ -22,9 +22,8 @@ weight: 80
 
 ## How to reach us
 
-- **Office (landline):** [+39 06 933 3717](tel:+39069333717)
-- **Services & transport (also WhatsApp):** [+39 348 4068657](tel:+393484068657)
-- **Administration & registrations:** [+39 328 8105399](tel:+393288105399)
+- **Administration, courses, training, registrations and Civil Service** (everything except ambulances and transport): mobile [+39 328 8105399](tel:+393288105399) · landline [+39 06 933 3717](tel:+39069333717)
+- **Ambulances, transport and requests for help (also WhatsApp):** [+39 348 4068657](tel:+393484068657)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it)
 - **Certified email (PEC):** misericordia-ariccia@pec.misericordia-ariccia.it
 
