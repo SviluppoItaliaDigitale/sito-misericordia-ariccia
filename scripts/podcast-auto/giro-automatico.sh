@@ -24,6 +24,13 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
 export DISPLAY="${DISPLAY:-:0}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
 export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+# Con GNOME su Wayland Chrome vuole anche l'autorizzazione di Xwayland, che cambia nome a ogni
+# avvio del PC (19/11/2026: da SSH Chrome non partiva, «Missing X server or $DISPLAY»).
+if [ -z "${XAUTHORITY:-}" ]; then
+  XAUTHORITY=$(ls -t "$XDG_RUNTIME_DIR"/.mutter-Xwaylandauth.* 2>/dev/null | head -1 || true)
+  [ -n "$XAUTHORITY" ] && export XAUTHORITY
+fi
 
 # Un solo giro della Misericordia alla volta.
 exec 9>"$LAVORO/.giro.lock"
