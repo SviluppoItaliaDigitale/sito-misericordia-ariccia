@@ -5,7 +5,7 @@ date: 2026-10-02
 slug: "primo-soccorso-10-cose"
 description: "Ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico: le 10 cose di primo soccorso da sapere, secondo le linee guida IRC 2025 e le altre fonti ufficiali citate nell'articolo."
 immagine: "/img/news/primo-soccorso-10-cose-grafica.jpg"
-social_testo: "🩺 10 cose di primo soccorso che possono salvare una vita, in 90 secondi: ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico. Secondo le linee guida IRC 2025 e le altre fonti ufficiali citate sul sito. 📞 In ogni emergenza chiama il 112. Vuoi imparare davvero? Vieni ai nostri corsi di primo soccorso e BLSD: 348 4068657."
+social_testo: "🩺 10 cose di primo soccorso che possono salvare una vita, in 90 secondi: ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico. Secondo le linee guida IRC 2025 e le altre fonti ufficiali citate sul sito. 📞 In ogni emergenza chiama il 112. Vuoi imparare davvero? Vieni ai nostri corsi di primo soccorso e BLSD: 328 8105399."
 italianoSemplice: |
   **Ecco 10 consigli di primo soccorso.**
 
@@ -41,7 +41,7 @@ Queste sono informazioni generali: **non sostituiscono un corso**. Il modo migli
 
 ## Impara con noi
 
-Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti, anche per aziende, scuole e associazioni. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti, anche per aziende, scuole e associazioni. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

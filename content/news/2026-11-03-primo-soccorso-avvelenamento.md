@@ -8,7 +8,7 @@ description: "Perché non far vomitare né dare latte, i numeri dei Centri Antiv
 immagine: "/img/news/primo-soccorso-avvelenamento-grafica.jpg"
 social_video: "/video/primo-soccorso-avvelenamento.mp4"
 social_video_copertina: 1
-social_testo: "🩺 Primo soccorso passo passo · 9/10 — Avvelenamento. Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 348 4068657."
+social_testo: "🩺 Primo soccorso passo passo · 9/10 — Avvelenamento. Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa. 📞 In ogni emergenza chiama il 112. Tutte le schede nel nostro dossier sul sito; per imparare davvero, vieni ai corsi di primo soccorso e BLSD: 328 8105399."
 italianoSemplice: |
   **Avvelenamento: un video con i disegni che spiega cosa fare, passo dopo passo.**
 
@@ -67,7 +67,7 @@ Trovi la scheda, insieme alle altre, nel dossier **[Primo soccorso passo passo](
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

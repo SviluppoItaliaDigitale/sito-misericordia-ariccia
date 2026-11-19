@@ -40,7 +40,7 @@ def passi(v):
 for i, (k, data) in enumerate(CAL, 1):
     v = contenuti.V[k]; tit, desc = EXTRA[k]; dur = fmt(durata(REPO/f'static/video/primo-soccorso-{k}.mp4'))
     extra = ("\n\n**Nel video c'è la simulazione delle compressioni a tempo:** 110 al minuto, con il conteggio da 1 a 30 e la musica allo stesso ritmo." if k == 'rianimazione-bambino' else '')
-    social = f"🩺 Primo soccorso passo passo · 2ª serie {i}/13 — {v['nome']}. {desc} 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 348 4068657."
+    social = f"🩺 Primo soccorso passo passo · 2ª serie {i}/13 — {v['nome']}. {desc} 📞 In ogni emergenza chiama il 112. Per imparare davvero, vieni ai corsi di primo soccorso, BLSD e P-BLSD: 328 8105399."
     testo = f'''---
 title: "{tit}"
 titoloSeo: "{v['nome']}: cosa fare passo passo (linee guida ERC/IRC 2025)"
@@ -73,7 +73,7 @@ Trovi la scheda riassuntiva, insieme alle altre 22, nel dossier **[Primo soccors
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**.
+Queste sono informazioni generali e **non sostituiscono un corso**: le manovre si imparano davvero provando, con un istruttore accanto. Organizziamo [corsi di primo soccorso, BLSD e P-BLSD](/servizi/formazione/) aperti a tutti. Per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 

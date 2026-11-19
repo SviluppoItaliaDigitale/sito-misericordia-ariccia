@@ -27,6 +27,13 @@ CASI = [  # (testo, deve essere segnalato)
     ("Chiama lo 06." + "8772" + "9139", True),
     ("06 8772" + "9139", True),
     ("Sede 06 933 3717, servizi 348 4068657", False),
+    # corsi al 328 8105399, non al 348 dei servizi (19/11/2026)
+    ("Organizziamo corsi aperti a tutti. Chiama o scrivi su WhatsApp al **[348 " + "4068657](tel:+39" + "348" + "4068657)**.", True),
+    ("vieni ai corsi di primo soccorso e BLSD: 348 " + "4068657.", True),
+    ("Want to be ready? We run courses: call **+39 348 " + "4068657**.", True),
+    ("vieni ai corsi di primo soccorso e BLSD: 328 8105399.", False),
+    ("Corsi aperti a tutti, poi in squadra agli eventi. WhatsApp 348 " + "4068657", False),
+    ("ti diciamo quando parte il prossimo corso. Scrivi VOLONTARIO al 348 " + "4068657", False),
     ("Che " + "Dio ve ne " + MOTTO, True),
     ("che " + "dio te ne " + MOTTO, True),
     ("Che " + "Dio gliene " + MOTTO, True),

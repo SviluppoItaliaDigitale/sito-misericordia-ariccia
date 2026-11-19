@@ -55,7 +55,7 @@ E a casa tua, i detersivi sono fuori portata?
 
 ## Impara con noi
 
-Queste sono informazioni generali e **non sostituiscono un corso**. Organizziamo [corsi di primo soccorso e di uso del defibrillatore (BLSD e P-BLSD)](/servizi/formazione/) aperti a tutti: chiama o scrivi su WhatsApp al **[+39 348 4068657](tel:+393484068657)**. Altri consigli nella scheda sull'avvelenamento del dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#avvelenamento)**.
+Queste sono informazioni generali e **non sostituiscono un corso**. Organizziamo [corsi di primo soccorso e di uso del defibrillatore (BLSD e P-BLSD)](/servizi/formazione/) aperti a tutti: per informazioni e iscrizioni chiama il **[328 8105399](tel:+393288105399)** o il fisso **[06 933 3717](tel:+39069333717)**. Altri consigli nella scheda sull'avvelenamento del dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/#avvelenamento)**.
 
 **In ogni emergenza, chiama sempre il [112](tel:112).**
 
