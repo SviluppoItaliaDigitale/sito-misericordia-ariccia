@@ -134,6 +134,10 @@ Una puntata alla volta: si chiude fino alla messa in calendario prima di cominci
    (il player carica l'audio) e controllo del feed `/podcast/index.xml`.
 8. **Resoconto** ad Alessandro con notifica: puntata in calendario (link e data) o scartata (motivo).
 
+## Senza il PC (riserva, dal 19/11/2026)
+
+`copione.py` fa una puntata da un copione scritto a mano (`copione.txt`, righe «A:» e «B:») solo con le frasi di `fonte.md`: `copione.py testi ID` prepara i testi per le voci ElevenLabs Luca e Daniela, `copione.py monta ID A.mp3 B.mp3` li divide e li rimonta; senza crediti `copione.py locale ID` usa le voci gratuite Kokoro «Nicola» e Piper «Paola». Poi i passi 3-8 come sopra. Il metodo principale resta NotebookLM.
+
 ## La coda
 
 `coda.yaml`: 20 puntate, i quattro temi alternati (primo soccorso, chi siamo e servizi, kit e
