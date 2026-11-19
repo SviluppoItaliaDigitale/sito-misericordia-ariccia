@@ -162,6 +162,7 @@ Istruzione di Alessandro: *«Quella è la sede legale!! NON VA MAI MENZIONATA NE
 Istruzione di Alessandro: il **328 8105399** è il numero dell'amministrazione e si affianca al fisso **06 933 3717**.
 - **Corsi, formazione, amministrazione e ogni attività che non riguarda ambulanze e auto speciali** (iscrizioni, Servizio Civile, eventi formativi, locandine dei corsi): **328 8105399**, con accanto il fisso 06 933 3717 (`site.Params.telefonoInfo` e `telefonoFisso`).
 - **Ambulanze, auto speciali, trasporti, assistenza agli eventi e richieste di aiuto**: **348 4068657** (anche WhatsApp, `site.Params.telefono`).
+- I 33 video della rubrica già montati restano con il 348 nella scheda finale (scelta di Alessandro, 19/11/2026: «Lasciali così»); i video nuovi hanno il 328.
 - Un invito ai corsi con il 348 lo blocca `FORME_SBAGLIATE` in `controlla_sito.py` (prova in `prova_forme.py`).
 - Resta com'è l'invito della campagna volontari («Scrivi VOLONTARIO su WhatsApp al 348 4068657»). Registro: `tel-amministrazione`, `tel-fisso`, `tel-servizi` in `data/dati_da_verificare.yaml`.
 
