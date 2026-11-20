@@ -5,8 +5,6 @@ date: 2026-11-21
 canale: "approfondimenti"
 slug: "rianimazione-come-funziona"
 controllo_editoriale: "2026-11-20"
-# Bloccata il 20/11/2026: correzioni della revisione sanitaria (placche del DAE più leggibili, due frasi). Si toglie quando il video corretto è online.
-draft: true
 description: "Un video in 3D con l'anatomia vera: il giro del sangue, che cosa succede nell'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello."
 immagine: "/img/news/2026-11-21-rianimazione-come-funziona-grafica.jpg"
 social_video: "/video/rianimazione-come-funziona-verticale.mp4"
@@ -31,7 +29,7 @@ italianoSemplice: |
 
 Che cosa succede davvero quando qualcuno fa il massaggio cardiaco? Lo abbiamo chiesto all'anatomia vera: in questo video **in tre dimensioni** il corpo, il cuore, le arterie e le vene vengono da un atlante ricostruito dalle risonanze di una persona reale. Si vedono il cuore che batte, il **giro del sangue**, che cosa cambia nell'**arresto cardiaco** e perché le **compressioni sul torace** fanno il lavoro del cuore.
 
-{{< video src="video/rianimazione-come-funziona-verticale.mp4" poster="img/video/rianimazione-come-funziona-verticale.jpg" verticale="si" titolo="Rianimazione: come funziona, in 3D" durata="PT2M25S" descrizione="Il giro del sangue, l'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello, secondo le linee guida IRC 2025." data="2026-11-21" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). È uno schema: le proporzioni non sono in scala." >}}
+{{< video src="video/rianimazione-come-funziona-verticale.mp4" poster="img/video/rianimazione-come-funziona-verticale.jpg" verticale="si" titolo="Rianimazione: come funziona, in 3D" durata="PT2M26S" descrizione="Il giro del sangue, l'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello, secondo le linee guida IRC 2025." data="2026-11-21" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). È uno schema: le proporzioni non sono in scala." >}}
 
 ## Il cuore è una pompa
 
@@ -47,7 +45,7 @@ Premendo **al centro del torace**, di **5-6 centimetri**, il torace si abbassa e
 
 ## Il defibrillatore
 
-Il **DAE** serve a far ripartire il cuore: la scarica ferma il tremito. Se il ritmo si può trattare con la scarica, **ogni minuto di ritardo** riduce dal 3 al 6% la probabilità di sopravvivere. Appena arriva, si accende e si seguono le sue istruzioni; dopo la scarica si riprendono subito le compressioni. Tutti i passi sono nella scheda [Defibrillatore](/dossier/primo-soccorso/#dae) del nostro dossier.
+Il **DAE** serve a fermare il tremito: così il cuore può ripartire con un battito efficace. Se il ritmo si può trattare con la scarica, **ogni minuto di ritardo** riduce dal 3 al 6% la probabilità di sopravvivere. Appena arriva, si accende e si seguono le sue istruzioni; dopo la scarica si riprendono subito le compressioni. Tutti i passi sono nella scheda [Defibrillatore](/dossier/primo-soccorso/#dae) del nostro dossier.
 
 ## E se una costola si rompe?
 
