@@ -35,6 +35,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
+          # la shell parte con -e: senza set +e l'uscita 1 (magazzino basso) fermava il passo
+          # prima di aprire la issue
+          set +e
           set -uo pipefail
           TZ=Europe/Rome python3 scripts/podcast-auto/controlla-magazzino.py --minimo 2 --corpo /tmp/podcast.txt
           esito=$?
