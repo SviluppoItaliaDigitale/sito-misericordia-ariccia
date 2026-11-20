@@ -90,6 +90,10 @@ def main() -> int:
                     vicine.append(" ".join(prima + [m.group(0)]))
                 if any(re.search(r"\b" + re.escape(v).replace(r"\ ", r"\W+") + r"\b", fonte) for v in vicine if " " in v):
                     continue
+                # Documenti storici («il documento è del 1321»): un anno delle fonti entro 20 parole.
+                seguito = " ".join(re.findall(r"[\w']+", testo[m.end():m.end() + 160])[:20])
+                if any(a in fonte for a in re.findall(r"\b1[0-9]{3}\b|\b20[0-9]{2}\b", seguito)):
+                    continue
             problemi.append(f"parola vietata «{m.group(0)}»: …{contesto(m)}…")
     for pat in ASSOLUTE:
         n_t, n_f = len(re.findall(pat, testo)), len(re.findall(pat, fonte))
@@ -107,6 +111,10 @@ def main() -> int:
         num = re.sub(r"[ .\-]", "", m.group(0))
         if re.fullmatch(r"(112)+", num) or num in numeri_fonte:
             continue
+        secoli = {"200": "duecento", "300": "trecento", "400": "quattrocento", "500": "cinquecento",
+                  "600": "seicento", "700": "settecento", "800": "ottocento", "900": "novecento"}
+        if num in secoli and secoli[num] in fonte:
+            continue
         # «25-26 gradi», «da 5 a 7»: ogni pezzo deve stare nelle fonti.
         pezzi = re.findall(r"\d+", m.group(0))
         if len(pezzi) > 1 and all(x in numeri_fonte or x == "112" for x in pezzi):
@@ -117,6 +125,8 @@ def main() -> int:
     # spazi o punti) è vietato, anche se sta nelle fonti; resta solo il 112.
     for m in re.finditer(r"(?<![\d,])\d{2,}(?:[ .]\d{2,})*(?![\d,])", testo):
         num = re.sub(r"[ .]", "", m.group(0))
+        if re.fullmatch(r"\d{1,3}(\.\d{3})+", m.group(0).strip()):
+            continue  # quantità («670.000 iscritti»): il controllo dei numeri sopra vuole che stia nelle fonti
         if len(num) >= 6 and not re.fullmatch(r"(112)+", num):
             problemi.append(f"numero di telefono diverso dal 112 «{m.group(0).strip()}»: …{contesto(m)}…")
     avvisi = [f"da guardare a mano «{m.group(0)}»: …{contesto(m)}…"
