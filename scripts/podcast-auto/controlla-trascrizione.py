@@ -24,10 +24,20 @@ VIETATE = [
     r"\bnotebook", r"intelligenza artificiale", r"\bgarantit", r"in assoluto",
     r"per nessun motivo", r"caratteri cubitali", r"\bmateriali che\b",
     r"esplorazione profonda", r"\bdeep dive\b", r"\bpodcast generat",
+    # Dal 19/11/2026 (puntate chi-siamo e kit-emergenze scartate): le voci leggono le regole
+    # («il 112, che si pronuncia…») e rafforzano le cautele delle pagine.
+    r"si pronuncia", r"\brigorosamente\b", r"in alcun modo", r"\bassolutamente\b",
+    # Dal 20/11/2026 (chiamare-il-112, generazione 1): chiusa morale che le pagine non contengono.
+    r"ogni gesto conta", r"minuti cruciali", r"proteggere (le nostre|la nostra) comunit",
 ]
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
-DA_GUARDARE = [r"chiam\w* (direttamente |subito )?(la|alla) misericordia", r"misericordia in emergenza",
-               r"pronto soccorso della misericordia", r"\b118\b"]
+DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
+               r"pronto soccorso della misericordia", r"\b118\b",
+               # Dal 19/11/2026: «l'istinto spinge a…» (ictus-infarto) e i recapiti letti dalle regole.
+               r"\bistint\w*", r"\brecapit\w*",
+               # Dal 20/11/2026: le condizioni si perdono («non dare farmaci» senza «se non te lo dice
+               # l'operatore»; «la posizione arriva in automatico» senza «se chiami da un cellulare»).
+               r"\bfarmac\w*", r"posizione arriva"]
 # Parole assolute: ammesse solo se presenti anche nelle fonti.
 ASSOLUTE = [r"\bsempre\b", r"\bmai\b", r"\bcertamente\b", r"\binevitabilmente\b"]
 
