@@ -49,3 +49,9 @@ rilascio completo, p. 8; le compressioni mantengono la perfusione cerebrale e le
 p. 19; ogni minuto di ritardo della scarica riduce del 3-6% la sopravvivenza, p. 26; posizione delle piastre,
 p. 30) e cap. 12 «Primo soccorso» (lesioni da RCP frequenti in chi è in arresto, soprattutto fratture di costole e
 sterno; meno dell'1% di lesioni in chi non era in arresto, p. 24).
+
+## Errori da non ripetere
+- **20/11/2026, placca del DAE sul braccio.** Nel modello il braccio sinistro è disteso lungo il corpo e copre il
+  fianco: il raggio che cercava la pelle per la placca laterale prendeva il braccio. Ora il braccio si apre di circa
+  40° prima che arrivino le placche (`uAbd`, attorno alla spalla), la placca si cerca solo sui triangoli del torace e
+  `__controlli` ferma il render se la placca non è sul torace o è visibile con il braccio ancora chiuso.

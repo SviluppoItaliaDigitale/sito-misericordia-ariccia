@@ -166,11 +166,17 @@
     return G;
   }
   // Uniformi comuni: affondamento del torace, tremito, contrazione, tempo, flusso.
-  const U = { uComp: { value: 0 }, uFib: { value: 0 }, uT: { value: 0 }, uFA: { value: 0 }, uFV: { value: 0 }, uVis: { value: 1 } };
+  const U = { uAbd: { value: 0 }, uComp: { value: 0 }, uFib: { value: 0 }, uT: { value: 0 }, uFA: { value: 0 }, uFV: { value: 0 }, uVis: { value: 1 } };
   const PIANO = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 0.02);   // spaccato: si tiene x <= 0,02 m
   // Affondamento dello sterno: pesato dalla profondità (0 davanti alla colonna, 1 sullo sterno) e dalla distanza
   // dalla metà inferiore dello sterno; è lo stesso per pelle, ossa, polmoni, cuore e vasi.
+  // Braccio sinistro aperto in fuori (abduzione attorno alla spalla) prima di attaccare la placca laterale del DAE:
+  // nella posizione del modello il braccio copre il fianco sotto l'ascella, dove la placca va sul torace.
+  const SPALLA = [0.19, 1.33], LIM_BRACCIO = [0.172, 0.19, 1.27, 1.36];
   const VERT_COMP = `
+    float pesoBr = smoothstep(${LIM_BRACCIO[0]}, ${LIM_BRACCIO[1]}, transformed.x) * (1.0 - smoothstep(${LIM_BRACCIO[2]}, ${LIM_BRACCIO[3]}, transformed.y));
+    if (pesoBr > 0.0) { float ab = uAbd * pesoBr; vec2 dd = transformed.xy - vec2(${SPALLA[0]}, ${SPALLA[1]});
+      transformed.xy = vec2(${SPALLA[0]}, ${SPALLA[1]}) + vec2(dd.x * cos(ab) - dd.y * sin(ab), dd.x * sin(ab) + dd.y * cos(ab)); }
     float pesoComp = smoothstep(0.075, 0.205, transformed.z) * exp(-pow(transformed.x / 0.115, 2.0)) * exp(-pow((transformed.y - 1.205) / 0.12, 2.0));
     transformed.z -= uComp * pesoComp;`;
   function prepara(mat, o = {}) {
@@ -181,7 +187,7 @@
       sh.uniforms.uTinta = o.tinta || { value: new THREE.Color(0, 0, 0) }; sh.uniforms.uTintaK = o.tintaK || { value: 0 };
       let v = sh.vertexShader, f = sh.fragmentShader;
       v = v.replace('#include <common>', `#include <common>
-        uniform float uComp, uFib, uT, uFA, uFV, uVis; uniform float uContr; uniform vec3 uCentro;
+        uniform float uAbd, uComp, uFib, uT, uFA, uFV, uVis; uniform float uContr; uniform vec3 uCentro;
         ${o.flusso ? 'attribute float flusso; varying float vFlusso;' : ''}`);
       v = v.replace('#include <begin_vertex>', `#include <begin_vertex>
         ${o.cuore ? `transformed = uCentro + (transformed - uCentro) * (1.0 - uContr);
@@ -292,6 +298,12 @@
   const globRossi = new THREE.InstancedMesh(sferaG, matGlob(0xff5a4e), Math.max(1, nRossi)), globBlu = new THREE.InstancedMesh(sferaG, matGlob(0x6f9cff), Math.max(1, nBlu));
   for (const im of [globRossi, globBlu]) { im.frustumCulled = false; im.renderOrder = 7; dentro.add(im); }
   const _gm = new THREE.Matrix4(), _gq = new THREE.Quaternion(), _gs = new THREE.Vector3(), _gp = new THREE.Vector3();
+  function braccio(v) {                             // stessa abduzione del vertice, per i globuli
+    const w = liscia(LIM_BRACCIO[0], LIM_BRACCIO[1], v.x) * (1 - liscia(LIM_BRACCIO[2], LIM_BRACCIO[3], v.y));
+    if (w <= 0) return v;
+    const a = U.uAbd.value * w, dx = v.x - SPALLA[0], dy = v.y - SPALLA[1];
+    v.x = SPALLA[0] + dx * Math.cos(a) - dy * Math.sin(a); v.y = SPALLA[1] + dx * Math.sin(a) + dy * Math.cos(a); return v;
+  }
   function aggiornaGlobuli(f, comp, vis, raggio) {
     let kr = 0, kb = 0;
     globRossi.visible = globBlu.visible = vis > 0.01; globRossi.material.opacity = globBlu.material.opacity = vis;
@@ -303,7 +315,7 @@
         let u = ((i + 0.5) / g.n + (g.verso > 0 ? 1 : -1) * avanti / g.lung) % 1; if (u < 0) u += 1;
         const q = g.punti[Math.min(m, Math.round(u * m))];
         const w = liscia(0.075, 0.205, q.z) * Math.exp(-Math.pow(q.x / 0.115, 2)) * Math.exp(-Math.pow((q.y - 1.205) / 0.12, 2));
-        _gp.set(q.x, q.y, q.z - comp * w); _gm.compose(_gp, _gq, _gs);
+        _gp.set(q.x, q.y, q.z - comp * w); braccio(_gp); _gm.compose(_gp, _gq, _gs);
         if (g.rosso) globRossi.setMatrixAt(kr++, _gm); else globBlu.setMatrixAt(kb++, _gm);
       }
     }
@@ -331,6 +343,7 @@
     for (let i = 0; i < idx.length; i += 3) {
       a.fromBufferAttribute(pos, idx[i]); if (Math.abs(a.z - z) > 0.04 || Math.abs(a.y - y) > 0.03 || a.x < 0.05) continue;
       b.fromBufferAttribute(pos, idx[i + 1]); c.fromBufferAttribute(pos, idx[i + 2]);
+      if (Math.max(a.x, b.x, c.x) >= LIM_BRACCIO[0]) continue;               // solo il torace, non il braccio
       if (r2.intersectTriangle(a, b, c, false, q)) hits.push(q.clone());
     }
     hits.sort((p1, p2) => p2.x - p1.x);
@@ -340,7 +353,7 @@
   const xMani = 0.0, yMani = 1.195;
   const PUNTO_MANI = sullaPelle(xMani, yMani, 1);
   const PUNTO_PLACCA1 = sullaPelle(-0.062, 1.27, 1);                      // sotto la clavicola destra, accanto allo sterno
-  const PUNTO_PLACCA2 = sullaPelleLato(0.17, 1.17, 0.09);                 // fianco sinistro, linea ascellare media
+  const PUNTO_PLACCA2 = sullaPelleLato(0.17, 1.15, 0.085);                 // fianco sinistro, linea ascellare media
   // placca adesiva che segue la pelle: una griglia nel piano tangente, ogni punto proiettato sulla pelle vera
   const triPelle = (function () {
     const pos = pelleMesh.geometry.attributes.position, idx = pelleMesh.geometry.index.array, T = [];
@@ -352,7 +365,7 @@
     let best = null, bd = 1e9;
     for (const [i, j, k] of vicini) {
       a.fromBufferAttribute(triPelle.pos, i); b.fromBufferAttribute(triPelle.pos, j); c.fromBufferAttribute(triPelle.pos, k);
-      if (r.intersectTriangle(a, b, c, false, q)) { const d = q.distanceTo(o); if (d < bd) { bd = d; best = q.clone(); } }
+      if (r.intersectTriangle(a, b, c, false, q)) { const d = q.distanceTo(o); if (d < bd && d < 0.1) { bd = d; best = q.clone(); } }
     }
     return best;
   }
@@ -365,19 +378,19 @@
     }
     return n.normalize();
   }
-  function placca(centro, verso, su) {
-    const vicini = triPelle.T.filter(([i]) => { const x = triPelle.pos.getX(i) - centro.x, y = triPelle.pos.getY(i) - centro.y, z = triPelle.pos.getZ(i) - centro.z; return x * x + y * y + z * z < 0.012; });
-    let n = normaleSuperficie(centro, vicini); if (n.dot(verso) < 0) n.negate();
+  function placca(centro, verso, su, normaleFissa) {
+    const vicini = triPelle.T.filter(([i, j, k]) => Math.max(triPelle.pos.getX(i), triPelle.pos.getX(j), triPelle.pos.getX(k)) < LIM_BRACCIO[0] || centro.x < 0.1).filter(([i]) => { const x = triPelle.pos.getX(i) - centro.x, y = triPelle.pos.getY(i) - centro.y, z = triPelle.pos.getZ(i) - centro.z; return x * x + y * y + z * z < 0.012; });
+    let n = normaleFissa ? normaleFissa.clone().normalize() : normaleSuperficie(centro, vicini); if (n.dot(verso) < 0) n.negate();
     const asseY = su.clone().sub(n.clone().multiplyScalar(su.dot(n))).normalize(), asseX = new THREE.Vector3().crossVectors(asseY, n);
     const g = new THREE.Group(), mats = [];
-    for (const [w, h, r, colore, alto] of [[0.075, 0.11, 0.018, 0xf4f6fa, 0.0025], [0.047, 0.075, 0.012, 0xFCEB0C, 0.0036]]) {
+    for (const [w, h, r, colore, alto] of [[0.075, 0.11, 0.018, 0xf4f6fa, 0.0025], [0.047, 0.075, 0.012, 0xFCEB0C, 0.0045]]) {
       const geo = new THREE.PlaneGeometry(w, h, 14, 20), pos = geo.attributes.position, v = new THREE.Vector3();
       for (let i = 0; i < pos.count; i++) {
         let x = pos.getX(i), y = pos.getY(i);
         const cx = Math.sign(x) * (w / 2 - r), cy = Math.sign(y) * (h / 2 - r);       // angoli arrotondati
         if (Math.abs(x) > w / 2 - r && Math.abs(y) > h / 2 - r) { const dx = x - cx, dy = y - cy, l = Math.hypot(dx, dy); if (l > r) { x = cx + dx / l * r; y = cy + dy / l * r; } }
         v.copy(centro).addScaledVector(asseX, x).addScaledVector(asseY, y);
-        const hit = proiettaSullaPelle(v.clone().addScaledVector(n, 0.06), n.clone().negate(), vicini) || v;
+        const hit = normaleFissa ? v.clone() : (proiettaSullaPelle(v.clone().addScaledVector(n, 0.06), n.clone().negate(), vicini) || v);   // sul fianco, quasi piano, la placca resta piana
         hit.addScaledVector(n, alto); pos.setXYZ(i, hit.x, hit.y, hit.z);
       }
       geo.computeVertexNormals();
@@ -388,7 +401,7 @@
     return { g, mats };
   }
   const placche = [placca(PUNTO_PLACCA1, new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 1, 0)),
-                   placca(PUNTO_PLACCA2, new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0))];
+                   placca(PUNTO_PLACCA2, new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(1, 0, 0.2))];
   // scarica: un fascio luminoso fra le placche, attraverso il cuore
   const curvaScarica = new THREE.QuadraticBezierCurve3(PUNTO_PLACCA1.clone(), v3(P.cuore).add(new THREE.Vector3(0, 0, 0.02)), PUNTO_PLACCA2.clone());
   const scarica = new THREE.Mesh(new THREE.TubeGeometry(curvaScarica, 60, 0.006, 8, false),
@@ -446,9 +459,9 @@
     { t: 66.2, c: [0, 1.0, 0.05], az: 402, el: 36, d: 2.75, dv: 1.8 },
     { t: 74.4, az: 470, el: 30, d: 2.6, facilita: 'lineare' },              // giro lento attorno alla persona sdraiata
     { t: 79.6, az: 470, el: 30, d: 2.6 },
-    { t: 81.2, c: [0.03, 1.25, 0.12], az: 378, el: 58, d: 0.95, dv: 1.4 },
-    { t: 87.8, az: 378, el: 58, d: 0.95 },
-    { t: 93.5, az: 350, el: 50, d: 0.9, facilita: 'lineare' },
+    { t: 81.2, c: [0.05, 1.235, 0.12], az: 404, el: 48, d: 1.12, dv: 1.35 },
+    { t: 87.8, az: 404, el: 48, d: 1.12 },
+    { t: 93.5, az: 392, el: 46, d: 1.05, facilita: 'lineare' },
     { t: 95.2, c: [0.05, 1.21, 0.15], az: 388, el: 46, d: 0.55, dv: 1.3 },
     { t: 101.5, az: 388, el: 46, d: 0.55 },
     { t: 102.5, az: 374, el: 50, d: 0.6 },
@@ -519,7 +532,7 @@
   // Posizioni dei pannelli nei due formati (zona delle animazioni: orizzontale 130-850, verticale 380-1260)
   const LAY = VERT ? {
     fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
-    ecg: { x: 90, y: 1010, w: 900, h: 170 }, ecgDae: { x: 90, y: 1010, w: 900, h: 170 },
+    ecg: { x: 90, y: 1010, w: 900, h: 170 }, ecgDae: { x: 90, y: 1010, w: 440, h: 170 },
     righello: { x: 130, y0: 900, k: 60 / 0.06 * 3.0 }, metronomo: { x: 90, y: 980, w: 900, h: 200 },
     avviso: 430, dato3: { x: 90, y: 890, w: 900, h: 290 }, legenda: { x: 90, y: 318 },
     passi: i => ({ x: 120, y: 420 + i * 190, w: 840, h: 160 }), riga1: 1030, tel: 1110, sito: 1205, corpoRiga: 30
@@ -674,6 +687,7 @@
     const tr = clamp(tempo, 0, TOTAL), t = scaletta(tr);       // tr: tempo reale; t: tempo della scaletta
     U.uT.value = tr;
     const comp = profondita(tr); U.uComp.value = comp;
+    U.uAbd.value = 0.7 * morb(prog(t, 78.9, 1.3));       // circa 40 gradi
     U.uFib.value = fibrillazione(tr);
     const f = flusso(tr); U.uFA.value = f.a; U.uFV.value = f.v; U.uVis.value = vistaFlusso(tr);
     const c = contrazione(tr); contrV.value = 0.07 * c.v; contrA.value = 0.06 * c.a;
@@ -792,7 +806,12 @@
   }
 
   window.renderFrame = t => render(t);
-  window.__controlli = () => IMP.controlli(stato);
+  // Errore del 20/11/2026 (la placca laterale finiva sul braccio): la placca deve stare sul torace, non sul braccio,
+  // e il braccio deve essere aperto quando le placche sono visibili.
+  const problemiPlacche = [];
+  if (PUNTO_PLACCA2.x >= LIM_BRACCIO[0] || PUNTO_PLACCA2.x < 0.12) problemiPlacche.push({ tipo: 'placca', dettagli: 'placca laterale del DAE fuori dal torace (x = ' + PUNTO_PLACCA2.x.toFixed(3) + ')' });
+  window.__controlli = () => IMP.controlli(stato).concat(problemiPlacche)
+    .concat(placche[1].g.visible && U.uAbd.value < 0.6 ? [{ tipo: 'placca', dettagli: 'placca laterale visibile con il braccio non ancora aperto' }] : []);
   Promise.all([IMP.caricaFont(), new Promise(r => { if (stemma.complete) r(); else stemma.onload = r; })]).then(() => {
     render(0);
     esitoCornice = window.corniceSovrapposta(telaCornice, fondo);   // tono preso dal fondo blu, in ogni fotogramma
