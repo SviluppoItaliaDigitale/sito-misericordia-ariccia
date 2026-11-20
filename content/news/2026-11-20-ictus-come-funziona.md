@@ -1,7 +1,7 @@
 ---
 title: "Ictus: il tempo è cervello, in 3D"
 titoloSeo: "Ictus: come si riconosce e che cosa fare subito, video 3D"
-date: 2026-11-23
+date: 2026-11-20
 canale: "approfondimenti"
 slug: "ictus-come-funziona"
 controllo_editoriale: "2026-11-20"
@@ -27,7 +27,7 @@ italianoSemplice: |
 
 Che cosa succede nel cervello durante un ictus? In questo video **in tre dimensioni** il cervello e le sue arterie vengono da un atlante ricostruito dalle risonanze di una persona reale: si vede il sangue che sale dal cuore lungo le arterie del collo, il **coagulo** che chiude un'arteria e la parte del cervello che resta senza sangue. Poi come si riconosce l'ictus e che cosa fare subito.
 
-{{< video src="video/ictus-come-funziona-verticale.mp4" poster="img/video/ictus-come-funziona-verticale.jpg" verticale="si" titolo="Ictus: il tempo è cervello, in 3D" durata="PT2M9S" descrizione="Il coagulo che chiude un'arteria del cervello, i tre controlli viso, braccia e parola, il 112 subito e che cosa non fare in attesa dell'ambulanza." data="2026-11-23" didascalia="Il video dura poco più di due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Coagulo, emorragia e zone del cervello sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
+{{< video src="video/ictus-come-funziona-verticale.mp4" poster="img/video/ictus-come-funziona-verticale.jpg" verticale="si" titolo="Ictus: il tempo è cervello, in 3D" durata="PT2M9S" descrizione="Il coagulo che chiude un'arteria del cervello, i tre controlli viso, braccia e parola, il 112 subito e che cosa non fare in attesa dell'ambulanza." data="2026-11-20" didascalia="Il video dura poco più di due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Coagulo, emorragia e zone del cervello sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
 
 ## Che cos'è l'ictus
 
