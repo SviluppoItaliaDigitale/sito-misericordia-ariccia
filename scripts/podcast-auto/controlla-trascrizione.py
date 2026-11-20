@@ -65,7 +65,6 @@ def main() -> int:
     cartella = LAVORO / sys.argv[1]
     testo = norm((cartella / "trascrizione-grezza.txt").read_text(encoding="utf-8"))
     fonte = norm((cartella / "fonte.md").read_text(encoding="utf-8"))
-    cifre_fonte = re.sub(r"[ .\-/–]", "", fonte)
     problemi: list[str] = []
 
     def contesto(m: re.Match) -> str:
@@ -84,9 +83,18 @@ def main() -> int:
                 problemi.append(f"parola assoluta assente dalle fonti «{m.group(0)}»: …{contesto(m)}…")
     # Numeri: ogni numero di due o più cifre (anche spezzato da trattini o spazi,
     # come i telefoni) deve comparire nelle fonti. Il 112 è sempre ammesso.
+    # Dal 20/11/2026: il numero deve stare nelle fonti come numero a sé (o come gruppo intero),
+    # non come pezzo di cifre incollate: «110 compressioni al minuto» passava perché «110»
+    # compariva dentro altre cifre della pagina (rianimazione-soffocamento, generazione 1).
+    numeri_fonte = set(re.findall(r"\d+", fonte))
+    numeri_fonte |= {re.sub(r"[ .\-]", "", g) for g in re.findall(r"\d[\d .\-]*\d", fonte)}
     for m in re.finditer(r"\d[\d .\-]*\d", testo):
         num = re.sub(r"[ .\-]", "", m.group(0))
-        if re.fullmatch(r"(112)+", num) or num in cifre_fonte:
+        if re.fullmatch(r"(112)+", num) or num in numeri_fonte:
+            continue
+        # «25-26 gradi», «da 5 a 7»: ogni pezzo deve stare nelle fonti.
+        pezzi = re.findall(r"\d+", m.group(0))
+        if len(pezzi) > 1 and all(x in numeri_fonte or x == "112" for x in pezzi):
             continue
         problemi.append(f"numero assente dalle fonti «{m.group(0).strip()}»: …{contesto(m)}…")
 
