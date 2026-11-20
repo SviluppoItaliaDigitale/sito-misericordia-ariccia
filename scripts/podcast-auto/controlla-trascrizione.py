@@ -29,6 +29,8 @@ VIETATE = [
     r"si pronuncia", r"\brigorosamente\b", r"in alcun modo", r"\bassolutamente\b",
     # Dal 20/11/2026 (chiamare-il-112, generazione 1): chiusa morale che le pagine non contengono.
     r"ogni gesto conta", r"minuti cruciali", r"proteggere (le nostre|la nostra) comunit",
+    # Dal 20/11/2026 (emorragia-ustioni scartata): cautele rafforzate e reazioni attribuite.
+    r"\brigoros\w*", r"fa (davvero |proprio )?la differenza", r"\bsbirci\w*", r"\bimpuls[oi]\b",
 ]
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
 DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
@@ -37,7 +39,11 @@ DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordi
                r"\bistint\w*", r"\brecapit\w*",
                # Dal 20/11/2026: le condizioni si perdono («non dare farmaci» senza «se non te lo dice
                # l'operatore»; «la posizione arriva in automatico» senza «se chiami da un cellulare»).
-               r"\bfarmac\w*", r"posizione arriva"]
+               r"\bfarmac\w*", r"posizione arriva",
+               # Dal 20/11/2026 (emorragia-ustioni): l'ordine dei passi cambiato («la primissima cosa
+               # da fare» non era quella della scheda), esempi aggiunti («tipo un ginocchio») e
+               # «cautela obbligatoria».
+               r"\b(primissim\w*|prima) cosa\b", r"\btipo (un|una|il|la)\b", r"\bobbligatori\w*"]
 # Parole assolute: ammesse solo se presenti anche nelle fonti.
 ASSOLUTE = [r"\bsempre\b", r"\bmai\b", r"\bcertamente\b", r"\binevitabilmente\b"]
 
