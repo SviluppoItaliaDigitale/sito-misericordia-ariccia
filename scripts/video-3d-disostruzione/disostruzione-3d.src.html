@@ -55,7 +55,7 @@
   // Le scene sono scritte rispetto alle frasi (S[i] inizio, E[i] fine della frase i, in secondi veri): niente
   // scaletta da riallineare. Senza sottotitoli (provini) si usa una stima dalla lunghezza delle frasi.
   const N = 20;
-  const DOPO = [0, 1.2, 1.2, 1.6, 0.8, 1.6, 0.8, 3.6, 3.4, 1.0, 2.6, 2.6, 0.8, 1.2, 1.2, 0.8, 2.6, 2.6, 1.2, 1.2, 3.0];
+  const DOPO = [0, 1.2, 1.2, 1.6, 0.8, 1.6, 0.8, 3.6, 3.4, 1.0, 2.6, 2.6, 0.8, 1.2, 1.2, 0.8, 2.6, 2.6, 1.2, 4.6, 3.0];   // dopo la 19: scheda «Dall'anno in su»
   const S = [], E = [];
   (function () {
     const R = []; FRASI.forEach(f => { const r = f.riga; if (!R[r]) R[r] = { inizio: f.inizio, fine: f.fine }; else R[r].fine = Math.max(R[r].fine, f.fine); });
@@ -357,9 +357,9 @@
     { id: 'epi', titolo: 'Epiglottide', sotto: 'chiude la trachea', punto: [0, P.epiglottide[1] + 0.006, P.epiglottide[2]], verso: { dx: -300, dy: -150 }, versoV: { dx: -200, dy: -250 }, inizio: S[2] + 0.8, fine: E[2] + 0.9, epi: true },
     { id: 'blocco', titolo: 'Boccone nella trachea', sotto: 'l\'aria non passa', punto: null, bocc: true, verso: { dx: -320, dy: -140 }, versoV: { dx: -200, dy: -260 }, inizio: S[3] + dur(3) * 0.55, fine: E[3] + 1.4 },
     { id: 'gola', titolo: '«Stai soffocando?»', sotto: 'mani alla gola, non parla, non tossisce', punto: [0, 1.41, 0.12], verso: { dx: 300, dy: -60 }, versoV: { dx: 230, dy: 170 }, inizio: S[4] + 0.8, fine: E[4] + 0.6 },
-    { id: 'scapole', titolo: 'Fra le scapole', sotto: 'con il palmo, colpi forti', punto: [SCHIENA.x, SCHIENA.y, SCHIENA.z], verso: { dx: 300, dy: -150 }, versoV: { dx: 230, dy: 70 }, inizio: COLPI[0] - 0.4, fine: E[7] + 3.2 },
+    { id: 'scapole', titolo: 'Fra le scapole', sotto: 'con la base del palmo, colpi forti', punto: [SCHIENA.x, SCHIENA.y, SCHIENA.z], verso: { dx: 300, dy: -150 }, versoV: { dx: 230, dy: 70 }, inizio: COLPI[0] - 0.4, fine: E[7] + 3.2 },
     { id: 'pugno', titolo: 'Pugno qui', sotto: 'fra ombelico e costole', punto: [ADDOME.x, ADDOME.y, ADDOME.z], verso: { dx: -320, dy: 120 }, versoV: { dx: 230, dy: 40 }, inizio: S[8] + dur(8) * 0.3, fine: E[8] + 3.2 },
-    { id: 'diaframma', titolo: 'Diaframma', sotto: 'la spinta lo fa salire', punto: [0, 1.135, 0.12], verso: { dx: -330, dy: -40 }, versoV: { dx: -260, dy: -90 }, inizio: S[9] + 0.6, fine: E[9] + 0.6 },
+    { id: 'diaframma', titolo: 'Diaframma', sotto: 'la spinta lo fa salire', punto: [0, 1.135, 0.12], verso: { dx: -330, dy: -40 }, versoV: { dx: -200, dy: 130 }, inizio: S[9] + 0.6, fine: E[9] + 0.6 },
     { id: 'polmoni', titolo: 'L\'aria spinge', sotto: 'come un colpo di tosse', punto: [0, 1.33, 0.095], verso: { dx: 300, dy: -150 }, versoV: { dx: 220, dy: 120 }, inizio: S[9] + 2.0, fine: E[9] + 0.6 }
   ];
   const _p = new THREE.Vector3();
@@ -420,17 +420,22 @@
   const contati = (t, lista) => lista.reduce((s, t0) => s + clamp((t - t0) / 0.12), 0);
 
   // --- passo: scheda grande con il numero e l'azione, per chi non è sanitario (si legge per tutta la scena)
+  let fondoPasso = 0;                               // dove finisce la scheda del passo: il disegno del gesto va sotto
   function passo(c, alfa, n, titolo, sotto, colore = '#FCEB0C') {
     if (alfa <= 0.001) return;
-    const { x, y, w, h } = LAY.passo;
+    const nr = [].concat(sotto).length, { x, y, w } = LAY.passo, h = LAY.passo.h + (nr - 1) * (VERT ? 36 : 30);
+    fondoPasso = y + h;
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, colore);
     const r = VERT ? 46 : 40, cx = x + 22 + r, cy = y + h / 2;
     c.fillStyle = colore; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill();
     testo(c, String(n), cx, cy + r * 0.38, r * 1.1, 900, KIT.blu, 'center');
-    const tx = cx + r + 22, libero = x + w - tx - 20;
+    const tx = cx + r + 22, libero = x + w - tx - 20;   // con più righe la scheda si allunga verso il basso
     let c1 = VERT ? 42 : 34; c.font = `800 ${c1}px Montserrat`; while (c.measureText(titolo).width > libero && c1 > 24) { c1--; c.font = `800 ${c1}px Montserrat`; }
-    let c2 = VERT ? 32 : 25; c.font = `600 ${c2}px Montserrat`; while (c.measureText(sotto).width > libero && c2 > 18) { c2--; c.font = `600 ${c2}px Montserrat`; }
-    testo(c, titolo, tx, cy - 6, c1, 800, '#FFFFFF'); testo(c, sotto, tx, cy + c2 + 8, c2, 600, colore === '#FCEB0C' ? '#FCEB0C' : colore);
+    const righe = [].concat(sotto);                // una o due righe sotto il titolo
+    let c2 = VERT ? 32 : 25; c.font = `600 ${c2}px Montserrat`; while (Math.max(...righe.map(r => c.measureText(r).width)) > libero && c2 > 18) { c2--; c.font = `600 ${c2}px Montserrat`; }
+    const su = (righe.length - 1) * c2 * 0.62;
+    testo(c, titolo, tx, cy - 6 - su, c1, 800, '#FFFFFF');
+    righe.forEach((r, k) => testo(c, r, tx, cy + c2 + 8 - su + k * (c2 * 1.22), c2, 600, colore === '#FCEB0C' ? '#FCEB0C' : colore));
     c.restore();
   }
   function contaPallini(c, x, y, n, r = 20) {
@@ -455,7 +460,7 @@
   // gesti dell'adulto, visti di lato: sagome piatte (chi soccorre in azzurro, chi soffoca in bianco)
   function gestoColpi(c, alfa, t) {
     if (alfa <= 0.001) return;
-    const { x, y, w, h } = LAY.gesto;
+    const { x, w } = LAY.gesto, y = VERT ? LAY.gesto.y : Math.max(LAY.gesto.y, fondoPasso + 20), h = LAY.gesto.h - (y - LAY.gesto.y);
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
     contaPallini(c, x + w - 24 - 5 * 2.6 * 18 + 8, y + 18, contati(t, COLPI.concat(ALTERNA.filter(q => q.tipo === 'colpo').map(q => q.t))), 18);
     const s = Math.min((w - 40) / 520, (h - 70) / 380), ox = x + w / 2 + 10 * s, oy = y + h - 34;
@@ -482,29 +487,32 @@
   }
   function gestoSpinte(c, alfa, t) {
     if (alfa <= 0.001) return;
-    const { x, y, w, h } = LAY.gesto;
+    const { x, w } = LAY.gesto, y = VERT ? LAY.gesto.y : Math.max(LAY.gesto.y, fondoPasso + 20), h = LAY.gesto.h - (y - LAY.gesto.y);
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
     contaPallini(c, x + w - 24 - 5 * 2.6 * 18 + 8, y + 18, contati(t, SPINTE.concat(ALTERNA.filter(q => q.tipo === 'spinta').map(q => q.t))), 18);
     const s = Math.min((w - 40) / 520, (h - 70) / 380), ox = x + w / 2 + 20 * s, oy = y + h - 34;
     c.save(); c.translate(ox, oy); c.scale(s, s);
     capsula(c, -250, 0, 250, 0, 2, 'rgba(255,255,255,.35)');
     capsula(c, 60, -2, 56, -150, 17, SOCC); capsula(c, 56, -150, 40, -282, 26, SOCC); cerchio(c, 44, -330, 30, SOCC);  // dietro
-    capsula(c, -40, -2, -44, -150, 17, BIANCO); capsula(c, -44, -156, -84, -280, 30, BIANCO); cerchio(c, -104, -326, 30, BIANCO);  // un po' in avanti
-    capsula(c, -80, -270, -112, -190, 12, BIANCO);
-    const k = clamp(spinta(t)), px = -104 + 16 * k, py = -196 - 14 * k;                         // pugno fra ombelico e costole
+    capsula(c, -40, -2, -44, -150, 17, BIANCO); capsula(c, -44, -156, -136, -262, 30, BIANCO); cerchio(c, -172, -296, 30, BIANCO);  // inclinata in avanti
+    capsula(c, -128, -252, -160, -172, 12, BIANCO);
+    const k = clamp(spinta(t)), px = -112 + 16 * k, py = -160 - 14 * k;                         // pugno fra ombelico e costole
     capsula(c, 34, -262, -20, -214, 11, SOCC); capsula(c, -20, -214, px + 10, py + 2, 11, SOCC);
     rett(c, px - 22, py - 18, 40, 36, 12); c.fillStyle = GIALLO; c.fill();
     ovale(c, px - 4, py + 2, 26, 12, -0.2, '#fff6a0');
     freccia2d(c, px - 70, py + 54, px - 26, py + 4, GIALLO, 8);
     c.restore();
     const S2 = (px2, py2) => [ox + px2 * s, oy + py2 * s];
-    const [ax, ay] = S2(-196, -110); cartellino(c, 'in dentro e in su', ax, ay + 30, VERT ? 26 : 22);
-    const [bx, by] = S2(-150, -260); cartellino(c, 'pugno fra ombelico', bx - (VERT ? 20 : 10), by - 8, VERT ? 26 : 22, 'right');
-    cartellino(c, 'e costole', bx - (VERT ? 20 : 10), by + (VERT ? 32 : 28), VERT ? 26 : 22, 'right');
+    const [, ay] = S2(0, -150); cartellino(c, 'in dentro e in su', x + 14, ay, VERT ? 26 : 22, 'left');
+    const [ix, iy] = S2(-190, -360); cartellino(c, 'inclinata in avanti', ix, iy, VERT ? 26 : 22);
+    const [, by] = S2(0, -46); cartellino(c, 'pugno fra ombelico', x + 14, by - 8, VERT ? 26 : 22, 'left');
+    cartellino(c, 'e costole', x + 14, by + (VERT ? 32 : 28), VERT ? 26 : 22, 'left');
     c.restore();
   }
   // disegni del lattante (pittogrammi): avambraccio dell'adulto in azzurro, lattante in bianco, mani che agiscono in giallo
   function lattanteSuAvambraccio(c, supino) {
+    // gamba dell'adulto: l'avambraccio ci si appoggia (pacche); il lattante ci sta sopra a pancia in su (compressioni)
+    if (supino) capsula(c, 290, 96, -120, 96, 48, '#4FA8D6'); else capsula(c, 290, 112, -40, 112, 42, '#4FA8D6');
     capsula(c, 330, 46, -150, 46, 30, SOCC);                                    // avambraccio
     if (!supino) capsula(c, -128, -18, -146, 58, 13, BIANCO);                   // braccino che pende (dietro l'avambraccio)
     capsula(c, 330, 46, 330, 46, 30, SOCC);
@@ -546,25 +554,28 @@
     if (alfa <= 0.001) return;
     const { x, y, w, h } = LAY.schema;
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
-    titoloSchema(c, 3, '5 compressioni sul torace', 'pancia in su, testa sostenuta');
+    titoloSchema(c, 3, '5 compressioni sul torace', 'pancia in su sulle tue ginocchia, più decise che nella rianimazione');
     contaPallini(c, x + w - 34 - 5 * 2.6 * 20, y + (VERT ? 150 : 128), contati(t, POLLICI));
     const s = VERT ? 1.35 : 1.25, ox = x + w / 2 + (VERT ? -60 : 60), oy = y + h * (VERT ? 0.62 : 0.66);
     c.save(); c.translate(ox, oy); c.scale(s, s); c.rotate(-0.12);
     lattanteSuAvambraccio(c, true);
     const k = clamp(somma(t, POLLICI, 0.12, 0.25)), giu = 12 * k;
-    ovale(c, -96, -40, 70, 54, 0, 'rgba(252,235,12,.18)');                                  // le mani che circondano il torace
-    for (const dx of [-15, 15]) { c.save(); c.translate(-96 + dx, -98 + giu); rett(c, -11, -40, 22, 46, 11); c.fillStyle = GIALLO; c.fill(); c.restore(); }
-    freccia2d(c, -96, -230 + giu, -96, -150 + giu, GIALLO, 8);
+    ovale(c, -84, -40, 70, 54, 0, 'rgba(252,235,12,.18)');                                  // le mani che circondano il torace
+    for (const dx of [-15, 15]) { c.save(); c.translate(-72 + dx, -98 + giu); rett(c, -11, -40, 22, 46, 11); c.fillStyle = GIALLO; c.fill(); c.restore(); }   // metà inferiore dello sterno
+    freccia2d(c, -72, -230 + giu, -72, -150 + giu, GIALLO, 8);
     c.restore();
     const R = (px, py) => { const a = -0.12, X = px * Math.cos(a) - py * Math.sin(a), Y = px * Math.sin(a) + py * Math.cos(a); return [ox + X * s, oy + Y * s]; };
-    const [ax, ay] = R(-96, -86);
+    const [ax, ay] = R(-72, -86);
     cartellino(c, 'due pollici al centro del torace', ax + (VERT ? 140 : 330), ay + (VERT ? 330 : 200), VERT ? 28 : 24); linea(c, ax + (VERT ? 90 : 230), ay + (VERT ? 300 : 175), ax + 14, ay + 6);
+    cartellino(c, 'metà inferiore dello sterno', ax + (VERT ? 140 : 330), ay + (VERT ? 330 : 200) + (VERT ? 44 : 38), VERT ? 28 : 24);
     c.restore();
   }
   function titoloSchema(c, n, t1, t2) {
     const { x, y } = LAY.schema, r = VERT ? 40 : 34, cx = x + 30 + r, cy = y + 30 + r;
     c.fillStyle = GIALLO; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill(); testo(c, String(n), cx, cy + r * 0.38, r * 1.1, 900, KIT.blu, 'center');
-    testo(c, t1, cx + r + 20, cy - 4, VERT ? 42 : 36, 800, '#FFFFFF'); testo(c, t2, cx + r + 20, cy + (VERT ? 40 : 34), VERT ? 30 : 25, 600, GIALLO);
+    const libero = LAY.schema.x + LAY.schema.w - (cx + r + 20) - 24;
+    let c2 = VERT ? 30 : 25; c.font = `600 ${c2}px Montserrat`; while (c.measureText(t2).width > libero && c2 > 18) { c2--; c.font = `600 ${c2}px Montserrat`; }
+    testo(c, t1, cx + r + 20, cy - 4, VERT ? 42 : 36, 800, '#FFFFFF'); testo(c, t2, cx + r + 20, cy + (VERT ? 40 : 34), c2, 600, GIALLO);
   }
   function linea(c, x1, y1, x2, y2) { c.save(); c.strokeStyle = 'rgba(252,235,12,.9)'; c.lineWidth = 2.5; c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke();
     c.fillStyle = GIALLO; c.beginPath(); c.arc(x2, y2, 6, 0, 7); c.fill(); c.restore(); }
@@ -612,6 +623,20 @@
     }
     testo(c, 'in quattro: sì', cx2, cy + R + 66, VERT ? 34 : 30, 800, '#7CFFB2', 'center');
     testo(c, 'pezzi di circa mezzo centimetro', cx2, cy + R + (VERT ? 112 : 106), VERT ? 28 : 24, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+  // dopo il lattante: dall'anno in su si fa come nell'adulto (IRC 2025 cap. 9 p. 29; scheda del dossier)
+  function schemaAnno(c, alfa) {
+    if (alfa <= 0.001) return;
+    const { x, y, w, h } = LAY.schema;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
+    titoloSchema(c, '!', 'Dall\'anno in su', 'si fa come nell\'adulto');
+    const cx = x + w / 2, bw = VERT ? 400 : 380, bh = VERT ? 200 : 170, gap = VERT ? 90 : 150, y1 = y + h * (VERT ? 0.36 : 0.42);
+    const b = (bx, t1, t2) => { rett(c, bx, y1, bw, bh, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = GIALLO; c.lineWidth = 4; c.stroke();
+      testo(c, t1, bx + bw / 2, y1 + bh * 0.5, VERT ? 64 : 54, 900, GIALLO, 'center'); testo(c, t2, bx + bw / 2, y1 + bh * 0.5 + (VERT ? 52 : 44), VERT ? 26 : 24, 600, '#FFFFFF', 'center'); };
+    b(cx - gap / 2 - bw, '5', 'colpi tra le scapole'); b(cx + gap / 2, '5', 'compressioni addominali');
+    const ya = y1 + bh / 2; freccia2d(c, cx - gap / 2 + 12, ya - 20, cx + gap / 2 - 12, ya - 20, '#FFFFFF', 7); freccia2d(c, cx + gap / 2 - 12, ya + 20, cx - gap / 2 + 12, ya + 20, '#FFFFFF', 7);
+    testo(c, 'piegato in avanti, come nell\'adulto', cx, y1 + bh + (VERT ? 90 : 70), VERT ? 32 : 28, 700, '#FFFFFF', 'center');
     c.restore();
   }
   function chiusura(c, t) {
@@ -772,13 +797,13 @@
     vicino.disegna(scena, camera);
 
     // --- sovrimpressioni
-    s2.clearRect(0, 0, W, H);
+    s2.clearRect(0, 0, W, H); fondoPasso = 0;
     avviso(s2, 'L\'aria non passa', fin(t, S[3] + Math.min(2.4, dur(3) * 0.7), E[3] + 1.4, 0.3, 0.3), '#ff8a80');
     passo(s2, fin(t, S[5] - 0.2, E[5] + 1.4, 0.3, 0.3), 1, 'Tossisce?', 'incoraggiala a tossire', '#7CFFB2');
     passo(s2, fin(t, S[6] - 0.2, E[6] + 0.7, 0.3, 0.3), 2, 'Non tossisce e non parla?', 'chiama il 112 in vivavoce');
-    passo(s2, fin(t, S[7] - 0.2, E[7] + 3.2, 0.3, 0.3), 3, 'Piegala in avanti', 'fino a 5 colpi forti tra le scapole');
+    passo(s2, fin(t, S[7] - 0.2, E[7] + 3.2, 0.3, 0.3), 3, 'Piegala in avanti', ['fino a 5 colpi forti tra le scapole', 'con la base del palmo']);
     gestoColpi(s2, fin(t, S[7] + 0.2, E[7] + 3.2, 0.4, 0.3), t);
-    passo(s2, fin(t, S[8] - 0.2, E[9] + 0.6, 0.3, 0.3), 4, 'Fino a 5 compressioni addominali', 'pugno fra ombelico e costole, in dentro e in su');
+    passo(s2, fin(t, S[8] - 0.2, E[9] + 0.6, 0.3, 0.3), 4, 'Fino a 5 compressioni addominali', ['pugno fra ombelico e costole', 'tira in dentro e in su', 'persona inclinata in avanti']);
     gestoSpinte(s2, fin(t, S[8] + 0.2, E[8] + 3.2, 0.4, 0.3), t);
     passo(s2, fin(t, S[10] - 0.2, S[11] - 0.5, 0.3, 0.3), 5, 'Alterna 5 colpi e 5 compressioni', 'finché il boccone esce');
     gestoColpi(s2, fin(t, ALTERNA[0].t - 0.4, ALTERNA[2].t + 0.4, 0.25, 0.2), t);
@@ -791,6 +816,7 @@
     schemaPollici(s2, fin(t, S[17] - 0.2, E[17] + 2.4, 0.4, 0.35), t);
     schemaAlterna(s2, fin(t, S[18] - 0.2, E[18] + 1.0, 0.4, 0.35), t);
     schemaUva(s2, fin(t, S[19] - 0.2, E[19] + 1.0, 0.4, 0.35));
+    schemaAnno(s2, fin(t, E[19] + 0.9, S[20] - 0.45, 0.35, 0.3));
     chiusura(s2, t);
     testata(s2, SCENE[sceneA(t)].nome);
 
