@@ -45,7 +45,7 @@ DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordi
                # Dal 20/11/2026 (emorragia-ustioni): l'ordine dei passi cambiato («la primissima cosa
                # da fare» non era quella della scheda), esempi aggiunti («tipo un ginocchio») e
                # «cautela obbligatoria».
-               r"\b(primissim\w*|prima) cosa\b", r"\btipo (un|una|il|la)\b", r"\bobbligatori\w*"]
+               r"\b(primissim\w*|prima) cosa\b", r"\bpunt\w* (importante|fondamentale|chiave)", r"\btipo (un|una|il|la)\b", r"\bobbligatori\w*"]
 # Parole assolute: ammesse solo se presenti anche nelle fonti.
 ASSOLUTE = [r"\bsempre\b", r"\bmai\b", r"\bcertamente\b", r"\binevitabilmente\b"]
 

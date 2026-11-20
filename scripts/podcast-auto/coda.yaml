@@ -83,7 +83,11 @@ puntate:
   - content/servizi/servizi-sanitari.md
   - content/dimissioni-ospedaliere.md
   parole: []
-  stato: da-fare
+  stato: scartata
+  motivo: '20/11/2026, seconda generazione: «Un punto importante sono le dimissioni
+    ospedaliere, perché il rientro a casa viene con l''accompagnamento…», giudizio con
+    una spiegazione che le pagine non danno. La prima apriva con «c''è un avviso vitale»,
+    «il 112, detto 112» e «non si chiama mai la Misericordia».'
 - id: prevenzione-stagionale
   tema: kit-prevenzione
   titolo: 'Prevenzione stagionale: prepararsi a ogni stagione'
