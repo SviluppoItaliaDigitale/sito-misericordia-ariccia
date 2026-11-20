@@ -1,7 +1,7 @@
 ---
 title: "Rianimazione: come funziona, in 3D"
 titoloSeo: "Rianimazione cardiopolmonare: come funziona, video 3D (linee guida IRC 2025)"
-date: 2026-11-21
+date: 2026-11-20
 canale: "approfondimenti"
 slug: "rianimazione-come-funziona"
 controllo_editoriale: "2026-11-20"
@@ -29,7 +29,7 @@ italianoSemplice: |
 
 Che cosa succede davvero quando qualcuno fa il massaggio cardiaco? Lo abbiamo chiesto all'anatomia vera: in questo video **in tre dimensioni** il corpo, il cuore, le arterie e le vene vengono da un atlante ricostruito dalle risonanze di una persona reale. Si vedono il cuore che batte, il **giro del sangue**, che cosa cambia nell'**arresto cardiaco** e perché le **compressioni sul torace** fanno il lavoro del cuore.
 
-{{< video src="video/rianimazione-come-funziona-verticale.mp4" poster="img/video/rianimazione-come-funziona-verticale.jpg" verticale="si" titolo="Rianimazione: come funziona, in 3D" durata="PT2M26S" descrizione="Il giro del sangue, l'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello, secondo le linee guida IRC 2025." data="2026-11-21" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). È uno schema: le proporzioni non sono in scala." >}}
+{{< video src="video/rianimazione-come-funziona-verticale.mp4" poster="img/video/rianimazione-come-funziona-verticale.jpg" verticale="si" titolo="Rianimazione: come funziona, in 3D" durata="PT2M26S" descrizione="Il giro del sangue, l'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello, secondo le linee guida IRC 2025." data="2026-11-20" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). È uno schema: le proporzioni non sono in scala." >}}
 
 ## Il cuore è una pompa
 

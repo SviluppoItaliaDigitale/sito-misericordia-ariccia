@@ -1,7 +1,7 @@
 ---
 title: "Infarto: che cosa succede nel cuore, in 3D"
 titoloSeo: "Infarto: che cosa succede nel cuore e cosa fare, video 3D (linee guida IRC 2025)"
-date: 2026-11-22
+date: 2026-11-20
 canale: "approfondimenti"
 slug: "infarto-come-funziona"
 controllo_editoriale: "2026-11-20"
@@ -27,7 +27,7 @@ italianoSemplice: |
 
 Che cosa succede davvero nel cuore durante un infarto? In questo video **in tre dimensioni** il cuore e le sue arterie vengono da un atlante ricostruito dalle risonanze di una persona reale: si vedono le **coronarie**, la **placca** e il **coagulo** che chiude l'arteria, e il muscolo che resta senza ossigeno. Poi come si riconosce l'infarto e che cosa fare subito.
 
-{{< video src="video/infarto-come-funziona-verticale.mp4" poster="img/video/infarto-come-funziona-verticale.jpg" verticale="si" titolo="Infarto: che cosa succede nel cuore, in 3D" durata="PT2M2S" descrizione="Le coronarie, la placca e il coagulo che chiude l'arteria, come si riconosce l'infarto e che cosa fare in attesa dell'ambulanza, secondo le linee guida IRC 2025." data="2026-11-22" didascalia="Il video dura circa due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Placca e coagulo sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
+{{< video src="video/infarto-come-funziona-verticale.mp4" poster="img/video/infarto-come-funziona-verticale.jpg" verticale="si" titolo="Infarto: che cosa succede nel cuore, in 3D" durata="PT2M2S" descrizione="Le coronarie, la placca e il coagulo che chiude l'arteria, come si riconosce l'infarto e che cosa fare in attesa dell'ambulanza, secondo le linee guida IRC 2025." data="2026-11-20" didascalia="Il video dura circa due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Placca e coagulo sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
 
 ## Il cuore ha le sue arterie
 
