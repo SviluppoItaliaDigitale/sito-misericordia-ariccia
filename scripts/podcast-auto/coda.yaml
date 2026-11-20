@@ -154,7 +154,9 @@ puntate:
   fonti:
   - content/dossier/storia-delle-misericordie.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-12-05-storia-delle-misericordie.md
+  data: '2026-12-05'
 - id: anafilassi-ipoglicemia
   tema: primo-soccorso
   titolo: 'Reazione allergica grave e ipoglicemia: i segni da riconoscere'
