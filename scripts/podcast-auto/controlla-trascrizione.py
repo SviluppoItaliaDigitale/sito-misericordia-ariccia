@@ -35,6 +35,8 @@ VIETATE = [
     r"\bvital[ei]\b", r"\bdetto (il |l')?(112|uno)",
     # Dal 20/11/2026 (opere-di-misericordia, generazione 1): «seguendo il testo».
     r"\b(seguendo|secondo|come dice) il testo\b",
+    # Dal 20/11/2026 (diventa-volontario, generazione 1): chiusa morale e giudizi delle voci.
+    r"da meditare", r"mi ha colpit\w*",
 ]
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
 DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
@@ -49,7 +51,9 @@ DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordi
                # «cautela obbligatoria».
                r"\b(primissim\w*|prima) cosa\b", r"\bpunt\w* (importante|fondamentale|chiave)", r"\btipo (un|una|il|la)\b", r"\bobbligatori\w*",
                # Dal 20/11/2026 (opere-di-misericordia): giudizi delle voci.
-               r"\bessenzial\w*", r"\battual[ei]\b", r"\bmi sembr\w*"]
+               r"\bessenzial\w*", r"\battual[ei]\b", r"\bmi sembr\w*",
+               # Regole lette ad alta voce e righe inventate dal riconoscitore nei silenzi (da togliere).
+               r"indicazion\w* (esatt|chiar|precis)\w*", r"amara\.org", r"sottotitoli"]
 # Parole assolute: ammesse solo se presenti anche nelle fonti.
 ASSOLUTE = [r"\bsempre\b", r"\bmai\b", r"\bcertamente\b", r"\binevitabilmente\b"]
 
@@ -65,7 +69,6 @@ def main() -> int:
     cartella = LAVORO / sys.argv[1]
     testo = norm((cartella / "trascrizione-grezza.txt").read_text(encoding="utf-8"))
     fonte = norm((cartella / "fonte.md").read_text(encoding="utf-8"))
-    cifre_fonte = re.sub(r"[ .\-/–]", "", fonte)
     problemi: list[str] = []
 
     def contesto(m: re.Match) -> str:
@@ -76,6 +79,17 @@ def main() -> int:
             # La «copia dei documenti» del kit di emergenza è un consiglio, non il processo.
             if "document" in pat and re.search(r"cop(ia|ie) de(i|gli) $", testo[max(0, m.start() - 12):m.start()]):
                 continue
+            # Dal 20/11/2026 (kit-bambini-neonati): «documenti sanitari», «farmaci, documenti» sono
+            # contenuto dei kit, non il processo: si accettano se la parola con le vicine sta identica nelle fonti.
+            if "document" in pat:
+                prima = re.findall(r"[\w']+", testo[max(0, m.start() - 25):m.start()])[-1:]
+                dopo = re.findall(r"[\w']+", testo[m.end():m.end() + 25])[:1]
+                articoli = {"i", "gli", "dei", "degli", "ai", "agli", "nei", "dai", "sui", "le", "tali", "questi"}
+                vicine = [" ".join([m.group(0)] + dopo)]
+                if prima and prima[0] not in articoli:
+                    vicine.append(" ".join(prima + [m.group(0)]))
+                if any(re.search(r"\b" + re.escape(v).replace(r"\ ", r"\W+") + r"\b", fonte) for v in vicine if " " in v):
+                    continue
             problemi.append(f"parola vietata «{m.group(0)}»: …{contesto(m)}…")
     for pat in ASSOLUTE:
         n_t, n_f = len(re.findall(pat, testo)), len(re.findall(pat, fonte))
@@ -84,9 +98,18 @@ def main() -> int:
                 problemi.append(f"parola assoluta assente dalle fonti «{m.group(0)}»: …{contesto(m)}…")
     # Numeri: ogni numero di due o più cifre (anche spezzato da trattini o spazi,
     # come i telefoni) deve comparire nelle fonti. Il 112 è sempre ammesso.
+    # Dal 20/11/2026: il numero deve stare nelle fonti come numero a sé (o come gruppo intero),
+    # non come pezzo di cifre incollate: «110 compressioni al minuto» passava perché «110»
+    # compariva dentro altre cifre della pagina (rianimazione-soffocamento, generazione 1).
+    numeri_fonte = set(re.findall(r"\d+", fonte))
+    numeri_fonte |= {re.sub(r"[ .\-]", "", g) for g in re.findall(r"\d[\d .\-]*\d", fonte)}
     for m in re.finditer(r"\d[\d .\-]*\d", testo):
         num = re.sub(r"[ .\-]", "", m.group(0))
-        if re.fullmatch(r"(112)+", num) or num in cifre_fonte:
+        if re.fullmatch(r"(112)+", num) or num in numeri_fonte:
+            continue
+        # «25-26 gradi», «da 5 a 7»: ogni pezzo deve stare nelle fonti.
+        pezzi = re.findall(r"\d+", m.group(0))
+        if len(pezzi) > 1 and all(x in numeri_fonte or x == "112" for x in pezzi):
             continue
         problemi.append(f"numero assente dalle fonti «{m.group(0).strip()}»: …{contesto(m)}…")
 

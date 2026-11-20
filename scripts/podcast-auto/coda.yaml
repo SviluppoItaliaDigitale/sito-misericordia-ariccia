@@ -121,7 +121,10 @@ puntate:
   - settimana-viva
   - linee-guida
   - slide
-  stato: da-fare
+  stato: scartata
+  motivo: '20/11/2026, seconda generazione: corretta in ciò che dice, ma senza il
+    primo passo della rianimazione («Prima controlla che il posto sia sicuro, per
+    te e per lui»). La prima diceva «azioni manuali».'
 - id: diventa-volontario
   tema: chi-siamo
   titolo: Diventare volontari alla Misericordia di Ariccia
@@ -129,7 +132,11 @@ puntate:
   - content/diventa-volontario.md
   - content/servizi/formazione.md
   parole: []
-  stato: da-fare
+  stato: scartata
+  motivo: '20/11/2026, seconda generazione: «Le risposte restano sul computer o telefono»,
+    che la pagina non dice (dice solo che il sito non riceve e non salva niente).
+    La prima apriva leggendo le regole e chiudeva con «uno spunto da meditare» attribuendo
+    il motto alla frase sbagliata.'
 - id: kit-bambini-neonati
   tema: kit-prevenzione
   titolo: 'Bambini, neonati e gravidanza: i kit per le emergenze'
@@ -138,7 +145,9 @@ puntate:
   - content/kit/neonati/_index.md
   - content/kit/gravidanza/_index.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-12-02-kit-bambini-neonati.md
+  data: '2026-12-02'
 - id: storia-delle-misericordie
   tema: dossier
   titolo: 'Otto secoli di carità: la storia delle Misericordie'
