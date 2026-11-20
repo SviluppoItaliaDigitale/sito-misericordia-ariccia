@@ -31,6 +31,8 @@ VIETATE = [
     r"ogni gesto conta", r"minuti cruciali", r"proteggere (le nostre|la nostra) comunit",
     # Dal 20/11/2026 (emorragia-ustioni scartata): cautele rafforzate e reazioni attribuite.
     r"\brigoros\w*", r"fa (davvero |proprio )?la differenza", r"\bsbirci\w*", r"\bimpuls[oi]\b",
+    # Dal 20/11/2026 (trasporti-sanitari, generazione 1): «avviso vitale», «il 112, detto 112».
+    r"\bvital[ei]\b", r"\bdetto (il |l')?(112|uno)",
 ]
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
 DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
