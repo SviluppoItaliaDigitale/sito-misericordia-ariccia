@@ -192,7 +192,7 @@ FORME_SBAGLIATE = [
     # Soffocamento: la tecnica cambia solo sotto l'anno (lattante); dall'anno in su si fa come nell'adulto
     # (IRC 2025, cap. 9, p. 29; corretto il 20/11/2026: il sito estendeva la differenza ai «bambini piccoli»).
     # Il video del soffocamento uscito il 20/10/2026 lo dice ancora nell'audio («le manovre sono diverse»): si corregge solo
-    # rifacendo il video, per questo la forma «manovre» qui non è cercata.
+    # rifacendo il video, che resta così (scelta di Alessandro del 20/11/2026): la forma «manovre» qui non è cercata.
     (re.compile(r"bambini\s+piccoli[^\n]{0,40}?tecnica[^\n]{0,20}?divers|young\s+children[^\n]{0,40}?technique\s+is\s+different", re.I),
      "soffocamento: la tecnica è diversa solo nei lattanti, sotto l'anno di età; dall'anno in su colpi tra le scapole e "
      "compressioni addominali come nell'adulto (IRC 2025, cap. 9, p. 29; corretto il 20/11/2026)"),

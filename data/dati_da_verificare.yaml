@@ -797,7 +797,7 @@ dati:
   delicato: true
   frequenza: "mensile"
   verificato: "2026-11-20"
-  note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). content/primo-soccorso.md ora dice «con i due pollici», come il dossier e ERC/IRC 2025 cap. 9 PBLS. 20/11/2026: riletto su IRC 2025 cap. 9 p. 29 e cap. 12 p. 28 per le slide dei corsi: la tecnica cambia solo sotto l'anno; corretto «bambini piccoli» nel dossier IT/EN, nella news del 20/10, nelle slide per le scuole (il video del 20/10 lo dice ancora nell'audio)."
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). content/primo-soccorso.md ora dice «con i due pollici», come il dossier e ERC/IRC 2025 cap. 9 PBLS. 20/11/2026: riletto su IRC 2025 cap. 9 p. 29 e cap. 12 p. 28 per le slide dei corsi: la tecnica cambia solo sotto l'anno; corretto «bambini piccoli» nel dossier IT/EN, nella news del 20/10, nelle slide per le scuole (il video del 20/10 lo dice ancora nell'audio: resta così, scelta di Alessandro del 20/11/2026, perché il testo scritto sul sito è corretto)."
 - id: "ustioni-20-minuti"
   cosa: "Ustioni: raffreddare sotto acqua corrente fresca per almeno 20 minuti; niente ghiaccio, burro, olio, creme o altri rimedi casalinghi (CRI, Ustioni; NHS, Burns and scalds, 31/03/2026; IFRC 2025, pp. 290 e 292); 112 per ustioni grandi o profonde, su viso, mani, piedi o genitali, da fiamme, elettriche o chimiche, o in un bambino (IFRC 2025, pp. 289-291; CRI); per un anziano o nel dubbio, dal medico."
   valore: "almeno 20 minuti"
