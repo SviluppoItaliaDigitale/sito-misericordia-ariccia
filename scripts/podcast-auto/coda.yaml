@@ -166,7 +166,9 @@ puntate:
   parole:
   - anafilassi
   - ipoglicemia
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-12-09-anafilassi-ipoglicemia.md
+  data: '2026-12-09'
 - id: servizio-civile
   tema: chi-siamo
   titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
