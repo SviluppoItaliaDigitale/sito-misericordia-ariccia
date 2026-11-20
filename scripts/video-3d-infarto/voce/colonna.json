@@ -1,0 +1,125 @@
+{
+ "voce": [
+  {
+   "file": "voce/line_1.wav",
+   "inizio": 1.0
+  },
+  {
+   "file": "voce/line_2.wav",
+   "inizio": 8.48
+  },
+  {
+   "file": "voce/line_3.wav",
+   "inizio": 14.32
+  },
+  {
+   "file": "voce/line_4.wav",
+   "inizio": 21.17
+  },
+  {
+   "file": "voce/line_5.wav",
+   "inizio": 30.61
+  },
+  {
+   "file": "voce/line_6.wav",
+   "inizio": 36.92
+  },
+  {
+   "file": "voce/line_7.wav",
+   "inizio": 43.38
+  },
+  {
+   "file": "voce/line_8.wav",
+   "inizio": 49.77
+  },
+  {
+   "file": "voce/line_9.wav",
+   "inizio": 61.03
+  },
+  {
+   "file": "voce/line_10.wav",
+   "inizio": 67.71
+  },
+  {
+   "file": "voce/line_11.wav",
+   "inizio": 74.84
+  },
+  {
+   "file": "voce/line_12.wav",
+   "inizio": 80.2
+  },
+  {
+   "file": "voce/line_13.wav",
+   "inizio": 85.75
+  },
+  {
+   "file": "voce/line_14.wav",
+   "inizio": 92.29
+  },
+  {
+   "file": "voce/line_15.wav",
+   "inizio": 97.06
+  },
+  {
+   "file": "voce/line_16.wav",
+   "inizio": 105.87
+  }
+ ],
+ "durata": 122.33,
+ "musica": [
+  {
+   "file": "musica.mp3",
+   "inizio": 0,
+   "da": 51.93,
+   "entrata": 1.5,
+   "uscita": 1.5
+  }
+ ],
+ "effetti": [
+  {
+   "file": "sfx/battito.wav",
+   "evento": 0.15,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 7.88,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 15.28,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/crepa.wav",
+   "evento": 21.74,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 30.99,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 43.76,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 92.58,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 105.47,
+   "tipo": "colpo"
+  },
+  {
+   "file": "sfx/chiusura.wav",
+   "evento": 106.07,
+   "tipo": "colpo"
+  }
+ ]
+}
