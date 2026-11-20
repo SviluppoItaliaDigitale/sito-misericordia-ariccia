@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rianimazione: come funziona</title>
+<!-- rianimazione-3d.src.html — video 3D «Rianimazione: come funziona» della Misericordia di Ariccia, da abbinare alle slide
+     del corso BLSD adulto (scripts/formazione/slide/blsd-adulto.html). Schema render(t) della skill video-3d.
+     Anatomia vera: atlante BodyParts3D (© The Database Center for Life Science, CC BY 4.0), preparato da anatomia.py.
+     Contenuti: Linee guida IRC 2025, cap. 4 (BLS adulto) e cap. 12 (primo soccorso). Scritto per Alessandro Cuollo il
+     20/11/2026. Si costruisce con costruisci.sh (cornice di microtesto, stemma, poi costruisci.py della skill). -->
+<!--FONT-->
+<style>
+  html, body { margin: 0; background: #061633; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; overflow: hidden; background: #061633; }
+  #stage canvas { position: absolute; left: 0; top: 0; display: block; }
+  #fondo { z-index: 0; } #livello-scena { z-index: 2; } #sopra { z-index: 20; } #cornice { z-index: 60; }
+  #fonte { position: absolute; z-index: 30; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px;
+           line-height: 1.3; color: rgba(255, 255, 255, .86); white-space: pre; padding: 5px 12px; border-radius: 10px;
+           background: rgba(6, 22, 51, .66); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="fondo" width="1920" height="1080"></canvas>
+  <canvas id="livello-scena"></canvas>
+  <canvas id="sopra" width="1920" height="1080"></canvas>
+  <canvas id="cornice" width="1920" height="1080"></canvas>
+  <div id="fonte"></div>
+</div>
+<script type="application/json" id="dato-anatomia">/*DATO:anatomia*/</script>
+<script type="application/json" id="dato-sottotitoli">/*DATO:sottotitoli*/</script>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>/*CORNICE*/</script>
+<script>
+(function () {
+  'use strict';
+  const M3 = window.Motore3D, IMP = window.IMP, THREE = window.THREE;
+  const dato = n => { const e = document.getElementById('dato-' + n), s = e ? e.textContent.trim() : '';
+                      return !s || s.startsWith('/*DATO:') ? null : JSON.parse(s); };
+  const A = dato('anatomia'), FRASI = dato('sottotitoli') || [];
+  const P = A.punti;
+  const { clamp, mix, prog } = M3;
+  const morb = u => 0.5 - 0.5 * Math.cos(Math.PI * clamp(u));
+  const liscia = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+  const fin = (t, a, b, e = 0.4, u = 0.4) => clamp(Math.min((t - a) / e, (b - t) / u));   // finestra 0..1
+  const KIT = { blu: '#003F85', giallo: '#FCEB0C', azzurro: '#009FE3', notte: '#061633' };
+
+  /* ============================================================ scene, tempi e testi */
+  const TOTAL = 124.5;
+  const SCENE = [
+    { nome: 'IL CUORE E IL SANGUE', inizio: 0 },     { nome: 'LE QUATTRO CAMERE', inizio: 7.2 },
+    { nome: 'LA CIRCOLAZIONE', inizio: 12.8 },       { nome: 'ARRESTO CARDIACO', inizio: 27.4 },
+    { nome: 'IL CERVELLO', inizio: 40.0 },           { nome: 'LE COMPRESSIONI', inizio: 46.4 },
+    { nome: 'RITMO E PAUSE', inizio: 64.4 },         { nome: 'IL DEFIBRILLATORE', inizio: 79.6 },
+    { nome: 'LE CONSEGUENZE', inizio: 93.5 },        { nome: 'COSA FARE', inizio: 110.4 }
+  ];
+  window.TOTAL = TOTAL;
+  const L = IMP.layout('orizzontale'), W = L.W, H = L.H;
+  window.STAGE_W = W; window.STAGE_H = H;
+  const stage = document.getElementById('stage');
+  const stato = IMP.monta(stage, { ente: 'misericordia', formato: 'orizzontale', hud: SCENE.map(s => s.nome),
+                                   passiHUD: SCENE.length, nota: 'SCHEMA · NON IN SCALA' });
+  IMP.anteprima(stage);
+
+  // Ritmo: battito normale (70 al minuto), fibrillazione, compressioni a 110 al minuto con pause, scarica.
+  const T_ARRESTO = 28.35, T_SCARICA = 83.4;
+  const RCP = [[52.4, 74.6], [77.4, 81.6], [84.2, 108.0]];          // compressioni (inizio, fine)
+  const PERIODO_RCP = 60 / 110, PROF = 0.055;                       // 110 al minuto, 5,5 cm
+  const PERIODO_CUORE = 60 / 70;
+  const inRCP = t => RCP.find(([a, b]) => t >= a && t < b);
+  function profondita(t) {                                          // affondamento dello sterno in metri
+    const r = inRCP(t); if (!r) return 0;
+    const ph = ((t - r[0]) / PERIODO_RCP) % 1;
+    return PROF * (0.5 - 0.5 * Math.cos(2 * Math.PI * ph)) * clamp((r[1] - t) / 0.2);
+  }
+  function contrazione(t) {                                         // sistole dei ventricoli (0..1) e degli atri
+    if (t >= T_ARRESTO) return { v: 0, a: 0 };
+    const ph = (t / PERIODO_CUORE) % 1;
+    const v = Math.exp(-Math.pow((ph - 0.3) / 0.09, 2)), a = Math.exp(-Math.pow((ph - 0.08) / 0.05, 2));
+    return { v, a };
+  }
+  function fibrillazione(t) {                                       // ampiezza del tremito (m)
+    if (t < T_ARRESTO || t >= T_SCARICA) return 0;
+    return 0.0011 * liscia(T_ARRESTO, T_ARRESTO + 0.6, t);
+  }
+  // Velocità del sangue lungo i vasi (m/s di «onda»), arteriosa e venosa, integrata per avere il flusso al tempo t.
+  function velocita(t) {
+    let a = 0, v = 0;
+    if (t < T_ARRESTO + 1.4) {
+      const c = contrazione(Math.min(t, T_ARRESTO - 1e-3)).v, k = 1 - liscia(T_ARRESTO, T_ARRESTO + 1.4, t);
+      a = (0.10 + 0.55 * c) * k; v = 0.16 * k;
+    }
+    const r = inRCP(t);
+    if (r) {
+      const ph = ((t - r[0]) / PERIODO_RCP) % 1, giu = Math.sin(2 * Math.PI * ph);
+      a += 0.32 * Math.max(0, giu); v += 0.20 * Math.max(0, -giu);
+    }
+    return { a, v };
+  }
+  const PASSO = 1 / 120, flussi = [{ a: 0, v: 0 }];
+  for (let k = 1; k * PASSO <= TOTAL + 0.1; k++) {
+    const s = velocita((k - 0.5) * PASSO), p = flussi[k - 1];
+    flussi.push({ a: p.a + s.a * PASSO, v: p.v + s.v * PASSO });
+  }
+  const flusso = t => { const x = clamp(t, 0, TOTAL) / PASSO, k = Math.floor(x), u = x - k, p = flussi[k], q = flussi[Math.min(k + 1, flussi.length - 1)];
+                        return { a: mix(p.a, q.a, u), v: mix(p.v, q.v, u) }; };
+  // Quanto si vede il sangue che scorre (bagliori nei vasi): pieno col cuore, ridotto con le compressioni.
+  function vistaFlusso(t) {
+    let x = 1 - liscia(T_ARRESTO, T_ARRESTO + 1.6, t);
+    const r = inRCP(t); if (r) x = Math.max(x, 0.75 * clamp(Math.min((t - r[0]) / 0.8, (r[1] - t) / 0.4)));
+    return x;
+  }
+  // Ossigeno nel cervello (0..1): cala dopo l'arresto, risale in parte con le compressioni, cala nelle pause.
+  const OSS = [[0, 1], [30.2, 1], [45.6, 0.08], [52.4, 0.08], [60.0, 0.55], [74.6, 0.6], [77.2, 0.42], [80.5, 0.6],
+               [81.6, 0.6], [84.1, 0.48], [93.0, 0.66], [108.0, 0.72], [124.5, 0.72]];
+  function ossigeno(t) {
+    for (let i = 1; i < OSS.length; i++) if (t <= OSS[i][0]) return mix(OSS[i - 1][1], OSS[i][1], morb((t - OSS[i - 1][0]) / (OSS[i][0] - OSS[i - 1][0])));
+    return OSS[OSS.length - 1][1];
+  }
+
+  /* ============================================================ fondo, livello 3D, sovrimpressioni */
+  const fondo = document.getElementById('fondo'), fctx = fondo.getContext('2d');
+  (function () {
+    const g = fctx.createRadialGradient(W * 0.5, 470, 60, W * 0.5, 470, 1250);
+    g.addColorStop(0, '#0B3D7E'); g.addColorStop(0.5, '#082B5E'); g.addColorStop(1, KIT.notte);
+    fctx.fillStyle = g; fctx.fillRect(0, 0, W, H);
+  })();
+  const vicino = M3.creaRenderer(document.getElementById('livello-scena'), W, H, { scala: 0.8 });
+  const scena = new THREE.Scene();
+  const camera = M3.creaCamera(W, H, { fov: 30, zona: L.zona });
+  scena.add(new THREE.HemisphereLight(0xdfe8ff, 0x1a2a4a, 1.25));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.5); scena.add(luce); scena.add(luce.target);
+  const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.55); scena.add(luce2); scena.add(luce2.target);
+
+  /* ============================================================ anatomia */
+  function b64(s, T) { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new T(u.buffer); }
+  function geometria(g) {
+    const q = b64(g.pos, Uint16Array), n = b64(g.nor, Int8Array), p = new Float32Array(q.length), nn = new Float32Array(q.length);
+    for (let i = 0; i < q.length; i++) { const k = i % 3; p[i] = g.lo[k] + q[i] / 65535 * g.sc[k]; nn[i] = n[i] / 127; }
+    const G = new THREE.BufferGeometry();
+    G.setAttribute('position', new THREE.BufferAttribute(p, 3));
+    G.setAttribute('normal', new THREE.BufferAttribute(nn, 3));
+    G.setIndex(new THREE.BufferAttribute(b64(g.idx, g.i32 ? Uint32Array : Uint16Array), 1));
+    if (g.flusso) { const f = b64(g.flusso, Uint16Array), d = new Float32Array(f.length);
+                    for (let i = 0; i < f.length; i++) d[i] = f[i] / 65535 * g.flussoMax; G.setAttribute('flusso', new THREE.BufferAttribute(d, 1)); }
+    G.computeBoundingSphere();
+    return G;
+  }
+  // Uniformi comuni: affondamento del torace, tremito, contrazione, tempo, flusso.
+  const U = { uComp: { value: 0 }, uFib: { value: 0 }, uT: { value: 0 }, uFA: { value: 0 }, uFV: { value: 0 }, uVis: { value: 1 } };
+  const PIANO = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 0.02);   // spaccato: si tiene x <= 0,02 m
+  // Affondamento dello sterno: pesato dalla profondità (0 davanti alla colonna, 1 sullo sterno) e dalla distanza
+  // dalla metà inferiore dello sterno; è lo stesso per pelle, ossa, polmoni, cuore e vasi.
+  const VERT_COMP = `
+    float pesoComp = smoothstep(0.075, 0.205, transformed.z) * exp(-pow(transformed.x / 0.115, 2.0)) * exp(-pow((transformed.y - 1.205) / 0.12, 2.0));
+    transformed.z -= uComp * pesoComp;`;
+  function prepara(mat, o = {}) {
+    mat.onBeforeCompile = sh => {
+      Object.assign(sh.uniforms, U);
+      sh.uniforms.uContr = o.contr; sh.uniforms.uCentro = { value: new THREE.Vector3(P.cuore[0], P.cuore[1], P.cuore[2]) };
+      sh.uniforms.uOss = o.oss || { value: 1 }; sh.uniforms.uAlfa = o.alfa || { value: 1 };
+      sh.uniforms.uTinta = o.tinta || { value: new THREE.Color(0, 0, 0) }; sh.uniforms.uTintaK = o.tintaK || { value: 0 };
+      let v = sh.vertexShader, f = sh.fragmentShader;
+      v = v.replace('#include <common>', `#include <common>
+        uniform float uComp, uFib, uT, uFA, uFV, uVis; uniform float uContr; uniform vec3 uCentro;
+        ${o.flusso ? 'attribute float flusso; varying float vFlusso;' : ''}`);
+      v = v.replace('#include <begin_vertex>', `#include <begin_vertex>
+        ${o.cuore ? `transformed = uCentro + (transformed - uCentro) * (1.0 - uContr);
+          transformed += normal * uFib * (sin(transformed.y * 230.0 + uT * 47.0) * sin(transformed.x * 190.0 - uT * 39.0)
+                                         + 0.6 * sin(transformed.z * 260.0 + uT * 61.0));` : ''}
+        ${VERT_COMP}
+        ${o.flusso ? 'vFlusso = flusso;' : ''}`);
+      f = f.replace('#include <common>', `#include <common>
+        uniform float uFA, uFV, uVis, uOss, uAlfa, uTintaK; uniform vec3 uTinta;
+        ${o.flusso ? 'varying float vFlusso;' : ''}`);
+      let extra = '';
+      if (o.flusso) extra += `
+        float onda = ${o.verso > 0 ? 'vFlusso - uFA' : 'vFlusso + uFV'};
+        float fr = fract(onda / 0.11);
+        float banda = smoothstep(0.0, 0.18, fr) * smoothstep(0.62, 0.18, fr);
+        totalEmissiveRadiance += vec3(${o.bagliore}) * banda * uVis * 0.9;`;
+      if (o.cervello) extra += `
+        totalEmissiveRadiance += vec3(0.35, 0.10, 0.12) * uOss * 0.55;`;
+      if (o.olo) extra += `
+        float rim = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.4);
+        diffuseColor.a = clamp((0.035 + 0.75 * rim) * uAlfa, 0.0, 1.0);
+        totalEmissiveRadiance += vec3(0.45, 0.78, 1.0) * rim * 0.9;`;
+      if (o.tinta) extra += `
+        diffuseColor.rgb = mix(diffuseColor.rgb, uTinta, uTintaK);`;
+      f = f.replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>' + extra);
+      sh.vertexShader = v; sh.fragmentShader = f;
+    };
+    mat.customProgramCacheKey = () => JSON.stringify(o, (k, x) => (x && x.value !== undefined ? 'u' : x));
+    mat.clippingPlanes = [];
+    return mat;
+  }
+  const corpo = new THREE.Group(); scena.add(corpo);                 // ruota per sdraiare la persona
+  const PERNO = new THREE.Vector3(0, 1.2, 0.12);
+  corpo.position.copy(PERNO);
+  const dentro = new THREE.Group(); dentro.position.copy(PERNO).multiplyScalar(-1); corpo.add(dentro);
+  const PARTI = {}, MATERIALI = [];
+  function parte(nome, mat, gruppo = dentro) {
+    const g = A.gruppi[nome]; if (!g) { console.warn('manca', nome); return null; }
+    const me = new THREE.Mesh(geometria(g), mat); gruppo.add(me); PARTI[nome] = me; MATERIALI.push(mat); return me;
+  }
+  const std = (colore, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: colore, roughness: 0.55, metalness: 0.0, side: THREE.DoubleSide }, o));
+  // pelle «olografica»: trasparente al centro, accesa sui contorni
+  const alfaPelle = { value: 1 };
+  parte('pelle', prepara(std(0x6fa8e8, { transparent: true, depthWrite: false, roughness: 0.4 }), { olo: true, alfa: alfaPelle })).renderOrder = 5;
+  const OSSA = 0xeee6d2;
+  parte('costole', prepara(std(OSSA, { transparent: true })));
+  parte('colonna', prepara(std(OSSA, { transparent: true })));
+  parte('polmoni', prepara(std(0xe7a3a6, { transparent: true, opacity: 0.3, depthWrite: false })));
+  parte('trachea', prepara(std(0xd9e1e8, { transparent: true })));
+  parte('diaframma', prepara(std(0xb5584f, { transparent: true, opacity: 0.0, depthWrite: false })));
+  const ossCerv = { value: 1 }, colCerv = { value: new THREE.Color(0x8b8f99) }, kCerv = { value: 0 };
+  parte('cervello', prepara(std(0xf0c0c4, { transparent: true }), { cervello: true, oss: ossCerv, tinta: colCerv, tintaK: kCerv }));
+  // vasi: rosso il sangue ricco di ossigeno, blu quello povero (piccola circolazione compresa)
+  const ROSSO = 0xd32f2f, BLU = 0x4f7fe8;
+  parte('arterie', prepara(std(ROSSO, { transparent: true }), { flusso: true, verso: 1, bagliore: '1.0, 0.62, 0.55' }));
+  parte('vene', prepara(std(BLU, { transparent: true }), { flusso: true, verso: -1, bagliore: '0.62, 0.78, 1.0' }));
+  parte('arterie_polm', prepara(std(BLU, { transparent: true }), { flusso: true, verso: 1, bagliore: '0.62, 0.78, 1.0' }));
+  parte('vene_polm', prepara(std(ROSSO, { transparent: true }), { flusso: true, verso: -1, bagliore: '1.0, 0.62, 0.55' }));
+  // cuore: ogni parte nel suo gruppo, per la vista esplosa
+  const cuore = new THREE.Group(); dentro.add(cuore);
+  const contrV = { value: 0 }, contrA = { value: 0 };
+  const tintaDx = { value: new THREE.Color(0x3d63c9) }, tintaSx = { value: new THREE.Color(0xc62828) }, kLato = { value: 0 };
+  const PARETE = 0xb34a42;
+  const PEZZI = {
+    atrio_dx: { col: PARETE, contr: contrA, dir: [-1, 0.75, 0.25], tinta: tintaDx },
+    atrio_sx: { col: PARETE, contr: contrA, dir: [1, 0.85, -0.45], tinta: tintaSx },
+    ventricolo_dx: { col: PARETE, contr: contrV, dir: [-0.9, -0.55, 0.55], tinta: tintaDx },
+    ventricolo_sx: { col: PARETE, contr: contrV, dir: [1, -0.6, 0.2], tinta: tintaSx },
+    papillari: { col: 0x9c3a33, contr: contrV, dir: [0, -0.4, 0.3] },
+    valvole: { col: 0xf2e3c4, contr: contrV, dir: [0, 0, 0] },
+    coronarie: { col: 0xe23b30, contr: contrV, dir: [0.2, -0.3, 0.6] },
+    vene_cuore: { col: 0x4f7fe8, contr: contrV, dir: [0.2, -0.3, 0.6] }
+  };
+  const GRUPPI_CUORE = {};
+  for (const [nome, c] of Object.entries(PEZZI)) {
+    const g = new THREE.Group(); cuore.add(g); GRUPPI_CUORE[nome] = g;
+    const m = prepara(std(c.col, { transparent: true, roughness: 0.5 }), { cuore: true, contr: c.contr, tinta: c.tinta, tintaK: kLato });
+    parte(nome, m, g);
+  }
+  // sangue nelle camere: particelle lungo i percorsi veri (centri delle cavità e delle valvole dall'atlante)
+  const v3 = a => new THREE.Vector3(a[0], a[1], a[2]);
+  const PERCORSI = [
+    { col: 0x7fa4ff, punti: [[P.vcs[0], P.vcs_max[1] - 0.005, P.vcs[2]], P.vcs, P.cav_ad, P.tricuspide, P.cav_vd, P.efflusso_vd, P.v_polmonare, P.tronco_polm], n: 70 },
+    { col: 0x7fa4ff, punti: [[P.vci[0], P.vci_min[1] + 0.03, P.vci[2]], P.vci, P.cav_ad, P.tricuspide, P.cav_vd, P.efflusso_vd, P.v_polmonare, P.tronco_polm], n: 70 },
+    { col: 0xff6b5e, punti: [P.vp_dx_sup, P.cav_as, P.mitrale, P.cav_vs, P.efflusso_vs, P.v_aortica, P.aorta_asc, P.arco_aortico], n: 70 },
+    { col: 0xff6b5e, punti: [P.vp_sx_inf, P.cav_as, P.mitrale, P.cav_vs, P.efflusso_vs, P.v_aortica, P.aorta_asc, P.arco_aortico], n: 70 }
+  ].map(p => Object.assign(p, { curva: new THREE.CatmullRomCurve3(p.punti.map(v3), false, 'centripetal') }));
+  const sfera = new THREE.SphereGeometry(0.0022, 10, 8);
+  const gocce = PERCORSI.map((p, k) => {
+    const m = prepara(new THREE.MeshStandardMaterial({ color: p.col, emissive: p.col, emissiveIntensity: 0.55, transparent: true }));
+    const im = new THREE.InstancedMesh(sfera, m, p.n); im.frustumCulled = false; dentro.add(im); MATERIALI.push(m);
+    return { p, im, m, lung: p.curva.getLength(), seme: k * 0.37 };
+  });
+
+  /* ---------- placche del DAE sulla pelle, punto della frattura sulla costola, mani sullo sterno */
+  const pelleMesh = PARTI.pelle, ray = new THREE.Raycaster();
+  function sullaPelle(x, y, dirz) {                 // punto della pelle colpito da un raggio orizzontale
+    const r2 = new THREE.Ray(new THREE.Vector3(x, y, 0.6), new THREE.Vector3(0, 0, -1));
+    const hits = [], pos = pelleMesh.geometry.attributes.position, idx = pelleMesh.geometry.index.array;
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), q = new THREE.Vector3();
+    for (let i = 0; i < idx.length; i += 3) {
+      a.fromBufferAttribute(pos, idx[i]); if (Math.abs(a.x - x) > 0.03 || Math.abs(a.y - y) > 0.03) continue;
+      b.fromBufferAttribute(pos, idx[i + 1]); c.fromBufferAttribute(pos, idx[i + 2]);
+      if (r2.intersectTriangle(a, b, c, false, q)) hits.push(q.clone());
+    }
+    hits.sort((p1, p2) => p2.z - p1.z);
+    return hits[0] || new THREE.Vector3(x, y, 0.2);
+  }
+  function sullaPelleLato(x, y, z) {               // raggio da sinistra verso il centro, per la placca laterale
+    const r2 = new THREE.Ray(new THREE.Vector3(0.6, y, z), new THREE.Vector3(-1, 0, 0));
+    const pos = pelleMesh.geometry.attributes.position, idx = pelleMesh.geometry.index.array, hits = [];
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), q = new THREE.Vector3();
+    for (let i = 0; i < idx.length; i += 3) {
+      a.fromBufferAttribute(pos, idx[i]); if (Math.abs(a.z - z) > 0.04 || Math.abs(a.y - y) > 0.03 || a.x < 0.05) continue;
+      b.fromBufferAttribute(pos, idx[i + 1]); c.fromBufferAttribute(pos, idx[i + 2]);
+      if (r2.intersectTriangle(a, b, c, false, q)) hits.push(q.clone());
+    }
+    hits.sort((p1, p2) => p2.x - p1.x);
+    return hits[0] || new THREE.Vector3(0.16, y, z);
+  }
+  // punti sulla pelle davanti: metà inferiore dello sterno (mani) e sotto la clavicola destra (placca)
+  const xMani = 0.0, yMani = 1.195;
+  const PUNTO_MANI = sullaPelle(xMani, yMani, 1);
+  const PUNTO_PLACCA1 = sullaPelle(-0.062, 1.27, 1);                      // sotto la clavicola destra, accanto allo sterno
+  const PUNTO_PLACCA2 = sullaPelleLato(0.17, 1.17, 0.09);                 // fianco sinistro, linea ascellare media
+  // placca adesiva che segue la pelle: una griglia nel piano tangente, ogni punto proiettato sulla pelle vera
+  const triPelle = (function () {
+    const pos = pelleMesh.geometry.attributes.position, idx = pelleMesh.geometry.index.array, T = [];
+    for (let i = 0; i < idx.length; i += 3) T.push([idx[i], idx[i + 1], idx[i + 2]]);
+    return { pos, T };
+  })();
+  function proiettaSullaPelle(o, dir, vicini) {
+    const r = new THREE.Ray(o, dir), a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), q = new THREE.Vector3();
+    let best = null, bd = 1e9;
+    for (const [i, j, k] of vicini) {
+      a.fromBufferAttribute(triPelle.pos, i); b.fromBufferAttribute(triPelle.pos, j); c.fromBufferAttribute(triPelle.pos, k);
+      if (r.intersectTriangle(a, b, c, false, q)) { const d = q.distanceTo(o); if (d < bd) { bd = d; best = q.clone(); } }
+    }
+    return best;
+  }
+  function normaleSuperficie(p, vicini) {                 // media delle normali dei triangoli vicini al punto
+    const n = new THREE.Vector3(), a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), t = new THREE.Triangle(), m = new THREE.Vector3();
+    for (const [i, j, k] of vicini) {
+      a.fromBufferAttribute(triPelle.pos, i); if (a.distanceTo(p) > 0.03) continue;
+      b.fromBufferAttribute(triPelle.pos, j); c.fromBufferAttribute(triPelle.pos, k); t.set(a, b, c); t.getNormal(m);
+      if (m.dot(n.lengthSq() ? n : m) < 0) m.negate(); n.add(m);
+    }
+    return n.normalize();
+  }
+  function placca(centro, verso, su) {
+    const vicini = triPelle.T.filter(([i]) => { const x = triPelle.pos.getX(i) - centro.x, y = triPelle.pos.getY(i) - centro.y, z = triPelle.pos.getZ(i) - centro.z; return x * x + y * y + z * z < 0.012; });
+    let n = normaleSuperficie(centro, vicini); if (n.dot(verso) < 0) n.negate();
+    const asseY = su.clone().sub(n.clone().multiplyScalar(su.dot(n))).normalize(), asseX = new THREE.Vector3().crossVectors(asseY, n);
+    const g = new THREE.Group(), mats = [];
+    for (const [w, h, r, colore, alto] of [[0.075, 0.11, 0.018, 0xf4f6fa, 0.0025], [0.047, 0.075, 0.012, 0xFCEB0C, 0.0036]]) {
+      const geo = new THREE.PlaneGeometry(w, h, 14, 20), pos = geo.attributes.position, v = new THREE.Vector3();
+      for (let i = 0; i < pos.count; i++) {
+        let x = pos.getX(i), y = pos.getY(i);
+        const cx = Math.sign(x) * (w / 2 - r), cy = Math.sign(y) * (h / 2 - r);       // angoli arrotondati
+        if (Math.abs(x) > w / 2 - r && Math.abs(y) > h / 2 - r) { const dx = x - cx, dy = y - cy, l = Math.hypot(dx, dy); if (l > r) { x = cx + dx / l * r; y = cy + dy / l * r; } }
+        v.copy(centro).addScaledVector(asseX, x).addScaledVector(asseY, y);
+        const hit = proiettaSullaPelle(v.clone().addScaledVector(n, 0.06), n.clone().negate(), vicini) || v;
+        hit.addScaledVector(n, alto); pos.setXYZ(i, hit.x, hit.y, hit.z);
+      }
+      geo.computeVertexNormals();
+      const m = prepara(new THREE.MeshStandardMaterial({ color: colore, roughness: 0.75, transparent: true, side: THREE.DoubleSide }));
+      const me = new THREE.Mesh(geo, m); me.renderOrder = 6; g.add(me); mats.push(m); MATERIALI.push(m);
+    }
+    g.visible = false; dentro.add(g);
+    return { g, mats };
+  }
+  const placche = [placca(PUNTO_PLACCA1, new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 1, 0)),
+                   placca(PUNTO_PLACCA2, new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0))];
+  // scarica: un fascio luminoso fra le placche, attraverso il cuore
+  const curvaScarica = new THREE.QuadraticBezierCurve3(PUNTO_PLACCA1.clone(), v3(P.cuore).add(new THREE.Vector3(0, 0, 0.02)), PUNTO_PLACCA2.clone());
+  const scarica = new THREE.Mesh(new THREE.TubeGeometry(curvaScarica, 60, 0.006, 8, false),
+                                 new THREE.MeshBasicMaterial({ color: 0xfff6a0, transparent: true, opacity: 0, depthTest: false }));
+  scarica.renderOrder = 10; dentro.add(scarica);
+  // anello sulle mani (dove si comprime) e freccia della spinta
+  const anello = new THREE.Mesh(new THREE.TorusGeometry(0.045, 0.004, 10, 48), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true, depthTest: false }));
+  anello.position.copy(PUNTO_MANI); anello.renderOrder = 11; dentro.add(anello);
+  const freccia = new THREE.Group();
+  { const m = new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true, depthTest: false });
+    const asta = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.09, 16), m); asta.position.y = 0.075;
+    const punta = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.035, 20), m); punta.rotation.x = Math.PI; punta.position.y = 0.017;
+    freccia.add(asta); freccia.add(punta); freccia.userData.m = m; }
+  freccia.rotation.x = Math.PI / 2; freccia.scale.setScalar(0.55); freccia.renderOrder = 11; dentro.add(freccia);
+  freccia.children.forEach(c => (c.renderOrder = 11));
+  // frattura: il punto delle costole più vicino alla giunzione della 5ª costola sinistra con la sua cartilagine
+  const PUNTO_FRATTURA = (function () {
+    const pos = PARTI.costole.geometry.attributes.position, q = new THREE.Vector3(), mira = new THREE.Vector3(0.082, 1.2, 0.17);
+    let best = null, bd = 1e9;
+    for (let i = 0; i < pos.count; i++) { q.fromBufferAttribute(pos, i); const d = q.distanceToSquared(mira); if (d < bd) { bd = d; best = q.clone(); } }
+    return best;
+  })();
+  const crepa = new THREE.Group();
+  { const m = new THREE.MeshBasicMaterial({ color: 0xff3b2f, transparent: true, depthTest: false });
+    const pts = []; for (let i = 0; i <= 8; i++) pts.push(new THREE.Vector3((i % 2 ? 1 : -1) * 0.0035, -0.012 + i * 0.003, 0));
+    crepa.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 40, 0.0011, 6, false), m));
+    crepa.userData.m = m; }
+  crepa.position.copy(PUNTO_FRATTURA).add(new THREE.Vector3(0, 0, 0.004)); crepa.rotation.z = 0.5; crepa.renderOrder = 12; dentro.add(crepa);
+  const alone = new THREE.Mesh(new THREE.SphereGeometry(0.012, 20, 14), new THREE.MeshBasicMaterial({ color: 0xff6b5e, transparent: true, opacity: 0, depthTest: false }));
+  alone.position.copy(crepa.position); alone.renderOrder = 12; dentro.add(alone);
+
+  /* ============================================================ telecamera (bersaglio nel corpo, angoli nel mondo) */
+  const CUORE = P.cuore, TORACE = [0.0, 1.205, 0.14];
+  const CAM = [
+    { t: 0, c: [0, 0.95, 0.05], az: -28, el: 6, d: 4.7, fov: 30 },
+    { t: 2.8, az: -8, el: 5, d: 3.95 },
+    { t: 7.2, az: -8, el: 5, d: 3.95 },
+    { t: 9.0, c: [CUORE[0] + 0.005, CUORE[1] + 0.005, CUORE[2]], az: 0, el: 8, d: 0.66 },
+    { t: 12.6, az: 0, el: 8, d: 0.66 },
+    { t: 14.0, c: [0.012, 1.245, 0.09], az: 0, el: 6, d: 1.0 },
+    { t: 17.0, az: 0, el: 6, d: 1.0 },
+    { t: 18.6, c: [0.0, 1.39, 0.08], az: 16, el: 4, d: 1.3 },
+    { t: 21.5, az: 16, el: 4, d: 1.3 },
+    { t: 23.4, c: [0, 1.08, 0.05], az: 30, el: 6, d: 2.7 },
+    { t: 27.4, az: 30, el: 6, d: 2.7 },
+    { t: 29.2, c: [CUORE[0], CUORE[1], CUORE[2]], az: -18, el: 8, d: 0.72 },
+    { t: 39.8, az: -18, el: 8, d: 0.72 },
+    { t: 41.8, c: [P.cervello[0], P.cervello[1] - 0.01, P.cervello[2]], az: 28, el: 8, d: 0.6 },
+    { t: 46.4, az: 28, el: 8, d: 0.6 },
+    { t: 49.4, c: TORACE, az: 62, el: 32, d: 1.05 },
+    { t: 51.0, az: 62, el: 32, d: 1.05 },
+    { t: 52.4, c: [0.02, 1.215, 0.115], az: 90, el: 10, d: 0.6 },
+    { t: 64.4, az: 90, el: 10, d: 0.6 },
+    { t: 66.2, c: [0, 1.0, 0.05], az: 42, el: 36, d: 2.75 },
+    { t: 79.6, az: 42, el: 36, d: 2.75 },
+    { t: 81.2, c: [0.03, 1.25, 0.12], az: 18, el: 58, d: 0.95 },
+    { t: 93.5, az: 18, el: 58, d: 0.95 },
+    { t: 95.2, c: [0.05, 1.21, 0.15], az: 28, el: 46, d: 0.55 },
+    { t: 101.5, az: 28, el: 46, d: 0.55 },
+    { t: 102.5, az: 14, el: 50, d: 0.6 },
+    { t: 107.6, az: 14, el: 50, d: 0.6 },
+    { t: 109.8, c: [0, 1.3, 0.05], az: 34, el: 30, d: 1.95 },
+    { t: 124.5, az: 52, el: 30, d: 2.2, facilita: 'lineare' }
+  ];
+  (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov']) if (k[x] == null) k[x] = p[x]; p = k; } })();
+  // rotazione della persona: in piedi fino a 46,6 s, poi sdraiata a pancia in su (49,4 s)
+  const sdraiata = t => morb(prog(t, 46.6, 2.8));
+  const _b = new THREE.Vector3();
+  function telecamera(t) {
+    let i = 0; while (i < CAM.length - 2 && t >= CAM[i + 1].t) i++;
+    const a = CAM[i], b = CAM[i + 1];
+    const u0 = clamp((t - a.t) / Math.max(1e-6, b.t - a.t)), u = b.facilita === 'lineare' ? u0 : morb(u0);
+    const c = [0, 1, 2].map(k => mix(a.c[k], b.c[k], u));
+    _b.set(c[0], c[1], c[2]); dentro.localToWorld(_b);
+    const az = mix(a.az, b.az, u) * Math.PI / 180, el = mix(a.el, b.el, u) * Math.PI / 180;
+    const d = Math.exp(mix(Math.log(a.d), Math.log(b.d), u)), fov = mix(a.fov, b.fov, u);
+    camera.position.set(_b.x + d * Math.sin(az) * Math.cos(el), _b.y + d * Math.sin(el), _b.z + d * Math.cos(az) * Math.cos(el));
+    camera.up.set(0, 1, 0); camera.lookAt(_b);
+    camera.near = d * 0.02; camera.far = d * 10 + 3; camera.fov = fov; camera.updateProjectionMatrix();
+    luce.position.copy(camera.position).add(new THREE.Vector3(0.6 * d, 1.2 * d, 0.4 * d)); luce.target.position.copy(_b);
+    luce2.position.copy(_b).add(new THREE.Vector3(-d, -0.3 * d, -0.5 * d)); luce2.target.position.copy(_b);
+    return { ferma: Math.abs(u0 - 0) < 1e-9 || u0 >= 1 || (a.az === b.az && a.el === b.el && a.d === b.d && a.c === b.c) };
+  }
+
+  /* ============================================================ schede (etichette con la linea di richiamo) */
+  // punto: coordinate nel corpo (si seguono rotazione e compressioni a mano); verso: dove sta la scheda
+  const SCHEDE = [
+    { id: 'cuore', titolo: 'Cuore', sotto: 'una pompa grande come un pugno', punto: CUORE, verso: { dx: 260, dy: -170 }, inizio: 3.4, fine: 6.9 },
+    { id: 'ad', titolo: 'Atrio destro', punto: P.cav_ad, pezzo: 'atrio_dx', verso: { dx: -330, dy: -140 }, inizio: 9.9, fine: 12.5 },
+    { id: 'as', titolo: 'Atrio sinistro', punto: P.cav_as, pezzo: 'atrio_sx', verso: { dx: 330, dy: -160 }, inizio: 10.1, fine: 12.5 },
+    { id: 'vd', titolo: 'Ventricolo destro', punto: P.cav_vd, pezzo: 'ventricolo_dx', verso: { dx: -360, dy: 120 }, inizio: 11.0, fine: 12.5 },
+    { id: 'vs', titolo: 'Ventricolo sinistro', punto: P.cav_vs, pezzo: 'ventricolo_sx', verso: { dx: 360, dy: 110 }, inizio: 11.2, fine: 12.5 },
+    { id: 'polmoni', titolo: 'Polmoni', sotto: 'il sangue prende ossigeno', punto: [-0.085, 1.27, 0.08], verso: { dx: -300, dy: -120 }, inizio: 14.4, fine: 16.9 },
+    { id: 'aorta', titolo: 'Aorta', sotto: 'la grande arteria', punto: P.arco_aortico, verso: { dx: 320, dy: 40 }, inizio: 19.0, fine: 21.3 },
+    { id: 'carotidi', titolo: 'Verso il cervello', sotto: 'arterie carotidi', punto: [P.carotide_sx[0], 1.44, P.carotide_sx[2]], verso: { dx: 330, dy: -60 }, inizio: 19.6, fine: 21.3 },
+    { id: 'fv', titolo: 'Fibrillazione ventricolare', sotto: 'il cuore trema e non spinge', punto: P.cav_vs, verso: { dx: 360, dy: -150 }, inizio: 31.8, fine: 39.5 },
+    { id: 'cervello', titolo: 'Cervello senza ossigeno', sotto: 'in pochi minuti si danneggia', punto: [P.cervello[0] + 0.03, P.cervello[1] + 0.03, P.cervello[2] + 0.05], verso: { dx: 360, dy: -40 }, inizio: 42.6, fine: 46.1 },
+    { id: 'mani', titolo: 'Mani qui', sotto: 'metà inferiore dello sterno', punto: [PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z], verso: { dx: 300, dy: -170 }, inizio: 49.6, fine: 50.95 },
+    { id: 'sterno', titolo: 'Sterno', punto: [0.0, 1.215, 0.195], verso: { dx: -260, dy: -150 }, inizio: 53.0, fine: 63.9 },
+    { id: 'cuoresez', titolo: 'Cuore', sotto: 'fra sterno e colonna', punto: [0.015, 1.215, 0.13], verso: { dx: 300, dy: -250 }, inizio: 53.6, fine: 63.9 },
+    { id: 'colonna', titolo: 'Colonna vertebrale', punto: [0.0, 1.2, 0.05], verso: { dx: 280, dy: 140 }, inizio: 54.2, fine: 63.9 },
+    { id: 'fratture', titolo: 'Fratture di costole e sterno', sotto: 'frequenti durante la RCP', punto: null, inizio: 96.8, fine: 101.3, frattura: true, verso: { dx: 330, dy: -150 } },
+    { id: 'lesioni', titolo: 'Meno di 1 su 100', sotto: 'lesioni in chi non era in arresto', punto: null, inizio: 102.7, fine: 107.4, centro: { x: 1480, y: 330 } }
+  ];
+  SCHEDE.forEach(s => { if (s.frattura) s.punto = [PUNTO_FRATTURA.x, PUNTO_FRATTURA.y, PUNTO_FRATTURA.z]; });
+  const _p = new THREE.Vector3();
+  function proietta(locale) {
+    _p.set(locale[0], locale[1], locale[2]);
+    // segue l'affondamento dello sterno (stessa formula del vertice)
+    const w = liscia(0.075, 0.205, _p.z) * Math.exp(-Math.pow(_p.x / 0.115, 2)) * Math.exp(-Math.pow((_p.y - 1.205) / 0.12, 2));
+    _p.z -= U.uComp.value * w;
+    dentro.localToWorld(_p);
+    const v = _p.clone().project(camera);
+    if (v.z > 1 || v.z < -1) return null;
+    return { x: (v.x + 1) / 2 * W, y: (1 - v.y) / 2 * H };
+  }
+
+  /* ============================================================ sovrimpressioni 2D */
+  const sopra = document.getElementById('sopra'), s2 = sopra.getContext('2d');
+  const stemma = new Image(); stemma.src = '/*STEMMA*/';
+  function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
+  function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+  // firma «Misericordia di Ariccia» con lo stemma, in alto a destra in ogni fotogramma
+  function firma(c) {
+    const h = 64, w = stemma.naturalWidth ? h * stemma.naturalWidth / stemma.naturalHeight : 0;
+    c.save(); c.font = '600 28px Montserrat'; const tw = c.measureText('Misericordia di Ariccia').width;
+    const x2 = W - L.margine, x1 = x2 - tw, y = 94;
+    c.shadowColor = 'rgba(0,22,54,.7)'; c.shadowBlur = 8; c.fillStyle = '#FFFFFF'; c.textAlign = 'left';
+    c.fillText('Misericordia di Ariccia', x1, y);
+    if (w) c.drawImage(stemma, x1 - w - 16, 50, w, h);
+    c.restore();
+    window.FIRMA_BOX = { x: Math.round(x1), y: 72, w: Math.round(tw), h: 30, corpo: 28 };
+  }
+  // tracciato del battito (schema): sinusale, fibrillazione, scarica, linea quasi piatta
+  function ecgValore(t) {
+    if (t < T_ARRESTO) {
+      const ph = (t / PERIODO_CUORE) % 1;
+      return 0.12 * Math.exp(-Math.pow((ph - 0.08) / 0.03, 2)) - 0.12 * Math.exp(-Math.pow((ph - 0.205) / 0.008, 2))
+           + 1.0 * Math.exp(-Math.pow((ph - 0.22) / 0.011, 2)) - 0.25 * Math.exp(-Math.pow((ph - 0.24) / 0.01, 2))
+           + 0.28 * Math.exp(-Math.pow((ph - 0.45) / 0.05, 2));
+    }
+    if (t < T_SCARICA) { const k = liscia(T_ARRESTO, T_ARRESTO + 0.5, t);
+      return k * (0.34 * Math.sin(t * 31.0) + 0.22 * Math.sin(t * 47.3 + 1.3) + 0.14 * Math.sin(t * 19.1 + 0.4) + 0.1 * Math.sin(t * 71.0)); }
+    if (t < T_SCARICA + 0.12) return 1.6 * Math.sin((t - T_SCARICA) / 0.12 * Math.PI);
+    return 0.02 * Math.sin(t * 5.0);
+  }
+  function ecg(c, t, alfa, titolo) {
+    if (alfa <= 0.001) return;
+    const x = 1360, y = t >= 79.6 && t < 93.5 ? 150 : 640, w = 480, h = 150;
+    c.save(); c.globalAlpha = alfa;
+    rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
+    testo(c, titolo, x + 18, y + 30, 19, 700, '#FCEB0C');
+    c.beginPath(); const n = 240, dur = 3.0;
+    for (let i = 0; i <= n; i++) { const tt = t - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n, yy = y + 102 - 46 * ecgValore(Math.max(0, tt));
+      if (i) c.lineTo(xx, yy); else c.moveTo(xx, yy); }
+    c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.shadowColor = '#7CFFB2'; c.shadowBlur = 6; c.stroke();
+    c.restore();
+  }
+  // righello della profondità e ritmo (scena delle compressioni)
+  function righello(c, t, alfa) {
+    if (alfa <= 0.001) return;
+    const x = 1500, y0 = 260, k = 60 / 0.06 * 4.6;    // 6 cm = 276 px
+    c.save(); c.globalAlpha = alfa;
+    rett(c, x - 30, y0 - 70, 300, 420, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
+    testo(c, 'Profondità', x - 8, y0 - 30, 22, 700, '#FFFFFF');
+    c.fillStyle = 'rgba(124,255,178,.25)'; c.fillRect(x, y0 + 0.05 * k, 60, 0.01 * k);
+    c.strokeStyle = 'rgba(255,255,255,.8)'; c.lineWidth = 2;
+    for (let cm = 0; cm <= 6; cm++) { const yy = y0 + cm / 100 * k; c.beginPath(); c.moveTo(x, yy); c.lineTo(x + (cm % 5 === 0 ? 30 : 18), yy); c.stroke();
+      testo(c, cm + ' cm', x + 40, yy + 7, 18, 600, 'rgba(255,255,255,.85)'); }
+    const d = profondita(t), yy = y0 + d * k;
+    c.fillStyle = '#FCEB0C'; c.beginPath(); c.moveTo(x - 4, yy); c.lineTo(x - 22, yy - 11); c.lineTo(x - 22, yy + 11); c.closePath(); c.fill();
+    testo(c, '5-6 cm', x + 118, y0 + 0.055 * k + 8, 26, 800, '#7CFFB2');
+    testo(c, 'Rilascio completo', x - 8, y0 + 0.06 * k + 60, 20, 600, '#FFFFFF');
+    c.restore();
+  }
+  function metronomo(c, t, alfa, pausa) {
+    if (alfa <= 0.001) return;
+    const x = 1370, y = 600, w = 470, h = 200;
+    c.save(); c.globalAlpha = alfa;
+    rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
+    testo(c, 'Compressioni al minuto', x + 22, y + 40, 22, 700, '#FFFFFF');
+    const bx = x + 22, bw = w - 44, by = y + 80;
+    c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(bx, by, bw, 26);
+    const sc = v => bx + (v - 80) / 60 * bw;
+    c.fillStyle = 'rgba(124,255,178,.55)'; c.fillRect(sc(100), by, sc(120) - sc(100), 26);
+    testo(c, '100', sc(100), by + 56, 20, 700, '#7CFFB2', 'center'); testo(c, '120', sc(120), by + 56, 20, 700, '#7CFFB2', 'center');
+    const r = inRCP(t), ph = r ? ((t - r[0]) / PERIODO_RCP) % 1 : 0, colpo = r ? Math.exp(-Math.pow(ph / 0.12, 2)) : 0;
+    c.fillStyle = pausa ? '#ff6b5e' : '#FCEB0C'; c.beginPath(); c.arc(sc(110), by + 13, 12 + 8 * colpo, 0, 7); c.fill();
+    if (pausa) testo(c, 'PAUSA: il sangue si ferma', x + w / 2, y + h - 18, 24, 800, '#ff8a80', 'center');
+    else testo(c, '110', x + w / 2, y + h - 16, 30, 800, '#FCEB0C', 'center');
+    c.restore();
+  }
+  function avviso(c, testoA, alfa, colore = '#FCEB0C', y = 214) {
+    if (alfa <= 0.001) return;
+    c.save(); c.globalAlpha = alfa; c.font = '800 34px Montserrat'; const w = c.measureText(testoA).width + 56;
+    rett(c, (W - w) / 2, y - 44, w, 64, 32); c.fillStyle = 'rgba(0,30,70,.9)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    testo(c, testoA, W / 2, y, 34, 800, colore, 'center'); c.restore();
+  }
+  function dato3(c, alfa) {                                   // scheda grande del ritardo della scarica
+    if (alfa <= 0.001) return;
+    c.save(); c.globalAlpha = alfa; const x = 1260, y = 300, w = 580, h = 300;
+    rett(c, x, y, w, h, 18); c.fillStyle = 'rgba(0,30,70,.9)'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 3; c.stroke();
+    testo(c, 'Ogni minuto di ritardo', x + 34, y + 62, 30, 700, '#FFFFFF');
+    testo(c, 'della scarica', x + 34, y + 102, 30, 700, '#FFFFFF');
+    testo(c, '−3-6%', x + 34, y + 200, 84, 900, '#FCEB0C');
+    testo(c, 'di probabilità di sopravvivere', x + 34, y + 250, 24, 600, '#FFFFFF');
+    testo(c, 'con un ritmo defibrillabile · IRC 2025', x + 34, y + 282, 17, 500, 'rgba(255,255,255,.75)');
+    c.restore();
+  }
+  function chiusura(c, t) {
+    const a = clamp((t - 110.4) / 0.7); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    c.fillStyle = 'rgba(0,40,92,.80)'; c.fillRect(0, 0, W, H);
+    const passi = [['1', 'Controlla', 'è sicuro? risponde?', 111.0], ['2', 'Chiama il 112', 'in vivavoce', 111.75], ['3', 'Comprimi', 'e usa il DAE', 112.75]];
+    passi.forEach(([n, ti, so, t0], i) => {
+      const b = clamp((t - t0) / 0.45), x = 230 + i * 520, y = 300 + (1 - b) * 24;
+      c.globalAlpha = a * b;
+      rett(c, x, y, 460, 230, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 4; c.stroke();
+      c.fillStyle = '#FCEB0C'; c.beginPath(); c.arc(x + 70, y + 78, 44, 0, 7); c.fill();
+      testo(c, n, x + 70, y + 96, 50, 900, '#003F85', 'center');
+      testo(c, ti, x + 134, y + 94, 40, 800, '#FFFFFF');
+      testo(c, so, x + 40, y + 180, 28, 600, 'rgba(255,255,255,.88)');
+    });
+    const d = clamp((t - 114.6) / 0.6);
+    c.globalAlpha = a * d;
+    testo(c, 'Le manovre si imparano sul manichino: corsi BLSD della Misericordia di Ariccia', W / 2, 640, 32, 700, '#FFFFFF', 'center');
+    testo(c, '328 8105399', W / 2, 726, 64, 900, '#FCEB0C', 'center');
+    testo(c, 'misericordia-ariccia.it/servizi/formazione', W / 2, 790, 30, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+
+  /* ============================================================ cornice di microtesto (motore delle grafiche) */
+  const telaCornice = document.getElementById('cornice');
+  let esitoCornice = null;
+
+  /* ============================================================ render(t) */
+  const fonte = document.getElementById('fonte');
+  const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
+  const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1);
+  function opacita(nome, a) { const m = PARTI[nome]; if (!m) return; m.material.opacity = a; m.visible = a > 0.004; m.material.depthWrite = a > 0.97; }
+  function render(t) {
+    t = clamp(t, 0, TOTAL);
+    U.uT.value = t;
+    const comp = profondita(t); U.uComp.value = comp;
+    U.uFib.value = fibrillazione(t);
+    const f = flusso(t); U.uFA.value = f.a; U.uFV.value = f.v; U.uVis.value = vistaFlusso(t);
+    const c = contrazione(t); contrV.value = 0.07 * c.v; contrA.value = 0.06 * c.a;
+    const oss = ossigeno(t); ossCerv.value = oss; kCerv.value = 1 - oss;
+    corpo.rotation.x = -Math.PI / 2 * sdraiata(t);
+    corpo.updateMatrixWorld(true);
+
+    // --- visibilità e trasparenze per scena
+    const vPelle = 1 - liscia(7.2, 8.6, t) + liscia(22.0, 23.6, t) - liscia(27.4, 28.8, t) + liscia(46.4, 48.4, t);
+    alfaPelle.value = clamp(vPelle) * (t > 93.5 && t < 110 ? 0.55 : 1);
+    PARTI.pelle.visible = alfaPelle.value > 0.01;
+    const vCostole = (t < 7.2 ? 1 - liscia(6.6, 8.2, t) : 0) + (t >= 46.4 ? liscia(48.0, 49.6, t) : 0);
+    opacita('costole', clamp(vCostole)); opacita('colonna', clamp(vCostole + (t >= 22 && t < 27.4 ? 0 : 0)));
+    const vPolm = (t < 7.2 ? 0.3 * (1 - liscia(6.6, 8.2, t)) : 0) + (t >= 12.8 && t < 27.4 ? 0.4 * fin(t, 13.0, 27.2, 0.8, 0.8) : 0) + (t >= 46.4 ? 0.22 * liscia(48, 49.6, t) * (1 - liscia(93.5, 94.5, t)) : 0);
+    opacita('polmoni', vPolm);
+    opacita('trachea', t < 7.2 ? 1 - liscia(6.6, 8.2, t) : (t >= 12.8 && t < 27.4 ? fin(t, 13.0, 27.2) : (t >= 46.4 ? liscia(48, 49.6, t) : 0)));
+    // vasi del corpo: si attenuano nei primi piani del cuore e del cervello
+    const vVasi = t < 7.2 ? 1 : t < 12.8 ? 1 - 0.85 * fin(t, 7.4, 12.6, 1.2, 0.6) : t < 27.4 ? 1 : t < 46.4 ? 1 - 0.55 * fin(t, 28.0, 46.4, 1.2, 0.2) : t >= 51.0 && t < 64.4 ? 1 - 0.6 * fin(t, 51.0, 64.4, 0.8, 0.8) : 1;
+    for (const n of ['arterie', 'vene', 'arterie_polm', 'vene_polm']) opacita(n, vVasi);
+    opacita('cervello', 1);
+    // cuore: vista esplosa, pareti trasparenti per vedere il sangue, tinta dei due lati
+    const esplo = morb(prog(t, 9.0, 1.3)) * (1 - morb(prog(t, 12.5, 0.9)));
+    for (const [nome, cfg] of Object.entries(PEZZI)) {
+      const g = GRUPPI_CUORE[nome], d = cfg.dir, k = 0.042 * esplo * (1 + 0.12 * Math.sin((t - 10.3) * 2.2) * (t > 10.3 ? 1 : 0));
+      g.position.set(d[0] * k, d[1] * k, d[2] * k);
+    }
+    const pareteTrasp = t >= 12.8 && t < 27.4 ? 1 - 0.68 * fin(t, 13.2, 27.2, 1.0, 0.8) : 1;
+    for (const n of ['atrio_dx', 'atrio_sx', 'ventricolo_dx', 'ventricolo_sx', 'papillari', 'coronarie', 'vene_cuore']) opacita(n, pareteTrasp);
+    kLato.value = t >= 12.8 && t < 27.4 ? 0.45 * fin(t, 13.2, 27.0, 1.0, 1.0) : 0;
+    // gocce di sangue nelle camere: corrono con il flusso, visibili quando le pareti sono trasparenti o in sezione
+    const vGocce = t >= 12.8 && t < 27.4 ? fin(t, 13.4, 27.2, 1.0, 0.6) : t >= 51.0 && t < 64.4 ? fin(t, 52.0, 64.2, 0.6, 0.4) : 0;
+    const mm = new THREE.Matrix4();
+    for (const g of gocce) {
+      g.im.visible = vGocce > 0.01; g.m.opacity = vGocce;
+      const avanti = (g.p.col === 0xff6b5e ? f.a : f.v) * 0.55;
+      for (let i = 0; i < g.p.n; i++) {
+        const s = ((i / g.p.n) + g.seme + avanti / g.lung) % 1;
+        const q = g.p.curva.getPointAt(s);
+        const jx = (M3.hash(i * 3.1 + g.seme) - 0.5) * 0.006, jy = (M3.hash(i * 5.3 + g.seme) - 0.5) * 0.006, jz = (M3.hash(i * 7.7 + g.seme) - 0.5) * 0.006;
+        const px = q.x + jx, py = q.y + jy, pz = q.z + jz;
+        const wq = liscia(0.075, 0.205, pz) * Math.exp(-Math.pow(px / 0.115, 2)) * Math.exp(-Math.pow((py - 1.205) / 0.12, 2));
+        mm.makeTranslation(px, py, pz - comp * wq); g.im.setMatrixAt(i, mm);
+      }
+      g.im.instanceMatrix.needsUpdate = true;
+    }
+    // spaccato del torace durante le compressioni (piano sagittale, si toglie la metà verso la telecamera)
+    const sezione = t >= 51.0 && t < 64.6;
+    const nomiSezione = ['pelle', 'costole', 'colonna', 'polmoni', 'trachea', 'atrio_dx', 'atrio_sx', 'ventricolo_dx', 'ventricolo_sx', 'papillari', 'valvole', 'coronarie', 'vene_cuore', 'arterie', 'vene', 'arterie_polm', 'vene_polm'];
+    PIANO.constant = sezione ? mix(0.4, 0.02, morb(prog(t, 51.0, 1.2))) : 1e3;
+    for (const n of nomiSezione) if (PARTI[n]) PARTI[n].material.clippingPlanes = sezione ? [PIANO] : [];
+    for (const g of gocce) g.m.clippingPlanes = sezione ? [PIANO] : [];
+    // mani e freccia della spinta
+    const vMani = t >= 49.4 && t < 79.6 ? fin(t, 49.6, 79.4, 0.5, 0.4) * (t >= 51.0 && t < 64.4 ? 1 - fin(t, 51.0, 64.4, 0.4, 0.5) : 1) : 0;
+    const vM2 = vMani * (1 - fin(t, 64.2, 66.4, 0.25, 0.4));
+    anello.material.opacity = vM2; anello.visible = vM2 > 0.01;
+    const wM = Math.exp(-Math.pow((PUNTO_MANI.y - 1.205) / 0.12, 2)) * liscia(0.075, 0.205, PUNTO_MANI.z);
+    anello.position.set(PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z - comp * wM + 0.003);
+    const vFreccia = t >= 51.0 && t < 79.6 ? fin(t, 51.6, 79.4, 0.4, 0.3) * (inRCP(t) || t < 52.4 ? 1 : 0.25) : 0;
+    const vF2 = vFreccia * (1 - fin(t, 64.2, 66.4, 0.25, 0.4));
+    freccia.visible = vF2 > 0.01; freccia.userData.m.opacity = vF2;
+    freccia.position.set(PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z - comp * wM + 0.012);
+    // placche, analisi e scarica
+    const vPlacche = t >= 80.2 ? liscia(80.2, 81.0, t) * (1 - liscia(93.3, 94.2, t)) : 0;
+    placche.forEach(p => { p.g.visible = vPlacche > 0.01; p.mats.forEach(m => (m.opacity = vPlacche)); });
+    const lampo = t >= T_SCARICA ? Math.exp(-(t - T_SCARICA) / 0.12) : 0;
+    scarica.material.opacity = t >= T_SCARICA && t < T_SCARICA + 0.6 ? clamp(lampo * 1.4) : 0;
+    // frattura della costola
+    const vCrepa = t >= 95.6 ? liscia(95.6, 95.75, t) * (1 - liscia(109.0, 110.0, t)) : 0;
+    crepa.visible = vCrepa > 0.01; crepa.userData.m.opacity = vCrepa;
+    alone.material.opacity = t >= 95.6 ? 0.7 * Math.exp(-(t - 95.6) / 0.5) : 0;
+    const fr = PUNTO_FRATTURA, wF = Math.exp(-Math.pow(fr.x / 0.115, 2)) * Math.exp(-Math.pow((fr.y - 1.205) / 0.12, 2)) * liscia(0.075, 0.205, fr.z);
+    crepa.position.set(fr.x, fr.y, fr.z + 0.004 - comp * wF); alone.position.copy(crepa.position);
+
+    const cam = telecamera(t);
+    vicino.disegna(scena, camera);
+
+    // --- sovrimpressioni
+    s2.clearRect(0, 0, W, H);
+    if (lampo > 0.01 && t < T_SCARICA + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.55 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
+    const vECG = t < 7.2 ? fin(t, 1.6, 7.0, 0.5, 0.4) : t >= 27.4 && t < 40.0 ? fin(t, 27.8, 39.8, 0.5, 0.4) : t >= 79.6 && t < 93.5 ? fin(t, 80.0, 86.3, 0.5, 0.4) : 0;
+    ecg(s2, t, vECG, t < T_ARRESTO ? 'Battito normale' : t < T_SCARICA ? 'Fibrillazione ventricolare' : 'Dopo la scarica');
+    righello(s2, t, t >= 52.0 && t < 64.4 ? fin(t, 52.2, 64.2, 0.5, 0.4) : 0);
+    const pausa = (t >= 74.6 && t < 77.4);
+    metronomo(s2, t, t >= 64.4 && t < 79.6 ? fin(t, 64.8, 79.4, 0.5, 0.4) : 0, pausa);
+    avviso(s2, 'Analisi: nessuno tocchi la persona', t >= 81.6 && t < T_SCARICA ? fin(t, 81.7, T_SCARICA, 0.25, 0.15) : 0, '#FCEB0C');
+    avviso(s2, 'Scarica', t >= T_SCARICA && t < 84.1 ? fin(t, T_SCARICA, 84.1, 0.05, 0.25) : 0, '#FFFFFF');
+    avviso(s2, 'Riprendi subito le compressioni', t >= 84.2 && t < 86.4 ? fin(t, 84.2, 86.4, 0.25, 0.3) : 0, '#7CFFB2');
+    dato3(s2, t >= 87.2 && t < 93.0 ? fin(t, 87.2, 92.9, 0.4, 0.35) : 0);
+    chiusura(s2, t);
+    firma(s2);
+
+    // --- impaginazione comune: barra, nota, sottotitoli, schede
+    const k = sceneA(t), sc = SCENE[k];
+    IMP.aggiorna(stato, t, { passoHUD: k + (k === 0 ? 1 : clamp((t - sc.inizio) / 0.4)), notaVisibile: true, hud: sc.nome });
+    IMP.sottotitoli(stato, t, FRASI, { modo: 'parole' });
+    for (const s of SCHEDE) {
+      let p = null;
+      if (s.punto) { const off = s.pezzo ? GRUPPI_CUORE[s.pezzo].position : null;
+                     p = proietta(off ? [s.punto[0] + off.x, s.punto[1] + off.y, s.punto[2] + off.z] : s.punto); }
+      IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: s.verso, centro: s.centro,
+                             inizio: s.inizio, fine: s.fine, visibile: !s.punto || !!p });
+    }
+    const testoFonte = 'Anatomia: BodyParts3D, © The Database Center for Life Science, CC BY 4.0\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council';
+    if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
+    fonte.style.left = L.margine + 'px'; fonte.style.top = (L.zona.basso - fonte.offsetHeight + 4) + 'px';
+    fonte.style.opacity = (t < 110.4 ? 1 : 1 - clamp((t - 110.4) / 0.5)).toFixed(3);
+    window.__camFerma = cam.ferma;
+  }
+
+  window.renderFrame = t => render(t);
+  window.__controlli = () => IMP.controlli(stato);
+  Promise.all([IMP.caricaFont(), new Promise(r => { if (stemma.complete) r(); else stemma.onload = r; })]).then(() => {
+    render(0);
+    esitoCornice = window.corniceSovrapposta(telaCornice, fondo);   // tono preso dal fondo blu, in ogni fotogramma
+    window.CORNICE_ESITO = esitoCornice;
+    window.__ready = true;
+  });
+})();
+</script>
+</body>
+</html>
