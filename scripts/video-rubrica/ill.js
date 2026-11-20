@@ -305,7 +305,7 @@ seduto({u,A}){
 'rcp-mini'({u,A}){
   const d=24*(0.5+0.5*Math.cos(TAU*u*110/60));
   cprScene(-60,220,.62,d);
-  grp(330,120,1,A(.75),()=>daeBox(0,0,.75,{on:true,u}));
+  grp(340,-60,1,A(.75),()=>daeBox(0,0,.75,{on:true,u}));
 },
 goccia({u}){
   const f=(u*1.2)%1; drop(0,-20,4.2); fe(-40,-60,18,34,'rgba(255,255,255,.35)',-.4);
@@ -460,7 +460,7 @@ tosse({u}){
 colpi({u,p,A}){
   // Rifatto il 20/11/2026 (revisione del video): il soccorritore sta accanto e un po' dietro la persona piegata in
   // avanti, una mano sostiene il petto e il palmo dell'altra colpisce davvero tra le scapole (prima colpiva il vuoto).
-  const ph=((u*1.1)%1); const hit=ph<.18;
+  const ph=((u*1.1)%1); const hit=ph<.18 && p>.5; // i colpi partono quando la voce li descrive
   const VX=-60, VY=110, S=.72, LEAN=.75;
   // punto del corpo della persona piegata (coordinate locali di sideFig) -> coordinate della scena
   const pt=(x,y)=>{ const c=Math.cos(-LEAN), s=Math.sin(-LEAN); return [VX+S*(x*c-y*s), VY+S*(x*s+y*c)]; };
@@ -473,12 +473,12 @@ colpi({u,p,A}){
   // braccio che sostiene il petto (passa davanti alla persona)
   const eb=[(sh[0]+px)/2+20,Math.max(sh[1],py)+70]; ln([sh,eb,[px+16,py+4]],RSD,36); ln([sh,eb,[px+16,py+4]],RS,30); fc(px,py,20,SK);
   // braccio che colpisce: mano alzata, poi palmo sul dorso tra le scapole
-  const k=hit?1:1-Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI);
+  const k=p<=.5?0:(hit?1:1-Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI));
   const hx=sx+(1-k)*30, hy=sy-(1-k)*95;
   const ex=(sh[0]+hx)/2+15, ey=(sh[1]+hy)/2+35-(1-k)*40;
   ln([sh,[ex,ey],[hx,hy]],RS,32); fe(hx,hy-6,24,16,SK);
   if(hit){ const r=ph/.18; arc(sx,sy,24+r*40,0,TAU,`rgba(242,228,51,${1-r})`,8); }
-  const n=Math.floor(Math.max(0,u-PRE)*1.1)%5+1; grp(360,-170,1,A(.8),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); });
+  const n=Math.floor(Math.max(0,u-PRE)*1.1)%5+1; grp(330,-170,1,A(.8),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); });
 },
 addome({u,A}){
   const ph=(u*1.0)%1; const th=ph<.25?Math.sin(ph/.25*Math.PI):0;
@@ -489,12 +489,12 @@ addome({u,A}){
   ln([[-10,-260],[-120,-190],[-250-th*25,-150-th*25]],RSD,54); ln([[-10,-260],[-120,-190],[-250-th*25,-150-th*25]],RS,46); fc(-258-th*25,-152-th*25,30,SK); fc(-248-th*25,-160-th*25,24,SKD);
   ctx.restore();
   if(th>.1) arrow(-310,40,-270-th*10,-20-th*20,C.giallo,10);
-  const n=Math.floor(Math.max(0,u-PRE))%5+1; grp(360,-170,1,A(.9),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); });
+  const n=Math.floor(Math.max(0,u-PRE))%5+1; grp(330,-170,1,A(.9),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); });
 },
 alterna({u}){
   const ph=(u%2.4)<1.2?0:1;
   [[-190,'colpi','tra le scapole',0],[190,'compressioni','sull’addome',1]].forEach(([x,l,s2,i])=>{ const on=ph===i; fc(x,-40,150,on?C.giallo:C.tile);
-    tx('5',x,-60,190,on?C.navy:C.giallo,'600','P'); tx(l,x,150,40,'#fff','700'); tx(s2,x,200,30,'#aab3cc','500'); });
+    tx('5',x,-60,190,on?C.navy:C.giallo,'600','P'); tx(l,x,150,40,'#fff','700'); tx(s2,x,200,30,'#dfe5f3','600'); });
   arc(0,-40,40,-2.5,.6,C.ciano,8); arc(0,-40,40,.64,3.7,C.ciano,8);
 },
 medico({u,A}){
