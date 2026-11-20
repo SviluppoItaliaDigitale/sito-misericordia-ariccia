@@ -78,6 +78,12 @@ Seguono le **Linee guida RCP 2025 di Italian Resuscitation Council**, la traduzi
 
 > **Accompagnano il corso, non lo sostituiscono.** Le slide affiancano il materiale ufficiale dei corsi (programma di ARES 118 e di Italian Resuscitation Council), che resta il riferimento. Le manovre si imparano solo provandole su un manichino, con un istruttore: le slide da sole non abilitano a nulla. Per frequentare un corso c'è la pagina della [formazione](/servizi/formazione/).
 
+## Il video: come funziona la rianimazione
+
+Un video di due minuti, in tre dimensioni, da proiettare insieme alle slide del corso BLSD. Fa vedere il cuore e la circolazione, che cosa succede nell'arresto cardiaco e perché le **compressioni** funzionano: premendo il torace si fa il lavoro del cuore e il sangue torna ad arrivare al cervello. Poi il defibrillatore e le conseguenze delle compressioni, comprese le fratture delle costole.
+
+{{< video src="video/rianimazione-come-funziona.mp4" poster="img/video/rianimazione-come-funziona.jpg" titolo="Rianimazione: come funziona" descrizione="Video in 3D per i corsi BLSD: il cuore e la circolazione, l'arresto cardiaco, come le compressioni toraciche sostituiscono il cuore e fanno arrivare il sangue al cervello, il DAE e le fratture delle costole, secondo le linee guida IRC 2025." durata="PT2M25S" data="2026-11-20" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitoli 4 e 12. È uno schema: le proporzioni non sono in scala." >}}
+
 ## Come sono fatte
 
 Ogni presentazione si scarica nel formato del proiettore o della lavagna interattiva: **16:9** in Full HD e in **4K**, **16:10** e **4:3**, in PDF e in PowerPoint. La grafica è quella istituzionale delle Misericordie d'Italia. I disegni sono fatti apposta per queste slide. Le poche foto e illustrazioni vere vengono da Wikimedia Commons (pubblico dominio, CC0 e CC BY-SA) e da Adobe Stock (immagini gratuite con licenza standard): autore e licenza sono sotto ogni immagine e nell'ultima slide di ogni presentazione.

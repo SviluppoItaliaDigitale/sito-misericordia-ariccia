@@ -2289,3 +2289,17 @@ dati:
   frequenza: "annuale"
   verificato: "2026-11-18"
   note: "Se cambiano i requisiti di guida o il formatore, aggiornare la domanda sulla patente dell'assistente."
+- id: "rcp-video-3d-fisiologia"
+  cosa: "Video 3D «Rianimazione: come funziona» (IRC 2025): le compressioni sono il mezzo più semplice per mantenere la perfusione cerebrale e d'organo e le pause la interrompono (cap. 4, p. 19); 5-6 cm, 100-120 al minuto, rilascio completo (cap. 4, p. 8); con un ritmo defibrillabile ogni minuto di ritardo della scarica riduce del 3-6% la sopravvivenza (cap. 4, p. 26); placche sotto la clavicola destra accanto allo sterno e sul fianco sinistro sotto l'ascella (cap. 4, p. 30); lesioni da RCP frequenti in chi è in arresto, soprattutto fratture di costole e sterno, e meno di 1 su 100 in chi non lo era (cap. 12, p. 24). Il cervello «in pochi minuti» comincia a danneggiarsi: nessun numero di minuti, perché non verificato su una fonte primaria."
+  valore: "5-6 cm; 100-120/min; -3-6% al minuto; fratture frequenti; <1% di lesioni senza arresto"
+  dove:
+  - "scripts/video-3d-rcp/voce/frasi.txt"
+  - "scripts/video-3d-rcp/rianimazione-3d.src.html"
+  - "static/video/rianimazione-come-funziona.vtt"
+  - "content/slide-corsi.md"
+  fonte: "https://www.ircouncil.it/linee-guida-rcp-2025/"
+  tipo: "sanita"
+  delicato: true
+  frequenza: "mensile"
+  verificato: "2026-11-20"
+  note: "Testi dentro il video: se cambiano le linee guida, il video va rifatto (scripts/video-3d-rcp/LEGGIMI.md)."
