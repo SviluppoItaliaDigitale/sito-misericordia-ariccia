@@ -44,13 +44,14 @@ def attendi(pagina) -> None:
 
 
 def copertina(uscita: Path, prima) -> None:
-    """Anteprima della prima pagina per la pagina del sito: static/img/scuole/<fascia>/<nome>.jpg, 640 px di lato lungo.
-    I materiali interni, salvati fuori da static/documenti/scuole (es. formazione-istruttori/, 20/11/2026), non ne hanno."""
-    base = RADICE / "static/documenti/scuole"
+    """Anteprima della prima pagina per la pagina del sito: static/documenti/X/nome.pdf → static/img/X/nome.jpg
+    (scuole/<fascia>/ e, dal 20/11/2026, formazione/ con le slide per i corsi), 640 px di lato lungo.
+    Un file salvato fuori da static/documenti/ non è pubblicato e non ha anteprima."""
+    base = RADICE / "static/documenti"
     if base not in uscita.parents:
         return
     rel = uscita.relative_to(base)
-    dest = RADICE / "static/img/scuole" / rel.with_suffix(".jpg")
+    dest = RADICE / "static/img" / rel.with_suffix(".jpg")
     dest.parent.mkdir(parents=True, exist_ok=True)
     im = prima.convert("RGB")
     im.thumbnail((640, 640))
