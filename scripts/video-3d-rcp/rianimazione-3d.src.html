@@ -49,25 +49,41 @@
   const KIT = { blu: '#003F85', giallo: '#FCEB0C', azzurro: '#009FE3', notte: '#061633' };
 
   /* ============================================================ scene, tempi e testi */
-  const TOTAL = 124.5;
+  // Tempi: le scene sono scritte su una scaletta fissa (inizio delle 22 frasi qui sotto); la pagina la allinea alla voce
+  // vera (inizio delle frasi in sottotitoli.json) con un tratto lineare fra una frase e l'altra. Battito, compressioni,
+  // tracciato e flusso del sangue vanno invece in tempo reale (110 compressioni al minuto restano 110).
+  const SCALETTA = [0, 1.0, 8.6, 13.2, 17.4, 22.0, 28.0, 31.0, 35.4, 40.6, 48.0, 51.4, 59.6, 64.8, 67.8, 74.0, 80.0, 86.5,
+                    94.5, 102.0, 107.8, 111.0, 114.6, 124.5];
+  // le frasi lunghe sono divise in più sottotitoli (campo «riga»: la frase della voce a cui appartengono)
+  const RIGHE = []; FRASI.forEach((f, i) => { const r = f.riga || i + 1; if (!RIGHE[r - 1]) RIGHE[r - 1] = { inizio: f.inizio, fine: f.fine }; else RIGHE[r - 1].fine = f.fine; });
+  const VERI = RIGHE.length === 22 ? [0, ...RIGHE.map(f => f.inizio), RIGHE[21].fine + 2.8] : SCALETTA.slice();
+  const interp = (x, xs, ys) => { if (x <= xs[0]) return ys[0]; for (let i = 1; i < xs.length; i++) if (x <= xs[i]) return mix(ys[i - 1], ys[i], (x - xs[i - 1]) / (xs[i] - xs[i - 1])); return ys[ys.length - 1] + (x - xs[xs.length - 1]); };
+  const scaletta = tr => interp(tr, VERI, SCALETTA), reale = tp => interp(tp, SCALETTA, VERI);
+  const TOTAL = VERI[VERI.length - 1];
   const SCENE = [
-    { nome: 'IL CUORE E IL SANGUE', inizio: 0 },     { nome: 'LE QUATTRO CAMERE', inizio: 7.2 },
-    { nome: 'LA CIRCOLAZIONE', inizio: 12.8 },       { nome: 'ARRESTO CARDIACO', inizio: 27.4 },
-    { nome: 'IL CERVELLO', inizio: 40.0 },           { nome: 'LE COMPRESSIONI', inizio: 46.4 },
-    { nome: 'RITMO E PAUSE', inizio: 64.4 },         { nome: 'IL DEFIBRILLATORE', inizio: 79.6 },
-    { nome: 'LE CONSEGUENZE', inizio: 93.5 },        { nome: 'COSA FARE', inizio: 110.4 }
+    { nome: 'Il cuore e il sangue', inizio: 0 },     { nome: 'Le quattro camere del cuore', inizio: 7.2 },
+    { nome: 'Il giro del sangue', inizio: 12.8 },    { nome: 'L\'arresto cardiaco', inizio: 27.4 },
+    { nome: 'Il cervello senza sangue', inizio: 40.0 }, { nome: 'Le compressioni', inizio: 46.4 },
+    { nome: 'Ritmo e pause', inizio: 64.4 },         { nome: 'Il defibrillatore (DAE)', inizio: 79.6 },
+    { nome: 'E le costole?', inizio: 93.5 },         { nome: 'Che cosa fare', inizio: 110.4 }
   ];
   window.TOTAL = TOTAL;
-  const L = IMP.layout('orizzontale'), W = L.W, H = L.H;
+  const FORMATO = new URLSearchParams(location.search).get('formato') === 'verticale' ? 'verticale' : 'orizzontale';
+  const VERT = FORMATO === 'verticale';
+  const L = IMP.layout(FORMATO), W = L.W, H = L.H;
   window.STAGE_W = W; window.STAGE_H = H;
+  for (const id of ['fondo', 'sopra', 'cornice']) { const e = document.getElementById(id); e.width = W; e.height = H; }
   const stage = document.getElementById('stage');
-  const stato = IMP.monta(stage, { ente: 'misericordia', formato: 'orizzontale', hud: SCENE.map(s => s.nome),
-                                   passiHUD: SCENE.length, nota: 'SCHEMA · NON IN SCALA' });
+  const stato = IMP.monta(stage, { ente: 'misericordia', formato: FORMATO, hud: null, nota: null });
   IMP.anteprima(stage);
+  // ?pulito=1: solo il 3D, senza scritte (immagini per la grafica della news, che ha la sua fascia)
+  if (new URLSearchParams(location.search).get('pulito') === '1') {
+    const st = document.createElement('style'); st.textContent = '#sopra,#cornice,#fonte,#imp-radice{display:none!important}'; document.head.appendChild(st);
+  }
 
   // Ritmo: battito normale (70 al minuto), fibrillazione, compressioni a 110 al minuto con pause, scarica.
-  const T_ARRESTO = 28.35, T_SCARICA = 83.4;
-  const RCP = [[52.4, 74.6], [77.4, 81.6], [84.2, 108.0]];          // compressioni (inizio, fine)
+  const T_ARRESTO = reale(28.35), T_SCARICA = reale(83.4);      // tempo reale
+  const RCP = [[52.4, 74.6], [77.4, 81.6], [84.2, 108.0]].map(([a, b]) => [reale(a), reale(b)]);          // compressioni (inizio, fine)
   const PERIODO_RCP = 60 / 110, PROF = 0.055;                       // 110 al minuto, 5,5 cm
   const PERIODO_CUORE = 60 / 70;
   const inRCP = t => RCP.find(([a, b]) => t >= a && t < b);
@@ -124,13 +140,13 @@
   /* ============================================================ fondo, livello 3D, sovrimpressioni */
   const fondo = document.getElementById('fondo'), fctx = fondo.getContext('2d');
   (function () {
-    const g = fctx.createRadialGradient(W * 0.5, 470, 60, W * 0.5, 470, 1250);
+    const g = fctx.createRadialGradient(W * 0.5, VERT ? 820 : 470, 60, W * 0.5, VERT ? 820 : 470, VERT ? 1500 : 1250);
     g.addColorStop(0, '#0B3D7E'); g.addColorStop(0.5, '#082B5E'); g.addColorStop(1, KIT.notte);
     fctx.fillStyle = g; fctx.fillRect(0, 0, W, H);
   })();
   const vicino = M3.creaRenderer(document.getElementById('livello-scena'), W, H, { scala: 0.8 });
   const scena = new THREE.Scene();
-  const camera = M3.creaCamera(W, H, { fov: 30, zona: L.zona });
+  const camera = M3.creaCamera(W, H, { fov: VERT ? 42 : 30, zona: L.zona });
   scena.add(new THREE.HemisphereLight(0xdfe8ff, 0x1a2a4a, 1.25));
   const luce = new THREE.DirectionalLight(0xffffff, 1.5); scena.add(luce); scena.add(luce.target);
   const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.55); scena.add(luce2); scena.add(luce2.target);
@@ -260,6 +276,40 @@
     return { p, im, m, lung: p.curva.getLength(), seme: k * 0.37 };
   });
 
+  // globuli che scorrono nei vasi veri di tutto il corpo (percorsi calcolati da anatomia.py): rossi con ossigeno,
+  // blu senza; nelle arterie vanno dal cuore verso testa, braccia, pancia e gambe, nelle vene tornano al cuore,
+  // nella piccola circolazione vanno blu ai polmoni e tornano rossi al cuore
+  const sferaG = new THREE.SphereGeometry(1, 12, 9);
+  const GLOBULI = (A.percorsi || []).map(p => {
+    const curva = new THREE.CatmullRomCurve3(p.punti.map(v3), false, 'centripetal');
+    const rosso = p.tipo === 'arterie' || p.tipo === 'vene_polm', verso = p.tipo === 'arterie' || p.tipo === 'arterie_polm' ? 1 : -1;
+    const n = Math.max(5, Math.round(p.lung / 0.028));
+    const punti = curva.getSpacedPoints(Math.max(60, Math.round(p.lung / 0.002)));   // tabella: niente ricerche a ogni fotogramma
+    return { p, rosso, verso, n, punti, lung: p.lung, arteria: p.tipo === 'arterie' || p.tipo === 'arterie_polm' };
+  });
+  const matGlob = col => { const m = prepara(new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.75, transparent: true, depthWrite: false })); MATERIALI.push(m); return m; };
+  const nRossi = GLOBULI.filter(g => g.rosso).reduce((x, g) => x + g.n, 0), nBlu = GLOBULI.filter(g => !g.rosso).reduce((x, g) => x + g.n, 0);
+  const globRossi = new THREE.InstancedMesh(sferaG, matGlob(0xff5a4e), Math.max(1, nRossi)), globBlu = new THREE.InstancedMesh(sferaG, matGlob(0x6f9cff), Math.max(1, nBlu));
+  for (const im of [globRossi, globBlu]) { im.frustumCulled = false; im.renderOrder = 7; dentro.add(im); }
+  const _gm = new THREE.Matrix4(), _gq = new THREE.Quaternion(), _gs = new THREE.Vector3(), _gp = new THREE.Vector3();
+  function aggiornaGlobuli(f, comp, vis, raggio) {
+    let kr = 0, kb = 0;
+    globRossi.visible = globBlu.visible = vis > 0.01; globRossi.material.opacity = globBlu.material.opacity = vis;
+    if (vis <= 0.01) return;
+    _gs.setScalar(raggio);
+    for (const g of GLOBULI) {
+      const avanti = (g.arteria ? f.a : f.v) * 0.9, m = g.punti.length - 1;
+      for (let i = 0; i < g.n; i++) {
+        let u = ((i + 0.5) / g.n + (g.verso > 0 ? 1 : -1) * avanti / g.lung) % 1; if (u < 0) u += 1;
+        const q = g.punti[Math.min(m, Math.round(u * m))];
+        const w = liscia(0.075, 0.205, q.z) * Math.exp(-Math.pow(q.x / 0.115, 2)) * Math.exp(-Math.pow((q.y - 1.205) / 0.12, 2));
+        _gp.set(q.x, q.y, q.z - comp * w); _gm.compose(_gp, _gq, _gs);
+        if (g.rosso) globRossi.setMatrixAt(kr++, _gm); else globBlu.setMatrixAt(kb++, _gm);
+      }
+    }
+    globRossi.instanceMatrix.needsUpdate = true; globBlu.instanceMatrix.needsUpdate = true;
+  }
+
   /* ---------- placche del DAE sulla pelle, punto della frattura sulla costola, mani sullo sterno */
   const pelleMesh = PARTI.pelle, ray = new THREE.Raycaster();
   function sullaPelle(x, y, dirz) {                 // punto della pelle colpito da un raggio orizzontale
@@ -373,40 +423,43 @@
   /* ============================================================ telecamera (bersaglio nel corpo, angoli nel mondo) */
   const CUORE = P.cuore, TORACE = [0.0, 1.205, 0.14];
   const CAM = [
-    { t: 0, c: [0, 0.95, 0.05], az: -28, el: 6, d: 4.7, fov: 30 },
-    { t: 2.8, az: -8, el: 5, d: 3.95 },
-    { t: 7.2, az: -8, el: 5, d: 3.95 },
-    { t: 9.0, c: [CUORE[0] + 0.005, CUORE[1] + 0.005, CUORE[2]], az: 0, el: 8, d: 0.66 },
+    { t: 0, c: [0, 0.95, 0.05], az: -60, el: 8, d: 4.9, fov: 30, dv: 0.8 },
+    { t: 3.9, az: -6, el: 5, d: 3.7 },                                       // giro e avvicinamento
+    { t: 7.2, az: -6, el: 5, d: 3.7 },
+    { t: 9.0, c: [CUORE[0] + 0.005, CUORE[1] + 0.005, CUORE[2]], az: 0, el: 8, d: 0.66, dv: 1.35 },
     { t: 12.6, az: 0, el: 8, d: 0.66 },
-    { t: 14.0, c: [0.012, 1.245, 0.09], az: 0, el: 6, d: 1.0 },
+    { t: 14.0, c: [0.012, 1.245, 0.09], az: 0, el: 6, d: 1.0, dv: 1.2 },
     { t: 17.0, az: 0, el: 6, d: 1.0 },
-    { t: 18.6, c: [0.0, 1.39, 0.08], az: 16, el: 4, d: 1.3 },
+    { t: 18.6, c: [0.0, 1.39, 0.08], az: 16, el: 4, d: 1.3, dv: 1.1 },
     { t: 21.5, az: 16, el: 4, d: 1.3 },
-    { t: 23.4, c: [0, 1.08, 0.05], az: 30, el: 6, d: 2.7 },
-    { t: 27.4, az: 30, el: 6, d: 2.7 },
-    { t: 29.2, c: [CUORE[0], CUORE[1], CUORE[2]], az: -18, el: 8, d: 0.72 },
-    { t: 39.8, az: -18, el: 8, d: 0.72 },
-    { t: 41.8, c: [P.cervello[0], P.cervello[1] - 0.01, P.cervello[2]], az: 28, el: 8, d: 0.6 },
-    { t: 46.4, az: 28, el: 8, d: 0.6 },
-    { t: 49.4, c: TORACE, az: 62, el: 32, d: 1.05 },
-    { t: 51.0, az: 62, el: 32, d: 1.05 },
-    { t: 52.4, c: [0.02, 1.215, 0.115], az: 90, el: 10, d: 0.6 },
-    { t: 64.4, az: 90, el: 10, d: 0.6 },
-    { t: 66.2, c: [0, 1.0, 0.05], az: 42, el: 36, d: 2.75 },
-    { t: 79.6, az: 42, el: 36, d: 2.75 },
-    { t: 81.2, c: [0.03, 1.25, 0.12], az: 18, el: 58, d: 0.95 },
-    { t: 93.5, az: 18, el: 58, d: 0.95 },
-    { t: 95.2, c: [0.05, 1.21, 0.15], az: 28, el: 46, d: 0.55 },
-    { t: 101.5, az: 28, el: 46, d: 0.55 },
-    { t: 102.5, az: 14, el: 50, d: 0.6 },
-    { t: 107.6, az: 14, el: 50, d: 0.6 },
-    { t: 109.8, c: [0, 1.3, 0.05], az: 34, el: 30, d: 1.95 },
-    { t: 124.5, az: 52, el: 30, d: 2.2, facilita: 'lineare' }
+    { t: 23.4, c: [0, 1.0, 0.05], az: 30, el: 8, d: 3.1, dv: 0.85 },
+    { t: 27.4, az: 210, el: 8, d: 3.1, facilita: 'lineare' },               // giro attorno al corpo: il sangue ovunque
+    { t: 29.2, c: [CUORE[0], CUORE[1], CUORE[2]], az: 342, el: 8, d: 0.72, dv: 1.3 },
+    { t: 34.6, az: 342, el: 8, d: 0.72 },
+    { t: 39.8, az: 402, el: 14, d: 0.66, facilita: 'lineare' },             // giro attorno al cuore che trema
+    { t: 41.8, c: [P.cervello[0], P.cervello[1] - 0.01, P.cervello[2]], az: 388, el: 8, d: 0.6, dv: 1.15 },
+    { t: 46.4, az: 388, el: 8, d: 0.6 },
+    { t: 49.4, c: TORACE, az: 422, el: 32, d: 1.05, dv: 1.5 },
+    { t: 51.0, az: 422, el: 32, d: 1.05 },
+    { t: 52.4, c: [0.02, 1.215, 0.115], az: 450, el: 10, d: 0.6, dv: 1.7 },
+    { t: 64.4, az: 450, el: 10, d: 0.6 },
+    { t: 66.2, c: [0, 1.0, 0.05], az: 402, el: 36, d: 2.75, dv: 1.8 },
+    { t: 74.4, az: 470, el: 30, d: 2.6, facilita: 'lineare' },              // giro lento attorno alla persona sdraiata
+    { t: 79.6, az: 470, el: 30, d: 2.6 },
+    { t: 81.2, c: [0.03, 1.25, 0.12], az: 378, el: 58, d: 0.95, dv: 1.4 },
+    { t: 87.8, az: 378, el: 58, d: 0.95 },
+    { t: 93.5, az: 350, el: 50, d: 0.9, facilita: 'lineare' },
+    { t: 95.2, c: [0.05, 1.21, 0.15], az: 388, el: 46, d: 0.55, dv: 1.3 },
+    { t: 101.5, az: 388, el: 46, d: 0.55 },
+    { t: 102.5, az: 374, el: 50, d: 0.6 },
+    { t: 107.6, az: 374, el: 50, d: 0.6 },
+    { t: 109.8, c: [0, 1.3, 0.05], az: 394, el: 30, d: 1.95, dv: 1.4 },
+    { t: 124.5, az: 412, el: 30, d: 2.2, facilita: 'lineare' }
   ];
-  (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov']) if (k[x] == null) k[x] = p[x]; p = k; } })();
+  (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov', 'dv']) if (k[x] == null) k[x] = p[x]; p = k; } })();
   // rotazione della persona: in piedi fino a 46,6 s, poi sdraiata a pancia in su (49,4 s)
   const sdraiata = t => morb(prog(t, 46.6, 2.8));
-  const _b = new THREE.Vector3();
+  const _b = new THREE.Vector3(); let camDist = 1;
   function telecamera(t) {
     let i = 0; while (i < CAM.length - 2 && t >= CAM[i + 1].t) i++;
     const a = CAM[i], b = CAM[i + 1];
@@ -414,34 +467,35 @@
     const c = [0, 1, 2].map(k => mix(a.c[k], b.c[k], u));
     _b.set(c[0], c[1], c[2]); dentro.localToWorld(_b);
     const az = mix(a.az, b.az, u) * Math.PI / 180, el = mix(a.el, b.el, u) * Math.PI / 180;
-    const d = Math.exp(mix(Math.log(a.d), Math.log(b.d), u)), fov = mix(a.fov, b.fov, u);
+    const d = Math.exp(mix(Math.log(a.d), Math.log(b.d), u)) * (VERT ? mix(a.dv, b.dv, u) : 1), fov = mix(a.fov, b.fov, u) * (VERT ? 1.4 : 1);
     camera.position.set(_b.x + d * Math.sin(az) * Math.cos(el), _b.y + d * Math.sin(el), _b.z + d * Math.cos(az) * Math.cos(el));
     camera.up.set(0, 1, 0); camera.lookAt(_b);
     camera.near = d * 0.02; camera.far = d * 10 + 3; camera.fov = fov; camera.updateProjectionMatrix();
     luce.position.copy(camera.position).add(new THREE.Vector3(0.6 * d, 1.2 * d, 0.4 * d)); luce.target.position.copy(_b);
     luce2.position.copy(_b).add(new THREE.Vector3(-d, -0.3 * d, -0.5 * d)); luce2.target.position.copy(_b);
+    camDist = d;
     return { ferma: Math.abs(u0 - 0) < 1e-9 || u0 >= 1 || (a.az === b.az && a.el === b.el && a.d === b.d && a.c === b.c) };
   }
 
   /* ============================================================ schede (etichette con la linea di richiamo) */
   // punto: coordinate nel corpo (si seguono rotazione e compressioni a mano); verso: dove sta la scheda
   const SCHEDE = [
-    { id: 'cuore', titolo: 'Cuore', sotto: 'una pompa grande come un pugno', punto: CUORE, verso: { dx: 260, dy: -170 }, inizio: 3.4, fine: 6.9 },
-    { id: 'ad', titolo: 'Atrio destro', punto: P.cav_ad, pezzo: 'atrio_dx', verso: { dx: -330, dy: -140 }, inizio: 9.9, fine: 12.5 },
-    { id: 'as', titolo: 'Atrio sinistro', punto: P.cav_as, pezzo: 'atrio_sx', verso: { dx: 330, dy: -160 }, inizio: 10.1, fine: 12.5 },
-    { id: 'vd', titolo: 'Ventricolo destro', punto: P.cav_vd, pezzo: 'ventricolo_dx', verso: { dx: -360, dy: 120 }, inizio: 11.0, fine: 12.5 },
-    { id: 'vs', titolo: 'Ventricolo sinistro', punto: P.cav_vs, pezzo: 'ventricolo_sx', verso: { dx: 360, dy: 110 }, inizio: 11.2, fine: 12.5 },
-    { id: 'polmoni', titolo: 'Polmoni', sotto: 'il sangue prende ossigeno', punto: [-0.085, 1.27, 0.08], verso: { dx: -300, dy: -120 }, inizio: 14.4, fine: 16.9 },
-    { id: 'aorta', titolo: 'Aorta', sotto: 'la grande arteria', punto: P.arco_aortico, verso: { dx: 320, dy: 40 }, inizio: 19.0, fine: 21.3 },
-    { id: 'carotidi', titolo: 'Verso il cervello', sotto: 'arterie carotidi', punto: [P.carotide_sx[0], 1.44, P.carotide_sx[2]], verso: { dx: 330, dy: -60 }, inizio: 19.6, fine: 21.3 },
-    { id: 'fv', titolo: 'Fibrillazione ventricolare', sotto: 'il cuore trema e non spinge', punto: P.cav_vs, verso: { dx: 360, dy: -150 }, inizio: 31.8, fine: 39.5 },
-    { id: 'cervello', titolo: 'Cervello senza ossigeno', sotto: 'in pochi minuti si danneggia', punto: [P.cervello[0] + 0.03, P.cervello[1] + 0.03, P.cervello[2] + 0.05], verso: { dx: 360, dy: -40 }, inizio: 42.6, fine: 46.1 },
-    { id: 'mani', titolo: 'Mani qui', sotto: 'metà inferiore dello sterno', punto: [PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z], verso: { dx: 300, dy: -170 }, inizio: 49.6, fine: 50.95 },
-    { id: 'sterno', titolo: 'Sterno', punto: [0.0, 1.215, 0.195], verso: { dx: -260, dy: -150 }, inizio: 53.0, fine: 63.9 },
-    { id: 'cuoresez', titolo: 'Cuore', sotto: 'fra sterno e colonna', punto: [0.015, 1.215, 0.13], verso: { dx: 300, dy: -250 }, inizio: 53.6, fine: 63.9 },
-    { id: 'colonna', titolo: 'Colonna vertebrale', punto: [0.0, 1.2, 0.05], verso: { dx: 280, dy: 140 }, inizio: 54.2, fine: 63.9 },
-    { id: 'fratture', titolo: 'Fratture di costole e sterno', sotto: 'frequenti durante la RCP', punto: null, inizio: 96.8, fine: 101.3, frattura: true, verso: { dx: 330, dy: -150 } },
-    { id: 'lesioni', titolo: 'Meno di 1 su 100', sotto: 'lesioni in chi non era in arresto', punto: null, inizio: 102.7, fine: 107.4, centro: { x: 1480, y: 330 } }
+    { id: 'cuore', titolo: 'Cuore', sotto: 'una pompa grande come un pugno', punto: CUORE, verso: { dx: 260, dy: -170 }, inizio: 4.2, fine: 6.9, versoV: { dx: 220, dy: -260 } },
+    { id: 'ad', titolo: 'Atrio destro', punto: P.cav_ad, pezzo: 'atrio_dx', verso: { dx: -330, dy: -140 }, inizio: 9.9, fine: 12.5, versoV: { dx: -200, dy: -260 } },
+    { id: 'as', titolo: 'Atrio sinistro', punto: P.cav_as, pezzo: 'atrio_sx', verso: { dx: 330, dy: -160 }, inizio: 10.1, fine: 12.5, versoV: { dx: 200, dy: -300 } },
+    { id: 'vd', titolo: 'Ventricolo destro', punto: P.cav_vd, pezzo: 'ventricolo_dx', verso: { dx: -360, dy: 120 }, inizio: 11.0, fine: 12.5, versoV: { dx: -200, dy: 260 } },
+    { id: 'vs', titolo: 'Ventricolo sinistro', punto: P.cav_vs, pezzo: 'ventricolo_sx', verso: { dx: 360, dy: 110 }, inizio: 11.2, fine: 12.5, versoV: { dx: 200, dy: 280 } },
+    { id: 'polmoni', titolo: 'Polmoni', sotto: 'il sangue prende ossigeno', punto: [-0.085, 1.27, 0.08], verso: { dx: -300, dy: -120 }, inizio: 14.4, fine: 16.9, versoV: { dx: -150, dy: -280 } },
+    { id: 'aorta', titolo: 'Aorta', sotto: 'la grande arteria', punto: P.arco_aortico, verso: { dx: 320, dy: 40 }, inizio: 19.0, fine: 21.3, versoV: { dx: 220, dy: 150 } },
+    { id: 'carotidi', titolo: 'Verso il cervello', sotto: 'arterie carotidi', punto: [P.carotide_sx[0], 1.44, P.carotide_sx[2]], verso: { dx: 330, dy: -60 }, inizio: 19.6, fine: 21.3, versoV: { dx: 220, dy: -200 } },
+    { id: 'fv', titolo: 'Fibrillazione ventricolare', sotto: 'il cuore trema e non spinge', punto: P.cav_vs, verso: { dx: 360, dy: -150 }, inizio: 31.0, fine: 34.4, versoV: { dx: 150, dy: -330 } },
+    { id: 'cervello', titolo: 'Cervello senza ossigeno', sotto: 'in pochi minuti si danneggia', punto: [P.cervello[0] + 0.03, P.cervello[1] + 0.03, P.cervello[2] + 0.05], verso: { dx: 360, dy: -40 }, inizio: 42.6, fine: 46.1, versoV: { dx: 150, dy: -330 } },
+    { id: 'mani', titolo: 'Mani qui', sotto: 'metà inferiore dello sterno', punto: [PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z], verso: { dx: 300, dy: -170 }, inizio: 49.6, fine: 50.95, versoV: { dx: 150, dy: -300 } },
+    { id: 'sterno', titolo: 'Sterno', punto: [0.0, 1.215, 0.195], verso: { dx: -260, dy: -150 }, inizio: 53.0, fine: 63.9, versoV: { dx: -150, dy: -300 } },
+    { id: 'cuoresez', titolo: 'Cuore', sotto: 'fra sterno e colonna', punto: [0.015, 1.215, 0.13], verso: { dx: 300, dy: -250 }, inizio: 53.6, fine: 63.9, versoV: { dx: 250, dy: -360 } },
+    { id: 'colonna', titolo: 'Colonna vertebrale', punto: [0.0, 1.2, 0.05], verso: { dx: 280, dy: 140 }, inizio: 54.2, fine: 63.9, versoV: { dx: 330, dy: 180 } },
+    { id: 'fratture', titolo: 'Fratture di costole e sterno', sotto: 'frequenti durante la RCP', punto: null, inizio: 96.8, fine: 101.3, frattura: true, verso: { dx: 330, dy: -150 }, versoV: { dx: 150, dy: -330 } },
+    { id: 'lesioni', titolo: 'Meno di 1 su 100', sotto: 'lesioni in chi non era in arresto', punto: null, inizio: 102.7, fine: 107.4, centro: { x: 1480, y: 330 }, centroV: { x: 540, y: 520 } }
   ];
   SCHEDE.forEach(s => { if (s.frattura) s.punto = [PUNTO_FRATTURA.x, PUNTO_FRATTURA.y, PUNTO_FRATTURA.z]; });
   const _p = new THREE.Vector3();
@@ -461,18 +515,55 @@
   const stemma = new Image(); stemma.src = '/*STEMMA*/';
   function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
   function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
-  // firma «Misericordia di Ariccia» con lo stemma, in alto a destra in ogni fotogramma
-  function firma(c) {
-    const h = 64, w = stemma.naturalWidth ? h * stemma.naturalWidth / stemma.naturalHeight : 0;
-    c.save(); c.font = '600 28px Montserrat'; const tw = c.measureText('Misericordia di Ariccia').width;
-    const x2 = W - L.margine, x1 = x2 - tw, y = 94;
-    c.shadowColor = 'rgba(0,22,54,.7)'; c.shadowBlur = 8; c.fillStyle = '#FFFFFF'; c.textAlign = 'left';
-    c.fillText('Misericordia di Ariccia', x1, y);
-    if (w) c.drawImage(stemma, x1 - w - 16, 50, w, h);
+  function pannello(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.86)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
+  // Posizioni dei pannelli nei due formati (zona delle animazioni: orizzontale 130-850, verticale 380-1260)
+  const LAY = VERT ? {
+    fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
+    ecg: { x: 90, y: 1070, w: 900, h: 170 }, ecgDae: { x: 90, y: 1070, w: 900, h: 170 },
+    righello: { x: 130, y0: 900, k: 60 / 0.06 * 3.0 }, metronomo: { x: 90, y: 1040, w: 900, h: 200 },
+    avviso: 430, dato3: { x: 90, y: 950, w: 900, h: 290 }, legenda: { x: 90, y: 318 },
+    passi: i => ({ x: 120, y: 420 + i * 190, w: 840, h: 160 }), riga1: 1030, tel: 1110, sito: 1165, corpoRiga: 30
+  } : {
+    fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
+    ecg: { x: 1360, y: 640, w: 480, h: 150 }, ecgDae: { x: 1360, y: 196, w: 480, h: 150 },
+    righello: { x: 1500, y0: 260, k: 60 / 0.06 * 4.6 }, metronomo: { x: 1370, y: 600, w: 470, h: 200 },
+    avviso: 236, dato3: { x: 1260, y: 300, w: 580, h: 300 }, legenda: { x: 1500, y: 196 },
+    passi: i => ({ x: 230 + i * 520, y: 300, w: 460, h: 230 }), riga1: 640, tel: 726, sito: 790, corpoRiga: 32
+  };
+  // Testata dei modelli nazionali: filo giallo, fascia blu con il titolo e la scena, stemma, firma; nota a destra.
+  function testata(c, nomeScena) {
+    const F = LAY.fascia, libero = F.w - F.sx - F.dx;
+    c.save();
+    c.fillStyle = KIT.giallo; c.fillRect(0, F.y - Math.round(F.h * 0.11), F.w + 18, Math.round(F.h * 0.9));
+    c.fillStyle = KIT.blu; c.fillRect(0, F.y, F.w, F.h);
+    const r1 = 'Rianimazione: come funziona', r2 = nomeScena;
+    let corpo = VERT ? 40 : 34; c.font = `600 ${corpo}px Montserrat`;
+    while (corpo > 24 && Math.max(c.measureText(r1).width, c.measureText(r2).width) > libero) { corpo--; c.font = `600 ${corpo}px Montserrat`; }
+    const Lh = corpo * 1.1, top = F.y + (F.h - 2 * Lh) / 2 + corpo * 0.88;
+    testo(c, r1, F.sx, top, corpo, 600, '#FFFFFF'); testo(c, r2, F.sx, top + Lh, corpo * 0.86, 700, KIT.giallo);
+    if (stemma.naturalWidth) { const sw = F.stemma, sh = sw * stemma.naturalHeight / stemma.naturalWidth; c.drawImage(stemma, F.w - F.dx + (F.dx - sw) / 2 + 6, F.y + F.h / 2 - sh / 2, sw, sh); }
+    const fr = LAY.firma; c.font = `600 ${fr.corpo}px Montserrat`; const tw = c.measureText('Misericordia di Ariccia').width;
+    c.shadowColor = 'rgba(0,22,54,.6)'; c.shadowBlur = 6; c.shadowOffsetY = 1;
+    testo(c, 'Misericordia di Ariccia', fr.x, fr.y + fr.corpo, fr.corpo, 600, '#FFFFFF');
+    c.shadowColor = 'transparent';
+    window.FIRMA_BOX = { x: fr.x, y: fr.y, w: Math.round(tw), h: fr.corpo, corpo: fr.corpo };
+    // nota «SCHEMA · NON IN SCALA», a destra
+    c.font = '700 20px Montserrat'; const nt = 'SCHEMA · NON IN SCALA', nw = c.measureText(nt).width + 36, nx = W - L.margine - nw;
+    rett(c, nx, LAY.nota.y, nw, 38, 19); c.fillStyle = KIT.giallo; c.fill();
+    testo(c, nt, nx + 18, LAY.nota.y + 26, 20, 700, KIT.blu);
     c.restore();
-    window.FIRMA_BOX = { x: Math.round(x1), y: 72, w: Math.round(tw), h: 30, corpo: 28 };
   }
-  // tracciato del battito (schema): sinusale, fibrillazione, scarica, linea quasi piatta
+  // legenda dei colori del sangue: si capisce al primo sguardo
+  function legenda(c, alfa) {
+    if (alfa <= 0.001) return;
+    const { x, y } = LAY.legenda, w = VERT ? 900 : 340, h = VERT ? 70 : 104;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, 'rgba(255,255,255,.45)');
+    const voce = (cx, cy, col, t1) => { c.fillStyle = col; c.beginPath(); c.arc(cx, cy, 12, 0, 7); c.fill(); testo(c, t1, cx + 24, cy + 8, 22, 600, '#FFFFFF'); };
+    if (VERT) { voce(x + 34, y + 35, '#ff5a4e', 'con ossigeno'); voce(x + 470, y + 35, '#6f9cff', 'senza ossigeno'); }
+    else { voce(x + 30, y + 34, '#ff5a4e', 'sangue con ossigeno'); voce(x + 30, y + 74, '#6f9cff', 'sangue senza ossigeno'); }
+    c.restore();
+  }
+  // tracciato del battito (schema): sinusale, fibrillazione, scarica, linea quasi piatta (tempo reale)
   function ecgValore(t) {
     if (t < T_ARRESTO) {
       const ph = (t / PERIODO_CUORE) % 1;
@@ -485,88 +576,87 @@
     if (t < T_SCARICA + 0.12) return 1.6 * Math.sin((t - T_SCARICA) / 0.12 * Math.PI);
     return 0.02 * Math.sin(t * 5.0);
   }
-  function ecg(c, t, alfa, titolo) {
+  function ecg(c, t, alfa, titolo, dae) {
     if (alfa <= 0.001) return;
-    const x = 1360, y = t >= 79.6 && t < 93.5 ? 150 : 640, w = 480, h = 150;
-    c.save(); c.globalAlpha = alfa;
-    rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
-    testo(c, titolo, x + 18, y + 30, 19, 700, '#FCEB0C');
-    c.beginPath(); const n = 240, dur = 3.0;
-    for (let i = 0; i <= n; i++) { const tt = t - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n, yy = y + 102 - 46 * ecgValore(Math.max(0, tt));
+    const { x, y, w, h } = dae ? LAY.ecgDae : LAY.ecg;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
+    testo(c, titolo, x + 18, y + 30, 20, 700, '#FCEB0C');
+    c.beginPath(); const n = 300, dur = 3.0, base = y + h - 46, amp = (h - 70) * 0.5;
+    for (let i = 0; i <= n; i++) { const tt = t - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n, yy = base - amp * ecgValore(Math.max(0, tt));
       if (i) c.lineTo(xx, yy); else c.moveTo(xx, yy); }
     c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.shadowColor = '#7CFFB2'; c.shadowBlur = 6; c.stroke();
     c.restore();
   }
-  // righello della profondità e ritmo (scena delle compressioni)
+  // righello della profondità (scena delle compressioni)
   function righello(c, t, alfa) {
     if (alfa <= 0.001) return;
-    const x = 1500, y0 = 260, k = 60 / 0.06 * 4.6;    // 6 cm = 276 px
-    c.save(); c.globalAlpha = alfa;
-    rett(c, x - 30, y0 - 70, 300, 420, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
+    const { x, y0, k } = LAY.righello;
+    c.save(); c.globalAlpha = alfa; pannello(c, x - 30, y0 - 70, 240, 0.06 * k + 160);
     testo(c, 'Profondità', x - 8, y0 - 30, 22, 700, '#FFFFFF');
-    c.fillStyle = 'rgba(124,255,178,.25)'; c.fillRect(x, y0 + 0.05 * k, 60, 0.01 * k);
+    c.fillStyle = 'rgba(124,255,178,.3)'; c.fillRect(x, y0 + 0.05 * k, 60, 0.01 * k);
     c.strokeStyle = 'rgba(255,255,255,.8)'; c.lineWidth = 2;
     for (let cm = 0; cm <= 6; cm++) { const yy = y0 + cm / 100 * k; c.beginPath(); c.moveTo(x, yy); c.lineTo(x + (cm % 5 === 0 ? 30 : 18), yy); c.stroke();
       testo(c, cm + ' cm', x + 40, yy + 7, 18, 600, 'rgba(255,255,255,.85)'); }
     const d = profondita(t), yy = y0 + d * k;
     c.fillStyle = '#FCEB0C'; c.beginPath(); c.moveTo(x - 4, yy); c.lineTo(x - 22, yy - 11); c.lineTo(x - 22, yy + 11); c.closePath(); c.fill();
-    testo(c, '5-6 cm', x + 118, y0 + 0.055 * k + 8, 26, 800, '#7CFFB2');
-    testo(c, 'Rilascio completo', x - 8, y0 + 0.06 * k + 60, 20, 600, '#FFFFFF');
+    testo(c, '5-6 cm', x + 110, y0 + 0.055 * k + 8, 24, 800, '#7CFFB2');
+    testo(c, 'poi rilascia tutto', x - 8, y0 + 0.06 * k + 62, 19, 600, '#FFFFFF');
     c.restore();
   }
   function metronomo(c, t, alfa, pausa) {
     if (alfa <= 0.001) return;
-    const x = 1370, y = 600, w = 470, h = 200;
-    c.save(); c.globalAlpha = alfa;
-    rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.82)'; c.fill(); c.strokeStyle = 'rgba(252,235,12,.85)'; c.lineWidth = 2; c.stroke();
+    const { x, y, w, h } = LAY.metronomo;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
     testo(c, 'Compressioni al minuto', x + 22, y + 40, 22, 700, '#FFFFFF');
     const bx = x + 22, bw = w - 44, by = y + 80;
     c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(bx, by, bw, 26);
     const sc = v => bx + (v - 80) / 60 * bw;
     c.fillStyle = 'rgba(124,255,178,.55)'; c.fillRect(sc(100), by, sc(120) - sc(100), 26);
     testo(c, '100', sc(100), by + 56, 20, 700, '#7CFFB2', 'center'); testo(c, '120', sc(120), by + 56, 20, 700, '#7CFFB2', 'center');
-    const r = inRCP(t), ph = r ? ((t - r[0]) / PERIODO_RCP) % 1 : 0, colpo = r ? Math.exp(-Math.pow(ph / 0.12, 2)) : 0;
+    const r = inRCP(t), ph = r ? ((t - r[0]) / PERIODO_RCP) % 1 : 0, colpo = r ? Math.exp(-Math.pow((ph - 0.5) / 0.12, 2)) : 0;
     c.fillStyle = pausa ? '#ff6b5e' : '#FCEB0C'; c.beginPath(); c.arc(sc(110), by + 13, 12 + 8 * colpo, 0, 7); c.fill();
     if (pausa) testo(c, 'PAUSA: il sangue si ferma', x + w / 2, y + h - 18, 24, 800, '#ff8a80', 'center');
     else testo(c, '110', x + w / 2, y + h - 16, 30, 800, '#FCEB0C', 'center');
     c.restore();
   }
-  function avviso(c, testoA, alfa, colore = '#FCEB0C', y = 214) {
+  function avviso(c, testoA, alfa, colore = '#FCEB0C') {
     if (alfa <= 0.001) return;
-    c.save(); c.globalAlpha = alfa; c.font = '800 34px Montserrat'; const w = c.measureText(testoA).width + 56;
-    rett(c, (W - w) / 2, y - 44, w, 64, 32); c.fillStyle = 'rgba(0,30,70,.9)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
-    testo(c, testoA, W / 2, y, 34, 800, colore, 'center'); c.restore();
+    const y = LAY.avviso, corpo = VERT ? 32 : 34;
+    c.save(); c.globalAlpha = alfa; c.font = `800 ${corpo}px Montserrat`; const w = c.measureText(testoA).width + 56;
+    rett(c, (W - w) / 2, y - 44, w, 64, 32); c.fillStyle = 'rgba(0,30,70,.92)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    testo(c, testoA, W / 2, y, corpo, 800, colore, 'center'); c.restore();
   }
   function dato3(c, alfa) {                                   // scheda grande del ritardo della scarica
     if (alfa <= 0.001) return;
-    c.save(); c.globalAlpha = alfa; const x = 1260, y = 300, w = 580, h = 300;
-    rett(c, x, y, w, h, 18); c.fillStyle = 'rgba(0,30,70,.9)'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 3; c.stroke();
-    testo(c, 'Ogni minuto di ritardo', x + 34, y + 62, 30, 700, '#FFFFFF');
-    testo(c, 'della scarica', x + 34, y + 102, 30, 700, '#FFFFFF');
-    testo(c, '−3-6%', x + 34, y + 200, 84, 900, '#FCEB0C');
-    testo(c, 'di probabilità di sopravvivere', x + 34, y + 250, 24, 600, '#FFFFFF');
-    testo(c, 'con un ritmo defibrillabile · IRC 2025', x + 34, y + 282, 17, 500, 'rgba(255,255,255,.75)');
+    const { x, y, w, h } = LAY.dato3;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, '#FCEB0C');
+    testo(c, 'Ogni minuto di ritardo della scarica', x + 34, y + 58, VERT ? 34 : 26, 700, '#FFFFFF');
+    testo(c, '−3-6%', x + 34, y + 170, 84, 900, '#FCEB0C');
+    testo(c, 'di probabilità di sopravvivere', x + 34, y + 222, 26, 600, '#FFFFFF');
+    testo(c, 'con un ritmo defibrillabile · IRC 2025', x + 34, y + 260, 18, 500, 'rgba(255,255,255,.75)');
     c.restore();
   }
   function chiusura(c, t) {
     const a = clamp((t - 110.4) / 0.7); if (a <= 0) return;
     c.save(); c.globalAlpha = a;
-    c.fillStyle = 'rgba(0,40,92,.80)'; c.fillRect(0, 0, W, H);
+    c.fillStyle = 'rgba(0,40,92,.82)'; c.fillRect(0, 0, W, H);
     const passi = [['1', 'Controlla', 'è sicuro? risponde?', 111.0], ['2', 'Chiama il 112', 'in vivavoce', 111.75], ['3', 'Comprimi', 'e usa il DAE', 112.75]];
     passi.forEach(([n, ti, so, t0], i) => {
-      const b = clamp((t - t0) / 0.45), x = 230 + i * 520, y = 300 + (1 - b) * 24;
+      const b = clamp((t - t0) / 0.45), q = LAY.passi(i), y = q.y + (1 - b) * 24;
       c.globalAlpha = a * b;
-      rett(c, x, y, 460, 230, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 4; c.stroke();
-      c.fillStyle = '#FCEB0C'; c.beginPath(); c.arc(x + 70, y + 78, 44, 0, 7); c.fill();
-      testo(c, n, x + 70, y + 96, 50, 900, '#003F85', 'center');
-      testo(c, ti, x + 134, y + 94, 40, 800, '#FFFFFF');
-      testo(c, so, x + 40, y + 180, 28, 600, 'rgba(255,255,255,.88)');
+      rett(c, q.x, y, q.w, q.h, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 4; c.stroke();
+      c.fillStyle = '#FCEB0C'; c.beginPath(); c.arc(q.x + 70, y + (VERT ? q.h / 2 : 78), 44, 0, 7); c.fill();
+      testo(c, n, q.x + 70, y + (VERT ? q.h / 2 + 18 : 96), 50, 900, '#003F85', 'center');
+      testo(c, ti, q.x + 134, y + (VERT ? q.h / 2 - 6 : 94), 40, 800, '#FFFFFF');
+      testo(c, so, VERT ? q.x + 134 : q.x + 40, y + (VERT ? q.h / 2 + 38 : 180), 28, 600, 'rgba(255,255,255,.88)');
     });
     const d = clamp((t - 114.6) / 0.6);
     c.globalAlpha = a * d;
-    testo(c, 'Le manovre si imparano sul manichino: corsi BLSD della Misericordia di Ariccia', W / 2, 640, 32, 700, '#FFFFFF', 'center');
-    testo(c, '328 8105399', W / 2, 726, 64, 900, '#FCEB0C', 'center');
-    testo(c, 'misericordia-ariccia.it/servizi/formazione', W / 2, 790, 30, 600, '#FFFFFF', 'center');
+    if (VERT) { testo(c, 'Le manovre si imparano sul manichino:', W / 2, LAY.riga1 - 40, 30, 700, '#FFFFFF', 'center');
+                testo(c, 'corsi BLSD della Misericordia di Ariccia', W / 2, LAY.riga1, 30, 700, '#FFFFFF', 'center'); }
+    else testo(c, 'Le manovre si imparano sul manichino: corsi BLSD della Misericordia di Ariccia', W / 2, LAY.riga1, 32, 700, '#FFFFFF', 'center');
+    testo(c, '328 8105399', W / 2, LAY.tel, 64, 900, '#FCEB0C', 'center');
+    testo(c, 'misericordia-ariccia.it/servizi/formazione', W / 2, LAY.sito, 30, 600, '#FFFFFF', 'center');
     c.restore();
   }
 
@@ -579,17 +669,24 @@
   const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
   const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1);
   function opacita(nome, a) { const m = PARTI[nome]; if (!m) return; m.material.opacity = a; m.visible = a > 0.004; m.material.depthWrite = a > 0.97; }
-  function render(t) {
-    t = clamp(t, 0, TOTAL);
-    U.uT.value = t;
-    const comp = profondita(t); U.uComp.value = comp;
-    U.uFib.value = fibrillazione(t);
-    const f = flusso(t); U.uFA.value = f.a; U.uFV.value = f.v; U.uVis.value = vistaFlusso(t);
-    const c = contrazione(t); contrV.value = 0.07 * c.v; contrA.value = 0.06 * c.a;
+  function render(tempo) {
+    const tr = clamp(tempo, 0, TOTAL), t = scaletta(tr);       // tr: tempo reale; t: tempo della scaletta
+    U.uT.value = tr;
+    const comp = profondita(tr); U.uComp.value = comp;
+    U.uFib.value = fibrillazione(tr);
+    const f = flusso(tr); U.uFA.value = f.a; U.uFV.value = f.v; U.uVis.value = vistaFlusso(tr);
+    const c = contrazione(tr); contrV.value = 0.07 * c.v; contrA.value = 0.06 * c.a;
     const oss = ossigeno(t); ossCerv.value = oss; kCerv.value = 1 - oss;
     corpo.rotation.x = -Math.PI / 2 * sdraiata(t);
     corpo.updateMatrixWorld(true);
 
+    const cam = telecamera(t);
+    // globuli: si vedono quando il sangue scorre; nell'arresto restano fermi e sbiaditi
+    const vGlob = t < 7.2 ? fin(t, 0.3, 7.6, 0.6, 1.0) : t < 12.8 ? 0 : t < 27.4 ? fin(t, 13.0, 30.0, 0.8, 2.4) : t < 46.4 ? 0.35 * fin(t, 27.4, 46.2, 0.1, 0.6)
+               : t < 64.4 ? 0.7 * fin(t, 49.0, 64.4, 0.8, 0.2) : t < 79.6 ? 1 : t < 93.5 ? 0.75 : t < 110.4 ? 0.6 : 0.3 * (1 - clamp((t - 110.4) / 1.0));
+    aggiornaGlobuli(f, comp, vGlob, clamp(0.0026 * camDist / 0.7, 0.0026, 0.0085));
+    if (t >= 51.0 && t < 64.6) { globRossi.material.clippingPlanes = [PIANO]; globBlu.material.clippingPlanes = [PIANO]; }
+    else { globRossi.material.clippingPlanes = []; globBlu.material.clippingPlanes = []; }
     // --- visibilità e trasparenze per scena
     const vPelle = 1 - liscia(7.2, 8.6, t) + liscia(22.0, 23.6, t) - liscia(27.4, 28.8, t) + liscia(46.4, 48.4, t);
     alfaPelle.value = clamp(vPelle) * (t > 93.5 && t < 110 ? 0.55 : 1);
@@ -640,15 +737,15 @@
     anello.material.opacity = vM2; anello.visible = vM2 > 0.01;
     const wM = Math.exp(-Math.pow((PUNTO_MANI.y - 1.205) / 0.12, 2)) * liscia(0.075, 0.205, PUNTO_MANI.z);
     anello.position.set(PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z - comp * wM + 0.003);
-    const vFreccia = t >= 51.0 && t < 79.6 ? fin(t, 51.6, 79.4, 0.4, 0.3) * (inRCP(t) || t < 52.4 ? 1 : 0.25) : 0;
+    const vFreccia = t >= 51.0 && t < 79.6 ? fin(t, 51.6, 79.4, 0.4, 0.3) * (inRCP(tr) || t < 52.4 ? 1 : 0.25) : 0;
     const vF2 = vFreccia * (1 - fin(t, 64.2, 66.4, 0.25, 0.4));
     freccia.visible = vF2 > 0.01; freccia.userData.m.opacity = vF2;
     freccia.position.set(PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z - comp * wM + 0.012);
     // placche, analisi e scarica
     const vPlacche = t >= 80.2 ? liscia(80.2, 81.0, t) * (1 - liscia(93.3, 94.2, t)) : 0;
     placche.forEach(p => { p.g.visible = vPlacche > 0.01; p.mats.forEach(m => (m.opacity = vPlacche)); });
-    const lampo = t >= T_SCARICA ? Math.exp(-(t - T_SCARICA) / 0.12) : 0;
-    scarica.material.opacity = t >= T_SCARICA && t < T_SCARICA + 0.6 ? clamp(lampo * 1.4) : 0;
+    const lampo = tr >= T_SCARICA ? Math.exp(-(tr - T_SCARICA) / 0.12) : 0;
+    scarica.material.opacity = tr >= T_SCARICA && tr < T_SCARICA + 0.6 ? clamp(lampo * 1.4) : 0;
     // frattura della costola
     const vCrepa = t >= 95.6 ? liscia(95.6, 95.75, t) * (1 - liscia(109.0, 110.0, t)) : 0;
     crepa.visible = vCrepa > 0.01; crepa.userData.m.opacity = vCrepa;
@@ -656,33 +753,33 @@
     const fr = PUNTO_FRATTURA, wF = Math.exp(-Math.pow(fr.x / 0.115, 2)) * Math.exp(-Math.pow((fr.y - 1.205) / 0.12, 2)) * liscia(0.075, 0.205, fr.z);
     crepa.position.set(fr.x, fr.y, fr.z + 0.004 - comp * wF); alone.position.copy(crepa.position);
 
-    const cam = telecamera(t);
     vicino.disegna(scena, camera);
 
     // --- sovrimpressioni
     s2.clearRect(0, 0, W, H);
-    if (lampo > 0.01 && t < T_SCARICA + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.55 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
+    if (lampo > 0.01 && tr < T_SCARICA + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.55 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
     const vECG = t < 7.2 ? fin(t, 1.6, 7.0, 0.5, 0.4) : t >= 27.4 && t < 40.0 ? fin(t, 27.8, 39.8, 0.5, 0.4) : t >= 79.6 && t < 93.5 ? fin(t, 80.0, 86.3, 0.5, 0.4) : 0;
-    ecg(s2, t, vECG, t < T_ARRESTO ? 'Battito normale' : t < T_SCARICA ? 'Fibrillazione ventricolare' : 'Dopo la scarica');
-    righello(s2, t, t >= 52.0 && t < 64.4 ? fin(t, 52.2, 64.2, 0.5, 0.4) : 0);
+    ecg(s2, tr, vECG, tr < T_ARRESTO ? 'Battito normale' : tr < T_SCARICA ? 'Fibrillazione ventricolare' : 'Dopo la scarica', t >= 79.6 && t < 93.5);
+    righello(s2, tr, t >= 52.0 && t < 64.4 ? fin(t, 52.2, 64.2, 0.5, 0.4) : 0);
     const pausa = (t >= 74.6 && t < 77.4);
-    metronomo(s2, t, t >= 64.4 && t < 79.6 ? fin(t, 64.8, 79.4, 0.5, 0.4) : 0, pausa);
-    avviso(s2, 'Analisi: nessuno tocchi la persona', t >= 81.6 && t < T_SCARICA ? fin(t, 81.7, T_SCARICA, 0.25, 0.15) : 0, '#FCEB0C');
-    avviso(s2, 'Scarica', t >= T_SCARICA && t < 84.1 ? fin(t, T_SCARICA, 84.1, 0.05, 0.25) : 0, '#FFFFFF');
+    metronomo(s2, tr, t >= 64.4 && t < 79.6 ? fin(t, 64.8, 79.4, 0.5, 0.4) : 0, pausa);
+    avviso(s2, 'Analisi: nessuno tocchi la persona', t >= 81.6 && t < 83.4 ? fin(t, 81.7, 83.4, 0.25, 0.15) : 0, '#FCEB0C');
+    avviso(s2, 'Scarica', t >= 83.4 && t < 84.1 ? fin(t, 83.4, 84.1, 0.05, 0.25) : 0, '#FFFFFF');
     avviso(s2, 'Riprendi subito le compressioni', t >= 84.2 && t < 86.4 ? fin(t, 84.2, 86.4, 0.25, 0.3) : 0, '#7CFFB2');
     dato3(s2, t >= 87.2 && t < 93.0 ? fin(t, 87.2, 92.9, 0.4, 0.35) : 0);
     chiusura(s2, t);
-    firma(s2);
+    legenda(s2, t < 7.2 ? fin(t, 0.6, 7.0, 0.5, 0.4) : t >= 12.8 && t < 27.4 ? fin(t, 13.4, 27.2, 0.5, 0.5) : t >= 64.4 && t < 79.6 ? fin(t, 66.4, 79.4, 0.5, 0.4) * (VERT ? 0 : 1) : 0);
+    testata(s2, SCENE[sceneA(t)].nome);
 
     // --- impaginazione comune: barra, nota, sottotitoli, schede
     const k = sceneA(t), sc = SCENE[k];
     IMP.aggiorna(stato, t, { passoHUD: k + (k === 0 ? 1 : clamp((t - sc.inizio) / 0.4)), notaVisibile: true, hud: sc.nome });
-    IMP.sottotitoli(stato, t, FRASI, { modo: 'parole' });
+    IMP.sottotitoli(stato, tr, FRASI, { modo: 'parole' });
     for (const s of SCHEDE) {
       let p = null;
       if (s.punto) { const off = s.pezzo ? GRUPPI_CUORE[s.pezzo].position : null;
                      p = proietta(off ? [s.punto[0] + off.x, s.punto[1] + off.y, s.punto[2] + off.z] : s.punto); }
-      IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: s.verso, centro: s.centro,
+      IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT && s.versoV ? s.versoV : s.verso, centro: VERT && s.centroV ? s.centroV : s.centro,
                              inizio: s.inizio, fine: s.fine, visibile: !s.punto || !!p });
     }
     const testoFonte = 'Anatomia: BodyParts3D, © The Database Center for Life Science, CC BY 4.0\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council';

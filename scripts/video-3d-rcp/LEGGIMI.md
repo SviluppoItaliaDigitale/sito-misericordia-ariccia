@@ -1,7 +1,11 @@
 # Video 3D «Rianimazione: come funziona»
 
-Video di 2 minuti e 4 secondi, 16:9, da proiettare insieme alle slide del corso BLSD adulto
-(`scripts/formazione/slide/blsd-adulto.html`) e pubblicato in `/servizi/formazione/slide/`.
+Video di 2 minuti e 25 secondi in due formati: **orizzontale 16:9** per la LIM, il proiettore e il sito (pagina
+`/servizi/formazione/slide/`, accanto alle slide del corso BLSD adulto `scripts/formazione/slide/blsd-adulto.html`) e
+**verticale 9:16** per i social (news `rianimazione-come-funziona`, che lo pubblica da sola su Facebook e Instagram).
+La stessa pagina fa i due formati: `?formato=verticale` (fotogrammi.py `--parametri formato=verticale`);
+`?pulito=1` toglie le scritte (immagine per la grafica della news). Grafica nazionale in ogni fotogramma: fascia blu
+con filo giallo e stemma, firma «Misericordia di Ariccia», nota «SCHEMA · NON IN SCALA», cornice di microtesto.
 Mostra il cuore e la circolazione, l'arresto cardiaco, che cosa fanno le compressioni (sostituiscono la pompa del
 cuore e fanno arrivare il sangue al cervello), il DAE e le conseguenze (fratture di costole e sterno).
 Fatto il 20/11/2026 con la skill `video-3d` (schema `render(t)`, impaginazione comune `IMP`, ente `misericordia`).
@@ -26,8 +30,18 @@ python3 $SKILL/motion-pc-genzano/scripts/fotogrammi.py $W/rianimazione-3d.html -
 python3 $SKILL/colonna-sonora/scripts/mixa.py voce/colonna.json --uscita $W/mix.wav --rapporto $W/mix.json \
         --video $W/muto.mp4 --video-uscita $W/rianimazione-come-funziona.mp4
 ```
-`voce/` contiene il testo (`frasi.txt`), i tempi delle frasi (`sottotitoli.json`) e la colonna sonora (`colonna.json`):
-voce, musica (Kevin MacLeod, «Touching Moments Two – Higher», CC BY 4.0) ed effetti fatti in codice.
+`voce/` contiene il testo (`frasi.txt`), i tempi delle frasi (`sottotitoli.json`, fatto da `tempi.py` dopo `voce.py scegli`)
+e la colonna sonora (`colonna.json`): voce **Damien** (XTTS-v2, `assistente-personale/strumenti/voce-riserva/voce_riserva.py`,
+scelta di Alessandro del 20/11/2026; la sigla DAE si scrive «dì a è» perché la legga lettera per lettera), musica
+(Kevin MacLeod, «Touching Moments Two – Higher», CC BY 4.0) ed effetti fatti in codice.
+Le scene sono scritte su una scaletta fissa (inizio delle 22 frasi) e la pagina le allinea da sola alla voce vera;
+battito, compressioni (110 al minuto) e flusso del sangue vanno in tempo reale.
+
+## Il sangue che scorre
+`anatomia.py` calcola anche i **percorsi del sangue** nei vasi veri (dal cuore a testa, braccia, pancia e gambe;
+il ritorno dal collo, dalle spalle e dal bacino; la piccola circolazione fino ai polmoni e ritorno): globuli rossi con
+ossigeno e blu senza, che scorrono con il battito, si fermano nell'arresto e ripartono con le compressioni.
+L'atlante non ha le vene di braccia e gambe: il ritorno del sangue si vede dal tronco in su.
 
 ## Fonti
 Linee guida RCP 2025 di Italian Resuscitation Council: cap. 4 «BLS adulto» (compressioni 5-6 cm, 100-120 al minuto,

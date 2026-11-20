@@ -67,6 +67,47 @@ PUNTI = {'vcs': 'FMA4720', 'vci': 'FMA10951', 'cav_ad': 'FMA11359', 'cav_vd': 'F
          'cartilagine5_sx': 'FMA8112', 'pelle': 'FMA7163', 'tricuspide': 'FMA7234', 'mitrale': 'FMA7235',
          'v_aortica': 'FMA7236', 'v_polmonare': 'FMA7246'}
 
+# Percorsi del sangue per i globuli che scorrono: dall'origine (radice dell'aorta, tronco polmonare, atrio destro, atrio
+# sinistro) al punto più lontano di ogni regione, lungo il grafo dei vasi; poi riportati al centro del vaso (media dei
+# punti vicini che hanno la stessa distanza lungo l'albero), lisciati e ricampionati ogni 5 mm.
+REGIONI = {
+    'arterie': {'testa_dx': lambda v: (v[:, 0] < 0) & (v[:, 1] > 1.47), 'testa_sx': lambda v: (v[:, 0] > 0) & (v[:, 1] > 1.47),
+                'braccio_dx': lambda v: v[:, 0] < -0.22, 'braccio_sx': lambda v: v[:, 0] > 0.22,
+                'gamba_dx': lambda v: (v[:, 0] < 0) & (v[:, 1] < 0.25), 'gamba_sx': lambda v: (v[:, 0] > 0) & (v[:, 1] < 0.25),
+                'pancia': lambda v: (np.abs(v[:, 0]) < 0.12) & (v[:, 1] > 0.95) & (v[:, 1] < 1.05)},
+    # l'atlante ha le vene del tronco e del collo, non quelle di braccia e gambe: il ritorno parte da lì
+    'vene': {'testa_dx': lambda v: (v[:, 1] > 1.33) & (v[:, 0] < 0), 'testa_sx': lambda v: (v[:, 1] > 1.33) & (v[:, 0] > 0),
+             'braccio_dx': lambda v: (v[:, 0] < -0.07) & (v[:, 1] > 1.28), 'braccio_sx': lambda v: (v[:, 0] > 0.07) & (v[:, 1] > 1.28),
+             'bacino_dx': lambda v: (v[:, 0] < 0) & (v[:, 1] < 0.78), 'bacino_sx': lambda v: (v[:, 0] > 0) & (v[:, 1] < 0.78)},
+    'arterie_polm': {'dx_alto': lambda v: (v[:, 0] < -0.03) & (v[:, 1] > 1.25), 'dx_basso': lambda v: (v[:, 0] < -0.03) & (v[:, 1] < 1.22),
+                     'sx_alto': lambda v: (v[:, 0] > 0.06) & (v[:, 1] > 1.25), 'sx_basso': lambda v: (v[:, 0] > 0.06) & (v[:, 1] < 1.22)},
+    'vene_polm': {'dx_alto': lambda v: (v[:, 0] < -0.03) & (v[:, 1] > 1.25), 'dx_basso': lambda v: (v[:, 0] < -0.03) & (v[:, 1] < 1.22),
+                  'sx_alto': lambda v: (v[:, 0] > 0.06) & (v[:, 1] > 1.25), 'sx_basso': lambda v: (v[:, 0] > 0.06) & (v[:, 1] < 1.22)}}
+
+def percorsi(nome, v, dist, pred):
+    from scipy.spatial import cKDTree
+    albero = cKDTree(v); out = []
+    for reg, sel in REGIONI.get(nome, {}).items():
+        idx = np.where(sel(v) & np.isfinite(dist))[0]
+        if not len(idx): print('   regione vuota', nome, reg); continue
+        k = idx[np.argmax(dist[idx])]; cammino = []
+        while k >= 0 and len(cammino) < 100000: cammino.append(k); k = pred[k]
+        cammino = cammino[::-1]
+        P = v[cammino]; C = []
+        for i, q in zip(cammino, P):
+            vic = albero.query_ball_point(q, 0.012)
+            vic = [j for j in vic if abs(dist[j] - dist[i]) < 0.006]
+            C.append(v[vic].mean(0) if vic else q)
+        C = np.array(C)
+        for _ in range(6):                                   # lisciatura
+            C[1:-1] = 0.25 * C[:-2] + 0.5 * C[1:-1] + 0.25 * C[2:]
+        L = np.concatenate([[0], np.cumsum(np.linalg.norm(np.diff(C, axis=0), axis=1))])
+        n = max(2, int(L[-1] / 0.005)); u = np.linspace(0, L[-1], n)
+        R = np.stack([np.interp(u, L, C[:, j]) for j in range(3)], 1)
+        out.append({'tipo': nome, 'nome': reg, 'lung': round(float(L[-1]), 4), 'punti': R.round(4).tolist()})
+        print(f'   percorso {nome}/{reg}: {L[-1]:.2f} m, {n} punti')
+    return out
+
 def estremo(v, alto, spess=0.004):
     z = v[:, 1]
     sel = z > z.max() - spess if alto else z < z.min() + spess
@@ -268,11 +309,12 @@ def main():
         if extra:
             ea = np.array(extra)
             G = G + coo_matrix((np.concatenate([ea[:, 2], ea[:, 2]]), (np.concatenate([ea[:, 0], ea[:, 1]]).astype(int), np.concatenate([ea[:, 1], ea[:, 0]]).astype(int))), shape=G.shape).tocsr()
-        dist = dijkstra(G, indices=sorg, min_only=True)
+        dist, pred, _ = dijkstra(G, indices=sorg, min_only=True, return_predecessors=True)
         fin = np.isfinite(dist)
         dist[~fin] = dist[fin].max()
         print(f'   {nome}: pezzi {ncomp}, agganciati {len(extra)}, non raggiunti {100*(~fin).mean():.1f}%, distanza massima {dist.max():.2f} m')
         ris['gruppi'][nome] = impacchetta(v, f, dist / 2.5)   # 0..1 = 0..2,5 m di percorso
+        ris.setdefault('percorsi', []).extend(percorsi(nome, v, dist, pred))
         ris['gruppi'][nome]['flussoMax'] = 2.5
     ris['punti'] = {k: (v.round(4).tolist()) for k, v in orig.items()}
     # centri e ingombri delle parti che la pagina usa per la telecamera, il sangue nelle camere e le compressioni
