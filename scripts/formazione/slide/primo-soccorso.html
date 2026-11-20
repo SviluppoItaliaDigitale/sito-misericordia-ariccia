@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/primo-soccorso.pdf">
+<title>Primo soccorso: le slide del corso</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per i formatori della Misericordia di Ariccia, da proiettare ai corsisti di un corso di primo soccorso per laici
+e volontari. Accompagnano il materiale ufficiale del corso e non lo sostituiscono (lo dice la slide 2).
+Fonte principale: Linee guida RCP 2025 di Italian Resuscitation Council, capitolo 12 «Primo soccorso»
+(https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf), letto il 20/11/2026;
+le pagine citate nelle note sono quelle stampate nel PDF. Dove il capitolo non tratta il tema (ustioni, ferite,
+fratture, convulsioni, avvelenamento) valgono le fonti già verificate dal sito il 1/11/2026 (data/dati_da_verificare.yaml).
+Ogni indicazione coincide con le schede del dossier content/dossier/primo-soccorso.md. RCP e disostruzione hanno
+presentazioni loro: qui c'è solo il rimando. Disegni SVG al tratto fatti a mano, nessuna foto.
+-->
+<style>
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 37px; line-height: 50px; gap: 24px; }
+.diapo .contenuto h2 { font-size: 58px; line-height: 64px; }
+.diapo .contenuto ul, .diapo .contenuto ol { gap: 10px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .lato { display: grid; grid-template-columns: 1fr 520px; gap: 56px; align-items: center; }
+.diapo .lato.largo { grid-template-columns: 1fr 560px; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .passi { display: flex; flex-direction: column; gap: 16px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 86px; min-height: 60px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 60px; height: 60px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 34px; line-height: 60px; text-align: center; }
+.diapo .riquadro.blu p { color: #FFFFFF; }
+.diapo .due { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+.diapo .due h3 { font-size: 40px; line-height: 48px; margin-bottom: 10px; }
+.diapo .numero { font-size: 84px; line-height: 1; font-weight: 800; color: var(--blu); }
+.diapo .tabella { display: grid; grid-template-columns: 80px 1fr; gap: 14px 20px; align-items: start; font-size: 33px; line-height: 44px; }
+.diapo .tabella .l { font-size: 50px; font-weight: 800; color: var(--blu); line-height: 44px; }
+.diapo .quattro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.diapo .quattro > div { background: rgba(255,255,255,.75); padding: 22px 24px; }
+.diapo .quattro .l { font-size: 64px; line-height: 1; font-weight: 800; color: var(--blu); margin-bottom: 12px; }
+.diapo .quattro p { font-size: 31px; line-height: 41px; }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo > .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+svg text { font-family: 'Montserrat', sans-serif; }
+.diapo .figura { margin: 0; display: flex; flex-direction: column; gap: 8px; background: rgba(255,255,255,.85); padding: 18px; }
+.diapo .figura img { width: 100%; height: auto; }
+.diapo .figura figcaption { font-size: 20px; line-height: 26px; color: #3D4F7C; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="480" height="460" viewBox="0 0 480 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="110" width="400" height="300" rx="24" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M170 110 V70 C170 55 180 45 195 45 H285 C300 45 310 55 310 70 V110" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M240 180 V340 M160 260 H320" stroke="#FCEB0C" stroke-width="34"/>
+</svg>
+<div class="contenuto">
+<h1>Primo soccorso: <span class="finale">i&nbsp;primi minuti</span></h1>
+<p class="sotto">Corso per cittadini e volontari. Riconoscere, chiamare il 112, proteggere e fare i gesti giusti finché arrivano i soccorsi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: presentatevi, dite chi è la Misericordia di Ariccia e che il corso segue le Linee guida 2025 di Italian Resuscitation Council (IRC), capitolo 12 «Primo soccorso». Chiedete ai corsisti che cosa si aspettano e se hanno già dovuto aiutare qualcuno: il capitolo ricorda che chi ha già visto un malore è più disposto ad aiutare e a formarsi (IRC 2025, cap. 12, p. 22). Errore frequente: promettere che «dopo il corso saprete fare tutto». Fonte: IRC 2025, cap. 12, pp. 5-6.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima di cominciare</h2>
+<p class="riquadro blu">Queste slide <strong>accompagnano il materiale ufficiale del corso</strong> e la pratica con l'istruttore. <strong>Non lo sostituiscono.</strong></p>
+<ul>
+<li>Il riferimento sono le <strong>Linee guida 2025 di Italian Resuscitation Council</strong>, capitolo 12 «Primo soccorso», e le indicazioni ufficiali dello Stato e della Regione Lazio.</li>
+<li><strong>Rianimazione</strong> e <strong>disostruzione</strong> hanno lezioni e slide loro: qui le richiamiamo soltanto.</li>
+<li>Le manovre si provano <strong>solo in aula</strong>, con l'istruttore, sui manichini o tra corsisti che lo accettano.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: le slide sono un supporto; fanno fede il materiale ufficiale consegnato ai corsisti e le indicazioni dell'istruttore. Il capitolo 12 chiede corsi adattati a chi partecipa e al contesto, che preparino anche a gestire ansia e stress prima e dopo il soccorso, e che spieghino le tutele di legge per chi presta soccorso: dedicateci qualche minuto con il materiale del corso. Errore frequente: far provare manovre senza chiedere il consenso del compagno. Fonte: IRC 2025, cap. 12, p. 5 (tabella 1) e p. 6 («Corsi di primo soccorso»).</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il ruolo del soccorritore: tre regole</h2>
+<ol class="passi">
+<li><strong>Controlla che la scena sia sicura</strong>, per te e per gli altri.</li>
+<li><strong>Chiama il 112</strong> il prima possibile.</li>
+<li>Usa <strong>solo attrezzature e medicinali</strong> per i quali hai avuto una formazione.</li>
+</ol>
+<p class="riquadro tenue">Il primo soccorso può evitare altri danni, migliorare le condizioni della persona e salvarle la vita. A volte l'unico gesto possibile è la telefonata: <strong>anche quella è primo soccorso</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: sono i tre principi chiave che il capitolo 12 chiede a ogni soccorritore. Il terzo vale anche per i farmaci della persona: la aiutiamo a usare i suoi (spray per l'asma, autoiniettore), non ne diamo di nostri. Errori frequenti: correre verso la persona senza guardare intorno; rimandare la chiamata per «vedere prima come sta». Fonte: IRC 2025, cap. 12, p. 6 («Aspettative nei confronti del soccorritore») e p. 22.</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima la sicurezza</h2>
+<div class="lato" style="grid-template-columns: 1fr 420px;">
+<ul>
+<li>Prima di avvicinarti guarda: <strong>traffico</strong>, <strong>fuoco o fumo</strong>, <strong>gas o prodotti chimici</strong>, corrente elettrica, <strong>persone violente</strong>.</li>
+<li>Su strada: quattro frecce, <strong>giubbotto catarifrangente</strong>, triangolo ad almeno 50 metri.</li>
+<li>Se li hai, indossa i <strong>guanti</strong>.</li>
+<li>Se il pericolo resta, <strong>non entrare</strong>: chiama il 112 e aspetta i soccorsi.</li>
+</ul>
+<svg viewBox="0 0 420 380" width="420" height="380" role="img" aria-label="Triangolo di pericolo con il punto esclamativo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M210 30 L395 350 H25 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="16"/>
+<path d="M210 130 V250" stroke="#003F85" stroke-width="26"/>
+<circle cx="210" cy="300" r="15" fill="#003F85"/>
+</svg>
+</div>
+<p class="no"><strong>Un soccorritore ferito è una persona in più da soccorrere.</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: la «S» di sicurezza viene prima di tutto lo schema di valutazione; il capitolo fa gli esempi di traffico, sostanze chimiche e persone violente. Le regole della strada sono quelle della scheda «Incidente stradale» del dossier del sito. Per gas e fumi: si esce o si porta fuori la persona solo senza mettersi in pericolo (schede «Avvelenamento» e «Monossido»). Errore frequente: fermarsi in mezzo alla carreggiata. Fonti: IRC 2025, cap. 12, p. 6 e p. 9 (tabella 3, «S – Sicurezza»); dossier del sito, scheda «Incidente stradale» (Codice della strada per il triangolo a 50 metri).</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>112 o 116117?</h2>
+<div class="due">
+<div class="riquadro blu">
+<div class="numero" style="color:#FCEB0C">112</div>
+<h3>Emergenze</h3>
+<p>Pericolo per la vita o per la sicurezza: malore grave, incidente, incendio, reato in corso. Gratis, 24 ore su 24, <strong>anche senza credito</strong>.</p>
+</div>
+<div class="riquadro tenue">
+<div class="numero">116117</div>
+<h3>Cure non urgenti</h3>
+<p>Problemi di salute non urgenti: consiglio sanitario o <strong>guardia medica</strong>. Gratis, attivo in tutto il Lazio dal 24 agosto 2026; risponde ARES 118.</p>
+</div>
+</div>
+<p class="piccolo">Se durante una chiamata al 116117 emerge un'emergenza, la telefonata passa in automatico al 118.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: nel Lazio il 112 è il Numero Unico di Emergenza; per un problema di salute la chiamata passa alla centrale del 118 di ARES 118. Il 116117 non è un numero «di riserva» per le emergenze. Errore frequente: chiamare il 116117 per un dolore al petto o un ictus per «non disturbare». Testi uguali alla guida del sito «Chiamare il 112» (content/dossier/chiamare-il-112.md). Fonte: Regione Lazio, «Salute, attivo in tutta la regione il numero 116117» (regione.lazio.it), voce 116117-lazio del registro dei dati del sito, verificata il 16/11/2026.</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La chiamata al 112</h2>
+<div class="lato" style="grid-template-columns: 1fr 360px;">
+<ul>
+<li><strong>Dove sei</strong>: comune, via, numero civico, scala, piano, nome sul citofono; in strada direzione, chilometro o un punto di riferimento.</li>
+<li><strong>Che cosa è successo</strong> e quante persone sono coinvolte.</li>
+<li><strong>Come sta</strong>: risponde? respira? sanguina? ha dolore?</li>
+<li>Metti il <strong>vivavoce</strong> e <strong>non riattaccare</strong> finché l'operatore non te lo dice.</li>
+</ul>
+<svg viewBox="0 0 360 420" width="360" height="420" role="img" aria-label="Telefono con il vivavoce e il numero 112" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="20" width="220" height="380" rx="34" stroke="#003F85" stroke-width="14" fill="#FFFFFF"/>
+<path d="M120 50 H180" stroke="#003F85" stroke-width="10"/>
+<text x="150" y="230" text-anchor="middle" font-size="92" font-weight="800" fill="#003F85" stroke="none">112</text>
+<path d="M275 150 C305 180 305 240 275 270 M298 115 C348 165 348 255 298 305" stroke="#009FE3" stroke-width="12"/>
+<circle cx="150" cy="335" r="28" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: la posizione del cellulare arriva da sola (AML), ma scala, piano e citofono li sai solo tu. Le domande del 118 non fanno perdere tempo: mentre si risponde l'ambulanza può essere già partita. Finita la chiamata, il telefono resta libero: la centrale può richiamare. In un sospetto arresto cardiaco l'operatore guida la rianimazione al telefono (IRC 2025, cap. 12, p. 7). Errori frequenti: dare solo «sono in via Roma» senza comune; riattaccare per primi. Fonti: guida del sito «Chiamare il 112» (Regione Lazio, ARES 118, Ministero dell'Interno); IRC 2025, cap. 12, pp. 6-7.</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Avvicinarsi alla persona</h2>
+<ol class="passi">
+<li><strong>Sicurezza</strong> della scena.</li>
+<li><strong>Risponde?</strong> Toccala delicatamente sulle spalle e chiedi ad alta voce: «Sta bene?».</li>
+<li><strong>Sanguina molto?</strong> Un'emorragia grave si ferma subito, prima di tutto il resto.</li>
+<li>Poi guardala con ordine, dalla testa ai piedi, con lo schema <strong>ABCDE</strong>, in pochi minuti.</li>
+</ol>
+<p class="riquadro tenue">Se risponde: guardala, chiedile che cosa sente, se ha allergie o malattie, e <strong>chiedi il permesso</strong> prima di toccarla.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: è l'ordine della valutazione strutturata del capitolo 12: sicurezza, responsività, emorragia massiva, poi ABCDE. La valutazione deve essere accurata ma durare pochi minuti; con una persona sveglia si chiede il consenso prima di cercare segni di malattia o di trauma. Errore frequente: concentrarsi sulla ferita più vistosa e non accorgersi che la persona non risponde. Fonte: IRC 2025, cap. 12, p. 8 (figura 2), p. 9 (tabella 3) e p. 24.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Lo schema ABCDE</h2>
+<div class="tabella">
+<div class="l">A</div><div><strong>Vie aeree.</strong> Sono libere? È caduta dall'alto o ha avuto un trauma forte? Allora non muoverla e tieni ferma la testa.</div>
+<div class="l">B</div><div><strong>Respiro.</strong> Respira normalmente? Fischi, labbra o lingua gonfie, soffocamento, labbra blu?</div>
+<div class="l">C</div><div><strong>Circolazione.</strong> Dolore al petto? Pelle pallida, fredda, sudata, capogiri: possibile shock.</div>
+<div class="l">D</div><div><strong>Coscienza.</strong> È sveglia, confusa, risponde alla voce, solo al dolore o per niente?</div>
+<div class="l">E</div><div><strong>Esposizione.</strong> Altre ferite, dalla testa ai piedi? Proteggila dal freddo e dal caldo.</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: per ogni lettera la tabella 3 del capitolo indica un'azione immediata, che vedremo nelle slide dei singoli temi (adrenalina per l'anafilassi, aspirina per il dolore toracico, zucchero per l'ipoglicemia, stop all'attività per la commozione cerebrale, coperte contro l'ipotermia). D: la scala ACVPU (vigile, confusione nuova, risponde alla voce, al dolore, non risponde). Shock: la persona resta supina; sollevare le gambe è solo una misura temporanea, non di routine. Ossigeno e pulsossimetro solo per chi è addestrato. Errore frequente: spostare o mettere seduta una persona in shock. Fonte: IRC 2025, cap. 12, p. 9 (tabella 3) e p. 24.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Non risponde: respira normalmente?</h2>
+<p>Chiama il <strong>112</strong> con il vivavoce e guarda, ascolta e senti il respiro per <strong>non più di 10 secondi</strong>.</p>
+<div class="due">
+<div class="riquadro blu"><h3>Non respira normalmente</h3><p>Non respira o fa respiri rari e rumorosi: inizia la <strong>rianimazione</strong> e segui l'operatore. Si impara nella lezione BLSD.</p></div>
+<div class="riquadro tenue"><h3>Respira normalmente</h3><p>Senza un trauma: <strong>posizione laterale di sicurezza</strong> e controlla spesso il respiro. Dopo un trauma: non muoverla.</p></div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: è la «regola comune» del dossier del sito, valida per tutte le schede: chi non risponde si gestisce chiamando il 112 e guardando se respira normalmente. I respiri rari e rumorosi (respiro agonico) non sono respiro normale: si comincia la rianimazione, senza paura di fare male. Qui solo il rimando: compressioni e DAE si fanno nella lezione e con le slide BLSD. Errore frequente: mettere in posizione laterale una persona con respiro agonico. Fonti: IRC 2025, cap. 12, p. 7 («Arresto cardiaco»), p. 8 («Posizione laterale di sicurezza») e p. 9 (tabella 3, B); registro del sito, voce «regola comune» della rubrica.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Posizione laterale di sicurezza</h2>
+<div class="lato largo">
+<ol class="passi">
+<li>Gambe distese; il <strong>braccio vicino a te ad angolo retto</strong>.</li>
+<li>Il dorso dell'altra mano <strong>sulla guancia</strong> rivolta verso di te.</li>
+<li>Piega la gamba lontana, piede a terra, e <strong>falla rotolare verso di te</strong>.</li>
+<li>Anca e ginocchio di sopra ad angolo retto; <strong>testa un po' indietro</strong>, bocca verso il basso.</li>
+</ol>
+<figure class="figura"><img src="img/ps-posizione-laterale-sicurezza.png" alt="Illustrazione: persona sdraiata sul fianco vista dall'alto, con il dorso della mano di sopra sotto la guancia, il braccio di sotto piegato ad angolo retto davanti a sé, la gamba di sopra piegata con anca e ginocchio ad angolo retto e la gamba di sotto distesa"><figcaption>Illustrazione: Mrmw, Wikimedia Commons, CC0</figcaption></figure>
+</div>
+<p class="no"><strong>Resta con lei e controlla spesso il respiro.</strong> Se smette di respirare normalmente: a pancia in su e rianimazione.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: si usa per adulti e bambini con ridotto livello di coscienza, di origine non traumatica, che respirano normalmente. Le Linee guida 2025 ammettono due varianti, con il braccio di sotto piegato o disteso (studio senza differenze per circolazione e comfort): mostrate quella del materiale del corso; l'illustrazione mostra la variante con il braccio piegato, la stessa della scheda del sito. Errori frequenti: usarla dopo un trauma (caduta dall'alto, incidente: la persona resta supina e non si muove) o con respiro agonico; lasciare la persona da sola. Fonti: IRC 2025, cap. 12, p. 8 e p. 10 (figura 3, braccio piegato A e disteso B), p. 24 («Posizione laterale di sicurezza»); dossier del sito, scheda «Posizione laterale di sicurezza» (testo identico).</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Emorragia grave: premi e non mollare</h2>
+<div class="lato">
+<ol class="passi">
+<li>Se li hai, <strong>guanti</strong>.</li>
+<li>Premi forte <strong>direttamente sulla ferita</strong>, con una garza sterile o un panno pulito.</li>
+<li><strong>Mantieni la pressione</strong> senza mollare finché arrivano i soccorsi.</li>
+<li>Chiama il <strong>112</strong>, o fallo chiamare da chi è con te.</li>
+</ol>
+<svg viewBox="0 0 520 420" width="520" height="420" role="img" aria-label="Schema di lato: un braccio appoggiato, una garza sulla ferita e due mani una sull'altra che premono forte sulla garza" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="300" width="480" height="80" rx="40" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<text x="60" y="352" font-size="24" font-weight="700" fill="#3D4F7C" stroke="none">braccio</text>
+<rect x="215" y="276" width="170" height="28" fill="#FFFFFF" stroke="#009FE3" stroke-width="8"/>
+<path d="M220 270 C215 230 225 205 250 200 L360 200 C385 205 390 235 385 270 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M232 196 C228 160 240 140 262 136 L350 136 C372 140 380 162 374 196" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M262 150 V188 M292 150 V188 M322 150 V188" stroke="#003F85" stroke-width="5"/>
+<path d="M300 30 V110 M272 84 L300 112 L328 84" stroke="#C8102E" stroke-width="12"/>
+<text x="350" y="70" font-size="26" font-weight="800" fill="#A50E26" stroke="none">premi forte</text>
+<path d="M400 290 L440 250" stroke="#009FE3" stroke-width="4"/>
+<text x="410" y="240" font-size="24" font-weight="700" fill="#0072A8" stroke="none">garza</text>
+<text x="20" y="150" font-size="24" font-weight="700" fill="#003F85" stroke="none">due mani</text>
+<text x="20" y="178" font-size="24" font-weight="700" fill="#003F85" stroke="none">una sull'altra</text>
+<path d="M196 186 L224 212" stroke="#003F85" stroke-width="4"/>
+</svg>
+</div>
+<p class="no"><strong>Non sollevare la garza per controllare.</strong> Non estrarre oggetti conficcati: premi intorno.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: la pressione manuale diretta è la prima scelta; il capitolo dice di mettere una medicazione (normale o emostatica) direttamente sulla ferita e di premere sopra. ERC preferisce la pressione diretta ai dispositivi compressivi e sconsiglia i punti di compressione a distanza. Nessuna fonte dà un tempo minimo di pressione: si preme finché arrivano i soccorsi. Errori frequenti: alzare la garza per guardare; premere a distanza dalla ferita; togliere un oggetto conficcato. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, emorragia massiva), p. 15 («Controllo di un'emorragia pericolosa per la vita»), p. 16 (figura 9), p. 35 («Dispositivi di compressione o punti di compressione»); dossier del sito, scheda «Emorragia grave»; registro, voce emorragia-laccio.</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il laccio emostatico</h2>
+<div class="lato" style="grid-template-columns: 1fr 460px;">
+<div style="display:flex; flex-direction:column; gap:20px;">
+<p><strong>Quando:</strong> su un braccio o una gamba, se la pressione diretta <strong>non basta</strong> e hai un laccio, il prima possibile.</p>
+<ul>
+<li><strong>Da 5 a 7 cm sopra la ferita</strong>, mai sopra un'articolazione.</li>
+<li><strong>Stringi</strong> finché il sangue rallenta e si ferma: avvisa che fa male.</li>
+<li><strong>Annota l'ora</strong> sul laccio.</li>
+<li>Se non basta, un secondo laccio sopra il primo.</li>
+</ul>
+<p class="no"><strong>Non allentarlo e non toglierlo:</strong> lo fa solo il personale sanitario.</p>
+</div>
+<svg viewBox="0 0 460 560" width="460" height="560" role="img" aria-label="Coscia vista di fronte: ferita sulla coscia, laccio emostatico da 5 a 7 centimetri sopra la ferita con l'ora scritta, lontano dal ginocchio" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M130 10 C122 140 128 300 150 430 C142 480 145 520 152 552 M310 10 C326 140 322 300 296 430 C302 480 298 520 290 552" stroke="#233B74" stroke-width="10"/>
+<ellipse cx="222" cy="448" rx="66" ry="28" stroke="#5A6478" stroke-width="6" stroke-dasharray="6 12"/>
+<text x="222" y="505" text-anchor="middle" font-size="24" font-weight="700" fill="#5A6478" stroke="none">ginocchio</text>
+<path d="M190 320 C205 310 235 310 252 320" stroke="#C8102E" stroke-width="14"/>
+<text x="112" y="330" text-anchor="end" font-size="26" font-weight="800" fill="#A50E26" stroke="none">ferita</text>
+<path d="M124 200 C190 216 262 216 324 198" stroke="#003F85" stroke-width="34"/>
+<rect x="160" y="150" width="124" height="40" rx="6" fill="#FCEB0C" stroke="#003F85" stroke-width="6"/>
+<text x="222" y="179" text-anchor="middle" font-size="24" font-weight="800" fill="#003F85" stroke="none">10.35</text>
+<path d="M346 214 V306 M332 228 L346 214 L360 228 M332 292 L346 306 L360 292" stroke="#003F85" stroke-width="6"/>
+<text x="362" y="268" font-size="24" font-weight="800" fill="#003F85" stroke="none">5-7 cm</text>
+<text x="340" y="150" font-size="24" font-weight="800" fill="#003F85" stroke="none">laccio</text>
+<text x="340" y="177" font-size="24" font-weight="800" fill="#003F85" stroke="none">con l'ora</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: IRC 2025 lo raccomanda il prima possibile nell'emorragia potenzialmente fatale di un arto che la pressione manuale diretta non controlla; i lacci commerciali sono più semplici e chiudono meglio di quelli improvvisati. Mostrate e fate provare il laccio commerciale del corso. Nei bambini si suggerisce un laccio commerciale a barra di torsione; se l'arto è troppo piccolo, pressione diretta. Il capitolo ricorda anche le lesioni da uso prolungato: per questo l'ora annotata e il 112 subito. Errori frequenti: laccio sul ginocchio o sul gomito; laccio lento, che aumenta il sanguinamento; allentarlo «per far respirare l'arto». Fonti: IRC 2025, cap. 12, p. 15 (ultimi due punti) e p. 35 («Tourniquet»: 5-7 cm, non su un'articolazione, dolore, ora, non allentare, secondo laccio); registro del sito, voce emorragia-laccio (nessun limite di addestramento, IRC p. 15 e IFRC 2025 p. 256).</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Medicazioni emostatiche</h2>
+<ul>
+<li>Sono garze trattate che aiutano il sangue a <strong>coagulare</strong>: le Linee guida 2025 ne raccomandano l'uso da parte dei soccorritori.</li>
+<li>Si mettono <strong>direttamente sulla ferita</strong> e <strong>sopra si preme</strong>, come con una garza normale.</li>
+<li>Servono anche nei <strong>lattanti e nei bambini</strong> con un arto troppo piccolo per il laccio, insieme alla pressione diretta.</li>
+<li>Come per ogni presidio: si usano <strong>se si è stati formati</strong> e seguendo le istruzioni della confezione.</li>
+</ul>
+<p class="riquadro tenue">La regola non cambia: <strong>pressione diretta</strong> prima di tutto, laccio se non basta su un arto, <strong>112</strong> subito.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: dal 2021 nuovi studi indicano che le medicazioni emostatiche riducono la durata del sanguinamento e migliorano la sopravvivenza, con pochi effetti avversi rispetto alle garze comuni; per questo ERC ne raccomanda l'impiego da parte dei primi soccorritori. Le schede del sito non le citano ancora (segnalato). Errore frequente: metterle e poi non premere. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3), p. 15 (secondo punto) e p. 35 («Medicazioni emostatiche» e ultimo capoverso di «Tourniquet»); principio generale: p. 6.</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ferite e tagli piccoli</h2>
+<ul>
+<li>Lavati le mani e, se li hai, indossa i guanti; se sanguina, <strong>premi con una garza pulita</strong>.</li>
+<li><strong>Lava sotto l'acqua corrente pulita</strong>; se vuoi, un disinfettante <strong>senza alcol</strong>.</li>
+<li>Asciuga intorno e <strong>copri</strong> con un cerotto o una garza.</li>
+<li><strong>Pronto soccorso</strong>: sangue che non si ferma, ferita profonda o con i bordi aperti, oggetto conficcato, ferita sul viso.</li>
+<li><strong>Antitetanica</strong>: ferita profonda, sporca di terra o morso, e ultimo richiamo di più di 5 anni fa o non ricordato: dal medico.</li>
+</ul>
+<p class="no"><strong>Niente alcol e niente cotone sulla ferita.</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo 12 non tratta le ferite piccole; le indicazioni sono quelle della scheda «Ferite e tagli» del dossier del sito. Se esce tanto sangue si torna alla slide dell'emorragia grave. Nei giorni dopo: pelle rossa, calda e sempre più dolorante, pus o febbre vanno fatti vedere dal medico. Errori frequenti: alcol sulla ferita, cotone che lascia fili, sottovalutare un morso di animale. Fonti: dossier del sito, scheda «Ferite e tagli»; per l'antitetanica la circolare del Ministero della Salute del 3/7/2018, prot. 20004 (voce tetano-ferite-5-anni del registro del sito); IRC 2025, cap. 12, p. 16, per le ferite aperte del torace (lasciarle scoperte, premere solo sul sanguinamento).</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ustioni: 20 minuti di acqua</h2>
+<ol class="passi">
+<li>Raffredda subito sotto <strong>acqua corrente fresca</strong>, non ghiacciata, per <strong>almeno 20 minuti</strong>.</li>
+<li>Togli anelli, braccialetti e orologi prima che la parte si gonfi.</li>
+<li>Copri con una medicazione pulita o con <strong>pellicola trasparente</strong> per alimenti, senza stringere.</li>
+</ol>
+<p class="riquadro tenue"><strong>112</strong> per ustioni grandi o profonde, sul viso, sulle mani, sui piedi o sui genitali, da fiamme, elettriche o chimiche, o in un bambino. Per un anziano o nel dubbio, dal medico.</p>
+<p class="no"><strong>Niente ghiaccio, burro, olio, creme o rimedi casalinghi.</strong> Non staccare i vestiti attaccati e non rompere le bolle.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: le Linee guida ERC 2025 non trattano più il raffreddamento e le medicazioni delle ustioni (tabella 1 del capitolo 12): restano valide le indicazioni della scheda «Ustioni» del sito, verificate su IFRC 2025, NHS e Croce Rossa Italiana. Acqua fresca, non ghiacciata: il ghiaccio peggiora il danno e raffredda troppo, soprattutto nei bambini. Errori frequenti: smettere dopo pochi minuti perché «non brucia più»; rimedi casalinghi. Fonti: IRC 2025, cap. 12, p. 5 (tabella 1, argomenti non più inclusi); IFRC 2025, pp. 289-292; dossier del sito, scheda «Ustioni»; registro, voce ustioni-20-minuti.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Sospetto trauma della colonna</h2>
+<div class="lato" style="grid-template-columns: 1fr 440px;">
+<div style="display:flex; flex-direction:column; gap:20px;">
+<p>Pensaci dopo una <strong>caduta o un tuffo dall'alto</strong>, uno schiacciamento, un incidente stradale o sportivo.</p>
+<ul>
+<li><strong>Sveglia:</strong> non muoverla; dille di <strong>stare ferma</strong> nella posizione per lei più comoda.</li>
+<li><strong>Non risponde, a pancia in su:</strong> inginocchiati dietro la testa e <strong>tienila ferma con le mani</strong>, allineata al corpo.</li>
+<li>Spostala solo per un <strong>pericolo immediato</strong> (fuoco, gas, crollo).</li>
+</ul>
+</div>
+<svg viewBox="0 0 440 440" width="440" height="440" role="img" aria-label="Testa vista dall'alto tenuta ferma da due mani ai lati, in linea con il corpo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M220 300 V430" stroke="#5A6478" stroke-width="6" stroke-dasharray="6 14"/>
+<path d="M120 440 C120 380 160 350 220 350 C280 350 320 380 320 440" stroke="#233B74" stroke-width="10"/>
+<ellipse cx="220" cy="210" rx="92" ry="112" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M98 120 C70 150 70 270 98 300 L120 290 C108 250 108 170 120 130 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M342 120 C370 150 370 270 342 300 L320 290 C332 250 332 170 320 130 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M60 40 L95 75 M380 40 L345 75" stroke="#009FE3" stroke-width="10"/>
+<text x="220" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="#003F85" stroke="none">testa ferma</text>
+</svg>
+</div>
+<p class="no"><strong>Non forzare mai</strong> la testa o il collo di chi non collabora. Non togliere il casco al motociclista.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: chi è sveglio si incoraggia a restare fermo da solo, in una posizione stabile; non lo si costringe in una posizione, perché si può peggiorare la lesione. Se non risponde ed è supina: stabilizzazione manuale della testa, o presa sui trapezi (figura 8 del capitolo), da far provare in aula. Se bisogna liberare le vie aeree di chi è a pancia in giù, la si gira in più persone mantenendo testa, collo e tronco allineati. Collari e presidi solo per chi ha una formazione specifica e i propri protocolli. Il casco: scheda «Incidente stradale» del sito, se non respira si seguono le indicazioni dell'operatore del 112. Errore frequente: sollevare la testa con un cuscino. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, A) e p. 15 («Immobilizzazione del rachide cervicale»), p. 34; dossier del sito, schede «Incidente stradale» e «Cadute degli anziani».</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Colpo alla testa</h2>
+<ul>
+<li>Segni: mal di testa, vertigini, nausea, vista disturbata, confusione, fatica a ricordare, sonnolenza.</li>
+<li><strong>Ferma subito</strong> ogni attività: niente sport né sforzi, e niente ritorno in campo lo stesso giorno.</li>
+<li>Anche se sembra stare bene: <strong>dal medico</strong>, e non lasciarla sola nelle ore dopo.</li>
+</ul>
+<p class="riquadro blu"><strong>112</strong> se perde conoscenza, vomita più volte, è confusa o molto assonnata, ha convulsioni, le esce sangue o liquido chiaro da naso o orecchie, vede male o doppio, ha un braccio o una gamba deboli.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo chiede di sospettare la commozione cerebrale con difficoltà a pensare o ricordare, sintomi fisici (mal di testa, vista, vertigini, nausea o vomito, convulsioni, fastidio per luce e rumori) e cambiamenti di comportamento, di fermare subito ogni attività fisica e di mandare la persona dal medico. Dopo una caduta dall'alto o un trauma forte vale la slide precedente. Errore frequente: «ha solo un bernoccolo, può tornare a giocare». Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, D) e p. 16 («Commozione cerebrale»); dossier del sito, scheda «Trauma cranico» (ISSalute, Commozione cerebrale; IFRC 2025, p. 312).</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fratture e distorsioni</h2>
+<ul>
+<li>Dolore forte, gonfiore, livido, forma strana dell'arto, parte che non si muove.</li>
+<li>Sostieni la parte <strong>nella posizione in cui si trova</strong>: mani, cuscino, fascia per il braccio.</li>
+<li><strong>Ghiaccio avvolto in un panno</strong>, per non più di 20 minuti alla volta.</li>
+<li>Frattura esposta: non spingere dentro l'osso; se sanguina, <strong>premi sulla ferita</strong> senza premere sull'osso.</li>
+<li><strong>Nel dubbio è una frattura</strong>: fatti vedere da un medico.</li>
+</ul>
+<p class="riquadro tenue"><strong>112</strong> per frattura esposta o arto deformato, anca, femore, schiena o collo, dolore fortissimo, o se è pallida, fredda e sudata.</p>
+<p class="no"><strong>Non raddrizzare l'arto e non farlo muovere.</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: ERC 2025 ha tolto dal capitolo il riallineamento delle fratture con deformità e il bendaggio compressivo per le distorsioni (tabella 1): per il cittadino si immobilizza così com'è. Pallida, fredda e sudata è un segno di shock: supina, coperta, 112. Errori frequenti: tirare l'arto per «rimetterlo dritto»; ghiaccio direttamente sulla pelle. Fonti: IRC 2025, cap. 12, p. 5 (tabella 1) e p. 9 (tabella 3, C); IFRC 2025, pp. 301-302; dossier del sito, scheda «Fratture e distorsioni»; registro, voce fratture-ghiaccio-112.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dolore al petto</h2>
+<p>Dolore, peso o oppressione <strong>al centro del petto</strong>, che può andare verso braccio, mandibola, schiena o stomaco; spesso sudore freddo, nausea, fiato corto.</p>
+<ol class="passi">
+<li><strong>Subito il 112</strong>, anche se il dolore dura da pochi minuti o va e viene.</li>
+<li>Falla <strong>sedere o sdraiare</strong> come sta più comoda e rassicurala.</li>
+<li>Se non è allergica e non l'ha già presa, aiutala a <strong>masticare un'aspirina</strong> (150-500 mg); se ha un'angina nota, aiutala a usare il suo spray o le sue compresse.</li>
+<li><strong>Resta con lei</strong> fino all'arrivo dei soccorsi.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo dice di incoraggiare e aiutare la persona ad assumere da sola l'aspirina masticabile il prima possibile, mentre si aspetta il trasporto, se il dolore può essere di origine cardiaca e non c'è allergia nota. Nelle donne, negli anziani e in chi ha il diabete i segni possono essere sfumati. Se perde conoscenza e non respira normalmente: rianimazione. Errori frequenti: accompagnarla in ospedale in auto; aspettare che il dolore «passi»; dare l'aspirina a chi ha i segni di un ictus. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, C) e p. 12 («Dolore toracico»); IFRC 2025, «Chest pain», p. 358; dossier del sito, scheda «Infarto».</div>
+</section>
+
+<!-- 20 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ictus: il tempo è cervello</h2>
+<div class="quattro">
+<div><div class="l">Viso</div><p>Chiedi di sorridere: un lato della bocca resta giù?</p></div>
+<div><div class="l">Braccia</div><p>Chiedi di alzarle tutte e due: una scende o non si muove?</p></div>
+<div><div class="l">Parola</div><p>Fai ripetere una frase semplice: parla male o non capisce?</p></div>
+<div style="background: var(--blu);" class="fondo-blu"><div class="l" style="color:#FCEB0C">Ora</div><p>Anche <strong>un solo segno</strong>: 112 e segna l'ora di inizio dei sintomi.</p></div>
+</div>
+<p class="no"><strong>Non aspettare che passi</strong>, anche se sembra migliorare. Niente cibo, acqua o farmaci, <strong>nemmeno l'aspirina</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: IRC 2025 raccomanda di usare una scala per riconoscere prima l'ictus e attivare subito i soccorsi; non ce n'è una migliore delle altre (FAST, BE-FAST, Cincinnati). «Viso, braccia, parola» è la FAST, la stessa delle schede del sito. Se non si sa quando è iniziato, si dice l'ultima volta che la persona stava bene: serve all'ospedale per scegliere le cure. Ossigeno solo se si è addestrati e con segni di ipossia. Errore frequente: dare l'aspirina «come per l'infarto». Fonti: IRC 2025, cap. 12, p. 14 («Ictus») e p. 32; dossier del sito, scheda «Ictus»; registro, voce ictus-segni (niente farmaci: SNLG Regione Toscana 2013, pp. 26 e 42; ISSalute, Ictus, 17/12/2025).</div>
+</section>
+
+<!-- 21 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Svenimento</h2>
+<p>Prima: pallore, sudore, nausea, capogiri, vista annebbiata. Poi una breve perdita di coscienza, <strong>di solito pochi secondi</strong>.</p>
+<ul>
+<li>Se sta per svenire: <strong>sdraiata</strong>, se si può con le gambe sollevate; se no accovacciata, o gambe incrociate stringendo i muscoli.</li>
+<li>Se sviene: <strong>a pancia in su</strong>, gambe sollevate se si può; se è incinta, <strong>sul fianco sinistro</strong>.</li>
+<li>Se non si riprende subito: <strong>112</strong> e guarda se respira normalmente. Respira e non ha battuto forte cadendo: <strong>su un fianco</strong>. Non respira normalmente: <strong>rianimazione</strong>.</li>
+<li>Quando sta meglio, si rialza piano: prima seduta, poi in piedi.</li>
+</ul>
+<p class="no"><strong>112</strong> anche per uno svenimento durante uno sforzo, con dolore al petto o palpitazioni.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: ERC 2025 ha tolto la sezione sulla presincope (tabella 1); restano lo schema ABCDE (supina, sollevamento passivo delle gambe come misura temporanea) e la posizione laterale per chi non si riprende ma respira normalmente e non ha un trauma. Le manovre per chi sta per svenire sono quelle della scheda del sito. Errori frequenti: tenerla in piedi o seduta «per farla riprendere»; farla alzare di colpo; aspettare che si riprenda senza guardare il respiro. Fonti: IRC 2025, cap. 12, p. 5 (tabella 1), p. 8, p. 9 (tabella 3, C) e p. 24; IFRC 2025, pp. 401-404; dossier del sito, scheda «Svenimento»; registro, voce «regola comune».</div>
+</section>
+
+<!-- 22 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Convulsioni: proteggi, non trattenere</h2>
+<ul>
+<li>Allontana gli oggetti pericolosi; <strong>qualcosa di morbido sotto la testa</strong>; allenta il colletto.</li>
+<li><strong>Guarda l'ora</strong>: se dura più di 5 minuti chiama il <strong>112</strong>.</li>
+<li>112 anche se è la prima crisi, si è ferita, è incinta o ha partorito da poco, ha il diabete o la febbre alta, ha bevuto alcol o preso droghe, le crisi si ripetono, non si riprende, e <strong>nel dubbio</strong>.</li>
+<li>Finiti i movimenti, <strong>controlla il respiro</strong>: respira normalmente, su un fianco e resta con lei; se no, 112 e rianimazione.</li>
+</ul>
+<p class="no"><strong>Non trattenere i movimenti. Niente in bocca:</strong> né dita, né oggetti, né acqua.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo 12 di IRC 2025 non ha una sezione sulle convulsioni (le cita fra i segni di commozione cerebrale e di colpo di calore): le indicazioni sono quelle della scheda del sito, sulla soglia dei 5 minuti della Lega Italiana contro l'Epilessia e su IFRC 2025. Dopo la crisi la persona può essere confusa e assonnata: parlatele con calma. Errori frequenti: mettere qualcosa tra i denti «per la lingua»; bloccare braccia e gambe. Fonti: IFRC 2025, pp. 397-398; dossier del sito, scheda «Convulsioni»; registro, voce convulsioni-5-minuti.</div>
+</section>
+
+<!-- 23 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ipoglicemia: serve zucchero</h2>
+<p>In una persona con diabete: sudore, tremore, pallore, confusione, comportamento strano, risposta che cala all'improvviso.</p>
+<ol class="passi">
+<li><strong>Sveglia e deglutisce:</strong> 15-20 g di zuccheri rapidi: compresse di glucosio, caramelle zuccherate, 50-100 ml di succo o bibita zuccherata.</li>
+<li>Se dopo <strong>15 minuti</strong> ha ancora i sintomi, <strong>ripeti</strong>.</li>
+<li>Quando sta meglio, uno <strong>spuntino leggero</strong>.</li>
+<li><strong>112</strong> se non risponde o non migliora; se non risponde: respira normalmente, su un fianco; se no, rianimazione.</li>
+</ol>
+<p class="no"><strong>Niente per bocca a chi non risponde:</strong> rischia di soffocare.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo aggiunge che, se c'è un glucometro, si tratta con glicemia fino a 70 mg/dL e si rimisura dopo; se non c'è zucchero da bere o masticare, gel di glucosio metà nella guancia e metà ingoiato; nei bambini che non collaborano, mezzo cucchiaino di zucchero sotto la lingua; chi ha un autoiniettore o uno spray nasale di glucagone può usarlo o farselo dare da una persona addestrata. Il miglioramento arriva di solito entro 5-10 minuti. Errori frequenti: ripetere lo zucchero invece di chiamare il 112 quando non migliora; dare da bere a chi è assopito. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, D), pp. 12-13 («Ipoglicemia») e pp. 30-31; dossier del sito, scheda «Ipoglicemia»; registro, voce ipoglicemia-15-20g.</div>
+</section>
+
+<!-- 24 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Crisi d'asma</h2>
+<p>Fiato corto, <strong>fischi nel respiro</strong>, tosse, oppressione al petto; nei casi gravi non riesce a parlare.</p>
+<ul>
+<li>Fallo stare <strong>seduto, un po' in avanti</strong>, con le braccia appoggiate; calma e vestiti stretti allentati.</li>
+<li>Aiutalo a usare il <strong>suo spray</strong> per la crisi, con il <strong>distanziatore</strong> se c'è.</li>
+<li><strong>112</strong> se non ha lo spray, se non basta o la crisi peggiora, se non riesce a parlare, ha le labbra blu o è sonnolento.</li>
+</ul>
+<p class="no"><strong>Non farlo sdraiare.</strong> Labbra o lingua gonfie possono essere anafilassi: 112 subito.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo dice che il soccorritore aiuta la persona con asma a usare il proprio broncodilatatore inalatorio di emergenza, preferibilmente con il distanziatore. Mostrate in aula uno spray da esercitazione con il distanziatore. Errori frequenti: usare lo spray di un'altra persona; farla sdraiare. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, B) e p. 12 («Asma»); dossier del sito, scheda «Crisi d'asma» (ISSalute, Asma, 21/05/2026; IFRC 2025, pp. 245-248).</div>
+</section>
+
+<!-- 25 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Anafilassi: adrenalina e 112</h2>
+<div class="lato" style="grid-template-columns: 1fr 420px;">
+<div style="display:flex; flex-direction:column; gap:18px;">
+<p>Dopo un cibo, un farmaco o una puntura d'insetto: labbra, lingua o viso gonfi, fatica a respirare, orticaria, malessere improvviso, a volte dolore alla pancia, vomito o diarrea.</p>
+<ol class="passi">
+<li>Chiama il <strong>112</strong>; falla stare <strong>seduta o sdraiata</strong>.</li>
+<li>Aiutala a usare il suo <strong>autoiniettore</strong> nella <strong>parte esterna della coscia</strong>, il prima possibile.</li>
+<li>Se non ha l'autoiniettore ma ha lo <strong>spray nasale</strong> di adrenalina, aiutala a usarlo.</li>
+<li>Sintomi ancora presenti dopo <strong>5 minuti</strong>: seconda dose, se c'è.</li>
+</ol>
+</div>
+<svg viewBox="0 0 420 560" width="420" height="560" role="img" aria-label="Gamba vista di fronte con l'autoiniettore appoggiato a metà della parte esterna della coscia" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M110 20 C100 170 110 300 130 380 C120 440 125 490 135 550 M260 20 C280 170 275 300 245 380 C250 440 245 490 235 550" stroke="#233B74" stroke-width="10"/>
+<ellipse cx="188" cy="390" rx="55" ry="22" stroke="#5A6478" stroke-width="6" stroke-dasharray="6 12"/>
+<path d="M190 150 V250" stroke="#5A6478" stroke-width="4" stroke-dasharray="4 10"/>
+<rect x="282" y="168" width="128" height="44" rx="12" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<rect x="268" y="178" width="20" height="24" rx="4" fill="#009FE3" stroke="#003F85" stroke-width="6"/>
+<text x="345" y="140" text-anchor="middle" font-size="22" font-weight="800" fill="#003F85" stroke="none">esterno</text>
+<text x="345" y="166" text-anchor="middle" font-size="22" font-weight="800" fill="#003F85" stroke="none">coscia</text>
+<text x="190" y="440" text-anchor="middle" font-size="22" font-weight="700" fill="#5A6478" stroke="none">ginocchio</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: adrenalina intramuscolare il prima possibile con l'autoiniettore della persona, nella parte esterna della coscia, a metà fra anca e ginocchio; si può fare sopra i vestiti se non sono spessi. Dosi del capitolo: 0,15 mg da 1 a 5 anni, 0,3 mg da 6 a 12 anni, 0,5 mg negli adulti: l'autoiniettore prescritto ha già la dose giusta. Se manca l'autoiniettore, il dispositivo intranasale (in Italia lo spray nasale di adrenalina con prescrizione, AIFA). Seconda dose se i sintomi persistono dopo 5 minuti, anche se va un po' meglio. Fate provare con l'autoiniettore da esercitazione. Errori frequenti: aspettare che peggiori; farla alzare in piedi di colpo; iniettare nel gluteo o in vena. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, B) e p. 11 («Anafilassi», figura 4); dossier del sito, scheda «Anafilassi»; registro, voci anafilassi-adrenalina e adrenalina-nasale-aifa.</div>
+</section>
+
+<!-- 26 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Avvelenamento: niente rimedi fai da te</h2>
+<ul>
+<li>Chiama il <strong>112</strong> o un <strong>Centro Antiveleni</strong> e segui le loro indicazioni.</li>
+<li>Tieni a portata di mano la <strong>confezione</strong> del prodotto, o una foto dell'etichetta.</li>
+<li>Gas o fumi: porta la persona all'aria aperta <strong>senza metterti in pericolo</strong>.</li>
+<li>Se non risponde e non respira normalmente: 112 e rianimazione; con il prodotto intorno alla bocca, solo compressioni.</li>
+</ul>
+<p class="riquadro tenue">A Roma, giorno e notte: Centro Antiveleni del <strong>Policlinico Gemelli 06 305 4343</strong>; per i bambini, del <strong>Bambino Gesù 06 6859 3726</strong>.</p>
+<p class="no"><strong>Non provocare il vomito.</strong> Niente latte, acqua o olio se non lo dicono il Centro Antiveleni o il 112.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il capitolo 12 tratta solo l'overdose da oppioidi (naloxone per via nasale a chi non risponde e non respira normalmente, insieme alla rianimazione) e rimanda per le altre intossicazioni al capitolo «Circostanze speciali»; le indicazioni generali sono quelle della scheda «Avvelenamento» del sito. Il Centro Antiveleni dell'Umberto I risponde solo di giorno nei feriali: per questo indichiamo Gemelli e Bambino Gesù. Errori frequenti: far vomitare; dare latte «per diluire». Fonti: IRC 2025, cap. 12, p. 13 («Overdose da oppioidi»); IFRC 2025, pp. 346-348; dossier del sito, scheda «Avvelenamento»; registro, voce centri-antiveleni-roma (pagine dei due ospedali, verificate il 16/11/2026).</div>
+</section>
+
+<!-- 27 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Colpo di calore e ipotermia</h2>
+<div class="due">
+<div class="riquadro tenue">
+<h3>Colpo di calore</h3>
+<p>Caldo forte o sforzo, pelle molto calda, poi <strong>confusione</strong>, agitazione, convulsioni.</p>
+<p><strong>112</strong> e intanto <strong>raffredda</strong>: al fresco, via più vestiti possibile, bagnala tutta con acqua fresca o teli bagnati e <strong>falle aria di continuo</strong>.</p>
+</div>
+<div class="riquadro tenue">
+<h3>Ipotermia</h3>
+<p>Brividi forti, pelle fredda e pallida, poi confusione e sonnolenza: <strong>se smette di tremare è grave</strong>.</p>
+<p><strong>112</strong>; al riparo dal vento, <strong>spostandola con delicatezza</strong>; via i vestiti bagnati, coperte asciutte anche sulla testa e <strong>sotto di lei</strong>, isolata dal suolo.</p>
+</div>
+</div>
+<p class="no"><strong>Niente alcol</strong> in entrambi i casi: né da bere, né sulla pelle.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Colpo di calore. Che cosa dire: non si aspetta l'ambulanza per raffreddare; il raffreddamento per evaporazione è quello indicato ai cittadini dalle Linee di indirizzo del Ministero della Salute (luglio 2026, p. 14 a stampa), ed è ammesso anche da IRC fra le tecniche disponibili. Le tecniche organizzate del capitolo IRC (immersione con termometro rettale, telo TACO) sono per eventi sportivi e soccorritori attrezzati. Da bere solo a piccoli sorsi se è ben sveglia e senza nausea; niente farmaci per la febbre. Ipotermia. Che cosa dire: coprire, riparare dal vento, togliere i vestiti bagnati e isolare dal suolo sono le quattro misure di prevenzione del capitolo; se è sveglia e deglutisce, una bevanda calda e zuccherata; panni tiepidi non oltre 37 gradi. Errori frequenti: strofinare le parti congelate; muovere bruscamente chi non trema più. Fonti: IRC 2025, cap. 12, p. 9 (tabella 3, E) e p. 19 («Prevenzione dell'ipotermia», «Colpo di calore»); Ministero della Salute, Linee di indirizzo per la prevenzione degli effetti del caldo, 2026, p. 14; dossier del sito, schede «Colpo di calore» e «Ipotermia e congelamento»; registro, voce colpo-calore.</div>
+</section>
+
+<!-- 28 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi">
+<li><strong>Sicurezza</strong>, poi <strong>112</strong> il prima possibile: vivavoce, non riattaccare.</li>
+<li>Non risponde: <strong>respira normalmente?</strong> No: rianimazione. Sì, senza trauma: posizione laterale.</li>
+<li>Emorragia grave: <strong>premi e non mollare</strong>; laccio sull'arto se non basta.</li>
+<li>Trauma: <strong>non muovere</strong>, testa ferma.</li>
+<li>Aiuta la persona con <strong>i suoi farmaci</strong>: spray, autoiniettore, zucchero.</li>
+</ol>
+<p class="sottolinea">Usa solo ciò che hai imparato a usare. E ripassa: il corso si rinnova.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: riassunto della lezione; lasciate la slide proiettata durante le domande. Ricordate le lezioni e le slide di rianimazione (BLSD) e di disostruzione, e la cassetta di primo soccorso: il capitolo chiede un kit in casa, in auto, nei luoghi di lavoro, adatto ai rischi e controllato regolarmente. Parlate anche dello stress dopo un soccorso: è normale, se ne può parlare con i formatori. Fonti: IRC 2025, cap. 12, pp. 6-9 e 15; dossier del sito, schede «Cassetta di primo soccorso» e «Posizione laterale di sicurezza».</div>
+</section>
+
+<!-- 29 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Primo soccorso</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti e crediti delle immagini</h2>
+<ul>
+<li><strong>Linee guida RCP 2025</strong> di Italian Resuscitation Council, capitolo 12 «Primo soccorso» (ircouncil.it), lette il 20/11/2026.</li>
+<li>Schede del dossier <strong>«Primo soccorso passo passo»</strong> e guida <strong>«Chiamare il 112»</strong> su misericordia-ariccia.it, con le fonti statali citate in ogni scheda.</li>
+<li>Illustrazione della posizione laterale di sicurezza: «Recovery position 02», di <strong>Mrmw</strong>, Wikimedia Commons, licenza <strong>CC0 1.0</strong> (creativecommons.org/publicdomain/zero/1.0).</li>
+<li>Gli altri disegni sono della Confraternita di Misericordia di Ariccia.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<div class="note-relatore">Fonti complete, con capitolo e pagina, nelle note di ogni slide. Illustrazione della slide 10: https://commons.wikimedia.org/wiki/File:Recovery_position_02.svg (CC0 1.0, dedica al pubblico dominio, verificata il 20/11/2026); riga in scripts/formazione/slide/img/CREDITI.md.</div>
+</section>
+
+</body>
+</html>

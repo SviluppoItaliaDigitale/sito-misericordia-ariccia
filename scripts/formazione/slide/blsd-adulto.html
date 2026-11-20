@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/blsd-adulto.pdf">
+<title>Corso BLSD adulto: slide per l'aula</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per i formatori della Misericordia di Ariccia, da proiettare ai corsisti di un corso BLSD adulto (laici e volontari).
+Accompagnano il materiale ufficiale del corso (programma ARES 118 / IRC) e non lo sostituiscono.
+Fonti, lette il 20/11/2026 (pagine come stampate nei PDF):
+- Linee guida RCP 2025 di Italian Resuscitation Council (traduzione delle Linee guida ERC 2025), https://www.ircouncil.it/linee-guida-rcp-2025/
+  cap. 2 «Epidemiologia»: pp. 5-7, 11-13; cap. 3 «Sistemi che salvano vite»: pp. 7 e 11 (figura 2);
+  cap. 4 «Basic Life Support (adulto)»: pp. 5-11, 14-16, 19-23, 25-32; cap. 9 «BLS pediatrico»: p. 33; cap. 12 «Primo soccorso»: pp. 7-9 e 24.
+- Legge 4 agosto 2021, n. 116, art. 3 (Normattiva, letta il 20/11/2026).
+Testi parafrasati, nessuna figura copiata dalle linee guida: i disegni sono SVG fatti a mano; il cartello del DAE è il segnale
+ISO 7010 E010 di Wikimedia Commons (CC0), crediti in img/CREDITI.md e nell'ultima slide.
+Contenuto sanitario: va rivisto dal responsabile sanitario come gli altri materiali sanitari del sito.
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 40px; line-height: 54px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .numeri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.diapo .numeri .cifra { font-size: 88px; line-height: 1; font-weight: 800; color: var(--blu); white-space: nowrap; }
+.diapo .numeri .cifra small { font-size: 44px; }
+.diapo .numeri p { font-size: 31px; line-height: 41px; margin-top: 14px; }
+.diapo .anelli { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 6px; }
+.diapo .anello { position: relative; padding: 0 22px; }
+.diapo .anello .n { width: 110px; height: 110px; border-radius: 50%; border: 10px solid var(--blu); display: flex; align-items: center;
+  justify-content: center; font-size: 56px; font-weight: 800; color: var(--blu); background: #FFFFFF; position: relative; z-index: 1; }
+.diapo .anello.noi .n { background: var(--giallo); }
+.diapo .anello::before { content: ""; position: absolute; left: 0; right: 0; top: 50px; height: 10px; background: var(--blu); }
+.diapo .anello:first-child::before { left: 77px; } .diapo .anello:last-child::before { right: calc(100% - 77px); }
+.diapo .anello h3 { font-size: 34px; line-height: 42px; margin-top: 22px; }
+.diapo .anello p { font-size: 28px; line-height: 37px; margin-top: 8px; }
+.diapo .passi { display: flex; flex-direction: column; gap: 18px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .lato { display: grid; gap: 56px; align-items: center; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .riquadro.blu p, .diapo .riquadro.blu li { color: #FFFFFF; }
+.diapo .tre { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.diapo .tre .passo { background: rgba(255,255,255,.75); border-top: 14px solid var(--blu); padding: 26px 30px; }
+.diapo .tre .passo h3 { font-size: 46px; line-height: 52px; font-weight: 800; color: var(--blu); }
+.diapo .tre .passo .num { font-size: 30px; font-weight: 700; color: #3D4F7C; }
+.diapo .tre .passo ul { padding-left: 34px; margin-top: 12px; font-size: 32px; line-height: 42px; gap: 8px; }
+.diapo .tabella { display: grid; grid-template-columns: 1fr 1fr; gap: 0; font-size: 30px; line-height: 39px; }
+.diapo .tabella > div { padding: 16px 24px; border-bottom: 3px solid #C9D3E6; }
+.diapo .tabella .tes { font-weight: 800; color: #FFFFFF; background: var(--blu); border-bottom: 0; }
+.diapo .tabella .vecchio { color: #4A5878; }
+.diapo .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo .crediti { font-size: 30px; line-height: 42px; }
+.diapo .crediti li { margin-bottom: 6px; }
+.diapo .url { white-space: nowrap; }
+.diapo svg text { font-family: 'Montserrat', sans-serif; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M260 420 C150 345 50 270 50 160 C50 95 100 45 165 45 C210 45 242 70 260 105 C278 70 310 45 355 45 C420 45 470 95 470 160 C470 270 370 345 260 420 Z" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M10 230 H150 L185 160 L230 320 L275 120 L315 260 L340 230 H510" stroke="#FCEB0C" stroke-width="14"/>
+</svg>
+<div class="contenuto">
+<h1>Rianimazione e defibrillatore <span class="finale">nell'adulto</span></h1>
+<p class="sotto">Le slide dell'aula per il corso BLSD: riconoscere l'arresto cardiaco, chiamare il 112, comprimere, usare il DAE. Secondo le Linee guida IRC 2025.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentatevi e presentate il corso: chi siete, quanto dura, come si svolge la prova pratica sul manichino. Chiedete chi ha già fatto un corso BLSD e chi ha già visto un defibrillatore, e dove. Fonte del contenuto di tutta la presentazione: Linee guida RCP 2025 di Italian Resuscitation Council (traduzione delle Linee guida ERC 2025), ircouncil.it/linee-guida-rcp-2025/.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Queste slide accompagnano il corso</h2>
+<p>Sono un supporto alla lezione dell'istruttore. <strong>Non sostituiscono</strong> il materiale ufficiale del corso BLSD, secondo il programma di <strong>ARES 118</strong> e le Linee guida di <strong>Italian Resuscitation Council</strong>.</p>
+<ul>
+<li>Le manovre si imparano <strong>sul manichino</strong>, con l'istruttore che corregge mani, braccia e ritmo.</li>
+<li>Per la certificazione valgono le prove del corso e le regole di ARES 118.</li>
+</ul>
+<p class="riquadro blu">Ogni dubbio va chiarito con l'istruttore: oggi è il momento giusto per fare domande.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dite chiaramente che il riferimento resta il materiale del corso (manuale e programma ARES 118, linee guida IRC 2025): le slide riassumono e servono a guidare la lezione. Il corso BLSD della Misericordia di Ariccia è tenuto da formatori abilitati ARES 118; l'attestato e la certificazione seguono le regole di ARES 118 (pagina Formazione del sito). Fonte delle indicazioni tecniche: Linee guida IRC 2025, capitolo 4 «Basic Life Support (adulto)».</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>L'arresto cardiaco in Europa</h2>
+<div class="numeri">
+<div><div class="cifra">55</div><p>arresti cardiaci fuori dall'ospedale <strong>ogni 100.000 abitanti</strong> in un anno, trattati dai soccorsi</p></div>
+<div><div class="cifra">67,6</div><p>anni: l'<strong>età media</strong> delle persone colpite</p></div>
+<div><div class="cifra">58<small>%</small></div><p>dei casi: quanto spesso <strong>chi è presente</strong> inizia la RCP (dal 13 all'82% da Paese a Paese)</p></div>
+<div><div class="cifra">7,5<small>%</small></div><p>delle persone colpite <strong>sopravvive</strong> (dal 3,1 al 35% da Paese a Paese)</p></div>
+</div>
+<p class="piccolo">Fonte: Linee guida IRC 2025, capitolo 2 «Epidemiologia», pp. 5-7 e 13 (studio europeo EuReCa-3, 2022).</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Prima di mostrare i numeri chiedete: «Su cento persone colpite, quante secondo voi sopravvivono?». Le grandi differenze fra Paesi dipendono soprattutto da quanto spesso chi è presente inizia la RCP e usa il DAE. Fonte: IRC 2025, cap. 2 «Epidemiologia»: messaggi chiave p. 5 (55 per 100.000, 58% con intervallo 13-82%, sopravvivenza 7,5%); età media 67,6 anni pp. 6-7; intervallo di sopravvivenza 3,1-35% p. 13. Dati dello studio EuReCa-3 (2022).</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Succede in casa, e ogni minuto conta</h2>
+<div class="numeri" style="grid-template-columns: 1fr 1fr 1.25fr;">
+<div><div class="cifra">70<small>%</small></div><p>in Europa: gli arresti cardiaci che avvengono <strong>in una casa</strong></p></div>
+<div><div class="cifra">76,3<small>%</small></div><p>in Italia: <strong>più di tre su quattro</strong> avvengono in casa</p></div>
+<div><div class="cifra">2,6–59<small>%</small></div><p>da Paese a Paese: quanto spesso si usa un <strong>DAE prima dei soccorsi</strong></p></div>
+</div>
+<p class="riquadro blu">Con un ritmo defibrillabile, ogni minuto di ritardo della scarica riduce la probabilità di sopravvivere <strong>del 3-6%</strong>.</p>
+<p class="piccolo">Fonti: Linee guida IRC 2025, capitolo 2, pp. 5, 7 e 12; capitolo 4, p. 26.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Messaggio: chi si trova accanto è spesso un familiare, quindi il corso serve prima di tutto a casa propria. Domanda: «Sapete dov'è il DAE più vicino a casa vostra o al lavoro?». Fonte: IRC 2025, cap. 2: 70% in abitazioni private (p. 5 e p. 7, dal 61,5% della Svizzera al 76,3% dell'Italia); uso del DAE fra 2,6 e 59% (pp. 5 e 12). Cap. 4, p. 26: ogni minuto di ritardo della defibrillazione aumenta del 6% la probabilità di non interrompere la fibrillazione ventricolare e riduce del 3-6% la sopravvivenza alla dimissione.</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La catena della sopravvivenza</h2>
+<div class="anelli">
+<div class="anello noi"><div class="n">1</div><h3>Riconoscimento precoce e chiamata di aiuto</h3><p>per prevenire l'arresto cardiaco</p></div>
+<div class="anello noi"><div class="n">2</div><h3>RCP e defibrillazione precoce</h3><p>per proteggere il cervello e far ripartire il cuore</p></div>
+<div class="anello"><div class="n">3</div><h3>Supporto avanzato e cure dopo la rianimazione</h3><p>per il cuore e il cervello</p></div>
+<div class="anello"><div class="n">4</div><h3>Sopravvivenza e recupero</h3><p>per ritrovare la qualità della vita</p></div>
+</div>
+<p>I primi due anelli, <span class="evidenzia">in giallo</span>, sono il BLSD: toccano a chi è presente, prima dei soccorsi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le Linee guida ERC 2025 mantengono la catena a quattro anelli (ILCOR ne aveva proposta una a sei), ampliandone i messaggi. Una catena è forte quanto il suo anello più debole: se i primi due mancano, gli altri arrivano troppo tardi. Fonte: IRC 2025, cap. 3 «Sistemi che salvano vite», p. 7 (messaggi chiave) e p. 11, figura 2.</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Tre passi per salvare una vita</h2>
+<div class="tre">
+<div class="passo"><div class="num">1</div><h3>Controlla</h3><ul><li>È sicuro avvicinarsi?</li><li>La persona risponde?</li></ul></div>
+<div class="passo"><div class="num">2</div><h3>Chiama</h3><ul><li>Se non risponde: <strong>112</strong> subito, in vivavoce.</li><li>Intanto guarda il respiro.</li></ul></div>
+<div class="passo"><div class="num">3</div><h3>Comprimi</h3><ul><li>Se non respira normalmente: <strong>RCP</strong>.</li><li>Appena c'è, il <strong>DAE</strong>.</li></ul></div>
+</div>
+<p class="riquadro tenue">Se hai un dubbio, l'operatore della centrale ti aiuta a decidere.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">È la sequenza essenziale che le linee guida indicano per tutti i soccorritori: le slide seguenti la sviluppano un passo alla volta. Fate ripetere alla classe le tre parole: controlla, chiama, comprimi. Fonte: IRC 2025, cap. 4, p. 5 («Linee guida essenziali per la rianimazione destinate a tutti i soccorritori», figura 2) e algoritmo BLS a p. 7 (figura 3).</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima di tutto, la sicurezza</h2>
+<div class="lato" style="grid-template-columns: 1fr 380px;">
+<ul>
+<li>Guarda la scena: <strong>traffico, sostanze chimiche, persone violente</strong>. Proteggi te, la persona e chi è intorno.</li>
+<li>Se ci sono guanti o altre protezioni, usali, ma <strong>senza ritardare</strong> le compressioni.</li>
+<li>Per chi soccorre il rischio di infezione, di lesioni e di scossa dal DAE è <strong>basso</strong>.</li>
+</ul>
+<svg viewBox="0 0 380 380" width="380" height="380" role="img" aria-label="Triangolo di pericolo con un punto esclamativo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M190 30 L355 330 H25 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="18"/>
+<path d="M190 130 V240" stroke="#003F85" stroke-width="26"/>
+<circle cx="190" cy="285" r="15" fill="#003F85"/>
+</svg>
+</div>
+<p class="no"><strong>Non avere paura di fare male:</strong> iniziare la RCP su chi poi non era in arresto cardiaco causa raramente danni seri; ritardarla, invece, costa vite.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda alla classe: «Quali pericoli potreste trovare in strada, in casa, in un capannone?». Errore frequente: correre verso la persona senza guardarsi intorno. Fonte: IRC 2025, cap. 4, p. 11 (sicurezza: rischio basso di infezione, di scossa accidentale dal DAE e di lesioni per chi esegue la RCP; RCP senza timore di danneggiare chi non è in arresto) e pp. 31-32 (dispositivi di protezione da usare quando ci sono, senza ritardi inutili; lesioni involontarie). Esempi di pericoli dalla tabella 3 del cap. 12 «Primo soccorso», p. 9.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Risponde? Valuta la coscienza</h2>
+<div class="lato" style="grid-template-columns: 1fr 520px;">
+<ol class="passi">
+<li>Avvicinati e mettiti <strong>accanto</strong> alla persona.</li>
+<li><strong>Scuotila delicatamente</strong> per le spalle.</li>
+<li>Chiedi <strong>ad alta voce</strong>: «Signore, signora, mi sente? Sta bene?».</li>
+</ol>
+<svg viewBox="0 0 520 400" width="520" height="400" role="img" aria-label="Le mani del soccorritore appoggiate sulle spalle della persona, che viene scossa delicatamente e chiamata a voce alta" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="260" cy="130" r="62" stroke="#233B74" stroke-width="10" fill="#FFFFFF"/>
+<path d="M232 192 V212 M288 192 V212" stroke="#233B74" stroke-width="10"/>
+<path d="M110 400 V310 C110 255 150 222 205 214 H315 C370 222 410 255 410 310 V400" stroke="#233B74" stroke-width="10" fill="#FFFFFF"/>
+<path d="M20 120 L120 222" stroke="#003F85" stroke-width="34"/>
+<path d="M20 120 L120 222" stroke="#FFFFFF" stroke-width="18"/>
+<path d="M500 120 L400 222" stroke="#003F85" stroke-width="34"/>
+<path d="M500 120 L400 222" stroke="#FFFFFF" stroke-width="18"/>
+<path d="M104 214 C112 196 136 190 158 196 L186 206 C196 210 196 222 186 226 L176 230 L182 240 C186 250 176 256 168 250 L120 246 C104 244 98 228 104 214 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M416 214 C408 196 384 190 362 196 L334 206 C324 210 324 222 334 226 L344 230 L338 240 C334 250 344 256 352 250 L400 246 C416 244 422 228 416 214 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M150 278 H200 M150 278 l12 -10 M150 278 l12 10 M200 278 l-12 -10 M200 278 l-12 10" stroke="#009FE3" stroke-width="6"/>
+<path d="M320 278 H370 M320 278 l12 -10 M320 278 l12 10 M370 278 l-12 -10 M370 278 l-12 10" stroke="#009FE3" stroke-width="6"/>
+<path d="M348 70 C366 84 366 112 348 126 M376 50 C406 76 406 120 376 146" stroke="#009FE3" stroke-width="9"/>
+</svg>
+</div>
+<p class="riquadro tenue">Se <strong>non risponde</strong>, passa subito al punto successivo: <strong>chiama il 112</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fate provare sul manichino la stimolazione: delicata, sulle spalle, con la voce forte. Errori frequenti: scuotere la testa o il collo; perdere tempo con stimoli dolorosi. Se la persona ha avuto un trauma, non la si muove (cap. 12, tabella 3). Fonte: IRC 2025, cap. 4, p. 5 («La persona è cosciente?», sospetta un arresto cardiaco in ogni persona che non risponde); cap. 12 «Primo soccorso», p. 9, tabella 3 (stimolare delicatamente la persona e chiedere ad alta voce «Sta bene?»).</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Non risponde: chiama subito il 112</h2>
+<div class="lato" style="grid-template-columns: 1fr 250px;">
+<ul>
+<li>Chiama il <strong>112</strong> e metti il <strong>vivavoce</strong>: hai le mani libere e senti l'operatore.</li>
+<li><strong>Mentre aspetti</strong> che l'operatore risponda, guarda se respira normalmente.</li>
+<li>L'operatore ti aiuta a riconoscere l'arresto, ti guida nelle compressioni e ti chiede del <strong>DAE</strong>.</li>
+</ul>
+<svg viewBox="0 0 340 460" width="250" height="338" role="img" aria-label="Telefono in vivavoce con il numero 112" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="70" y="40" width="200" height="380" rx="28" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<path d="M140 72 H200" stroke="#003F85" stroke-width="10"/>
+<text x="170" y="230" text-anchor="middle" fill="#003F85" font-size="70" font-weight="800" stroke="none">112</text>
+<circle cx="170" cy="345" r="34" fill="#1E7B34"/>
+<path d="M152 334 H162 L176 322 V368 L162 356 H152 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4"/><path d="M184 336 C190 342 190 350 184 356" stroke="#FFFFFF" stroke-width="5"/>
+<path d="M290 150 C310 170 310 210 290 230 M312 125 C346 160 346 220 312 255" stroke="#009FE3" stroke-width="10"/>
+<path d="M50 150 C30 170 30 210 50 230 M28 125 C-6 160 -6 220 28 255" stroke="#009FE3" stroke-width="10"/>
+</svg>
+</div>
+<p class="riquadro blu">Solo e senza telefono? Grida aiuto. Se non arriva nessuno: <strong>un minuto di RCP</strong>, poi vai a chiamare.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">È la novità principale del 2025: prima si chiama, poi si valuta il respiro mentre si aspetta la risposta della centrale. Non si ritarda la chiamata per essere sicuri del respiro, perché la maggior parte degli arresti cardiaci viene riconosciuta dall'operatore durante la chiamata. Nel Lazio il numero unico è il 112, che smista al 118. Domanda: «Che cosa dite all'operatore?» (che cosa è successo e dove: comune, via, numero civico). Errore frequente: chiudere la telefonata o non mettere il vivavoce. Fonte: IRC 2025, cap. 4, p. 5 e p. 7 (allertare i servizi di emergenza; ruolo dell'operatore pp. 7-8), p. 6 tabella 1 (modifiche rispetto al 2021), pp. 15-16 (vivavoce, non ritardare la chiamata; soccorritore solo senza telefono: in ambito italiano un minuto di RCP, poi si cerca aiuto).</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Respira normalmente?</h2>
+<p>Apri le vie aeree (una mano sulla fronte, due dita sotto il mento, testa indietro) e <strong>guarda, ascolta, senti</strong> il respiro.</p>
+<svg viewBox="0 0 1700 300" width="1700" height="300" role="img" aria-label="Confronto fra un respiro normale, con onde regolari, e un respiro agonico, con atti rari e irregolari" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="0" y="0" width="820" height="300" fill="#FFFFFF" fill-opacity=".75"/>
+<text x="30" y="56" fill="#1E7B34" font-size="38" font-weight="800" stroke="none">Respiro normale</text>
+<path d="M30 190 C70 120 110 120 150 190 C190 260 230 260 270 190 C310 120 350 120 390 190 C430 260 470 260 510 190 C550 120 590 120 630 190 C670 260 710 260 750 190 C770 155 790 140 800 140" stroke="#1E7B34" stroke-width="10"/>
+<rect x="880" y="0" width="820" height="300" fill="#FFFFFF" fill-opacity=".75"/>
+<text x="910" y="56" fill="#A50E26" font-size="38" font-weight="800" stroke="none">Respiro agonico = arresto</text>
+<path d="M910 200 H1030 C1050 200 1055 120 1080 120 C1100 120 1100 200 1125 200 H1380 C1395 200 1400 150 1415 150 C1430 150 1432 200 1450 200 H1680" stroke="#C8102E" stroke-width="10"/>
+<text x="1080" y="275" fill="#3D4F7C" font-size="26" stroke="none">rari, rumorosi, a fatica (gasping)</text>
+</svg>
+<p class="no"><strong>Non risponde e non respira normalmente</strong> (non respira, o respira in modo raro, lento, affannoso o rumoroso): è un arresto cardiaco. <strong>Nel dubbio, inizia la RCP.</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il respiro agonico si vede nel 30-60% degli arresti cardiaci, soprattutto all'inizio, ed è spesso scambiato per un segno di vita: è l'ostacolo principale al riconoscimento. Parole con cui i testimoni lo descrivono: ansima, respira a fatica o ogni tanto, geme, sospira, gorgoglia, rantola, sbuffa. All'inizio possono esserci brevi movimenti simili a convulsioni: finiti quelli, si guarda il respiro. Negli sportivi il respiro può sembrare quasi normale subito dopo il collasso. Non si cerca il polso. Fonte: IRC 2025, cap. 4, p. 5 (riconoscere l'arresto cardiaco), p. 6 (tabella 1 e riquadro: nel dubbio presumere l'arresto), pp. 14-15 (respiro agonico, convulsioni, atleti; figura 8b: controllare la respirazione e aprire le vie aeree); manovra di apertura descritta nel cap. 12 «Primo soccorso», p. 9, tabella 3.</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Le compressioni: dove e come</h2>
+<div class="lato" style="grid-template-columns: 1fr 480px; gap: 50px;">
+<ul style="font-size:37px;line-height:49px">
+<li>Persona a pancia in su; tu <strong>in ginocchio al suo fianco</strong>.</li>
+<li>Il palmo di una mano <strong>al centro del torace</strong>, cioè sulla <strong>metà inferiore dello sterno</strong>. Se i vestiti non lasciano vedere, spostali o toglili.</li>
+<li>L'altra mano sopra la prima, <strong>dita intrecciate</strong>: non si preme sulle costole.</li>
+<li><strong>Braccia tese</strong> e spalle <strong>sulla verticale</strong> del torace.</li>
+</ul>
+<svg viewBox="0 0 520 600" width="480" height="554" role="img" aria-label="Torace visto di fronte: lo sterno al centro e il punto delle compressioni sulla sua metà inferiore" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M70 500 C66 360 80 220 120 160 C150 120 200 104 260 104 C320 104 370 120 400 160 C440 220 454 360 450 500" stroke="#233B74" stroke-width="9" fill="#FFFFFF"/>
+<path d="M120 160 C170 150 215 148 245 150 M400 160 C350 150 305 148 275 150" stroke="#233B74" stroke-width="7"/>
+<path d="M244 190 C200 196 165 210 135 236 M244 235 C198 242 162 258 132 286 M244 280 C200 290 166 308 136 336 M244 325 C205 338 175 358 150 384" stroke="#009FE3" stroke-width="5"/>
+<path d="M276 190 C320 196 355 210 385 236 M276 235 C322 242 358 258 388 286 M276 280 C320 290 354 308 384 336 M276 325 C315 338 345 358 370 384" stroke="#009FE3" stroke-width="5"/>
+<rect x="244" y="150" width="32" height="210" rx="14" fill="#EEF0F8" stroke="#233B74" stroke-width="7"/>
+<path d="M260 360 L260 385" stroke="#233B74" stroke-width="7"/>
+<circle cx="260" cy="300" r="44" fill="#FCEB0C" fill-opacity=".9" stroke="#003F85" stroke-width="8"/>
+<path d="M260 276 V322 M244 308 L260 324 L276 308" stroke="#003F85" stroke-width="8"/>
+<path d="M260 350 V520" stroke="#233B74" stroke-width="4" stroke-dasharray="2 10"/>
+<text x="260" y="560" text-anchor="middle" fill="#233B74" font-size="30" font-weight="700" stroke="none">metà inferiore dello sterno</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Si insegna «al centro del torace» mostrando che corrisponde alla metà inferiore dello sterno. Fate posizionare le mani sul manichino e controllate uno per uno: errori frequenti sono mani troppo in basso (sulla punta dello sterno o sull'addome) o di lato, gomiti piegati, spalle non sopra le mani. La RCP rende di più su un piano rigido, ma non si sposta la persona dal letto a terra: si inizia sul letto e si comprime più a fondo per compensare il materasso. Fonte: IRC 2025, cap. 4, p. 8 (compressioni di alta qualità: posizione delle mani, dita intrecciate, braccia dritte, spalle sopra il torace, vestiti da spostare) e pp. 20-21 (posizione delle mani, superficie rigida).</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Compressioni di qualità</h2>
+<div class="lato" style="grid-template-columns: 1fr 1fr 420px; gap: 40px; align-items: start;">
+<div class="numeri" style="display:block"><div class="cifra">5-6 <small>cm</small></div><p><strong>profondità</strong>: almeno 5 cm, ma non oltre 6</p></div>
+<div class="numeri" style="display:block"><div class="cifra">100-120</div><p>compressioni <strong>al minuto</strong></p></div>
+<svg viewBox="0 0 420 300" width="420" height="300" role="img" aria-label="Schema della profondità: il torace si abbassa di 5-6 cm e poi torna su del tutto" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M20 80 H260" stroke="#233B74" stroke-width="10"/>
+<path d="M20 200 H260" stroke="#009FE3" stroke-width="10" stroke-dasharray="18 14"/>
+<path d="M300 84 V196" stroke="#003F85" stroke-width="8"/>
+<path d="M284 108 L300 84 L316 108 M284 172 L300 196 L316 172" stroke="#003F85" stroke-width="8"/>
+<text x="330" y="152" fill="#003F85" font-size="40" font-weight="800" stroke="none">5-6</text>
+<text x="330" y="190" fill="#003F85" font-size="30" font-weight="700" stroke="none">cm</text>
+<text x="20" y="54" fill="#233B74" font-size="26" font-weight="700" stroke="none">torace a riposo</text>
+<text x="20" y="250" fill="#009FE3" font-size="26" font-weight="700" stroke="none">torace compresso</text>
+</svg>
+</div>
+<ul>
+<li><strong>Rilascio completo</strong>: dopo ogni compressione il torace torna su del tutto, senza restare appoggiati.</li>
+<li>Inizia <strong>il prima possibile</strong>: prima le compressioni, poi le eventuali ventilazioni.</li>
+<li><strong>Meno interruzioni possibili</strong>: ogni pausa ferma il sangue che arriva al cervello.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Usate il manichino con il controllo della profondità o un metronomo: chiedete alla classe di contare a voce alta. Errori frequenti: ritmo troppo veloce, profondità scarsa quando arriva la stanchezza, mani che restano appoggiate e non lasciano risalire il torace. Le pause servono solo per le ventilazioni (se formati) e per l'analisi e la scarica del DAE. Fonte: IRC 2025, cap. 4, p. 8 (profondità almeno 5 e non oltre 6 cm, 100-120 al minuto, rilascio completo, minime interruzioni) e pp. 19 e 21 (approccio «prima le compressioni»; frequenza, profondità e rilasciamento; ridurre le interruzioni).</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ventilazioni o solo compressioni</h2>
+<div class="griglia-2">
+<div class="riquadro tenue">
+<h3>Se sei formato e te la senti</h3>
+<ul style="margin-top: 14px;">
+<li><strong>30 compressioni e 2 ventilazioni</strong>.</li>
+<li>Ogni insufflazione dura <strong>circa 1 secondo</strong>, quanto basta a far <strong>sollevare il torace</strong>.</li>
+<li>Per le 2 ventilazioni ti fermi <strong>non più di 10 secondi</strong>.</li>
+</ul>
+</div>
+<div class="riquadro blu">
+<h3>Se non sei formato o non te la senti</h3>
+<ul style="margin-top: 14px;">
+<li><strong>Compressioni continue</strong>, senza fermarti.</li>
+<li>È quello che l'operatore del 112 guida di solito al telefono.</li>
+</ul>
+</div>
+</div>
+<p class="piccolo">Se dopo due tentativi il torace non si solleva, pensa a un corpo estraneo nelle vie aeree. Nelle persone con obesità la RCP è la stessa, 30:2.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Mostrate la tecnica con la maschera tascabile o con il dispositivo previsto dal corso. Errori frequenti: insufflazioni troppo forti o troppo lunghe, pause lunghe per «sistemare» la testa. Le compressioni toraciche vanno fatte a tutti gli adulti in arresto cardiaco; chi non è formato, capace o disposto a ventilare fa le compressioni continue. Fonte: IRC 2025, cap. 4, p. 9 (ventilazioni: 30:2 se addestrati, solo l'aria che solleva il torace, due tentativi poi pensare all'ostruzione; compressioni continue se non addestrati), p. 7 (l'operatore dà istruzioni per le sole compressioni, poi 30:2 se il chiamante sa ventilare), p. 23 (raccomandazione per tutti gli adulti; obesità: protocollo standard), pp. 25-26 (insufflazione di circa 1 s, pausa massima 10 s, rapporto 30:2).</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il defibrillatore (DAE): puoi usarlo anche tu</h2>
+<div class="lato" style="grid-template-columns: 1fr 340px;">
+<ul>
+<li>Usalo <strong>appena è disponibile</strong>, ma non fermare la RCP per andarlo a cercare: se siete in due, uno va a prenderlo.</li>
+<li>Il DAE <strong>analizza il ritmo</strong> e decide lui se serve la scarica: è preciso e sicuro anche nelle mani di chi non è sanitario.</li>
+<li>Lo trovi segnalato dal <strong>cartello verde con il cuore e il fulmine</strong>; l'operatore del 112 può indicarti il più vicino.</li>
+</ul>
+<figure style="margin:0;display:flex;flex-direction:column;gap:12px;align-items:center">
+<img src="img/cartello-dae-iso-7010-e010.svg" width="320" height="320" alt="Cartello di sicurezza ISO 7010 E010: cuore bianco con un fulmine e una croce, su fondo verde">
+<figcaption class="piccolo" style="font-size:22px;line-height:28px;text-align:center">Cartello ISO 7010 E010 (CC0)</figcaption>
+</figure>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda: «Dove avete visto questo cartello?». Il DAE si collega solo a chi non risponde e non respira normalmente. Si usa appena arriva accanto alla persona: non si ritarda la scarica per fare altra RCP. Le centrali del 112/118 possono indicare il DAE registrato più vicino; esistono anche app di mappatura. Sulla legge italiana per chi non è formato vedi la slide «Che cosa dice la legge». Fonte: IRC 2025, cap. 4, p. 9 (come trovare un DAE, usarlo appena disponibile, figura 5 segnaletica), pp. 26-29 (DAE accurati e sicuri nelle mani dei laici; come trovarlo; come e quando usarlo), p. 30 (non ritardare la defibrillazione per fare RCP aggiuntiva). Il cartello della slide è il segnale normalizzato ISO 7010 E010, da Wikimedia Commons (CC0), non una figura delle linee guida.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il DAE passo per passo</h2>
+<ol class="passi">
+<li><strong>Aprilo e accendilo</strong> (alcuni si accendono da soli all'apertura) e <strong>segui la sua voce</strong>.</li>
+<li>Attacca le <strong>piastre sul torace nudo</strong>, come nel disegno sulle piastre. Chi comprime <strong>continua</strong> intanto.</li>
+<li>Durante l'<strong>analisi</strong>: <strong>nessuno tocca</strong> la persona.</li>
+<li>Se la scarica serve: tutti lontani, poi premi il pulsante (DAE semiautomatico) o lascia che la eroghi da solo (automatico).</li>
+<li>Dopo la scarica, o se non serve, <strong>riprendi subito le compressioni</strong>. Dopo <strong>2 minuti</strong> il DAE fa una nuova analisi.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fate dire ad alta voce, prima dell'analisi e della scarica, «Via tutti!» guardando che nessuno tocchi la persona. Errori frequenti segnalati dalle linee guida: continuare la RCP durante l'analisi, non erogare la scarica quando è indicata, togliere il DAE troppo presto (le piastre restano attaccate fino all'arrivo dei soccorsi). Fonte: IRC 2025, cap. 4, pp. 9-10 (quando e come usare un DAE: accensione, istruzioni, elettrodi sul torace nudo, RCP continua mentre si applicano, nessuno tocca durante analisi e scarica, ripresa immediata, nuova analisi dopo 2 minuti), p. 29 (DAE automatici e semiautomatici, figure 8l-8o), p. 32 (errori d'uso più frequenti).</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dove vanno le piastre</h2>
+<div class="lato" style="grid-template-columns: 1fr 560px;">
+<div style="display:flex;flex-direction:column;gap:22px">
+<ul>
+<li>Segui il <strong>disegno sulle piastre</strong> o sul DAE.</li>
+<li>Di solito: una <strong>sotto la clavicola destra</strong>, accanto allo sterno; l'altra sul <strong>fianco sinistro</strong>, sotto l'ascella.</li>
+<li>Sulla <strong>pelle nuda</strong>; se possibile si evita il tessuto del seno.</li>
+</ul>
+<p class="riquadro tenue" style="font-size:34px;line-height:46px">Reggiseno: se le piastre si mettono bene spostandolo, può restare; se ostacola, si sposta o si toglie. Il pudore non deve ritardare la scarica.</p>
+</div>
+<svg viewBox="0 0 560 560" width="560" height="560" role="img" aria-label="Torace visto di fronte: una piastra sotto la clavicola destra della persona, l'altra sul fianco sinistro sotto l'ascella" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<circle cx="280" cy="70" r="48" stroke="#233B74" stroke-width="9" fill="#FFFFFF"/>
+<path d="M254 114 V140 M306 114 V140" stroke="#233B74" stroke-width="9"/>
+<path d="M60 560 V400 C60 300 70 210 110 175 C150 150 210 140 280 140 C350 140 410 150 450 175 C490 210 500 300 500 400 V560" stroke="#233B74" stroke-width="9" fill="#FFFFFF"/>
+<path d="M110 175 C160 168 220 166 262 170 M450 175 C400 168 340 166 298 170" stroke="#233B74" stroke-width="6"/>
+<path d="M280 175 V380" stroke="#009FE3" stroke-width="5" stroke-dasharray="4 14"/>
+<rect x="170" y="190" width="92" height="120" rx="12" fill="#FCEB0C" stroke="#003F85" stroke-width="7" transform="rotate(-8 216 250)"/>
+<rect x="388" y="300" width="92" height="120" rx="12" fill="#FCEB0C" stroke="#003F85" stroke-width="7" transform="rotate(12 434 360)"/>
+<path d="M230 300 C240 400 230 470 200 540 M420 410 C390 470 340 500 300 540" stroke="#003F85" stroke-width="5"/>
+<text x="4" y="128" fill="#233B74" font-size="21" font-weight="700" stroke="none">destra della persona</text>
+<text x="556" y="128" text-anchor="end" fill="#233B74" font-size="21" font-weight="700" stroke="none">sinistra della persona</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">La persona è vista di fronte: la sua destra è alla nostra sinistra. È l'errore più comune quando si applicano le piastre guardando la persona. Posizione antero-laterale: un elettrodo sotto la clavicola destra, appena a destra del margine superiore dello sterno; l'altro centrato sulla linea ascellare media sinistra, sotto l'ascella. La posizione davanti-dietro (antero-posteriore) si considera solo se quella antero-laterale non si può usare e se si è addestrati. Le linee guida chiedono di esercitarsi anche con manichini che indossano il reggiseno. Fonte: IRC 2025, cap. 4, p. 9 (elettrodi sul torace nudo secondo le istruzioni, figura 6 a p. 10), p. 30 (posizionamento degli elettrodi: istruzioni del produttore, antero-laterale, antero-posteriore se addestrati) e pp. 30-31 (reggiseno e pudore).</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>In due: chi fa che cosa</h2>
+<div class="lato" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
+<div class="riquadro tenue">
+<h3>Soccorritore 1</h3>
+<ul style="margin-top: 14px;">
+<li>Valuta la persona e inizia le <strong>compressioni</strong>.</li>
+<li>Non si ferma mentre l'altro prepara il DAE.</li>
+</ul>
+</div>
+<div class="riquadro blu">
+<h3>Soccorritore 2</h3>
+<ul style="margin-top: 14px;">
+<li>Chiama il <strong>112</strong> (vivavoce) e va a prendere il <strong>DAE</strong>.</li>
+<li>Accende il DAE e attacca le piastre <strong>mentre l'altro comprime</strong>.</li>
+</ul>
+</div>
+</div>
+<p class="riquadro tenue">Datevi il cambio durante l'analisi del DAE, circa ogni 2 minuti, o prima se chi comprime è stanco: il cambio deve durare pochissimo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Esercitazione a coppie sul manichino: uno comprime, l'altro arriva con il DAE di addestramento; poi si invertono i ruoli. Con la stanchezza la profondità cala senza che chi comprime se ne accorga. Fonte: IRC 2025, cap. 4, p. 8 (se ci sono più persone, l'operatore manda un soccorritore a prendere il DAE), p. 9 e p. 29 (con più soccorritori la RCP continua mentre si applicano gli elettrodi), p. 10 (il DAE chiede di interrompere le compressioni per una nuova analisi dopo 2 minuti), p. 22 (fatica di chi comprime). Il cambio di chi comprime «almeno ogni 2 minuti, prima se stanco» è scritto nel cap. 9 «BLS pediatrico», p. 33 (supporto avanzato pediatrico); il cap. 4 sull'adulto non fissa un intervallo: seguite il manuale del corso.</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Quando ci si ferma</h2>
+<ul>
+<li>Quando arrivano i <strong>soccorritori professionali</strong> e prendono il controllo, o ti dicono di fermarti.</li>
+<li>Quando la persona <strong>si sveglia e respira normalmente</strong>. Se resta poco reattiva ma respira normalmente: posizione laterale di sicurezza, e controlla il respiro.</li>
+<li>Solo una <strong>pausa</strong> quando lo chiede il <strong>DAE</strong>, per l'analisi e la scarica.</li>
+<li>Se sei solo e senza telefono, per andare a chiamare il 112 (dopo un minuto di RCP).</li>
+</ul>
+<p class="no"><strong>Non fermarti per cercare il polso</strong> e non staccare il DAE: le piastre restano attaccate fino all'arrivo dei soccorsi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda: «E se mi stanco e sono solo?». Si continua al meglio possibile seguendo l'operatore, che resta in linea. Dopo l'intervento chi ha soccorso può avere bisogno di parlarne: è normale. Fonte: IRC 2025, cap. 12 «Primo soccorso», p. 7 (continuare la RCP fino all'arrivo dei soccorritori professionali, che prendono il controllo o dicono di interrompere); cap. 4, p. 7 e p. 16 (soccorritore solo senza telefono), pp. 9-10 (pause per analisi e scarica), p. 32 (errore: togliere il DAE troppo presto). La ripresa del respiro normale è nella scheda «Arresto cardiaco» del dossier del sito («finché arrivano i soccorsi o la persona riprende a respirare normalmente») e nelle linee guida IFRC 2025, p. 162, citate dal registro dei dati del sito.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La posizione laterale di sicurezza</h2>
+<div class="lato" style="grid-template-columns: 1fr 640px;">
+<div style="display:flex;flex-direction:column;gap:22px">
+<p><strong>Quando:</strong> la persona <strong>non risponde ma respira normalmente</strong> e non ha avuto un trauma.</p>
+<ul>
+<li>Girala <strong>su un fianco</strong>, verso di te: gamba di sopra piegata, mano sotto la guancia, testa leggermente indietro, bocca verso il basso.</li>
+<li><strong>Controlla spesso il respiro.</strong> Se peggiora: a pancia in su e <strong>RCP</strong>.</li>
+</ul>
+<p class="no"><strong>Mai</strong> con il respiro agonico (serve la RCP) e <strong>mai</strong> dopo un trauma (resta a pancia in su).</p>
+</div>
+<svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Posizione laterale di sicurezza vista dall'alto: la persona su un fianco, con il davanti del corpo verso il basso del disegno; il braccio di sotto disteso ad angolo retto, il dorso della mano di sopra sotto la guancia, la gamba di sopra piegata ad angolo retto all'anca e al ginocchio, la gamba di sotto distesa" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif"><path d="M150 186 V330" stroke="#233B74" stroke-width="40"/><path d="M150 186 V330" stroke="#FFFFFF" stroke-width="24"/><path d="M560 140 H352" stroke="#233B74" stroke-width="40"/><path d="M560 140 H352" stroke="#FFFFFF" stroke-width="24"/><path d="M360 168 V300 H520" stroke="#233B74" stroke-width="40"/><path d="M360 168 V300 H520" stroke="#FFFFFF" stroke-width="24"/><path d="M120 112 C170 100 300 100 360 112 C380 120 380 182 360 192 C300 204 170 204 120 190 C104 182 104 122 120 112 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/><circle cx="66" cy="150" r="48" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/><path d="M150 176 C150 214 116 214 92 206" stroke="#233B74" stroke-width="40"/><path d="M150 176 C150 214 116 214 92 206" stroke="#FFFFFF" stroke-width="24"/><ellipse cx="88" cy="204" rx="22" ry="14" fill="#FCEB0C" stroke="#003F85" stroke-width="6"/><text x="630" y="390" text-anchor="end" fill="#3D4F7C" font-size="24" font-weight="600" stroke="none">vista dall'alto</text></svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Mostrate la manovra passo per passo come nel manuale del corso e nella scheda del dossier del sito: braccio vicino ad angolo retto, dorso dell'altra mano sulla guancia, gamba lontana piegata, rotazione verso di sé, anca e ginocchio di sopra ad angolo retto, testa leggermente indietro. Il braccio di sotto può essere piegato o disteso: le due varianti sono equivalenti. Si controllano spesso vie aeree, respiro e coscienza. Fonte: IRC 2025, cap. 12 «Primo soccorso», p. 8 (persone con coscienza ridotta che non hanno bisogno della RCP; no con respiro agonico o trauma), p. 9 (origine non traumatica, respira normalmente, rivalutare periodicamente) e p. 24 (braccio piegato o disteso; monitorare; se peggiora, a pancia in su e RCP; trauma accertato: supina).</div>
+</section>
+
+<!-- 20 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa dice la legge in Italia</h2>
+<p>Legge 116/2021, art. 3, che riscrive l'art. 1, comma 1, della legge 120/2001:</p>
+<ul>
+<li>il DAE lo usano i sanitari e chi ha una <strong>formazione specifica</strong>, come questo corso;</li>
+<li><strong>se non c'è personale sanitario o formato</strong>, in caso di <strong>sospetto arresto cardiaco</strong> può usarlo <strong>anche chi non è formato</strong>;</li>
+<li>chi, senza formazione, usa il DAE o fa la RCP per soccorrere una persona è tutelato dall'<strong>articolo 54 del Codice penale</strong> (stato di necessità).</li>
+</ul>
+<p class="riquadro blu">Dopo questo corso sei tu la persona formata: se sei presente, tocca prima a te.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Attenzione alla formula: le linee guida europee scrivono che ogni persona può usare un DAE; la legge italiana lo consente a chi non è formato solo in assenza di personale sanitario o formato, nel sospetto arresto cardiaco. In aula si usa la formula della legge. Le linee guida ricordano anche che chiarire le tutele legali riduce l'esitazione di chi potrebbe intervenire. Fonte: legge 4 agosto 2021, n. 116, art. 3, che sostituisce l'art. 1, comma 1, della legge 3 aprile 2001, n. 120 (testo letto su Normattiva il 20/11/2026); IRC 2025, cap. 11 «Etica», p. 7 (chiarire la protezione legale per gli astanti) e p. 13.</div>
+</section>
+
+<!-- 21 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa cambia rispetto al 2021</h2>
+<div class="tabella">
+<div class="tes">Linee guida 2021</div><div class="tes">Linee guida 2025</div>
+<div class="vecchio">Prima si riconosceva l'arresto (non risponde, respiro anormale), poi si chiamava.</div><div><strong>Si chiama subito</strong> per chi non risponde; il respiro si guarda mentre si aspetta l'operatore.</div>
+<div class="vecchio">Il respiro lento o difficoltoso era il segno principale.</div><div>Negli sportivi, all'inizio, il respiro può sembrare <strong>quasi normale</strong>.</div>
+<div class="vecchio">L'operatore era trattato in un altro capitolo.</div><div>Il <strong>ruolo dell'operatore</strong> entra nel BLS.</div>
+<div class="vecchio">Nessuna indicazione su obesità e benessere di chi soccorre.</div><div>Con l'obesità RCP <strong>standard 30:2</strong>; a chi ha soccorso si offre <strong>supporto psicologico</strong>.</div>
+</div>
+<p class="piccolo">Tolte le modifiche per il COVID-19; il soffocamento passa al capitolo del primo soccorso.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Utile per chi ha già fatto un corso con le linee guida 2021. Altre indicazioni del 2025: la RCP «a testa sollevata» da sola non è raccomandata; il reggiseno si sposta solo se impedisce di mettere bene le piastre; i dispositivi di feedback e i DAE tascabili non sono raccomandati di routine. Fonte: IRC 2025, cap. 4, p. 6, tabella 1 «Le principali modifiche nelle Linee Guida ERC 2025 per il Basic Life Support per adulti»; p. 11 (benessere psicologico); pp. 24-25, 27 e 30-31 per gli altri temi.</div>
+</section>
+
+<!-- 22 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi">
+<li><strong>Sicurezza</strong>, poi: risponde? Se no, <strong>112</strong> subito, in vivavoce.</li>
+<li>Non risponde e non respira normalmente: <strong>arresto cardiaco</strong>. Nel dubbio, RCP.</li>
+<li>Al centro del torace: <strong>5-6 cm, 100-120 al minuto</strong>, rilascio completo; 30:2 se formato.</li>
+<li><strong>DAE</strong> appena arriva: segui la voce, nessuno tocca, poi riprendi subito.</li>
+<li>Respira normalmente ma non risponde, senza trauma: <strong>posizione laterale</strong>.</li>
+</ol>
+<p class="piccolo">Corsi BLSD della Misericordia di Ariccia: 328 8105399 (fisso 06 933 3717) · <span class="url">www.misericordia-ariccia.it/servizi/formazione/</span></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Riepilogo prima della prova pratica. Lasciate la slide proiettata mentre la classe fa domande e mentre si preparano le stazioni con i manichini. Fonte: IRC 2025, cap. 4, pp. 5-10 (sintesi delle raccomandazioni BLS) e cap. 12, p. 8 (posizione laterale di sicurezza).</div>
+</section>
+
+<!-- 23 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>BLSD adulto</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti e crediti delle immagini</h2>
+<ul class="crediti">
+<li><strong>Contenuti:</strong> Linee guida RCP 2025 di Italian Resuscitation Council, traduzione delle Linee guida ERC 2025, capitoli 2, 3, 4, 9, 11 e 12 (<span class="url">ircouncil.it/linee-guida-rcp-2025/</span>); legge 4 agosto 2021, n. 116, art. 3 (Normattiva). Testi riassunti dalla Misericordia di Ariccia.</li>
+<li><strong>Cartello del DAE</strong> (slide 14): «ISO 7010 E010.svg», di M!dgard, Wikimedia Commons, licenza CC0 1.0 (pubblico dominio), <span class="url">creativecommons.org/publicdomain/zero/1.0/</span></li>
+<li><strong>Disegni</strong> delle altre slide: Misericordia di Ariccia.</li>
+</ul>
+<p class="piccolo">Verificato il 20/11/2026.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<div class="note-relatore">Slide dei crediti: va lasciata in fondo alla presentazione anche quando si tolgono altre slide, perché la licenza delle immagini va dichiarata. Elenco completo con gli indirizzi in scripts/formazione/slide/img/CREDITI.md.</div>
+</section>
+
+</body>
+</html>
