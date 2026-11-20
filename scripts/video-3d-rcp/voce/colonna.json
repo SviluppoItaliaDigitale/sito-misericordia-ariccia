@@ -66,35 +66,35 @@
   },
   {
    "file": "voce/line_17.wav",
-   "inizio": 101.81
+   "inizio": 102.11
   },
   {
    "file": "voce/line_18.wav",
-   "inizio": 110.63
+   "inizio": 110.93
   },
   {
    "file": "voce/line_19.wav",
-   "inizio": 119.23
+   "inizio": 119.53
   },
   {
    "file": "voce/line_20.wav",
-   "inizio": 125.37
+   "inizio": 125.67
   },
   {
    "file": "voce/line_21.wav",
-   "inizio": 128.57
+   "inizio": 128.87
   },
   {
    "file": "voce/line_22.wav",
-   "inizio": 134.43
+   "inizio": 134.73
   }
  ],
- "durata": 145.81,
+ "durata": 146.11,
  "musica": [
   {
    "file": "musica.mp3",
    "inizio": 0,
-   "da": 28.6,
+   "da": 28.3,
    "entrata": 1.5,
    "uscita": 1.5
   }
@@ -132,22 +132,22 @@
   },
   {
    "file": "sfx/scarica.wav",
-   "evento": 97.8,
+   "evento": 97.96,
    "tipo": "colpo"
   },
   {
    "file": "sfx/crepa.wav",
-   "evento": 111.89,
+   "evento": 112.19,
    "tipo": "colpo"
   },
   {
    "file": "sfx/passaggio.wav",
-   "evento": 127.57,
+   "evento": 127.87,
    "tipo": "colpo"
   },
   {
    "file": "sfx/chiusura.wav",
-   "evento": 128.17,
+   "evento": 128.47,
    "tipo": "colpo"
   },
   {
@@ -159,13 +159,13 @@
   {
    "file": "sfx/compressioni_2.wav",
    "inizio": 90.403,
-   "fine": 95.478,
+   "fine": 95.552,
    "tipo": "ambiente"
   },
   {
    "file": "sfx/compressioni_3.wav",
-   "inizio": 98.838,
-   "fine": 125.57,
+   "inizio": 99.032,
+   "fine": 125.87,
    "tipo": "ambiente"
   }
  ]
