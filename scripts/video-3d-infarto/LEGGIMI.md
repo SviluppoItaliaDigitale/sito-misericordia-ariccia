@@ -17,7 +17,8 @@ Grafica nazionale in ogni fotogramma: fascia blu con filo giallo e stemma, firma
 6. Come si riconosce: il centro del petto e le irradiazioni (braccio, spesso il sinistro, mandibola, schiena, stomaco),
    poi «spesso anche» (sudore freddo, nausea, fiato corto) e «segni più sfumati» (donne, anziani, diabete).
 7. Che cosa fare, quattro schede grandi: 112 subito; seduta o sdraiata, restale accanto; aspirina da masticare se non
-   è allergica e non l'ha già presa; niente auto, l'ambulanza comincia le cure in viaggio.
+   è allergica e non l'ha già presa (a schermo, dopo la revisione del medico dell'emergenza del 20/11/2026: «150-500 mg,
+   se non è allergica e non ha altre controindicazioni», IRC 2025 cap. 12 pp. 12 e 30); niente auto, l'ambulanza comincia le cure in viaggio.
 8. In ospedale l'arteria si riapre (palloncino o farmaci) e il muscolo torna rosso.
 9. Se il cuore si ferma: trema e non spinge, «non risponde e non respira normalmente? Compressioni e DAE».
 10. Chiusura: riconosci, chiama il 112, resta con lei; corsi BLSD 328 8105399 oppure 06 933 3717.

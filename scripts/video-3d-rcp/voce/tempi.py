@@ -1,6 +1,9 @@
 # Mette le frasi di Damien sulla scaletta (inizi con le pause per le animazioni) e scrive sottotitoli.json
 # (frasi lunghe divise per periodo, campo «riga»), colonna.json (voce) e la durata totale.
-import json, re, sys
+import glob, json, os, re, sys
+# tempi delle parole a schermo («112», «DAE») da quelli delle parole lette: voce.py della skill colonna-sonora
+sys.path.insert(0, os.environ.get('VOCE_PY') or glob.glob('/root/.claude/skills/synced/*/colonna-sonora/scripts')[0])
+from voce import tempi_schermo  # noqa: E402
 v = json.load(open('voce/voce.json'))
 SC = [1.0, 8.6, 13.2, 17.4, 22.0, 28.0, 31.0, 35.4, 40.6, 48.0, 51.4, 59.6, 64.8, 67.8, 74.0, 80.0, 86.5, 94.5, 102.0, 107.8, 111.0, 114.6]
 GAP_MIN = 0.55
@@ -15,8 +18,8 @@ for i, x in enumerate(v):
 fine = inizi[-1] + v[-1]['durata']
 sub = []
 for i, (s, x) in enumerate(zip(inizi, v), 1):
-    parole = [{'w': p['w'], 't0': round(s + p['t0'], 3), 't1': round(s + p['t1'], 3)} for p in x['parole']]
     testo = x['schermo']
+    parole = [{'w': p['w'], 't0': round(s + p['t0'], 3), 't1': round(s + p['t1'], 3)} for p in tempi_schermo(testo, x['parole'], x['durata'])]
     pezzi = [testo] if len(testo) <= 95 else [q.strip() for q in re.split(r'(?<=[.?!])\s+', testo) if q.strip()]
     pezzi = [z.strip() for q in pezzi for z in (re.split(r'(?<=:)\s+', q) if len(q) > 95 else [q]) if z.strip()]
     k = 0
