@@ -357,7 +357,7 @@
     { id: 'parola', titolo: 'La parola', punto: [P.parola[0] + 0.02, P.parola[1] - 0.004, P.parola[2]], verso: { dx: 260, dy: 150 }, versoV: { dx: 150, dy: 260 }, inizio: tm.parola, fine: F(4) + 0.3 },
     { id: 'braccio', titolo: 'Il movimento del braccio', punto: [P.braccio_cervello[0] + 0.02, P.braccio_cervello[1] + 0.01, P.braccio_cervello[2]], verso: { dx: 260, dy: -170 }, versoV: { dx: 120, dy: -280 }, inizio: tm.braccio, fine: F(4) + 0.3 },
     { id: 'sinistra', titolo: 'Parte sinistra del cervello', punto: [0.045, 1.6, 0.08], verso: { dx: 300, dy: -80 }, versoV: { dx: 150, dy: -230 }, inizio: tm.sinistra - 0.2, fine: F(5) + 0.4 },
-    { id: 'destro', titolo: 'Lato destro del corpo', punto: [-0.24, 1.18, 0.02], verso: { dx: -300, dy: 40 }, versoV: { dx: -100, dy: 260 }, inizio: tm.destro - 0.2, fine: F(5) + 0.4 },
+    { id: 'destro', titolo: 'Lato destro del corpo', punto: [-0.24, 1.18, 0.02], verso: { dx: -300, dy: 40 }, versoV: { dx: -60, dy: -200 }, inizio: tm.destro - 0.2, fine: F(5) + 0.4 },
     { id: 'coag2', titolo: 'Coagulo?', punto: [PUNTO_COAG.x, PUNTO_COAG.y, PUNTO_COAG.z], verso: { dx: 280, dy: -150 }, versoV: { dx: 150, dy: -250 }, inizio: tm.coagEmo - 0.1, fine: tm.tac - 0.2 },
     { id: 'emo2', titolo: 'Emorragia?', punto: P.emorragia, verso: { dx: -300, dy: -140 }, versoV: { dx: -160, dy: -250 }, inizio: tm.coagEmo + 0.5, fine: tm.tac - 0.2 },
     { id: 'tac', titolo: 'TAC', sotto: 'l\'esame che fotografa il cervello', punto: [VERT ? 0.12 : 0.2, 1.62, 0.07], verso: { dx: 260, dy: -120 }, versoV: { dx: -60, dy: -230 }, inizio: tm.tac + 0.5, fine: tm.medicine - 0.1, segue: true },
