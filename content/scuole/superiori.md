@@ -43,6 +43,11 @@ materiali:
     file: "/documenti/scuole/superiori/scheda-accanto-a-un-compagno.pdf"
     pagine: 2
     descrizione: "Che cosa fare accanto a un compagno scosso dopo un fatto che spaventa, con i tre principi del primo soccorso psicologico dell'OMS (osservare, ascoltare, mettere in contatto), i segnali che chiedono subito un adulto o il 112 e tre situazioni da discutere. Nella seconda pagina le note per l'insegnante e a chi rivolgersi."
+  - titolo: "I mestieri del soccorso"
+    tipo: "scheda"
+    file: "/documenti/scuole/superiori/scheda-mestieri-del-soccorso.pdf"
+    pagine: 2
+    descrizione: "Una scheda di orientamento, adatta anche alla terza media: otto mestieri del soccorso sanitario e sociale, che cosa fanno e come ci si arriva, il volontariato e la formazione scuola-lavoro come prime esperienze, la carta d'identità di un mestiere da compilare e le indicazioni per le ore di orientamento."
   - titolo: "Guida per l'insegnante"
     tipo: "guida"
     file: "/documenti/scuole/superiori/guida-insegnante.pdf"
@@ -99,6 +104,33 @@ fonti:
     verificata: "20/11/2026"
   - titolo: "Telefono Amico Italia"
     url: "https://www.telefonoamico.it/"
+    verificata: "20/11/2026"
+  - titolo: "MUR, D.M. 10 luglio 2026, n. 941 (semestre filtro di Medicina, a.a. 2026/2027)"
+    url: "https://www.mur.gov.it/sites/default/files/2026-07/Decreto%20Ministeriale%20n.%20941%20del%2010-7-2026.pdf"
+    verificata: "20/11/2026"
+  - titolo: "FNOPI, Come diventare infermiere"
+    url: "https://www.fnopi.it/come-diventare-infermieri/"
+    verificata: "20/11/2026"
+  - titolo: "ARES 118, concorso per 143 operatori tecnici specializzati autisti di ambulanza"
+    url: "https://ares118.it/concorsi-in-corso/concorso-pubblico-per-titoli-ed-esami-per-lassunzione-a-tempo-indeterminato-d-n-143-operatori-tecnici-specializzati-autista-di-ambulanza-area-degli-operatori-per-le-esigenze-dellares-118.html"
+    verificata: "20/11/2026"
+  - titolo: "Regione Lazio, D.G.R. 452/2026, allegato 2: standard di percorso formativo dell'Operatore socio-sanitario"
+    url: "https://www.regione.lazio.it/sites/default/files/documentazione/2026/FOR-DGR-452-11-06-2026-Allegato2.pdf"
+    verificata: "20/11/2026"
+  - titolo: "CNOAS, Accesso alla professione di assistente sociale"
+    url: "https://cnoas.org/accesso-alla-professione/"
+    verificata: "20/11/2026"
+  - titolo: "Consiglio Nazionale Ordine Psicologi, scheda Psicologia dell'emergenza"
+    url: "https://www.psy.it/allegati/aree-pratica-professionale/psicologo_emergenza.pdf"
+    verificata: "20/11/2026"
+  - titolo: "Vigili del fuoco, Come diventare vigile del fuoco"
+    url: "https://www.vigilfuoco.it/comando-vvf-como/come-diventare-vigile-del-fuoco"
+    verificata: "20/11/2026"
+  - titolo: "Ministero dell'istruzione e del merito, Formazione scuola-lavoro (D.L. 9 settembre 2025, n. 127)"
+    url: "https://www.mim.gov.it/web/bergamo/fls-formazione-scuola-lavoro"
+    verificata: "20/11/2026"
+  - titolo: "Ministero dell'istruzione e del merito, Linee guida per l'orientamento (allegato al D.M. 328/2022)"
+    url: "https://www.mim.gov.it/documents/20182/0/linee_guida_orientamento-2-STAMPA.pdf/4c926cff-afaa-8d3f-7176-09b3ec508d64?t=1703239848691"
     verificata: "20/11/2026"
 ---
 
@@ -192,6 +224,10 @@ Undici slide: che cos'è una Misericordia, quasi otto secoli di storia, che cosa
 ### Accanto a un compagno in difficoltà
 
 Dopo un fatto che spaventa (un malore in classe, una scossa, una brutta notizia) anche un compagno può aiutare: esserci, ascoltare senza giudicare, portare da un adulto. La scheda segue i tre principi del primo soccorso psicologico dell'Organizzazione mondiale della sanità, nell'edizione italiana: osservare, ascoltare, mettere in contatto. Ci sono le frasi che aiutano e quelle da evitare, i segnali che chiedono subito un adulto o il 112, perché certe confidenze non si tengono segrete, e tre situazioni da discutere. Nella seconda pagina, per l'insegnante, come condurre la lezione in circa 50 minuti, gli spunti di risposta, le attenzioni (non è una terapia) e a chi rivolgersi: lo sportello d'ascolto della scuola, il medico, i consultori familiari, Telefono Azzurro e Telefono Amico.
+
+### I mestieri del soccorso
+
+Per le ore di orientamento, anche in terza media. Otto mestieri di chi soccorre e assiste: medico dell'emergenza, infermiere (anche nella centrale operativa del 118), operatore della centrale del 112, autista soccorritore, operatore socio-sanitario, assistente sociale, psicologo dell'emergenza e vigile del fuoco. Per ognuno che cosa fa e come ci si arriva, con le fonti ufficiali; dove i requisiti cambiano con i bandi, la scheda rimanda al bando. Poi le prime esperienze: il volontariato in Misericordia, dai 16 agli 80 anni, il Servizio Civile dai 18 ai 28 anni e la formazione scuola-lavoro. Nella seconda pagina la «carta d'identità di un mestiere» da compilare cercando sui siti ufficiali o intervistando chi lo fa, quattro domande per riflettere e le indicazioni per l'insegnante, con l'invito a un incontro con i nostri volontari.
 
 ### Guida per l'insegnante
 

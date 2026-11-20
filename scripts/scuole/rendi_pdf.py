@@ -146,6 +146,14 @@ def rendi(browser, sorgente: Path, anteprime: Path | None) -> bool:
         if (p.scrollHeight > p.clientHeight + 1) out.push(`pagina ${i + 1}: il contenuto è più alto della pagina`);
         p.querySelectorAll('*').forEach(e => { const r = e.getBoundingClientRect();
           if (r.width && (r.bottom > b.bottom + 1 || r.right > b.right + 1)) out.push(`pagina ${i + 1}: <${e.tagName.toLowerCase()}> «${(e.textContent || '').trim().slice(0, 40)}» esce dalla pagina`); });
+        // Testo nascosto sotto la fascia blu in fondo (20/11/2026: una scheda usciva «ok» con l'ultimo
+        // paragrafo coperto dalla fascia): nessun elemento del contenuto può scendere oltre il suo spazio.
+        // Il limite è 4 px sopra la fascia (le guide già pubblicate arrivano a 11 px dalla fascia, che va bene).
+        const c = p.querySelector(':scope > .contenuto');
+        const piede = p.querySelector(':scope > .piede');
+        if (c && piede) { const limite = piede.getBoundingClientRect().top - 4;
+          c.querySelectorAll('*').forEach(e => { const r = e.getBoundingClientRect();
+            if (r.width && r.height && r.bottom > limite + 1) out.push(`pagina ${i + 1}: <${e.tagName.toLowerCase()}> «${(e.textContent || '').trim().slice(0, 40)}» scende sotto lo spazio del contenuto (fascia in fondo)`); }); }
       });
       return out.slice(0, 20); }""", sel)
     immagini_rotte = pagina.evaluate("[...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.src)")

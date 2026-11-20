@@ -24,29 +24,30 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
 .fascia .etichetta { background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 13px; line-height: 1; letter-spacing: .03em;
   text-transform: uppercase; padding: 6px 10px; }
 .fascia .filo { flex: 1; height: 2px; background: #233B74; }
-.perte { display: grid; grid-template-columns: 1fr 124px; gap: 18px; align-items: center; }
+.perte { display: grid; grid-template-columns: 1fr 110px; gap: 18px; align-items: center; }
 .frasi { list-style: none; padding: 0 !important; display: flex; flex-direction: column; gap: 6px !important; }
-.frasi li { font-size: 17px; line-height: 22px; color: #233B74; font-weight: 600; padding-left: 30px; position: relative; }
+.frasi li { font-size: 16.5px; line-height: 21px; color: #233B74; font-weight: 600; padding-left: 30px; position: relative; }
 .frasi li::before { content: ""; position: absolute; left: 0; top: 5px; width: 16px; height: 16px; background: var(--giallo); border: 2px solid #233B74; border-radius: 50%; }
 .frasi li b { font-weight: 800; }
 .pronta { border: 2px solid #233B74; padding: 10px 16px 12px; }
 .pronta h2 { font-size: 18px; line-height: 22px; }
-.pronta p.come { font-size: 12.5px; line-height: 17px; color: #233B74; margin: 2px 0 6px; }
+.pronta p.come { font-size: 12px; line-height: 16px; color: #233B74; margin: 1px 0 4px; }
 .spunte { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
 .spunte div { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 17px; border-bottom: 1px solid var(--linea); padding: 3px 0 5px; }
 .spunte div::before { content: ""; flex: 0 0 auto; width: 18px; height: 18px; border: 2px solid #233B74; background: #FFFFFF; margin-top: 0; }
-.grandi { columns: 2; column-gap: 22px; font-size: 11.5px; line-height: 15.5px; }
+.grandi { columns: 2; column-gap: 22px; font-size: 11px; line-height: 15px; }
 .grandi h3 { font-size: 13.5px; line-height: 17px; margin: 0 0 3px; break-after: avoid; }
 .grandi p, .grandi ol, .grandi ul { margin: 0 0 6px; }
 .grandi ol, .grandi ul { padding-left: 17px; display: block; }
 .grandi li { margin-bottom: 2px; }
 .grandi .blocco { break-inside: avoid; }
-.numeri { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-.numeri > div { border-top: 4px solid var(--blu); padding-top: 4px; font-size: 11px; line-height: 14px; }
+.numeri { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.numeri > div { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; border-top: 4px solid var(--blu); padding-top: 5px; font-size: 10.5px; line-height: 13px; }
 .numeri .n { font-size: 19px; line-height: 22px; font-weight: 800; color: #233B74; }
 .disegno svg { display: block; }
-.pagina > .contenuto { gap: 10px; }
-.contenuto h1 + .sotto { margin-top: -4px; }
+.pagina > .contenuto { gap: 9px; }
+.contenuto h1 { display: flex; align-items: baseline; gap: 14px; }
+.contenuto h1 small { font-size: 13px; line-height: 18px; font-weight: 500; color: #233B74; }
 </style>
 </head>
 <body class="a4">
@@ -56,8 +57,7 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
 <img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
 <div class="tema">Per la <b>scuola primaria</b></div>
 <div class="contenuto">
-  <h1>D'inverno</h1>
-  <p class="sotto">Un foglio da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</p>
+  <h1>D'inverno <small>Da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</small></h1>
 
   <div class="fascia"><span class="etichetta">Per te</span><span class="filo"></span></div>
   <div class="perte">
@@ -68,7 +68,7 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
       <li>Se in casa a tutti fa male la testa o viene tanto sonno, <b>dillo subito a un grande</b>: si esce all'aria aperta.</li>
     </ul>
     <div class="disegno">
-      <svg width="124" height="140" viewBox="0 0 150 170" role="img" aria-label="Disegno di una casa con il camino e il fumo che esce fuori">
+      <svg width="110" height="124" viewBox="0 0 150 170" role="img" aria-label="Disegno di una casa con il camino e il fumo che esce fuori">
         <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
           <path d="M104 30 C 98 22, 112 16, 106 8" />
           <path d="M116 34 C 110 26, 124 20, 118 12" />
@@ -86,14 +86,14 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
 
   <div class="pronta">
     <h2>La mia casa è pronta per l'inverno?</h2>
-    <p class="come">Fate il giro della casa insieme, tu e un adulto. Ogni volta che la risposta è sì, fai una crocetta.</p>
+    <p class="come">Fate il giro della casa, tu e un adulto: per ogni sì, una crocetta.</p>
     <div class="spunte">
-      <div>La caldaia è stata controllata quest'anno, prima del freddo.</div>
-      <div>Stufe, camino e canna fumaria sono stati controllati e puliti.</div>
-      <div>Le prese d'aria delle stanze sono libere: nessun mobile o straccio le copre.</div>
-      <div>Per scaldarci non usiamo mai il forno, i fornelli a gas o un braciere.</div>
-      <div>Ogni giorno apriamo le finestre per cambiare l'aria.</div>
-      <div>Sappiamo quali nonni o vicini vivono da soli e li chiamiamo spesso.</div>
+      <div>La caldaia è stata controllata quest'anno.</div>
+      <div>Stufe, camino e canna fumaria sono puliti.</div>
+      <div>Le prese d'aria sono libere, non coperte.</div>
+      <div>Mai forno, fornelli o bracieri per scaldarci.</div>
+      <div>Ogni giorno cambiamo l'aria nelle stanze.</div>
+      <div>Chiamiamo spesso i nonni che vivono soli.</div>
     </div>
   </div>
 
@@ -130,9 +130,9 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
   <div class="numeri" style="margin-top: auto">
     <div><div class="n">112</div>Emergenze: pericolo per la vita o la sicurezza. Gratis, 24 ore su 24.</div>
     <div><div class="n">116117</div>Cure mediche non urgenti, nel Lazio. Gratis, 24 ore su 24.</div>
-    <div><div class="n">Medico</div>Il medico di famiglia, nei suoi orari, per i dubbi di tutti i giorni.</div>
+    <div><div class="n">Medico</div>Di famiglia, nei suoi orari.</div>
   </div>
-  <p class="nota-adulti">Fonti, verificate il 20/11/2026: Istituto Superiore di Sanità, EpiCentro, «Monossido di carbonio»; Vigili del fuoco, «Casa sicura»; Ministero della Salute, decalogo contro il freddo; Dipartimento della Protezione Civile, «Neve e gelo, sei preparato?»; Regione Lazio, 116117. Approfondimenti: www.misericordia-ariccia.it/dossier/prevenzione-stagionale/ e /dossier/primo-soccorso/.</p>
+  <p class="nota-adulti">Fonti, verificate il 20/11/2026: ISS EpiCentro, «Monossido di carbonio»; Vigili del fuoco, «Casa sicura»; Ministero della Salute, decalogo contro il freddo; Protezione Civile, «Neve e gelo»; Regione Lazio. Più consigli: <span style="white-space: nowrap">www.misericordia-ariccia.it/dossier/prevenzione-stagionale/</span></p>
 </div>
 <div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
 </section>
@@ -142,20 +142,18 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
 <img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
 <div class="tema">Per la <b>scuola primaria</b></div>
 <div class="contenuto">
-  <h1>D'estate</h1>
-  <p class="sotto">Un foglio da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</p>
+  <h1>D'estate <small>Da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</small></h1>
 
   <div class="fascia"><span class="etichetta">Per te</span><span class="filo"></span></div>
   <div class="perte">
     <ul class="frasi">
       <li><b>Bevo acqua spesso</b>, anche quando non ho sete.</li>
-      <li>Nelle ore più calde, <b>dalle 11 alle 18</b>, sto all'ombra o al fresco.</li>
-      <li>Al sole metto un <b>cappello leggero</b> e vestiti chiari.</li>
+      <li>Nelle ore più calde, <b>dalle 11 alle 18</b>, sto all'ombra o al fresco. Al sole, <b>cappello leggero</b>.</li>
       <li>In macchina <b>non resto mai da solo</b>, neanche per un minuto.</li>
       <li>Al mare e al lago faccio il bagno <b>dove c'è il bagnino</b> e con un grande che mi guarda.</li>
     </ul>
     <div class="disegno">
-      <svg width="124" height="140" viewBox="0 0 150 170" role="img" aria-label="Disegno di un sole e di una bottiglietta d'acqua">
+      <svg width="110" height="124" viewBox="0 0 150 170" role="img" aria-label="Disegno di un sole e di una bottiglietta d'acqua">
         <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
           <circle cx="46" cy="44" r="20" fill="#FCEB0C"/>
           <path d="M46 10 V16 M46 72 V78 M12 44 H18 M74 44 H80 M22 20 L26 24 M66 64 L70 68 M22 68 L26 64 M66 24 L70 20"/>
@@ -170,14 +168,14 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
 
   <div class="pronta">
     <h2>La mia casa è pronta per l'estate?</h2>
-    <p class="come">Fate il giro della casa insieme, tu e un adulto. Ogni volta che la risposta è sì, fai una crocetta.</p>
+    <p class="come">Fate il giro della casa, tu e un adulto: per ogni sì, una crocetta.</p>
     <div class="spunte">
-      <div>In casa c'è sempre acqua fresca da bere, non ghiacciata.</div>
-      <div>Di giorno teniamo chiuse tende e tapparelle dove batte il sole.</div>
-      <div>Le medicine stanno al fresco e non restano in macchina.</div>
-      <div>Prima di chiudere la macchina guardiamo che dentro non resti nessuno.</div>
-      <div>Sappiamo quali nonni o vicini vivono da soli e li chiamiamo spesso.</div>
-      <div>Al mare e al lago scegliamo una spiaggia con il bagnino.</div>
+      <div>C'è sempre acqua fresca, non ghiacciata.</div>
+      <div>Di giorno, tende giù dove batte il sole.</div>
+      <div>Le medicine stanno al fresco, non in auto.</div>
+      <div>Chiudendo l'auto, guardiamo dentro.</div>
+      <div>Chiamiamo spesso i nonni che vivono soli.</div>
+      <div>Al mare e al lago, spiaggia con il bagnino.</div>
     </div>
   </div>
 
@@ -210,7 +208,7 @@ ISS e Regioni, Sicurezza in acqua (2025); Guardia costiera, 1530 Emergenza in ma
     <div><div class="n">116117</div>Cure mediche non urgenti, nel Lazio. Gratis, 24 ore su 24.</div>
     <div><div class="n">1530</div>Guardia costiera, emergenze in mare.</div>
   </div>
-  <p class="nota-adulti">Fonti, verificate il 20/11/2026: Ministero della Salute, «Dieci consigli utili», «Chi rischia di più», bollettini sulle ondate di calore e Linee di indirizzo sul caldo (luglio 2026); Istituto Superiore di Sanità e Regioni, campagna «Sicurezza in acqua» (2025); Guardia costiera, 1530 Emergenza in mare; Regione Lazio, 116117. Approfondimenti: www.misericordia-ariccia.it/dossier/prevenzione-stagionale/ e /dossier/primo-soccorso/.</p>
+  <p class="nota-adulti">Fonti, verificate il 20/11/2026: Ministero della Salute, «Dieci consigli utili», «Chi rischia di più», Linee di indirizzo sul caldo 2026; ISS e Regioni, «Sicurezza in acqua»; Guardia costiera; Regione Lazio. Più consigli: <span style="white-space: nowrap">www.misericordia-ariccia.it/dossier/prevenzione-stagionale/</span></p>
 </div>
 <div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
 </section>
