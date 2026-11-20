@@ -3,7 +3,7 @@
   {
    "file": "musica.mp3",
    "inizio": 0,
-   "da": 46.75,
+   "da": 45.17,
    "entrata": 1.5,
    "uscita": 1.5
   }
@@ -31,12 +31,12 @@
   },
   {
    "file": "sfx/passaggio.wav",
-   "evento": 100.62,
+   "evento": 101.7,
    "tipo": "colpo"
   },
   {
    "file": "sfx/chiusura.wav",
-   "evento": 113.39,
+   "evento": 114.97,
    "tipo": "colpo"
   }
  ],
@@ -87,24 +87,24 @@
   },
   {
    "file": "voce/line_12.wav",
-   "inizio": 86.55
+   "inizio": 86.6
   },
   {
    "file": "voce/line_13.wav",
-   "inizio": 92.1
+   "inizio": 92.15
   },
   {
    "file": "voce/line_14.wav",
-   "inizio": 107.86
+   "inizio": 109.44
   },
   {
    "file": "voce/line_15.wav",
-   "inizio": 113.79
+   "inizio": 115.37
   },
   {
    "file": "voce/line_16.wav",
-   "inizio": 116.93
+   "inizio": 118.51
   }
  ],
- "durata": 127.51
+ "durata": 129.09
 }

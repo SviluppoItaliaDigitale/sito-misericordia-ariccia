@@ -15,6 +15,14 @@ for i, x in enumerate(v):
         pausa = max(GAP_MIN, SC[i] - (SC[i - 1] + ser[i - 1]['durata']))   # pausa della scaletta dopo la frase precedente
         s = inizi[-1] + max(SC[i] - SC[i - 1], v[i - 1]['durata'] + pausa)
     inizi.append(round(s, 2))
+# TIENI_INIZI=colonna.json di prima: tiene gli inizi già montati (per rifare una frase senza spostare il video),
+# se ogni frase finisce almeno 0,3 s prima della successiva
+if os.environ.get('TIENI_INIZI'):
+    vecchi = [x['inizio'] for x in json.load(open(os.environ['TIENI_INIZI']))['voce']]
+    assert len(vecchi) == len(v)
+    for i in range(len(v) - 1):
+        assert vecchi[i] + v[i]['durata'] + 0.3 <= vecchi[i + 1], f'la frase {i + 1} non entra prima della {i + 2}'
+    inizi = vecchi
 fine = inizi[-1] + v[-1]['durata']
 sub = []
 for i, (s, x) in enumerate(zip(inizi, v), 1):
