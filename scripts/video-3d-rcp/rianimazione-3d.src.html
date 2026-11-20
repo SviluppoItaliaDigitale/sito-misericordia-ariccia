@@ -514,7 +514,7 @@
     { id: 'clavicola', titolo: 'Clavicola destra', punto: [P.clavicola_dx[0], P.clavicola_dx[1], P.clavicola_dx_max[2] - 0.01], verso: { dx: -280, dy: -70 }, versoV: { dx: -125, dy: -165 }, inizio: 81.8, fine: 84.7 },
     { id: 'sterno2', titolo: 'Sterno', punto: [0.0, 1.25, 0.205], verso: { dx: 280, dy: 130 }, versoV: { dx: 250, dy: -200 }, inizio: 82.0, fine: 84.7 },
     { id: 'placca1', titolo: 'Sotto la clavicola destra', sotto: 'a destra dello sterno', placca: 0, verso: { dx: -430, dy: 40 }, versoV: { dx: -170, dy: 260 }, inizio: 81.4, fine: 84.7 },
-    { id: 'placca2', titolo: 'Sotto l\'ascella sinistra', sotto: 'sul fianco, non sul braccio', placca: 1, verso: { dx: -360, dy: -150 }, versoV: { dx: -60, dy: 230 }, inizio: 86.6, fine: 90.6 },
+    { id: 'placca2', titolo: 'Sotto l\'ascella sinistra', sotto: 'sul fianco, non sul braccio', placca: 1, verso: { dx: -360, dy: -150 }, versoV: { dx: -60, dy: 150 }, inizio: 86.6, fine: 90.6, fineV: 89.4 },   // nel verticale sparisce prima che la vista scenda
     { id: 'fratture', titolo: 'Fratture di costole e sterno', sotto: 'frequenti durante la RCP', punto: null, inizio: 96.8, fine: 101.3, frattura: true, verso: { dx: 330, dy: -150 }, versoV: { dx: 150, dy: -330 } },
     { id: 'lesioni', titolo: 'Meno di 1 su 100', sotto: 'lesioni in chi non era in arresto', punto: null, inizio: 102.7, fine: 107.4, centro: { x: 1480, y: 330 }, centroV: { x: 540, y: 520 } }
   ];
@@ -541,7 +541,7 @@
   // Posizioni dei pannelli nei due formati (zona delle animazioni: orizzontale 130-850, verticale 380-1260)
   const LAY = VERT ? {
     fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
-    ecg: { x: 90, y: 1010, w: 900, h: 170 }, ecgDae: { x: 550, y: 1010, w: 440, h: 170 },
+    ecg: { x: 90, y: 1010, w: 900, h: 170 }, ecgDae: { x: 596, y: 1010, w: 394, h: 170 },   // accanto alla scheda «Sotto la clavicola destra», senza toccarla
     righello: { x: 130, y0: 900, k: 60 / 0.06 * 3.0 }, metronomo: { x: 90, y: 980, w: 900, h: 200 },
     avviso: 430, dato3: { x: 90, y: 390, w: 900, h: 290 }, legenda: { x: 90, y: 318 },
     passi: i => ({ x: 120, y: 420 + i * 190, w: 840, h: 160 }), riga1: 1030, tel: 1110, sito: 1205, corpoRiga: 30
@@ -808,7 +808,7 @@
       if (s.punto) { const off = s.pezzo ? GRUPPI_CUORE[s.pezzo].position : null;
                      p = proietta(off ? [s.punto[0] + off.x, s.punto[1] + off.y, s.punto[2] + off.z] : s.punto); }
       IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT && s.versoV ? s.versoV : s.verso, centro: VERT && s.centroV ? s.centroV : s.centro,
-                             inizio: s.inizio, fine: s.fine, visibile: !s.punto || !!p });
+                             inizio: s.inizio, fine: VERT && s.fineV ? s.fineV : s.fine, visibile: !s.punto || !!p });
     }
     const testoFonte = 'Anatomia: BodyParts3D, © The Database Center for Life Science, CC BY 4.0\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council';
     if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
