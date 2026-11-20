@@ -503,7 +503,7 @@
     freccia2d(c, px - 70, py + 54, px - 26, py + 4, GIALLO, 8);
     c.restore();
     const S2 = (px2, py2) => [ox + px2 * s, oy + py2 * s];
-    const [, ay] = S2(0, -150); cartellino(c, 'in dentro e in su', x + 14, ay, VERT ? 26 : 22, 'left');
+    // «in dentro e in su» è scritto nella scheda del passo: qui basta la freccia
     const [ix, iy] = S2(-190, -360); cartellino(c, 'inclinata in avanti', ix, iy, VERT ? 26 : 22);
     const [, by] = S2(0, -46); cartellino(c, 'pugno fra ombelico', x + 14, by - 8, VERT ? 26 : 22, 'left');
     cartellino(c, 'e costole', x + 14, by + (VERT ? 32 : 28), VERT ? 26 : 22, 'left');
