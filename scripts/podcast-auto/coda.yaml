@@ -103,7 +103,9 @@ puntate:
   fonti:
   - content/dossier/le-opere-di-misericordia.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-11-28-opere-di-misericordia.md
+  data: '2026-11-28'
 - id: rianimazione-soffocamento
   tema: primo-soccorso
   titolo: 'Arresto cardiaco e soffocamento nell''adulto: riconoscerli e chiamare aiuto'
