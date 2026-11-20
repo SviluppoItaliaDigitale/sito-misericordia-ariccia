@@ -46,7 +46,10 @@ lattante») e data/dati_da_verificare.yaml (voce soffocamento-5-5). Disegni SVG 
 .diapo .tabella > .t { font-weight: 800; color: var(--blu); background: rgba(255,255,255,.75); }
 .diapo .tabella > .r { font-weight: 700; }
 .diapo .figura { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.diapo .figura img { width: 380px; height: auto; background: #FFFFFF; border: 2px solid #C9D3E6; }
+.diapo .figure-due { display: flex; gap: 20px; align-items: center; }
+.diapo .figure-due > svg { flex: none; }
+.diapo .figure-due > .figura { flex: 0 0 340px; }
+.diapo .figura img { width: 340px; height: auto; background: #FFFFFF; border: 2px solid #C9D3E6; }
 .diapo .figura .didascalia { font-size: 22px; line-height: 28px; color: #3D4F7C; text-align: center; }
 .diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
 .diapo > .disegno-copertina { position: absolute; right: 170px; top: calc(var(--h, 1080px) / 2 - 230px); }
@@ -221,29 +224,39 @@ lattante») e data/dati_da_verificare.yaml (voce soffocamento-5-5). Disegni SVG 
 <img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
 <div class="contenuto">
 <h2>Adulto: i colpi tra le scapole</h2>
-<div class="lato" style="grid-template-columns: 1fr 640px;">
+<div class="lato" style="grid-template-columns: 1fr 680px; gap: 40px;">
 <ol class="passi">
 <li>Mettiti <strong>dietro</strong> la persona, un po' di lato, e falla <strong>piegare in avanti</strong> sostenendole il petto con una mano.</li>
 <li>Con la <strong>base del palmo</strong>, dalla parte del mignolo, dai un colpo deciso <strong>tra le scapole</strong>, al centro della schiena.</li>
 <li>Fino a <strong>5 colpi</strong>: dopo ognuno guarda se l'ostruzione si è risolta.</li>
 </ol>
-<svg viewBox="0 0 700 525" width="640" height="480" role="img" aria-label="Schiena vista da dietro con il punto tra le scapole, e mano vista dal palmo con evidenziata la base del palmo dalla parte del mignolo" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
-<path d="M150 20 C150 70 140 85 100 95 C50 108 20 140 20 200 L20 450 M250 20 C250 70 260 85 300 95 C350 108 380 140 380 200 L380 450" stroke="#233B74" stroke-width="8"/>
-<path d="M200 230 V440" stroke="#5A6478" stroke-width="5" stroke-dasharray="3 16"/>
-<path d="M200 105 V145" stroke="#5A6478" stroke-width="5" stroke-dasharray="3 16"/>
-<path d="M108 142 L168 132 L160 252 Z" stroke="#233B74" stroke-width="6"/>
-<path d="M292 142 L232 132 L240 252 Z" stroke="#233B74" stroke-width="6"/>
-<circle cx="200" cy="188" r="30" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
-<text x="200" y="500" text-anchor="middle" fill="#233B74" font-size="28" font-weight="700" stroke="none">tra le scapole</text>
-<g transform="translate(440 30)">
-<ellipse cx="78" cy="330" rx="32" ry="52" fill="#FCEB0C" stroke="none"/>
-<path d="M52 400 L42 300 L40 140 C40 120 70 120 70 140 L70 215 M70 215 L72 90 C72 70 104 70 104 90 L104 210 M104 210 L106 70 C106 50 138 50 138 70 L138 210 M138 210 L140 95 C140 75 172 75 172 95 L172 240 C185 228 205 210 218 205 C236 200 246 216 236 230 L200 300 C188 322 175 340 168 360 L162 400" stroke="#233B74" stroke-width="7"/>
-<path d="M52 400 H162" stroke="#233B74" stroke-width="7"/>
-<path d="M78 278 C60 300 58 360 78 382" stroke="#003F85" stroke-width="4" stroke-dasharray="2 8"/>
-<text x="110" y="440" text-anchor="middle" fill="#233B74" font-size="26" font-weight="700" stroke="none">base del palmo</text>
-<text x="110" y="470" text-anchor="middle" fill="#233B74" font-size="26" font-weight="700" stroke="none">(lato del mignolo)</text>
-</g>
-</svg>
+<svg viewBox="220 0 700 600" width="680" height="583" role="img" aria-label="Il soccorritore sta dietro e un po' di lato alla persona piegata in avanti, la sostiene al petto con un braccio e con l'altra mano colpisce tra le scapole; a destra una mano vista dal palmo con evidenziata la base del palmo dalla parte del mignolo" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M300 340 L280 540 M300 340 L335 540" stroke="#003F85" stroke-width="34"/>
+<path d="M322 222 L455 345 L535 300" stroke="#003F85" stroke-width="30"/>
+<path d="M430 340 L415 540 M430 340 L465 540" stroke="#009FE3" stroke-width="34"/>
+<path d="M430 340 L530 240" stroke="#009FE3" stroke-width="70"/>
+<circle cx="572" cy="214" r="36" fill="#009FE3"/>
+<path d="M530 258 L545 350" stroke="#009FE3" stroke-width="28"/>
+<path d="M480 323 L535 300" stroke="#003F85" stroke-width="30"/>
+<path d="M300 340 L312 205" stroke="#003F85" stroke-width="64"/>
+<circle cx="318" cy="140" r="38" fill="#003F85"/>
+<path d="M306 210 L372 128 L448 182" stroke="#003F85" stroke-width="30"/>
+<ellipse cx="462" cy="196" rx="30" ry="20" transform="rotate(40 462 196)" fill="#003F85"/>
+<circle cx="490" cy="248" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="6"/>
+<path d="M505 160 C522 172 530 186 532 200 M478 140 C496 150 506 160 511 172" stroke="#5A6478" stroke-width="5"/>
+<text x="370" y="40" text-anchor="middle" fill="#003F85" font-size="25" font-weight="700" stroke="none">tu, dietro e di lato</text>
+<text x="560" y="440" text-anchor="middle" fill="#0077AA" font-size="25" font-weight="700" stroke="none">piegata</text>
+<text x="560" y="469" text-anchor="middle" fill="#0077AA" font-size="25" font-weight="700" stroke="none">in avanti</text>
+<text x="500" y="105" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">tra le scapole</text>
+<g transform="translate(650 40)">
+<path d="M60 238 L60 160 M100 232 L100 92 M140 232 L140 80 M178 238 L178 112 M192 305 L236 256" stroke="#233B74" stroke-width="34"/>
+<path d="M40 250 C40 225 55 215 90 215 L175 215 C198 215 202 240 200 270 L194 360 C192 395 170 410 130 410 L90 410 C55 410 40 390 40 360 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M60 245 L60 160 M100 245 L100 92 M140 245 L140 80 M178 245 L178 112 M185 315 L236 256" stroke="#FFFFFF" stroke-width="20"/>
+<ellipse cx="80" cy="350" rx="30" ry="46" fill="#FCEB0C" stroke="#003F85" stroke-width="4"/>
+<path d="M62 420 V470 M168 420 V470" stroke="#233B74" stroke-width="7"/>
+<text x="118" y="515" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">base del palmo,</text>
+<text x="118" y="546" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">lato del mignolo</text>
+</g></svg>
 </div>
 </div>
 <div class="firma-slide">Misericordia di Ariccia</div>
@@ -258,16 +271,37 @@ lattante») e data/dati_da_verificare.yaml (voce soffocamento-5-5). Disegni SVG 
 <img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
 <div class="contenuto">
 <h2>Adulto: le compressioni addominali</h2>
-<div class="lato" style="grid-template-columns: 1fr 420px;">
+<div class="lato" style="grid-template-columns: 1fr 760px; gap: 40px;">
 <ol class="passi">
 <li>Resta <strong>dietro</strong>, circonda con le braccia la <strong>parte alta dell'addome</strong> e fai piegare la persona <strong>in avanti</strong>.</li>
 <li>Chiudi il <strong>pugno</strong> e mettilo <strong>tra l'ombelico e l'arco delle costole</strong>.</li>
 <li>Afferra il pugno con l'altra mano e tira con decisione <strong>in dentro e in su</strong>.</li>
 <li>Fino a <strong>5 compressioni</strong>, poi di nuovo 5 colpi tra le scapole.</li>
 </ol>
+<div class="figure-due">
+<svg viewBox="240 0 380 560" width="380" height="560" role="img" aria-label="Il soccorritore sta dietro la persona un po' piegata in avanti, la circonda con le braccia e mette il pugno sulla parte alta dell'addome; una freccia indica la spinta in dentro e in su" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<!-- soccorritore (blu), dietro -->
+<path d="M300 340 L285 540 M300 340 L335 540" stroke="#003F85" stroke-width="34"/>
+<path d="M300 340 L315 200" stroke="#003F85" stroke-width="64"/>
+<circle cx="312" cy="134" r="38" fill="#003F85"/>
+<!-- vittima (azzurro), un po' piegata in avanti -->
+<path d="M400 345 L385 540 M400 345 L435 540" stroke="#009FE3" stroke-width="34"/>
+<path d="M400 345 L470 215" stroke="#009FE3" stroke-width="72"/>
+<circle cx="510" cy="172" r="36" fill="#009FE3"/>
+<path d="M476 228 L515 328" stroke="#009FE3" stroke-width="28"/>
+<!-- braccia del soccorritore attorno all'addome -->
+<path d="M320 222 L385 302 L452 292" stroke="#003F85" stroke-width="30"/>
+<circle cx="462" cy="290" r="22" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M556 345 C548 305 520 284 492 268" stroke="#C8102E" stroke-width="7"/>
+<path d="M514 264 L490 267 L498 290" stroke="#C8102E" stroke-width="7"/>
+<text x="560" y="380" text-anchor="middle" fill="#A50E26" font-size="24" font-weight="700" stroke="none">in dentro</text>
+<text x="560" y="408" text-anchor="middle" fill="#A50E26" font-size="24" font-weight="700" stroke="none">e in su</text>
+<text x="300" y="40" text-anchor="middle" fill="#003F85" font-size="24" font-weight="700" stroke="none">tu, dietro</text>
+</svg>
 <div class="figura">
 <img src="img/disostruzione-punto-compressioni-addominali.png" alt="Disegno del torace con le costole: un cerchio verde indica il punto delle compressioni, sotto la punta dello sterno e sopra l'ombelico">
-<p class="didascalia">Il punto: sopra l'ombelico, sotto la punta dello sterno. Disegno di pubblico dominio (US Army Medical Department Center and School, da Wikimedia Commons).</p>
+<p class="didascalia">Il punto: sopra l'ombelico, sotto la punta dello sterno (disegno di pubblico dominio, crediti nell'ultima slide).</p>
+</div>
 </div>
 </div>
 </div>
