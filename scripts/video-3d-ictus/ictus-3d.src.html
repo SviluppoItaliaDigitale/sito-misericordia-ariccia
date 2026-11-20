@@ -439,7 +439,7 @@
     rett(c, cx - s * 0.2, cy - s * 0.4, s * 0.4, s * 0.62, s * 0.12); c.fill(); c.stroke();                       // busto
     const braccio = (x0, y0, dx, dy, col) => { c.strokeStyle = col; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x0 + dx * s * 0.55, y0 + dy * s * 0.55); c.stroke(); };
     braccio(cx + s * 0.2, cy - s * 0.32, 0.62, -0.78, '#FFFFFF');                                               // braccio sinistro: resta su
-    const a0 = Math.atan2(-0.78, -0.62), a1 = Math.atan2(0.85, -0.53), a = mix(a0, a1, cade);                   // braccio destro: scende
+    const a0 = Math.atan2(-0.78, -0.62), a1 = Math.atan2(0.85, -0.53) - 2 * Math.PI, a = mix(a0, a1, cade);    // braccio destro: scende all'esterno, passando per l'orizzontale (non attraverso il torace)
     braccio(cx - s * 0.2, cy - s * 0.32, Math.cos(a), Math.sin(a), cade > 0.05 ? KIT.giallo : '#FFFFFF');
     if (cade > 0.05) { c.globalAlpha *= clamp(cade * 2); c.strokeStyle = KIT.giallo; c.lineWidth = 4;               // freccia: scende
       const ax = cx - s * 0.62, ay = cy - s * 0.42; c.beginPath(); c.moveTo(ax, ay); c.lineTo(ax, ay + s * 0.3); c.lineTo(ax - 10, ay + s * 0.3 - 14); c.moveTo(ax, ay + s * 0.3); c.lineTo(ax + 10, ay + s * 0.3 - 14); c.stroke(); }
@@ -619,9 +619,9 @@
     incrocio.geometry.setDrawRange(0, Math.floor(incrocio.geometry.index.count * clamp(cresce) / 3) * 3);
     const finePunta = curvaIncrocio.getPointAt(Math.max(0.001, clamp(cresce))), tang = curvaIncrocio.getTangentAt(Math.max(0.001, clamp(cresce)));
     puntaIncrocio.visible = incrocio.visible; puntaIncrocio.position.copy(finePunta); puntaIncrocio.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tang);
-    const vTac = fin(t, tm.tac - 0.6, tm.medicine + 1.0, 0.6, 0.6);
+    const vTac = fin(t, tm.tac - 0.3, tm.medicine + 1.0, 0.4, 0.6);   // entra già attorno alla testa: niente fascia grigia in alto
     tac.visible = vTac > 0.01; tac.userData.m1.opacity = vTac; tac.userData.m2.opacity = vTac * 0.9;
-    const yScan = mix(1.68, 1.47, clamp((t - tm.tac + 0.2) / 2.4));
+    const yScan = mix(1.65, 1.47, clamp((t - tm.tac + 0.3) / 2.3));
     tac.position.y = yScan; U.uScan.value = vTac > 0.3 ? yScan : -1;
 
     vicino.disegna(scena, camera);
