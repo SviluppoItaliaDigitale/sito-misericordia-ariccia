@@ -55,3 +55,22 @@ sterno; meno dell'1% di lesioni in chi non era in arresto, p. 24).
   fianco: il raggio che cercava la pelle per la placca laterale prendeva il braccio. Ora il braccio si apre di circa
   40° prima che arrivino le placche (`uAbd`, attorno alla spalla), la placca si cerca solo sui triangoli del torace e
   `__controlli` ferma il render se la placca non è sul torace o è visibile con il braccio ancora chiuso.
+- **20/11/2026, revisione del medico dell'emergenza.**
+  - *Placca destra che sembrava sulla spalla.* Il punto era giusto, ma senza clavicole e con la vista dal fianco
+    sinistro non si capiva. Ora `anatomia.py` ha il gruppo `clavicole` (FMA13322 destra = FJ3362, FMA13323 sinistra =
+    FJ3237) e i punti `clavicola_dx`/`clavicola_sx`; la placca destra sta a x = -0,062, y = 1,255 (bordo alto appena
+    sotto la clavicola, accanto allo sterno). La scena del DAE mostra prima sterno e clavicola destra di fronte, poi il
+    fianco sinistro, con le schede «Sotto la clavicola destra» e «Sotto l'ascella sinistra»; nessun avviso o pannello
+    copre le placche (nel verticale il pannello del ritardo sta in alto). `__controlli` ferma il render se la placca
+    destra esce da x -0,10…-0,03, y 1,22…1,31 (IRC 2025, cap. 4, p. 30).
+  - *«Per questo non ci si ferma».* Con il DAE ci si ferma per analisi e scarica: ora «per questo ci si ferma il meno
+    possibile» (cap. 4, p. 8: compressioni con meno interruzioni possibili).
+  - *«Il DAE serve a far ripartire il cuore».* La scarica ferma il tremito, poi il cuore può ripartire con un battito
+    efficace: ora «serve a fermare il tremito: così il cuore può ripartire con un battito efficace» (cap. 4, p. 26).
+  - *Linea piatta dopo la scarica.* Lasciava intendere un cuore fermo: ora traccia neutra grigia con la scritta «Dopo la
+    scarica: riprendi subito le compressioni».
+  - *«−3-6%».* Poco leggibile: ora «dal 3 al 6%» «in meno di probabilità di sopravvivere».
+  - Le due frasi nuove sono di Damien, controllate con Whisper medium; `voce/tempi.py` ricava i tempi delle parole a
+    schermo («DAE», «112») da quelli delle parole lette con `tempi_schermo` di voce.py. I suoni delle compressioni sono
+    allungati di un periodo (60/110 s) inserito a metà, per coprire i tratti un po' più lunghi senza perdere il passo.
+
