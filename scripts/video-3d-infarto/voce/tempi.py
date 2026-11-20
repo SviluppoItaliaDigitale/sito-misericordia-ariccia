@@ -13,6 +13,14 @@ PAUSA = [1.3, 1.6, 0.9, 1.7, 0.8, 1.2, 0.7, 1.0, 1.0, 1.5, 1.5, 1.5, 1.6, 1.2, 1
 inizi, s = [], 1.0
 for x, p in zip(v, PAUSA):
     inizi.append(round(s, 2)); s += x['durata'] + p
+# TIENI_INIZI=colonna.json di prima: tiene gli inizi delle frasi già montati (per rifare una frase senza spostare
+# tutto il video), se ogni frase finisce almeno 0,3 s prima della successiva
+if os.environ.get('TIENI_INIZI'):
+    vecchi = [x['inizio'] for x in json.load(open(os.environ['TIENI_INIZI']))['voce']]
+    assert len(vecchi) == len(v)
+    for i in range(len(v) - 1):
+        assert vecchi[i] + v[i]['durata'] + 0.3 <= vecchi[i + 1], f'la frase {i + 1} non entra prima della {i + 2}'
+    inizi = vecchi
 fine = inizi[-1] + v[-1]['durata']
 sub = []
 for i, (s0, x) in enumerate(zip(inizi, v), 1):

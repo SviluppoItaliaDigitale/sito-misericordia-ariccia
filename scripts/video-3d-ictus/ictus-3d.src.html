@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ictus: il tempo è cervello</title>
+<!-- ictus-3d.src.html — video 3D «Ictus: il tempo è cervello» della Misericordia di Ariccia (rubrica di primo soccorso
+     e corsi BLSD). Schema render(t) della skill video-3d, stessa impaginazione del video sulla rianimazione
+     (scripts/video-3d-rcp/). Anatomia vera: atlante BodyParts3D (© The Database Center for Life Science, CC BY 4.0),
+     preparato da anatomia_ictus.py. Contenuti: scheda «Ictus» del dossier di primo soccorso del sito; IRC 2025 cap. 12;
+     ISSalute «Ictus» e «Afasia»; Ministero della Salute (2025); linea guida SNLG Regione Toscana sull'ictus (2013).
+     Scritto per Alessandro Cuollo il 20/11/2026. Si costruisce con costruisci.sh. -->
+<!--FONT-->
+<style>
+  html, body { margin: 0; background: #061633; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; overflow: hidden; background: #061633; }
+  #stage canvas { position: absolute; left: 0; top: 0; display: block; }
+  #fondo { z-index: 0; } #livello-scena { z-index: 2; } #sopra { z-index: 20; } #cornice { z-index: 60; }
+  #fonte { position: absolute; z-index: 30; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px;
+           line-height: 1.3; color: rgba(255, 255, 255, .86); white-space: pre; padding: 5px 12px; border-radius: 10px;
+           background: rgba(6, 22, 51, .66); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="fondo" width="1920" height="1080"></canvas>
+  <canvas id="livello-scena"></canvas>
+  <canvas id="sopra" width="1920" height="1080"></canvas>
+  <canvas id="cornice" width="1920" height="1080"></canvas>
+  <div id="fonte"></div>
+</div>
+<script type="application/json" id="dato-anatomia">/*DATO:anatomia*/</script>
+<script type="application/json" id="dato-sottotitoli">/*DATO:sottotitoli*/</script>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>/*CORNICE*/</script>
+<script>
+(function () {
+  'use strict';
+  const M3 = window.Motore3D, IMP = window.IMP, THREE = window.THREE;
+  const dato = n => { const e = document.getElementById('dato-' + n), s = e ? e.textContent.trim() : '';
+                      return !s || s.startsWith('/*DATO:') ? null : JSON.parse(s); };
+  const A = dato('anatomia'), FRASI = dato('sottotitoli') || [];
+  const P = A.punti;
+  const { clamp, mix, prog } = M3;
+  const morb = u => 0.5 - 0.5 * Math.cos(Math.PI * clamp(u));
+  const liscia = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+  const fin = (t, a, b, e = 0.4, u = 0.4) => clamp(Math.min((t - a) / e, (b - t) / u));   // finestra 0..1
+  const KIT = { blu: '#003F85', giallo: '#FCEB0C', azzurro: '#009FE3', notte: '#061633' };
+
+  /* ============================================================ tempi: tutto è legato alle frasi della voce */
+  // 16 frasi; senza i sottotitoli (anteprima) si usano durate stimate.
+  const STIMA = [6.5, 6.0, 8.5, 10.5, 7.5, 2.4, 5.0, 5.0, 6.0, 4.0, 8.0, 4.0, 13.0, 5.0, 3.0, 8.5];
+  const PAUSA = [0, 0.9, 1.0, 1.0, 1.0, 1.4, 0.8, 1.6, 1.6, 1.3, 1.2, 1.0, 1.0, 1.2, 1.3, 0.7];
+  const RIGHE = [];
+  FRASI.forEach((f, i) => { const r = f.riga || i + 1; if (!RIGHE[r - 1]) RIGHE[r - 1] = { inizio: f.inizio, fine: f.fine, parole: (f.parole || []).slice() };
+                            else { RIGHE[r - 1].fine = f.fine; RIGHE[r - 1].parole.push(...(f.parole || [])); } });
+  if (RIGHE.length !== 16) { RIGHE.length = 0; let s = 1.0; for (let i = 0; i < 16; i++) { s += PAUSA[i]; RIGHE.push({ inizio: s, fine: s + STIMA[i], parole: [] }); s += STIMA[i]; } }
+  const T = i => RIGHE[i - 1].inizio, F = i => RIGHE[i - 1].fine;
+  // momento di una parola della frase i (prima che combacia), altrimenti una frazione stimata della frase
+  const W_ = (i, re, frazione) => { const p = RIGHE[i - 1].parole.find(x => re.test(x.w.toLowerCase()));
+                                     return p ? p.t0 : T(i) + (F(i) - T(i)) * frazione; };
+  const TOTAL = F(16) + 2.8;
+  window.TOTAL = TOTAL;
+  const tm = {
+    arterieTesta: W_(2, /collo/, 0.45), rami: W_(2, /rami/, 0.8), coagulo: W_(3, /coagulo/, 0.12), rompe: W_(3, /rompe/, 0.42),
+    senza: W_(3, /^senza/, 0.75), ictus: W_(3, /ictus/, 0.95), parola: W_(4, /parola/, 0.4), braccio: W_(4, /^braccio,?$/, 0.75),
+    opposto: W_(5, /opposto/, 0.35), sinistra: W_(5, /sinistra/, 0.6), destro: W_(5, /destro/, 0.9),
+    sorridere: W_(7, /sorridere/, 0.3), bocca: W_(7, /bocca/, 0.75), alzarle: W_(8, /alzarle/, 0.35), scende: W_(8, /scende/, 0.7),
+    ripetere: W_(9, /ripetere/, 0.3), male: W_(9, /male/, 0.6), coagEmo: W_(13, /coagulo/, 0.45), tac: W_(13, /tac/, 0.65),
+    medicine: W_(13, /medicine/, 0.8), salva: W_(14, /salva/, 0.45), tempo: W_(14, /tempo/, 0.7)
+  };
+  const SCENE = [
+    { nome: 'Il cervello e il sangue', inizio: 0 }, { nome: 'Che cos\'è l\'ictus', inizio: T(3) - 0.3 },
+    { nome: 'Il cervello comanda il corpo', inizio: T(4) - 0.3 }, { nome: 'Riconoscilo: viso, braccia, parola', inizio: T(6) - 0.3 },
+    { nome: 'Chiama subito il 112', inizio: T(10) - 0.3 }, { nome: 'Segna l\'ora', inizio: T(11) - 0.3 },
+    { nome: 'Che cosa non fare', inizio: T(12) - 0.3 }, { nome: 'Il tempo è cervello', inizio: T(14) - 0.3 },
+    { nome: 'In ogni emergenza', inizio: T(15) - 0.3 }
+  ];
+  const FORMATO = new URLSearchParams(location.search).get('formato') === 'verticale' ? 'verticale' : 'orizzontale';
+  const VERT = FORMATO === 'verticale';
+  const L = IMP.layout(FORMATO), W = L.W, H = L.H;
+  window.STAGE_W = W; window.STAGE_H = H;
+  for (const id of ['fondo', 'sopra', 'cornice']) { const e = document.getElementById(id); e.width = W; e.height = H; }
+  const stage = document.getElementById('stage');
+  const stato = IMP.monta(stage, { ente: 'misericordia', formato: FORMATO, hud: null, nota: null });
+  IMP.anteprima(stage);
+  if (new URLSearchParams(location.search).get('pulito') === '1') {
+    const st = document.createElement('style'); st.textContent = '#sopra,#cornice,#fonte,#imp-radice{display:none!important}'; document.head.appendChild(st);
+  }
+
+  // Battito e sangue: il cuore batte sempre (70 al minuto); il sangue scorre con il battito.
+  const PERIODO_CUORE = 60 / 70;
+  function contrazione(t) { const ph = (t / PERIODO_CUORE) % 1; return { v: Math.exp(-Math.pow((ph - 0.3) / 0.09, 2)), a: Math.exp(-Math.pow((ph - 0.08) / 0.05, 2)) }; }
+  const PASSO = 1 / 120, flussi = [0];
+  for (let k = 1; k * PASSO <= TOTAL + 0.1; k++) flussi.push(flussi[k - 1] + (0.10 + 0.55 * contrazione((k - 0.5) * PASSO).v) * PASSO);
+  const flusso = t => { const x = clamp(t, 0, TOTAL) / PASSO, k = Math.floor(x), u = x - k; return mix(flussi[k], flussi[Math.min(k + 1, flussi.length - 1)], u); };
+  // il coagulo: si forma con «coagulo» (frase 3), resta fino a «salva» (frase 14), poi si scioglie
+  const blocco = t => liscia(tm.coagulo, tm.coagulo + 1.2, t) * (1 - liscia(tm.salva - 0.4, tm.salva + 1.6, t));
+  const scurito = t => liscia(tm.senza + 0.7, tm.senza + 1.9, t) * (1 - liscia(tm.salva + 0.4, tm.salva + 3.0, t));
+
+  /* ============================================================ fondo, livello 3D */
+  const fondo = document.getElementById('fondo'), fctx = fondo.getContext('2d');
+  (function () {
+    const g = fctx.createRadialGradient(W * 0.5, VERT ? 820 : 470, 60, W * 0.5, VERT ? 820 : 470, VERT ? 1500 : 1250);
+    g.addColorStop(0, '#0B3D7E'); g.addColorStop(0.5, '#082B5E'); g.addColorStop(1, KIT.notte);
+    fctx.fillStyle = g; fctx.fillRect(0, 0, W, H);
+  })();
+  const vicino = M3.creaRenderer(document.getElementById('livello-scena'), W, H, { scala: 0.8 });
+  const scena = new THREE.Scene();
+  const camera = M3.creaCamera(W, H, { fov: VERT ? 42 : 30, zona: L.zona });
+  scena.add(new THREE.HemisphereLight(0xdfe8ff, 0x1a2a4a, 1.25));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.5); scena.add(luce); scena.add(luce.target);
+  const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.55); scena.add(luce2); scena.add(luce2.target);
+
+  /* ============================================================ anatomia */
+  function b64(s, T_) { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new T_(u.buffer); }
+  function geometria(g) {
+    const q = b64(g.pos, Uint16Array), n = b64(g.nor, Int8Array), p = new Float32Array(q.length), nn = new Float32Array(q.length);
+    for (let i = 0; i < q.length; i++) { const k = i % 3; p[i] = g.lo[k] + q[i] / 65535 * g.sc[k]; nn[i] = n[i] / 127; }
+    const G = new THREE.BufferGeometry();
+    G.setAttribute('position', new THREE.BufferAttribute(p, 3));
+    G.setAttribute('normal', new THREE.BufferAttribute(nn, 3));
+    G.setIndex(new THREE.BufferAttribute(b64(g.idx, g.i32 ? Uint32Array : Uint16Array), 1));
+    if (g.flusso) { const f = b64(g.flusso, Uint16Array), d = new Float32Array(f.length);
+                    for (let i = 0; i < f.length; i++) d[i] = f[i] / 65535 * g.flussoMax; G.setAttribute('flusso', new THREE.BufferAttribute(d, 1)); }
+    for (const k of ['parola', 'braccio', 'zona']) if (g[k]) { const z = b64(g[k], Uint8Array), d = new Float32Array(z.length);
+      for (let i = 0; i < z.length; i++) d[i] = z[i] / 255; G.setAttribute(k, new THREE.BufferAttribute(d, 1)); }
+    G.computeBoundingSphere();
+    return G;
+  }
+  const C = P.coagulo;
+  const U = { uT: { value: 0 }, uFA: { value: 0 }, uVis: { value: 1 }, uBlocco: { value: 0 }, uScuro: { value: 0 }, uParola: { value: 0 },
+              uBraccio: { value: 0 }, uLatoSx: { value: 0 }, uLatoDx: { value: 0 }, uScan: { value: -1 } };
+  function prepara(mat, o = {}) {
+    mat.onBeforeCompile = sh => {
+      Object.assign(sh.uniforms, U);
+      sh.uniforms.uContr = o.contr || { value: 0 }; sh.uniforms.uCentro = { value: new THREE.Vector3(P.cuore[0], P.cuore[1], P.cuore[2]) };
+      sh.uniforms.uAlfa = o.alfa || { value: 1 };
+      let v = sh.vertexShader, f = sh.fragmentShader;
+      v = v.replace('#include <common>', `#include <common>
+        uniform float uT; uniform float uContr; uniform vec3 uCentro; varying vec3 vPosC;
+        ${o.flusso ? 'attribute float flusso; varying float vFlusso;' : ''}
+        ${o.zone ? 'attribute float parola; attribute float braccio; attribute float zona; varying vec3 vZone;' : ''}`);
+      v = v.replace('#include <begin_vertex>', `#include <begin_vertex>
+        ${o.cuore ? 'transformed = uCentro + (transformed - uCentro) * (1.0 - uContr);' : ''}
+        vPosC = transformed;
+        ${o.flusso ? 'vFlusso = flusso;' : ''}
+        ${o.zone ? 'vZone = vec3(parola, braccio, zona);' : ''}`);
+      f = f.replace('#include <common>', `#include <common>
+        uniform float uFA, uVis, uAlfa, uBlocco, uScuro, uParola, uBraccio, uLatoSx, uLatoDx, uScan; varying vec3 vPosC;
+        ${o.flusso ? 'varying float vFlusso;' : ''}
+        ${o.zone ? 'varying vec3 vZone;' : ''}`);
+      let extra = '';
+      if (o.flusso) extra += `
+        float fr = fract((vFlusso - uFA) / 0.11);
+        float banda = smoothstep(0.0, 0.18, fr) * smoothstep(0.62, 0.18, fr);
+        ${o.cervello ? `// oltre il coagulo, nell'arteria cerebrale media sinistra, il sangue non passa
+        float valle = step(${(C[0] + 0.0015).toFixed(4)}, vPosC.x) * step(1.525, vPosC.y) * step(0.088, vPosC.z) * step(vPosC.y, 1.585);
+        banda *= 1.0 - uBlocco * valle;
+        diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.38, 0.12, 0.14), uBlocco * valle * 0.7);` : ''}
+        totalEmissiveRadiance += vec3(${o.bagliore}) * banda * uVis * 0.9;`;
+      if (o.cervelloCol) extra += `
+        totalEmissiveRadiance += vec3(0.30, 0.10, 0.12) * 0.45;`;
+      if (o.zone) extra += `
+        // territorio senza sangue (si scurisce), zone della parola e del braccio, lato sinistro acceso
+        diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.24, 0.24, 0.31), uScuro * vZone.z * 0.92);
+        totalEmissiveRadiance *= 1.0 - 0.8 * uScuro * vZone.z;
+        totalEmissiveRadiance += vec3(0.99, 0.92, 0.05) * vZone.x * uParola * 0.85;
+        totalEmissiveRadiance += vec3(0.0, 0.62, 0.89) * vZone.y * uBraccio * 1.1;
+        totalEmissiveRadiance += vec3(0.0, 0.50, 0.80) * uLatoSx * 0.45;`;
+      if (o.olo) extra += `
+        float rim = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.4);
+        diffuseColor.a = clamp((0.035 + 0.75 * rim) * uAlfa, 0.0, 1.0);
+        float dx = smoothstep(-0.005, -0.03, vPosC.x) * uLatoDx;
+        totalEmissiveRadiance += mix(vec3(0.45, 0.78, 1.0), vec3(0.99, 0.92, 0.05), dx) * rim * (0.9 + 0.4 * dx);
+        diffuseColor.a = clamp(diffuseColor.a + dx * 0.10, 0.0, 1.0);`;
+      if (o.scan) extra += `
+        float sc = exp(-pow((vPosC.y - uScan) / 0.004, 2.0)) * step(-0.5, uScan);
+        totalEmissiveRadiance += vec3(0.6, 0.9, 1.0) * sc * 1.4;`;
+      f = f.replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>' + extra);
+      sh.vertexShader = v; sh.fragmentShader = f;
+    };
+    mat.customProgramCacheKey = () => JSON.stringify(o, (k, x) => (x && x.value !== undefined ? 'u' : x));
+    return mat;
+  }
+  const dentro = new THREE.Group(); scena.add(dentro);
+  const PARTI = {}, MATERIALI = [];
+  function parte(nome, mat, gruppo = dentro) {
+    const g = A.gruppi[nome]; if (!g) { console.warn('manca', nome); return null; }
+    const me = new THREE.Mesh(geometria(g), mat); gruppo.add(me); PARTI[nome] = me; MATERIALI.push(mat); return me;
+  }
+  const std = (colore, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: colore, roughness: 0.55, metalness: 0.0, side: THREE.DoubleSide }, o));
+  const alfaPelle = { value: 1 };
+  parte('pelle', prepara(std(0x6fa8e8, { transparent: true, depthWrite: false, roughness: 0.4 }), { olo: true, alfa: alfaPelle })).renderOrder = 5;
+  parte('colonna', prepara(std(0xeee6d2, { transparent: true, opacity: 0.35, depthWrite: false })));
+  const ROSSO = 0xd32f2f, BLU = 0x4f7fe8;
+  parte('arterie', prepara(std(ROSSO, { transparent: true }), { flusso: true, bagliore: '1.0, 0.62, 0.55' }));
+  parte('vene', prepara(std(BLU, { transparent: true, opacity: 0.3, depthWrite: false })));
+  parte('arterie_cervello', prepara(std(ROSSO, { transparent: true }), { flusso: true, cervello: true, bagliore: '1.0, 0.62, 0.55' }));
+  const BRAIN = 0xf0c0c4;
+  parte('emisfero_sx', prepara(std(BRAIN, { transparent: true }), { zone: true, cervelloCol: true, scan: true })).renderOrder = 4;
+  parte('emisfero_dx', prepara(std(BRAIN, { transparent: true }), { cervelloCol: true, scan: true })).renderOrder = 4;
+  parte('encefalo_resto', prepara(std(0xe7b2b8, { transparent: true }), { cervelloCol: true, scan: true })).renderOrder = 4;
+  const cuore = new THREE.Group(); dentro.add(cuore);
+  const contrV = { value: 0 }, contrA = { value: 0 };
+  for (const [nome, col, contr] of [['atrio_dx', 0xb34a42, contrA], ['atrio_sx', 0xb34a42, contrA], ['ventricolo_dx', 0xb34a42, contrV], ['ventricolo_sx', 0xb34a42, contrV],
+                                    ['papillari', 0x9c3a33, contrV], ['valvole', 0xf2e3c4, contrV], ['coronarie', 0xe23b30, contrV], ['vene_cuore', 0x4f7fe8, contrV]])
+    parte(nome, prepara(std(col, { transparent: true, roughness: 0.5 }), { cuore: true, contr }), cuore);
+
+  // globuli: dal cuore su per il collo fino alla testa (percorsi del video sulla rianimazione) e nelle arterie del
+  // cervello (carotidi interne → arterie cerebrali anteriori e medie; basilare → cerebrali posteriori)
+  const v3 = a => new THREE.Vector3(a[0], a[1], a[2]);
+  const sferaG = new THREE.SphereGeometry(1, 12, 9);
+  const GLOBULI = (A.percorsi || []).map(p => {
+    const curva = new THREE.CatmullRomCurve3(p.punti.map(v3), false, 'centripetal');
+    const passo = p.tipo === 'arterie_cervello' ? 0.006 : 0.028;
+    const punti = curva.getSpacedPoints(Math.max(60, Math.round(p.lung / 0.001)));
+    const g = { p, cervello: p.tipo === 'arterie_cervello', n: Math.max(5, Math.round(p.lung / passo)), punti, lung: p.lung, uC: 2 };
+    if (p.nome === 'media_sx') {                     // dove sta il coagulo lungo il percorso
+      let bd = 1e9; punti.forEach((q, i) => { const d = q.distanceToSquared(v3(C)); if (d < bd) { bd = d; g.uC = i / (punti.length - 1); g.kC = i; } });
+    }
+    return g;
+  });
+  const MEDIA = GLOBULI.find(g => g.p.nome === 'media_sx');
+  const PUNTO_COAG = MEDIA ? MEDIA.punti[MEDIA.kC].clone() : v3(C);
+  const DIR_COAG = MEDIA ? MEDIA.punti[Math.min(MEDIA.punti.length - 1, MEDIA.kC + 4)].clone().sub(MEDIA.punti[Math.max(0, MEDIA.kC - 4)]).normalize() : new THREE.Vector3(1, 0, 0);
+  const matGlob = col => { const m = prepara(new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.75, transparent: true, depthWrite: false })); MATERIALI.push(m); return m; };
+  const nCorpo = GLOBULI.filter(g => !g.cervello).reduce((x, g) => x + g.n, 0), nCerv = GLOBULI.filter(g => g.cervello).reduce((x, g) => x + g.n, 0);
+  const globCorpo = new THREE.InstancedMesh(sferaG, matGlob(0xff5a4e), Math.max(1, nCorpo)), globCerv = new THREE.InstancedMesh(sferaG, matGlob(0xff5a4e), Math.max(1, nCerv));
+  for (const im of [globCorpo, globCerv]) { im.frustumCulled = false; im.renderOrder = 7; dentro.add(im); }
+  const _gm = new THREE.Matrix4(), _gq = new THREE.Quaternion(), _gs = new THREE.Vector3();
+  let flussoFermo = null;                            // flusso al momento del blocco: i globuli prima del coagulo si fermano lì
+  function aggiornaGlobuli(t, f, vCorpo, vCerv, rCorpo, rCerv) {
+    const b = blocco(t);
+    if (b > 0.5 && flussoFermo === null) flussoFermo = f;
+    if (b <= 0.5) flussoFermo = null;
+    let kc = 0, kv = 0;
+    globCorpo.visible = vCorpo > 0.01; globCorpo.material.opacity = vCorpo;
+    globCerv.visible = vCerv > 0.01; globCerv.material.opacity = vCerv;
+    for (const g of GLOBULI) {
+      const m = g.punti.length - 1, media = g === MEDIA;
+      const avanti = (media && b > 0.5 ? flussoFermo : f) * (g.cervello ? 0.45 : 0.9);
+      for (let i = 0; i < g.n; i++) {
+        let u = ((i + 0.5) / g.n + avanti / g.lung) % 1; if (u < 0) u += 1;
+        let s = g.cervello ? rCerv : rCorpo;
+        if (media && b > 0) {
+          if (u > g.uC) s *= 1 - b;                               // a valle del coagulo il sangue non arriva
+          else if (u > g.uC - 0.05) u = mix(u, g.uC - 0.012 - (g.uC - u) * 0.3, b);   // a monte si accalcano contro il coagulo
+        }
+        const q = g.punti[Math.min(m, Math.round(u * m))];
+        _gs.setScalar(Math.max(1e-6, s)); _gm.compose(q, _gq, _gs);
+        if (g.cervello) globCerv.setMatrixAt(kv++, _gm); else globCorpo.setMatrixAt(kc++, _gm);
+      }
+    }
+    globCorpo.instanceMatrix.needsUpdate = true; globCerv.instanceMatrix.needsUpdate = true;
+  }
+
+  // coagulo: grumo rosso scuro, irregolare, allungato lungo l'arteria (disegno schematico)
+  const coagulo = (function () {
+    const geo = new THREE.IcosahedronGeometry(1, 4), pos = geo.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < pos.count; i++) { v.fromBufferAttribute(pos, i);
+      const r = 1 + 0.16 * Math.sin(v.x * 7.1 + 1.3) * Math.sin(v.y * 6.3) + 0.1 * Math.sin(v.z * 9.7 + v.x * 3.1);
+      v.multiplyScalar(r); pos.setXYZ(i, v.x, v.y, v.z); }
+    geo.computeVertexNormals();
+    const m = new THREE.MeshStandardMaterial({ color: 0x5e1014, roughness: 0.85, emissive: 0x2a0306, transparent: true });
+    const me = new THREE.Mesh(geo, m); me.position.copy(PUNTO_COAG);
+    me.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), DIR_COAG); me.renderOrder = 8; dentro.add(me); return me;
+  })();
+  // emorragia (solo accenno, frase 3 e 13): sangue che esce da un'arteria che si rompe
+  const emorragia = (function () {
+    const geo = new THREE.IcosahedronGeometry(1, 4), pos = geo.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < pos.count; i++) { v.fromBufferAttribute(pos, i);
+      v.multiplyScalar(1 + 0.22 * Math.sin(v.x * 5.3) * Math.sin(v.y * 4.1 + 0.7) + 0.12 * Math.sin(v.z * 8.3)); pos.setXYZ(i, v.x, v.y, v.z); }
+    geo.computeVertexNormals();
+    const m = new THREE.MeshStandardMaterial({ color: 0xb3121a, roughness: 0.4, emissive: 0x5a0508, transparent: true, depthWrite: false });
+    const me = new THREE.Mesh(geo, m); me.position.copy(v3(P.emorragia)); me.renderOrder = 8; dentro.add(me); return me;
+  })();
+  // freccia «lato opposto»: dall'emisfero sinistro, incrocia in basso, scende al braccio destro (schema)
+  const curvaIncrocio = new THREE.CatmullRomCurve3([v3(P.braccio_cervello), new THREE.Vector3(0.012, 1.53, 0.06), new THREE.Vector3(-0.004, 1.47, 0.04),
+                                                    new THREE.Vector3(-0.07, 1.41, 0.03), new THREE.Vector3(-0.16, 1.37, 0.0), new THREE.Vector3(-0.2, 1.24, -0.01)], false, 'centripetal');
+  const incrocio = new THREE.Mesh(new THREE.TubeGeometry(curvaIncrocio, 160, 0.0045, 10, false),
+                                  new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true, depthTest: false }));
+  incrocio.renderOrder = 11; dentro.add(incrocio);
+  const puntaIncrocio = new THREE.Mesh(new THREE.ConeGeometry(0.012, 0.03, 20), incrocio.material);
+  puntaIncrocio.renderOrder = 11; dentro.add(puntaIncrocio);
+  // anello della TAC: passa attorno alla testa dall'alto in basso, con il piano di scansione acceso sul cervello
+  const tac = new THREE.Group();
+  { const m1 = new THREE.MeshStandardMaterial({ color: 0xe9eef5, roughness: 0.35, transparent: true });
+    const m2 = new THREE.MeshBasicMaterial({ color: 0x7fd4ff, transparent: true, depthWrite: false });
+    const anelloT = new THREE.Mesh(new THREE.TorusGeometry(0.2, 0.028, 18, 72), m1); anelloT.rotation.x = Math.PI / 2;
+    const luceT = new THREE.Mesh(new THREE.TorusGeometry(0.172, 0.004, 8, 72), m2); luceT.rotation.x = Math.PI / 2;
+    tac.add(anelloT); tac.add(luceT); tac.userData = { m1, m2 }; }
+  tac.position.set(0, 1.7, 0.07); dentro.add(tac);
+
+  /* ============================================================ telecamera */
+  const CERV = [0.0, 1.565, 0.075], TESTA_V = [0.0, 1.54, 0.08];
+  const CAM = [
+    { t: 0, c: [0, 0.95, 0.05], az: -40, el: 8, d: 4.6, fov: 30, dv: 0.8 },
+    { t: T(1) + 2.0, c: [0, 1.0, 0.05], az: 10, el: 8, d: 3.4 },
+    { t: F(1) - 1.6, c: [0, 1.5, 0.07], az: 24, el: 10, d: 0.95, dv: 1.2 },
+    { t: F(1) + 0.2, az: 28, el: 10, d: 0.92, facilita: 'lineare' },
+    { t: T(2) + 0.6, c: [P.cuore[0], P.cuore[1], P.cuore[2]], az: 18, el: 6, d: 0.8, dv: 1.2 },
+    { t: tm.arterieTesta + 0.6, c: [0.005, 1.42, 0.08], az: 26, el: 6, d: 0.62 },
+    { t: tm.rami + 0.4, c: [0.0, 1.535, 0.085], az: 36, el: 18, d: 0.36, dv: 1.25 },
+    { t: tm.coagulo - 0.6, az: 62, el: 12, d: 0.3, facilita: 'lineare' },                       // giro attorno ai rami
+    { t: tm.coagulo + 0.4, c: [PUNTO_COAG.x, PUNTO_COAG.y, PUNTO_COAG.z], az: 66, el: 14, d: 0.12, dv: 1.25 },
+    { t: tm.rompe - 0.3, az: 70, el: 14, d: 0.12 },
+    { t: tm.rompe + 0.6, c: [0.004, 1.555, 0.102], az: 40, el: 22, d: 0.22 },
+    { t: tm.senza - 0.2, az: 40, el: 22, d: 0.22 },
+    { t: tm.senza + 0.95, c: [P.zona[0] - 0.01, P.zona[1], P.zona[2]], az: 82, el: 12, d: 0.34, dv: 1.2 },
+    { t: F(3) + 0.6, az: 92, el: 14, d: 0.33 },
+    { t: T(4) + 0.8, c: [P.emisfero_sx[0] + 0.01, P.emisfero_sx[1], P.emisfero_sx[2]], az: 94, el: 10, d: 0.33 },
+    { t: F(4), az: 104, el: 12, d: 0.32, facilita: 'lineare' },
+    { t: T(5) + 1.0, c: [0, 1.36, 0.05], az: 14, el: 6, d: 1.75, dv: 1.15 },
+    { t: F(5) + 0.4, az: 4, el: 6, d: 1.65, facilita: 'lineare' },
+    { t: T(6) + 0.6, c: TESTA_V, az: 0, el: 4, d: 0.9, dv: 1.0 },
+    { t: F(9), az: -30, el: 6, d: 0.95, facilita: 'lineare' },                                  // sotto le schede dei controlli
+    { t: F(12), az: -60, el: 8, d: 1.0, facilita: 'lineare' },
+    { t: T(13) + 0.6, c: [0.004, 1.556, 0.095], az: 28, el: 22, d: 0.3, dv: 1.25 },
+    { t: tm.tac - 0.8, az: 36, el: 22, d: 0.3, facilita: 'lineare' },
+    { t: tm.tac + 0.4, c: [0, 1.56, 0.07], az: 30, el: 18, d: 0.78, dv: 1.15 },
+    { t: tm.medicine + 1.0, az: 34, el: 18, d: 0.78 },
+    { t: T(14) + 0.4, c: [P.zona[0] - 0.01, P.zona[1], P.zona[2]], az: 76, el: 14, d: 0.34, dv: 1.2 },
+    { t: F(14) + 0.6, az: 96, el: 14, d: 0.33, facilita: 'lineare' },
+    { t: T(15) + 0.5, c: [0, 1.0, 0.05], az: 60, el: 8, d: 3.2, dv: 0.85 },
+    { t: TOTAL, az: 110, el: 8, d: 3.3, facilita: 'lineare' }
+  ];
+  (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov', 'dv']) if (k[x] == null) k[x] = p[x]; p = k; } })();
+  const _b = new THREE.Vector3(); let camDist = 1;
+  function telecamera(t) {
+    let i = 0; while (i < CAM.length - 2 && t >= CAM[i + 1].t) i++;
+    const a = CAM[i], b = CAM[i + 1];
+    const u0 = clamp((t - a.t) / Math.max(1e-6, b.t - a.t)), u = b.facilita === 'lineare' ? u0 : morb(u0);
+    const c = [0, 1, 2].map(k => mix(a.c[k], b.c[k], u));
+    _b.set(c[0], c[1], c[2]); dentro.localToWorld(_b);
+    const az = mix(a.az, b.az, u) * Math.PI / 180, el = mix(a.el, b.el, u) * Math.PI / 180;
+    const d = Math.exp(mix(Math.log(a.d), Math.log(b.d), u)) * (VERT ? mix(a.dv, b.dv, u) : 1), fov = mix(a.fov, b.fov, u) * (VERT ? 1.4 : 1);
+    camera.position.set(_b.x + d * Math.sin(az) * Math.cos(el), _b.y + d * Math.sin(el), _b.z + d * Math.cos(az) * Math.cos(el));
+    camera.up.set(0, 1, 0); camera.lookAt(_b);
+    camera.near = d * 0.02; camera.far = d * 10 + 3; camera.fov = fov; camera.updateProjectionMatrix();
+    luce.position.copy(camera.position).add(new THREE.Vector3(0.6 * d, 1.2 * d, 0.4 * d)); luce.target.position.copy(_b);
+    luce2.position.copy(_b).add(new THREE.Vector3(-d, -0.3 * d, -0.5 * d)); luce2.target.position.copy(_b);
+    camDist = d;
+    return { ferma: u0 >= 1 || (a.az === b.az && a.el === b.el && a.d === b.d && a.c === b.c) };
+  }
+
+  /* ============================================================ schede con la linea di richiamo */
+  const SCHEDE = [
+    { id: 'cervello', titolo: 'Cervello', sotto: 'comanda movimenti, parola, pensiero', punto: [0.03, 1.6, 0.1], verso: { dx: 300, dy: -60 }, versoV: { dx: 150, dy: -260 }, inizio: F(1) - 1.4, fine: F(1) + 0.15 },
+    { id: 'carotidi', titolo: 'Arterie del collo', sotto: 'carotidi', punto: [P.carotide_sx[0] + 0.003, 1.45, P.carotide_sx[2] - 0.02], verso: { dx: 300, dy: -40 }, versoV: { dx: 220, dy: -200 }, inizio: tm.arterieTesta, fine: tm.rami - 0.2 },
+    { id: 'rami', titolo: 'Arterie del cervello', sotto: 'i rami dentro la testa', punto: [0.02, 1.54, 0.108], verso: { dx: 300, dy: -150 }, versoV: { dx: 160, dy: -280 }, inizio: tm.rami + 0.2, fine: tm.coagulo - 0.3 },
+    { id: 'coagulo', titolo: 'Coagulo', sotto: 'un grumo di sangue che chiude l\'arteria', punto: [PUNTO_COAG.x, PUNTO_COAG.y + 0.003, PUNTO_COAG.z], verso: { dx: 280, dy: -170 }, versoV: { dx: 150, dy: -280 }, inizio: tm.coagulo + 0.9, fine: tm.rompe - 0.1 },
+    { id: 'emorragia', titolo: 'Arteria che si rompe', sotto: 'il sangue esce: emorragia', punto: P.emorragia, verso: { dx: -300, dy: -150 }, versoV: { dx: -150, dy: -280 }, inizio: tm.rompe + 0.5, fine: tm.senza + 0.5 },
+    { id: 'zona', titolo: 'Senza sangue', sotto: 'questa parte del cervello soffre', punto: [P.zona[0] + 0.018, P.zona[1], P.zona[2]], verso: { dx: 280, dy: -170 }, versoV: { dx: 120, dy: -300 }, inizio: tm.senza + 1.4, fine: T(4) + 1.2 },
+    { id: 'parola', titolo: 'La parola', punto: [P.parola[0] + 0.02, P.parola[1] - 0.004, P.parola[2]], verso: { dx: 260, dy: 150 }, versoV: { dx: 150, dy: 260 }, inizio: tm.parola, fine: F(4) + 0.3 },
+    { id: 'braccio', titolo: 'Il movimento del braccio', punto: [P.braccio_cervello[0] + 0.02, P.braccio_cervello[1] + 0.01, P.braccio_cervello[2]], verso: { dx: 260, dy: -170 }, versoV: { dx: 120, dy: -280 }, inizio: tm.braccio, fine: F(4) + 0.3 },
+    { id: 'sinistra', titolo: 'Parte sinistra del cervello', punto: [0.045, 1.6, 0.08], verso: { dx: 300, dy: -80 }, versoV: { dx: 150, dy: -230 }, inizio: tm.sinistra - 0.2, fine: F(5) + 0.4 },
+    { id: 'destro', titolo: 'Lato destro del corpo', punto: [-0.24, 1.18, 0.02], verso: { dx: -300, dy: 40 }, versoV: { dx: -100, dy: 260 }, inizio: tm.destro - 0.2, fine: F(5) + 0.4 },
+    { id: 'coag2', titolo: 'Coagulo?', punto: [PUNTO_COAG.x, PUNTO_COAG.y, PUNTO_COAG.z], verso: { dx: 280, dy: -150 }, versoV: { dx: 150, dy: -250 }, inizio: tm.coagEmo - 0.1, fine: tm.tac - 0.2 },
+    { id: 'emo2', titolo: 'Emorragia?', punto: P.emorragia, verso: { dx: -300, dy: -140 }, versoV: { dx: -160, dy: -250 }, inizio: tm.coagEmo + 0.5, fine: tm.tac - 0.2 },
+    { id: 'tac', titolo: 'TAC', sotto: 'l\'esame che fotografa il cervello', punto: [VERT ? 0.12 : 0.2, 1.62, 0.07], verso: { dx: 260, dy: -120 }, versoV: { dx: -60, dy: -230 }, inizio: tm.tac + 0.5, fine: tm.medicine - 0.1, segue: true },
+    { id: 'zona2', titolo: 'Se è un coagulo, si può riaprire l\'arteria', sotto: 'prima si arriva, più cervello si salva', punto: [PUNTO_COAG.x, PUNTO_COAG.y + 0.003, PUNTO_COAG.z], verso: { dx: 280, dy: -170 }, versoV: { dx: 120, dy: -300 }, inizio: T(14) + 0.4, fine: F(14) + 0.8 }
+  ];
+  const _p = new THREE.Vector3();
+  function proietta(locale) {
+    _p.set(locale[0], locale[1], locale[2]); dentro.localToWorld(_p);
+    const v = _p.clone().project(camera);
+    if (v.z > 1 || v.z < -1) return null;
+    return { x: (v.x + 1) / 2 * W, y: (1 - v.y) / 2 * H };
+  }
+
+  /* ============================================================ sovrimpressioni 2D */
+  const sopra = document.getElementById('sopra'), s2 = sopra.getContext('2d');
+  const stemma = new Image(); stemma.src = '/*STEMMA*/';
+  function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
+  function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+  function pannello(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = '#022A5C'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 3; c.stroke(); }
+  const LAY = VERT ? {
+    fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
+    controllo: i => ({ x: 90, y: 400 + i * 285, w: 900, h: 260 }), avviso: 1180, grande: { x: 140, y: 560, w: 800, h: 420 },
+    orologio: { x: 140, y: 470, w: 800, h: 640 }, divieti: i => ({ x: 90 + i * 310, y: 880, w: 280, h: 330 }),
+    riga1: 1010, tel: 1095, sito: 1215
+  } : {
+    fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
+    controllo: i => ({ x: 120 + i * 570, y: 220, w: 540, h: 560 }), avviso: 760, grande: { x: 560, y: 260, w: 800, h: 440 },
+    orologio: { x: 1220, y: 210, w: 600, h: 600 }, divieti: i => ({ x: 1100 + i * 260, y: 230, w: 240, h: 330 }),
+    riga1: 560, tel: 660, sito: 790
+  };
+  function testata(c, nomeScena) {
+    const Fz = LAY.fascia, libero = Fz.w - Fz.sx - Fz.dx;
+    c.save();
+    if (VERT) { const g = c.createLinearGradient(0, 0, 0, Fz.y + 4); g.addColorStop(0, 'rgba(6,22,51,1)'); g.addColorStop(0.8, 'rgba(6,22,51,.96)'); g.addColorStop(1, 'rgba(6,22,51,0)'); c.fillStyle = g; c.fillRect(0, 0, W, Fz.y + 4); }
+    c.fillStyle = KIT.giallo; c.fillRect(0, Fz.y - Math.round(Fz.h * 0.11), Fz.w + 18, Math.round(Fz.h * 0.9));
+    c.fillStyle = KIT.blu; c.fillRect(0, Fz.y, Fz.w, Fz.h);
+    const r1 = 'Ictus: il tempo è cervello', r2 = nomeScena;
+    let corpo = VERT ? 40 : 34; c.font = `600 ${corpo}px Montserrat`;
+    while (corpo > 24 && Math.max(c.measureText(r1).width, c.measureText(r2).width * 0.86) > libero) { corpo--; c.font = `600 ${corpo}px Montserrat`; }
+    const Lh = corpo * 1.1, top = Fz.y + (Fz.h - 2 * Lh) / 2 + corpo * 0.88;
+    testo(c, r1, Fz.sx, top, corpo, 600, '#FFFFFF'); testo(c, r2, Fz.sx, top + Lh, corpo * 0.86, 700, KIT.giallo);
+    if (stemma.naturalWidth) { const sw = Fz.stemma, sh = sw * stemma.naturalHeight / stemma.naturalWidth; c.drawImage(stemma, Fz.w - Fz.dx + (Fz.dx - sw) / 2 + 6, Fz.y + Fz.h / 2 - sh / 2, sw, sh); }
+    const fr = LAY.firma; c.font = `600 ${fr.corpo}px Montserrat`; const tw = c.measureText('Misericordia di Ariccia').width;
+    c.shadowColor = 'rgba(0,22,54,.6)'; c.shadowBlur = 6; c.shadowOffsetY = 1;
+    testo(c, 'Misericordia di Ariccia', fr.x, fr.y + fr.corpo, fr.corpo, 600, '#FFFFFF');
+    c.shadowColor = 'transparent';
+    window.FIRMA_BOX = { x: fr.x, y: fr.y, w: Math.round(tw), h: fr.corpo, corpo: fr.corpo };
+    c.font = '700 20px Montserrat'; const nt = 'SCHEMA · NON IN SCALA', nw = c.measureText(nt).width + 36, nx = W - L.margine - nw;
+    rett(c, nx, LAY.nota.y, nw, 38, 19); c.fillStyle = KIT.giallo; c.fill();
+    testo(c, nt, nx + 18, LAY.nota.y + 26, 20, 700, KIT.blu);
+    c.restore();
+  }
+  function avviso(c, testoA, alfa, colore = '#FCEB0C', y = LAY.avviso) {
+    if (alfa <= 0.001) return;
+    const corpo = VERT ? 34 : 36;
+    c.save(); c.globalAlpha = alfa; c.font = `800 ${corpo}px Montserrat`; const w = c.measureText(testoA).width + 100;
+    rett(c, (W - w) / 2, y - 46, w, 68, 34); c.fillStyle = 'rgba(0,30,70,.94)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    testo(c, testoA, W / 2, y, corpo, 800, colore, 'center'); c.restore();
+  }
+  // linea con il disegno che si traccia (u da 0 a 1)
+  const linea = (c, pts, u) => { c.beginPath(); const n = Math.max(2, Math.ceil(pts.length * clamp(u))); pts.slice(0, n).forEach(([x, y], i) => (i ? c.lineTo(x, y) : c.moveTo(x, y))); c.stroke(); };
+  // --- i tre controlli: viso, braccia, parola (disegni schematici, chiari anche per un bambino)
+  function disegnoViso(c, cx, cy, r, cade) {          // cade 0..1: il lato destro della persona (a sinistra per chi guarda) scende
+    c.save(); c.lineWidth = 6; c.strokeStyle = '#FFFFFF'; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath(); c.ellipse(cx, cy, r * 0.82, r, 0, 0, 7); c.fillStyle = 'rgba(111,168,232,.18)'; c.fill(); c.stroke();
+    c.fillStyle = '#FFFFFF';
+    c.beginPath(); c.arc(cx - r * 0.32, cy - r * 0.22 + cade * r * 0.05, r * 0.07, 0, 7); c.fill();   // occhi
+    c.beginPath(); c.arc(cx + r * 0.32, cy - r * 0.22, r * 0.07, 0, 7); c.fill();
+    c.strokeStyle = KIT.giallo; c.lineWidth = 7;
+    c.beginPath(); const y0 = cy + r * 0.38;
+    c.moveTo(cx - r * 0.42, y0 - r * 0.14 * (1 - cade) + r * 0.2 * cade);
+    c.quadraticCurveTo(cx - r * 0.1, y0 + r * 0.2 * (1 - cade * 0.6) + r * 0.08 * cade, cx + r * 0.05, y0 + r * 0.16);
+    c.quadraticCurveTo(cx + r * 0.25, y0 + r * 0.14, cx + r * 0.42, y0 - r * 0.14);
+    c.stroke(); c.restore();
+  }
+  function disegnoBraccia(c, cx, cy, s, cade) {       // braccia alzate; il destro della persona (a sinistra per chi guarda) scende
+    c.save(); c.lineWidth = 8; c.strokeStyle = '#FFFFFF'; c.lineCap = 'round'; c.lineJoin = 'round'; c.fillStyle = 'rgba(111,168,232,.18)';
+    c.beginPath(); c.arc(cx, cy - s * 0.62, s * 0.16, 0, 7); c.fill(); c.stroke();                               // testa
+    rett(c, cx - s * 0.2, cy - s * 0.4, s * 0.4, s * 0.62, s * 0.12); c.fill(); c.stroke();                       // busto
+    const braccio = (x0, y0, dx, dy, col) => { c.strokeStyle = col; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x0 + dx * s * 0.55, y0 + dy * s * 0.55); c.stroke(); };
+    braccio(cx + s * 0.2, cy - s * 0.32, 0.62, -0.78, '#FFFFFF');                                               // braccio sinistro: resta su
+    const a0 = Math.atan2(-0.78, -0.62), a1 = Math.atan2(0.85, -0.53) - 2 * Math.PI, a = mix(a0, a1, cade);    // braccio destro: scende all'esterno, passando per l'orizzontale (non attraverso il torace)
+    braccio(cx - s * 0.2, cy - s * 0.32, Math.cos(a), Math.sin(a), cade > 0.05 ? KIT.giallo : '#FFFFFF');
+    if (cade > 0.05) { c.globalAlpha *= clamp(cade * 2); c.strokeStyle = KIT.giallo; c.lineWidth = 4;               // freccia: scende
+      const ax = cx - s * 0.62, ay = cy - s * 0.42; c.beginPath(); c.moveTo(ax, ay); c.lineTo(ax, ay + s * 0.3); c.lineTo(ax - 10, ay + s * 0.3 - 14); c.moveTo(ax, ay + s * 0.3); c.lineTo(ax + 10, ay + s * 0.3 - 14); c.stroke(); }
+    c.restore();
+  }
+  function disegnoParola(c, x, y, w, u, male) {
+    c.save();
+    const corpo = VERT ? 30 : 30; c.font = `700 ${corpo}px Montserrat`;
+    const nuvola = (bx, by, bw, bh, coda) => { rett(c, bx, by, bw, bh, 22); c.fillStyle = 'rgba(255,255,255,.95)'; c.fill();
+      c.beginPath(); c.moveTo(bx + coda, by + bh); c.lineTo(bx + coda + 18, by + bh + 26); c.lineTo(bx + coda + 40, by + bh); c.closePath(); c.fill(); };
+    c.globalAlpha *= clamp(u * 3);
+    nuvola(x, y, w, 70, 40); testo(c, '«Oggi c\'è il sole»', x + w / 2, y + 46, corpo, 700, KIT.blu, 'center');
+    if (male > 0.01) {
+      c.globalAlpha = clamp(male) * c.globalAlpha;
+      nuvola(x + 20, y + 120, w - 40, 70, w - 120);
+      testo(c, '«Og… c’è… so…»', x + w / 2, y + 166, corpo, 700, '#b3121a', 'center');
+    }
+    c.restore();
+  }
+  function controlli3(c, t) {
+    const a = fin(t, T(6) - 0.2, F(9) + 1.0, 0.5, 0.5); if (a <= 0.001) return;
+    const voci = [['1', 'Viso', 'sorridi', T(7)], ['2', 'Braccia', 'alzale tutte e due', T(8)], ['3', 'Parola', 'ripeti una frase', T(9)]];
+    c.save();
+    voci.forEach(([n, ti, so, t0], i) => {
+      const q = LAY.controllo(i), b = clamp((t - (T(6) + 0.3 + i * 0.35)) / 0.45), attivo = t >= t0 - 0.3 && t < (i < 2 ? voci[i + 1][3] - 0.3 : F(9) + 1);
+      if (b <= 0.001) return;
+      c.globalAlpha = a * clamp(b * 4);                        // il pannello è pieno subito, il contenuto entra
+      const y = q.y + (1 - b) * 24;
+      pannello(c, q.x, y, q.w, q.h, attivo ? KIT.giallo : 'rgba(255,255,255,.45)');
+      c.globalAlpha = a * b;
+      c.globalAlpha = a * b * (t >= T(7) - 0.3 && !attivo ? 0.6 : 1);
+      c.fillStyle = KIT.giallo; c.beginPath(); c.arc(q.x + 52, y + 52, 32, 0, 7); c.fill();
+      testo(c, n, q.x + 52, y + 66, 38, 900, KIT.blu, 'center');
+      testo(c, ti, q.x + 100, y + 64, 40, 800, '#FFFFFF');
+      testo(c, so, q.x + 100, y + 100, 24, 600, 'rgba(255,255,255,.85)');
+      const dx = VERT ? q.x + q.w - 190 : q.x + q.w / 2, dy = VERT ? y + q.h / 2 + 6 : y + 330;
+      if (i === 0) disegnoViso(c, dx, dy, VERT ? 100 : 130, liscia(tm.bocca - 0.6, tm.bocca + 0.4, t));
+      if (i === 1) disegnoBraccia(c, dx, dy + (VERT ? 40 : 60), VERT ? 190 : 260, liscia(tm.scende - 0.5, tm.scende + 0.9, t));
+      if (i === 2) disegnoParola(c, VERT ? q.x + q.w - 440 : q.x + 40, VERT ? y + 30 : y + 170, VERT ? 410 : q.w - 80, clamp((t - tm.ripetere + 0.4) / 0.6), clamp((t - tm.male + 0.6) / 0.6));
+      const domanda = i === 0 ? 'Un lato della bocca resta giù?' : i === 1 ? 'Una scende o non si muove?' : 'Parla male o non capisce?';
+      const vD = clamp((t - (i === 0 ? tm.bocca : i === 1 ? tm.scende : tm.male) + 0.2) / 0.4);
+      if (vD > 0) { c.globalAlpha = a * b * vD; if (VERT) testo(c, domanda, q.x + 100, y + 150, 24, 700, KIT.giallo); else testo(c, domanda, q.x + q.w / 2, y + q.h - 30, 26, 700, KIT.giallo, 'center'); }
+    });
+    c.restore();
+  }
+  function chiama112(c, t) {
+    const a = fin(t, T(10) - 0.1, F(10) + 0.9, 0.4, 0.5); if (a <= 0.001) return;
+    const { x, y, w, h } = LAY.grande;
+    c.save(); c.globalAlpha = a; pannello(c, x, y, w, h, KIT.giallo);
+    testo(c, 'Basta un solo segno', x + w / 2, y + 90, 40, 800, '#FFFFFF', 'center');
+    testo(c, 'chiama subito il', x + w / 2, y + 160, 34, 600, 'rgba(255,255,255,.9)', 'center');
+    testo(c, '112', x + w / 2, y + 340, 170, 900, KIT.giallo, 'center');
+    c.restore();
+  }
+  function orologio(c, t) {
+    const a = fin(t, T(11) - 0.2, F(11) + 0.8, 0.4, 0.5); if (a <= 0.001) return;
+    const { x, y, w, h } = LAY.orologio, cx = x + w / 2, cy = y + (VERT ? 260 : 250), r = VERT ? 190 : 170;
+    c.save(); c.globalAlpha = a; pannello(c, x, y, w, h, KIT.giallo);
+    c.fillStyle = 'rgba(255,255,255,.96)'; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill();
+    c.strokeStyle = KIT.blu; c.lineWidth = 8; c.stroke();
+    for (let k = 0; k < 12; k++) { const an = k / 12 * 2 * Math.PI, l = k % 3 ? 0.1 : 0.17; c.lineWidth = k % 3 ? 4 : 7;
+      c.beginPath(); c.moveTo(cx + Math.sin(an) * r * (0.92 - l), cy - Math.cos(an) * r * (0.92 - l)); c.lineTo(cx + Math.sin(an) * r * 0.92, cy - Math.cos(an) * r * 0.92); c.stroke(); }
+    for (let k = 0; k < 60; k++) if (k % 5) { const an = k / 60 * 2 * Math.PI; c.lineWidth = 2;               // minuti
+      c.beginPath(); c.moveTo(cx + Math.sin(an) * r * 0.87, cy - Math.cos(an) * r * 0.87); c.lineTo(cx + Math.sin(an) * r * 0.92, cy - Math.cos(an) * r * 0.92); c.stroke(); }
+    for (let k = 1; k <= 12; k++) { const an = k / 12 * 2 * Math.PI;                                             // numeri delle ore
+      testo(c, String(k), cx + Math.sin(an) * r * 0.66, cy - Math.cos(an) * r * 0.66 + r * 0.075, Math.round(r * 0.2), 700, KIT.blu, 'center'); }
+    // 10:15: la lancetta delle ore sta un quarto oltre il 10, verso l'11 (10,25 ore); quella dei minuti sul 3
+    const ore = 10 + 15 / 60, aO = ore / 12 * 2 * Math.PI, aM = 15 / 60 * 2 * Math.PI;
+    c.lineCap = 'round'; c.lineWidth = 11; c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + Math.sin(aO) * r * 0.5, cy - Math.cos(aO) * r * 0.5); c.stroke();
+    c.lineWidth = 7; c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + Math.sin(aM) * r * 0.78, cy - Math.cos(aM) * r * 0.78); c.stroke();
+    c.fillStyle = KIT.blu; c.beginPath(); c.arc(cx, cy, 12, 0, 7); c.fill();
+    const b = clamp((t - T(11) - 0.8) / 0.5);
+    c.globalAlpha = a * b;
+    testo(c, 'Annota: «sintomi dalle 10:15»', cx, cy + r + 70, VERT ? 36 : 30, 800, KIT.giallo, 'center');
+    const b2 = clamp((t - W_(11, /oppure/, 0.45) + 0.2) / 0.5); c.globalAlpha = a * b2;
+    testo(c, 'oppure l\'ultima volta che stava bene', cx, cy + r + (VERT ? 122 : 114), VERT ? 28 : 24, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+  function iconaDivieto(c, q, tipo, alfa) {
+    c.save(); c.globalAlpha = alfa; pannello(c, q.x, q.y, q.w, q.h, '#ff8a80');
+    const cx = q.x + q.w / 2, cy = q.y + 130; c.strokeStyle = '#FFFFFF'; c.lineWidth = 6; c.lineCap = 'round'; c.lineJoin = 'round';
+    if (tipo === 0) { c.beginPath(); c.ellipse(cx, cy + 20, 70, 22, 0, 0, 7); c.stroke();                       // piatto con forchetta
+      c.beginPath(); c.moveTo(cx - 95, cy - 50); c.lineTo(cx - 95, cy + 40); c.moveTo(cx - 108, cy - 50); c.lineTo(cx - 108, cy - 20); c.lineTo(cx - 82, cy - 20); c.lineTo(cx - 82, cy - 50); c.stroke(); }
+    if (tipo === 1) { c.beginPath(); c.moveTo(cx - 40, cy - 60); c.lineTo(cx - 30, cy + 55); c.lineTo(cx + 30, cy + 55); c.lineTo(cx + 40, cy - 60); c.stroke();   // bicchiere d'acqua
+      c.fillStyle = 'rgba(0,159,227,.7)'; c.beginPath(); c.moveTo(cx - 35, cy - 15); c.lineTo(cx - 30, cy + 52); c.lineTo(cx + 30, cy + 52); c.lineTo(cx + 35, cy - 15); c.closePath(); c.fill(); }
+    if (tipo === 2) { c.save(); c.translate(cx, cy); c.rotate(-0.6); rett(c, -62, -26, 124, 52, 26); c.stroke(); c.beginPath(); c.moveTo(0, -26); c.lineTo(0, 26); c.stroke(); c.restore();   // compressa
+      c.beginPath(); c.arc(cx + 50, cy + 40, 22, 0, 7); c.stroke(); }
+    c.strokeStyle = '#ff5a4e'; c.lineWidth = 10; c.beginPath(); c.arc(cx, cy, 92, 0, 7); c.stroke();             // divieto
+    c.beginPath(); c.moveTo(cx - 65, cy + 65); c.lineTo(cx + 65, cy - 65); c.stroke();
+    const ti = ['Niente cibo', 'Niente acqua', 'Niente farmaci'][tipo];
+    testo(c, ti, cx, q.y + 278, VERT ? 28 : 26, 800, '#FFFFFF', 'center');
+    if (tipo === 2) testo(c, 'nemmeno l\'aspirina', cx, q.y + 312, VERT ? 22 : 20, 700, KIT.giallo, 'center');
+    c.restore();
+  }
+  function divieti(c, t) {
+    const a = fin(t, T(13) - 0.2, tm.coagEmo - 0.1, 0.4, 0.5); if (a <= 0.001) return;
+    const chi = [W_(13, /mangiare/, 0.05), W_(13, /bere/, 0.12), W_(13, /farmaci/, 0.2)];
+    chi.forEach((t0, i) => iconaDivieto(c, LAY.divieti(i), i, a * clamp((t - t0 + 0.3) / 0.4)));
+  }
+  // chiusura: le azioni in ordine (riepilogo da leggere con calma), il 112 e i corsi
+  function chiusura(c, t) {
+    const a = clamp((t - T(15) + 0.4) / 0.7); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    c.fillStyle = 'rgba(0,40,92,.9)'; c.fillRect(0, 0, W, H);
+    const passi = ['Viso, braccia, parola: controlla', 'Chiama subito il 112', 'Segna l\'ora dei primi segni', 'Niente cibo, acqua né farmaci'];
+    const x0 = VERT ? 110 : 150, y0 = VERT ? 420 : 250, dy = VERT ? 92 : 104, corpo = VERT ? 36 : 38;
+    testo(c, 'Se pensi a un ictus:', x0, y0, VERT ? 38 : 40, 800, KIT.giallo);
+    passi.forEach((p, i) => {
+      const b = clamp((t - T(15) - 0.1 - i * 0.3) / 0.4), y = y0 + 70 + i * dy;
+      c.globalAlpha = a * b;
+      c.fillStyle = KIT.giallo; c.beginPath(); c.arc(x0 + 30, y - 12, 30, 0, 7); c.fill();
+      testo(c, String(i + 1), x0 + 30, y + 2, 36, 900, KIT.blu, 'center');
+      testo(c, p, x0 + 82, y, corpo, 700, '#FFFFFF');
+    });
+    c.globalAlpha = a;
+    const cx = VERT ? W / 2 : 1500, y112 = VERT ? 930 : 330;
+    testo(c, 'In ogni emergenza', cx, y112 - 80, VERT ? 34 : 34, 700, '#FFFFFF', 'center');
+    testo(c, '112', cx, y112 + 70, VERT ? 140 : 150, 900, KIT.giallo, 'center');
+    const d = clamp((t - T(16) + 0.2) / 0.6);
+    c.globalAlpha = a * d;
+    const yc = VERT ? 1080 : 560;
+    testo(c, 'Il primo soccorso si impara ai corsi BLSD', cx, yc, VERT ? 30 : 28, 700, '#FFFFFF', 'center');
+    testo(c, 'della Misericordia di Ariccia', cx, yc + (VERT ? 40 : 38), VERT ? 30 : 28, 700, '#FFFFFF', 'center');
+    testo(c, '328 8105399', cx, yc + (VERT ? 118 : 116), VERT ? 60 : 58, 900, KIT.giallo, 'center');
+    testo(c, 'oppure 06 933 3717', cx, yc + (VERT ? 160 : 156), 26, 600, '#FFFFFF', 'center');
+    testo(c, 'misericordia-ariccia.it/servizi/formazione', cx, yc + (VERT ? 212 : 210), VERT ? 28 : 26, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+
+  /* ============================================================ cornice di microtesto */
+  const telaCornice = document.getElementById('cornice');
+  let esitoCornice = null;
+
+  /* ============================================================ render(t) */
+  const fonte = document.getElementById('fonte');
+  const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
+  function opacita(nome, a) { const m = PARTI[nome]; if (!m) return; m.material.opacity = a; m.visible = a > 0.004; m.material.depthWrite = a > 0.97; }
+  function render(tempo) {
+    const t = clamp(tempo, 0, TOTAL);
+    U.uT.value = t;
+    const f = flusso(t); U.uFA.value = f;
+    const c = contrazione(t); contrV.value = 0.07 * c.v; contrA.value = 0.06 * c.a;
+    const b = blocco(t); U.uBlocco.value = b; U.uScuro.value = scurito(t);
+    U.uParola.value = fin(t, tm.parola - 0.2, F(4) + 0.4, 0.5, 0.5) * (0.75 + 0.25 * Math.sin(t * 5));
+    U.uBraccio.value = fin(t, tm.braccio - 0.2, F(4) + 0.4, 0.5, 0.5) * (0.75 + 0.25 * Math.sin(t * 5 + 1.5));
+    U.uLatoSx.value = fin(t, tm.opposto - 0.2, F(5) + 0.6, 0.6, 0.5);
+    U.uLatoDx.value = fin(t, tm.destro - 0.6, F(5) + 0.6, 0.6, 0.5);
+    const cam = telecamera(t);
+    dentro.updateMatrixWorld(true);
+
+    // pelle olografica: piena nelle viste del corpo, più leggera vicino al cervello
+    const vicinoCerv = clamp((0.9 - camDist) / 0.4);
+    alfaPelle.value = mix(1, 0.35, vicinoCerv);
+    PARTI.pelle.visible = true;
+    opacita('colonna', 0.35 * (1 - vicinoCerv));
+    // emisferi trasparenti quando si guardano le arterie, pieni quando si guarda il cervello
+    const trasp = Math.max(fin(t, T(2) + 1.2, tm.senza + 1.45, 1.0, 0.5), fin(t, T(13) + 0.2, tm.tac + 0.4, 0.8, 0.6), fin(t, T(14) + 0.3, tm.salva + 1.7, 0.6, 0.6));   // nel finale si vede il coagulo che si scioglie
+    const aCerv = mix(1, 0.2, trasp);
+    for (const n of ['emisfero_sx', 'emisfero_dx', 'encefalo_resto']) {   // a metà dissolvenza solo la faccia esterna: niente pieghe interne
+      opacita(n, aCerv); const m = PARTI[n].material, pieno = aCerv > 0.35;
+      if ((m.side === THREE.FrontSide) !== pieno) { m.side = pieno ? THREE.FrontSide : THREE.DoubleSide; m.needsUpdate = true; }
+      m.depthWrite = pieno; }
+    opacita('arterie_cervello', 1); opacita('arterie', 1); opacita('vene', 0.3 * (1 - vicinoCerv));
+    U.uVis.value = 1;
+    // globuli
+    const rCorpo = clamp(0.0026 * camDist / 0.7, 0.0026, 0.0085), rCerv = clamp(0.0009 * camDist / 0.25, 0.0007, 0.0024);
+    const vG = t < T(1) + 0.5 ? fin(t, 0.3, 99, 0.8, 1) : 1;
+    aggiornaGlobuli(t, f, vG * (1 - 0.6 * vicinoCerv), vG, rCorpo, rCerv);
+    // coagulo, emorragia, incrocio, TAC
+    const sC = 0.0019 * b; coagulo.visible = sC > 1e-5; coagulo.scale.set(sC * 1.7, sC, sC);
+    coagulo.material.opacity = clamp(b * 1.5);
+    const vEmo = fin(t, tm.rompe - 0.1, tm.senza + 1.0, 0.9, 0.5) + fin(t, tm.coagEmo + 0.4, tm.tac + 0.3, 0.6, 0.5);
+    emorragia.visible = vEmo > 0.01; emorragia.material.opacity = 0.85 * clamp(vEmo);
+    const sE = 0.0055 * clamp(vEmo) * (0.85 + 0.15 * clamp((t - tm.rompe) / 1.5)); emorragia.scale.set(sE, sE * 0.8, sE);
+    const cresce = clamp((t - tm.opposto) / 1.6) * fin(t, tm.opposto - 0.1, F(5) + 0.6, 0.1, 0.5);
+    incrocio.visible = cresce > 0.01; incrocio.material.opacity = clamp(cresce * 3) * fin(t, tm.opposto, F(5) + 0.6, 0.1, 0.5);
+    incrocio.geometry.setDrawRange(0, Math.floor(incrocio.geometry.index.count * clamp(cresce) / 3) * 3);
+    const finePunta = curvaIncrocio.getPointAt(Math.max(0.001, clamp(cresce))), tang = curvaIncrocio.getTangentAt(Math.max(0.001, clamp(cresce)));
+    puntaIncrocio.visible = incrocio.visible; puntaIncrocio.position.copy(finePunta); puntaIncrocio.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tang);
+    const vTac = fin(t, tm.tac - 0.3, tm.medicine + 1.0, 0.4, 0.6);   // entra già attorno alla testa: niente fascia grigia in alto
+    tac.visible = vTac > 0.01; tac.userData.m1.opacity = vTac; tac.userData.m2.opacity = vTac * 0.9;
+    const yScan = mix(1.65, 1.47, clamp((t - tm.tac + 0.3) / 2.3));
+    tac.position.y = yScan; U.uScan.value = vTac > 0.3 ? yScan : -1;
+
+    vicino.disegna(scena, camera);
+
+    // --- sovrimpressioni
+    s2.clearRect(0, 0, W, H);
+    const velo = Math.max(fin(t, T(6) - 0.2, F(9) + 1.0, 0.5, 0.5), fin(t, T(10) - 0.1, F(10) + 0.9, 0.4, 0.5), fin(t, T(11) - 0.2, F(11) + 0.8, 0.4, 0.5) * 0.7, fin(t, T(13) - 0.2, tm.coagEmo - 0.1, 0.4, 0.5) * 0.6);
+    if (velo > 0.001) { s2.fillStyle = `rgba(6,22,51,${(0.95 * velo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
+    controlli3(s2, t);
+    chiama112(s2, t);
+    orologio(s2, t);
+    avviso(s2, 'Non aspettare che passi', fin(t, T(12) - 0.1, F(12) + 0.6, 0.35, 0.4), '#ff8a80', VERT ? 720 : 500);
+    avviso(s2, 'anche se sembra migliorare', fin(t, W_(12, /anche/, 0.5) - 0.1, F(12) + 0.6, 0.35, 0.4), '#FFFFFF', VERT ? 810 : 590);
+    divieti(s2, t);
+    avviso(s2, 'Lo dice solo la TAC, in ospedale', fin(t, tm.tac - 0.2, tm.medicine - 0.1, 0.35, 0.4), '#7fd4ff');
+    avviso(s2, 'Le medicine le decidono i medici', fin(t, tm.medicine - 0.1, F(13) + 0.8, 0.35, 0.4), '#FFFFFF');
+    avviso(s2, 'Il tempo è cervello', fin(t, tm.tempo - 0.2, F(14) + 0.9, 0.35, 0.4), KIT.giallo);
+    avviso(s2, 'Ictus', fin(t, tm.ictus - 0.1, F(3) + 0.8, 0.3, 0.4), '#ff8a80');
+    chiusura(s2, t);
+    testata(s2, SCENE[sceneA(t)].nome);
+
+    const k = sceneA(t), sc = SCENE[k];
+    IMP.aggiorna(stato, t, { passoHUD: k + (k === 0 ? 1 : clamp((t - sc.inizio) / 0.4)), notaVisibile: true, hud: sc.nome });
+    IMP.sottotitoli(stato, t, FRASI, { modo: 'parole' });
+    for (const s of SCHEDE) {
+      const p = s.punto ? proietta(s.segue ? [s.punto[0], tac.position.y, s.punto[2]] : s.punto) : null;
+      IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT && s.versoV ? s.versoV : s.verso,
+                             inizio: s.inizio, fine: s.fine, visibile: !s.punto || !!p });
+    }
+    const testoFonte = 'Anatomia: BodyParts3D, © The Database Center for Life Science, CC BY 4.0\nContenuti: IRC 2025, Istituto Superiore di Sanità, Ministero della Salute';
+    if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
+    fonte.style.left = L.margine + 'px'; fonte.style.top = (L.zona.basso - fonte.offsetHeight + 4) + 'px';
+    const pannelli = Math.max(fin(t, T(6) - 0.2, F(9) + 1.0, 0.3, 0.3), fin(t, T(11) - 0.2, F(11) + 0.8, 0.3, 0.3) * (VERT ? 1 : 0), fin(t, T(13) - 0.2, tm.coagEmo - 0.1, 0.3, 0.3));
+    fonte.style.opacity = ((t < T(15) - 0.4 ? 1 : 1 - clamp((t - T(15) + 0.4) / 0.5)) * (1 - pannelli)).toFixed(3);
+    window.__camFerma = cam.ferma;
+  }
+
+  window.renderFrame = t => render(t);
+  const problemi = [];
+  if (!MEDIA) problemi.push({ tipo: 'anatomia', dettagli: 'manca il percorso dell\'arteria cerebrale media sinistra' });
+  if (MEDIA && (MEDIA.uC < 0.2 || MEDIA.uC > 0.9)) problemi.push({ tipo: 'anatomia', dettagli: 'coagulo fuori dal tratto dell\'arteria cerebrale media (u = ' + MEDIA.uC.toFixed(2) + ')' });
+  if (FRASI.length && RIGHE.length !== 16) problemi.push({ tipo: 'voce', dettagli: 'le frasi della voce non sono 16' });
+  window.__controlli = () => IMP.controlli(stato).concat(problemi);
+  Promise.all([IMP.caricaFont(), new Promise(r => { if (stemma.complete) r(); else stemma.onload = r; })]).then(() => {
+    render(0);
+    esitoCornice = window.corniceSovrapposta(telaCornice, fondo);
+    window.CORNICE_ESITO = esitoCornice;
+    window.__ready = true;
+  });
+})();
+</script>
+</body>
+</html>
