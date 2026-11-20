@@ -45,6 +45,7 @@ for i, (k, data) in enumerate(CAL, 1):
 title: "{tit}"
 titoloSeo: "{v['nome']}: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: {data}
+canale: "approfondimenti"
 slug: "primo-soccorso-{k}"
 description: "{desc}"
 immagine: "/img/news/primo-soccorso-{k}-grafica.jpg"
@@ -89,6 +90,7 @@ testo = f'''---
 title: "Giornata del volontariato: grazie, e c'è posto anche per te"
 titoloSeo: "Giornata internazionale del volontariato: diventa volontario ad Ariccia"
 date: 2026-12-05
+canale: "misericordia"
 slug: "giornata-volontariato-2026"
 description: "{desc}"
 immagine: "/img/news/{k}-grafica.jpg"

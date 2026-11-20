@@ -42,6 +42,7 @@ for i, (k, data) in enumerate(CAL, 1):
 title: "{tit}"
 titoloSeo: "{a['titolo']}: cosa fare passo passo (linee guida IRC 2025)"
 date: {data}
+canale: "approfondimenti"
 slug: "primo-soccorso-{k}"
 description: "{desc}"
 immagine: "/img/news/primo-soccorso-{k}-grafica.jpg"
