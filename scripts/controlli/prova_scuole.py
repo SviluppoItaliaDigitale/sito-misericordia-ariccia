@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Controllo dei materiali per le scuole (content/scuole/, static/documenti/scuole/, dal 18/11/2026).
+"""Controllo dei materiali per le scuole (content/scuole/, static/documenti/scuole/, dal 18/11/2026) e delle slide
+per i corsi (content/slide-corsi.md, static/documenti/formazione/, scripts/formazione/slide/, dal 20/11/2026).
 
 Per ogni materiale elencato nelle pagine di content/scuole/: il PDF esiste, ha il segno di firma e cornice
 (rendi.py --cornice, regola del 21/10/2026) e la sua anteprima in static/img/scuole/; le slide hanno anche i
@@ -29,7 +30,11 @@ def ha_segno(dati: bytes) -> bool:
 
 elencati = set()
 nascosti = set()  # PDF di materiali con revisione: "da fare" (contenuti sanitari non ancora rivisti)
-for pagina in sorted((REPO / "content/scuole").glob("*.md")):
+# dal 20/11/2026 anche le slide per i corsi dei formatori: content/slide-corsi.md e static/documenti/formazione/
+PAGINE = sorted((REPO / "content/scuole").glob("*.md")) + [REPO / "content/slide-corsi.md"]
+for pagina in PAGINE:
+    if not pagina.exists():
+        continue
     if pagina.name == "_index.md":
         continue
     fm = pagina.read_text(encoding="utf-8").split("---")[1]
@@ -46,7 +51,7 @@ for pagina in sorted((REPO / "content/scuole").glob("*.md")):
         rel = f.group(1).strip()
         pdf = REPO / "static" / rel.lstrip("/")
         elencati.add(pdf)
-        if not re.fullmatch(r"/documenti/scuole/[a-z]+/[a-z0-9-]+\.pdf", rel):
+        if not re.fullmatch(r"/documenti/(scuole/[a-z]+|formazione)/[a-z0-9-]+\.pdf", rel):
             errori.append(f"{pagina.name}: percorso non valido {rel}")
         nascosto = re.search(r'revisione:\s*"da fare"', voce)
         if nascosto:
@@ -68,11 +73,12 @@ for pagina in sorted((REPO / "content/scuole").glob("*.md")):
                     # la pagina mostra solo i formati che esistono: un formato mancante è un avviso, non un errore
                     avvisi.append(f"{rel}: formato per la LIM ancora da fare, {altro.name}")
 
-for pdf in sorted(f for f in (REPO / "static/documenti/scuole").rglob("*") if f.suffix in (".pdf", ".pptx")):
-    if pdf not in elencati:
-        errori.append(f"{pdf.relative_to(REPO)}: non è elencato in nessuna pagina di content/scuole/")
+for cartella in ("scuole", "formazione"):
+    for pdf in sorted(f for f in (REPO / "static/documenti" / cartella).rglob("*") if f.suffix in (".pdf", ".pptx")):
+        if pdf not in elencati:
+            errori.append(f"{pdf.relative_to(REPO)}: non è elencato in nessuna pagina (content/scuole/ o content/slide-corsi.md)")
 
-for sorgente in sorted((REPO / "scripts/scuole").glob("*/*.html")):
+for sorgente in sorted(list((REPO / "scripts/scuole").glob("*/*.html")) + list((REPO / "scripts/formazione/slide").glob("*.html"))):
     m = re.search(r'<meta name="uscita" content="([^"]+)"', sorgente.read_text(encoding="utf-8"))
     if not m:
         errori.append(f"{sorgente.relative_to(REPO)}: manca <meta name=\"uscita\">")

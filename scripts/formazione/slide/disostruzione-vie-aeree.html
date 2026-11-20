@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/disostruzione-vie-aeree.pdf">
+<title>Disostruzione delle vie aeree: adulto, bambino e lattante</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per i formatori della Misericordia di Ariccia, da proiettare in aula nei corsi di disostruzione delle vie aeree
+(adulto, bambino, lattante). Accompagnano il materiale ufficiale del corso e non lo sostituiscono (lo dice la slide 2).
+Fonti, lette il 20/11/2026 (ogni slide cita capitolo e pagina nelle note per chi presenta):
+- Linee guida RCP 2025 IRC (versione italiana delle linee guida ERC 2025), https://www.ircouncil.it/linee-guida-rcp-2025/
+  - capitolo 12 «Primo soccorso» (PDF del 15/04/2026), pp. 5, 9, 11, 12, 28-30: ostruzione delle vie aeree nell'adulto;
+  - capitolo 9 «Supporto delle funzioni vitali in età pediatrica» (PDF del 02/04/2026), pp. 6-7, 23-24, 28-30, 64-65;
+  - capitolo 4 «BLS adulto» (PDF di febbraio 2026), pp. 6 e 9.
+Gli stessi contenuti del sito: dossier content/dossier/primo-soccorso.md (schede «Soffocamento» e «Soffocamento nel
+lattante») e data/dati_da_verificare.yaml (voce soffocamento-5-5). Disegni SVG fatti a mano; l'unica immagine esterna
+(slide 9) è di pubblico dominio, con i crediti nella slide 20 e in img/CREDITI.md. Il testo è una parafrasi, non una copia.
+-->
+<style>
+.diapo .contenuto { gap: 24px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 38px; line-height: 50px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .lato { display: grid; grid-template-columns: 1fr 520px; gap: 60px; align-items: center; }
+.diapo .passi { display: flex; flex-direction: column; gap: 18px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 86px; min-height: 60px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 60px; height: 60px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 34px; line-height: 60px; text-align: center; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .si { border-left: 10px solid #1E7B34; padding-left: 26px; }
+.diapo .colonna h3 { margin-bottom: 10px; }
+.diapo .colonna ul { gap: 8px; }
+.diapo .etichetta { display: inline-block; background: var(--blu); color: #FFFFFF; font-weight: 700; padding: 2px 18px; font-size: 30px; line-height: 44px; }
+.diapo .flusso { display: flex; align-items: stretch; gap: 0; }
+.diapo .flusso .box { flex: 1; background: #FFFFFF; border: 4px solid var(--blu); padding: 18px 20px; font-size: 31px; line-height: 40px; display: flex; flex-direction: column; justify-content: center; }
+.diapo .flusso .box b { display: block; font-size: 36px; line-height: 44px; font-weight: 800; color: var(--blu); margin-bottom: 6px; }
+.diapo .flusso .box.giallo { background: var(--giallo); }
+.diapo .flusso .box.rosso { border-color: #C8102E; }
+.diapo .flusso .box.rosso b { color: #A50E26; }
+.diapo .flusso .tra { width: 56px; display: flex; align-items: center; justify-content: center; flex: none; }
+.diapo .tabella { display: grid; grid-template-columns: 300px 1fr 1fr 1fr; border-top: 4px solid var(--blu); font-size: 29px; line-height: 38px; }
+.diapo .tabella > div { padding: 12px 16px; border-bottom: 2px solid #C9D3E6; }
+.diapo .tabella > .t { font-weight: 800; color: var(--blu); background: rgba(255,255,255,.75); }
+.diapo .tabella > .r { font-weight: 700; }
+.diapo .figura { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.diapo .figure-due { display: flex; gap: 20px; align-items: center; }
+.diapo .figure-due > svg { flex: none; }
+.diapo .figure-due > .figura { flex: 0 0 340px; }
+.diapo .figura img { width: 340px; height: auto; background: #FFFFFF; border: 2px solid #C9D3E6; }
+.diapo .figura .didascalia { font-size: 22px; line-height: 28px; color: #3D4F7C; text-align: center; }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo > .disegno-copertina { position: absolute; right: 170px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo .crediti { font-size: 28px; line-height: 38px; }
+.diapo .crediti li { margin-bottom: 10px; }
+.diapo .url { white-space: nowrap; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="480" height="460" viewBox="0 0 480 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M210 20 V200 C210 250 180 280 120 330 C80 365 60 400 60 440" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M270 20 V200 C270 250 300 280 360 330 C400 365 420 400 420 440" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M210 60 H270 M210 100 H270 M210 140 H270" stroke="#FFFFFF" stroke-width="8"/>
+<circle cx="240" cy="182" r="30" fill="#FCEB0C" stroke="#FCEB0C" stroke-width="4"/>
+</svg>
+<div class="contenuto">
+<h1>Disostruzione delle vie aeree: <span class="finale">adulto, bambino, lattante</span></h1>
+<p class="sotto">Che cosa fare quando un corpo estraneo blocca le vie aeree, secondo le linee guida 2025 di Italian Resuscitation Council.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentazione per i corsi di disostruzione delle vie aeree della Misericordia di Ariccia. Prima di cominciare: presentatevi, dite quanto dura la lezione e che le manovre si provano solo sui manichini, mai sui compagni. Fonti di tutta la presentazione: Linee guida RCP 2025 IRC, capitolo 12 «Primo soccorso» (adulto) e capitolo 9 «Supporto delle funzioni vitali in età pediatrica» (bambino e lattante), lette il 20/11/2026 su ircouncil.it.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima di cominciare</h2>
+<ul>
+<li>Queste slide <strong>accompagnano il materiale ufficiale del corso</strong>: non lo sostituiscono.</li>
+<li>Il riferimento sono le <strong>linee guida RCP 2025</strong> di Italian Resuscitation Council (IRC), versione italiana delle linee guida europee ERC 2025.</li>
+<li>Le manovre si imparano <strong>provandole sui manichini</strong>, con l'istruttore che corregge. Mai sulle persone sane.</li>
+</ul>
+<p class="riquadro blu">Nel dubbio vale sempre quello che dicono il manuale del corso e l'istruttore.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dite chiaramente che il materiale di riferimento è quello del corso (programma del corso riconosciuto e manuale IRC). Le compressioni addominali su una persona sana possono fare male: in aula si provano solo sui manichini o sui giubbotti da addestramento. Fonte: Linee guida RCP 2025 IRC, capitolo 12 «Primo soccorso», p. 3 (il primo soccorso comprende anche l'ostruzione delle vie aeree) e capitolo 9, p. 28.</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Perché chi è presente fa la differenza</h2>
+<ul>
+<li>Il soffocamento è <strong>frequente</strong>, soprattutto nei <strong>bambini piccoli</strong> e negli <strong>anziani</strong>.</li>
+<li>I bambini portano alla bocca piccoli oggetti; gli adulti soffocano spesso con <strong>carne, frutta a guscio, uva</strong> e altri cibi.</li>
+<li>Se l'ostruzione è completa, in <strong>pochi minuti</strong> la persona perde conoscenza e il cuore si ferma.</li>
+</ul>
+<p class="riquadro tenue">In un grande studio, chi era presente è intervenuto per primo in 643 casi e ha liberato le vie aeree in <strong>492</strong>: di questi, il <strong>97,6%</strong> è sopravvissuto.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Messaggio: si interviene subito, prima che arrivino i soccorsi, perché l'ostruzione completa porta all'arresto cardiaco in pochi minuti. I numeri (643 casi, 492 risolti pari al 76,5%, 97,6% di sopravvissuti fra questi) vengono dal più grande studio osservazionale citato da IRC 2025, capitolo 12 «Primo soccorso», p. 28. Per i bambini il capitolo 9, p. 64, dice che semplici interventi di chi è presente funzionano in oltre il 75% dei casi.</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Riconoscere il soffocamento</h2>
+<div class="griglia-2">
+<div class="colonna">
+<h3>Adulto e ragazzo</h3>
+<ul>
+<li>All'improvviso <strong>non riesce a parlare</strong> né a tossire.</li>
+<li>Succede soprattutto <strong>mentre mangia</strong>.</li>
+<li>Spesso si porta le mani alla gola.</li>
+</ul>
+</div>
+<div class="colonna">
+<h3>Lattante e bambino piccolo</h3>
+<ul>
+<li><strong>Non riesce a piangere</strong> con forza, o a tossire.</li>
+<li>Succede durante il <strong>pasto</strong> o il <strong>gioco senza sorveglianza</strong>.</li>
+</ul>
+</div>
+</div>
+<p class="riquadro blu">Chiedi subito: <span class="evidenzia">«Stai soffocando?»</span> Se fa sì con la testa e non riesce a parlare, è un'ostruzione grave.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: adulto, IRC 2025 capitolo 12, p. 11 (sospettare il soffocamento se all'improvviso non riesce a parlare o tossire, soprattutto durante il pasto; chiedere «Sta soffocando?»); bambino e lattante, capitolo 9, p. 29 (non riesce a parlare o a piangere con vigore, durante il pasto o il gioco senza supervisione). Le mani alla gola sono nella figura 5 del capitolo 12 (p. 12) e nella scheda del sito; non sono un criterio scritto nel testo. Il cenno di sì con la testa alla domanda è un'indicazione pratica del corso, non una frase delle linee guida. Errore frequente: aspettare che diventi cianotico.</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ostruzione lieve o grave?</h2>
+<div class="griglia-2">
+<div class="riquadro tenue si">
+<h3>Lieve (parziale)</h3>
+<p>L'aria passa ancora: <strong>tossisce</strong> con forza, <strong>parla</strong>, piange.</p>
+<p style="margin-top: 14px;"><strong>Incoraggia a tossire</strong> e resta accanto: controlla se peggiora.</p>
+</div>
+<div class="riquadro tenue no">
+<h3>Grave (completa)</h3>
+<p><strong>Non parla</strong>, tosse debole o assente, respira a fatica o non respira.</p>
+<p style="margin-top: 14px;"><strong>Agisci subito</strong>: 112, colpi tra le scapole e compressioni.</p>
+</div>
+</div>
+<p class="piccolo">La tosse è la manovra più efficace finché funziona: non battere sulla schiena di chi tossisce bene.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 12 «Primo soccorso», p. 28: nell'ostruzione parziale l'aria passa e la persona tossisce o parla; nell'ostruzione completa non parla, la tosse è debole o assente, respira a fatica o non respira. La tosse crea pressioni alte e prolungate e può espellere il corpo estraneo; colpi e compressioni sono riservati a chi non riesce a tossire o parlare. Il passaggio alla manovra avviene quando la tosse diventa inefficace o la persona si stanca (stessa pagina; capitolo 9, p. 29 e figura 22, p. 28).</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Quando chiamare il 112</h2>
+<ol class="passi">
+<li>Appena la tosse <strong>non basta più</strong> (non tossisce, non parla, non piange): <strong>chiama subito il 112</strong>, o fallo chiamare da chi è vicino.</li>
+<li>Metti il <strong>vivavoce</strong> e intanto comincia le manovre: l'operatore ti guida.</li>
+<li>Se sei da solo con un bambino, chiama <strong>al più tardi quando perde conoscenza</strong>.</li>
+</ol>
+<p class="no"><strong>Non aspettare che perda conoscenza</strong> per chiamare, se puoi farlo prima.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: adulto, IRC 2025 capitolo 12, p. 11 («chiamare immediatamente» i soccorsi) e p. 5, tabella 1 (chiamare sempre aiuto come principio generale); bambino, capitolo 9, p. 29 (chiamare o far chiamare appena possibile, al più tardi quando perde coscienza) e algoritmo della figura 22, p. 28 (tosse non efficace → chiamare il 112/118 → manovre). Nel Lazio il numero unico è il 112. Errore frequente: chiamare solo quando la persona è già incosciente.</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Adulto: la sequenza</h2>
+<div class="flusso">
+<div class="box"><b>Tosse</b>Se tossisce, incoraggialo a continuare.</div>
+<div class="tra"><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M6 6 L36 30 L6 54" fill="none" stroke="#233B74" stroke-width="10" stroke-linejoin="miter"/></svg></div>
+<div class="box giallo"><b>5 colpi</b>tra le scapole, se la tosse non basta più</div>
+<div class="tra"><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M6 6 L36 30 L6 54" fill="none" stroke="#233B74" stroke-width="10" stroke-linejoin="miter"/></svg></div>
+<div class="box giallo"><b>5 compressioni</b>addominali, se i colpi non bastano</div>
+<div class="tra"><svg width="46" height="60" viewBox="0 0 46 60" aria-hidden="true"><path d="M6 6 L36 30 L6 54" fill="none" stroke="#233B74" stroke-width="10" stroke-linejoin="miter"/></svg></div>
+<div class="box rosso"><b>Perde conoscenza?</b>Rianimazione cardiopolmonare</div>
+</div>
+<p><strong>Alterna</strong> 5 colpi e 5 compressioni finché l'ostruzione si risolve o la persona non risponde più. Il <strong>112</strong> si chiama subito.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">È la «strategia progressiva» delle linee guida 2025: tosse, poi colpi interscapolari, poi compressioni addominali (IRC 2025, capitolo 12, p. 5, tabella 1, e p. 11; figura 5 a p. 12). Si comincia dai colpi perché le compressioni addominali come primo intervento risolvono meno spesso e causano più lesioni (p. 28). «Fino a 5»: ci si ferma appena l'ostruzione si risolve.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Adulto: i colpi tra le scapole</h2>
+<div class="lato" style="grid-template-columns: 1fr 680px; gap: 40px;">
+<ol class="passi">
+<li>Mettiti <strong>dietro</strong> la persona, un po' di lato, e falla <strong>piegare in avanti</strong> sostenendole il petto con una mano.</li>
+<li>Con la <strong>base del palmo</strong>, dalla parte del mignolo, dai un colpo deciso <strong>tra le scapole</strong>, al centro della schiena.</li>
+<li>Fino a <strong>5 colpi</strong>: dopo ognuno guarda se l'ostruzione si è risolta.</li>
+</ol>
+<svg viewBox="220 0 700 600" width="680" height="583" role="img" aria-label="Il soccorritore sta dietro e un po' di lato alla persona piegata in avanti, la sostiene al petto con un braccio e con l'altra mano colpisce tra le scapole; a destra una mano vista dal palmo con evidenziata la base del palmo dalla parte del mignolo" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M300 340 L280 540 M300 340 L335 540" stroke="#003F85" stroke-width="34"/>
+<path d="M322 222 L455 345 L535 300" stroke="#003F85" stroke-width="30"/>
+<path d="M430 340 L415 540 M430 340 L465 540" stroke="#009FE3" stroke-width="34"/>
+<path d="M430 340 L530 240" stroke="#009FE3" stroke-width="70"/>
+<circle cx="572" cy="214" r="36" fill="#009FE3"/>
+<path d="M530 258 L545 350" stroke="#009FE3" stroke-width="28"/>
+<path d="M480 323 L535 300" stroke="#003F85" stroke-width="30"/>
+<path d="M300 340 L312 205" stroke="#003F85" stroke-width="64"/>
+<circle cx="318" cy="140" r="38" fill="#003F85"/>
+<path d="M306 210 L372 128 L448 182" stroke="#003F85" stroke-width="30"/>
+<ellipse cx="462" cy="196" rx="30" ry="20" transform="rotate(40 462 196)" fill="#003F85"/>
+<circle cx="490" cy="248" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="6"/>
+<path d="M505 160 C522 172 530 186 532 200 M478 140 C496 150 506 160 511 172" stroke="#5A6478" stroke-width="5"/>
+<text x="370" y="40" text-anchor="middle" fill="#003F85" font-size="25" font-weight="700" stroke="none">tu, dietro e di lato</text>
+<text x="560" y="440" text-anchor="middle" fill="#0077AA" font-size="25" font-weight="700" stroke="none">piegata</text>
+<text x="560" y="469" text-anchor="middle" fill="#0077AA" font-size="25" font-weight="700" stroke="none">in avanti</text>
+<text x="500" y="105" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">tra le scapole</text>
+<g transform="translate(650 40)">
+<path d="M60 238 L60 160 M100 232 L100 92 M140 232 L140 80 M178 238 L178 112 M192 305 L236 256" stroke="#233B74" stroke-width="34"/>
+<path d="M40 250 C40 225 55 215 90 215 L175 215 C198 215 202 240 200 270 L194 360 C192 395 170 410 130 410 L90 410 C55 410 40 390 40 360 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M60 245 L60 160 M100 245 L100 92 M140 245 L140 80 M178 245 L178 112 M185 315 L236 256" stroke="#FFFFFF" stroke-width="20"/>
+<ellipse cx="80" cy="350" rx="30" ry="46" fill="#FCEB0C" stroke="#003F85" stroke-width="4"/>
+<path d="M62 420 V470 M168 420 V470" stroke="#233B74" stroke-width="7"/>
+<text x="118" y="515" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">base del palmo,</text>
+<text x="118" y="546" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">lato del mignolo</text>
+</g></svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 12, p. 28: posizionarsi dietro la persona e usare l'eminenza ipotenar (la parte carnosa del palmo dalla parte del mignolo, vicino al polso) per colpire tra le scapole al centro della schiena; fino a 5 colpi se non tossisce o la tosse diventa inefficace (p. 11). La persona piegata in avanti è nella figura 5, p. 12 (per il bambino è scritto nel capitolo 9, p. 29). Errori frequenti: colpi troppo deboli, colpi sul collo o in basso sulla schiena, persona dritta invece che piegata in avanti. Disegno nel disegno: la mano è vista dal palmo.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Adulto: le compressioni addominali</h2>
+<div class="lato" style="grid-template-columns: 1fr 760px; gap: 40px;">
+<ol class="passi">
+<li>Resta <strong>dietro</strong>, circonda con le braccia la <strong>parte alta dell'addome</strong> e fai piegare la persona <strong>in avanti</strong>.</li>
+<li>Chiudi il <strong>pugno</strong> e mettilo <strong>tra l'ombelico e l'arco delle costole</strong>.</li>
+<li>Afferra il pugno con l'altra mano e tira con decisione <strong>in dentro e in su</strong>.</li>
+<li>Fino a <strong>5 compressioni</strong>, poi di nuovo 5 colpi tra le scapole.</li>
+</ol>
+<div class="figure-due">
+<svg viewBox="240 0 380 560" width="380" height="560" role="img" aria-label="Il soccorritore sta dietro la persona un po' piegata in avanti, la circonda con le braccia e mette il pugno sulla parte alta dell'addome; una freccia indica la spinta in dentro e in su" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<!-- soccorritore (blu), dietro -->
+<path d="M300 340 L285 540 M300 340 L335 540" stroke="#003F85" stroke-width="34"/>
+<path d="M300 340 L315 200" stroke="#003F85" stroke-width="64"/>
+<circle cx="312" cy="134" r="38" fill="#003F85"/>
+<!-- vittima (azzurro), un po' piegata in avanti -->
+<path d="M400 345 L385 540 M400 345 L435 540" stroke="#009FE3" stroke-width="34"/>
+<path d="M400 345 L470 215" stroke="#009FE3" stroke-width="72"/>
+<circle cx="510" cy="172" r="36" fill="#009FE3"/>
+<path d="M476 228 L515 328" stroke="#009FE3" stroke-width="28"/>
+<!-- braccia del soccorritore attorno all'addome -->
+<path d="M320 222 L385 302 L452 292" stroke="#003F85" stroke-width="30"/>
+<circle cx="462" cy="290" r="22" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M556 345 C548 305 520 284 492 268" stroke="#C8102E" stroke-width="7"/>
+<path d="M514 264 L490 267 L498 290" stroke="#C8102E" stroke-width="7"/>
+<text x="560" y="380" text-anchor="middle" fill="#A50E26" font-size="24" font-weight="700" stroke="none">in dentro</text>
+<text x="560" y="408" text-anchor="middle" fill="#A50E26" font-size="24" font-weight="700" stroke="none">e in su</text>
+<text x="300" y="40" text-anchor="middle" fill="#003F85" font-size="24" font-weight="700" stroke="none">tu, dietro</text>
+</svg>
+<div class="figura">
+<img src="img/disostruzione-punto-compressioni-addominali.png" alt="Disegno del torace con le costole: un cerchio verde indica il punto delle compressioni, sotto la punta dello sterno e sopra l'ombelico">
+<p class="didascalia">Il punto: sopra l'ombelico, sotto la punta dello sterno (disegno di pubblico dominio, crediti nell'ultima slide).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 12, p. 28: dietro la persona, braccia attorno alla parte superiore dell'addome, inclinarla in avanti, pugno tra l'ombelico e il margine costale, afferrarlo con l'altra mano e tirare con decisione verso l'interno e verso l'alto; fino a 5 compressioni se i colpi interscapolari non funzionano. È la manovra di Heimlich. Errori frequenti: pugno sullo sterno o sulle costole (rischio di fratture), spinta solo all'indietro e non anche verso l'alto, persona non piegata in avanti. L'immagine mostra solo il punto; la tecnica si prova sul manichino.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Alternare, e fermarsi al momento giusto</h2>
+<ul>
+<li>Se dopo 5 compressioni l'ostruzione non si è risolta, <strong>alterna 5 colpi e 5 compressioni</strong>.</li>
+<li><strong>Fermati</strong> appena la persona torna a tossire, a parlare o a respirare: spesso basta una sola tecnica.</li>
+<li>Continua finché l'ostruzione si risolve o la persona <strong>non risponde più</strong>: allora si passa alla rianimazione.</li>
+</ul>
+<p class="riquadro tenue">In uno studio del 2024 solo il <strong>16%</strong> dei soccorritori ha alternato le due tecniche: molte ostruzioni si risolvono prima.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 12, pp. 28-29 (alternare 5 colpi interscapolari e 5 compressioni addominali fino alla risoluzione o finché la persona diventa non responsiva; molte ostruzioni si risolvono con una sola tecnica; studio di coorte del 2024 con il 16% di soccorritori che hanno alternato). Esercizio: fate ripetere ai corsisti il ciclo sul manichino, contando ad alta voce «uno… cinque».</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Bambino (sopra l'anno di età)</h2>
+<p>La tecnica è <strong>la stessa dell'adulto</strong>, adattata alla sua statura:</p>
+<ol class="passi">
+<li>Se è un bambino grande o un ragazzo, <strong>incoraggialo a tossire</strong>.</li>
+<li>Se la tosse non basta: fallo piegare in avanti e dai <strong>fino a 5 colpi tra le scapole</strong>.</li>
+<li>Poi <strong>fino a 5 compressioni addominali</strong>: dietro di lui, pugno <strong>tra l'ombelico e la punta dello sterno</strong>, in dentro e in su.</li>
+<li><strong>Alterna</strong> 5 e 5 finché è cosciente. Fermati subito se tossisce, respira rumorosamente o piange.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 9 «Supporto delle funzioni vitali in età pediatrica», p. 29 e figure 17a-17b, p. 30: nel bambino e nell'adolescente colpi interscapolari facendolo piegare in avanti, poi compressioni addominali con il pugno tra l'ombelico e l'apofisi xifoide; alternare finché è cosciente; interrompere appena compaiono segni di risoluzione (tosse, respiro rumoroso, pianto). Le compressioni addominali possono essere persino più efficaci nei bambini che negli adulti (p. 65). Con un bambino piccolo il soccorritore si abbassa alla sua altezza: lo si mostra sul manichino.</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Lattante (sotto l'anno): 5 pacche dorsali</h2>
+<div class="lato" style="grid-template-columns: 1fr 660px;">
+<ol class="passi">
+<li>Giralo <strong>a pancia in giù</strong> sul tuo avambraccio, e appoggia l'avambraccio sulla tua <strong>coscia</strong>.</li>
+<li>Sostieni la <strong>testa</strong> con la mano, tenendo la mandibola, senza premere sulla gola.</li>
+<li>Tieni la <strong>testa più in basso del torace</strong>.</li>
+<li>Dai <strong>fino a 5 pacche</strong> decise tra le scapole.</li>
+</ol>
+<svg viewBox="0 0 700 560" width="660" height="528" role="img" aria-label="Lattante a pancia in giù sull'avambraccio del soccorritore, appoggiato sulla coscia, con la testa più in basso del torace e la mano che sostiene la mandibola; l'altra mano dà una pacca tra le scapole" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M60 352 L600 430" stroke="#5A6478" stroke-width="84"/>
+<path d="M60 352 L600 430" stroke="#E4E9F3" stroke-width="72"/>
+<text x="250" y="388" fill="#3D4F7C" font-size="24" font-weight="700" stroke="none" transform="rotate(8.1 250 388)">la tua coscia</text>
+<path d="M80 300 L440 354" stroke="#233B74" stroke-width="52"/>
+<path d="M80 300 L440 354" stroke="#FFFFFF" stroke-width="40"/>
+<path d="M195 282 C185 300 178 315 172 330 L152 338" stroke="#233B74" stroke-width="30"/>
+<path d="M195 282 C185 300 178 315 172 330 L152 338" stroke="#FFFFFF" stroke-width="18"/>
+<ellipse cx="300" cy="255" rx="122" ry="48" transform="rotate(8.4 300 255)" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M398 292 C402 312 404 330 402 348" stroke="#233B74" stroke-width="28"/>
+<path d="M398 292 C402 312 404 330 402 348" stroke="#FFFFFF" stroke-width="16"/>
+<path d="M410 278 L456 300" stroke="#233B74" stroke-width="34"/>
+<path d="M410 278 L456 300" stroke="#FFFFFF" stroke-width="22"/>
+<circle cx="498" cy="318" r="46" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M486 306 C478 312 478 324 486 330" stroke="#233B74" stroke-width="5"/>
+<path d="M522 330 L532 332" stroke="#233B74" stroke-width="5"/>
+<path d="M436 354 C470 366 505 372 528 364 C542 358 548 344 546 330" stroke="#233B74" stroke-width="30"/>
+<path d="M436 354 C470 366 505 372 528 364 C542 358 548 344 546 330" stroke="#FFFFFF" stroke-width="18"/>
+<circle cx="372" cy="232" r="18" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+<path d="M345 70 C335 70 330 80 332 92 L340 150 C342 162 352 168 364 168 L392 166 C404 165 410 156 408 144 L402 92 C400 80 392 74 382 74 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M352 74 L358 120 M370 74 L374 120 M388 76 L390 120" stroke="#233B74" stroke-width="4"/>
+<path d="M332 120 C318 118 312 132 322 142 L340 150" stroke="#233B74" stroke-width="7"/>
+<path d="M370 178 L372 205 M360 194 L372 210 L384 194" stroke="#003F85" stroke-width="7"/>
+<path d="M300 255 H620" stroke="#C8102E" stroke-width="4" stroke-dasharray="4 12"/>
+<path d="M600 262 V312 M588 298 L600 316 L612 298" stroke="#C8102E" stroke-width="6"/>
+<text x="350" y="520" text-anchor="middle" fill="#A50E26" font-size="27" font-weight="700" stroke="none">la testa resta più in basso del torace</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 9, p. 29 e figura 16a, p. 30: lattante prono sull'avambraccio, con l'avambraccio appoggiato sulla gamba del soccorritore; sostenere il capo con la mano; testa più in basso del torace per sfruttare la gravità; colpo vigoroso tra le scapole, fino a 5 volte o fino alla risoluzione. Il testo dice «sostenere il capo con la mano»: tenerlo dalla mandibola, senza premere sulle parti molli della gola, è il modo pratico (la scheda del sito dice «sostenendo il mento»). Errori frequenti: dita che premono sulle parti molli del collo, lattante tenuto in orizzontale o con la testa più alta, pacche troppo leggere. Sul manichino: girare il lattante «a sandwich» fra i due avambracci, sostenendo sempre la testa.</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Lattante: 5 compressioni toraciche</h2>
+<div class="lato" style="grid-template-columns: 1fr 560px;">
+<ol class="passi">
+<li>Giralo <strong>a pancia in su</strong> e appoggialo sulle tue <strong>ginocchia</strong>.</li>
+<li>Circonda il torace con le mani e metti <strong>i due pollici</strong> sulla <strong>metà inferiore dello sterno</strong>.</li>
+<li>Comprimi come nella rianimazione, ma <strong>più deciso</strong>: fino a <strong>5 compressioni</strong>.</li>
+<li><strong>Alterna</strong> 5 pacche e 5 compressioni finché è cosciente.</li>
+</ol>
+<svg viewBox="0 0 600 550" width="560" height="513" role="img" aria-label="Lattante a pancia in su visto dall'alto: le mani del soccorritore circondano il torace e i due pollici sono sulla metà inferiore dello sterno, appena sotto la linea dei capezzoli" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M185 170 C150 175 125 160 115 120" stroke="#233B74" stroke-width="30"/><path d="M185 170 C150 175 125 160 115 120" stroke="#FFFFFF" stroke-width="18"/>
+<path d="M335 170 C370 175 395 160 405 120" stroke="#233B74" stroke-width="30"/><path d="M335 170 C370 175 395 160 405 120" stroke="#FFFFFF" stroke-width="18"/>
+<path d="M215 370 C185 410 170 440 200 480" stroke="#233B74" stroke-width="32"/><path d="M215 370 C185 410 170 440 200 480" stroke="#FFFFFF" stroke-width="20"/>
+<path d="M305 370 C335 410 350 440 320 480" stroke="#233B74" stroke-width="32"/><path d="M305 370 C335 410 350 440 320 480" stroke="#FFFFFF" stroke-width="20"/>
+<path d="M260 140 C330 140 352 170 352 230 L352 320 C352 370 320 392 260 392 C200 392 168 370 168 320 L168 230 C168 170 190 140 260 140 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<circle cx="260" cy="88" r="58" fill="#FFFFFF" stroke="#233B74" stroke-width="7"/>
+<path d="M238 84 h4 M278 84 h4" stroke="#233B74" stroke-width="8"/>
+<path d="M248 110 C255 115 265 115 272 110" stroke="#233B74" stroke-width="5"/>
+<path d="M190 212 H330" stroke="#009FE3" stroke-width="5" stroke-dasharray="4 12"/>
+<circle cx="222" cy="212" r="6" fill="#009FE3" stroke="none"/><circle cx="298" cy="212" r="6" fill="#009FE3" stroke="none"/>
+<path d="M260 150 V330" stroke="#5A6478" stroke-width="4" stroke-dasharray="3 12"/>
+<path d="M70 480 L148 300 M128 480 L196 322" stroke="#233B74" stroke-width="7"/>
+<path d="M450 480 L372 300 M392 480 L324 322" stroke="#233B74" stroke-width="7"/>
+<path d="M208 236 C190 224 158 230 148 256 L146 300 C148 326 178 336 204 322 C212 300 212 262 208 236 Z" fill="#E4E9F3" stroke="#233B74" stroke-width="7"/>
+<path d="M312 236 C330 224 362 230 372 256 L374 300 C372 326 342 336 316 322 C308 300 308 262 312 236 Z" fill="#E4E9F3" stroke="#233B74" stroke-width="7"/>
+<path d="M200 276 C220 270 238 260 250 246" stroke="#233B74" stroke-width="30"/>
+<path d="M200 276 C220 270 238 260 250 246" stroke="#E4E9F3" stroke-width="18"/>
+<path d="M320 276 C300 270 282 260 270 246" stroke="#233B74" stroke-width="30"/>
+<path d="M320 276 C300 270 282 260 270 246" stroke="#E4E9F3" stroke-width="18"/>
+<circle cx="260" cy="244" r="12" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+<path d="M336 212 H452" stroke="#009FE3" stroke-width="3"/>
+<text x="462" y="206" fill="#233B74" font-size="24" font-weight="700" stroke="none">linea dei</text>
+<text x="462" y="234" fill="#233B74" font-size="24" font-weight="700" stroke="none">capezzoli</text>
+<text x="300" y="532" text-anchor="middle" fill="#233B74" font-size="25" font-weight="700" stroke="none">due pollici sullo sterno, appena sotto la linea</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 9, p. 29 e figura 16b, p. 30: lattante supino sulle ginocchia del soccorritore; tecnica a due pollici come nella RCP ma comprimendo lo sterno in modo più deciso; fino a 5 volte o fino alla risoluzione; poi alternare con le pacche finché è cosciente. Il punto è la metà inferiore dello sterno (capitolo 9, p. 63). Nel disegno i pollici stanno sullo sterno appena sotto la linea dei capezzoli, le altre dita circondano il torace. Errori frequenti: usare due dita (tecnica del 2021), premere sull'addome, compressioni troppo leggere.</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Nel lattante, mai compressioni addominali</h2>
+<div class="griglia-2">
+<div class="riquadro tenue si">
+<h3>Lattante (sotto l'anno)</h3>
+<p>5 pacche dorsali alternate a <strong>5 compressioni toraciche</strong>, con i due pollici.</p>
+</div>
+<div class="riquadro tenue">
+<h3>Bambino, ragazzo, adulto</h3>
+<p>5 colpi tra le scapole alternati a <strong>5 compressioni addominali</strong>.</p>
+</div>
+</div>
+<p class="no"><strong>Nel lattante niente manovra di Heimlich:</strong> le linee guida prevedono solo le compressioni sul torace.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, capitolo 9, p. 29 e algoritmo della figura 22, p. 28: nel lattante colpi interscapolari alternati a compressioni toraciche; nel bambino e nell'adolescente colpi interscapolari alternati a compressioni addominali (p. 65: «compressioni addominali nei bambini più grandi o compressioni toraciche nel lattante»). Il testo non usa la parola «mai»: la regola del corso e del sito («mai Heimlich nel lattante») discende dal fatto che per il lattante è prevista solo la compressione toracica.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Se perde conoscenza: rianimazione</h2>
+<div class="griglia-2">
+<div class="colonna">
+<h3><span class="etichetta">Adulto</span></h3>
+<ul>
+<li>Accompagnalo a terra e comincia subito le <strong>compressioni toraciche</strong>, come nel BLS: <strong>30 e 2</strong>.</li>
+<li>Se nessuno l'ha ancora fatto, <strong>chiama il 112</strong>.</li>
+</ul>
+</div>
+<div class="colonna">
+<h3><span class="etichetta">Bambino e lattante</span></h3>
+<ul>
+<li>Comincia subito con <strong>5 ventilazioni</strong> di soccorso, poi le compressioni.</li>
+<li>Chi ha fatto il corso pediatrico usa <strong>15 e 2</strong>, gli altri 30 e 2.</li>
+</ul>
+</div>
+</div>
+<p class="riquadro tenue">Le compressioni sul torace aumentano la pressione nelle vie aeree e possono anche liberarle. Se il torace non si alza con le ventilazioni, pensa a un corpo estraneo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: adulto, IRC 2025 capitolo 12, p. 29 (se diventa non responsivo con respiro assente o anormale si iniziano le compressioni secondo il BLS standard; generano pressioni nelle vie aeree e una gittata cardiaca) e capitolo 4 «BLS adulto», p. 9 (30:2; se il torace non si solleva dopo due tentativi di ventilazione, considerare l'ostruzione da corpo estraneo). Bambino e lattante, capitolo 9, p. 29 (RCP con 5 ventilazioni di soccorso appena perde coscienza) e pp. 23-24 (15 compressioni, poi 15:2 se addestrati al PBLS, altrimenti 30:2). Il DAE si usa appena disponibile, come in ogni arresto cardiaco.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Niente dita in bocca alla cieca</h2>
+<p class="no"><strong>Non infilare le dita in bocca</strong> per cercare un oggetto che non vedi: puoi spingerlo più in fondo e ferire la gola.</p>
+<ul>
+<li>Togli l'oggetto con le dita <strong>solo se lo vedi chiaramente</strong> in bocca.</li>
+<li>Nel bambino: <strong>un solo tentativo</strong>, e solo per un oggetto ben visibile.</li>
+<li>Sui dispositivi ad aspirazione in commercio le linee guida <strong>non si esprimono</strong> né a favore né contro: mancano prove affidabili.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: IRC 2025, capitolo 12, p. 11 (mai esplorazioni cieche con le dita) e p. 29 (la rimozione alla cieca può peggiorare l'ostruzione o ledere i tessuti molli; rimozione con le dita solo se l'ostruzione è chiaramente visibile nella cavità orale); capitolo 9, p. 29 (niente manovre alla cieca, un solo tentativo per un corpo estraneo chiaramente visibile). Dispositivi ad aspirazione: nessuna raccomandazione a favore o contro per evidenze insufficienti (capitolo 12, pp. 29-30; capitolo 9, pp. 29 e 65). Se un corsista li ha in casa, non devono ritardare colpi, compressioni e RCP.</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dopo: sempre dal medico</h2>
+<ul>
+<li>Chi ha ricevuto <strong>compressioni addominali o toraciche</strong> va sempre fatto <strong>vedere da un medico</strong>, anche se sta bene.</li>
+<li>Le manovre possono causare <strong>lesioni interne</strong> che all'inizio non si notano.</li>
+<li>Nel bambino, a ostruzione risolta, serve una <strong>visita medica urgente</strong>.</li>
+</ul>
+<p class="riquadro blu">Spiega all'operatore del 112 o al medico <strong>quali manovre</strong> hai fatto e <strong>quante</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: IRC 2025, capitolo 12, p. 11 (chi è stato trattato con compressioni addominali o toraciche per soffocamento dovrebbe essere valutato da un medico per possibili complicanze o lesioni interne) e p. 30 (case report di lesioni gravi dopo le compressioni addominali, meno dopo colpi e compressioni toraciche); capitolo 9, figura 22, p. 28 («necessaria visita medica urgente» a ostruzione risolta). Il riquadro blu è un consiglio pratico del corso, non una frase delle linee guida.</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Casi particolari</h2>
+<p>Le linee guida 2025 <strong>non danno indicazioni specifiche</strong> per la donna in gravidanza avanzata, la persona con obesità o chi soffoca da solo.</p>
+<ul>
+<li>Per chi è solo quando soffoca <strong>non ci sono studi</strong>: non si sa che cosa sia davvero fattibile.</li>
+<li>Se la persona perde conoscenza vale per tutti la <strong>rianimazione standard</strong>, anche con obesità.</li>
+</ul>
+<p class="riquadro tenue">Per questi casi segui <strong>il materiale del corso e l'istruttore</strong>, senza improvvisare manovre che non hai provato.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Controllato il 20/11/2026: il capitolo 12 «Primo soccorso» (pp. 11, 28-30), il capitolo 9 pediatrico (p. 29) e il capitolo 6 «Circostanze speciali» di IRC 2025 non trattano la disostruzione in gravidanza, nell'obesità o l'auto-disostruzione. Il capitolo 12, p. 29, dice che non sono stati identificati studi su persone sole al momento dell'ostruzione. Il capitolo 4 «BLS adulto», p. 6 (tabella 1), raccomanda la RCP standard 30:2 senza modifiche nelle persone obese in arresto cardiaco. Se il manuale del vostro corso insegna varianti (per esempio le compressioni toraciche in gravidanza), presentatele come indicazione del corso, non come raccomandazione IRC 2025.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa cambia rispetto al 2021</h2>
+<ol class="passi">
+<li>L'ostruzione dell'adulto è passata dal capitolo del BLS a quello del <strong>primo soccorso</strong>.</li>
+<li>È scritta come <strong>strategia progressiva</strong>: prima la tosse, poi i colpi tra le scapole, poi le compressioni addominali.</li>
+<li>Nel lattante le compressioni toraciche si fanno con <strong>i due pollici</strong> e le altre dita intorno al torace, non più con due dita.</li>
+<li>Sui <strong>dispositivi ad aspirazione</strong> nessuna raccomandazione, a favore o contro.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonti: 1) IRC 2025, capitolo 4 «BLS adulto», p. 6, tabella 1 (argomenti rimossi: l'ostruzione da corpo estraneo è spostata nel capitolo Primo soccorso); 2) capitolo 12, p. 5, tabella 1 (ostruzione delle vie aeree, «non incluso» nel primo soccorso 2021: strategia progressiva tosse, colpi dorsali, compressioni addominali); 3) capitolo 9, p. 7, tabella 1 e p. 65 (due pollici con le altre dita che circondano il torace al posto della tecnica a due dita: compressioni più profonde, più facile da spiegare al telefono, una sola tecnica per RCP e disostruzione); 4) capitolo 12, pp. 29-30 e capitolo 9, p. 65. La sequenza delle manovre in sé (5 colpi, 5 compressioni, alternate) non è cambiata.</div>
+</section>
+
+<!-- 20 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Riepilogo</h2>
+<div class="tabella">
+<div class="t"></div><div class="t">Adulto</div><div class="t">Bambino (sopra 1 anno)</div><div class="t">Lattante (sotto 1 anno)</div>
+<div class="r">Tossisce</div><div>incoraggia la tosse</div><div>incoraggia la tosse</div><div>lascialo tossire e piangere, osserva</div>
+<div class="r">Non tossisce</div><div>112 subito</div><div>112 appena possibile</div><div>112 appena possibile</div>
+<div class="r">Manovre</div><div>5 colpi + 5 compressioni addominali</div><div>5 colpi + 5 compressioni addominali</div><div>5 pacche + 5 compressioni toraciche (due pollici)</div>
+<div class="r">Perde conoscenza</div><div>RCP 30:2</div><div>5 ventilazioni, poi RCP</div><div>5 ventilazioni, poi RCP</div>
+<div class="r">Dopo</div><div style="grid-column: span 3;">sempre dal medico; mai dita in bocca alla cieca</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Riepilogo delle slide precedenti (IRC 2025, capitolo 12, pp. 11 e 28-30; capitolo 9, pp. 28-29). «Lascialo tossire e piangere» per il lattante: la tosse e il pianto vigoroso indicano che l'aria passa (capitolo 9, p. 29; scheda «Soffocamento nel lattante» del sito). Chiudete con le prove pratiche sui manichini adulto, bambino e lattante.</div>
+</section>
+
+<!-- 21 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>Disostruzione</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti e crediti delle immagini</h2>
+<ul class="crediti">
+<li>Linee guida RCP 2025, Italian Resuscitation Council (versione italiana delle linee guida ERC 2025): capitolo 12 «Primo soccorso», capitolo 9 «Supporto delle funzioni vitali in età pediatrica», capitolo 4 «BLS adulto». Indice: <span class="url">ircouncil.it/linee-guida-rcp-2025</span>, consultate il 20/11/2026.</li>
+<li>Slide 9, disegno del punto delle compressioni addominali: «Abdominal thrusts against choking», US Army Medical Department Center and School, <strong>pubblico dominio</strong> (opera del governo degli Stati Uniti), da Wikimedia Commons; ritagliato. <span class="url">commons.wikimedia.org/wiki/File:Abdominal_thrusts_against_choking.jpg</span></li>
+<li>Tutti gli altri disegni: Misericordia di Ariccia.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Crediti richiesti per le immagini con licenza (registro in scripts/formazione/slide/img/CREDITI.md). Le slide non riproducono figure né testi delle linee guida IRC/ERC: i contenuti sono riassunti con parole nostre, con capitolo e pagina nelle note.</div>
+</section>
+
+</body>
+</html>

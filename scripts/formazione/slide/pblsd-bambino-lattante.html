@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/pblsd-bambino-lattante.pdf">
+<title>Rianimazione nel bambino e nel lattante (P-BLSD)</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per i formatori della Misericordia di Ariccia, da proiettare ai corsisti del corso P-BLSD (bambino e lattante)
+per cittadini e volontari; pubblicate anche sul sito. Sono un supporto al materiale ufficiale del corso (programma
+ARES 118, manuale e linee guida IRC) e non lo sostituiscono. Contenuto sanitario: Linee guida RCP 2025 di Italian
+Resuscitation Council, capitolo 9 «BLS pediatrico» (PDF del 02/04/2026,
+https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf), letto il 20/11/2026;
+capitolo e pagina di ogni indicazione nelle note per chi presenta. Testi parafrasati, disegni SVG fatti a mano.
+Valori uguali al registro data/dati_da_verificare.yaml (rcp-pediatrica-parametri, rcp-bambino-parametri).
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 42px; line-height: 56px; }
+.diapo .piccolo { font-size: 28px; line-height: 38px; color: #3D4F7C; }
+.diapo .passi { display: flex; flex-direction: column; gap: 20px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .lato { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: start; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .riquadro.blu p { color: #FFFFFF; }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo > .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo .url { white-space: nowrap; }
+.diapo figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.diapo figcaption { font-size: 32px; line-height: 42px; text-align: center; }
+.diapo .eta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: end; text-align: center; }
+.diapo .eta svg { margin: 0 auto; }
+.diapo .eta h3 { margin-top: 6px; }
+.diapo .eta p { font-size: 36px; line-height: 46px; }
+.diapo .griglia-3 .riquadro h3, .diapo .griglia-2 .riquadro h3 { margin-bottom: 10px; }
+.diapo .griglia-3 .riquadro p { font-size: 34px; line-height: 44px; }
+.diapo .griglia-2 .riquadro .grande { font-size: 50px; line-height: 64px; font-weight: 600; }
+.diapo .griglia-2 .riquadro .piccolo { margin-top: 8px; }
+.diapo .riquadro.blu .piccolo { color: #FFFFFF; }
+.diapo .vie figcaption { max-width: 620px; }
+.diapo .facce { gap: 20px; }
+.diapo .facce figcaption { font-size: 30px; line-height: 38px; }
+.diapo .placche { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.diapo .placche figure.oltre { border-left: 4px dashed #9AA8C6; }
+.diapo .novita { gap: 18px; font-size: 38px; line-height: 50px; }
+.diapo .riepilogo { gap: 16px; font-size: 38px; line-height: 50px; }
+.diapo .fonti { font-size: 32px; line-height: 44px; gap: 18px; }
+</style>
+</head>
+<body class="slide">
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M260 420 C150 345 50 270 50 160 C50 95 100 45 165 45 C210 45 242 70 260 105 C278 70 310 45 355 45 C420 45 470 95 470 160 C470 270 370 345 260 420 Z" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M260 318 C214 286 176 254 176 210 C176 183 196 163 222 163 C240 163 252 173 260 187 C268 173 280 163 298 163 C324 163 344 183 344 210 C344 254 306 286 260 318 Z" stroke="#FCEB0C" stroke-width="14"/>
+</svg>
+<div class="contenuto">
+<h1>Rianimazione nel bambino <span class="finale">e nel lattante</span></h1>
+<p class="sotto">Corso P-BLSD per cittadini e volontari, secondo le Linee guida RCP 2025 di Italian Resuscitation Council.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentatevi e presentate il corso: supporto di base delle funzioni vitali in età pediatrica, con l'uso del defibrillatore (P-BLSD). Chiedete chi ha figli, nipoti o lavora con i bambini: gli esempi della giornata partono da lì. Fonte di tutta la presentazione: Linee guida RCP 2025 di Italian Resuscitation Council, capitolo 9 «BLS pediatrico» (versione italiana delle linee guida ERC 2025 Paediatric Life Support), https://www.ircouncil.it/linee-guida-rcp-2025/ ; i numeri di pagina citati nelle note sono quelli del PDF del capitolo 9 pubblicato da IRC il 02/04/2026.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Queste slide accompagnano il corso</h2>
+<ul>
+<li>Sono un <strong>supporto</strong> al materiale ufficiale del corso P-BLSD: programma ARES 118, manuale e linee guida di Italian Resuscitation Council.</li>
+<li><strong>Non lo sostituiscono</strong>: se qualcosa sembra diverso, vale il materiale ufficiale.</li>
+</ul>
+<p class="riquadro blu">Le manovre si imparano <strong>sul manichino</strong>, con l'istruttore che corregge mani, posizione e ritmo.</p>
+<p class="piccolo">Riferimento: Linee guida RCP 2025, Italian Resuscitation Council, capitolo 9 «BLS pediatrico».</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dite subito che la presentazione non è il manuale del corso: lo riassume per l'aula. In caso di differenza fra slide e materiale ufficiale vale il materiale ufficiale (manuale IRC e programma del corso ARES 118); segnalatelo al responsabile della formazione perché le slide vengano corrette. Fonte: IRC 2025, cap. 9, Introduzione, p. 4 (le linee guida descrivono principi generali, non l'assistenza di ogni singolo bambino).</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Chi è lattante, chi è bambino</h2>
+<div class="eta">
+<div><svg viewBox="0 0 200 220" width="200" height="220" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="150" r="32"/><path d="M68 214 C68 194 82 184 100 184 C118 184 132 194 132 214"/></svg>
+<h3>Lattante</h3><p>dalla nascita<br>a <strong>1 anno</strong></p></div>
+<div><svg viewBox="0 0 200 220" width="200" height="220" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="104" r="34"/><path d="M58 214 C58 168 76 146 100 146 C124 146 142 168 142 214"/></svg>
+<h3>Bambino</h3><p>da 1<br>a <strong>12 anni</strong></p></div>
+<div><svg viewBox="0 0 200 220" width="200" height="220" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="44" r="34"/><path d="M48 214 C48 128 70 92 100 92 C130 92 152 128 152 214"/></svg>
+<h3>Adolescente</h3><p>da 13<br>a <strong>18 anni</strong></p></div>
+</div>
+<p class="riquadro tenue">Ti sembra un adulto? Usa la sequenza dell'adulto. Usare quella pediatrica su un giovane adulto comporta un rischio minimo o nullo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Definizioni delle linee guida: lattante dalla nascita a 1 anno, bambino 1-12 anni, adolescente 13-18 anni; «bambini» nel testo comprende tutte le età da 0 a 18 anni. Se il soccorritore pensa che sia un adulto usa l'algoritmo dell'adulto; se rianima un adulto con quello pediatrico il rischio di danno è minimo o nullo, perché le cause pediatriche durano fino alla giovane età adulta. La rianimazione del neonato alla nascita non fa parte del corso (linee guida NLS); un neonato già dimesso e a casa si rianima con la sequenza pediatrica. Fonte: IRC 2025, cap. 9, Abstract p. 3 e Introduzione p. 4. Domanda all'aula: «Un bambino di 11 mesi è un lattante o un bambino?».</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Perché nel bambino è diverso</h2>
+<div class="lato" style="grid-template-columns: 1fr 360px; align-items: center;">
+<ul>
+<li>Di solito il cuore si ferma <strong>alla fine</strong> di un problema di <strong>respiro</strong> o di circolazione che peggiora.</li>
+<li>In circa <strong>metà</strong> degli arresti fuori dall'ospedale c'è una causa che si può correggere: la più frequente è la <strong>mancanza di ossigeno</strong>.</li>
+</ul>
+<svg viewBox="0 0 360 340" width="360" height="340" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M180 40 V140 M180 140 C150 140 140 160 120 175 M180 140 C210 140 220 160 240 175" stroke="#233B74" stroke-width="10"/>
+<path d="M118 120 C70 130 46 200 50 270 C52 300 76 312 104 300 C140 284 156 250 156 200 C156 150 142 116 118 120 Z" stroke="#233B74" stroke-width="10" fill="#FFFFFF"/>
+<path d="M242 120 C290 130 314 200 310 270 C308 300 284 312 256 300 C220 284 204 250 204 200 C204 150 218 116 242 120 Z" stroke="#233B74" stroke-width="10" fill="#FFFFFF"/>
+<text x="180" y="25" text-anchor="middle" fill="#003F85" font-family="Montserrat, sans-serif" font-size="30" font-weight="800" stroke="none">O₂</text>
+</svg>
+</div>
+<p class="riquadro blu">Per questo nel bambino i soffi contano: si comincia con <strong>5 ventilazioni</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">L'arresto cardiaco nei bambini è spesso secondario a un'insufficienza respiratoria o circolatoria progressiva o a un'emergenza neurologica (IRC 2025, cap. 9, p. 8). Circa metà degli arresti extraospedalieri pediatrici ha una causa reversibile riconoscibile, con l'ipossia come causa predominante; negli adolescenti contano anche trauma, intossicazioni e tentativi di suicidio (p. 4-5). Proprio perché l'ipossia è frequente, ERC giustifica gli sforzi per ventilazioni efficaci e la partenza con 5 ventilazioni (p. 62). Domanda: «Quali situazioni di tutti i giorni tolgono ossigeno a un bambino?» (soffocamento, annegamento, malattie respiratorie).</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prevenire: riconoscere il bambino che sta male</h2>
+<div class="griglia-3">
+<div class="riquadro tenue"><h3>Comportamento</h3><p>è difficile da svegliare, molle o rigido, ha convulsioni, piange senza consolarsi</p></div>
+<div class="riquadro tenue"><h3>Respiro</h3><p>fa fatica, fa rumore, respira troppo veloce, troppo lento o con pause</p></div>
+<div class="riquadro tenue"><h3>Colorito</h3><p>pelle bluastra, a chiazze, grigia o pallida in modo strano</p></div>
+</div>
+<p class="riquadro blu">Anche uno solo di questi segni: <strong>subito il medico o il 112</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">È lo strumento «BBB» delle linee guida (Behaviour, Breathing, Body colour: comportamento, respirazione, colorito), pensato per genitori e caregiver. Elenco completo: non completamente cosciente o difficile da risvegliare, ipotonico o rigido, crisi convulsiva, confuso o agitato, pianto inconsolabile, non muove uno o più arti, dolore intenso; difficoltà a respirare, rumori respiratori, respiro troppo veloce, lento o irregolare, pause, postura anomala per respirare; cute cianotica, marezzata, pallida o grigiastra (guardare palmi, piante e mucose nei bambini con la pelle scura). Fonte: IRC 2025, cap. 9, p. 8. Riconoscere presto il bambino critico è il modo migliore per prevenire l'arresto cardiaco (p. 8).</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prevenire, ogni giorno</h2>
+<ol class="passi">
+<li><strong>Impariamo le manovre</strong>: genitori, nonni, babysitter, insegnanti, allenatori.</li>
+<li>Ai bambini che vivono vicino all'acqua si insegna a <strong>nuotare</strong> prima di lasciarli giocare da soli.</li>
+<li>Chi ha avuto una reazione allergica grave porta sempre con sé l'<strong>autoiniettore di adrenalina</strong>.</li>
+<li>A tavola, gli alimenti tondi (uva, pomodorini, olive) <strong>in pezzi piccoli, di circa 5 mm</strong>, senza semi né noccioli.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Punti 1-3: IRC 2025, cap. 9, Raccomandazioni per il pubblico, p. 52 (formazione di genitori, caregiver e di chi lavora con i bambini; nuoto per i bambini che vivono vicino all'acqua; autoiniettore di adrenalina del dosaggio giusto) e p. 8. Punto 4: Ministero della Salute, Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica (2017), Tabella 1, p. 9, come nel dossier del sito. Domanda: «Che cosa avete cambiato in casa da quando c'è un bambino?».</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Sicurezza e coscienza</h2>
+<div class="lato" style="grid-template-columns: 1fr 380px; align-items: center;">
+<ol class="passi">
+<li>Prima di avvicinarti: la scena è <strong>sicura</strong>, per te e per il bambino?</li>
+<li><strong>Chiamalo</strong> a voce alta e <strong>toccalo</strong> con delicatezza.</li>
+<li><strong>Niente stimoli dolorosi</strong>: pizzicotti o schiaffi non servono.</li>
+<li>Non risponde? <strong>Chiedi aiuto</strong> subito.</li>
+</ol>
+<svg viewBox="0 0 380 300" width="380" height="300" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M30 30 H350 Q370 30 370 50 V170 Q370 190 350 190 H140 L90 250 L100 190 H30 Q10 190 10 170 V50 Q10 30 30 30 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<text x="190" y="128" text-anchor="middle" fill="#003F85" font-size="50" font-weight="800" stroke="none">Mi senti?</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">La valutazione della coscienza si fa con uno stimolo verbale e tattile; le linee guida chiedono espressamente di non usare stimoli dolorosi. Prima ancora, sicurezza propria e del bambino. Fonte: IRC 2025, cap. 9, p. 21 (soccorritori non addestrati: «controlla» con stimoli non dolorosi) e p. 22 (soccorritori addestrati PBLS). Errore frequente: scuotere con forza il lattante. Fatelo provare sul manichino del lattante: voce e tocco su spalla o piede.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Non risponde: chiama subito il 112</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px; align-items: center;">
+<ul>
+<li>Chiama o fai chiamare il <strong>112</strong> e metti il <strong>vivavoce</strong> (o una videochiamata, se si può).</li>
+<li>L'operatore ti guida e ti aiuta a capire se iniziare la rianimazione.</li>
+<li>Se siete in due: <strong>uno comincia</strong> la rianimazione, <strong>l'altro chiama</strong> e porta il DAE.</li>
+</ul>
+<svg viewBox="0 0 300 320" width="300" height="320" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="40" y="20" width="140" height="280" rx="26" stroke="#233B74" stroke-width="10" fill="#FFFFFF"/>
+<rect x="62" y="60" width="96" height="170" rx="6" fill="#003F85"/>
+<text x="110" y="162" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="800">112</text>
+<circle cx="110" cy="262" r="12" stroke="#233B74" stroke-width="8"/>
+<path d="M210 120 C228 140 228 180 210 200" stroke="#009FE3" stroke-width="10"/>
+<path d="M238 96 C268 128 268 192 238 224" stroke="#009FE3" stroke-width="10"/>
+<path d="M266 72 C306 114 306 206 266 248" stroke="#009FE3" stroke-width="10"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Novità 2025: si chiama il servizio di emergenza appena si sospetta l'arresto cardiaco. Il soccorritore addestrato PBLS valuta il respiro mentre aspetta la risposta della centrale. Fonte: IRC 2025, cap. 9, p. 22 (vivavoce o videochiamata) e Tabella 1, p. 6. Per chi non ha fatto un corso le linee guida usano i «3 passi»: Controlla, Chiama, Comprimi e connetti il DAE (p. 21, figura 6). Con due soccorritori, il secondo chiama e recupera e collega il DAE appena possibile (p. 24). In Italia il 112 è il Numero Unico per le emergenze.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Solo e senza telefono</h2>
+<div class="lato" style="grid-template-columns: 300px 1fr; align-items: center;">
+<svg viewBox="0 0 300 300" width="300" height="300" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<circle cx="150" cy="160" r="120" stroke="#233B74" stroke-width="12" fill="#FFFFFF"/>
+<path d="M130 22 H170 M150 22 V40" stroke="#233B74" stroke-width="12"/>
+<text x="150" y="170" text-anchor="middle" fill="#003F85" font-size="76" font-weight="800">1</text>
+<text x="150" y="218" text-anchor="middle" fill="#003F85" font-size="34" font-weight="700">minuto</text>
+</svg>
+<div style="display:flex;flex-direction:column;gap:26px">
+<p>Fai <strong>1 minuto di rianimazione</strong>, poi vai a cercare aiuto.</p>
+<p class="riquadro tenue">Hai il telefono? <strong>Non aspettare</strong>: chiami subito, con il vivavoce, e intanto cominci.</p>
+</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Solo un soccorritore da solo e senza telefono subito disponibile fa un minuto di RCP prima di andare a cercare aiuto. Le linee guida osservano che è una situazione sempre più rara: oggi quasi tutti hanno un cellulare. Fonte: IRC 2025, cap. 9, p. 28 e p. 64. È la stessa indicazione del dossier del sito (scheda «Rianimazione nel bambino»). Errore frequente: chi ha il telefono in tasca fa prima il minuto di RCP; con il telefono si chiama subito in vivavoce.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Aprire le vie aeree</h2>
+<div class="griglia-2 vie">
+<figure><svg viewBox="0 0 470 400" width="470" height="400" role="img" aria-label="Lattante sdraiato a pancia in su visto di lato: testa in posizione neutra, volto rivolto in alto, dita sotto il mento" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(130,280)">
+<path d="M-90 92 H330" stroke="#5A6478" stroke-width="6"/>
+<rect x="70" y="-14" width="230" height="104" rx="46" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<g><path d="M20 -190 V-114" stroke="#009FE3" stroke-width="7" stroke-dasharray="4 16"/><path d="M4 -172 L20 -192 L36 -172" stroke="#009FE3" stroke-width="7"/>
+<path d="M84 -4 C80 -20 76 -34 72 -48 C70 -58 64 -64 58 -66 L48 -70 L44 -66 L38 -76 L30 -76 L24 -98 L12 -74 C-4 -76 -22 -72 -34 -62 A84 84 0 1 0 60 78 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+<path d="M-12 -56 q9 6 18 0" stroke="#233B74" stroke-width="6"/>
+<path d="M8 -6 c14 -8 16 12 2 14" stroke="#233B74" stroke-width="6"/>
+<rect x="62" y="-58" width="40" height="20" rx="10" transform="rotate(55 82 -48)" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/></g></g></svg><figcaption><strong>Lattante:</strong> testa in posizione <strong>neutra</strong>, mento sollevato</figcaption></figure>
+<figure><svg viewBox="0 0 450 400" width="450" height="400" role="img" aria-label="Bambino sdraiato a pancia in su visto di lato: testa leggermente estesa all'indietro, dita sotto il mento" fill="none" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(110,280)">
+<path d="M-80 92 H330" stroke="#5A6478" stroke-width="6"/>
+<rect x="56" y="-24" width="270" height="114" rx="50" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<g transform="translate(0,4) rotate(-20 30 30) scale(.82)"><path d="M20 -190 V-114" stroke="#009FE3" stroke-width="7" stroke-dasharray="4 16"/><path d="M4 -172 L20 -192 L36 -172" stroke="#009FE3" stroke-width="7"/>
+<path d="M84 -4 C80 -20 76 -34 72 -48 C70 -58 64 -64 58 -66 L48 -70 L44 -66 L38 -76 L30 -76 L24 -98 L12 -74 C-4 -76 -22 -72 -34 -62 A84 84 0 1 0 60 78 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="8"/>
+<path d="M-12 -56 q9 6 18 0" stroke="#233B74" stroke-width="6"/>
+<path d="M8 -6 c14 -8 16 12 2 14" stroke="#233B74" stroke-width="6"/>
+<rect x="62" y="-58" width="40" height="20" rx="10" transform="rotate(55 82 -48)" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/></g></g></svg><figcaption><strong>Bambino:</strong> testa <strong>appena estesa</strong> all'indietro, mento sollevato</figcaption></figure>
+</div>
+<p class="piccolo">Le dita sollevano il mento sull'osso, senza premere sotto il mento. Nell'adolescente si estende la testa come nell'adulto.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Lattante: posizione neutra; poiché da supino la testa del lattante tende a flettersi in avanti, per ottenerla serve in genere inclinarla leggermente indietro. Bambino: lieve estensione («sniffing position»), più marcata con la crescita; adolescente: iperestensione come nell'adulto. In tutti, sollevamento del mento con due dita sulla mandibola senza premere sui tessuti molli. Nei disegni la freccia azzurra indica la direzione del volto, il segno giallo le dita sull'osso del mento; il lattante ha la testa più grande rispetto al corpo. Fonte: IRC 2025, cap. 9, p. 25 e p. 63 (angoli indicativi: da 1° a 13° in età prescolare, fino a 16° in età scolare), figure 7 e 8 alle pp. 22-23. Errore frequente: estendere troppo la testa del lattante, che chiude le vie aeree. Per i soccorritori addestrati la sublussazione della mandibola è un'alternativa, soprattutto nel trauma (p. 64).</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Respira normalmente?</h2>
+<ol class="passi">
+<li>Con le vie aeree aperte <strong>guarda</strong> il torace, <strong>ascolta</strong> e <strong>senti</strong> l'aria da naso e bocca.</li>
+<li>Al massimo <strong>10 secondi</strong>, cercando anche altri segni di vita.</li>
+<li>Un respiro a boccheggi, raro o rumoroso <strong>non è normale</strong>.</li>
+<li><strong>Nel dubbio</strong>, fai come se non respirasse normalmente.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Per i soccorritori addestrati PBLS: apertura delle vie aeree, valutazione della respirazione e ricerca dei segni vitali per non più di 10 secondi, mentre si aspetta la risposta della centrale (IRC 2025, cap. 9, p. 22). Tecnica Guardo-Ascolto-Sento (GAS) (p. 63). Se il torace si muove ma l'aria non passa, le vie aeree non sono libere: migliorare subito l'apertura (p. 25). Nel dubbio sulla normalità del respiro, comportarsi come se non fosse normale (p. 25). Il riconoscimento dell'arresto si basa su: non cosciente, non respira normalmente, nessun altro segno di vita; il solo polso non è affidabile (p. 62). Il respiro agonico è citato a p. 63.</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Si comincia con 5 ventilazioni</h2>
+<div class="lato" style="grid-template-columns: 1fr 660px; gap: 40px; align-items: center;">
+<ul>
+<li>Soffia <strong>piano, per circa 1 secondo</strong>, quanto basta perché il <strong>torace si alzi</strong>.</li>
+<li>Lascia scendere il torace, poi il soffio successivo.</li>
+<li>Il torace non si alza? <strong>Sistema testa e mento</strong> e riprova.</li>
+</ul>
+<div class="griglia-2 facce">
+<figure><svg viewBox="-180 -180 360 360" width="300" height="300" role="img" aria-label="Volto di lattante: la bocca del soccorritore copre insieme bocca e naso" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle r="160" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M-78 -40 q22 14 44 0 M34 -40 q22 14 44 0" stroke="#233B74" stroke-width="8"/>
+<path d="M-6 -6 C-12 14 -22 22 -12 28 Q0 32 12 28 C22 22 12 14 6 -6" stroke="#233B74" stroke-width="7"/>
+<path d="M-26 62 q26 14 52 0" stroke="#233B74" stroke-width="8"/>
+<ellipse cx="0" cy="36" rx="74" ry="66" stroke="#009FE3" stroke-width="9" stroke-dasharray="16 12"/>
+</svg><figcaption><strong>Lattante:</strong> bocca e naso</figcaption></figure>
+<figure><svg viewBox="-180 -180 360 360" width="300" height="300" role="img" aria-label="Volto di bambino: due dita chiudono il naso e la bocca del soccorritore copre la bocca" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle r="160" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M-74 -46 q20 13 40 0 M34 -46 q20 13 40 0" stroke="#233B74" stroke-width="8"/>
+<path d="M-6 -12 C-12 8 -22 16 -12 22 Q0 26 12 22 C22 16 12 8 6 -12" stroke="#233B74" stroke-width="7"/>
+<path d="M-24 66 q24 12 48 0" stroke="#233B74" stroke-width="8"/>
+<ellipse cx="0" cy="70" rx="52" ry="28" stroke="#009FE3" stroke-width="9" stroke-dasharray="16 12"/>
+<path d="M-30 18 C-40 -30 -10 -70 0 -118 M30 18 C40 -30 10 -70 0 -118" stroke="#003F85" stroke-width="16" opacity=".85"/>
+<ellipse cx="-26" cy="14" rx="10" ry="16" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+<ellipse cx="26" cy="14" rx="10" ry="16" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+</svg><figcaption><strong>Bambino:</strong> bocca, naso chiuso</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Cinque ventilazioni iniziali di soccorso, poi subito le compressioni (IRC 2025, cap. 9, p. 23, figure 9 e 10). Tecnica: vie aeree aperte, soffiare lentamente e progressivamente nella bocca del bambino o nella bocca e nel naso del lattante per circa 1 secondo, fino a vedere il torace alzarsi, poi lasciarlo scendere (p. 25). Nel bambino il naso si chiude con le dita, come mostra la figura 10 (p. 23). Se il torace non si alza: togliere un'ostruzione visibile solo se è facile, mai le dita in bocca alla cieca; riposizionare la testa e sollevare meglio il mento (p. 25). Perché cinque: nelle prove sul manichino solo il 50-72% dei soccorritori poco esperti riesce a dare due ventilazioni efficaci su cinque (p. 62). Errore frequente: soffiare troppo forte o troppo a lungo, soprattutto nel lattante (p. 63).</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Compressioni: dove e quanto</h2>
+<div class="lato" style="grid-template-columns: 1fr 480px; align-items: center;">
+<ul>
+<li>Sulla <strong>metà inferiore dello sterno</strong>, a ogni età.</li>
+<li>Almeno <strong>un terzo</strong> della profondità del torace, <strong>mai più di 6 cm</strong>.</li>
+<li><strong>100-120</strong> al minuto, lasciando <strong>risalire</strong> del tutto il torace.</li>
+<li>Su un piano rigido, se c'è subito; pause <strong>brevissime</strong>.</li>
+</ul>
+<svg viewBox="0 0 480 400" width="480" height="400" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="40" y="120" width="300" height="210" rx="70" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M20 342 H360" stroke="#5A6478" stroke-width="6"/>
+<path d="M50 190 H330" stroke="#009FE3" stroke-width="6" stroke-dasharray="4 14"/>
+<path d="M190 40 V170 M168 148 L190 172 L212 148" stroke="#003F85" stroke-width="10"/>
+<path d="M375 120 V190 M362 120 H388 M362 190 H388" stroke="#003F85" stroke-width="6"/>
+<path d="M375 120 V330 M362 330 H388" stroke="#5A6478" stroke-width="4" stroke-dasharray="3 10"/>
+<text x="400" y="168" text-anchor="start" fill="#003F85" font-size="36" font-weight="800" stroke="none">1/3</text>
+<text x="190" y="270" text-anchor="middle" fill="#233B74" font-size="28" font-weight="700" stroke="none">torace</text>
+<text x="190" y="390" text-anchor="middle" fill="#233B74" font-size="26" font-weight="600" stroke="none">piano rigido</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Compressioni sulla metà inferiore dello sterno in tutte le fasce d'età; almeno un terzo del diametro antero-posteriore del torace; negli adolescenti 5-6 cm come negli adulti e mai oltre 6 cm a qualsiasi età; frequenza 100-120 al minuto; rilasciare del tutto la pressione fra una compressione e l'altra; non interrompere se non per le ventilazioni o se lo chiede il DAE; piano rigido se facilmente disponibile; togliere i vestiti solo se ostacolano. Fonte: IRC 2025, cap. 9, p. 25; pause sotto i 5 secondi e motivazioni pp. 62-64. Errore frequente: compressioni troppo superficiali (p. 64). Fate misurare a occhio un terzo del torace sul manichino.</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Nel lattante: due pollici</h2>
+<div class="lato" style="grid-template-columns: 1fr 640px; gap: 40px; align-items: center;">
+<ul>
+<li><strong>Circonda il torace</strong> con le mani: le altre dita sostengono la schiena.</li>
+<li>I <strong>due pollici</strong>, vicini, sulla metà inferiore dello sterno.</li>
+<li>È la tecnica raccomandata <strong>sempre</strong>, anche se sei da solo: non si usano più le due dita.</li>
+</ul>
+<svg viewBox="0 0 660 440" width="640" height="427" role="img" aria-label="Lattante sdraiato a pancia in su visto dall'alto, testa a sinistra: le mani del soccorritore, che sta ai suoi piedi, circondano il torace e i due pollici premono sulla metà inferiore dello sterno" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="10" y="40" width="560" height="360" rx="24" fill="#DCE4F1"/>
+<path d="M214 150 C228 112 250 92 282 84 M214 290 C228 328 250 348 282 356" stroke="#233B74" stroke-width="13"/>
+<path d="M392 182 C430 150 470 140 500 168 C520 186 530 196 548 194 M392 258 C430 290 470 300 500 272 C520 254 530 244 548 246" stroke="#233B74" stroke-width="13"/>
+<rect x="190" y="138" width="216" height="164" rx="64" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<circle cx="126" cy="220" r="74" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M118 186 q-8 12 0 24 M118 230 q-8 12 0 24 M162 210 q8 10 0 20" stroke="#233B74" stroke-width="6"/>
+<path d="M206 220 H350" stroke="#009FE3" stroke-width="6" stroke-dasharray="4 13"/>
+<path d="M256 156 V284" stroke="#009FE3" stroke-width="4" stroke-dasharray="3 12"/>
+<path d="M330 118 C300 118 280 132 282 150 C284 166 300 172 330 168 L420 160 L420 112 Z" fill="#003F85" opacity=".93"/>
+<path d="M330 322 C300 322 280 308 282 290 C284 274 300 268 330 272 L420 280 L420 328 Z" fill="#003F85" opacity=".93"/>
+<path d="M410 112 L650 60 L650 120 L420 160 Z M410 328 L650 380 L650 320 L420 280 Z" fill="#003F85" opacity=".93"/>
+<path d="M322 160 L298 206 M322 280 L298 234" stroke="#003F85" stroke-width="24"/>
+<ellipse cx="292" cy="208" rx="20" ry="12" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+<ellipse cx="292" cy="232" rx="20" ry="12" fill="#FCEB0C" stroke="#003F85" stroke-width="5"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Nel disegno il lattante è sdraiato a pancia in su su un piano, visto dall'alto, con la testa a sinistra; il soccorritore sta ai suoi piedi: i palmi (in blu) stanno sui fianchi, le altre dita, non visibili, passano dietro la schiena, i pollici (in giallo) sono sulla metà inferiore dello sterno, appena oltre (verso i piedi) la linea tratteggiata che unisce i capezzoli. Le linee guida 2025 raccomandano la tecnica a due pollici con le altre dita che circondano il torace per i lattanti in tutte le situazioni, al posto della tecnica a due dita del 2021: dà compressioni più profonde e costanti e meno fatica, e si spiega più facilmente anche al telefono (IRC 2025, cap. 9, Tabella 1 p. 6, p. 25, p. 63, figura 11 p. 24). Il testo di p. 25 parla di pollici sovrapposti, la figura 11 li mostra affiancati; a p. 63 le varianti della tecnica a due pollici non risultano superiori: seguite l'indicazione del manuale del corso. Errore frequente: pollici troppo in alto o sull'estremità dello sterno.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Nel bambino: una o due mani</h2>
+<div class="lato" style="grid-template-columns: 1fr 640px; gap: 40px; align-items: center;">
+<ul>
+<li>Da 1 a 8 anni circa: <strong>una mano o due</strong>, secondo la corporatura del bambino e la tua forza.</li>
+<li>Con due mani le compressioni sono più efficaci e si fa meno fatica.</li>
+<li>Nell'<strong>adolescente</strong>: due mani, come nell'adulto, <strong>5-6 cm</strong>.</li>
+</ul>
+<svg viewBox="0 0 660 440" width="640" height="427" role="img" aria-label="Bambino sdraiato a pancia in su visto dall'alto, testa a sinistra: il soccorritore, al suo fianco, appoggia il palmo di una mano sulla metà inferiore dello sterno" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="10" y="30" width="640" height="340" rx="24" fill="#DCE4F1"/>
+<path d="M196 142 C230 108 280 96 330 96 M196 258 C230 292 280 304 330 304" stroke="#233B74" stroke-width="13"/>
+<path d="M440 170 L610 150 M440 230 L610 250" stroke="#233B74" stroke-width="13"/>
+<rect x="170" y="124" width="290" height="152" rx="58" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<circle cx="110" cy="200" r="62" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M104 172 q-7 10 0 20 M104 208 q-7 10 0 20 M142 192 q7 8 0 16" stroke="#233B74" stroke-width="6"/>
+<path d="M186 200 H380" stroke="#009FE3" stroke-width="6" stroke-dasharray="4 13"/>
+<circle cx="318" cy="200" r="40" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<path d="M300 236 C292 212 300 186 322 180 C344 176 356 196 352 220 L360 300 L376 440 L300 440 L296 300 Z" fill="#003F85" opacity=".93"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Tecnica a una o due mani nei bambini oltre 1 anno, o quando con i due pollici non si ottengono compressioni di qualità; tra 1 e 8 anni la tecnica a due mani consente compressioni più efficaci e minore affaticamento; negli adolescenti due mani e stessa tecnica dell'adulto, con profondità 5-6 cm. Fonte: IRC 2025, cap. 9, p. 25 e p. 63, figure 12 e 13 a p. 24. Nel disegno il bambino è sdraiato a pancia in su, visto dall'alto, con la testa a sinistra; il soccorritore è al suo fianco e appoggia il palmo (in blu) sul punto giallo, la metà inferiore dello sterno; con due mani la seconda si sovrappone alla prima. Fate provare sul manichino del bambino entrambe le tecniche e chiedete quale permette di arrivare a un terzo del torace.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Compressioni e ventilazioni</h2>
+<div class="griglia-2">
+<div class="riquadro tenue"><h3>Chi non è addestrato al PBLS</h3><p class="grande">5 soffi, poi <strong>30 : 2</strong></p><p class="piccolo">come nell'adulto, guidato dall'operatore</p></div>
+<div class="riquadro blu"><h3>Chi è addestrato al PBLS</h3><p class="grande">5 soffi, poi <strong>15 : 2</strong></p><p class="piccolo">corso PBLS ERC o equivalente</p></div>
+</div>
+<p class="no"><strong>Non vuoi o non riesci a soffiare?</strong> Comprimi senza fermarti e aggiungi i soffi appena puoi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Rapporto 15:2 per chi è specificamente addestrato al PBLS (corso PBLS ERC o equivalente), 30:2 per gli altri, sempre dopo 5 ventilazioni iniziali; gli operatori di centrale consigliano 30:2 con 5 ventilazioni iniziali a chi non è addestrato o lo è solo al BLS dell'adulto, così le istruzioni sono uguali a quelle per l'adulto. Fonte: IRC 2025, cap. 9, p. 21 e p. 24; motivazioni p. 62. Se il soccorritore non vuole o non può ventilare: subito compressioni e ventilazioni appena possibile (p. 22 e p. 64). Ventilazioni e compressioni insieme restano l'obiettivo, perché nel bambino la causa è spesso l'ipossia. Se il corso che state tenendo vale come addestramento PBLS equivalente lo stabilisce il suo programma ufficiale (ARES 118): in quel caso i partecipanti usano 15:2, altrimenti 30:2.</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il DAE anche nel bambino</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px; align-items: center;">
+<ol class="passi">
+<li>Si usa <strong>a ogni età</strong>: attaccalo appena arriva e segui la sua voce.</li>
+<li>Sotto i <strong>25 kg</strong> (circa 8 anni): <strong>modalità pediatrica</strong>, se c'è.</li>
+<li>Sopra i 25 kg, o se la modalità pediatrica non c'è: <strong>modalità per adulti</strong>.</li>
+<li>Se sei <strong>da solo</strong>: prima chiamata e rianimazione, poi il DAE.</li>
+</ol>
+<svg viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="Il cartello del defibrillatore: un cuore bianco con un fulmine su fondo verde">
+<rect x="10" y="10" width="280" height="280" fill="#1E7B34"/>
+<path d="M150 250 C80 200 40 160 40 110 C40 75 66 52 96 52 C120 52 138 66 150 86 C162 66 180 52 204 52 C234 52 260 75 260 110 C260 160 220 200 150 250 Z" fill="#FFFFFF"/>
+<path d="M162 82 L120 160 H150 L132 222 L184 136 H152 L170 82 Z" fill="#1E7B34"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il DAE va recuperato e collegato appena possibile nei bambini di tutte le età; una persona applica le placche mentre l'altra continua la RCP. Modalità pediatrica, se disponibile, in tutti i lattanti e i bambini sotto 25 kg (circa 8 anni); nei bambini più grandi e negli adolescenti modalità standard; senza modalità pediatrica si usa quella per adulti. Fonte: IRC 2025, cap. 9, pp. 24-26. Con un solo soccorritore chiamare e iniziare la RCP hanno la priorità sul DAE, perché nei bambini i ritmi non defibrillabili sono più frequenti (p. 25 e p. 62). Un DAE senza attenuazione dà più energia del necessario in un bambino piccolo, ma il beneficio di una scarica precoce è considerato maggiore del rischio (p. 62). Il registro del sito riporta lo stesso valore di 25 kg (voce rcp-pediatrica-parametri).</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dove vanno le placche</h2>
+<div class="placche">
+<figure><svg viewBox="0 0 228 360" width="228" height="360" role="img" aria-label="Bambino visto davanti: placca al centro del torace, appena a sinistra dello sterno"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M64 112 C46 150 36 200 34 240 M164 112 C182 150 192 200 194 240" stroke="#233B74" stroke-width="9"/>
+<path d="M94 270 V350 M134 270 V350" stroke="#233B74" stroke-width="9"/>
+<rect x="60" y="96" width="108" height="180" rx="34" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<circle cx="114" cy="52" r="38" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M96 52 q6 5 12 0 M120 52 q6 5 12 0" stroke="#233B74" stroke-width="5"/>
+</g><rect x="112" y="128" width="40" height="58" rx="8" fill="#009FE3" stroke="#003F85" stroke-width="5"/><path d="M114 108 V250" stroke="#5A6478" stroke-width="3" stroke-dasharray="3 9"/></svg><figcaption>Sotto i 25 kg:<br><strong>davanti</strong></figcaption></figure>
+<figure><svg viewBox="0 0 228 360" width="228" height="360" role="img" aria-label="Bambino visto da dietro: placca al centro della schiena, tra le scapole"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M64 112 C46 150 36 200 34 240 M164 112 C182 150 192 200 194 240" stroke="#233B74" stroke-width="9"/>
+<path d="M94 270 V350 M134 270 V350" stroke="#233B74" stroke-width="9"/>
+<rect x="60" y="96" width="108" height="180" rx="34" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<circle cx="114" cy="52" r="38" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+
+</g><rect x="94" y="122" width="40" height="58" rx="8" fill="#009FE3" stroke="#003F85" stroke-width="5"/></svg><figcaption>e <strong>dietro</strong>,<br>tra le scapole</figcaption></figure>
+<figure class="oltre"><svg viewBox="0 0 228 360" width="266" height="420" role="img" aria-label="Bambino più grande visto davanti: una placca sotto la clavicola destra e una sotto l'ascella sinistra"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M64 112 C46 150 36 200 34 240 M164 112 C182 150 192 200 194 240" stroke="#233B74" stroke-width="9"/>
+<path d="M94 270 V350 M134 270 V350" stroke="#233B74" stroke-width="9"/>
+<rect x="60" y="96" width="108" height="180" rx="34" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<circle cx="114" cy="52" r="38" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+<path d="M96 52 q6 5 12 0 M120 52 q6 5 12 0" stroke="#233B74" stroke-width="5"/>
+</g><rect x="68" y="108" width="40" height="40" rx="8" fill="#009FE3" stroke="#003F85" stroke-width="5"/><rect x="132" y="168" width="34" height="56" rx="8" fill="#009FE3" stroke="#003F85" stroke-width="5"/></svg><figcaption>Sopra i 25 kg: <strong>anche così</strong>,<br>purché non si tocchino</figcaption></figure>
+</div>
+<p class="piccolo">Durante l'analisi <strong>nessuno tocca</strong> il bambino; dopo la scarica, <strong>subito le compressioni</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Sotto 25 kg posizione antero-posteriore: placca anteriore al centro del torace, subito a sinistra dello sterno (nel disegno a destra di chi guarda), placca posteriore sul dorso con il centro tra le scapole. Sopra 25 kg e negli adolescenti posizione antero-laterale (sotto la clavicola destra e sotto l'ascella sinistra) o antero-posteriore; negli adolescenti in antero-posteriore evitare il tessuto mammario. Le placche non devono toccarsi. Non toccare il paziente durante l'analisi; riprendere subito le compressioni dopo la scarica. Fonte: IRC 2025, cap. 9, p. 26 (figura 14) e p. 27 (figura 15); p. 28: con placche pediatriche, chi è competente può usare l'antero-laterale anche sotto 25 kg se non si toccano; p. 64: girare un bambino grande per la placca dietro allunga la pausa. Novità 2025: i DAE pubblici dovrebbero avere placche di un'unica misura per tutte le età (Tabella 1, p. 7). Fate sempre guardare il disegno stampato sulle placche del DAE in uso.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Non risponde, ma respira normalmente</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px; align-items: center;">
+<ul>
+<li>Tieni aperte le vie aeree (testa e mento) oppure mettilo <strong>su un fianco</strong>, soprattutto se può vomitare.</li>
+<li><strong>Non</strong> su un fianco se ha avuto un <strong>trauma</strong>.</li>
+<li>Controlla il respiro <strong>di continuo</strong>, almeno <strong>ogni minuto</strong>.</li>
+<li>Nel dubbio, rimettilo a pancia in su e riapri le vie aeree.</li>
+</ul>
+<svg viewBox="0 0 300 330" width="300" height="330" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<circle cx="150" cy="180" r="130" stroke="#233B74" stroke-width="12" fill="#FFFFFF"/>
+<path d="M128 22 H172 M150 22 V48 M250 70 L268 52" stroke="#233B74" stroke-width="12"/>
+<path d="M150 180 V80" stroke="#009FE3" stroke-width="10"/>
+<text x="150" y="232" text-anchor="middle" fill="#003F85" font-size="44" font-weight="800" stroke="none">ogni</text>
+<text x="150" y="278" text-anchor="middle" fill="#003F85" font-size="36" font-weight="700" stroke="none">minuto</text>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">In un bambino che non risponde ma respira chiaramente in modo efficace: mantenere le vie aeree aperte con estensione del capo e sollevamento del mento oppure posizione laterale di sicurezza, soprattutto se c'è rischio di vomito, ma non in caso di trauma; controllare il respiro di continuo o almeno ogni minuto; in caso di dubbio sulla stabilità della posizione o sul respiro, rimetterlo supino e riaprire le vie aeree. Fonte: IRC 2025, cap. 9, p. 25; p. 63 (la posizione laterale non è ideale nei traumi di colonna, anca o bacino; da supini si riconosce prima un peggioramento). La posizione laterale si mostra e si prova sul manichino del bambino; nella slide c'è solo il promemoria del controllo ogni minuto.</div>
+</section>
+
+<!-- 20 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>E il soffocamento?</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px; align-items: center;">
+<p>L'ostruzione delle vie aeree da corpo estraneo ha una <strong>presentazione dedicata</strong>, con le manovre per il lattante e per il bambino.</p>
+<svg viewBox="0 0 300 300" width="300" height="300" aria-hidden="true" font-family="Montserrat, sans-serif">
+<circle cx="150" cy="150" r="130" fill="#003F85"/>
+<text x="150" y="160" text-anchor="middle" fill="#FFFFFF" font-size="110" font-weight="800">5</text>
+<text x="150" y="214" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="700">soffi</text>
+</svg>
+</div>
+<p class="riquadro blu">Se il bambino che soffoca <strong>perde coscienza</strong>: 112, se nessuno l'ha ancora chiamato, e subito la rianimazione, cominciando dai <strong>5 soffi</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Rimando alla presentazione sull'ostruzione delle vie aeree. Il punto di contatto con questa: appena il bambino perde coscienza si inizia la RCP con 5 ventilazioni di soccorso, chiamando il servizio di emergenza se non è già stato fatto. Fonte: IRC 2025, cap. 9, pp. 28-30 (algoritmo figura 22, figure 16 e 17). Anche nell'ostruzione, nel lattante le compressioni toraciche si fanno con i due pollici (Tabella 1, p. 7).</div>
+</section>
+
+<!-- 21 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa cambia rispetto al 2021</h2>
+<ul class="novita">
+<li><strong>112 subito</strong>, appena sospetti un arresto cardiaco.</li>
+<li>Nel lattante <strong>sempre i due pollici</strong>, anche da solo e nel soffocamento: niente più due dita.</li>
+<li>Profondità: <strong>almeno un terzo</strong> del torace e mai oltre 6 cm, al posto dei 4 cm del lattante e dei 5 cm del bambino.</li>
+<li>Sotto i 25 kg placche <strong>davanti e dietro</strong>; i DAE pubblici dovrebbero avere placche di una sola misura.</li>
+<li>Raccomandazioni nuove per <strong>genitori e cittadini</strong>.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Fonte: IRC 2025, cap. 9, Tabella 1 «Confronto tra le Linee Guida 2021 e 2025», pp. 6-7: raccomandazioni per il pubblico e i sistemi (prima non c'erano); chiamare aiuto e attivare il servizio di emergenza appena si sospetta l'arresto; due pollici nel lattante in tutte le situazioni, anche nell'ostruzione; placche antero-posteriori in tutti i lattanti e i bambini sotto 25 kg, DAE pubblici con placche di un'unica misura. Profondità: p. 25 e pp. 63-64 (i valori assoluti di 4 e 5 cm sono solo approssimativi e nei lattanti possono superare metà del torace; puntare ad almeno un terzo dà compressioni più adeguate). Restano invariati: 5 ventilazioni iniziali, 15:2 per chi è formato, 100-120 al minuto, un minuto di RCP solo per chi è da solo e senza telefono.</div>
+</section>
+
+<!-- 22 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi riepilogo">
+<li><strong>Sicurezza</strong>, poi chiamalo e toccalo.</li>
+<li>Non risponde: <strong>112</strong> con il vivavoce.</li>
+<li><strong>Vie aeree</strong> aperte e respiro, al massimo 10 secondi.</li>
+<li><strong>5 soffi</strong>, poi <strong>15 : 2</strong> (30 : 2 se non sei formato).</li>
+<li>Almeno <strong>un terzo</strong> del torace, mai oltre 6 cm, <strong>100-120</strong> al minuto.</li>
+<li><strong>DAE</strong> appena c'è; non fermarti finché non ci sono chiari segni di vita o lo chiede il DAE.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Riepilogo della sequenza PBLS (IRC 2025, cap. 9, algoritmo della figura 5 a p. 21 e testo alle pp. 22-26). Non interrompere la RCP a meno che non vi siano chiari segni vitali o che il DAE non lo richieda (p. 25). Lasciate la slide proiettata durante le prove pratiche finali e fate ripetere la sequenza ad alta voce a ogni coppia.</div>
+</section>
+
+<!-- 23 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Corso&nbsp;<b>P-BLSD</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti</h2>
+<ul class="fonti">
+<li>Italian Resuscitation Council, <strong>Linee guida RCP 2025</strong>, capitolo 9 «BLS pediatrico», versione italiana delle linee guida ERC 2025 Paediatric Life Support (PDF del 02/04/2026): pp. 3-8, 21-30, 52, 62-64. <span class="url">www.ircouncil.it/linee-guida-rcp-2025/</span></li>
+<li>Ministero della Salute, Linee di indirizzo per la prevenzione del soffocamento da cibo in età pediatrica, 2017, Tabella 1.</li>
+<li>Disegni della Misericordia di Ariccia. Testi verificati sulle fonti il 20/11/2026.</li>
+</ul>
+<p class="riquadro tenue">Corsi P-BLSD: <strong>328 8105399</strong> · 06 933 3717<br><span class="url">www.misericordia-ariccia.it/servizi/formazione/</span></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Tutti i testi sono parafrasi; nessuna figura o testo è copiato dal manuale o dalle slide IRC. Prima di ogni ciclo di corsi controllate che IRC non abbia pubblicato aggiornamenti del capitolo 9 (registro del sito: voci rcp-pediatrica-parametri e rcp-bambino-parametri in data/dati_da_verificare.yaml). Contatti per la formazione come nella pagina Formazione del sito.</div>
+</section>
+
+</body>
+</html>

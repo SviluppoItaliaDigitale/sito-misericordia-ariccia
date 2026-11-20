@@ -765,7 +765,7 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-18"
+  verificato: "2026-11-20"
   note: ""
 - id: "rcp-pediatrica-parametri"
   cosa: "Rianimazione nel bambino (IRC 2025, cap. 9, pp. 21-28): 5 soffi iniziali, compressioni di almeno un terzo del torace, mai più di 6 cm, 100-120/min, 30:2 (15:2 se formati PBLS), DAE in modalità pediatrica sotto i 25 kg se c'è, altrimenti in quella per adulti, con piastre davanti e dietro."
@@ -796,8 +796,8 @@ dati:
   tipo: "sanita"
   delicato: true
   frequenza: "mensile"
-  verificato: "2026-10-18"
-  note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). content/primo-soccorso.md ora dice «con i due pollici», come il dossier e ERC/IRC 2025 cap. 9 PBLS."
+  verificato: "2026-11-20"
+  note: "Corretto il 9/10/2026 con l'ok di Alessandro (issue #147). content/primo-soccorso.md ora dice «con i due pollici», come il dossier e ERC/IRC 2025 cap. 9 PBLS. 20/11/2026: riletto su IRC 2025 cap. 9 p. 29 e cap. 12 p. 28 per le slide dei corsi: la tecnica cambia solo sotto l'anno; corretto «bambini piccoli» nel dossier IT/EN, nella news del 20/10, nelle slide per le scuole (il video del 20/10 lo dice ancora nell'audio)."
 - id: "ustioni-20-minuti"
   cosa: "Ustioni: raffreddare sotto acqua corrente fresca per almeno 20 minuti; niente ghiaccio, burro, olio, creme o altri rimedi casalinghi (CRI, Ustioni; NHS, Burns and scalds, 31/03/2026; IFRC 2025, pp. 290 e 292); 112 per ustioni grandi o profonde, su viso, mani, piedi o genitali, da fiamme, elettriche o chimiche, o in un bambino (IFRC 2025, pp. 289-291; CRI); per un anziano o nel dubbio, dal medico."
   valore: "almeno 20 minuti"

@@ -53,7 +53,7 @@ Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno h
 
 ### Dopo
 
-Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei bambini piccoli le manovre sono diverse: si imparano a un corso.
+Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei lattanti, sotto l'anno di età, le manovre sono diverse: si imparano a un corso.
 
 ## Da ricordare
 

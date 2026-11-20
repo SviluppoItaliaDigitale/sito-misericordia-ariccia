@@ -5,7 +5,7 @@
        rivisti dal responsabile sanitario) non compare. I PDF si fanno con scripts/scuole/rendi_pdf.py. */ -}}
 <div class="pagina-testata">
   <div class="container">
-    <p class="occhiello mb-1" data-anim="fade-up">Materiali per le scuole · {{ .Params.eta }}</p>
+    <p class="occhiello mb-1" data-anim="fade-up">{{ with .Params.occhiello }}{{ . }}{{ else }}Materiali per le scuole · {{ .Params.eta }}{{ end }}</p>
     <h1 data-split="words">{{ .Title }}</h1>
   </div>
 </div>
