@@ -1478,3 +1478,4 @@ html.aula-aperta .barra-lettura, html.aula-aperta #torna-su, html.aula-aperta #w
 .canale-tutte { display: inline-block; margin-top: .3rem; font-family: "Jost", sans-serif; font-weight: 600; text-decoration: none; color: var(--mise-ciano-testo); }
 .pagina-testata .occhiello-canale { color: var(--mise-giallo); text-decoration: none; }
 .pagina-testata .occhiello-canale:hover { text-decoration: underline; }
+[id^="canale-"] { scroll-margin-top: 6.5rem; }
