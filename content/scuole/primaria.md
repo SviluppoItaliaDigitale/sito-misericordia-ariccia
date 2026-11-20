@@ -42,6 +42,11 @@ materiali:
     file: "/documenti/scuole/primaria/attestato-piccolo-soccorritore.pdf"
     pagine: 1
     descrizione: "Da compilare con il nome del bambino e la classe, firmato dall'insegnante e dalla classe. Un ricordo dell'attività, non un attestato di formazione."
+  - titolo: "Quando serviva aiuto: intervista ai nonni"
+    tipo: "scheda"
+    file: "/documenti/scuole/primaria/scheda-intervista-ai-nonni.pdf"
+    pagine: 2
+    descrizione: "Per le classi 3ª-5ª: i bambini intervistano un nonno, una nonna o un'altra persona anziana su come si chiedeva aiuto un tempo, con domande aperte, consigli per ascoltare, un disegno e il confronto con il 112 di oggi. Sul secondo foglio la guida per l'insegnante."
   - titolo: "Guida per l'insegnante"
     tipo: "guida"
     file: "/documenti/scuole/primaria/guida-insegnante.pdf"
@@ -90,6 +95,12 @@ fonti:
   - titolo: "Protezione Civile di Genzano di Roma, schede stampabili e giochi per la primaria (CC BY-NC-SA 4.0)"
     url: "https://www.protezionecivilegenzano.it/formazione/schede-stampabili/"
     verificata: "18/11/2026"
+  - titolo: "DPR 27 marzo 1992, emergenza sanitaria, articolo 3: centrale operativa e numero 118 (Gazzetta Ufficiale n. 76 del 31/03/1992)"
+    url: "https://www.gazzettaufficiale.it/eli/id/1992/03/31/092A1471/sg"
+    verificata: "20/11/2026"
+  - titolo: "Confederazione Nazionale delle Misericordie d'Italia, Chi siamo"
+    url: "https://www.misericordie.it/chi-siamo/"
+    verificata: "20/11/2026"
 ---
 
 Questa pagina è per le maestre e i maestri della **scuola primaria** che vogliono parlare in classe di come si chiede aiuto e di come si sta attenti in casa e in strada. I materiali sono pensati per bambini **dai 6 ai 10 anni** e sono gratuiti: si stampano e si usano così come sono.
@@ -220,6 +231,10 @@ Nella pagina delle soluzioni c'è anche un avviso da leggere: se dopo una puntur
 ### L'attestato del piccolo soccorritore
 
 Si compila con il nome del bambino, la classe e la scuola, e lo firmano l'insegnante e la classe. Ricorda le cose imparate: il 112 e il trucco dei pollici, che cosa si dice al telefono, l'indirizzo a memoria, il 112 che non è un gioco, l'attenzione ai pericoli in casa e in strada. È **un ricordo dell'attività**, non un attestato di formazione al primo soccorso. Si consegna alla fine del secondo incontro.
+
+### Quando serviva aiuto: intervista ai nonni
+
+Una scheda da portare a casa per le classi terza, quarta e quinta. Il bambino intervista un nonno, una nonna o un'altra persona anziana che conosce: come si chiamava il medico o l'ambulanza quando erano piccoli, chi aiutava i vicini, una volta in cui qualcuno li ha aiutati. Ci sono domande aperte con le righe per scrivere, consigli per ascoltare con rispetto, un riquadro per disegnare la storia e il confronto con il 112 di oggi. Sul secondo foglio, per l'insegnante, come usarla in italiano, storia ed educazione civica, il consenso di chi racconta (niente cognomi, foto o registrazioni senza permesso) e che cosa proporre a chi non ha i nonni vicino.
 
 ### La guida per l'insegnante
 

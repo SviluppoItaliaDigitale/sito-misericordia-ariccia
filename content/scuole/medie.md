@@ -38,6 +38,16 @@ materiali:
     file: "/documenti/scuole/medie/schede-verifica.pdf"
     pagine: 3
     descrizione: "Vero o falso, una telefonata da completare, la mappa della catena dei soccorsi, 112 o 116117. Le soluzioni sono su una pagina a parte per l'insegnante."
+  - titolo: "Controlla, chiama, comprimi"
+    tipo: "scheda"
+    file: "/documenti/scuole/medie/scheda-controlla-chiama-comprimi.pdf"
+    pagine: 2
+    descrizione: "Che cosa può fare un ragazzo se una persona crolla e non risponde: controllare che sia sicuro, chiamare il 112 con il vivavoce, farsi portare il DAE. Con tre attività per la classe e una pagina per l'insegnante. Le compressioni si imparano solo con un istruttore."
+  - titolo: "Help, please! Chiedere aiuto in inglese"
+    tipo: "scheda"
+    file: "/documenti/scuole/medie/scheda-aiuto-in-inglese.pdf"
+    pagine: 2
+    descrizione: "Le frasi in inglese per chiedere aiuto in gita o in vacanza all'estero: che cosa è successo, dove sei, allergie e farmaci, con il 112 valido in tutta l'Unione europea, un esercizio sulle domande dell'operatore e una tessera da ritagliare. Per l'insegnante le soluzioni, le avvertenze e la Tessera europea di assicurazione malattia."
   - titolo: "Guida per l'insegnante"
     tipo: "guida"
     file: "/documenti/scuole/medie/guida-insegnante.pdf"
@@ -93,6 +103,24 @@ fonti:
   - titolo: "Dipartimento della Protezione civile, L'attimo decisivo: il progetto per le scuole secondarie di primo grado"
     url: "https://www.attimodecisivo.gov.it/it/progetto/"
     verificata: "18/11/2026"
+  - titolo: "Italian Resuscitation Council, Linee guida RCP 2025, cap. 4 «BLS adulto»"
+    url: "https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf"
+    verificata: "20/11/2026"
+  - titolo: "Legge 4 agosto 2021, n. 116, art. 3: uso del DAE anche da parte di chi non è formato (Normattiva)"
+    url: "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2021-08-04;116~art3"
+    verificata: "20/11/2026"
+  - titolo: "Commissione europea, 112, il numero di emergenza dell'Unione europea"
+    url: "https://digital-strategy.ec.europa.eu/en/policies/112"
+    verificata: "20/11/2026"
+  - titolo: "Ministero della Salute, Tessera europea di assicurazione malattia (TEAM)"
+    url: "https://www.salute.gov.it/new/it/tema/cure-nellunione-europea/tessera-europea-assicurazione-malattia-team/"
+    verificata: "20/11/2026"
+  - titolo: "Ministero della Salute, Cure urgenti e necessarie nell'Unione europea con la TEAM"
+    url: "https://www.salute.gov.it/new/it/tema/cure-nellunione-europea/cure-urgenti-e-necessarie-nellunione-europea-team/"
+    verificata: "20/11/2026"
+  - titolo: "Commissione europea, Tessera europea di assicurazione malattia"
+    url: "https://employment-social-affairs.ec.europa.eu/node/53_it"
+    verificata: "20/11/2026"
 ---
 
 
@@ -177,6 +205,14 @@ Due pagine per provare una telefonata al 112 in gruppi da tre: **chi chiama** le
 ### Schede di verifica
 
 Tre pagine: dieci affermazioni vero o falso, una telefonata da completare, la mappa della catena dei soccorsi, cinque situazioni in cui scegliere fra 112 e 116117 e una domanda aperta sulla posizione del telefono. Le soluzioni sono su una pagina a parte per l'insegnante.
+
+### Controlla, chiama, comprimi
+
+Due pagine sul primo soccorso a misura di età, secondo le Linee guida 2025 dell'Italian Resuscitation Council e l'iniziativa europea «Kids Save Lives». Nella prima i tre passaggi (controlla che sia sicuro avvicinarsi e se la persona risponde, chiama il 112 con il vivavoce, l'operatore guida le compressioni), il cartello verde del defibrillatore e tre attività: mettere in ordine i passi, uno scenario al campo sportivo da discutere e la caccia al DAE della scuola, con l'insegnante. Nella seconda le soluzioni, le attenzioni (chi ha vissuto un lutto, niente prove sul compagno, telefono finto o spento), la legge 116/2021 e il 16 ottobre. Le compressioni si provano solo su un manichino, con un istruttore: per un corso c'è la pagina della [formazione](/servizi/formazione/).
+
+### Help, please! Chiedere aiuto in inglese
+
+Per l'ora di inglese e per prepararsi a una gita all'estero. Il 112 risponde gratis in tutti i Paesi dell'Unione europea e in molti l'operatore parla anche inglese. Le frasi sono divise in quattro gruppi: chiedere aiuto, dire che cosa è successo, dire dove sei, allergie e farmaci. Poi un esercizio per abbinare le domande dell'operatore alle risposte e una tessera da ritagliare e piegare, con il 112 davanti e «About me» dietro. Nella seconda pagina le soluzioni, le avvertenze (le prove si fanno sempre con un telefono finto o spento) e che cosa copre la Tessera europea di assicurazione malattia, cioè il retro della tessera sanitaria.
 
 ### Guida per l'insegnante
 

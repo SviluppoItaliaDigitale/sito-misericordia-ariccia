@@ -38,6 +38,11 @@ materiali:
     file: "/documenti/scuole/superiori/scheda-cittadinanza-attiva.pdf"
     pagine: 2
     descrizione: "Una scheda di riflessione per un dibattito di educazione civica su responsabilità, paura di sbagliare ed effetto spettatore, con tre fatti verificati e una consegna scritta."
+  - titolo: "Accanto a un compagno in difficoltà"
+    tipo: "scheda"
+    file: "/documenti/scuole/superiori/scheda-accanto-a-un-compagno.pdf"
+    pagine: 2
+    descrizione: "Che cosa fare accanto a un compagno scosso dopo un fatto che spaventa, con i tre principi del primo soccorso psicologico dell'OMS (osservare, ascoltare, mettere in contatto), i segnali che chiedono subito un adulto o il 112 e tre situazioni da discutere. Nella seconda pagina le note per l'insegnante e a chi rivolgersi."
   - titolo: "Guida per l'insegnante"
     tipo: "guida"
     file: "/documenti/scuole/superiori/guida-insegnante.pdf"
@@ -83,6 +88,18 @@ fonti:
   - titolo: "Ministero dell'istruzione e del merito, Linee guida per l'insegnamento dell'educazione civica (allegato al D.M. 183/2024)"
     url: "https://www.mim.gov.it/documents/20182/0/Linee+guida+Educazione+civica.pdf/9ffd1e06-db57-1596-c742-216b3f42b995"
     verificata: "18/11/2026"
+  - titolo: "Organizzazione mondiale della sanità, Psychological first aid: guide for field workers (2011), edizione italiana «Primo soccorso psicologico: manuale per operatori sul campo» (AUSL della Romagna, 2018)"
+    url: "https://www.who.int/publications/i/item/9789241548205"
+    verificata: "20/11/2026"
+  - titolo: "Salute Lazio, Consultori familiari"
+    url: "https://www.salutelazio.it/consultori-familiari"
+    verificata: "20/11/2026"
+  - titolo: "Telefono Azzurro, linea di ascolto 1.96.96"
+    url: "https://azzurro.it/"
+    verificata: "20/11/2026"
+  - titolo: "Telefono Amico Italia"
+    url: "https://www.telefonoamico.it/"
+    verificata: "20/11/2026"
 ---
 
 Questi materiali sono pensati per le insegnanti e gli insegnanti della **scuola secondaria di secondo grado**, per le classi dai **14 ai 18 anni**. Ci sono due serie di **slide** da proiettare, in PDF e in PowerPoint, due **schede** da stampare e una **guida per l'insegnante** con il percorso e le fonti. Parlano di come si riconosce un'emergenza e di quale numero chiamare, di rianimazione e defibrillatore, di responsabilità e cittadinanza attiva, di volontariato e Servizio Civile Universale. Sono gratuiti e si possono usare in classe così come sono.
@@ -171,6 +188,10 @@ Una scheda di due pagine per un dibattito di educazione civica: **tre fatti veri
 ### Volontariato e Servizio Civile
 
 Undici slide: che cos'è una Misericordia, quasi otto secoli di storia, che cosa facciamo ad Ariccia e che cosa non facciamo, come si diventa volontari e come funziona il **Servizio Civile Universale**, dai 18 ai 28 anni. Circa 40 minuti, con le note per chi presenta nel file PowerPoint. Rende di più se in classe c'è anche una nostra volontaria o un nostro volontario: chiedetecelo. Per saperne di più: [Diventa volontario](/diventa-volontario/), [Servizio Civile Universale](/servizio-civile/) e il dossier [Otto secoli di carità](/dossier/storia-delle-misericordie/).
+
+### Accanto a un compagno in difficoltà
+
+Dopo un fatto che spaventa (un malore in classe, una scossa, una brutta notizia) anche un compagno può aiutare: esserci, ascoltare senza giudicare, portare da un adulto. La scheda segue i tre principi del primo soccorso psicologico dell'Organizzazione mondiale della sanità, nell'edizione italiana: osservare, ascoltare, mettere in contatto. Ci sono le frasi che aiutano e quelle da evitare, i segnali che chiedono subito un adulto o il 112, perché certe confidenze non si tengono segrete, e tre situazioni da discutere. Nella seconda pagina, per l'insegnante, come condurre la lezione in circa 50 minuti, gli spunti di risposta, le attenzioni (non è una terapia) e a chi rivolgersi: lo sportello d'ascolto della scuola, il medico, i consultori familiari, Telefono Azzurro e Telefono Amico.
 
 ### Guida per l'insegnante
 
