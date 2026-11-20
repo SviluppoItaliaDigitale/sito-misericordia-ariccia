@@ -1,0 +1,438 @@
+{
+ "durata": 164.87,
+ "voce": [
+  {
+   "file": "voce/line_1.wav",
+   "inizio": 1.0
+  },
+  {
+   "file": "voce/line_2.wav",
+   "inizio": 11.49
+  },
+  {
+   "file": "voce/line_3.wav",
+   "inizio": 17.9
+  },
+  {
+   "file": "voce/line_4.wav",
+   "inizio": 24.39
+  },
+  {
+   "file": "voce/line_5.wav",
+   "inizio": 30.6
+  },
+  {
+   "file": "voce/line_6.wav",
+   "inizio": 37.32
+  },
+  {
+   "file": "voce/line_7.wav",
+   "inizio": 44.26
+  },
+  {
+   "file": "voce/line_8.wav",
+   "inizio": 52.75
+  },
+  {
+   "file": "voce/line_9.wav",
+   "inizio": 67.58
+  },
+  {
+   "file": "voce/line_10.wav",
+   "inizio": 73.33
+  },
+  {
+   "file": "voce/line_11.wav",
+   "inizio": 79.54
+  },
+  {
+   "file": "voce/line_12.wav",
+   "inizio": 92.58
+  },
+  {
+   "file": "voce/line_13.wav",
+   "inizio": 97.43
+  },
+  {
+   "file": "voce/line_14.wav",
+   "inizio": 103.04
+  },
+  {
+   "file": "voce/line_15.wav",
+   "inizio": 106.43
+  },
+  {
+   "file": "voce/line_16.wav",
+   "inizio": 111.9
+  },
+  {
+   "file": "voce/line_17.wav",
+   "inizio": 121.36
+  },
+  {
+   "file": "voce/line_18.wav",
+   "inizio": 128.75
+  },
+  {
+   "file": "voce/line_19.wav",
+   "inizio": 136.97
+  },
+  {
+   "file": "voce/line_20.wav",
+   "inizio": 143.63
+  }
+ ],
+ "musica": [
+  {
+   "file": "musica.mp3",
+   "inizio": 0,
+   "da": 9.39,
+   "entrata": 1.5,
+   "uscita": 1.5
+  }
+ ],
+ "effetti": [
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 45.86,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 46.64,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 47.42,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 48.2,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 48.98,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 73.73,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 74.35,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 74.97,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 113.3,
+   "tipo": "colpo",
+   "volume": -4.4
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 114.1,
+   "tipo": "colpo",
+   "volume": -4.4
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 114.9,
+   "tipo": "colpo",
+   "volume": -4.4
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 115.7,
+   "tipo": "colpo",
+   "volume": -4.4
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 116.5,
+   "tipo": "colpo",
+   "volume": -4.4
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 61.78,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 62.6,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 63.42,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 64.24,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 65.06,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 75.73,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 76.35,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 76.97,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 68.48,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 70.48,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 31.2,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 32.1,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 33.0,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 36.02,
+   "tipo": "colpo",
+   "volume": -1.9
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 122.76,
+   "tipo": "colpo",
+   "volume": -8.0
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 123.51,
+   "tipo": "colpo",
+   "volume": -8.0
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 124.26,
+   "tipo": "colpo",
+   "volume": -8.0
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 125.01,
+   "tipo": "colpo",
+   "volume": -8.0
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 125.76,
+   "tipo": "colpo",
+   "volume": -8.0
+  },
+  {
+   "file": "sfx/soffio.wav",
+   "evento": 78.04,
+   "tipo": "colpo",
+   "volume": 0.0
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 82.413,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 82.958,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 83.504,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 84.049,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 84.595,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 85.14,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 85.685,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 86.231,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 86.776,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 87.322,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 87.867,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 88.413,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 88.958,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 89.504,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 90.049,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 90.595,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 91.14,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 91.685,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/colpo.wav",
+   "evento": 92.231,
+   "tipo": "colpo",
+   "volume": -9.1
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 17.6,
+   "tipo": "colpo",
+   "volume": -3.1
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 43.96,
+   "tipo": "colpo",
+   "volume": -3.1
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 79.24,
+   "tipo": "colpo",
+   "volume": -3.1
+  },
+  {
+   "file": "sfx/passaggio.wav",
+   "evento": 102.74,
+   "tipo": "colpo",
+   "volume": -3.1
+  },
+  {
+   "file": "sfx/chiusura.wav",
+   "evento": 143.33,
+   "tipo": "colpo",
+   "volume": -1.9
+  }
+ ]
+}
