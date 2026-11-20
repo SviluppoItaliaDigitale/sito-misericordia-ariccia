@@ -175,7 +175,9 @@ puntate:
   fonti:
   - content/servizio-civile.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-12-12-servizio-civile.md
+  data: '2026-12-12'
 - id: kit-anziani-fragilita
   tema: kit-prevenzione
   titolo: 'Anziani, disabilità e terapie salvavita: i kit per le emergenze'
