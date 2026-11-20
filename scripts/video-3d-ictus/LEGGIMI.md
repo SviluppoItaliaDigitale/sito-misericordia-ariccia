@@ -51,6 +51,7 @@ scrive «uno uno due», TAC si scrive come si legge; ogni ripresa è controllata
 - ISSalute, «Ictus» (aggiornata il 17/12/2025): coagulo che chiude un'arteria (circa l'80%) o arteria che si rompe;
   in ospedale subito TAC o risonanza.
 - ISSalute, «Afasia»: l'ictus danneggia le aree del cervello che controllano il linguaggio.
+- Manuale MSD, edizione per i professionisti, «Panoramica sulla funzione cerebrale» (revisione set. 2025, agg. gen. 2026): corteccia motoria primaria nel giro precentrale, lato controlaterale; area di Broca nella corteccia frontale posteroinferiore sinistra.
 - Ministero della Salute, «La presa in carico riabilitativa nell'assistenza a lungo termine» (dicembre 2025): deficit
   motorio «nell'emilato corporeo opposto al lato della lesione cerebrale».
 - SNLG Regione Toscana, «Ictus cerebrale: linee guida» (2013): p. 25 ora di inizio dei sintomi raccolta dai

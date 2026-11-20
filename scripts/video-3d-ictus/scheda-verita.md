@@ -10,8 +10,8 @@ uno ogni 0,5 s, nelle scene che la riguardano (20/11/2026). Convenzione: «destr
 | 2 | Il coagulo sta **dentro** un'arteria del cervello (arteria cerebrale media **sinistra**) e la chiude: a valle i globuli spariscono, a monte si fermano | ISSalute «Ictus»: coagulo che ostruisce un'arteria (circa 80% dei casi) | 15,8-19,5 | verificata |
 | 3 | L'altra forma: un'arteria che si rompe e il sangue esce (emorragia), solo accennata | ISSalute «Ictus»: rottura di un'arteria con fuoriuscita di sangue | 20,0-22,5 | verificata |
 | 4 | La parte del cervello a valle del coagulo (faccia laterale dell'emisfero **sinistro**) resta senza sangue e si scurisce | ISSalute «Afasia»: la mancata irrorazione danneggia le cellule; schema | 23,0-37,5 | verificata |
-| 5 | La zona della parola è nell'emisfero **sinistro** (attorno all'insula) | ISSalute «Afasia»: emisfero dominante e aree del linguaggio | 29,5-37,5 | verificata |
-| 6 | La zona del movimento del braccio è sul giro precentrale **sinistro** | anatomia di base (corteccia motoria); **nessuna fonte statale letta in sessione** | 35,0-37,5 | posizione verificata sui fotogrammi, fonte da confermare |
+| 5 | La zona della parola è nell'emisfero **sinistro** (attorno all'insula) | ISSalute «Afasia»: emisfero dominante e aree del linguaggio; Manuale MSD (stessa pagina della voce 6): la corteccia frontale posteroinferiore sinistra (area di Broca) controlla la funzione espressiva del linguaggio | 29,5-37,5 | verificata |
+| 6 | La zona del movimento del braccio è sul giro precentrale **sinistro** (corteccia motoria), e comanda il lato opposto | Manuale MSD, edizione per i professionisti, «Panoramica sulla funzione cerebrale» (J. Huang, revisione set. 2025, agg. gen. 2026; letto il 20/11/2026), § «Lobi frontali»: «la corteccia motoria primaria è la parte più posteriore del giro precentrale… di un lato controlla tutte le parti mobili sul lato controlaterale del corpo» (homunculus: area della mano ampia) | 35,0-37,5 | verificata |
 | 7 | Emisfero **sinistro** colpito → problema sul lato **destro** del corpo: freccia dall'emisfero sinistro al braccio destro, lato destro acceso (a sinistra per chi guarda) | Ministero della Salute, «La presa in carico riabilitativa… ictus» (dic. 2025): deficit «nell'emilato corporeo opposto al lato della lesione cerebrale» | 40,0-46,0 | verificata |
 | 8 | Viso: si chiede di sorridere; scende l'angolo della bocca del lato **destro** della persona (a sinistra per chi guarda), coerente con la voce 7 | scheda «Ictus» del dossier del sito; IRC 2025 cap. 12 p. 14 (scala per l'ictus) | 50,0-71,0 | verificata |
 | 9 | Braccia: alzate tutte e due; scende il braccio **destro** della persona (a sinistra per chi guarda) | scheda «Ictus» del dossier; IRC 2025 cap. 12 p. 14 | 56,3-71,0 | verificata |
@@ -26,5 +26,4 @@ uno ogni 0,5 s, nelle scene che la riguardano (20/11/2026). Convenzione: «destr
 | 18 | Numeri: 112; corsi 328 8105399, fisso 06 933 3717 | CLAUDE.md del sito, § «Telefoni» (19/11/2026) | 114,0-127,5 | verificata |
 | 19 | Firma «Misericordia di Ariccia», fascia nazionale, nota «SCHEMA · NON IN SCALA», cornice di microtesto | CLAUDE.md § «2. Grafica brand» | 0-127,5 | verificata |
 
-Scheda di verità: 19 voci, 18 verificate su fonte e fotogrammi; la voce 6 è verificata sui fotogrammi ma la sua fonte
-ufficiale (funzione motoria del giro precentrale) non è stata letta in sessione.
+Scheda di verità: 19 voci, tutte verificate su fonte e sui fotogrammi (20/11/2026).
