@@ -79,6 +79,17 @@ def main() -> int:
             # La «copia dei documenti» del kit di emergenza è un consiglio, non il processo.
             if "document" in pat and re.search(r"cop(ia|ie) de(i|gli) $", testo[max(0, m.start() - 12):m.start()]):
                 continue
+            # Dal 20/11/2026 (kit-bambini-neonati): «documenti sanitari», «farmaci, documenti» sono
+            # contenuto dei kit, non il processo: si accettano se la parola con le vicine sta identica nelle fonti.
+            if "document" in pat:
+                prima = re.findall(r"[\w']+", testo[max(0, m.start() - 25):m.start()])[-1:]
+                dopo = re.findall(r"[\w']+", testo[m.end():m.end() + 25])[:1]
+                articoli = {"i", "gli", "dei", "degli", "ai", "agli", "nei", "dai", "sui", "le", "tali", "questi"}
+                vicine = [" ".join([m.group(0)] + dopo)]
+                if prima and prima[0] not in articoli:
+                    vicine.append(" ".join(prima + [m.group(0)]))
+                if any(re.search(r"\b" + re.escape(v).replace(r"\ ", r"\W+") + r"\b", fonte) for v in vicine if " " in v):
+                    continue
             problemi.append(f"parola vietata «{m.group(0)}»: …{contesto(m)}…")
     for pat in ASSOLUTE:
         n_t, n_f = len(re.findall(pat, testo)), len(re.findall(pat, fonte))
