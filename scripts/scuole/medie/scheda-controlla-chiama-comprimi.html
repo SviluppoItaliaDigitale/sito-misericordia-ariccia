@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/medie/scheda-controlla-chiama-comprimi.pdf">
+<title>Controlla, chiama, comprimi</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 per la scuola media, 2 pagine: che cosa può fare un ragazzo di 11-13 anni se una persona crolla e non
+risponde, con tre attività per la classe (pagina 1), e soluzioni e attenzioni per l'insegnante (pagina 2).
+Nessuna manovra da provare: le compressioni si imparano solo con un istruttore, su un manichino.
+Testi allineati alle schede «Arresto cardiaco» e «Il defibrillatore (DAE)» di content/dossier/primo-soccorso.md,
+alle slide medie/slide-primi-gesti.html e al registro data/dati_da_verificare.yaml (rcp-adulto-parametri,
+legge-116-2021-dae, kids-save-lives, giornata-rcp-16-ottobre). Fonti ricontrollate il 20/11/2026: IRC, Linee guida
+RCP 2025, cap. 4 «BLS adulto» (pp. 5, 7-9); Normattiva, legge 116/2021, artt. 3 e 5; ERC, Kids Save Lives;
+dichiarazione Kids Save Lives approvata dall'OMS (Resuscitation Council UK).
+-->
+<style>
+.pagina > .contenuto { gap: 9px; }
+.passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.passo { border-top: 6px solid var(--blu); background: #EEF0F8; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; font-size: 12px; line-height: 16px; }
+.passo .testa { display: flex; align-items: center; gap: 10px; }
+.passo .num { width: 30px; height: 30px; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 17px; line-height: 30px; text-align: center; flex: none; }
+.passo .nome { font-size: 19px; line-height: 22px; font-weight: 800; color: #233B74; }
+.passo svg { width: 46px; height: 46px; margin-left: auto; flex: none; }
+.passo ul { padding-left: 16px; gap: 3px; }
+.passo .corso { margin-top: 2px; border-top: 1.5px solid #233B74; padding-top: 5px; font-weight: 700; color: #233B74; }
+.dae { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: center; border: 2px solid var(--verde); padding: 8px 14px; font-size: 12.5px; line-height: 17px; }
+.dae svg { width: 58px; height: 58px; }
+.dae b.t { color: var(--verde); font-weight: 800; }
+.att { display: flex; flex-direction: column; gap: 6px; }
+.att h2 { font-size: 16.5px; line-height: 21px; display: flex; align-items: center; gap: 8px; }
+.att h2 .lettera { background: var(--azzurro); color: #FFFFFF; width: 24px; height: 24px; font-size: 14px; line-height: 24px; text-align: center; flex: none; }
+.att .consegna { font-size: 12.5px; line-height: 17px; }
+.ordine { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 14px; }
+.ordine div { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: center; border: 1.5px solid var(--linea); padding: 5px 8px; font-size: 12.5px; line-height: 16px; }
+.ordine i { display: block; width: 26px; height: 26px; border: 2px solid #233B74; }
+.scenario { border-left: 6px solid var(--azzurro); padding: 4px 0 4px 12px; font-size: 12.5px; line-height: 17px; }
+.scenario p + p { margin-top: 3px; }
+.domande { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 12.5px; line-height: 17px; }
+table.caccia { width: 100%; border-collapse: collapse; font-size: 12px; line-height: 16px; }
+.caccia th, .caccia td { border: 1.5px solid #233B74; padding: 4px 8px; text-align: left; vertical-align: middle; }
+.caccia thead th { background: var(--blu); color: #FFFFFF; font-weight: 700; }
+.caccia td { height: 24px; }
+/* pagina 2 */
+.sol { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; line-height: 17px; }
+.sol b.n { display: inline-block; min-width: 22px; color: #FFFFFF; background: var(--azzurro); text-align: center; margin-right: 6px; }
+.attenzioni { padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; line-height: 17px; }
+.due-col { display: grid; grid-template-columns: 1.35fr 1fr; gap: 14px; font-size: 12px; line-height: 16.5px; }
+.due-col .riquadro { display: flex; flex-direction: column; gap: 5px; }
+.riquadro.blu h3 { color: #FFFFFF; }
+.nw { white-space: nowrap; }
+</style>
+</head>
+<body class="a4">
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola media</b></div>
+<div class="contenuto">
+<h1>Controlla, chiama, comprimi</h1>
+<p class="sotto">Una persona crolla a terra e non risponde: anche a 12 anni puoi fare molto. Ecco i tre passaggi delle linee guida europee: i primi due li puoi fare già oggi.</p>
+
+<div class="passi">
+<div class="passo">
+<div class="testa"><span class="num">1</span><span class="nome">Controlla</span>
+<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24c5-8 12-12 20-12s15 4 20 12c-5 8-12 12-20 12S9 32 4 24z"/><circle cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="1.6" fill="#233B74"/></svg></div>
+<ul>
+<li><strong>È sicuro avvicinarsi?</strong> Traffico, fuoco, fumo, gas: se c'è un pericolo, stai lontano e chiama un adulto.</li>
+<li><strong>Risponde?</strong> Chiamala ad alta voce e scuotila delicatamente.</li>
+</ul>
+</div>
+<div class="passo">
+<div class="testa"><span class="num">2</span><span class="nome">Chiama</span>
+<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="5" width="18" height="36" rx="3"/><path d="M15 36h6"/><path d="M33 17c2.5 2 2.5 8 0 10"/><path d="M38 13c5 4.5 5 13.5 0 18"/></svg></div>
+<ul>
+<li>Non risponde? Chiama subito il <strong>112</strong> o fallo chiamare, con il <strong>vivavoce</strong>: l'operatore ti guida.</li>
+<li>Di' dove sei e che cosa è successo.</li>
+<li>Intanto guarda se respira normalmente: respiri rari e rumorosi <strong>non</strong> lo sono.</li>
+</ul>
+</div>
+<div class="passo">
+<div class="testa"><span class="num">3</span><span class="nome">Comprimi</span>
+<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="#233B74" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 41S6 30 6 17.5C6 11 10.5 7 15.5 7c3.8 0 6.6 2.2 8.5 5 1.9-2.8 4.7-5 8.5-5C37.5 7 42 11 42 17.5 42 30 24 41 24 41z"/><path d="M24 17v11"/><path d="M19.5 23.5 24 28l4.5-4.5"/></svg></div>
+<ul>
+<li>Se non respira normalmente, servono le compressioni sul torace: l'operatore ti spiega come farle, finché arrivano i soccorsi.</li>
+</ul>
+<p class="corso">Le compressioni si imparano con un istruttore, su un manichino. Mai provarle su un compagno.</p>
+</div>
+</div>
+
+<div class="dae">
+<svg viewBox="0 0 60 60" aria-hidden="true"><rect x="2" y="2" width="56" height="56" fill="#1E7B34"/><path d="M30 47S12 36.5 12 24.5C12 18.5 16 15 20.5 15c4 0 7 2.4 9.5 5.6 2.5-3.2 5.5-5.6 9.5-5.6C44 15 48 18.5 48 24.5 48 36.5 30 47 30 47z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/><path d="M32.5 19.5 25 31h6l-3.5 10.5L36 28h-6z" fill="#FFFFFF"/><path d="M48 6v8M44 10h8" stroke="#FFFFFF" stroke-width="2.6"/></svg>
+<p><b class="t">Fatti portare il defibrillatore (DAE).</b> Lo riconosci dal <strong>cartello verde con un cuore e un fulmine</strong>. Appena arriva, si apre, si accende e si segue la sua voce: ti dice lui che cosa fare. Se non sai dov'è, chiedilo all'operatore del 112.</p>
+</div>
+
+<div class="att">
+<h2><span class="lettera">A</span>Metti in ordine</h2>
+<p class="consegna">Scrivi nei quadrati i numeri da 1 a 6. Se siete in tanti, alcune cose si fanno insieme.</p>
+<div class="ordine">
+<div><i></i>Vivavoce: fai ciò che dice l'operatore.</div>
+<div><i></i>Qualcuno corre a prendere il DAE.</div>
+<div><i></i>Guardati intorno: è sicuro avvicinarsi?</div>
+<div><i></i>Accendi il DAE e segui la sua voce.</div>
+<div><i></i>Chiama il 112, o fallo chiamare.</div>
+<div><i></i>Chiamala forte e scuotila delicatamente.</div>
+</div>
+</div>
+
+<div class="att">
+<h2><span class="lettera">B</span>Al campo sportivo: discutetene in classe</h2>
+<div class="scenario"><p>Sabato pomeriggio, partita di calcio. Un signore che guarda dalla tribuna scende, cammina verso la panchina e cade a terra. Lo chiamate: non risponde. Ci siete tu, due compagni di squadra e un genitore che arriva di corsa. Vicino agli spogliatoi c'è un cartello verde.</p></div>
+<div class="domande">
+<p>1. Chi chiama il 112 e che cosa dice per primo?</p>
+<p>2. Chi va a prendere il DAE? Dove?</p>
+<p>3. Chi va incontro all'ambulanza al cancello?</p>
+<p>4. Che cosa fai tu mentre aspettate?</p>
+</div>
+</div>
+
+<div class="att">
+<h2><span class="lettera">C</span>Caccia al DAE, con l'insegnante</h2>
+<table class="caccia">
+<thead><tr><th style="width:34%">Dove c'è un DAE?</th><th style="width:33%">Il cartello verde si vede bene?</th><th>Chi sa come prenderlo?</th></tr></thead>
+<tbody><tr><td>A scuola:</td><td></td><td></td></tr><tr><td>Vicino alla palestra o al campo:</td><td></td><td></td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola media</b></div>
+<div class="contenuto">
+<h2>Per l'insegnante: soluzioni e attenzioni</h2>
+<p>«Controlla, chiama, comprimi» sono i passaggi che le Linee guida europee 2025 indicano a tutti. A questa età l'obiettivo è <strong>riconoscere, chiamare e far portare il DAE</strong>: con il vivavoce l'operatore del 112 guida chi chiama, anche nelle compressioni.</p>
+<div class="sol">
+<p><b class="n">A</b><strong>Ordine:</strong> 1 è sicuro avvicinarsi; 2 chiamala e scuotila; 3 chiama il 112; 4 vivavoce e operatore; 5 qualcuno prende il DAE; 6 accendi il DAE. Se ci sono più persone, 3, 4 e 5 avvengono <strong>insieme</strong>: uno chiama, un altro corre a prendere il DAE. Conta che il 112 si chiami subito, senza aspettare di capire che cosa ha la persona.</p>
+<p><b class="n">B</b><strong>Campo sportivo:</strong> il genitore, o chi è più vicino al telefono, chiama il 112 con il vivavoce e dice prima <strong>dove</strong> si è (nome del campo, via, ingresso) e che una persona è a terra e non risponde; un ragazzo corre al cartello verde e porta il DAE; un altro va al cancello per guidare l'ambulanza. Chi resta accanto guarda se respira e fa ciò che dice l'operatore, che può anche indicare il DAE più vicino.</p>
+<p><b class="n">C</b><strong>Caccia al DAE:</strong> fatela insieme, con il referente della sicurezza o il personale della scuola. Mostrate la teca senza aprirla. Se manca un DAE o il cartello non si vede, è un buon tema di educazione civica.</p>
+</div>
+<h3>Attenzioni</h3>
+<ul class="attenzioni">
+<li><strong>Chi ha vissuto un lutto</strong> o un malore grave in famiglia può soffrire: avvisate prima classe e famiglie, lasciate la possibilità di non intervenire e ascoltate.</li>
+<li><strong>Nessuna prova sul compagno:</strong> né compressioni né scosse, nemmeno per gioco: solo su un manichino, con un istruttore.</li>
+<li><strong>Telefono finto o spento</strong> per le simulazioni: il 112 non si chiama mai per prova.</li>
+<li><strong>Senza paura e senza promesse:</strong> aiutare dà più possibilità, ma non sempre basta. Se la persona non ce la fa, non è colpa di chi ha aiutato.</li>
+</ul>
+<div class="due-col">
+<div class="riquadro tenue">
+<h3>La legge e le campagne</h3>
+<p>La <strong>legge 4 agosto 2021, n. 116</strong>, art. 5, prevede per gli studenti la formazione su rianimazione di base, defibrillatore e soffocamento, con attenzione all'età; le scuole la organizzano in autonomia, anche con il volontariato, e possono dedicare il <strong>16 ottobre</strong>, Giornata mondiale della rianimazione cardiopolmonare, a iniziative sul tema. Per l'art. 3, se non c'è personale formato, anche chi non è formato può usare il DAE in caso di sospetto arresto cardiaco.</p>
+<p><strong>Kids Save Lives</strong>, dello European Resuscitation Council, approvata dall'OMS, chiede due ore l'anno di rianimazione a scuola dai 12 anni: per l'ERC già a 10-12 anni si comprime alla profondità giusta.</p>
+</div>
+<div class="riquadro blu">
+<h3>Un corso per la classe</h3>
+<p>La Misericordia di Ariccia tiene corsi di primo soccorso, BLSD e P-BLSD con formatori abilitati ARES 118, sulle Linee guida ERC 2025. Sul manichino si impara a comprimere al centro del torace, 5-6 cm, 100-120 volte al minuto, e a usare il DAE.</p>
+<p><strong>Per i corsi:</strong><br><span class="nw">328 8105399 o 06 933 3717</span><br><span class="nw">sede@misericordia-ariccia.it</span><br><span class="nw">misericordia-ariccia.it/servizi/formazione</span></p>
+</div>
+</div>
+<p class="nota-adulti">Fonti, verificate il 20/11/2026: Italian Resuscitation Council, Linee guida RCP 2025, cap. 4 «BLS adulto», pp. 5 (controlla, chiama, comprimi), 7-8 (vivavoce, istruzioni dell'operatore, DAE più vicino) e 9 (segnaletica e uso del DAE); legge 4 agosto 2021, n. 116, artt. 3 e 5 (Normattiva); European Resuscitation Council, Kids Save Lives (erc.edu); dichiarazione Kids Save Lives approvata dall'OMS (Resuscitation Council UK). Sul sito: «Primo soccorso passo passo», <span class="nw">www.misericordia-ariccia.it/dossier/primo-soccorso/</span>.</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+</body>
+</html>
