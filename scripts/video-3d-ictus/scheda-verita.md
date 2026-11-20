@@ -1,4 +1,4 @@
-# Scheda di verità — «Ictus: il tempo è cervello» (versione orizzontale, 127,4 s; correzioni del medico del 20/11/2026)
+# Scheda di verità — «Ictus: il tempo è cervello» (versione orizzontale, 128,9 s; correzioni del medico del 20/11/2026)
 
 Che cosa deve essere vero in scena, con fonte e secondi del video. Ogni voce è stata controllata sui fotogrammi,
 uno ogni 0,5 s, nelle scene che la riguardano (20/11/2026). Convenzione: «destra» e «sinistra» sono quelle della
@@ -19,11 +19,11 @@ uno ogni 0,5 s, nelle scene che la riguardano (20/11/2026). Convenzione: «destr
 | 11 | Basta **un solo** segno per chiamare **subito** il 112 | scheda «Ictus» del dossier; IRC 2025 cap. 12 p. 14 | 72,3-76,0 | verificata |
 | 12 | Si annota l'ora di inizio (o l'ultima volta che stava bene): esempio «10:15»; l'orologio, con i numeri, ha la lancetta delle ore un quarto oltre il 10 (verso l'11) e quella dei minuti sul 3 | SNLG Regione Toscana 2013, p. 25 (ora di inizio raccolta dai soccorritori) e p. 33 (± 30 minuti) | 77,3-85,5 | verificata |
 | 13 | Non aspettare che passi | scheda «Ictus» del dossier | 86,6-91,5 | verificata |
-| 14 | Niente cibo, niente acqua, niente farmaci, **nemmeno l'aspirina** | SNLG Toscana 2013, p. 26 (nessuna terapia a domicilio) e p. 42 (aspirina in ospedale, non nei candidati alla trombolisi) | 92,2-99,0 | verificata |
-| 15 | Coagulo o emorragia lo dice solo la TAC in ospedale (anello attorno alla testa) | ISSalute «Ictus»: TAC o risonanza appena arriva in ospedale | 99,0-103,0 | verificata |
-| 16 | Solo per il coagulo: «Se è un coagulo, si può riaprire l'arteria»; si vede il coagulo che si scioglie nell'arteria cerebrale media sinistra e il sangue che riprende; nessun riferimento all'emorragia | SNLG Toscana 2013, p. 38 (trombolisi entro una finestra di ore) | 107,9-113,0 | verificata |
-| 17 | Riepilogo in ordine: 1 viso-braccia-parola, 2 chiama subito il 112, 3 segna l'ora, 4 niente cibo, acqua né farmaci | come 8-14 | 114,0-127,5 | verificata |
-| 18 | Numeri: 112; corsi 328 8105399, fisso 06 933 3717 | CLAUDE.md del sito, § «Telefoni» (19/11/2026) | 114,0-127,5 | verificata |
-| 19 | Firma «Misericordia di Ariccia», fascia nazionale, nota «SCHEMA · NON IN SCALA», cornice di microtesto | CLAUDE.md § «2. Grafica brand» | 0-127,5 | verificata |
+| 14 | Niente cibo, niente acqua, niente farmaci, **nemmeno l'aspirina** | SNLG Toscana 2013, p. 26 (nessuna terapia a domicilio) e p. 42 (aspirina in ospedale, non nei candidati alla trombolisi) | 92,2-99,5 | verificata |
+| 15 | Coagulo o emorragia lo dice solo la TAC in ospedale (anello attorno alla testa) | ISSalute «Ictus»: TAC o risonanza appena arriva in ospedale | 99,5-104,5 | verificata |
+| 16 | Solo per il coagulo: «Se è un coagulo, si può riaprire l'arteria»; si vede il coagulo che si scioglie nell'arteria cerebrale media sinistra e il sangue che riprende; nessun riferimento all'emorragia | SNLG Toscana 2013, p. 38 (trombolisi entro una finestra di ore) | 109,4-114,5 | verificata |
+| 17 | Riepilogo in ordine: 1 viso-braccia-parola, 2 chiama subito il 112, 3 segna l'ora, 4 niente cibo, acqua né farmaci | come 8-14 | 115,4-128,9 | verificata |
+| 18 | Numeri: 112; corsi 328 8105399, fisso 06 933 3717 | CLAUDE.md del sito, § «Telefoni» (19/11/2026) | 115,4-128,9 | verificata |
+| 19 | Firma «Misericordia di Ariccia», fascia nazionale, nota «SCHEMA · NON IN SCALA», cornice di microtesto | CLAUDE.md § «2. Grafica brand» | 0-128,9 | verificata |
 
 Scheda di verità: 19 voci, tutte verificate su fonte e sui fotogrammi (20/11/2026).

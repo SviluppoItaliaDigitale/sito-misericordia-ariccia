@@ -67,3 +67,16 @@ i numeri di telefono cifra per cifra (`voce/frasi.txt`, dopo `||` il testo a sch
 - Schede «Soffocamento» e «Soffocamento nel lattante» di `content/dossier/primo-soccorso.md` (lattante: pacche a
   pancia in giù sull'avambraccio con la testa più in basso, compressioni con due pollici, 5 soffi e rianimazione se
   perde conoscenza, cibi tondi in pezzi di circa mezzo centimetro).
+- Linee guida RCP 2025 di Italian Resuscitation Council, cap. 9 «BLS pediatrico»
+  (<https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf>), p. 25 (compressioni
+  sulla metà inferiore dello sterno) e p. 29 (soffocamento nel lattante e nel bambino), figure 16 e 17 a p. 30. Letto il
+  20/11/2026.
+
+## Versione 2 (20/11/2026)
+Solo ritocchi a schermo, voce invariata: «con la base del palmo» nei colpi; «persona inclinata in avanti» nelle
+compressioni addominali, con la figura più piegata; nel lattante la gamba e le ginocchia di chi soccorre, «pancia in su
+sulle tue ginocchia, più decise che nella rianimazione» e «metà inferiore dello sterno»; dopo il lattante la scheda
+«Dall'anno in su si fa come nell'adulto» (pausa dopo la frase 19 portata a 4,6 s). Ogni voce e la sua fonte sono in
+`scheda-verita.md`, da verificare sui fotogrammi ogni 0,5 s prima di pubblicare.
+Voce: le pronunce sbagliate di Damien si correggono in `assistente-personale/strumenti/voce-riserva/pronuncia.tsv`
+(qui: «boccóne», «tèsta», segnalate da Alessandro).
