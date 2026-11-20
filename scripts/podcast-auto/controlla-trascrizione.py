@@ -35,6 +35,8 @@ VIETATE = [
     r"\bvital[ei]\b", r"\bdetto (il |l')?(112|uno)",
     # Dal 20/11/2026 (opere-di-misericordia, generazione 1): «seguendo il testo».
     r"\b(seguendo|secondo|come dice) il testo\b",
+    # Dal 20/11/2026 (diventa-volontario, generazione 1): chiusa morale e giudizi delle voci.
+    r"da meditare", r"mi ha colpit\w*",
 ]
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
 DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
@@ -49,7 +51,9 @@ DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordi
                # «cautela obbligatoria».
                r"\b(primissim\w*|prima) cosa\b", r"\bpunt\w* (importante|fondamentale|chiave)", r"\btipo (un|una|il|la)\b", r"\bobbligatori\w*",
                # Dal 20/11/2026 (opere-di-misericordia): giudizi delle voci.
-               r"\bessenzial\w*", r"\battual[ei]\b", r"\bmi sembr\w*"]
+               r"\bessenzial\w*", r"\battual[ei]\b", r"\bmi sembr\w*",
+               # Regole lette ad alta voce e righe inventate dal riconoscitore nei silenzi (da togliere).
+               r"indicazion\w* (esatt|chiar|precis)\w*", r"amara\.org", r"sottotitoli"]
 # Parole assolute: ammesse solo se presenti anche nelle fonti.
 ASSOLUTE = [r"\bsempre\b", r"\bmai\b", r"\bcertamente\b", r"\binevitabilmente\b"]
 
