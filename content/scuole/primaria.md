@@ -47,6 +47,11 @@ materiali:
     file: "/documenti/scuole/primaria/scheda-intervista-ai-nonni.pdf"
     pagine: 2
     descrizione: "Per le classi 3ª-5ª: i bambini intervistano un nonno, una nonna o un'altra persona anziana su come si chiedeva aiuto un tempo, con domande aperte, consigli per ascoltare, un disegno e il confronto con il 112 di oggi. Sul secondo foglio la guida per l'insegnante."
+  - titolo: "Fogli per la famiglia: d'inverno e d'estate"
+    tipo: "scheda"
+    file: "/documenti/scuole/primaria/fogli-per-la-famiglia.pdf"
+    pagine: 2
+    descrizione: "Due fogli da mandare a casa, uno per l'inverno (freddo, ghiaccio, monossido da stufe, caldaie e camini) e uno per l'estate (caldo, mai soli in auto, anziani soli, mare e laghi). In ognuno le frasi per il bambino, «La mia casa è pronta?» da spuntare con un adulto e i consigli per i grandi."
   - titolo: "Guida per l'insegnante"
     tipo: "guida"
     file: "/documenti/scuole/primaria/guida-insegnante.pdf"
@@ -100,6 +105,27 @@ fonti:
     verificata: "20/11/2026"
   - titolo: "Confederazione Nazionale delle Misericordie d'Italia, Chi siamo"
     url: "https://www.misericordie.it/chi-siamo/"
+    verificata: "20/11/2026"
+  - titolo: "EpiCentro ISS, Monossido di carbonio"
+    url: "https://www.epicentro.iss.it/ambiente/monossido-carbonio"
+    verificata: "20/11/2026"
+  - titolo: "Vigili del fuoco, Casa sicura (monossido, prese d'aria, stufe a gas)"
+    url: "https://www.vigilfuoco.it/sites/default/files/2023-09/Casa%20sicura%20Italiano_0.pdf"
+    verificata: "20/11/2026"
+  - titolo: "Dipartimento della Protezione Civile, Neve e gelo: sei preparato?"
+    url: "https://www.protezionecivile.gov.it/it/approfondimento/neve-e-gelo---sei-preparato-/"
+    verificata: "20/11/2026"
+  - titolo: "Ministero della Salute, Ondate di calore: dieci consigli utili"
+    url: "https://www.salute.gov.it/new/it/tema/ondate-di-calore/dieci-consigli-utili/"
+    verificata: "20/11/2026"
+  - titolo: "Ministero della Salute, Ondate di calore: chi rischia di più"
+    url: "https://www.salute.gov.it/new/it/tema/ondate-di-calore/chi-rischia-di-piu/"
+    verificata: "20/11/2026"
+  - titolo: "Ministero della Salute, Linee di indirizzo per la prevenzione degli effetti del caldo (2026)"
+    url: "https://www.salute.gov.it/new/sites/default/files/2026-07/LG%20CALDO%20INQUINAMENTO%20AGG%202026_0.pdf"
+    verificata: "20/11/2026"
+  - titolo: "ISS e Regioni, Sicurezza in acqua: campagna di prevenzione degli annegamenti (2025)"
+    url: "https://www.regione.fvg.it/rafvg/export/sites/default/RAFVG/salute-sociale/promozione-salute-prevenzione/FOGLIA45/allegati/20250625_ISS-CS_annegamenti_2025.pdf"
     verificata: "20/11/2026"
 ---
 
@@ -235,6 +261,10 @@ Si compila con il nome del bambino, la classe e la scuola, e lo firmano l'insegn
 ### Quando serviva aiuto: intervista ai nonni
 
 Una scheda da portare a casa per le classi terza, quarta e quinta. Il bambino intervista un nonno, una nonna o un'altra persona anziana che conosce: come si chiamava il medico o l'ambulanza quando erano piccoli, chi aiutava i vicini, una volta in cui qualcuno li ha aiutati. Ci sono domande aperte con le righe per scrivere, consigli per ascoltare con rispetto, un riquadro per disegnare la storia e il confronto con il 112 di oggi. Sul secondo foglio, per l'insegnante, come usarla in italiano, storia ed educazione civica, il consenso di chi racconta (niente cognomi, foto o registrazioni senza permesso) e che cosa proporre a chi non ha i nonni vicino.
+
+### Fogli per la famiglia: d'inverno e d'estate
+
+Due fogli da dare ai bambini da portare a casa: quello dell'inverno prima delle vacanze di Natale, quello dell'estate a fine anno. In alto la parte per il bambino, con quattro frasi grandi e un disegno; al centro «La mia casa è pronta?», sei cose da controllare insieme a un adulto; in basso i consigli per i grandi. D'inverno: il monossido di carbonio di caldaie, stufe e camini, i segni e che cosa fare (uscire subito all'aria aperta e chiamare il 112), il freddo e il ghiaccio. D'estate: le ore più calde, dalle 11 alle 18, almeno un litro e mezzo d'acqua al giorno, mai nessuno chiuso in auto, gli anziani che vivono soli, che cosa fare se qualcuno sta male per il caldo, il bagno dove c'è il bagnino. I consigli sono quelli del Ministero della Salute, dell'Istituto superiore di sanità e dei Vigili del fuoco; altri sono nel dossier [Prevenzione stagionale](/dossier/prevenzione-stagionale/).
 
 ### La guida per l'insegnante
 

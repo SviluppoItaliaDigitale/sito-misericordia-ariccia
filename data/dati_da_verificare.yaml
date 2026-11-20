@@ -231,12 +231,37 @@ dati:
   dove:
   - "content/bambini-e-scuole.md"
   - "content/news/2027-02-11-giornata-europea-112-bambini.md"
+  - "scripts/scuole/superiori/scheda-accanto-a-un-compagno.html"
   fonte: "https://azzurro.it/"
   tipo: "emergenza"
   delicato: false
   frequenza: "mensile"
   verificato: "2026-11-09"
   note: ""
+- id: "telefono-amico"
+  cosa: "Telefono Amico Italia risponde al 02 2327 2327 per chi ha bisogno di parlare con qualcuno."
+  valore: "02 2327 2327"
+  dove:
+  - "content/dossier/anziani-e-solitudine.md"
+  - "scripts/scuole/superiori/scheda-accanto-a-un-compagno.html"
+  fonte: "https://www.telefonoamico.it/"
+  tipo: "emergenza"
+  delicato: false
+  frequenza: "mensile"
+  verificato: "2026-11-20"
+  note: "20/11/2026: numero letto sulla home di telefonoamico.it. Il servizio si dichiara gratuito, ma un numero 02 può costare come una telefonata normale: la scheda per le superiori non scrive «gratis»; il dossier anziani sì, da ricontrollare alla prossima verifica."
+- id: "team-tessera-europea"
+  cosa: "La Tessera europea di assicurazione malattia (TEAM), sul retro della tessera sanitaria, copre le cure medicalmente necessarie nell'Unione europea, in Islanda, Liechtenstein, Norvegia e Svizzera; la Commissione europea indica anche il Regno Unito. Non sostituisce l'assicurazione di viaggio."
+  valore: "UE + Islanda, Liechtenstein, Norvegia, Svizzera (Regno Unito secondo la Commissione europea)"
+  dove:
+  - "scripts/scuole/medie/scheda-aiuto-in-inglese.html"
+  - "content/scuole/medie.md"
+  fonte: "https://www.salute.gov.it/new/it/tema/cure-nellunione-europea/tessera-europea-assicurazione-malattia-team/"
+  tipo: "sanita"
+  delicato: false
+  frequenza: "annuale"
+  verificato: "2026-11-20"
+  note: "20/11/2026: Ministero della Salute (pagine TEAM e cure urgenti nell'UE) e Commissione europea (https://employment-social-affairs.ec.europa.eu/node/53_it), lette con il browser perché rispondono 403 alle richieste automatiche."
 - id: "protezione-civile-lazio-803555"
   cosa: "La Sala operativa della Protezione Civile della Regione Lazio risponde al numero verde 803 555."
   valore: "803 555"
