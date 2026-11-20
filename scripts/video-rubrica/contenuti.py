@@ -70,7 +70,7 @@ V = {
   S('Alterna', ['5 e 5,','senza *fermarti*.'], 'Continua alternando cinque colpi e cinque compressioni, finché l\'oggetto non esce. Non infilare le dita in bocca alla cieca.', 'alterna', [['Alterna 5 e 5', .4], ['Niente dita in bocca', .85]]),
   S('Se sviene', ['A terra e','*rianimazione*.'], 'Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato '+U12+', chiamalo subito.', 'rcp-mini', [['Rianimazione', .4], ['112, se non l\'hai già chiamato', .85, 1]],
     sub='Se perde conoscenza, accompagnalo a terra e inizia la rianimazione. Se nessuno ha ancora chiamato il 112, chiamalo subito.'),
-  S('Dopo', ['Sempre','dal *medico*.'], 'Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei bambini piccoli le manovre sono diverse: si imparano a un corso.', 'medico', [['Visita medica', .3], ['Bambini: manovre diverse', .8]]),
+  S('Dopo', ['Sempre','dal *medico*.'], 'Dopo le compressioni addominali, fallo sempre visitare da un medico. Nei lattanti, sotto l\'anno di età, le manovre sono diverse: si imparano a un corso.', 'medico', [['Visita medica', .3], ['Lattanti: manovre diverse', .8]]),
   FINE]),
 'anafilassi': dict(nome='Anafilassi', scene=[
   S('Anafilassi', ['L\'allergia','*grave*.'], 'Anafilassi: la reazione allergica grave. Agire in fretta salva la vita.', 'adrenalina'),

@@ -222,6 +222,7 @@ CASI = [  # (testo, deve essere segnalato)
     # soffocamento: tecnica diversa solo nel lattante (20/11/2026)
     ("Nei lattanti e nei bambini " + "piccoli la tecnica è diversa", True),
     ("In infants and young " + "children the technique is different", True),
+    ("Nei bambini " + "piccoli le manovre sono diverse: si imparano a un corso.", True),
     ("Nei lattanti, sotto l'anno di età, la tecnica è diversa.", False),
 ]
 
