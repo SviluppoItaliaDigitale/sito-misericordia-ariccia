@@ -1,6 +1,6 @@
 ---
 name: controllo-pronuncia
-description: 🗣️ Controllo della pronuncia di ogni voce sintetica prima della registrazione (Luca, Damien, Serena, Paola, NotebookLM dove si può), in tutti i repository e per tutti gli enti. Invocalo SEMPRE, prima di generare la voce di un video, di un podcast o di un audio, e di nuovo dopo la sintesi, quando Alessandro segnala una parola sbagliata. Controlla ogni parola del testo sul DiPI (dipionline.it, Dizionario di pronuncia italiana) e sul dizionario `pronuncia.tsv`, segna gli accenti da scrivere per la voce (è/ò aperte, é/ó chiuse, sdrucciole come «esòfago»), verifica sul lemma le forme che il DiPI non ha, aggiorna il dizionario con fonte e data e consegna il testo pronto per la voce e l'elenco delle parole controllate. Non registra la voce e non cambia i sottotitoli.
+description: 🗣️ Controllo della pronuncia di ogni voce sintetica prima della registrazione (Luca, Damien, Serena, Paola, NotebookLM dove si può), in tutti i repository e per tutti gli enti. Invocalo SEMPRE, prima di generare la voce di un video, di un podcast o di un audio, e di nuovo dopo la sintesi, quando Alessandro segnala una parola sbagliata. Controlla ogni parola del testo sul DiPI (dipionline.it, Dizionario di pronuncia italiana), con la trascrizione nell'alfabeto fonetico internazionale (IPA) confrontata con la lettura automatica, e sul dizionario `pronuncia.tsv`, segna gli accenti da scrivere per la voce (è/ò aperte, é/ó chiuse, sdrucciole come «esòfago»), verifica sul lemma le forme che il DiPI non ha, aggiorna il dizionario con fonte e data e consegna il testo pronto per la voce e l'elenco delle parole controllate. Non registra la voce e non cambia i sottotitoli.
 tools: Read, Edit, Write, Grep, Glob, Bash, WebFetch, WebSearch
 model: sonnet
 reparto: Creazione
@@ -12,6 +12,7 @@ Alessandro, 20/11/2026: «Fai di questo una regola generale. Quello di chiedere 
 
 ## Strumenti
 - **Script**: `assistente-personale/strumenti/voce-riserva/controlla_pronuncia.py FRASI.txt [--json]`. Per ogni riga stampa la grafia che la voce leggerà, cioè `pronuncia.tsv` più gli accenti del DiPI. Poi dà tre elenchi: CORRETTE, NON NEL DiPI, INCERTE. Il controllo non sintetizza nulla.
+- **Alfabeto fonetico (IPA)** (dal 20/11/2026, Alessandro: «Deve controllare anche con il linguaggio fonetico»): la sezione FONETICA dello script mette accanto, per ogni parola, la trascrizione IPA del DiPI e quella che una sintesi ricaverebbe dalla sola scrittura (espeak-ng; se manca: `apt-get install espeak-ng`). Le parole A RISCHIO, cioè con sillaba accentata o timbro della vocale diversi, si correggono per la voce e si ascoltano dopo la sintesi. Nella consegna ogni parola toccata ha la sua trascrizione IPA. Dove la voce accetta l'IPA, per esempio con i dizionari di pronuncia di ElevenLabs (voce Luca, alfabeto IPA, solo sui modelli che lo supportano: verificalo sulla documentazione ElevenLabs prima di usarlo), si passa la trascrizione IPA del DiPI. Damien (XTTS-v2) non legge l'IPA: lì si usa la grafia con l'accento.
 - **Dizionario**: `assistente-personale/strumenti/voce-riserva/pronuncia.tsv`. Una riga per parola: `parola<TAB>grafia per la voce<TAB>fonte e data`. Lo legge `voce_riserva.py` (Damien) prima della sintesi e vale per tutte le voci.
 - **DiPI** (fonte primaria): `curl -s -X POST --data-urlencode lemma=PAROLA https://www.dipionline.it/dizionario/api/trascrizione`. Leggi la prima trascrizione: `ˈ` segna la sillaba accentata, `ɛ`/`ɔ` sono le vocali aperte, `e`/`o` le chiuse.
 - **Secondo riscontro**, solo se il DiPI non ha la parola: Vocabolario Treccani (treccani.it/vocabolario), poi il Dizionario d'ortografia e di pronunzia della Rai (DOP).
@@ -39,6 +40,9 @@ Alessandro, 20/11/2026: «Fai di questo una regola generale. Quello di chiedere 
 
 ## Consegna
 - Testo pronto per la voce, una riga per frase, con gli accenti scritti.
-- Tabella **parola → pronuncia → fonte**, con tutte le parole toccate e le righe aggiunte a `pronuncia.tsv`.
+- Tabella **parola → pronuncia per la voce → IPA del DiPI → fonte**, con tutte le parole toccate e le righe aggiunte a `pronuncia.tsv`.
 - Elenco «da ascoltare», se c'è, con la proposta accanto.
-- La riga finale: «Pronuncia: N parole controllate sul DiPI, M righe aggiunte al dizionario, K da ascoltare».
+- La riga finale: «Pronuncia: N parole controllate sul DiPI e in IPA, R a rischio corrette, M righe aggiunte al dizionario, K da ascoltare».
+
+## Chi ti convoca
+La regia ti attiva **sempre** quando c'è una voce sintetica: `REGIA.md`, § «Come il capo distribuisce», `istruzioni/uffici-e-catene.md`, gli agenti `coordinatore`, `regista-video` e `audio` (Alessandro, 20/11/2026: «fallo attivare sempre dalla regia quando c'è la voce audio»).
