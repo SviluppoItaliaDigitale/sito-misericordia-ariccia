@@ -121,7 +121,10 @@ puntate:
   - settimana-viva
   - linee-guida
   - slide
-  stato: da-fare
+  stato: scartata
+  motivo: '20/11/2026, seconda generazione: corretta in ciò che dice, ma senza il primo
+    passo della rianimazione («Prima controlla che il posto sia sicuro, per te e per lui»).
+    La prima diceva «azioni manuali».'
 - id: diventa-volontario
   tema: chi-siamo
   titolo: Diventare volontari alla Misericordia di Ariccia
