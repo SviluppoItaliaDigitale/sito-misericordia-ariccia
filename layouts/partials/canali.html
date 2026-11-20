@@ -1,0 +1,8 @@
+{{- /* Elenco dei canali delle news con nome e descrizione, in italiano o in inglese.
+     Uso: {{ range partial "canali.html" (dict "en" $en) }}{{ .id }} {{ .nome }} {{ .intro }}{{ end }} */ -}}
+{{- $en := .en -}}
+{{- return (slice
+  (dict "id" "misericordia" "nome" (cond $en "From the Misericordia" "Dalla Misericordia") "intro" (cond $en "Our services, events, volunteers and campaigns." "I nostri servizi, gli eventi, i volontari e le campagne della Confraternita."))
+  (dict "id" "informazioni" "nome" (cond $en "Useful information" "Informazioni utili") "intro" (cond $en "Public health, guides and news from other bodies." "Notizie di servizio per i cittadini: salute pubblica, guide pratiche, novità dagli enti."))
+  (dict "id" "approfondimenti" "nome" (cond $en "In depth" "Approfondimenti") "intro" (cond $en "First aid step by step, 3D videos, history and faith." "Primo soccorso passo passo, video in 3D, «Lo sapevi che…», dossier e fede."))
+) -}}

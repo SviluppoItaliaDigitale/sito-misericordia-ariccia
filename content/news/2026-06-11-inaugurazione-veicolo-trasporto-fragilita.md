@@ -1,6 +1,7 @@
 ---
 title: "Sabato 13 giugno: inauguriamo il nuovo veicolo per il trasporto delle persone con fragilità"
 date: 2026-06-11
+canale: "misericordia"
 slug: "inaugurazione-veicolo-trasporto-fragilita"
 italianoSemplice: |
   **La Misericordia ha un nuovo mezzo.** Serve per trasportare le persone con fragilità.

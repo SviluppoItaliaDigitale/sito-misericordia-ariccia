@@ -1,6 +1,7 @@
 ---
 title: "Assistenza sanitaria ai saggi di danza al Palazzetto dello Sport di Genzano"
 date: 2026-07-03
+canale: "misericordia"
 slug: "assistenza-sanitaria-saggi-danza-genzano"
 italianoSemplice: |
   **La Misericordia di Ariccia ha aiutato durante i saggi di danza.**

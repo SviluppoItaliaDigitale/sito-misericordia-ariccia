@@ -2,6 +2,7 @@
 title: "Giornata mondiale dell'acqua: dar da bere agli assetati"
 titoloSeo: "22 marzo, Giornata mondiale dell'acqua: l'opera di misericordia «dar da bere agli assetati» ad Ariccia"
 date: 2027-03-22
+canale: "approfondimenti"
 slug: "giornata-mondiale-acqua"
 description: "Il 22 marzo è la Giornata mondiale dell'acqua, voluta dalle Nazioni Unite. Per noi è l'occasione di raccontare un'opera di misericordia antica: dar da bere agli assetati, oggi."
 immagine: "/img/news/2027-03-22-giornata-mondiale-acqua-grafica.jpg"

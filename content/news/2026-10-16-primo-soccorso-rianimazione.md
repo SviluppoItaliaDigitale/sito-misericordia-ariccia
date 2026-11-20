@@ -2,6 +2,7 @@
 title: "Arresto cardiaco: la rianimazione passo passo"
 titoloSeo: "Arresto cardiaco: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-16
+canale: "approfondimenti"
 slug: "primo-soccorso-rianimazione"
 controllo_editoriale: "2026-10-14"
 description: "Nella Giornata mondiale della rianimazione: sicurezza, coscienza, 112 subito, respiro e DAE, e la simulazione del massaggio cardiaco a tempo, fra 100 e 120 compressioni al minuto."

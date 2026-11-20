@@ -2,6 +2,7 @@
 title: "Crisi d'asma: cosa fare"
 titoloSeo: "Crisi d'asma: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-12-08
+canale: "approfondimenti"
 slug: "primo-soccorso-asma"
 description: "I segni della crisi d'asma, la posizione giusta, come aiutare con lo spray e quando chiamare il 112."
 immagine: "/img/news/primo-soccorso-asma-grafica.jpg"

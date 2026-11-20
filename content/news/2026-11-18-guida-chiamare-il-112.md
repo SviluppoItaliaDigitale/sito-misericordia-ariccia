@@ -2,6 +2,7 @@
 title: "Cosa succede quando chiami il 112: la nostra guida"
 titoloSeo: "Cosa succede quando chiami il 112 nel Lazio | Guida della Misericordia di Ariccia"
 date: 2026-11-18
+canale: "informazioni"
 slug: "guida-chiamare-il-112"
 controllo_editoriale: "2026-11-16"
 description: "Chi ti risponde quando chiami il 112, come ti localizza, quali domande ti fanno l'operatore e il 118, cosa fare e cosa non fare mentre arriva l'ambulanza e quando chiamare invece il 116117: la guida pratica della Misericordia di Ariccia."

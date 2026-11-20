@@ -1,6 +1,7 @@
 ---
 title: "Servizio di sostegno psicologico telefonico"
 date: 2020-04-02
+canale: "misericordia"
 slug: "servizio-di-sostegno-psicologico-telefonico"
 italianoSemplice: |
   **Un aiuto psicologico al telefono.**

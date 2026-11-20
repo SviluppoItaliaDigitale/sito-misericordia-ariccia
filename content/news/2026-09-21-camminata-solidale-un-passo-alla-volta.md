@@ -2,6 +2,7 @@
 title: "Sabato 26 settembre alla camminata solidale «Un Passo alla Volta»: la Misericordia c'è"
 titoloSeo: "Camminata solidale «Un Passo alla Volta» a Rocca di Papa, 26 settembre 2026: assistenza sanitaria della Misericordia di Ariccia"
 date: 2026-09-21
+canale: "misericordia"
 slug: "camminata-solidale-un-passo-alla-volta"
 social_testo: "Sabato 26 settembre 2026 la Misericordia di Ariccia ha garantito l'assistenza sanitaria alla camminata solidale «Un Passo alla Volta» ai Campi di Annibale di Rocca di Papa, a sostegno di Loto OdV contro il carcinoma ovarico, lungo la Via Sacra di Monte Cavo."
 servizio: "Assistenza sanitaria per eventi"

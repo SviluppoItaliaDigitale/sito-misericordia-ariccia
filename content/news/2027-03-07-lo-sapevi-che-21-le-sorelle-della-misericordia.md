@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Le «Sorelle» della Misericordia"
 titoloSeo: "Le «Sorelle» della Misericordia | Lo sapevi che… storia delle Misericordie"
 date: 2027-03-07
+canale: "approfondimenti"
 slug: "lo-sapevi-che-21-le-sorelle-della-misericordia"
 description: "Lo sapevi che… n. 21: Nel regolamento della Misericordia di Pisa del 1848 le «Sorelle» sono già tra i membri, con una loro festa e le loro preghiere di suffragio. A Firenze le donne entrano in Misericordia nel 1971."
 immagine: "/img/news/lo-sapevi-che-21-le-sorelle-della-misericordia-grafica.jpg"

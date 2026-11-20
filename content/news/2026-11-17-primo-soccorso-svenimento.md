@@ -2,6 +2,7 @@
 title: "Svenimento: sdraiato e gambe su"
 titoloSeo: "Svenimento: cosa fare passo passo, primo soccorso"
 date: 2026-11-17
+canale: "approfondimenti"
 slug: "primo-soccorso-svenimento"
 controllo_editoriale: "2026-11-16"
 description: "I segni che annunciano uno svenimento, le contromanovre per evitarlo, cosa fare se la persona sviene e quando chiamare il 112."

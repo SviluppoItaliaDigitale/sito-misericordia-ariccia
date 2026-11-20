@@ -1,6 +1,7 @@
 ---
 title: "Dona un respiro"
 date: 2020-03-27
+canale: "misericordia"
 slug: "dona-un-respiro"
 italianoSemplice: |
   **Una raccolta di soldi per l'ospedale.**

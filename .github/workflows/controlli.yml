@@ -132,6 +132,12 @@ jobs:
       - name: Materiali per le scuole
         run: python3 scripts/controlli/prova_scuole.py
 
+      # Ogni news ha il suo canale (dal 20/11/2026): Dalla Misericordia, Informazioni utili, Approfondimenti.
+      - name: Canale delle news
+        run: |
+          python3 scripts/controlli/prova_canali.py --autotest
+          python3 scripts/controlli/prova_canali.py
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

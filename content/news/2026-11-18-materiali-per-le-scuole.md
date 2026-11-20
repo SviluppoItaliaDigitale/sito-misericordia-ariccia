@@ -2,6 +2,7 @@
 title: "Materiali gratuiti per le scuole: il 112 e il primo soccorso in classe"
 titoloSeo: "Materiali gratuiti per le scuole su 112 e primo soccorso, anche per la LIM | Misericordia di Ariccia"
 date: 2026-11-18
+canale: "misericordia"
 slug: "materiali-per-le-scuole"
 description: "Schede da stampare, slide per la LIM in tutti i formati e guide per l'insegnante, dalla scuola dell'infanzia alle superiori: il 112, la sicurezza in casa e in strada, il primo soccorso. Gratis dalla Misericordia di Ariccia."
 immagine: "/img/news/2026-11-18-materiali-per-le-scuole-grafica.jpg"

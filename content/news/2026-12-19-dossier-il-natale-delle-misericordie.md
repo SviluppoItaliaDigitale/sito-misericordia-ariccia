@@ -2,6 +2,7 @@
 title: "Il Natale delle Misericordie: dal presepe di Greccio alla cena della vigilia"
 titoloSeo: "Il Natale delle Misericordie: presepi, Avvento e carità | Dossier"
 date: 2026-12-19
+canale: "approfondimenti"
 slug: "dossier-il-natale-delle-misericordie"
 description: "Un dossier sul Natale delle Misericordie: il presepe di Greccio del 1223, l'Avvento, la Natività dipinta per le confraternite, i presepi nelle sedi di Siena e Pistoia, la cena della vigilia a Lucca, Betlemme e l'aiuto della Misericordia di Ariccia a chi è solo."
 immagine: "/img/news/2026-12-19-dossier-il-natale-delle-misericordie-grafica.jpg"

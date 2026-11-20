@@ -2,6 +2,7 @@
 title: "Invalidità, Legge 104, trasporti: la guida ai diritti socio-sanitari"
 titoloSeo: "Guida ai diritti socio-sanitari ad Ariccia e nei Castelli Romani | Misericordia di Ariccia"
 date: 2026-11-25
+canale: "informazioni"
 slug: "guida-ai-diritti-socio-sanitari"
 description: "La guida della Misericordia di Ariccia ai diritti socio-sanitari: la nuova procedura INPS per l'invalidità nella provincia di Roma, Legge 104, trasporto per la dialisi, pass disabili, esenzioni ticket, ausili, assistenza a casa, caregiver e amministratore di sostegno."
 immagine: "/img/news/guida-diritti-grafica.jpg"

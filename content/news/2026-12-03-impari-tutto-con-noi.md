@@ -2,6 +2,7 @@
 title: "Impari tutto con noi"
 titoloSeo: "Diventa volontario ad Ariccia: la formazione della Misericordia, dal primo soccorso al soccorritore"
 date: 2026-12-03
+canale: "misericordia"
 slug: "impari-tutto-con-noi"
 description: "Non sai niente di primo soccorso? Va benissimo: alla Misericordia di Ariccia la formazione viene prima del servizio. Corsi aperti a tutti, poi in squadra agli eventi. WhatsApp 348 4068657."
 immagine: "/img/news/2026-12-03-impari-tutto-con-noi-grafica.jpg"

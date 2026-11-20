@@ -2,6 +2,7 @@
 title: "La spesa, la posta, il medico: ti accompagniamo nella vita di ogni giorno"
 titoloSeo: "Accompagnamento sociale ad Ariccia: spesa, posta, banca e farmacia con la Misericordia"
 date: 2026-10-03
+canale: "misericordia"
 slug: "accompagnamento-sociale-video"
 description: "Spesa al supermercato, posta e banca, medico e farmacia, parrucchiere, messa e cimitero, visite a chi ami: la Misericordia di Ariccia accompagna chi non può muoversi da solo, anche in carrozzina. Prenota al 348 4068657."
 immagine: "/img/news/accompagnamento-sociale-grafica.jpg"

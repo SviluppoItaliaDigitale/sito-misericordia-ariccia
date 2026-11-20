@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il cambio sotto la barella? Un colpo sulla stanga"
 titoloSeo: "Il cambio sotto la barella? Un colpo sulla stanga | Lo sapevi che… storia delle Misericordie"
 date: 2026-11-15
+canale: "approfondimenti"
 slug: "lo-sapevi-che-05-colpo-sulla-stanga"
 description: "Lo sapevi che… n. 5: Chi era stanco di portare la barella non parlava: batteva la mano sulla stanga e la squadra si fermava per il cambio, «nel più grande silenzio». Davanti alla casa del malato era vietato sedersi sulle stanghe o appoggiarsi al muro."
 immagine: "/img/news/lo-sapevi-che-05-colpo-sulla-stanga-grafica.jpg"

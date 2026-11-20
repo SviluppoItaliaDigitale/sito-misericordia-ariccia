@@ -687,7 +687,7 @@
     elenco(s2, t, 'Segni più sfumati', [['nelle donne', TP(9, 'donne', 0.1) - 0.2], ['negli anziani', TP(9, 'anziani', 0.25) - 0.2], ['in chi ha il diabete', TP(9, 'diabete', 0.4) - 0.3]], F(9, 0.12), F(10, 0.02), '#7FD3FF');
     azione(s2, t, '1', 'Chiama subito il 112', 'anche se il dolore dura poco\no va e viene', F(10, 0.02), F(11, 0.02), '#FCEB0C', simboloTel);
     azione(s2, t, '2', 'Seduta o sdraiata', 'come sta più comoda,\ne resta con lei', F(11, 0.02), F(12, 0.02), '#FCEB0C', simboloSedia);
-    azione(s2, t, '3', 'Un\'aspirina da masticare', 'se non è allergica\ne non l\'ha già presa', F(12, 0.02), F(13, 0.02), '#FCEB0C', simboloPastiglia);
+    azione(s2, t, '3', 'Un\'aspirina da masticare', '150-500 mg, se non è allergica\ne non ha altre controindicazioni', F(12, 0.02), F(13, 0.02), '#FCEB0C', simboloPastiglia);
     azione(s2, t, '4', 'Niente auto: l\'ambulanza', 'le cure cominciano\ngià durante il viaggio', F(13, 0.02), F(14, 0.0), '#FCEB0C', simboloAuto);
     avviso(s2, 'Non risponde e non respira normalmente?', t >= F(15, 0.35) && t < F(15, 0.7) ? fin(t, F(15, 0.36), F(15, 0.7), 0.3, 0.2) : 0, '#FFFFFF');
     avviso(s2, 'Compressioni e DAE', t >= F(15, 0.7) && t < F(16, 0) ? fin(t, F(15, 0.71), F(16, 0), 0.3, 0.3) : 0, '#7CFFB2');

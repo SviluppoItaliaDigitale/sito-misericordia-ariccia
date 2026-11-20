@@ -2,6 +2,7 @@
 title: "Ad Assisi con le Misericordie d'Italia: il pellegrinaggio nazionale nell'anno di San Francesco"
 titoloSeo: "Pellegrinaggio nazionale delle Misericordie e dei Fratres ad Assisi, 26 settembre 2026: presente la Misericordia di Ariccia"
 date: 2026-09-27
+canale: "misericordia"
 slug: "pellegrinaggio-assisi-misericordie-2026"
 description: "Sabato 26 settembre 2026 migliaia di volontari delle Misericordie e dei Fratres in pellegrinaggio da Santa Maria degli Angeli alla Basilica di San Francesco, nell'ottavo centenario della morte del Santo. A rappresentare la Misericordia di Ariccia il Custode spirituale Marco Caroli."
 social_testo: "🙏 Sabato 26 settembre 2026 ad Assisi migliaia di volontari delle Misericordie e dei Fratres di tutta Italia hanno camminato insieme da Santa Maria degli Angeli fino alla Basilica di San Francesco, nell'anno dell'ottavo centenario della morte del Santo. Il tema: «Dove la preghiera si fa servizio e dono». A rappresentare la Misericordia di Ariccia c'era il nostro Custode spirituale Marco Caroli. Grazie Marco: che Iddio te ne renda merito! 💛💙"

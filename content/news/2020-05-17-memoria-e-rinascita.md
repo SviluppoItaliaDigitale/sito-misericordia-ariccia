@@ -1,6 +1,7 @@
 ---
 title: "Memoria e Rinascita"
 date: 2020-05-17
+canale: "misericordia"
 slug: "memoria-e-rinascita"
 italianoSemplice: |
   **Un nuovo libro: "Memoria e Rinascita".**

@@ -2,6 +2,7 @@
 title: "Arriva l'estate: nessun anziano lasciato solo"
 titoloSeo: "Caldo ed estate 2027: anziani soli ad Ariccia, che cosa fa la Misericordia e dove trovare le informazioni ufficiali"
 date: 2027-05-27
+canale: "informazioni"
 slug: "estate-anziani-soli-caldo"
 description: "Con il caldo, chi è anziano e vive solo ha bisogno di qualcuno vicino. Accompagnamento per spesa, farmacia e medico, trasporti, e le fonti ufficiali: bollettini del Ministero della Salute e numero 1500."
 immagine: "/img/news/2027-05-27-estate-anziani-soli-caldo-grafica.jpg"

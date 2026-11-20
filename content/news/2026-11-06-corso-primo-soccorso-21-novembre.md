@@ -2,6 +2,7 @@
 title: "Corso di primo soccorso: si parte sabato 21 novembre"
 titoloSeo: "Corso di primo soccorso ad Ariccia dal 21 novembre 2026 — Misericordia"
 date: 2026-11-06T03:30:00+01:00
+canale: "misericordia"
 slug: "corso-primo-soccorso-21-novembre"
 description: "Nuovo corso di primo soccorso alla Misericordia di Ariccia: si parte sabato 21 novembre 2026 alle 10, in sede in Viale Antonietta Chigi 46. Quota 50 €, iscrizione compresa. Info 328 8105399."
 immagine: "/img/news/2026-11-06-corso-primo-soccorso-21-novembre-locandina.jpg"

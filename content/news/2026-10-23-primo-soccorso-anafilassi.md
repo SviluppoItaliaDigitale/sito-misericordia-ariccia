@@ -2,6 +2,7 @@
 title: "Anafilassi: riconoscerla e usare l'adrenalina"
 titoloSeo: "Anafilassi: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-23
+canale: "approfondimenti"
 slug: "primo-soccorso-anafilassi"
 controllo_editoriale: "2026-10-21"
 description: "Le cause, i segni della reazione allergica grave, come usare l'autoiniettore di adrenalina e in che posizione mettere la persona."

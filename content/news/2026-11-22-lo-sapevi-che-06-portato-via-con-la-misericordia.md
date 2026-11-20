@@ -2,6 +2,7 @@
 title: "Lo sapevi che… «L'hanno portato all'ospedale con la Misericordia»"
 titoloSeo: "«L'hanno portato all'ospedale con la Misericordia» | Lo sapevi che… storia delle Misericordie"
 date: 2026-11-22
+canale: "approfondimenti"
 slug: "lo-sapevi-che-06-portato-via-con-la-misericordia"
 description: "Lo sapevi che… n. 6: Il vocabolario Treccani registra «Misericordia» anche come la sede e l'ambulanza della confraternita: «andare alla Misericordia», «l'hanno portato all'ospedale con la Misericordia». E c'è un omonimo inatteso: un pugnale medievale."
 immagine: "/img/news/lo-sapevi-che-06-portato-via-con-la-misericordia-grafica.jpg"

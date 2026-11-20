@@ -2,6 +2,7 @@
 title: "Incidente stradale: come aiutare in sicurezza"
 titoloSeo: "Incidente stradale: cosa fare passo passo, primo soccorso"
 date: 2026-11-13
+canale: "approfondimenti"
 slug: "primo-soccorso-incidente-stradale"
 description: "Nella settimana della Giornata in ricordo delle vittime della strada: quattro frecce, giubbotto, triangolo, 112, non spostare i feriti e non togliere il casco."
 immagine: "/img/news/primo-soccorso-incidente-stradale-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Giacomo Puccini, confratello a Viareggio"
 titoloSeo: "Giacomo Puccini, confratello a Viareggio | Lo sapevi che… storia delle Misericordie"
 date: 2027-01-03
+canale: "approfondimenti"
 slug: "lo-sapevi-che-12-puccini-confratello"
 description: "Lo sapevi che… n. 12: Il compositore della Bohème e della Tosca era iscritto alla Misericordia di Viareggio. Quando morì, nel 1924, la confraternita fece celebrare una messa solenne da Requiem. Nella sua sala consiliare c'è ancora un pianoforte di Puccini."
 immagine: "/img/news/lo-sapevi-che-12-puccini-confratello-grafica.jpg"

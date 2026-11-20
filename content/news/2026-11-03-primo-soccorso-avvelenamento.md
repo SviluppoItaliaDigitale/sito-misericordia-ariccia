@@ -2,6 +2,7 @@
 title: "Avvelenamento: niente rimedi fai da te"
 titoloSeo: "Avvelenamento: cosa fare passo passo, primo soccorso"
 date: 2026-11-03
+canale: "approfondimenti"
 slug: "primo-soccorso-avvelenamento"
 controllo_editoriale: "2026-11-01"
 description: "Perché non far vomitare né dare latte, i numeri dei Centri Antiveleni di Roma, pelle e occhi, gas e fumi, e come prevenire in casa."

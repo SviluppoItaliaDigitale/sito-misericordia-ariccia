@@ -2,6 +2,7 @@
 title: "Anziani e solitudine: i dati, i segnali, i gesti di ogni giorno"
 titoloSeo: "Anziani e solitudine: il nuovo dossier della Misericordia di Ariccia"
 date: 2026-11-21
+canale: "approfondimenti"
 slug: "dossier-anziani-e-solitudine"
 description: "In Italia 4,6 milioni di persone di 65 anni e più vivono sole. Il nuovo dossier della Misericordia di Ariccia spiega che cosa dicono ISTAT, ISS e OMS, quali segnali notare in un vicino e a chi rivolgersi ad Ariccia."
 immagine: "/img/news/2026-11-21-dossier-anziani-e-solitudine-grafica.jpg"

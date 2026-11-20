@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il granduca che si alzava da tavola al suono della campana"
 titoloSeo: "Il granduca che si alzava da tavola al suono della campana | Lo sapevi che… storia delle Misericordie"
 date: 2027-02-14
+canale: "approfondimenti"
 slug: "lo-sapevi-che-18-granduca-a-tavola"
 description: "Lo sapevi che… n. 18: Charles Dickens scrive che anche il granduca di Toscana era iscritto alla Misericordia. E aggiunge un «si dice»: al suono della campana lo si vide alzarsi da tavola e uscire in silenzio, per rispondere alla chiamata."
 immagine: "/img/news/lo-sapevi-che-18-granduca-a-tavola-grafica.jpg"

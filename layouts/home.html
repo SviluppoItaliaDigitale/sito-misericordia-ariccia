@@ -178,7 +178,7 @@
         <div class="card-servizio p-4 h-100" data-tilt>
           <span class="chip" aria-hidden="true">↗</span>
           <h3>{{ .Title }}</h3>
-          <p>{{ .Summary | plainify | truncate 140 }}</p>
+          <p>{{ .Description | default (.Summary | plainify) | truncate 140 }}</p>
           <a href="{{ .RelPermalink }}" class="stretched-link">Scopri di più</a>
         </div>
       </div>
@@ -314,23 +314,35 @@
   </div>
 </section>
 
-<!-- ============ Ultime notizie ============ -->
+<!-- ============ Ultime notizie, divise per canale (20/11/2026) ============ -->
 <section class="container pb-5">
   <div class="d-flex justify-content-between align-items-baseline mb-3">
     <h2 class="mb-0" data-split="words">Ultime notizie</h2>
     <a href="{{ "/news/" | relURL }}" data-anim="fade-left">Tutte le news →</a>
   </div>
-  {{ $news := (site.GetPage "/news").Pages | first 3 }}
-  {{ if $news }}
-    <div data-anim-group>
-      {{ range $news }}
-      <article class="news-item">
-        <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p class="mb-0">{{ .Summary | plainify | truncate 160 }}</p>
-      </article>
-      {{ end }}
+  {{ $tutte := (site.GetPage "/news").Pages }}
+  {{ if $tutte }}
+  <div class="canali-home">
+    {{ range partial "canali.html" (dict "en" false) }}
+    {{ $id := .id }}{{ $ultime := slice }}
+    {{ range $tutte }}{{ if and (lt (len $ultime) 3) (eq (partial "canale-articolo.html" .) $id) }}{{ $ultime = $ultime | append . }}{{ end }}{{ end }}
+    {{ if $ultime }}
+    <div class="canale-home">
+      <h3 class="canale-titolo canale-{{ .id }}">{{ .nome }}</h3>
+      <div data-anim-group>
+        {{ range $ultime }}
+        <article class="news-item">
+          <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
+          <h4 class="h5"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+          <p class="mb-0">{{ .Description | default (.Summary | plainify) | truncate 140 }}</p>
+        </article>
+        {{ end }}
+      </div>
+      <a class="canale-tutte" href="{{ "/news/" | relURL }}#canale-{{ .id }}">Tutte: {{ .nome }} →</a>
     </div>
+    {{ end }}
+    {{ end }}
+  </div>
   {{ else }}
   <p>Le notizie arriveranno presto.</p>
   {{ end }}

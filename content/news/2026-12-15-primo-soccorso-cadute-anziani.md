@@ -2,6 +2,7 @@
 title: "Se un anziano cade: cosa fare"
 titoloSeo: "Cadute degli anziani: cosa fare passo passo, primo soccorso"
 date: 2026-12-15
+canale: "approfondimenti"
 slug: "primo-soccorso-cadute-anziani"
 description: "Non tirarlo su subito, le domande da fare, quando chiamare il 112, come rialzarsi a tappe e come rendere la casa più sicura."
 immagine: "/img/news/primo-soccorso-cadute-anziani-grafica.jpg"

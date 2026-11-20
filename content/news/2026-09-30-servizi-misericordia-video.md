@@ -2,6 +2,7 @@
 title: "Da casa all'ospedale e ritorno, e alle tue manifestazioni: i nostri servizi in un minuto"
 titoloSeo: "Trasporto infermi, carrozzina e assistenza eventi ad Ariccia: i servizi della Misericordia in video"
 date: 2026-09-30
+canale: "misericordia"
 slug: "servizi-misericordia-video"
 description: "Trasporto da casa all'ospedale e ritorno per chi non ha un mezzo o nessuno a cui chiedere, furgone con pedana e carrozzina o stampelle in prestito, assistenza sanitaria alle manifestazioni: i servizi della Misericordia di Ariccia in un video di un minuto."
 immagine: "/img/news/servizi-video-grafica.jpg"

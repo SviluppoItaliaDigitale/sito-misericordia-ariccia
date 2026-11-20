@@ -2,6 +2,7 @@
 title: "Infarto: i segni e cosa fare"
 titoloSeo: "Infarto: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-09
+canale: "approfondimenti"
 slug: "primo-soccorso-infarto"
 description: "Dolore o peso al centro del petto, i segni più sfumati in donne, anziani e diabetici, perché chiamare subito il 112, l'aspirina da masticare e perché non andare in ospedale in auto."
 immagine: "/img/news/primo-soccorso-infarto-grafica.jpg"

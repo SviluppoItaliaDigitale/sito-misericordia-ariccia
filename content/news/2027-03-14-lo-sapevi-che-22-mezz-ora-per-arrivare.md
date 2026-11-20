@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Mezz'ora per un malato, un quarto d'ora per un morto"
 titoloSeo: "Mezz'ora per un malato, un quarto d'ora per un morto | Lo sapevi che… storia delle Misericordie"
 date: 2027-03-14
+canale: "approfondimenti"
 slug: "lo-sapevi-che-22-mezz-ora-per-arrivare"
 description: "Lo sapevi che… n. 22: Dopo il suono della campana, il regolamento di Pisa dava ai confratelli mezz'ora per presentarsi se c'era un malato, un quarto d'ora se c'era un morto. Per un ferito si partiva «al più presto possibile»."
 immagine: "/img/news/lo-sapevi-che-22-mezz-ora-per-arrivare-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il cappuccio nero per fare il bene senza farsi riconoscere"
 titoloSeo: "Il cappuccio nero per fare il bene senza farsi riconoscere | Lo sapevi che… storia delle Misericordie"
 date: 2026-11-01
+canale: "approfondimenti"
 slug: "lo-sapevi-che-03-la-buffa"
 description: "Lo sapevi che… n. 3: Si chiama «buffa»: copre il viso e lascia due fori per gli occhi. Con guanti e ghette, nessuno poteva riconoscere il confratello. Il motivo è nel Vangelo: «non sappia la tua sinistra quello che fa la tua destra»."
 immagine: "/img/news/lo-sapevi-che-03-la-buffa-grafica.jpg"

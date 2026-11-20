@@ -2,6 +2,7 @@
 title: "Ipotermia e congelamento: cosa fare"
 titoloSeo: "Ipotermia e congelamento: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-12-01
+canale: "approfondimenti"
 slug: "primo-soccorso-freddo"
 description: "I segni dell'ipotermia, come scaldare una persona in modo sicuro, perché niente alcol, il congelamento e chi rischia di più."
 immagine: "/img/news/primo-soccorso-freddo-grafica.jpg"

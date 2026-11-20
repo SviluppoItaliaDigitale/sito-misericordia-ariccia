@@ -1,0 +1,18 @@
+{{- /* CANALE EDITORIALE DI UNA NEWS — restituisce "misericordia", "informazioni" o "approfondimenti".
+     Dal 20/11/2026 ogni news dichiara il canale nel front matter (`canale:`), scelto leggendo il
+     contenuto, come nel sito della Protezione Civile di Genzano:
+       misericordia     «Dalla Misericordia»: vita della Confraternita, servizi, eventi, volontari,
+                        campagne (volontari, 5×1000), corsi, ringraziamenti
+       informazioni     «Informazioni utili»: notizie di servizio per i cittadini, sanità pubblica,
+                        guide, notizie dalla Confederazione e da altri enti
+       approfondimenti  «Approfondimenti»: rubrica «Primo soccorso passo passo», video 3D,
+                        «Lo sapevi che…», dossier, fede e divulgazione
+     Lo controlla scripts/controlli/controlla_canali.py (bloccante sulle PR). Se il campo manca
+     vale un ripiego sul nome del file, solo per non rompere la pagina.
+     Uso: {{ $canale := partial "canale-articolo.html" . }} */ -}}
+{{- $c := lower (.Params.canale | default "") -}}
+{{- if not (in (slice "misericordia" "informazioni" "approfondimenti") $c) -}}
+  {{- $f := .File.LogicalName | default "" -}}
+  {{- $c = cond (or (in $f "primo-soccorso-") (in $f "-dossier-") (in $f "lo-sapevi-che")) "approfondimenti" "misericordia" -}}
+{{- end -}}
+{{- return $c -}}

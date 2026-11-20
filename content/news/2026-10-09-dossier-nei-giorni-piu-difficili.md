@@ -2,6 +2,7 @@
 title: "Nei giorni più difficili: le Misericordie nelle grandi emergenze"
 titoloSeo: "Le Misericordie nelle emergenze: peste, colera, terremoti, alluvione di Firenze, Covid | Dossier"
 date: 2026-10-09
+canale: "approfondimenti"
 slug: "dossier-nei-giorni-piu-difficili"
 description: "Il nuovo dossier racconta le Misericordie nelle grandi emergenze: i lasciti per seppellire i morti della peste del 1348, il colera dell'Ottocento, la Squadra federale, l'alluvione di Firenze, Amatrice, il Covid e la medaglia d'oro del 2023."
 immagine: "/img/news/dossier-giorni-difficili-grafica.jpg"

@@ -324,6 +324,7 @@ debba rispiegarlo:
 
 ### 1. Articolo sul sito (`content/news/AAAA-MM-GG-slug.md`)
 
+- **Canale (dal 20/11/2026)**: ogni news ha `canale:` nel front matter, scelto leggendo l'articolo, come nel sito della Protezione Civile di Genzano: `misericordia` («Dalla Misericordia»: servizi, eventi, volontari, campagne, corsi), `informazioni` («Informazioni utili»: notizie di servizio, salute pubblica, guide, notizie da altri enti), `approfondimenti` (rubrica di primo soccorso, video 3D, «Lo sapevi che…», dossier, fede). Lo usano la home (una colonna per canale), l'archivio `/news/` (una sezione per canale, `#canale-…`) e la pagina della news (`partials/canale-articolo.html`); lo blocca sulle PR `scripts/controlli/prova_canali.py`.
 - Front matter: `title`, `date`, `slug`, `description` **unica e specifica**
   (mai quella di default del sito), `italianoSemplice` (frasi brevi, parole
   facili — c'è in ogni contenuto del sito).

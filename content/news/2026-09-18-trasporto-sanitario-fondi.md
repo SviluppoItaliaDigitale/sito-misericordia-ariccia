@@ -2,6 +2,7 @@
 title: "In viaggio per chi ha bisogno: un trasporto sanitario fino a Fondi"
 titoloSeo: "Trasporto sanitario della Misericordia di Ariccia fino a Fondi: i volontari in viaggio per chi ha bisogno"
 date: 2026-09-18
+canale: "misericordia"
 slug: "trasporto-sanitario-fondi"
 aliases: ["/news/trasporto-solidale-fondi/"]
 description: "Il 18 settembre 2026 i volontari della Misericordia di Ariccia hanno accompagnato una persona fragile fino a Fondi, sul litorale pontino, con il mezzo dei Servizi Sociali: il racconto e le foto della giornata."

@@ -2,6 +2,7 @@
 title: "Verso la Pasqua: la Settimana Santa con noi"
 titoloSeo: "Settimana Santa 2027: dalle Palme alla Pasqua con la Parola del giorno della Misericordia di Ariccia"
 date: 2027-03-20
+canale: "approfondimenti"
 slug: "verso-la-pasqua-settimana-santa"
 description: "Domenica 21 marzo le Palme, giovedì 25 e venerdì 26 i giorni santi, domenica 28 la Pasqua. Ogni mattina la Parola del giorno sui nostri social e la Liturgia del giorno sul sito."
 immagine: "/img/news/2027-03-20-verso-la-pasqua-settimana-santa-grafica.jpg"

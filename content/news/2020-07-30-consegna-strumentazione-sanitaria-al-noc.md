@@ -1,6 +1,7 @@
 ---
 title: "Consegna strumentazione sanitaria al NOC"
 date: 2020-07-30
+canale: "misericordia"
 slug: "consegna-strumentazione-sanitaria-al-noc"
 italianoSemplice: |
   **Abbiamo donato strumenti all'ospedale nuovo dei Castelli (NOC).**

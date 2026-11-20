@@ -2,6 +2,7 @@
 title: "Una giornata di servizio, da vicino"
 titoloSeo: "Diventa volontario della Misericordia di Ariccia: com'è una giornata di servizio"
 date: 2027-05-20
+canale: "misericordia"
 slug: "volontario-una-giornata-di-servizio"
 description: "Un trasporto la mattina, il Banco Alimentare il pomeriggio, una festa la sera: che cosa fa davvero un volontario della Misericordia di Ariccia. Scrivi VOLONTARIO su WhatsApp al 348 4068657."
 immagine: "/img/news/2027-05-20-volontario-una-giornata-di-servizio-grafica.jpg"

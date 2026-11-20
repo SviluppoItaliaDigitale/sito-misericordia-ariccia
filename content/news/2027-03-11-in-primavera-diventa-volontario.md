@@ -2,6 +2,7 @@
 title: "In primavera, un posto anche per te"
 titoloSeo: "Diventa volontario in primavera con la Misericordia di Ariccia: trasporti, Banco Alimentare, ascolto, eventi"
 date: 2027-03-11
+canale: "misericordia"
 slug: "in-primavera-diventa-volontario"
 description: "Con la bella stagione tornano feste, gare e camminate, e restano i trasporti, il Banco Alimentare e il Centro di Ascolto. Non serve guidare l'ambulanza: scrivi VOLONTARIO al 348 4068657."
 immagine: "/img/news/2027-03-11-in-primavera-diventa-volontario-grafica.jpg"

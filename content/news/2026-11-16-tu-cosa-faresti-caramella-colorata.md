@@ -2,6 +2,7 @@
 title: "Tu cosa faresti? Una caramella colorata"
 titoloSeo: "Capsule di detersivo e bambini: cosa fare se le mettono in bocca"
 date: 2026-11-16
+canale: "approfondimenti"
 slug: "tu-cosa-faresti-caramella-colorata"
 description: "Leo ha due anni e una capsula di detersivo sembra una caramella. In un video di poco più di un minuto: cosa fare subito, chi chiamare e come prevenire in casa."
 immagine: "/img/news/tu-cosa-faresti-caramella-colorata-grafica.jpg"

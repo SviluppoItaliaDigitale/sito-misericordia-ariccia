@@ -2,6 +2,7 @@
 title: "Le confraternite e la Settimana Santa: un nuovo dossier"
 titoloSeo: "Le confraternite e la Settimana Santa: disciplinati, Via Crucis e processioni | Dossier"
 date: 2026-11-30
+canale: "approfondimenti"
 slug: "dossier-confraternite-e-settimana-santa"
 description: "Un dossier sul legame fra le confraternite e i giorni della Passione: i disciplinati di Perugia del 1260, le laudi, la Passione del Gonfalone al Colosseo, la Via Crucis dei francescani, la lavanda dei piedi, i «perdoni» di Taranto e le processioni del Cristo morto."
 immagine: "/img/news/2026-11-30-dossier-confraternite-e-settimana-santa-grafica.jpg"

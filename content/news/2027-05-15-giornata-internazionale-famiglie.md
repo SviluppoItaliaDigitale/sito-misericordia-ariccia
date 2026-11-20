@@ -2,6 +2,7 @@
 title: "Giornata delle famiglie: accanto a chi si prende cura"
 titoloSeo: "Giornata internazionale delle famiglie 2027: trasporti e servizi per chi assiste un familiare ad Ariccia"
 date: 2027-05-15
+canale: "misericordia"
 slug: "giornata-internazionale-famiglie"
 description: "Il 15 maggio è la Giornata internazionale delle famiglie dell'ONU. Per chi assiste un genitore anziano o un familiare con disabilità: trasporti per visite e dialisi, dimissioni dall'ospedale, accompagnamento, Centro di Ascolto."
 immagine: "/img/news/2027-05-15-giornata-internazionale-famiglie-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Non siamo eroi. Siamo persone come te: il nostro video"
 titoloSeo: "Non siamo eroi, siamo persone come te: il video della Misericordia di Ariccia sul volontariato"
 date: 2026-10-28
+canale: "misericordia"
 slug: "non-siamo-eroi-video"
 description: "In tre minuti il video della Misericordia di Ariccia racconta i trasporti sanitari, l'assistenza agli eventi, i corsi di primo soccorso, l'ascolto e il Servizio Civile. Dai 16 agli 80 anni c'è un posto anche per te: 348 4068657."
 immagine: "/img/news/2026-10-28-non-siamo-eroi-video-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Una serata di risate con Gabriele Cirilli: in servizio al Parco Chigi per «Ciri Rider»"
 data_evento: "2026-07-24"
 date: 2026-07-25
+canale: "misericordia"
 slug: "fantastiche-visioni-cirilli-ciri-rider"
 social_testo: "Venerdì 24 luglio 2026, la Misericordia di Ariccia in servizio di assistenza sanitaria al Parco Chigi per «Ciri Rider» di Gabriele Cirilli, alla XVI edizione di Fantastiche Visioni, col selfie del comico con le nostre volontarie."
 description: "La Misericordia di Ariccia in servizio di assistenza sanitaria al Parco Chigi per «Ciri Rider» di Gabriele Cirilli, alla XVI edizione di Fantastiche Visioni — col selfie del comico con le nostre volontarie."

@@ -2,6 +2,7 @@
 title: "Fratture e distorsioni: ferma, non raddrizzare"
 titoloSeo: "Fratture e distorsioni: cosa fare passo passo, primo soccorso"
 date: 2026-11-27
+canale: "approfondimenti"
 slug: "primo-soccorso-fratture"
 description: "Come riconoscere una frattura, perché non raddrizzare l'arto, il ghiaccio nel panno, la frattura esposta e quando chiamare il 112."
 immagine: "/img/news/primo-soccorso-fratture-grafica.jpg"

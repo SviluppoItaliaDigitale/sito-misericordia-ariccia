@@ -2,6 +2,7 @@
 title: "Infarto: che cosa succede nel cuore, in 3D"
 titoloSeo: "Infarto: che cosa succede nel cuore e cosa fare, video 3D (linee guida IRC 2025)"
 date: 2026-11-22
+canale: "approfondimenti"
 slug: "infarto-come-funziona"
 controllo_editoriale: "2026-11-20"
 description: "Un video in 3D con l'anatomia vera: le coronarie, la placca e il coagulo che chiude l'arteria, come si riconosce l'infarto e che cosa fare subito, in attesa dell'ambulanza."

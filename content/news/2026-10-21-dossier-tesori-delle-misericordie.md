@@ -2,6 +2,7 @@
 title: "I tesori delle Misericordie: musei, sedi storiche e opere d'arte"
 titoloSeo: "I tesori delle Misericordie: Museo della Misericordia di Firenze, Bigallo, Arezzo, Piero della Francesca | Dossier"
 date: 2026-10-21
+canale: "approfondimenti"
 slug: "dossier-tesori-delle-misericordie"
 controllo_editoriale: "2026-10-18"
 description: "Una piccola guida ai tesori delle Misericordie: il Museo della Misericordia di Firenze, la più antica veduta di Firenze al Bigallo, il Palazzo di Fraternita ad Arezzo, il polittico di Piero della Francesca a Sansepolcro e il Caravaggio di Napoli."

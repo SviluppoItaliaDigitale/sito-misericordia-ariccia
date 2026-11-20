@@ -2,6 +2,7 @@
 title: "Le cugine nel mondo: il nuovo dossier"
 titoloSeo: "Le Misericordie nel mondo, dal Portogallo a Macao | Dossier"
 date: 2026-12-16
+canale: "approfondimenti"
 slug: "dossier-le-cugine-nel-mondo"
 description: "Le Santas Casas de Misericórdia del Portogallo e del Brasile, Macao, i confratelli giapponesi di Nagasaki, e le nuove Misericordie italiane a Betlemme, in Albania e in Ucraina: il dossier sulle «cugine» nel mondo."
 immagine: "/img/news/dossier-cugine-mondo-grafica.jpg"

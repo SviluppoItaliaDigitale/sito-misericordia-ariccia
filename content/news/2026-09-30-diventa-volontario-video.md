@@ -2,6 +2,7 @@
 title: "Nessuno resta solo: in 40 secondi, cosa fa un volontario della Misericordia"
 titoloSeo: "Diventa volontario della Misericordia di Ariccia: il video in 40 secondi"
 date: 2026-09-30
+canale: "misericordia"
 slug: "diventa-volontario-video"
 description: "Una chiamata, l'ambulanza che parte, un braccio a cui appoggiarsi: in un video di 40 secondi il servizio dei volontari della Misericordia di Ariccia. Si può iniziare dai 16 agli 80 anni, senza esperienza."
 immagine: "/img/news/diventa-volontario-video-grafica.jpg"

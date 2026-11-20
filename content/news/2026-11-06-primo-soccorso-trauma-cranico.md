@@ -2,6 +2,7 @@
 title: "Colpo alla testa: i segnali d'allarme"
 titoloSeo: "Trauma cranico: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-11-06
+canale: "approfondimenti"
 slug: "primo-soccorso-trauma-cranico"
 description: "Dopo un colpo alla testa: cosa osservare, quando chiamare il 112, collo e schiena, il bernoccolo e le 24 ore successive."
 immagine: "/img/news/primo-soccorso-trauma-cranico-grafica.jpg"

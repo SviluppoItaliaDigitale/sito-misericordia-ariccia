@@ -2,6 +2,7 @@
 title: "I Papi e le Misericordie: il nuovo dossier"
 titoloSeo: "I Papi e le Misericordie, da Clemente VII a Leone XIV | Dossier"
 date: 2026-12-09
+canale: "approfondimenti"
 slug: "dossier-i-papi-e-le-misericordie"
 description: "Un futuro Papa tra i Capi di Guardia di Firenze, l'Angelus di Paolo VI, le udienze di Giovanni Paolo II, Benedetto XVI, Francesco e Leone XIV: le parole dei Papi per le Misericordie, dai testi ufficiali della Santa Sede."
 immagine: "/img/news/dossier-papi-grafica.jpg"

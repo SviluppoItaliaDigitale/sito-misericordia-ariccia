@@ -2,6 +2,7 @@
 title: "Primo maggio: chi lavora e trova il tempo per gli altri"
 titoloSeo: "Primo maggio 2027: lavorare e fare volontariato con la Misericordia di Ariccia, che cosa dice la legge"
 date: 2027-05-01
+canale: "misericordia"
 slug: "primo-maggio-lavoro-e-volontariato"
 description: "Molti nostri volontari lavorano e prestano servizio la sera o nel fine settimana. Il Codice del Terzo settore tutela chi fa volontariato: gratuità, assicurazione, orari più flessibili se il contratto li prevede."
 immagine: "/img/news/2027-05-01-primo-maggio-lavoro-e-volontariato-grafica.jpg"

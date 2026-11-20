@@ -1,6 +1,7 @@
 ---
 title: "VIVA! 2026: dal 12 al 18 ottobre la settimana della rianimazione. Le Misericordie sono partner"
 date: 2026-07-10
+canale: "informazioni"
 slug: "settimana-viva-2026"
 italianoSemplice: |
   **A ottobre c'è la settimana VIVA.**

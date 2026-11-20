@@ -2,6 +2,7 @@
 title: "Donare il sangue: i Fratres delle Misericordie e dove donare ai Castelli Romani"
 titoloSeo: "Donare il sangue ai Castelli Romani: chi può, come si dona, i donatori Fratres | Dossier"
 date: 2026-11-23
+canale: "approfondimenti"
 slug: "dossier-donare-il-sangue"
 description: "Una nuova guida della Misericordia di Ariccia sul dono del sangue: chi sono i donatori Fratres nati dalle Misericordie, i dati 2025 del Centro nazionale sangue, chi può donare secondo il decreto del 2015, sangue intero e plasma, e dove donare con la ASL Roma 6."
 immagine: "/img/news/2026-11-23-dossier-donare-il-sangue-grafica.jpg"

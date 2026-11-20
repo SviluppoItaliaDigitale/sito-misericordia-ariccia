@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Due rintocchi «a caso», tre «a morto»"
 titoloSeo: "Due rintocchi «a caso», tre «a morto» | Lo sapevi che… storia delle Misericordie"
 date: 2026-10-25
+canale: "approfondimenti"
 slug: "lo-sapevi-che-02-campana-a-caso-a-morto"
 description: "Lo sapevi che… n. 2: La campana della Misericordia suonava anche di notte. Due colpi volevano dire «a caso»: una disgrazia per strada o sul lavoro. Tre colpi volevano dire «a morto». Chi aveva un familiare fuori casa restava in ansia finché non lo vedeva tornare."
 immagine: "/img/news/lo-sapevi-che-02-campana-a-caso-a-morto-grafica.jpg"

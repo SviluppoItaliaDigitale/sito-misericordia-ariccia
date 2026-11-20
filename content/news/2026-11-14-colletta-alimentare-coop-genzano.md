@@ -2,6 +2,7 @@
 title: "Colletta Alimentare: oggi ci trovi alla Coop di Genzano di Roma"
 titoloSeo: "Colletta Alimentare 2026: la Misericordia di Ariccia alla Coop di Genzano di Roma"
 date: 2026-11-14
+canale: "misericordia"
 slug: "colletta-alimentare-coop-genzano"
 description: "Oggi, sabato 14 novembre, è la Giornata nazionale della Colletta Alimentare: i volontari della Misericordia di Ariccia ti aspettano alla Coop di Genzano di Roma, in via Emilia Romagna 102."
 immagine: "/img/news/2026-11-14-colletta-alimentare-coop-genzano-grafica.jpg"

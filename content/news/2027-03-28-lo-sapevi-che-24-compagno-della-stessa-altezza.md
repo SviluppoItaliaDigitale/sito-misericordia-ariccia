@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Un compagno della stessa altezza e niente calze colorate"
 titoloSeo: "Un compagno della stessa altezza e niente calze colorate | Lo sapevi che… storia delle Misericordie"
 date: 2027-03-28
+canale: "approfondimenti"
 slug: "lo-sapevi-che-24-compagno-della-stessa-altezza"
 description: "Lo sapevi che… n. 24: Appena vestito, ogni confratello doveva scegliersi un compagno «di eguale altezza», così la barella restava dritta. Scarpe e calze colorate erano vietate: chi le aveva doveva coprirle con le ghette."
 immagine: "/img/news/lo-sapevi-che-24-compagno-della-stessa-altezza-grafica.jpg"

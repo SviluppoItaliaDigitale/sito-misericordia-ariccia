@@ -2,6 +2,7 @@
 title: "Ictus: riconoscerlo e cosa fare"
 titoloSeo: "Ictus: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-06
+canale: "approfondimenti"
 slug: "primo-soccorso-ictus"
 description: "Viso, braccia, parola e gli altri segni improvvisi: come riconoscere un ictus, perché chiamare subito il 112 e cosa non dare alla persona."
 immagine: "/img/news/primo-soccorso-ictus-grafica.jpg"

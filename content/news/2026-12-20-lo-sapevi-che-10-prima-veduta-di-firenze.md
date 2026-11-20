@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il primo ritratto di Firenze è in un affresco della Misericordia"
 titoloSeo: "Il primo ritratto di Firenze è in un affresco della Misericordia | Lo sapevi che… storia delle Misericordie"
 date: 2026-12-20
+canale: "approfondimenti"
 slug: "lo-sapevi-che-10-prima-veduta-di-firenze"
 description: "Lo sapevi che… n. 10: Nel Museo del Bigallo c'è la Madonna della Misericordia che apre il mantello sui fiorentini. Ai suoi piedi si riconoscono il Battistero e il Duomo ancora senza facciata. È la più antica veduta di Firenze che si conosca."
 immagine: "/img/news/lo-sapevi-che-10-prima-veduta-di-firenze-grafica.jpg"

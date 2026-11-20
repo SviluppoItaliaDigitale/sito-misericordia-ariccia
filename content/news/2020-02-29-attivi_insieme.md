@@ -1,6 +1,7 @@
 ---
 title: "Attivi Insieme"
 date: 2020-02-29
+canale: "misericordia"
 slug: "attivi_insieme"
 italianoSemplice: |
   **Dal 1 marzo 2020 c'è una nuova iniziativa a Velletri.**

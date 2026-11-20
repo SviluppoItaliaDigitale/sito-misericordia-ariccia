@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Al Palio, le barelle aspettavano dietro i tendoni"
 titoloSeo: "Al Palio, le barelle aspettavano dietro i tendoni | Lo sapevi che… storia delle Misericordie"
 date: 2027-01-17
+canale: "approfondimenti"
 slug: "lo-sapevi-che-14-palio-dei-barberi"
 description: "Lo sapevi che… n. 14: Al Palio dei Barberi i cavalli correvano senza fantino per le vie di Firenze. All'arrivo, alla Porta alla Croce, bisognava fermarli in corsa. Lì, dietro i tendoni, aspettavano i cataletti della Misericordia."
 immagine: "/img/news/lo-sapevi-che-14-palio-dei-barberi-grafica.jpg"

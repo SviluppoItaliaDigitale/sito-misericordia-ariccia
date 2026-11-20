@@ -1,6 +1,7 @@
 ---
 title: "«Albano Laziale, impatto positivo»: la Misericordia raccontata in un video"
 date: 2026-09-14
+canale: "misericordia"
 slug: "albano-impatto-positivo-video"
 description: "Il reportage «Albano Laziale, impatto positivo» dedica un capitolo alla Misericordia di Ariccia: la Governatrice Maddalena Basili e il fondatore Fernando Nasoni raccontano trasporti, Centro di Ascolto e volontariato. Guarda il video."
 italianoSemplice: |

@@ -2,6 +2,7 @@
 title: "Le Misericordie nei libri e nell'arte: il nuovo dossier"
 titoloSeo: "Le Misericordie nei libri, nei quadri e nelle fotografie | Dossier"
 date: 2026-12-30
+canale: "approfondimenti"
 slug: "dossier-nei-libri-e-nell-arte"
 description: "Charles Dickens, Edmondo De Amicis, Thomas Adolphus Trollope, Emma Perodi, Alberto Savinio, il quadro di Pagliano e le fotografie degli Alinari: come scrittori e artisti hanno visto i confratelli della Misericordia. E i falsi miti, da Pinocchio a Camera con vista."
 immagine: "/img/news/dossier-libri-arte-grafica.jpg"

@@ -1,6 +1,7 @@
 ---
 title: "Non servono superpoteri: servi tu. Il 5x1000 alla Misericordia di Ariccia"
 date: 2026-06-09
+canale: "misericordia"
 slug: "5x1000-non-servono-superpoteri"
 italianoSemplice: |
   **Puoi aiutare la Misericordia con il 5x1000.**

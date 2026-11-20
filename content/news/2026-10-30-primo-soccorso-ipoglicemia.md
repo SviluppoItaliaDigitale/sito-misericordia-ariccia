@@ -2,6 +2,7 @@
 title: "Ipoglicemia: serve zucchero"
 titoloSeo: "Ipoglicemia: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-30
+canale: "approfondimenti"
 slug: "primo-soccorso-ipoglicemia"
 description: "Come riconoscere un calo di zuccheri in una persona con diabete, quanto zucchero dare, la regola dei 15 minuti e cosa fare se non risponde."
 immagine: "/img/news/primo-soccorso-ipoglicemia-grafica.jpg"

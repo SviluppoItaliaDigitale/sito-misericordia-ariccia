@@ -1,6 +1,7 @@
 ---
 title: "SEMI di Inclusione"
 date: 2021-06-05
+canale: "misericordia"
 slug: "semi-di-inclusione"
 italianoSemplice: |
   **Abbiamo aperto un orto sociale a Fontana di Papa.**

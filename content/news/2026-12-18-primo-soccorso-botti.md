@@ -2,6 +2,7 @@
 title: "Botti di Capodanno: prevenzione e primo soccorso"
 titoloSeo: "Botti di Capodanno: ustioni, mani e occhi, cosa fare passo passo"
 date: 2026-12-18
+canale: "approfondimenti"
 slug: "primo-soccorso-botti"
 description: "Fuochi solo a norma CE, mai raccogliere petardi inesplosi, e cosa fare per ustioni, ferite alla mano, dita staccate e lesioni agli occhi."
 immagine: "/img/news/primo-soccorso-botti-grafica.jpg"

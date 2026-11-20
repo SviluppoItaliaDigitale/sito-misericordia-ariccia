@@ -2,6 +2,7 @@
 title: "Soffocamento: 5 colpi e 5 compressioni"
 titoloSeo: "Soffocamento: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-20
+canale: "approfondimenti"
 slug: "primo-soccorso-soffocamento"
 controllo_editoriale: "2026-10-18"
 description: "Tosse, ostruzione grave, 5 colpi tra le scapole e 5 compressioni addominali, mostrati con i disegni animati, e cosa fare se la persona perde conoscenza."

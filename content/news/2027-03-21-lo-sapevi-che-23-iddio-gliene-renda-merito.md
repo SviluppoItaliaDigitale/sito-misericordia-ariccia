@@ -2,6 +2,7 @@
 title: "Lo sapevi che… «Iddio gliene renda merito» – «Vada in pace»"
 titoloSeo: "«Iddio gliene renda merito» – «Vada in pace» | Lo sapevi che… storia delle Misericordie"
 date: 2027-03-21
+canale: "approfondimenti"
 slug: "lo-sapevi-che-23-iddio-gliene-renda-merito"
 description: "Lo sapevi che… n. 23: Al cambio sotto la barella, chi prendeva il posto diceva «Iddio gliene renda merito» e chi lasciava rispondeva «Vada in pace». È l'antenato del motto che i confratelli usano ancora oggi: «Che Iddio te ne renda merito»."
 immagine: "/img/news/lo-sapevi-che-23-iddio-gliene-renda-merito-grafica.jpg"

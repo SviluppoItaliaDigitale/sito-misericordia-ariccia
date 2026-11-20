@@ -2,6 +2,7 @@
 title: "Giornata europea del 112: insegniamolo ai bambini"
 titoloSeo: "Giornata europea del 112: come insegnarlo ai bambini, con il quiz | Misericordia di Ariccia"
 date: 2027-02-11
+canale: "informazioni"
 slug: "giornata-europea-112-bambini"
 description: "L'11 febbraio, cioè l'11/2, è la Giornata europea del 112. Come insegnare ai bambini a chiamare i soccorsi senza fare paura, il trucco dei pollici, i numeri amici 114 e 1.96.96 e il quiz del piccolo soccorritore."
 immagine: "/img/news/bambini-112-grafica.jpg"

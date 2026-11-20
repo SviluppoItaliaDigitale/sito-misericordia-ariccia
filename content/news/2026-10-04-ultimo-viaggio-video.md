@@ -2,6 +2,7 @@
 title: "L'ultimo viaggio: perché nessun desiderio resti un sogno"
 titoloSeo: "L'ultimo viaggio in ambulanza: realizzare un ultimo desiderio con la Misericordia di Ariccia"
 date: 2026-10-04
+canale: "misericordia"
 slug: "ultimo-viaggio"
 description: "Rivedere il mare, tornare al paese natale, esserci al matrimonio di un nipote: con «L'ultimo viaggio» la Misericordia di Ariccia accompagna in ambulanza, con la barella e i volontari accanto, chi ha un ultimo desiderio. Per informazioni 348 4068657."
 immagine: "/img/news/ultimo-viaggio-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Morso di vipera: calma, e fermo"
 titoloSeo: "Morso di vipera: cosa fare e cosa non fare, primo soccorso (linee guida ERC/IRC 2025)"
 date: 2027-04-20
+canale: "approfondimenti"
 slug: "primo-soccorso-vipera"
 description: "Morso di vipera: come riconoscerlo, chiamare il 112, tenere fermi la persona e l'arto, togliere gli anelli, e perché niente lacci, tagli, succhiare il veleno o ghiaccio."
 immagine: "/img/news/2027-04-20-primo-soccorso-vipera-grafica.jpg"

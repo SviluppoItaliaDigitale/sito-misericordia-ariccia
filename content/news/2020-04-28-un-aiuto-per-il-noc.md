@@ -1,6 +1,7 @@
 ---
 title: "Un aiuto per il NOC"
 date: 2020-04-28
+canale: "misericordia"
 slug: "un-aiuto-per-il-noc"
 italianoSemplice: |
   **Una nuova raccolta di soldi per l'ospedale nuovo (NOC).**

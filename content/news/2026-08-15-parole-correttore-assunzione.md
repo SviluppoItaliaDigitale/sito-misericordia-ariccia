@@ -1,6 +1,7 @@
 ---
 title: "Le parole del nostro Correttore: il pensiero di don Antonio per l'Assunzione di Maria"
 date: 2026-08-15
+canale: "approfondimenti"
 slug: "parole-correttore-assunzione-2026"
 description: "Il messaggio di don Antonio Salimbeni, parroco di Santa Maria Assunta in Cielo e Correttore della Misericordia di Ariccia, per la Festa dell'Assunzione: Maria esempio, guida e conforto per chi si mette al servizio dei fratelli."
 italianoSemplice: |
