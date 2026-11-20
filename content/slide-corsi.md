@@ -80,7 +80,7 @@ Seguono le **Linee guida RCP 2025 di Italian Resuscitation Council**, la traduzi
 
 ## Come sono fatte
 
-Ogni presentazione si scarica nel formato del proiettore o della lavagna interattiva: **16:9** in Full HD e in **4K**, **16:10** e **4:3**, in PDF e in PowerPoint. La grafica è quella istituzionale delle Misericordie d'Italia. I disegni sono fatti apposta per queste slide; le poche immagini prese da Wikimedia Commons sono di pubblico dominio e sono citate nell'ultima slide di ogni presentazione.
+Ogni presentazione si scarica nel formato del proiettore o della lavagna interattiva: **16:9** in Full HD e in **4K**, **16:10** e **4:3**, in PDF e in PowerPoint. La grafica è quella istituzionale delle Misericordie d'Italia. I disegni sono fatti apposta per queste slide. Le poche foto e illustrazioni vere vengono da Wikimedia Commons (pubblico dominio, CC0 e CC BY-SA) e da Adobe Stock (immagini gratuite con licenza standard): autore e licenza sono sotto ogni immagine e nell'ultima slide di ogni presentazione.
 
 ### Rianimazione e defibrillatore nell'adulto
 
