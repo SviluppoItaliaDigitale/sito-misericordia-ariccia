@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/superiori/scheda-mestieri-del-soccorso.pdf">
+<title>I mestieri del soccorso</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 di orientamento per le scuole superiori (adatta anche alla 3ª media), 2 pagine: otto mestieri del
+soccorso sanitario e sociale con i percorsi di studio e il volontariato come prima esperienza (pagina 1);
+attività «carta d'identità di un mestiere», domande e indicazioni per l'insegnante (pagina 2).
+Percorsi verificati il 20/11/2026 su fonti primarie: MUR (semestre filtro di Medicina, D.M. 941/2026),
+Università di Bari (scuola di specializzazione MEU, 5 anni), FNOPI (infermiere), ARES 118 (carta dei servizi,
+concorso autisti di ambulanza, delibera 698/2020), Regione Lazio (NUE 112; standard OSS, D.G.R. 452/2026),
+CNOAS (assistente sociale), CNOP e D.I. 654/2022 (psicologo, psicologia dell'emergenza), Vigili del fuoco
+(come si diventa, bando 2026), scelgoilserviziocivile.gov.it, MIM (formazione scuola-lavoro, Linee guida
+per l'orientamento, D.M. 328/2022). Età dei volontari dalla pagina «Diventa volontario» del sito.
+-->
+<style>
+.mestieri { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; }
+.mestiere { border-top: 4px solid var(--blu); padding-top: 5px; }
+.mestiere h3 { font-size: 13.5px; line-height: 17px; margin-bottom: 2px; }
+.mestiere p { font-size: 11px; line-height: 14.6px; }
+.mestiere p + p { margin-top: 2px; }
+.mestiere .via { color: #233B74; }
+.mestiere .via b { font-weight: 700; }
+.prima { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.prima > div { font-size: 11px; line-height: 14.6px; }
+.prima h3 { font-size: 13px; line-height: 17px; margin-bottom: 3px; }
+.avviso { font-size: 11px; line-height: 15px; color: #233B74; }
+.carta { display: grid; grid-template-columns: 210px 1fr; border: 2px solid #233B74; }
+.carta > div { padding: 6px 10px; border-bottom: 1px solid var(--linea); font-size: 12px; line-height: 16px; min-height: 37px; }
+.carta > div:nth-child(odd) { background: #EEF0F8; font-weight: 700; color: #233B74; border-right: 1px solid var(--linea); }
+.carta > div:nth-last-child(-n+2) { border-bottom: 0; }
+.carta small { display: block; font-weight: 500; font-size: 10px; line-height: 13px; color: #5A6686; }
+.domande { padding-left: 22px; display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; line-height: 17px; }
+.insegnante p { font-size: 12px; line-height: 16.5px; }
+.insegnante p + p { margin-top: 5px; }
+</style>
+</head>
+<body class="a4">
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per le <b>scuole superiori</b></div>
+<div class="contenuto">
+<h1>I mestieri del soccorso</h1>
+<p class="sotto">Dietro una telefonata al 112 o un'ambulanza c'è una squadra di persone con mestieri diversi. Non sono eroi: hanno studiato, si aggiornano e lavorano insieme. Ecco otto di questi mestieri, che cosa fanno e come ci si arriva.</p>
+<div class="mestieri">
+<div class="mestiere"><h3>Medica o medico dell'emergenza</h3><p>Cura chi è in pericolo di vita: in pronto soccorso, sull'automedica, sull'elicottero, nella centrale operativa del 118.</p><p class="via"><b>Come ci si arriva:</b> laurea magistrale a ciclo unico in Medicina e chirurgia (si entra dopo il «semestre filtro»), poi la scuola di specializzazione in Medicina d'emergenza-urgenza, 5 anni, con un concorso nazionale.</p></div>
+<div class="mestiere"><h3>Infermiera o infermiere</h3><p>Sulle ambulanze del 118 del Lazio c'è sempre un infermiere esperto nel soccorso. In centrale operativa si ascolta la chiamata, si dà il codice di gravità e si sceglie il mezzo.</p><p class="via"><b>Come ci si arriva:</b> laurea triennale in Infermieristica, con un test d'ingresso, poi l'iscrizione all'Albo dell'Ordine delle professioni infermieristiche.</p></div>
+<div class="mestiere"><h3>Operatrice o operatore del 112</h3><p>Nella Centrale Unica di Risposta riceve tutte le chiamate di emergenza, capisce che aiuto serve e le passa alla centrale giusta: 118, Vigili del fuoco, Polizia, Carabinieri. Filtra anche le chiamate che non sono emergenze.</p><p class="via"><b>Come ci si arriva:</b> non c'è un corso di laurea apposito. Nel Lazio la centrale è della Regione: requisiti e selezioni si chiedono lì.</p></div>
+<div class="mestiere"><h3>Autista soccorritore</h3><p>Porta l'ambulanza sul posto e in ospedale in sicurezza e aiuta l'équipe durante il soccorso.</p><p class="via"><b>Come ci si arriva:</b> nel servizio pubblico per concorso (l'ARES 118 nel 2024 ne ha bandito uno per 143 autisti di ambulanza): patente, titolo di studio ed esperienza sono scritti nel bando. Nelle associazioni lo fanno anche i volontari, dopo i corsi.</p></div>
+<div class="mestiere"><h3>Operatrice o operatore socio-sanitario (OSS)</h3><p>Aiuta la persona assistita nei bisogni di base e nella vita di ogni giorno (igiene, pasti, movimento), a casa o nelle strutture di cura, in squadra con infermieri e medici.</p><p class="via"><b>Come ci si arriva:</b> corso della Regione Lazio dai 18 anni, con la licenza media: almeno 556 ore di lezione e da 450 a 550 di tirocinio, poi un esame pubblico.</p></div>
+<div class="mestiere"><h3>Assistente sociale</h3><p>Accompagna persone e famiglie in difficoltà verso i servizi e gli aiuti giusti, insieme ai servizi sociali e sanitari del territorio.</p><p class="via"><b>Come ci si arriva:</b> laurea triennale in Servizio sociale (classe L-39) ed esame di Stato per l'iscrizione all'Albo. Con la magistrale (LM-87) si diventa assistente sociale specialista.</p></div>
+<div class="mestiere"><h3>Psicologa o psicologo dell'emergenza</h3><p>Sostiene chi ha vissuto un evento grave: le persone coinvolte, i familiari, i testimoni e anche i soccorritori.</p><p class="via"><b>Come ci si arriva:</b> laurea magistrale in Psicologia (LM-51), che oggi abilita alla professione, e iscrizione all'Albo. L'Ordine consiglia poi i corsi di protezione civile e un master sull'emergenza.</p></div>
+<div class="mestiere"><h3>Vigile del fuoco</h3><p>Interviene negli incendi, nei crolli, negli incidenti e nelle alluvioni, quando servono mezzi e tecniche speciali.</p><p class="via"><b>Come ci si arriva:</b> concorso pubblico del Corpo nazionale, pubblicato in Gazzetta Ufficiale e su vigilfuoco.it (nel 2026 per 400 posti): età, titolo e prove sono nel bando. Si può essere anche vigili del fuoco volontari.</p></div>
+</div>
+<div class="riquadro tenue">
+<h2 style="margin-bottom:6px">Per cominciare, prima del lavoro</h2>
+<div class="prima">
+<div><h3>Il volontariato</h3>Il Movimento delle Misericordie accoglie uomini e donne <strong>dai 16 agli 80 anni</strong>; sotto i 18 anni si chiede in sede quali servizi si possono fare. Non è un lavoro e non è pagato, ma fa conoscere da vicino questi mestieri.</div>
+<div><h3>Il Servizio Civile</h3>Per chi ha <strong>tra i 18 e i 28 anni</strong>: un periodo di servizio alla comunità con un progetto, e un assegno mensile dallo Stato. Ad Ariccia i progetti sono accanto ad anziani e persone con disabilità.</div>
+<div><h3>La formazione scuola-lavoro</h3>È il nuovo nome dei PCTO, dall'anno scolastico 2025/26. Nel triennio servono almeno 90 ore nei licei, 150 nei tecnici e 210 nei professionali: chiedi alla tua scuola quali esperienze sono possibili.</div>
+</div>
+</div>
+<p class="avviso"><strong>Attenzione:</strong> corsi, bandi e requisiti cambiano ogni anno. Controlla sempre sui siti ufficiali delle università e degli enti. E in emergenza si chiama il <strong>112</strong>.</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per le <b>scuole superiori</b></div>
+<div class="contenuto">
+<h2>Prova tu: la carta d'identità di un mestiere</h2>
+<p>Scegli un mestiere della pagina 1, o un altro del soccorso. Cerca le risposte sul sito ufficiale di un'università, di un Ordine o di un ente; se puoi, intervista chi lo fa.</p>
+<div class="carta">
+<div>Il mestiere</div><div></div>
+<div>Che cosa fa in una giornata</div><div></div>
+<div>Dove lavora</div><div></div>
+<div>Che cosa si studia<small>titolo e anni di studio</small></div><div></div>
+<div>Come si entra<small>test, concorso, esame di Stato, corso</small></div><div></div>
+<div>Una qualità che serve<small>e perché</small></div><div></div>
+<div>La fonte che hai usato<small>sito e data</small></div><div></div>
+</div>
+<h3>Per riflettere, da soli o in classe</h3>
+<ol class="domande">
+<li>Quale di questi mestieri non conoscevi? Che cosa ti ha sorpreso?</li>
+<li>Quale lavoro si vede meno, ma senza di lui il soccorso non funziona?</li>
+<li>Che cosa hanno in comune tutti questi mestieri?</li>
+<li>Che cosa potresti fare già adesso per capire se un mestiere fa per te?</li>
+</ol>
+<div class="riquadro insegnante">
+<h3 style="margin-bottom:4px">Per l'insegnante</h3>
+<p>Le <strong>Linee guida per l'orientamento</strong> (D.M. 22 dicembre 2022, n. 328) prevedono moduli di orientamento formativo di <strong>almeno 30 ore</strong> per anno: nella secondaria di primo grado in tutte le classi; nelle superiori anche extracurricolari in prima e seconda, curricolari in terza, quarta e quinta, integrati con la formazione scuola-lavoro. Le Linee guida chiedono di progettarli anche con i servizi attivi sul territorio.</p>
+<p><strong>Come usarla, in circa un'ora:</strong> lettura della pagina 1 (15 minuti), carta d'identità a coppie con la ricerca sui siti ufficiali (30 minuti), domande in cerchio (15 minuti). La carta d'identità può entrare fra i lavori documentati nell'E-Portfolio.</p>
+<p><strong>Un incontro con i volontari:</strong> per far raccontare in classe che cosa fa un volontario della Misericordia scrivete a <strong>sede@misericordia-ariccia.it</strong> o chiamate il <strong>328 8105399</strong> (amministrazione), indicando scuola, classi e periodo. Noi facciamo trasporti programmati, assistenza agli eventi e corsi: in emergenza si chiama sempre il 112.</p>
+</div>
+<p class="nota-adulti">Fonti, verificate il 20/11/2026: MUR, D.M. 941/2026 (semestre filtro); Università di Bari, scuola di specializzazione in Medicina d'emergenza-urgenza; FNOPI, «Come diventare infermiere»; ARES 118, carta dei servizi, delibera 698/2020 e concorso per 143 autisti di ambulanza; Regione Lazio, Emergenza 112 e D.G.R. 452/2026 (standard OSS); CNOAS, «Accesso alla professione»; D.I. 654/2022 e CNOP, scheda «Psicologia dell'emergenza»; Vigili del fuoco, «Come diventare vigile del fuoco» e bando 2026; scelgoilserviziocivile.gov.it; MIM, formazione scuola-lavoro (D.L. 127/2025) e Linee guida per l'orientamento. Sul sito: /diventa-volontario/, /servizio-civile/, /servizi/formazione/.</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+</body>
+</html>
