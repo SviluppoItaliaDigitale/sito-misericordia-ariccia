@@ -13,180 +13,189 @@
 # fratture e le successive. Si aggiungono quando la loro news è uscita.
 
 puntate:
-  - id: ictus-infarto
-    tema: primo-soccorso
-    titolo: "Ictus e infarto: riconoscerli e chiamare subito il 112"
-    fonti:
-      - content/news/2026-10-06-primo-soccorso-ictus.md
-      - content/news/2026-10-09-primo-soccorso-infarto.md
-    parole: ["ictus", "infarto"]
-    stato: da-fare
-
-  - id: chi-siamo
-    tema: chi-siamo
-    titolo: "Chi siamo: la Confraternita di Misericordia di Ariccia"
-    fonti:
-      - content/chi-siamo.md
-      - content/storia-e-tradizione.md
-    parole: []
-    stato: da-fare
-
-  - id: kit-emergenze
-    tema: kit-prevenzione
-    titolo: "I kit per le emergenze: prepararsi prima, con calma"
-    fonti:
-      - content/kit/_index.md
-      - content/kit/fragilita-vulnerabilita/_index.md
-    parole: []
-    stato: da-fare
-
-  - id: chiamare-il-112
-    tema: dossier
-    titolo: "Che cosa succede quando chiami il 112"
-    fonti:
-      - content/dossier/chiamare-il-112.md
-    parole: []
-    stato: da-fare
-
-  - id: emorragia-ustioni
-    tema: primo-soccorso
-    titolo: "Emorragia grave e ustioni: che cosa fare nei primi minuti"
-    fonti:
-      - content/news/2026-10-13-primo-soccorso-emorragia.md
-      - content/news/2026-10-27-primo-soccorso-ustioni.md
-    parole: ["emorragia", "ustion"]
-    stato: da-fare
-
-  - id: trasporti-sanitari
-    tema: chi-siamo
-    titolo: "I trasporti sanitari programmati della Misericordia"
-    fonti:
-      - content/trasporto-infermi.md
-      - content/servizi/servizi-sanitari.md
-      - content/dimissioni-ospedaliere.md
-    parole: []
-    stato: da-fare
-
-  - id: prevenzione-stagionale
-    tema: kit-prevenzione
-    titolo: "Prevenzione stagionale: prepararsi a ogni stagione"
-    fonti:
-      - content/dossier/prevenzione-stagionale.md
-    parole: []
-    stato: da-fare
-
-  - id: opere-di-misericordia
-    tema: dossier
-    titolo: "Le Opere di Misericordia"
-    fonti:
-      - content/dossier/le-opere-di-misericordia.md
-    parole: []
-    stato: da-fare
-
-  - id: rianimazione-soffocamento
-    tema: primo-soccorso
-    titolo: "Arresto cardiaco e soffocamento nell'adulto: riconoscerli e chiamare aiuto"
-    fonti:
-      - content/news/2026-10-16-primo-soccorso-rianimazione.md
-      - content/news/2026-10-20-primo-soccorso-soffocamento.md
-    parole: ["rianimazione", "soffocamento"]
-    # Le schede del bambino e del lattante sono un'altra puntata.
-    escludi: ["bambino", "lattante", "settimana-viva", "linee-guida"]
-    stato: da-fare
-
-  - id: diventa-volontario
-    tema: chi-siamo
-    titolo: "Diventare volontari alla Misericordia di Ariccia"
-    fonti:
-      - content/diventa-volontario.md
-      - content/servizi/formazione.md
-    parole: []
-    stato: da-fare
-
-  - id: kit-bambini-neonati
-    tema: kit-prevenzione
-    titolo: "Bambini, neonati e gravidanza: i kit per le emergenze"
-    fonti:
-      - content/kit/bambini/_index.md
-      - content/kit/neonati/_index.md
-      - content/kit/gravidanza/_index.md
-    parole: []
-    stato: da-fare
-
-  - id: storia-delle-misericordie
-    tema: dossier
-    titolo: "Otto secoli di carità: la storia delle Misericordie"
-    fonti:
-      - content/dossier/storia-delle-misericordie.md
-    parole: []
-    stato: da-fare
-
-  - id: anafilassi-ipoglicemia
-    tema: primo-soccorso
-    titolo: "Reazione allergica grave e ipoglicemia: i segni da riconoscere"
-    fonti:
-      - content/news/2026-10-23-primo-soccorso-anafilassi.md
-      - content/news/2026-10-30-primo-soccorso-ipoglicemia.md
-    parole: ["anafilassi", "ipoglicemia"]
-    stato: da-fare
-
-  - id: servizio-civile
-    tema: chi-siamo
-    titolo: "Il Servizio Civile Universale alla Misericordia di Ariccia"
-    fonti:
-      - content/servizio-civile.md
-    parole: []
-    stato: da-fare
-
-  - id: kit-anziani-fragilita
-    tema: kit-prevenzione
-    titolo: "Anziani, disabilità e terapie salvavita: i kit per le emergenze"
-    fonti:
-      - content/kit/anziani/_index.md
-      - content/kit/disabilita-adulti/_index.md
-      - content/kit/terapie-salvavita/_index.md
-      - content/kit/caregiver-familiari/_index.md
-    parole: []
-    stato: da-fare
-
-  - id: dalla-barella-all-ambulanza
-    tema: dossier
-    titolo: "Dalla barella all'ambulanza"
-    fonti:
-      - content/dossier/dalla-barella-all-ambulanza.md
-    parole: []
-    stato: da-fare
-
-  - id: trauma-convulsioni-svenimento
-    tema: primo-soccorso
-    titolo: "Trauma cranico, convulsioni e svenimento: che cosa fare"
-    fonti:
-      - content/news/2026-11-06-primo-soccorso-trauma-cranico.md
-      - content/news/2026-11-10-primo-soccorso-convulsioni.md
-      - content/news/2026-11-17-primo-soccorso-svenimento.md
-    parole: ["trauma cranico", "convulsioni", "svenimento"]
-    stato: da-fare
-
-  - id: servizi-sociali
-    tema: chi-siamo
-    titolo: "Accompagnare e ascoltare: i servizi sociali della Misericordia"
-    fonti:
-      - content/servizi/servizi-sociali.md
-    parole: []
-    stato: da-fare
-
-  - id: kit-animali
-    tema: kit-prevenzione
-    titolo: "Gli animali domestici in emergenza"
-    fonti:
-      - content/kit/animali/_index.md
-    parole: []
-    stato: da-fare
-
-  - id: misericordie-d-italia
-    tema: dossier
-    titolo: "Le Misericordie d'Italia"
-    fonti:
-      - content/dossier/misericordie-d-italia.md
-    parole: []
-    stato: da-fare
+- id: ictus-infarto
+  tema: primo-soccorso
+  titolo: 'Ictus e infarto: riconoscerli e chiamare subito il 112'
+  fonti:
+  - content/news/2026-10-06-primo-soccorso-ictus.md
+  - content/news/2026-10-09-primo-soccorso-infarto.md
+  parole:
+  - ictus
+  - infarto
+  stato: scartata
+  motivo: '19/11/2026, seconda generazione: aggiunge una motivazione che le schede
+    non contengono («l''istinto spinge a dare qualcosa da bere per far riprendere
+    la persona»). La prima aveva commenti sulle istruzioni («dichiarazione obbligatoria»)
+    e conclusioni non nelle fonti.'
+- id: chi-siamo
+  tema: chi-siamo
+  titolo: 'Chi siamo: la Confraternita di Misericordia di Ariccia'
+  fonti:
+  - content/chi-siamo.md
+  - content/storia-e-tradizione.md
+  parole: []
+  stato: scartata
+  motivo: '19/11/2026: la prima generazione legge le regole ad alta voce («il 112,
+    che si pronuncia…») e fa nascere le Misericordie con Pietro da Verona; la seconda
+    dice «leggevo dalle fonti», «assolutamente», «avvertenza obbligatoria», «esclusivamente»
+    e trae una conclusione che le pagine non contengono.'
+- id: kit-emergenze
+  tema: kit-prevenzione
+  titolo: 'I kit per le emergenze: prepararsi prima, con calma'
+  fonti:
+  - content/kit/_index.md
+  - content/kit/fragilita-vulnerabilita/_index.md
+  parole: []
+  stato: scartata
+  motivo: '19/11/2026, seconda generazione: «la Misericordia di Ariccia fa solo trasporti
+    programmati e servizi sociali» (falso e non nelle pagine: fa anche corsi e assistenza
+    agli eventi) e «si chiama solo il 112» (la pagina: «in caso di pericolo immediato
+    chiama il 112»). La prima rafforzava le cautele («rigorosamente», «in alcun modo»).'
+- id: chiamare-il-112
+  tema: dossier
+  titolo: Che cosa succede quando chiami il 112
+  fonti:
+  - content/dossier/chiamare-il-112.md
+  parole: []
+  stato: programmata
+  file: content/podcast/2026-11-21-chiamare-il-112.md
+  data: '2026-11-21'
+- id: emorragia-ustioni
+  tema: primo-soccorso
+  titolo: 'Emorragia grave e ustioni: che cosa fare nei primi minuti'
+  fonti:
+  - content/news/2026-10-13-primo-soccorso-emorragia.md
+  - content/news/2026-10-27-primo-soccorso-ustioni.md
+  parole:
+  - emorragia
+  - ustion
+  stato: da-fare
+- id: trasporti-sanitari
+  tema: chi-siamo
+  titolo: I trasporti sanitari programmati della Misericordia
+  fonti:
+  - content/trasporto-infermi.md
+  - content/servizi/servizi-sanitari.md
+  - content/dimissioni-ospedaliere.md
+  parole: []
+  stato: da-fare
+- id: prevenzione-stagionale
+  tema: kit-prevenzione
+  titolo: 'Prevenzione stagionale: prepararsi a ogni stagione'
+  fonti:
+  - content/dossier/prevenzione-stagionale.md
+  parole: []
+  stato: da-fare
+- id: opere-di-misericordia
+  tema: dossier
+  titolo: Le Opere di Misericordia
+  fonti:
+  - content/dossier/le-opere-di-misericordia.md
+  parole: []
+  stato: da-fare
+- id: rianimazione-soffocamento
+  tema: primo-soccorso
+  titolo: 'Arresto cardiaco e soffocamento nell''adulto: riconoscerli e chiamare aiuto'
+  fonti:
+  - content/news/2026-10-16-primo-soccorso-rianimazione.md
+  - content/news/2026-10-20-primo-soccorso-soffocamento.md
+  parole:
+  - rianimazione
+  - soffocamento
+  escludi:
+  - bambino
+  - lattante
+  - settimana-viva
+  - linee-guida
+  stato: da-fare
+- id: diventa-volontario
+  tema: chi-siamo
+  titolo: Diventare volontari alla Misericordia di Ariccia
+  fonti:
+  - content/diventa-volontario.md
+  - content/servizi/formazione.md
+  parole: []
+  stato: da-fare
+- id: kit-bambini-neonati
+  tema: kit-prevenzione
+  titolo: 'Bambini, neonati e gravidanza: i kit per le emergenze'
+  fonti:
+  - content/kit/bambini/_index.md
+  - content/kit/neonati/_index.md
+  - content/kit/gravidanza/_index.md
+  parole: []
+  stato: da-fare
+- id: storia-delle-misericordie
+  tema: dossier
+  titolo: 'Otto secoli di carità: la storia delle Misericordie'
+  fonti:
+  - content/dossier/storia-delle-misericordie.md
+  parole: []
+  stato: da-fare
+- id: anafilassi-ipoglicemia
+  tema: primo-soccorso
+  titolo: 'Reazione allergica grave e ipoglicemia: i segni da riconoscere'
+  fonti:
+  - content/news/2026-10-23-primo-soccorso-anafilassi.md
+  - content/news/2026-10-30-primo-soccorso-ipoglicemia.md
+  parole:
+  - anafilassi
+  - ipoglicemia
+  stato: da-fare
+- id: servizio-civile
+  tema: chi-siamo
+  titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
+  fonti:
+  - content/servizio-civile.md
+  parole: []
+  stato: da-fare
+- id: kit-anziani-fragilita
+  tema: kit-prevenzione
+  titolo: 'Anziani, disabilità e terapie salvavita: i kit per le emergenze'
+  fonti:
+  - content/kit/anziani/_index.md
+  - content/kit/disabilita-adulti/_index.md
+  - content/kit/terapie-salvavita/_index.md
+  - content/kit/caregiver-familiari/_index.md
+  parole: []
+  stato: da-fare
+- id: dalla-barella-all-ambulanza
+  tema: dossier
+  titolo: Dalla barella all'ambulanza
+  fonti:
+  - content/dossier/dalla-barella-all-ambulanza.md
+  parole: []
+  stato: da-fare
+- id: trauma-convulsioni-svenimento
+  tema: primo-soccorso
+  titolo: 'Trauma cranico, convulsioni e svenimento: che cosa fare'
+  fonti:
+  - content/news/2026-11-06-primo-soccorso-trauma-cranico.md
+  - content/news/2026-11-10-primo-soccorso-convulsioni.md
+  - content/news/2026-11-17-primo-soccorso-svenimento.md
+  parole:
+  - trauma cranico
+  - convulsioni
+  - svenimento
+  stato: da-fare
+- id: servizi-sociali
+  tema: chi-siamo
+  titolo: 'Accompagnare e ascoltare: i servizi sociali della Misericordia'
+  fonti:
+  - content/servizi/servizi-sociali.md
+  parole: []
+  stato: da-fare
+- id: kit-animali
+  tema: kit-prevenzione
+  titolo: Gli animali domestici in emergenza
+  fonti:
+  - content/kit/animali/_index.md
+  parole: []
+  stato: da-fare
+- id: misericordie-d-italia
+  tema: dossier
+  titolo: Le Misericordie d'Italia
+  fonti:
+  - content/dossier/misericordie-d-italia.md
+  parole: []
+  stato: da-fare
