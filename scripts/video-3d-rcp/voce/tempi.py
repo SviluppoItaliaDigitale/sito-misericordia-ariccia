@@ -17,7 +17,8 @@ sub = []
 for i, (s, x) in enumerate(zip(inizi, v), 1):
     parole = [{'w': p['w'], 't0': round(s + p['t0'], 3), 't1': round(s + p['t1'], 3)} for p in x['parole']]
     testo = x['schermo']
-    pezzi = [testo] if len(testo) <= 100 else [q.strip() for q in re.split(r'(?<=[.?!])\s+', testo) if q.strip()]
+    pezzi = [testo] if len(testo) <= 95 else [q.strip() for q in re.split(r'(?<=[.?!])\s+', testo) if q.strip()]
+    pezzi = [z.strip() for q in pezzi for z in (re.split(r'(?<=:)\s+', q) if len(q) > 95 else [q]) if z.strip()]
     k = 0
     for q in pezzi:
         n = len(q.split()); pw = parole[k:k + n]; k += n

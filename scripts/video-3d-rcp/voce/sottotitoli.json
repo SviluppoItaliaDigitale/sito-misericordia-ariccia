@@ -665,8 +665,8 @@
 {
 "riga": 11,
 "inizio": 59.74,
-"fine": 68.86,
-"testo": "Premi al centro del torace, di 5-6 centimetri: il torace si abbassa e spinge il sangue fuori dal cuore, verso il cervello.",
+"fine": 62.58,
+"testo": "Premi al centro del torace, di 5-6 centimetri:",
 "parole": [
 {
 "w": "Premi",
@@ -707,7 +707,15 @@
 "w": "sei",
 "t0": 62.3,
 "t1": 62.58
+}
+]
 },
+{
+"riga": 11,
+"inizio": 62.58,
+"fine": 68.86,
+"testo": "il torace si abbassa e spinge il sangue fuori dal cuore, verso il cervello.",
+"parole": [
 {
 "w": "centimetri:",
 "t0": 62.58,

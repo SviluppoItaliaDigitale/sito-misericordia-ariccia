@@ -438,7 +438,7 @@
     { t: 34.6, az: 342, el: 8, d: 0.72 },
     { t: 39.8, az: 402, el: 14, d: 0.66, facilita: 'lineare' },             // giro attorno al cuore che trema
     { t: 41.8, c: [P.cervello[0], P.cervello[1] - 0.01, P.cervello[2]], az: 388, el: 8, d: 0.6, dv: 1.15 },
-    { t: 46.4, az: 388, el: 8, d: 0.6 },
+    { t: 46.4, az: 394, el: 9, d: 0.585, facilita: 'lineare' },            // lento avvicinamento mentre si legge
     { t: 49.4, c: TORACE, az: 422, el: 32, d: 1.05, dv: 1.5 },
     { t: 51.0, az: 422, el: 32, d: 1.05 },
     { t: 52.4, c: [0.02, 1.215, 0.115], az: 450, el: 10, d: 0.6, dv: 1.7 },
@@ -484,7 +484,7 @@
     { id: 'ad', titolo: 'Atrio destro', punto: P.cav_ad, pezzo: 'atrio_dx', verso: { dx: -330, dy: -140 }, inizio: 9.9, fine: 12.5, versoV: { dx: -200, dy: -260 } },
     { id: 'as', titolo: 'Atrio sinistro', punto: P.cav_as, pezzo: 'atrio_sx', verso: { dx: 330, dy: -160 }, inizio: 10.1, fine: 12.5, versoV: { dx: 200, dy: -300 } },
     { id: 'vd', titolo: 'Ventricolo destro', punto: P.cav_vd, pezzo: 'ventricolo_dx', verso: { dx: -360, dy: 120 }, inizio: 11.0, fine: 12.5, versoV: { dx: -200, dy: 260 } },
-    { id: 'vs', titolo: 'Ventricolo sinistro', punto: P.cav_vs, pezzo: 'ventricolo_sx', verso: { dx: 360, dy: 110 }, inizio: 11.2, fine: 12.5, versoV: { dx: 200, dy: 280 } },
+    { id: 'vs', titolo: 'Ventricolo sinistro', punto: P.cav_vs, pezzo: 'ventricolo_sx', verso: { dx: 360, dy: 110 }, inizio: 11.2, fine: 12.5, versoV: { dx: 220, dy: 190 } },
     { id: 'polmoni', titolo: 'Polmoni', sotto: 'il sangue prende ossigeno', punto: [-0.085, 1.27, 0.08], verso: { dx: -300, dy: -120 }, inizio: 14.4, fine: 16.9, versoV: { dx: -150, dy: -280 } },
     { id: 'aorta', titolo: 'Aorta', sotto: 'la grande arteria', punto: P.arco_aortico, verso: { dx: 320, dy: 40 }, inizio: 19.0, fine: 21.3, versoV: { dx: 220, dy: 150 } },
     { id: 'carotidi', titolo: 'Verso il cervello', sotto: 'arterie carotidi', punto: [P.carotide_sx[0], 1.44, P.carotide_sx[2]], verso: { dx: 330, dy: -60 }, inizio: 19.6, fine: 21.3, versoV: { dx: 220, dy: -200 } },
