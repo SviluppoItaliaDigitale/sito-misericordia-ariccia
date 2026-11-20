@@ -234,6 +234,7 @@
   parte('pelle', prepara(std(0x6fa8e8, { transparent: true, depthWrite: false, roughness: 0.4 }), { olo: true, alfa: alfaPelle })).renderOrder = 5;
   const OSSA = 0xeee6d2;
   parte('costole', prepara(std(OSSA, { transparent: true })));
+  parte('clavicole', prepara(std(OSSA, { transparent: true })));   // riferimento per la placca sotto la clavicola destra
   parte('colonna', prepara(std(OSSA, { transparent: true })));
   parte('polmoni', prepara(std(0xe7a3a6, { transparent: true, opacity: 0.3, depthWrite: false })));
   parte('trachea', prepara(std(0xd9e1e8, { transparent: true })));
@@ -352,7 +353,7 @@
   // punti sulla pelle davanti: metà inferiore dello sterno (mani) e sotto la clavicola destra (placca)
   const xMani = 0.0, yMani = 1.195;
   const PUNTO_MANI = sullaPelle(xMani, yMani, 1);
-  const PUNTO_PLACCA1 = sullaPelle(-0.062, 1.27, 1);                      // sotto la clavicola destra, accanto allo sterno
+  const PUNTO_PLACCA1 = sullaPelle(-0.062, 1.255, 1);                     // sotto la clavicola destra (bordo alto della placca appena sotto l'osso), accanto allo sterno
   const PUNTO_PLACCA2 = sullaPelleLato(0.17, 1.15, 0.085);                 // fianco sinistro, linea ascellare media
   // placca adesiva che segue la pelle: una griglia nel piano tangente, ogni punto proiettato sulla pelle vera
   const triPelle = (function () {
@@ -457,10 +458,13 @@
     { t: 52.4, c: [0.02, 1.215, 0.115], az: 450, el: 10, d: 0.6, dv: 1.7 },
     { t: 64.4, az: 450, el: 10, d: 0.6 },
     { t: 66.2, c: [0, 1.0, 0.05], az: 402, el: 36, d: 2.75, dv: 1.8 },
-    { t: 74.4, az: 470, el: 30, d: 2.6, facilita: 'lineare' },              // giro lento attorno alla persona sdraiata
-    { t: 79.6, az: 470, el: 30, d: 2.6 },
-    { t: 81.2, c: [0.05, 1.235, 0.12], az: 404, el: 48, d: 1.12, dv: 1.35 },
-    { t: 87.8, az: 404, el: 48, d: 1.12 },
+    { t: 74.4, az: 372, el: 30, d: 2.6, facilita: 'lineare' },              // giro lento attorno alla persona sdraiata
+    { t: 79.6, az: 366, el: 32, d: 2.5 },
+    { t: 81.0, c: [-0.035, 1.255, 0.16], az: 342, el: 64, d: 0.78, dv: 1.45 },      // di fronte, dal lato destro: sterno, clavicola destra, placca
+    { t: 84.4, az: 336, el: 66, d: 0.76, facilita: 'lineare' },
+    { t: 86.0, c: [0.11, 1.18, 0.1], az: 440, el: 28, d: 0.82, dv: 1.45 },           // fianco sinistro: placca sotto l'ascella
+    { t: 89.0, az: 446, el: 30, d: 0.8, facilita: 'lineare' },
+    { t: 91.0, c: [0.05, 1.235, 0.12], az: 404, el: 48, d: 1.12, dv: 1.35 },
     { t: 93.5, az: 392, el: 46, d: 1.05, facilita: 'lineare' },
     { t: 95.2, c: [0.05, 1.21, 0.15], az: 388, el: 46, d: 0.55, dv: 1.3 },
     { t: 101.5, az: 388, el: 46, d: 0.55 },
@@ -507,10 +511,15 @@
     { id: 'sterno', titolo: 'Sterno', punto: [0.0, 1.215, 0.195], verso: { dx: -260, dy: -150 }, inizio: 53.0, fine: 63.9, versoV: { dx: -150, dy: -300 } },
     { id: 'cuoresez', titolo: 'Cuore', sotto: 'fra sterno e colonna', punto: [0.015, 1.215, 0.13], verso: { dx: 300, dy: -250 }, inizio: 53.6, fine: 63.9, versoV: { dx: 250, dy: -360 } },
     { id: 'colonna', titolo: 'Colonna vertebrale', punto: [0.0, 1.2, 0.05], verso: { dx: 280, dy: 140 }, inizio: 54.2, fine: 63.9, versoV: { dx: 330, dy: 180 } },
+    { id: 'clavicola', titolo: 'Clavicola destra', punto: [P.clavicola_dx[0], P.clavicola_dx[1], P.clavicola_dx_max[2] - 0.01], verso: { dx: -280, dy: -70 }, versoV: { dx: -120, dy: -260 }, inizio: 81.8, fine: 85.4 },
+    { id: 'sterno2', titolo: 'Sterno', punto: [0.0, 1.25, 0.205], verso: { dx: 280, dy: 130 }, versoV: { dx: 200, dy: 230 }, inizio: 82.0, fine: 85.4 },
+    { id: 'placca1', titolo: 'Sotto la clavicola destra', sotto: 'a destra dello sterno', placca: 0, verso: { dx: -430, dy: 40 }, versoV: { dx: -60, dy: -330 }, inizio: 81.4, fine: 85.4 },
+    { id: 'placca2', titolo: 'Sotto l\'ascella sinistra', sotto: 'sul fianco, non sul braccio', placca: 1, verso: { dx: -360, dy: -150 }, versoV: { dx: 60, dy: -330 }, inizio: 86.6, fine: 90.6 },
     { id: 'fratture', titolo: 'Fratture di costole e sterno', sotto: 'frequenti durante la RCP', punto: null, inizio: 96.8, fine: 101.3, frattura: true, verso: { dx: 330, dy: -150 }, versoV: { dx: 150, dy: -330 } },
     { id: 'lesioni', titolo: 'Meno di 1 su 100', sotto: 'lesioni in chi non era in arresto', punto: null, inizio: 102.7, fine: 107.4, centro: { x: 1480, y: 330 }, centroV: { x: 540, y: 520 } }
   ];
-  SCHEDE.forEach(s => { if (s.frattura) s.punto = [PUNTO_FRATTURA.x, PUNTO_FRATTURA.y, PUNTO_FRATTURA.z]; });
+  SCHEDE.forEach(s => { if (s.frattura) s.punto = [PUNTO_FRATTURA.x, PUNTO_FRATTURA.y, PUNTO_FRATTURA.z];
+                       if (s.placca != null) { const q = [PUNTO_PLACCA1, PUNTO_PLACCA2][s.placca]; s.punto = [q.x, q.y, q.z]; } });
   const _p = new THREE.Vector3();
   function proietta(locale) {
     _p.set(locale[0], locale[1], locale[2]);
@@ -587,17 +596,20 @@
     if (t < T_SCARICA) { const k = liscia(T_ARRESTO, T_ARRESTO + 0.5, t);
       return k * (0.34 * Math.sin(t * 31.0) + 0.22 * Math.sin(t * 47.3 + 1.3) + 0.14 * Math.sin(t * 19.1 + 0.4) + 0.1 * Math.sin(t * 71.0)); }
     if (t < T_SCARICA + 0.12) return 1.6 * Math.sin((t - T_SCARICA) / 0.12 * Math.PI);
-    return 0.02 * Math.sin(t * 5.0);
+    // dopo la scarica: traccia neutra (non una linea piatta: il ritmo non si legge mentre si comprime)
+    return 0.09 * Math.sin(t * 7.3) + 0.06 * Math.sin(t * 12.9 + 0.7) + 0.04 * Math.sin(t * 3.1 + 1.9);
   }
   function ecg(c, t, alfa, titolo, dae) {
     if (alfa <= 0.001) return;
     const { x, y, w, h } = dae ? LAY.ecgDae : LAY.ecg;
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
-    testo(c, titolo, x + 18, y + 30, 20, 700, '#FCEB0C');
-    c.beginPath(); const n = 300, dur = 3.0, base = y + h - 46, amp = (h - 70) * 0.5;
+    const righe = titolo.split('\n'); righe.forEach((r, i) => testo(c, r, x + 18, y + 30 + i * 24, 20, 700, '#FCEB0C'));
+    const neutra = t >= T_SCARICA + 0.12;
+    c.beginPath(); const n = 300, dur = 3.0, base = y + h - 40, amp = (h - 70 - (righe.length - 1) * 24) * 0.5;
     for (let i = 0; i <= n; i++) { const tt = t - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n, yy = base - amp * ecgValore(Math.max(0, tt));
       if (i) c.lineTo(xx, yy); else c.moveTo(xx, yy); }
-    c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.shadowColor = '#7CFFB2'; c.shadowBlur = 6; c.stroke();
+    const colTr = neutra ? 'rgba(200,215,235,.75)' : '#7CFFB2';
+    c.strokeStyle = colTr; c.lineWidth = 3; c.lineJoin = 'round'; c.shadowColor = colTr; c.shadowBlur = neutra ? 0 : 6; c.stroke();
     c.restore();
   }
   // righello della profondità (scena delle compressioni)
@@ -644,8 +656,8 @@
     const { x, y, w, h } = LAY.dato3;
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, '#FCEB0C');
     testo(c, 'Ogni minuto di ritardo della scarica', x + 34, y + 58, VERT ? 34 : 26, 700, '#FFFFFF');
-    testo(c, '−3-6%', x + 34, y + 170, 84, 900, '#FCEB0C');
-    testo(c, 'di probabilità di sopravvivere', x + 34, y + 222, 26, 600, '#FFFFFF');
+    testo(c, 'dal 3 al 6%', x + 34, y + 160, VERT ? 84 : 76, 900, '#FCEB0C');
+    testo(c, 'in meno di probabilità di sopravvivere', x + 34, y + 216, VERT ? 30 : 25, 600, '#FFFFFF');
     testo(c, 'con un ritmo defibrillabile · IRC 2025', x + 34, y + 260, 18, 500, 'rgba(255,255,255,.75)');
     c.restore();
   }
@@ -707,7 +719,7 @@
     alfaPelle.value = clamp(vPelle) * (t > 93.5 && t < 110 ? 0.55 : 1);
     PARTI.pelle.visible = alfaPelle.value > 0.01;
     const vCostole = (t < 7.2 ? 1 - liscia(6.6, 8.2, t) : 0) + (t >= 46.4 ? liscia(48.0, 49.6, t) : 0);
-    opacita('costole', clamp(vCostole)); opacita('colonna', clamp(vCostole + (t >= 22 && t < 27.4 ? 0 : 0)));
+    opacita('costole', clamp(vCostole)); opacita('clavicole', clamp(vCostole)); opacita('colonna', clamp(vCostole + (t >= 22 && t < 27.4 ? 0 : 0)));
     const vPolm = (t < 7.2 ? 0.3 * (1 - liscia(6.6, 8.2, t)) : 0) + (t >= 12.8 && t < 27.4 ? 0.4 * fin(t, 13.0, 27.2, 0.8, 0.8) : 0) + (t >= 46.4 ? 0.22 * liscia(48, 49.6, t) * (1 - liscia(93.5, 94.5, t)) : 0);
     opacita('polmoni', vPolm);
     opacita('trachea', t < 7.2 ? 1 - liscia(6.6, 8.2, t) : (t >= 12.8 && t < 27.4 ? fin(t, 13.0, 27.2) : (t >= 46.4 ? liscia(48, 49.6, t) : 0)));
@@ -742,7 +754,7 @@
     }
     // spaccato del torace durante le compressioni (piano sagittale, si toglie la metà verso la telecamera)
     const sezione = t >= 51.0 && t < 64.6;
-    const nomiSezione = ['pelle', 'costole', 'colonna', 'polmoni', 'trachea', 'atrio_dx', 'atrio_sx', 'ventricolo_dx', 'ventricolo_sx', 'papillari', 'valvole', 'coronarie', 'vene_cuore', 'arterie', 'vene', 'arterie_polm', 'vene_polm'];
+    const nomiSezione = ['pelle', 'costole', 'clavicole', 'colonna', 'polmoni', 'trachea', 'atrio_dx', 'atrio_sx', 'ventricolo_dx', 'ventricolo_sx', 'papillari', 'valvole', 'coronarie', 'vene_cuore', 'arterie', 'vene', 'arterie_polm', 'vene_polm'];
     PIANO.constant = sezione ? mix(0.4, 0.02, morb(prog(t, 51.0, 1.2))) : 1e3;
     for (const n of nomiSezione) if (PARTI[n]) PARTI[n].material.clippingPlanes = sezione ? [PIANO] : [];
     for (const g of gocce) g.m.clippingPlanes = sezione ? [PIANO] : [];
@@ -775,7 +787,7 @@
     s2.clearRect(0, 0, W, H);
     if (lampo > 0.01 && tr < T_SCARICA + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.55 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
     const vECG = t < 7.2 ? fin(t, 1.6, 7.0, 0.5, 0.4) : t >= 27.4 && t < 40.0 ? fin(t, 27.8, 39.8, 0.5, 0.4) : t >= 79.6 && t < 93.5 ? fin(t, 80.0, 86.3, 0.5, 0.4) : 0;
-    ecg(s2, tr, vECG, tr < T_ARRESTO ? 'Battito normale' : tr < T_SCARICA ? 'Fibrillazione ventricolare' : 'Dopo la scarica', t >= 79.6 && t < 93.5);
+    ecg(s2, tr, vECG, tr < T_ARRESTO ? 'Battito normale' : tr < T_SCARICA ? 'Fibrillazione ventricolare' : 'Dopo la scarica:\nriprendi subito le compressioni', t >= 79.6 && t < 93.5);
     righello(s2, tr, t >= 52.0 && t < 64.4 ? fin(t, 52.2, 64.2, 0.5, 0.4) : 0);
     const pausa = (t >= 74.6 && t < 77.4);
     metronomo(s2, tr, t >= 64.4 && t < 79.6 ? fin(t, 64.8, 79.4, 0.5, 0.4) : 0, pausa);
@@ -810,6 +822,8 @@
   // e il braccio deve essere aperto quando le placche sono visibili.
   const problemiPlacche = [];
   if (PUNTO_PLACCA2.x >= LIM_BRACCIO[0] || PUNTO_PLACCA2.x < 0.12) problemiPlacche.push({ tipo: 'placca', dettagli: 'placca laterale del DAE fuori dal torace (x = ' + PUNTO_PLACCA2.x.toFixed(3) + ')' });
+  // Revisione del 20/11/2026: la placca destra deve stare sotto la clavicola destra, accanto allo sterno.
+  if (PUNTO_PLACCA1.x > -0.03 || PUNTO_PLACCA1.x < -0.10 || PUNTO_PLACCA1.y < 1.22 || PUNTO_PLACCA1.y > 1.31) problemiPlacche.push({ tipo: 'placca', dettagli: 'placca destra del DAE fuori dalla zona sotto la clavicola destra (x = ' + PUNTO_PLACCA1.x.toFixed(3) + ', y = ' + PUNTO_PLACCA1.y.toFixed(3) + ')' });
   window.__controlli = () => IMP.controlli(stato).concat(problemiPlacche)
     .concat(placche[1].g.visible && U.uAbd.value < 0.6 ? [{ tipo: 'placca', dettagli: 'placca laterale visibile con il braccio non ancora aperto' }] : []);
   Promise.all([IMP.caricaFont(), new Promise(r => { if (stemma.complete) r(); else stemma.onload = r; })]).then(() => {

@@ -19,6 +19,7 @@ GRUPPI = {
     'trachea':      (['FMA7393'], 0.6),
     'costole':      (['FMA7480'], 0.45),     # gabbia toracica: costole, cartilagini, sterno
     'colonna':      (['FMA9140'], 0.5),
+    'clavicole':    (['FMA13322', 'FMA13323'], 0.6),   # destra FJ3362, sinistra FJ3237: riferimento per la placca del DAE
     'diaframma':    (['FMA13295'], 0.6),
 }
 CUORE = {   # parti del cuore, in quest'ordine di precedenza
@@ -61,7 +62,7 @@ PUNTI = {'vcs': 'FMA4720', 'vci': 'FMA10951', 'cav_ad': 'FMA11359', 'cav_vd': 'F
          'cav_vs': 'FMA9466', 'efflusso_vd': 'FMA7216', 'efflusso_vs': 'FMA9473', 'tronco_polm': 'FMA8612',
          'aorta_asc': 'FMA3736', 'arco_aortico': 'FMA3768', 'aorta_disc': 'FMA3784', 'sterno': 'FMA7485',
          'corpo_sterno': 'FMA7487', 'colonna_t': 'FMA9140', 'cuore': 'FMA7088', 'cervello': 'FMA50801',
-         'polm_dx': 'FMA7309', 'polm_sx': 'FMA7310', 'vp_dx_sup': 'FMA49914', 'vp_dx_inf': 'FMA49911',
+         'clavicola_dx': 'FMA13322', 'clavicola_sx': 'FMA13323', 'polm_dx': 'FMA7309', 'polm_sx': 'FMA7310', 'vp_dx_sup': 'FMA49914', 'vp_dx_inf': 'FMA49911',
          'vp_sx_sup': 'FMA49916', 'vp_sx_inf': 'FMA49913', 'carotide_dx': 'FMA3941', 'carotide_sx': 'FMA4058',
          'carotide_int_dx': 'FMA3949', 'carotide_int_sx': 'FMA4062', 'costola5_sx': 'FMA8093', 'costola4_sx': 'FMA8148',
          'cartilagine5_sx': 'FMA8112', 'pelle': 'FMA7163', 'tricuspide': 'FMA7234', 'mitrale': 'FMA7235',
