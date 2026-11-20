@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/primaria/fogli-per-la-famiglia.pdf">
+<title>Fogli per la famiglia: d'inverno e d'estate</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 per la scuola primaria, 2 pagine da mandare a casa: «D'inverno» (freddo, ghiaccio, monossido di carbonio)
+e «D'estate» (caldo, auto, anziani soli, mare e laghi). In ogni pagina una parte per il bambino, con l'attività
+«La mia casa è pronta?» da spuntare con un adulto, e una parte per i grandi.
+Dati allineati al sito (content/dossier/prevenzione-stagionale.md, scheda «monossido» di content/dossier/primo-soccorso.md,
+data/dati_da_verificare.yaml: 116117-lazio, monossido-controllo-annuale, colpo-calore, bollettino-ondate-calore,
+annegamento-rianimazione). Monossido: prima si esce all'aria aperta, le finestre solo se si aprono senza fermarsi
+(FORME_SBAGLIATE di scripts/controlli/controlla_sito.py). Fonti ricontrollate il 20/11/2026: EpiCentro ISS, Monossido di
+carbonio (26/02/2026); Vigili del fuoco, Casa sicura; Ministero della Salute, Dieci consigli utili e Chi rischia di più
+(24/05/2026), Linee di indirizzo caldo (luglio 2026), Bollettini; decalogo contro il freddo; Protezione Civile, Neve e gelo;
+ISS e Regioni, Sicurezza in acqua (2025); Regione Lazio, 116117.
+-->
+<style>
+/* Fogli per la famiglia: due fasce, «Per te» (testo grande, per il bambino) e «Per i grandi» (testo fitto, su due colonne). */
+.fascia { display: flex; align-items: center; gap: 10px; }
+.fascia .etichetta { background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 13px; line-height: 1; letter-spacing: .03em;
+  text-transform: uppercase; padding: 6px 10px; }
+.fascia .filo { flex: 1; height: 2px; background: #233B74; }
+.perte { display: grid; grid-template-columns: 1fr 110px; gap: 18px; align-items: center; }
+.frasi { list-style: none; padding: 0 !important; display: flex; flex-direction: column; gap: 6px !important; }
+.frasi li { font-size: 16.5px; line-height: 21px; color: #233B74; font-weight: 600; padding-left: 30px; position: relative; }
+.frasi li::before { content: ""; position: absolute; left: 0; top: 5px; width: 16px; height: 16px; background: var(--giallo); border: 2px solid #233B74; border-radius: 50%; }
+.frasi li b { font-weight: 800; }
+.pronta { border: 2px solid #233B74; padding: 10px 16px 12px; }
+.pronta h2 { font-size: 18px; line-height: 22px; }
+.pronta p.come { font-size: 12px; line-height: 16px; color: #233B74; margin: 1px 0 4px; }
+.spunte { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+.spunte div { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 17px; border-bottom: 1px solid var(--linea); padding: 3px 0 5px; }
+.spunte div::before { content: ""; flex: 0 0 auto; width: 18px; height: 18px; border: 2px solid #233B74; background: #FFFFFF; margin-top: 0; }
+.grandi { columns: 2; column-gap: 22px; font-size: 11px; line-height: 15px; }
+.grandi h3 { font-size: 13.5px; line-height: 17px; margin: 0 0 3px; break-after: avoid; }
+.grandi p, .grandi ol, .grandi ul { margin: 0 0 6px; }
+.grandi ol, .grandi ul { padding-left: 17px; display: block; }
+.grandi li { margin-bottom: 2px; }
+.grandi .blocco { break-inside: avoid; }
+.numeri { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.numeri > div { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; border-top: 4px solid var(--blu); padding-top: 5px; font-size: 10.5px; line-height: 13px; }
+.numeri .n { font-size: 19px; line-height: 22px; font-weight: 800; color: #233B74; }
+.disegno svg { display: block; }
+.pagina > .contenuto { gap: 9px; }
+.contenuto h1 { display: flex; align-items: baseline; gap: 14px; }
+.contenuto h1 small { font-size: 13px; line-height: 18px; font-weight: 500; color: #233B74; }
+</style>
+</head>
+<body class="a4">
+
+<!-- ======================================================= 1. D'inverno -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>D'inverno <small>Da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</small></h1>
+
+  <div class="fascia"><span class="etichetta">Per te</span><span class="filo"></span></div>
+  <div class="perte">
+    <ul class="frasi">
+      <li>Fuori fa freddo? <b>Cappello, sciarpa e guanti.</b></li>
+      <li>Sul ghiaccio si scivola: <b>passi piccoli</b> e scarpe che non scivolano.</li>
+      <li>Stufe e camino scottano: <b>si guardano da lontano.</b></li>
+      <li>Se in casa a tutti fa male la testa o viene tanto sonno, <b>dillo subito a un grande</b>: si esce all'aria aperta.</li>
+    </ul>
+    <div class="disegno">
+      <svg width="110" height="124" viewBox="0 0 150 170" role="img" aria-label="Disegno di una casa con il camino e il fumo che esce fuori">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M104 30 C 98 22, 112 16, 106 8" />
+          <path d="M116 34 C 110 26, 124 20, 118 12" />
+          <rect x="98" y="40" width="20" height="34" fill="#FFFFFF"/>
+          <path d="M12 86 L75 32 L138 86" fill="#FFFFFF"/>
+          <rect x="24" y="80" width="102" height="80" fill="#FFFFFF"/>
+          <rect x="38" y="96" width="30" height="26"/><path d="M53 96 V122 M38 109 H68"/>
+          <path d="M84 160 V122 a14 14 0 0 1 28 0 V160"/>
+          <path d="M4 160 H146"/>
+        </g>
+        <rect x="70" y="56" width="10" height="10" fill="#FCEB0C" stroke="#233B74" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="pronta">
+    <h2>La mia casa è pronta per l'inverno?</h2>
+    <p class="come">Fate il giro della casa, tu e un adulto: per ogni sì, una crocetta.</p>
+    <div class="spunte">
+      <div>La caldaia è stata controllata quest'anno.</div>
+      <div>Stufe, camino e canna fumaria sono puliti.</div>
+      <div>Le prese d'aria sono libere, non coperte.</div>
+      <div>Mai forno, fornelli o bracieri per scaldarci.</div>
+      <div>Ogni giorno cambiamo l'aria nelle stanze.</div>
+      <div>Chiamiamo spesso i nonni che vivono soli.</div>
+    </div>
+  </div>
+
+  <div class="fascia"><span class="etichetta">Per i grandi</span><span class="filo"></span></div>
+  <div class="grandi">
+    <div class="blocco">
+      <h3>Il monossido di carbonio</h3>
+      <p>Non ha odore né colore. Si forma in caldaie, stufe, camini, bracieri, barbecue, generatori e motori accesi. I segni: <strong>mal di testa, vertigini, nausea, debolezza, sonnolenza, confusione</strong>; nei bambini anche mal di pancia. Se stanno male più persone della stessa casa, pensate subito al monossido. Rischiano di più i neonati, gli anziani e chi ha malattie del cuore o del respiro.</p>
+    </div>
+    <div class="blocco">
+      <h3>Se pensate al monossido</h3>
+      <ol>
+        <li><strong>Uscite subito all'aria aperta</strong>, con tutti. Se potete farlo senza fermarvi, aprite le finestre.</li>
+        <li>Spegnete l'apparecchio solo se potete farlo subito e senza rischi.</li>
+        <li><strong>Chiamate il 112</strong>, anche se fuori vi sentite meglio: l'intossicazione va curata in pronto soccorso.</li>
+        <li>Non rientrate finché i soccorritori o un tecnico non vi dicono che si può.</li>
+      </ol>
+    </div>
+    <div class="blocco">
+      <h3>Per prevenirlo</h3>
+      <ul>
+        <li>Fate controllare e pulire <strong>ogni anno, prima dell'autunno</strong>, caldaia, stufe e canna fumaria.</li>
+        <li>Non chiudete le prese d'aria e cambiate spesso l'aria.</li>
+        <li>Mai forno o fornelli a gas per scaldare la casa; mai bracieri, barbecue o generatori al chiuso; mai l'auto accesa in garage.</li>
+        <li>Stufe a gas e caldaie a fiamma libera non vanno mai in camera da letto.</li>
+      </ul>
+    </div>
+    <div class="blocco">
+      <h3>Freddo e ghiaccio</h3>
+      <p>Dopo una nevicata o una gelata il ghiaccio si forma su strade e marciapiedi: scarpe adatte e passi con calma. Telefonate spesso agli anziani che vivono soli e controllate che abbiano cibo e medicine. L'alcol non scalda: fa perdere calore.</p>
+    </div>
+  </div>
+
+  <div class="numeri" style="margin-top: auto">
+    <div><div class="n">112</div>Emergenze: pericolo per la vita o la sicurezza. Gratis, 24 ore su 24.</div>
+    <div><div class="n">116117</div>Cure mediche non urgenti, nel Lazio. Gratis, 24 ore su 24.</div>
+    <div><div class="n">Medico</div>Di famiglia, nei suoi orari.</div>
+  </div>
+  <p class="nota-adulti">Fonti, verificate il 20/11/2026: ISS EpiCentro, «Monossido di carbonio»; Vigili del fuoco, «Casa sicura»; Ministero della Salute, decalogo contro il freddo; Protezione Civile, «Neve e gelo»; Regione Lazio. Più consigli: <span style="white-space: nowrap">www.misericordia-ariccia.it/dossier/prevenzione-stagionale/</span></p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- ======================================================= 2. D'estate -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h1>D'estate <small>Da leggere a casa, insieme: in alto la parte per te, in basso quella per i grandi.</small></h1>
+
+  <div class="fascia"><span class="etichetta">Per te</span><span class="filo"></span></div>
+  <div class="perte">
+    <ul class="frasi">
+      <li><b>Bevo acqua spesso</b>, anche quando non ho sete.</li>
+      <li>Nelle ore più calde, <b>dalle 11 alle 18</b>, sto all'ombra o al fresco. Al sole, <b>cappello leggero</b>.</li>
+      <li>In macchina <b>non resto mai da solo</b>, neanche per un minuto.</li>
+      <li>Al mare e al lago faccio il bagno <b>dove c'è il bagnino</b> e con un grande che mi guarda.</li>
+    </ul>
+    <div class="disegno">
+      <svg width="110" height="124" viewBox="0 0 150 170" role="img" aria-label="Disegno di un sole e di una bottiglietta d'acqua">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <circle cx="46" cy="44" r="20" fill="#FCEB0C"/>
+          <path d="M46 10 V16 M46 72 V78 M12 44 H18 M74 44 H80 M22 20 L26 24 M66 64 L70 68 M22 68 L26 64 M66 24 L70 20"/>
+          <rect x="96" y="56" width="18" height="12" fill="#FFFFFF"/>
+          <path d="M92 68 H118 C 124 74, 126 80, 126 88 V156 a6 6 0 0 1 -6 6 H90 a6 6 0 0 1 -6 -6 V88 C 84 80, 86 74, 92 68 Z" fill="#FFFFFF"/>
+          <path d="M84 110 C 94 104, 106 116, 126 108"/>
+          <path d="M4 162 H146"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="pronta">
+    <h2>La mia casa è pronta per l'estate?</h2>
+    <p class="come">Fate il giro della casa, tu e un adulto: per ogni sì, una crocetta.</p>
+    <div class="spunte">
+      <div>C'è sempre acqua fresca, non ghiacciata.</div>
+      <div>Di giorno, tende giù dove batte il sole.</div>
+      <div>Le medicine stanno al fresco, non in auto.</div>
+      <div>Chiudendo l'auto, guardiamo dentro.</div>
+      <div>Chiamiamo spesso i nonni che vivono soli.</div>
+      <div>Al mare e al lago, spiaggia con il bagnino.</div>
+    </div>
+  </div>
+
+  <div class="fascia"><span class="etichetta">Per i grandi</span><span class="filo"></span></div>
+  <div class="grandi">
+    <div class="blocco">
+      <h3>Il caldo e le ondate di calore</h3>
+      <p>D'estate il Ministero della Salute pubblica i bollettini sulle ondate di calore, anche per Roma. Nei giorni caldi evitate il sole e gli sforzi <strong>fra le 11 e le 18</strong>. Bevete almeno un litro e mezzo d'acqua al giorno, anche senza sete; chi ha malattie del cuore, dei reni o del fegato, o l'epilessia, chieda al medico quanto bere. Niente alcol. Ai bambini offrite spesso acqua; sotto i 6 mesi niente sole.</p>
+    </div>
+    <div class="blocco">
+      <h3>Mai nessuno in auto</h3>
+      <p>In un'auto chiusa la temperatura sale in fretta: <strong>mai bambini, persone o animali in macchina</strong>, neanche per poco. Toccate il seggiolino prima di sistemare il bambino: al sole scotta.</p>
+    </div>
+    <div class="blocco">
+      <h3>Gli anziani soli</h3>
+      <p>Sentono meno la sete. Chiamateli o passate da loro: controllate che bevano e che la casa sia fresca. Un campanello d'allarme: fanno meno le cose di tutti i giorni.</p>
+    </div>
+    <div class="blocco">
+      <h3>Se qualcuno sta male per il caldo</h3>
+      <p>All'ombra e al fresco, meno vestiti, bagnatelo con acqua fresca o teli bagnati e fategli aria; niente acqua fredda. Se ha la pelle molto calda, è confuso o assonnato, o non migliora, <strong>chiamate il 112</strong>.</p>
+    </div>
+    <div class="blocco">
+      <h3>Mare e laghi</h3>
+      <p>Bagno dove c'è il bagnino, seguendo i cartelli; mai con il mare mosso, niente tuffi dove non si conosce il fondo. <strong>I bambini si guardano sempre, da vicino</strong>, anche se c'è il bagnino: chi è in difficoltà in acqua spesso non fa rumore. In emergenza, anche in mare, si chiama il <strong>112</strong>.</p>
+    </div>
+  </div>
+
+  <div class="numeri" style="margin-top: auto">
+    <div><div class="n">112</div>Emergenze: pericolo per la vita o la sicurezza. Gratis, 24 ore su 24.</div>
+    <div><div class="n">116117</div>Cure mediche non urgenti, nel Lazio. Gratis, 24 ore su 24.</div>
+    <div><div class="n">Medico</div>Di famiglia, nei suoi orari.</div>
+  </div>
+  <p class="nota-adulti">Fonti, verificate il 20/11/2026: Ministero della Salute, «Dieci consigli utili», «Chi rischia di più», Linee di indirizzo sul caldo 2026; ISS e Regioni, «Sicurezza in acqua»; Regione Lazio. Più consigli: <span style="white-space: nowrap">www.misericordia-ariccia.it/dossier/prevenzione-stagionale/</span></p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/medie/scheda-aiuto-in-inglese.pdf">
+<title>Help, please! Chiedere aiuto in inglese</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 per la scuola media, 2 pagine: il 112 in Europa, le frasi in inglese per chiedere aiuto, un esercizio di
+abbinamento con le domande dell'operatore e la tessera da ritagliare (pagina 1); soluzioni, uso in classe,
+avvertenze e Tessera europea di assicurazione malattia per l'insegnante (pagina 2).
+Dati verificati il 20/11/2026: Commissione europea, pagina «112 - the EU's emergency phone number»
+(digital-strategy.ec.europa.eu/en/policies/112); Ministero della Salute, pagine sulla TEAM; Commissione europea,
+pagina «Tessera europea di assicurazione malattia». Il 112 gratuito, 24 ore su 24, anche senza credito: come
+data/dati_da_verificare.yaml (nue-112-lazio, nue-112-senza-sim) e content/dossier/chiamare-il-112.md.
+-->
+<style>
+.pagina > .contenuto { gap: 9px; }
+.pagina:first-child > .contenuto { gap: 11px; }
+.testa112 { display: grid; grid-template-columns: 118px 1fr; gap: 16px; align-items: center; padding: 10px 16px; }
+.testa112 .n { font-size: 52px; line-height: 54px; font-weight: 800; text-align: center; }
+.testa112 .n span { text-decoration: underline; text-decoration-color: #FCEB0C; text-decoration-thickness: 6px; text-underline-offset: 4px; }
+.testa112 p { font-size: 13px; line-height: 18.5px; }
+.frasi { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.gruppo { border-top: 5px solid var(--blu); background: #EEF0F8; padding: 7px 12px 9px; }
+.gruppo h3 { font-size: 13.5px; line-height: 18px; margin-bottom: 3px; }
+.gruppo h3 b.num { display: inline-block; min-width: 20px; color: #FFFFFF; background: var(--blu); text-align: center; margin-right: 6px; }
+.gruppo p { font-size: 12px; line-height: 15px; margin-top: 2px; }
+.gruppo p b { font-weight: 800; color: #233B74; }
+.gruppo p i { font-style: normal; color: #5A6686; font-size: 11px; }
+.abbina { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 22px; font-size: 12.5px; line-height: 17px; }
+.abbina p { display: grid; grid-template-columns: 22px 1fr 34px; gap: 6px; align-items: center; border-bottom: 1px solid var(--linea); padding: 2px 0; }
+.abbina p .k { font-weight: 800; color: #233B74; }
+.abbina p .box { width: 30px; height: 20px; border: 1.5px solid #233B74; }
+.istr { font-size: 13px; font-weight: 500; margin-left: 8px; }
+.risposte { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 22px; background: #EEF0F8; padding: 7px 10px; font-size: 12px; line-height: 15px; color: #233B74; }
+.risposte b { display: inline-block; min-width: 18px; color: #FFFFFF; background: var(--blu); text-align: center; margin-right: 4px; font-weight: 800; }
+.ritaglio { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 7px; }
+.tess { border: 2.5px solid #003F85; display: flex; flex-direction: column; height: 168px; }
+.tess + .tess { border-left-style: dashed; border-left-width: 1.5px; border-left-color: #5A6686; }
+.tess .t { background: #003F85; font-weight: 800; font-size: 12px; letter-spacing: .04em; text-align: center; padding: 4px 0; }
+.tess .corpo { padding: 4px 12px 0; font-size: 11px; line-height: 14.5px; color: #233B74; flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.tess .big { display: flex; align-items: center; gap: 12px; }
+.tess .big b { font-size: 36px; line-height: 38px; font-weight: 800; }
+.tess .big span { font-size: 10.5px; line-height: 13.5px; }
+.tess .riga { border-bottom: 1.2px solid #5A6686; height: 19px; display: flex; align-items: flex-end; padding-bottom: 1px; font-weight: 700; }
+.tess .firma-c { font-size: 9px; font-weight: 700; color: #233B74; text-align: center; padding: 3px 0 4px; border-top: 1px solid #C9D3E6; margin: 0 12px; }
+.sol { display: flex; flex-direction: column; gap: 6px; }
+.sol p { font-size: 12.5px; line-height: 17px; }
+.sol b.n { display: inline-block; min-width: 22px; color: #FFFFFF; background: var(--blu); text-align: center; margin-right: 6px; }
+.chiavi { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.chiavi div { border: 2px solid #233B74; text-align: center; font-weight: 800; color: #233B74; font-size: 15px; line-height: 30px; }
+</style>
+</head>
+<body class="a4">
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola media</b></div>
+<div class="contenuto">
+<h1>Help, please! Chiedere aiuto in inglese</h1>
+
+<div class="riquadro blu testa112">
+<div class="n"><span>112</span></div>
+<p>In gita o in vacanza all'estero un amico può stare male. In <strong>tutti i Paesi dell'Unione europea</strong> il numero di emergenza è lo stesso: il <strong>112</strong>. È <strong>gratis</strong> e si chiama dal cellulare o dal fisso. Funziona anche in alcuni Paesi fuori dall'Unione, come la Svizzera. In molti Paesi l'operatore risponde anche in inglese.</p>
+</div>
+
+<div class="frasi">
+<div class="gruppo">
+<h3><b class="n num">1</b>Chiedere aiuto</h3>
+<p><b>I need an ambulance.</b> <i>Mi serve un'ambulanza.</i></p>
+<p><b>Do you speak Italian?</b> <i>Parla italiano?</i></p>
+<p><b>Can you speak slowly, please?</b> <i>Può parlare piano?</i></p>
+<p><b>Can you repeat, please?</b> <i>Può ripetere?</i></p>
+</div>
+<div class="gruppo">
+<h3><b class="n num">2</b>Dire che cosa è successo</h3>
+<p><b>My friend fainted.</b> <i>Il mio amico è svenuto.</i></p>
+<p><b>She is not breathing.</b> <i>Non respira.</i></p>
+<p><b>She is bleeding a lot.</b> <i>Perde molto sangue.</i></p>
+<p><b>He fell. His leg hurts.</b> <i>È caduto, ha male alla gamba.</i></p>
+</div>
+<div class="gruppo">
+<h3><b class="n num">3</b>Dire dove sei</h3>
+<p><b>We are at Hotel …</b> <i>Siamo all'hotel …</i></p>
+<p><b>We are near the station.</b> <i>Siamo vicino alla stazione.</i></p>
+<p><b>I don't know where I am.</b> <i>Non so dove sono.</i></p>
+<p><b>My phone number is …</b> <i>Il mio numero è …</i></p>
+</div>
+<div class="gruppo">
+<h3><b class="n num">4</b>Allergie e farmaci</h3>
+<p><b>He is allergic to nuts.</b> <i>È allergico alla frutta a guscio.</i></p>
+<p><b>She has asthma.</b> <i>Ha l'asma.</i></p>
+<p><b>She takes this medicine.</b> <i>Prende questo farmaco.</i></p>
+<p><b>He has diabetes.</b> <i>Ha il diabete.</i></p>
+</div>
+</div>
+
+<h2>Esercizio: capire l'operatore <span class="istr">Scrivi nel quadratino la lettera giusta.</span></h2>
+<div class="abbina">
+<p><span class="k">1</span><span>What's your emergency?</span><span class="box"></span></p>
+<p><span class="k">4</span><span>Is she breathing normally?</span><span class="box"></span></p>
+<p><span class="k">2</span><span>Where are you?</span><span class="box"></span></p>
+<p><span class="k">5</span><span>How old is she?</span><span class="box"></span></p>
+<p><span class="k">3</span><span>Is she awake? Can she talk?</span><span class="box"></span></p>
+<p><span class="k">6</span><span>Stay on the line, please.</span><span class="box"></span></p>
+</div>
+<div class="risposte">
+<p><b>A</b> She is thirteen.</p>
+<p><b>B</b> OK, I'm not hanging up.</p>
+<p><b>C</b> My friend fainted at the museum.</p>
+<p><b>D</b> Yes, she is breathing.</p>
+<p><b>E</b> We are in Castle Square, near the bus stop.</p>
+<p><b>F</b> No, she doesn't answer.</p>
+</div>
+
+<div class="ritaglia ritaglio">
+<div class="tess">
+<div class="t fondo-blu">IN AN EMERGENCY CALL</div>
+<div class="corpo">
+<div class="big"><b>112</b><span>In tutta l'Unione europea.<br>Gratis, dal cellulare e dal fisso.</span></div>
+<div><strong>Help, please! I need an ambulance.</strong></div>
+<div><strong>My friend fainted / is not breathing / is bleeding.</strong></div>
+<div><strong>We are at …</strong> &nbsp;·&nbsp; <strong>Please speak slowly.</strong></div>
+<div>Rispondi alle domande. <strong>Non riattaccare.</strong></div>
+</div>
+<div class="firma-c">Misericordia di Ariccia</div>
+</div>
+<div class="tess">
+<div class="t fondo-blu">ABOUT ME</div>
+<div class="corpo">
+<div class="riga">Name:</div>
+<div class="riga">Hotel / address:</div>
+<div class="riga">I am allergic to:</div>
+<div class="riga">I take (medicine):</div>
+<div class="riga">Teacher's phone:</div>
+</div>
+<div class="firma-c">Misericordia di Ariccia</div>
+</div>
+</div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per l'<b>insegnante</b></div>
+<div class="contenuto">
+<h2>Per l'insegnante: soluzioni e indicazioni</h2>
+<h3>Soluzioni dell'esercizio</h3>
+<div class="chiavi"><div>1 C</div><div>2 E</div><div>3 F</div><div>4 D</div><div>5 A</div><div>6 B</div></div>
+<p>Si può chiedere ai ragazzi di riscrivere le risposte con dati diversi (un altro luogo, un'altra età, un altro malore) e poi di leggere il dialogo a coppie, operatore e chi chiama. La domanda 6 è la più importante: <strong>non si riattacca finché l'operatore non lo dice</strong>.</p>
+
+<h3>Come usarla</h3>
+<div class="sol">
+<p><b class="n">1</b><strong>Inglese.</strong> Le frasi sono semplici (presente, «I need», «He is», «Can you…?») e adatte agli anni della scuola media. Ripetere a voce alta le frasi dei quattro gruppi, poi fare l'esercizio e il dialogo a coppie.</p>
+<p><b class="n">2</b><strong>Educazione civica.</strong> Il 112 come servizio comune dei Paesi dell'Unione europea: un'occasione per parlare di che cosa vuol dire essere cittadini europei e di come si chiede aiuto in modo corretto.</p>
+<p><b class="n">3</b><strong>Prima di una gita all'estero.</strong> Ogni ragazzo ritaglia la tessera, la piega lungo la linea tratteggiata centrale e la compila a casa con un genitore (nome, hotel, allergie, farmaci, numero del docente accompagnatore). Va tenuta nel portafoglio o nella custodia del telefono.</p>
+</div>
+
+<div class="riquadro">
+<h3>Avvertenze</h3>
+<p>Per le prove in classe si usa <strong>sempre un telefono finto o spento</strong>: il 112 non si chiama mai per esercizio, neanche per pochi secondi, perché ogni chiamata tiene occupato un operatore. Chiamare per scherzo e annunciare un'emergenza che non esiste è un reato (procurato allarme, articolo 658 del Codice penale). Le frasi della scheda servono per farsi capire; non sostituiscono un corso di primo soccorso.</p>
+</div>
+
+<div class="riquadro tenue">
+<h3>Per chi viaggia: la Tessera europea di assicurazione malattia (TEAM)</h3>
+<p>La TEAM è il <strong>retro della tessera sanitaria</strong>. Durante un soggiorno temporaneo nei Paesi dell'Unione europea e in Islanda, Liechtenstein, Norvegia e Svizzera dà diritto alle <strong>cure medicalmente necessarie</strong> (non solo urgenti) nelle strutture pubbliche o convenzionate, alle stesse condizioni di chi vive in quel Paese; la Commissione europea indica anche il Regno Unito. Può restare a carico un eventuale ticket, non rimborsabile. <strong>Non è un'assicurazione di viaggio</strong>: non copre le cure private né il rientro in Italia, e in alcuni Paesi il trasporto in ambulanza si paga. Conviene controllare la scadenza prima di partire; se manca, la ASL può rilasciare un certificato sostitutivo.</p>
+</div>
+
+<p class="nota-adulti">Fonti, verificate il 20/11/2026: Commissione europea, «112 - the EU's emergency phone number» (digital-strategy.ec.europa.eu/en/policies/112); Ministero della Salute, «Tessera europea assicurazione malattia - TEAM» e «Cure urgenti e necessarie nell'Unione Europea - TEAM» (salute.gov.it); Commissione europea, «Tessera europea di assicurazione malattia» (employment-social-affairs.ec.europa.eu). Approfondimenti sul sito: «Cosa succede quando chiami il 112» (www.misericordia-ariccia.it/dossier/chiamare-il-112/).</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+</body>
+</html>

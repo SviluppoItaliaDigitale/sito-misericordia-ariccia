@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="a4">
+<meta name="uscita" content="static/documenti/scuole/primaria/scheda-intervista-ai-nonni.pdf">
+<title>Quando serviva aiuto: intervista ai nonni</title>
+<link rel="stylesheet" href="../scuole.css">
+<!--
+Scheda A4 per la scuola primaria (classi 3ª-5ª), 2 pagine: l'intervista per il bambino (pagina 1) e la guida
+per l'insegnante (pagina 2). Dati identici al sito: 112 nel Lazio dal 18/11/2015 e gratuito 24 ore su 24
+(content/dossier/chiamare-il-112.md), 118 dal DPR 27/03/1992 (content/dossier/dalla-barella-all-ambulanza.md),
+Misericordie nate a Firenze nel 1244 e Misericordia di Ariccia nata nel 1994 (content/dossier/storia-delle-misericordie.md).
+Fonti ricontrollate il 20/11/2026 su regione.lazio.it, gazzettaufficiale.it, misericordie.it, misericordia.firenze.it, normattiva.it.
+-->
+<style>
+/* Disegni al tratto blu #233B74 con il giallo del kit come solo accento, come nelle altre schede della primaria. */
+.testa { display: grid; grid-template-columns: 1fr 150px; gap: 20px; align-items: start; }
+.campo { display: flex; flex-direction: column; gap: 2px; }
+.campo label { font-weight: 700; color: #233B74; font-size: 13px; }
+.campo .linea { height: 26px; border-bottom: 1.5px solid #5A6686; }
+.chi { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.consigli { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.consigli div { border-top: 5px solid var(--blu); padding-top: 6px; font-size: 12px; line-height: 16px; }
+.consigli b { display: block; color: #233B74; font-size: 12.5px; }
+.domande { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 22px; counter-reset: dom; }
+.domanda { display: flex; flex-direction: column; }
+.domanda p { font-weight: 700; color: #233B74; font-size: 13px; line-height: 18px; display: grid; grid-template-columns: 30px 1fr; }
+.domanda p::before { counter-increment: dom; content: counter(dom); width: 24px; height: 24px; border-radius: 50%; background: var(--blu);
+  color: #FFFFFF; font-weight: 800; font-size: 13px; line-height: 24px; text-align: center; }
+.domanda .righe { gap: 24px; padding-top: 24px; padding-left: 30px; }
+.domanda .righe span { height: 0; }
+.fondo { display: grid; grid-template-columns: 1fr 272px; gap: 18px; align-items: stretch; }
+.cornice-disegno { border: 2px solid #233B74; padding: 8px 12px; display: flex; flex-direction: column; }
+.cornice-disegno h3 { margin-bottom: 4px; }
+.cornice-disegno .vuoto { flex: 1; min-height: 120px; }
+.oggi { display: flex; flex-direction: column; gap: 10px; }
+.oggi .riquadro p { font-size: 12.5px; line-height: 17px; }
+.storia { display: grid; grid-template-columns: 70px 1fr; gap: 14px; align-items: center; }
+.storia p { font-size: 12.5px; line-height: 17px; }
+.disegno svg { display: block; }
+/* pagina 2 */
+.guida { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
+.guida h3 { margin-bottom: 3px; }
+.guida p, .guida li { font-size: 12.5px; line-height: 17px; }
+.guida ul { padding-left: 18px; gap: 3px; }
+.tempi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tempi > div { border-top: 5px solid var(--blu); padding-top: 6px; font-size: 12px; line-height: 16px; }
+.tempi .anno { font-size: 22px; line-height: 26px; font-weight: 800; color: #233B74; }
+</style>
+</head>
+<body class="a4">
+
+<!-- ======================================================= pagina 1: l'intervista -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <div class="testa">
+    <div style="display:flex; flex-direction:column; gap: 10px">
+      <h1>Quando serviva aiuto</h1>
+      <p class="sotto">Intervista un nonno, una nonna o un'altra persona anziana che conosci. Fatti raccontare come si chiedeva aiuto quando era piccola e scrivi le sue risposte sulle righe.</p>
+    </div>
+    <div class="disegno">
+      <svg width="150" height="118" viewBox="0 0 150 118" role="img" aria-label="Disegno di un vecchio telefono di casa con la rotella per comporre il numero">
+        <g fill="none" stroke="#233B74" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M22 112 L36 58 H114 L128 112 Z" fill="#FFFFFF"/>
+          <path d="M14 34 q0 -22 61 -22 q61 0 61 22 v8 q0 6 -6 6 h-20 q-6 0 -6 -6 v-6 h-58 v6 q0 6 -6 6 h-20 q-6 0 -6 -6 Z" fill="#FFFFFF"/>
+          <path d="M52 48 V58 M98 48 V58"/>
+          <circle cx="75" cy="86" r="22" fill="#FCEB0C"/>
+          <circle cx="75" cy="86" r="7" fill="#FFFFFF"/>
+        </g>
+        <g fill="#FFFFFF" stroke="#233B74" stroke-width="2">
+          <circle cx="75" cy="70" r="4"/><circle cx="88" cy="74" r="4"/><circle cx="92" cy="87" r="4"/><circle cx="86" cy="99" r="4"/>
+          <circle cx="62" cy="74" r="4"/><circle cx="58" cy="87" r="4"/><circle cx="64" cy="99" r="4"/><circle cx="75" cy="103" r="4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="chi">
+    <div class="campo"><label>Ho intervistato (solo il nome, senza cognome)</label><div class="linea"></div></div>
+    <div class="campo"><label>Quando era piccolo o piccola abitava a</label><div class="linea"></div></div>
+  </div>
+  <div class="consigli">
+    <div><b>Chiedi prima</b>se ha voglia e tempo di raccontare.</div>
+    <div><b>Ascolta</b>senza interrompere. Guardalo negli occhi.</div>
+    <div><b>Scrivi poche parole</b>e poi chiedi «Mi spieghi meglio?».</div>
+    <div><b>Un ricordo triste?</b>Passa alla domanda dopo.</div>
+    <div><b>Alla fine</b>di' grazie per il racconto.</div>
+  </div>
+  <div class="domande">
+    <div class="domanda"><p>Da piccolo o piccola avevi il telefono in casa? Se no, come si telefonava?</p><div class="righe"><span></span><span></span><span></span></div></div>
+    <div class="domanda"><p>Se qualcuno stava male, chi si chiamava? Come arrivavano il medico o l'ambulanza?</p><div class="righe"><span></span><span></span><span></span></div></div>
+    <div class="domanda"><p>Chi aiutava i vicini di casa quando avevano bisogno? In che modo?</p><div class="righe"><span></span><span></span><span></span></div></div>
+    <div class="domanda"><p>Raccontami una volta in cui qualcuno ti ha aiutato, oppure tu hai aiutato qualcuno.</p><div class="righe"><span></span><span></span><span></span></div></div>
+  </div>
+  <div class="fondo">
+    <div class="cornice-disegno">
+      <h3>Disegna il racconto che ti è piaciuto di più</h3>
+      <div class="vuoto"></div>
+    </div>
+    <div class="oggi">
+      <div class="riquadro">
+        <h3>Allora e oggi</h3>
+        <p>Una cosa che è cambiata:</p>
+        <div class="righe" style="gap: 22px; padding-top: 8px"><span></span><span></span></div>
+      </div>
+      <div class="riquadro blu">
+        <p><strong>Oggi basta un numero: il 112.</strong> È gratis, risponde giorno e notte e si può chiamare anche da un telefono senza credito.</p>
+      </div>
+    </div>
+  </div>
+  <div class="riquadro tenue storia">
+    <div class="disegno">
+      <svg width="70" height="56" viewBox="0 0 70 56" role="img" aria-label="Disegno di una cesta di vimini con due manici">
+        <g fill="none" stroke="#233B74" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M6 22 H64 L58 52 H12 Z" fill="#FCEB0C"/>
+          <path d="M8 32 H62 M10 42 H60" stroke-width="2"/>
+          <path d="M22 22 L24 52 M35 22 V52 M48 22 L46 52" stroke-width="2"/>
+          <path d="M14 22 q0 -18 21 -18 q21 0 21 18"/>
+        </g>
+      </svg>
+    </div>
+    <p><strong>Aiutarsi fra vicini è una cosa antica.</strong> Le Misericordie sono nate a Firenze nel 1244, quasi 800 anni fa: i volontari portavano i malati all'ospedale. La Misericordia di Ariccia è nata nel 1994 e aiuta ancora oggi le persone del paese. Ma in un'emergenza si chiama sempre il 112.</p>
+  </div>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+
+<!-- ======================================================= pagina 2: per l'insegnante -->
+<section class="pagina">
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="tema">Per la <b>scuola primaria</b></div>
+<div class="contenuto">
+  <h2>Per l'insegnante: come usare la scheda</h2>
+  <p>L'intervista è pensata per le classi <strong>terza, quarta e quinta</strong>. Il bambino ascolta come si chiedeva aiuto un tempo e lo confronta con oggi. Al centro ci sono il telefono, i vicini e il gesto di aiutare, non i dettagli di malattie o incidenti.</p>
+  <div class="guida">
+    <div>
+      <h3>In tre momenti</h3>
+      <ul>
+        <li><strong>In classe, prima:</strong> leggete insieme le domande e i consigli per ascoltare. Ognuno può aggiungere una domanda sua sul retro del foglio.</li>
+        <li><strong>A casa:</strong> il bambino fa l'intervista e scrive poche parole per risposta. Bastano venti minuti.</li>
+        <li><strong>In classe, dopo:</strong> ognuno racconta una risposta che lo ha colpito e mostra il disegno. Si raccolgono le differenze fra allora e oggi.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Con quali discipline</h3>
+      <ul>
+        <li><strong>Italiano:</strong> preparare domande aperte, ascoltare, prendere appunti, raccontare per iscritto quello che si è sentito.</li>
+        <li><strong>Storia:</strong> il racconto di un testimone come fonte orale, il cambiamento nel tempo, la linea del tempo qui sotto.</li>
+        <li><strong>Educazione civica:</strong> i servizi pubblici come il 112, la solidarietà e il volontariato. La legge 92/2019 (articolo 3, comma 2) chiede di promuovere l'educazione al volontariato e alla cittadinanza attiva e solidale.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Consenso e dati personali</h3>
+      <p>Si scrive <strong>solo il nome</strong> della persona intervistata, mai il cognome, l'indirizzo o altri dati. <strong>Niente foto, video o registrazioni</strong> senza il permesso della persona intervistata e della famiglia del bambino. Prima di esporre le schede, chiedete. La persona può non rispondere o fermarsi quando vuole.</p>
+    </div>
+    <div>
+      <h3>Chi non ha i nonni vicino</h3>
+      <p>Non tutti i bambini hanno i nonni vicino; qualcuno può averne perso uno da poco. Va bene <strong>qualunque adulto</strong> che il bambino conosce: un vicino, un parente, una persona del quartiere. Oppure si intervista insieme una persona invitata in classe, o si inventa un racconto insieme. Nessuno deve sentirsi escluso.</p>
+    </div>
+  </div>
+  <h3>Come confrontare con oggi: una linea del tempo</h3>
+  <div class="tempi">
+    <div><div class="anno">1244</div>Nascono a Firenze le Misericordie: volontari che portano i malati all'ospedale.</div>
+    <div><div class="anno">1992</div>Un decreto del 27 marzo organizza l'emergenza sanitaria con le centrali operative del 118.</div>
+    <div><div class="anno">1994</div>Nasce la Misericordia di Ariccia, al servizio delle persone del paese.</div>
+    <div><div class="anno">2015</div>Dal 18 novembre, nel Lazio, per tutte le emergenze c'è un solo numero: il 112.</div>
+  </div>
+  <div class="riquadro tenue">
+    <p>Sulla linea del tempo la classe mette le risposte delle interviste («quando la nonna era piccola il 112 non c'era») e poi ripete che cosa vale oggi: <strong>il 112 è gratuito, risponde 24 ore su 24</strong>, si chiama anche senza credito e solo per un pericolo vero. Per approfondire: le slide «Il 112 e il piccolo soccorritore».</p>
+  </div>
+  <p class="nota-adulti">Fonti, verificate il 20/11/2026: Regione Lazio, Emergenza 112 (comunicazione.regione.lazio.it/112) e notizia «Inaugurata la nuova sala del Numero Unico Emergenza 112»; DPR 27 marzo 1992, Gazzetta Ufficiale n. 76 del 31 marzo 1992; Confederazione Nazionale delle Misericordie d'Italia, Chi siamo; Misericordia di Firenze, Chi siamo; legge 20 agosto 2019, n. 92, articolo 3 (Normattiva). Sul sito: www.misericordia-ariccia.it/dossier/storia-delle-misericordie/ e /dossier/chiamare-il-112/.</p>
+</div>
+<div class="piede"><div class="p1"><span>Confraternita di Misericordia</span><span>di Ariccia ODV</span></div><div class="p2"><span>Viale Antonietta Chigi 46 - 00072 Ariccia (RM)</span><span>Cell. +39 328 8105399 - C.F. 90031910582</span></div><div class="p3"><span>www.misericordia-ariccia.it</span><span>sede@misericordia-ariccia.it</span></div></div>
+</section>
+</body>
+</html>
