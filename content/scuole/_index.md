@@ -25,4 +25,6 @@ Schede da stampare, slide da proiettare e una guida per l'insegnante per ogni fa
 
 Per i bambini c'è anche la pagina [Per bambini e scuole](/bambini-e-scuole/), con il quiz del piccolo soccorritore.
 
+**Prove di evacuazione e protezione civile.** Per il piano di emergenza della scuola la Protezione Civile di Genzano di Roma pubblica materiali gratuiti (licenza CC BY-NC-SA 4.0) che si affiancano ai nostri: un [curricolo verticale di protezione civile dai 3 ai 19 anni](https://www.protezionecivilegenzano.it/formazione/curricolo-verticale/) e le schede per [prove di evacuazione, famiglie e personale](https://www.protezionecivilegenzano.it/formazione/schede-stampabili/#prove-famiglie-personale), tra cui la storia sociale con pittogrammi, la scheda per gli alunni appena arrivati in Italia, il compagno-guida, la scheda di evacuazione personalizzata accanto al PEI e il foglio per il supplente.
+
 Vorreste che una volontaria o un volontario della Misericordia venisse in classe? [Scriveteci](/contatti/): valuteremo insieme che cosa possiamo fare. Le manovre di rianimazione si imparano solo con un istruttore, in un [corso di primo soccorso](/servizi/formazione/).

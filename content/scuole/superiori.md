@@ -196,3 +196,5 @@ Il sito della [Protezione Civile di Genzano di Roma](https://www.protezionecivil
 - [Scelte difficili](https://www.protezionecivilegenzano.it/giochi/ragazzi/scelte-difficili/), gioco
 - [Vero o bufala?](https://www.protezionecivilegenzano.it/giochi/ragazzi/vero-o-bufala/), gioco sulle notizie false
 - [Simulatore COC](https://www.protezionecivilegenzano.it/giochi/ragazzi/simulatore-coc/), gioco sul Centro operativo comunale
+- [Decidere sotto incertezza](https://www.protezionecivilegenzano.it/formazione/schede-stampabili/dibattito-dilemmi-protezione-civile/): quattro dilemmi di protezione civile da dibattere, scheda stampabile
+- [La chat in tilt](https://www.protezionecivilegenzano.it/formazione/schede-stampabili/chat-in-tilt/): che cosa si inoltra in un'emergenza, scheda stampabile
