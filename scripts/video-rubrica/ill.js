@@ -458,12 +458,26 @@ tosse({u}){
   if(ph<.5){ const f=ph/.5; for(let i=0;i<3;i++) arc(-30,-30,40+f*120+i*20,Math.PI*.85,Math.PI*1.15,`rgba(255,255,255,${(1-f)*.9})`,8); }
 },
 colpi({u,p,A}){
+  // Rifatto il 20/11/2026 (revisione del video): il soccorritore sta accanto e un po' dietro la persona piegata in
+  // avanti, una mano sostiene il petto e il palmo dell'altra colpisce davvero tra le scapole (prima colpiva il vuoto).
   const ph=((u*1.1)%1); const hit=ph<.18;
-  sideFig(-60,110,.72,{lean:.75,mouth:'o',frontArm(){ ln([[-20,-260],[-80,-170]],VSD,40); }});
-  sideFig(170,110,.72,{shirt:RS,shirtD:RSD,
-    backArm(){ ln([[-10,-260],[-150,-170],[-235,-150]],RSD,44); fc(-240,-150,24,SK); },
-    frontArm(){ const a=hit?0:-.9*Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI); ctx.save(); ctx.translate(0,-270); ctx.rotate(a); ln([[0,0],[-80,40],[-170,30]],RS,46); fc(-178,28,28,SK); ctx.restore(); }});
-  if(hit){ const r=ph/.18; arc(-150*.72+170-60,-180*.72+110-40,30+r*40,0,TAU,`rgba(242,228,51,${1-r})`,8); }
+  const VX=-60, VY=110, S=.72, LEAN=.75;
+  // punto del corpo della persona piegata (coordinate locali di sideFig) -> coordinate della scena
+  const pt=(x,y)=>{ const c=Math.cos(-LEAN), s=Math.sin(-LEAN); return [VX+S*(x*c-y*s), VY+S*(x*s+y*c)]; };
+  const [sx,sy]=pt(56,-225);   // tra le scapole, sul dorso
+  const [px,py]=pt(-66,-235);  // sotto il petto
+  const RX=120, RY=110, RL=.25;
+  const sh=[RX+S*(250*Math.sin(-RL)), RY+S*(-250*Math.cos(-RL))]; // spalla del soccorritore
+  sideFig(RX,RY,S,{shirt:RS,shirtD:RSD,lean:RL});
+  sideFig(VX,VY,S,{lean:LEAN,mouth:'o',frontArm(){ ln([[-20,-260],[-80,-170]],VSD,40); }});
+  // braccio che sostiene il petto (passa davanti alla persona)
+  const eb=[(sh[0]+px)/2+20,Math.max(sh[1],py)+70]; ln([sh,eb,[px+16,py+4]],RSD,36); ln([sh,eb,[px+16,py+4]],RS,30); fc(px,py,20,SK);
+  // braccio che colpisce: mano alzata, poi palmo sul dorso tra le scapole
+  const k=hit?1:1-Math.sin(Math.min(1,(ph-.18)/.82)*Math.PI);
+  const hx=sx+(1-k)*30, hy=sy-(1-k)*95;
+  const ex=(sh[0]+hx)/2+15, ey=(sh[1]+hy)/2+35-(1-k)*40;
+  ln([sh,[ex,ey],[hx,hy]],RS,32); fe(hx,hy-6,24,16,SK);
+  if(hit){ const r=ph/.18; arc(sx,sy,24+r*40,0,TAU,`rgba(242,228,51,${1-r})`,8); }
   const n=Math.floor(Math.max(0,u-PRE)*1.1)%5+1; grp(360,-170,1,A(.8),()=>{ fc(0,0,70,C.giallo); tx(String(n),0,4,70,C.navy,'800','P'); tx('di 5',0,100,28,'#fff','600'); });
 },
 addome({u,A}){
