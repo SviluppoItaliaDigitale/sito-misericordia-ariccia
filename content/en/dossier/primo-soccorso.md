@@ -81,7 +81,7 @@ argomenti:
       - "After abdominal thrusts the person must always be seen by a doctor."
     nonfare:
       - "Don't put your fingers blindly into their mouth."
-      - "In infants and young children the technique is different: it is taught in paediatric choking and life-support courses (P-BLSD)."
+      - "In infants, under one year of age, the technique is different: it is taught in paediatric choking and life-support courses (P-BLSD). From one year of age it is the same as in adults."
   - id: "anafilassi"
     titolo: "Anaphylaxis"
     motto: "Adrenaline and 112"

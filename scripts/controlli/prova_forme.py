@@ -219,6 +219,10 @@ CASI = [  # (testo, deve essere segnalato)
     ("Con il livello 2 o 3 evita il sole tra le 12 " + "e le 18.", True),
     ("il condizionatore va bene tra **25 e 27 " + "gradi**.", True),
     ("Con il livello 2 o 3 evita il sole tra le 11 e le 18; condizionatore intorno a 25-26 gradi.", False),
+    # soffocamento: tecnica diversa solo nel lattante (20/11/2026)
+    ("Nei lattanti e nei bambini " + "piccoli la tecnica è diversa", True),
+    ("In infants and young " + "children the technique is different", True),
+    ("Nei lattanti, sotto l'anno di età, la tecnica è diversa.", False),
 ]
 
 errori = 0

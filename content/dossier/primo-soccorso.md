@@ -90,7 +90,7 @@ argomenti:
       - "Dopo le compressioni addominali la persona va sempre fatta vedere da un medico."
     nonfare:
       - "Non infilare le dita in bocca alla cieca."
-      - "Nei lattanti e nei bambini piccoli la tecnica è diversa: si impara nei corsi di disostruzione pediatrica (P-BLSD)."
+      - "Nei lattanti, sotto l'anno di età, la tecnica è diversa: si impara nei corsi di disostruzione pediatrica (P-BLSD). Dall'anno in su si fa come nell'adulto."
   - id: "anafilassi"
     titolo: "Anafilassi"
     motto: "Adrenalina e 112"
