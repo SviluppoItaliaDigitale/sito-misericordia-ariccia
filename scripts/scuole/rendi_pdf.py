@@ -44,8 +44,12 @@ def attendi(pagina) -> None:
 
 
 def copertina(uscita: Path, prima) -> None:
-    """Anteprima della prima pagina per la pagina del sito: static/img/scuole/<fascia>/<nome>.jpg, 640 px di lato lungo."""
-    rel = uscita.relative_to(RADICE / "static/documenti/scuole")
+    """Anteprima della prima pagina per la pagina del sito: static/img/scuole/<fascia>/<nome>.jpg, 640 px di lato lungo.
+    I materiali interni, salvati fuori da static/documenti/scuole (es. formazione-istruttori/, 20/11/2026), non ne hanno."""
+    base = RADICE / "static/documenti/scuole"
+    if base not in uscita.parents:
+        return
+    rel = uscita.relative_to(base)
     dest = RADICE / "static/img/scuole" / rel.with_suffix(".jpg")
     dest.parent.mkdir(parents=True, exist_ok=True)
     im = prima.convert("RGB")
