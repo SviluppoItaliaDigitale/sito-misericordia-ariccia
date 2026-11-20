@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Passa la Misericordia: giù il cappello"
 titoloSeo: "Passa la Misericordia: giù il cappello | Lo sapevi che… storia delle Misericordie"
 date: 2027-02-21
+canale: "approfondimenti"
 slug: "lo-sapevi-che-19-giu-il-cappello"
 description: "Lo sapevi che… n. 19: Quando passavano i confratelli con la barella, i fiorentini si toglievano il cappello. Nel 1877 l'uso stava già scomparendo. Anche i confratelli avevano le loro regole: a Pisa la squadra si scopriva il capo davanti al Santissimo, all'arcivescovo o al granduca."
 immagine: "/img/news/lo-sapevi-che-19-giu-il-cappello-grafica.jpg"

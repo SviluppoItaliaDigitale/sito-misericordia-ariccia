@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Nottanti, mutanti e «stracciafoglie»"
 titoloSeo: "Nottanti, mutanti e «stracciafoglie» | Lo sapevi che… storia delle Misericordie"
 date: 2027-01-31
+canale: "approfondimenti"
 slug: "lo-sapevi-che-16-nottanti-e-stracciafoglie"
 description: "Lo sapevi che… n. 16: Nel 1877 la Misericordia di Firenze aveva 72 capi di guardia e una cinquantina di confratelli in servizio ogni giorno. I «nottanti» vegliavano i malati di notte; i «mutanti» li spostavano da un letto all'altro senza scoprirli."
 immagine: "/img/news/lo-sapevi-che-16-nottanti-e-stracciafoglie-grafica.jpg"

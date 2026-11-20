@@ -1,6 +1,7 @@
 ---
 title: "Progetto \"Al Tuo Servizio\""
 date: 2020-03-18
+canale: "misericordia"
 slug: "progetto-al-tuo-servizio"
 italianoSemplice: |
   **I nostri volontari di Velletri aiutano durante l'emergenza coronavirus.**

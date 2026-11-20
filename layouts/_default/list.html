@@ -36,17 +36,37 @@
         </div>
       </article>
       {{- end }}
-      <div class="griglia-news" data-anim-group>
-        {{ range .Pages }}
-        {{ if in $evid . }}{{ continue }}{{ end }}
-        <article class="news-item">
-          <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
-          <a href="{{ .RelPermalink }}" class="news-leggi">Leggi →</a>
-        </article>
-        {{ end }}
-      </div>
+      {{- /* Tre canali, come nel sito della Protezione Civile di Genzano (20/11/2026): ogni news ha
+           `canale:` nel front matter (partial canale-articolo.html). Senza JavaScript i link portano
+           alla sezione del canale. */ -}}
+      {{- $canali := partial "canali.html" (dict "en" $en) }}
+      {{- $pagine := .Pages }}
+      <nav class="canali-nav" id="canali-inizio" aria-label="{{ cond $en "News channels" "Canali delle notizie" }}">
+        {{- range $canali }}
+        {{- $id := .id }}{{ $n := 0 }}{{ range $pagine }}{{ if and (not (in $evid .)) (eq (partial "canale-articolo.html" .) $id) }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+        <a class="canali-nav-voce canale-{{ .id }}" href="#canale-{{ .id }}">{{ .nome }} <span class="canali-nav-n">{{ $n }}</span></a>
+        {{- end }}
+      </nav>
+      {{- range $canali }}
+      {{- $id := .id }}
+      <section class="canale-sezione" id="canale-{{ .id }}" aria-labelledby="titolo-canale-{{ .id }}">
+        <h2 class="canale-titolo canale-{{ .id }}" id="titolo-canale-{{ .id }}">{{ .nome }}</h2>
+        <p class="canale-intro">{{ .intro }}</p>
+        <div class="griglia-news" data-anim-group>
+          {{ range $pagine }}
+          {{ if in $evid . }}{{ continue }}{{ end }}
+          {{ if ne (partial "canale-articolo.html" .) $id }}{{ continue }}{{ end }}
+          <article class="news-item">
+            <p class="data mb-0">{{ time.Format ":date_long" .Date }}</p>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="mb-0">{{ .Summary | plainify | truncate 180 }}</p>
+            <a href="{{ .RelPermalink }}" class="news-leggi">{{ cond $en "Read →" "Leggi →" }}</a>
+          </article>
+          {{ end }}
+        </div>
+        <p class="canale-su"><a href="#canali-inizio">{{ cond $en "↑ Back to the channels" "↑ Torna ai canali" }}</a></p>
+      </section>
+      {{- end }}
     {{ else }}
     <div class="row g-4" data-anim-group>
       {{ range .Pages }}

@@ -1,6 +1,7 @@
 ---
 title: "Avviso pubblico \"Comunità solidali 2021-Coltivare Inclusione\""
 date: 2022-04-13
+canale: "misericordia"
 slug: "avviso-pubblico-comunita-solidali-2021-coltivare-inclusione"
 italianoSemplice: |
   **La Misericordia ha vinto un bando della Regione Lazio: "Comunità Solidali".**

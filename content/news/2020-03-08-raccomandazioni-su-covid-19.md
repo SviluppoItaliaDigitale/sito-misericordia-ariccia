@@ -1,6 +1,7 @@
 ---
 title: "Raccomandazioni su COVID-19"
 date: 2020-03-08
+canale: "informazioni"
 slug: "raccomandazioni-su-covid-19"
 italianoSemplice: |
   **Alcuni consigli contro il coronavirus.**

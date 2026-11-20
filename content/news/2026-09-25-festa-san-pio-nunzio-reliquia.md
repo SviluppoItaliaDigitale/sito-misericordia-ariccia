@@ -2,6 +2,7 @@
 title: "Festa di San Pio ad Ariccia: la Messa con il Nunzio Apostolico e la reliquia di Padre Pio"
 titoloSeo: "Festa di San Pio ad Ariccia 2026: Messa con il Nunzio Peña Parra, la reliquia di Padre Pio e l'assistenza della Misericordia"
 date: 2026-09-25
+canale: "misericordia"
 slug: "festa-san-pio-2026-nunzio-reliquia"
 servizio: "Assistenza sanitaria per eventi"
 description: "Il 23 settembre 2026 la festa di San Pio a Santa Maria Assunta in Cielo, ad Ariccia, con la Messa presieduta dal Nunzio Apostolico Mons. Edgar Peña Parra e la reliquia di Padre Pio: la Misericordia presente in divisa e in servizio di assistenza sanitaria."

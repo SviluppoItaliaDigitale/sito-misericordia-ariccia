@@ -2,6 +2,7 @@
 title: "Esci dal post. Entra nella squadra."
 titoloSeo: "Diventa volontario della Misericordia di Ariccia: entra nella squadra"
 date: 2026-10-18T09:25:00+02:00
+canale: "misericordia"
 slug: "esci-dal-post-entra-nella-squadra"
 description: "Hai voglia di aiutare? Conosci la Misericordia di Ariccia: formazione prima del servizio e disponibilità da concordare. Scrivi VOLONTARIO su WhatsApp al 348 4068657."
 immagine: "/img/news/2026-10-18-esci-dal-post-grafica.jpg"

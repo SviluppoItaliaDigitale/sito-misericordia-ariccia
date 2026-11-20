@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Un movimento nazionale nato in due giorni"
 titoloSeo: "Un movimento nazionale nato in due giorni | Lo sapevi che… storia delle Misericordie"
 date: 2027-04-25
+canale: "approfondimenti"
 slug: "lo-sapevi-che-28-pistoia-1899-in-due-giorni"
 description: "Lo sapevi che… n. 28: A metà Ottocento le Misericordie erano tante, ma ognuna faceva da sé. Il 24 e 25 settembre 1899, al primo congresso di Pistoia, nacque la Federazione da cui viene l'attuale Confederazione nazionale."
 immagine: "/img/news/lo-sapevi-che-28-pistoia-1899-in-due-giorni-grafica.jpg"

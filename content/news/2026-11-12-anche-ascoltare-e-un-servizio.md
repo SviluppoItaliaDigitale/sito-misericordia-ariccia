@@ -2,6 +2,7 @@
 title: "Anche ascoltare è un servizio"
 titoloSeo: "Volontari al Centro di Ascolto e al Banco Alimentare: Misericordia di Ariccia"
 date: 2026-11-12
+canale: "misericordia"
 slug: "anche-ascoltare-e-un-servizio"
 description: "Alla Misericordia di Ariccia si fa volontariato anche al Centro di Ascolto e al Banco Alimentare. Sabato 14 novembre ci trovi alla Coop di Genzano di Roma per la Colletta Alimentare."
 immagine: "/img/news/2026-11-12-anche-ascoltare-e-un-servizio-grafica.jpg"

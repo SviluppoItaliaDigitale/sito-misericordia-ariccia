@@ -2,6 +2,7 @@
 title: "Formarsi per aiutare: BLSD, PBLSD e disostruzione per i nostri volontari"
 titoloSeo: "Corso BLSD, PBLSD e disostruzione ad Ariccia — Misericordia"
 date: 2026-10-25T08:20:00+01:00
+canale: "misericordia"
 slug: "corso-blsd-pblsd-disostruzione"
 description: "Oggi, 25 ottobre, alcuni volontari della Misericordia di Ariccia e tutti i giovani del Servizio Civile partecipano al corso BLSD, PBLSD e disostruzione."
 immagine: "/img/news/2026-10-25-corso-blsd-pblsd-disostruzione-grafica.jpg"

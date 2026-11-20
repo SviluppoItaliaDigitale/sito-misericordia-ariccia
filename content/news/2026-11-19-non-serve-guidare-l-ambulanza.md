@@ -2,6 +2,7 @@
 title: "Non serve guidare l'ambulanza"
 titoloSeo: "Volontariato ad Ariccia: tutti i modi per entrare nella Misericordia"
 date: 2026-11-19
+canale: "misericordia"
 slug: "non-serve-guidare-l-ambulanza"
 description: "Fare il volontario alla Misericordia di Ariccia non vuol dire solo guidare l'ambulanza: trasporti, accompagnamento, ascolto, Banco Alimentare, eventi e corsi. Dai 16 agli 80 anni."
 immagine: "/img/news/2026-11-19-non-serve-guidare-l-ambulanza-grafica.jpg"

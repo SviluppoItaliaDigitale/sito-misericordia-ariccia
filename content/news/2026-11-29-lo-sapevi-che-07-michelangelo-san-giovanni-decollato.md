@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Michelangelo e il condannato liberato ogni anno"
 titoloSeo: "Michelangelo e il condannato liberato ogni anno | Lo sapevi che… storia delle Misericordie"
 date: 2026-11-29
+canale: "approfondimenti"
 slug: "lo-sapevi-che-07-michelangelo-san-giovanni-decollato"
 description: "Lo sapevi che… n. 7: A Roma i fiorentini avevano una «cugina» della Misericordia: l'Arciconfraternita di San Giovanni Decollato, nata nel 1488. I confratelli confortavano i condannati a morte. Dal 1540 potevano liberarne uno ogni anno."
 immagine: "/img/news/lo-sapevi-che-07-michelangelo-san-giovanni-decollato-grafica.jpg"

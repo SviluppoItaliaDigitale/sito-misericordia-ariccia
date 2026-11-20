@@ -2,6 +2,7 @@
 title: "In Quaresima, le opere di misericordia"
 titoloSeo: "Quaresima 2027: le sette opere di misericordia corporale con la Misericordia di Ariccia"
 date: 2027-02-17
+canale: "approfondimenti"
 slug: "quaresima-opere-di-misericordia"
 description: "La Quaresima è cominciata il 10 febbraio: un cammino verso la Pasqua del 28 marzo. Le sette opere di misericordia corporale, e dove le viviamo ogni giorno ad Ariccia."
 immagine: "/img/news/2027-02-17-quaresima-opere-di-misericordia-grafica.jpg"

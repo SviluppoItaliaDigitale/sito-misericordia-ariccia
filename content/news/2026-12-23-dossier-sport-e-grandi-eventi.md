@@ -2,6 +2,7 @@
 title: "Le Misericordie, lo sport e i grandi eventi: il nuovo dossier"
 titoloSeo: "Le Misericordie al Palio, al Calcio storico, alle Olimpiadi e al Giubileo | Dossier"
 date: 2026-12-23
+canale: "approfondimenti"
 slug: "dossier-sport-e-grandi-eventi"
 description: "Il soccorso ai fantini del Palio di Siena in 15 secondi, il Calcio storico fiorentino, il Mugello, la 100 km del Passatore, le Olimpiadi di Milano-Cortina e il Giubileo: le Misericordie in servizio ai grandi eventi."
 immagine: "/img/news/dossier-sport-eventi-grafica.jpg"

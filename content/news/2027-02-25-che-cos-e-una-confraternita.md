@@ -2,6 +2,7 @@
 title: "Che cos'è una Confraternita, oggi"
 titoloSeo: "Che cos'è una Confraternita oggi: confratelli, consorelle e volontari della Misericordia di Ariccia"
 date: 2027-02-25
+canale: "approfondimenti"
 slug: "che-cos-e-una-confraternita"
 description: "Confratelli, consorelle, Magistrato, Correttore spirituale: le parole antiche della Misericordia di Ariccia spiegate in modo semplice. Chi siamo oggi e come si entra."
 immagine: "/img/news/2027-02-25-che-cos-e-una-confraternita-grafica.jpg"

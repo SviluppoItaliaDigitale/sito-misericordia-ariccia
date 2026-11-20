@@ -1,6 +1,7 @@
 ---
 title: "Grazie, ragazzi: buona strada ad Antonio, Francesca e Gabriele"
 date: 2026-06-10
+canale: "misericordia"
 slug: "grazie-ragazzi-scu"
 italianoSemplice: |
   **Finisce un anno di Servizio Civile.**

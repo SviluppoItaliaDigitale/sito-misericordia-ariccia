@@ -2,6 +2,7 @@
 title: "4 ottobre, San Francesco: 800 anni di misericordia"
 titoloSeo: "San Francesco d'Assisi, 4 ottobre 2026: 800 anni dalla morte, il Cantico delle creature (testo) e il Testamento"
 date: 2026-10-04
+canale: "approfondimenti"
 slug: "san-francesco-800-anni"
 description: "San Francesco d'Assisi, 4 ottobre 2026: 800 anni dalla morte. Il testo integrale del Cantico delle creature, il Testamento («usai con essi misericordia») e le domande frequenti sul Santo."
 immagine: "/img/news/san-francesco-2026-grafica.jpg"

@@ -2,6 +2,7 @@
 title: "Rianimazione: come funziona, in 3D"
 titoloSeo: "Rianimazione cardiopolmonare: come funziona, video 3D (linee guida IRC 2025)"
 date: 2026-11-21
+canale: "approfondimenti"
 slug: "rianimazione-come-funziona"
 controllo_editoriale: "2026-11-20"
 # Bloccata il 20/11/2026: correzioni della revisione sanitaria (placche del DAE più leggibili, due frasi). Si toglie quando il video corretto è online.

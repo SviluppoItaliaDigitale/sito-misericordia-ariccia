@@ -1,6 +1,7 @@
 ---
 title: "Rianimazione cardiopolmonare: arrivano le Linee Guida 2025, tradotte in italiano da IRC"
 date: 2026-07-10
+canale: "informazioni"
 slug: "linee-guida-rcp-2025-irc"
 italianoSemplice: |
   **Ci sono le nuove regole per la rianimazione.**

@@ -2,6 +2,7 @@
 title: "Dente caduto o rotto: nel latte, e subito dal dentista"
 titoloSeo: "Dente caduto o rotto dopo un colpo: cosa fare passo passo, primo soccorso"
 date: 2027-02-09
+canale: "approfondimenti"
 slug: "primo-soccorso-dente"
 description: "Un dente uscito per un colpo si può salvare: come prenderlo, dove conservarlo (latte o soluzione fisiologica), perché un dente da latte non va rimesso e quando correre dal dentista o al pronto soccorso."
 immagine: "/img/news/2027-02-09-primo-soccorso-dente-grafica.jpg"

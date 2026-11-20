@@ -2,6 +2,7 @@
 title: "Colletta Alimentare: 1.177 kg di spesa donata alla Coop di Genzano. Grazie!"
 titoloSeo: "Colletta Alimentare 2026: il grazie della Misericordia di Ariccia dalla Coop di Genzano di Roma"
 date: 2026-11-14
+canale: "misericordia"
 slug: "colletta-alimentare-grazie"
 description: "Alla Coop di Genzano di Roma la Colletta Alimentare 2026 ha raccolto 1.177 kg di spesa in 114 scatole: il grazie della Misericordia di Ariccia a chi ha donato e ai volontari dei turni dalle 8 alle 20."
 immagine: "/img/news/2026-11-14-colletta-alimentare-grazie-grafica.jpg"

@@ -1459,3 +1459,22 @@ html.aula-aperta .barra-lettura, html.aula-aperta #torna-su, html.aula-aperta #w
 .podcast-player audio { display: block; width: 100%; max-width: 640px; min-height: 44px; margin-bottom: .75rem; }
 .podcast-trascrizione h2:first-child { margin-top: 0; }
 @media print { .podcast-player, .podcast-iscriviti, .podcast-copertina { display: none !important; } }
+
+/* ---- Canali delle news (20/11/2026): Dalla Misericordia, Informazioni utili, Approfondimenti ---- */
+.canali-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 2rem; scroll-margin-top: 6rem; }
+.canali-nav-voce { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1.1rem; border-radius: 999px; background: #fff; border: 2px solid var(--mise-ciano-testo); color: var(--mise-navy); font-family: "Jost", sans-serif; font-weight: 600; text-decoration: none; }
+.canali-nav-voce:hover, .canali-nav-voce:focus-visible { background: var(--mise-navy); border-color: var(--mise-navy); color: #fff; }
+.canali-nav-n { display: inline-block; min-width: 1.8rem; padding: 0 .4rem; border-radius: 999px; background: var(--mise-ciano-velo); color: var(--mise-navy); font-size: .85rem; text-align: center; }
+.canale-sezione { margin-bottom: 2.6rem; scroll-margin-top: 6rem; }
+.canale-titolo { padding-left: .8rem; border-left: 6px solid var(--mise-ciano); }
+.canale-titolo.canale-misericordia { border-left-color: var(--mise-giallo); }
+.canale-titolo.canale-approfondimenti { border-left-color: var(--mise-navy); }
+.canale-intro { color: #4a5068; margin-bottom: 1.2rem; }
+.canale-su { margin-top: 1rem; font-size: .95rem; }
+.canali-home { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem; }
+.canale-home .canale-titolo { font-size: 1.3rem; margin-bottom: 1rem; }
+.canale-home .news-item h4 { margin: .2rem 0 .4rem; }
+.canale-home .news-item h4 a { color: var(--mise-navy); }
+.canale-tutte { display: inline-block; margin-top: .3rem; font-family: "Jost", sans-serif; font-weight: 600; text-decoration: none; color: var(--mise-ciano-testo); }
+.pagina-testata .occhiello-canale { color: var(--mise-giallo); text-decoration: none; }
+.pagina-testata .occhiello-canale:hover { text-decoration: underline; }

@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Le «cugine» portoghesi che gestiscono la lotteria"
 titoloSeo: "Le «cugine» portoghesi che gestiscono la lotteria | Lo sapevi che… storia delle Misericordie"
 date: 2026-12-13
+canale: "approfondimenti"
 slug: "lo-sapevi-che-09-lisbona-lotteria"
 description: "Lo sapevi che… n. 9: La Santa Casa da Misericórdia di Lisbona nasce nel 1498, voluta dalla regina Eleonora. Dal 1783 gestisce la lotteria del Portogallo, e la gestisce ancora oggi: i ricavi finanziano le opere sociali."
 immagine: "/img/news/lo-sapevi-che-09-lisbona-lotteria-grafica.jpg"

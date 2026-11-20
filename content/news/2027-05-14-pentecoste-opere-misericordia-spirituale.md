@@ -2,6 +2,7 @@
 title: "Pentecoste: le opere di misericordia per l'animo"
 titoloSeo: "Pentecoste 2027: le sette opere di misericordia spirituale con la Misericordia di Ariccia"
 date: 2027-05-14
+canale: "approfondimenti"
 slug: "pentecoste-opere-misericordia-spirituale"
 description: "Domenica 16 maggio è Pentecoste. Le sette opere di misericordia spirituale, da consigliare i dubbiosi a pregare per i vivi e per i morti, e dove le viviamo ad Ariccia: Centro di Ascolto, formazione, vicinanza."
 immagine: "/img/news/2027-05-14-pentecoste-opere-misericordia-spirituale-grafica.jpg"

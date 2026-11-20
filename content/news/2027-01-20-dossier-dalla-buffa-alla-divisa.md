@@ -2,6 +2,7 @@
 title: "Dalla buffa alla divisa: la storia dell'abito dei confratelli"
 titoloSeo: "Dalla buffa alla divisa giallo-ciano: la storia dell'abito delle Misericordie | Misericordia di Ariccia"
 date: 2027-01-20
+canale: "approfondimenti"
 slug: "dossier-dalla-buffa-alla-divisa"
 description: "Il nuovo dossier della Misericordia di Ariccia sull'abito dei confratelli: la veste rossa del 1244, la cappa nera con la buffa dal 1495, la fascia al braccio, la divisa giallo-ciano delle Misericordie d'Italia e la cerimonia della Vestizione."
 immagine: "/img/news/dossier-divise-grafica.jpg"

@@ -1,6 +1,7 @@
 ---
 title: "Corso Primo Soccorso 2024"
 date: 2024-02-13
+canale: "misericordia"
 slug: "corso-primo-soccorso-2024"
 italianoSemplice: |
   **La Misericordia fa un corso di Primo Soccorso e BLSD.**

@@ -2,6 +2,7 @@
 title: "Batterie a bottone e calamite: un'emergenza"
 titoloSeo: "Batterie a bottone e calamite: cosa fare passo passo, primo soccorso"
 date: 2026-12-11
+canale: "approfondimenti"
 slug: "primo-soccorso-batterie"
 description: "Se un bambino ingoia una batteria a bottone o delle calamite: perché basta il dubbio per correre in ospedale, cosa non fare e come prevenire."
 immagine: "/img/news/primo-soccorso-batterie-grafica.jpg"

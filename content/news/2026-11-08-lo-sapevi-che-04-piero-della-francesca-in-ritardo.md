@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Tre anni di contratto, più di quindici per finire"
 titoloSeo: "Tre anni di contratto, più di quindici per finire | Lo sapevi che… storia delle Misericordie"
 date: 2026-11-08
+canale: "approfondimenti"
 slug: "lo-sapevi-che-04-piero-della-francesca-in-ritardo"
 description: "Lo sapevi che… n. 4: Nel 1445 la Compagnia della Misericordia di Sansepolcro commissiona un polittico a Piero della Francesca. Il contratto gli dà tre anni e vuole tutto di sua mano. Piero ne impiega più di quindici. Ne valeva la pena."
 immagine: "/img/news/lo-sapevi-che-04-piero-della-francesca-in-ritardo-grafica.jpg"

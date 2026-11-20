@@ -2,6 +2,7 @@
 title: "Accanto a chi deve curarsi"
 titoloSeo: "Volontari per i trasporti sanitari e sociali ad Ariccia: Misericordia di Ariccia"
 date: 2026-11-26
+canale: "misericordia"
 slug: "accanto-a-chi-deve-curarsi"
 description: "Dialisi, ritorno a casa dopo un ricovero, visite in carrozzina: dietro ogni viaggio ci sono i volontari della Misericordia di Ariccia. Entra in squadra: WhatsApp 348 4068657."
 immagine: "/img/news/2026-11-26-accanto-a-chi-deve-curarsi-grafica.jpg"

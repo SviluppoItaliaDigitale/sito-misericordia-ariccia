@@ -2,6 +2,7 @@
 title: "Dalla barella all'ambulanza: otto secoli di mezzi di soccorso"
 titoloSeo: "Dalla barella all'ambulanza: la storia dei mezzi di soccorso delle Misericordie | Misericordia di Ariccia"
 date: 2027-01-13
+canale: "approfondimenti"
 slug: "dossier-dalla-barella-all-ambulanza"
 description: "Il nuovo dossier della Misericordia di Ariccia sulla storia delle ambulanze: dalle zane di vimini al cataletto del 1478, dal carro-lettiga del 1903 alla prima autoambulanza di Firenze nel 1911, fino al 118 e ai mezzi di oggi."
 immagine: "/img/news/dossier-ambulanze-grafica.jpg"

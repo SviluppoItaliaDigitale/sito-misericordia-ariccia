@@ -2,6 +2,7 @@
 title: "Lo sapevi che… La raccolta punti della carità"
 titoloSeo: "La raccolta punti della carità | Lo sapevi che… storia delle Misericordie"
 date: 2027-01-10
+canale: "approfondimenti"
 slug: "lo-sapevi-che-13-punti-di-diligenza"
 description: "Lo sapevi che… n. 13: A Pisa ogni servizio valeva «punti di diligenza»: uno in città, due nei sobborghi, tre oltre un miglio dalle mura. Con mille punti si poteva diventare capo di guardia. E chi non sapeva leggere? Diventava capo di guardia onorario."
 immagine: "/img/news/lo-sapevi-che-13-punti-di-diligenza-grafica.jpg"

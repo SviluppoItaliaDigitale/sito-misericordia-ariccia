@@ -2,6 +2,7 @@
 title: "Le Misericordie d'Italia nei secoli: il nuovo dossier"
 titoloSeo: "Le Misericordie d'Italia nei secoli: Siena, Pisa, Arezzo, Livorno e le altre | Dossier"
 date: 2026-10-09
+canale: "approfondimenti"
 slug: "dossier-misericordie-d-italia"
 description: "Un nuovo dossier racconta le Misericordie d'Italia in ordine di nascita: Siena 1250, Arezzo, Volterra, Pisa 1330, Prato nata da un pellegrinaggio, Livorno da un povero lasciato in strada, la rete nazionale nata a Pistoia nel 1899, fino ad Ariccia."
 immagine: "/img/news/dossier-misericordie-italia-grafica.jpg"

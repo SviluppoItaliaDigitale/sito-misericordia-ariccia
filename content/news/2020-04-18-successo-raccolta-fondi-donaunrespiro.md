@@ -1,6 +1,7 @@
 ---
 title: "Successo raccolta fondi DonaUnRespiro"
 date: 2020-04-18
+canale: "misericordia"
 slug: "successo-raccolta-fondi-donaunrespiro"
 italianoSemplice: |
   **La raccolta di soldi "Dona un Respiro" è finita bene.**

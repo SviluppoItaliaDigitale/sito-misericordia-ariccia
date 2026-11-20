@@ -2,6 +2,7 @@
 title: "La cassetta di primo soccorso di casa e auto"
 titoloSeo: "La cassetta di primo soccorso: cosa fare passo passo (linee guida ERC/IRC 2025)"
 date: 2026-12-22
+canale: "approfondimenti"
 slug: "primo-soccorso-cassetta"
 description: "Cosa mettere nella cassetta di primo soccorso, cosa tenere in auto, dove tenerla, le scadenze, e gli auguri di buone feste."
 immagine: "/img/news/primo-soccorso-cassetta-grafica.jpg"

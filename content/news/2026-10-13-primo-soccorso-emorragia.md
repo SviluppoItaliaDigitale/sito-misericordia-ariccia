@@ -2,6 +2,7 @@
 title: "Emorragia grave: premi e non mollare"
 titoloSeo: "Emorragia grave: cosa fare passo passo (linee guida IRC 2025)"
 date: 2026-10-13
+canale: "approfondimenti"
 slug: "primo-soccorso-emorragia"
 controllo_editoriale: "2026-10-10"
 description: "Guanti, pressione diretta senza mollare fino ai soccorsi, garza sopra garza, oggetti conficcati, laccio emostatico e shock: cosa fare passo passo."

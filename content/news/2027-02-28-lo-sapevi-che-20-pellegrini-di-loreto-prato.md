@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Trenta pellegrini di ritorno da Loreto"
 titoloSeo: "Trenta pellegrini di ritorno da Loreto | Lo sapevi che… storia delle Misericordie"
 date: 2027-02-28
+canale: "approfondimenti"
 slug: "lo-sapevi-che-20-pellegrini-di-loreto-prato"
 description: "Lo sapevi che… n. 20: Il 22 luglio 1588 trenta pratesi tornano da un pellegrinaggio alla Santa Casa di Loreto. Durante il viaggio decidono di fondare una compagnia per aiutare i malati della loro città. Nasce così la Misericordia di Prato."
 immagine: "/img/news/lo-sapevi-che-20-pellegrini-di-loreto-prato-grafica.jpg"

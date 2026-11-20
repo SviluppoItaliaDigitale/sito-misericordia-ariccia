@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Sotto la loggia, i bambini smarriti aspettavano la famiglia"
 titoloSeo: "Sotto la loggia, i bambini smarriti aspettavano la famiglia | Lo sapevi che… storia delle Misericordie"
 date: 2026-12-27
+canale: "approfondimenti"
 slug: "lo-sapevi-che-11-bambini-smarriti-bigallo"
 description: "Lo sapevi che… n. 11: Un affresco del 1386 nella Loggia del Bigallo mostra i capitani della Misericordia che affidano bambini abbandonati a nuove madri. Dal 1525 la loggia servì a mostrare i bambini smarriti, perché qualcuno li riconoscesse."
 immagine: "/img/news/lo-sapevi-che-11-bambini-smarriti-bigallo-grafica.jpg"

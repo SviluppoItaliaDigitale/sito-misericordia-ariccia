@@ -2,6 +2,7 @@
 title: "Lo sapevi che… L'ambulanza «sbuffante e traballante» e i soccorritori in bicicletta"
 titoloSeo: "L'ambulanza «sbuffante e traballante» e i soccorritori in bicicletta | Lo sapevi che… storia delle Misericordie"
 date: 2027-02-07
+canale: "approfondimenti"
 slug: "lo-sapevi-che-17-ambulanza-sbuffante-viareggio"
 description: "Lo sapevi che… n. 17: Il 5 dicembre 1920 a Viareggio entra in servizio la prima ambulanza a motore della Misericordia. Un medico la descrive come «un carro angoloso e rozzo, sbuffante e traballante». D'estate c'era anche il «Plotone ciclistico»."
 immagine: "/img/news/lo-sapevi-che-17-ambulanza-sbuffante-viareggio-grafica.jpg"

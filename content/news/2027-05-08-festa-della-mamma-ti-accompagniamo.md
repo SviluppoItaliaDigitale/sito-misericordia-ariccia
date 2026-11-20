@@ -2,6 +2,7 @@
 title: "Festa della mamma: la accompagniamo noi"
 titoloSeo: "Festa della mamma 2027: accompagnamento sociale per anziani ad Ariccia con la Misericordia"
 date: 2027-05-08
+canale: "misericordia"
 slug: "festa-della-mamma-ti-accompagniamo"
 description: "Domenica 9 maggio è la Festa della mamma. Se tua madre non guida o ha bisogno di aiuto per uscire, la Misericordia di Ariccia la accompagna a messa, dal parrucchiere, a trovare chi ama. Prenota al 348 4068657."
 immagine: "/img/news/2027-05-08-festa-della-mamma-ti-accompagniamo-grafica.jpg"

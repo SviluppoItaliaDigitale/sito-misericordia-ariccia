@@ -1,6 +1,7 @@
 ---
 title: "Inaugurazione nuovo mezzo sociale"
 date: 2019-01-12
+canale: "misericordia"
 slug: "inaugurazione-nuovo-mezzo-sociale"
 italianoSemplice: |
   **La Misericordia di Ariccia ha nuovi mezzi di trasporto.**

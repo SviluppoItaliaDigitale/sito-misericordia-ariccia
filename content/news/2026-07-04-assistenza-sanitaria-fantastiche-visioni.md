@@ -1,6 +1,7 @@
 ---
 title: "Assistenza sanitaria a Fantastiche Visioni, al Parco Chigi di Ariccia"
 date: 2026-07-04
+canale: "misericordia"
 slug: "assistenza-sanitaria-fantastiche-visioni"
 italianoSemplice: |
   **La Misericordia di Ariccia era presente alla festa "Fantastiche Visioni".**

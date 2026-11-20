@@ -2,6 +2,7 @@
 title: "«Un Passo alla Volta»: in cammino sulla Via Sacra contro il tumore ovarico"
 titoloSeo: "Camminata «Un Passo alla Volta» a Rocca di Papa, 26 settembre 2026: le foto e l'assistenza sanitaria della Misericordia di Ariccia"
 date: 2026-09-26
+canale: "misericordia"
 slug: "camminata-un-passo-alla-volta-2026-resoconto"
 servizio: "Assistenza sanitaria per eventi"
 description: "Sabato 26 settembre 2026 la Misericordia di Ariccia ha garantito l'assistenza sanitaria e ha camminato con i partecipanti di «Un Passo alla Volta», dai Campi di Annibale all'Occhialone lungo la Via Sacra di Rocca di Papa, a sostegno di Loto OdV contro il tumore ovarico. Le foto della mattinata."

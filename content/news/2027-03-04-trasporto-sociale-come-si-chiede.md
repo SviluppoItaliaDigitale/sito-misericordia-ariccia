@@ -2,6 +2,7 @@
 title: "Ti accompagniamo noi: come si chiede un trasporto"
 titoloSeo: "Trasporto sociale e accompagnamenti ad Ariccia: come chiederli alla Misericordia di Ariccia"
 date: 2027-03-04
+canale: "misericordia"
 slug: "trasporto-sociale-come-si-chiede"
 description: "Una visita, la spesa, la posta, il medico: come si chiede un trasporto o un accompagnamento alla Misericordia di Ariccia. Una telefonata al 348 4068657 e ti richiamiamo noi."
 immagine: "/img/news/2027-03-04-trasporto-sociale-come-si-chiede-grafica.jpg"

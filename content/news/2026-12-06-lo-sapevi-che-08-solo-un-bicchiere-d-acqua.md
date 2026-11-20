@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Nemmeno un caffè: solo un bicchiere d'acqua"
 titoloSeo: "Nemmeno un caffè: solo un bicchiere d'acqua | Lo sapevi che… storia delle Misericordie"
 date: 2026-12-06
+canale: "approfondimenti"
 slug: "lo-sapevi-che-08-solo-un-bicchiere-d-acqua"
 description: "Lo sapevi che… n. 8: I confratelli che assistevano i malati in casa non potevano accettare denaro, né mangiare o bere qualcosa. Era concesso al massimo un bicchiere d'acqua. Lo raccontano Charles Dickens nel 1846 e una guida inglese del 1877."
 immagine: "/img/news/lo-sapevi-che-08-solo-un-bicchiere-d-acqua-grafica.jpg"

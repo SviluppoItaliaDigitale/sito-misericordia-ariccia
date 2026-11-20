@@ -2,6 +2,7 @@
 title: "10 cose di primo soccorso che possono salvare una vita"
 titoloSeo: "Primo soccorso: 10 cose da sapere secondo le linee guida IRC 2025"
 date: 2026-10-02
+canale: "approfondimenti"
 slug: "primo-soccorso-10-cose"
 description: "Ictus, infarto, emorragia, rianimazione, soffocamento, anafilassi, ustioni, ipoglicemia, avvelenamento e trauma cranico: le 10 cose di primo soccorso da sapere, secondo le linee guida IRC 2025 e le altre fonti ufficiali citate nell'articolo."
 immagine: "/img/news/primo-soccorso-10-cose-grafica.jpg"

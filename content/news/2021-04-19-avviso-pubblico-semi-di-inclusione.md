@@ -1,6 +1,7 @@
 ---
 title: "Avviso Pubblico Semi di Inclusione"
 date: 2021-04-19
+canale: "informazioni"
 slug: "avviso-pubblico-semi-di-inclusione"
 italianoSemplice: |
   **Il progetto "Semi di Inclusione".**

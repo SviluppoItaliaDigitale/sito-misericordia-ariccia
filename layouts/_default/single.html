@@ -2,7 +2,10 @@
 {{ $en := eq (partial "lingua.html" .) "en" }}
 <div class="pagina-testata">
   <div class="container">
-    {{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}
+    {{ if eq .Section "news" }}
+    {{- $c := partial "canale-articolo.html" . }}{{ $nome := "" }}{{ range partial "canali.html" (dict "en" $en) }}{{ if eq .id $c }}{{ $nome = .nome }}{{ end }}{{ end }}
+    <p class="occhiello mb-1" data-anim="fade-up"><a class="occhiello-canale" href="{{ "/news/" | relURL }}#canale-{{ $c }}">News · {{ $nome }}</a></p>
+    {{ else }}{{ with .Parent }}{{ if not .IsHome }}<p class="occhiello mb-1" data-anim="fade-up">{{ .Title }}</p>{{ end }}{{ end }}{{ end }}
     <h1 data-split="words">{{ .Title }}</h1>
     {{ if eq .Section "news" }}<p class="data-news mt-2 mb-0" data-anim="fade-up" data-anim-delay="0.2">{{ time.Format ":date_long" .Date }}</p>{{ end }}
   </div>

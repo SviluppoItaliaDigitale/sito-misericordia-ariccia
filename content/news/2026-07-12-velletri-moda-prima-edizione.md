@@ -1,6 +1,7 @@
 ---
 title: "Velletri Moda – Prima Edizione: una sfilata in dialogo con le fragilità"
 date: 2026-07-12
+canale: "misericordia"
 slug: "velletri-moda-prima-edizione"
 italianoSemplice: |
   **C'è una sfilata di moda a Velletri.**

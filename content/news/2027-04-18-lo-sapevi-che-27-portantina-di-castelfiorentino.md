@@ -2,6 +2,7 @@
 title: "Lo sapevi che… La portantina del 1580 e la «volantina»"
 titoloSeo: "La portantina del 1580 e la «volantina» | Lo sapevi che… storia delle Misericordie"
 date: 2027-04-18
+canale: "approfondimenti"
 slug: "lo-sapevi-che-27-portantina-di-castelfiorentino"
 description: "Lo sapevi che… n. 27: La Misericordia di Castelfiorentino conserva la sua più antica portantina a mano, del 1580, un carro funebre a cavalli e la «volantina», un carro senza ruote. Nell'ottobre 2024 l'alluvione dell'Elsa ha raggiunto anche questi cimeli."
 immagine: "/img/news/lo-sapevi-che-27-portantina-di-castelfiorentino-grafica.jpg"

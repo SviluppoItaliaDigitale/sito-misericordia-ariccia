@@ -1,6 +1,7 @@
 ---
 title: "«Siate sempre messaggeri di speranza, di carità e di pace»: Papa Leone XIV alle Misericordie"
 date: 2026-07-06
+canale: "informazioni"
 slug: "papa-leone-xiv-alle-misericordie"
 italianoSemplice: |
   **Il Papa ha parlato alle Misericordie.**

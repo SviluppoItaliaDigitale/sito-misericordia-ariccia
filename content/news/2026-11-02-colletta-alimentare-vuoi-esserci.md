@@ -2,6 +2,7 @@
 title: "Colletta Alimentare: vuoi esserci anche tu? Ti accogliamo alla Coop di Genzano"
 titoloSeo: "Colletta Alimentare 2026 alla Coop di Genzano di Roma: partecipa con la Misericordia di Ariccia"
 date: 2026-11-02
+canale: "misericordia"
 slug: "colletta-alimentare-vuoi-esserci"
 description: "Sabato 14 novembre la Misericordia di Ariccia è alla Coop di Genzano di Roma per la Colletta Alimentare: chi vuole partecipare, anche se non è iscritto, può unirsi a noi in uno dei turni 8-12, 12-16 e 16-20."
 immagine: "/img/news/2026-11-02-colletta-alimentare-vuoi-esserci-grafica.jpg"

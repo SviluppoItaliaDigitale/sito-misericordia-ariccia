@@ -1,6 +1,7 @@
 ---
 title: "Bando servizio civile universale 2019"
 date: 2019-09-05
+canale: "misericordia"
 slug: "bando-servizio-civile-universale-2019"
 italianoSemplice: |
   **C'è il bando per il Servizio Civile 2019.**

@@ -1,6 +1,7 @@
 ---
 title: "Trasporto sanitario per persone inferme nella Città papale di Castel Gandolfo"
 date: 2026-07-02
+canale: "misericordia"
 slug: "trasporto-sanitario-castel-gandolfo"
 italianoSemplice: |
   **La Misericordia di Ariccia fa il trasporto sanitario. Ora anche a Castel Gandolfo.**

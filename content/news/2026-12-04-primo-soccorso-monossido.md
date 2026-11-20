@@ -2,6 +2,7 @@
 title: "Monossido di carbonio: il pericolo che non si sente"
 titoloSeo: "Monossido di carbonio: cosa fare passo passo, primo soccorso"
 date: 2026-12-04
+canale: "approfondimenti"
 slug: "primo-soccorso-monossido"
 description: "Stufe, camini e caldaie: i segni dell'intossicazione da monossido, cosa fare subito e come prevenirla con controlli e rilevatore."
 immagine: "/img/news/primo-soccorso-monossido-grafica.jpg"

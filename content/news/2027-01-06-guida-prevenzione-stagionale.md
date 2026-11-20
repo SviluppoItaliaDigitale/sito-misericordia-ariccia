@@ -2,6 +2,7 @@
 title: "Caldo, freddo, casa sicura: la guida alla prevenzione"
 titoloSeo: "Prevenzione stagionale: influenza, monossido, freddo, cadute in casa | Misericordia di Ariccia"
 date: 2027-01-06
+canale: "informazioni"
 slug: "guida-prevenzione-stagionale"
 description: "La guida della Misericordia di Ariccia alla prevenzione stagionale: vaccino antinfluenzale, monossido da stufe e caldaie, ghiaccio e freddo, cadute in casa degli anziani, sicurezza dei bambini, strada, caldo estivo e punture, con i consigli ufficiali di Ministero della Salute e ISS."
 immagine: "/img/news/guida-prevenzione-grafica.jpg"

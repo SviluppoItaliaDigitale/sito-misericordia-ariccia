@@ -2,6 +2,7 @@
 title: "Posizione laterale di sicurezza: quando e come"
 titoloSeo: "Posizione laterale di sicurezza: quando usarla e come farla passo passo (linee guida ERC/IRC 2025)"
 date: 2027-01-19
+canale: "approfondimenti"
 slug: "primo-soccorso-pls"
 description: "Per chi non risponde ma respira normalmente: quando usare la posizione laterale di sicurezza, i passaggi per girare la persona su un fianco, cosa controllare e quando non usarla."
 immagine: "/img/news/2027-01-19-primo-soccorso-pls-grafica.jpg"

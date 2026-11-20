@@ -1,6 +1,7 @@
 ---
 title: "Corso primo soccorso"
 date: 2019-01-16
+canale: "misericordia"
 slug: "corso-primo-soccorso"
 italianoSemplice: |
   **La Misericordia di Ariccia fa un corso di primo soccorso.**

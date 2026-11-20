@@ -2,6 +2,7 @@
 title: "Le Misericordie nella protezione civile: il nuovo dossier"
 titoloSeo: "Le Misericordie nella protezione civile, dal Friuli a Faenza | Dossier"
 date: 2026-12-02
+canale: "approfondimenti"
 slug: "dossier-protezione-civile"
 description: "Dal terremoto del Friuli del 1976 alle alluvioni del 2024: come le Misericordie sono diventate un ente nazionale di protezione civile, con la colonna mobile, i moduli operativi, la prevenzione e la fiera REAS."
 immagine: "/img/news/dossier-protezione-civile-grafica.jpg"

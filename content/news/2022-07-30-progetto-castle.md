@@ -1,6 +1,7 @@
 ---
 title: "Progetto Castle"
 date: 2022-07-30
+canale: "misericordia"
 slug: "progetto-castle"
 italianoSemplice: |
   **Il progetto "Castle" aiuta le persone straniere in difficoltà.**

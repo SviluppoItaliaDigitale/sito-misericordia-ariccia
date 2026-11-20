@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il granduca che chiuse le confraternite ma salvò la Misericordia"
 titoloSeo: "Il granduca che chiuse le confraternite ma salvò la Misericordia | Lo sapevi che… storia delle Misericordie"
 date: 2027-04-11
+canale: "approfondimenti"
 slug: "lo-sapevi-che-26-pietro-leopoldo-confratello"
 description: "Lo sapevi che… n. 26: Il granduca Pietro Leopoldo soppresse quasi tutte le confraternite della Toscana. Ma era anche iscritto alla Misericordia di Firenze, e la protesse. La Misericordia continuò il suo servizio."
 immagine: "/img/news/lo-sapevi-che-26-pietro-leopoldo-confratello-grafica.jpg"

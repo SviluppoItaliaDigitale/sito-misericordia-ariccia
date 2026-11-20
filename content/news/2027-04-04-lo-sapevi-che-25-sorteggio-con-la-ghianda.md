@@ -2,6 +2,7 @@
 title: "Lo sapevi che… Il sorteggio con la ghianda"
 titoloSeo: "Il sorteggio con la ghianda | Lo sapevi che… storia delle Misericordie"
 date: 2027-04-04
+canale: "approfondimenti"
 slug: "lo-sapevi-che-25-sorteggio-con-la-ghianda"
 description: "Lo sapevi che… n. 25: Quando moriva un confratello, a Firenze si tirava a sorte chi doveva pagare le candele del funerale. I nomi, su strisce di pergamena, si chiudevano in pezzetti di legno a forma di ghianda, poi mescolati in un contenitore girato con una manovella."
 immagine: "/img/news/lo-sapevi-che-25-sorteggio-con-la-ghianda-grafica.jpg"

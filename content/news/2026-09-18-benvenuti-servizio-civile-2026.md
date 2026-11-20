@@ -2,6 +2,7 @@
 title: "Benvenuti, ragazzi! Al via il Servizio Civile Universale nella Misericordia"
 titoloSeo: "Al via il Servizio Civile Universale 2026-2027 alla Misericordia di Ariccia: benvenuti ai nuovi volontari"
 date: 2026-09-18
+canale: "misericordia"
 slug: "benvenuti-servizio-civile-2026"
 description: "Il 18 settembre 2026 è iniziato il Servizio Civile Universale 2026-2027 alla Misericordia di Ariccia. Il saluto di benvenuto della Governatrice Maddalena Basili ai nuovi giovani volontari."
 italianoSemplice: |

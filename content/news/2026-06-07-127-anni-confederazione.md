@@ -1,6 +1,7 @@
 ---
 title: "127 anni di Confederazione: giallo e ciano, colori che raccontano una storia di servizio"
 date: 2026-06-07
+canale: "informazioni"
 slug: "127-anni-confederazione"
 italianoSemplice: |
   **Le Misericordie compiono 127 anni.**

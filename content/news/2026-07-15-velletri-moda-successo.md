@@ -1,6 +1,7 @@
 ---
 title: "Velletri Moda, che successo! I nostri volontari al servizio della prima edizione"
 date: 2026-07-15
+canale: "misericordia"
 slug: "velletri-moda-successo-prima-edizione"
 description: "Grande pubblico al CREA di Velletri per la prima edizione di Velletri Moda, la sfilata etica nata dal Muro della Gentilezza: la Misericordia di Ariccia ha garantito l'assistenza con i suoi volontari."
 italianoSemplice: |

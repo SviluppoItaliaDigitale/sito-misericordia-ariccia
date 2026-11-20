@@ -2,6 +2,7 @@
 title: "Ustioni: cosa fare e cosa non fare"
 titoloSeo: "Ustioni: cosa fare passo passo, primo soccorso"
 date: 2026-10-27
+canale: "approfondimenti"
 slug: "primo-soccorso-ustioni"
 description: "Fermare il fuoco, 20 minuti di acqua corrente, togliere anelli, coprire con la pellicola, i rimedi da evitare e quando chiamare il 112."
 immagine: "/img/news/primo-soccorso-ustioni-grafica.jpg"
