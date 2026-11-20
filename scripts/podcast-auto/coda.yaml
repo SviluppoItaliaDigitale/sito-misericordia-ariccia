@@ -132,7 +132,11 @@ puntate:
   - content/diventa-volontario.md
   - content/servizi/formazione.md
   parole: []
-  stato: da-fare
+  stato: scartata
+  motivo: '20/11/2026, seconda generazione: «Le risposte restano sul computer o telefono»,
+    che la pagina non dice (dice solo che il sito non riceve e non salva niente). La prima
+    apriva leggendo le regole e chiudeva con «uno spunto da meditare» attribuendo il motto
+    alla frase sbagliata.'
 - id: kit-bambini-neonati
   tema: kit-prevenzione
   titolo: 'Bambini, neonati e gravidanza: i kit per le emergenze'
