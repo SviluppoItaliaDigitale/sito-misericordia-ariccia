@@ -519,21 +519,22 @@
   // Posizioni dei pannelli nei due formati (zona delle animazioni: orizzontale 130-850, verticale 380-1260)
   const LAY = VERT ? {
     fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
-    ecg: { x: 90, y: 1070, w: 900, h: 170 }, ecgDae: { x: 90, y: 1070, w: 900, h: 170 },
-    righello: { x: 130, y0: 900, k: 60 / 0.06 * 3.0 }, metronomo: { x: 90, y: 1040, w: 900, h: 200 },
-    avviso: 430, dato3: { x: 90, y: 950, w: 900, h: 290 }, legenda: { x: 90, y: 318 },
-    passi: i => ({ x: 120, y: 420 + i * 190, w: 840, h: 160 }), riga1: 1030, tel: 1110, sito: 1165, corpoRiga: 30
+    ecg: { x: 90, y: 1010, w: 900, h: 170 }, ecgDae: { x: 90, y: 1010, w: 900, h: 170 },
+    righello: { x: 130, y0: 900, k: 60 / 0.06 * 3.0 }, metronomo: { x: 90, y: 980, w: 900, h: 200 },
+    avviso: 430, dato3: { x: 90, y: 890, w: 900, h: 290 }, legenda: { x: 90, y: 318 },
+    passi: i => ({ x: 120, y: 420 + i * 190, w: 840, h: 160 }), riga1: 1030, tel: 1110, sito: 1205, corpoRiga: 30
   } : {
     fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
     ecg: { x: 1360, y: 640, w: 480, h: 150 }, ecgDae: { x: 1360, y: 196, w: 480, h: 150 },
     righello: { x: 1500, y0: 260, k: 60 / 0.06 * 4.6 }, metronomo: { x: 1370, y: 600, w: 470, h: 200 },
     avviso: 236, dato3: { x: 1260, y: 300, w: 580, h: 300 }, legenda: { x: 1500, y: 196 },
-    passi: i => ({ x: 230 + i * 520, y: 300, w: 460, h: 230 }), riga1: 640, tel: 726, sito: 790, corpoRiga: 32
+    passi: i => ({ x: 230 + i * 520, y: 300, w: 460, h: 230 }), riga1: 630, tel: 710, sito: 800, corpoRiga: 32
   };
   // Testata dei modelli nazionali: filo giallo, fascia blu con il titolo e la scena, stemma, firma; nota a destra.
   function testata(c, nomeScena) {
     const F = LAY.fascia, libero = F.w - F.sx - F.dx;
     c.save();
+    if (VERT) { const g = c.createLinearGradient(0, 0, 0, F.y + 4); g.addColorStop(0, 'rgba(6,22,51,1)'); g.addColorStop(0.8, 'rgba(6,22,51,.96)'); g.addColorStop(1, 'rgba(6,22,51,0)'); c.fillStyle = g; c.fillRect(0, 0, W, F.y + 4); }
     c.fillStyle = KIT.giallo; c.fillRect(0, F.y - Math.round(F.h * 0.11), F.w + 18, Math.round(F.h * 0.9));
     c.fillStyle = KIT.blu; c.fillRect(0, F.y, F.w, F.h);
     const r1 = 'Rianimazione: come funziona', r2 = nomeScena;
@@ -556,11 +557,10 @@
   // legenda dei colori del sangue: si capisce al primo sguardo
   function legenda(c, alfa) {
     if (alfa <= 0.001) return;
-    const { x, y } = LAY.legenda, w = VERT ? 900 : 340, h = VERT ? 70 : 104;
+    const { x, y } = LAY.legenda, w = 340, h = 104;
     c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, 'rgba(255,255,255,.45)');
     const voce = (cx, cy, col, t1) => { c.fillStyle = col; c.beginPath(); c.arc(cx, cy, 12, 0, 7); c.fill(); testo(c, t1, cx + 24, cy + 8, 22, 600, '#FFFFFF'); };
-    if (VERT) { voce(x + 34, y + 35, '#ff5a4e', 'con ossigeno'); voce(x + 470, y + 35, '#6f9cff', 'senza ossigeno'); }
-    else { voce(x + 30, y + 34, '#ff5a4e', 'sangue con ossigeno'); voce(x + 30, y + 74, '#6f9cff', 'sangue senza ossigeno'); }
+    voce(x + 30, y + 34, '#ff5a4e', 'sangue con ossigeno'); voce(x + 30, y + 74, '#6f9cff', 'sangue senza ossigeno');
     c.restore();
   }
   // tracciato del battito (schema): sinusale, fibrillazione, scarica, linea quasi piatta (tempo reale)
@@ -591,9 +591,9 @@
   function righello(c, t, alfa) {
     if (alfa <= 0.001) return;
     const { x, y0, k } = LAY.righello;
-    c.save(); c.globalAlpha = alfa; pannello(c, x - 30, y0 - 70, 240, 0.06 * k + 160);
+    c.save(); c.globalAlpha = alfa; pannello(c, x - 44, y0 - 70, 254, 0.06 * k + 160);
     testo(c, 'Profondità', x - 8, y0 - 30, 22, 700, '#FFFFFF');
-    c.fillStyle = 'rgba(124,255,178,.3)'; c.fillRect(x, y0 + 0.05 * k, 60, 0.01 * k);
+    c.fillStyle = 'rgba(124,255,178,.35)'; c.fillRect(x - 4, y0 + 0.05 * k, 36, 0.01 * k);
     c.strokeStyle = 'rgba(255,255,255,.8)'; c.lineWidth = 2;
     for (let cm = 0; cm <= 6; cm++) { const yy = y0 + cm / 100 * k; c.beginPath(); c.moveTo(x, yy); c.lineTo(x + (cm % 5 === 0 ? 30 : 18), yy); c.stroke();
       testo(c, cm + ' cm', x + 40, yy + 7, 18, 600, 'rgba(255,255,255,.85)'); }
@@ -656,6 +656,7 @@
                 testo(c, 'corsi BLSD della Misericordia di Ariccia', W / 2, LAY.riga1, 30, 700, '#FFFFFF', 'center'); }
     else testo(c, 'Le manovre si imparano sul manichino: corsi BLSD della Misericordia di Ariccia', W / 2, LAY.riga1, 32, 700, '#FFFFFF', 'center');
     testo(c, '328 8105399', W / 2, LAY.tel, 64, 900, '#FCEB0C', 'center');
+    testo(c, 'oppure 06 933 3717', W / 2, LAY.tel + (VERT ? 44 : 40), 26, 600, '#FFFFFF', 'center');
     testo(c, 'misericordia-ariccia.it/servizi/formazione', W / 2, LAY.sito, 30, 600, '#FFFFFF', 'center');
     c.restore();
   }
@@ -741,6 +742,7 @@
     const vF2 = vFreccia * (1 - fin(t, 64.2, 66.4, 0.25, 0.4));
     freccia.visible = vF2 > 0.01; freccia.userData.m.opacity = vF2;
     freccia.position.set(PUNTO_MANI.x, PUNTO_MANI.y, PUNTO_MANI.z - comp * wM + 0.012);
+    freccia.scale.setScalar(t >= 51.0 && t < 64.6 ? 0.2 : 0.55);   // nel primo piano della sezione resta sotto la fascia
     // placche, analisi e scarica
     const vPlacche = t >= 80.2 ? liscia(80.2, 81.0, t) * (1 - liscia(93.3, 94.2, t)) : 0;
     placche.forEach(p => { p.g.visible = vPlacche > 0.01; p.mats.forEach(m => (m.opacity = vPlacche)); });
