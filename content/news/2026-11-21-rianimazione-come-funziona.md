@@ -4,8 +4,6 @@ titoloSeo: "Rianimazione cardiopolmonare: come funziona, video 3D (linee guida I
 date: 2026-11-21
 slug: "rianimazione-come-funziona"
 controllo_editoriale: "2026-11-20"
-# Bloccata il 20/11/2026 su richiesta di Alessandro: nel video la placca laterale del DAE era sul braccio. Si toglie dopo la correzione.
-draft: true
 description: "Un video in 3D con l'anatomia vera: il giro del sangue, che cosa succede nell'arresto cardiaco e perché le compressioni sul torace fanno arrivare di nuovo il sangue al cervello."
 immagine: "/img/news/2026-11-21-rianimazione-come-funziona-grafica.jpg"
 social_video: "/video/rianimazione-come-funziona-verticale.mp4"
