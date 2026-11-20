@@ -71,10 +71,10 @@ puntate:
   - ustion
   stato: scartata
   motivo: '20/11/2026, seconda generazione: dice che la prima cosa da fare è chiamare
-    il 112 (la scheda: «Prima di tutto, proteggi te stesso»), «le condizioni sono rigorose»,
-    «non si toglie mai la prima» garza e l''esempio «tipo un ginocchio», che le schede
-    non contengono. La prima diceva «le fonti», «assolutamente», «cautela obbligatoria»,
-    «fa davvero la differenza» e attribuiva istinti alle persone.'
+    il 112 (la scheda: «Prima di tutto, proteggi te stesso»), «le condizioni sono
+    rigorose», «non si toglie mai la prima» garza e l''esempio «tipo un ginocchio»,
+    che le schede non contengono. La prima diceva «le fonti», «assolutamente», «cautela
+    obbligatoria», «fa davvero la differenza» e attribuiva istinti alle persone.'
 - id: trasporti-sanitari
   tema: chi-siamo
   titolo: I trasporti sanitari programmati della Misericordia
@@ -85,16 +85,18 @@ puntate:
   parole: []
   stato: scartata
   motivo: '20/11/2026, seconda generazione: «Un punto importante sono le dimissioni
-    ospedaliere, perché il rientro a casa viene con l''accompagnamento…», giudizio con
-    una spiegazione che le pagine non danno. La prima apriva con «c''è un avviso vitale»,
-    «il 112, detto 112» e «non si chiama mai la Misericordia».'
+    ospedaliere, perché il rientro a casa viene con l''accompagnamento…», giudizio
+    con una spiegazione che le pagine non danno. La prima apriva con «c''è un avviso
+    vitale», «il 112, detto 112» e «non si chiama mai la Misericordia».'
 - id: prevenzione-stagionale
   tema: kit-prevenzione
   titolo: 'Prevenzione stagionale: prepararsi a ogni stagione'
   fonti:
   - content/dossier/prevenzione-stagionale.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-11-25-prevenzione-stagionale.md
+  data: '2026-11-25'
 - id: opere-di-misericordia
   tema: dossier
   titolo: Le Opere di Misericordia
