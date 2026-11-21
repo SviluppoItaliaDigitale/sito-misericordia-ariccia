@@ -162,11 +162,13 @@ puntate:
   fonti:
   - content/dossier/storia-delle-misericordie.md
   parole: []
-  stato: da-fare
-  nota: 'Era in calendario per il 5/12; tolta il 21/11/2026 al ricontrollo frase per
-    frase: «670.000 iscritti» senza «circa» (registro: «circa 670.000») e la conclusione
-    «chi riceveva assistenza non sapeva chi avesse di fronte», che la pagina non dà.
-    Da rigenerare.'
+  stato: scartata
+  motivo: '21/11/2026, rifatta dopo il ritiro, seconda generazione: «giovani adulti
+    scelgono di mettersi al servizio» (la pagina: «giovani e adulti dei Castelli Romani»;
+    sentito così da due riconoscitori sul tratto isolato). La prima diceva «quasi
+    109 Misericordie» (pagina: «quasi cento»), «caspita» e chiamava il sito «misericordie.it».
+    Prima del ritiro: «670.000 iscritti» senza «circa» e una conclusione sull''anonimato
+    che la pagina non dà.'
 - id: anafilassi-ipoglicemia
   tema: primo-soccorso
   titolo: 'Reazione allergica grave e ipoglicemia: i segni da riconoscere'
@@ -180,7 +182,7 @@ puntate:
   nota: 'Era in calendario per il 9/12; tolta il 21/11/2026 al ricontrollo frase per
     frase: «uno spray nasale prescritto dal medico» senza «di adrenalina», «succede
     a chi ha il diabete» senza «soprattutto» e «usa insulina o alcune medicine», seconda
-    dose senza «anche se va un po'' meglio». Da rigenerare.'
+    dose senza «anche se va un po'' meglio». Da rigenerare. Il 21/11 alle 14:42 è partita la nuova generazione (istruzioni rafforzate su questi tre punti) nel notebook «Notebook senza titolo» con le due schede (notebook fd5a60d7): il giro dopo la scarica da lì, senza crearne un altro.'
 - id: servizio-civile
   tema: chi-siamo
   titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
