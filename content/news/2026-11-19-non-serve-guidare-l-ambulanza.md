@@ -59,7 +59,7 @@ Hai tra i 18 e i 28 anni? C'è anche il **[Servizio Civile Universale](/servizio
 
 ## Basta un messaggio
 
-**[Scrivi VOLONTARIO su WhatsApp al 348 4068657](https://wa.me/393484068657?text=VOLONTARIO)**, oppure passa a trovarci in sede, in Piazzale Aldo Moro 6 ad Ariccia. Per le iscrizioni: **[328 8105399](tel:+393288105399)**. Tutti i passaggi sono nella pagina **[Diventa volontario](/diventa-volontario/)**.
+**[Scrivi VOLONTARIO su WhatsApp al 348 4068657](https://wa.me/393484068657?text=VOLONTARIO)**, oppure passa a trovarci nella sede amministrativa, in Viale Antonietta Chigi 46 ad Ariccia. Per le iscrizioni: **[328 8105399](tel:+393288105399)**. Tutti i passaggi sono nella pagina **[Diventa volontario](/diventa-volontario/)**.
 
 **Esci dal post. Entra nella squadra.**
 

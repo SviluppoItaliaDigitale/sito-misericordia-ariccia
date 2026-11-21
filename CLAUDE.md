@@ -150,11 +150,13 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
 `scripts/parola-domenica/`. Procedura: `docs/parola-della-domenica.md`.
 
-## Sedi: quale indirizzo usare (dal 18/11/2026)
+## Sedi: quale indirizzo usare (dal 18/11/2026, regola definitiva del 21/11/2026)
 
-Istruzione di Alessandro: *«Quella è la sede legale!! NON VA MAI MENZIONATA NELLE COSE OPERATIVE! LA SEDE STA IN VIA CHIGI»*.
-- **Contenuti operativi** (dove trovarci, Centro di Ascolto, schede, kit, materiali per le scuole, locandine): **Viale Antonietta Chigi, 46 — Ariccia** (`site.Params.indirizzo`).
-- **Sede legale, via Beata Rosa Venerini 6** (`site.Params.sedeLegale`): **solo** atti, privacy e trasparenza (`contatti.md` in nota, `privacy.md`, `trasparenza.md`, dati strutturati come «Sede legale»). Lo controlla `scripts/controlli/prova_sede_legale.py` su ogni PR.
+Istruzione di Alessandro del 21/11/2026, «una volta per tutte»: tre sedi, ognuna con il suo uso.
+- **Sede legale, via Beata Rosa Venerini 6** (`site.Params.sedeLegale`): **solo** carta intestata e fiscalità (con atti, privacy e trasparenza: `contatti.md` in nota, `privacy.md`, `trasparenza.md`, dati strutturati come «Sede legale», modello `carta-intestata.html`). Mai nelle cose operative (18/11/2026: *«NON VA MAI MENZIONATA NELLE COSE OPERATIVE!»*).
+- **Sede amministrativa, Viale Antonietta Chigi, 46** (`site.Params.indirizzo` e `sedeAmministrativa`): iscrizioni, corsi, Servizio Civile, Banco alimentare, Centro di Ascolto; quindi anche schede, kit, materiali per le scuole e slide dei corsi.
+- **Sede operativa, Piazzale Aldo Moro, 6** (`site.Params.sedeOperativa`): dove stanno i mezzi, per i trasporti sanitari e i servizi. Non negli inviti a iscriversi o a venire ai corsi.
+- Lo controlla `scripts/controlli/prova_sede_legale.py` su ogni PR (sede legale fuori posto; sede operativa in un invito a iscriversi).
 - Il nome del paese si scrive sempre **«Ariccia»**, in ogni lingua, senza traslitterazioni.
 
 ## Telefoni: quale numero usare (dal 19/11/2026)

@@ -8,7 +8,7 @@ Schede A4 da stampare della pagina [/kit/](https://www.misericordia-ariccia.it/k
 
 ⚠️ **Rilanciarlo sovrascrive tutto**, comprese le correzioni fatte qui dopo l'importazione: Montserrat e cornice di microtesto in `comune/print.css`, i caratteri delle singole schede e le correzioni di stampa del 19/11/2026 (commenti `controllo fogli di stampa` nelle schede). Dopo un'importazione si confronta con `git diff`, si rimettono le correzioni e si esegue il controllo qui sotto. Per una scheda sola conviene copiarla a mano.
 
-Dopo l'importazione i testi si rileggono: recapiti e sede della Misericordia (la sede operativa di Viale Antonietta Chigi, 46; mai la sede legale, vedi `CLAUDE.md` § «Sedi»), l'attribuzione alla Protezione Civile nel piè di pagina (dovuta per la licenza), i riferimenti che valevano solo per il Gruppo comunale.
+Dopo l'importazione i testi si rileggono: recapiti e sede della Misericordia (la sede amministrativa di Viale Antonietta Chigi, 46; mai la sede legale né la sede operativa dei mezzi, vedi `CLAUDE.md` § «Sedi»), l'attribuzione alla Protezione Civile nel piè di pagina (dovuta per la licenza), i riferimenti che valevano solo per il Gruppo comunale.
 
 ## Cornice di microtesto
 

@@ -15,7 +15,7 @@ Le risposte alle domande che ci vengono rivolte più spesso. Non trovi quello ch
 <details class="faq-item">
 <summary>Come posso diventare volontario?</summary>
 
-Non servono competenze particolari per iniziare: la formazione la facciamo insieme. Passa a trovarci nella **sede amministrativa** (Viale Antonietta Chigi, 46) o nella **sede operativa** (Piazzale Aldo Moro, 6), scrivici a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it), chiama o scrivi su WhatsApp al **348 4068657**. Puoi anche scaricare e compilare il [modulo di iscrizione come socio](/documenti/modulo-iscrizione-socio.pdf).
+Non servono competenze particolari per iniziare: la formazione la facciamo insieme. Passa a trovarci nella **sede amministrativa** (Viale Antonietta Chigi, 46), dove si fanno le iscrizioni, scrivici a [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it), chiama o scrivi su WhatsApp al **348 4068657**. Puoi anche scaricare e compilare il [modulo di iscrizione come socio](/documenti/modulo-iscrizione-socio.pdf).
 
 </details>
 

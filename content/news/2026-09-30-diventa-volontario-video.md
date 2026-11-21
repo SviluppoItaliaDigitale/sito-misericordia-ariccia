@@ -46,7 +46,7 @@ Il Movimento delle Misericordie accoglie volontari **dai 16 agli 80 anni**. C'è
 
 ## Tocca a te
 
-**[Diventa volontario](/diventa-volontario/)**: chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**, oppure passa a trovarci in sede, in Piazzale Aldo Moro 6 ad Ariccia.
+**[Diventa volontario](/diventa-volontario/)**: chiama o scrivi su WhatsApp al **[348 4068657](tel:+393484068657)**, oppure passa a trovarci nella sede amministrativa, in Viale Antonietta Chigi 46 ad Ariccia.
 
 Se hai tra i 18 e i 28 anni, guarda anche il [Servizio Civile Universale](/servizio-civile/).
 

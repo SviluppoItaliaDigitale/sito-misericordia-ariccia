@@ -15,8 +15,8 @@ weight: 80
 <strong>Visits to our offices are by appointment only, arranged by phone.</strong> Before coming <strong>you must call</strong> <a href="tel:+39069333717">+39 06 933 3717</a> or <a href="tel:+393484068657">+39 348 4068657</a>: without a call you may find nobody there. On the phone we will tell you when to come and who can help. For transport requests you don't need to come in: <a href="/en/richiedi-trasporto/">request one here</a>; we usually reply within a few minutes, and always on the same day.
 </div>
 
-- **Operational office:** Piazzale Aldo Moro, 6 — 00072 Ariccia (RM), Italy
-- **Administrative office:** Viale Antonietta Chigi, 46 — 00072 Ariccia (RM), Italy
+- **Operational office** (vehicles, medical transport and services): Piazzale Aldo Moro, 6 — 00072 Ariccia (RM), Italy
+- **Administrative office** (sign-ups, courses, Civil Service, food bank, Listening Centre): Viale Antonietta Chigi, 46 — 00072 Ariccia (RM), Italy
 
 **Access (both offices):** step-free entrance, suitable for wheelchairs, with **parking** available.
 

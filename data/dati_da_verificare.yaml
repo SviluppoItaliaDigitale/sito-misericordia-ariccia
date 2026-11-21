@@ -1858,7 +1858,7 @@ dati:
   verificato: "2026-10-09"
   note: "Confermata sulla scheda RUNTS il 9/10/2026."
 - id: "sede-operativa"
-  cosa: "Indirizzo della sede operativa."
+  cosa: "Indirizzo della sede operativa: dove stanno i mezzi, per trasporti sanitari e servizi (Alessandro, 21/11/2026). Mai negli inviti a iscriversi o ai corsi."
   valore: "Piazzale Aldo Moro, 6 — 00072 Ariccia (RM)"
   dove:
   - "content/contatti.md"
@@ -1880,7 +1880,7 @@ dati:
   verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "sede-amministrativa"
-  cosa: "Indirizzo della sede amministrativa."
+  cosa: "Indirizzo della sede amministrativa: iscrizioni, corsi, Servizio Civile, Banco alimentare, Centro di Ascolto, schede e kit (Alessandro, 21/11/2026)."
   valore: "Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)"
   dove:
   - "content/contatti.md"
@@ -1899,7 +1899,7 @@ dati:
   verificato: "2026-11-09"
   note: "9/10/2026: dato interno, verificata solo la coerenza tra tutti i file del sito (conferma chiesta nella issue)."
 - id: "sede-legale"
-  cosa: "Indirizzo della sede legale."
+  cosa: "Indirizzo della sede legale: solo carta intestata e fiscalità, con atti, privacy e trasparenza (Alessandro, 21/11/2026)."
   valore: "Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)"
   dove:
   - "content/contatti.md"
