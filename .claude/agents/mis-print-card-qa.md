@@ -47,7 +47,7 @@ Non si cambia `comune/print.css` per una scheda sola: il 19/11/2026 un cambio gl
 - Intestazione del kit nazionale: triangolo delle Misericordie (`/kit/comune/triangolo-misericordie.png`, file originale, mai modificato), «Misericordia di Ariccia» e «Confraternita di Misericordia di Ariccia ODV», etichetta del kit. Pulsanti «Stampa A4» e «Indice» con `no-print`.
 - Piè di pagina con nome della scheda, fonti e la riga «www.misericordia-ariccia.it · adattato da materiali della Protezione Civile di Genzano di Roma, CC BY-NC-SA 4.0» dove la scheda viene dal kit della PC: l'attribuzione è un obbligo della licenza, non va tolta.
 - **Cornice di microtesto** su ogni foglio (in fondo a `comune/print.css`, regola `grafica.md` del 21/10/2026): non si toglie e non si copre; una scheda con `@page { margin: 0 }` la disegna da sé (`scripts/kit/LEGGIMI.md`).
-- Recapiti: quelli della Misericordia (`hugo.toml`, `site.Params`), mai quelli della PC; nei contenuti operativi la sede di Viale Antonietta Chigi, 46.
+- Recapiti: quelli della Misericordia (`hugo.toml`, `site.Params`), mai quelli della PC; per iscrizioni, corsi, scuole e kit la sede amministrativa di Viale Antonietta Chigi, 46 (`CLAUDE.md` § «Sedi»).
 
 ### 2. Immagini
 - Ogni `<img>` esiste (lo script lo prova caricando la pagina) e ha un `alt` che descrive ciò che si vede; vuoto solo per le immagini decorative.

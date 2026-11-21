@@ -26,7 +26,7 @@ I numeri da salvare in rubrica e da tenere sul frigorifero. Puoi anche **stampar
 ## Misericordia di Ariccia
 
 - **Servizi e trasporti (anche WhatsApp):** [348 4068657](tel:+393484068657)
-- **Sede operativa (telefono fisso):** [06 933 3717](tel:+39069333717)
+- **Sede amministrativa (telefono fisso):** [06 933 3717](tel:+39069333717)
 - **Amministrazione, corsi, formazione, iscrizioni e Servizio Civile:** [328 8105399](tel:+393288105399)
 - **Email:** [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) — **PEC:** [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
 

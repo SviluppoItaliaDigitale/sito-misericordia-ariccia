@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/volontari-terzo-settore.pdf">
+<title>Essere volontari in Misericordia: slide per il corso dei nuovi volontari</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per il corso dei nuovi volontari della Misericordia di Ariccia: chi è il volontario per il Codice del Terzo settore,
+che cosa è un'organizzazione di volontariato, le Misericordie e la Misericordia di Ariccia, diritti e doveri.
+Accompagnano lo Statuto, il regolamento interno e il materiale della Confraternita e non li sostituiscono.
+Fonti, lette il 21/11/2026:
+- D.Lgs. 3 luglio 2017, n. 117 (Codice del Terzo settore), testo vigente su Normattiva: artt. 17, 18, 32, 33, 34 e 45,
+  https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2017-07-03;117
+- Pagine del sito: Storia e tradizione, dossier Storia delle Misericordie, Chi siamo, I confratelli (che riassume lo
+  Statuto vigente registrato il 28/05/2022), Diventa volontario, Servizi, Servizio Civile, Trasparenza.
+- Numeri della Confederazione dal registro data/dati_da_verificare.yaml (Bilancio sociale 2024 della Confederazione,
+  aprile 2026, p. 19; età 16-80 dal sito della Confederazione, verificata il 9/10/2026).
+Testi parafrasati; disegni SVG fatti a mano, nessuna foto.
+Da completare con lo Statuto e il regolamento interno: diritti e doveri specifici dei confratelli, provvedimenti,
+quote, uso della divisa, turni (lo Statuto in PDF è una scansione senza testo: il contenuto non è stato letto qui).
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 40px; line-height: 54px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .numeri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.diapo .numeri .cifra { font-size: 96px; line-height: 1; font-weight: 800; color: var(--blu); white-space: nowrap; }
+.diapo .numeri .cifra small { font-size: 48px; }
+.diapo .numeri p { font-size: 34px; line-height: 44px; margin-top: 14px; }
+.diapo .quattro { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.diapo .quattro .passo { background: rgba(255,255,255,.75); border-top: 14px solid var(--blu); padding: 24px 28px; }
+.diapo .quattro .passo h3 { font-size: 42px; line-height: 48px; font-weight: 800; color: var(--blu); }
+.diapo .quattro .passo p { font-size: 30px; line-height: 40px; margin-top: 12px; }
+.diapo .quattro.giallo .passo { border-top-color: var(--giallo); }
+.diapo .lato { display: grid; gap: 56px; align-items: center; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .si { border-left: 10px solid var(--blu); padding-left: 26px; }
+.diapo .riquadro.blu p, .diapo .riquadro.blu li { color: #FFFFFF; }
+.diapo .passi { display: flex; flex-direction: column; gap: 20px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .tappe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.diapo .tappa { position: relative; padding: 0 26px 0 0; }
+.diapo .tappa::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; height: 10px; background: var(--blu); }
+.diapo .tappa:last-child::before { right: calc(100% - 39px); }
+.diapo .tappa .punto { width: 78px; height: 78px; border-radius: 50%; background: var(--giallo); border: 10px solid var(--blu); position: relative; z-index: 1; }
+.diapo .tappa .anno { font-size: 58px; line-height: 1; font-weight: 800; color: var(--blu); margin-top: 22px; }
+.diapo .tappa p { font-size: 29px; line-height: 39px; margin-top: 10px; }
+.diapo .tabella { display: grid; grid-template-columns: 340px 1fr; gap: 0; font-size: 33px; line-height: 43px; }
+.diapo .tabella > div { padding: 16px 24px; border-bottom: 3px solid #C9D3E6; }
+.diapo .tabella .tes { font-weight: 800; color: var(--blu); }
+.diapo .due { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.diapo .due h3 { color: var(--blu); font-weight: 800; margin-bottom: 14px; }
+.diapo .due ul { font-size: 34px; line-height: 45px; }
+.diapo .motto { font-size: 76px; line-height: 90px; font-weight: 800; color: var(--blu); }
+.diapo .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo .crediti { font-size: 29px; line-height: 40px; }
+.diapo .crediti li { margin-bottom: 4px; }
+.diapo .url { white-space: nowrap; }
+.diapo svg text { font-family: 'Montserrat', sans-serif; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M260 285 C185 235 125 190 125 125 C125 85 155 55 195 55 C225 55 247 72 260 97 C273 72 295 55 325 55 C365 55 395 85 395 125 C395 190 335 235 260 285 Z" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M30 300 C70 300 110 318 150 345 L235 345 C258 345 272 360 272 378 C272 396 258 408 235 408 H170" stroke="#FCEB0C" stroke-width="14"/>
+<path d="M30 430 H250 C290 430 320 418 352 398 L470 320 C490 306 494 284 480 270 C466 256 446 258 430 270 L340 335" stroke="#FCEB0C" stroke-width="14"/>
+</svg>
+<div class="contenuto">
+<h1>Essere volontari<br><span class="finale">in Misericordia</span></h1>
+<p class="sotto">Il corso per i nuovi volontari: chi è il volontario per la legge, che cos'è un'organizzazione di volontariato, la famiglia delle Misericordie e la nostra Confraternita.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Accogliete i nuovi volontari e presentatevi: nome, da quanto fate servizio, che cosa fate in Confraternita. Fate un giro di presentazioni: chi sono, che cosa li ha portati qui, che cosa vorrebbero fare. Fonti di tutta la presentazione: D.Lgs. 3 luglio 2017, n. 117, Codice del Terzo settore (testo vigente su Normattiva, letto il 21/11/2026), e le pagine del sito misericordia-ariccia.it (Storia e tradizione, Chi siamo, I confratelli, Diventa volontario, Servizi, Servizio Civile, Trasparenza).</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Queste slide accompagnano il corso</h2>
+<p>Sono un aiuto per chi tiene la lezione. <strong>Non sostituiscono</strong> i documenti della Confraternita:</p>
+<ul>
+<li>lo <strong>Statuto</strong> della Confraternita di Misericordia di Ariccia ODV;</li>
+<li>il <strong>regolamento interno</strong> e le indicazioni del Magistrato;</li>
+<li>il materiale dei <strong>corsi</strong> per i servizi che sceglierai.</li>
+</ul>
+<p class="riquadro blu">Se una regola ti sembra poco chiara, chiedi: oggi è il momento giusto per farlo.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dite chiaramente che il riferimento resta lo Statuto vigente (atto registrato il 28 maggio 2022, pubblicato nella pagina Trasparenza del sito) e il regolamento interno: consegnatene una copia o indicate dove trovarli. Le slide riassumono la legge e la storia; le regole pratiche della Confraternita (turni, divisa, quote, comportamento in servizio) vanno spiegate con il regolamento interno. Fonte: pagina Trasparenza del sito, sezione Statuto.</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Benvenuto: c'è posto anche per te</h2>
+<p>Non contano il mestiere, l'età o le competenze: contano <span class="evidenzia">le mani, l'ascolto e la presenza</span>.</p>
+<p>I volontari delle Misericordie sono <strong>«artigiani di misericordia»</strong>: persone comuni che, un gesto alla volta, diventano vicinanza per chi è solo, malato o in difficoltà.</p>
+<p class="riquadro tenue">Non servono capacità speciali per iniziare: la formazione la facciamo insieme.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Domanda al gruppo: «Che cosa vi aspettate da questa esperienza? Che cosa vi preoccupa?». Raccogliete le risposte e riprendetele alla fine. Fonte: pagina Diventa volontario del sito («artigiani di misericordia»; «non contano il mestiere, l'età o le competenze: contano le mani, l'ascolto e la presenza»; «la formazione la facciamo insieme»).</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Chi è il volontario, per la legge</h2>
+<p>Una persona che <strong>per sua libera scelta</strong> mette il proprio tempo e le proprie capacità al servizio della comunità e del bene comune. Lo fa in modo:</p>
+<div class="quattro">
+<div class="passo"><h3>Libero</h3><p>nessuno ti obbliga: scegli tu</p></div>
+<div class="passo"><h3>Personale</h3><p>sei tu, con il tuo tempo</p></div>
+<div class="passo"><h3>Spontaneo</h3><p>nasce dalla tua volontà</p></div>
+<div class="passo"><h3>Gratuito</h3><p>senza guadagno, solo per solidarietà</p></div>
+</div>
+<p class="piccolo">Codice del Terzo settore (D.Lgs. 117/2017), articolo 17, comma 2.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">L'articolo 17, comma 2, definisce il volontario come la persona che, per sua libera scelta, svolge attività in favore della comunità e del bene comune, anche tramite un ente del Terzo settore, mettendo a disposizione tempo e capacità per rispondere ai bisogni delle persone, in modo personale, spontaneo e gratuito, senza fini di lucro, neanche indiretti, ed esclusivamente per fini di solidarietà. Domanda: «Perché la gratuità è una garanzia anche per chi riceve l'aiuto?». Fonte: D.Lgs. 117/2017, art. 17, comma 2 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Gratuito davvero</h2>
+<p class="no"><strong>Nessuna retribuzione</strong>, in nessuna forma: nemmeno da chi riceve il tuo aiuto.</p>
+<p class="si">L'ente può rimborsarti solo le <strong>spese che hai sostenuto davvero</strong> e che puoi <strong>documentare</strong>, entro i limiti che ha fissato prima.</p>
+<p class="no"><strong>Vietati</strong> i rimborsi «a forfait», cioè una cifra fissa senza le spese.</p>
+<p class="piccolo">Articolo 17, commi 3 e 4. Con un'autocertificazione si possono rimborsare fino a 10 euro al giorno e 150 euro al mese, solo se l'organo della Confraternita lo ha deciso.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Comma 3: l'attività del volontario non può essere retribuita in alcun modo, nemmeno dal beneficiario; l'ente può rimborsare soltanto le spese effettivamente sostenute e documentate per l'attività prestata, entro limiti massimi e alle condizioni stabilite prima dall'ente; sono in ogni caso vietati i rimborsi spese di tipo forfetario. Comma 4: le spese possono essere rimborsate anche con autocertificazione (art. 46 del d.P.R. 445/2000) fino a 10 euro al giorno e 150 euro al mese, se l'organo sociale competente delibera sulle tipologie di spese e sulle attività; non vale per la donazione di sangue e di organi. Come chiedere un rimborso in Confraternita (moduli, a chi, quali spese): da spiegare con il regolamento interno. Fonte: D.Lgs. 117/2017, art. 17, commi 3 e 4 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Volontario o lavoratore: non tutti e due</h2>
+<p>Non puoi essere volontario e, insieme, avere con la Confraternita un <strong>rapporto di lavoro</strong>: dipendente, autonomo o qualsiasi altro rapporto pagato.</p>
+<p class="riquadro tenue">Lavori da un'altra parte? Se il tuo contratto lo prevede, hai diritto alla <strong>flessibilità di orario</strong> o ai <strong>turni</strong> per fare volontariato, se l'azienda può organizzarsi.</p>
+<p class="piccolo">Articolo 17, commi 5 e 6-bis.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Comma 5: la qualità di volontario è incompatibile con qualsiasi forma di rapporto di lavoro subordinato o autonomo e con ogni altro rapporto di lavoro retribuito con l'ente di cui il volontario è socio o associato o tramite il quale svolge l'attività. Comma 6-bis: i lavoratori subordinati che vogliono fare volontariato in un ente del Terzo settore hanno diritto di usufruire delle forme di flessibilità di orario o delle turnazioni previste dai contratti o accordi collettivi, compatibilmente con l'organizzazione aziendale. Comma 6: non è volontario, ai fini del Codice, l'associato che aiuta solo occasionalmente gli organi sociali. Fonte: D.Lgs. 117/2017, art. 17, commi 5, 6 e 6-bis (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Iscritto e assicurato</h2>
+<div class="lato" style="grid-template-columns: 1fr 360px;">
+<ul>
+<li>Se fai servizio in modo non occasionale, il tuo nome va nel <strong>registro dei volontari</strong> della Confraternita.</li>
+<li>La Confraternita ti <strong>assicura</strong> contro gli <strong>infortuni</strong> e le <strong>malattie</strong> legati al servizio.</li>
+<li>E ti assicura per la <strong>responsabilità civile</strong> verso gli altri.</li>
+</ul>
+<svg viewBox="0 0 360 400" width="360" height="400" role="img" aria-label="Scudo con il segno di spunta: il volontario è assicurato" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M180 30 L320 85 V190 C320 285 260 345 180 375 C100 345 40 285 40 190 V85 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="18"/>
+<path d="M115 205 L162 252 L250 155" stroke="#003F85" stroke-width="26"/>
+</svg>
+</div>
+<p class="piccolo">Articolo 17, comma 1, e articolo 18, comma 1.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Art. 17, comma 1: gli enti del Terzo settore possono avvalersi di volontari e devono iscrivere in un apposito registro quelli che svolgono la loro attività in modo non occasionale. Art. 18, comma 1: gli enti che si avvalgono di volontari devono assicurarli contro gli infortuni e le malattie connessi allo svolgimento dell'attività di volontariato, nonché per la responsabilità civile verso i terzi. Il sito (pagina I confratelli) conferma che ogni volontario della Misericordia di Ariccia è assicurato contro infortuni e responsabilità civile. Spiegate perché è importante segnare ogni servizio come indica il regolamento interno (fogli presenza, turni): da completare con il regolamento. Fonte: D.Lgs. 117/2017, artt. 17 e 18 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cos'è un'organizzazione di volontariato</h2>
+<div class="tabella">
+<div class="tes">Chi la forma</div><div>Un'<strong>associazione</strong> di almeno <strong>sette persone</strong> (o tre organizzazioni di volontariato).</div>
+<div class="tes">Che cosa fa</div><div>Attività di <strong>interesse generale</strong>, soprattutto a favore degli <strong>altri</strong>.</div>
+<div class="tes">Con chi</div><div>Soprattutto con il lavoro <strong>volontario</strong> dei suoi associati.</div>
+<div class="tes">Lavoratori</div><div>Solo se servono, e <strong>mai più della metà</strong> dei volontari.</div>
+<div class="tes">Cariche</div><div><strong>Gratuite</strong>: a chi guida l'associazione nessun compenso.</div>
+</div>
+<p class="piccolo">Nel nome c'è la sigla <strong>ODV</strong>. Codice del Terzo settore, articoli 32, 33 e 34.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Art. 32, comma 1: le ODV sono enti del Terzo settore costituiti in forma di associazione, riconosciuta o non riconosciuta, da almeno sette persone fisiche o tre organizzazioni di volontariato, per svolgere prevalentemente a favore di terzi una o più attività di interesse generale (art. 5), avvalendosi in modo prevalente dell'attività di volontariato degli associati. Art. 32, comma 3: la denominazione contiene «organizzazione di volontariato» o l'acronimo ODV. Art. 33, comma 1: lavoratori dipendenti o autonomi solo quando necessario al funzionamento o a qualificare l'attività, e in ogni caso non più del 50% del numero dei volontari; comma 3: per le attività di interesse generale solo il rimborso delle spese effettivamente sostenute e documentate. Art. 34: amministratori scelti fra gli associati, nessun compenso ai componenti degli organi sociali (salvo l'organo di controllo con i requisiti di legge), solo rimborso delle spese documentate. Fonte: D.Lgs. 117/2017, artt. 32-34 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Il RUNTS, il registro del Terzo settore</h2>
+<div class="lato" style="grid-template-columns: 1fr 400px;">
+<ul>
+<li>È il <strong>Registro unico nazionale del Terzo settore</strong>, del Ministero del Lavoro e delle Politiche sociali.</li>
+<li>Lo gestiscono insieme il Ministero e le <strong>Regioni</strong>, in modo telematico.</li>
+<li>È <strong>pubblico</strong>: chiunque può consultarlo online.</li>
+</ul>
+<svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Registro aperto con le righe e il segno di spunta" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 90 C160 62 100 55 40 66 V330 C100 319 160 326 200 354 C240 326 300 319 360 330 V66 C300 55 240 62 200 90 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="16"/>
+<path d="M200 90 V354" stroke="#003F85" stroke-width="12"/>
+<path d="M80 130 H165 M80 180 H165 M80 230 H165" stroke="#009FE3" stroke-width="12"/>
+<path d="M240 200 L270 232 L325 165" stroke="#003F85" stroke-width="20"/>
+</svg>
+</div>
+<p class="riquadro blu">La Misericordia di Ariccia è iscritta al RUNTS <strong>dal 28 marzo 2023</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Art. 45: il Registro unico nazionale del Terzo settore è istituito presso il Ministero del Lavoro e delle Politiche sociali, è operativamente gestito su base territoriale e con modalità informatiche in collaborazione con ciascuna Regione e Provincia autonoma (uffici regionali del RUNTS) ed è pubblico e accessibile a tutti in modalità telematica. Le ODV sono una delle sezioni del registro. Dati della Confraternita dal sito (pagine Chi siamo e Trasparenza): Organizzazione di volontariato con personalità giuridica, nel RUNTS dal 28 marzo 2023, codice fiscale 90031910582. Fonte: D.Lgs. 117/2017, art. 45 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Le Misericordie: quasi otto secoli di storia</h2>
+<div class="tappe">
+<div class="tappa"><div class="punto"></div><div class="anno">1244</div><p>A <strong>Firenze</strong> il frate Pietro da Verona dà le prime Costituzioni alla Misericordia.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">1321</div><p>Il primo documento conosciuto che cita la Misericordia.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">1899</div><p>A <strong>Pistoia</strong> le Misericordie decidono di unirsi: nasce il Movimento.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">Oggi</div><p>La <strong>Confederazione</strong> delle Misericordie d'Italia.</p></div>
+</div>
+<p>Tutto nasce da un'idea semplice: <strong>stare accanto a chi soffre</strong>, portando i malati e aiutando i poveri.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Raccontate in breve: nel 1244 giunse a Firenze il frate domenicano Pietro da Verona (San Pietro Martire, santo dal 1253), che stabilì le prime Costituzioni della Misericordia di Firenze; il primo documento conosciuto è del 1321, quando la Compagnia comprò una casa davanti al Battistero. La tradizione popolare racconta di Piero Borsi, facchino dell'Arte della Lana, e delle sei ceste per portare i malati agli ospedali. Il 24 e 25 settembre 1899, a Pistoia, nel 1° Congresso, le Misericordie decisero di costituire la Federazione delle Associazioni e Confraternite di Misericordia: è l'origine della Confederazione. Fonte: pagina Storia e tradizione e dossier Storia delle Misericordie del sito.</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Tutti uguali sotto la veste</h2>
+<p>Per secoli i confratelli hanno servito con la <strong>«buffa»</strong>, una veste che copriva anche il volto.</p>
+<p>Papi, principi e popolani facevano lo stesso servizio, <strong>senza distinzione</strong>: nessuno doveva sapere chi aiutava.</p>
+<p class="riquadro tenue">«Non sappia la tua sinistra quello che fa la tua destra»: si aiuta per l'altro, non per farsi vedere.</p>
+<p>Oggi la veste storica nera si consegna ai nuovi confratelli nella <strong>Vestizione</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">La veste di servizio, con guanti e ghette, rendeva i confratelli visivamente uguali, senza distinzione di censo, e garantiva l'anonimato secondo il principio evangelico «non sappia la tua sinistra quello che fa la tua destra». In origine era rossa, segno dello Spirito Santo; dal 1495 è nera, in segno di penitenza. Collegate il tema di oggi: discrezione e rispetto per le persone che aiutiamo (niente foto, niente racconti in giro dei servizi): le regole di riservatezza vanno spiegate con il regolamento interno e l'informativa privacy. Fonte: pagina Storia e tradizione del sito, paragrafi «Confratelli e protettori illustri» e «La buffa, la veste di servizio».</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Una grande famiglia, in tutta Italia</h2>
+<div class="numeri">
+<div><div class="cifra">770+</div><p><strong>Misericordie</strong> nella Confederazione nazionale</p></div>
+<div><div class="cifra">670<small> mila</small></div><p>circa: gli <strong>iscritti</strong></p></div>
+<div><div class="cifra">100<small> mila</small></div><p>oltre: i <strong>volontari attivi</strong></p></div>
+</div>
+<p>Entrando qui, entri anche in questa famiglia: la Misericordia di Ariccia è <strong>affiliata alla Confederazione</strong>.</p>
+<p class="piccolo">Fonte: Bilancio sociale 2024 della Confederazione Nazionale delle Misericordie d'Italia, p. 19.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dal Bilancio sociale 2024 (aprile 2026, p. 19): le Misericordie attive sono 774, di cui 646 sedi e 128 sezioni; circa 670.000 iscritti; oltre 100.000 volontari attivi. Sono gli stessi numeri delle pagine del sito (I confratelli, Storia e tradizione). La Confederazione è anche ente nazionale di protezione civile; la Misericordia di Ariccia oggi non ha un gruppo di protezione civile. Il sito della Confederazione è misericordie.it; la rivista nazionale è «Giallo Ciano» (pagina del sito /giallo-ciano/). Fonte: registro dei dati del sito (data/dati_da_verificare.yaml, voci confederazione-numero-misericordie, confederazione-soci, confederazione-volontari-attivi), verificato il 9/11/2026.</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>I valori che ci guidano</h2>
+<ol class="passi">
+<li>Le <strong>Opere di Misericordia</strong>, corporali e spirituali: dare da mangiare, visitare i malati, consolare chi soffre.</li>
+<li>La <strong>carità</strong> e la <strong>fraternità</strong> cristiana, vissute nei gesti di ogni giorno.</li>
+<li>La <strong>dignità</strong> di ogni persona: aiuto materiale e vicinanza umana insieme.</li>
+<li>Le Misericordie <strong>«si governano a popolo»</strong>: gli organi sono eletti dai confratelli.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dal sito: la missione della Confraternita è dare soccorso a chi si trova in situazioni di bisogno e di sofferenza, con un aiuto materiale e morale, ispirati dai principi evangelici e dalle Opere di Misericordia, per restituire dignità alle persone (pagina Chi siamo); confratelli e consorelle mettono a disposizione tempo e capacità per la costante affermazione della carità e della fraternità cristiana, attraverso le Opere di Misericordia spirituali e corporali (pagina I confratelli); le Misericordie «si governano a popolo», con organi liberamente eletti (Storia e tradizione). Il volontariato è aperto a tutti: chiedete al gruppo quale opera sentono più vicina. Approfondimento: dossier Le opere di misericordia del sito.</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La Misericordia di Ariccia</h2>
+<div class="tappe">
+<div class="tappa"><div class="punto"></div><div class="anno">1994</div><p>Nasce, per l'<strong>assistenza a casa</strong> delle persone con disabilità.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">1998</div><p>Iscritta come <strong>ODV</strong> nel registro regionale del volontariato.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">2011</div><p>Riceve la <strong>personalità giuridica</strong>.</p></div>
+<div class="tappa"><div class="punto"></div><div class="anno">2023</div><p>Il 28&nbsp;marzo entra nel <strong>RUNTS</strong>.</p></div>
+</div>
+<p class="riquadro tenue">Ci guida il <strong>Magistrato</strong>, eletto dall'assemblea dei confratelli, con la Governatrice <strong>Maddalena Basili</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dal sito (pagina Chi siamo): la Confraternita è attiva dal 1994, nata per l'assistenza domiciliare alle persone con disabilità; iscritta come ODV nel registro regionale del volontariato dal 1998, con personalità giuridica dal 2011, nel RUNTS dal 28 marzo 2023, affiliata alla Confederazione. Ha partecipato agli interventi nelle grandi calamità (Versilia 1996, Marche 1997, L'Aquila 2009, Amatrice 2016) e, durante la pandemia, con la Protezione Civile di Ariccia e Velletri, alla consegna di viveri e farmaci. Il Magistrato è eletto dall'assemblea dei confratelli (pagina Trasparenza); la composizione aggiornata è nella pagina Chi siamo: prima di ogni corso controllate che sia ancora quella.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa puoi fare con noi</h2>
+<div class="quattro">
+<div class="passo"><h3>Trasporti</h3><p>accompagnare chi deve curarsi: in ambulanza, in auto o con i mezzi attrezzati</p></div>
+<div class="passo"><h3>Ascolto</h3><p>Centro di Ascolto e Banco Alimentare: accogliere le famiglie, distribuire alimenti, ascoltare</p></div>
+<div class="passo"><h3>Eventi</h3><p>assistenza sanitaria a gare sportive, feste e sagre del territorio</p></div>
+<div class="passo"><h3>Formazione</h3><p>primo soccorso, BLSD e P-BLSD, soccorritore: i corsi li facciamo insieme</p></div>
+</div>
+<p>Non serve guidare l'ambulanza: ognuno trova il servizio adatto al <strong>suo tempo</strong> e a <strong>ciò che sa fare</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Sono i quattro ambiti della pagina Diventa volontario del sito. Dettagli dalla pagina Servizi: trasporto in ambulanza e trasferimenti fra ospedali in convenzione con la ASL Roma 6, trasporto delle persone con disabilità, accompagnamento nella vita di ogni giorno (spesa, posta, medico); Centro di Ascolto con il supporto di uno psicologo nelle sue giornate; Banco Alimentare e Colletta Alimentare; corsi con formatori abilitati ARES 118. Il corso per autisti dei mezzi di emergenza è riservato ai volontari. Chiedete a ciascuno quale servizio vorrebbe provare per primo.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Chi può entrare, e come</h2>
+<ol class="passi">
+<li>Il Movimento accoglie <strong>uomini e donne dai 16 agli 80 anni</strong>.</li>
+<li>Presenti una <strong>domanda scritta di ammissione</strong>: decide il <strong>Magistrato</strong>.</li>
+<li>Inizi il percorso: la formazione, passo dopo passo, fino a quando sei <strong>pronto per il servizio</strong>.</li>
+</ol>
+<p class="riquadro blu">Hai tra i 18 e i 28 anni? C'è anche il <strong>Servizio Civile Universale</strong>: un anno al servizio della comunità, con un assegno mensile.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Età dal sito (pagina Diventa volontario, dato confermato sul sito della Confederazione il 9/10/2026). Domanda scritta di ammissione su cui delibera il Magistrato: pagina I confratelli, che riassume lo Statuto vigente; il modulo di iscrizione come socio è nella pagina Trasparenza. Servizio Civile Universale (pagina Servizio Civile): giovani dai 18 ai 28 anni, domanda online sulla piattaforma DOL quando il bando è aperto; la Misericordia di Ariccia partecipa ai bandi dal 2015. Attenzione: gli operatori volontari del servizio civile non sono «volontari» ai sensi del Codice del Terzo settore (D.Lgs. 117/2017, art. 17, comma 7), hanno regole proprie. Informazioni sul Servizio Civile: 328 8105399.</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Diritti e doveri</h2>
+<div class="due">
+<div><h3>Hai diritto a</h3><ul>
+<li><strong>uguali diritti</strong> con tutti i confratelli e le consorelle;</li>
+<li>partecipare alle <strong>assemblee</strong>, votare ed eleggere le cariche;</li>
+<li>essere <strong>assicurato</strong> durante il servizio;</li>
+<li>il <strong>rimborso</strong> delle spese documentate, come previsto.</li>
+</ul></div>
+<div><h3>Ti impegni a</h3><ul>
+<li>servire in modo <strong>personale e gratuito</strong>;</li>
+<li>non avere un <strong>lavoro pagato</strong> con la Confraternita;</li>
+<li>rispettare lo <strong>Statuto</strong> e il <strong>regolamento interno</strong>;</li>
+<li>seguire la <strong>formazione</strong> prima del servizio.</li>
+</ul></div>
+</div>
+<p class="piccolo">Codice del Terzo settore, artt. 17 e 18; Statuto della Confraternita, come lo riassume il sito. Gli altri diritti e doveri sono nello Statuto e nel regolamento interno.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dalla legge: attività personale, spontanea e gratuita e rimborso delle sole spese effettive e documentate (art. 17, commi 2-4); incompatibilità con ogni rapporto di lavoro retribuito con l'ente (art. 17, comma 5); assicurazione contro infortuni, malattie e responsabilità civile (art. 18, comma 1). Dallo Statuto vigente, come lo riassume la pagina I confratelli del sito: gli associati hanno tutti uguali diritti e uguali doveri, partecipano alle assemblee, votano ed eleggono le cariche sociali. La formazione prima del servizio è nella pagina Diventa volontario («fino a quando sarai pronto per il servizio»). DA COMPLETARE con lo Statuto e il regolamento interno prima di usare la slide: elenco completo dei doveri dell'associato (quota associativa, partecipazione, comportamento, divisa, riservatezza), provvedimenti in caso di mancanze, recesso ed esclusione.</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La nostra sola ricompensa</h2>
+<p>Per le Misericordie la ricompensa del volontario è nella <strong>coscienza del dovere compiuto</strong>. Per questo, a chi serve, si dice da secoli:</p>
+<p class="motto">«Che Iddio te ne <span class="finale" style="color: var(--blu); text-decoration-color: var(--giallo);">renda merito</span>»</p>
+<p class="riquadro tenue">Benvenuto in Confraternita: da oggi questo augurio è anche per te.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il motto tradizionale delle Misericordie, come lo scrive il sito (pagina Diventa volontario: «La sola ricompensa del volontario è nella coscienza del dovere compiuto, salutata dall'antico motto delle Misericordie: Che Iddio te ne renda merito»; la pagina I confratelli lo riporta nella forma «Che Iddio gliene renda merito»). Si scrive sempre con «Iddio». Chiudete riprendendo le aspettative e le preoccupazioni raccolte all'inizio e chiedete se ci sono domande.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti e contatti</h2>
+<ul class="crediti">
+<li><strong>Legge:</strong> D.Lgs. 3 luglio 2017, n. 117, Codice del Terzo settore, artt. 17, 18, 32, 33, 34 e 45, testo vigente su <span class="url">normattiva.it</span>.</li>
+<li><strong>Confraternita e Misericordie:</strong> pagine del sito <span class="url">misericordia-ariccia.it</span> (Chi siamo, I confratelli, Storia e tradizione, Diventa volontario, Servizi, Servizio Civile, Trasparenza); Bilancio sociale 2024 della Confederazione.</li>
+<li><strong>Statuto e regolamento interno:</strong> il riferimento per tutto ciò che queste slide non dicono.</li>
+<li><strong>Disegni:</strong> Misericordia di Ariccia.</li>
+</ul>
+<p class="riquadro blu">Corsi e amministrazione: <strong class="url">328 8105399</strong> · fisso <strong class="url">06 933 3717</strong><br><strong class="url">sede@misericordia-ariccia.it</strong> · Sede amministrativa: <span class="url">Viale Antonietta Chigi, 46 — Ariccia</span></p>
+<p class="piccolo">Verificato il 21/11/2026.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<div class="note-relatore">Slide delle fonti: va lasciata in fondo anche quando si tolgono altre slide. Indirizzi: Codice del Terzo settore su Normattiva, https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2017-07-03;117; Bilancio sociale 2024 della Confederazione, https://www.misericordie.it/wp-content/uploads/2026/04/BILANCIO_2024_DEF_BASSA.pdf; Statuto vigente nella pagina Trasparenza del sito. Numeri e indirizzo come in hugo.toml (telefonoInfo, telefonoFisso, email, indirizzo).</div>
+</section>
+
+</body>
+</html>

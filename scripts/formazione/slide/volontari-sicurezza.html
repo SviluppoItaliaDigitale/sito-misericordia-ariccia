@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/volontari-sicurezza.pdf">
+<title>La sicurezza del volontario: slide per il corso dei nuovi volontari</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per i formatori della Misericordia di Ariccia, da proiettare al corso dei nuovi volontari (servizi sanitari e sociali).
+Accompagnano la formazione obbligatoria e le procedure interne della Confraternita e non le sostituiscono.
+Fonti, lette il 21/11/2026:
+- D.Lgs. 9 aprile 2008, n. 81, art. 3, comma 12-bis, e art. 21 (Normattiva, testo vigente).
+- D.Lgs. 3 luglio 2017, n. 117 (Codice del Terzo settore), artt. 17, 18 e 102, comma 1, lett. a) (Normattiva).
+- D.P.R. 15 luglio 2003, n. 254, artt. 2 e 8 (Normattiva); D.Lgs. 30 aprile 1992, n. 285, art. 162, commi 1 e 4-ter (Normattiva).
+- ISS EpiCentro, «I 5 momenti per l'igiene delle mani» e uso dei guanti (strategia multimodale OMS), epicentro.iss.it/igiene-mani/5-momenti-oms.
+- OMS, Glove use information leaflet (revisione agosto 2009).
+- Ministero della Salute, «Fattori di esposizione a rischio di infezione da Hiv» (aggiornata il 30/11/2023).
+- Calendario nazionale vaccinale del PNPV 2023-2025 (Intesa Stato-Regioni n. 193/CSR del 2/8/2023, GU n. 194 del 21/8/2023),
+  prorogato di un anno con l'Intesa n. 243/CSR del 18/12/2025; circolare del Ministero della Salute n. 5134 del 23/06/2026
+  «Prevenzione e controllo dell'influenza: raccomandazioni per la stagione 2026-2027».
+- INAIL, «I disturbi muscoloscheletrici lavorativi», edizione 2012, pp. 21-23 e 34.
+- Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4 «Basic Life Support (adulto)», p. 6 (tabella 1) e p. 11.
+Le norme per i volontari di protezione civile (D.Lgs. 81/2008 art. 3, comma 3-bis; decreto interministeriale 13/4/2011;
+decreto del Capo Dipartimento 12/1/2012) NON sono usate: valgono per la protezione civile, non per i servizi sanitari e sociali.
+Tutti i disegni sono SVG fatti a mano dalla Misericordia di Ariccia. Contenuto sanitario: va rivisto dal responsabile sanitario.
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 40px; line-height: 54px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .passi { display: flex; flex-direction: column; gap: 18px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .lato { display: grid; gap: 56px; align-items: center; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .riquadro.blu p, .diapo .riquadro.blu li { color: #FFFFFF; }
+.diapo .corsi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.diapo .corsi > div { background: rgba(255,255,255,.75); border-top: 14px solid var(--blu); padding: 22px 26px; font-size: 31px; line-height: 40px; }
+.diapo .corsi h3 { font-size: 36px; line-height: 44px; font-weight: 800; color: var(--blu); margin-bottom: 8px; }
+.diapo .corsi .solo { border-top-color: var(--giallo); }
+.diapo .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo.copertina.con-disegno > .contenuto { right: 700px; left: 160px; }
+.diapo .crediti { font-size: 27px; line-height: 37px; gap: 8px; }
+.diapo .url { white-space: nowrap; }
+.diapo svg text { font-family: 'Montserrat', sans-serif; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="520" height="460" viewBox="0 0 520 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 40 L260 92 L320 40 L380 62 L476 170 L420 238 L380 200 V430 H140 V200 L100 238 L44 170 L140 62 Z" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M200 40 L260 92 L320 40" stroke="#FCEB0C" stroke-width="14"/>
+<path d="M260 92 V430" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M140 300 H380 M140 350 H380" stroke="#FCEB0C" stroke-width="16"/>
+<path d="M82 194 L118 222 M438 194 L402 222" stroke="#FCEB0C" stroke-width="16"/>
+</svg>
+<div class="contenuto">
+<h1>La sicurezza <span class="finale">del volontario</span></h1>
+<p class="sotto">Corso per i nuovi volontari: chi ti tutela, formazione, protezioni e igiene, la schiena, la strada, la divisa, lo stress, gli infortuni.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: presentatevi, spiegate che questa lezione riguarda la sicurezza di chi presta servizio, non dei pazienti. Chiedete chi ha già fatto servizi in ambulanza, in auto o al Centro di Ascolto, e che cosa lo ha preoccupato di più. Avvertenza per chi presenta: le norme per i volontari di protezione civile (decreto interministeriale 13 aprile 2011, decreto del Capo Dipartimento 12 gennaio 2012) non valgono per i nostri servizi sanitari e sociali e non vanno citate.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Queste slide accompagnano la formazione</h2>
+<p>Sono un supporto alla lezione. <strong>Non sostituiscono</strong> la formazione obbligatoria né le <strong>procedure interne</strong> della Confraternita.</p>
+<ul>
+<li>Che cosa fare in servizio, con quali protezioni e con quale mezzo lo dicono le <strong>procedure interne</strong> e i responsabili.</li>
+<li>Le manovre si imparano nei <strong>corsi</strong>, con gli istruttori.</li>
+</ul>
+<p class="riquadro blu">Un dubbio sulla sicurezza non si tiene per sé: si chiede prima del servizio, al responsabile.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: le slide danno le regole generali, con le fonti ufficiali nelle note. Dove serve una regola pratica della Confraternita (quali guanti, dove si buttano i rifiuti, come si sanifica il mezzo, chi avvisare) le note dicono «seguire la procedura interna»: mostrate in aula le procedure e i moduli in uso. Contenuto sanitario da far rivedere al responsabile sanitario prima dell'uso, come gli altri materiali sanitari del sito.</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Chi ti tutela: la legge sulla sicurezza</h2>
+<div class="lato" style="grid-template-columns: 1fr 340px;">
+<ul>
+<li>Il Testo unico sulla sicurezza, <strong>D.Lgs. 81/2008</strong>, all'art. 3, comma 12-bis, parla dei <strong>volontari</strong>.</li>
+<li>Ai volontari applica l'<strong>art. 21</strong>: le stesse regole dei lavoratori autonomi, non quelle dei dipendenti.</li>
+<li>Le modalità della tutela si possono fissare con <strong>accordi</strong> fra i volontari e l'ente.</li>
+</ul>
+<svg viewBox="0 0 340 400" width="340" height="400" role="img" aria-label="Fascicolo di legge con il segno di paragrafo" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M70 30 H230 L290 90 V370 H70 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<path d="M230 30 V90 H290" stroke="#003F85" stroke-width="12"/>
+<text x="180" y="250" text-anchor="middle" fill="#003F85" font-size="150" font-weight="800" stroke="none">§</text>
+<path d="M110 300 H250 M110 335 H210" stroke="#009FE3" stroke-width="10"/>
+</svg>
+</div>
+<p class="riquadro tenue">Se presti servizio dentro l'organizzazione di un <strong>datore di lavoro</strong>, lui deve informarti sui <strong>rischi</strong> di quei luoghi e sulle misure di prevenzione e di emergenza.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il comma 12-bis elenca i volontari della legge 11 agosto 1991, n. 266, i volontari del servizio civile, quelli delle associazioni di promozione sociale, sportive dilettantistiche e religiose, e stabilisce che «si applicano le disposizioni di cui all'articolo 21». Il secondo periodo prevede accordi fra i soggetti e le associazioni per le modalità della tutela; il terzo obbliga il datore di lavoro, nella cui organizzazione il volontario opera, a dare informazioni dettagliate sui rischi specifici e sulle misure di prevenzione e di emergenza, e a eliminare o ridurre al minimo i rischi da interferenze. Attenzione: la legge 266/1991 è stata abrogata dal Codice del Terzo settore (D.Lgs. 117/2017, art. 102, comma 1, lett. a), ma il comma 12-bis non è stato riscritto e cita ancora quella legge; che valga per i volontari degli enti del Terzo settore è la lettura corrente, da confermare con il responsabile della sicurezza della Confraternita. Non usate il comma 3-bis e i decreti del 2011 e del 2012: riguardano la protezione civile. Fonte: D.Lgs. 9 aprile 2008, n. 81, art. 3, comma 12-bis (Normattiva, testo vigente letto il 21/11/2026); D.Lgs. 3 luglio 2017, n. 117, art. 102, comma 1, lett. a).</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa chiede l'art. 21</h2>
+<div class="griglia-2">
+<div class="riquadro tenue">
+<h3>Il volontario deve</h3>
+<ul style="margin-top: 14px;">
+<li>usare <strong>attrezzature</strong> conformi alle regole del Testo unico;</li>
+<li>avere i <strong>dispositivi di protezione individuale</strong> (DPI) e usarli come prevede la legge.</li>
+</ul>
+</div>
+<div class="riquadro blu">
+<h3>Il volontario può</h3>
+<ul style="margin-top: 14px;">
+<li>chiedere la <strong>sorveglianza sanitaria</strong> per i rischi delle sue attività;</li>
+<li>seguire <strong>corsi sulla salute e sicurezza</strong> centrati su quei rischi.</li>
+</ul>
+</div>
+</div>
+<p class="piccolo">Quali DPI usare in ogni servizio e dove trovarli lo dice la procedura interna della Confraternita.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: l'art. 21, comma 1, chiede di utilizzare attrezzature di lavoro conformi al titolo III e di munirsi di dispositivi di protezione individuale e utilizzarli conformemente al titolo III (la lettera c, sulla tessera di riconoscimento negli appalti, non riguarda i nostri servizi). Il comma 2 dà la facoltà, «relativamente ai rischi propri delle attività svolte e con oneri a proprio carico», di beneficiare della sorveglianza sanitaria (art. 41) e di partecipare a corsi di formazione specifici (art. 37). Dite chiaramente che la norma usa queste parole; come la Confraternita organizza DPI, formazione ed eventuali controlli sanitari lo spiega il responsabile, secondo la procedura interna. Fonte: D.Lgs. 81/2008, art. 21, commi 1 e 2 (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Registro e assicurazione</h2>
+<div class="lato" style="grid-template-columns: 1fr 360px;">
+<ul>
+<li>Chi fa volontariato in modo non occasionale è iscritto nel <strong>registro dei volontari</strong> dell'ente.</li>
+<li>L'ente <strong>assicura</strong> i volontari contro gli <strong>infortuni</strong> e le <strong>malattie</strong> legati all'attività di volontariato.</li>
+<li>E per la <strong>responsabilità civile</strong> verso altre persone.</li>
+</ul>
+<svg viewBox="0 0 360 400" width="360" height="400" role="img" aria-label="Scudo con il segno di spunta, simbolo di protezione" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M180 30 L320 80 V190 C320 290 260 350 180 380 C100 350 40 290 40 190 V80 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="14"/>
+<path d="M110 205 L160 255 L255 150" stroke="#009FE3" stroke-width="22"/>
+</svg>
+</div>
+<p class="riquadro blu">Per questo il servizio si fa <strong>con la Confraternita</strong>: turni, mezzi e attività decisi dall'ente.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il Codice del Terzo settore definisce il volontario (art. 17, comma 2: persona che per libera scelta mette a disposizione tempo e capacità, in modo personale, spontaneo e gratuito) e obbliga gli enti a iscrivere in un apposito registro i volontari che svolgono la loro attività in modo non occasionale (art. 17, comma 1). L'art. 18, comma 1: «Gli enti del Terzo settore che si avvalgono di volontari devono assicurarli contro gli infortuni e le malattie connessi allo svolgimento dell'attività di volontariato, nonché per la responsabilità civile verso i terzi». Compagnia, polizza e modulo di denuncia: seguire la procedura interna (non citate numeri di polizza in aula se non quelli ufficiali dell'ente). Fonte: D.Lgs. 3 luglio 2017, n. 117, artt. 17 e 18 (Normattiva, letti il 21/11/2026).</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima la formazione, poi il servizio</h2>
+<p>In servizio fai <strong>solo ciò per cui sei formato</strong> e che ti è stato affidato. I corsi della Misericordia:</p>
+<div class="corsi">
+<div><h3>Primo soccorso</h3>Le manovre e le buone pratiche di base.</div>
+<div><h3>Soccorritore I e II livello</h3>Per i servizi in ambulanza.</div>
+<div><h3>BLSD e P-BLSD</h3>Rianimazione e defibrillatore, adulto e bambino.</div>
+<div class="solo"><h3>Autisti dei mezzi di emergenza</h3>Riservato ai volontari.</div>
+<div><h3>Sicurezza (D.Lgs. 81/2008)</h3>La formazione per la sicurezza.</div>
+<div style="background: var(--blu); color: #FFFFFF; border-top-color: var(--giallo);"><h3 style="color: #FFFFFF;">Non sai fare una cosa?</h3><span style="color:#FFFFFF">Fermati e chiedi a chi è formato.</span></div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: un volontario non formato che improvvisa mette in pericolo sé stesso e la persona assistita. Spiegate il percorso della Confraternita: quali corsi servono per quale servizio (auto, ambulanza, guida dei mezzi, eventi) e chi li assegna, secondo la procedura interna. Elenco dei corsi come nella pagina Formazione del sito (/servizi/formazione/): primo soccorso, soccorritore di I e II livello, BLSD e P-BLSD con formatori abilitati ARES 118, autisti dei mezzi di emergenza (riservato ai volontari), sicurezza (D.lgs. 81/08). Iscrizioni: 328 8105399, fisso 06 933 3717.</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Igiene delle mani: i 5 momenti</h2>
+<div class="lato" style="grid-template-columns: 1fr 500px; gap: 50px;">
+<ol class="passi" style="font-size: 36px; line-height: 46px;">
+<li><strong>Prima</strong> di toccare la persona assistita.</li>
+<li><strong>Prima</strong> di una manovra pulita o asettica.</li>
+<li><strong>Dopo</strong> il rischio di contatto con liquidi biologici.</li>
+<li><strong>Dopo</strong> aver toccato la persona assistita.</li>
+<li><strong>Dopo</strong> aver toccato le cose intorno a lei.</li>
+</ol>
+<div style="display:flex;flex-direction:column;gap:24px">
+<p class="riquadro tenue" style="font-size:34px;line-height:46px"><strong>Gel alcolico:</strong> 20-30 secondi, finché le mani sono asciutte.</p>
+<p class="riquadro blu" style="font-size:34px;line-height:46px"><strong>Acqua e sapone:</strong> 40-60 secondi, quando le mani sono visibilmente sporche.</p>
+</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: è il modello dell'Organizzazione mondiale della sanità, valido anche in ambulanza: la «zona del paziente» comprende la barella e ciò che la persona tocca. Fate provare la frizione con il gel in aula. Il momento 3 vale anche dopo aver tolto i guanti. Errori frequenti: lavarsi le mani solo a fine turno; credere che i guanti bastino. Fonte: ISS EpiCentro, «I 5 momenti per l'igiene delle mani» (strategia multimodale dell'OMS), epicentro.iss.it/igiene-mani/5-momenti-oms, letta il 21/11/2026: cinque momenti; frizione con soluzione idroalcolica «sono sufficienti 20-30 secondi»; lavaggio con acqua e sapone «40-60 secondi». Stessa pagina: acqua e sapone «quando le mani sono visibilmente sporche (sangue, altri liquidi biologici)», la frizione alcolica è la metodica da preferire quando non lo sono, «una volta asciutte le mani sono sicure». Prodotti e dispenser: seguire la procedura interna.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>I guanti monouso</h2>
+<div class="griglia-2">
+<div class="riquadro tenue">
+<h3>Quando</h3>
+<ul style="margin-top: 14px;">
+<li>Quando è prevedibile il contatto con <strong>sangue</strong> o altri liquidi biologici, mucose, pelle non integra.</li>
+<li>Prima di indossarli: <strong>igiene delle mani</strong>.</li>
+</ul>
+</div>
+<div class="riquadro blu">
+<h3>Come</h3>
+<ul style="margin-top: 14px;">
+<li>Un paio per <strong>ogni persona</strong> assistita.</li>
+<li>Si cambiano passando da una parte sporca a una pulita.</li>
+<li><strong>Mai riusarli</strong>. Tolti i guanti, di nuovo igiene delle mani.</li>
+</ul>
+</div>
+</div>
+<p class="no"><strong>I guanti non sostituiscono l'igiene delle mani:</strong> non proteggono del tutto e le mani si sporcano quando li togli.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: fate indossare e togliere i guanti in aula, rovesciandoli senza toccare l'esterno con la pelle. Errore frequente: tenere gli stessi guanti per guidare, toccare il telefono, la maniglia, la cartella. Quali guanti (materiale, taglie) e dove sono nel mezzo: seguire la procedura interna. Fonti: OMS, Glove use information leaflet (revisione agosto 2009), raccomandazioni A-E (i guanti non sostituiscono l'igiene delle mani; si indossano quando è prevedibile il contatto con sangue, altri liquidi biologici, mucose, pelle non integra; si tolgono dopo l'assistenza e non si usa lo stesso paio per più pazienti; si cambiano passando da una sede contaminata a un'altra; il riuso non è raccomandato); ISS EpiCentro, pagina «5 momenti OMS» (i guanti non garantiscono una protezione assoluta; l'igiene delle mani resta imprescindibile dopo la rimozione), lette il 21/11/2026.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dopo il servizio: mezzo e rifiuti</h2>
+<div class="lato" style="grid-template-columns: 1fr 380px;">
+<ul>
+<li>Il mezzo, la barella e i presidi si <strong>puliscono e disinfettano</strong> come dice la procedura interna, con i guanti.</li>
+<li>Ciò che è sporco di <strong>sangue visibile</strong> è un rifiuto sanitario <strong>a rischio infettivo</strong>: va nel contenitore dedicato.</li>
+<li>Aghi e oggetti taglienti: nel contenitore <strong>rigido</strong>, resistente alla puntura.</li>
+</ul>
+<svg viewBox="0 0 380 420" width="380" height="420" role="img" aria-label="Contenitore rigido per rifiuti taglienti e pungenti, con il coperchio" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M70 120 H310 L290 390 H90 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="12"/>
+<rect x="50" y="80" width="280" height="44" rx="8" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<path d="M160 80 V60 H220 V80" stroke="#003F85" stroke-width="12"/>
+<rect x="105" y="190" width="170" height="120" fill="#FFFFFF" stroke="#003F85" stroke-width="6"/>
+<text x="190" y="238" text-anchor="middle" fill="#003F85" font-size="30" font-weight="800" stroke="none">Taglienti</text>
+<text x="190" y="280" text-anchor="middle" fill="#003F85" font-size="30" font-weight="800" stroke="none">pungenti</text>
+</svg>
+</div>
+<p class="riquadro tenue">Dove si mettono i contenitori pieni e chi li ritira: <strong>procedura interna</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: la sanificazione del mezzo e dei presidi (prodotti, tempi, ordine delle operazioni, registrazione) non ha una regola nazionale da riportare qui: seguire la procedura interna della Confraternita e mostrarla in aula. Per i rifiuti, il regolamento nazionale definisce «rifiuti sanitari pericolosi a rischio infettivo» anche quelli contaminati da sangue o altri liquidi biologici che contengono sangue in quantità tale da renderlo visibile (art. 2, comma 1, lett. d, n. 2b1) e prevede imballaggi a perdere con la scritta e il simbolo del rischio biologico e, per taglienti e pungenti, un imballaggio rigido resistente alla puntura (art. 8, comma 1). Il regolamento è scritto per le strutture sanitarie: come la Confraternita raccoglie e conferisce i propri rifiuti lo dice la procedura interna. Errore frequente: buttare garze sporche di sangue nei rifiuti comuni o nel cestino del mezzo. Fonte: D.P.R. 15 luglio 2003, n. 254, artt. 2 e 8 (Normattiva, letti il 21/11/2026).</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Sangue addosso o una puntura: che cosa fare</h2>
+<ol class="passi">
+<li><strong>Fermati</strong> appena puoi, in sicurezza, e togli i guanti.</li>
+<li><strong>Lava subito</strong> la parte, come dice la procedura interna.</li>
+<li><strong>Avvisa subito</strong> il responsabile del servizio, anche se ti sembra poco.</li>
+<li>Vai al <strong>Pronto soccorso</strong> il prima possibile: il medico valuta se serve una profilassi.</li>
+</ol>
+<p class="riquadro blu">Contro l'Hiv la profilassi va iniziata il prima possibile, <strong>senza superare le 48 ore</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: esposizione vuol dire puntura o taglio con un oggetto sporco di sangue, schizzi negli occhi, in bocca o su pelle ferita. Il primo intervento sulla parte (come lavarla, con che cosa, quanto a lungo) va insegnato con la procedura interna della Confraternita, scritta con il medico: qui non la riportiamo. Segnalare serve anche per l'assicurazione (slide «Infortuni»). Non si chiede alla persona assistita di fare esami: lo decide il medico. Fonti: OMS/ISS EpiCentro, «5 momenti» (igiene delle mani subito dopo il rischio di esposizione a liquidi biologici); Ministero della Salute, pagina «Fattori di esposizione a rischio di infezione da Hiv» (aggiornata il 30/11/2023, letta il 21/11/2026): dopo un infortunio accidentale con un oggetto contaminato di sangue, ad esempio fra gli operatori sanitari, andare il più presto possibile, senza superare le 48 ore, al Pronto soccorso o al reparto di infettivologia, dove il medico può prescrivere un test e la profilassi post-esposizione (PEP) per un mese.</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Le vaccinazioni raccomandate</h2>
+<div class="lato" style="grid-template-columns: 1fr 300px; gap: 50px;">
+<ul style="font-size:36px;line-height:47px">
+<li><strong>Epatite B</strong>: offerta gratuita a chi fa soccorso e trasporto di infortunati e infermi, anche da volontario, se mai vaccinato.</li>
+<li><strong>Morbillo, parotite, rosolia</strong> e <strong>varicella</strong>: per chi non è protetto e lavora in ambito sanitario.</li>
+<li><strong>Influenza</strong>: ogni anno, secondo la circolare del Ministero della Salute.</li>
+<li><strong>Difterite, tetano, pertosse</strong>: un richiamo ogni 10 anni.</li>
+</ul>
+<svg viewBox="0 0 300 420" width="300" height="420" role="img" aria-label="Siringa per vaccinazione" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M150 20 V60 M110 60 H190" stroke="#003F85" stroke-width="14"/>
+<path d="M150 60 V110" stroke="#003F85" stroke-width="10"/>
+<rect x="105" y="110" width="90" height="210" rx="10" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<rect x="117" y="200" width="66" height="108" fill="#009FE3" stroke="none"/>
+<path d="M105 160 H135 M105 200 H135 M105 240 H135 M105 280 H135" stroke="#003F85" stroke-width="6"/>
+<path d="M80 110 H220" stroke="#003F85" stroke-width="12"/>
+<path d="M135 320 V345 H165 V320" stroke="#003F85" stroke-width="10"/>
+<path d="M150 345 V405" stroke="#003F85" stroke-width="6"/>
+</svg>
+</div>
+<p class="riquadro tenue">Ne parli con il tuo <strong>medico</strong>: valuta lui che cosa ti manca.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il Calendario nazionale vaccinale, nella parte sulle vaccinazioni per soggetti a rischio per esposizione professionale, raccomanda l'offerta gratuita dell'antiepatite B, fra gli altri, agli «addetti al soccorso e al trasporto di infortunati e infermi» e ai «soggetti che svolgono attività di lavoro, studio e volontariato nel settore della sanità» mai vaccinati, con il controllo degli anticorpi un mese dopo l'ultima dose; MPR per «tutti gli operatori sanitari suscettibili», in due dosi; antivaricella, in due dosi, per le «persone suscettibili che lavorano in ambiente sanitario»; per l'influenza rinvia alla circolare annuale; per la pertosse ricorda il richiamo dTpa ogni 10 anni, importante soprattutto per chi assiste donne in gravidanza e neonati. La circolare 2026-2027 raccomanda il vaccino antinfluenzale a medici e personale sanitario e sociosanitario di assistenza e lascia alle Regioni l'offerta ad altre categorie. Dove vaccinarsi: medico di famiglia o centro vaccinale della ASL. Se la Confraternita chiede o raccomanda vaccinazioni per alcuni servizi: seguire la procedura interna. Fonti: Calendario nazionale vaccinale del PNPV 2023-2025 (Intesa Stato-Regioni n. 193/CSR del 2/8/2023, GU n. 194 del 21/8/2023; piano prorogato di un anno con l'Intesa n. 243/CSR del 18/12/2025), testo su trovanorme.salute.gov.it; circolare del Ministero della Salute n. 5134 del 23/06/2026, p. 18; letti il 21/11/2026.</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La schiena: come si solleva</h2>
+<div class="lato" style="grid-template-columns: 1fr 720px; gap: 40px;">
+<ul style="font-size:36px;line-height:47px">
+<li>Porta il carico <strong>vicino al corpo</strong>.</li>
+<li><strong>Piega le gambe</strong>, non la schiena; un piede più avanti dell'altro.</li>
+<li>Non girare solo il busto: <strong>gira tutto il corpo</strong> spostando i piedi.</li>
+<li>Se puoi, fai <strong>scivolare</strong> il carico e <strong>spingi</strong> invece di tirare.</li>
+</ul>
+<svg viewBox="0 0 720 420" width="720" height="420" role="img" aria-label="Due modi di sollevare una scatola: a sinistra, sbagliato, con le gambe tese e la schiena curva in avanti; a destra, corretto, con le gambe piegate, la schiena dritta e la scatola vicino al corpo" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="0" y="0" width="350" height="420" fill="#FFFFFF" fill-opacity=".75"/>
+<rect x="370" y="0" width="350" height="420" fill="#FFFFFF" fill-opacity=".75"/>
+<path d="M20 370 H330 M390 370 H700" stroke="#9AA6C2" stroke-width="5"/>
+<!-- sbagliato -->
+<path d="M100 370 L118 262 L134 370" stroke="#233B74" stroke-width="12"/>
+<path d="M118 262 C150 200 200 205 226 236" stroke="#233B74" stroke-width="12"/>
+<circle cx="256" cy="246" r="24" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M218 236 L232 330" stroke="#233B74" stroke-width="10"/>
+<rect x="222" y="326" width="80" height="44" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M40 40 L84 84 M84 40 L40 84" stroke="#C8102E" stroke-width="12"/>
+<text x="102" y="76" fill="#A50E26" font-size="34" font-weight="800" stroke="none">No</text>
+<!-- corretto -->
+<path d="M520 370 L556 300 L494 270" stroke="#233B74" stroke-width="12"/>
+<path d="M494 270 L470 340 L420 370" stroke="#233B74" stroke-width="12"/>
+<path d="M494 270 L506 160" stroke="#233B74" stroke-width="12"/>
+<circle cx="512" cy="124" r="24" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M506 170 L566 262" stroke="#233B74" stroke-width="10"/>
+<rect x="566" y="242" width="80" height="56" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<path d="M410 62 L432 84 L474 40" stroke="#1E7B34" stroke-width="12"/>
+<text x="490" y="76" fill="#1E7B34" font-size="34" font-weight="800" stroke="none">Sì</text>
+</svg>
+</div>
+<p class="no"><strong>Un peso troppo grande non si solleva da soli:</strong> si usa un ausilio o si chiama un compagno.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: il mal di schiena è uno dei rischi più frequenti per chi sposta persone, barelle, sedie e borse. Fate provare in aula il sollevamento di una borsa da terra nei due modi. Errori frequenti: sollevare con le gambe tese, ruotare il busto con il peso in mano, tenere il carico lontano dal corpo. Fonte: INAIL, «I disturbi muscoloscheletrici lavorativi», edizione 2012: p. 21 (non sollevare manualmente da soli pesi oltre i valori massimi ricavati dalla norma tecnica UNI ISO 11228-1; oltre, ausilio meccanico o più operatori), p. 22 (avvicinare l'oggetto al corpo, non ruotare solo il tronco ma girare tutto il corpo spostandosi con gli arti inferiori; sollevando da terra, piegare le gambe e tenere un piede più avanti dell'altro), p. 23 (far scivolare il carico spingendolo anziché tirandolo, senza inarcare la schiena), letta il 21/11/2026.</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Pazienti e barella: ausili e squadra</h2>
+<div class="lato" style="grid-template-columns: 1fr 560px;">
+<ul>
+<li>Per sollevare o spostare una persona si usano gli <strong>ausili</strong>: barella con ruote, telo di scorrimento, sedia da trasporto.</li>
+<li>Gli spostamenti si fanno <strong>in squadra</strong>: decidete prima chi guida la manovra e il percorso.</li>
+<li>Se la persona può aiutarvi, <strong>chiedetele di collaborare</strong>.</li>
+</ul>
+<svg viewBox="0 0 560 360" width="560" height="360" role="img" aria-label="Barella con le ruote, con una persona sdraiata coperta da un lenzuolo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="110" cy="150" r="32" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M150 170 C220 120 400 125 500 160 V186 H150 Z" fill="#EEF0F8" stroke="#009FE3" stroke-width="9"/>
+<rect x="50" y="186" width="470" height="30" rx="8" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M120 216 L190 290 M450 216 L380 290 M190 216 L120 290 M380 216 L450 290" stroke="#003F85" stroke-width="9"/>
+<circle cx="120" cy="310" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<circle cx="190" cy="310" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<circle cx="380" cy="310" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<circle cx="450" cy="310" r="20" fill="#FCEB0C" stroke="#003F85" stroke-width="8"/>
+<path d="M50 201 H20 M520 201 H545" stroke="#003F85" stroke-width="10"/>
+</svg>
+</div>
+<p class="riquadro tenue">Le tecniche con barella, sedia e telo si imparano e si provano nel <strong>corso soccorritore</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: le scale, i corridoi stretti e le persone che non collaborano sono i momenti di maggior rischio. Mostrate i presidi dei nostri mezzi; come si caricano barella e sedia e come si comunica in squadra si insegna nel corso soccorritore e con la procedura interna. Fonte: INAIL, «I disturbi muscoloscheletrici lavorativi», edizione 2012, p. 34 («Per il sollevamento o lo spostamento dei pazienti è opportuno far uso di adeguati ausili»: per i pazienti non collaboranti ausili a imbragatura, telini e tavole di scorrimento per i trasferimenti orizzontali con due operatori, barelle e letti con ruote; per i pazienti parzialmente collaboranti cinture con maniglie, piattaforme girevoli, carrozzine) e p. 21 (oltre i valori limite, ausilio meccanico o più operatori), letta il 21/11/2026.</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Su strada: prima la scena sicura</h2>
+<div class="lato" style="grid-template-columns: 1fr 380px;">
+<ul>
+<li>Prima di scendere guarda: <strong>traffico</strong>, fuoco o fumo, gas, corrente elettrica, <strong>persone violente</strong>.</li>
+<li>Scendi con il <strong>giubbotto ad alta visibilità</strong>; per chi guida, in certi casi, è un obbligo del Codice della strada.</li>
+<li>Se il pericolo resta, <strong>non entrare</strong>: avvisa la centrale e aspetta.</li>
+</ul>
+<svg viewBox="0 0 380 420" width="380" height="420" role="img" aria-label="Giubbotto ad alta visibilità giallo con due bande riflettenti" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 40 L160 40 C170 90 210 110 210 110 V390 H70 C60 390 55 380 55 370 V170 L95 120 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="12"/>
+<path d="M260 40 L220 40 C210 90 170 110 170 110 V390 H310 C320 390 325 380 325 370 V170 L285 120 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="12"/>
+<path d="M55 270 H325 M55 330 H325" stroke="#9AA6C2" stroke-width="22"/>
+<path d="M55 270 H325 M55 330 H325" stroke="#FFFFFF" stroke-width="8"/>
+</svg>
+</div>
+<p class="no"><strong>Un soccorritore ferito è una persona in più da soccorrere.</strong></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: è la stessa regola delle slide di primo soccorso e BLSD: la sicurezza tua, della persona e dei presenti viene prima di tutto. Il Codice della strada, art. 162, comma 4-ter, vieta al conducente di scendere dal veicolo e circolare sulla strada senza giubbotto o bretelle retroriflettenti ad alta visibilità nei casi del comma 1 (veicolo fermo sulla carreggiata fuori dai centri abitati, di notte senza luci efficienti o quando non è visibile a sufficiente distanza), anche in corsia di emergenza o in piazzola. Dove fermare il mezzo, luci e dispositivi, chi scende per primo: seguire la procedura interna e il corso autisti. Errore frequente: scendere dal lato del traffico o fermarsi in mezzo alla carreggiata. Fonti: Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4 «Basic Life Support (adulto)», p. 11 («Sicurezza»); slide «Primo soccorso» della Misericordia (pericoli della scena, dal cap. 12, p. 9); D.Lgs. 30 aprile 1992, n. 285, art. 162, commi 1 e 4-ter (Normattiva, letto il 21/11/2026).</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>La divisa</h2>
+<div class="lato" style="grid-template-columns: 1fr 400px;">
+<ul>
+<li>La nostra divisa è <strong>blu</strong>, con il colletto e le fasce <strong>giallo fluo</strong> e i filetti argento.</li>
+<li>Si indossa <strong>in servizio</strong>: chi la vede pensa che tu sia in servizio e ti chiede aiuto.</li>
+<li>Ti rende <strong>riconoscibile e visibile</strong>: tienila completa e in ordine.</li>
+</ul>
+<svg viewBox="0 0 400 440" width="400" height="440" role="img" aria-label="Giacca della divisa blu con colletto e fasce giallo fluo e filetti argento" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M140 40 L200 86 L260 40 L310 58 L380 160 L338 214 L310 186 V410 H90 V186 L62 214 L20 160 L90 58 Z" fill="#3A5DAE" stroke="#233B74" stroke-width="10"/>
+<path d="M140 40 L200 86 L260 40 L240 30 L200 62 L160 30 Z" fill="#D9EC3C" stroke="#233B74" stroke-width="8"/>
+<path d="M200 86 V410" stroke="#233B74" stroke-width="6"/>
+<rect x="90" y="270" width="220" height="44" fill="#D9EC3C" stroke="none"/>
+<path d="M90 262 H310 M90 322 H310 M90 360 H310" stroke="#C9D3E6" stroke-width="7"/>
+<path d="M44 170 L76 196 M356 170 L324 196" stroke="#D9EC3C" stroke-width="22"/>
+<path d="M90 410 H310" stroke="#233B74" stroke-width="10"/>
+</svg>
+</div>
+<p class="piccolo">Disegno della divisa sanitaria blu; quella arancione è della protezione civile e non si usa nei nostri servizi.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: la divisa è la regola generale del servizio, non un capo da indossare nel tempo libero: fuori servizio una persona in difficoltà vi scambierebbe per soccorritori operativi, con mezzi e materiali che non avete. Quando e come si indossa, che cosa si fa se si rovina, come si riconsegna: seguire il regolamento e la procedura interna della Confraternita, da mostrare in aula. Il disegno riprende il riferimento della divisa giallo-ciano usato nei video della rubrica (scripts/video-rubrica/riferimenti/volontari-divisa.png): divisa blu sanitaria con colletto e fasce giallo fluo e filetti argento; l'arancione è della protezione civile, settore non attivo. Stemma e bandiera non sono disegnati per non riprodurre il logo fuori dai file originali.</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dopo un servizio difficile, se ne parla</h2>
+<div class="lato" style="grid-template-columns: 1fr 420px;">
+<ul>
+<li>Un servizio pesante può lasciare <strong>pensieri, tristezza, rabbia, insonnia</strong>. Succede anche ai soccorritori esperti.</li>
+<li>Non tenerlo per te: parlane con il <strong>responsabile</strong>, con i <strong>formatori</strong>, con i compagni di squadra.</li>
+<li>Se il malessere continua, parlane con il tuo <strong>medico</strong>.</li>
+</ul>
+<svg viewBox="0 0 420 380" width="420" height="380" role="img" aria-label="Due fumetti di dialogo, uno blu e uno giallo, che si sovrappongono" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M30 40 H250 C266 40 276 50 276 66 V170 C276 186 266 196 250 196 H120 L72 240 L82 196 H56 C40 196 30 186 30 170 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M80 100 H226 M80 140 H190" stroke="#009FE3" stroke-width="12"/>
+<path d="M150 180 H364 C380 180 390 190 390 206 V300 C390 316 380 326 364 326 H340 L350 366 L302 326 H176 C160 326 150 316 150 300 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M196 238 H344 M196 276 H300" stroke="#003F85" stroke-width="12"/>
+</svg>
+</div>
+<p class="riquadro blu">Chiedere aiuto fa parte della sicurezza, come i guanti.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: dopo un decesso, un bambino, una scena violenta o un servizio andato male è normale stare male per qualche giorno. Il primo passo è parlarne con chi era in servizio e con il responsabile. Se la Confraternita ha un momento di confronto dopo i servizi difficili o un riferimento per il supporto psicologico, indicatelo qui secondo la procedura interna; non promettete servizi che l'ente non ha. Le Linee guida 2025 riconoscono che trovare una persona in arresto cardiaco e tentare la rianimazione può essere un'esperienza traumatica e che soccorritori e presenti possono trarre beneficio da un supporto psicologico successivo. Fonte: Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4 «Basic Life Support (adulto)», p. 6 (tabella 1, benessere psicologico dei soccorritori) e p. 11 («Considera il benessere psicologico dei soccorritori laici e dei presenti - offri loro supporto dopo l'evento»).</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Incidenti e infortuni: si segnalano subito</h2>
+<div class="lato" style="grid-template-columns: 1fr 340px;">
+<ol class="passi">
+<li>Ti fai male, ti pungi, c'è un incidente con il mezzo: <strong>avvisa subito il responsabile</strong>.</li>
+<li>Anche se ti sembra poco: un dolore può peggiorare nei giorni dopo.</li>
+<li>Fatti visitare e conserva i <strong>referti</strong>: servono per l'assicurazione.</li>
+</ol>
+<svg viewBox="0 0 340 420" width="340" height="420" role="img" aria-label="Cartellina con un modulo di segnalazione e una penna" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="50" y="50" width="240" height="340" rx="16" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<rect x="120" y="30" width="100" height="44" rx="10" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M90 130 H250 M90 180 H250 M90 230 H210 M90 280 H180" stroke="#009FE3" stroke-width="10"/>
+<path d="M300 210 L220 330 L208 362 L234 342 L314 222 Z" fill="#FFFFFF" stroke="#233B74" stroke-width="9"/>
+</svg>
+</div>
+<p class="riquadro tenue">L'ente assicura i volontari contro <strong>infortuni e malattie</strong> legati al servizio: per la denuncia segui la <strong>procedura interna</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: segnalare non è una colpa. Serve a farsi curare, ad attivare l'assicurazione e a correggere ciò che ha causato l'incidente, perché non capiti a un altro. Vale anche per i «quasi incidenti» (la barella che stava per cadere, l'ago trovato nel posto sbagliato). A chi si segnala, con quale modulo, entro quanto tempo e come si fa la denuncia alla compagnia: seguire la procedura interna. Fonte: D.Lgs. 3 luglio 2017, n. 117, art. 18, comma 1 (assicurazione obbligatoria dei volontari contro infortuni e malattie connessi all'attività di volontariato e per la responsabilità civile verso i terzi), Normattiva, letto il 21/11/2026.</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi">
+<li>Fai <strong>solo ciò per cui sei formato</strong>; nel dubbio, chiedi.</li>
+<li><strong>Igiene delle mani</strong> nei 5 momenti; i guanti non la sostituiscono.</li>
+<li>Sangue addosso o una puntura: lava, <strong>avvisa subito</strong>, Pronto soccorso.</li>
+<li>Carichi <strong>vicino al corpo</strong>, gambe piegate, ausili e squadra.</li>
+<li>Su strada <strong>scena sicura</strong> e giubbotto; divisa solo in servizio.</li>
+<li>Servizio difficile o infortunio: <strong>parlane e segnala</strong>.</li>
+</ol>
+<p class="piccolo">Corsi della Misericordia di Ariccia: 328 8105399 (fisso 06 933 3717) · <span class="url">www.misericordia-ariccia.it/servizi/formazione/</span></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa dire: riepilogo della lezione; lasciate la slide proiettata durante le domande e consegnate ai nuovi volontari le procedure interne citate nelle note (DPI, sanificazione, rifiuti, esposizione a liquidi biologici, infortuni, divisa). Fonti: quelle delle slide precedenti, elencate nella slide finale.</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti</h2>
+<ul class="crediti">
+<li><strong>Norme</strong> (Normattiva): D.Lgs. 81/2008, artt. 3, comma 12-bis, e 21; D.Lgs. 117/2017, artt. 17, 18 e 102; D.P.R. 254/2003, artt. 2 e 8; Codice della strada, art. 162.</li>
+<li><strong>Igiene delle mani e guanti:</strong> ISS EpiCentro, «I 5 momenti per l'igiene delle mani» (strategia OMS); OMS, <em>Glove use information leaflet</em>, 2009.</li>
+<li><strong>Esposizione:</strong> Ministero della Salute, «Fattori di esposizione a rischio di infezione da Hiv».</li>
+<li><strong>Vaccinazioni:</strong> Calendario nazionale vaccinale del PNPV 2023-2025, prorogato al 2026; circolare del Ministero della Salute sull'influenza 2026-2027.</li>
+<li><strong>Schiena:</strong> INAIL, «I disturbi muscoloscheletrici lavorativi», 2012.</li>
+<li><strong>Sicurezza e benessere:</strong> Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4.</li>
+<li><strong>Disegni:</strong> Misericordia di Ariccia. Testi riassunti dalla Misericordia di Ariccia.</li>
+</ul>
+<p class="piccolo">Verificato il 21/11/2026.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<div class="note-relatore">Slide delle fonti: va lasciata in fondo alla presentazione anche quando si tolgono altre slide. Indirizzi: normattiva.it; epicentro.iss.it/igiene-mani/5-momenti-oms; cdn.who.int (Glove use information leaflet); salute.gov.it (pagina Hiv «Fattori di esposizione»); trovanorme.salute.gov.it (PNPV 2023-2025 e circolare influenza 2026-2027); statoregioni.it (Intesa n. 243/CSR del 18/12/2025); inail.it (I disturbi muscoloscheletrici lavorativi); ircouncil.it/linee-guida-rcp-2025/. Ricontrollare a ogni nuovo Piano nazionale vaccinale, a ogni circolare antinfluenzale e a ogni modifica delle norme.</div>
+</section>
+
+</body>
+</html>

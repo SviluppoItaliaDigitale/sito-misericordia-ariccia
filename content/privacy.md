@@ -55,7 +55,7 @@ Le richieste (email, messaggi WhatsApp, appunti) le **cancelliamo subito dopo av
 ## Titolare del trattamento
 
 **Confraternita di Misericordia di Ariccia ODV**
-Sede legale: Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM)
+Sede amministrativa: Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)
 Codice fiscale: 90031910582
 Email: [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it) — PEC: [misericordia-ariccia@pec.misericordia-ariccia.it](mailto:misericordia-ariccia@pec.misericordia-ariccia.it)
 
