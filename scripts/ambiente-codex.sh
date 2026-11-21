@@ -44,7 +44,7 @@ elif [ -n "${AP_TOKEN:-}" ]; then
     rm -rf "$AP"
     if git clone -q --depth 1 --filter=blob:none --sparse \
          "https://x-access-token:${AP_TOKEN}@github.com/SviluppoItaliaDigitale/assistente-personale.git" "$AP" >/dev/null 2>&1 \
-       && git -C "$AP" sparse-checkout set .agents/skills .claude/skills/landing-premium routine >/dev/null 2>&1; then
+       && git -C "$AP" sparse-checkout set .agents/skills .claude/skills/landing-premium .claude/skills/leggi-web .claude/skills/ricopia-dal-vero routine >/dev/null 2>&1; then
       git -C "$AP" remote set-url origin https://github.com/SviluppoItaliaDigitale/assistente-personale.git
       touch "$SEGNO"
       ln -sfn "$AP/.agents/skills" "$HOME/.agents/skills"

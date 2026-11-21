@@ -2,7 +2,7 @@
 """Foglio di confronto fra un riferimento reale e il nostro render: affiancati e sovrapposti al 50%.
 Skill ricopia-dal-vero (21/11/2026). Uso:
   python3 confronta.py RIFERIMENTO.jpg RENDER.jpg USCITA.jpg [--titolo "testo"]
-Le due immagini si portano alla stessa altezza (sovrapposizione: il render adattato alla cornice del riferimento).
+Le due immagini si portano alla stessa altezza con scala uniforme; nella sovrapposizione stanno centrate su una tela comune, senza deformazioni.
 Il foglio serve solo a lavorare: i riferimenti con diritti d'autore non si pubblicano.
 """
 import argparse
@@ -33,7 +33,14 @@ def main():
     ren = Image.open(a.render).convert("RGB")
     rif = rif.resize((round(rif.width * h / rif.height), h))
     ren = ren.resize((round(ren.width * h / ren.height), h))
-    sovr = Image.blend(rif, ren.resize(rif.size), 0.5)
+    # sovrapposizione senza deformare: le due immagini, alla stessa altezza, centrate su una tela comune
+    # (mai allargate o strette in una sola direzione, che falserebbe le proporzioni da confrontare)
+    tela = (max(rif.width, ren.width), h)
+    def centra(img):
+        t = Image.new("RGB", tela, (0, 0, 0))
+        t.paste(img, ((tela[0] - img.width) // 2, 0))
+        return t
+    sovr = Image.blend(centra(rif), centra(ren), 0.5)
 
     fascia = 56
     larg = rif.width + ren.width + sovr.width
