@@ -2318,3 +2318,15 @@ dati:
   frequenza: "mensile"
   verificato: "2026-11-20"
   note: "Testi dentro il video: se cambiano le linee guida, il video va rifatto (scripts/video-3d-infarto/LEGGIMI.md)."
+- id: "piano-pandemico-2025-2029"
+  cosa: "Piano strategico operativo di preparazione e risposta ad una pandemia da patogeni a trasmissione respiratoria a maggiore potenziale pandemico 2025-2029: accordo Conferenza Stato-Regioni Rep. atti n. 50/CSR del 30/04/2026, GU Serie generale n. 136 del 15/06/2026, S.O. n. 25; tre fasi (prevenzione e preparazione, allerta, risposta); recepimento regionale entro 90 giorni; fondi L. 207/2024 art. 1 c. 308 (50 M€ 2025, 150 M€ 2026, 300 M€ annui dal 2027); volontariato alle pp. 30, 33, 58, 124 e 191 del Supplemento. Delibera di recepimento della Regione Lazio non trovata al 21/11/2026: quando esce, aggiornare la news."
+  valore: "Piano pandemico 2025-2029, GU n. 136 del 15/06/2026 S.O. 25; Lazio: recepimento non trovato"
+  dove:
+  - "content/news/2026-11-21-piano-pandemico-2025-2029.md"
+  - "content/dossier/protezione-civile.md"
+  fonte: "https://www.gazzettaufficiale.it/eli/id/2026/06/15/26A02859/sg"
+  tipo: "legge"
+  delicato: false
+  frequenza: "mensile"
+  verificato: "2026-11-21"
+  note: "Controllare ogni mese se la Regione Lazio ha pubblicato la delibera di recepimento (BURL, sito della Regione) e se il piano è stato modificato."
