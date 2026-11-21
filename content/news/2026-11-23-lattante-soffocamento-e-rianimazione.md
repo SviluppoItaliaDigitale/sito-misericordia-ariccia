@@ -78,7 +78,7 @@ Nell'adulto e nel bambino dall'anno in su le manovre sono diverse: le spiega il 
 
 ## Impara le manovre
 
-Il video non sostituisce un corso: le manovre sul lattante si imparano **sul manichino**, con un istruttore. Per i corsi di primo soccorso e P-BLSD della Misericordia di Ariccia chiama il **328 8105399** o il fisso **06 933 3717**, oppure guarda la pagina della [formazione](/servizi/formazione/). Agli istruttori il video serve anche in aula: è nella pagina delle [slide per i corsi](/servizi/formazione/slide/), insieme alle presentazioni.
+Il video non sostituisce un corso: le manovre sul lattante si imparano **sul manichino**, con un istruttore. Per i corsi di primo soccorso e P-BLSD della Misericordia di Ariccia chiama il **328 8105399** o il fisso **06 933 3717**, oppure guarda la pagina della [formazione](/servizi/formazione/). Agli istruttori il video serve anche in aula: è nella pagina dei [video 3D per i corsi](/video-corsi/#lattante); le presentazioni sono nella pagina delle [slide per i corsi](/servizi/formazione/slide/).
 
 In ogni emergenza chiama il **112**.
 

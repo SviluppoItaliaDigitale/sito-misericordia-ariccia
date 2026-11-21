@@ -15,4 +15,6 @@ With the help of doctors, nurses and lawyers, our instructors train the future r
 - **Emergency-vehicle drivers** — for Misericordia volunteers.
 - **Workplace safety** (Legislative Decree 81/08).
 
+**For instructors and trainees:** [3D course videos (in Italian)](/video-corsi/) on resuscitation, heart attack, stroke and choking, and the [course slides (in Italian)](/servizi/formazione/slide/), free to use and based on the 2025 Italian Resuscitation Council guidelines.
+
 **To enrol in the next course:** [+39 328 8105399](tel:+393288105399) or landline [+39 06 933 3717](tel:+39069333717) — [sede@misericordia-ariccia.it](mailto:sede@misericordia-ariccia.it).

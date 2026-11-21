@@ -14,7 +14,9 @@
     <nav aria-label="Percorso" class="mb-4" data-anim="fade-right">
       <ol class="breadcrumb briciole">
         <li class="breadcrumb-item"><a href="{{ "/" | relURL }}">Home</a></li>
-        {{ with .Parent }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+        {{- /* briciola: "/percorso" nel front matter = pagina madre delle pagine che stanno nella radice (slide e video dei corsi → Formazione) */}}
+        {{ $madre := .Parent }}{{ with .Params.briciola }}{{ with site.GetPage . }}{{ $madre = . }}{{ end }}{{ end }}
+        {{ with $madre }}{{ if not .IsHome }}<li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}
         <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
       </ol>
     </nav>

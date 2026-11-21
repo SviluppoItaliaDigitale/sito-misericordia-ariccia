@@ -3,7 +3,7 @@
 <aside class="lim-pronto d-print-none" aria-label="Uso sulla lavagna interattiva">
   <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="1"/><path d="M8 21l4-5 4 5"/></svg>
   <div>
-    <p class="mb-0"><strong>Pronto per la LIM.</strong> Le slide si scaricano nel formato della vostra lavagna (16:9, 4K, 16:10, 4:3) e la pagina si proietta a schermo intero con la Modalità Aula, da usare col dito. <a href="{{ "lim/" | relURL }}">Come usarli in classe</a></p>
+    <p class="mb-0"><strong>Pronto per la LIM.</strong> {{ with .page.Params.limTesto }}{{ . }}{{ else }}Le slide si scaricano nel formato della vostra lavagna (16:9, 4K, 16:10, 4:3) e la pagina si proietta a schermo intero con la Modalità Aula, da usare col dito.{{ end }} <a href="{{ "lim/" | relURL }}">Come usarli in classe</a></p>
     {{ with .aula }}<div class="lim-pronto-azioni">{{ partial "modalita-aula.html" (dict "page" $.page "selector" .) }}</div>{{ end }}
   </div>
 </aside>

@@ -39,11 +39,16 @@ contatto:
 
 Con la collaborazione di medici, infermieri e avvocati, i nostri istruttori formano i futuri soccorritori della Misericordia.
 
+> **Video 3D e slide per i corsi.** Cinque video in tre dimensioni su rianimazione, infarto, ictus e soffocamento, anche nel lattante, e le presentazioni dei nostri formatori per BLSD adulto, P-BLSD, disostruzione e primo soccorso, in PDF e PowerPoint con le note per l'istruttore. Sono gratis e seguono le linee guida IRC 2025.
+
+<div class="rt-azioni">
+  <a class="btn btn-giallo btn-lg" href="/video-corsi/">🎬 Guarda i video 3D</a>
+  <a class="btn btn-ciano btn-lg" href="/servizi/formazione/slide/">📊 Scarica le slide</a>
+</div>
+
 I contenuti dei corsi di rianimazione e primo soccorso si allineano alle **Linee Guida ERC 2025-2030**, tradotte in italiano da [Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/).
 
 Le Misericordie d'Italia sono inoltre **partner nazionale di [VIVA! La settimana per la rianimazione cardiopolmonare](https://www.settimanaviva.it/)**, la campagna di IRC che ogni anno, a ottobre, insegna a tutti i gesti che salvano una vita (l'edizione 2026 si è svolta dal 12 al 18 ottobre).
-
-**Slide per i corsi.** Le presentazioni che usano i nostri formatori per BLSD adulto, P-BLSD, disostruzione delle vie aeree e primo soccorso, secondo le linee guida IRC 2025, sono scaricabili gratis nella pagina [Slide per i corsi di rianimazione e primo soccorso](/servizi/formazione/slide/), in PDF e PowerPoint con le note per l'istruttore.
 
 **Un ripasso prima del corso?** Leggi il nostro dossier **[Primo soccorso passo passo](/dossier/primo-soccorso/)**: una scheda e un video con disegni animati per 33 emergenze, secondo le linee guida ERC/IRC 2025 e le fonti ufficiali dello Stato.
 

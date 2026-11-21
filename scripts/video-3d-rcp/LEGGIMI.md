@@ -1,7 +1,7 @@
 # Video 3D «Rianimazione: come funziona»
 
 Video di 2 minuti e 25 secondi in due formati: **orizzontale 16:9** per la LIM, il proiettore e il sito (pagina
-`/servizi/formazione/slide/`, accanto alle slide del corso BLSD adulto `scripts/formazione/slide/blsd-adulto.html`) e
+`/video-corsi/`, `content/video-corsi.md`, con gli altri video 3D per i corsi; le slide del corso BLSD adulto sono `scripts/formazione/slide/blsd-adulto.html`) e
 **verticale 9:16** per i social (news `rianimazione-come-funziona`, che lo pubblica da sola su Facebook e Instagram).
 La stessa pagina fa i due formati: `?formato=verticale` (fotogrammi.py `--parametri formato=verticale`);
 `?pulito=1` toglie le scritte (immagine per la grafica della news). Grafica nazionale in ogni fotogramma: fascia blu

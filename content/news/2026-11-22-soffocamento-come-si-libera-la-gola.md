@@ -72,7 +72,7 @@ Per prevenire: ai bambini piccoli taglia uva, pomodorini e olive in pezzi piccol
 
 ## Impara le manovre
 
-Il video non sostituisce un corso: le manovre si imparano **sul manichino**, con un istruttore. Per i corsi di primo soccorso, BLSD e disostruzione della Misericordia di Ariccia chiama il **328 8105399** o il fisso **06 933 3717**, oppure guarda la pagina della [formazione](/servizi/formazione/). Agli istruttori il video serve anche in aula: è nella pagina delle [slide per i corsi](/servizi/formazione/slide/), insieme alle presentazioni.
+Il video non sostituisce un corso: le manovre si imparano **sul manichino**, con un istruttore. Per i corsi di primo soccorso, BLSD e disostruzione della Misericordia di Ariccia chiama il **328 8105399** o il fisso **06 933 3717**, oppure guarda la pagina della [formazione](/servizi/formazione/). Agli istruttori il video serve anche in aula: è nella pagina dei [video 3D per i corsi](/video-corsi/#soffocamento); le presentazioni sono nella pagina delle [slide per i corsi](/servizi/formazione/slide/).
 
 In ogni emergenza chiama il **112**.
 
