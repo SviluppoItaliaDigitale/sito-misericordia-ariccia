@@ -165,6 +165,17 @@ draft: false
 In emergenza chiama il **112**. La Misericordia di Ariccia fa trasporti programmati, non soccorso d'emergenza.
 """
     (PODCAST / f"{slug}.md").write_text(testo, encoding="utf-8")
+    # La grafica prima di segnare la voce in coda: se non riesce si toglie tutto, così la puntata
+    # resta «da-fare» e si può rifare (senza grafica Instagram la salterebbe per sempre).
+    grafica = subprocess.run(["python3", str(RADICE / "scripts/grafica-brand/podcast/rendi-post.py"),
+                              str(PODCAST / f"{slug}.md")])
+    if grafica.returncode:
+        (PODCAST / f"{slug}.md").unlink(missing_ok=True)
+        audio_out.unlink(missing_ok=True)
+        (RADICE / "static/img/podcast/post" / f"{slug}.jpg").unlink(missing_ok=True)
+        print("ERRORE: grafica dei social non riuscita (rendi-post.py): puntata tolta, la voce resta da fare",
+              file=sys.stderr)
+        return 1
 
     voce["stato"] = "programmata"
     voce["file"] = f"content/podcast/{slug}.md"
@@ -175,12 +186,6 @@ In emergenza chiama il **112**. La Misericordia di Ariccia fa trasporti programm
         + yaml.safe_dump({"puntate": dati["puntate"]}, allow_unicode=True, sort_keys=False),
         encoding="utf-8")
 
-    grafica = subprocess.run(["python3", str(RADICE / "scripts/grafica-brand/podcast/rendi-post.py"),
-                              str(PODCAST / f"{slug}.md")])
-    if grafica.returncode:
-        print("ERRORE: grafica dei social non riuscita (rendi-post.py): senza grafica Instagram non pubblica",
-              file=sys.stderr)
-        return 1
     print(f"PROGRAMMATA content/podcast/{slug}.md episodio {episodio}: sul sito da oggi, sui social il {social}")
     return 0
 
