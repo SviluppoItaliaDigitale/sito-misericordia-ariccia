@@ -20,7 +20,7 @@ traccia dei contenuti da preparare per il sito e i social: notizie, schede del d
 | 9 | Uso dei presidi, pratica in ambulanza, lavorare in squadra | 19/12/2026 | 10:00 |
 | 10 | Cenni sulla guida in sicurezza | 22/12/2026 | 18:00 |
 
-I nomi dei docenti **non si pubblicano** sul sito né sui social senza il loro consenso (si scrive il ruolo:
+I nomi dei docenti **non si pubblicano** sul sito né sui social senza il loro consenso: si scrive il ruolo («un medico», «un nostro istruttore»).
 
 ## Che cosa c'è già (al 21/11/2026)
 
