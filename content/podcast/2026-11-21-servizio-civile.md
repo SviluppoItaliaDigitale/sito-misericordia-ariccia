@@ -5,6 +5,7 @@ social_data: "2026-12-02"
 description: "Il Servizio Civile Universale con la Misericordia di Ariccia: a chi è rivolto, che cosa si fa e come si presenta la domanda."
 episodio: 4
 audio: "/podcast/episodi/2026-11-21-servizio-civile-podcast.m4a"
+immagine: "/img/podcast/post/2026-11-21-servizio-civile.jpg"
 durata: "2 min 41 s"
 durata_secondi: 161
 italianoSemplice: |

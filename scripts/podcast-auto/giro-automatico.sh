@@ -86,9 +86,13 @@ PROMPT="Giro giornaliero del podcast automatico della Misericordia di Ariccia, s
 Conta le puntate in calendario con: python3 scripts/podcast-auto/controlla-magazzino.py --minimo 8. \
 Se sono 8 o più, scrivi «Magazzino pieno» ed esci. Altrimenti produci nuove puntate seguendo alla lettera \
 scripts/podcast-auto/README.md (fonti con trova-fonti.py, NotebookLM nel Chrome in schede nuove, trascrizione, \
-controllo dei fatti rigoroso, messa in calendario con pubblica-puntata.py, ramo claude/podcast-…, PR, squash merge \
+controllo dei fatti rigoroso, pubblicazione con pubblica-puntata.py, ramo claude/podcast-…, PR, squash merge \
 a controlli verdi, verifica del deploy) finché il magazzino torna a 8, la coda finisce o NotebookLM rifiuta altre \
-generazioni. Una puntata con anche un solo errore non si pubblica. Alla fine scrivi un resoconto breve e, se hai \
+generazioni. Ogni puntata che supera il controllo va subito online nella sezione Podcast del sito (una PR per \
+puntata, unita appena i controlli sono verdi) e nel calendario dei social, il primo mercoledì o sabato libero \
+(social_data, lo scrive pubblica-puntata.py): dopo il deploy controlla che la pagina /podcast/<file>/ risponda, \
+che il lettore carichi l'audio e che la puntata sia nel feed /podcast/index.xml (regola di Alessandro del \
+21/11/2026). Una puntata con anche un solo errore non si pubblica. Alla fine scrivi un resoconto breve e, se hai \
 prodotto o scartato qualcosa, manda una notifica ad Alessandro. Se a un certo punto l'estensione di Chrome non \
 risponde più, fermati e scrivi come ultima riga GIRO-SENZA-CHROME."
 

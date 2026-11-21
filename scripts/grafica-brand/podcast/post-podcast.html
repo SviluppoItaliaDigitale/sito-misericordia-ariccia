@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Post di una puntata del podcast</title>
+<link rel="stylesheet" href="../modelli-nazionali/base.css">
+<!--
+Post 4:5 (1080×1350) di una puntata del podcast, per Facebook e Instagram (21/11/2026).
+Stessi elementi della copertina del podcast (copertina-podcast.html), presi dal kit nazionale:
+blu, giallo, Montserrat, fascia bianca del carosello, triangolo ufficiale, doppia freccia gialla.
+Lo riempie e lo salva rendi-post.py (campi: data-campo="puntata" e "titolo"), che poi passa il
+file da rendi.py --cornice. Testi a 100 px dai bordi, come vuole la regola dei social.
+-->
+<style>
+  html, body { margin: 0; }
+  .tavola { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--blu); font-family: Montserrat, sans-serif; color: #fff; }
+  .titolo { position: absolute; left: 100px; right: 100px; top: 520px; height: 500px; display: flex; align-items: center; font-weight: 800; line-height: 1.08; }
+  [data-campo=titolo] { text-wrap: balance; }
+</style>
+</head>
+<body>
+<div class="tavola">
+  <div style="position:absolute; left:0; right:0; top:130px; height:128px; background:#fff"></div>
+  <img src="../modelli-nazionali/loghi/triangolo-misericordie.png" alt="" style="position:absolute; left:100px; top:104px; width:212px; height:auto">
+  <div style="position:absolute; right:100px; top:130px; height:128px; display:flex; align-items:center; font-size:58px; line-height:1; letter-spacing:.01em; color:#233B74; white-space:nowrap"><span style="font-weight:400">IL</span>&nbsp;<span style="font-weight:800">PODCAST</span></div>
+  <div data-firma style="position:absolute; left:100px; top:330px; font-weight:800; font-size:50px; line-height:1.1">Misericordia di <span style="color:var(--giallo)">Ariccia</span></div>
+  <div data-campo="puntata" style="position:absolute; left:100px; top:420px; font-weight:600; font-size:36px; color:var(--giallo); letter-spacing:.02em">PUNTATA 1</div>
+  <div class="titolo"><div data-campo="titolo">Titolo della puntata</div></div>
+  <div style="position:absolute; left:100px; top:1080px; width:700px; font-weight:500; font-size:38px; line-height:1.3">Ascolta la puntata e leggi il testo completo sul nostro sito</div>
+  <svg aria-hidden="true" style="position:absolute; right:100px; bottom:100px" width="124" height="114" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+  <div style="position:absolute; left:100px; bottom:108px; font-weight:600; font-size:32px; color:#fff">misericordia-ariccia.it/podcast</div>
+</div>
+</body>
+</html>

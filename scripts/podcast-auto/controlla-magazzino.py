@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""controlla-magazzino.py — Quante puntate del podcast sono in calendario.
+"""controlla-magazzino.py — Quante puntate del podcast sono in calendario (sui social, dal 21/11/2026).
 
 Adattato dal podcast della Protezione Civile di Genzano. Gira ogni giorno su
 GitHub (controllo-podcast.yml), anche a PC spento.
@@ -33,7 +33,10 @@ def main() -> int:
         t = f.read_text(encoding="utf-8")
         if f.name == "_index.md" or "render: never" in t:
             continue
-        m = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", t, re.M)
+        # Dal 21/11/2026 la puntata esce subito sul sito e sui social alla data del calendario
+        # («social_data:»): il calendario è quello dei social.
+        m = (re.search(r'^social_data:\s*"?(\d{4}-\d{2}-\d{2})', t, re.M)
+             or re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", t, re.M))
         if m:
             date_attive.append(date.fromisoformat(m.group(1)))
     future = sorted(d for d in date_attive if d > oggi)

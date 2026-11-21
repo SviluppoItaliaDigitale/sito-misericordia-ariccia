@@ -5,6 +5,7 @@ social_data: "2026-12-05"
 description: "I kit per le emergenze per anziani, caregiver familiari, persone con disabilità e con terapie salvavita: che cosa preparare prima."
 episodio: 5
 audio: "/podcast/episodi/2026-11-21-kit-anziani-fragilita-podcast.m4a"
+immagine: "/img/podcast/post/2026-11-21-kit-anziani-fragilita.jpg"
 durata: "2 min 38 s"
 durata_secondi: 158
 italianoSemplice: |
