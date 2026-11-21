@@ -1,0 +1,131 @@
+---
+tema: "guide"
+title: "Il piano pandemico italiano"
+titoloSeo: "Piano pandemico 2025-2029: che cos'è, le fasi, chi decide, il ruolo delle Regioni e del volontariato"
+description: "Il nuovo piano pandemico italiano 2025-2029 spiegato in modo semplice: quali virus riguarda, gli obiettivi, le cinque fasi, chi decide, le esercitazioni, i fondi, le Regioni, il posto del volontariato e che cosa può fare ognuno di noi. Con le pagine della Gazzetta Ufficiale."
+date: 2026-11-21
+italianoSemplice: |
+  **Una pandemia è una malattia che si diffonde in tutto il mondo.**
+
+  Il Covid è stato una pandemia.
+
+  L'Italia ha un piano per essere pronta alla prossima. Vale dal 2025 al 2029.
+
+  Il piano dice che cosa devono fare lo Stato, le Regioni, gli ospedali e la Protezione civile.
+
+  Il piano parla anche dei volontari.
+
+  Anche tu puoi aiutare: segui le notizie ufficiali, fai i vaccini consigliati e lava spesso le mani.
+layout: "storia"
+occhiello: "Guida pratica · Pronti prima"
+sottotitolo: "Dopo il Covid l'Italia ha un nuovo piano per prepararsi alla prossima pandemia. Che cosa prevede, chi decide, che cosa fanno le Regioni e che posto dà al volontariato, con le pagine della Gazzetta Ufficiale."
+summary: "Il Piano strategico operativo di preparazione e risposta ad una pandemia da patogeni a trasmissione respiratoria a maggiore potenziale pandemico 2025-2029: la lezione del 1918 e del Covid, i virus considerati, i cinque obiettivi, le fasi operative, la Rete italiana di preparedness pandemica e l'Unità di crisi, le esercitazioni, i fondi, il recepimento delle Regioni, il volontariato e il Terzo settore, che cosa può fare ognuno."
+lettura: "9 minuti"
+meta:
+  - "piano **2025-2029**"
+  - "fonte: **Gazzetta Ufficiale**"
+  - "aggiornata a **novembre 2026**"
+cover_cta:
+  testo: "Leggi la guida"
+  ancora: "#introduzione"
+cap_titolo: "Capire il piano"
+indice_tappe: "Capire il piano"
+cap_intro: "Dalla storia al testo ufficiale: che cosa prevede il piano, passo per passo, con le pagine del Supplemento della Gazzetta Ufficiale da cui viene ogni informazione."
+intro: |
+  Durante il Covid i nostri volontari hanno portato viveri e farmaci a chi non poteva uscire di casa, insieme alla Protezione Civile dei Comuni di Ariccia e Velletri. Da quei mesi abbiamo imparato una cosa: in un'emergenza conta **quello che è stato preparato prima**.
+
+  Dal 2026 l'Italia ha un nuovo piano per prepararsi alla prossima pandemia. Si chiama **«Piano strategico operativo di preparazione e risposta ad una pandemia da patogeni a trasmissione respiratoria a maggiore potenziale pandemico 2025-2029»**. È stato approvato con l'accordo della **Conferenza Stato-Regioni del 30 aprile 2026** e pubblicato nella **Gazzetta Ufficiale n. 136 del 15 giugno 2026** (Supplemento ordinario n. 25).
+
+  Il testo è lungo e tecnico: il Supplemento che lo contiene ha 204 pagine. Qui lo raccontiamo in parole semplici. Accanto a ogni informazione trovi la **pagina del Supplemento** da cui viene, così puoi controllare. Non è un documento di istruzioni sanitarie: per quelle valgono sempre le indicazioni del Ministero della Salute e della Regione Lazio del momento.
+tappe:
+  - anno: "1918"
+    epoca: "La lezione della storia"
+    titolo: "Un terzo del mondo contagiato"
+    testo: "Nel **1918-1919** l'influenza chiamata «spagnola» fece il giro del mondo. Secondo i **Centers for Disease Control and Prevention** statunitensi si ammalò circa un terzo della popolazione mondiale, **circa 500 milioni di persone**, e i morti furono **almeno 50 milioni**. Non esistevano vaccini né antibiotici: si potevano solo isolare i malati e curarli in grandi ospedali di emergenza, come quello della foto. Le Misericordie conoscevano già le epidemie: dalla peste del 1348 al colera dell'Ottocento, lo raccontiamo nel dossier **[Nei giorni più difficili](/dossier/nei-giorni-piu-difficili/)**."
+    img: "/img/dossier/pandemico-camp-funston-1918.jpg"
+    img_alt: "Fotografia d'epoca in bianco e nero: un enorme capannone con lunghe file di letti da campo occupati da soldati malati, assistiti da infermiere, durante l'influenza del 1918"
+    img_didascalia: "L'ospedale di emergenza di Camp Funston, in Kansas, durante l'epidemia di influenza del 1918."
+    img_credit: "Otis Historical Archives, National Museum of Health and Medicine · Pubblico dominio · Wikimedia Commons"
+  - anno: "2020"
+    epoca: "Il Covid-19"
+    titolo: "La prima pandemia da coronavirus"
+    testo: "L'**11 marzo 2020** il direttore generale dell'**Organizzazione mondiale della sanità** dichiarò che il Covid-19 poteva essere definito una **pandemia**, la prima causata da un coronavirus. Lo stesso giorno, a Fiumicino, i volontari di protezione civile montavano una tenda per il primo controllo dei pazienti davanti al Pronto soccorso pediatrico del Bambino Gesù. Il nuovo piano parte da quell'esperienza: ricorda che la recente pandemia ha mostrato quanto servano sistemi flessibili, capaci di rispondere in fretta (p. 21)."
+    img: "/img/dossier/pandemico-tenda-pre-triage-2020.jpg"
+    img_alt: "Una grande tenda blu della Protezione civile nazionale montata nel parcheggio di un ospedale, con volontari in divisa e mascherina accanto"
+    img_didascalia: "Fiumicino, 11 marzo 2020: volontari di protezione civile allestiscono una tenda pre-triage davanti all'Ospedale Pediatrico Bambino Gesù."
+    img_credit: "Dipartimento della Protezione Civile · CC BY 2.0 · Wikimedia Commons"
+  - anno: "2026"
+    epoca: "Il nuovo piano"
+    titolo: "Dal piano per l'influenza al piano per tutti i virus respiratori"
+    testo: "Il piano precedente, il **PanFlu 2021-2023**, riguardava solo l'influenza. Il nuovo segue l'indicazione dell'OMS: non si prepara a un virus solo, ma a **tutti i virus che si trasmettono per via respiratoria** e possono causare una pandemia (pp. 15 e 22). Lo hanno firmato Governo, Regioni e Province autonome nella Conferenza Stato-Regioni del **30 aprile 2026** (accordo Rep. atti n. 50/CSR), ed è uscito in **Gazzetta Ufficiale il 15 giugno 2026**. Vale per gli anni dal **2025 al 2029**."
+    img: "/img/dossier/pandemico-ministero-salute.jpg"
+    img_alt: "La facciata chiara di un palazzo di Roma con le bandiere italiana ed europea sopra il portone: una sede del Ministero della Salute in Lungotevere Ripa"
+    img_didascalia: "Una sede del Ministero della Salute, in Lungotevere Ripa a Roma."
+    img_credit: "Foto Mattes · CC BY-SA 4.0 · Wikimedia Commons (ritagliata)"
+  - anno: "Quali virus"
+    epoca: "L'elenco dell'OMS"
+    titolo: "Influenza, coronavirus e gli altri"
+    testo: "Non si può sapere **quando**, da **dove** e da **quale virus** partirà la prossima pandemia (p. 22). Per questo il piano prende l'elenco dell'OMS delle famiglie di virus respiratori con potenziale epidemico e pandemico: tra gli altri i **virus influenzali**, i **coronavirus** come quello del Covid, il **virus respiratorio sinciziale**, i virus della parainfluenza e i rinovirus (pp. 22-23). Prepara azioni che valgono per tutti e chiede un **piano specifico** per il singolo virus quando scatta l'allerta (p. 23). La ragione è scritta all'inizio: un virus che passa con la tosse o anche solo con il respiro è il più difficile da fermare (p. 15)."
+    img: "/img/dossier/pandemico-sars-cov-2.jpg"
+    img_alt: "Immagine al microscopio elettronico, a falsi colori: particelle rotonde rosse del virus SARS-CoV-2 dentro una cellula"
+    img_didascalia: "Particelle del virus SARS-CoV-2, che causa il Covid-19, al microscopio elettronico (colori aggiunti)."
+    img_credit: "National Institute of Allergy and Infectious Diseases · CC BY 2.0 · Wikimedia Commons"
+  - anno: "Perché"
+    epoca: "I cinque obiettivi"
+    titolo: "Meno contagi, servizi aperti, operatori protetti"
+    testo: "Il piano ha cinque obiettivi (p. 18): **ridurre gli effetti sulla salute**, cioè contagi, malattie e morti; **coordinare in tempo** le azioni nazionali e locali; **ridurre l'impatto sui servizi sanitari e sociali** e tenere aperti quelli essenziali; **proteggere la salute degli operatori sanitari** e di chi lavora nell'emergenza; **informare, coinvolgere e responsabilizzare la comunità**. Tra i principi scritti nel piano c'è anche la **solidarietà**, «alla base di ogni intervento di sanità pubblica» (p. 18)."
+    img: "/img/dossier/pandemico-pesaro-2020.jpg"
+    img_alt: "Un'infermiera con camice blu, cuffia, mascherina e guanti, seduta a terra a riposare in un corridoio d'ospedale accanto a un carrello"
+    img_didascalia: "Ospedale San Salvatore di Pesaro, marzo 2020: un'infermiera alla fine di un lungo turno durante l'emergenza Covid."
+    img_credit: "Foto Alberto Giuliani · CC BY-SA 4.0 · Wikimedia Commons"
+  - anno: "Le fasi"
+    epoca: "Dalla calma all'emergenza"
+    titolo: "Prepararsi, allertare, rispondere, ripartire"
+    testo: "Il piano divide il lavoro in **fasi operative** (pp. 129-130). **Prevenzione, preparazione e valutazione del rischio**: è il tempo normale, senza contagi tra persone, in cui ci si prepara e si sorvegliano gli allarmi. **Allerta**: il sistema si prepara a scoprire in Italia il primo caso. **Risposta: contenimento**: ci sono i primi casi e si cerca di spezzare le catene di contagio solo nei territori colpiti. **Risposta: controllo**, con la **soppressione** (frenare il contagio su tutto il territorio nazionale) o la **mitigazione** (ridurre l'impatto sugli ospedali quando non si può più fermarlo). **Recupero**: i casi calano e il sistema sanitario torna a gestirli in modo ordinario."
+  - anno: "Chi decide"
+    epoca: "Le reti e l'Unità di crisi"
+    titolo: "Tecnici che valutano, il Ministro che decide"
+    testo: "Le valutazioni tecniche le fanno due reti di esperti, **MiRiK** e **Dispatch**. Su questa base la **Rete italiana di preparedness pandemica**, coordinata dal Ministero della Salute, propone al **Ministro** il passaggio da una fase all'altra e la convocazione dell'**Unità di crisi permanente** (p. 132), che il Ministro presiede (p. 48). La Rete è stata aggiornata con un decreto del Ministro del **20 dicembre 2024** e cura anche la formazione e le esercitazioni (p. 51). Accanto alla linea sanitaria c'è quella della **Protezione civile**, che si fonda sul Servizio nazionale e sulle sue strutture operative (pp. 33 e 58)."
+  - anno: "Prove"
+    epoca: "Le esercitazioni"
+    titolo: "Provare il piano prima che serva"
+    testo: "Con il piano precedente l'Italia ha fatto un'esercitazione nazionale, chiamata **«Mosaico»**. Ha mostrato che servivano passaggi più graduali tra le fasi, una definizione più chiara dell'allerta e segnali precisi per decidere quando cambiare fase (p. 26). Il nuovo piano prevede un'**esercitazione nazionale entro due anni** dall'approvazione ed **esercitazioni regionali entro tre anni**, per provare il coordinamento tra le reti, gli enti e le Regioni (pp. 127-128)."
+    img: "/img/dossier/pandemico-virus-influenza-1918.jpg"
+    img_alt: "Immagine in bianco e nero al microscopio elettronico: particelle ovali di virus dell'influenza"
+    img_didascalia: "Virus dell'influenza del 1918, ricostruito in laboratorio, al microscopio elettronico."
+    img_credit: "Cynthia Goldsmith, CDC / Terrence Tumpey · Pubblico dominio · Wikimedia Commons"
+  - anno: "Le Regioni"
+    epoca: "Il piano diventa locale"
+    titolo: "Ogni Regione con il suo calendario"
+    testo: "Il piano nazionale si applica sul territorio attraverso le **Regioni**. Entro **90 giorni** dall'accordo del 30 aprile 2026 ogni Regione doveva mandare al Ministero della Salute la **delibera di recepimento**, con il calendario delle azioni (p. 5). Nelle fasi di allerta e di risposta le Regioni devono attuare le azioni descritte nell'allegato n. 2, «Azioni regionali» (p. 5). **Lazio**: al momento della nostra verifica, il **21 novembre 2026**, non abbiamo trovato pubblicata la delibera della Regione. Aggiorneremo questa pagina quando la troveremo. I **fondi** li stanzia la legge di bilancio 2025 (legge 207/2024, art. 1, comma 308): **50 milioni** di euro per il 2025, **150 milioni** per il 2026 e **300 milioni l'anno** dal 2027 (p. 1)."
+  - anno: "Volontari"
+    epoca: "Il nostro posto"
+    titolo: "Il piano nomina anche il volontariato"
+    testo: "Tra chi partecipa alla preparazione e alla risposta il piano elenca anche **le associazioni di volontariato** e le organizzazioni della società civile (p. 30). Tra le strutture operative della Protezione civile ricorda il **volontariato organizzato di protezione civile** (pp. 33 e 58). Per far fronte ai bisogni di assistenza durante una pandemia prevede il coinvolgimento degli **enti del Terzo settore** (p. 124). Tra le azioni che le Regioni possono aggiungere c'è la **«definizione di procedure per mobilitare, addestrare, accreditare e gestire i volontari»**, per avere più forze quando servono (p. 191). Come racconta il dossier **[Le Misericordie nella protezione civile](/dossier/protezione-civile/)**, durante il Covid i volontari delle Misericordie hanno portato spesa e farmaci e trasportato i malati gravi in biocontenimento."
+    img: "/img/dossier/pandemico-volontari-pc-2020.jpg"
+    img_alt: "Volontari di protezione civile con caschi e divise ad alta visibilità montano la struttura di una tenda davanti a un Pronto soccorso pediatrico, dietro le barriere stradali"
+    img_didascalia: "Fiumicino, 11 marzo 2020: volontari di protezione civile al lavoro davanti all'Ospedale Pediatrico Bambino Gesù."
+    img_credit: "Dipartimento della Protezione Civile · CC BY 2.0 · Wikimedia Commons"
+  - anno: "Tu"
+    epoca: "Che cosa puoi fare"
+    titolo: "La prima difesa siamo noi"
+    testo: "Il piano lo dice chiaramente: in una pandemia da virus respiratori l'**impegno della popolazione** nel rispettare le misure di prevenzione contribuisce al successo della risposta. Le misure non farmacologiche, cioè i comportamenti e le precauzioni, sono **la prima linea di difesa** (p. 85). Il piano chiede anche una comunicazione trasparente e un impegno contro la **disinformazione** (p. 93). Nella vita di ogni giorno vuol dire: informarsi dalle **fonti ufficiali** (Ministero della Salute, Istituto superiore di sanità, Regione Lazio), fare i **vaccini consigliati**, come quello contro l'influenza (lo spieghiamo nel dossier **[Prevenzione stagionale](/dossier/prevenzione-stagionale/)**), **lavarsi bene le mani** come spiega il [Ministero della Salute](https://www.salute.gov.it/new/it/news-e-media/notizie/iorestoacasa-e-lavo-le-mani-12-mosse/) e chiedere al medico che cosa fare quando si sta male."
+  - anno: "Noi"
+    epoca: "Misericordia di Ariccia"
+    titolo: "Prepararsi è già un servizio"
+    testo: "La Misericordia di Ariccia oggi fa trasporti sanitari e sociali, servizi alla persona, assistenza agli eventi e formazione. Durante il Covid abbiamo raccolto e consegnato viveri e farmaci e attivato la teleassistenza per le persone fragili, come raccontiamo in **[Chi siamo](/chi-siamo/)**. Un piano funziona se ci sono persone pronte: per questo la **formazione viene prima del servizio**. Vuoi esserci? Comincia da un **[corso di primo soccorso](/servizi/formazione/)** o **[diventa volontario](/diventa-volontario/)**: possono farlo donne e uomini dai 16 agli 80 anni."
+    img: "/img/attivita/attivita-12.jpg"
+    img_alt: "I volontari della Misericordia di Ariccia in servizio"
+    img_didascalia: "I volontari della Misericordia di Ariccia in servizio."
+fonti:
+  - titolo: "Conferenza Stato-Regioni, accordo Rep. atti n. 50/CSR del 30/04/2026 e Piano pandemico 2025-2029, Gazzetta Ufficiale Serie generale n. 136 del 15/06/2026, Supplemento ordinario n. 25"
+    url: "https://www.gazzettaufficiale.it/eli/id/2026/06/15/26A02859/sg"
+  - titolo: "Ministero della Salute, comunicato sul via libera al piano pandemico 2025-2029"
+    url: "https://www.salute.gov.it/new/it/comunicato-stampa/sanita-libera-al-piano-pandemico-2025-2029schillaci-si-fonda-su-obiettivo-chiaro/"
+  - titolo: "Organizzazione mondiale della sanità, intervento del direttore generale dell'11/03/2020"
+    url: "https://www.who.int/news-room/speeches/item/who-director-general-s-opening-remarks-at-the-media-briefing-on-covid-19---11-march-2020"
+  - titolo: "Centers for Disease Control and Prevention, 1918 Pandemic (H1N1 virus)"
+    url: "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html"
+  - titolo: "Ministero della Salute, lavarsi le mani in 12 mosse"
+    url: "https://www.salute.gov.it/new/it/news-e-media/notizie/iorestoacasa-e-lavo-le-mani-12-mosse/"
+---

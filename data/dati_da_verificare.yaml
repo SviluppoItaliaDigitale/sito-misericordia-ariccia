@@ -2319,14 +2319,26 @@ dati:
   verificato: "2026-11-20"
   note: "Testi dentro il video: se cambiano le linee guida, il video va rifatto (scripts/video-3d-infarto/LEGGIMI.md)."
 - id: "piano-pandemico-2025-2029"
-  cosa: "Piano strategico operativo di preparazione e risposta ad una pandemia da patogeni a trasmissione respiratoria a maggiore potenziale pandemico 2025-2029: accordo Conferenza Stato-Regioni Rep. atti n. 50/CSR del 30/04/2026, GU Serie generale n. 136 del 15/06/2026, S.O. n. 25; tre fasi (prevenzione e preparazione, allerta, risposta); recepimento regionale entro 90 giorni; fondi L. 207/2024 art. 1 c. 308 (50 M€ 2025, 150 M€ 2026, 300 M€ annui dal 2027); volontariato alle pp. 30, 33, 58, 124 e 191 del Supplemento. Delibera di recepimento della Regione Lazio non trovata al 21/11/2026: quando esce, aggiornare la news."
+  cosa: "Piano strategico operativo di preparazione e risposta ad una pandemia da patogeni a trasmissione respiratoria a maggiore potenziale pandemico 2025-2029: accordo Conferenza Stato-Regioni Rep. atti n. 50/CSR del 30/04/2026, GU Serie generale n. 136 del 15/06/2026, S.O. n. 25; fasi operative (prevenzione e preparazione, allerta, risposta-contenimento, risposta-controllo, recupero; pp. 129-130); recepimento regionale entro 90 giorni; fondi L. 207/2024 art. 1 c. 308 (50 M€ 2025, 150 M€ 2026, 300 M€ annui dal 2027); volontariato alle pp. 30, 33, 58, 124 e 191 del Supplemento. Delibera di recepimento della Regione Lazio non trovata al 21/11/2026: quando esce, aggiornare la news."
   valore: "Piano pandemico 2025-2029, GU n. 136 del 15/06/2026 S.O. 25; Lazio: recepimento non trovato"
   dove:
   - "content/news/2026-11-21-piano-pandemico-2025-2029.md"
   - "content/dossier/protezione-civile.md"
+  - "content/dossier/piano-pandemico.md"
   fonte: "https://www.gazzettaufficiale.it/eli/id/2026/06/15/26A02859/sg"
   tipo: "legge"
   delicato: false
   frequenza: "mensile"
   verificato: "2026-11-21"
   note: "Controllare ogni mese se la Regione Lazio ha pubblicato la delibera di recepimento (BURL, sito della Regione) e se il piano è stato modificato."
+- id: "pandemie-storia-1918-2020"
+  cosa: "Dossier sul piano pandemico: influenza del 1918-1919 con circa 500 milioni di contagiati (un terzo della popolazione mondiale) e almeno 50 milioni di morti (CDC); Covid-19 definito pandemia dall'OMS l'11/03/2020."
+  valore: "1918: ~500 milioni di contagi, ≥50 milioni di morti; OMS 11/03/2020"
+  dove:
+  - "content/dossier/piano-pandemico.md"
+  fonte: "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html"
+  tipo: "statistica"
+  delicato: false
+  frequenza: "annuale"
+  verificato: "2026-11-21"
+  note: "Data OMS: https://www.who.int/news-room/speeches/item/who-director-general-s-opening-remarks-at-the-media-briefing-on-covid-19---11-march-2020"

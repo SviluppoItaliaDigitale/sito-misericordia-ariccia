@@ -76,7 +76,7 @@ tappe:
   - anno: "2020"
     epoca: "Covid-19"
     titolo: "La medaglia d'oro"
-    testo: "Durante la pandemia i volontari portano spesa e farmaci a chi è solo o fragile e trasportano i malati gravi in **biocontenimento**. Il **27 aprile 2023**, al Quirinale, il presidente Mattarella consegna alla Confederazione la **Medaglia d'oro al merito della sanità pubblica**: la motivazione parla di «un esercito di oltre 100.000 volontari». Dal 2026 c'è un nuovo [piano pandemico nazionale 2025-2029](/news/piano-pandemico-2025-2029/), che nomina anche il volontariato."
+    testo: "Durante la pandemia i volontari portano spesa e farmaci a chi è solo o fragile e trasportano i malati gravi in **biocontenimento**. Il **27 aprile 2023**, al Quirinale, il presidente Mattarella consegna alla Confederazione la **Medaglia d'oro al merito della sanità pubblica**: la motivazione parla di «un esercito di oltre 100.000 volontari». Dal 2026 c'è un nuovo [piano pandemico nazionale 2025-2029](/dossier/piano-pandemico/), che nomina anche il volontariato."
   - anno: "2022"
     epoca: "Ucraina"
     titolo: "Portare in salvo i più fragili"
