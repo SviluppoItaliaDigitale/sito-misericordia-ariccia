@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Lattante 3D: provini delle mani</title>
+<!-- provino-mani.src.html — provini delle mani vere (MakeHuman, CC0, da mani_makehuman.py) per il video 3D sul lattante:
+     ?scena=prova|pollici|pacche|capo|lattante e ?vista=0..n. Espone window.__controlli (5 dita per mano, compenetrazione
+     delle punte nel torace) e ?prova=dita toglie un dito per provare il controllo. Scritto per Alessandro Cuollo il 21/11/2026. -->
+<!--FONT-->
+<style>html,body{margin:0;background:#061633;overflow:hidden}#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 50% 45%,#0B3D7E,#082B5E 50%,#061633)}#stage canvas{position:absolute;left:0;top:0}#et{position:absolute;left:40px;top:30px;font:700 30px Montserrat,sans-serif;color:#FCEB0C}</style>
+</head>
+<body>
+<div id="stage"><canvas id="c"></canvas><div id="et"></div></div>
+<script type="application/json" id="dato-mani">/*DATO:mani*/</script>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>
+(function () {
+  const THREE = window.THREE, L3 = window.Lattante3D, Q = new URLSearchParams(location.search);
+  if (Q.get('pp')) window.__PP = JSON.parse(Q.get('pp'));   // solo prove di posa
+  if (Q.get('prova') === 'pollici') window.__PP = Object.assign(window.__PP || {}, { tL: [0.03, 0.0, 0.0] });   // pollice lontano sulla parete del torace: il controllo deve fermarlo
+  const W = 1920, H = 1080; window.STAGE_W = W; window.STAGE_H = H; window.TOTAL = 1;
+  const MANI = JSON.parse(document.getElementById('dato-mani').textContent);
+  const r = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, alpha: true });
+  r.setSize(W, H, false); r.setPixelRatio(1); r.shadowMap.enabled = true; r.outputColorSpace = THREE.SRGBColorSpace;
+  const scena = new THREE.Scene(), cam = new THREE.PerspectiveCamera(28, W / H, 0.01, 20);
+  scena.add(new THREE.HemisphereLight(0xe6eeff, 0x2a3a5a, 1.3));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.9); luce.position.set(1.2, 2.2, 1.6); scena.add(luce);
+  const l2 = new THREE.DirectionalLight(0x9fc4ff, 0.6); l2.position.set(-1.5, 0.6, -1); scena.add(l2);
+  const v = (x, y, z) => new THREE.Vector3(x, y, z);
+  const et = document.getElementById('et');
+  window.__controlli = () => window.__problemi || [];
+  const scelta = Q.get('scena') || 'prova', vista = +(Q.get('vista') || 0);
+  const parti = [];
+  if (scelta === 'prova') {
+    // braccio destro a riposo e con le dita piegate di 0,8 rad: per vedere l'asse di flessione
+    for (const [k, a] of [[0, 0], [1, 0.8]]) {
+      const b = L3.creaParteMH(THREE, MANI, 'braccio.R', { manica: 0x003f85, manicaDa: 0.16 });
+      for (let d = 1; d <= 5; d++) for (let f = 1; f <= 3; f++) b.flessione(`finger${d}-${f}.R`, a);
+      const g = new THREE.Group(); g.add(b.mesh); g.position.x = k * 0.25; scena.add(g); parti.push(b);
+    }
+    const c = parti[0].testa('wrist.R').add(v(0.12, -0.05, 0));
+    cam.position.copy(c).add(v(0, 0.05, 0.75)); cam.lookAt(c); et.textContent = 'prova: a riposo | dita piegate';
+  }
+  /* --------- posa a due pollici sul torace (modello: foto di riferimento e IRC 2025 cap. 9 fig. 11) --------- */
+  const lat = L3.creaLattante(THREE, { mh: MANI }); lat.radice.visible = false; scena.add(lat.radice);
+  const piano = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.03, 0.7), new THREE.MeshStandardMaterial({ color: 0xdfe6ee, roughness: 0.7 })); piano.visible = false; scena.add(piano);
+  const DITA4 = [2, 3, 4, 5];
+  const SCALA_MANI = +(Q.get('scala') || 1.15);   // mani grandi rispetto al torace del lattante, come nella foto di riferimento
+  const PM = L3.creaPoseMani(THREE, lat); const { orientaParte, vettoriMano, centroPalmo, posaPollici, ditaIntorno, compenetrazione } = PM;
+  const VIS = { alto: [v(0.02, 0.62, 0.06), v(0, -0.02, 0)], lato: [v(0.7, 0.12, 0.05), v(0, -0.03, 0)], sotto: [v(-0.55, -0.12, 0.2), v(0, -0.03, 0)], lontano: [v(-0.7, 0.3, 0.1), v(0, -0.03, 0)], obliqua: [v(0.6, 0.55, 0.35), v(0, -0.03, 0)],
+    fig11: [v(0.0, 0.62, 0.0), v(0, -0.02, 0), v(1, 0, 0)], alamy: [v(-0.42, 0.3, -0.12), v(0, -0.02, 0.02)], accostati: [v(0.05, 0.26, -0.2), v(0, -0.005, 0.0)] };   // stesse angolazioni dei riferimenti (IRC cap. 9 fig. 11, foto Alamy)
+  if (scelta === 'pollici') {
+    lat.radice.visible = true; lat.posa('supino'); lat.espressione('incosciente'); lat.mostraSterno(true);
+    const y = v(0, 0, -1).normalize(), z = v(0, 1, 0), x = new THREE.Vector3().crossVectors(y, z);
+    lat.radice.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z)); lat.radice.position.set(0, 0.062 + 0.017, 0.06); lat.radice.updateMatrixWorld(true);   // il lattante appoggia sulle dita
+    piano.visible = Q.get('vista') !== 'sotto'; piano.position.set(0, -0.015, 0);
+    const st = lat.P.sternoBasso.getWorldPosition(new THREE.Vector3());
+    for (const [nome, s] of [['braccio.R', 1], ['braccio.L', -1]]) {
+      const b = L3.creaParteMH(THREE, MANI, nome, { manica: 0x003f85, manicaDa: 0.1 }); const g = new THREE.Group(); g.add(b.mesh); g.scale.setScalar(SCALA_MANI); scena.add(g); parti.push(b);
+      posaPollici(b, s, st);
+      window.__dbgP = () => parti.map(b => [b.lato, ...["finger1-1", "finger1-2", "finger1-3"].map(k => b.testa(k + "." + b.lato).toArray().map(x => +x.toFixed(4))), b.punta("finger1-3." + b.lato).toArray().map(x => +x.toFixed(4))]).concat([[st.toArray().map(x => +x.toFixed(4))]]);
+    }
+    const V = VIS[Q.get('vista') || 'alto'];
+    cam.position.copy(st).add(V[0]); if (V[2]) cam.up.copy(V[2]); cam.lookAt(st.clone().add(V[1])); et.textContent = 'due pollici · vista ' + (Q.get('vista') || 'alto');
+    window.__extra = () => parti.flatMap(b => compenetrazione(b)).concat(lat.controlloSterno(parti.map(b => b.punta(`finger1-3.${b.lato}`).add(v(0, -0.004, 0.008)))));
+  }
+  if (scelta === 'aperta') {
+    const b = L3.creaParteMH(THREE, MANI, 'braccio.R', { manica: 0x003f85, manicaDa: 0.1 }); const g = new THREE.Group(); g.add(b.mesh); scena.add(g); parti.push(b);
+    orientaParte(b, 'R', v(0, 1, 0), v(0, 0, -1));
+    for (const d of [2, 3, 4, 5]) b.flessione(`finger${d}-1.R`, 0.05, (d - 3.5) * 0.12);
+    const c = b.testa('finger3-1.R'); cam.position.copy(c).add(v(0, 0.0, 0.55)); cam.lookAt(c); et.textContent = 'mano dell\'adulto aperta, dal palmo';
+  }
+  if (scelta === 'pollici') { const V = { alto: [v(0.03, 0.8, 0.12), v(0, -0.02, 0)], obliqua: [v(-0.55, 0.6, 0.15), v(0, -0.03, 0)] }[Q.get('vista')];
+    if (V) { const st = lat.P.sternoBasso.getWorldPosition(new THREE.Vector3()); cam.position.copy(st).add(V[0]); if (V[2]) cam.up.copy(V[2]); cam.lookAt(st.clone().add(V[1])); } }
+  /* --------- posa prona: mano delle pacche aperta, mano che sostiene il capo sulla mandibola --------- */
+  if (scelta === 'pacche' || scelta === 'capo') {
+    lat.radice.visible = true; lat.posa('prono'); lat.espressione('sveglio');
+    const a20 = 20 * Math.PI / 180, d = v(-Math.cos(a20), -Math.sin(a20), 0), n = v(Math.sin(a20), -Math.cos(a20), 0);
+    const yb = d.clone(), zb = n.clone(), xb = new THREE.Vector3().crossVectors(yb, zb);
+    lat.radice.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(xb, yb, zb)); lat.radice.position.set(0, 0, 0); lat.radice.updateMatrixWorld(true);
+    // avambraccio di sostegno (braccio.L) sotto il lattante, mano sul capo
+    const A = L3.creaParteMH(THREE, MANI, 'braccio.L', { manica: 0x003f85, manicaDa: 0.1 }); const gA = new THREE.Group(); gA.add(A.mesh); scena.add(gA); parti.push(A);
+    // la mano sta sul fianco lontano del viso, palmo verso la guancia, all'altezza della mandibola e verso il collo (senza
+    // toccarlo): le dita piegate agganciano la mandibola sotto la guancia lontana, il pollice passa sotto il mento fino
+    // alla mandibola vicina. Bocca, naso e occhi restano liberi.
+    orientaParte(A, 'L', d.clone().add(n.clone().multiplyScalar(0.25)).normalize(), xb.clone().add(n.clone().multiplyScalar(-0.35)).normalize());
+    const te = lat.G.testa, P = q => te.localToWorld(q);
+    const mento = P(v(0, 0.012, 0.046)), angVicino = P(v(0.044, 0.026, 0.012)), angLontano = P(v(-0.044, 0.026, 0.012));
+    gA.updateMatrixWorld(true);
+    gA.position.add(angLontano.clone().add(xb.clone().multiplyScalar(-0.03)).add(n.clone().multiplyScalar(0.034)).add(d.clone().multiplyScalar(-0.075)).sub(centroPalmo(A, 'L')));
+    gA.updateMatrixWorld(true);
+    for (const dd of [2, 3, 4, 5]) { A.flessione(`finger${dd}-1.L`, 0.55, (dd - 3.5) * 0.06); A.flessione(`finger${dd}-2.L`, 0.75); A.flessione(`finger${dd}-3.L`, 0.45); }
+    gA.updateMatrixWorld(true);
+    A.mira('finger1-1.L', mento.clone().add(n.clone().multiplyScalar(0.022)).add(d.clone().multiplyScalar(-0.012))); gA.updateMatrixWorld(true);
+    A.mira('finger1-2.L', angVicino.clone().add(n.clone().multiplyScalar(0.008))); gA.updateMatrixWorld(true); A.flessione('finger1-3.L', 0.15);
+    window.__capo = { mento, angVicino, angLontano };
+    // mano delle pacche (braccio.R): aperta e distesa, di lato, base del palmo sull'anello tra le scapole
+    const B = L3.creaParteMH(THREE, MANI, 'braccio.R', { manica: 0x003f85, manicaDa: 0.1 }); const gB = new THREE.Group(); gB.add(B.mesh); scena.add(gB); parti.push(B);
+    orientaParte(B, 'R', xb.clone().negate().add(d.clone().multiplyScalar(-0.12)).normalize(), n);   // come nel video   // dita di traverso verso il fianco lontano, un po' verso i piedi
+    B.flessione('wrist.R', 0.0);
+    for (const dd of [2, 3, 4, 5]) B.flessione(`finger${dd}-1.R`, 0.02, (dd - 3.5) * 0.1);
+    const sc = lat.P.scapole.getWorldPosition(new THREE.Vector3());
+    gB.position.add(sc.clone().add(n.clone().multiplyScalar(-0.025)).add(d.clone().multiplyScalar(-0.012)).sub(centroPalmo(B, 'R'))); gB.updateMatrixWorld(true);
+    const anello = new THREE.Mesh(new THREE.RingGeometry(0.012, 0.016, 40), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, side: THREE.DoubleSide, depthTest: false })); anello.renderOrder = 9;
+    anello.position.copy(sc).add(n.clone().multiplyScalar(-0.004)); anello.quaternion.setFromUnitVectors(v(0, 0, 1), n.clone().negate()); scena.add(anello);
+    const c = lat.P.xifoide.getWorldPosition(new THREE.Vector3());
+    const VV = scelta === 'pacche' ? { 0: xb.clone().multiplyScalar(0.9).add(v(0, 0.5, 0)).add(d.clone().multiplyScalar(-0.2)), 1: v(0, 0.85, 0.05), 2: xb.clone().multiplyScalar(-0.8).add(v(0, 0.3, 0)), 3: xb.clone().multiplyScalar(0.75).add(v(0, 0.12, 0)), 4: xb.clone().multiplyScalar(-0.75).add(v(0, 0.12, 0)) }
+      : { 0: d.clone().multiplyScalar(0.12).add(n.clone().multiplyScalar(0.4)).add(xb.clone().multiplyScalar(0.15)), 1: xb.clone().multiplyScalar(0.45).add(n.clone().multiplyScalar(0.08)), 2: d.clone().multiplyScalar(0.4).add(n.clone().multiplyScalar(0.12)) };
+    const fuoco = scelta === 'pacche' ? sc : mento;
+    cam.position.copy(fuoco).add(VV[vista] || VV[0]); cam.lookAt(fuoco);
+    et.textContent = (scelta === 'pacche' ? 'mano delle pacche' : 'mano che sostiene il capo') + ' · vista ' + vista;
+  }
+  function b2(A) { return A.testa('finger1-1.L').add(A.testa('finger2-1.L')).multiplyScalar(0.5); }   // incavo fra pollice e indice
+  /* --------- mani e piedi del lattante --------- */
+  if (scelta === 'lattante') {
+    lat.radice.visible = true; lat.posa('inPiedi'); lat.espressione('sveglio'); lat.radice.updateMatrixWorld(true);
+    lat.PARTI_MH.forEach(p => parti.push(p));
+    const bers = [lat.G.polsoSx, lat.G.cavigliaSx, lat.G.polsoDx][vista] || lat.G.polsoSx, c = bers.getWorldPosition(new THREE.Vector3()).add(v(0, vista === 1 ? -0.01 : -0.025, 0.01));
+    cam.position.copy(c).add(v(0.1, 0.06, 0.32)); cam.lookAt(c); et.textContent = ['mano del lattante', 'piede del lattante', 'altra mano del lattante'][vista] || '';
+  }
+  if (Q.get('prova') === 'dita') { const p0 = parti[0]; if (p0) { const n0 = Object.keys(p0.ossa).find(k => k.startsWith('finger4-1')); p0.ossa[n0].visible = false; } }
+  window.renderFrame = () => {
+    window.__problemi = [];
+    parti.forEach((p, i) => { window.__problemi.push(...L3.controlloDitaMH(p, 'parte ' + i)); });
+    if (window.__extra) window.__problemi.push(...window.__extra());
+    r.render(scena, cam);
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { window.renderFrame(0); window.__ready = true; });
+})();
+</script>
+</body>
+</html>

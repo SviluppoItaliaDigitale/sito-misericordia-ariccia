@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lattante: soffocamento e rianimazione</title>
+<!-- lattante-3d.src.html — video 3D «Lattante: soffocamento e rianimazione» della Misericordia di Ariccia, per genitori,
+     persone non sanitarie e volontari. Schema render(t) della skill video-3d, stessa impaginazione dei video sulla
+     disostruzione e sulla rianimazione (scripts/video-3d-disostruzione/, scripts/video-3d-rcp/). Il lattante e le mani di
+     chi soccorre sono forme disegnate in codice (lattante3d.js), coperte dalla nota «SCHEMA · NON IN SCALA».
+     Contenuti: Linee guida RCP 2025, Italian Resuscitation Council, cap. 9 «BLS pediatrico» (scheda-verita.md).
+     Approvato sanitariamente sui provini il 20/11/2026. Scritto per Alessandro Cuollo il 20/11/2026. Si costruisce con
+     costruisci.sh. -->
+<!--FONT-->
+<style>
+  html, body { margin: 0; background: #061633; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; overflow: hidden; background: #061633; }
+  #stage canvas { position: absolute; left: 0; top: 0; display: block; }
+  #fondo { z-index: 0; } #livello-scena { z-index: 2; } #sopra { z-index: 20; } #cornice { z-index: 60; }
+  #fonte { position: absolute; z-index: 30; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px;
+           line-height: 1.3; color: rgba(255, 255, 255, .86); white-space: pre; padding: 5px 12px; border-radius: 10px;
+           background: rgba(6, 22, 51, .66); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="fondo" width="1920" height="1080"></canvas>
+  <canvas id="livello-scena"></canvas>
+  <canvas id="sopra" width="1920" height="1080"></canvas>
+  <canvas id="cornice" width="1920" height="1080"></canvas>
+  <div id="fonte"></div>
+</div>
+<script type="application/json" id="dato-sottotitoli">/*DATO:sottotitoli*/</script>
+<script type="application/json" id="dato-mani">/*DATO:mani*/</script>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>/*CORNICE*/</script>
+<script>
+(function () {
+  'use strict';
+  const M3 = window.Motore3D, IMP = window.IMP, THREE = window.THREE, L3 = window.Lattante3D;
+  const dato = n => { const e = document.getElementById('dato-' + n), s = e ? e.textContent.trim() : '';
+                      return !s || s.startsWith('/*DATO:') ? null : JSON.parse(s); };
+  const FRASI = dato('sottotitoli') || [], MANI = dato('mani');
+  const { clamp, mix, prog } = M3;
+  const morb = u => 0.5 - 0.5 * Math.cos(Math.PI * clamp(u));
+  const fin = (t, a, b, e = 0.4, u = 0.4) => clamp(Math.min((t - a) / e, (b - t) / u));   // finestra 0..1
+  const KIT = { blu: '#003F85', giallo: '#FCEB0C', azzurro: '#009FE3', notte: '#061633' };
+  const TITOLO = 'Lattante: soffocamento e rianimazione';
+  const v3 = (x, y, z) => new THREE.Vector3(x, y, z);
+
+  /* ============================================================ tempi: inizio e fine delle 18 frasi della voce */
+  // S[i], E[i]: inizio e fine della frase i (secondi veri, da sottotitoli.json); DOPO: pausa dopo la frase i, la stessa
+  // di voce/tempi.py. Senza sottotitoli (provini) si stima dalla lunghezza delle frasi.
+  const N = 18;
+  const DOPO = [0, 1.0, 1.4, 1.0, 1.0, 0.8, 3.2, 0.9, 3.0, 1.4, 0.8, 1.8, 0.8, 3.2, 1.6, 3.6, 1.0, 1.2, 3.6];   // DOPO[15] da 2,6 a 3,6 (21/11/2026)
+  const S = [], E = [];
+  (function () {
+    const R = []; FRASI.forEach(f => { const r = f.riga; if (!R[r]) R[r] = { inizio: f.inizio, fine: f.fine }; else R[r].fine = Math.max(R[r].fine, f.fine); });
+    if (R.filter(Boolean).length === N) { for (let i = 1; i <= N; i++) { S[i] = R[i].inizio; E[i] = R[i].fine; } return; }
+    const DUR = [8.0, 7.9, 6.8, 5.0, 9.7, 4.3, 4.2, 9.7, 6.8, 6.1, 7.8, 6.8, 6.7, 6.4, 9.5, 4.5, 4.8, 14.2];
+    let x = 1.0; for (let i = 1; i <= N; i++) { S[i] = x; E[i] = x + DUR[i - 1]; x = E[i] + DOPO[i]; }
+  })();
+  const TOTAL = E[N] + DOPO[N];
+  window.TOTAL = TOTAL;
+  const dur = i => E[i] - S[i];
+  const SCENE = [
+    { nome: 'Il soffocamento', inizio: 0 }, { nome: 'La tosse', inizio: S[3] - 0.3 }, { nome: 'Chiama il 112', inizio: S[4] - 0.3 },
+    { nome: '5 pacche tra le scapole', inizio: S[5] - 0.3 }, { nome: '5 compressioni sul torace', inizio: S[7] - 0.3 },
+    { nome: 'Alterna 5 e 5', inizio: S[9] - 0.3 }, { nome: 'Se non risponde: 5 soffi', inizio: S[10] - 0.3 },
+    { nome: 'Le compressioni', inizio: S[12] - 0.3 }, { nome: '30 e 2', inizio: S[14] - 0.3 }, { nome: 'Il defibrillatore', inizio: S[15] - 0.3 },
+    { nome: 'Attenzione', inizio: S[16] - 0.3 }, { nome: 'Che cosa fare', inizio: S[18] - 0.3 }
+  ];
+  /* eventi (gli stessi istanti di voce/tempi.py, per gli effetti sonori) */
+  const PACCHE = [0, 1, 2, 3, 4].map(k => S[6] + Math.min(1.0, dur(6) * 0.25) + k * 0.85);
+  const COMPR_G = [0, 1, 2, 3, 4].map(k => S[8] + dur(8) * 0.45 + k * 0.8);
+  const SOFFI = [0, 1, 2, 3, 4].map(k => S[11] + 0.4 + k * 1.55);
+  const RCP_A = S[12] + Math.min(3.4, dur(12) * 0.55), RCP_B = E[14] + 1.2, PERIODO = 60 / 110;
+  const TEMPI_DAE = (function () {
+    const P = FRASI.filter(f => f.riga === 15).flatMap(f => f.parole || []), tW = (w, dopo) => { const p = P.find(q => q.w.toLowerCase().replace(/[^a-zà-ù]/g, '') === w && q.t0 >= dopo); return p ? p.t0 : null; };
+    const A = tW('se', S[15]) || S[15] + 0.6, petto = tW('petto', A), G = (petto && tW('e', petto)) || A + 0.45 * (E[15] + DOPO[15] - A);
+    return { DAE_A: A, DAE_GIRO: G, GIRO_D: 1.3, DAE_B: S[16] - 0.25, SCHIENA: tW('sulla', G) || G + 0.3 };
+  })();
+  window.__TEMPI_DAE = TEMPI_DAE;
+  // tagli fra le pose (con dissolvenza)
+  const T_PRONO = S[5] - 0.5, T_GIN = S[7] - 0.5, T_TAV = S[10] - 0.5;
+
+  const PROVA = new URLSearchParams(location.search).get('prova') || '';
+  { const pp = new URLSearchParams(location.search).get('pp'); if (pp) window.__PP = JSON.parse(pp); }   // solo prove della posa delle mani    // solo prove dei controlli: soffi-lontano, soffi-dentro, placca-fianco
+  const FORMATO = new URLSearchParams(location.search).get('formato') === 'verticale' ? 'verticale' : 'orizzontale';
+  const VERT = FORMATO === 'verticale';
+  const L = IMP.layout(FORMATO), W = L.W, H = L.H;
+  window.STAGE_W = W; window.STAGE_H = H;
+  for (const id of ['fondo', 'sopra', 'cornice']) { const e = document.getElementById(id); e.width = W; e.height = H; }
+  const stage = document.getElementById('stage');
+  const stato = IMP.monta(stage, { ente: 'misericordia', formato: FORMATO, hud: null, nota: null });
+  // etichette con la linea di richiamo più grandi di circa il 40% (revisione di medico, regista e formatore, 21/11/2026)
+  stato.L.scheda = Object.assign({}, stato.L.scheda, { titolo: Math.round(stato.L.scheda.titolo * 1.4), sotto: Math.max(30, Math.round(stato.L.scheda.sotto * 1.4)), larghezzaMax: Math.round(stato.L.scheda.larghezzaMax * 1.35) });
+  IMP.anteprima(stage);
+  if (new URLSearchParams(location.search).get('pulito') === '1') {
+    const st = document.createElement('style'); st.textContent = '#sopra,#cornice,#fonte,#imp-radice{display:none!important}'; document.head.appendChild(st);
+  }
+
+  /* ============================================================ fondo, renderer e luci (come nei provini approvati) */
+  const fondo = document.getElementById('fondo'), fctx = fondo.getContext('2d');
+  (function () {
+    const g = fctx.createRadialGradient(W * 0.5, VERT ? 820 : 470, 60, W * 0.5, VERT ? 820 : 470, VERT ? 1500 : 1250);
+    g.addColorStop(0, '#0B3D7E'); g.addColorStop(0.5, '#082B5E'); g.addColorStop(1, KIT.notte);
+    fctx.fillStyle = g; fctx.fillRect(0, 0, W, H);
+  })();
+  const tela3d = document.getElementById('livello-scena');
+  const r = new THREE.WebGLRenderer({ canvas: tela3d, antialias: true, alpha: true, preserveDrawingBuffer: true });
+  r.setPixelRatio(1); r.setSize(W, H, false); tela3d.style.width = W + 'px'; tela3d.style.height = H + 'px';
+  r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap; r.outputColorSpace = THREE.SRGBColorSpace;
+  r.setClearColor(0x000000, 0);
+  const scena = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(VERT ? 40 : 28, W / H, 0.02, 20);
+  scena.add(new THREE.HemisphereLight(0xe6eeff, 0x2a3a5a, 1.3));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.9); luce.castShadow = true;
+  luce.shadow.mapSize.set(2048, 2048); Object.assign(luce.shadow.camera, { left: -0.6, right: 0.6, top: 0.6, bottom: -0.6, near: 0.1, far: 6 });
+  scena.add(luce); scena.add(luce.target);
+  const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.6); luce2.position.set(-1.5, 0.6, -1); scena.add(luce2);
+
+  /* ============================================================ il lattante, le mani, la gamba, il piano */
+  // il lattante (forme disegnate qui) con mani e piedi veri a cinque dita; braccia e mani dell'adulto vere (MakeHuman, CC0)
+  const lat = L3.creaLattante(THREE, { mh: MANI }); scena.add(lat.radice);
+  const braccio = {}, gruppo = {};
+  for (const n of ['R', 'L']) {
+    // le due maniche di tono diverso, così si leggono come due avambracci distinti
+    braccio[n] = L3.creaParteMH(THREE, MANI, 'braccio.' + n, { manica: n === 'L' ? 0x2f6db3 : 0x003f85, manicaDa: 0.1 });
+    gruppo[n] = new THREE.Group(); gruppo[n].add(braccio[n].mesh); scena.add(gruppo[n]);
+    braccio[n].mesh.castShadow = false; braccio[n].mesh.receiveShadow = false;   // il tono della mano non si scurisce
+    // manica blu lunga (revisione del 21/11/2026): dal polso in su, dritta oltre il gomito fino a uscire dal quadro; il
+    // controllo «braccio» verifica che la sua estremità non si veda mai
+    (function (b) {
+      // DUE ASPETTI (21/11/2026): «manica» è quello approvato (manica blu lunga dal polso oltre il gomito, fino a uscire dal
+      // quadro) e vale in tutte le scene tranne i due pollici; «nudo» (avambracci nudi come nella fig. 11, che oltre il taglio
+      // del modello continuano con un tronco di cono color pelle fino a uscire dal quadro) vale solo nelle scene dei pollici
+      const tubo = []; b.mesh.traverse(o => { if (o !== b.mesh && o.isMesh) tubo.push(o); });
+      const t0 = tubo[0], r = 0.03, L = PROVA === 'manica-corta' ? 0.01 : 1.8;   // 1,8 m: con i tempi nuovi la fine (0,9 m) si vedeva a inizio frase 5; prova: manica corta
+      t0.geometry.dispose(); t0.geometry = new THREE.CapsuleGeometry(r, L, 6, 20); t0.position.y = 0.14 - L / 2;
+      const fineManicaBlu = () => t0.localToWorld(v3(0, -L / 2 - r, 0));
+      const matManica = b.mesh.material, matNudo = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55, side: THREE.DoubleSide });
+      const la = b.ossa['lowerarm01.' + b.lato], pos = b.mesh.geometry.attributes.position, qv = v3(0, 0, 0);
+      b.mesh.updateMatrixWorld(true); const inv = new THREE.Matrix4().copy(la.matrixWorld).invert();
+      const P = []; for (let i = 0; i < pos.count; i++) { b.mesh.getVertexPosition(i, qv); b.mesh.localToWorld(qv); qv.applyMatrix4(inv); P.push([qv.x, qv.y, qv.z]); }
+      const yCut = Math.min(...P.map(p => p[1]));
+      const fascia = P.filter(p => p[1] < yCut + 0.02), cx = fascia.reduce((s0, p) => s0 + p[0], 0) / fascia.length, cz = fascia.reduce((s0, p) => s0 + p[2], 0) / fascia.length;
+      let sxx = 0, szz = 0, sxz = 0; for (const [x, , z] of fascia) { sxx += (x - cx) ** 2; szz += (z - cz) ** 2; sxz += (x - cx) * (z - cz); }
+      const th = 0.5 * Math.atan2(2 * sxz, sxx - szz), ux = Math.cos(th), uz = Math.sin(th);
+      let ea = 0, ec = 0; for (const [x, , z] of fascia) { ea = Math.max(ea, Math.abs((x - cx) * ux + (z - cz) * uz)); ec = Math.max(ec, Math.abs(-(x - cx) * uz + (z - cz) * ux)); }
+      const LC = PROVA === 'manica-corta' ? 0.03 : 0.8, cono = 0.12, pezzi = [];
+      const matP = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55 });
+      const pezzo = (r0, r1, len, y) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r0, r1, len, 48, 1, false), matP); m.position.set(cx, y, cz); m.scale.set(ea, 1, ec); m.rotation.y = -th; la.add(m); pezzi.push(m); return m; };
+      pezzo(1, 1.12, Math.min(cono, LC), yCut + 0.006 - Math.min(cono, LC) / 2);
+      if (LC > cono) pezzo(1.12, 1.22, LC - cono, yCut + 0.006 - cono - (LC - cono) / 2);
+      const fineNuda = () => la.localToWorld(v3(cx, yCut + 0.006 - LC, cz));
+      b.aspetto = modo => { if (b.modo === modo) return; b.modo = modo; const nudo = modo === 'nudo';
+        b.mesh.material = nudo ? matNudo : matManica; t0.visible = !nudo; pezzi.forEach(m => m.visible = nudo);
+        b.fineManica = nudo ? fineNuda : fineManicaBlu; b.fineOpaca = b.fineManica; };
+      b.aspetto('manica');
+      // angoli di riposo delle ossa presi alla costruzione (prima si prendevano alla prima posa dei pollici: se prima si
+      // rendeva la scena delle pacche, il «riposo» era la posa delle pacche e la presa dei pollici veniva sbagliata)
+      b.riposo0 = Object.fromEntries(Object.entries(b.ossa).map(([k, o]) => [k, o.quaternion.clone()]));
+    })(braccio[n]);
+  }
+  /* ---------- testa di chi soccorre per i soffi (IRC 2025 cap. 9 p. 25, fig. 9) ---------- */
+  // dal corpo base di MakeHuman, CC0 (mani_makehuman.py, parte «testa»): viso vero con occhi, mascella, collo e spalle,
+  // colori per vertice (pelle, labbra, occhi, maglia blu); mai sfere o primitive per un volto
+  const capo = MANI && MANI.parti.testa ? L3.creaParteMH(THREE, MANI, 'testa', { pelle: 0xffffff }) : null;
+  const gruppoCapo = new THREE.Group(); scena.add(gruppoCapo);
+  const CAPO = {};
+  if (capo) {
+    gruppoCapo.add(capo.mesh); capo.mesh.castShadow = false;
+    // il busto sotto il collo sfuma nel fondo (schema): niente bordi tagliati del modello in vista
+    const b = atob(MANI.parti.testa.colori), col = new Float32Array(b.length / 3 * 4), c = new THREE.Color(), labbra = [], viso = [];
+    const pos0 = capo.mesh.geometry.attributes.position;
+    // colori della testa di chi soccorre (revisione del 21/11/2026): niente sfumature nella trasparenza (lasciavano un moncone
+    // sfocato); pelle, maglia blu e capelli si fondono con pesi lisci calcolati sulla posizione a riposo, così scollo e
+    // attaccatura dei capelli sono morbidi e non a gradini; collo, spalle e maglia restano interi ed escono dal quadro
+    const sm = (a, b2, x) => { const u = M3.clamp((x - a) / (b2 - a)); return u * u * (3 - 2 * u); };
+    const cPelle = new THREE.Color().setRGB(217 * 0.86 / 255, 160 * 0.86 / 255, 124 * 0.86 / 255, THREE.SRGBColorSpace);
+    const cMaglia = new THREE.Color().setRGB(0, 63 / 255, 133 / 255, THREE.SRGBColorSpace), cCapelli = new THREE.Color().setRGB(0.20, 0.13, 0.09, THREE.SRGBColorSpace);
+    for (let i = 0; i < b.length; i += 3) {
+      const r0 = b.charCodeAt(i), g0 = b.charCodeAt(i + 1), y = pos0.getY(i / 3), z = pos0.getZ(i / 3), x = pos0.getX(i / 3);
+      if (r0 === 217 || (r0 === 0 && g0 === 63)) {
+        // scollo: piano liscio un poco più alto dietro (z negativo), sfumato su circa 8 mm
+        const yScollo = 0.598 + 0.018 * sm(0.06, -0.04, z), wM = sm(yScollo + 0.004, yScollo - 0.004, y);
+        // capelli: sopra la fronte e, sul retro e sui lati, sopra le orecchie; orecchie libere
+        const fH = Math.max(y - 0.79, Math.min(y - 0.735, 0.105 - z), Math.min(y - 0.70, 0.03 - z)) - 0.003;   // sopra la fronte; sui lati sopra e davanti all'orecchio; dietro fino alla nuca
+        let wH = sm(-0.006, 0.006, fH) * sm(0.105, 0.09, Math.abs(x)) * (1 - sm(0.058, 0.07, Math.abs(x)) * sm(0.772, 0.758, y) * sm(0.0, 0.015, z) * sm(0.075, 0.06, z));
+        if (y < 0.66) wH = 0;
+        c.copy(cPelle).lerp(cMaglia, wM).lerp(cCapelli, wH * (1 - wM));
+      } else c.setRGB(r0 / 255, g0 / 255, b.charCodeAt(i + 2) / 255, THREE.SRGBColorSpace);
+      col.set([c.r, c.g, c.b, 1], i / 3 * 4);
+      if (r0 === 184 && g0 === 118) labbra.push(i / 3);                                         // labbra (colore di mani_makehuman.py)
+    }
+    // bordo del pezzo: vertici dei lati che appartengono a un solo triangolo (dove il corpo base è stato tagliato: spalle e
+    // maglia), esclusi gli occhi e la bocca che sono pezzi a sé (sopra y 0,64)
+    { const ix = capo.mesh.geometry.index, cnt = new Map(), key = (a2, b2) => a2 < b2 ? a2 + ',' + b2 : b2 + ',' + a2;
+      for (let k = 0; k < ix.count; k += 3) { const t3 = [ix.getX(k), ix.getX(k + 1), ix.getX(k + 2)]; for (let e = 0; e < 3; e++) { const kk = key(t3[e], t3[(e + 1) % 3]); cnt.set(kk, (cnt.get(kk) || 0) + 1); } }
+      const S2 = new Set(); for (const [kk, n] of cnt) if (n === 1) kk.split(',').forEach(v => { if (pos0.getY(+v) < 0.64) S2.add(+v); });
+      CAPO.taglio = [...S2]; }
+    capo.mesh.geometry.setAttribute('color', new THREE.BufferAttribute(col, 4));
+    capo.mesh.material.vertexColors = true; capo.mesh.material.transparent = true; capo.mesh.material.side = THREE.FrontSide; capo.mesh.material.color.set(0xffffff); capo.mesh.material.roughness = 0.6;
+    const pos = capo.mesh.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) if (pos.getY(i) > 0.56) viso.push(i);                    // testa e collo (per le compenetrazioni)
+    gruppoCapo.updateMatrixWorld(true);
+    const su = labbra.filter(i => pos0.getY(i) > 0.661), giu = labbra.filter(i => pos0.getY(i) < 0.657);
+    Object.assign(CAPO, { labbra, su, giu, viso, q0: capo.ossa.head.getWorldQuaternion(new THREE.Quaternion()) });
+  }
+  const PM = L3.creaPoseMani(THREE, lat);
+  const SCALA_MANI = 1.15;                     // mani grandi rispetto al torace, come nella foto di riferimento
+  // fotografia della posa di un braccio (gruppo e ossa), per non ricalcolarla a ogni fotogramma
+  const foto = n => ({ p: gruppo[n].position.clone(), q: gruppo[n].quaternion.clone(), s: gruppo[n].scale.x, o: Object.fromEntries(Object.entries(braccio[n].ossa).map(([k, b]) => [k, b.quaternion.clone()])) });
+  const rimetti = (n, f) => { gruppo[n].position.copy(f.p); gruppo[n].quaternion.copy(f.q); gruppo[n].scale.setScalar(f.s); for (const k in f.o) braccio[n].ossa[k].quaternion.copy(f.o[k]); gruppo[n].updateMatrixWorld(true); };
+  const cache = {}, BASE_Y = 0.062;
+  const pantaloni = new THREE.MeshStandardMaterial({ color: 0x1d2a40, roughness: 0.9 });
+  const gamba = [0, 1].map(() => {
+    const g = { coscia: new THREE.Mesh(L3.arto(THREE, 0, 0.42, 0.064, 0.074, 0.03, 0.9), pantaloni),
+                ginocchio: new THREE.Mesh(new THREE.SphereGeometry(0.062, 32, 24), pantaloni),
+                tibia: new THREE.Mesh(L3.arto(THREE, 0, 0.42, 0.05, 0.042, 0.04, 0.95), pantaloni) };
+    Object.values(g).forEach(o => { o.receiveShadow = true; scena.add(o); }); return g;
+  });
+  const piano = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.03, 0.5), new THREE.MeshStandardMaterial({ color: 0xdfe6ee, roughness: 0.7 }));
+  piano.receiveShadow = true; scena.add(piano);
+  const anello = new THREE.Mesh(new THREE.RingGeometry(0.012, 0.016, 40), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, side: THREE.DoubleSide, depthTest: false, transparent: true }));
+  anello.renderOrder = 10; scena.add(anello);
+  // riferimento della linea dei capezzoli (revisione del 21/11/2026): due puntini sulla tutina a y 0,17 del bacino, così il
+  // giallo e i pollici si leggono sotto quella linea, a metà torace
+  const capezzoli = [1, -1].map(s => { const q = lat.sezione(0.17), x = s * 0.032, m = new THREE.Mesh(new THREE.SphereGeometry(0.0032, 16, 12), new THREE.MeshStandardMaterial({ color: 0xc77f86, roughness: 0.6 }));
+    m.position.set(x, 0.17, q.z + q.rz * Math.sqrt(1 - Math.pow(x / q.rx, 2)) + 0.0006); m.visible = false; lat.G.bacino.add(m); return m; });
+  // torace che si abbassa nelle compressioni (solo il tronco: materiale suo)
+  const uComp = { value: 0 }, uAlza = { value: 0 };
+  (function () {
+    const busto = lat.G.busto; busto.material = busto.material.clone();
+    busto.material.onBeforeCompile = sh => {
+      sh.uniforms.uComp = uComp; sh.uniforms.uAlza = uAlza;
+      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nuniform float uComp;\nuniform float uAlza;')
+        .replace('#include <begin_vertex>', `#include <begin_vertex>
+          float pesoC = smoothstep(0.0, 0.05, transformed.z) * exp(-pow(transformed.x / 0.045, 2.0)) * exp(-pow((transformed.y - 0.13) / 0.045, 2.0));
+          transformed.z -= uComp * pesoC;
+          transformed.z += uAlza * smoothstep(-0.03, 0.035, transformed.z) * exp(-pow((transformed.y - 0.1) / 0.06, 2.0));`);
+    };
+    busto.material.customProgramCacheKey = () => 'busto-comp';
+  })();
+  // vie dell'aria a schema (scena iniziale): tubo dalla bocca ai bronchi, pezzetto di cibo, aria
+  const matTrachea = new THREE.MeshBasicMaterial({ color: 0x7fd0f5, transparent: true, opacity: 0.85, depthTest: false });
+  let trachea = null, curva = null;
+  const pezzetto = new THREE.Mesh(new THREE.SphereGeometry(0.0075, 20, 16), new THREE.MeshStandardMaterial({ color: 0xe0902f, roughness: 0.6, depthTest: false }));
+  pezzetto.renderOrder = 12; scena.add(pezzetto);
+  const NA = 26, aria = new THREE.InstancedMesh(new THREE.SphereGeometry(0.0024, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, depthTest: false }), NA);
+  aria.renderOrder = 13; scena.add(aria);
+  // segni del defibrillatore (placche): davanti al centro del torace subito a sinistra dello sterno, dietro fra le scapole
+  const matPlacca = new THREE.MeshStandardMaterial({ color: 0xf4f4f4, roughness: 0.5 });
+  // segni sottili per il DAE: linea dello sterno (riferimento per «subito a sinistra dello sterno») e scapole accennate
+  const segniDae = [];
+  function pelleL(x, y, verso) {        // punto della pelle del tronco (coordinate del bacino) e normale, lungo la normale del petto o del dorso
+    const b = lat.G.bacino, d = (q) => lat.dentroTronco(b.localToWorld(q.clone()));
+    let z = 0; while (z < 0.12 && d(v3(x, y, verso * z)) < 1) z += 0.0003;
+    const p = v3(x, y, verso * z), e = 0.002, n = v3(d(v3(x + e, y, p.z)) - d(v3(x - e, y, p.z)), 0, d(v3(x, y, p.z + e)) - d(v3(x, y, p.z - e))).normalize();
+    return { p, n };
+  }
+  function creaSegniDae() {
+    const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 });
+    const linea = (punti, verso) => { const pts = punti.map(([x, y]) => { const q = pelleL(x, y, verso); return q.p.addScaledVector(q.n, 0.0012); });
+      const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 60, 0.0016, 6, false), mat); m.visible = false; lat.G.bacino.add(m); segniDae.push(m); return m; };
+    segniDae.sterno = linea([[0, 0.183], [0, 0.16], [0, 0.135], [0, 0.11]], 1);
+    segniDae.scapole = [1, -1].map(s => linea([[s * 0.052, 0.18], [s * 0.028, 0.176], [s * 0.026, 0.15], [s * 0.028, 0.118], [s * 0.054, 0.162]], -1));
+  }
+  // placche del DAE (revisione del 21/11/2026): rettangolo bianco pieno ad angoli arrotondati (4,6 × 5,6 cm, 5 mm), bordo
+  // giallo, con un corto tratto di cavo: si legge a colpo d'occhio anche al proiettore
+  const placche = [0, 1].map(() => { const sh = new THREE.Shape(), w = 0.023, l = 0.028, rr = 0.007;
+    sh.moveTo(-w + rr, -l); sh.lineTo(w - rr, -l); sh.quadraticCurveTo(w, -l, w, -l + rr); sh.lineTo(w, l - rr); sh.quadraticCurveTo(w, l, w - rr, l); sh.lineTo(-w + rr, l); sh.quadraticCurveTo(-w, l, -w, l - rr); sh.lineTo(-w, -l + rr); sh.quadraticCurveTo(-w, -l, -w + rr, -l);
+    const g = new THREE.ExtrudeGeometry(sh, { depth: 0.005, bevelEnabled: false }); g.translate(0, 0, -0.0025); g.rotateX(-Math.PI / 2);
+    const p = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0xffffff })); p.castShadow = false; scena.add(p);
+    const bordo = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sh.getPoints(12).map(q => v3(q.x, 0.0032, -q.y)), true), 80, 0.0013, 6, true), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true }));
+    p.add(bordo); bordo.material.opacity = 1; p.children[0] = bordo;
+    const cavo = new THREE.Mesh(new THREE.CylinderGeometry(0.0022, 0.0022, 0.03, 12), new THREE.MeshBasicMaterial({ color: 0x3a3a3a })); cavo.rotation.x = Math.PI / 2; cavo.position.set(0, 0.002, l + 0.013); p.add(cavo);
+    return p; });
+  const bordoPlacca = [0, 1].map(() => { const b = new THREE.Mesh(new THREE.RingGeometry(0.036, 0.04, 4, 1, Math.PI / 4), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, side: THREE.DoubleSide, depthTest: false, transparent: true })); b.renderOrder = 11; scena.add(b); return b; });
+  // bocca di chi soccorre (schema): ovale trasparente che copre bocca e naso, frecce dell'aria
+  const coperta = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0x9fe3ff, transparent: true, opacity: 0.45, depthTest: false, side: THREE.DoubleSide }));
+  coperta.scale.set(0.03, 0.016, 0.034);
+  coperta.renderOrder = 14; scena.add(coperta);
+
+  const mondo = o => o.getWorldPosition(new THREE.Vector3());
+  function orientaLattante(su, fronte) {
+    const y = su.clone().normalize(), z = fronte.clone().sub(y.clone().multiplyScalar(fronte.dot(y))).normalize();
+    const x = new THREE.Vector3().crossVectors(y, z);
+    lat.radice.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+    return { x, y, z };
+  }
+  const orientaMano = (m, dita, palmo) => L3.orienta(THREE, m.radice, dita, palmo);
+  function nascondiTutto() {
+    gruppo.R.visible = gruppo.L.visible = piano.visible = anello.visible = false;
+    gamba.forEach(g => Object.values(g).forEach(o => o.visible = false));
+    placche.concat(bordoPlacca).forEach(p => p.visible = false);
+    pezzetto.visible = aria.visible = coperta.visible = false; if (trachea) trachea.visible = false;
+    lat.mostraSterno(false); capezzoli.forEach(m => m.visible = false); lat.G.busto.material.emissive.setRGB(0, 0, 0); alzaOra = 0; daeAtteso = -1; uComp.value = 0; uAlza.value = 0; gruppoCapo.visible = false; freccia = null; segnoTorace = null; mani2D = null; polliciPosa = false;
+    lat.G.sterno.children.forEach(o => o.visible = true); segniDae.forEach(o => o.visible = false);
+    for (const m of [lat.materiali.pelle, lat.materiali.body]) { m.transparent = false; m.opacity = 1; m.depthWrite = true; }
+    lat.G.busto.material.transparent = false; lat.G.busto.material.opacity = 1; lat.G.busto.material.depthWrite = true;
+  }
+  let daeAtteso = -1, alzaOra = 0, problemi = [], posaCorrente = '', freccia = null, segnoTorace = null, mani2D = null, polliciPosa = false;      // freccia di profondità delle compressioni (punti del mondo)                   // controlli automatici del fotogramma corrente
+
+  /* ---------- posa 1: in braccio, dritto (schema delle vie dell'aria) ---------- */
+  function posaAria(t) {
+    lat.posa('inPiedi'); lat.espressione('sveglio');
+    lat.radice.quaternion.identity(); lat.radice.position.set(0, 0, 0); lat.radice.updateMatrixWorld(true);
+    if (!trachea) {
+      const b = lat.G.bacino, te = lat.G.testa;
+      const p = [te.localToWorld(v3(0, 0.036, 0.058)), te.localToWorld(v3(0, 0.03, 0.02)), te.localToWorld(v3(0, 0.0, 0.012)),
+                 b.localToWorld(v3(0, 0.19, 0.012)), b.localToWorld(v3(0, 0.15, 0.01)), b.localToWorld(v3(0, 0.12, 0.006))];
+      curva = new THREE.CatmullRomCurve3(p);
+      trachea = new THREE.Mesh(new THREE.TubeGeometry(curva, 80, 0.0055, 12, false), matTrachea); trachea.renderOrder = 11; scena.add(trachea);
+      lat.radice.updateMatrixWorld(true);
+    }
+    const tr = clamp((t - S[1] - 0.5) / 1.0) * (1 - clamp((t - S[3] - 1.0) / 1.0));       // pelle in trasparenza
+    for (const m of [lat.materiali.pelle, lat.materiali.body, lat.G.busto.material]) { m.transparent = tr > 0; m.opacity = 1 - 0.62 * tr; m.depthWrite = tr < 0.5; }
+    trachea.visible = tr > 0.02; matTrachea.opacity = 0.85 * tr;
+    // il pezzetto entra dalla bocca e si ferma nella trachea (a 0,62 del percorso)
+    const u = 0.62 * morb(clamp((t - (S[1] + dur(1) * 0.35)) / 2.2));
+    pezzetto.visible = tr > 0.02 && t > S[1] + dur(1) * 0.3; pezzetto.position.copy(curva.getPointAt(u)); pezzetto.material.opacity = tr;
+    const bloccata = u > 0.6, _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _s = new THREE.Vector3();
+    aria.visible = tr > 0.02; aria.material.opacity = 0.9 * tr;
+    for (let i = 0; i < NA; i++) {
+      let w = ((i + 0.5) / NA + t * 0.35) % 1;
+      if (bloccata && w > 0.58) w = 0.58 - (w - 0.58) * 0.15;            // l'aria si ferma davanti al pezzetto
+      const q = curva.getPointAt(1 - w * 0.98); _s.setScalar(1); _m.compose(q, _q, _s); aria.setMatrixAt(i, _m);
+    }
+    aria.instanceMatrix.needsUpdate = true;
+    const c = mondo(lat.P.giugulo).add(v3(0, 0.035, 0.0)), az = -1.15 + 0.35 * clamp((t - S[1]) / 25);
+    return { c, pos: c.clone().add(v3(Math.sin(az) * 1.15, 0.12, Math.cos(az) * 1.15)), sh: 0.1 };
+  }
+
+  /* ---------- posa 2: a pancia in giù sull'avambraccio (IRC 2025 cap. 9 p. 29, fig. 16a) ---------- */
+  const a20 = 20 * Math.PI / 180, dP = v3(-Math.cos(a20), -Math.sin(a20), 0), nP = v3(Math.sin(a20), -Math.cos(a20), 0);
+  function colpoPacca(t) { let x = 0; for (const t0 of PACCHE) { const q = (t - t0 + 0.35) / 0.6; if (q > 0 && q < 1) x = Math.max(x, Math.sin(Math.PI * q)); } return x; }
+  function posaProno(t) {
+    lat.posa('prono'); lat.espressione('sveglio');
+    const B = orientaLattante(dP, nP); lat.radice.position.set(0, 0, 0); lat.radice.updateMatrixWorld(true);
+    const asse = k => dP.clone().multiplyScalar(k).add(nP.clone().multiplyScalar(0.088));
+    // mano che sostiene il capo (braccio L) e mano delle pacche (braccio R): pose dei provini delle mani (MakeHuman)
+    if (!cache.prono) {
+      const A = braccio.L, gA = gruppo.L, xb = B.x, d = dP, n = nP;
+      gA.scale.setScalar(1); PM.orientaParte(A, 'L', d.clone().add(n.clone().multiplyScalar(0.25)).normalize(), xb.clone().add(n.clone().multiplyScalar(-0.35)).normalize()); gA.updateMatrixWorld(true);
+      const te = lat.G.testa, P = q => te.localToWorld(q);
+      const mento = P(v3(0, 0.012, 0.046)), angVicino = P(v3(0.044, 0.026, 0.012)), angLontano = P(v3(-0.044, 0.026, 0.012));
+      gA.position.add(angLontano.clone().add(xb.clone().multiplyScalar(-0.03)).add(n.clone().multiplyScalar(0.034)).add(d.clone().multiplyScalar(-0.075)).sub(PM.centroPalmo(A, 'L')));
+      gA.updateMatrixWorld(true);
+      for (const dd of [2, 3, 4, 5]) { A.flessione(`finger${dd}-1.L`, 0.55, (dd - 3.5) * 0.06); A.flessione(`finger${dd}-2.L`, 0.75); A.flessione(`finger${dd}-3.L`, 0.45); }
+      gA.updateMatrixWorld(true);
+      A.mira('finger1-1.L', mento.clone().add(n.clone().multiplyScalar(0.022)).add(d.clone().multiplyScalar(-0.012))); gA.updateMatrixWorld(true);
+      A.mira('finger1-2.L', angVicino.clone().add(n.clone().multiplyScalar(0.008))); gA.updateMatrixWorld(true); A.flessione('finger1-3.L', 0.15);
+      const Bb = braccio.R, gB = gruppo.R;
+      gB.scale.setScalar(1); PM.orientaParte(Bb, 'R', xb.clone().negate().add(d.clone().multiplyScalar(-0.12)).normalize(), n);   // avambraccio di lato, dita di traverso verso il fianco lontano, mai verso la testa gB.updateMatrixWorld(true);
+      for (const dd of [2, 3, 4, 5]) Bb.flessione(`finger${dd}-1.R`, 0.02, (dd - 3.5) * 0.1);
+      const sc0 = mondo(lat.P.scapole);
+      gB.position.add(sc0.clone().add(n.clone().multiplyScalar(-0.025)).add(d.clone().multiplyScalar(-0.012)).sub(PM.centroPalmo(Bb, 'R'))); gB.updateMatrixWorld(true);
+      cache.prono = { L: foto('L'), R: foto('R') };
+    }
+    rimetti('L', cache.prono.L); rimetti('R', cache.prono.R); gruppo.L.visible = true;
+    // gamba: coscia sotto l'avambraccio, ginocchio dal lato della testa, tibia giù
+    const k = asse(0.2).add(nP.clone().multiplyScalar(0.102)), g = gamba[0];
+    g.coscia.quaternion.setFromUnitVectors(v3(0, 1, 0), dP.clone().negate()); g.coscia.position.copy(k);
+    g.ginocchio.position.copy(k); g.tibia.quaternion.setFromUnitVectors(v3(0, 1, 0), v3(-0.15, -1, 0).normalize()); g.tibia.position.copy(k);
+    Object.values(g).forEach(o => o.visible = true);
+    // mano delle pacche: arriva di lato, aperta e distesa, dita di traverso verso il fianco lontano; il colpo cade sull'anello
+    const sc = mondo(lat.P.scapole);
+    const alza = 0.07 * (1 - colpoPacca(t));
+    gruppo.R.position.add(v3(0, 1, 0).add(dP.clone().multiplyScalar(-0.35)).normalize().multiplyScalar(alza));   // si alza verso l'alto e verso i piedi, mai verso la testa gruppo.R.updateMatrixWorld(true);
+    // la mano arriva di lato (dal fianco vicino), dopo che la telecamera è salita sopra la schiena
+    const arriva = morb(clamp((t - (S[6] - 0.1)) / 0.6));
+    gruppo.R.position.add(B.x.clone().multiplyScalar(0.16 * (1 - arriva))); gruppo.R.updateMatrixWorld(true);
+    gruppo.R.visible = t > S[6] - 0.1;
+    anello.visible = true; anello.position.copy(sc).add(nP.clone().multiplyScalar(-0.004)); anello.quaternion.setFromUnitVectors(v3(0, 0, 1), nP.clone().negate());
+    // controllo: la mano delle pacche (e il suo avambraccio) non entra mai nel volume sopra testa e collo
+    if (gruppo.R.visible) {
+      const b = lat.G.bacino, Bb = braccio.R;
+      const pts = ['lowerarm01', 'lowerarm02', 'wrist'].map(k => Bb.testa(k + '.R')).concat([1, 2, 3, 4, 5].map(dd => Bb.punta(`finger${dd}-3.R`)));
+      for (const pw of pts) {
+        const lb = b.worldToLocal(pw.clone());
+        if (lb.y > 0.17 && Math.abs(lb.x) < 0.12) { problemi.push({ tipo: 'pacche', dettagli: `mano delle pacche sopra testa o collo (y ${lb.y.toFixed(3)})` }); break; }
+      }
+    }
+    const c = mondo(lat.P.xifoide).add(dP.clone().multiplyScalar(-0.03)).add(nP.clone().multiplyScalar(0.06));
+    const dx = 0.05 * clamp((t - T_PRONO) / 10);
+    const posA = c.clone().add(B.x.clone().multiplyScalar(0.55 - dx)).add(nP.clone().multiplyScalar(-1.45)).add(dP.clone().multiplyScalar(-0.1 + dx));
+    // mentre la voce dice che la mano sostiene la testa, la telecamera scende di lato e da sotto: si vede la presa sulla
+    // mandibola, con bocca e naso liberi; poi risale per le pacche
+    const sotto = 1 - morb(clamp((t - (S[6] - 1.4)) / 1.3));
+    const cB = mondo(lat.G.testa).add(dP.clone().multiplyScalar(-0.07)).add(nP.clone().multiplyScalar(0.02));
+    const posB = cB.clone().add(B.x.clone().multiplyScalar(1.1)).add(v3(0, -0.5, 0)).add(dP.clone().multiplyScalar(0.2));
+    // passaggio fra le due viste: direzione e distanza si interpolano a parte, così la telecamera gira intorno al lattante
+    const cc = c.clone().lerp(cB, sotto), dA = posA.clone().sub(c), dB = posB.clone().sub(cB);
+    const dir = dA.clone().normalize().lerp(dB.clone().normalize(), sotto).normalize(), dist = dA.length() + (dB.length() - dA.length()) * sotto;
+    return { c: cc, pos: cc.clone().add(dir.multiplyScalar(dist)), sh: 0.11, segni: { sc } };
+  }
+
+  /* ---------- mani intorno al torace, pollici sulla metà inferiore dello sterno (approvate sui provini) ---------- */
+  /* ---------- presa a due pollici costruita dalle mani (21/11/2026, Alessandro e revisori; IRC 2025 cap. 9 fig. 11) ----------
+     1) palmi sui fianchi del torace all'altezza dei capezzoli, dita che avvolgono il dorso e toccano la pelle;
+     2) avambracci verso il lato di chi soccorre (+x), perpendicolari all'asse del lattante, paralleli, distanziati;
+     3) pollici riportati dal polso al giallo (metà inferiore dello sterno, punte affiancate), angolo della base libero. */
+  // palmi: la mano vicina sul bordo basso del torace, quella lontana sul bordo alto (avambracci distanziati di un torace)
+  const PRESA = { yPalmo: s => s > 0 ? 0.105 : 0.15, fi: 1.75, staccoPalmo: 0.01 };
+  function direzioneAvambraccio(s) {
+    // vicino (+x): bordo verso i piedi; lontano (-x): bordo verso la testa e più alto, per passare sopra il torace
+    if (PROVA === 'braccia-incrociate') return s > 0 ? v3(1, 0.9, -0.9) : v3(1, 1.1, 0.9);
+    if (PROVA === 'braccia-paralleli-al-corpo') return v3(0.15, 0.9, 1);
+    const T = JSON.parse(new URLSearchParams(location.search).get('fa') || 'null');   // solo prove: [[x,y,z],[x,y,z]]
+    if (T) return v3(...T[s > 0 ? 0 : 1]);
+    return s > 0 ? v3(1, 0.8, 0.28) : v3(1, 1.0, -0.28);
+  }
+  function posaAvvolgente(b, s, st) {
+    const l = b.lato, g = b.mesh.parent, bac = lat.G.bacino, sc = g.scale.x;
+    const F = direzioneAvambraccio(s).normalize();
+    const punta = st.clone().add(v3(s * 0.0042, 0.011, -0.004));                     // punta del pollice, come in posaPollici
+    const L1 = b.ossa[`finger1-1.${l}`].userData.lunghezza * sc, L2 = (b.ossa[`finger1-2.${l}`].userData.lunghezza + b.ossa[`finger1-3.${l}`].userData.lunghezza) * sc * 0.98;
+    const yP = PRESA.yPalmo(s);
+    const ancora = fi => { const q = lat.sezione(yP), x = Math.sin(fi) * q.rx, z = q.z + Math.cos(fi) * q.rz;
+      const n = new THREE.Vector2(Math.sin(fi) / q.rx, Math.cos(fi) / q.rz).normalize();
+      return { p: bac.localToWorld(v3(s * (x + n.x * PRESA.staccoPalmo), yP, z + n.y * PRESA.staccoPalmo)), c: bac.localToWorld(v3(0, yP, q.z)) }; };
+    const pollice = () => {                                                         // cinematica inversa a due segmenti, inarcata verso l'alto
+      g.updateMatrixWorld(true);
+      const cmc = b.testa(`finger1-1.${l}`), dv = punta.clone().sub(cmc), d = dv.length(), u = dv.clone().normalize();
+      const aa = (L1 * L1 - L2 * L2 + d * d) / (2 * d), hh = Math.sqrt(Math.max(0, L1 * L1 - aa * aa));
+      const w = v3(0, 1, 0); w.sub(u.clone().multiplyScalar(w.dot(u))).normalize();
+      b.mira(`finger1-1.${l}`, cmc.clone().add(u.multiplyScalar(aa)).add(w.multiplyScalar(hh))); g.updateMatrixWorld(true);
+      b.mira(`finger1-2.${l}`, punta); g.updateMatrixWorld(true); b.flessione(`finger1-3.${l}`, 0.06); g.updateMatrixWorld(true);
+      return d <= L1 + L2;
+    };
+    let best = null;
+    for (const fi of [2.0, PRESA.fi, 1.5, 1.25]) for (const torci of [-1.2, -0.8, -0.4, 0, 0.4, 0.8, 1.2]) for (const piega of [-0.3, -0.55, -0.8, -1.05]) {
+      const A = ancora(fi);
+      b.riposa();
+      PM.orientaParte(b, l, F.clone().negate(), v3(0, 1, 0));                    // avambraccio lungo F, palmo in alto: il polso esteso porta la mano giù sul fianco, palmo verso il torace
+      // polso: la mano si piega verso il basso intorno al fianco
+      b.flessione(`wrist.${l}`, piega, 0, torci); g.updateMatrixWorld(true);
+      g.position.add(A.p.clone().sub(PM.centroPalmo(b, l))); g.updateMatrixWorld(true);
+      PM.ditaIntorno(b, s); g.updateMatrixWorld(true);
+      const ok = pollice();
+      const pen = PM.compenetrazione(b).length, cont = contattoDita(b);
+      const pp = b.punta(`finger1-3.${l}`).distanceTo(punta);
+      const tot = pen * 5 + cont.aria * 1 + cont.peggio * 100 + (ok ? 0 : 10) + pp * 200 + Math.abs(fi - PRESA.fi) * 0.3;
+      if (!best || tot < best.tot) best = { tot, fi, torci, piega };
+    }
+    const A = ancora(best.fi);
+    b.riposa(); PM.orientaParte(b, l, F.clone().negate(), v3(0, 1, 0));
+    b.flessione(`wrist.${l}`, best.piega, 0, best.torci); g.updateMatrixWorld(true);
+    g.position.add(A.p.clone().sub(PM.centroPalmo(b, l))); g.updateMatrixWorld(true);
+    PM.ditaIntorno(b, s); g.updateMatrixWorld(true); pollice();
+    if (typeof window !== 'undefined') (window.__presa = window.__presa || {})[l] = best;
+  }
+  /* ---------- presa laterale (coordinatore e Alessandro, 21/11/2026): chi soccorre è di lato (+x), le due mani stanno sul
+     fianco vicino, una verso la testa e una verso i piedi (3-4 cm), dita orizzontali sotto la schiena verso il lato lontano,
+     palmo in alto e verso l'interno, avambracci perpendicolari all'asse del lattante, pollici dall'alto sul giallo ---------- */
+  const LATERALE = { y: [0.135, 0.098], fi: +(new URLSearchParams(location.search).get('lfi') || 1.15), stacco: 0.006, giu: +(new URLSearchParams(location.search).get('lgiu') || 1.2) };
+  function posaLaterale(st) {
+    const bac = lat.G.bacino;
+    const punte = { R: st.clone().add(v3(0.0042, 0.011, -0.004)), L: st.clone().add(v3(-0.0042, 0.011, -0.004)) };
+    const metti = (b, yl) => {
+      const l = b.lato, g = b.mesh.parent, q = lat.sezione(yl), fi = LATERALE.fi;
+      const nn = new THREE.Vector2(Math.sin(fi) / q.rx, Math.cos(fi) / q.rz).normalize();
+      const anc = bac.localToWorld(v3(Math.sin(fi) * q.rx + nn.x * LATERALE.stacco, yl, q.z + Math.cos(fi) * q.rz + nn.y * LATERALE.stacco));
+      b.riposa();
+      const h = v3(-1, -LATERALE.giu, 0).normalize(), p = v3(-0.7, 1, 0);       // dita sotto la schiena; palmo in alto e verso l'interno
+      PM.orientaParte(b, l, h, p);
+      g.position.add(anc.clone().sub(PM.centroPalmo(b, l))); g.updateMatrixWorld(true);
+      PM.ditaIntorno(b, 1); g.updateMatrixWorld(true);
+      return b.testa(`finger1-1.${l}`).sub(PM.centroPalmo(b, l)).dot(v3(0, 0, 1));   // pollice verso i piedi (+) o la testa (-)
+    };
+    // la mano col pollice verso i piedi sta verso la testa (e viceversa): i pollici si incontrano sul giallo
+    const zR = metti(braccio.R, LATERALE.y[0]);
+    const [nTesta, nPiedi] = zR > 0 ? ['R', 'L'] : ['L', 'R'];
+    for (const [n, yl] of [[nTesta, LATERALE.y[0]], [nPiedi, LATERALE.y[1]]]) {
+      const b = braccio[n], l = b.lato, g = b.mesh.parent, sc = g.scale.x; metti(b, yl);
+      const punta = n === nTesta ? st.clone().add(v3(0.0042, 0.011, -0.004)) : st.clone().add(v3(-0.0042, 0.011, -0.004));
+      const L1 = b.ossa[`finger1-1.${l}`].userData.lunghezza * sc, L2 = (b.ossa[`finger1-2.${l}`].userData.lunghezza + b.ossa[`finger1-3.${l}`].userData.lunghezza) * sc * 0.98;
+      // il pollice dall'alto: punta sul giallo (punte affiancate), giunto intermedio inarcato verso l'alto
+      const cmc = b.testa(`finger1-1.${l}`), dv = punta.clone().sub(cmc), d = Math.min(dv.length(), L1 + L2 - 1e-4), u = dv.clone().normalize();
+      const aa = (L1 * L1 - L2 * L2 + d * d) / (2 * d), hh = Math.sqrt(Math.max(0, L1 * L1 - aa * aa));
+      const w = v3(0, 1, 0); w.sub(u.clone().multiplyScalar(w.dot(u))).normalize();
+      b.mira(`finger1-1.${l}`, cmc.clone().add(u.clone().multiplyScalar(aa)).add(w.multiplyScalar(hh))); g.updateMatrixWorld(true);
+      b.mira(`finger1-2.${l}`, punta); g.updateMatrixWorld(true); b.flessione(`finger1-3.${l}`, 0.06); g.updateMatrixWorld(true);
+      if (window.__presaL) window.__presaL[n] = { d: dv.length(), L: L1 + L2 }; else window.__presaL = { [n]: { d: dv.length(), L: L1 + L2 } };
+    }
+  }
+  // contatto delle dita: per ogni punta delle 4 dita, distanza dalla pelle del tronco (stima dall'ellisse della sezione)
+  function contattoDita(b) {
+    const l = b.lato, bac = lat.G.bacino; let aria = 0, peggio = 0;
+    for (let d = 2; d <= 5; d++) { const q = b.punta(`finger${d}-3.${l}`), y = bac.worldToLocal(q.clone()).y;
+      const r = lat.sezione(Math.min(0.19, Math.max(-0.04, y))), dist = (lat.dentroTronco(q) - 1) * Math.min(r.rx, r.rz);
+      const ql = bac.worldToLocal(q.clone()), sotto = ql.z < r.z - 0.3 * r.rz && Math.abs(ql.x) < r.rx * 0.95;   // nascosta sotto la schiena
+      if (dist > 0.005 && !sotto) { aria++; peggio = Math.max(peggio, dist); } }
+    return { aria, peggio };
+  }
+  // pollice premuto dritto sullo sterno: falange distale lungo la normale dello sterno (punta sul giallo), articolazione
+  // interfalangea piegata, metacarpo dalla base già messa da posaPollici (cinematica inversa a due segmenti fino all'IP)
+  function pollicePerpendicolare(b, s, st) {
+    const l = b.lato, g = b.mesh.parent, sc = g.scale.x, bac = lat.G.bacino;
+    const n = v3(0, 0, 1).transformDirection(bac.matrixWorld);                     // normale dello sterno (davanti del torace)
+    const T = st.clone().add(v3(s * 0.0042, 0.011, -0.004)).addScaledVector(n, -0.002);   // punta sul giallo, come in posaPollici
+    const L1 = b.ossa[`finger1-1.${l}`].userData.lunghezza * sc, L2 = b.ossa[`finger1-2.${l}`].userData.lunghezza * sc, L3 = b.ossa[`finger1-3.${l}`].userData.lunghezza * sc;
+    const J2 = T.clone().addScaledVector(n, L3);                                    // articolazione interfalangea sopra la punta
+    g.updateMatrixWorld(true);
+    // se la base del pollice è troppo lontana, la mano intera si avvicina (la punta resta il vincolo fisso)
+    { const d0 = J2.distanceTo(b.testa(`finger1-1.${l}`)), dmax = (L1 + L2) * 0.93;
+      if (d0 > dmax) { g.position.add(J2.clone().sub(b.testa(`finger1-1.${l}`)).normalize().multiplyScalar(d0 - dmax)); g.updateMatrixWorld(true); } }
+    const J0 = b.testa(`finger1-1.${l}`), dv = J2.clone().sub(J0), d = Math.min(dv.length(), (L1 + L2) * 0.999), u = dv.clone().normalize();
+    const aa = (L1 * L1 - L2 * L2 + d * d) / (2 * d), hh = Math.sqrt(Math.max(0, L1 * L1 - aa * aa));
+    const w = n.clone(); w.sub(u.clone().multiplyScalar(w.dot(u))).normalize();
+    const J1 = J0.clone().add(u.clone().multiplyScalar(aa)).add(w.multiplyScalar(hh));   // nocca del pollice inarcata in alto
+    b.mira(`finger1-1.${l}`, J1); g.updateMatrixWorld(true);
+    b.mira(`finger1-2.${l}`, J2); g.updateMatrixWorld(true);
+    b.mira(`finger1-3.${l}`, T); g.updateMatrixWorld(true);
+  }
+  /* ---------- due pollici con la catena del pollice (21/11/2026, istruttore; IRC 2025 cap. 9 fig. 11) ----------
+     1) prima il palmo: sul fianco del torace all'altezza fra il fondo della gabbia e la linea dei capezzoli, dita che
+        avvolgono il fianco verso il dorso; il polso si piega (entro i suoi limiti) perché l'avambraccio arrivi dai piedi,
+        di lato al torace e salendo;
+     2) poi SOLO la catena del pollice (trapezio-metacarpale finger1-1, metacarpo-falangea finger1-2, interfalangea
+        finger1-3), dentro gli angoli veri (CMC fino a 70°, MCP 0-60°, IP 0-80°): punta sul giallo e falange distale
+        perpendicolare allo sterno (entro 25° dalla normale);
+     3) se il pollice non arriva, il palmo si sposta un poco in avanti sul fianco (mai sopra la linea dei capezzoli). */
+  const DUEP = { y: [0.075, 0.0775, 0.08], fi: [1.1, 1.13, 1.16, 1.2], psi: [0.34, 0.38, 0.42, 0.45], stacco: [0.027, 0.03], alfa: 0.42, sx: 0.12 };
+  const RAD = Math.PI / 180;
+  function angoliPollice(b) {                     // angoli delle articolazioni del pollice rispetto al riposo (gradi)
+    const l = b.lato, ang = n => 2 * Math.acos(Math.min(1, Math.abs(b.ossa[n].quaternion.clone().multiply(b.riposo0[n].clone().invert()).w))) / RAD;
+    return { cmc: ang(`finger1-1.${l}`), mcp: ang(`finger1-2.${l}`), ip: ang(`finger1-3.${l}`) };
+  }
+  // le quattro dita avvolgono il fianco verso il dorso: flessione vera (angoli negativi), nocca 0-90°, interfalangee 0-100°;
+  // la piega più avvolgente con le dita fuori dal torace e dal piano, che tocca la pelle o passa sotto la schiena
+  const DITA_LIM = { mcp: [15, 30], ip: [10, 25] };   // dita lunghe, distese lungo il fianco (coordinatore, 21/11/2026)   // gradi: nocca (MCP) e interfalangee (PIP e DIP) delle 4 dita
+  function avvolgiDita(b) {
+    const l = b.lato, g = b.mesh.parent;
+    for (const d of [2, 3, 4, 5]) {
+      const metti = (a1, a2) => { b.flessione(`finger${d}-1.${l}`, -a1, (d - 3.5) * 0.11); b.flessione(`finger${d}-2.${l}`, -a2); b.flessione(`finger${d}-3.${l}`, -a2 * 0.8); g.updateMatrixWorld(true); };
+      let best = null;
+      // dita lunghe, ben separate (apertura 0,11 rad fra un dito e l'altro) e appena curve lungo il fianco (revisione del
+      // 21/11/2026: mai il pugno): limiti in DITA_LIM, DIP 0,8 × PIP
+      for (let a1 = DITA_LIM.mcp[0] * RAD; a1 <= DITA_LIM.mcp[1] * RAD + 1e-6; a1 += 0.035) for (let a2 = (DITA_LIM.ip[0] / 0.8) * RAD; a2 <= DITA_LIM.ip[1] * RAD + 1e-6; a2 += 0.035) {
+        metti(a1, a2);
+        const pts = [1, 2, 3].map(f => b.punta(`finger${d}-${f}.${l}`)).concat([2, 3].map(f => b.testa(`finger${d}-${f}.${l}`)));
+        const pen = pts.reduce((x, q) => x + Math.max(0, 1.075 - lat.dentroTronco(q)) + 40 * Math.max(0, 0.004 - q.y), 0);
+        const pt = lat.dentroTronco(pts[2]), stacco = Math.max(0, pt - 1.04);
+        const e = pen * 100 + stacco * 30 - (a1 + a2) * 0.02;
+        if (!best || e < best.e) best = { e, a1, a2 };
+      }
+      metti(best.a1, best.a2);
+    }
+  }
+  // distanza minima (m) fra le dita dell'adulto (pollice escluso) e braccio o ascella del lattante (raggio 26 mm)
+  function distanzaBraccine(b) {
+    if (PROVA === 'braccia-giu') return 9;                                          // prova: la posa non guarda le braccia del lattante
+    const l = b.lato, braccioL = ['Sx', 'Dx'].map(n => [mondo(lat.G['spalla' + n]), mondo(lat.G['gomito' + n])]); let vicino = 9;
+    for (let d = 2; d <= 5; d++) for (let f = 1; f <= 3; f++) for (const q of [b.testa(`finger${d}-${f}.${l}`), b.punta(`finger${d}-${f}.${l}`)])
+      for (const [a0, a1] of braccioL) { const dd = a1.clone().sub(a0), u = clamp(q.clone().sub(a0).dot(dd) / dd.lengthSq()); vicino = Math.min(vicino, q.distanceTo(a0.clone().addScaledVector(dd, u)) - 0.026); }
+    return vicino;
+  }
+  // polpastrello del pollice: il vertice più basso della falange distale (pelle con i pesi dell'osso finger1-3), con la sua
+  // altezza sulla pelle del torace (m, superficie a riposo meno l'affondamento della compressione) e la posizione sul bacino
+  function polpastrello(b, comp = 0, fisso = false) {
+    const l = b.lato, m = b.mesh, bac = lat.G.bacino;
+    if (!b.idxPolp) { const sk = m.skeleton, si = m.geometry.attributes.skinIndex, sw = m.geometry.attributes.skinWeight, k = sk.bones.findIndex(o => o.name === `finger1-3.${l}`); b.idxPolp = [];
+      for (let i = 0; i < si.count; i++) for (let j = 0; j < 4; j++) if (si.getComponent(i, j) === k && sw.getComponent(i, j) > 0.5) b.idxPolp.push(i); }
+    m.updateMatrixWorld(true); const q = new THREE.Vector3(); let best = null;
+    for (const i of (fisso && b.iPolp !== undefined ? [b.iPolp] : b.idxPolp)) { m.getVertexPosition(i, q); m.localToWorld(q); const lq = bac.worldToLocal(q.clone()), sz = lat.sezione(lq.y);
+      const zs = sz.z + sz.rz * Math.sqrt(Math.max(0, 1 - Math.pow(lq.x / sz.rx, 2))) - comp * Math.exp(-Math.pow(lq.x / 0.045, 2)) * Math.exp(-Math.pow((lq.y - 0.13) / 0.045, 2));
+      const hh = lq.z - zs; if (!best || hh < best.h) best = { h: hh, P: q.clone(), loc: lq.clone(), i }; }
+    return best;
+  }
+  // dita aperte, mai a pugno (coordinatore, 21/11/2026): flessione media delle 4 dita, nocca 20-45°, interfalangee 15-40°
+  function controlloDitaAperte() {
+    const pr = [];
+    for (const n of ['R', 'L']) { const b = braccio[n]; if (!b.riposo0) continue;
+      const ang = k => 2 * Math.acos(Math.min(1, Math.abs(b.ossa[k].quaternion.clone().multiply(b.riposo0[k].clone().invert()).w))) / RAD;
+      let m = 0, ip = 0; for (let d = 2; d <= 5; d++) { m += ang(`finger${d}-1.${n}`) / 4; ip += (ang(`finger${d}-2.${n}`) + ang(`finger${d}-3.${n}`)) / 8; }
+      if (m < DITA_LIM.mcp[0] - 1 || m > DITA_LIM.mcp[1] + 1 || ip < DITA_LIM.ip[0] - 1 || ip > DITA_LIM.ip[1] + 1)
+        pr.push({ tipo: 'mani', dettagli: `mano ${n}: dita a pugno o troppo dritte (flessione media: nocca ${m.toFixed(0)}°, interfalangee ${ip.toFixed(0)}°; ammesse ${DITA_LIM.mcp.join('-')}° e ${DITA_LIM.ip.join('-')}°)` }); }
+    return pr;
+  }
+  // polpastrelli sul giallo, visti dalla telecamera (coordinatore, 21/11/2026): il vertice più basso di ogni pollice tocca la
+  // pelle (al massimo 2 mm sopra), sta sul giallo con 5 mm di margine verso testa e piedi (il contatto del polpastrello è
+  // largo circa 1 cm) e, proiettato, cade dentro il contorno proiettato del giallo senza nulla del torace davanti
+  // un'intersezione del raggio conta solo se l'oggetto è visibile e, sulla pelle sfumata dell'avambraccio, opaca
+  const colpoOpaco = x => { if (!x.object.visible) return false; const c = x.object.geometry && x.object.geometry.attributes.color;
+    return !(c && c.itemSize === 4 && x.face && Math.min(c.getW(x.face.a), c.getW(x.face.b), c.getW(x.face.c)) < 0.5); };
+  function controlloPolpastrelli() {
+    const pr = []; if (!polliciPosa) return pr;
+    const b0 = lat.G.bacino, D = lat.G.sternoDati, comp = uComp.value;
+    const giallo = []; for (let k = 0; k <= 12; k++) { const y = D.Y1 + (D.meta - D.Y1) * k / 12; giallo.push([D.largo(y), y]); }
+    for (let k = 12; k >= 0; k--) { const y = D.Y1 + (D.meta - D.Y1) * k / 12; giallo.push([-D.largo(y), y]); }
+    const poly = giallo.map(([x, y]) => { const q = lat.sezione(y); return proietta(b0.localToWorld(v3(x, y, q.z + q.rz * Math.sqrt(1 - Math.pow(x / q.rx, 2)) - comp * Math.exp(-Math.pow(x / 0.045, 2)) * Math.exp(-Math.pow((y - 0.13) / 0.045, 2))))); });
+    const dentro = (p, P) => { let ins = false; for (let i = 0, j = P.length - 1; i < P.length; j = i++) { const a = P[i], c = P[j]; if ((a.y > p.y) !== (c.y > p.y) && p.x < (c.x - a.x) * (p.y - a.y) / (c.y - a.y) + a.x) ins = !ins; } return ins; };
+    const HW = v3(0, 1, 0).transformDirection(b0.matrixWorld).normalize(), nW = v3(0, 0, 1).transformDirection(b0.matrixWorld).normalize(), dirs = {}, locP = {};
+    const ray = new THREE.Raycaster();
+    for (const k of ['R', 'L']) { const m = braccio[k].mesh; if (m.computeBoundingSphere) { m.computeBoundingSphere(); m.computeBoundingBox && m.computeBoundingBox(); } }   // sfere della posa attuale, non del riposo
+    for (const n of ['R', 'L']) { const b = braccio[n], pp = polpastrello(b, comp, true), l = pp.loc;
+      if (pp.h > 0.002) pr.push({ tipo: 'pollici', dettagli: `pollice ${n}: polpastrello ${(pp.h * 1000).toFixed(1)} mm sopra la pelle (massimo 2)` });
+      if (l.y < D.Y1 + 0.005 || l.y > D.meta - 0.005 || Math.abs(l.x) > D.largo(Math.min(Math.max(l.y, D.Y1), D.meta)) + 0.002)
+        pr.push({ tipo: 'pollici', dettagli: `pollice ${n}: polpastrello fuori dal giallo (x ${(l.x * 1000).toFixed(1)} mm, y ${(l.y * 1000).toFixed(1)} mm; ammesso y ${((D.Y1 + 0.005) * 1000).toFixed(0)}-${((D.meta - 0.005) * 1000).toFixed(0)} mm)` });
+      const p2 = proietta(pp.P); if (!p2 || !dentro(p2, poly)) pr.push({ tipo: 'pollici', dettagli: `pollice ${n}: nell'immagine il polpastrello non cade sul giallo` });
+      // profondità (a torace fermo: il raggio non vede la deformazione delle compressioni): lungo il raggio della telecamera nulla
+      // del torace sta davanti al polpastrello (6 mm di tolleranza: il polpastrello affonda di 2-3 mm nella pelle)
+      ray.set(cam.position, pp.P.clone().sub(cam.position).normalize()); const hit = ray.intersectObject(lat.G.busto, false)[0];
+      // la punta del pollice si vede sopra il giallo: nulla (maniche, altra mano, torace) davanti all'estremità della falange
+      // distale; vale solo il pollice stesso (pelle a meno di 2 cm dall'estremità)
+      const pe = b.punta(`finger1-3.${n}`); ray.set(cam.position, pe.clone().sub(cam.position).normalize());
+      const h2 = ray.intersectObjects(comp < 0.002 ? [lat.G.busto, gruppo.R, gruppo.L] : [gruppo.R, gruppo.L], true)   // il raggio non vede l'affondamento del torace.find(x => colpoOpaco(x) && !(x.object === b.mesh && x.point.distanceTo(pe) < 0.02));
+      if (h2 && h2.distance < cam.position.distanceTo(pe) - 0.002) pr.push({ tipo: 'pollici', dettagli: `pollice ${n}: punta coperta nell'immagine (${h2.object === lat.G.busto ? 'torace' : h2.object.isSkinnedMesh ? 'mano' : 'manica'})` });
+      if (comp < 0.002 && hit && hit.distance < cam.position.distanceTo(pp.P) - 0.006) pr.push({ tipo: 'pollici', dettagli: `pollice ${n}: polpastrello nascosto dal torace (${((cam.position.distanceTo(pp.P) - hit.distance) * 1000).toFixed(0)} mm)` });
+      dirs[n] = b.testa(`finger1-3.${n}`).sub(b.punta(`finger1-3.${n}`)).normalize(); locP[n] = l.x; }
+    // «cuore» (coordinatore, 21/11/2026): le due falangi distali quasi verticali e fra loro entro 30°, punte non incrociate
+    // (il polpastrello della mano destra resta dal suo lato, x del bacino maggiore di quello della sinistra)
+    const ab = Math.acos(Math.min(1, dirs.R.dot(dirs.L))) / RAD; if (ab > 30) pr.push({ tipo: 'pollici', dettagli: `pollici a «cuore»: falangi distali a ${ab.toFixed(0)}° fra loro (massimo 30°)` });
+    // almeno il 30% del giallo proiettato si vede, a torace fermo (affondamento sotto il 10% del massimo, 3,6 mm; durante la
+    // compressione i pollici affondano proprio lì e il controllo non vale) (coordinatore, 21/11/2026): si leggono i pixel della scena 3D su una griglia
+    // di 9 × 7 punti del giallo; un punto è visibile se il pixel è giallo (rosso e verde alti, blu basso), non pelle o tutina
+    { const gl = r.getContext(), px = new Uint8Array(4); let vis = 0, tot = 0;
+      for (let iy = 0; iy <= 8; iy++) for (let ix = -3; ix <= 3; ix++) { const y = D.Y1 + (D.meta - D.Y1) * (0.03 + 0.94 * iy / 8), x = D.largo(y) * ix / 3.6, q = lat.sezione(y);
+        const P = b0.localToWorld(v3(x, y, q.z + q.rz * Math.sqrt(1 - Math.pow(x / q.rx, 2)) - comp * Math.exp(-Math.pow(x / 0.045, 2)) * Math.exp(-Math.pow((y - 0.13) / 0.045, 2))));
+        const s2 = proietta(P); tot++; if (!s2 || s2.x < 0 || s2.y < 0 || s2.x >= W || s2.y >= H) continue;
+        gl.readPixels(Math.round(s2.x), H - 1 - Math.round(s2.y), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+        if (px[0] > 170 && px[1] > 160 && px[2] < 110) vis++; }
+      window.__gialloVisibile = vis / tot;
+      if (comp < 0.0036 && vis / tot < 0.3) pr.push({ tipo: 'pollici', dettagli: `giallo visibile solo al ${(100 * vis / tot).toFixed(0)}% (minimo 30%)` }); }
+    if (locP.R < locP.L) pr.push({ tipo: 'pollici', dettagli: `punte dei pollici incrociate (destra a x ${(locP.R * 1000).toFixed(1)} mm, sinistra a ${(locP.L * 1000).toFixed(1)} mm)` });
+    return pr;
+  }
+  function posaDuePollici(b, s, st, forza) {
+    const X = (typeof window !== 'undefined' && window.__PP) || {};
+    const l = b.lato, g = b.mesh.parent, bac = lat.G.bacino, O = b.ossa;
+    if (!b.riposo0) b.riposo0 = Object.fromEntries(Object.entries(O).map(([k, o]) => [k, o.quaternion.clone()]));
+    const nW = v3(0, 0, 1).transformDirection(bac.matrixWorld);                    // normale dello sterno (mondo)
+    // contatto voluto: centro del giallo (y 0,128 sul bacino), 4,5 mm dalla linea mediana, sulla pelle; T è l'estremità
+    // dell'osso della falange distale, corretta poi con il polpastrello vero (vertice più basso) fino al contatto
+    const HW = v3(0, 1, 0).transformDirection(bac.matrixWorld).normalize();     // verso la testa (mondo)
+    // polpastrelli al centro del giallo (y 0,128; revisione del 21/11/2026: mai più in alto)
+    const yC = (forza && forza.yC !== undefined ? forza.yC : TARA('yc', 0.128)) + (PROVA === 'pollici-testa' ? 0.015 : 0), qC = lat.sezione(yC), xC = forza && forza.xC !== undefined ? forza.xC : s * 0.002;   // polpastrelli a circa ±5 mm: affiancati, a meno di 1 cm
+    const C = bac.localToWorld(v3(xC, yC, qC.z + qC.rz * Math.sqrt(1 - Math.pow(xC / qC.rx, 2))));
+    let T = C.clone().addScaledVector(nW, 0.007);
+    const loc2w = d => d.clone().transformDirection(bac.matrixWorld);
+    // avambraccio voluto (dal polso verso il gomito): verso i piedi, un poco di lato, salendo di alfa
+    const alfa = X.alfa !== undefined ? X.alfa : DUEP.alfa;
+    const sx = PROVA === 'braccia-incrociate' ? -0.9 : X.sx !== undefined ? X.sx : DUEP.sx;   // prova: avambracci dal lato opposto, incrociati
+    const U = loc2w(v3(s * sx, -Math.cos(alfa), Math.sin(alfa))).normalize();      // bacino: y verso la testa, z davanti
+    // segno della flessione delle ossa del pollice (verso il palmo) e del polso
+    g.updateMatrixWorld(true);
+    const segno = {};
+    // ATTENZIONE: nelle ossa di MakeHuman la flessione verso il palmo è l'angolo NEGATIVO di flessione(); il vettore «p» di
+    // vettoriMano (spostamento delle punte con angolo positivo) è quindi il DORSO della mano (prova del 21/11/2026)
+    { const { p } = PM.vettoriMano(b, l);
+      for (const n of ['finger1-2', 'finger1-3']) { b.riposa(); g.updateMatrixWorld(true); const t0 = b.punta(`finger1-3.${l}`);
+        b.flessione(`${n}.${l}`, 0.3); g.updateMatrixWorld(true); segno[n] = b.punta(`finger1-3.${l}`).sub(t0).dot(p) < 0 ? 1 : -1; b.riposa(); } }
+    const posaMano = (yP, fi, psi, stacco) => {
+      b.riposa(); g.updateMatrixWorld(true);
+      const q = lat.sezione(yP), nn = new THREE.Vector2(Math.sin(fi) / q.rx, Math.cos(fi) / q.rz).normalize();
+      const P = bac.localToWorld(v3(s * (Math.sin(fi) * q.rx + nn.x * stacco), yP, q.z + Math.cos(fi) * q.rz + nn.y * stacco));
+      const pIn = loc2w(v3(-s * nn.x, 0, -nn.y)).normalize();                       // palmo verso il torace
+      const tb = v3(s * Math.cos(fi) * q.rx, 0, -Math.sin(fi) * q.rz).normalize();  // tangente intorno al fianco, verso il dorso
+      const h = loc2w(tb.multiplyScalar(Math.cos(psi)).add(v3(0, Math.sin(psi), 0))).normalize();   // asse della mano, un poco verso la testa
+      PM.orientaParte(b, l, h, pIn.clone().negate());                              // dorso verso fuori: palmo sul torace
+      // il polso si piega, la mano resta ferma: l'avambraccio ruota intorno al polso verso la direzione voluta
+      const W0 = b.testa(`wrist.${l}`), Qh0 = O[`wrist.${l}`].getWorldQuaternion(new THREE.Quaternion()), qg0 = g.quaternion.clone(), pg0 = g.position.clone();
+      const prova = (a, d, t) => {
+        g.quaternion.copy(qg0); g.position.copy(pg0); b.flessione(`wrist.${l}`, a, d, t); g.updateMatrixWorld(true);
+        const Qh1 = O[`wrist.${l}`].getWorldQuaternion(new THREE.Quaternion()), R = Qh0.clone().multiply(Qh1.invert());
+        g.quaternion.premultiply(R); g.updateMatrixWorld(true); g.position.add(W0.clone().sub(b.testa(`wrist.${l}`))); g.updateMatrixWorld(true);
+        const fa = b.testa(`lowerarm01.${l}`).sub(b.testa(`wrist.${l}`)).normalize();
+        return Math.acos(Math.min(1, fa.dot(U))) + 0.15 * (Math.abs(a) + Math.abs(d));
+      };
+      let best = null;
+      for (let a = -1.2; a <= 1.21; a += 0.2) for (let d = -0.45; d <= 0.46; d += 0.15) for (let t = -1.4; t <= 1.41; t += 0.35) { const e = prova(a, d, t); if (!best || e < best.e) best = { e, a, d, t }; }
+      for (const passo of [0.08, 0.03]) for (let k = 0; k < 3; k++) for (const [da, dd, dt] of [[passo, 0, 0], [-passo, 0, 0], [0, passo, 0], [0, -passo, 0], [0, 0, passo], [0, 0, -passo]]) {
+        const a = Math.max(-1.22, Math.min(1.22, best.a + da)), d = Math.max(-0.45, Math.min(0.45, best.d + dd)), t = Math.max(-1.4, Math.min(1.4, best.t + dt));
+        const e = prova(a, d, t); if (e < best.e) best = { e, a, d, t }; }
+      prova(best.a, best.d, best.t);
+      g.position.add(P.clone().sub(PM.centroPalmo(b, l))); g.updateMatrixWorld(true);
+      avvolgiDita(b); g.updateMatrixWorld(true);
+      const fa = b.testa(`lowerarm01.${l}`).sub(b.testa(`wrist.${l}`)).normalize();
+      return { polso: best, avamb: Math.acos(Math.min(1, fa.dot(U))) / RAD };
+    };
+    // catena del pollice: 6 angoli dentro i limiti; punta sul bersaglio, falange distale lungo -normale
+    const LIM = [[-1.22, 1.22], [-1.22, 1.22], [-1.0, 1.0], [0, 1.05], [-0.2, 0.2], [0, 1.38]];
+    const mettiP = x => { b.flessione(`finger1-1.${l}`, x[0], x[1], x[2]); b.flessione(`finger1-2.${l}`, segno['finger1-2'] * x[3], x[4]); b.flessione(`finger1-3.${l}`, segno['finger1-3'] * x[5]); g.updateMatrixWorld(true); };
+    const errP = x => {
+      mettiP(x);
+      const ip = b.testa(`finger1-3.${l}`), tip = b.punta(`finger1-3.${l}`), dir = ip.clone().sub(tip).normalize();
+      // prova «cuore»: le falangi distali puntano 25° verso l'esterno (punte unite, articolazioni lontane): il controllo deve vederlo
+      const nRif = PROVA === 'cuore' ? nW.clone().multiplyScalar(Math.cos(25 * RAD)).addScaledVector(v3(1, 0, 0).transformDirection(bac.matrixWorld), s * Math.sin(25 * RAD)) : nW;
+      const ang = Math.acos(Math.min(1, dir.dot(nRif))) / RAD;
+      // la nocca e la base del pollice fuori dal torace
+      const pen = ['finger1-2', 'finger1-3'].reduce((z, k) => z + Math.max(0, 1.12 - lat.dentroTronco(b.testa(`${k}.${l}`))), 0);
+      const cmc = 2 * Math.acos(Math.min(1, Math.abs(O[`finger1-1.${l}`].quaternion.clone().multiply(b.riposo0[`finger1-1.${l}`].clone().invert()).w))) / RAD;
+      // pollici affiancati e paralleli, rivolti verso la testa (mai a «cuore»): falange prossimale vista dall'alto lungo l'asse
+      const pr = b.punta(`finger1-2.${l}`).sub(b.testa(`finger1-2.${l}`)); pr.addScaledVector(nW, -pr.dot(nW)).normalize();
+      const par = Math.acos(Math.min(1, pr.dot(HW))) / RAD;
+      return tip.distanceTo(T) * 1000 + Math.max(0, ang - 12) * 0.6 + pen * 200 + Math.max(0, cmc - 63) * 3 + 0;   // i pollici arrivano dai lati e convergono: nessun vincolo di parallelismo (coordinatore, 21/11/2026)
+    };
+    const risolviPollice = () => {
+      let best = null;
+      const prove = [[0, 0, 0, 0.5, 0, 0.8], [0.6, 0.6, 0, 0.5, 0, 0.8], [-0.6, 0.6, 0, 0.5, 0, 0.8], [0.6, -0.6, 0, 0.5, 0, 0.8], [-0.6, -0.6, 0, 0.5, 0, 0.8], [0, 0, 0.6, 0.3, 0, 1.0], [0, 0, -0.6, 0.3, 0, 1.0]];
+      for (const x0 of prove) {
+        let x = x0.slice(), e = errP(x);
+        for (const passo of [0.3, 0.12, 0.05, 0.02, 0.008]) for (let it = 0, mig = true; it < 12 && mig; it++) { mig = false;
+          for (let i = 0; i < 6; i++) for (const sg of [1, -1]) { const y = x.slice(); y[i] = Math.max(LIM[i][0], Math.min(LIM[i][1], y[i] + sg * passo)); const ey = errP(y); if (ey < e - 1e-6) { e = ey; x = y; mig = true; } } }
+        if (!best || e < best.e) best = { e, x };
+      }
+      mettiP(best.x); return best;
+    };
+    let scelta = null;
+    const Y = X.y || DUEP.y, FI = X.fi || DUEP.fi, PSI = X.psi || DUEP.psi;   // palmo sul fianco (1,1-1,3 rad), mai sul davanti
+    const STC = X.stacco || DUEP.stacco;
+    for (const yP of Y) for (const fi of FI) for (const psi of PSI) for (const stacco of STC) {
+      const m = posaMano(yP, fi, psi, stacco), pl = risolviPollice();
+      const tip = b.punta(`finger1-3.${l}`), dir = b.testa(`finger1-3.${l}`).sub(tip).normalize(), ang = Math.acos(Math.min(1, dir.dot(nW))) / RAD;
+      const pen = PM.compenetrazione(b, 0.97).reduce((z, p) => z + (+(p.dettagli.match(/: (\d+) punti/) || [0, 3])[1]), 0);
+      const pen95 = PM.compenetrazione(b, 0.95).reduce((z, p) => z + (+(p.dettagli.match(/: (\d+) punti/) || [0, 3])[1]), 0);
+      const cd = contattoDita(b);
+      let fuori = 0; for (let d = 2; d <= 5; d++) for (let f = 1; f <= 3; f++) for (const yl of [b.punta(`finger${d}-${f}.${l}`), b.testa(`finger${d}-${f}.${l}`)].map(q => bac.worldToLocal(q).y)) { fuori += Math.max(0, yl - (COSTE.yMax - 0.025)) + Math.max(0, COSTE.yMin - yl); }
+      const ang0 = angoliPollice(b), vic = distanzaBraccine(b);
+      const prx = b.punta(`finger1-2.${l}`).sub(b.testa(`finger1-2.${l}`)); prx.addScaledVector(nW, -prx.dot(nW)).normalize(); const par = Math.acos(Math.min(1, prx.dot(HW))) / RAD;
+      const tot = tip.distanceTo(T) * 1000 * 3 + Math.max(0, ang - 18) * 10 + pen * 0.5 + pen95 * 40 + cd.aria * 15 + cd.peggio * 2000 + fuori * 20000 + m.avamb * 0.3 + Math.max(0, 0.0165 - vic) * 60000 + Math.max(0, ang0.cmc - 65) * 5;
+      if (!scelta || tot < scelta.tot) scelta = { tot, yP, fi, psi, stacco, pollice: pl.x, tipmm: +(tip.distanceTo(T) * 1000).toFixed(1), par: +par.toFixed(0), ang: +ang.toFixed(1), pen, pen95, aria: cd.aria, vic: +(vic * 1000).toFixed(0), fuori: +(fuori * 1000).toFixed(1), avamb: +m.avamb.toFixed(1), polso: m.polso };
+    }
+    posaMano(scelta.yP, scelta.fi, scelta.psi, scelta.stacco); mettiP(scelta.pollice);
+    // il polpastrello vero va a toccare la pelle al centro del giallo (0,3 mm dentro): T si corregge e il pollice si risolve di nuovo
+    const angD = () => Math.acos(Math.min(1, b.testa(`finger1-3.${l}`).sub(b.punta(`finger1-3.${l}`)).normalize().dot(nW))) / RAD;
+    const errC = () => { const pp = polpastrello(b); return pp.P.distanceTo(C) * 1000 + Math.max(0, angD() - 15) * 1.5 + Math.max(0, -pp.h - 0.0008) * 4000; };   // mai più di 1 mm nella pelle
+    { let migliore = { e: errC(), T: T.clone(), x: scelta.pollice };
+      for (let k = 0; k < 6; k++) { const pp = polpastrello(b), dC = pp.P.clone().sub(C).addScaledVector(nW, -0.001);   // polpastrello 1 mm sopra la pelle a riposo (margine)
+        if (dC.length() > 0.006) dC.setLength(0.006);
+        T.sub(dC); const x = risolviPollice().x, e = errC(); if (e < migliore.e) migliore = { e, T: T.clone(), x }; }
+      T.copy(migliore.T); scelta.pollice = migliore.x; mettiP(migliore.x); }
+    { const pp = polpastrello(b); b.iPolp = pp.i; scelta.polp = { h: +(pp.h * 1000).toFixed(1), x: +(pp.loc.x * 1000).toFixed(1), y: +(pp.loc.y * 1000).toFixed(1) }; }
+    scelta.angoli = angoliPollice(b);
+    (window.__dbgP = window.__dbgP || {})[l] = scelta; return scelta;
+  }
+  // controllo: falange distale del pollice entro 25° dalla normale dello sterno
+  function controlloPolliciDritti() {
+    const pr = [], n = v3(0, 0, 1).transformDirection(lat.G.bacino.matrixWorld);
+    for (const k of ['R', 'L']) { const b = braccio[k], a = b.testa(`finger1-3.${k}`), p = b.punta(`finger1-3.${k}`), dir = a.clone().sub(p).normalize();
+      const ang = Math.acos(Math.min(1, dir.dot(n))) * 180 / Math.PI;
+      if (ang > 25) pr.push({ tipo: 'pollici', dettagli: `pollice ${k}: falange distale a ${ang.toFixed(0)}° dalla normale dello sterno (massimo 25°)` }); }
+    return pr;
+  }
+  function maniPollici(st, giu, via, chiave) {
+    // mani vere intorno al torace, pollici affiancati sulla metà inferiore dello sterno (provini approvati); calcolate una
+    // volta per posa, poi arrivano dall'alto e di lato (via = 1: lontane)
+    // la posa si calcola con il lattante sollevato di 17 mm (appoggia sulle dita) e si salva rispetto al lattante
+    const y0 = lat.radice.position.y, ALTO = BASE_Y + 0.017;
+    if (!cache[chiave]) {
+      // la posa si calcola sempre con le braccia del lattante come nelle scene dei pollici, qualunque sia il primo fotogramma
+      // reso (prima la cache dipendeva dal fotogramma da cui partiva il render: braccia dei soffi o dei pollici)
+      const rotSx = lat.G.spallaSx.rotation.z, rotDx = lat.G.spallaDx.rotation.z; braccineLibere(true);
+      lat.radice.position.y = ALTO; lat.radice.updateMatrixWorld(true);
+      const st0 = mondo(lat.P.sternoBasso);
+      // ?presa=nuova: la presa costruita dalle mani (in lavorazione, 21/11/2026); altrimenti quella di posaPollici
+      const PRESA_P = new URLSearchParams(location.search).get('presa') || 'laterale';
+      // presa dai piedi come IRC 2025 cap. 9 fig. 11 (posaPollici), poi i pollici diventano verticali sullo sterno
+      // (Alessandro, 21/11/2026: «I pollici delle due mani devono andare sullo sterno del bambino», perpendicolari al corpo)
+      // (istruttore, 21/11/2026): palmo sul fianco prima, poi la sola catena del pollice perpendicolare allo sterno;
+      // prova «pollici-sdraiati»: la vecchia presa con i pollici obliqui, che il controllo deve segnalare
+      // prima la sinistra (la più stretta fra ascella e giallo), poi la destra con il polpastrello accanto al suo: stessa
+      // altezza sul giallo, 9 mm più in là (polpastrelli affiancati a meno di 1 cm)
+      for (const [n, s] of [['L', -1], ['R', 1]]) { gruppo[n].scale.setScalar(SCALA_MANI);
+        if (PROVA === 'pollici-sdraiati') { PM.posaPollici(braccio[n], s, st0); continue; }
+        const pL = n === 'R' ? polpastrello(braccio.L).loc : null;
+        posaDuePollici(braccio[n], s, st0, pL ? { yC: pL.y, xC: Math.max(0.002, pL.x + (chiave === 'tavolo' ? TARA('roff', 0.0065) : 0.0065)) } : null); }   // stessa distanza sul piano (più vicini: falangi a «cuore»)
+      lat.G.spallaSx.rotation.z = rotSx; lat.G.spallaDx.rotation.z = rotDx;
+      cache[chiave] = { R: foto('R'), L: foto('L') }; cache[chiave].R.p.y -= ALTO; cache[chiave].L.p.y -= ALTO;
+      lat.radice.position.y = y0; lat.radice.updateMatrixWorld(true);
+    }
+    const contatti = [];
+    for (const [n, s] of [['R', 1], ['L', -1]]) {
+      rimetti(n, cache[chiave][n]); gruppo[n].position.y += y0;
+      if (PROVA === 'mani-ascelle') gruppo[n].position.z -= 0.035;
+      if (PROVA === 'giallo-coperto') { gruppo[n].position.z += 0.022; gruppo[n].position.y += 0.004; gruppo[n].position.x -= (n === "R" ? 1 : -1) * 0.006; }   // prova: mani sopra il giallo verso i piedi, a torace fermo            // prova: mani spostate verso le ascelle
+      gruppo[n].updateMatrixWorld(true);
+      contatti.push(PROVA === 'pollici-sdraiati' ? braccio[n].punta(`finger1-3.${n}`) : polpastrello(braccio[n], 0, true).P);   // contatto vero: il polpastrello
+      if (PROVA === 'pugno') for (let d = 2; d <= 5; d++) for (let f = 1; f <= 3; f++) braccio[n].flessione(`finger${d}-${f}.${n}`, -1.4);   // prova: mani a pugno
+      gruppo[n].position.add(v3(s * 0.08 * clamp(via * 2), 0.12 * clamp(via * 2 - 1), 0));   // prima di lato (le dita escono da sotto la schiena), poi in alto
+      gruppo[n].visible = via < 0.98; gruppo[n].updateMatrixWorld(true);
+    }
+    // controllo (Alessandro, 21/11/2026): le dita (tutte le falangi tranne i pollici) avvolgono la gabbia toracica in basso,
+    // fra le coste inferiori e il fondo del torace, ad almeno 15 mm da ascella e braccio; le braccia del lattante restano libere
+    polliciPosa = via < 0.02; capezzoli.forEach(m => m.visible = via < 0.98);
+    if (via < 0.02) problemi = problemi.concat(controlloDitaCoste(), controlloManine(), controlloPolliciDritti(), controlloDitaAperte());
+    // controllo: quando le mani sono in posa (compressioni) devono essere in scena tutte e due
+    if (via < 0.02 && !(gruppo.R.visible && gruppo.L.visible)) problemi.push({ tipo: 'mani', dettagli: 'mani assenti durante le compressioni' });
+    return contatti;
+  }
+  // braccia del lattante un po' più aperte nelle scene sul dorso: restano libere, fuori dalle mani di chi soccorre
+  // (revisione del 21/11/2026): braccia in alto, accanto alla testa (spalle abdotte a circa 130°), lontane dalle mani dell'adulto
+  // pollici (revisione del 21/11/2026): il braccio sinistro del lattante si abbassa un poco (2,3 → 1,75 rad), così la manina
+  // non finisce sotto la scheda o il contatore; resta lontana dalle mani dell'adulto (controlli a 12 e 30 mm)
+  function braccineLibere(pollici) { const z = PROVA === 'braccia-giu' ? TARA('bz', 0.25) : 2.3, zs = pollici === true && PROVA !== 'braccia-giu' ? TARA('bsx', 1.75) : z;   // prova: braccia lungo i fianchi, manine vicino alle mani dell'adulto
+    lat.G.spallaSx.rotation.set(0, 0, zs); lat.G.spallaDx.rotation.set(0, 0, -(pollici === 'soffi' ? TARA('bdx', 1.75) : z)); lat.radice.updateMatrixWorld(true); }
+  // limiti delle dita (decisione del 21/11/2026, IRC 2025 cap. 9 fig. 11): dal fondo della gabbia toracica alla linea dei
+  // capezzoli, in coordinate del bacino del lattante (xifoide 0,11; spalla 0,165); il modello non ha capezzoli: la linea
+  // è presa a y 0,17, sotto l'attacco della spalla
+  const COSTE = { yMin: 0.05, yMax: 0.17, margine: 0.012 };   // 12 mm da ascella e braccio (coordinatore, 21/11/2026; prima 15)
+  window.__COSTE = COSTE;
+  function controlloDitaCoste() {
+    const pr = [], b = lat.G.bacino;
+    const braccioL = ['Sx', 'Dx'].map(n => [mondo(lat.G['spalla' + n]), mondo(lat.G['gomito' + n])]);
+    const RAGGIO = 0.026;                                                     // raggio del braccio e della spalla del lattante
+    for (const n of ['R', 'L']) {
+      let alto = 0, vicino = 9, chi = '';
+      for (let d = 2; d <= 5; d++) for (let f = 1; f <= 3; f++) for (const q of [braccio[n].testa(`finger${d}-${f}.${n}`), braccio[n].punta(`finger${d}-${f}.${n}`)]) {
+        const l = b.worldToLocal(q.clone());
+        if (l.y > COSTE.yMax || l.y < COSTE.yMin) { alto = Math.max(alto, l.y > COSTE.yMax ? l.y - COSTE.yMax : COSTE.yMin - l.y); chi = `dito ${d}`; }
+        for (const [a0, a1] of braccioL) { const dd = a1.clone().sub(a0), u = clamp(q.clone().sub(a0).dot(dd) / dd.lengthSq()); vicino = Math.min(vicino, q.distanceTo(a0.clone().addScaledVector(dd, u)) - RAGGIO); }
+      }
+      if (alto > 0.002) pr.push({ tipo: 'mani', dettagli: `mano ${n}: ${chi} fuori dalla gabbia toracica (fra il fondo e la linea dei capezzoli) di ${(alto * 1000).toFixed(0)} mm` });
+      if (vicino < COSTE.margine) pr.push({ tipo: 'mani', dettagli: `mano ${n}: dita a ${(Math.max(0, vicino) * 1000).toFixed(0)} mm da ascella o braccio del lattante (minimo 12)` });
+      const ct = contattoDita(braccio[n]);
+      if (ct.aria) pr.push({ tipo: 'mani', dettagli: `mano ${n}: ${ct.aria} dita staccate dalla pelle (fino a ${(ct.peggio * 1000).toFixed(0)} mm; massimo 5)` });
+    }
+    return pr;
+  }
+  // la mano del lattante non tocca le mani dell'adulto: almeno 30 mm da ogni falange (polso e punte delle dita del lattante)
+  function controlloManine() {
+    const pr = [], manine = lat.PARTI_MH.filter(p => p.nome.startsWith('mano'));
+    const puntiL = manine.flatMap(p => [p.testa(`wrist.${p.lato}`)].concat([1, 2, 3, 4, 5].map(d => p.punta(`finger${d}-3.${p.lato}`))));
+    for (const n of ['R', 'L']) {
+      let m = 9;
+      for (let d = 1; d <= 5; d++) for (let f = 1; f <= 3; f++) { const q = braccio[n].punta(`finger${d}-${f}.${n}`); for (const pl of puntiL) m = Math.min(m, q.distanceTo(pl)); }
+      (window.__manine = window.__manine || {})[n] = +(m * 1000).toFixed(0);
+      if (m < 0.03) pr.push({ tipo: 'mani', dettagli: `mano ${n} dell'adulto a ${(m * 1000).toFixed(0)} mm dalla mano del lattante (minimo 30)` });
+    }
+    return pr;
+  }
+  function compressione(t, eventi, profondo) {   // affondamento (m): un terzo del torace ≈ 0,036 m nello schema
+    let x = 0; for (const t0 of eventi) { const q = (t - t0) / 0.5; if (q > 0 && q < 1) x = Math.max(x, Math.sin(Math.PI * q)); }
+    return x * profondo;
+  }
+
+  // vista dei due pollici (istruttore, 21/11/2026): 3/4 dai piedi e di lato verso chi soccorre (29°), elevazione 62°, distanza 1,1 m (meno scorcio: il giallo si legge a metà torace): gli avambracci vengono dal basso a sinistra senza coprire il torace: si vedono i pollici
+  // verticali sullo sterno e le dita sul fianco; prima (fino al 21/11/2026) quasi dall'alto come la fig. 11 (elevazione 78°),
+  // dal lato dei piedi, testa in alto nel quadro, torace, testa e mani interi; gli avambracci escono dal bordo in basso; il centro è un po' più in basso dello sterno, così il lattante sale nel
+  // quadro e la fascia dei sottotitoli non taglia la testa. Telecamera ferma quando arrivano le mani.
+  const POLLICI = { p: v3(Math.sin(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08)), Math.sin(TARA('pel', 1.08)), Math.cos(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08))).multiplyScalar(TARA('dpoll', 1.2)), c: v3(0, -0.03, 0.035), sh: PROVA === 'pannelli' ? -0.12 : TARA('psh', 0.1) }   // prova «pannelli»: il lattante finisce sotto le schede;
+  function TARA(k, d) { return +(new URLSearchParams(location.search).get(k) || d); }   // solo prove: dpoll, pel, paz
+  // freccia di profondità accanto al torace (un terzo del diametro antero-posteriore, 0,036 m nello schema)
+  function frecciaProfondita(prof) { const b = lat.G.bacino; freccia = { a: b.localToWorld(v3(0.085, 0.128, 0.058)), b: b.localToWorld(v3(0.085, 0.128, 0.058 - 0.036)), prof }; }
+
+  /* ---------- posa 3: a pancia in su sulle ginocchia (soffocamento, IRC 2025 cap. 9 p. 29, fig. 16b) ---------- */
+  function posaGinocchia(t) {
+    lat.posa('supino'); lat.espressione('sveglio'); lat.mostraSterno(true);
+    braccineLibere(true);
+    const via = 1 - morb(clamp((t - (S[8] + 0.6)) / 1.6));
+    orientaLattante(v3(0, 0, -1), v3(0, 1, 0)); lat.radice.position.set(0, BASE_Y + 0.017 * (1 - via), 0.05); lat.radice.updateMatrixWorld(true);
+    gamba.forEach((g, i) => {                                         // due cosce sotto il lattante (sulle ginocchia), ginocchia verso la testa
+      const x = (i ? -1 : 1) * 0.062, k = v3(x, -0.07, -0.2);
+      g.coscia.quaternion.setFromUnitVectors(v3(0, 1, 0), v3(0, 0, 1)); g.coscia.position.copy(k);
+      g.ginocchio.position.copy(k); g.tibia.quaternion.setFromUnitVectors(v3(0, 1, 0), v3(0, -1, -0.1).normalize()); g.tibia.position.copy(k);
+      Object.values(g).forEach(o => o.visible = false);   // grembo tolto (revisione del 21/11/2026: la sagoma non si leggeva)
+    });
+    const giu = lat.radice.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(v3(1, 0, 0), Math.PI / 2));
+    const st = mondo(lat.P.sternoBasso);
+    const comp = compressione(t, COMPR_G, 0.03);
+    uComp.value = comp; lat.G.sterno.position.z = -comp;
+    const contatti = maniPollici(st, giuSupino(), via, 'ginocchia');
+    gruppo.R.position.y -= comp; gruppo.L.position.y -= comp;
+    if (via < 0.02) problemi = problemi.concat(lat.controlloSterno(contatti));
+    // telecamera: 3/4 dai piedi, ferma per tutta la scena (le mani arrivano a telecamera ferma)
+    if (t > COMPR_G[0] - 0.3 && t < COMPR_G[4] + 0.6) frecciaProfondita(comp / 0.036);
+    const st0 = lat.G.bacino.localToWorld(v3(0, 0.128, 0.058)).setY(BASE_Y + 0.017 + 0.058);   // sterno a mani in posa: centro fisso
+    return { c: st0.clone().add(POLLICI.c), pos: st0.clone().add(POLLICI.c).add(POLLICI.p), sh: POLLICI.sh, segni: { st } };
+  }
+  // orientamento di riferimento delle mani per il lattante supino (testa verso -z): coincide con i provini approvati
+  const giuSupino = () => { const q = new THREE.Quaternion(); return q; };
+
+  /* ---------- soffi: bocca di chi soccorre su bocca e naso del lattante (IRC 2025 cap. 9 p. 25, fig. 9) ---------- */
+  // forma della testa del lattante, la stessa di creaLattante (lattante3d.js): cranio di rivoluzione e naso
+  const rTestaL = y => { const r = 0.067 * Math.sqrt(Math.max(0, 1 - Math.pow((y - 0.072) / 0.075, 2))); return r * (1 + 0.075 * Math.exp(-Math.pow((y - 0.036) / 0.024, 2))); };
+  const dzTL = y => -0.004 * Math.sin(Math.PI * (y + 0.003) / 0.15) + 0.006 * Math.exp(-Math.pow((y - 0.03) / 0.02, 2));
+  const visoL = lat.G.testa.children.filter(m => m.isMesh && Math.abs(m.position.x) < 1e-6);
+  const nasoL = visoL.find(m => Math.abs(m.position.y - 0.051) < 0.002), boccaL = visoL.find(m => Math.abs(m.position.y - 0.03) < 0.002);
+  // distanza (m, negativa se dentro) di un punto del mondo dalla pelle della testa del lattante, naso compreso
+  function fuoriTestaL(pw) {
+    const l = lat.G.testa.worldToLocal(pw.clone()), sc = lat.G.testa.getWorldScale(new THREE.Vector3()).x;
+    let d = 9;
+    if (l.y > -0.003 && l.y < 0.147) { const r = rTestaL(l.y); if (r > 1e-3) d = (Math.hypot(l.x / (r * 0.95), (l.z - dzTL(l.y)) / (r * 1.03)) - 1) * r; }
+    d = Math.min(d, l.distanceTo(nasoL.position) - 0.0058);
+    return d * sc;
+  }
+  // posa della testa (TARATURA: a = testa girata verso chi guarda, con il naso accanto alla guancia del lattante; fc = collo e
+  // capo chinati; j = bocca aperta); poi la bocca va su bocca e naso e scende finché le labbra toccano il viso, senza entrarci
+  const TARATURA = Object.assign({ a: 0.3, fc: 1.05, j: -0.2 }, JSON.parse(new URLSearchParams(location.search).get('capo') || '{}'));
+  function posaCapo(alfa) {
+    if (!capo) return;
+    gruppoCapo.visible = true; capo.mesh.material.opacity = PROVA === 'fantasma' ? 0.35 : alfa; capo.mesh.material.depthWrite = PROVA !== 'fantasma';   // fantasma: solo per guardare le labbra dall'alto
+    capo.riposa();
+    for (const [o, k] of [['neck01', 0.2], ['neck02', 0.2], ['neck03', 0.2], ['head', 0.4]]) capo.flessione(o, TARATURA.fc * k);
+    capo.flessione('jaw', TARATURA.j);
+    gruppoCapo.quaternion.identity(); gruppoCapo.position.set(0, 0, 0); gruppoCapo.updateMatrixWorld(true);
+    const qrel = capo.ossa.head.getWorldQuaternion(new THREE.Quaternion()).multiply(CAPO.q0.clone().invert());
+    const te = lat.G.testa, n = v3(0, 0, 1).transformDirection(te.matrixWorld), asse = v3(0, 1, 0).transformDirection(te.matrixWorld);
+    const lato = new THREE.Vector3().crossVectors(asse, n).normalize();          // verso chi guarda
+    // assi della testa di chi soccorre (come in fig. 9, chi soccorre dall'altro lato del lattante, chinato verso chi guarda):
+    // X (la sua sinistra) lungo l'asse del viso del lattante, così la larghezza della bocca copre insieme bocca e naso;
+    // Y (la sommità) verso chi guarda, alzata di «a»; Z (il viso) verso il basso
+    const X = asse.clone(), Y = lato.clone().multiplyScalar(Math.cos(TARATURA.a)).addScaledVector(n, Math.sin(TARATURA.a)).normalize(), Z = new THREE.Vector3().crossVectors(X, Y);
+    const qT = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, Y, Z));
+    gruppoCapo.quaternion.copy(qT.multiply(qrel.invert())); gruppoCapo.updateMatrixWorld(true);
+    const tmp = new THREE.Vector3(), V = CAPO.viso.map(i => capo.mesh.getVertexPosition(i, tmp).clone().applyMatrix4(capo.mesh.matrixWorld));
+    const lab = CAPO.labbra.map(i => capo.mesh.getVertexPosition(i, tmp).clone().applyMatrix4(capo.mesh.matrixWorld));
+    const media = l => l.map(i => capo.mesh.getVertexPosition(i, tmp).clone().applyMatrix4(capo.mesh.matrixWorld)).reduce((a, q) => a.add(q), v3(0, 0, 0)).multiplyScalar(1 / l.length);
+    const lSu = media(CAPO.su), lGiu = media(CAPO.giu), cL = lSu.clone().add(lGiu).multiplyScalar(0.5);   // centro dell'apertura della bocca
+    const pB = mondo(boccaL), pN = mondo(nasoL), bers = pB.clone().add(pN).multiplyScalar(0.5);
+    let sposta = bers.clone().sub(cL);
+    if (PROVA === 'soffi-lontano') sposta.addScaledVector(asse, -0.035);                // prova: bocca sul mento, naso scoperto
+    const minimo = h => V.reduce((m, q) => Math.min(m, fuoriTestaL(q.clone().add(sposta).addScaledVector(n, h))), 9);
+    let a = -0.02, b = 0.08;
+    for (let k = 0; k < 22; k++) { const h = (a + b) / 2; if (minimo(h) < 0.0004) a = h; else b = h; }
+    let h = b; if (PROVA === 'soffi-dentro') h -= 0.006;                                // prova: viso dentro il viso
+    sposta.addScaledVector(n, h); gruppoCapo.position.copy(sposta); gruppoCapo.updateMatrixWorld(true);
+    if (new URLSearchParams(location.search).get('dbg')) { let mi = 9, k = -1; V.forEach((q, i) => { const d = fuoriTestaL(q.clone().add(sposta)); if (d < mi) { mi = d; k = i; } });
+      const pr = capo.mesh.geometry.attributes.position, j = CAPO.viso[k]; window.__dbg = { h, mi, rest: [pr.getX(j), pr.getY(j), pr.getZ(j)], loc: lat.G.testa.worldToLocal(V[k].clone().add(sposta)).toArray().map(x => +x.toFixed(4)), cL: lat.G.testa.worldToLocal(cL.clone().add(sposta)).toArray().map(x => +x.toFixed(4)) }; console.log(JSON.stringify(window.__dbg)); }
+    if (alfa < 0.999) return;
+    // controlli automatici: bocca su bocca e naso, labbra appoggiate, nessuna compenetrazione volto-volto
+    const L2 = lab.map(q => q.clone().add(sposta)), c2 = cL.clone().add(sposta), s2 = lSu.clone().add(sposta), g2 = lGiu.clone().add(sposta);
+    const ex = Math.max(...L2.map(q => Math.abs(q.clone().sub(c2).dot(X))));             // mezza larghezza della bocca (lungo la sua sinistra-destra)
+    const asseB = s2.clone().sub(g2); asseB.addScaledVector(n, -asseB.dot(n)); asseB.normalize();   // dal labbro inferiore al superiore, sul piano del viso del lattante
+    // apertura INTERNA: bordo interno del labbro superiore e di quello inferiore (i punti delle labbra più vicini al centro)
+    // solo la parte centrale delle labbra (gli angoli della bocca stanno per forza sulla linea di mezzo)
+    const centrali = l => l.map(i => capo.mesh.getVertexPosition(i, tmp).clone().applyMatrix4(capo.mesh.matrixWorld).sub(c2)).filter(q => Math.abs(q.dot(X)) < 0.012);   // (il gruppo è già al suo posto)
+    const inSu = Math.min(...centrali(CAPO.su).map(q => q.dot(asseB))), inGiu = Math.max(...centrali(CAPO.giu).map(q => q.dot(asseB))), lung = inSu - inGiu;
+    const NASO_L = 0.0144 * lat.G.testa.getWorldScale(new THREE.Vector3()).x;              // larghezza del naso del lattante
+    for (const [nome, p] of [['bocca', pB], ['naso', pN]]) {
+      const q = p.clone().sub(c2), u = q.dot(asseB), w = Math.abs(q.dot(X)) / ex;
+      if (u - NASO_L / 2 < inGiu || u + NASO_L / 2 > inSu || w > 0.6) problemi.push({ tipo: 'soffi', dettagli: `${nome} del lattante non dentro l'apertura delle labbra di chi soccorre (fra le labbra ${(u * 1000).toFixed(1)} mm, lungo la bocca ${w.toFixed(2)})` });
+      if (q.dot(n) > 0.004) problemi.push({ tipo: 'soffi', dettagli: `${nome} del lattante sopra le labbra di chi soccorre` });
+    }
+    if (lung < NASO_L) problemi.push({ tipo: 'soffi', dettagli: `apertura interna delle labbra ${(lung * 1000).toFixed(0)} mm: non copre il naso del lattante (${(NASO_L * 1000).toFixed(0)} mm)` });
+    if (new URLSearchParams(location.search).get('dbg')) console.log('apertura interna', (lung * 1000).toFixed(1), 'mm; bocca-naso', (pB.distanceTo(pN) * 1000).toFixed(1));
+    const dentro = V.reduce((m, q) => Math.min(m, fuoriTestaL(q.clone().add(sposta))), 9);
+    if (dentro < -0.0005) problemi.push({ tipo: 'soffi', dettagli: `volto di chi soccorre dentro il volto del lattante di ${(-dentro * 1000).toFixed(1)} mm` });
+    const tocco = L2.reduce((m, q) => Math.min(m, fuoriTestaL(q)), 9);
+    if (tocco > 0.003) problemi.push({ tipo: 'soffi', dettagli: `labbra staccate dal viso del lattante di ${(tocco * 1000).toFixed(1)} mm` });
+  }
+
+  /* ---------- posa 4: supino su un piano rigido (rianimazione, IRC 2025 cap. 9 p. 25, fig. 11, fig. 7) ---------- */
+  function posaTavolo(t) {
+    lat.posa('supino'); lat.espressione('incosciente');
+    braccineLibere(t >= S[12] - 0.5 && t < RCP_B + 0.6 ? true : t < S[12] - 0.5 ? 'soffi' : false);
+    // DAE: il lattante si gira sul fianco (la schiena verso chi guarda) perché si veda la placca sulla schiena
+    // DAE in due momenti (indicazioni di Alessandro e dei revisori, 21/11/2026), nell'ordine della voce («una placca sul
+    // petto e una sulla schiena»): prima di fronte con la placca davanti, poi un solo giro lento (1,5 s) e la placca dietro;
+    // testa sempre a destra; braccia aperte di lato; una placca per volta; etichette solo a lattante fermo
+    // DAE sulle parole della voce (revisione del 21/11/2026): placca davanti da «se sei solo…» per tutto «Una placca sul
+    // petto»; il giro (1,3 s) parte su «e una»; placca dietro durante «sulla schiena» e nella pausa; supino prima della frase 16
+    const { DAE_A, DAE_GIRO, DAE_B, GIRO_D } = TEMPI_DAE;
+    const vdae = fin(t, DAE_A - 0.1, DAE_B, 0.6, 0.6);
+    const giro = Math.PI * (morb(clamp((t - DAE_GIRO) / GIRO_D)) + morb(clamp((t - (DAE_B - 1.0)) / 0.8)));   // prima della frase 16 torna supino
+    const alzaDae = 0.014 * morb(clamp((t - (DAE_GIRO - 0.25)) / 0.25)) * (1 - morb(clamp((t - (DAE_B - 0.2)) / 0.2)));   // appena sollevato: resta sul piano, con l'ombra
+    orientaLattante(v3(0, 0, -1), v3(-Math.sin(giro), Math.cos(giro), 0));
+    if (vdae > 0) { const ap = 0.5 * morb(vdae); lat.G.spallaSx.rotation.z += ap; lat.G.spallaDx.rotation.z -= ap; }
+    { const arr = S[12] + Math.min(2.2, dur(12) * 0.35), v0 = t < S[12] ? 1 : 1 - morb(clamp((t - arr) / 1.1)), v1 = t > RCP_B ? morb(clamp((t - RCP_B) / 0.45)) : 0;
+      lat.radice.position.set(0, BASE_Y + 0.017 * (1 - Math.max(v0, v1)) + alzaDae, 0.06); }      // appoggia sulle dita quando le mani ci sono
+    lat.radice.updateMatrixWorld(true);
+    piano.visible = true; piano.position.set(0, -0.015, 0);
+    const st = mondo(lat.P.sternoBasso);
+    const vedoSterno = t >= S[12] - 0.3 && t < S[15] - 0.3;
+    lat.mostraSterno(vedoSterno);
+    // nella rianimazione si vede solo la zona gialla (metà inferiore dello sterno), senza contorno né parti azzurre
+    lat.G.sterno.children.forEach(o => o.visible = o === lat.G.sternoGiallo);
+    // mani: lontane nei soffi; arrivano durante la frase 12 dopo che il giallo si è letto tutto (raccomandazione del medico)
+    const arrivo = S[12] + Math.min(2.2, dur(12) * 0.35);
+    const via = t < S[12] ? 1 : 1 - morb(clamp((t - arrivo) / 1.1));
+    const viaFine = t > RCP_B ? morb(clamp((t - RCP_B) / 0.45)) : 0;   // mani via subito dopo l'ultima compressione, prima del movimento verso il DAE
+    const comp = t >= RCP_A && t < RCP_B ? 0.036 * (0.5 - 0.5 * Math.cos(2 * Math.PI * ((t - RCP_A) / PERIODO))) * clamp((RCP_B - t) / 0.3) : 0;
+    if (t > RCP_A - 0.2 && t < RCP_B + 0.2) frecciaProfondita(comp / 0.036);
+    uComp.value = comp; lat.G.sterno.position.z = -comp;
+    if (t < S[16] - 0.3) {
+      const contatti = maniPollici(st, giuSupino(), Math.max(via, viaFine), 'tavolo');
+      gruppo.R.position.y -= comp; gruppo.L.position.y -= comp;
+      if (Math.max(via, viaFine) < 0.02) problemi = problemi.concat(lat.controlloSterno(contatti));
+    }
+    // soffi: bocca di chi soccorre (schema) su bocca e naso, il torace si alza
+    const vs = fin(t, SOFFI[0] - 0.6, SOFFI[4] + 1.6, 0.4, 0.4);
+    let alza = 0; for (const t0 of SOFFI) { const q = (t - t0) / 1.4; if (q > 0 && q < 1) alza = Math.max(alza, Math.sin(Math.PI * Math.min(1, q * 1.4)) * (q < 0.72 ? 1 : 1 - (q - 0.72) / 0.28)); }
+    if (vs > 0.01) {
+      posaCapo(morb(vs));                                                 // la testa di chi soccorre arriva e si appoggia
+      if (vs < 0.999) gruppoCapo.position.add(v3(-0.06, 0.1, 0).multiplyScalar(1 - morb(vs)));
+      uAlza.value = 0.011 * alza;                                        // il torace si alza di 11 mm (revisione del 21/11/2026), con una luce tenue
+      lat.G.busto.material.emissive.setRGB(0.25 * alza, 0.32 * alza, 0.38 * alza); alzaOra = alza;
+      if (vs > 0.98) segnoTorace = lat.G.bacino.localToWorld(v3(0, 0.1, 0.07));
+    }
+    // DAE: placche antero-posteriori (IRC 2025 cap. 9 p. 26, fig. 14): davanti al centro del torace subito a sinistra dello
+    // sterno, sulla parte bassa del torace e lontano dal braccio; dietro sulla schiena, sulla linea mediana, con il centro
+    // tra le scapole. Prima di spalle (si vede la placca dietro), poi di fronte (si vede la placca davanti).
+    piano.material.transparent = false; piano.material.opacity = 1; { const k = t >= S[15] + 0.05 && PROVA !== 'firma' ? 0.62 : 1; piano.scale.set(k, 1, k); }   // DAE: piano più piccolo, lontano dalla firma
+    piano.visible = true;   // il piano e l'ombra restano anche durante il giro
+    if (t > TEMPI_DAE.DAE_A + 0.6 && t < DAE_GIRO - 0.1) daeAtteso = 0; else if (t > TEMPI_DAE.SCHIENA + 0.9 && t < DAE_B - 1.2) daeAtteso = 1;
+    const DAVANTI = t > DAE_A && t < DAE_GIRO && giro < 0.01, DIETRO = t > DAE_GIRO + GIRO_D && t < DAE_B - 1.0 && Math.abs(giro - Math.PI) < 0.01;
+    const vd = DAVANTI ? fin(t, DAE_A, DAE_GIRO, 0.5, 0.25) : DIETRO ? fin(t, DAE_GIRO + GIRO_D, DAE_B - 1.0, 0.25, 0.25) : 0;
+    if (vd > 0.01) {
+      if (!segniDae.length) creaSegniDae();
+      lat.radice.updateMatrixWorld(true);
+      const b = lat.G.bacino, qb = b.getWorldQuaternion(new THREE.Quaternion());
+      const k = DIETRO ? 1 : 0;
+      // davanti: subito a sinistra dello sterno (bordo a 2 mm dallo sterno), in basso sul torace; dietro: al centro fra le scapole
+      let q = DIETRO ? pelleL(0, 0.14, -1) : pelleL(0.0075 + 0.023 + 0.002, 0.12, 1);
+      if (PROVA === 'placca-fianco' && DIETRO) q = { p: v3(0.09, 0.12, -0.02), n: v3(1, 0, 0) };   // prova: la placca accanto al fianco
+      if (PROVA === 'placca-braccio' && DAVANTI) q = pelleL(0.045, 0.165, 1);                       // prova: la placca davanti sotto la spalla
+      const p = b.localToWorld(q.p.clone().addScaledVector(q.n, 0.003));
+      const qn = new THREE.Quaternion().setFromUnitVectors(v3(0, 1, 0), q.n);                        // spessore della placca lungo la normale
+      placche[k].visible = true; placche[k].position.copy(p); placche[k].quaternion.copy(qb).multiply(qn);
+      placche[k].children[0].material.opacity = vd;
+      if (DAVANTI) segniDae.sterno.visible = true; else segniDae.scapole.forEach(m => m.visible = true);
+      // controllo automatico
+      if (vd > 0.98) {
+        const l = b.worldToLocal(p.clone());
+        if (DIETRO) {
+          if (l.z > -0.045) problemi.push({ tipo: 'dae', dettagli: `placca dietro non sul dorso (z ${l.z.toFixed(3)}: deve stare sulla schiena)` });
+          if (Math.abs(l.x) > 0.004) problemi.push({ tipo: 'dae', dettagli: `placca dietro fuori dalla linea mediana di ${(Math.abs(l.x) * 1000).toFixed(0)} mm` });
+          if (l.y < 0.125 || l.y > 0.165) problemi.push({ tipo: 'dae', dettagli: `placca dietro non al centro fra le scapole (y ${l.y.toFixed(3)})` });
+          if (v3(0, 1, 0).dot(b.localToWorld(v3(0, 0.13, -1)).sub(b.localToWorld(v3(0, 0.13, 0)))) < 0.9) problemi.push({ tipo: 'dae', dettagli: 'placca dietro mostrata senza la schiena verso la telecamera' });
+        } else {
+          if (l.z < 0.045 || l.x < 0.026 || l.x > 0.036 || l.y < 0.105 || l.y > 0.13) problemi.push({ tipo: 'dae', dettagli: `placca davanti non subito a sinistra dello sterno in basso sul torace (x ${l.x.toFixed(3)}, y ${l.y.toFixed(3)}, z ${l.z.toFixed(3)})` });
+          // la placca davanti non tocca il braccio: ogni angolo lontano dall'asse del braccio (spalla → gomito) più del suo raggio
+          const angoli = [[-0.02, -0.025], [0.02, -0.025], [-0.02, 0.025], [0.02, 0.025]].map(([x, z]) => placche[0].localToWorld(v3(x, 0, z)));
+          for (const n of ['Sx', 'Dx']) {
+            const a0 = mondo(lat.G['spalla' + n]), a1 = mondo(lat.G['gomito' + n]), d = a1.clone().sub(a0), L2 = d.lengthSq();
+            const dist = q2 => { const u = clamp(q2.clone().sub(a0).dot(d) / L2); return q2.distanceTo(a0.clone().addScaledVector(d, u)); };
+            const m = Math.min(...angoli.map(dist));
+            if (m < 0.045) problemi.push({ tipo: 'dae', dettagli: `placca davanti a ${(m * 1000).toFixed(0)} mm dall'asse del braccio ${n}: sembra sul braccio` });
+          }
+        }
+      }
+    }
+    // telecamera: profilo per i soffi (testa neutra), 3/4 dai piedi per lo sterno e le compressioni, dall'alto per il DAE
+    const stF = lat.G.bacino.localToWorld(v3(0, 0.128, 0.058)).setY(BASE_Y + 0.017 + 0.058);   // sterno a mani in posa (fisso)
+    const viste = [
+      { a: T_TAV, c: st.clone().add(v3(0, -0.02, 0.04)), p: v3(0.95, 0.72, -0.3), sh: 0.11 },
+      { a: S[11] - 0.5, c: st.clone().add(v3(0, TARA('sy', 0.0), TARA('sz', -0.05))), p: v3(TARA('sax', 0.7), TARA('say', 0.35), TARA('saz', 1.35)).multiplyScalar(TARA('sd', 0.48)), sh: 0.11 },   // soffi: di lato, vicino
+      { a: S[12] - 0.4, c: stF.clone().add(POLLICI.c), p: POLLICI.p.clone(), sh: POLLICI.sh },   // pollici: 3/4 dai piedi, poi ferma
+      { a: S[15] + 0.05, c: v3(0, BASE_Y + 0.05, 0), p: v3(0.22, 0.9, 0.12).multiplyScalar(TARA('dd', 1.12)), sh: TARA('dsh', 0.25) },   // DAE: dall'alto (circa 74°), vicino al torace, lattante a sinistra delle schede;     // DAE: dall'alto, come la fig. 14
+      { a: S[16] - 0.4, c: st.clone().add(v3(0, -0.02, -0.02)), p: v3(0.95, 0.72, -0.4), sh: 0.11 }
+    ];
+    const camProva = JSON.parse(new URLSearchParams(location.search).get('cam') || 'null');   // solo prove: {"c":[..],"p":[..]}
+    let i = 0; while (i < viste.length - 1 && t >= viste[i + 1].a) i++;
+    const A = viste[Math.max(0, i - 1)], Bv = viste[i], u = i === 0 ? 1 : morb(clamp((t - Bv.a) / 1.2));
+    const c = A.c.clone().lerp(Bv.c, u), dpos = A.p.clone().lerp(Bv.p, u);   // niente rotazione lenta: telecamera ferma fra un movimento e l'altro
+    if (camProva) return { c: st.clone().add(v3(...camProva.c)), pos: st.clone().add(v3(...camProva.c)).add(v3(...camProva.p)), sh: 0, segni: { st } };
+    return { c, pos: c.clone().add(dpos), sh: A.sh + (Bv.sh - A.sh) * u, segni: { st } };
+  }
+
+  /* ============================================================ sovrimpressioni 2D (come negli altri video 3D) */
+  const sopra = document.getElementById('sopra'), s2 = sopra.getContext('2d');
+  const stemma = new Image(); stemma.src = '/*STEMMA*/';
+  function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
+  function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+  function pannello(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.88)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
+  const LAY = VERT ? {
+    fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
+    avviso: 430, passo: { x: 60, y: 316, w: 960, h: 150 }, conta: { x: 60, y: 1180 },
+    passi: i => ({ x: 120, y: 390 + i * 180, w: 840, h: 150 }), riga1: 1030, tel: 1110, sito: 1205
+  } : {
+    fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
+    avviso: 236, passo: { x: 1250, y: 176, w: 620, h: 150 }, conta: { x: 1270, y: 420 },
+    passi: i => ({ x: 230 + i * 520, y: 300, w: 460, h: 230 }), riga1: 630, tel: 710, sito: 800
+  };
+  function testata(c, nomeScena) {
+    const F = LAY.fascia, libero = F.w - F.sx - F.dx;
+    c.save();
+    if (VERT) { const g = c.createLinearGradient(0, 0, 0, F.y + 4); g.addColorStop(0, 'rgba(6,22,51,1)'); g.addColorStop(0.8, 'rgba(6,22,51,.96)'); g.addColorStop(1, 'rgba(6,22,51,0)'); c.fillStyle = g; c.fillRect(0, 0, W, F.y + 4); }
+    c.fillStyle = KIT.giallo; c.fillRect(0, F.y - Math.round(F.h * 0.11), F.w + 18, Math.round(F.h * 0.9));
+    c.fillStyle = KIT.blu; c.fillRect(0, F.y, F.w, F.h);
+    let corpo = VERT ? 40 : 34; c.font = `600 ${corpo}px Montserrat`;
+    while (corpo > 24 && Math.max(c.measureText(TITOLO).width, c.measureText(nomeScena).width * 0.86) > libero) { corpo--; c.font = `600 ${corpo}px Montserrat`; }
+    const Lh = corpo * 1.1, top = F.y + (F.h - 2 * Lh) / 2 + corpo * 0.88;
+    testo(c, TITOLO, F.sx, top, corpo, 600, '#FFFFFF'); testo(c, nomeScena, F.sx, top + Lh, corpo * 0.86, 700, KIT.giallo);
+    if (stemma.naturalWidth) { const sw = F.stemma, sh = sw * stemma.naturalHeight / stemma.naturalWidth; c.drawImage(stemma, F.w - F.dx + (F.dx - sw) / 2 + 6, F.y + F.h / 2 - sh / 2, sw, sh); }
+    const fr = LAY.firma; c.font = `600 ${fr.corpo}px Montserrat`; const tw = c.measureText('Misericordia di Ariccia').width;
+    c.shadowColor = 'rgba(0,22,54,.6)'; c.shadowBlur = 6; c.shadowOffsetY = 1;
+    testo(c, 'Misericordia di Ariccia', fr.x, fr.y + fr.corpo, fr.corpo, 600, '#FFFFFF');
+    c.shadowColor = 'transparent';
+    window.FIRMA_BOX = { x: fr.x, y: fr.y, w: Math.round(tw), h: fr.corpo, corpo: fr.corpo };
+    c.font = '700 20px Montserrat'; const nt = 'SCHEMA · NON IN SCALA', nw = c.measureText(nt).width + 36, nx = W - L.margine - nw;
+    rett(c, nx, LAY.nota.y, nw, 38, 19); c.fillStyle = KIT.giallo; c.fill();
+    testo(c, nt, nx + 18, LAY.nota.y + 26, 20, 700, KIT.blu);
+    c.restore();
+  }
+  function avviso(c, righe, alfa, colore = '#FCEB0C') {
+    if (alfa <= 0.001) return;
+    righe = [].concat(righe);
+    const y = LAY.avviso, corpo = VERT ? 32 : 34, lh = corpo * 1.3;
+    c.save(); c.globalAlpha = alfa; c.font = `800 ${corpo}px Montserrat`;
+    const w = Math.max(...righe.map(r => c.measureText(r).width)) + 64, h = 30 + lh * righe.length;
+    rett(c, (W - w) / 2, y - 44, w, h, 30); c.fillStyle = 'rgba(0,30,70,.93)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    righe.forEach((r, i) => testo(c, r, W / 2, y + i * lh, corpo, 800, i ? '#FFFFFF' : colore, 'center'));
+    c.restore();
+  }
+  let fondoPasso = 0;
+  // schede dei passi 4-10 (scene riviste il 21/11/2026): testo su 2 righe al massimo, carattere più grande di circa il 40%
+  const GRANDE = n => n >= 4 && n <= 10;
+  let passoX = null, pannelli = [], marcatore = null;
+  function passo(c, alfa, n, titolo, sotto, colore = '#FCEB0C') {
+    if (alfa <= 0.001) return;
+    const G4 = GRANDE(n), k4 = G4 ? 1.4 : 1;
+    const nr = [].concat(sotto).length, y = LAY.passo.y;
+    let x = G4 && !VERT ? 1060 : LAY.passo.x, w = G4 && !VERT ? 810 : LAY.passo.w;
+    const h = Math.round(LAY.passo.h * (G4 ? 1.25 : 1)) + (nr - 1) * (VERT ? 36 : 30) * k4;
+    const r = (VERT ? 46 : 40) * (G4 ? 1.2 : 1);
+    // righe sotto di almeno 30 px (revisione del 21/11/2026): se non entrano, la scheda si allarga verso sinistra
+    const righe = [].concat(sotto);
+    let c1 = (VERT ? 42 : 34) * k4, c2 = Math.max(30, (VERT ? 32 : 25) * k4);
+    c.save(); c.font = `600 ${c2}px Montserrat`; const largR = Math.max(...righe.map(rr => c.measureText(rr).width)); c.restore();
+    const serve = largR + 22 + 2 * r + 22 + 20 + 10;
+    if (serve > w) { const dx = Math.min(serve - w, x - (VERT ? 40 : 60)); x -= dx; w += dx; }
+    passoX = x;
+    fondoPasso = y + h;
+    if (alfa > 0.3) pannelli.push({ x, y, w, h, nome: `scheda ${n}` });
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h, colore);
+    const cx = x + 22 + r, cy = y + h / 2;
+    c.fillStyle = colore; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fill();
+    testo(c, String(n), cx, cy + r * 0.38, r * 1.1, 900, KIT.blu, 'center');
+    const tx = cx + r + 22, libero = x + w - tx - 20;
+    c.font = `800 ${c1}px Montserrat`; while (c.measureText(titolo).width > libero && c1 > 24) { c1--; c.font = `800 ${c1}px Montserrat`; }
+    const su = (righe.length - 1) * c2 * 0.62;
+    testo(c, titolo, tx, cy - 6 - su, c1, 800, '#FFFFFF');
+    righe.forEach((rr, k) => testo(c, rr, tx, cy + c2 + 8 - su + k * (c2 * 1.22), c2, 600, colore));
+    c.restore();
+  }
+  function contatore(c, alfa, n, etichetta) {
+    if (alfa <= 0.001) return;
+    const rr = VERT ? 26 : 22, x = (passoX || LAY.passo.x) + 20, y = (fondoPasso || LAY.conta.y) + 26;
+    c.save(); c.globalAlpha = alfa;
+    pannello(c, x - 10, y - 10, 5 * 2.6 * rr + 30 + (VERT ? 260 : 230), 2 * rr + 20);
+    if (alfa > 0.3) pannelli.push({ x: x - 10, y: y - 10, w: 5 * 2.6 * rr + 30 + (VERT ? 260 : 230), h: 2 * rr + 20, nome: 'contatore' });
+    for (let k = 0; k < 5; k++) { const cx = x + rr + k * (2.6 * rr), cy = y + rr, on = clamp(n - k) > 0;
+      c.beginPath(); c.arc(cx, cy, rr, 0, 7); c.fillStyle = on ? KIT.giallo : 'rgba(255,255,255,.16)'; c.fill();
+      testo(c, String(k + 1), cx, cy + rr * 0.4, rr * 1.1, 900, on ? KIT.blu : 'rgba(255,255,255,.7)', 'center'); }
+    testo(c, etichetta, x + 5 * 2.6 * rr + 10, y + rr + 10, 30, 700, '#FFFFFF');
+    c.restore();
+  }
+  const contati = (t, lista) => lista.reduce((s, t0) => s + clamp((t - t0) / 0.12), 0);
+  function chiusura(c, t) {
+    const t0 = S[18] - 0.3, a = clamp((t - t0) / 0.7); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    c.fillStyle = 'rgba(0,40,92,.86)'; c.fillRect(0, 0, W, H);
+    const passi = [['1', 'Tossisce o piange?', 'lascialo tossire', t0 + 0.6], ['2', 'Chiama il 112', 'in vivavoce', t0 + 1.3], ['3', '5 pacche, 5 compressioni', 'alternate', t0 + 2.0]];
+    passi.forEach(([n, ti, so, tt], i) => {
+      const b = clamp((t - tt) / 0.45), q = LAY.passi(i), y = q.y + (1 - b) * 24;
+      c.globalAlpha = a * b;
+      rett(c, q.x, y, q.w, q.h, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 4; c.stroke();
+      c.fillStyle = '#FCEB0C'; c.beginPath(); c.arc(q.x + 70, y + (VERT ? q.h / 2 : 78), 44, 0, 7); c.fill();
+      testo(c, n, q.x + 70, y + (VERT ? q.h / 2 + 18 : 96), 50, 900, '#003F85', 'center');
+      let corpo = 40; c.font = `800 ${corpo}px Montserrat`; while (c.measureText(ti).width > q.w - 150 && corpo > 26) { corpo--; c.font = `800 ${corpo}px Montserrat`; }
+      testo(c, ti, q.x + 134, y + (VERT ? q.h / 2 - 6 : 94), corpo, 800, '#FFFFFF');
+      testo(c, so, VERT ? q.x + 134 : q.x + 40, y + (VERT ? q.h / 2 + 38 : 180), 28, 600, 'rgba(255,255,255,.88)');
+    });
+    const d = clamp((t - (t0 + 2.8)) / 0.6);
+    c.globalAlpha = a * d;
+    if (VERT) { testo(c, 'Le manovre si imparano sul manichino:', W / 2, LAY.riga1 - 40, 30, 700, '#FFFFFF', 'center');
+                testo(c, 'corsi della Misericordia di Ariccia', W / 2, LAY.riga1, 30, 700, '#FFFFFF', 'center'); }
+    else testo(c, 'Le manovre si imparano sul manichino: corsi della Misericordia di Ariccia', W / 2, LAY.riga1, 32, 700, '#FFFFFF', 'center');
+    testo(c, '328 8105399', W / 2, LAY.tel, 64, 900, '#FCEB0C', 'center');
+    testo(c, 'oppure 06 933 3717', W / 2, LAY.tel + (VERT ? 44 : 40), 26, 600, '#FFFFFF', 'center');
+    testo(c, 'In ogni emergenza chiama il 112', W / 2, LAY.sito, 30, 700, '#FFFFFF', 'center');
+    c.restore();
+  }
+  // disegno «30 e 2» (frase 14)
+  function schema302(c, alfa) {
+    if (alfa <= 0.001) return;
+    const { x, w } = LAY.passo, y = (fondoPasso || 400) + 24, h = VERT ? 150 : 130;
+    c.save(); c.globalAlpha = alfa; pannello(c, x, y, w, h);
+    testo(c, '30', x + w * 0.22, y + h * 0.62, VERT ? 76 : 64, 900, KIT.giallo, 'center');
+    testo(c, 'compressioni', x + w * 0.22, y + h * 0.88, VERT ? 24 : 21, 700, '#FFFFFF', 'center');
+    testo(c, '+', x + w * 0.45, y + h * 0.6, 54, 900, '#FFFFFF', 'center');
+    testo(c, '2', x + w * 0.62, y + h * 0.62, VERT ? 76 : 64, 900, KIT.giallo, 'center');
+    testo(c, 'soffi', x + w * 0.62, y + h * 0.88, VERT ? 24 : 21, 700, '#FFFFFF', 'center');
+    testo(c, '15 + 2', x + w * 0.86, y + h * 0.5, VERT ? 34 : 30, 800, '#7FD0F5', 'center');
+    testo(c, 'con un corso', x + w * 0.86, y + h * 0.74, VERT ? 20 : 17, 600, '#FFFFFF', 'center');
+    testo(c, 'pediatrico', x + w * 0.86, y + h * 0.92, VERT ? 20 : 17, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+
+  /* ============================================================ schede con la linea di richiamo */
+  function proietta(p) {
+    if (!p) return null; const q = p.clone().project(cam); if (q.z > 1 || q.z < -1) return null;
+    return { x: (q.x + 1) / 2 * W, y: (1 - q.y) / 2 * H };
+  }
+  const telaCornice = document.getElementById('cornice');
+  const fonte = document.getElementById('fonte');
+  const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
+
+  /* ---------- mani dell'adulto disegnate in 2D sopra il lattante 3D (decisione di Alessandro, 21/11/2026) ----------
+     Disegno nostro, rifatto seguendo IRC 2025 cap. 9 fig. 11 (mai copiato né ricalcato): chi soccorre è di lato (in basso
+     nel quadro), due mani viste dall'alto, avambracci perpendicolari al lattante, paralleli e distanziati; pollici affiancati
+     sul giallo (metà inferiore dello sterno, punte a 8 mm); le altre dita passano sotto la schiena e se ne vedono le punte
+     dal lato lontano (4 per mano, il medio più lungo). Coordinate in metri sul torace: u verso la testa, v verso chi soccorre;
+     ogni fotogramma l'ancora è lo sterno proiettato, così il disegno resta attaccato al 3D e scende con le compressioni. */
+  const COL2D = { pelle: '#c48a63', luce: '#dba584', bordo: '#1b2a3a', unghia: '#e8c3ad', maniche: ['#003F85', '#2F6DB3'] };
+  let geo2D = null;
+  function disegnaMani2D(c, m) {
+    const b = lat.G.bacino, yS = 0.128, q = lat.sezione(yS);
+    const P3 = (u, v, h) => b.localToWorld(v3(-v, yS + u, h === undefined ? q.z + q.rz - m.comp : h));   // v verso -x locale (chi soccorre)
+    const spost = PROVA === 'mani-fuori-sterno' ? 0.03 : 0;
+    const S0 = proietta(P3(0, 0)), Su = proietta(P3(0.01, 0)), Sv = proietta(P3(0, 0.01));
+    if (!S0 || !Su || !Sv) { geo2D = null; return; }
+    const eu = { x: (Su.x - S0.x) / 0.01, y: (Su.y - S0.y) / 0.01 }, ev = { x: (Sv.x - S0.x) / 0.01, y: (Sv.y - S0.y) / 0.01 };
+    const X = (u, v) => ({ x: S0.x + eu.x * (u + spost) + ev.x * v, y: S0.y + eu.y * (u + spost) + ev.y * v });
+    const rx = q.rx, kpx = Math.hypot(eu.x, eu.y);
+    const poli = [], linee = [];
+    c.save(); c.globalAlpha = m.alfa; c.lineJoin = 'round'; c.lineCap = 'round'; c.lineWidth = 2; c.strokeStyle = COL2D.bordo;
+    // forme morbide: curve quadratiche per i punti medi (stile illustrazione medica, contorno sottile)
+    const forma = (pts, fill, morbida = true) => { const Q = pts.map(p => X(p[0], p[1])); c.beginPath();
+      if (morbida) { const M = (a, bq) => ({ x: (a.x + bq.x) / 2, y: (a.y + bq.y) / 2 }); const n = Q.length; let m0 = M(Q[n - 1], Q[0]); c.moveTo(m0.x, m0.y);
+        for (let i = 0; i < n; i++) { const m1 = M(Q[i], Q[(i + 1) % n]); c.quadraticCurveTo(Q[i].x, Q[i].y, m1.x, m1.y); } }
+      else Q.forEach((P, i) => i ? c.lineTo(P.x, P.y) : c.moveTo(P.x, P.y));
+      c.closePath(); c.fillStyle = fill; c.fill(); c.stroke(); poli.push(Q); };
+    const curva = (pts) => { c.beginPath(); pts.forEach((p, i) => { const P = X(p[0], p[1]); i ? c.lineTo(P.x, P.y) : c.moveTo(P.x, P.y); }); c.stroke(); };
+    const pollici = [];
+    [[0.026, 0], [-0.026, 1]].forEach(([uc, k]) => {
+      const mz = Math.sign(uc);                                             // il pollice sta dal lato del centro
+      // punte delle 4 dita che spuntano da sotto la schiena dal lato lontano (indice vicino al centro, medio il più lungo)
+      const lung = [0.013, 0.017, 0.014, 0.010];                            // indice, medio (il più lungo), anulare, mignolo
+      lung.forEach((L, i) => { const u = uc - mz * 0.013 + mz * i * 0.0088, v0 = -(rx - 0.001), r = i === 3 ? 0.0038 : 0.0045;
+        forma([[u - r, v0 + 0.002], [u - r, v0 - L + 0.004], [u, v0 - L], [u + r, v0 - L + 0.004], [u + r, v0 + 0.002]], COL2D.pelle);
+        forma([[u - r * 0.55, v0 - L + 0.0055], [u, v0 - L + 0.0018], [u + r * 0.55, v0 - L + 0.0055], [u, v0 - L + 0.007]], COL2D.unghia);   // unghia
+        curva([[u - r * 0.8, v0 - L * 0.45], [u + r * 0.8, v0 - L * 0.45]]); });    // piega dell'ultima falange
+      // avambraccio e manica (fino al bordo in basso), polso
+      const w = 0.021;
+      forma([[uc - w * 0.92, rx + 0.025], [uc + w * 0.92, rx + 0.025], [uc + w * 1.08, 0.6], [uc - w * 1.08, 0.6]], COL2D.pelle, false);
+      forma([[uc - w * 1.06, rx + 0.07], [uc + w * 1.06, rx + 0.07], [uc + w * 1.18, 0.6], [uc - w * 1.18, 0.6]], COL2D.maniche[k], false);
+      curva([[uc - w * 1.06, rx + 0.078], [uc + w * 1.06, rx + 0.078]]);                     // orlo del polsino
+      // dorso della mano sul fianco vicino, con le nocche sul bordo del torace (le dita proseguono sotto la schiena)
+      const v1 = rx - 0.006;
+      forma([[uc - w * 0.92, rx + 0.036], [uc - w * 1.02, rx + 0.02], [uc - w * 1.12, v1 + 0.006], [uc - w * 0.9, v1 - 0.002], [uc, v1 - 0.004], [uc + w * 0.9, v1 - 0.002], [uc + w * 1.12, v1 + 0.006], [uc + w * 1.02, rx + 0.02], [uc + w * 0.92, rx + 0.036]], COL2D.pelle);
+      for (let i = 0; i < 4; i++) { const u = uc - mz * 0.013 + mz * i * 0.0088; curva([[u - 0.004, v1 + 0.004], [u, v1 + 0.0015], [u + 0.004, v1 + 0.004]]); }
+      // pollice: dalla base sul lato della mano alla punta sul giallo (due falangi, piega e unghia)
+      const ub = uc - mz * 0.018, tip = [mz * 0.004, 0], base = [ub, v1 + 0.004], mid = [(ub + tip[0]) / 2 + mz * 0.002, (base[1] + tip[1]) / 2];
+      const larg = (a, bb, r1, r2) => { const dx = bb[0] - a[0], dy = bb[1] - a[1], L = Math.hypot(dx, dy), nx = -dy / L, ny = dx / L;
+        return [[a[0] + nx * r1, a[1] + ny * r1], [bb[0] + nx * r2, bb[1] + ny * r2], [bb[0] - nx * r2, bb[1] - ny * r2], [a[0] - nx * r1, a[1] - ny * r1]]; };
+      const f1 = larg(base, mid, 0.0095, 0.0082), f2 = larg(mid, tip, 0.0082, 0.0068);
+      forma([f1[0], f1[1], f2[1], [tip[0] + (tip[0] - mid[0]) * 0.12, tip[1] - 0.004], f2[2], f1[2], f1[3]], COL2D.luce);
+      const n1 = larg(mid, tip, 0.006, 0.0045); curva([n1[1], [tip[0], tip[1] - 0.0028], n1[2]]);          // unghia
+      const cr = larg(mid, mid, 0.007, 0.007); curva([[mid[0] - 0.006, mid[1] + 0.0005], [mid[0] + 0.006, mid[1] + 0.0005]]);  // piega fra le falangi
+      pollici.push(X(tip[0], tip[1] - 0.002));
+    });
+    c.restore();
+    geo2D = { S0, poli, pollici, kpx, P3, X };
+  }
+  // controlli del disegno: punte dei pollici dentro il giallo proiettato, disegno attaccato allo sterno (< 3 px), niente sul
+  // viso o sulle mani del lattante
+  function controlliMani2D() {
+    const pr = []; if (!geo2D || !mani2D || mani2D.alfa < 0.98) return pr;
+    const dentro = (p, poly) => { let ins = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], bq = poly[j]; if ((a.y > p.y) !== (bq.y > p.y) && p.x < (bq.x - a.x) * (p.y - a.y) / (bq.y - a.y) + a.x) ins = !ins; } return ins; };
+    const b = lat.G.bacino, D = lat.G.sternoDati, giallo = [[-0.0075, D.Y1], [0.0075, D.Y1], [0.0075, D.meta], [-0.0075, D.meta]].map(([x, y]) => { const qq = lat.sezione(y); return proietta(b.localToWorld(v3(x, y, qq.z + qq.rz - mani2D.comp))); });
+    geo2D.pollici.forEach((p, i) => { if (!dentro(p, giallo)) pr.push({ tipo: 'mani-2d', dettagli: `punta del pollice ${i + 1} disegnata fuori dal giallo (metà inferiore dello sterno)` }); });
+    if (geo2D.pollici.length === 2) { const d = Math.hypot(geo2D.pollici[0].x - geo2D.pollici[1].x, geo2D.pollici[0].y - geo2D.pollici[1].y) / geo2D.kpx; if (d > 0.01) pr.push({ tipo: 'mani-2d', dettagli: `punte dei pollici a ${(d * 1000).toFixed(0)} mm (massimo 10)` }); }
+    const ora = proietta(geo2D.P3(0, 0)); const sp = PROVA === 'mani-fuori-sterno' ? 0 : Math.hypot(ora.x - geo2D.S0.x, ora.y - geo2D.S0.y);
+    if (sp > 3) pr.push({ tipo: 'mani-2d', dettagli: `disegno staccato dallo sterno di ${sp.toFixed(1)} px` });
+    const viso = proietta(lat.G.testa.localToWorld(v3(0, 0.06, 0.06)));
+    const manine = ['Sx', 'Dx'].map(n => proietta(mondo(lat.G['polso' + n])));
+    for (const [nome, p] of [['viso', viso], ['mano sinistra del lattante', manine[0]], ['mano destra del lattante', manine[1]]]) if (p && geo2D.poli.some(poly => dentro(p, poly))) pr.push({ tipo: 'mani-2d', dettagli: `il disegno delle mani copre ${nome}` });
+    return pr;
+  }
+
+  /* ---------- «giù di 1/3» accanto al torace (revisione del 21/11/2026): freccia verticale chiara, mai sopra il corpo, le
+     braccia, le mani o un pannello: si prova a sinistra e a destra dello sterno e si sceglie il primo posto libero ---------- */
+  function puntiOccupati() {
+    const pts = [];
+    for (const n of ['R', 'L']) if (gruppo[n].visible) for (const k in braccio[n].ossa) pts.push(braccio[n].testa(k));
+    if (gruppo.R.visible) for (const n of ['R', 'L']) { const w = braccio[n].testa(`wrist.${n}`), e = braccio[n].fineOpaca ? braccio[n].fineOpaca() : w; for (let k = 0; k <= 10; k++) pts.push(w.clone().lerp(e, k / 10)); }
+    for (const n of ['Sx', 'Dx']) { const a = mondo(lat.G['spalla' + n]), b = mondo(lat.G['gomito' + n]), c = mondo(lat.G['polso' + n]); for (let k = 0; k <= 6; k++) { pts.push(a.clone().lerp(b, k / 6)); pts.push(b.clone().lerp(c, k / 6)); } }
+    lat.PARTI_MH.forEach(p => pts.push(...Object.keys(p.ossa).map(k => p.testa(k))));
+    for (let y = -0.04; y <= 0.2; y += 0.02) for (const x of [-0.06, -0.03, 0, 0.03, 0.06]) { const q = lat.sezione(Math.max(-0.04, Math.min(0.19, y))); pts.push(lat.G.bacino.localToWorld(v3(x, y, q.z + q.rz * 0.6))); }
+    pts.push(mondo(lat.G.testa));
+    return pts.map(proietta).filter(Boolean);
+  }
+  function disegnaMarcatore(c, prof) {
+    const st = proietta(lat.G.bacino.localToWorld(v3(0, 0.128, 0.058))); if (!st) return;
+    const occ = puntiOccupati(), Wm = 230, Hm = 150;
+    const libero = r => r.x > 70 && r.x + r.w < W - 70 && r.y > 170 && r.y + r.h < (L.zona ? L.zona.basso - 10 : H - 220) &&
+      !occ.some(p => p.x > r.x - 12 && p.x < r.x + r.w + 12 && p.y > r.y - 12 && p.y < r.y + r.h + 12) &&
+      !pannelli.some(q => r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y);
+    const CAND = PROVA === 'freccia-coperta' ? [[-Wm / 2, -Hm / 2]] : [[-330, -80], [-330, 40], [-450, -40], [-330, -200], [-450, -200], [-560, -120], [120, 120], [200, 60], [-560, 0], [-330, 160], [-600, -260], [260, 160]];
+    let r = null; for (const [dx, dy] of CAND) { const q = { x: st.x + dx, y: st.y + dy, w: Wm, h: Hm }; if (PROVA === 'freccia-coperta' || libero(q)) { r = q; break; } }
+    marcatore = r ? Object.assign({ libero: libero(r) }, r) : { libero: false, nessuno: true };
+    if (!r) return;
+    const x0 = r.x + 34, y0 = r.y + 22, y1 = r.y + Hm - 22;
+    c.save();
+    pannello(c, r.x, r.y, r.w, r.h, 'rgba(252,235,12,.85)');
+    c.strokeStyle = KIT.giallo; c.fillStyle = KIT.giallo; c.lineWidth = 6; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x0 - 16, y0); c.lineTo(x0 + 16, y0); c.stroke();                          // pelle a riposo
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x0, y1 - 16); c.stroke();
+    c.beginPath(); c.moveTo(x0, y1 + 4); c.lineTo(x0 - 15, y1 - 20); c.lineTo(x0 + 15, y1 - 20); c.closePath(); c.fill();
+    c.beginPath(); c.arc(x0, y0 + (y1 - y0) * clamp(prof), 9, 0, 7); c.fillStyle = '#FFFFFF'; c.fill();   // segno che scende con la compressione
+    testo(c, 'giù di', x0 + 32, r.y + 66, 32, 700, '#FFFFFF'); testo(c, '1/3', x0 + 32, r.y + 112, 44, 900, KIT.giallo);
+    c.restore();
+  }
+  /* ============================================================ render(t) */
+  function render(tempo) {
+    const t = clamp(tempo, 0, TOTAL);
+    problemi = [];
+    nascondiTutto();
+    let inq;
+    posaCorrente = t < T_PRONO ? 'aria' : t < T_GIN ? 'prono' : t < T_TAV ? 'ginocchia' : 'tavolo';
+    for (const n of ['R', 'L']) braccio[n].aspetto(posaCorrente === 'ginocchia' || posaCorrente === 'tavolo' ? 'nudo' : 'manica');   // avambracci nudi solo nei due pollici
+    if (t < T_PRONO) inq = posaAria(t);
+    else if (t < T_GIN) inq = posaProno(t);
+    else if (t < T_TAV) inq = posaGinocchia(t);
+    else inq = posaTavolo(t);
+    scena.updateMatrixWorld(true);
+    // telecamera, con lo spostamento dell'inquadratura per lasciare posto alle schede (a destra o in basso)
+    if (VERT) inq.pos = inq.c.clone().add(inq.pos.clone().sub(inq.c).multiplyScalar(1.3));
+    const dist = inq.pos.distanceTo(inq.c);
+    cam.position.copy(inq.pos); cam.up.set(0, 1, 0); cam.lookAt(inq.c);
+    const fov = cam.fov, tg = Math.tan(fov * Math.PI / 360);
+    const dx = v3(1, 0, 0).applyQuaternion(cam.quaternion), dy = v3(0, 1, 0).applyQuaternion(cam.quaternion);
+    const off = VERT ? dy.multiplyScalar(0) : dx.multiplyScalar(2 * (inq.sh || 0) * dist * tg * W / H);
+    cam.position.add(off); cam.near = dist * 0.03; cam.far = dist * 10 + 2; cam.updateProjectionMatrix();
+    luce.position.copy(cam.position).add(v3(0.6 * dist, 1.2 * dist, 0.4 * dist)); luce.target.position.copy(inq.c);
+    r.render(scena, cam);
+
+    // dissolvenze nei tagli fra le pose
+    const taglio = Math.max(...[T_PRONO, T_GIN, T_TAV].map(tc => 1 - clamp(Math.abs(t - tc) / 0.35)));
+    s2.clearRect(0, 0, W, H); fondoPasso = 0; pannelli = []; marcatore = null;
+    if (mani2D && mani2D.alfa > 0.01) disegnaMani2D(s2, mani2D);
+    // freccia di profondità sottile accanto al torace: un terzo del torace, con il segno che scende con la compressione
+    if (taglio > 0) { s2.fillStyle = `rgba(6,22,51,${taglio.toFixed(3)})`; s2.fillRect(0, 0, W, H); }
+
+    avviso(s2, ['Non piange forte, non tossisce bene:', 'l\'aria non passa'], fin(t, S[2] + 0.2, E[2] + 1.2, 0.3, 0.3), '#ff8a80');
+    passo(s2, fin(t, S[3] - 0.2, E[3] + 0.9, 0.3, 0.3), 1, 'Tossisce con forza o piange?', 'lascialo tossire e tienilo d\'occhio', '#7CFFB2');
+    passo(s2, fin(t, S[4] - 0.2, E[4] + 0.9, 0.3, 0.3), 2, 'La tosse non basta?', ['chiama subito il 112', 'o fallo chiamare, in vivavoce']);
+    passo(s2, fin(t, S[5] - 0.2, E[6] + DOPO[6] - 0.2, 0.3, 0.3), 3, 'Fino a 5 pacche tra le scapole', ['a pancia in giù sul tuo avambraccio,', 'appoggiato alla gamba; testa più in basso', 'mano aperta, a metà della schiena']);
+    contatore(s2, fin(t, PACCHE[0] - 0.5, E[6] + DOPO[6] - 0.2, 0.3, 0.3), contati(t, PACCHE), 'pacche');
+    passo(s2, fin(t, S[7] - 0.2, E[8] + DOPO[8] - 0.2, 0.3, 0.3), 4, 'Fino a 5 compressioni sul torace', ['due pollici sulla metà inferiore dello sterno', 'compressioni forti e ben staccate']);
+    contatore(s2, fin(t, COMPR_G[0] - 0.5, E[8] + DOPO[8] - 0.2, 0.3, 0.3), contati(t, COMPR_G), 'compressioni');
+    passo(s2, fin(t, S[9] - 0.2, E[9] + DOPO[9] - 0.2, 0.3, 0.3), 5, 'Alterna 5 pacche e 5 compressioni', 'finché piange, tossisce o respira');
+    passo(s2, fin(t, S[10] - 0.2, E[10] + DOPO[10], 0.3, 0.3), 6, 'Non risponde più?', ['rianimazione subito, con 5 soffi', 'su un piano rigido, se c\'è'], '#ff8a80');
+    passo(s2, fin(t, S[11] - 0.2, E[11] + DOPO[11] - 0.2, 0.3, 0.3), 7, '5 soffi', ['testa dritta, bocca su bocca e naso', 'un secondo, finché il torace si alza']);
+    contatore(s2, fin(t, SOFFI[0] - 0.5, E[11] + DOPO[11] - 0.2, 0.3, 0.3), contati(t, SOFFI), 'soffi');
+    passo(s2, fin(t, S[12] - 0.2, E[13] + DOPO[13] - 0.2, 0.3, 0.3), 8, 'Compressioni', ['metà inferiore dello sterno, un terzo del torace', '100-120 al minuto, lascialo risalire']);
+    passo(s2, fin(t, S[14] - 0.2, E[14] + DOPO[14] - 0.2, 0.3, 0.3), 9, '30 compressioni e 2 soffi', '15 e 2 se hai fatto un corso pediatrico');
+    schema302(s2, fin(t, S[14] + 0.3, E[14] + DOPO[14] - 0.2, 0.3, 0.3));
+    passo(s2, fin(t, S[15] + 1.15, E[15] + DOPO[15] - 0.2, 0.3, 0.3), 10,   /* dopo il movimento della telecamera */ 'Defibrillatore anche nel lattante', ['se sei solo, prima chiama e rianima', 'modalità pediatrica, se c\'è']);
+    avviso(s2, ['Niente dita in bocca alla cieca', 'togli il pezzetto solo se lo vedi bene'], fin(t, S[16] + 0.1, E[16] + DOPO[16], 0.3, 0.3), '#ff8a80');
+    avviso(s2, ['Anche quando si risolve', 'subito dal medico'], fin(t, S[17] + 0.1, E[17] + DOPO[17] - 0.2, 0.3, 0.3), '#FCEB0C');
+    chiusura(s2, t);
+    testata(s2, SCENE[sceneA(t)].nome);
+    if (freccia) disegnaMarcatore(s2, freccia.prof);
+
+    const kS = sceneA(t), sc = SCENE[kS];
+    IMP.aggiorna(stato, t, { passoHUD: kS + (kS === 0 ? 1 : clamp((t - sc.inizio) / 0.4)), notaVisibile: true, hud: sc.nome });
+    IMP.sottotitoli(stato, t, FRASI, { modo: 'parole' });
+    // parole non ancora dette: opacità almeno 0,74 (contrasto di almeno 4,5:1 sulla fascia, revisione del 21/11/2026)
+    if (stato.sub && stato.sub.parole) stato.sub.parole.forEach(sp => { const o = +sp.style.opacity || 1; if (o < 0.995) { const n = (0.74 + 0.26 * (o - 0.5) / 0.5).toFixed(3); if (sp.style.opacity !== n) sp.style.opacity = n; } });
+    // schede con la linea di richiamo
+    const seg = inq.segni || {};
+    const SCH = [
+      { id: 'trachea', titolo: 'Vie dell\'aria', sotto: 'il pezzetto le chiude', punto: t < T_PRONO && pezzetto.visible ? pezzetto.position : null, verso: { dx: 300, dy: -120 }, versoV: { dx: 230, dy: 120 }, inizio: S[1] + dur(1) * 0.6, fine: E[2] + 0.6 },
+      { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: -300, dy: -150 }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: E[6] + 2.8 },
+      { id: 'sterno', titolo: 'Metà inferiore dello sterno', sotto: 'qui i due pollici', punto: seg.st && t >= S[12] - 0.3 && t < S[13] + 0.3 ? seg.st : null, verso: { dx: 470, dy: 210 }, versoV: { dx: -200, dy: 150 }, inizio: S[12] + 1.0, fine: S[13] },
+      { id: 'torace', titolo: 'Il torace si alza', sotto: 'a ogni soffio', punto: segnoTorace, verso: { dx: -260, dy: -220 }, versoV: { dx: -200, dy: -150 }, inizio: SOFFI[0] + 0.2, fine: SOFFI[4] + 1.2 },
+      { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 420), dy: TARA('l1y', 230) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
+      { id: 'placca2', titolo: 'Placca dietro', sotto: 'sulla schiena, tra le scapole', punto: placche[1].visible ? placche[1].position : null, verso: { dx: TARA('l2x', 420), dy: TARA('l2y', 230) }, versoV: { dx: 200, dy: -150 }, inizio: TEMPI_DAE.DAE_GIRO + TEMPI_DAE.GIRO_D + 0.1, fine: TEMPI_DAE.DAE_B - 1.1 }
+    ];
+    for (const s of SCH) { const p = proietta(s.punto); IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT ? s.versoV : s.verso, inizio: s.inizio, fine: s.fine, visibile: !!p }); }
+    const testoFonte = 'Lattante e mani: schema disegnato dalla Misericordia di Ariccia\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council, cap. 9';
+    if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
+    fonte.style.left = L.margine + 'px'; fonte.style.top = (L.zona.basso - fonte.offsetHeight + 4) + 'px';
+    fonte.style.opacity = (t < S[18] - 0.3 ? 1 : 1 - clamp((t - S[18] + 0.3) / 0.5)).toFixed(3);
+  }
+
+  window.renderFrame = t => render(t);
+  window.__controlli = () => {
+    const dita = [];
+    if (PROVA === 'dita') braccio.R.ossa['finger4-1.R'].visible = false;          // prova: un dito tolto, il controllo deve contare 4
+    for (const n of ['R', 'L']) if (gruppo[n].visible) dita.push(...L3.controlloDitaMH(braccio[n], 'adulto'));
+    if (lat.radice.visible) lat.PARTI_MH.forEach(p => dita.push(...L3.controlloDitaMH(p, 'lattante')));
+    const extra = [];
+    // avambracci non incrociati né sovrapposti nell'immagine: distanza 2D fra gli assi (dal polso alla fine della manica,
+    // tagliati al bordo del quadro) maggiore di un diametro della manica
+    if (gruppo.R.visible && gruppo.L.visible && braccio.R.fineManica && posaCorrente !== 'prono') {
+      const seg = n => { const a = braccio[n].testa(`wrist.${n}`), e = braccio[n].fineManica();
+        const pts = []; for (let k = 0; k <= 40; k++) { const q = a.clone().lerp(e, k / 40).project(cam); if (Math.abs(q.x) <= 1.05 && Math.abs(q.y) <= 1.05 && q.z < 1) pts.push(v3(q.x * W / 2, q.y * H / 2, 0)); } return pts; };
+      const A = seg('R'), B = seg('L'), w = braccio.R.testa('wrist.R'), dx = v3(1, 0, 0).applyQuaternion(cam.quaternion).multiplyScalar(0.06);
+      const p1 = w.clone().project(cam), p2 = w.clone().add(dx).project(cam), diam = Math.hypot((p2.x - p1.x) * W / 2, (p2.y - p1.y) * H / 2);
+      let m = 1e9; for (const p of A) for (const q of B) m = Math.min(m, p.distanceTo(q));
+      if (A.length && B.length && m < 0.45 * diam) extra.push({ tipo: 'braccia', dettagli: `avambracci incrociati o sovrapposti nell'immagine (distanza ${m.toFixed(0)} px, diametro della manica ${diam.toFixed(0)} px)` });
+    }
+    // nessuna estremità del braccio in vista: il taglio del modello è del tutto trasparente, oppure la fine opaca
+    // dell'avambraccio sta fuori dal campo della telecamera
+    for (const n of ['R', 'L']) if (gruppo[n].visible && braccio[n].fineOpaca) {
+      const q = braccio[n].fineOpaca().project(cam), dentroQuadro = q.z > -1 && q.z < 1 && Math.abs(q.x) < 1 && Math.abs(q.y) < 1;
+      if (dentroQuadro) extra.push({ tipo: 'braccio', dettagli: `fine dell'avambraccio ${n} in vista (x ${q.x.toFixed(2)}, y ${q.y.toFixed(2)})` });
+    }
+    for (const n of ['R', 'L']) if (gruppo[n].visible && posaCorrente !== 'prono' && Math.abs(uComp.value) < 0.002) extra.push(...PM.compenetrazione(braccio[n]));
+    // la placca detta dalla voce si vede nel quadro (e non è coperta da un pannello)
+    if (daeAtteso >= 0) { const pl = placche[daeAtteso], p = pl.visible ? proietta(pl.position) : null;
+      if (!p || p.x < 0 || p.x > W || p.y < 0 || p.y > H || pannelli.some(r => p.x > r.x && p.x < r.x + r.w && p.y > r.y && p.y < r.y + r.h)) extra.push({ tipo: 'dae', dettagli: `placca ${daeAtteso ? 'dietro' : 'davanti'} non visibile mentre la voce la nomina` });
+      else { const cs = [[-0.023, -0.028], [0.023, -0.028], [0.023, 0.028], [-0.023, 0.028]].map(([x, z]) => proietta(pl.localToWorld(v3(x * (PROVA === 'placca-piccola' ? 0.3 : 1), 0, z * (PROVA === 'placca-piccola' ? 0.3 : 1)))));
+        let a = 0; for (let i = 0; i < 4; i++) { const u = cs[i], w = cs[(i + 1) % 4]; a += u.x * w.y - w.x * u.y; } a = Math.abs(a) / 2 / (W * H);
+        if (a < 0.004) extra.push({ tipo: 'dae', dettagli: `placca ${daeAtteso ? 'dietro' : 'davanti'} troppo piccola nell'immagine (${(a * 100).toFixed(2)}% del quadro, minimo 0,4%)` }); } }
+    // le etichette con la linea di richiamo (placche, torace) non stanno sopra il corpo del lattante
+    if (lat.radice.visible) { const sr = stage.getBoundingClientRect(), kx = W / sr.width, ky = H / sr.height;
+      const corpo = []; for (let y = -0.03; y <= 0.19; y += 0.02) for (const x of [-0.05, -0.025, 0, 0.025, 0.05]) for (const zz of [1, -1]) { const q = lat.sezione(y); corpo.push(lat.G.bacino.localToWorld(v3(x, y, q.z + zz * q.rz * 0.7))); }
+      for (const n of ['Sx', 'Dx']) { const a = mondo(lat.G['spalla' + n]), b2 = mondo(lat.G['gomito' + n]); for (let k = 0; k <= 4; k++) corpo.push(a.clone().lerp(b2, k / 4)); }
+      corpo.push(mondo(lat.G.testa)); const cp = corpo.map(proietta).filter(Boolean);
+      for (const id of ['placca1', 'placca2', 'torace']) { const el = document.getElementById('imp-scheda-' + id); if (!el || +getComputedStyle(el).opacity < 0.5) continue;
+        const r = el.getBoundingClientRect(), R = { x: (r.left - sr.left) * kx, y: (r.top - sr.top) * ky, w: r.width * kx, h: r.height * ky };
+        if (cp.some(p => p.x > R.x && p.x < R.x + R.w && p.y > R.y && p.y < R.y + R.h)) extra.push({ tipo: 'etichette', dettagli: `etichetta «${id}» sopra il corpo del lattante` }); } }
+    // firma «Misericordia di Ariccia» leggibile: sotto la firma la scena 3D non è chiara (al massimo il 3% dei pixel chiari)
+    { const fr = LAY.firma, gl = r.getContext(); s2.font = `600 ${fr.corpo}px Montserrat`; const tw = Math.ceil(s2.measureText('Misericordia di Ariccia').width);
+      const x0 = Math.max(0, Math.round(fr.x)), y0 = Math.round(fr.y), w = Math.min(W - x0, tw), hh = Math.round(fr.corpo * 1.3), px = new Uint8Array(w * hh * 4);
+      gl.readPixels(x0, H - y0 - hh, w, hh, gl.RGBA, gl.UNSIGNED_BYTE, px); let chiari = 0;
+      for (let i = 0; i < px.length; i += 4) if (px[i + 3] > 128 && 0.2126 * px[i] + 0.7152 * px[i + 1] + 0.0722 * px[i + 2] > 150) chiari++;
+      if (chiari / (w * hh) > 0.03) extra.push({ tipo: 'firma', dettagli: `sotto la firma «Misericordia di Ariccia» la scena è chiara (${(100 * chiari / (w * hh)).toFixed(0)}% dei pixel): poco contrasto` }); }
+    // il bordo tagliato del pezzo della testa di chi soccorre (fondo della maglia) non si vede mai
+    if (gruppoCapo.visible && CAPO.taglio) { capo.mesh.updateMatrixWorld(true); const q = v3(0, 0, 0); let dentro = 0, sx = 0, sy2 = 0;
+      // conta solo i punti che si vedono davvero: nel quadro e senza nulla davanti (la testa stessa, il lattante, il piano)
+      capo.mesh.computeBoundingSphere && capo.mesh.computeBoundingSphere(); const ray = new THREE.Raycaster(), ogg = [capo.mesh, lat.radice, piano];
+      for (const i of CAPO.taglio) { capo.mesh.getVertexPosition(i, q); capo.mesh.localToWorld(q); const w = q.clone(), p = q.project(cam);
+        if (!(p.z < 1 && Math.abs(p.x) < 1 && Math.abs(p.y) < 1)) continue;
+        const d = cam.position.distanceTo(w); ray.set(cam.position, w.clone().sub(cam.position).normalize()); ray.far = d - 0.004;
+        if (!ray.intersectObjects(ogg, true).some(x => x.object.visible !== false)) { dentro++; sx += (p.x + 1) / 2 * W; sy2 += (1 - p.y) / 2 * H; } }
+      if (dentro) extra.push({ tipo: 'testa', dettagli: `bordo tagliato della testa di chi soccorre in vista (${dentro} punti, intorno a x ${(sx / dentro).toFixed(0)}, y ${(sy2 / dentro).toFixed(0)})` }); }
+    if (marcatore && !marcatore.libero) extra.push({ tipo: 'marcatore', dettagli: marcatore.nessuno ? 'nessun posto libero per «giù di 1/3» accanto al torace' : '«giù di 1/3» sopra il corpo, le mani o un pannello' });
+    // nessun pannello taglia il lattante: mani, piedi e testa del lattante fuori dalle schede e dai contatori
+    if (lat.radice.visible) { const pl = []; lat.PARTI_MH.forEach(p => { for (const k in p.ossa) pl.push([p.nome, p.testa(k)]); if (p.punta) for (let d = 1; d <= 5; d++) { const nn = Object.keys(p.ossa).find(k => k.startsWith((p.nome.startsWith('piede') ? 'toe' : 'finger') + d + '-3')); if (nn) pl.push([p.nome, p.punta(nn)]); } });
+      const tc = mondo(lat.G.testa); pl.push(['testa', tc]);
+      for (const [nome, q] of pl) { const p = proietta(q); if (!p) continue; const pan = pannelli.find(r => p.x > r.x - 8 && p.x < r.x + r.w + 8 && p.y > r.y - 8 && p.y < r.y + r.h + 8);
+        if (pan) { extra.push({ tipo: 'pannelli', dettagli: `${pan.nome} copre ${nome === 'testa' ? 'la testa' : nome} del lattante` }); break; } } }
+    // sottotitoli: parole non ancora dette leggibili (opacità almeno 0,74)
+    if (stato.sub && stato.sub.parole && stato.sub.visibile > 0.98) { const m = Math.min(...stato.sub.parole.map(sp => +sp.style.opacity || 1)); if (m < 0.735) extra.push({ tipo: 'sottotitoli', dettagli: `parole non ancora dette troppo tenui (opacità ${m.toFixed(2)}, minimo 0,74)` }); }
+    return IMP.controlli(stato).concat(problemi, dita, extra, controlliMani2D(), controlloPolpastrelli());
+  };
+  Promise.all([IMP.caricaFont(), new Promise(ok => { if (stemma.complete) ok(); else stemma.onload = ok; })]).then(() => {
+    render(0);
+    window.CORNICE_ESITO = window.corniceSovrapposta(telaCornice, fondo);
+    window.__ready = true;
+  });
+})();
+</script>
+</body>
+</html>

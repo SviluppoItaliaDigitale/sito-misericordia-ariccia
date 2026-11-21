@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Lattante 3D: provini del modello</title>
+<!-- provino-modello.src.html — tre pose del lattante di lattante3d.js per il controllo prima del video: t 0-1 in piedi
+     davanti, t 1-2 a pancia in giù sull'avambraccio (IRC 2025 cap. 9 fig. 16a), t 2-3 supino su un piano rigido con i
+     due pollici sulla metà inferiore dello sterno e le dita intorno al torace (cap. 9 fig. 11). Si costruisce con
+     costruisci.py della skill video-3d (--script lattante3d.js). Scritto per Alessandro Cuollo il 20/11/2026. -->
+<!--FONT-->
+<style>html,body{margin:0;background:#061633;overflow:hidden}#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 50% 45%,#0B3D7E,#082B5E 50%,#061633)}#stage canvas{position:absolute;left:0;top:0}#et{position:absolute;left:40px;top:30px;font:700 34px Montserrat,sans-serif;color:#FCEB0C}</style>
+</head>
+<body>
+<div id="stage"><canvas id="c"></canvas><div id="et"></div></div>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>
+(function () {
+  const THREE = window.THREE, M3 = window.Motore3D, L3 = window.Lattante3D;
+  const W = 1920, H = 1080; window.STAGE_W = W; window.STAGE_H = H; window.TOTAL = 3;
+  const r = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, alpha: true });
+  r.setSize(W, H, false); r.setPixelRatio(1); r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+  r.outputColorSpace = THREE.SRGBColorSpace;
+  const scena = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(28, W / H, 0.02, 20);
+  scena.add(new THREE.HemisphereLight(0xe6eeff, 0x2a3a5a, 1.3));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.9); luce.position.set(1.2, 2.2, 1.6); luce.castShadow = true;
+  luce.shadow.mapSize.set(2048, 2048); Object.assign(luce.shadow.camera, { left: -0.6, right: 0.6, top: 0.6, bottom: -0.6, near: 0.1, far: 6 });
+  scena.add(luce); const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.6); luce2.position.set(-1.5, 0.6, -1); scena.add(luce2);
+
+  const lat = L3.creaLattante(THREE); scena.add(lat.radice);
+  const manoA = L3.creaMano(THREE, 'sinistra'), manoB = L3.creaMano(THREE, 'destra');   // sostegno / pacche (o pollici)
+  scena.add(manoA.radice, manoB.radice);
+  const pelleAdulto = new THREE.MeshStandardMaterial({ color: 0x1d2a40, roughness: 0.9 });   // gamba (pantaloni blu)
+  const coscia = new THREE.Mesh(L3.arto(THREE, 0, 0.42, 0.064, 0.074, 0.03, 0.9), pelleAdulto); coscia.receiveShadow = true; scena.add(coscia);
+  const ginocchio = new THREE.Mesh(new THREE.SphereGeometry(0.06, 32, 24), pelleAdulto); scena.add(ginocchio);
+  const tibia = new THREE.Mesh(L3.arto(THREE, 0, 0.4, 0.05, 0.042, 0.04, 0.95), pelleAdulto); scena.add(tibia);
+  const piano = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.03, 0.5), new THREE.MeshStandardMaterial({ color: 0xdfe6ee, roughness: 0.7 }));
+  piano.receiveShadow = true; scena.add(piano);
+  const segno = new THREE.Mesh(new THREE.RingGeometry(0.012, 0.016, 40), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, side: THREE.DoubleSide, depthTest: false, transparent: true }));
+  segno.renderOrder = 10; scena.add(segno);
+  const v = (x, y, z) => new THREE.Vector3(x, y, z);
+  const mondo = o => o.getWorldPosition(new THREE.Vector3());
+  const et = document.getElementById('et');
+  const PROVA_FUORI = new URLSearchParams(location.search).get('prova') === 'fuori';
+
+  function posaInPiedi() {
+    manoA.polso(0); manoB.polso(0);
+    cam.up.set(0, 1, 0);
+    lat.posa('inPiedi'); lat.espressione('sveglio'); lat.radice.position.set(0, 0.28, 0); lat.radice.rotation.set(0, 0, 0); lat.radice.updateMatrixWorld(true);
+    manoA.radice.visible = manoB.radice.visible = coscia.visible = piano.visible = segno.visible = ginocchio.visible = tibia.visible = false; lat.mostraSterno(false);
+    cam.position.set(0.25, 0.42, 1.55); cam.lookAt(0, 0.33, 0); et.textContent = '1 · in piedi, davanti';
+  }
+  // base ortonormale: il lattante con la testa lungo «su» e la pancia (il viso) verso «fronte»
+  function orientaLattante(su, fronte) {
+    const y = su.clone().normalize(), z = fronte.clone().sub(y.clone().multiplyScalar(fronte.dot(y))).normalize();
+    const x = new THREE.Vector3().crossVectors(y, z);
+    lat.radice.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+    return { x, y, z };
+  }
+  function posaProno() {
+    cam.up.set(0, 1, 0);
+    lat.posa('prono'); lat.espressione('sveglio'); lat.mostraSterno(false); manoA.polso(0); manoB.polso(0);
+    // avambraccio inclinato di 20° verso la mano: la testa del lattante resta più in basso del torace (IRC 2025 cap. 9 p. 29)
+    const a = 20 * Math.PI / 180, d = v(-Math.cos(a), -Math.sin(a), 0), n = v(Math.sin(a), -Math.cos(a), 0);   // n: verso il braccio (giù)
+    const B = orientaLattante(d, n);
+    lat.radice.position.set(0, 0, 0); lat.radice.updateMatrixWorld(true);
+    const asse = t => d.clone().multiplyScalar(t).add(n.clone().multiplyScalar(0.088));   // asse dell'avambraccio
+    // mano che sostiene il capo: di lato, sul fianco lontano del viso, palmo verso la guancia; il pollice va sulla guancia
+    // vicina; bocca e naso restano liberi, il collo non è toccato
+    const mento = mondo(lat.G.mento), boccaP = mondo(lat.G.bocca);
+    const palmoA = n.clone().multiplyScalar(-0.3).add(B.x.clone().multiplyScalar(0.95)).normalize();   // verso il viso, dal fianco lontano
+    orientaMano(manoA, d, palmoA);
+    manoA.piega(0.85);
+    // palmo di lato, all'altezza della mandibola lontana e indietro verso il collo (senza toccarlo): le dita piegate
+    // agganciano la mandibola sotto la guancia; il pollice va sull'altro lato della mandibola, sotto la bocca
+    const centroPalmo = mento.clone().add(B.x.clone().multiplyScalar(-0.06)).add(n.clone().multiplyScalar(0.026)).add(d.clone().multiplyScalar(-0.046));
+    manoA.radice.position.copy(centroPalmo).add(d.clone().multiplyScalar(-0.045));
+    manoA.radice.updateMatrixWorld(true);
+    manoA.mira(mento.clone().add(B.x.clone().multiplyScalar(0.036)).add(n.clone().multiplyScalar(0.004)).add(d.clone().multiplyScalar(-0.004)), 0.15, B.x.clone().negate());
+    manoA.radice.visible = true;
+    // gamba di chi soccorre (seduto): coscia sotto l'avambraccio, ginocchio dal lato della testa, poi la tibia giù
+    coscia.visible = ginocchio.visible = tibia.visible = true;
+    const k = asse(0.2).add(n.clone().multiplyScalar(0.102));                       // ginocchio
+    coscia.quaternion.setFromUnitVectors(v(0, 1, 0), d.clone().negate()); coscia.position.copy(k);
+    ginocchio.position.copy(k);
+    tibia.quaternion.setFromUnitVectors(v(0, 1, 0), v(-0.15, -1, 0).normalize()); tibia.position.copy(k);
+    // l'altra mano aperta e distesa, sopra il centro della schiena (fra le scapole): dita di traverso, verso il fianco vicino,
+    // lontane da testa e collo; un attimo prima della pacca
+    const sc = mondo(lat.P.scapole);
+    const ditaB = d.clone().negate().add(B.x.clone().multiplyScalar(-0.3)).normalize();   // dita verso i piedi: lontane da testa e collo
+    orientaMano(manoB, ditaB, n); manoB.polso(1.15); manoB.piega(-0.05, 0.35, 0.05, 0.05);
+    manoB.radice.position.copy(sc).add(ditaB.clone().multiplyScalar(-0.012)).add(n.clone().multiplyScalar(-0.045));   // base del palmo sopra l'anello
+    manoB.radice.visible = true; piano.visible = false;
+    segno.visible = true; segno.position.copy(sc).add(n.clone().multiplyScalar(-0.004)); segno.quaternion.setFromUnitVectors(v(0, 0, 1), n.clone().negate());
+    const c = mondo(lat.P.xifoide).add(d.clone().multiplyScalar(-0.04)).add(n.clone().multiplyScalar(0.07));
+    const vistaP = +(new URLSearchParams(location.search).get('vista') || 0);
+    if (vistaP === 1) {                                       // da sotto e davanti: il viso, la mano che sostiene il capo
+      segno.visible = false; coscia.visible = ginocchio.visible = tibia.visible = false; const f = mondo(lat.G.bocca); cam.position.copy(f).add(d.clone().multiplyScalar(0.1)).add(n.clone().multiplyScalar(0.3)).add(B.x.clone().multiplyScalar(0.2)); cam.lookAt(f.clone().add(d.clone().multiplyScalar(-0.045)).add(n.clone().multiplyScalar(0.02)));
+      et.textContent = '2 · da vicino: la mano sostiene il capo, bocca e naso liberi, collo libero';
+    } else {
+      cam.position.copy(c).add(B.x.clone().multiplyScalar(1.25)).add(v(0, 0.36, 0)).add(d.clone().multiplyScalar(0.05)); cam.lookAt(c.clone().add(v(0, 0.03, 0)));
+      et.textContent = '2 · a pancia in giù sull\'avambraccio appoggiato alla gamba, testa più in basso';
+    }
+  }
+  function orientaMano(m, dita, palmo) { L3.orienta(THREE, m.radice, dita, palmo); }
+  function posaSupino() {
+    lat.posa('supino'); lat.espressione('incosciente'); lat.mostraSterno(true); manoA.polso(0); manoB.polso(0);
+    ginocchio.visible = tibia.visible = false;
+    orientaLattante(v(0, 0, -1), v(0, 1, 0));               // testa verso -z, pancia in su
+    lat.radice.position.set(0, 0.062, 0.06); lat.radice.updateMatrixWorld(true);
+    piano.visible = true; piano.position.set(0, -0.015, 0); coscia.visible = false;
+    const st = mondo(lat.P.sternoBasso);
+    // tecnica a due pollici (IRC 2025 cap. 9 p. 25, fig. 11 p. 24): mani ai lati del torace, avambracci dal lato dei piedi,
+    // dita intorno al torace; pollici affiancati, paralleli allo sterno e rivolti verso la testa, polpastrelli sulla metà
+    // inferiore dello sterno
+    const contatti = [];
+    for (const [m, s] of [[manoB, 1], [manoA, -1]]) {      // la destra sul lato sinistro del lattante (+x)
+      const dita = v(-s * 0.12, -0.78, -0.62).normalize();
+      orientaMano(m, dita, v(-s, 0, 0).sub(dita.clone().multiplyScalar(v(-s, 0, 0).dot(dita))).normalize());
+      m.piega(0.6);
+      const punta = st.clone().add(v(s * 0.0074, 0.0086, -0.001 + (PROVA_FUORI ? 0.03 : 0)));   // ?prova=fuori: pollici 3 cm verso i piedi, prova del controllo
+      const mcp = st.clone().add(v(s * 0.0105, 0.013, 0.045 + (PROVA_FUORI ? 0.03 : 0)));
+      const voluta = mcp.clone().add(v(s * 0.03, -0.022, 0.03).normalize().multiplyScalar(0.036));   // base del pollice
+      m.radice.position.set(0, 0, 0); m.radice.updateMatrixWorld(true);
+      m.radice.position.add(voluta.clone().sub(m.pollice[0].getWorldPosition(new THREE.Vector3())));
+      const err = m.miraCatena(mcp, punta, v(0, -1, 0), 0.06);
+      window['__errPollice' + s] = err; contatti.push(m.contattoPollice());
+      m.radice.visible = true;
+    }
+    const vista = +(new URLSearchParams(location.search).get('vista') || 0);
+    const VISTE = [v(0.52, 0.5, -0.24), v(0.95, 0.03, -0.14), v(0.0, 0.62, 0.01), v(0.17, 0.2, -0.12), v(0.0, 0.42, -0.2)];
+    const MIRA = [v(0, -0.04, 0.05), v(0, -0.02, -0.03), v(0, -0.04, 0.05), v(0, -0.005, 0.02), v(0, 0.0, -0.17)];
+    cam.up.set(0, 0, vista === 4 ? -1 : 0).add(v(0, vista === 4 ? 0 : 1, 0)); cam.position.copy(st).add(VISTE[vista]); cam.lookAt(st.clone().add(MIRA[vista]));
+    segno.visible = false;
+    et.textContent = ['3 · supino su un piano rigido, due pollici sulla metà inferiore dello sterno', '3 · di profilo: testa in posizione neutra',
+      '3 · dall\'alto: sterno in trasparenza, metà inferiore in giallo', '3 · i pollici da vicino', '3 · il volto di fronte (non risponde)'][vista];
+    window.__problemiSterno = lat.controlloSterno(contatti);
+    window.__contatti = contatti.map(c => { const l = lat.G.bacino.worldToLocal(c.clone()); return [+l.x.toFixed(4), +l.y.toFixed(4)]; });
+  }
+  window.__controlli = () => (window.__problemiSterno || []);
+  window.renderFrame = t => {
+    window.__problemiSterno = [];
+    if (t < 1) posaInPiedi(); else if (t < 2) posaProno(); else posaSupino();
+    scena.updateMatrixWorld(true);
+    r.render(scena, cam);
+  };
+  window.SEGNO_DEBUG = new URLSearchParams(location.search).get('segno') === '1'; window.__dbg = { lat, manoA, manoB, THREE, scena, cam };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { window.renderFrame(0); window.__ready = true; });
+})();
+</script>
+</body>
+</html>
