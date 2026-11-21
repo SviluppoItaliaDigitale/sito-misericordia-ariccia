@@ -233,4 +233,11 @@ Le scene si indicano per frase della voce (`S[i]`, `E[i]`), non per secondi. In 
   `?prova=chiusura-lunga`). Schede 7 e 8 e contatore dei soffi compaiono a telecamera ferma; avviso della scena delle vie
   dell'aria a destra. Prova ogni 0,5 s di tutto il video: nessun problema in 315 fotogrammi. Le righe dei sottotitoli non
   si bilanciano dalla pagina: le spezza il motore `IMP.sottotitoli` della skill motion-pc-genzano.
+- **Ultime correzioni (21/11/2026):** manica: continuazione a sezioni tonde, un poco più strette dell'avambraccio, che con
+  l'avambraccio ruotato non spunta a punte (controllo della manica in 24 direzioni, prova `?prova=manica-punte`);
+  etichetta «Tra le scapole» visibile fino a 0,9 s prima della prima pacca e di nuovo da 0,5 s dopo la quinta (mai
+  sotto la mano che colpisce); etichetta «Placca dietro» spostata in basso a destra; il controllo delle etichette copre
+  anche avambracci e mani del lattante; braccia del lattante aperte per tutto il giro del DAE; controllo della placca
+  dietro solo a placca del tutto comparsa; avviso della frase 16 0,3 s più tardi (braccia già richiuse). Prova a ogni
+  fotogramma (30 al secondo) di 33-50,5 s e 125,5-132 s: nessun problema in 525 e 195 fotogrammi.
 
