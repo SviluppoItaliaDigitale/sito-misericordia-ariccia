@@ -1,6 +1,6 @@
 ---
 title: "Video 3D per i corsi di primo soccorso"
-titoloSeo: "Video 3D per i corsi di primo soccorso, BLSD e P-BLSD (linee guida IRC 2025) | Misericordia di Ariccia"
+titoloSeo: "Video 3D per i corsi di primo soccorso, BLSD e P-BLSD (linee guida IRC 2025)"
 description: "Cinque video in 3D da proiettare nei corsi di primo soccorso, BLSD e P-BLSD: come funziona la rianimazione, infarto, ictus, soffocamento nell'adulto e nel lattante, secondo le Linee guida RCP 2025 di Italian Resuscitation Council."
 date: 2026-11-21
 type: "scuole"
