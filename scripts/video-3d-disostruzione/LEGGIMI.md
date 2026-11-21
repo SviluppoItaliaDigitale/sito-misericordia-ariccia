@@ -55,7 +55,7 @@ i numeri di telefono cifra per cifra (`voce/frasi.txt`, dopo `||` il testo a sch
 
 ## Fonti
 - Linee guida RCP 2025 di Italian Resuscitation Council, cap. 12 «Primo soccorso»
-  (<https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf>), p. 13
+  (<https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf>), p. 11
   (sequenza nell'adulto: «Sta soffocando?», incoraggiare la tosse, fino a 5 colpi interscapolari, fino a 5
   compressioni addominali, alternare, chiamare i soccorsi, niente esplorazioni alla cieca con le dita, RCP se non
   responsiva, valutazione medica dopo le compressioni addominali) e pp. 28-29 (la tosse genera pressioni elevate nelle
