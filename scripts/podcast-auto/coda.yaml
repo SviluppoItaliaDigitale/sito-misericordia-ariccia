@@ -94,12 +94,15 @@ puntate:
   fonti:
   - content/dossier/prevenzione-stagionale.md
   parole: []
-  stato: da-fare
+  stato: programmata
   nota: 'Era in calendario per il 25/11; tolta il 21/11/2026 al ricontrollo frase
     per frase: «se compaiono difficoltà a deglutire o gonfiore» senza «del viso o
     della gola» (e senza fiato corto e svenimento), «la regola dice» letto due volte,
     sull''acqua fredda il perché senza il divieto «niente vasca, doccia fredda o ghiaccio».
     Da rigenerare.'
+  file: content/podcast/2026-11-21-prevenzione-stagionale.md
+  data: '2026-11-21'
+  social_data: '2026-12-12'
 - id: opere-di-misericordia
   tema: dossier
   titolo: Le Opere di Misericordia

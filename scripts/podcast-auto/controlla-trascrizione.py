@@ -39,6 +39,9 @@ VIETATE = [
     r"da meditare", r"mi ha colpit\w*",
     # Dal 21/11/2026 (trauma-convulsioni-svenimento, generazione 1): «come dicono i testi».
     r"\b(come|secondo) (dicono |indicano |riportano )?(i|questi|nei) test[io]\b",
+    # Dal 21/11/2026 (prevenzione-stagionale, generazione 1): istruzioni lette ad alta voce e
+    # commenti sui numeri che la pagina non fa.
+    r"indicazione (è )?complet\w*", r"divieto esplicito", r"\bviene precisat\w*", r"numeri (altissim|enorm|impression|pazzesc)\w*",
     # Dal 21/11/2026 (prevenzione-stagionale, ritirata dopo la pubblicazione): regole lette ad alta voce.
     r"la regola dice", r"precisare la regola",
 ]
