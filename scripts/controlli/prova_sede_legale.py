@@ -3,7 +3,8 @@
 - sede legale, via Beata Rosa Venerini 6: MAI sul sito né sui social; solo nella modulistica (carta intestata e moduli),
   sempre insieme alla sede amministrativa e a quella operativa. Altrove il controllo diventa rosso;
 - sede amministrativa, viale Antonietta Chigi 46: iscrizioni, corsi, Servizio Civile, Banco alimentare, Centro di Ascolto;
-- sede operativa, piazzale Aldo Moro 6: dove stanno i mezzi, per trasporti sanitari e servizi. Non va negli inviti a
+- sede operativa, piazzale Aldo Moro 6: dove stanno i mezzi, per trasporti sanitari e servizi, con il cellulare 348 4068657;
+  il fisso 06 933 3717 e il 328 8105399 sono della sede amministrativa. Non va negli inviti a
   iscriversi o a passare per diventare volontari (riga con «Aldo Moro» e «passa a trovarci» o «iscriv» senza «Chigi»).
 Solo libreria standard."""
 import sys
@@ -37,6 +38,10 @@ for c in CARTELLE:
         for n, riga in enumerate(t.splitlines(), 1):
             if "Aldo Moro" in riga and INVITO.search(riga) and "Chigi" not in riga and "operativ" not in riga:
                 sedi.append(f"{rel}:{n}")
+            # il fisso 06 933 3717 è della sede amministrativa, non dell'operativa (Alessandro, 21/11/2026)
+            if re.search(r"933 ?3717|069333717", riga) and re.search(r"[Ss]ede operativa|Operations base|Operational office", riga) \
+                    and not re.search(r"amministrativ|Administrative", riga) and rel != "scripts/controlli/prova_sede_legale.py":
+                sedi.append(f"{rel}:{n} (fisso accanto alla sede operativa)")
 if sedi:
     print("La sede operativa (Aldo Moro, i mezzi) compare in un invito a iscriversi o ai corsi: lì va la sede "
           "amministrativa di viale Antonietta Chigi 46:\n- " + "\n- ".join(sedi))
