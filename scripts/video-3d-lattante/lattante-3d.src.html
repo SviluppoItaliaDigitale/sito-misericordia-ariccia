@@ -1028,7 +1028,7 @@
     // tra le scapole. Prima di spalle (si vede la placca dietro), poi di fronte (si vede la placca davanti).
     piano.material.transparent = false; piano.material.opacity = 1; { const k = t >= S[15] + 0.05 && PROVA !== 'firma' ? 0.62 : 1; piano.scale.set(k, 1, k); }   // DAE: piano più piccolo, lontano dalla firma
     piano.visible = true;   // il piano e l'ombra restano anche durante il giro
-    if (t > TEMPI_DAE.DAE_A + 0.6 && t < DAE_GIRO - 0.1) daeAtteso = 0; else if (t > TEMPI_DAE.SCHIENA + 0.9 && t < DAE_B - 1.2) daeAtteso = 1;
+    if (t > TEMPI_DAE.DAE_A + 0.6 && t < DAE_GIRO - 0.1) daeAtteso = 0; else if (t > Math.max(TEMPI_DAE.SCHIENA + 0.9, DAE_GIRO + GIRO_D + 0.3) && t < DAE_B - 1.2) daeAtteso = 1;   // a placca del tutto comparsa
     const DAVANTI = t > DAE_A && t < DAE_GIRO && giro < 0.01, DIETRO = t > DAE_GIRO + GIRO_D && t < DAE_B - 1.0 && Math.abs(giro - Math.PI) < 0.01;
     const vd = DAVANTI ? fin(t, DAE_A, DAE_GIRO, 0.5, 0.25) : DIETRO ? fin(t, DAE_GIRO + GIRO_D, DAE_B - 1.0, 0.25, 0.25) : 0;
     if (vd > 0.01) {
@@ -1391,7 +1391,7 @@
     passo(s2, fin(t, S[14] - 0.2, E[14] + DOPO[14] - 0.2, 0.3, 0.3), 9, '30 compressioni e 2 soffi', '15 e 2 se hai fatto un corso pediatrico');
     schema302(s2, fin(t, S[14] + 0.3, E[14] + DOPO[14] - 0.2, 0.3, 0.3));
     passo(s2, fin(t, S[15] + 1.15, E[15] + DOPO[15] - 0.2, 0.3, 0.3), 10,   /* dopo il movimento della telecamera */ 'Defibrillatore anche nel lattante', ['se sei solo, prima chiama e rianima', 'modalità pediatrica, se c\'è']);
-    avviso(s2, ['Niente dita in bocca alla cieca', 'togli il pezzetto solo se lo vedi bene'], fin(t, S[16] + 0.1, E[16] + DOPO[16], 0.3, 0.3), '#ff8a80');
+    avviso(s2, ['Niente dita in bocca alla cieca', 'togli il pezzetto solo se lo vedi bene'], fin(t, S[16] + 0.4, E[16] + DOPO[16], 0.3, 0.3), '#ff8a80');   /* dopo che le braccia si sono richiuse */
     avviso(s2, ['Anche quando si risolve', 'subito dal medico'], fin(t, S[17] + 0.1, E[17] + DOPO[17] - 0.2, 0.3, 0.3), '#FCEB0C');
     chiusura(s2, t);
     testata(s2, SCENE[sceneA(t)].nome);
@@ -1406,7 +1406,8 @@
     const seg = inq.segni || {};
     const SCH = [
       { id: 'trachea', titolo: 'Vie dell\'aria', sotto: 'il pezzetto le chiude', punto: t < T_PRONO && pezzetto.visible ? pezzetto.position : null, verso: { dx: TARA('ltx', 420), dy: TARA('lty', 120) }, versoV: { dx: 230, dy: 120 }, inizio: S[1] + dur(1) * 0.6, fine: E[2] + 0.6 },
-      { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: TARA('lsx', -520), dy: TARA('lsy', -280) }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: E[6] + 2.8 },
+      { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: TARA('lsx', -520), dy: TARA('lsy', -280) }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: PACCHE[0] - 0.9 },   // via prima che la mano si alzi
+      { id: 'scapole2', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: TARA('lsx', -520), dy: TARA('lsy', -280) }, versoV: { dx: 230, dy: 110 }, inizio: PACCHE[4] + 0.5, fine: E[6] + 2.8 },   // di nuovo dopo l'ultima pacca
       { id: 'sterno', titolo: 'Metà inferiore dello sterno', sotto: 'qui i due pollici', punto: seg.st && t >= S[12] - 0.3 && t < S[13] + 0.3 ? seg.st : null, verso: { dx: TARA('lex', 750), dy: TARA('ley', 170) }, versoV: { dx: -200, dy: 150 }, inizio: S[12] + 1.0, fine: S[13] },
       { id: 'torace', titolo: 'Il torace si alza', sotto: 'a ogni soffio', punto: segnoTorace, verso: { dx: -260, dy: -220 }, versoV: { dx: -200, dy: -150 }, inizio: SOFFI[0] + 0.2, fine: SOFFI[4] + 1.2 },
       { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 600), dy: TARA('l1y', 90) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
@@ -1455,7 +1456,7 @@
       for (const n of ['Sx', 'Dx']) { const a = mondo(lat.G['spalla' + n]), b2 = mondo(lat.G['gomito' + n]), c3 = mondo(lat.G['polso' + n]); for (let k = 0; k <= 4; k++) { corpo.push(a.clone().lerp(b2, k / 4)); corpo.push(b2.clone().lerp(c3, k / 4)); } }
       lat.PARTI_MH.forEach(p => { if (p.nome.startsWith('mano')) for (const k in p.ossa) { corpo.push(p.testa(k)); corpo.push(p.punta(k)); } });
       corpo.push(mondo(lat.G.testa)); puntiViso().forEach(q => corpo.push(q)); puntiManiAdulto().forEach(q => corpo.push(q)); const cp = corpo.map(proietta).filter(Boolean);
-      for (const id of ['trachea', 'scapole', 'sterno', 'placca1', 'placca2', 'torace']) { const el = document.getElementById('imp-scheda-' + id); if (!el || +getComputedStyle(el).opacity < 0.5) continue;
+      for (const id of ['trachea', 'scapole', 'scapole2', 'sterno', 'placca1', 'placca2', 'torace']) { const el = document.getElementById('imp-scheda-' + id); if (!el || +getComputedStyle(el).opacity < 0.5) continue;
         const r = el.getBoundingClientRect(), R = { x: (r.left - sr.left) * kx, y: (r.top - sr.top) * ky, w: r.width * kx, h: r.height * ky };
         if (cp.some(p => p.x > R.x && p.x < R.x + R.w && p.y > R.y && p.y < R.y + R.h)) extra.push({ tipo: 'etichette', dettagli: `etichetta «${id}» sopra il corpo, il viso del lattante o le mani dell'adulto` }); } }
     // firma «Misericordia di Ariccia» leggibile: sotto la firma la scena 3D non è chiara (al massimo il 3% dei pixel chiari)
