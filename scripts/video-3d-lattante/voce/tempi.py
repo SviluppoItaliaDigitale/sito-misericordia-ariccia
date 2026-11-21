@@ -31,9 +31,9 @@ for i, x in enumerate(v, 1):
             for k in range(a1 - a0):          # ogni cifra è una parola letta («328» = «tre due otto»)
                 q0 = b0 + (b1 - b0) * acc // tot; acc += peso[k]; q1 = max(q0, b0 + (b1 - b0) * acc // tot - 1)
                 parole[a0 + k] = {'w': sch[a0 + k], 't0': lette[q0]['t0'], 't1': lette[q1]['t1']}
-    pezzi = [testo] if len(testo) <= 95 else [q.strip() for q in re.split(r'(?<=[.?!»])\s+', testo) if q.strip()]
-    def taglia(q):                               # oltre 95 caratteri: prima ai due punti, poi alla virgola più centrale
-        if len(q) <= 95: return [q]
+    pezzi = [testo] if len(testo) <= 72 else [q.strip() for q in re.split(r'(?<=[.?!»])\s+', testo) if q.strip()]
+    def taglia(q):                               # oltre 72 caratteri (una riga sola a schermo): prima ai due punti, poi alla virgola più centrale
+        if len(q) <= 72: return [q]
         for seg in [r':\s', r',\s']:
             pos = [m.end() for m in re.finditer(seg, q)]
             if pos:

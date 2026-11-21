@@ -222,4 +222,15 @@ Le scene si indicano per frase della voce (`S[i]`, `E[i]`), non per secondi. In 
   è lunga 1,8 m (prima 0,9): con i tempi della voce nuova la sua fine si vedeva a inizio frase 5. Gli angoli di riposo delle
   ossa si prendono alla costruzione (prima alla prima posa dei pollici: partendo dalle pacche la presa veniva sbagliata).
   Prova ogni 0,5 s di tutto il video (0-157,3 s): nessun problema in 315 fotogrammi.
+- **Revisione finale (21/11/2026):** braccia dell'adulto rifatte: la pelle colorata di blu oltre il polsino con un passaggio
+  liscio di 1,2 cm e un orlo (manica), oppure nuda (pollici); in entrambi i casi oltre il taglio del modello una
+  continuazione chiusa, con la sezione del primo anello intero (il taglio è obliquo), che parte 5 cm dentro l'avambraccio;
+  i vertici vicini al taglio rientrano (fino all'85%) dentro la continuazione. Controllo `braccio` della giunzione (vertici
+  entro la sezione, con le ossa in posa; prova `?prova=giunzione-aperta`). Placche senza segni accessori, con un piccolo
+  connettore in fondo al cavo. Controlli estesi: `pannelli` (anche avvisi; viso e testa del lattante in tutte le scene),
+  `etichette` (tutte le etichette con la linea; viso del lattante e mani dell'adulto), `firma` (nessuna parte del lattante
+  sotto la fascia del titolo, lo stemma o la firma), `chiusura` (testo dentro i riquadri finali; prova
+  `?prova=chiusura-lunga`). Schede 7 e 8 e contatore dei soffi compaiono a telecamera ferma; avviso della scena delle vie
+  dell'aria a destra. Prova ogni 0,5 s di tutto il video: nessun problema in 315 fotogrammi. Le righe dei sottotitoli non
+  si bilanciano dalla pagina: le spezza il motore `IMP.sottotitoli` della skill motion-pc-genzano.
 

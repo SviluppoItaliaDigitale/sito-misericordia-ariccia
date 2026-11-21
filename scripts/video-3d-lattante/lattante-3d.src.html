@@ -1380,9 +1380,9 @@
     contatore(s2, fin(t, COMPR_G[0] - 0.5, E[8] + DOPO[8] - 0.2, 0.3, 0.3), contati(t, COMPR_G), 'compressioni');
     passo(s2, fin(t, S[9] - 0.2, E[9] + DOPO[9] - 0.2, 0.3, 0.3), 5, 'Alterna 5 pacche e 5 compressioni', 'finché piange, tossisce o respira');
     passo(s2, fin(t, S[10] - 0.2, E[10] + DOPO[10], 0.3, 0.3), 6, 'Non risponde più?', ['rianimazione subito, con 5 soffi', 'su un piano rigido, se c\'è'], '#ff8a80');
-    passo(s2, fin(t, S[11] - 0.2, E[11] + DOPO[11] - 0.2, 0.3, 0.3), 7, '5 soffi', ['testa dritta, bocca su bocca e naso', 'un secondo, finché il torace si alza']);
-    contatore(s2, fin(t, SOFFI[0] - 0.5, E[11] + DOPO[11] - 0.2, 0.3, 0.3), contati(t, SOFFI), 'soffi');
-    passo(s2, fin(t, S[12] - 0.2, E[13] + DOPO[13] - 0.2, 0.3, 0.3), 8, 'Compressioni', ['metà inferiore dello sterno, un terzo del torace', '100-120 al minuto, lascialo risalire']);
+    passo(s2, fin(t, S[11] + 0.75,   /* a telecamera ferma */ E[11] + DOPO[11] - 0.2, 0.3, 0.3), 7, '5 soffi', ['testa dritta, bocca su bocca e naso', 'un secondo, finché il torace si alza']);
+    contatore(s2, fin(t, SOFFI[0] + 0.35,   /* a telecamera ferma */ E[11] + DOPO[11] - 0.2, 0.3, 0.3), contati(t, SOFFI), 'soffi');
+    passo(s2, fin(t, S[12] + 0.85,   /* dopo il movimento della telecamera */ E[13] + DOPO[13] - 0.2, 0.3, 0.3), 8, 'Compressioni', ['metà inferiore dello sterno, un terzo del torace', '100-120 al minuto, lascialo risalire']);
     passo(s2, fin(t, S[14] - 0.2, E[14] + DOPO[14] - 0.2, 0.3, 0.3), 9, '30 compressioni e 2 soffi', '15 e 2 se hai fatto un corso pediatrico');
     schema302(s2, fin(t, S[14] + 0.3, E[14] + DOPO[14] - 0.2, 0.3, 0.3));
     passo(s2, fin(t, S[15] + 1.15, E[15] + DOPO[15] - 0.2, 0.3, 0.3), 10,   /* dopo il movimento della telecamera */ 'Defibrillatore anche nel lattante', ['se sei solo, prima chiama e rianima', 'modalità pediatrica, se c\'è']);
@@ -1404,8 +1404,8 @@
       { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: TARA('lsx', -430), dy: TARA('lsy', -250) }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: E[6] + 2.8 },
       { id: 'sterno', titolo: 'Metà inferiore dello sterno', sotto: 'qui i due pollici', punto: seg.st && t >= S[12] - 0.3 && t < S[13] + 0.3 ? seg.st : null, verso: { dx: TARA('lex', 750), dy: TARA('ley', 170) }, versoV: { dx: -200, dy: 150 }, inizio: S[12] + 1.0, fine: S[13] },
       { id: 'torace', titolo: 'Il torace si alza', sotto: 'a ogni soffio', punto: segnoTorace, verso: { dx: -260, dy: -220 }, versoV: { dx: -200, dy: -150 }, inizio: SOFFI[0] + 0.2, fine: SOFFI[4] + 1.2 },
-      { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 460), dy: TARA('l1y', 40) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
-      { id: 'placca2', titolo: 'Placca dietro', sotto: 'sulla schiena, tra le scapole', punto: placche[1].visible ? placche[1].position : null, verso: { dx: TARA('l2x', 460), dy: TARA('l2y', 40) }, versoV: { dx: 200, dy: -150 }, inizio: TEMPI_DAE.DAE_GIRO + TEMPI_DAE.GIRO_D + 0.1, fine: TEMPI_DAE.DAE_B - 1.1 }
+      { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 600), dy: TARA('l1y', 90) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
+      { id: 'placca2', titolo: 'Placca dietro', sotto: 'sulla schiena, tra le scapole', punto: placche[1].visible ? placche[1].position : null, verso: { dx: TARA('l2x', 700), dy: TARA('l2y', 160) }, versoV: { dx: 200, dy: -150 }, inizio: TEMPI_DAE.DAE_GIRO + TEMPI_DAE.GIRO_D + 0.1, fine: TEMPI_DAE.DAE_B - 1.1 }
     ];
     for (const s of SCH) { const p = proietta(s.punto); IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT ? s.versoV : s.verso, inizio: s.inizio, fine: s.fine, visibile: !!p }); }
     const testoFonte = 'Lattante e mani: schema disegnato dalla Misericordia di Ariccia\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council, cap. 9';
