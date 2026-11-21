@@ -1,9 +1,10 @@
 ---
 title: "Il Servizio Civile Universale alla Misericordia di Ariccia"
-date: 2026-12-02
+date: 2026-11-21T00:03:00+01:00
+social_data: "2026-12-02"
 description: "Il Servizio Civile Universale con la Misericordia di Ariccia: a chi è rivolto, che cosa si fa e come si presenta la domanda."
 episodio: 4
-audio: "/podcast/episodi/2026-12-02-servizio-civile-podcast.m4a"
+audio: "/podcast/episodi/2026-11-21-servizio-civile-podcast.m4a"
 durata: "2 min 41 s"
 durata_secondi: 161
 italianoSemplice: |
