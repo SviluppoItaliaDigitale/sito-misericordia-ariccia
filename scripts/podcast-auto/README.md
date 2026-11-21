@@ -134,7 +134,7 @@ Una puntata alla volta: si chiude fino alla messa in calendario prima di cominci
    `stato: scartata` con il motivo e si passa alla successiva al giro dopo.
 6. **Trascrizione pulita**: correggere solo gli errori di riconoscimento (non il contenuto), dare
    paragrafi leggibili, in `~/podcast-lavoro-misericordia/<id>/trascrizione.md`. Il 112 si scrive «112».
-**Sito subito, social a calendario (dal 21/11/2026).** Scelta di Alessandro: «i podcast già pronti me li devi
+**Sito subito, social a calendario (dal 21/11/2026).** Regola di Alessandro per ogni puntata nuova: «in automatico mettilo nel calendario e pubblicalo sul sito nella relativa sezione»; prima scelta: «i podcast già pronti me li devi
 già pubblicare immediatamente sul sito, mentre sui social rimane il calendario che hai fatto». `pubblica-puntata.py`
 mette nella pagina la data di oggi (esce al primo deploy, cioè al merge) e in `social_data:` il primo mercoledì o
 sabato libero del calendario dei social, che è quello che conta `controlla-magazzino.py`. Fa anche la grafica 4:5
