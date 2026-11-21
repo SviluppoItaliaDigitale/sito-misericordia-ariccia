@@ -182,7 +182,14 @@ puntate:
   nota: 'Era in calendario per il 9/12; tolta il 21/11/2026 al ricontrollo frase per
     frase: «uno spray nasale prescritto dal medico» senza «di adrenalina», «succede
     a chi ha il diabete» senza «soprattutto» e «usa insulina o alcune medicine», seconda
-    dose senza «anche se va un po'' meglio». Da rigenerare. Il 21/11 alle 14:42 è partita la nuova generazione (istruzioni rafforzate su questi tre punti) nel notebook «Notebook senza titolo» con le due schede (notebook fd5a60d7): il giro dopo la scarica da lì, senza crearne un altro.'
+    dose senza «anche se va un po'' meglio». Da rigenerare. Il 21/11 alle 14:42 è partita la nuova generazione (istruzioni rafforzate su questi tre punti) nel notebook «Notebook senza titolo» con le due schede (notebook fd5a60d7): il giro dopo la scarica da lì, senza crearne un altro.
+    Scaricata e controllata il 21/11/2026 alle 19:40 (prima generazione dopo il ritiro): non
+    passa. Aggiunge «quindi anche sul corpo» all''orticaria diffusa, «un malessere improvviso
+    che può portare allo svenimento» (la scheda: «pallore, debolezza, svenimento»), «sono le
+    situazioni più comuni» dopo pasto saltato, sforzo e troppo farmaco, «le manovre si imparano
+    solo con un istruttore» (la scheda: «davvero provando, con un istruttore accanto»); toglie
+    «tenendolo premuto per il tempo indicato» e «se è ora». Da rigenerare una volta, in un
+    notebook nuovo, con le istruzioni rafforzate su questi punti; al prossimo errore va scartata.'
 - id: servizio-civile
   tema: chi-siamo
   titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
@@ -238,6 +245,10 @@ puntate:
   - content/servizi/servizi-sociali.md
   parole: []
   stato: da-fare
+  nota: 'Il 21/11/2026 alle 19:20 è partita la prima generazione (Approfondimento, Italiano,
+    Breve, istruzioni.txt) nel notebook «Servizi Sociali e Assistenza ad Ariccia» (notebook
+    afb14ee3); poi l''estensione di Chrome si è scollegata. Il giro dopo la scarica da lì,
+    senza crearne un altro.'
 - id: kit-animali
   tema: kit-prevenzione
   titolo: Gli animali domestici in emergenza
