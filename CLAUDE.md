@@ -210,6 +210,7 @@ menu), feed `/podcast/index.xml`, issue automatica se il magazzino si svuota
 - `content/liturgia-del-giorno.md` — pagina della Liturgia del giorno
 - `content/news/` — notizie
 - `content/servizi/` — servizi offerti
+- `content/video-corsi.md` — i video 3D per i corsi (`/video-corsi/`, voce «Video 3D per i corsi» nel menu Servizi, dal 21/11/2026): gli shortcode `video` stanno solo qui; la pagina delle slide (`content/slide-corsi.md`, `/servizi/formazione/slide/`) e le news li collegano con le ancore `#rianimazione`, `#infarto`, `#ictus`, `#soffocamento`, `#lattante`
 - `assets/` — CSS, JS e librerie (Hugo Pipes: bundle unico minificato con
   impronta nel nome; vedi `assets/README.md` e `layouts/_default/baseof.html`)
 - `static/img/` — loghi e foto (con copia `.webp` accanto a ogni jpg/png)

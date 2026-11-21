@@ -2295,7 +2295,7 @@ dati:
   - "scripts/video-3d-rcp/voce/frasi.txt"
   - "scripts/video-3d-rcp/rianimazione-3d.src.html"
   - "static/video/rianimazione-come-funziona.vtt"
-  - "content/slide-corsi.md"
+  - "content/video-corsi.md"
   fonte: "https://www.ircouncil.it/linee-guida-rcp-2025/"
   tipo: "sanita"
   delicato: true
@@ -2310,7 +2310,7 @@ dati:
   - "scripts/video-3d-infarto/infarto-3d.src.html"
   - "static/video/infarto-come-funziona.vtt"
   - "static/video/infarto-come-funziona-verticale.vtt"
-  - "content/slide-corsi.md"
+  - "content/video-corsi.md"
   - "content/news/2026-11-20-infarto-come-funziona.md"
   fonte: "https://www.issalute.it/index.php/la-salute-dalla-a-alla-z-menu/i/infarto-del-miocardio"
   tipo: "sanita"
@@ -2327,7 +2327,7 @@ dati:
   - "scripts/video-3d-disostruzione/disostruzione-3d.src.html"
   - "scripts/video-3d-disostruzione/scheda-verita.md"
   - "static/video/disostruzione-come-funziona.vtt"
-  - "content/slide-corsi.md"
+  - "content/video-corsi.md"
   fonte: "https://www.ircouncil.it/linee-guida-rcp-2025/"
   tipo: "sanita"
   delicato: true
@@ -2343,7 +2343,7 @@ dati:
   - "scripts/video-3d-lattante/lattante-3d.src.html"
   - "scripts/video-3d-lattante/scheda-verita.md"
   - "static/video/lattante-come-si-soccorre.vtt"
-  - "content/slide-corsi.md"
+  - "content/video-corsi.md"
   fonte: "https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_9-BLS_PEDIATRICO_02.04.2026.pdf"
   tipo: "sanita"
   delicato: true

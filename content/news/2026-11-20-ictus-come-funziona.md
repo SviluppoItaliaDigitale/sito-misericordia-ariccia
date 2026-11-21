@@ -50,7 +50,7 @@ Se è un coagulo, in ospedale si può riaprire l'arteria: prima si arriva, più 
 
 ## Impara il primo soccorso
 
-Il video non sostituisce un corso: per i corsi di primo soccorso e BLSD della Misericordia di Ariccia chiama il **328 8105399** o guarda la pagina della [formazione](/servizi/formazione/). Per gli istruttori, la versione orizzontale per la lavagna interattiva è nella pagina delle [slide per i corsi](/servizi/formazione/slide/).
+Il video non sostituisce un corso: per i corsi di primo soccorso e BLSD della Misericordia di Ariccia chiama il **328 8105399** o guarda la pagina della [formazione](/servizi/formazione/). Per gli istruttori, la versione orizzontale per la lavagna interattiva è nella pagina dei [video 3D per i corsi](/video-corsi/#ictus).
 
 In ogni emergenza chiama il **112**.
 

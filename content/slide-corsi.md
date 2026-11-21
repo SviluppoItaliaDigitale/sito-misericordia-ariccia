@@ -5,6 +5,7 @@ description: "Presentazioni gratuite per i corsi di BLSD adulto, P-BLSD, disostr
 date: 2026-11-20
 type: "scuole"
 layout: "single"
+briciola: "/servizi/formazione"
 url: "/servizi/formazione/slide/"
 occhiello: "Formazione · per istruttori e formatori"
 italianoSemplice: |
@@ -123,35 +124,15 @@ Seguono le **Linee guida RCP 2025 di Italian Resuscitation Council**, la traduzi
 
 > **Accompagnano il corso, non lo sostituiscono.** Le slide affiancano il materiale ufficiale dei corsi (programma di ARES 118 e di Italian Resuscitation Council), che resta il riferimento. Le manovre si imparano solo provandole su un manichino, con un istruttore: le slide da sole non abilitano a nulla. Per frequentare un corso c'è la pagina della [formazione](/servizi/formazione/).
 
-## Il video: come funziona la rianimazione
+## I video 3D da proiettare
 
-Un video di due minuti, in tre dimensioni, da proiettare insieme alle slide del corso BLSD. Fa vedere il cuore e la circolazione, che cosa succede nell'arresto cardiaco e perché le **compressioni** funzionano: premendo il torace si fa il lavoro del cuore e il sangue torna ad arrivare al cervello. Poi il defibrillatore e le conseguenze delle compressioni, comprese le fratture delle costole.
+Cinque video in tre dimensioni, di due o tre minuti, da proiettare in aula insieme alle slide. Sono tutti nella pagina [Video 3D per i corsi di primo soccorso](/video-corsi/):
 
-{{< video src="video/rianimazione-come-funziona.mp4" poster="img/video/rianimazione-come-funziona.jpg" titolo="Rianimazione: come funziona" descrizione="Video in 3D per i corsi BLSD: il cuore e la circolazione, l'arresto cardiaco, come le compressioni toraciche sostituiscono il cuore e fanno arrivare il sangue al cervello, il DAE e le fratture delle costole, secondo le linee guida IRC 2025." durata="PT2M26S" data="2026-11-20" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitoli 4 e 12. È uno schema: le proporzioni non sono in scala." >}}
-
-## Il video: infarto, che cosa succede nel cuore
-
-Un video di due minuti, in tre dimensioni, per i corsi di primo soccorso e BLSD. Fa vedere le **coronarie**, le arterie che portano il sangue al cuore, la placca e il coagulo che le chiude, il muscolo che resta senza ossigeno. Poi come si riconosce l'infarto e che cosa fare subito: chiamare il **112**, far stare la persona seduta o sdraiata, l'aspirina da masticare se non è allergica, niente auto.
-
-{{< video src="video/infarto-come-funziona.mp4" poster="img/video/infarto-come-funziona.jpg" titolo="Infarto: che cosa succede nel cuore" descrizione="Video in 3D per i corsi: le coronarie, la placca e il coagulo che chiude l'arteria, come si riconosce l'infarto e che cosa fare in attesa dell'ambulanza, secondo le linee guida IRC 2025." durata="PT2M2S" data="2026-11-20" didascalia="Il video dura circa due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitolo 12; Istituto Superiore di Sanità, ISSalute, «Infarto del miocardio». Placca e coagulo sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
-
-## Il video: ictus, il tempo è cervello
-
-Un video di due minuti, in tre dimensioni, per i corsi di primo soccorso e BLSD. Fa vedere le arterie che portano il sangue al cervello, il coagulo o l'arteria che si rompe, perché un lato del cervello comanda il lato opposto del corpo. Poi i tre controlli, **viso, braccia, parola**: basta un solo segno per chiamare subito il **112**. Si segna l'ora, e non si danno cibo, acqua né farmaci, nemmeno l'aspirina.
-
-{{< video src="video/ictus-come-funziona.mp4" poster="img/video/ictus-come-funziona.jpg" titolo="Ictus: il tempo è cervello" descrizione="Video in 3D per i corsi: le arterie del cervello, il coagulo e l'emorragia, il lato del corpo colpito, i tre controlli viso, braccia, parola e che cosa fare in attesa dell'ambulanza." durata="PT2M9S" data="2026-11-20" didascalia="Il video dura circa due minuti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitolo 12; Istituto Superiore di Sanità, ISSalute, «Ictus»; linea guida SNLG «Diagnosi e cura dell'ictus», Regione Toscana. Coagulo, emorragia e zone del cervello sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
-
-## Il video: soffocamento, come si libera la gola
-
-Un video di quasi tre minuti, in tre dimensioni, per i corsi di primo soccorso, BLSD e disostruzione. Fa vedere la gola dall'interno: l'esofago, la trachea e l'epiglottide, e che cosa succede quando un boccone sbaglia strada. Poi le manovre nell'adulto e nel bambino dall'anno in su: tosse, **fino a 5 colpi tra le scapole**, **fino a 5 compressioni addominali**, il **112** e la rianimazione se perde conoscenza. Infine le manovre nel **lattante**, sotto l'anno: 5 pacche e 5 compressioni sul torace.
-
-{{< video src="video/disostruzione-come-funziona.mp4" poster="img/video/disostruzione-come-funziona.jpg" titolo="Soffocamento: come si libera la gola" descrizione="Video in 3D per i corsi: esofago, trachea ed epiglottide, il boccone che sbaglia strada, i colpi tra le scapole e le compressioni addominali nell'adulto, le manovre nel lattante, secondo le linee guida IRC 2025." durata="PT2M47S" data="2026-11-20" didascalia="Il video dura circa due minuti e tre quarti, con voce narrante e sottotitoli. Anatomia: BodyParts3D, © The Database Center for Life Science, licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitoli 9 e 12. Il boccone, le mani e le posizioni del lattante sono disegnati: è uno schema, le proporzioni non sono in scala." >}}
-
-## Il video: il lattante che soffoca o non risponde
-
-Un video di circa due minuti e mezzo, in tre dimensioni, per i corsi di primo soccorso e P-BLSD. Mostra che cosa fare quando un lattante, un bambino sotto l'anno, ha un pezzetto di cibo o un piccolo oggetto nelle vie dell'aria: come riconoscere la tosse che non basta, le 5 pacche tra le scapole a pancia in giù sull'avambraccio, le 5 compressioni sul torace con i due pollici e, se smette di rispondere, la rianimazione con 5 soffi, 30 compressioni e 2 soffi e il defibrillatore. La tecnica è quella delle linee guida IRC 2025: due pollici sulla metà inferiore dello sterno, con le altre dita intorno al torace, al posto delle due dita che si insegnavano prima.
-
-{{< video src="video/lattante-come-si-soccorre.mp4" poster="img/video/lattante-come-si-soccorre.jpg" titolo="Lattante: soffocamento e rianimazione" descrizione="Video in 3D per i corsi: soffocamento nel lattante con pacche tra le scapole e compressioni con due pollici, rianimazione con 5 soffi, 30 compressioni e 2 soffi e defibrillatore, secondo le linee guida IRC 2025." durata="PT2M37S" data="2026-11-21" didascalia="Il video dura circa due minuti e mezzo, con voce narrante e sottotitoli. Mani: modello MakeHuman (CC0). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Contenuti: Linee guida RCP 2025 di Italian Resuscitation Council, capitolo 9. Il lattante e le mani sono disegnati in 3D: è uno schema, le proporzioni non sono in scala." >}}
+- [Come funziona la rianimazione](/video-corsi/#rianimazione)
+- [Infarto: che cosa succede nel cuore](/video-corsi/#infarto)
+- [Ictus: il tempo è cervello](/video-corsi/#ictus)
+- [Soffocamento: come si libera la gola](/video-corsi/#soffocamento)
+- [Il lattante che soffoca o non risponde](/video-corsi/#lattante)
 
 ## Come sono fatte
 

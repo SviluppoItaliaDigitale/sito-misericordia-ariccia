@@ -105,6 +105,11 @@ enableGitInfo = true
     parent = "servizi"
     weight = 4
   [[menus.main]]
+    name = "Video 3D per i corsi"
+    pageRef = "/video-corsi"
+    parent = "servizi"
+    weight = 5
+  [[menus.main]]
     name = "Primo soccorso"
     pageRef = "/primo-soccorso"
     weight = 22

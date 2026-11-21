@@ -52,7 +52,7 @@ Se il cuore si ferma, la persona non risponde e non respira normalmente: inizia 
 
 ## Impara le manovre
 
-Il video non sostituisce un corso: per i corsi di primo soccorso e BLSD della Misericordia di Ariccia chiama il **328 8105399** o guarda la pagina della [formazione](/servizi/formazione/). Per gli istruttori, la versione orizzontale per la lavagna interattiva è nella pagina delle [slide per i corsi](/servizi/formazione/slide/).
+Il video non sostituisce un corso: per i corsi di primo soccorso e BLSD della Misericordia di Ariccia chiama il **328 8105399** o guarda la pagina della [formazione](/servizi/formazione/). Per gli istruttori, la versione orizzontale per la lavagna interattiva è nella pagina dei [video 3D per i corsi](/video-corsi/#infarto).
 
 In ogni emergenza chiama il **112**.
 
