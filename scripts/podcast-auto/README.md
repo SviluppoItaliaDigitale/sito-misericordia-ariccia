@@ -134,6 +134,15 @@ Una puntata alla volta: si chiude fino alla messa in calendario prima di cominci
    `stato: scartata` con il motivo e si passa alla successiva al giro dopo.
 6. **Trascrizione pulita**: correggere solo gli errori di riconoscimento (non il contenuto), dare
    paragrafi leggibili, in `~/podcast-lavoro-misericordia/<id>/trascrizione.md`. Il 112 si scrive «112».
+**Sito subito, social a calendario (dal 21/11/2026).** Scelta di Alessandro: «i podcast già pronti me li devi
+già pubblicare immediatamente sul sito, mentre sui social rimane il calendario che hai fatto». `pubblica-puntata.py`
+mette nella pagina la data di oggi (esce al primo deploy, cioè al merge) e in `social_data:` il primo mercoledì o
+sabato libero del calendario dei social, che è quello che conta `controlla-magazzino.py`. Fa anche la grafica 4:5
+dei social con `scripts/grafica-brand/podcast/rendi-post.py` (in `static/img/podcast/post/`, scritta in `immagine:`,
+che è anche l'anteprima della pagina). Il giorno di `social_data`, al deploy di mezzanotte, `scripts/pubblica_social.py`
+pubblica la puntata su Facebook (post con link) e Instagram (la grafica, con testo alternativo): stessa coda e stesso
+registro delle news, chiave `podcast/<file>`.
+
 7. **Pubblicazione**: `~/.podcast-venv/bin/python scripts/podcast-auto/pubblica-puntata.py <id> AUDIO TRASCRIZIONE --descrizione "…"`
    (≤160 caratteri, dice di che cosa parla, niente «verificato» o «interviste»). Ricodifica l'audio
    (AAC 64 kbps mono, senza metadati) in `static/podcast/episodi/`, scrive `content/podcast/<data>-<id>.md`

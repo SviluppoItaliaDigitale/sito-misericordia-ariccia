@@ -109,17 +109,78 @@ def credito_musica(n):
 
 
 def testo_facebook(n):
+    if n.get("tipo") == "podcast":
+        return testo_podcast(n, instagram=False)
     corpo = n.get("social_testo") or accorcia(n["sommario"], 400)
     return f"{n['titolo']}\n\n{riga_data(n)}{corpo}{credito_musica(n)}\n\n👉 Leggi tutto: {n['url']}"
 
 
 def testo_instagram(n):
+    if n.get("tipo") == "podcast":
+        return testo_podcast(n, instagram=True)
     corpo = n.get("social_testo") or accorcia(n["sommario"], 1200)
     # Su Instagram i link nel testo non sono cliccabili: li scriviamo comunque
     # in forma breve, leggibile e ricopiabile.
     url_breve = n["url"].replace("https://", "").replace("www.", "").rstrip("/")
     testo = f"{n['titolo']}\n\n{riga_data(n)}{corpo}{credito_musica(n)}\n\nL'articolo completo su {url_breve}\n\n{HASHTAG}"
     return testo[:2200]  # limite Instagram
+
+
+# ---------------------------------------------------------------- podcast (dal 21/11/2026)
+#
+# Le puntate del podcast escono sul sito appena sono verificate; sui social escono alla data del
+# calendario (mercoledì e sabato), scritta in «social_data:» del front matter (o, se manca, la data
+# della puntata). Scelta di Alessandro del 21/11/2026: «i podcast già pronti me li devi già
+# pubblicare immediatamente sul sito, mentre sui social rimane il calendario». Post con link su
+# Facebook, immagine su Instagram: la grafica è static/img/podcast/post/<file>.jpg, fatta da
+# scripts/grafica-brand/podcast/rendi-post.py e scritta in «immagine:» del front matter.
+
+PODCAST_DIR = RADICE / "content/podcast"
+HASHTAG_PODCAST = "#Podcast #MisericordiaAriccia #Misericordie #Ariccia #CastelliRomani"
+
+
+def _campo(testo, nome):
+    m = re.search(rf'^{nome}:\s*"?(.*?)"?\s*$', testo, re.M)
+    return m.group(1).replace('\\"', '"') if m else ""
+
+
+def puntate_podcast(oggi=None):
+    """Puntate del podcast da mettere nella coda dei social: già online sul sito e con la data
+    del calendario arrivata (ora italiana)."""
+    oggi = oggi or oggi_roma().date()
+    voci = []
+    for f in sorted(PODCAST_DIR.glob("*.md")):
+        if f.name.startswith("_"):
+            continue
+        testo = f.read_text(encoding="utf-8").split("\n---", 1)[0]
+        uscita = _campo(testo, "date")[:10]
+        quando = _campo(testo, "social_data")[:10] or uscita
+        if not uscita or _campo(testo, "draft") == "true" or _campo(testo, "social") == "false":
+            continue
+        if dt.date.fromisoformat(uscita) > oggi or dt.date.fromisoformat(quando) > oggi:
+            continue
+        immagine = _campo(testo, "immagine")
+        titolo, puntata = _campo(testo, "title"), _campo(testo, "episodio")
+        voci.append({
+            "tipo": "podcast", "id": f"podcast/{f.stem}", "titolo": titolo, "data": quando,
+            "url": f"{SITO}/podcast/{f.stem}/", "sommario": _campo(testo, "description"),
+            "immagine": SITO + immagine if immagine.startswith("/") else immagine,
+            "puntata": puntata, "social": True, "video": "",
+            "social_alt": (f"Grafica blu del podcast della Misericordia di Ariccia, puntata {puntata}: "
+                           f"«{titolo}». Ascolta la puntata e leggi il testo completo su "
+                           "misericordia-ariccia.it/podcast."),
+        })
+    return voci
+
+
+def testo_podcast(n, instagram):
+    testo = (f"🎧 Il podcast della Misericordia di Ariccia, puntata {n['puntata']}\n\n{n['titolo']}\n\n"
+             f"{n['sommario']}\n\n")
+    if instagram:
+        url_breve = n["url"].replace("https://", "").replace("www.", "").rstrip("/")
+        return (testo + f"Ascolta la puntata e leggi il testo completo su {url_breve}\n\n"
+                "In caso di emergenza chiama sempre il 112.\n\n" + HASHTAG_PODCAST)[:2200]
+    return testo + f"In caso di emergenza chiama sempre il 112.\n\n👉 Ascolta la puntata: {n['url']}"
 
 
 # ---------------------------------------------------------------- testo alternativo
@@ -759,6 +820,7 @@ def main():
         sys.exit(f"Feed non trovato: {FEED} (compilare prima il sito con hugo)")
     news = json.loads(FEED.read_text(encoding="utf-8"))["news"]
     reg = carica_registro()
+    news = news + puntate_podcast()  # stessa coda e stesso registro (chiave «podcast/<file>»)
 
     # --inizializza: segna tutte le news attuali come già pubblicate (primo avvio)
     if "--inizializza" in sys.argv:

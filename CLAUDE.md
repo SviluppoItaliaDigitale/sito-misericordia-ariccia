@@ -173,7 +173,7 @@ Istruzione di Alessandro: il **328 8105399** è il numero dell'amministrazione e
 Due puntate a settimana (mercoledì e sabato) a due voci, come il podcast della Protezione Civile
 di Genzano: le fa sul PC il giro di `scripts/podcast-auto/giro-automatico.sh` (crontab, Chrome e
 NotebookLM, blocco comune con la PC), sulle sole pagine del sito già pubblicate, e le mette in
-calendario solo dopo trascrizione e controllo dei fatti. Pagina `/podcast/` (voce «Podcast» nel
+calendario solo dopo trascrizione e controllo dei fatti. Dal 21/11/2026 una puntata verificata esce **subito sul sito** e **sui social alla data del calendario** (`social_data:`, mercoledì o sabato), con la grafica di `scripts/grafica-brand/podcast/rendi-post.py`, pubblicata da `pubblica_social.py`. Pagina `/podcast/` (voce «Podcast» nel
 menu), feed `/podcast/index.xml`, issue automatica se il magazzino si svuota
 (`controllo-podcast.yml`). Procedura completa, coda e regole: `scripts/podcast-auto/README.md`.
 

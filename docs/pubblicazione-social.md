@@ -27,6 +27,13 @@ esce sul sito e sui social il giorno della sua data.
 - Se i social danno errore, **il sito viene pubblicato comunque**; il post si
   ritenta al deploy successivo (o la notte seguente).
 
+## Podcast (dal 21/11/2026)
+
+Oltre alle news, lo script pubblica le puntate del podcast (`content/podcast/`) il giorno scritto in
+`social_data:` (ora italiana), solo se la pagina è già online: post con link su Facebook, grafica
+`immagine:` su Instagram con testo alternativo. Registro: chiave `podcast/<file>`. `social: false`
+esclude una puntata. Procedura in `scripts/podcast-auto/README.md`.
+
 ## Opzioni nella singola news (front matter)
 
 ```yaml

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""pubblica-puntata.py — Mette in calendario una puntata che ha superato il controllo.
+"""pubblica-puntata.py — Pubblica una puntata che ha superato il controllo e la mette nel calendario dei social.
 
 Adattato dal podcast della Protezione Civile di Genzano. Ricodifica l'audio
 (AAC 64 kbps mono, senza metadati né firma dell'encoder), scrive
-content/podcast/<data>-<id>.md con la data del primo mercoledì o sabato libero
-(il sito la pubblica da solo quel giorno, anche a PC spento, col rebuild di
-mezzanotte), con la trascrizione verificata come corpo e le pagine fonte in
-fondo, e segna la voce «programmata» in coda.yaml.
+content/podcast/<oggi>-<id>.md con la trascrizione verificata come corpo e le pagine fonte
+in fondo, e segna la voce «programmata» in coda.yaml. Dal 21/11/2026 (scelta di Alessandro:
+«i podcast già pronti me li devi già pubblicare immediatamente sul sito, mentre sui social
+rimane il calendario») la puntata esce sul sito subito, al primo deploy, e sui social il
+primo mercoledì o sabato libero, scritto in «social_data:» (scripts/pubblica_social.py).
+Fa anche la grafica dei social (scripts/grafica-brand/podcast/rendi-post.py).
 Uso: pubblica-puntata.py ID AUDIO TRASCRIZIONE_VERIFICATA.md [--descrizione "…"]
 """
 from __future__ import annotations
@@ -15,7 +17,8 @@ import argparse
 import re
 import subprocess
 import sys
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import yaml
@@ -75,13 +78,14 @@ GIORNI_USCITA = (2, 5)  # mercoledì e sabato
 
 
 def date_programmate() -> list[date]:
-    """Date delle puntate attive (pubblicate o in calendario)."""
+    """Date del calendario dei social delle puntate attive («social_data:», altrimenti la data)."""
     out = []
     for f in PODCAST.glob("*.md"):
         testo = f.read_text(encoding="utf-8")
         if f.name == "_index.md" or "render: never" in testo:
             continue
-        m = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", testo, re.M)
+        m = (re.search(r'^social_data:\s*"?(\d{4}-\d{2}-\d{2})', testo, re.M)
+             or re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", testo, re.M))
         if m:
             out.append(date.fromisoformat(m.group(1)))
     return out
@@ -101,7 +105,7 @@ def main() -> int:
     ap.add_argument("audio")
     ap.add_argument("trascrizione")
     ap.add_argument("--descrizione", required=True)
-    ap.add_argument("--oggi", action="store_true", help="esce oggi invece che al primo mercoledì o sabato libero")
+    ap.add_argument("--oggi", action="store_true", help="anche sui social oggi, invece che al primo mercoledì o sabato libero")
     a = ap.parse_args()
 
     dati = yaml.safe_load(CODA.read_text(encoding="utf-8"))
@@ -109,7 +113,9 @@ def main() -> int:
     if not voce:
         print(f"ERRORE: {a.id} non è in coda.yaml", file=sys.stderr)
         return 1
-    oggi = (date.today() if a.oggi else prossima_uscita()).isoformat()
+    adesso = datetime.now(ZoneInfo("Europe/Rome")).replace(microsecond=0)
+    oggi = adesso.date().isoformat()
+    social = (adesso.date() if a.oggi else prossima_uscita()).isoformat()
     slug = f"{oggi}-{a.id}"
     if (PODCAST / f"{slug}.md").exists():
         print(f"ERRORE: esiste già content/podcast/{slug}.md", file=sys.stderr)
@@ -132,7 +138,8 @@ def main() -> int:
     descr = a.descrizione.replace('"', "'")
     testo = f"""---
 title: "{titolo}"
-date: {oggi}
+date: {(adesso - timedelta(minutes=5)).isoformat()}
+social_data: "{social}"
 description: "{descr}"
 episodio: {episodio}
 audio: "/podcast/episodi/{audio_out.name}"
@@ -162,12 +169,19 @@ In emergenza chiama il **112**. La Misericordia di Ariccia fa trasporti programm
     voce["stato"] = "programmata"
     voce["file"] = f"content/podcast/{slug}.md"
     voce["data"] = oggi
+    voce["social_data"] = social
     CODA.write_text(
         CODA.read_text(encoding="utf-8").split("puntate:")[0]
         + yaml.safe_dump({"puntate": dati["puntate"]}, allow_unicode=True, sort_keys=False),
         encoding="utf-8")
 
-    print(f"PROGRAMMATA content/podcast/{slug}.md episodio {episodio} in uscita il {oggi}")
+    grafica = subprocess.run(["python3", str(RADICE / "scripts/grafica-brand/podcast/rendi-post.py"),
+                              str(PODCAST / f"{slug}.md")])
+    if grafica.returncode:
+        print("ERRORE: grafica dei social non riuscita (rendi-post.py): senza grafica Instagram non pubblica",
+              file=sys.stderr)
+        return 1
+    print(f"PROGRAMMATA content/podcast/{slug}.md episodio {episodio}: sul sito da oggi, sui social il {social}")
     return 0
 
 

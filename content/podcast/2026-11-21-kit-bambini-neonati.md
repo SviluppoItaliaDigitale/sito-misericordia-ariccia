@@ -5,6 +5,7 @@ social_data: "2026-11-28"
 description: "I kit della Misericordia per bambini, neonati e gravidanza: schede da stampare, borse per l'evacuazione e cautele per le emergenze."
 episodio: 3
 audio: "/podcast/episodi/2026-11-21-kit-bambini-neonati-podcast.m4a"
+immagine: "/img/podcast/post/2026-11-21-kit-bambini-neonati.jpg"
 durata: "2 min 57 s"
 durata_secondi: 177
 italianoSemplice: |
