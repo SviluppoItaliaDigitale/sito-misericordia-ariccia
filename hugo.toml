@@ -30,7 +30,7 @@ enableGitInfo = true
   telefonoInfo = "328 8105399"
   email = "sede@misericordia-ariccia.it"
   pec = "misericordia-ariccia@pec.misericordia-ariccia.it"
-  # Tre sedi (Alessandro, 21/11/2026): legale SOLO carta intestata e fiscalità (con atti, privacy, trasparenza);
+  # Tre sedi (Alessandro, 21/11/2026): legale MAI su sito e social, solo nella modulistica insieme alle altre due;
   # amministrativa (= indirizzo) per iscrizioni, corsi, Servizio Civile, Banco alimentare, Centro di Ascolto, schede e kit;
   # operativa dove stanno i mezzi, per trasporti sanitari e servizi.
   indirizzo = "Viale Antonietta Chigi, 46 — 00072 Ariccia (RM)"

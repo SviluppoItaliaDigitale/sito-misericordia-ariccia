@@ -27,8 +27,6 @@ italianoSemplice: |
 
 **Accesso (entrambe le sedi):** si entra **senza scale**, comodo anche in carrozzina, e c'è il **parcheggio**.
 
-*Sede legale (solo per la carta intestata e gli adempimenti fiscali): Via Beata Rosa Venerini, 6 — 00072 Ariccia (RM).*
-
 ## Come contattarci
 
 - **Amministrazione, corsi, formazione, iscrizioni e Servizio Civile** (tutto ciò che non riguarda ambulanze e trasporti): cell. [328 8105399](tel:+393288105399) · telefono fisso [06 933 3717](tel:+39069333717)
