@@ -39,8 +39,14 @@ for c in CARTELLE:
             if "Aldo Moro" in riga and INVITO.search(riga) and "Chigi" not in riga and "operativ" not in riga:
                 sedi.append(f"{rel}:{n}")
             # il fisso 06 933 3717 è della sede amministrativa, non dell'operativa (Alessandro, 21/11/2026)
-            if re.search(r"933 ?3717|069333717", riga) and re.search(r"[Ss]ede operativa|Operations base|Operational office", riga) \
-                    and not re.search(r"amministrativ|Administrative", riga) and rel != "scripts/controlli/prova_sede_legale.py":
+            # Segnala il fisso scritto sotto l'etichetta della sede operativa (fino alla sede amministrativa o a fine
+            # riga) o con l'etichetta «sede operativa» subito dopo il numero.
+            if rel != "scripts/controlli/prova_sede_legale.py" and (
+                    re.search(r"(?:[Ss]ede operativa|Operations base|Operational office)[^\n]*?(?:933 ?3717|069333717)"
+                              r"(?![^\n]*?(?:[Ss]ede operativa|Operations base|Operational office))", riga)
+                    and not re.search(r"(?:[Ss]ede operativa|Operations base|Operational office)[^\n]*?"
+                                      r"(?:[Ss]ede amministrativa|Administrative office)[^\n]*?(?:933 ?3717|069333717)", riga)
+                    or re.search(r"(?:933 ?3717|069333717)[^\n]{0,25}?(?:[Ss]ede operativa|Operations base)", riga)):
                 sedi.append(f"{rel}:{n} (fisso accanto alla sede operativa)")
 if sedi:
     print("La sede operativa (Aldo Moro, i mezzi) compare in un invito a iscriversi o ai corsi: lì va la sede "
