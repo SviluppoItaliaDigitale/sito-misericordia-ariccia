@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="formato" content="slide">
+<meta name="uscita" content="static/documenti/formazione/volontari-in-servizio.pdf">
+<title>In servizio: le persone prima di tutto</title>
+<link rel="stylesheet" href="../../scuole/scuole.css">
+<!--
+Slide per il corso dei nuovi volontari della Misericordia di Ariccia: come si sta in servizio accanto alle persone
+(trasporti, accompagnamento sociale, assistenza agli eventi, Centro di Ascolto e Banco Alimentare).
+Accompagnano la formazione e le regole interne della Confraternita e non le sostituiscono: dove servono procedure
+interne, le note dicono «secondo le procedure della Confraternita», senza inventarle.
+Fonti, lette il 21/11/2026 (pagine come stampate nel PDF):
+- OMS, War Trauma Foundation, World Vision International, «Primo soccorso psicologico: Manuale per operatori sul campo»
+  (2011; edizione italiana Azienda USL della Romagna, 2018), da who.int (iris.who.int, scheda 10665/44615):
+  p. 3 (che cos'è e che cosa non è), p. 9 (fare e non fare; seguire i codici di condotta dell'ente), p. 17 (comunicare),
+  p. 20 (osservare, ascoltare, mettere in contatto), p. 24 (presentarsi, chiedere il permesso di aiutare),
+  pp. 37-38 (persone con problemi di salute o disabilità), pp. 40-42 (prendersi cura di sé, riposo e riflessione).
+- D.lgs. 3 maggio 2024, n. 62, art. 4 (Normattiva); Regolamento (UE) 2016/679, artt. 4 n. 15, 9 e 29 (EUR-Lex);
+  D.lgs. 30 giugno 2003, n. 196, art. 2-septies, c. 8 (Normattiva); D.lgs. 3 luglio 2017, n. 117, art. 17, cc. 2-3
+  (Normattiva); Garante privacy, «Attenzione quando pubblichi immagini online» (novembre 2020, doc. web 3766930);
+  Regione Lazio, pagina del 112 (comunicazione.regione.lazio.it/112/); Linee guida RCP 2025 IRC, cap. 4, pp. 5, 7 e 11.
+- Pagine del sito: «Diventa volontario», «I confratelli», «Storia e tradizione», «Privacy».
+Disegni SVG fatti a mano, nessuna foto di persone.
+-->
+<style>
+.diapo .contenuto { gap: 26px; }
+.diapo .contenuto p { margin: 0; }
+.diapo:not(.copertina) > .contenuto { justify-content: center; font-size: 40px; line-height: 54px; }
+.diapo .piccolo { font-size: 27px; line-height: 36px; color: #3D4F7C; }
+.diapo .lato { display: grid; gap: 56px; align-items: center; }
+.diapo .no { border-left: 10px solid #C8102E; padding-left: 26px; }
+.diapo .no strong { color: #A50E26; }
+.diapo .si { border-left: 10px solid #1E7B34; padding-left: 26px; }
+.diapo .passi { display: flex; flex-direction: column; gap: 18px; counter-reset: passo; list-style: none; padding-left: 0; }
+.diapo .passi li { position: relative; padding-left: 92px; min-height: 64px; }
+.diapo .passi li::before { counter-increment: passo; content: counter(passo); position: absolute; left: 0; top: -4px; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--blu); color: #FFFFFF; font-weight: 800; font-size: 38px; line-height: 64px; text-align: center; }
+.diapo .tre, .diapo .quattro { display: grid; gap: 40px; }
+.diapo .tre { grid-template-columns: repeat(3, 1fr); }
+.diapo .quattro { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.diapo .passo { background: rgba(255,255,255,.75); border-top: 14px solid var(--blu); padding: 26px 30px; }
+.diapo .passo h3 { font-size: 44px; line-height: 50px; font-weight: 800; color: var(--blu); }
+.diapo .quattro .passo h3 { font-size: 32px; line-height: 40px; }
+.diapo .passo .num { font-size: 30px; font-weight: 700; color: #3D4F7C; }
+.diapo .passo ul { padding-left: 34px; margin-top: 12px; font-size: 31px; line-height: 41px; gap: 8px; }
+.diapo .passo p { font-size: 30px; line-height: 40px; margin-top: 12px; }
+.diapo .tabella { display: grid; grid-template-columns: 1fr 1fr; gap: 0; font-size: 32px; line-height: 42px; }
+.diapo .tabella > div { padding: 14px 24px; border-bottom: 3px solid #C9D3E6; background: rgba(255,255,255,.55); }
+.diapo .tabella .tes { font-weight: 800; color: #FFFFFF; background: var(--blu); border-bottom: 0; }
+.diapo .tabella .tes.rossa { background: #A50E26; }
+.diapo .tabella .sbagliato { color: #4A5878; text-decoration: line-through; text-decoration-color: #C8102E; text-decoration-thickness: 3px; }
+.diapo .disegno-copertina { position: absolute; right: 150px; top: calc(var(--h, 1080px) / 2 - 230px); }
+.diapo.copertina.con-disegno > .contenuto { right: 720px; left: 160px; }
+.diapo .citazione { font-size: 44px; line-height: 58px; font-weight: 700; color: var(--blu); border-left: 12px solid var(--giallo); padding-left: 30px; }
+.diapo .crediti { font-size: 29px; line-height: 40px; }
+.diapo .crediti li { margin-bottom: 4px; }
+.diapo .url { white-space: nowrap; }
+.diapo svg text { font-family: 'Montserrat', sans-serif; }
+</style>
+</head>
+<body class="slide">
+
+<!-- 1 -->
+<section class="diapo copertina con-disegno">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<svg class="disegno-copertina" aria-hidden="true" width="540" height="460" viewBox="0 0 540 460" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="150" cy="180" r="60" stroke="#FFFFFF" stroke-width="14"/>
+<path d="M40 440 V380 C40 305 88 268 150 268 C212 268 260 305 260 380 V440" stroke="#FFFFFF" stroke-width="14"/>
+<circle cx="390" cy="180" r="60" stroke="#FCEB0C" stroke-width="14"/>
+<path d="M280 440 V380 C280 305 328 268 390 268 C452 268 500 305 500 380 V440" stroke="#FCEB0C" stroke-width="14"/>
+<path d="M226 74 C226 46 254 30 270 50 C286 30 314 46 314 74 C314 106 270 132 270 132 C270 132 226 106 226 74 Z" stroke="#FCEB0C" stroke-width="12"/>
+</svg>
+<div class="contenuto">
+<h1>In servizio:<br>le persone<br><span class="finale">prima di tutto</span></h1>
+<p class="sotto">Il corso per i nuovi volontari: come si sta accanto a chi aiutiamo, in squadra, con rispetto e riservatezza.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#FCEB0C" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Presentatevi e chiedete a ciascuno di dire in una frase perché ha scelto di fare il volontario e in quale servizio si immagina: trasporti, accompagnamento sociale, eventi, Centro di Ascolto e Banco Alimentare. Riprendete le risposte durante la lezione. Fonti principali della presentazione: OMS, «Primo soccorso psicologico: Manuale per operatori sul campo» (2011, edizione italiana AUSL della Romagna 2018); norme sulla protezione dei dati e sul volontariato citate nelle singole slide; pagine «Diventa volontario», «I confratelli», «Storia e tradizione» e «Privacy» del sito della Misericordia di Ariccia.</div>
+</section>
+
+<!-- 2 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Queste slide accompagnano la formazione</h2>
+<p>Sono un supporto alla lezione. <strong>Non sostituiscono</strong> la formazione della Confraternita né le sue <strong>regole interne</strong>, che restano il riferimento per ogni servizio.</p>
+<ul>
+<li>Che cosa fare in ogni servizio lo dicono le <strong>procedure della Confraternita</strong> e chi coordina il turno.</li>
+<li>Le manovre di soccorso si imparano nei corsi dedicati, con l'istruttore.</li>
+</ul>
+<p class="riquadro blu">Ogni dubbio va chiarito con chi tiene il corso o con il responsabile: chiedere è sempre la scelta giusta.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Dite chiaramente che il riferimento restano le regole e le procedure interne della Confraternita: queste slide parlano del modo di stare accanto alle persone, non dei compiti tecnici di ogni servizio. Indicate dove i nuovi volontari trovano le regole interne e chi è il loro riferimento, secondo le procedure della Confraternita. Anche il manuale dell'OMS sul primo soccorso psicologico chiede di conoscere e seguire i codici di condotta dell'ente per cui si fa volontariato (OMS, «Primo soccorso psicologico», ed. it. 2018, p. 9). Le manovre di rianimazione e di primo soccorso hanno le loro slide e i loro corsi (BLSD, P-BLSD, primo soccorso).</div>
+</section>
+
+<!-- 3 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Lo stile della Misericordia</h2>
+<p class="citazione">Non contano il mestiere, l'età o le competenze: contano le mani, l'ascolto e la presenza.</p>
+<ul>
+<li>Il servizio è <strong>personale, spontaneo e gratuito</strong>: nessun compenso, nemmeno da chi aiutiamo.</li>
+<li>Sotto la veste della «buffa» ogni confratello era <strong>uguale agli altri</strong>: conta il servizio, non chi lo fa.</li>
+<li>L'antico motto: <strong>«Che Iddio te ne renda merito»</strong>.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">La frase in evidenza è della pagina «Diventa volontario» del sito, che parla dei volontari delle Misericordie come «artigiani di misericordia», persone comuni che un gesto alla volta diventano vicinanza concreta. La «buffa», la veste storica che copriva il volto, garantiva l'anonimato del soccorritore: papi, principi e popolani prestavano lo stesso servizio (pagina «Storia e tradizione»). Il volontariato è personale, spontaneo e gratuito (pagina «I confratelli»), come lo definisce il Codice del Terzo settore: d.lgs. 3 luglio 2017, n. 117, art. 17, comma 2 (attività per libera scelta, in modo personale, spontaneo e gratuito, senza fini di lucro) e comma 3 (l'attività non può essere retribuita in alcun modo, nemmeno dal beneficiario; solo rimborsi di spese documentate, nei limiti stabiliti dall'ente), testo letto su Normattiva il 21/11/2026. Domanda alla classe: «Che cosa vuol dire, oggi, servire senza mettersi in mostra?».</div>
+</section>
+
+<!-- 4 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dove incontrerai le persone</h2>
+<div class="quattro">
+<div class="passo"><h3>Trasporti sanitari e sociali</h3><p>Accompagni chi deve curarsi: in ambulanza, in auto o con i mezzi attrezzati.</p></div>
+<div class="passo"><h3>Accompagnamento sociale</h3><p>Stai accanto a chi è solo o in difficoltà, per una visita o una commissione.</p></div>
+<div class="passo"><h3>Assistenza agli eventi</h3><p>Sei presente a gare, feste e sagre, pronto a intervenire con la squadra.</p></div>
+<div class="passo"><h3>Centro di Ascolto e Banco Alimentare</h3><p>Accogli le famiglie, ascolti, aiuti nella distribuzione.</p></div>
+</div>
+<p class="riquadro tenue">In ogni servizio la persona che hai davanti viene <strong>prima del compito</strong>.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">I servizi sono quelli descritti nella pagina «Diventa volontario» del sito (trasporti sanitari e sociali; Centro di Ascolto e Banco Alimentare; assistenza a eventi e manifestazioni; formazione) e nelle pagine «Servizi sociali» (accompagnamento sociale) e «Assistenza sanitaria per eventi». Chiedete a ciascuno quale servizio lo incuriosisce e quale lo preoccupa di più. Chi fa che cosa, con quale preparazione e con quali mezzi lo stabiliscono le procedure della Confraternita.</div>
+</section>
+
+<!-- 5 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Prima di partire: il briefing</h2>
+<div class="lato" style="grid-template-columns: 1fr 380px;">
+<ul>
+<li>Con il <strong>responsabile del servizio</strong>: chi è la persona da aiutare e di che cosa ha bisogno.</li>
+<li>Il tuo <strong>compito</strong>, il <strong>mezzo</strong> e il materiale, gli <strong>orari</strong> di partenza e di rientro.</li>
+<li>Chi coordina e come raggiungerlo durante il servizio.</li>
+</ul>
+<svg viewBox="0 0 380 460" width="380" height="460" role="img" aria-label="Cartellina con un elenco: tre righe spuntate e una con il punto di domanda" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="40" y="50" width="300" height="390" rx="20" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<rect x="130" y="26" width="120" height="54" rx="12" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M80 140 l18 18 l34 -38 M80 230 l18 18 l34 -38 M80 320 l18 18 l34 -38" stroke="#1E7B34" stroke-width="12"/>
+<path d="M160 148 H300 M160 238 H300 M160 328 H260" stroke="#233B74" stroke-width="10"/>
+<text x="106" y="420" text-anchor="middle" fill="#003F85" font-size="64" font-weight="800" stroke="none">?</text>
+<path d="M160 400 H300" stroke="#009FE3" stroke-width="10" stroke-dasharray="4 18"/>
+</svg>
+</div>
+<p class="riquadro blu">Se qualcosa non è chiaro, <strong>chiedi prima di partire</strong>: è il momento giusto.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Come si svolge il briefing, chi lo tiene e che cosa si consegna (mezzo, chiavi, materiale, documenti di viaggio) lo stabiliscono le procedure della Confraternita: qui si insegna l'atteggiamento, cioè arrivare in tempo e non partire con un dubbio. Il manuale dell'OMS sul primo soccorso psicologico chiede, prima di aiutare, di conoscere la situazione e i ruoli e le responsabilità di ciascuno, e ricorda che la mancanza di una chiara descrizione dei compiti è una delle principali fonti di stress per chi aiuta (OMS, «Primo soccorso psicologico», ed. it. 2018, pp. 40-41). Esercizio: a coppie, scrivete le tre domande che fareste al responsabile prima di un accompagnamento a una visita in ospedale.</div>
+</section>
+
+<!-- 6 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>In squadra, mai da soli</h2>
+<div class="lato" style="grid-template-columns: 1fr 460px;">
+<ul>
+<li>Si esce <strong>in squadra</strong>: ognuno sa che cosa fa l'altro.</li>
+<li>Fai <strong>solo ciò per cui sei formato</strong>: non esagerare le tue capacità.</li>
+<li>Le decisioni le prende <strong>chi coordina</strong>; tu riferisci ciò che vedi.</li>
+<li>Un imprevisto? Avvisa subito il responsabile.</li>
+</ul>
+<svg viewBox="0 0 460 400" width="460" height="400" role="img" aria-label="Tre persone vicine, una accanto all'altra" fill="none" stroke-linecap="butt" stroke-linejoin="round">
+<circle cx="110" cy="150" r="46" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M30 390 V330 C30 270 65 236 110 236 C155 236 190 270 190 330 V390" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<circle cx="350" cy="150" r="46" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M270 390 V330 C270 270 305 236 350 236 C395 236 430 270 430 330 V390" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<circle cx="230" cy="120" r="52" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M140 390 V320 C140 252 180 214 230 214 C280 214 320 252 320 320 V390" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Chi coordina ogni servizio, come si compongono le squadre e quali compiti spettano a ciascun livello di formazione lo stabiliscono le procedure della Confraternita: indicatele ai corsisti. Il principio «non esagerare le proprie capacità» è fra le cose da non fare elencate dal manuale dell'OMS (OMS, «Primo soccorso psicologico», ed. it. 2018, p. 9). Domanda alla classe: «Una persona che accompagni ti chiede di aiutarla a prendere un farmaco che non conosci: che cosa fai?» (non decidi da solo: riferisci al responsabile).</div>
+</section>
+
+<!-- 7 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Quando incontri la persona</h2>
+<div class="lato" style="grid-template-columns: 1fr 560px;">
+<ol class="passi">
+<li><strong>Presentati</strong>: il tuo nome e la Misericordia.</li>
+<li><strong>Chiedi prima di aiutare</strong>: «Posso aiutarla?», «Come preferisce?».</li>
+<li><strong>Rispetta le sue scelte</strong>: decide lei per sé.</li>
+<li>Parla con <strong>calma</strong> e con <strong>parole semplici</strong>.</li>
+</ol>
+<svg viewBox="0 0 560 440" width="560" height="440" role="img" aria-label="Un volontario si presenta a una persona: «Buongiorno, sono della Misericordia. Posso aiutarla?»" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<path d="M14 20 H380 C394 20 402 28 402 42 V136 C402 150 394 158 380 158 H170 L126 196 L136 158 H36 C22 158 14 150 14 136 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="7"/>
+<text x="208" y="76" text-anchor="middle" fill="#003F85" font-size="30" font-weight="800" stroke="none">Buongiorno, sono</text>
+<text x="208" y="114" text-anchor="middle" fill="#003F85" font-size="30" font-weight="800" stroke="none">della Misericordia.</text>
+<text x="208" y="148" text-anchor="middle" fill="#003F85" font-size="26" font-weight="700" stroke="none">Posso aiutarla?</text>
+<circle cx="140" cy="268" r="48" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M50 440 V400 C50 350 90 322 140 322 C190 322 230 350 230 400 V440" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<circle cx="420" cy="276" r="46" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+<path d="M334 440 V404 C334 356 372 330 420 330 C468 330 506 356 506 404 V440" fill="#FFFFFF" stroke="#233B74" stroke-width="10"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il manuale dell'OMS indica di avvicinare le persone con rispetto, presentarsi dicendo il proprio nome e l'ente di appartenenza, chiedere il permesso di aiutare e chiedere sempre alle persone di che cosa hanno bisogno, anche quando sembra evidente (OMS, «Primo soccorso psicologico», ed. it. 2018, p. 24); fra le cose da fare c'è rispettare il diritto delle persone di prendere le proprie decisioni (p. 9); fra quelle per comunicare bene, dare informazioni in modo semplice, essere pazienti e calmi, non usare termini troppo tecnici (p. 17). Gioco di ruolo a coppie: uno è il volontario che arriva a casa per un accompagnamento, l'altro la persona da accompagnare; poi si scambiano i ruoli e si dice come ci si è sentiti.</div>
+</section>
+
+<!-- 8 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ascoltare senza giudicare</h2>
+<div class="tre">
+<div class="passo"><div class="num">1</div><h3>Osserva</h3><ul><li>La situazione è sicura?</li><li>Di che cosa ha bisogno subito?</li><li>È molto agitata o confusa?</li></ul></div>
+<div class="passo"><div class="num">2</div><h3>Ascolta</h3><ul><li>Chiedi di che cosa ha bisogno.</li><li>Lasciala parlare, senza forzarla.</li><li>Aiutala a stare calma.</li></ul></div>
+<div class="passo"><div class="num">3</div><h3>Metti in contatto</h3><ul><li>Con i suoi familiari.</li><li>Con i servizi e con chi può aiutarla.</li><li>Dai informazioni vere.</li></ul></div>
+</div>
+<p class="piccolo">I tre principi del primo soccorso psicologico dell'Organizzazione mondiale della sanità (OMS).</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Osservare, ascoltare, mettere in contatto sono i tre principi di azione del primo soccorso psicologico (OMS, War Trauma Foundation e World Vision International, «Primo soccorso psicologico: Manuale per operatori sul campo», 2011; edizione italiana Azienda USL della Romagna 2018, p. 20). Il manuale precisa che non è qualcosa che possono fare solo gli specialisti, non è una consulenza professionale e non chiede di far raccontare tutto l'accaduto (p. 3). Si ascolta con gli occhi, le orecchie e il cuore: attenzione piena, ascolto vero, rispetto (p. 24). Nel Centro di Ascolto e negli accompagnamenti questo è il cuore del servizio; chi ha bisogno di un aiuto professionale si mette in contatto con i servizi, secondo le procedure della Confraternita.</div>
+</section>
+
+<!-- 9 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Che cosa aiuta, che cosa no</h2>
+<div class="tabella">
+<div class="tes">Aiuta</div><div class="tes rossa">Non aiuta</div>
+<div>Dire ciò che sai e ciò che non sai: «Non lo so, ma chiedo».</div><div>Fare promesse che non puoi mantenere.</div>
+<div>Lasciare tempo, anche al silenzio.</div><div>Interrompere, mettere fretta, guardare l'orologio.</div>
+<div>Riconoscere ciò che la persona prova.</div><div>«Non deve sentirsi così», «Poteva andare peggio».</div>
+<div>Lasciarle fare ciò che sa fare da sola.</div><div>Parlare dei tuoi problemi o delle storie di altri.</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Le indicazioni sono riprese dalla tabella su che cosa dire e fare e che cosa non dire e non fare del manuale dell'OMS: essere onesti su ciò che si sa e non si sa («Non lo so, ma proverò a trovare per te informazioni a riguardo»), consentire il silenzio, riconoscere gli stati d'animo, non interrompere né mettere fretta, non giudicare e non dire «Non devi sentirti così», non fare false promesse, non parlare dei propri problemi, non raccontare la storia di qualcun altro, non togliere alla persona la sensazione di potersi prendere cura di sé (OMS, «Primo soccorso psicologico», ed. it. 2018, p. 17; anche p. 9). La frase «Poteva andare peggio» è un esempio nostro dello stesso errore. Chiedete alla classe altre frasi che a loro hanno fatto male in un momento difficile.</div>
+</section>
+
+<!-- 10 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Le parole giuste</h2>
+<div class="tabella">
+<div class="tes">Diciamo</div><div class="tes rossa">Non diciamo</div>
+<div><strong>Persona con disabilità</strong></div><div class="sbagliato">disabile, handicappato, portatore di handicap, diversamente abile</div>
+<div><strong>Persone con fragilità</strong></div><div class="sbagliato">i fragili, soggetti fragili</div>
+<div>Usa la carrozzina, <strong>vive con</strong> una malattia</div><div class="sbagliato">costretto sulla sedia a rotelle, soffre di</div>
+<div><strong>Persona sorda</strong></div><div class="sbagliato">sordomuto</div>
+<div>Chiamarla per nome, con il «lei»</div><div class="sbagliato">nonnino, i nostri ragazzi (per un adulto)</div>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">«Persona con disabilità» e «condizione di disabilità» sono i termini stabiliti dalla legge: il d.lgs. 3 maggio 2024, n. 62, art. 4, sostituisce «handicap» con «condizione di disabilità» e «persona handicappata», «portatore di handicap», «disabile» e «diversamente abile» con «persona con disabilità» (testo letto su Normattiva il 21/11/2026). Le altre forme sono le regole di comunicazione della Confraternita: si parla di persone, non di categorie; niente pietismo né eroismo. Anche il manuale dell'OMS chiede di non parlare delle persone in termini negativi (ed. it. 2018, p. 17). Il «lei» e il nome sono l'esempio del rispetto per un adulto: seguite comunque come la persona preferisce essere chiamata.</div>
+</section>
+
+<!-- 11 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Aiutare come preferisce la persona</h2>
+<div class="lato" style="grid-template-columns: 1fr 420px;">
+<ul>
+<li>Chiedi <strong>come preferisce essere aiutata</strong>: lei conosce il suo corpo e i suoi tempi.</li>
+<li>Spiega che cosa stai per fare, <strong>prima</strong> di farlo.</li>
+<li><strong>Ausili e farmaci</strong> che usa viaggiano con lei: prima di partire, controlla che ci siano.</li>
+<li>Non lasciarla sola se è molto in difficoltà.</li>
+</ul>
+<svg viewBox="0 0 420 420" width="420" height="420" role="img" aria-label="Una carrozzina e una borsa con una croce, che partono insieme" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="150" cy="300" r="90" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<circle cx="150" cy="300" r="14" fill="#003F85"/>
+<circle cx="300" cy="370" r="24" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M80 70 V230 H260 L300 346" stroke="#003F85" stroke-width="12"/>
+<path d="M80 150 H220 V230" stroke="#003F85" stroke-width="12"/>
+<path d="M60 70 H100" stroke="#003F85" stroke-width="12"/>
+<rect x="270" y="80" width="130" height="110" rx="14" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M305 80 V62 C305 54 310 50 318 50 H352 C360 50 365 54 365 62 V80" stroke="#003F85" stroke-width="10"/>
+<path d="M335 108 V162 M308 135 H362" stroke="#003F85" stroke-width="12"/>
+</svg>
+</div>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Per le persone con problemi di salute o con disabilità il manuale dell'OMS indica di aiutarle a soddisfare i bisogni di base, di chiedere se assumono regolarmente farmaci e di aiutarle a trovarli, di restare con loro o accertarsi che abbiano qualcuno che le aiuti; ricorda che tutte le persone hanno risorse proprie e che va rispettato il loro diritto di decidere (OMS, «Primo soccorso psicologico», ed. it. 2018, pp. 9, 32, 37-38; non lasciare sole le persone molto in difficoltà, pp. 24-25). Ausili come carrozzina, deambulatore, apparecchi acustici e occhiali: come si caricano, si fissano e si controllano sui mezzi lo stabiliscono le procedure della Confraternita e la formazione sui trasporti. Domanda: «Che cosa chiedereste prima di aiutare una persona a scendere dall'auto?».</div>
+</section>
+
+<!-- 12 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Ciò che vedi e senti resta con te</h2>
+<ul>
+<li>Ciò che vedi <strong>nelle case</strong> e ciò che le persone ti raccontano è <strong>riservato</strong>: non si racconta ad amici, vicini o familiari.</li>
+<li>Le notizie sulla <strong>salute</strong> delle persone sono dati protetti dalla legge: <strong>non si diffondono</strong>.</li>
+<li>Usi i dati <strong>solo per il servizio</strong> e come ti indica la Confraternita.</li>
+<li>Nelle <strong>chat</strong>, anche in quelle del servizio, scrivi solo ciò che serve, secondo le regole interne.</li>
+</ul>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">I dati relativi alla salute sono i dati sulla salute fisica o mentale di una persona, compresi i servizi di assistenza sanitaria ricevuti (Regolamento UE 2016/679, GDPR, art. 4, n. 15) e sono una categoria particolare di dati (art. 9). Chi agisce sotto l'autorità del titolare tratta i dati solo su sua istruzione (art. 29). I dati genetici, biometrici e relativi alla salute non possono essere diffusi (d.lgs. 30 giugno 2003, n. 196, Codice privacy, art. 2-septies, comma 8). Testi letti su EUR-Lex e Normattiva il 21/11/2026. L'informativa privacy del sito ricorda che i dati di chi chiede un servizio li vedono i volontari e gli incaricati che organizzano il servizio, autorizzati e tenuti alla riservatezza. Anche il manuale dell'OMS chiede di rispettare la riservatezza delle storie e di non condividerle con altri (ed. it. 2018, pp. 9 e 17). Quali chat usare e che cosa scriverci lo stabiliscono le procedure della Confraternita: indicatele ai corsisti.</div>
+</section>
+
+<!-- 13 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Foto e social: chi aiutiamo non si pubblica</h2>
+<div class="lato" style="grid-template-columns: 1fr 260px;">
+<ul>
+<li><strong>Niente foto, video, nomi o dettagli</strong> delle persone assistite, né sui social né nelle chat personali.</li>
+<li>Nemmeno sullo sfondo, di spalle o con il volto coperto: case, targhe e indirizzi le fanno riconoscere.</li>
+<li>Le immagini di altre persone si pubblicano solo con il loro consenso.</li>
+</ul>
+<svg viewBox="0 0 330 460" width="260" height="362" role="img" aria-label="Telefono con una macchina fotografica barrata" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="45" y="20" width="240" height="420" rx="30" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<path d="M135 52 H195" stroke="#003F85" stroke-width="10"/>
+<rect x="85" y="185" width="160" height="110" rx="14" stroke="#233B74" stroke-width="10"/>
+<path d="M125 185 L140 160 H190 L205 185" stroke="#233B74" stroke-width="10"/>
+<circle cx="165" cy="240" r="30" stroke="#233B74" stroke-width="10"/>
+<circle cx="165" cy="240" r="105" stroke="#C8102E" stroke-width="16"/>
+<path d="M90 165 L240 315" stroke="#C8102E" stroke-width="16"/>
+</svg>
+</div>
+<p class="riquadro blu">Le foto per raccontare la Misericordia le fa e le pubblica <strong>solo la Confraternita</strong>, con le sue regole.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il Garante per la protezione dei dati personali consiglia di pubblicare immagini di altre persone solo con il loro consenso, perché potrebbero non voler apparire online, e ricorda che una volta pubblicate può essere molto difficile eliminarle («Attenzione quando pubblichi immagini online», novembre 2020, doc. web 3766930, letto su garanteprivacy.it il 21/11/2026). Per le persone in stato di necessità (assistiti, trasportati, persone in difficoltà) le regole di comunicazione della Confraternita vanno oltre: non devono essere riconoscibili, nemmeno sullo sfondo o di spalle, e mai con dati sanitari, targhe, indirizzi o citofoni. Il manuale dell'OMS chiede di proteggere le persone dall'esposizione ai media, per la loro privacy e dignità (ed. it. 2018, p. 24). Chi può fotografare durante un servizio e come si chiede il consenso lo stabiliscono le procedure della Confraternita. Domanda: «Un passante riprende con il telefono una persona che stai aiutando: che cosa fai?».</div>
+</section>
+
+<!-- 14 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Un'emergenza durante il servizio</h2>
+<div class="lato" style="grid-template-columns: 1fr 250px;">
+<ol class="passi">
+<li>Guarda che la situazione sia <strong>sicura</strong>.</li>
+<li>Chiama il <strong>112</strong> in <strong>vivavoce</strong> e segui le indicazioni dell'operatore.</li>
+<li>Di' <strong>dove sei</strong>: indirizzo preciso, piano, un punto di riferimento.</li>
+<li><strong>Avvisa il responsabile</strong> del servizio.</li>
+</ol>
+<svg viewBox="0 0 340 460" width="250" height="338" role="img" aria-label="Telefono in vivavoce con il numero 112" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="Montserrat, sans-serif">
+<rect x="70" y="40" width="200" height="380" rx="28" fill="#FFFFFF" stroke="#003F85" stroke-width="12"/>
+<path d="M140 72 H200" stroke="#003F85" stroke-width="10"/>
+<text x="170" y="230" text-anchor="middle" fill="#003F85" font-size="70" font-weight="800" stroke="none">112</text>
+<circle cx="170" cy="345" r="34" fill="#1E7B34"/>
+<path d="M152 334 H162 L176 322 V368 L162 356 H152 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4"/><path d="M184 336 C190 342 190 350 184 356" stroke="#FFFFFF" stroke-width="5"/>
+<path d="M290 150 C310 170 310 210 290 230 M312 125 C346 160 346 220 312 255" stroke="#009FE3" stroke-width="10"/>
+<path d="M50 150 C30 170 30 210 50 230 M28 125 C-6 160 -6 220 28 255" stroke="#009FE3" stroke-width="10"/>
+</svg>
+</div>
+<p class="riquadro tenue">Se non risponde e non respira normalmente: <strong>112</strong> e <strong>RCP</strong>, come nel corso BLSD.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Nel Lazio il 112 è il numero unico di emergenza, gratuito e attivo giorno e notte; il 113, il 115 e il 118 restano attivi, ma risponde la centrale del 112. All'operatore si dicono il nome, l'indirizzo preciso (scala, piano, nome sul citofono) o, in strada, la direzione e un punto di riferimento, e chi ha bisogno di aiuto (Regione Lazio, comunicazione.regione.lazio.it/112/, letta il 21/11/2026). Vivavoce e chiamata immediata per chi non risponde: Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4 «Basic Life Support (adulto)», pp. 5 e 7, come nelle slide del corso BLSD. Le manovre si fanno solo se si è formati: per chi non lo è, l'operatore del 112 guida al telefono. Chi avvisare e come si interrompe o si riorganizza un servizio lo stabiliscono le procedure della Confraternita.</div>
+</section>
+
+<!-- 15 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Dopo il servizio</h2>
+<ol class="passi">
+<li><strong>Annota</strong> ciò che serve, nel modo previsto dalla Confraternita: niente di più.</li>
+<li><strong>Riferisci al responsabile</strong> ciò che è successo e ciò che è rimasto in sospeso.</li>
+<li>Se hai promesso di richiamare o di informarti, <strong>mantieni la promessa</strong> o passala a chi può farlo.</li>
+<li>Lascia mezzo e materiale <strong>pronti</strong> per chi viene dopo.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Che cosa si annota, dove (registro, scheda di servizio, altro), come si riferisce e come si ripristinano mezzo e materiale lo stabiliscono le procedure della Confraternita: mostrate ai corsisti i moduli che usano. «Niente di più» ricorda che si scrivono solo i dati che servono al servizio (Regolamento UE 2016/679, art. 29: si trattano i dati solo su istruzione del titolare). Il manuale dell'OMS chiede di seguire le persone se si è promesso di farlo e di non fare false promesse (ed. it. 2018, pp. 9 e 27).</div>
+</section>
+
+<!-- 16 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>E tu come stai? Parlarne aiuta</h2>
+<div class="lato" style="grid-template-columns: 1fr 400px;">
+<ul>
+<li>Un servizio può lasciarti addosso <strong>pensieri pesanti</strong>: è normale.</li>
+<li><strong>Parlane</strong> con il responsabile, con un compagno di squadra o con una persona di fiducia.</li>
+<li>Riconosci ciò che hai fatto bene e i limiti di ciò che si poteva fare.</li>
+<li>Riposa, mangia, non accumulare turni troppo lunghi.</li>
+</ul>
+<svg viewBox="0 0 400 380" width="400" height="380" role="img" aria-label="Due fumetti che si parlano" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M20 40 H240 C254 40 262 48 262 62 V170 C262 184 254 192 240 192 H110 L70 230 L80 192 H42 C28 192 20 184 20 170 Z" fill="#FFFFFF" stroke="#003F85" stroke-width="10"/>
+<path d="M60 96 H222 M60 140 H180" stroke="#233B74" stroke-width="10"/>
+<path d="M380 170 H160 C146 170 138 178 138 192 V300 C138 314 146 322 160 322 H290 L330 360 L320 322 H358 C372 322 380 314 380 300 V192 C380 178 372 170 358 170 Z" fill="#FCEB0C" stroke="#003F85" stroke-width="10"/>
+<path d="M232 250 C232 236 246 228 258 236 C270 228 284 236 284 250 C284 268 258 282 258 282 C258 282 232 268 232 250 Z" stroke="#003F85" stroke-width="8"/>
+</svg>
+</div>
+<p class="riquadro blu">Se pensieri, tristezza o sonno disturbato <strong>durano più di un mese</strong>, rivolgiti al tuo medico.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Il manuale dell'OMS dedica un capitolo a prendersi cura di sé e dei colleghi: tempo per mangiare, riposare e rilassarsi, orari ragionevoli e turni, parlare della propria esperienza con un supervisore, un collega o qualcuno di fiducia, riconoscere ciò che si è riusciti a fare e i limiti di ciò che si poteva fare; se pensieri disturbanti, forte nervosismo o tristezza, problemi di sonno, alcol o droghe persistono per più di un mese, rivolgersi a un operatore sanitario o a uno specialista della salute mentale (OMS, «Primo soccorso psicologico», ed. it. 2018, pp. 40-42). Anche le Linee guida RCP 2025 di Italian Resuscitation Council ricordano che chi ha soccorso può trarre beneficio da un supporto psicologico successivo (cap. 4, p. 11). A chi rivolgersi dentro la Confraternita lo stabiliscono le sue procedure: indicatelo ai corsisti.</div>
+</section>
+
+<!-- 17 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Proviamo: che cosa fai?</h2>
+<p class="riquadro tenue">Accompagni una signora a una visita. In auto ti racconta un problema di famiglia. Il giorno dopo, al bar, una sua vicina ti chiede: «Come sta? Che cos'ha?».</p>
+<ol class="passi">
+<li>Racconti quello che sai, tanto è una vicina che le vuole bene.</li>
+<li>Rispondi con gentilezza che non puoi parlare delle persone che accompagni.</li>
+<li>Se la signora ti era sembrata in difficoltà, ne parli con il responsabile.</li>
+</ol>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Sono giuste la seconda e la terza risposta. La prima no: ciò che si viene a sapere durante il servizio, e a maggior ragione le notizie sulla salute, non si racconta a nessuno, nemmeno a chi conosce la persona (Codice privacy, art. 2-septies, comma 8: i dati relativi alla salute non possono essere diffusi; OMS, «Primo soccorso psicologico», ed. it. 2018, p. 9: non condividere la storia di una persona con altri). La terza è il «mettere in contatto»: chi coordina valuta, secondo le procedure della Confraternita, se coinvolgere i servizi o il Centro di Ascolto. Fate discutere a gruppi di tre per cinque minuti, poi chiedete a ogni gruppo di motivare la scelta.</div>
+</section>
+
+<!-- 18 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Da ricordare</h2>
+<ol class="passi">
+<li><strong>Briefing</strong> prima di partire; se qualcosa non è chiaro, chiedi.</li>
+<li><strong>In squadra</strong>, solo ciò per cui sei formato; decide chi coordina.</li>
+<li>Presentati, <strong>chiedi prima di aiutare</strong>, rispetta le scelte, ascolta senza giudicare.</li>
+<li><strong>Riservatezza</strong>: niente foto, nomi o dettagli delle persone, né sui social né nelle chat.</li>
+<li>Emergenza: <strong>112</strong> in vivavoce. Dopo: riferisci, e <strong>parlane</strong> se è stato pesante.</li>
+</ol>
+<p class="piccolo">Corsi e formazione della Misericordia di Ariccia: 328 8105399 (fisso 06 933 3717) · <span class="url">www.misericordia-ariccia.it/diventa-volontario/</span></p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<svg class="freccia" aria-hidden="true" width="94" height="86" viewBox="0 0 94 86" fill="none" stroke="#233B74" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"><path d="M8 8l34 35-34 35"></path><path d="M48 8l34 35-34 35"></path></svg>
+<div class="note-relatore">Riepilogo della lezione. Chiedete a ciascuno di dire quale dei cinque punti gli sembra più difficile da mettere in pratica e perché. Lasciate la slide proiettata mentre la classe fa domande. Il 328 8105399 e il fisso 06 933 3717 sono i numeri per corsi, formazione e iscrizioni; per ambulanze, trasporti ed eventi il numero è il 348 4068657 (pagina «Contatti» del sito).</div>
+</section>
+
+<!-- 19 -->
+<section class="diapo">
+<div class="banda"></div>
+<div class="tema">Nuovi&nbsp;<b>volontari</b></div>
+<img class="logo" src="../../grafica-brand/modelli-nazionali/loghi/triangolo-misericordie.png" alt="Logo delle Misericordie">
+<div class="contenuto">
+<h2>Fonti</h2>
+<ul class="crediti">
+<li>OMS, War Trauma Foundation e World Vision International, «Primo soccorso psicologico: Manuale per operatori sul campo» (2011; edizione italiana Azienda USL della Romagna, 2018), su <span class="url">who.int</span>.</li>
+<li>D.lgs. 3 maggio 2024, n. 62, art. 4; d.lgs. 30 giugno 2003, n. 196 (Codice privacy), art. 2-septies; d.lgs. 3 luglio 2017, n. 117 (Codice del Terzo settore), art. 17 (<span class="url">normattiva.it</span>).</li>
+<li>Regolamento (UE) 2016/679 (GDPR), artt. 4, 9 e 29 (<span class="url">eur-lex.europa.eu</span>).</li>
+<li>Garante per la protezione dei dati personali, «Attenzione quando pubblichi immagini online», 2020 (<span class="url">garanteprivacy.it</span>).</li>
+<li>Regione Lazio, Numero unico di emergenza 112 (<span class="url">comunicazione.regione.lazio.it/112/</span>); Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4.</li>
+<li>Sito della Misericordia di Ariccia: «Diventa volontario», «I confratelli», «Storia e tradizione», «Privacy». Testi riassunti e disegni della Misericordia di Ariccia.</li>
+</ul>
+<p class="piccolo">Verificato il 21/11/2026.</p>
+</div>
+<div class="firma-slide">Misericordia di Ariccia</div>
+<div class="note-relatore">Slide delle fonti: va lasciata in fondo alla presentazione anche quando si tolgono altre slide. Le note di ogni slide indicano articolo, pagina e data di lettura di ciascuna fonte. Le regole e le procedure interne della Confraternita restano il riferimento per ogni servizio.</div>
+</section>
+
+</body>
+</html>
