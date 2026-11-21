@@ -37,6 +37,8 @@ VIETATE = [
     r"\b(seguendo|secondo|come dice) il testo\b",
     # Dal 20/11/2026 (diventa-volontario, generazione 1): chiusa morale e giudizi delle voci.
     r"da meditare", r"mi ha colpit\w*",
+    # Dal 21/11/2026 (trauma-convulsioni-svenimento, generazione 1): «come dicono i testi».
+    r"\b(come|secondo) (dicono |indicano |riportano )?(i|questi|nei) test[io]\b",
     # Dal 21/11/2026 (prevenzione-stagionale, ritirata dopo la pubblicazione): regole lette ad alta voce.
     r"la regola dice", r"precisare la regola",
 ]
@@ -128,6 +130,13 @@ def main() -> int:
         secoli = {"200": "duecento", "300": "trecento", "400": "quattrocento", "500": "cinquecento",
                   "600": "seicento", "700": "settecento", "800": "ottocento", "900": "novecento"}
         if num in secoli and secoli[num] in fonte:
+            continue
+        # Dal 21/11/2026: «anni 90» detto dalle voci quando la fonte scrive «anni Novanta»
+        # (dalla-barella-all-ambulanza, generazione 1). Vale solo dopo «anni».
+        decenni = {"20": "venti", "30": "trenta", "40": "quaranta", "50": "cinquanta",
+                   "60": "sessanta", "70": "settanta", "80": "ottanta", "90": "novanta"}
+        if (num in decenni and testo[max(0, m.start() - 5):m.start()].endswith("anni ")
+                and f"anni {decenni[num]}" in fonte):
             continue
         # «25-26 gradi», «da 5 a 7»: ogni pezzo deve stare nelle fonti.
         pezzi = re.findall(r"\d+", m.group(0))
