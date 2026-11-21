@@ -1,9 +1,10 @@
 ---
 title: "Bambini, neonati e gravidanza: i kit per le emergenze"
-date: 2026-12-02
+date: 2026-11-21T00:02:00+01:00
+social_data: "2026-11-28"
 description: "I kit della Misericordia per bambini, neonati e gravidanza: schede da stampare, borse per l'evacuazione e cautele per le emergenze."
-episodio: 4
-audio: "/podcast/episodi/2026-12-02-kit-bambini-neonati-podcast.m4a"
+episodio: 3
+audio: "/podcast/episodi/2026-11-21-kit-bambini-neonati-podcast.m4a"
 durata: "2 min 57 s"
 durata_secondi: 177
 italianoSemplice: |
@@ -62,6 +63,8 @@ Sì, pannolini, cambi, alimentazione, igiene, farmaci, ma anche documenti e ogge
 Ripetiamo la cautela. I materiali sono strumenti pratici di supporto e non sostituiscono le indicazioni del pediatra, del personale sanitario o del 112 in caso di urgenza.
 
 E ricordiamo la regola fissa del sito. In caso di emergenza, chiama sempre il 112.
+
+Vi invitiamo a leggere le pagine sul sito misericordia-ariccia.it.
 
 ## Per approfondire sul nostro sito
 

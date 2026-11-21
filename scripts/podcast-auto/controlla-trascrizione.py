@@ -37,7 +37,21 @@ VIETATE = [
     r"\b(seguendo|secondo|come dice) il testo\b",
     # Dal 20/11/2026 (diventa-volontario, generazione 1): chiusa morale e giudizi delle voci.
     r"da meditare", r"mi ha colpit\w*",
+    # Dal 21/11/2026 (prevenzione-stagionale, ritirata dopo la pubblicazione): regole lette ad alta voce.
+    r"la regola dice", r"precisare la regola",
 ]
+# Dal 21/11/2026 (puntate ritirate al ricontrollo): parole che le fonti precisano sempre.
+# Se la fonte ha la forma completa e la trascrizione dice la parola senza, è un errore:
+# «spray nasale» senza «di adrenalina» vale per qualunque spray.
+DA_NON_SPEZZARE = [
+    (r"spray nasale", r"spray nasale di adrenalina"),
+    (r"(difficoltà a deglutire|deglutire) o gonfiore|gonfiore o difficoltà", r"gonfiore del viso o della gola"),
+    (r"succede a chi ha il diabete", r"succede soprattutto a chi ha il diabete"),
+]
+# Dal 21/11/2026 (storia-delle-misericordie: «670.000 iscritti» senza «circa»): un numero che
+# nelle fonti è accompagnato da una di queste parole (anche una volta sola: le tabelle dei numeri
+# lo scrivono nudo) deve averla anche nella puntata.
+QUALIFICA_NUMERI = r"(circa|oltre|più di|quasi|almeno|fino a|meno di|intorno a|sopra i|sotto i)\s+$"
 # Frasi da guardare a mano: la Misericordia non si chiama in emergenza.
 DA_GUARDARE = [r"chiam\w* (direttamente |subito |proprio )?(la|alla) misericordia", r"misericordia in emergenza",
                r"pronto soccorso della misericordia", r"\b118\b",
@@ -120,6 +134,26 @@ def main() -> int:
         if len(pezzi) > 1 and all(x in numeri_fonte or x == "112" for x in pezzi):
             continue
         problemi.append(f"numero assente dalle fonti «{m.group(0).strip()}»: …{contesto(m)}…")
+
+    # Numeri «circa»: se la fonte accompagna il numero con «circa», «oltre»…,
+    # la puntata deve dirlo con una di quelle parole.
+    for m in re.finditer(r"\d[\d.]*\d|\d", testo):
+        num = m.group(0)
+        if len(num) < 3 or re.fullmatch(r"(112)+|1[0-9]{3}|20[0-9]{2}", num):
+            continue  # cifre singole, 112 e anni
+        in_fonte = [f for f in re.finditer(r"(?<![\d.,])" + re.escape(num) + r"(?![\d,]|\.\d)", fonte)]
+        if re.search(r"(nell|dell|all|dall)'$", testo[max(0, m.start() - 5):m.start()]):
+            continue  # secoli: «nell'800»
+        if not in_fonte or not any(re.search(QUALIFICA_NUMERI, fonte[max(0, f.start() - 14):f.start()]) for f in in_fonte):
+            continue
+        if not re.search(QUALIFICA_NUMERI, testo[max(0, m.start() - 14):m.start()]):
+            problemi.append(f"numero senza «circa/oltre…» che le fonti gli danno «{num}»: …{contesto(m)}…")
+    for corta, completa in DA_NON_SPEZZARE:
+        if not re.search(completa, fonte):
+            continue
+        for m in re.finditer(corta, testo):
+            if not re.match(completa, testo[m.start():]) and not re.search(completa, testo[max(0, m.start() - 40):m.end() + 40]):
+                problemi.append(f"manca la precisazione delle fonti («{completa}»): …{contesto(m)}…")
 
     # Telefoni: qualunque numero di sei o più cifre (anche a gruppi separati da
     # spazi o punti) è vietato, anche se sta nelle fonti; resta solo il 112.
