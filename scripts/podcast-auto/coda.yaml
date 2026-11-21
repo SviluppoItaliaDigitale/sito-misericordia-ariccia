@@ -95,7 +95,11 @@ puntate:
   - content/dossier/prevenzione-stagionale.md
   parole: []
   stato: da-fare
-  nota: 'Era in calendario per il 25/11; tolta il 21/11/2026 al ricontrollo frase per frase: «se compaiono difficoltà a deglutire o gonfiore» senza «del viso o della gola» (e senza fiato corto e svenimento), «la regola dice» letto due volte, sull''acqua fredda il perché senza il divieto «niente vasca, doccia fredda o ghiaccio». Da rigenerare.'
+  nota: 'Era in calendario per il 25/11; tolta il 21/11/2026 al ricontrollo frase
+    per frase: «se compaiono difficoltà a deglutire o gonfiore» senza «del viso o
+    della gola» (e senza fiato corto e svenimento), «la regola dice» letto due volte,
+    sull''acqua fredda il perché senza il divieto «niente vasca, doccia fredda o ghiaccio».
+    Da rigenerare.'
 - id: opere-di-misericordia
   tema: dossier
   titolo: Le Opere di Misericordia
@@ -156,7 +160,10 @@ puntate:
   - content/dossier/storia-delle-misericordie.md
   parole: []
   stato: da-fare
-  nota: 'Era in calendario per il 5/12; tolta il 21/11/2026 al ricontrollo frase per frase: «670.000 iscritti» senza «circa» (registro: «circa 670.000») e la conclusione «chi riceveva assistenza non sapeva chi avesse di fronte», che la pagina non dà. Da rigenerare.'
+  nota: 'Era in calendario per il 5/12; tolta il 21/11/2026 al ricontrollo frase per
+    frase: «670.000 iscritti» senza «circa» (registro: «circa 670.000») e la conclusione
+    «chi riceveva assistenza non sapeva chi avesse di fronte», che la pagina non dà.
+    Da rigenerare.'
 - id: anafilassi-ipoglicemia
   tema: primo-soccorso
   titolo: 'Reazione allergica grave e ipoglicemia: i segni da riconoscere'
@@ -167,7 +174,10 @@ puntate:
   - anafilassi
   - ipoglicemia
   stato: da-fare
-  nota: 'Era in calendario per il 9/12; tolta il 21/11/2026 al ricontrollo frase per frase: «uno spray nasale prescritto dal medico» senza «di adrenalina», «succede a chi ha il diabete» senza «soprattutto» e «usa insulina o alcune medicine», seconda dose senza «anche se va un po'' meglio». Da rigenerare.'
+  nota: 'Era in calendario per il 9/12; tolta il 21/11/2026 al ricontrollo frase per
+    frase: «uno spray nasale prescritto dal medico» senza «di adrenalina», «succede
+    a chi ha il diabete» senza «soprattutto» e «usa insulina o alcune medicine», seconda
+    dose senza «anche se va un po'' meglio». Da rigenerare.'
 - id: servizio-civile
   tema: chi-siamo
   titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
@@ -197,7 +207,10 @@ puntate:
   fonti:
   - content/dossier/dalla-barella-all-ambulanza.md
   parole: []
-  stato: da-fare
+  stato: scartata
+  motivo: '21/11/2026, seconda generazione: «nel 2020 … biocontenimento ad alta intensità
+    e a pressione negativa» (la pressione negativa è di Empoli, 2021); la prima univa
+    guerra e alluvione del 1966 attribuendo al 1966 i cataletti.'
 - id: trauma-convulsioni-svenimento
   tema: primo-soccorso
   titolo: 'Trauma cranico, convulsioni e svenimento: che cosa fare'
@@ -209,7 +222,10 @@ puntate:
   - trauma cranico
   - convulsioni
   - svenimento
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-11-21-trauma-convulsioni-svenimento.md
+  data: '2026-11-21'
+  social_data: '2026-12-09'
 - id: servizi-sociali
   tema: chi-siamo
   titolo: 'Accompagnare e ascoltare: i servizi sociali della Misericordia'
