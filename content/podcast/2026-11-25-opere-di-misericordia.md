@@ -1,9 +1,9 @@
 ---
 title: "Le Opere di Misericordia"
-date: 2026-11-28
+date: 2026-11-25
 description: "Le quattordici Opere di Misericordia, sette per il corpo e sette per l'animo, e come la Misericordia di Ariccia le vive ogni giorno."
-episodio: 3
-audio: "/podcast/episodi/2026-11-28-opere-di-misericordia-podcast.m4a"
+episodio: 2
+audio: "/podcast/episodi/2026-11-25-opere-di-misericordia-podcast.m4a"
 durata: "2 min 12 s"
 durata_secondi: 132
 italianoSemplice: |

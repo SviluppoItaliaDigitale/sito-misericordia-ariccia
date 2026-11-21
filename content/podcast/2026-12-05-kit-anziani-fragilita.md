@@ -1,9 +1,9 @@
 ---
 title: "Anziani, disabilità e terapie salvavita: i kit per le emergenze"
-date: 2026-12-16
+date: 2026-12-05
 description: "I kit per le emergenze per anziani, caregiver familiari, persone con disabilità e con terapie salvavita: che cosa preparare prima."
-episodio: 8
-audio: "/podcast/episodi/2026-12-16-kit-anziani-fragilita-podcast.m4a"
+episodio: 5
+audio: "/podcast/episodi/2026-12-05-kit-anziani-fragilita-podcast.m4a"
 durata: "2 min 38 s"
 durata_secondi: 158
 italianoSemplice: |
