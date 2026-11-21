@@ -217,6 +217,7 @@ menu), feed `/podcast/index.xml`, issue automatica se il magazzino si svuota
 - `static/fonts/` — font auto-ospitati (woff2)
 - `scripts/ottimizza-immagini.py` — ricompressione JPEG + creazione `.webp`
 - `docs/` — documentazione di progetto
+- `docs/corso-primo-soccorso-2026.md` — gli argomenti del corso base dei volontari (dieci lezioni, 21/11–22/12/2026): sono la traccia dei contenuti da trattare su sito e social (Alessandro, 21/11/2026), con ciò che c'è già e ciò che manca
 
 ## SEO e performance (audit settembre 2026)
 
