@@ -43,6 +43,8 @@ Nell'arresto cardiaco il cuore smette di pompare: spesso **trema senza spingere*
 
 Premendo **al centro del torace**, di **5-6 centimetri**, il torace si abbassa e spinge il sangue fuori dal cuore, verso il cervello. Poi si lascia **risalire del tutto** il torace: così il cuore si riempie di nuovo. **Da 100 a 120 compressioni al minuto**, con meno pause possibile: ogni pausa ferma il sangue. Le linee guida lo dicono chiaramente: le compressioni sono il modo più semplice per mantenere il sangue che arriva al cervello e agli organi.
 
+> **Lo sapevi?** Per tenere il ritmo giusto molti istruttori fanno pensare a *Stayin' Alive* dei Bee Gees: la British Heart Foundation, la grande associazione inglese per il cuore, consiglia proprio di [comprimere a tempo con quella canzone](https://www.bhf.org.uk/how-you-can-help/how-to-save-a-life/how-to-do-cpr). Se ti viene in mente nel momento giusto, le tue mani vanno alla velocità che serve: né troppo piano né troppo in fretta.
+
 ## Il defibrillatore
 
 Il **DAE** serve a fermare il tremito: così il cuore può ripartire con un battito efficace. Se il ritmo si può trattare con la scarica, **ogni minuto di ritardo** riduce dal 3 al 6% la probabilità di sopravvivere. Appena arriva, si accende e si seguono le sue istruzioni; dopo la scarica si riprendono subito le compressioni. Tutti i passi sono nella scheda [Defibrillatore](/dossier/primo-soccorso/#dae) del nostro dossier.
@@ -57,4 +59,4 @@ Il video non sostituisce un corso: le manovre si imparano **sul manichino**, con
 
 In ogni emergenza chiama il **112**.
 
-*Fonti: [Linee guida RCP 2025 di Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), [capitolo 4 «BLS adulto»](https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf) (pp. 8, 19, 26 e 30) e [capitolo 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf) (p. 24). Anatomia: [BodyParts3D](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/), © The Database Center for Life Science, licenza CC BY 4.0. Dati verificati il 20/11/2026.*
+*Fonti: [Linee guida RCP 2025 di Italian Resuscitation Council](https://www.ircouncil.it/linee-guida-rcp-2025/), [capitolo 4 «BLS adulto»](https://www.ircouncil.it/wp-content/uploads/2026/02/CAPITOLO_4-BLS-ADULTO.pdf) (pp. 8, 19, 26 e 30) e [capitolo 12 «Primo soccorso»](https://www.ircouncil.it/wp-content/uploads/2026/04/CAPITOLO_12-PRIMO-SOCCORSO_15.04.2026.pdf) (p. 24); [British Heart Foundation, «How to do CPR»](https://www.bhf.org.uk/how-you-can-help/how-to-save-a-life/how-to-do-cpr) (il ritmo di *Stayin' Alive*, verificato il 21/11/2026). Anatomia: [BodyParts3D](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/), © The Database Center for Life Science, licenza CC BY 4.0. Dati verificati il 20/11/2026.*
