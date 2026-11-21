@@ -15,7 +15,7 @@ traccia dei contenuti da preparare per il sito e i social: notizie, schede del d
 | 4 | Cenni di emergenza ostetrica e parto in emergenza | 02/12/2026 | 18:00 |
 | 5 | Soccorso extraospedaliero, presidi in ambulanza, zaino di soccorso | 05/12/2026 | 10:00 |
 | 6 | Aspetti legali e BLSD | 12/12/2026 | 14:30 |
-| 7 | Emorragie e medicazioni, ustioni e trattamenti, SVT (Supporto Vitale al Trauma, il primo soccorso al traumatizzato; significato da confermare con il docente) | 16/12/2026 | 16:00 |
+| 7 | Emorragie e medicazioni, ustioni e trattamenti, SVT (Supporto Vitale al Trauma, il primo soccorso al traumatizzato; significato confermato da Alessandro il 21/11/2026) | 16/12/2026 | 16:00 |
 | 8 | Cenni di anatomia e patologie cardiache | 18/12/2026 | 18:00 |
 | 9 | Uso dei presidi, pratica in ambulanza, lavorare in squadra | 19/12/2026 | 10:00 |
 | 10 | Cenni sulla guida in sicurezza | 22/12/2026 | 18:00 |
