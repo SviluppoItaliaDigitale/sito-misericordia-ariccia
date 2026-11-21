@@ -134,31 +134,56 @@
     // manica blu lunga (revisione del 21/11/2026): dal polso in su, dritta oltre il gomito fino a uscire dal quadro; il
     // controllo «braccio» verifica che la sua estremità non si veda mai
     (function (b) {
-      // DUE ASPETTI (21/11/2026): «manica» è quello approvato (manica blu lunga dal polso oltre il gomito, fino a uscire dal
-      // quadro) e vale in tutte le scene tranne i due pollici; «nudo» (avambracci nudi come nella fig. 11, che oltre il taglio
-      // del modello continuano con un tronco di cono color pelle fino a uscire dal quadro) vale solo nelle scene dei pollici
-      const tubo = []; b.mesh.traverse(o => { if (o !== b.mesh && o.isMesh) tubo.push(o); });
-      const t0 = tubo[0], r = 0.03, L = PROVA === 'manica-corta' ? 0.01 : 1.8;   // 1,8 m: con i tempi nuovi la fine (0,9 m) si vedeva a inizio frase 5; prova: manica corta
-      t0.geometry.dispose(); t0.geometry = new THREE.CapsuleGeometry(r, L, 6, 20); t0.position.y = 0.14 - L / 2;
-      const fineManicaBlu = () => t0.localToWorld(v3(0, -L / 2 - r, 0));
-      const matManica = b.mesh.material, matNudo = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55, side: THREE.DoubleSide });
-      const la = b.ossa['lowerarm01.' + b.lato], pos = b.mesh.geometry.attributes.position, qv = v3(0, 0, 0);
-      b.mesh.updateMatrixWorld(true); const inv = new THREE.Matrix4().copy(la.matrixWorld).invert();
+      // DUE ASPETTI (21/11/2026): «manica» (manica blu: la pelle dell'avambraccio colorata di blu oltre il polsino, con
+      // un passaggio liscio e un orlo, e la stessa continuazione chiusa in blu oltre il taglio del modello) in tutte le scene
+      // tranne i due pollici; «nudo» (avambraccio nudo e continuazione color pelle) solo nei pollici. Giunzione pulita
+      // (revisione finale): i vertici del modello vicini al taglio rientrano dentro la continuazione, che parte 5 cm dentro
+      // l'avambraccio con la stessa sezione, è chiusa e non ha buchi né pezzi sovrapposti
+      const tubo = []; b.mesh.traverse(o => { if (o !== b.mesh && o.isMesh) tubo.push(o); }); tubo.forEach(o => o.visible = false);
+      const geo = b.mesh.geometry, pos = geo.attributes.position, la = b.ossa['lowerarm01.' + b.lato], qv = v3(0, 0, 0);
+      b.mesh.updateMatrixWorld(true); const inv = new THREE.Matrix4().copy(la.matrixWorld).invert(), M = new THREE.Matrix4().copy(b.mesh.matrixWorld);
       const P = []; for (let i = 0; i < pos.count; i++) { b.mesh.getVertexPosition(i, qv); b.mesh.localToWorld(qv); qv.applyMatrix4(inv); P.push([qv.x, qv.y, qv.z]); }
-      const yCut = Math.min(...P.map(p => p[1]));
-      const fascia = P.filter(p => p[1] < yCut + 0.02), cx = fascia.reduce((s0, p) => s0 + p[0], 0) / fascia.length, cz = fascia.reduce((s0, p) => s0 + p[2], 0) / fascia.length;
-      let sxx = 0, szz = 0, sxz = 0; for (const [x, , z] of fascia) { sxx += (x - cx) ** 2; szz += (z - cz) ** 2; sxz += (x - cx) * (z - cz); }
-      const th = 0.5 * Math.atan2(2 * sxz, sxx - szz), ux = Math.cos(th), uz = Math.sin(th);
-      let ea = 0, ec = 0; for (const [x, , z] of fascia) { ea = Math.max(ea, Math.abs((x - cx) * ux + (z - cz) * uz)); ec = Math.max(ec, Math.abs(-(x - cx) * uz + (z - cz) * ux)); }
-      const LC = PROVA === 'manica-corta' ? 0.03 : 0.8, cono = 0.12, pezzi = [];
-      const matP = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55 });
-      const pezzo = (r0, r1, len, y) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(r0, r1, len, 48, 1, false), matP); m.position.set(cx, y, cz); m.scale.set(ea, 1, ec); m.rotation.y = -th; la.add(m); pezzi.push(m); return m; };
-      pezzo(1, 1.12, Math.min(cono, LC), yCut + 0.006 - Math.min(cono, LC) / 2);
-      if (LC > cono) pezzo(1.12, 1.22, LC - cono, yCut + 0.006 - cono - (LC - cono) / 2);
-      const fineNuda = () => la.localToWorld(v3(cx, yCut + 0.006 - LC, cz));
+      // vertici staccati (6 punti lontani dall'avambraccio nel modello): fuori dai calcoli della sezione e dalla giunzione
+      const asseD = p => Math.hypot(p[0], p[2]); const med = P.map(asseD).sort((a, b2) => a - b2)[Math.floor(P.length / 2)];
+      const buoni = P.map(p => asseD(p) < 4 * med); const PB = P.filter((p, i) => buoni[i]);
+      const yCut = Math.min(...PB.map(p => p[1])), lw = la.worldToLocal(b.ossa['wrist.' + b.lato].getWorldPosition(v3(0, 0, 0))).y;
+      const ellisse = (a0, a1) => { const f = PB.filter(p => p[1] >= a0 && p[1] <= a1), cx = f.reduce((s0, p) => s0 + p[0], 0) / f.length, cz = f.reduce((s0, p) => s0 + p[2], 0) / f.length;
+        let sxx = 0, szz = 0, sxz = 0; for (const [x, , z] of f) { sxx += (x - cx) ** 2; szz += (z - cz) ** 2; sxz += (x - cx) * (z - cz); }
+        const th = 0.5 * Math.atan2(2 * sxz, sxx - szz), ux = Math.cos(th), uz = Math.sin(th); let a = 0, c = 0;
+        for (const [x, , z] of f) { a = Math.max(a, Math.abs((x - cx) * ux + (z - cz) * uz)); c = Math.max(c, Math.abs(-(x - cx) * uz + (z - cz) * ux)); }
+        return { cx, cz, th, a, c }; };
+      // il taglio del modello è obliquo: la sezione di riferimento è il primo anello intero, 4,5 cm sopra il punto più basso
+      const yR = yCut + 0.045, E0 = ellisse(yR - 0.01, yR + 0.01), E1 = ellisse(yR + 0.042, yR + 0.058);
+      // i vertici entro 4 cm dal taglio rientrano verso l'asse (fino all'85%), così restano dentro la continuazione
+      const R0 = new THREE.Matrix4().copy(la.matrixWorld), toLa = new THREE.Matrix4().multiplyMatrices(inv, M), daLa = new THREE.Matrix4().copy(toLa).invert();
+      for (let i = 0; i < pos.count; i++) { const [x, y, z] = P[i]; if (y > yR + 0.048) continue; const k = y < yR ? 0.85 : 0.85 + 0.15 * ((y - yR) / 0.048) ** 2;
+        const q = v3(E0.cx + (x - E0.cx) * k, y, E0.cz + (z - E0.cz) * k).applyMatrix4(daLa); pos.setXYZ(i, q.x, q.y, q.z); }
+      pos.needsUpdate = true; geo.computeVertexNormals();
+      // continuazione chiusa: da 5 cm dentro l'avambraccio (sezione appena sotto la pelle) al taglio (sezione del taglio) e
+      // oltre, allargandosi come un braccio vero, fino a uscire dal quadro
+      const LC = PROVA === 'manica-corta' ? 0.03 : 1.8, pezzi = [];
+      const pezzo = (sa, sb, ya, yb, mat) => { const g2 = new THREE.CylinderGeometry(1, 1, ya - yb, 48, 1, false);   // y alto = ya
+        const pp = g2.attributes.position; for (let i = 0; i < pp.count; i++) { const t = (pp.getY(i) + (ya - yb) / 2) / (ya - yb), e = t < 0.5 ? null : null;
+          const A = sb.a + (sa.a - sb.a) * t, C = sb.c + (sa.c - sb.c) * t, th = sb.th + (sa.th - sb.th) * t, cx = sb.cx + (sa.cx - sb.cx) * t, cz = sb.cz + (sa.cz - sb.cz) * t;
+          const x0 = pp.getX(i) * A, z0 = pp.getZ(i) * C; pp.setXYZ(i, cx + x0 * Math.cos(th) - z0 * Math.sin(th), yb + t * (ya - yb), cz + x0 * Math.sin(th) + z0 * Math.cos(th)); }
+        g2.computeVertexNormals(); const m = new THREE.Mesh(g2, mat); la.add(m); pezzi.push(m); return m; };
+      const sez = (E, k) => Object.assign({}, E, { a: E.a * k, c: E.c * k });
+      const matPelle = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55 }), matBlu = new THREE.MeshStandardMaterial({ color: b.lato === 'L' ? 0x2f6db3 : 0x003f85, roughness: 0.55 });
+      const mkCont = mat => [pezzo(sez(E1, 0.97), sez(E0, 1.0), yR + 0.05, yR, mat), pezzo(sez(E0, 1.0), sez(E0, 1.12), yR, yCut - 0.12, mat), pezzo(sez(E0, 1.12), sez(E0, 1.22), yCut - 0.12, yCut - LC, mat)];
+      const contP = mkCont(matPelle), contB = mkCont(matBlu);
+      const fine = () => la.localToWorld(v3(E0.cx, yCut - LC, E0.cz));
+      // manica: colore dei vertici con un passaggio liscio (1,2 cm) a 10 cm dal polso, misurato sulla posizione a riposo
+      const yPolsino = lw - 0.1 / 1.0, cP = new THREE.Color(0xd9a07c), cB = new THREE.Color(b.lato === 'L' ? 0x2f6db3 : 0x003f85), col = new Float32Array(pos.count * 3);
+      for (let i = 0; i < pos.count; i++) { const u = M3.clamp((yPolsino + 0.006 - P[i][1]) / 0.012), w = u * u * (3 - 2 * u); const c = cP.clone().lerp(cB, w); col.set([c.r, c.g, c.b], 3 * i); }
+      geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+      const Eo = ellisse(yPolsino - 0.01, yPolsino + 0.01);
+      const orlo = new THREE.Mesh(new THREE.TorusGeometry(1, 0.0028 / Math.min(Eo.a, Eo.c), 10, 48), new THREE.MeshStandardMaterial({ color: b.lato === 'L' ? 0x5a8fd0 : 0x1f5aa8, roughness: 0.6 }));
+      orlo.rotation.x = Math.PI / 2; const og = new THREE.Group(); og.add(orlo); og.position.set(Eo.cx, yPolsino - 0.006, Eo.cz); og.scale.set(Eo.a * 1.02, 1, Eo.c * 1.02); og.rotation.y = -Eo.th; la.add(og);
+      const matManica = new THREE.MeshStandardMaterial({ color: 0xffffff, vertexColors: true, roughness: 0.55, side: THREE.DoubleSide }), matNudo = new THREE.MeshStandardMaterial({ color: 0xd9a07c, roughness: 0.55, side: THREE.DoubleSide });
       b.aspetto = modo => { if (b.modo === modo) return; b.modo = modo; const nudo = modo === 'nudo';
-        b.mesh.material = nudo ? matNudo : matManica; t0.visible = !nudo; pezzi.forEach(m => m.visible = nudo);
-        b.fineManica = nudo ? fineNuda : fineManicaBlu; b.fineOpaca = b.fineManica; };
+        b.mesh.material = nudo ? matNudo : matManica; contP.forEach(m => m.visible = nudo); contB.forEach(m => m.visible = !nudo); og.visible = !nudo;
+        b.fineManica = fine; b.fineOpaca = fine; };
+      b.giunzione = { E0, yCut, la, vicini: P.map((p, i) => p[1] < yR && buoni[i] ? i : -1).filter(i => i >= 0), staccati: P.map((p, i) => buoni[i] ? -1 : i).filter(i => i >= 0) };
       b.aspetto('manica');
       // angoli di riposo delle ossa presi alla costruzione (prima si prendevano alla prima posa dei pollici: se prima si
       // rendeva la scena delle pacche, il «riposo» era la posa delle pacche e la presa dei pollici veniva sbagliata)
@@ -275,9 +300,10 @@
     sh.moveTo(-w + rr, -l); sh.lineTo(w - rr, -l); sh.quadraticCurveTo(w, -l, w, -l + rr); sh.lineTo(w, l - rr); sh.quadraticCurveTo(w, l, w - rr, l); sh.lineTo(-w + rr, l); sh.quadraticCurveTo(-w, l, -w, l - rr); sh.lineTo(-w, -l + rr); sh.quadraticCurveTo(-w, -l, -w + rr, -l);
     const g = new THREE.ExtrudeGeometry(sh, { depth: 0.005, bevelEnabled: false }); g.translate(0, 0, -0.0025); g.rotateX(-Math.PI / 2);
     const p = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0xffffff })); p.castShadow = false; scena.add(p);
-    const bordo = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sh.getPoints(12).map(q => v3(q.x, 0.0032, -q.y)), true), 80, 0.0013, 6, true), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true }));
+    const bordo = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sh.getPoints(12).filter((q, k, A) => k < A.length - 1 || q.distanceTo(A[0]) > 1e-6).map(q => v3(q.x, 0.0032, -q.y)), true, 'centripetal')   /* senza il punto doppio di chiusura (lasciava un dentino) */, 80, 0.0013, 6, true), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true }));
     p.add(bordo); bordo.material.opacity = 1; p.children[0] = bordo;
     const cavo = new THREE.Mesh(new THREE.CylinderGeometry(0.0022, 0.0022, 0.03, 12), new THREE.MeshBasicMaterial({ color: 0x3a3a3a })); cavo.rotation.x = Math.PI / 2; cavo.position.set(0, 0.002, l + 0.013); p.add(cavo);
+    const spina = new THREE.Mesh(new THREE.BoxGeometry(0.009, 0.006, 0.012), new THREE.MeshBasicMaterial({ color: 0x555b66 })); spina.position.set(0, 0.002, l + 0.033); p.add(spina);   // piccolo connettore in fondo al cavo
     return p; });
   const bordoPlacca = [0, 1].map(() => { const b = new THREE.Mesh(new THREE.RingGeometry(0.036, 0.04, 4, 1, Math.PI / 4), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, side: THREE.DoubleSide, depthTest: false, transparent: true })); b.renderOrder = 11; scena.add(b); return b; });
   // bocca di chi soccorre (schema): ovale trasparente che copre bocca e naso, frecce dell'aria
@@ -843,7 +869,7 @@
   // verticali sullo sterno e le dita sul fianco; prima (fino al 21/11/2026) quasi dall'alto come la fig. 11 (elevazione 78°),
   // dal lato dei piedi, testa in alto nel quadro, torace, testa e mani interi; gli avambracci escono dal bordo in basso; il centro è un po' più in basso dello sterno, così il lattante sale nel
   // quadro e la fascia dei sottotitoli non taglia la testa. Telecamera ferma quando arrivano le mani.
-  const POLLICI = { p: v3(Math.sin(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08)), Math.sin(TARA('pel', 1.08)), Math.cos(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08))).multiplyScalar(TARA('dpoll', 1.2)), c: v3(0, -0.03, 0.035), sh: PROVA === 'pannelli' ? -0.12 : TARA('psh', 0.1) }   // prova «pannelli»: il lattante finisce sotto le schede;
+  const POLLICI = { p: v3(Math.sin(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08)), Math.sin(TARA('pel', 1.08)), Math.cos(TARA('paz', 0.4)) * Math.cos(TARA('pel', 1.08))).multiplyScalar(TARA('dpoll', 1.2)), c: v3(0, -0.03, 0.035), sh: PROVA === 'pannelli' ? -0.12 : TARA('psh', 0.2) }   // prova «pannelli»: il lattante finisce sotto le schede;
   function TARA(k, d) { return +(new URLSearchParams(location.search).get(k) || d); }   // solo prove: dpoll, pel, paz
   // freccia di profondità accanto al torace (un terzo del diametro antero-posteriore, 0,036 m nello schema)
   function frecciaProfondita(prof) { const b = lat.G.bacino; freccia = { a: b.localToWorld(v3(0.085, 0.128, 0.058)), b: b.localToWorld(v3(0.085, 0.128, 0.058 - 0.036)), prof }; }
@@ -1013,7 +1039,7 @@
       const qn = new THREE.Quaternion().setFromUnitVectors(v3(0, 1, 0), q.n);                        // spessore della placca lungo la normale
       placche[k].visible = true; placche[k].position.copy(p); placche[k].quaternion.copy(qb).multiply(qn);
       placche[k].children[0].material.opacity = vd;
-      if (DAVANTI) segniDae.sterno.visible = true; else segniDae.scapole.forEach(m => m.visible = true);
+      // niente segni accessori (righe dello sterno e delle scapole): solo la placca (revisione finale)
       // controllo automatico
       if (vd > 0.98) {
         const l = b.worldToLocal(p.clone());
@@ -1041,7 +1067,7 @@
       { a: T_TAV, c: st.clone().add(v3(0, -0.02, 0.04)), p: v3(0.95, 0.72, -0.3), sh: 0.11 },
       { a: S[11] - 0.5, c: st.clone().add(v3(0, TARA('sy', 0.0), TARA('sz', -0.05))), p: v3(TARA('sax', 0.7), TARA('say', 0.35), TARA('saz', 1.35)).multiplyScalar(TARA('sd', 0.48)), sh: 0.11 },   // soffi: di lato, vicino
       { a: S[12] - 0.4, c: stF.clone().add(POLLICI.c), p: POLLICI.p.clone(), sh: POLLICI.sh },   // pollici: 3/4 dai piedi, poi ferma
-      { a: S[15] + 0.05, c: v3(0, BASE_Y + 0.05, 0), p: v3(0.22, 0.9, 0.12).multiplyScalar(TARA('dd', 1.12)), sh: TARA('dsh', 0.25) },   // DAE: dall'alto (circa 74°), vicino al torace, lattante a sinistra delle schede;     // DAE: dall'alto, come la fig. 14
+      { a: S[15] + 0.05, c: v3(0, BASE_Y + 0.05, TARA('dcz', -0.11)), p: v3(0.22, 0.9, 0.12).multiplyScalar(TARA('dd', 1.22)), sh: TARA('dsh', 0.25) },   // DAE: dall'alto (circa 74°), vicino al torace, lattante a sinistra delle schede;     // DAE: dall'alto, come la fig. 14
       { a: S[16] - 0.4, c: st.clone().add(v3(0, -0.02, -0.02)), p: v3(0.95, 0.72, -0.4), sh: 0.11 }
     ];
     const camProva = JSON.parse(new URLSearchParams(location.search).get('cam') || 'null');   // solo prove: {"c":[..],"p":[..]}
@@ -1092,10 +1118,13 @@
     if (alfa <= 0.001) return;
     righe = [].concat(righe);
     const y = LAY.avviso, corpo = VERT ? 32 : 34, lh = corpo * 1.3;
+    const aSinistra = !VERT && posaCorrente === 'aria';   // nella scena delle vie dell'aria l'avviso va a destra, lontano dalla testa
     c.save(); c.globalAlpha = alfa; c.font = `800 ${corpo}px Montserrat`;
     const w = Math.max(...righe.map(r => c.measureText(r).width)) + 64, h = 30 + lh * righe.length;
-    rett(c, (W - w) / 2, y - 44, w, h, 30); c.fillStyle = 'rgba(0,30,70,.93)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
-    righe.forEach((r, i) => testo(c, r, W / 2, y + i * lh, corpo, 800, i ? '#FFFFFF' : colore, 'center'));
+    const xa = aSinistra ? W - w - 60 : (W - w) / 2, cxa = xa + w / 2;
+    if (alfa > 0.3) pannelli.push({ x: xa, y: y - 44, w, h, nome: 'avviso' });
+    rett(c, xa, y - 44, w, h, 30); c.fillStyle = 'rgba(0,30,70,.93)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    righe.forEach((r, i) => testo(c, r, cxa, y + i * lh, corpo, 800, i ? '#FFFFFF' : colore, 'center'));
     c.restore();
   }
   let fondoPasso = 0;
@@ -1142,19 +1171,27 @@
     c.restore();
   }
   const contati = (t, lista) => lista.reduce((s, t0) => s + clamp((t - t0) / 0.12), 0);
+  let fuoriChiusura = [];
   function chiusura(c, t) {
+    fuoriChiusura = [];
     const t0 = S[18] - 0.3, a = clamp((t - t0) / 0.7); if (a <= 0) return;
     c.save(); c.globalAlpha = a;
     c.fillStyle = 'rgba(0,40,92,.86)'; c.fillRect(0, 0, W, H);
-    const passi = [['1', 'Tossisce o piange?', 'lascialo tossire', t0 + 0.6], ['2', 'Chiama il 112', 'in vivavoce', t0 + 1.3], ['3', '5 pacche, 5 compressioni', 'alternate', t0 + 2.0]];
+    const passi = [['1', 'Tossisce o piange?', 'lascialo tossire', t0 + 0.6], ['2', 'Chiama il 112', 'in vivavoce', t0 + 1.3], ['3', PROVA === 'chiusura-lunga' ? '5 pacche, 5 compressioni alternate sempre' : '5 pacche, 5 compressioni', 'alternate', t0 + 2.0]];
+    // titoli della stessa misura nei tre riquadri, il terzo su due righe; il testo resta dentro (controllo `chiusura`)
+    const righeT = passi.map(p => p[1] === '5 pacche, 5 compressioni' ? ['5 pacche,', '5 compressioni'] : [p[1]]);
+    let corpoT = 40; c.font = `800 ${corpoT}px Montserrat`;
+    while (corpoT > 26 && passi.some((p, i) => righeT[i].some(rr => c.measureText(rr).width > LAY.passi(i).w - 150))) { corpoT--; c.font = `800 ${corpoT}px Montserrat`; }
     passi.forEach(([n, ti, so, tt], i) => {
       const b = clamp((t - tt) / 0.45), q = LAY.passi(i), y = q.y + (1 - b) * 24;
       c.globalAlpha = a * b;
       rett(c, q.x, y, q.w, q.h, 22); c.fillStyle = '#003F85'; c.fill(); c.strokeStyle = '#FCEB0C'; c.lineWidth = 4; c.stroke();
       c.fillStyle = '#FCEB0C'; c.beginPath(); c.arc(q.x + 70, y + (VERT ? q.h / 2 : 78), 44, 0, 7); c.fill();
       testo(c, n, q.x + 70, y + (VERT ? q.h / 2 + 18 : 96), 50, 900, '#003F85', 'center');
-      let corpo = 40; c.font = `800 ${corpo}px Montserrat`; while (c.measureText(ti).width > q.w - 150 && corpo > 26) { corpo--; c.font = `800 ${corpo}px Montserrat`; }
-      testo(c, ti, q.x + 134, y + (VERT ? q.h / 2 - 6 : 94), corpo, 800, '#FFFFFF');
+      const rt = righeT[i], corpo = corpoT, y0t = y + (VERT ? q.h / 2 - 6 : 94) - (rt.length - 1) * corpo * 0.55;
+      c.font = `800 ${corpo}px Montserrat`;
+      rt.forEach((rr, k) => { testo(c, rr, q.x + 134, y0t + k * corpo * 1.1, corpo, 800, '#FFFFFF'); if (b > 0.99 && q.x + 134 + c.measureText(rr).width > q.x + q.w - 12) fuoriChiusura.push(`riquadro ${n}: «${rr}» esce dal bordo`); });
+      c.font = `600 28px Montserrat`; if (b > 0.99 && (VERT ? q.x + 134 : q.x + 40) + c.measureText(so).width > q.x + q.w - 12) fuoriChiusura.push(`riquadro ${n}: «${so}» esce dal bordo`);
       testo(c, so, VERT ? q.x + 134 : q.x + 40, y + (VERT ? q.h / 2 + 38 : 180), 28, 600, 'rgba(255,255,255,.88)');
     });
     const d = clamp((t - (t0 + 2.8)) / 0.6);
@@ -1267,6 +1304,11 @@
 
   /* ---------- «giù di 1/3» accanto al torace (revisione del 21/11/2026): freccia verticale chiara, mai sopra il corpo, le
      braccia, le mani o un pannello: si prova a sinistra e a destra dello sterno e si sceglie il primo posto libero ---------- */
+  // punti del viso e della testa del lattante (calotta anteriore, occhi, naso, bocca, guance) per i controlli di schede ed etichette
+  function puntiViso() { const T = lat.G.testa, out = [];
+    for (let a = -1.2; a <= 1.21; a += 0.4) for (let e = -0.6; e <= 1.21; e += 0.3) out.push(T.localToWorld(v3(0.066 * Math.sin(a) * Math.cos(e), 0.072 + 0.07 * Math.sin(e), 0.066 * Math.cos(a) * Math.cos(e))));
+    out.push(T.localToWorld(v3(0, 0.145, 0))); return out; }
+  function puntiManiAdulto() { const pts = []; for (const n of ['R', 'L']) if (gruppo[n].visible) for (const k in braccio[n].ossa) if (/finger|wrist|metacarpal/.test(k)) { pts.push(braccio[n].testa(k)); pts.push(braccio[n].punta(k)); } return pts; }
   function puntiOccupati() {
     const pts = [];
     for (const n of ['R', 'L']) if (gruppo[n].visible) for (const k in braccio[n].ossa) pts.push(braccio[n].testa(k));
@@ -1358,12 +1400,12 @@
     // schede con la linea di richiamo
     const seg = inq.segni || {};
     const SCH = [
-      { id: 'trachea', titolo: 'Vie dell\'aria', sotto: 'il pezzetto le chiude', punto: t < T_PRONO && pezzetto.visible ? pezzetto.position : null, verso: { dx: 300, dy: -120 }, versoV: { dx: 230, dy: 120 }, inizio: S[1] + dur(1) * 0.6, fine: E[2] + 0.6 },
-      { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: -300, dy: -150 }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: E[6] + 2.8 },
-      { id: 'sterno', titolo: 'Metà inferiore dello sterno', sotto: 'qui i due pollici', punto: seg.st && t >= S[12] - 0.3 && t < S[13] + 0.3 ? seg.st : null, verso: { dx: 470, dy: 210 }, versoV: { dx: -200, dy: 150 }, inizio: S[12] + 1.0, fine: S[13] },
+      { id: 'trachea', titolo: 'Vie dell\'aria', sotto: 'il pezzetto le chiude', punto: t < T_PRONO && pezzetto.visible ? pezzetto.position : null, verso: { dx: TARA('ltx', 420), dy: TARA('lty', 120) }, versoV: { dx: 230, dy: 120 }, inizio: S[1] + dur(1) * 0.6, fine: E[2] + 0.6 },
+      { id: 'scapole', titolo: 'Tra le scapole', sotto: 'a metà della schiena', punto: seg.sc || null, verso: { dx: TARA('lsx', -430), dy: TARA('lsy', -250) }, versoV: { dx: 230, dy: 110 }, inizio: S[5] + dur(5) * 0.5, fine: E[6] + 2.8 },
+      { id: 'sterno', titolo: 'Metà inferiore dello sterno', sotto: 'qui i due pollici', punto: seg.st && t >= S[12] - 0.3 && t < S[13] + 0.3 ? seg.st : null, verso: { dx: TARA('lex', 750), dy: TARA('ley', 170) }, versoV: { dx: -200, dy: 150 }, inizio: S[12] + 1.0, fine: S[13] },
       { id: 'torace', titolo: 'Il torace si alza', sotto: 'a ogni soffio', punto: segnoTorace, verso: { dx: -260, dy: -220 }, versoV: { dx: -200, dy: -150 }, inizio: SOFFI[0] + 0.2, fine: SOFFI[4] + 1.2 },
-      { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 420), dy: TARA('l1y', 230) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
-      { id: 'placca2', titolo: 'Placca dietro', sotto: 'sulla schiena, tra le scapole', punto: placche[1].visible ? placche[1].position : null, verso: { dx: TARA('l2x', 420), dy: TARA('l2y', 230) }, versoV: { dx: 200, dy: -150 }, inizio: TEMPI_DAE.DAE_GIRO + TEMPI_DAE.GIRO_D + 0.1, fine: TEMPI_DAE.DAE_B - 1.1 }
+      { id: 'placca1', titolo: 'Placca davanti', sotto: 'subito a sinistra dello sterno', punto: placche[0].visible ? placche[0].position : null, verso: { dx: TARA('l1x', 460), dy: TARA('l1y', 40) }, versoV: { dx: -190, dy: -170 }, inizio: TEMPI_DAE.DAE_A + 0.5, fine: TEMPI_DAE.DAE_GIRO - 0.15 },
+      { id: 'placca2', titolo: 'Placca dietro', sotto: 'sulla schiena, tra le scapole', punto: placche[1].visible ? placche[1].position : null, verso: { dx: TARA('l2x', 460), dy: TARA('l2y', 40) }, versoV: { dx: 200, dy: -150 }, inizio: TEMPI_DAE.DAE_GIRO + TEMPI_DAE.GIRO_D + 0.1, fine: TEMPI_DAE.DAE_B - 1.1 }
     ];
     for (const s of SCH) { const p = proietta(s.punto); IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT ? s.versoV : s.verso, inizio: s.inizio, fine: s.fine, visibile: !!p }); }
     const testoFonte = 'Lattante e mani: schema disegnato dalla Misericordia di Ariccia\nContenuti: Linee guida RCP 2025, Italian Resuscitation Council, cap. 9';
@@ -1406,10 +1448,10 @@
     if (lat.radice.visible) { const sr = stage.getBoundingClientRect(), kx = W / sr.width, ky = H / sr.height;
       const corpo = []; for (let y = -0.03; y <= 0.19; y += 0.02) for (const x of [-0.05, -0.025, 0, 0.025, 0.05]) for (const zz of [1, -1]) { const q = lat.sezione(y); corpo.push(lat.G.bacino.localToWorld(v3(x, y, q.z + zz * q.rz * 0.7))); }
       for (const n of ['Sx', 'Dx']) { const a = mondo(lat.G['spalla' + n]), b2 = mondo(lat.G['gomito' + n]); for (let k = 0; k <= 4; k++) corpo.push(a.clone().lerp(b2, k / 4)); }
-      corpo.push(mondo(lat.G.testa)); const cp = corpo.map(proietta).filter(Boolean);
-      for (const id of ['placca1', 'placca2', 'torace']) { const el = document.getElementById('imp-scheda-' + id); if (!el || +getComputedStyle(el).opacity < 0.5) continue;
+      corpo.push(mondo(lat.G.testa)); puntiViso().forEach(q => corpo.push(q)); puntiManiAdulto().forEach(q => corpo.push(q)); const cp = corpo.map(proietta).filter(Boolean);
+      for (const id of ['trachea', 'scapole', 'sterno', 'placca1', 'placca2', 'torace']) { const el = document.getElementById('imp-scheda-' + id); if (!el || +getComputedStyle(el).opacity < 0.5) continue;
         const r = el.getBoundingClientRect(), R = { x: (r.left - sr.left) * kx, y: (r.top - sr.top) * ky, w: r.width * kx, h: r.height * ky };
-        if (cp.some(p => p.x > R.x && p.x < R.x + R.w && p.y > R.y && p.y < R.y + R.h)) extra.push({ tipo: 'etichette', dettagli: `etichetta «${id}» sopra il corpo del lattante` }); } }
+        if (cp.some(p => p.x > R.x && p.x < R.x + R.w && p.y > R.y && p.y < R.y + R.h)) extra.push({ tipo: 'etichette', dettagli: `etichetta «${id}» sopra il corpo, il viso del lattante o le mani dell'adulto` }); } }
     // firma «Misericordia di Ariccia» leggibile: sotto la firma la scena 3D non è chiara (al massimo il 3% dei pixel chiari)
     { const fr = LAY.firma, gl = r.getContext(); s2.font = `600 ${fr.corpo}px Montserrat`; const tw = Math.ceil(s2.measureText('Misericordia di Ariccia').width);
       const x0 = Math.max(0, Math.round(fr.x)), y0 = Math.round(fr.y), w = Math.min(W - x0, tw), hh = Math.round(fr.corpo * 1.3), px = new Uint8Array(w * hh * 4);
@@ -1425,10 +1467,24 @@
         const d = cam.position.distanceTo(w); ray.set(cam.position, w.clone().sub(cam.position).normalize()); ray.far = d - 0.004;
         if (!ray.intersectObjects(ogg, true).some(x => x.object.visible !== false)) { dentro++; sx += (p.x + 1) / 2 * W; sy2 += (1 - p.y) / 2 * H; } }
       if (dentro) extra.push({ tipo: 'testa', dettagli: `bordo tagliato della testa di chi soccorre in vista (${dentro} punti, intorno a x ${(sx / dentro).toFixed(0)}, y ${(sy2 / dentro).toFixed(0)})` }); }
+    // giunzione avambraccio-continuazione chiusa: i vertici del modello entro 2 cm dal taglio stanno dentro la sezione della
+    // continuazione (ellisse del taglio), con le ossa in posa; prova «giunzione-aperta»: i vertici non rientrano
+    for (const n of ['R', 'L']) if (gruppo[n].visible && braccio[n].giunzione) { const G2 = braccio[n].giunzione, m = braccio[n].mesh, q = v3(0, 0, 0); m.updateMatrixWorld(true);
+      const inv2 = new THREE.Matrix4().copy(G2.la.matrixWorld).invert(); let fuori = 0, peggio = 0;
+      for (const i of G2.vicini) { m.getVertexPosition(i, q); m.localToWorld(q); q.applyMatrix4(inv2); const dx = q.x - G2.E0.cx, dz = q.z - G2.E0.cz, c = Math.cos(G2.E0.th), s = Math.sin(G2.E0.th);
+        const rr = Math.hypot((dx * c + dz * s) / G2.E0.a, (-dx * s + dz * c) / G2.E0.c) * (PROVA === 'giunzione-aperta' ? 1 / 0.85 : 1); if (rr > 0.995) { fuori++; peggio = Math.max(peggio, rr); } }
+      if (fuori) extra.push({ tipo: 'braccio', dettagli: `giunzione dell'avambraccio ${n} aperta: ${fuori} vertici fuori dalla continuazione (fino a ${peggio.toFixed(2)})` }); }
+    fuoriChiusura.forEach(d => extra.push({ tipo: 'chiusura', dettagli: d }));
+    // nessuna parte del lattante sotto la fascia del titolo, lo stemma o la firma «Misericordia di Ariccia»
+    if (lat.radice.visible) { const F2 = LAY.fascia, fr = LAY.firma, zone = [{ x: 0, y: 0, w: F2.w + 18, h: F2.y + F2.h + 14 }, { x: fr.x - 8, y: fr.y - 6, w: 340, h: fr.corpo * 1.5 }];
+      const pb = []; lat.PARTI_MH.forEach(p => { for (const k in p.ossa) { pb.push(p.testa(k)); if (p.punta) pb.push(p.punta(k)); } }); puntiViso().forEach(q => pb.push(q));
+      for (const n of ['Sx', 'Dx']) { const a = mondo(lat.G['spalla' + n]), b2 = mondo(lat.G['gomito' + n]), c2 = mondo(lat.G['polso' + n]); for (let k = 0; k <= 4; k++) { pb.push(a.clone().lerp(b2, k / 4)); pb.push(b2.clone().lerp(c2, k / 4)); } }
+      const sotto = pb.map(proietta).filter(Boolean).find(p => zone.some(z => p.x > z.x && p.x < z.x + z.w && p.y > z.y && p.y < z.y + z.h));
+      if (sotto) extra.push({ tipo: 'firma', dettagli: `il lattante passa sotto la fascia del titolo, lo stemma o la firma (x ${sotto.x.toFixed(0)}, y ${sotto.y.toFixed(0)})` }); }
     if (marcatore && !marcatore.libero) extra.push({ tipo: 'marcatore', dettagli: marcatore.nessuno ? 'nessun posto libero per «giù di 1/3» accanto al torace' : '«giù di 1/3» sopra il corpo, le mani o un pannello' });
     // nessun pannello taglia il lattante: mani, piedi e testa del lattante fuori dalle schede e dai contatori
     if (lat.radice.visible) { const pl = []; lat.PARTI_MH.forEach(p => { for (const k in p.ossa) pl.push([p.nome, p.testa(k)]); if (p.punta) for (let d = 1; d <= 5; d++) { const nn = Object.keys(p.ossa).find(k => k.startsWith((p.nome.startsWith('piede') ? 'toe' : 'finger') + d + '-3')); if (nn) pl.push([p.nome, p.punta(nn)]); } });
-      const tc = mondo(lat.G.testa); pl.push(['testa', tc]);
+      const tc = mondo(lat.G.testa); pl.push(['testa', tc]); puntiViso().forEach(q => pl.push(['testa', q]));
       for (const [nome, q] of pl) { const p = proietta(q); if (!p) continue; const pan = pannelli.find(r => p.x > r.x - 8 && p.x < r.x + r.w + 8 && p.y > r.y - 8 && p.y < r.y + r.h + 8);
         if (pan) { extra.push({ tipo: 'pannelli', dettagli: `${pan.nome} copre ${nome === 'testa' ? 'la testa' : nome} del lattante` }); break; } } }
     // sottotitoli: parole non ancora dette leggibili (opacità almeno 0,74)
