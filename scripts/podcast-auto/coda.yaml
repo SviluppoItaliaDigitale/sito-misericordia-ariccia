@@ -187,7 +187,9 @@ puntate:
   - content/kit/terapie-salvavita/_index.md
   - content/kit/caregiver-familiari/_index.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-12-16-kit-anziani-fragilita.md
+  data: '2026-12-16'
 - id: dalla-barella-all-ambulanza
   tema: dossier
   titolo: Dalla barella all'ambulanza
