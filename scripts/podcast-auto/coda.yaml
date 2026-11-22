@@ -178,18 +178,12 @@ puntate:
   parole:
   - anafilassi
   - ipoglicemia
-  stato: da-fare
-  nota: 'Era in calendario per il 9/12; tolta il 21/11/2026 al ricontrollo frase per
-    frase: «uno spray nasale prescritto dal medico» senza «di adrenalina», «succede
-    a chi ha il diabete» senza «soprattutto» e «usa insulina o alcune medicine», seconda
-    dose senza «anche se va un po'' meglio». Da rigenerare. Il 21/11 alle 14:42 è partita la nuova generazione (istruzioni rafforzate su questi tre punti) nel notebook «Notebook senza titolo» con le due schede (notebook fd5a60d7): il giro dopo la scarica da lì, senza crearne un altro.
-    Scaricata e controllata il 21/11/2026 alle 19:40 (prima generazione dopo il ritiro): non
-    passa. Aggiunge «quindi anche sul corpo» all''orticaria diffusa, «un malessere improvviso
-    che può portare allo svenimento» (la scheda: «pallore, debolezza, svenimento»), «sono le
-    situazioni più comuni» dopo pasto saltato, sforzo e troppo farmaco, «le manovre si imparano
-    solo con un istruttore» (la scheda: «davvero provando, con un istruttore accanto»); toglie
-    «tenendolo premuto per il tempo indicato» e «se è ora». Da rigenerare una volta, in un
-    notebook nuovo, con le istruzioni rafforzate su questi punti; al prossimo errore va scartata.'
+  stato: scartata
+  motivo: '22/11/2026, seconda generazione dopo il ritiro: «assolutamente» dopo la
+    chiamata al 112, rafforzativo che le schede non contengono. La prima aggiungeva
+    «anche sul corpo», «un malessere che può portare allo svenimento», «le situazioni
+    più comuni» e «solo con un istruttore», e toglieva «tenendolo premuto per il tempo
+    indicato» e «se è ora».'
 - id: servizio-civile
   tema: chi-siamo
   titolo: Il Servizio Civile Universale alla Misericordia di Ariccia
@@ -245,17 +239,20 @@ puntate:
   - content/servizi/servizi-sociali.md
   parole: []
   stato: da-fare
-  nota: 'Il 21/11/2026 alle 19:20 è partita la prima generazione (Approfondimento, Italiano,
-    Breve, istruzioni.txt) nel notebook «Servizi Sociali e Assistenza ad Ariccia» (notebook
-    afb14ee3); poi l''estensione di Chrome si è scollegata. Il giro dopo la scarica da lì,
-    senza crearne un altro.'
+  nota: Il 21/11/2026 alle 19:20 è partita la prima generazione (Approfondimento,
+    Italiano, Breve, istruzioni.txt) nel notebook «Servizi Sociali e Assistenza ad
+    Ariccia» (notebook afb14ee3); poi l'estensione di Chrome si è scollegata. Il giro
+    dopo la scarica da lì, senza crearne un altro.
 - id: kit-animali
   tema: kit-prevenzione
   titolo: Gli animali domestici in emergenza
   fonti:
   - content/kit/animali/_index.md
   parole: []
-  stato: da-fare
+  stato: programmata
+  file: content/podcast/2026-11-22-kit-animali.md
+  data: '2026-11-22'
+  social_data: '2026-12-16'
 - id: misericordie-d-italia
   tema: dossier
   titolo: Le Misericordie d'Italia
