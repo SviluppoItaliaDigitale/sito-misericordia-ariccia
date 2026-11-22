@@ -50,7 +50,7 @@
 
   /* ============================================================ testo, scene e tempi */
   // Testo approvato da Alessandro il 22/11/2026 (scripts/video-3d-dae/BOZZA.md). Le scene sono scritte su una scaletta
-  // fissa (inizio delle 9 frasi); con sottotitoli.json la pagina la allinea alla voce vera, come il video della
+  // fissa (inizio delle 10 frasi); con sottotitoli.json la pagina la allinea alla voce vera, come il video della
   // rianimazione. Senza voce valgono queste frasi e questi tempi.
   const TESTI = [
     'Questo è un defibrillatore, il DAE. Vediamo com\'è fatto dentro.',
@@ -58,15 +58,16 @@
     'Le due piastre adesive hanno dei sensori: leggono il ritmo del cuore. Il disegno ti dice dove attaccarle.',
     'L\'altoparlante ti guida con la voce, passo dopo passo.',
     'Dentro, un piccolo computer analizza il ritmo e decide se serve una scarica. Mentre analizza, nessuno deve toccare la persona.',
+    'Alcuni registrano anche il ritmo del cuore e ciò che succede durante il soccorso, a volte pure l\'audio.',
     'La batteria alimenta tutto: va controllata e cambiata quando serve.',
-    'Se serve, il DAE ti chiede di premere il pulsante della scarica. Alcuni la danno da soli.',
+    'Se serve, il DAE ti chiede di premere il pulsante della scarica. Prima controlla che nessuno tocchi la persona. Alcuni la danno da soli.',
     'La scarica ferma il tremito del cuore, così può ripartire con un battito efficace. Poi riprendi subito le compressioni.',
     'Impara a usarlo: corsi alla Misericordia di Ariccia. Chiama il 328 8105399.'
   ];
-  const SCALETTA = [0, 0.4, 5.2, 9.6, 17.2, 21.4, 30.2, 34.8, 40.6, 48.6, 54.8];   // 0, inizio delle 9 frasi, fine
+  const SCALETTA = [0, 0.4, 5.2, 9.6, 17.2, 21.4, 30.2, 36.6, 41.2, 47.0, 55.0, 61.2];   // 0, inizio delle 10 frasi, fine
   const NF = TESTI.length;
   const SOTT = dato('sottotitoli');
-  const CHIAVE = ['DAE', 'piastre', 'sensori', 'altoparlante', 'computer', 'batteria', 'scarica', 'compressioni', '328 8105399'];
+  const CHIAVE = ['DAE', 'piastre', 'sensori', 'altoparlante', 'computer', 'batteria', 'scarica', 'compressioni', 'registrano', 'audio', '328 8105399'];
   // senza voce: le frasi lunghe si dividono in due sottotitoli (campo «riga»: la frase della voce a cui appartengono)
   const FRASI = SOTT || TESTI.flatMap((testo, i) => {
     const a = i === 0 ? -0.5 : SCALETTA[i + 1], b = SCALETTA[i + 2] - 0.15, pezzi = testo.length > 80 ? testo.split(/(?<=[.:]) /) : [testo];
@@ -82,9 +83,10 @@
   const SCENE = [
     { nome: 'Il DAE', inizio: 0 },                 { nome: 'Accensione', inizio: F(2) },
     { nome: 'Le piastre', inizio: F(3) },          { nome: 'L\'altoparlante', inizio: F(4) },
-    { nome: 'Il computer', inizio: F(5) },         { nome: 'La batteria', inizio: F(6) },
-    { nome: 'La scarica', inizio: F(7) },          { nome: 'Dopo la scarica', inizio: F(8) },
-    { nome: 'Impara a usarlo', inizio: F(9) }
+    { nome: 'Il computer', inizio: F(5) },         { nome: 'La memoria', inizio: F(6) },
+    { nome: 'La batteria', inizio: F(7) },
+    { nome: 'La scarica', inizio: F(8) },          { nome: 'Dopo la scarica', inizio: F(9) },
+    { nome: 'Impara a usarlo', inizio: F(10) }
   ];
   window.TOTAL = TOTAL;
   const FORMATO = PAR.get('formato') === 'orizzontale' ? 'orizzontale' : 'verticale';     // il Reel è verticale
@@ -165,6 +167,10 @@
   [[0.035, -0.04], [0.06, -0.04], [0.035, 0.03], [0.06, 0.03]].forEach(([x, z]) => { const c2 = new THREE.Mesh(new THREE.BoxGeometry(0.018, 0.005, 0.012), MAT.chip); c2.position.set(x, 0.0045, z); scheda.add(c2); });
   const luceProc = new THREE.Mesh(new THREE.BoxGeometry(0.047, 0.0015, 0.047), new THREE.MeshBasicMaterial({ color: 0x7CFFB2, transparent: true, opacity: 0 }));
   luceProc.position.set(-0.03, 0.0085, 0); scheda.add(luceProc);
+  // memoria del soccorso (scena 6: alcuni DAE registrano ritmo, eventi e a volte l'audio; manuali ZOLL AED Plus, AED Pro, AED 3)
+  const chipMem = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.005, 0.02), MAT.chip); chipMem.position.set(0.05, 0.0045, 0.045); scheda.add(chipMem);
+  const luceMem = new THREE.Mesh(new THREE.BoxGeometry(0.032, 0.0015, 0.022), new THREE.MeshBasicMaterial({ color: 0x009FE3, transparent: true, opacity: 0 }));
+  luceMem.position.set(0.05, 0.0078, 0.045); scheda.add(luceMem);
   // batteria: blocco grigio scuro con etichetta, infilato dietro (esce verso -z)
   const batteria = new THREE.Group(); batteria.position.set(0.085, 0.006, -0.045); dae.add(batteria);
   const batTex = tela(256, 128, (c, w, h) => { c.translate(w, h); c.rotate(Math.PI); c.fillStyle = '#3A414B'; c.fillRect(0, 0, w, h); c.fillStyle = '#FCEB0C'; c.fillRect(18, 44, 60, 40); c.fillRect(78, 54, 8, 20);
@@ -241,10 +247,14 @@
       c.beginPath(); c.rect(-pw / 2, -ph / 2, pw, ph); c.fill(); c.stroke(); c.restore();
     });
   }
+  // Punto del disegno → coordinate locali sulla faccia superiore della piastra (x = larghezza, z = altezza della tela:
+  // la tela in alto sta verso z negativo). Il riquadro della figura è quello di disegnoPiastra (0,18 + 0,64 u; 0,08 + 0,84 v).
+  const PIASTRA = { w: 0.1, d: 0.125, h: 0.004 };
+  const puntoDisegno = q => [(-0.5 + 0.18 + 0.64 * q.x) * PIASTRA.w, PIASTRA.h / 2 + 0.0005, (-0.5 + 0.08 + 0.84 * q.y) * PIASTRA.d];
   const piastre = [0, 1].map(k => {
     const g = new THREE.Group();
     const tex = tela(512, 640, (c, w, h) => disegnoPiastra(c, w, h, k));
-    const m = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.004, 0.125), [MAT.bianco, MAT.bianco, new THREE.MeshStandardMaterial({ map: tex, transparent: true }), MAT.bianco, MAT.bianco, MAT.bianco]);
+    const m = new THREE.Mesh(new THREE.BoxGeometry(PIASTRA.w, PIASTRA.h, PIASTRA.d), [MAT.bianco, MAT.bianco, new THREE.MeshStandardMaterial({ map: tex, transparent: true }), MAT.bianco, MAT.bianco, MAT.bianco]);
     g.add(m); scena.add(g);
     return { g, m, tex };
   });
@@ -263,13 +273,13 @@
     altop: [F(4) + 0.3, 1.2],           // l'altoparlante sale sopra la griglia
     altopTorna: [F(5) - 0.9, 0.8],
     guscio: [F(5) + 0.2, 1.6],          // il guscio superiore si alza: si vede la scheda elettronica
-    guscioTorna: [F(6) - 1.0, 0.9],
+    guscioTorna: [F(7) - 1.0, 0.9],
     analisi: [F(5) + 3.2, F(6) - 0.4],  // la scheda «analizza» (luce e tracciato)
-    batteria: [F(6) + 0.3, 1.5],        // la batteria esce dal retro
-    batteriaTorna: [F(7) - 0.9, 0.8],
-    scarica: F(7) + 3.0,                // il pulsante lampeggia, poi la pressione
-    chiudi: [F(8) + 0.4, 2.6],          // tutto torna al suo posto
-    chiudiCoperchio: [F(9) - 0.2, 1.2]
+    batteria: [F(7) + 0.3, 1.5],        // la batteria esce dal retro
+    batteriaTorna: [F(8) - 0.9, 0.8],
+    scarica: F(8) + 5.9,                // il pulsante lampeggia; la pressione solo dopo «prima controlla che nessuno tocchi la persona»
+    chiudi: [F(9) + 0.4, 2.6],          // tutto torna al suo posto
+    chiudiCoperchio: [F(10) - 0.2, 1.2]
   };
   const espl = (t, [a, d]) => quintica(prog(t, a, d));
   const rientro = t => 1 - quintica(prog(t, T.chiudi[0], T.chiudi[1]));
@@ -297,12 +307,14 @@
     // scheda elettronica: «analizza» (luce sul processore che pulsa)
     const kAn = tr >= 0 && t >= T.analisi[0] && t < T.analisi[1] ? fin(t, T.analisi[0], T.analisi[1], 0.3, 0.3) : 0;
     luceProc.material.opacity = kAn * (0.45 + 0.4 * Math.sin(tr * 9.0) ** 2);
+    const kMem = t >= F(6) + 0.3 && t < F(7) - 0.2 ? fin(t, F(6) + 0.3, F(7) - 0.2, 0.4, 0.3) : 0;
+    luceMem.material.opacity = kMem * (0.5 + 0.35 * Math.sin(tr * 5.0) ** 2);
     // accensione: pulsante verde e spie
     const acceso = t >= T.on && t < T.chiudiCoperchio[0] + 0.6;
     tastoOn.material[1].emissiveIntensity = acceso ? 0.9 : 0;
     spie.forEach((s, i) => { s.material.emissiveIntensity = acceso ? (i < 2 ? 0.15 : 0.8) : 0.1; });
     // pulsante della scarica: lampeggia (scena 7), poi la pressione
-    const lamp = t >= F(7) && t < F(8) ? (0.5 + 0.5 * Math.sin((tr) * 7.0)) * fin(t, F(7) + 0.6, F(8) - 0.2, 0.3, 0.3) : 0;
+    const lamp = t >= F(8) && t < F(9) ? (0.5 + 0.5 * Math.sin((tr) * 7.0)) * fin(t, F(8) + 0.6, F(9) - 0.2, 0.3, 0.3) : 0;
     tasto.material[1].emissiveIntensity = 1.2 * lamp;
     alone.material.opacity = 0.55 * lamp;
     const prem = t >= T.scarica && t < T.scarica + 0.5 ? Math.sin(Math.PI * (t - T.scarica) / 0.5) : 0;
@@ -344,14 +356,14 @@
     { t: F(4) + 0.6, c: [-0.075, 0.09, 0.05], az: -24, el: 42, d: 0.7 },            // avvicinamento all'altoparlante
     { t: F(5) - 0.2, c: [-0.075, 0.09, 0.05], az: -24, el: 42, d: 0.7 },
     { t: F(5) + 1.9, c: [0, 0.11, -0.02], az: -8, el: 40, d: 1.25 },                // gru: il guscio si alza, si vede la scheda
-    { t: F(6) - 0.2, c: [0, 0.11, -0.02], az: -8, el: 40, d: 1.25 },
-    { t: F(6) + 0.8, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },           // orbita dietro: esce la batteria
-    { t: F(7) - 0.2, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },
-    { t: F(7) + 0.8, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },             // primo piano del pulsante della scarica
-    { t: F(8) - 0.2, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },
-    { t: F(8) + 0.8, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
-    { t: F(9) - 0.2, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
-    { t: F(9) + 2.0, az: 24, el: 34, d: 1.0, facilita: 'lineare' },                // orbita lenta mentre si richiude
+    { t: F(7) - 0.2, c: [0, 0.11, -0.02], az: -8, el: 40, d: 1.25 },
+    { t: F(7) + 0.8, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },           // orbita dietro: esce la batteria
+    { t: F(8) - 0.2, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },
+    { t: F(8) + 0.8, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },             // primo piano del pulsante della scarica
+    { t: F(9) - 0.2, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },
+    { t: F(9) + 0.8, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
+    { t: F(10) - 0.2, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
+    { t: F(10) + 2.0, az: 24, el: 34, d: 1.0, facilita: 'lineare' },                // orbita lenta mentre si richiude
     { t: SCALETTA[SCALETTA.length - 1], az: 40, el: 32, d: 1.05, facilita: 'lineare' }
   ];
   (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov', 'dv']) if (k[x] == null) k[x] = p[x]; p = k; } })();
@@ -376,12 +388,13 @@
   // punto: oggetto 3D e scostamento locale; compaiono a telecamera ferma (lo controlla __controlli).
   const SCHEDE = [
     { id: 'on', titolo: 'Accensione', sotto: 'pulsante o apertura del coperchio', ogg: pulsOn, off: [0, 0.006, 0], verso: { dx: -200, dy: 230 }, versoO: { dx: -320, dy: 120 }, inizio: F(2) + 2.7, fine: F(3) - 0.3 },
-    { id: 'p1', titolo: 'Piastra adesiva', sotto: 'con sensori e disegno', ogg: piastre[0].g, off: [0, 0.003, 0], verso: { dx: -120, dy: -380 }, versoO: { dx: -340, dy: -120 }, inizio: F(3) + 2.5, fine: F(4) - 0.3 },
-    { id: 'p2', titolo: 'Sotto l\'ascella sinistra', sotto: 'l\'altra sotto la clavicola destra', ogg: piastre[1].g, off: [0, 0.003, 0], verso: { dx: 120, dy: -250 }, versoO: { dx: 340, dy: -140 }, inizio: F(3) + 4.2, fine: F(4) - 0.3 },
+    { id: 'p1', titolo: 'Sotto la clavicola destra', sotto: 'accanto allo sterno', ogg: piastre[0].g, off: puntoDisegno(DISEGNO.placca1), riquadro: [0, 'placca1'], verso: { dx: -120, dy: -380 }, versoO: { dx: -340, dy: -120 }, inizio: F(3) + 2.5, fine: F(4) - 0.3 },
+    { id: 'p2', titolo: 'Sotto l\'ascella sinistra', sotto: 'sul fianco, non sul braccio', ogg: piastre[1].g, off: puntoDisegno(DISEGNO.placca2), riquadro: [1, 'placca2'], verso: { dx: 120, dy: -250 }, versoO: { dx: 340, dy: -140 }, inizio: F(3) + 4.2, fine: F(4) - 0.3 },
     { id: 'alt', titolo: 'Altoparlante', sotto: 'ti guida passo dopo passo', ogg: altoparlante, off: [0, 0.02, 0], verso: { dx: 200, dy: -280 }, versoO: { dx: 340, dy: -150 }, inizio: F(4) + 0.8, fine: F(5) - 0.3 },
     { id: 'pc', titolo: 'Computer interno', sotto: 'analizza il ritmo del cuore', ogg: chipProc, off: [0, 0.006, 0], verso: { dx: 200, dy: -300 }, versoO: { dx: 360, dy: 120 }, inizio: F(5) + 2.5, fine: F(6) - 0.3 },
-    { id: 'bat', titolo: 'Batteria', sotto: 'da controllare e cambiare', ogg: batteria, off: [0, 0.04, 0], verso: { dx: -180, dy: -280 }, versoO: { dx: -340, dy: -130 }, inizio: F(6) + 1.9, fine: F(7) - 0.3 },
-    { id: 'scarica', titolo: 'Pulsante della scarica', sotto: 'premilo solo se te lo chiede', ogg: pulsScarica, off: [0, 0.009, 0], verso: { dx: 0, dy: 300 }, versoO: { dx: 330, dy: 140 }, inizio: F(7) + 0.9, fine: F(8) - 0.3 }
+    { id: 'mem', titolo: 'Memoria del soccorso', sotto: 'ritmo, eventi, a volte l\'audio', ogg: chipMem, off: [0, 0.004, 0], verso: { dx: 160, dy: -320 }, versoO: { dx: 360, dy: -120 }, inizio: F(6) + 0.6, fine: F(7) - 0.3 },
+    { id: 'bat', titolo: 'Batteria', sotto: 'da controllare e cambiare', ogg: batteria, off: [0, 0.04, 0], verso: { dx: -180, dy: -280 }, versoO: { dx: -340, dy: -130 }, inizio: F(7) + 1.9, fine: F(8) - 0.3 },
+    { id: 'scarica', titolo: 'Pulsante della scarica', sotto: 'premilo solo se te lo chiede', ogg: pulsScarica, off: [0, 0.009, 0], verso: { dx: 0, dy: 300 }, versoO: { dx: 330, dy: 140 }, inizio: F(8) + 0.9, fine: F(9) - 0.3 }
   ];
   const _p = new THREE.Vector3();
   function proietta(s) {
@@ -435,7 +448,8 @@
     testo(c, 'Analisi del ritmo', x + 18, y + 32, 22, 700, '#FCEB0C');
     c.beginPath(); const n = 300, dur = 3.0, base = y + h - 46, amp = (h - 80) * 0.5;
     for (let i = 0; i <= n; i++) { const tt = tr - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n;
-      const v = 0.34 * Math.sin(tt * 31.0) + 0.22 * Math.sin(tt * 47.3 + 1.3) + 0.14 * Math.sin(tt * 19.1 + 0.4) + 0.1 * Math.sin(tt * 71.0);
+      const inv = 0.55 + 0.45 * Math.sin(tt * 2.3) * Math.sin(tt * 0.9 + 1.1);   // ampiezza che cambia: tracciato caotico
+      const v = inv * (0.34 * Math.sin(tt * 31.0 + 2 * Math.sin(tt * 3.7)) + 0.22 * Math.sin(tt * 47.3 + 1.3) + 0.18 * Math.sin(tt * 13.1 + 0.4 * Math.sin(tt * 5.3)) + 0.12 * Math.sin(tt * 71.0 + tt * tt * 0.3));
       if (i) c.lineTo(xx, base - amp * v); else c.moveTo(xx, base - amp * v); }
     c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.stroke();
     testo(c, 'tremito del cuore (schema)', x + w - 18, y + 32, 18, 600, 'rgba(255,255,255,.8)', 'right');
@@ -449,7 +463,7 @@
     testo(c, testoA, W / 2, y, corpo, 800, colore, 'center'); c.restore();
   }
   function chiusura(c, t) {
-    const a = clamp((t - (F(9) + 1.4)) / 0.7); if (a <= 0) return;
+    const a = clamp((t - (F(10) + 1.4)) / 0.7); if (a <= 0) return;
     c.save(); c.globalAlpha = a * 0.92;
     rett(c, L.margine + 20, LAY.riga1 - 90, W - 2 * L.margine - 40, LAY.sito - LAY.riga1 + 150, 24); c.fillStyle = 'rgba(0,40,92,.9)'; c.fill();
     c.strokeStyle = '#FCEB0C'; c.lineWidth = 3; c.stroke();
@@ -481,6 +495,15 @@
     if (!(p2.y > p1.y + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sotto l\'ascella, più in basso della prima (y = ' + p2.y + ')' });
   })();
 
+  // Revisione del medico del 22/11/2026: la scheda «Sotto l'ascella sinistra» puntava al riquadro vuoto (clavicola) e non a
+  // quello pieno. Ora il punto si calcola dal disegno; il controllo ferma il render se scheda e riquadro pieno non coincidono.
+  if (PAR.get('prova') === 'scheda') SCHEDE.find(s => s.id === 'p2').off = [0, 0.003, 0];
+  SCHEDE.filter(s => s.riquadro).forEach(s => {
+    const [k, nome] = s.riquadro, atteso = puntoDisegno(DISEGNO[nome]);
+    if (s.ogg !== piastre[k].g || s.off.some((v, i) => Math.abs(v - atteso[i]) > 1e-6))
+      problemiDisegno.push({ tipo: 'piastre', dettagli: 'la scheda «' + s.id + '» non indica il riquadro pieno ' + nome + ' della piastra ' + (k + 1) });
+  });
+
   /* ============================================================ render(t) */
   const fonte = document.getElementById('fonte');
   const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
@@ -497,7 +520,8 @@
     if (lampo > 0.01 && t < T.scarica + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.45 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
     ecg(s2, tr, t >= T.analisi[0] && t < T.analisi[1] ? fin(t, T.analisi[0], T.analisi[1], 0.4, 0.3) : 0);
     avviso(s2, 'Analisi: nessuno tocchi la persona', t >= F(5) + 5.0 && t < F(6) - 0.4 ? fin(t, F(5) + 5.0, F(6) - 0.4, 0.3, 0.25) : 0, '#FCEB0C');
-    avviso(s2, 'Riprendi subito le compressioni', t >= F(8) + 3.2 && t < F(9) - 0.3 ? fin(t, F(8) + 3.2, F(9) - 0.3, 0.3, 0.3) : 0, '#7CFFB2');
+    avviso(s2, 'Nessuno tocchi la persona', t >= F(8) + 2.9 && t < F(8) + 5.6 ? fin(t, F(8) + 2.9, F(8) + 5.6, 0.25, 0.25) : 0, '#FCEB0C');
+    avviso(s2, 'Riprendi subito le compressioni', t >= F(9) + 3.2 && t < F(10) - 0.3 ? fin(t, F(9) + 3.2, F(10) - 0.3, 0.3, 0.3) : 0, '#7CFFB2');
     chiusura(s2, t);
     testata(s2, SCENE[sceneA(t)].nome);
 
@@ -512,10 +536,10 @@
       IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT ? s.verso : s.versoO,
                              inizio: s.inizio, fine: s.fine, visibile: !!p });
     }
-    const testoFonte = 'Illustrazione di un DAE generico, non di una marca\nContenuti: NHLBI (NIH); Linee guida RCP 2025, Italian Resuscitation Council';
+    const testoFonte = 'Illustrazione di un DAE generico, non di una marca\nContenuti: NHLBI (NIH); Linee guida RCP 2025, Italian Resuscitation Council;\nmanuali ZOLL AED Plus, AED Pro e AED 3';
     if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
     fonte.style.left = L.margine + 'px'; fonte.style.top = (L.zona.basso - fonte.offsetHeight + 4) + 'px';
-    fonte.style.opacity = (t < F(9) + 1.2 ? 1 : 1 - clamp((t - F(9) - 1.2) / 0.5)).toFixed(3);
+    fonte.style.opacity = (t < F(10) + 1.2 ? 1 : 1 - clamp((t - F(10) - 1.2) / 0.5)).toFixed(3);
     window.__camFerma = cam.ferma;
   }
 
