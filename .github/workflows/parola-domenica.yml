@@ -20,8 +20,8 @@ name: Parola della domenica e delle feste (social)
 # (negli altri giorni il giro finisce subito).
 # Dal 22/11/2026 i giri della finestra 4:47-7:00 partono anche da fuori: GitHub ha
 # saltato tutti quelli della finestra il 15/11 e il 22/11 e la Parola non è uscita.
-# L'operazione pianificata «Parola: avvio delle 4:52» lo avvia ogni giorno con
-# esterno=true (vedi docs/parola-della-domenica.md); alle 7 controllo-parola.yml
+# L'avvio esterno alle 4:52 usa esterno=true (chi lo fa: docs/parola-della-domenica.md);
+# alle 7 controllo-parola.yml
 # apre la issue se la Parola di oggi non è nel registro.
 # Procedura completa: docs/parola-della-domenica.md
 on:

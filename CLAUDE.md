@@ -148,7 +148,7 @@ il carosello è nello stile nazionale, come tutte le grafiche
 i giorni della Parola dei prossimi 7 giorni (`calendario.py prossimi 7`), con il «recupero notturno»
 ogni notte all'1:55 se la scheda di oggi manca: scheda in
 `.github/social/parola/AAAA-MM-GG.json`, pagine in `static/img/parola/AAAA-MM-GG-N.jpg`, strumenti in
-`scripts/parola-domenica/`. Dal 22/11/2026, dopo due domeniche saltate perché GitHub non aveva avviato nessun giro fra le 4:47 e le 7, il workflow si avvia anche da fuori (`esterno=true`, operazione pianificata «Parola: avvio delle 4:52») e alle 7 `controllo-parola.yml` apre la issue «Parola della domenica: non pubblicata entro le 7» se il post manca.
+`scripts/parola-domenica/`. Dal 22/11/2026, dopo due domeniche saltate perché GitHub non aveva avviato nessun giro fra le 4:47 e le 7, il workflow accetta l'avvio da fuori alle 4:52 (`esterno=true`; chi lo avvia è scritto in `docs/parola-della-domenica.md`) e alle 7 `controllo-parola.yml` apre la issue «Parola della domenica: non pubblicata entro le 7» se il post manca.
 Procedura: `docs/parola-della-domenica.md`.
 
 ## Sedi: quale indirizzo usare (dal 18/11/2026, regola definitiva del 21/11/2026)

@@ -84,7 +84,7 @@ jobs:
           RETI="${STATO#manca:}"
           CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s' \
             "Alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y') la Parola di oggi ($OGGI) non risulta pubblicata su: $RETI." \
-            "Da guardare: i giri di «Parola della domenica e delle feste (social)» fra le 4:47 e le 7:00 (se nessuno è partito, GitHub li ha saltati e non è partito nemmeno l'avvio esterno «Parola: avvio delle 4:52»; se un giro è partito, il passo «Pubblica sui social»)." \
+            "Da guardare: i giri di «Parola della domenica e delle feste (social)» fra le 4:47 e le 7:00 (se nessuno è partito, GitHub li ha saltati e non è partito nemmeno l'avvio esterno delle 4:52, se attivo; se un giro è partito, il passo «Pubblica sui social»)." \
             "Dopo le 7 la Parola non si pubblica più (regola del 18/10/2026): la issue serve a trovare la causa prima della prossima domenica o festa. Si chiude da sola il prossimo giorno della Parola in cui il post esce. Procedura: docs/parola-della-domenica.md." \
             "Run: $GITHUB_SERVER_URL/$R/actions/runs/$GITHUB_RUN_ID")
           if [ -z "$NUM" ]; then
