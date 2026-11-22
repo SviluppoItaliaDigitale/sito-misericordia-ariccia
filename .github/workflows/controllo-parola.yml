@@ -5,7 +5,9 @@ name: Controllo Parola della domenica (uscita entro le 7)
 # la voce «parola-AAAA-MM-GG» con Facebook e Instagram. Se manca, apre o aggiorna la
 # issue «Parola della domenica: non pubblicata entro le 7» (label automazione +
 # fonte-rotta) e il run diventa rosso, così arriva anche l'email; la issue si chiude
-# da sola al primo controllo in cui la Parola di oggi risulta pubblicata.
+# da sola al primo controllo in cui la Parola di oggi risulta pubblicata. Dal 22/11/2026
+# parola-domenica.yml riprova da solo fino alle 23: la issue avvisa che l'uscita delle
+# 4:52 è saltata.
 # Nasce il 22/11/2026: il 15/11 e il 22/11 GitHub ha saltato tutti i giri della
 # finestra 4:47-7:00 di parola-domenica.yml, quelli fuori orario finivano in verde
 # senza pubblicare e nessuno se n'è accorto fino alla domanda di Alessandro.
@@ -84,8 +86,8 @@ jobs:
           RETI="${STATO#manca:}"
           CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s' \
             "Alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y') la Parola di oggi ($OGGI) non risulta pubblicata su: $RETI." \
-            "Da guardare: i giri di «Parola della domenica e delle feste (social)» fra le 4:47 e le 7:00 (se nessuno è partito, GitHub li ha saltati e non è partito nemmeno l'avvio esterno delle 4:52, se attivo; se un giro è partito, il passo «Pubblica sui social»)." \
-            "Dopo le 7 la Parola non si pubblica più (regola del 18/10/2026): la issue serve a trovare la causa prima della prossima domenica o festa. Si chiude da sola il prossimo giorno della Parola in cui il post esce. Procedura: docs/parola-della-domenica.md." \
+            "Da guardare: i giri di «Parola della domenica e delle feste (social)» fra le 4:47 e le 7:00 e dopo (se nessuno è partito, GitHub li ha saltati e non è partito nemmeno l'avvio esterno delle 4:52, se attivo; se un giro è partito, il passo «Pubblica sui social»)." \
+            "La Parola doveva uscire alle 4:52. Il workflow riprova da solo ogni mezz'ora fino alle 23 (regola del 22/11/2026); la issue si chiude da sola appena il post esce. Se resta aperta, trovare la causa prima della prossima domenica o festa. Procedura: docs/parola-della-domenica.md." \
             "Run: $GITHUB_SERVER_URL/$R/actions/runs/$GITHUB_RUN_ID")
           if [ -z "$NUM" ]; then
             gh api -X POST "repos/$R/issues" -f title="$TITOLO_ISSUE" -f body="$CORPO" \
