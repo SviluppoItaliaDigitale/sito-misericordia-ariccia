@@ -62,8 +62,14 @@ Prima lettura dell'agente `medico-emergenza`, tre correzioni, tutte fatte:
 2. Frase di sicurezza prima della scarica: riga 7 della scaletta e avviso «Nessuno tocchi la persona».
 3. Tracciato della fibrillazione troppo regolare: ora irregolare, con ampiezza variabile.
 
-## Prossimi passi
-1. Seconda lettura del medico («APPROVATO SANITARIAMENTE») e ascolto della voce da parte di Alessandro.
-2. Render completo, controllo di un fotogramma ogni 0,5 s, mix (voce, musica bassa, effetti), `revisore-video`.
-3. Pagina del sito con lo stesso modello; news e post solo dopo l'approvazione, con la riga di licenza della voce
-   Damien nella descrizione.
+## Pubblicazione (22/11/2026)
+- Seconda lettura del medico: «APPROVATO SANITARIAMENTE» (piastra 2 spostata sul fianco sotto l'ascella, con il controllo
+  anatomico `?prova=ascella`; tracciato irregolare).
+- Revisore video: APPROVATO al secondo giro (fondo pieno dietro la firma; restano minori gli oggetti tagliati ai bordi
+  nei primi piani). Controlli del render: nessun problema in 2424 fotogrammi; controllo `?prova=entro` sulle schede.
+- Mix: musica «Morning» (Kevin MacLeod, CC BY 4.0), fruscio ai cambi di scena e colpo della scarica generati qui;
+  -14 LUFS, voce sopra il fondo 23,7 dB.
+- News `content/news/2026-11-22-dae-com-e-fatto.md`, video `static/video/dae-com-e-fatto.mp4` con `.vtt`.
+
+## Da fare
+- Pagina del sito con lo stesso modello 3D, scorrendo (seconda parte della richiesta del 22/11/2026).

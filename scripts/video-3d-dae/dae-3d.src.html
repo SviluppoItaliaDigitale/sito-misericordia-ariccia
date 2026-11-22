@@ -174,7 +174,7 @@
   // batteria: blocco grigio scuro con etichetta, infilato dietro (esce verso -z)
   const batteria = new THREE.Group(); batteria.position.set(0.085, 0.006, -0.045); dae.add(batteria);
   const batTex = tela(256, 128, (c, w, h) => { c.translate(w, h); c.rotate(Math.PI); c.fillStyle = '#3A414B'; c.fillRect(0, 0, w, h); c.fillStyle = '#FCEB0C'; c.fillRect(18, 44, 60, 40); c.fillRect(78, 54, 8, 20);
-                                               c.fillStyle = '#FFFFFF'; c.font = '700 30px Montserrat'; c.fillText('BATTERIA', 100, 76); });
+                                               /* niente scritta stampata: il carattere della texture usciva con le grazie e la scheda «Batteria» basta (22/11/2026) */ });
   const batMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.036, 0.14), [MAT.grigio, MAT.grigio, new THREE.MeshStandardMaterial({ map: batTex, transparent: true }), MAT.grigio, MAT.grigio, MAT.grigio]);
   batMesh.position.y = 0.018; batteria.add(batMesh);
 
@@ -202,7 +202,7 @@
   const ghiera = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.032, 0.004, 40), MAT.nero); ghiera.position.y = 0.002; pulsScarica.add(ghiera);
   const tasto = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.006, 40), [new THREE.MeshStandardMaterial({ color: 0xD9341F }), new THREE.MeshStandardMaterial({ map: fulmineTex, emissive: 0xff5a1f, emissiveIntensity: 0, transparent: true, emissiveMap: fulmineTex }), MAT.nero]);
   tasto.position.y = 0.006; pulsScarica.add(tasto);
-  const alone = new THREE.Mesh(new THREE.RingGeometry(0.028, 0.05, 48), new THREE.MeshBasicMaterial({ color: 0xffb070, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+  const alone = new THREE.Mesh(new THREE.RingGeometry(0.028, 0.05, 48), new THREE.MeshBasicMaterial({ color: 0xFCEB0C, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
   alone.rotation.x = -Math.PI / 2; alone.position.y = 0.0095; pulsScarica.add(alone);
   // pulsante di accensione verde, in basso a sinistra davanti
   const pulsOn = new THREE.Group(); pulsOn.position.set(-0.115, 0.02, 0.105); guscio.add(pulsOn);
@@ -415,7 +415,7 @@
   function pannelloS(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.97)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
   const LAY = VERT ? {
     fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
-    ecg: { x: 90, y: 1015, w: 900, h: 150 }, avviso: 430, riga1: 760, tel: 880, sito: 990
+    ecg: { x: 90, y: 1015, w: 860, h: 150 }, avviso: 430, riga1: 760, tel: 880, sito: 990
   } : {
     fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
     ecg: { x: 1360, y: 640, w: 480, h: 150 }, avviso: 236, riga1: 520, tel: 640, sito: 740
@@ -433,6 +433,8 @@
     testo(c, r1, Fa.sx, top, corpo, 600, '#FFFFFF'); testo(c, r2, Fa.sx, top + Lh, corpo * 0.86, 700, KIT.giallo);
     if (stemma.naturalWidth) { const sw = Fa.stemma, sh = sw * stemma.naturalHeight / stemma.naturalWidth; c.drawImage(stemma, Fa.w - Fa.dx + (Fa.dx - sw) / 2 + 6, Fa.y + Fa.h / 2 - sh / 2, sw, sh); }
     const fr = LAY.firma; c.font = `600 ${fr.corpo}px Montserrat`; const tw = c.measureText('Misericordia di Ariccia').width;
+    // fondo pieno dietro la firma: il coperchio del DAE le passava dietro e il contrasto scendeva sotto 3:1 (revisore, 22/11/2026)
+    rett(c, fr.x - 14, fr.y - 4, tw + 28, fr.corpo + 14, 10); c.fillStyle = 'rgba(6,22,51,.95)'; c.fill();
     c.shadowColor = 'rgba(0,22,54,.6)'; c.shadowBlur = 6; c.shadowOffsetY = 1;
     testo(c, 'Misericordia di Ariccia', fr.x, fr.y + fr.corpo, fr.corpo, 600, '#FFFFFF');
     c.shadowColor = 'transparent';
@@ -455,7 +457,7 @@
       const v = inv * (0.34 * Math.sin(tt * 31.0 + 2 * Math.sin(tt * 3.7)) + 0.22 * Math.sin(tt * 47.3 + 1.3) + 0.18 * Math.sin(tt * 13.1 + 0.4 * Math.sin(tt * 5.3)) + 0.12 * Math.sin(tt * 71.0 + tt * tt * 0.3));
       if (i) c.lineTo(xx, base - amp * v); else c.moveTo(xx, base - amp * v); }
     c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.stroke();
-    testo(c, 'tremito del cuore (schema)', x + w - 18, y + 32, 18, 600, 'rgba(255,255,255,.8)', 'right');
+    testo(c, 'tremito del cuore (schema)', x + w - 18, y + 32, 24, 600, 'rgba(255,255,255,.8)', 'right');
     c.restore();
   }
   function avviso(c, testoA, alfa, colore = '#FCEB0C') {

@@ -2374,3 +2374,17 @@ dati:
   frequenza: "annuale"
   verificato: "2026-11-21"
   note: "Data OMS: https://www.who.int/news-room/speeches/item/who-director-general-s-opening-remarks-at-the-media-briefing-on-covid-19---11-march-2020"
+- id: "dae-video-3d"
+  cosa: "Video 3D «Il defibrillatore: com'è fatto dentro» e news del 22/11/2026: DAE leggero, portatile, a batteria, che controlla il ritmo, dice che cosa fare e può dare una scarica; piastre adesive con sensori (elettrodi) che mandano il ritmo a un computer che decide se serve la scarica; manutenzione regolare, batterie ricaricabili o da cambiare ogni qualche anno (NHLBI, «How Do Defibrillators Work?»); piastre sotto la clavicola destra accanto allo sterno e sul fianco sinistro sotto l'ascella (IRC 2025, cap. 4, p. 30); nessuno tocca la persona durante l'analisi e prima della scarica; semiautomatico con pulsante, automatico da solo; la scarica ferma la fibrillazione, poi subito le compressioni (IRC 2025, cap. 4); memoria degli eventi e audio facoltativo su alcuni modelli (manuali ZOLL AED Plus, AED Pro, AED 3: «alcuni», mai «molti» o «tutti»)."
+  valore: "2 piastre (clavicola destra, fianco sinistro sotto l'ascella); nessuno tocca la persona in analisi e prima della scarica; subito le compressioni"
+  dove:
+  - "content/news/2026-11-22-dae-com-e-fatto.md"
+  - "scripts/video-3d-dae/dae-3d.src.html"
+  - "scripts/video-3d-dae/BOZZA.md"
+  - "static/video/dae-com-e-fatto.vtt"
+  fonte: "https://www.nhlbi.nih.gov/health/defibrillators/how-do-defibrillators-work"
+  tipo: "sanita"
+  delicato: true
+  frequenza: "mensile"
+  verificato: "2026-11-22"
+  note: "Testi dentro il video: se cambiano le linee guida, il video va rifatto (scripts/video-3d-dae/BOZZA.md). Revisione sanitaria dell'agente medico-emergenza del 22/11/2026: APPROVATO SANITARIAMENTE. I manuali ZOLL su manualslib rispondono 403 alle richieste automatiche (anti-bot)."
