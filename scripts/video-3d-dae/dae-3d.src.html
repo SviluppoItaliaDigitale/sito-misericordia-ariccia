@@ -159,7 +159,7 @@
     c.fillStyle = '#1E7A4A'; c.fillRect(0, 0, w, h);
     c.strokeStyle = '#C9A25A'; c.lineWidth = 3;
     for (let k = 0; k < 26; k++) { const y = 20 + k * 13; c.beginPath(); c.moveTo(20 + (k * 37) % 120, y); c.lineTo(200 + (k * 53) % 200, y); c.lineTo(230 + (k * 53) % 200, y + 12); c.stroke(); }
-    c.fillStyle = '#E6E9EC'; c.font = '600 18px Montserrat'; c.fillText('analisi del ritmo', 300, 360);
+    // niente scritte stampate sulla scheda: il pannello «Analisi del ritmo» le copriva a metà (22/11/2026)
   });
   const pcb = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.004, 0.15), [MAT.pcb, MAT.pcb, new THREE.MeshStandardMaterial({ map: pcbTex, transparent: true }), MAT.pcb, MAT.pcb, MAT.pcb]);
   scheda.add(pcb);
@@ -411,10 +411,10 @@
   const stemma = new Image(); stemma.src = '/*STEMMA*/';
   function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
   function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
-  function pannelloS(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.86)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
+  function pannelloS(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.97)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
   const LAY = VERT ? {
     fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
-    ecg: { x: 90, y: 1070, w: 900, h: 150 }, avviso: 430, riga1: 760, tel: 880, sito: 990
+    ecg: { x: 90, y: 1015, w: 900, h: 150 }, avviso: 430, riga1: 760, tel: 880, sito: 990
   } : {
     fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
     ecg: { x: 1360, y: 640, w: 480, h: 150 }, avviso: 236, riga1: 520, tel: 640, sito: 740
@@ -447,7 +447,8 @@
     const { x, y, w, h } = LAY.ecg;
     c.save(); c.globalAlpha = alfa; pannelloS(c, x, y, w, h);
     testo(c, 'Analisi del ritmo', x + 18, y + 32, 22, 700, '#FCEB0C');
-    c.beginPath(); const n = 300, dur = 3.0, base = y + h - 46, amp = (h - 80) * 0.5;
+    c.beginPath(); const n = 300, dur = 3.0, alto = y + 46, basso = y + h - 14;   // spazio libero fra il titolo e il bordo
+    const base = (alto + basso) / 2, amp = (basso - alto) / 2 / 0.86;   // |v| ≤ 0,86: il tracciato resta dentro il riquadro
     for (let i = 0; i <= n; i++) { const tt = tr - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n;
       const inv = 0.55 + 0.45 * Math.sin(tt * 2.3) * Math.sin(tt * 0.9 + 1.1);   // ampiezza che cambia: tracciato caotico
       const v = inv * (0.34 * Math.sin(tt * 31.0 + 2 * Math.sin(tt * 3.7)) + 0.22 * Math.sin(tt * 47.3 + 1.3) + 0.18 * Math.sin(tt * 13.1 + 0.4 * Math.sin(tt * 5.3)) + 0.12 * Math.sin(tt * 71.0 + tt * tt * 0.3));
