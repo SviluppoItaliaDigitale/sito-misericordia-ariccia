@@ -71,5 +71,12 @@ Prima lettura dell'agente `medico-emergenza`, tre correzioni, tutte fatte:
   -14 LUFS, voce sopra il fondo 23,7 dB.
 - News `content/news/2026-11-22-dae-com-e-fatto.md`, video `static/video/dae-com-e-fatto.mp4` con `.vtt`.
 
+## Voce rifatta (22/11/2026, dopo l'ascolto di Alessandro)
+Dopo la pubblicazione Alessandro ha sentito «chesto», «scaricà» e il secondo «passo» con l'accento sbagliato. Frasi
+1, 4, 5, 8 e 9 rifatte con le grafie scelte da lui all'ascolto fra più varianti: «Cuésto» (B), «skàrika» (B),
+«pàsso dópo pàsso…» (C; va bene anche A, «pàsso dópo pàsso!»). Testo per la voce in `voce/frasi-voce.txt` (i
+sottotitoli restano scritti normalmente). Video aggiornato solo sul sito, su sua richiesta; i post social restano quelli
+del primo giorno. Il controllo della pronuncia (`controlla_pronuncia.py`) ora ferma le sdrucciole non risolte.
+
 ## Da fare
 - Pagina del sito con lo stesso modello 3D, scorrendo (seconda parte della richiesta del 22/11/2026).
