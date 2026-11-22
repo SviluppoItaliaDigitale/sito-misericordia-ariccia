@@ -18,6 +18,11 @@ name: Parola della domenica e delle feste (social)
 # girano ogni notte e coprono ora legale e ora solare; il passo «Orario» tiene
 # solo quelli che cadono tra le 0:00 e le 7:00 italiane di un giorno della Parola
 # (negli altri giorni il giro finisce subito).
+# Dal 22/11/2026 i giri della finestra 4:47-7:00 partono anche da fuori: GitHub ha
+# saltato tutti quelli della finestra il 15/11 e il 22/11 e la Parola non è uscita.
+# L'operazione pianificata «Parola: avvio delle 4:52» lo avvia ogni giorno con
+# esterno=true (vedi docs/parola-della-domenica.md); alle 7 controllo-parola.yml
+# apre la issue se la Parola di oggi non è nel registro.
 # Procedura completa: docs/parola-della-domenica.md
 on:
   schedule:
@@ -35,6 +40,10 @@ on:
         description: "Solo prova (mostra cosa pubblicherebbe)"
         type: boolean
         default: true
+      esterno:
+        description: "Avvio programmato da fuori (si comporta come i cron: pubblica davvero solo nel giorno e nell'orario della Parola, negli altri casi finisce subito)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -55,6 +64,7 @@ jobs:
         env:
           EVENTO: ${{ github.event_name }}
           PROVA: ${{ inputs.prova }}
+          ESTERNO: ${{ inputs.esterno }}
           DATA: ${{ inputs.data }}
         run: |
           HM=$((10#$(TZ=Europe/Rome date +%H%M)))    # es. 447 = 4:47
@@ -69,6 +79,8 @@ jobs:
             echo "::warning::calendario.json non copre oggi: lanciare «calendario.py aggiorna»"
             [ -f ".github/social/parola/$OGGI.json" ] && RC=0
           fi
+          # L'avvio esterno (esterno=true) vale come un giro programmato.
+          if [ "$ESTERNO" = "true" ]; then EVENTO=schedule; echo "esterno=1" >> "$GITHUB_OUTPUT"; fi
           if [ "$EVENTO" = "schedule" ]; then
             if [ "$RC" -ne 0 ] || [ "$HM" -ge 650 ]; then
               echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Oggi niente Parola, o fuori dalla finestra 0:00-6:50 (entro le 7:00 la Parola deve essere uscita): niente da fare."
@@ -110,7 +122,7 @@ jobs:
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
-          DRY_RUN: ${{ inputs.prova && '1' || '' }}
+          DRY_RUN: ${{ (inputs.prova && !inputs.esterno) && '1' || '' }}
           DATA: ${{ inputs.data }}
           PAROLA_ENTRO: "07:00"   # lo script ricontrolla l'ora prima di ogni social
         run: python3 scripts/pubblica_social.py --parola $DATA
