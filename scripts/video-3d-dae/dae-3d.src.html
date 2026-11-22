@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il DAE: com'è fatto</title>
+<!-- dae-3d.src.html — video 3D «Il DAE: com'è fatto» della Misericordia di Ariccia: un DAE generico (semiautomatico,
+     senza marca) che ruota, si apre nella vista esplosa e si richiude. Schema render(t) della skill video-3d.
+     Proporzioni e disposizione ricopiate da foto di DAE veri con licenza libera (Wikimedia Commons, solo guardate:
+     nessuna foto entra nel video; elenco in LEGGIMI.md). Contenuti: NHLBI (NIH), «How Do Defibrillators Work»;
+     Linee guida RCP 2025 di Italian Resuscitation Council, cap. 4, pp. 8, 26 e 30. Scritto per Alessandro Cuollo il
+     22/11/2026. Si costruisce con costruisci.sh (cornice di microtesto, stemma, poi costruisci.py della skill). -->
+<!--FONT-->
+<style>
+  html, body { margin: 0; background: #061633; overflow: hidden; }
+  #stage { position: absolute; left: 0; top: 0; overflow: hidden; background: #061633; }
+  #stage canvas { position: absolute; left: 0; top: 0; display: block; }
+  #fondo { z-index: 0; } #livello-scena { z-index: 2; } #sopra { z-index: 20; } #cornice { z-index: 60; }
+  #fonte { position: absolute; z-index: 30; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px;
+           line-height: 1.3; color: rgba(255, 255, 255, .86); white-space: pre; padding: 5px 12px; border-radius: 10px;
+           background: rgba(6, 22, 51, .66); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="fondo" width="1920" height="1080"></canvas>
+  <canvas id="livello-scena"></canvas>
+  <canvas id="sopra" width="1920" height="1080"></canvas>
+  <canvas id="cornice" width="1920" height="1080"></canvas>
+  <div id="fonte"></div>
+</div>
+<script type="application/json" id="dato-sottotitoli">/*DATO:sottotitoli*/</script>
+<!--LIBRERIE-->
+<!--THREE-->
+<!--MOTORE3D-->
+<script>/*CORNICE*/</script>
+<script>
+(function () {
+  'use strict';
+  const M3 = window.Motore3D, IMP = window.IMP, THREE = window.THREE;
+  const PAR = new URLSearchParams(location.search);
+  const dato = n => { const e = document.getElementById('dato-' + n), s = e ? e.textContent.trim() : '';
+                      return !s || s.startsWith('/*DATO:') ? null : JSON.parse(s); };
+  const { clamp, mix, prog } = M3;
+  const morb = u => 0.5 - 0.5 * Math.cos(Math.PI * clamp(u));
+  const liscia = (a, b, x) => { const u = clamp((x - a) / (b - a)); return u * u * (3 - 2 * u); };
+  const fin = (t, a, b, e = 0.4, u = 0.4) => clamp(Math.min((t - a) / e, (b - t) / u));   // finestra 0..1
+  const quintica = x => { x = clamp(x); return x * x * x * (x * (6 * x - 15) + 10); };      // regola 11 della skill
+  const KIT = { blu: '#003F85', giallo: '#FCEB0C', azzurro: '#009FE3', notte: '#061633' };
+
+  /* ============================================================ testo, scene e tempi */
+  // Testo approvato da Alessandro il 22/11/2026 (scripts/video-3d-dae/BOZZA.md). Le scene sono scritte su una scaletta
+  // fissa (inizio delle 9 frasi); con sottotitoli.json la pagina la allinea alla voce vera, come il video della
+  // rianimazione. Senza voce valgono queste frasi e questi tempi.
+  const TESTI = [
+    'Questo è un defibrillatore, il DAE. Vediamo com\'è fatto dentro.',
+    'Alcuni si accendono da soli quando li apri, altri con un pulsante.',
+    'Le due piastre adesive hanno dei sensori: leggono il ritmo del cuore. Il disegno ti dice dove attaccarle.',
+    'L\'altoparlante ti guida con la voce, passo dopo passo.',
+    'Dentro, un piccolo computer analizza il ritmo e decide se serve una scarica. Mentre analizza, nessuno deve toccare la persona.',
+    'La batteria alimenta tutto: va controllata e cambiata quando serve.',
+    'Se serve, il DAE ti chiede di premere il pulsante della scarica. Alcuni la danno da soli.',
+    'La scarica ferma il tremito del cuore, così può ripartire con un battito efficace. Poi riprendi subito le compressioni.',
+    'Impara a usarlo: corsi alla Misericordia di Ariccia. Chiama il 328 8105399.'
+  ];
+  const SCALETTA = [0, 0.4, 5.2, 9.6, 17.2, 21.4, 30.2, 34.8, 40.6, 48.6, 54.8];   // 0, inizio delle 9 frasi, fine
+  const NF = TESTI.length;
+  const SOTT = dato('sottotitoli');
+  const CHIAVE = ['DAE', 'piastre', 'sensori', 'altoparlante', 'computer', 'batteria', 'scarica', 'compressioni', '328 8105399'];
+  // senza voce: le frasi lunghe si dividono in due sottotitoli (campo «riga»: la frase della voce a cui appartengono)
+  const FRASI = SOTT || TESTI.flatMap((testo, i) => {
+    const a = i === 0 ? -0.5 : SCALETTA[i + 1], b = SCALETTA[i + 2] - 0.15, pezzi = testo.length > 80 ? testo.split(/(?<=[.:]) /) : [testo];
+    const tot = pezzi.reduce((m, x) => m + x.length, 0); let t0 = a;
+    return pezzi.map(x => { const d = (b - Math.max(a, 0)) * x.length / tot, f = { inizio: t0, fine: Math.max(t0, 0) + d - 0.1, testo: x, riga: i + 1, chiave: CHIAVE }; t0 = Math.max(t0, 0) + d; return f; });
+  });
+  const RIGHE = []; FRASI.forEach((f, i) => { const r = f.riga || i + 1; if (!RIGHE[r - 1]) RIGHE[r - 1] = { inizio: f.inizio, fine: f.fine }; else RIGHE[r - 1].fine = f.fine; });
+  const VERI = SOTT && RIGHE.length === NF ? [0, ...RIGHE.map(f => Math.max(0, f.inizio)), RIGHE[NF - 1].fine + 3.0] : SCALETTA.slice();
+  const interp = (x, xs, ys) => { if (x <= xs[0]) return ys[0]; for (let i = 1; i < xs.length; i++) if (x <= xs[i]) return mix(ys[i - 1], ys[i], (x - xs[i - 1]) / (xs[i] - xs[i - 1])); return ys[ys.length - 1] + (x - xs[xs.length - 1]); };
+  const scaletta = tr => interp(tr, VERI, SCALETTA);
+  const TOTAL = VERI[VERI.length - 1];
+  const F = i => SCALETTA[i];      // inizio della frase i (1..9) sulla scaletta
+  const SCENE = [
+    { nome: 'Il DAE', inizio: 0 },                 { nome: 'Accensione', inizio: F(2) },
+    { nome: 'Le piastre', inizio: F(3) },          { nome: 'L\'altoparlante', inizio: F(4) },
+    { nome: 'Il computer', inizio: F(5) },         { nome: 'La batteria', inizio: F(6) },
+    { nome: 'La scarica', inizio: F(7) },          { nome: 'Dopo la scarica', inizio: F(8) },
+    { nome: 'Impara a usarlo', inizio: F(9) }
+  ];
+  window.TOTAL = TOTAL;
+  const FORMATO = PAR.get('formato') === 'orizzontale' ? 'orizzontale' : 'verticale';     // il Reel è verticale
+  const VERT = FORMATO === 'verticale';
+  const L = IMP.layout(FORMATO), W = L.W, H = L.H;
+  window.STAGE_W = W; window.STAGE_H = H;
+  for (const id of ['fondo', 'sopra', 'cornice']) { const e = document.getElementById(id); e.width = W; e.height = H; }
+  const stage = document.getElementById('stage');
+  const stato = IMP.monta(stage, { ente: 'misericordia', formato: FORMATO, hud: null, nota: null });
+  IMP.anteprima(stage);
+  if (PAR.get('pulito') === '1') {          // solo il 3D, senza scritte (immagini per la grafica della news e per la pagina)
+    const st = document.createElement('style'); st.textContent = '#sopra,#cornice,#fonte,#imp-radice{display:none!important}'; document.head.appendChild(st);
+  }
+
+  /* ============================================================ fondo, livello 3D, luci */
+  const fondo = document.getElementById('fondo'), fctx = fondo.getContext('2d');
+  (function () {
+    const g = fctx.createRadialGradient(W * 0.5, VERT ? 820 : 470, 60, W * 0.5, VERT ? 820 : 470, VERT ? 1500 : 1250);
+    g.addColorStop(0, '#0B3D7E'); g.addColorStop(0.5, '#082B5E'); g.addColorStop(1, KIT.notte);
+    fctx.fillStyle = g; fctx.fillRect(0, 0, W, H);
+  })();
+  const vicino = M3.creaRenderer(document.getElementById('livello-scena'), W, H, { scala: 0.8 });
+  const scena = new THREE.Scene();
+  const camera = M3.creaCamera(W, H, { fov: VERT ? 40 : 30, zona: L.zona });
+  scena.add(new THREE.HemisphereLight(0xe8efff, 0x1a2a4a, 1.35));
+  const luce = new THREE.DirectionalLight(0xffffff, 1.7); scena.add(luce); scena.add(luce.target);
+  const luce2 = new THREE.DirectionalLight(0x9fc4ff, 0.6); scena.add(luce2); scena.add(luce2.target);
+
+  /* ============================================================ il DAE (metri; x a destra, y in alto, z verso chi guarda)
+     Disposizione ricopiata dai riferimenti: corpo a valigetta con la maniglia davanti, coperchio incernierato dietro con
+     le piastre nella busta all'interno, pannello con griglia dell'altoparlante, spie, pulsante della scarica con il
+     fulmine al centro davanti, pulsante di accensione verde, connettore delle piastre a destra. Colori neutri (nessuna
+     marca): giallo e grigio scuro, comuni a molti DAE. Dimensioni di un DAE da borsa: 30 × 9 × 26 cm circa. */
+  const DIM = { w: 0.30, h: 0.085, d: 0.26 };
+  const mat = (colore, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: colore, roughness: 0.55, metalness: 0.05, transparent: true }, o));
+  const MAT = { giallo: mat(0xF2C230, { roughness: 0.45 }), scuro: mat(0x2B313A, { roughness: 0.6 }), grigio: mat(0x59616C), nero: mat(0x15181D, { roughness: 0.7 }),
+                bianco: mat(0xF4F4F1, { roughness: 0.75 }), pcb: mat(0x1E7A4A, { roughness: 0.5 }), chip: mat(0x1A1D22, { roughness: 0.4 }),
+                rame: mat(0xC9A25A, { metalness: 0.6, roughness: 0.35 }), argento: mat(0xB9BEC6, { metalness: 0.7, roughness: 0.3 }),
+                verde: mat(0x2EB872, { emissive: 0x0b4d2c }), cavo: mat(0xEDEDE8, { roughness: 0.6 }) };
+  function forma(w, d, r) {             // rettangolo arrotondato nel piano xz (estruso lungo y)
+    const s = new THREE.Shape(), x = -w / 2, z = -d / 2;
+    s.moveTo(x + r, z); s.lineTo(x + w - r, z); s.quadraticCurveTo(x + w, z, x + w, z + r); s.lineTo(x + w, z + d - r);
+    s.quadraticCurveTo(x + w, z + d, x + w - r, z + d); s.lineTo(x + r, z + d); s.quadraticCurveTo(x, z + d, x, z + d - r);
+    s.lineTo(x, z + r); s.quadraticCurveTo(x, z, x + r, z); return s;
+  }
+  function blocco(w, h, d, r, m, bev = 0.004) {   // scatola con angoli e spigoli arrotondati, base a y = 0
+    const g = new THREE.ExtrudeGeometry(forma(w - 2 * bev, d - 2 * bev, Math.max(0.001, r - bev)),
+      { depth: h - 2 * bev, bevelEnabled: true, bevelThickness: bev, bevelSize: bev, bevelSegments: 3, curveSegments: 10 });
+    g.rotateX(Math.PI / 2); g.translate(0, h - bev, 0);    // estrusione lungo -y dopo la rotazione: la portiamo su 0..h
+    g.computeVertexNormals();
+    return new THREE.Mesh(g, m);
+  }
+  function tela(w, h, disegna) { const c = document.createElement('canvas'); c.width = w; c.height = h; disegna(c.getContext('2d'), w, h);
+                                 const t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t; }
+
+  const dae = new THREE.Group(); scena.add(dae);
+  // base (guscio inferiore)
+  const base = blocco(DIM.w, 0.05, DIM.d, 0.028, MAT.giallo); dae.add(base);
+  // maniglia davanti: un'ansa scura che sporge dalla base
+  const maniglia = new THREE.Group(); dae.add(maniglia);
+  (function () {
+    const tubo = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-0.085, 0.028, 0.118), new THREE.Vector3(-0.075, 0.03, 0.158), new THREE.Vector3(0, 0.032, 0.166),
+      new THREE.Vector3(0.075, 0.03, 0.158), new THREE.Vector3(0.085, 0.028, 0.118)]), 40, 0.012, 12, false), MAT.scuro);
+    maniglia.add(tubo);
+  })();
+  // scheda elettronica dentro la base (si vede quando il guscio superiore si alza)
+  const scheda = new THREE.Group(); scheda.position.set(-0.02, 0.052, -0.005); dae.add(scheda);   // sopra il corpo, coperta dal guscio quando è chiuso
+  const pcbTex = tela(512, 384, (c, w, h) => {
+    c.fillStyle = '#1E7A4A'; c.fillRect(0, 0, w, h);
+    c.strokeStyle = '#C9A25A'; c.lineWidth = 3;
+    for (let k = 0; k < 26; k++) { const y = 20 + k * 13; c.beginPath(); c.moveTo(20 + (k * 37) % 120, y); c.lineTo(200 + (k * 53) % 200, y); c.lineTo(230 + (k * 53) % 200, y + 12); c.stroke(); }
+    c.fillStyle = '#E6E9EC'; c.font = '600 18px Montserrat'; c.fillText('analisi del ritmo', 300, 360);
+  });
+  const pcb = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.004, 0.15), [MAT.pcb, MAT.pcb, new THREE.MeshStandardMaterial({ map: pcbTex, transparent: true }), MAT.pcb, MAT.pcb, MAT.pcb]);
+  scheda.add(pcb);
+  const chipProc = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.006, 0.045), MAT.chip); chipProc.position.set(-0.03, 0.005, 0.0); scheda.add(chipProc);
+  [[0.035, -0.04], [0.06, -0.04], [0.035, 0.03], [0.06, 0.03]].forEach(([x, z]) => { const c2 = new THREE.Mesh(new THREE.BoxGeometry(0.018, 0.005, 0.012), MAT.chip); c2.position.set(x, 0.0045, z); scheda.add(c2); });
+  const luceProc = new THREE.Mesh(new THREE.BoxGeometry(0.047, 0.0015, 0.047), new THREE.MeshBasicMaterial({ color: 0x7CFFB2, transparent: true, opacity: 0 }));
+  luceProc.position.set(-0.03, 0.0085, 0); scheda.add(luceProc);
+  // batteria: blocco grigio scuro con etichetta, infilato dietro (esce verso -z)
+  const batteria = new THREE.Group(); batteria.position.set(0.085, 0.006, -0.045); dae.add(batteria);
+  const batTex = tela(256, 128, (c, w, h) => { c.translate(w, h); c.rotate(Math.PI); c.fillStyle = '#3A414B'; c.fillRect(0, 0, w, h); c.fillStyle = '#FCEB0C'; c.fillRect(18, 44, 60, 40); c.fillRect(78, 54, 8, 20);
+                                               c.fillStyle = '#FFFFFF'; c.font = '700 30px Montserrat'; c.fillText('BATTERIA', 100, 76); });
+  const batMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.036, 0.14), [MAT.grigio, MAT.grigio, new THREE.MeshStandardMaterial({ map: batTex, transparent: true }), MAT.grigio, MAT.grigio, MAT.grigio]);
+  batMesh.position.y = 0.018; batteria.add(batMesh);
+
+  // guscio superiore: pannello scuro con altoparlante, spie, pulsanti, connettore; porta con sé il coperchio
+  const guscio = new THREE.Group(); guscio.position.y = 0.05; dae.add(guscio);
+  const pannello = blocco(DIM.w - 0.006, 0.02, DIM.d - 0.006, 0.026, MAT.scuro, 0.003); guscio.add(pannello);
+  // griglia dell'altoparlante (fessure) sul pannello, a sinistra
+  const griglia = new THREE.Group(); griglia.position.set(-0.075, 0.0205, 0.055); guscio.add(griglia);
+  for (let k = -2; k <= 2; k++) { const f = new THREE.Mesh(new THREE.BoxGeometry(0.066 - Math.abs(k) * 0.008, 0.0015, 0.004), MAT.nero); f.position.z = k * 0.009; griglia.add(f); }
+  // altoparlante vero e proprio sotto la griglia (cono): esce nella scena 4
+  const altoparlante = new THREE.Group(); altoparlante.position.set(-0.075, 0.0, 0.055); guscio.add(altoparlante);
+  (function () {
+    const cestello = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.022, 0.016, 32), MAT.argento); cestello.position.y = 0.008; altoparlante.add(cestello);
+    const cono = new THREE.Mesh(new THREE.ConeGeometry(0.027, 0.012, 32, 1, true), MAT.nero); cono.rotation.x = Math.PI; cono.position.y = 0.017; altoparlante.add(cono);
+    const magnete = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.01, 24), MAT.grigio); magnete.position.y = -0.003; altoparlante.add(magnete);
+  })();
+  // pulsante della scarica: tondo arancio-rosso con il fulmine bianco, al centro davanti
+  const fulmineTex = tela(256, 256, (c, w, h) => {
+    const gr = c.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2); gr.addColorStop(0, '#FF8A3D'); gr.addColorStop(1, '#D9341F');
+    c.fillStyle = gr; c.beginPath(); c.arc(w / 2, h / 2, w / 2, 0, 7); c.fill();
+    c.fillStyle = '#FFFFFF'; c.beginPath();
+    c.moveTo(140, 36); c.lineTo(84, 140); c.lineTo(124, 140); c.lineTo(104, 220); c.lineTo(176, 108); c.lineTo(134, 108); c.lineTo(160, 36); c.closePath(); c.fill();
+  });
+  const pulsScarica = new THREE.Group(); pulsScarica.position.set(0.012, 0.02, 0.078); guscio.add(pulsScarica);
+  const ghiera = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.032, 0.004, 40), MAT.nero); ghiera.position.y = 0.002; pulsScarica.add(ghiera);
+  const tasto = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.006, 40), [new THREE.MeshStandardMaterial({ color: 0xD9341F }), new THREE.MeshStandardMaterial({ map: fulmineTex, emissive: 0xff5a1f, emissiveIntensity: 0, transparent: true, emissiveMap: fulmineTex }), MAT.nero]);
+  tasto.position.y = 0.006; pulsScarica.add(tasto);
+  const alone = new THREE.Mesh(new THREE.RingGeometry(0.028, 0.05, 48), new THREE.MeshBasicMaterial({ color: 0xffb070, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+  alone.rotation.x = -Math.PI / 2; alone.position.y = 0.0095; pulsScarica.add(alone);
+  // pulsante di accensione verde, in basso a sinistra davanti
+  const pulsOn = new THREE.Group(); pulsOn.position.set(-0.115, 0.02, 0.105); guscio.add(pulsOn);
+  const onTex = tela(128, 128, (c, w, h) => { c.fillStyle = '#2EB872'; c.beginPath(); c.arc(64, 64, 64, 0, 7); c.fill();
+                                              c.strokeStyle = '#FFFFFF'; c.lineWidth = 10; c.beginPath(); c.arc(64, 68, 30, -1.1, 4.25); c.stroke(); c.beginPath(); c.moveTo(64, 24); c.lineTo(64, 66); c.stroke(); });
+  const tastoOn = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.006, 32), [MAT.verde, new THREE.MeshStandardMaterial({ map: onTex, emissive: 0x2EB872, emissiveIntensity: 0, emissiveMap: onTex, transparent: true }), MAT.nero]);
+  tastoOn.position.y = 0.003; pulsOn.add(tastoOn);
+  // spie di stato accanto al pulsante della scarica
+  const spie = []; [-0.06, -0.048, 0.048, 0.06].forEach((x, i) => { const s = new THREE.Mesh(new THREE.CylinderGeometry(0.0035, 0.0035, 0.002, 16), new THREE.MeshStandardMaterial({ color: i < 2 ? 0xff5a4e : 0xFCEB0C, emissive: i < 2 ? 0xff2a1e : 0xFCEB0C, emissiveIntensity: 0.2, transparent: true }));
+                                                       s.position.set(x + 0.012, 0.021, 0.108); guscio.add(s); spie.push(s); });
+  // connettore delle piastre, a destra sul pannello
+  const connettore = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.012, 0.018), mat(0xC73A2E)); connettore.position.set(0.105, 0.026, 0.05); guscio.add(connettore);
+
+  // coperchio: incernierato sul bordo posteriore del guscio, si apre ruotando attorno all'asse x
+  const cerniera = new THREE.Group(); cerniera.position.set(0, 0.02, -DIM.d / 2 + 0.006); guscio.add(cerniera);
+  const coperchio = new THREE.Group(); cerniera.add(coperchio);
+  const lastra = blocco(DIM.w - 0.004, 0.016, DIM.d * 0.5, 0.026, MAT.giallo, 0.003);
+  lastra.position.z = DIM.d * 0.25; coperchio.add(lastra);
+  const fodera = new THREE.Mesh(new THREE.BoxGeometry(DIM.w - 0.03, 0.002, DIM.d * 0.44), MAT.scuro); fodera.position.set(0, -0.0008, DIM.d * 0.25); coperchio.add(fodera);
+
+  // piastre: due cuscinetti bianchi con il disegno di dove attaccarle (IRC 2025, cap. 4, p. 30): una sotto la clavicola
+  // destra della persona, accanto allo sterno; l'altra sul fianco sinistro, sotto l'ascella. Nel disegno la persona è vista
+  // di fronte: la sua destra sta a sinistra di chi guarda.
+  // Posizioni nel disegno (frazioni della figura): servono anche al controllo automatico.
+  const DISEGNO = { sterno: 0.5, clavicola: 0.30, placca1: { x: 0.40, y: 0.36 }, placca2: { x: 0.70, y: 0.60 } };
+  function disegnoPiastra(c, w, h, quale) {
+    c.fillStyle = '#F4F4F1'; c.fillRect(0, 0, w, h);
+    const ox = w * 0.18, oy = h * 0.08, fw = w * 0.64, fh = h * 0.84;     // riquadro della figura
+    const X = u => ox + fw * u, Y = v => oy + fh * v;
+    c.strokeStyle = '#2B313A'; c.lineWidth = 6; c.lineJoin = 'round';
+    c.beginPath(); c.arc(X(0.5), Y(0.1), fw * 0.11, 0, 7); c.stroke();                        // testa
+    c.beginPath(); c.moveTo(X(0.44), Y(0.2)); c.lineTo(X(0.44), Y(0.24)); c.moveTo(X(0.56), Y(0.2)); c.lineTo(X(0.56), Y(0.24)); c.stroke();   // collo
+    c.beginPath(); c.moveTo(X(0.12), Y(0.30)); c.quadraticCurveTo(X(0.2), Y(0.24), X(0.44), Y(0.24)); c.lineTo(X(0.56), Y(0.24));
+    c.quadraticCurveTo(X(0.8), Y(0.24), X(0.88), Y(0.30)); c.lineTo(X(0.84), Y(0.95)); c.lineTo(X(0.16), Y(0.95)); c.closePath(); c.stroke();   // busto
+    c.lineWidth = 3; c.beginPath(); c.moveTo(X(0.2), Y(DISEGNO.clavicola)); c.lineTo(X(0.47), Y(0.28)); c.moveTo(X(0.53), Y(0.28)); c.lineTo(X(0.8), Y(DISEGNO.clavicola)); c.stroke();   // clavicole
+    c.setLineDash([8, 8]); c.beginPath(); c.moveTo(X(DISEGNO.sterno), Y(0.3)); c.lineTo(X(DISEGNO.sterno), Y(0.62)); c.stroke(); c.setLineDash([]);   // sterno
+    // le due piastre nel disegno: quella di questa piastra è piena, l'altra solo contornata
+    [[DISEGNO.placca1, 0], [DISEGNO.placca2, 1]].forEach(([p, k]) => {
+      const pw = fw * 0.16, ph = fh * 0.13;
+      c.save(); c.translate(X(p.x), Y(p.y)); c.rotate(k === 1 ? -0.5 : 0);
+      c.fillStyle = k === quale ? '#D9341F' : 'rgba(217,52,31,0)'; c.strokeStyle = '#D9341F'; c.lineWidth = 5;
+      c.beginPath(); c.rect(-pw / 2, -ph / 2, pw, ph); c.fill(); c.stroke(); c.restore();
+    });
+  }
+  const piastre = [0, 1].map(k => {
+    const g = new THREE.Group();
+    const tex = tela(512, 640, (c, w, h) => disegnoPiastra(c, w, h, k));
+    const m = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.004, 0.125), [MAT.bianco, MAT.bianco, new THREE.MeshStandardMaterial({ map: tex, transparent: true }), MAT.bianco, MAT.bianco, MAT.bianco]);
+    g.add(m); scena.add(g);
+    return { g, m, tex };
+  });
+  // cavi delle piastre: dal bordo della piastra al connettore; ricostruiti a ogni fotogramma dalle posizioni (niente stato)
+  const cavi = [0, 1].map(() => { const m = new THREE.Mesh(new THREE.BufferGeometry(), MAT.cavo); scena.add(m); return m; });
+  // busta delle piastre nel coperchio
+  const busta = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.008, 0.1), mat(0xC8CDD3, { metalness: 0.5, roughness: 0.35 }));
+  busta.position.set(0, -0.006, DIM.d * 0.25); coperchio.add(busta);
+
+  /* ============================================================ movimenti (tutto calcolato da t) */
+  // Tempi sulla scaletta (secondi).
+  const T = {
+    apri: [F(2) + 0.6, 1.6],            // coperchio: da chiuso a 105°
+    on: F(2) + 2.6,                     // accensione: si illumina il pulsante verde e le spie
+    piastreEsci: [F(3) + 0.4, 1.8],     // le piastre escono dalla busta e si allargano davanti
+    altop: [F(4) + 0.3, 1.2],           // l'altoparlante sale sopra la griglia
+    altopTorna: [F(5) - 0.9, 0.8],
+    guscio: [F(5) + 0.2, 1.6],          // il guscio superiore si alza: si vede la scheda elettronica
+    guscioTorna: [F(6) - 1.0, 0.9],
+    analisi: [F(5) + 3.2, F(6) - 0.4],  // la scheda «analizza» (luce e tracciato)
+    batteria: [F(6) + 0.3, 1.5],        // la batteria esce dal retro
+    batteriaTorna: [F(7) - 0.9, 0.8],
+    scarica: F(7) + 3.0,                // il pulsante lampeggia, poi la pressione
+    chiudi: [F(8) + 0.4, 2.6],          // tutto torna al suo posto
+    chiudiCoperchio: [F(9) - 0.2, 1.2]
+  };
+  const espl = (t, [a, d]) => quintica(prog(t, a, d));
+  const rientro = t => 1 - quintica(prog(t, T.chiudi[0], T.chiudi[1]));
+  const respiro = (t, t0) => t > t0 ? 1 + 0.08 * Math.sin((t - t0) * 1.6) * clamp((t - t0) / 0.8) : 1;   // le parti «respirano» (regola 11)
+  const _v = new THREE.Vector3(), _w = new THREE.Vector3();
+  function aggiornaDae(t, tr) {
+    // il DAE intero ruota piano all'inizio e alla fine; nelle scene di dettaglio sta fermo (gira la telecamera)
+    dae.rotation.y = 0;
+    const kChiudi = rientro(t);
+    // coperchio
+    const ap = espl(t, T.apri) * (1 - quintica(prog(t, T.chiudiCoperchio[0], T.chiudiCoperchio[1])));
+    cerniera.rotation.x = -1.83 * ap;           // circa 105 gradi
+    // guscio superiore che si alza (con il coperchio sopra)
+    const kG = espl(t, T.guscio) * (1 - espl(t, T.guscioTorna));
+    guscio.position.y = 0.05 + 0.09 * kG * respiro(t, T.guscio[0] + T.guscio[1]);
+    guscio.position.z = -0.07 * kG; guscio.rotation.x = -0.45 * kG;
+    // altoparlante che esce sopra la griglia
+    const kA = espl(t, T.altop) * (1 - espl(t, T.altopTorna));
+    altoparlante.position.y = 0.0 + 0.075 * kA * respiro(t, T.altop[0] + T.altop[1]);
+    altoparlante.rotation.y = 0.6 * kA;
+    // batteria che esce dal retro
+    const kB = espl(t, T.batteria) * (1 - espl(t, T.batteriaTorna));
+    batteria.position.z = -0.045 - 0.2 * kB * respiro(t, T.batteria[0] + T.batteria[1]);
+    batteria.position.y = 0.006 + 0.02 * kB;
+    // scheda elettronica: «analizza» (luce sul processore che pulsa)
+    const kAn = tr >= 0 && t >= T.analisi[0] && t < T.analisi[1] ? fin(t, T.analisi[0], T.analisi[1], 0.3, 0.3) : 0;
+    luceProc.material.opacity = kAn * (0.45 + 0.4 * Math.sin(tr * 9.0) ** 2);
+    // accensione: pulsante verde e spie
+    const acceso = t >= T.on && t < T.chiudiCoperchio[0] + 0.6;
+    tastoOn.material[1].emissiveIntensity = acceso ? 0.9 : 0;
+    spie.forEach((s, i) => { s.material.emissiveIntensity = acceso ? (i < 2 ? 0.15 : 0.8) : 0.1; });
+    // pulsante della scarica: lampeggia (scena 7), poi la pressione
+    const lamp = t >= F(7) && t < F(8) ? (0.5 + 0.5 * Math.sin((tr) * 7.0)) * fin(t, F(7) + 0.6, F(8) - 0.2, 0.3, 0.3) : 0;
+    tasto.material[1].emissiveIntensity = 1.2 * lamp;
+    alone.material.opacity = 0.55 * lamp;
+    const prem = t >= T.scarica && t < T.scarica + 0.5 ? Math.sin(Math.PI * (t - T.scarica) / 0.5) : 0;
+    tasto.position.y = 0.006 - 0.003 * prem;
+    // piastre: dentro la busta (coperchio aperto) → davanti, allargate; seguono il coperchio finché sono nella busta
+    dae.updateMatrixWorld(true);
+    const kP = espl(t, T.piastreEsci) * (1 - quintica(prog(t, F(4) - 0.1, 1.0)));
+    piastre.forEach((p, k) => {
+      busta.getWorldPosition(_v); _v.y += 0.004 + k * 0.004;                 // nella busta
+      const qBusta = new THREE.Quaternion(); busta.getWorldQuaternion(qBusta);
+      const fuori = new THREE.Vector3(k === 0 ? -0.1 : 0.1, 0.16, 0.24);     // davanti al DAE, una per lato
+      const qFuori = new THREE.Quaternion().setFromEuler(new THREE.Euler(0.95, k === 0 ? 0.22 : -0.22, 0));
+      p.g.position.lerpVectors(_v, fuori, kP);
+      p.g.quaternion.slerpQuaternions(qBusta, qFuori, kP);
+      if (kP > 0) p.g.position.y += 0.012 * Math.sin((t - T.piastreEsci[0]) * 1.4 + k) * clamp((t - T.piastreEsci[0] - T.piastreEsci[1]) / 0.8);
+      // visibili solo con il coperchio aperto (chiuse nella busta non si vedono)
+      p.g.visible = ap > 0.4 || kP > 0.02;
+      // cavo: dal bordo superiore della piastra al connettore
+      const a = new THREE.Vector3(0, 0.003, -0.06).applyQuaternion(p.g.quaternion).add(p.g.position);
+      connettore.getWorldPosition(_w);
+      const b = _w.clone().add(new THREE.Vector3(k === 0 ? -0.006 : 0.006, 0.004, 0));
+      const m1 = a.clone().lerp(b, 0.35).add(new THREE.Vector3(0, 0.05 * kP + 0.01, 0.03 * kP));
+      const m2 = a.clone().lerp(b, 0.7).add(new THREE.Vector3(0, 0.03 * kP + 0.008, 0));
+      cavi[k].geometry.dispose();
+      cavi[k].geometry = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([a, m1, m2, b]), 40, 0.0022, 8, false);
+      cavi[k].visible = p.g.visible;
+    });
+  }
+
+  /* ============================================================ telecamera (bersaglio sul DAE) */
+  // el 35-55° per gli oggetti (regola 11 della skill), un movimento con un nome per tratto.
+  const CAM = [
+    { t: 0, c: [0, 0.05, 0], az: -40, el: 30, d: 1.15, fov: 30 },
+    { t: F(2) - 0.2, az: 18, el: 36, d: 0.95, facilita: 'lineare' },               // orbita lenta attorno al DAE chiuso
+    { t: F(2) + 0.6, c: [0, 0.06, 0.02], az: 12, el: 40, d: 0.9 },
+    { t: F(3) - 0.2, c: [0, 0.06, 0.02], az: 12, el: 40, d: 0.9 },                 // ferma: coperchio e accensione
+    { t: F(3) + 0.8, c: [0, 0.1, 0.12], az: 0, el: 36, d: 1.0 },                    // indietro: escono le piastre
+    { t: F(4) - 0.2, c: [0, 0.1, 0.12], az: 0, el: 36, d: 1.0 },                    // ferma: schede delle piastre
+    { t: F(4) + 0.6, c: [-0.075, 0.09, 0.05], az: -24, el: 42, d: 0.7 },            // avvicinamento all'altoparlante
+    { t: F(5) - 0.2, c: [-0.075, 0.09, 0.05], az: -24, el: 42, d: 0.7 },
+    { t: F(5) + 1.9, c: [0, 0.11, -0.02], az: -8, el: 40, d: 1.25 },                // gru: il guscio si alza, si vede la scheda
+    { t: F(6) - 0.2, c: [0, 0.11, -0.02], az: -8, el: 40, d: 1.25 },
+    { t: F(6) + 0.8, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },           // orbita dietro: esce la batteria
+    { t: F(7) - 0.2, c: [0.06, 0.06, -0.12], az: 150, el: 38, d: 0.95 },
+    { t: F(7) + 0.8, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },             // primo piano del pulsante della scarica
+    { t: F(8) - 0.2, c: [0.012, 0.075, 0.078], az: 6, el: 46, d: 0.62 },
+    { t: F(8) + 0.8, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
+    { t: F(9) - 0.2, c: [0, 0.06, 0], az: 0, el: 36, d: 1.0 },
+    { t: F(9) + 2.0, az: 24, el: 34, d: 1.0, facilita: 'lineare' },                // orbita lenta mentre si richiude
+    { t: SCALETTA[SCALETTA.length - 1], az: 40, el: 32, d: 1.05, facilita: 'lineare' }
+  ];
+  (function () { let p = CAM[0]; for (const k of CAM) { for (const x of ['c', 'az', 'el', 'd', 'fov', 'dv']) if (k[x] == null) k[x] = p[x]; p = k; } })();
+  const _b = new THREE.Vector3();
+  function telecamera(t) {
+    let i = 0; while (i < CAM.length - 2 && t >= CAM[i + 1].t) i++;
+    const a = CAM[i], b = CAM[i + 1];
+    const u0 = clamp((t - a.t) / Math.max(1e-6, b.t - a.t)), u = b.facilita === 'lineare' ? u0 : morb(u0);
+    _b.set(...[0, 1, 2].map(k => mix(a.c[k], b.c[k], u)));
+    const az = mix(a.az, b.az, u) * Math.PI / 180, el = mix(a.el, b.el, u) * Math.PI / 180;
+    const d = Math.exp(mix(Math.log(a.d), Math.log(b.d), u)) * (VERT ? 1.0 : 0.82), fov = mix(a.fov, b.fov, u) * (VERT ? 1.35 : 1);
+    camera.position.set(_b.x + d * Math.sin(az) * Math.cos(el), _b.y + d * Math.sin(el), _b.z + d * Math.cos(az) * Math.cos(el));
+    camera.up.set(0, 1, 0); camera.lookAt(_b);
+    camera.near = d * 0.02; camera.far = d * 10 + 3; camera.fov = fov; camera.updateProjectionMatrix();
+    luce.position.copy(camera.position).add(new THREE.Vector3(0.6 * d, 1.2 * d, 0.4 * d)); luce.target.position.copy(_b);
+    luce2.position.copy(_b).add(new THREE.Vector3(-d, -0.3 * d, -0.5 * d)); luce2.target.position.copy(_b);
+    const ferma = a.az === b.az && a.el === b.el && a.d === b.d && a.c.join() === b.c.join();
+    return { ferma: ferma || u0 >= 1 };
+  }
+
+  /* ============================================================ schede (etichette con la linea di richiamo) */
+  // punto: oggetto 3D e scostamento locale; compaiono a telecamera ferma (lo controlla __controlli).
+  const SCHEDE = [
+    { id: 'on', titolo: 'Accensione', sotto: 'pulsante o apertura del coperchio', ogg: pulsOn, off: [0, 0.006, 0], verso: { dx: -200, dy: 230 }, versoO: { dx: -320, dy: 120 }, inizio: F(2) + 2.7, fine: F(3) - 0.3 },
+    { id: 'p1', titolo: 'Piastra adesiva', sotto: 'con sensori e disegno', ogg: piastre[0].g, off: [0, 0.003, 0], verso: { dx: -120, dy: -380 }, versoO: { dx: -340, dy: -120 }, inizio: F(3) + 2.5, fine: F(4) - 0.3 },
+    { id: 'p2', titolo: 'Sotto l\'ascella sinistra', sotto: 'l\'altra sotto la clavicola destra', ogg: piastre[1].g, off: [0, 0.003, 0], verso: { dx: 120, dy: -250 }, versoO: { dx: 340, dy: -140 }, inizio: F(3) + 4.2, fine: F(4) - 0.3 },
+    { id: 'alt', titolo: 'Altoparlante', sotto: 'ti guida passo dopo passo', ogg: altoparlante, off: [0, 0.02, 0], verso: { dx: 200, dy: -280 }, versoO: { dx: 340, dy: -150 }, inizio: F(4) + 0.8, fine: F(5) - 0.3 },
+    { id: 'pc', titolo: 'Computer interno', sotto: 'analizza il ritmo del cuore', ogg: chipProc, off: [0, 0.006, 0], verso: { dx: 200, dy: -300 }, versoO: { dx: 360, dy: 120 }, inizio: F(5) + 2.5, fine: F(6) - 0.3 },
+    { id: 'bat', titolo: 'Batteria', sotto: 'da controllare e cambiare', ogg: batteria, off: [0, 0.04, 0], verso: { dx: -180, dy: -280 }, versoO: { dx: -340, dy: -130 }, inizio: F(6) + 1.9, fine: F(7) - 0.3 },
+    { id: 'scarica', titolo: 'Pulsante della scarica', sotto: 'premilo solo se te lo chiede', ogg: pulsScarica, off: [0, 0.009, 0], verso: { dx: 0, dy: 300 }, versoO: { dx: 330, dy: 140 }, inizio: F(7) + 0.9, fine: F(8) - 0.3 }
+  ];
+  const _p = new THREE.Vector3();
+  function proietta(s) {
+    _p.set(...s.off); s.ogg.localToWorld(_p);
+    if (!s.ogg.visible && s.ogg.parent && !s.ogg.parent.visible) return null;
+    const v = _p.clone().project(camera);
+    if (v.z > 1 || v.z < -1) return null;
+    return { x: (v.x + 1) / 2 * W, y: (1 - v.y) / 2 * H };
+  }
+
+  /* ============================================================ sovrimpressioni 2D (come il video della rianimazione) */
+  const sopra = document.getElementById('sopra'), s2 = sopra.getContext('2d');
+  const stemma = new Image(); stemma.src = '/*STEMMA*/';
+  function testo(c, t, x, y, corpo, peso, colore, alline = 'left') { c.font = `${peso} ${corpo}px Montserrat`; c.fillStyle = colore; c.textAlign = alline; c.fillText(t, x, y); }
+  function rett(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+  function pannelloS(c, x, y, w, h, bordo = 'rgba(252,235,12,.85)') { rett(c, x, y, w, h, 16); c.fillStyle = 'rgba(0,30,70,.86)'; c.fill(); c.strokeStyle = bordo; c.lineWidth = 2; c.stroke(); }
+  const LAY = VERT ? {
+    fascia: { y: 150, h: 102, w: 1010, sx: 52, dx: 200, stemma: 112 }, firma: { x: 56, y: 266, corpo: 30 }, nota: { y: 268 },
+    ecg: { x: 90, y: 1070, w: 900, h: 150 }, avviso: 430, riga1: 760, tel: 880, sito: 990
+  } : {
+    fascia: { y: 40, h: 84, w: 940, sx: 46, dx: 170, stemma: 92 }, firma: { x: 48, y: 134, corpo: 28 }, nota: { y: 64 },
+    ecg: { x: 1360, y: 640, w: 480, h: 150 }, avviso: 236, riga1: 520, tel: 640, sito: 740
+  };
+  function testata(c, nomeScena) {
+    const Fa = LAY.fascia, libero = Fa.w - Fa.sx - Fa.dx;
+    c.save();
+    if (VERT) { const g = c.createLinearGradient(0, 0, 0, Fa.y + 4); g.addColorStop(0, 'rgba(6,22,51,1)'); g.addColorStop(0.8, 'rgba(6,22,51,.96)'); g.addColorStop(1, 'rgba(6,22,51,0)'); c.fillStyle = g; c.fillRect(0, 0, W, Fa.y + 4); }
+    c.fillStyle = KIT.giallo; c.fillRect(0, Fa.y - Math.round(Fa.h * 0.11), Fa.w + 18, Math.round(Fa.h * 0.9));
+    c.fillStyle = KIT.blu; c.fillRect(0, Fa.y, Fa.w, Fa.h);
+    const r1 = 'Il DAE: com\'è fatto', r2 = nomeScena;
+    let corpo = VERT ? 40 : 34; c.font = `600 ${corpo}px Montserrat`;
+    while (corpo > 24 && Math.max(c.measureText(r1).width, c.measureText(r2).width) > libero) { corpo--; c.font = `600 ${corpo}px Montserrat`; }
+    const Lh = corpo * 1.1, top = Fa.y + (Fa.h - 2 * Lh) / 2 + corpo * 0.88;
+    testo(c, r1, Fa.sx, top, corpo, 600, '#FFFFFF'); testo(c, r2, Fa.sx, top + Lh, corpo * 0.86, 700, KIT.giallo);
+    if (stemma.naturalWidth) { const sw = Fa.stemma, sh = sw * stemma.naturalHeight / stemma.naturalWidth; c.drawImage(stemma, Fa.w - Fa.dx + (Fa.dx - sw) / 2 + 6, Fa.y + Fa.h / 2 - sh / 2, sw, sh); }
+    const fr = LAY.firma; c.font = `600 ${fr.corpo}px Montserrat`; const tw = c.measureText('Misericordia di Ariccia').width;
+    c.shadowColor = 'rgba(0,22,54,.6)'; c.shadowBlur = 6; c.shadowOffsetY = 1;
+    testo(c, 'Misericordia di Ariccia', fr.x, fr.y + fr.corpo, fr.corpo, 600, '#FFFFFF');
+    c.shadowColor = 'transparent';
+    window.FIRMA_BOX = { x: fr.x, y: fr.y, w: Math.round(tw), h: fr.corpo, corpo: fr.corpo };
+    c.font = '700 20px Montserrat'; const nt = 'SCHEMA · NON IN SCALA', nw = c.measureText(nt).width + 36, nx = W - L.margine - nw;
+    rett(c, nx, LAY.nota.y, nw, 38, 19); c.fillStyle = KIT.giallo; c.fill();
+    testo(c, nt, nx + 18, LAY.nota.y + 26, 20, 700, KIT.blu);
+    c.restore();
+  }
+  // tracciato schematico durante l'analisi: fibrillazione (tremito), poi «scarica consigliata»
+  function ecg(c, tr, alfa) {
+    if (alfa <= 0.001) return;
+    const { x, y, w, h } = LAY.ecg;
+    c.save(); c.globalAlpha = alfa; pannelloS(c, x, y, w, h);
+    testo(c, 'Analisi del ritmo', x + 18, y + 32, 22, 700, '#FCEB0C');
+    c.beginPath(); const n = 300, dur = 3.0, base = y + h - 46, amp = (h - 80) * 0.5;
+    for (let i = 0; i <= n; i++) { const tt = tr - dur + dur * i / n, xx = x + 18 + (w - 36) * i / n;
+      const v = 0.34 * Math.sin(tt * 31.0) + 0.22 * Math.sin(tt * 47.3 + 1.3) + 0.14 * Math.sin(tt * 19.1 + 0.4) + 0.1 * Math.sin(tt * 71.0);
+      if (i) c.lineTo(xx, base - amp * v); else c.moveTo(xx, base - amp * v); }
+    c.strokeStyle = '#7CFFB2'; c.lineWidth = 3; c.lineJoin = 'round'; c.stroke();
+    testo(c, 'tremito del cuore (schema)', x + w - 18, y + 32, 18, 600, 'rgba(255,255,255,.8)', 'right');
+    c.restore();
+  }
+  function avviso(c, testoA, alfa, colore = '#FCEB0C') {
+    if (alfa <= 0.001) return;
+    const y = LAY.avviso, corpo = VERT ? 32 : 34;
+    c.save(); c.globalAlpha = alfa; c.font = `800 ${corpo}px Montserrat`; const w = c.measureText(testoA).width + 56;
+    rett(c, (W - w) / 2, y - 44, w, 64, 32); c.fillStyle = 'rgba(0,30,70,.92)'; c.fill(); c.strokeStyle = colore; c.lineWidth = 3; c.stroke();
+    testo(c, testoA, W / 2, y, corpo, 800, colore, 'center'); c.restore();
+  }
+  function chiusura(c, t) {
+    const a = clamp((t - (F(9) + 1.4)) / 0.7); if (a <= 0) return;
+    c.save(); c.globalAlpha = a * 0.92;
+    rett(c, L.margine + 20, LAY.riga1 - 90, W - 2 * L.margine - 40, LAY.sito - LAY.riga1 + 150, 24); c.fillStyle = 'rgba(0,40,92,.9)'; c.fill();
+    c.strokeStyle = '#FCEB0C'; c.lineWidth = 3; c.stroke();
+    c.globalAlpha = a;
+    testo(c, 'Impara a usarlo: corsi alla', W / 2, LAY.riga1 - 30, VERT ? 34 : 32, 700, '#FFFFFF', 'center');
+    testo(c, 'Misericordia di Ariccia', W / 2, LAY.riga1 + 14, VERT ? 34 : 32, 700, '#FFFFFF', 'center');
+    testo(c, '328 8105399', W / 2, LAY.tel, 64, 900, '#FCEB0C', 'center');
+    testo(c, 'oppure 06 933 3717', W / 2, LAY.tel + 44, 26, 600, '#FFFFFF', 'center');
+    testo(c, 'misericordia-ariccia.it/servizi/formazione', W / 2, LAY.sito, VERT ? 28 : 30, 600, '#FFFFFF', 'center');
+    c.restore();
+  }
+
+  /* ============================================================ cornice di microtesto (motore delle grafiche) */
+  const telaCornice = document.getElementById('cornice');
+
+  /* ============================================================ controlli automatici (ricopia-dal-vero, punto 5) */
+  // Scheda di verità, voce 3 (IRC 2025, cap. 4, p. 30): due piastre; nel disegno una sotto la clavicola destra della
+  // persona (a sinistra di chi guarda), accanto allo sterno; l'altra sul fianco sinistro (a destra di chi guarda), sotto
+  // l'ascella, più in basso della prima. Il controllo ferma il render se il disegno non lo rispetta.
+  // ?prova=piastre sposta apposta una piastra per verificare che il controllo la segnali.
+  if (PAR.get('prova') === 'piastre') { DISEGNO.placca2 = { x: 0.62, y: 0.33 }; }
+  const problemiDisegno = [];
+  (function () {
+    const D = DISEGNO, p1 = D.placca1, p2 = D.placca2;
+    if (piastre.length !== 2) problemiDisegno.push({ tipo: 'piastre', dettagli: 'le piastre devono essere due (sono ' + piastre.length + ')' });
+    if (!(p1.x < D.sterno && p1.x > D.sterno - 0.2)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 1 non accanto allo sterno, alla destra della persona (x = ' + p1.x + ')' });
+    if (!(p1.y > D.clavicola && p1.y < D.clavicola + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 1 non subito sotto la clavicola (y = ' + p1.y + ')' });
+    if (!(p2.x > D.sterno + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sul fianco sinistro della persona (x = ' + p2.x + ')' });
+    if (!(p2.y > p1.y + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sotto l\'ascella, più in basso della prima (y = ' + p2.y + ')' });
+  })();
+
+  /* ============================================================ render(t) */
+  const fonte = document.getElementById('fonte');
+  const sceneA = t => { let k = 0; SCENE.forEach((s, i) => { if (t >= s.inizio) k = i; }); return k; };
+  let schedeMovimento = [];
+  function render(tempo) {
+    const tr = clamp(tempo, 0, TOTAL), t = scaletta(tr);
+    const cam = telecamera(t);
+    aggiornaDae(t, tr);
+    vicino.disegna(scena, camera);
+
+    s2.clearRect(0, 0, W, H);
+    // lampo della scarica, breve
+    const lampo = t >= T.scarica ? Math.exp(-(t - T.scarica) / 0.12) : 0;
+    if (lampo > 0.01 && t < T.scarica + 0.5) { s2.fillStyle = `rgba(255,250,210,${(0.45 * lampo).toFixed(3)})`; s2.fillRect(0, 0, W, H); }
+    ecg(s2, tr, t >= T.analisi[0] && t < T.analisi[1] ? fin(t, T.analisi[0], T.analisi[1], 0.4, 0.3) : 0);
+    avviso(s2, 'Analisi: nessuno tocchi la persona', t >= F(5) + 5.0 && t < F(6) - 0.4 ? fin(t, F(5) + 5.0, F(6) - 0.4, 0.3, 0.25) : 0, '#FCEB0C');
+    avviso(s2, 'Riprendi subito le compressioni', t >= F(8) + 3.2 && t < F(9) - 0.3 ? fin(t, F(8) + 3.2, F(9) - 0.3, 0.3, 0.3) : 0, '#7CFFB2');
+    chiusura(s2, t);
+    testata(s2, SCENE[sceneA(t)].nome);
+
+    const k = sceneA(t), sc = SCENE[k];
+    IMP.aggiorna(stato, t, { passoHUD: k + (k === 0 ? 1 : clamp((t - sc.inizio) / 0.4)), notaVisibile: true, hud: sc.nome });
+    IMP.sottotitoli(stato, tr, FRASI, { modo: 'parole' });
+    schedeMovimento = [];
+    for (const s of SCHEDE) {
+      const p = proietta(s);
+      const attiva = t >= s.inizio && t < s.fine;
+      if (attiva && !cam.ferma) schedeMovimento.push(s.id);
+      IMP.scheda(stato, t, { id: s.id, titolo: s.titolo, sotto: s.sotto, punto: p, verso: VERT ? s.verso : s.versoO,
+                             inizio: s.inizio, fine: s.fine, visibile: !!p });
+    }
+    const testoFonte = 'Illustrazione di un DAE generico, non di una marca\nContenuti: NHLBI (NIH); Linee guida RCP 2025, Italian Resuscitation Council';
+    if (fonte.textContent !== testoFonte) fonte.textContent = testoFonte;
+    fonte.style.left = L.margine + 'px'; fonte.style.top = (L.zona.basso - fonte.offsetHeight + 4) + 'px';
+    fonte.style.opacity = (t < F(9) + 1.2 ? 1 : 1 - clamp((t - F(9) - 1.2) / 0.5)).toFixed(3);
+    window.__camFerma = cam.ferma;
+  }
+
+  window.renderFrame = t => render(t);
+  window.__controlli = () => IMP.controlli(stato).concat(problemiDisegno)
+    .concat(schedeMovimento.map(id => ({ tipo: 'tempi', dettagli: 'scheda «' + id + '» visibile mentre la telecamera si muove' })));
+  Promise.all([IMP.caricaFont(), new Promise(r => { if (stemma.complete) r(); else stemma.onload = r; })]).then(() => {
+    render(0);
+    window.CORNICE_ESITO = window.corniceSovrapposta(telaCornice, fondo);
+    window.__ready = true;
+  });
+})();
+</script>
+</body>
+</html>
