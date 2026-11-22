@@ -134,9 +134,7 @@ costi, bandi). I push che toccano solo la bacheca (`bacheca/`, `AGENTS.md`,
 Ogni domenica e nelle feste principali (feste di precetto, Ceneri, Giovedì e Venerdì santo, Defunti,
 Santo Stefano e solennità in settimana: `scripts/parola-domenica/calendario.json`, da LitCal, scelta di
 Alessandro del 31/10/2026) alle 4:47 il workflow `parola-domenica.yml` pubblica su Facebook e
-Instagram (solo social, nessuna pagina) un carosello (**sempre entro le 7:00**, poi iniziano
-le Messe: dalla mezzanotte controlli ogni mezz'ora, dalle 4:47 alle 7 pubblicazione con giri
-di riserva, dopo le 7 nulla, regola del 18/10/2026): copertina con una sola opera
+Instagram (solo social, nessuna pagina) un carosello (**alle 4:47-4:52**, prima delle Messe; se salta, riprova da solo **fino alle 23:00**: regola del 18/10/2026, aggiornata il 22/11/2026, «anche dopo le 7 ma entro le 23»): copertina con una sola opera
 d'arte di pubblico dominio **intera** (Wikimedia Commons) e una pagina per ognuno dei
 versetti più significativi delle letture, con il nome della lettura ben visibile. Dal 30/10/2026 il testo del post riporta anche un brano
 breve delle «Parole dei Papi» di Vatican News (campo `parole_papi` della scheda, copiato identico e
