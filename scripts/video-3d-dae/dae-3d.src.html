@@ -227,7 +227,8 @@
   // destra della persona, accanto allo sterno; l'altra sul fianco sinistro, sotto l'ascella. Nel disegno la persona è vista
   // di fronte: la sua destra sta a sinistra di chi guarda.
   // Posizioni nel disegno (frazioni della figura): servono anche al controllo automatico.
-  const DISEGNO = { sterno: 0.5, clavicola: 0.30, placca1: { x: 0.40, y: 0.36 }, placca2: { x: 0.70, y: 0.60 } };
+  const DISEGNO = { sterno: 0.5, clavicola: 0.30, placca1: { x: 0.40, y: 0.36 }, placca2: { x: 0.80, y: 0.47 } };
+  if (new URLSearchParams(location.search).get('prova') === 'ascella') DISEGNO.placca2 = { x: 0.70, y: 0.60 };   // posizione sbagliata del 22/11/2026
   function disegnoPiastra(c, w, h, quale) {
     c.fillStyle = '#F4F4F1'; c.fillRect(0, 0, w, h);
     const ox = w * 0.18, oy = h * 0.08, fw = w * 0.64, fh = h * 0.84;     // riquadro della figura
@@ -492,7 +493,13 @@
     if (!(p1.x < D.sterno && p1.x > D.sterno - 0.2)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 1 non accanto allo sterno, alla destra della persona (x = ' + p1.x + ')' });
     if (!(p1.y > D.clavicola && p1.y < D.clavicola + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 1 non subito sotto la clavicola (y = ' + p1.y + ')' });
     if (!(p2.x > D.sterno + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sul fianco sinistro della persona (x = ' + p2.x + ')' });
-    if (!(p2.y > p1.y + 0.15)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sotto l\'ascella, più in basso della prima (y = ' + p2.y + ')' });
+    if (!(p2.y > p1.y + 0.08)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non più in basso della prima (y = ' + p2.y + ')' });
+    // Revisione del medico del 22/11/2026: la piastra 2 va sul fianco, sotto l'ascella (linea ascellare media, all'altezza
+    // del 5° spazio intercostale: IRC 2025, cap. 4, p. 30), non bassa né vicina allo sterno. Bordo destro del busto nel
+    // disegno: da (0,88; 0,30) a (0,84; 0,95). Il centro del riquadro sta entro 0,10 dal bordo, all'altezza del torace.
+    const bordo = 0.88 - 0.04 * (p2.y - 0.30) / 0.65;
+    if (!(bordo - p2.x <= 0.10 && p2.x < bordo)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non sul fianco, lontana dalla linea ascellare (x = ' + p2.x + ', bordo ' + bordo.toFixed(2) + ')' });
+    if (!(p2.y >= D.clavicola + 0.10 && p2.y <= 0.52)) problemiDisegno.push({ tipo: 'piastre', dettagli: 'piastra 2 non all\'altezza dell\'ascella e del torace (y = ' + p2.y + '): troppo in alto o sull\'addome' });
   })();
 
   // Revisione del medico del 22/11/2026: la scheda «Sotto l'ascella sinistra» puntava al riquadro vuoto (clavicola) e non a
