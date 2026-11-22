@@ -1,0 +1,104 @@
+name: Controllo Parola della domenica (uscita entro le 7)
+
+# Nei giorni della Parola (domenica e feste di scripts/parola-domenica/calendario.json),
+# dopo le 7:00 italiane controlla che il registro .github/social/pubblicati.json abbia
+# la voce «parola-AAAA-MM-GG» con Facebook e Instagram. Se manca, apre o aggiorna la
+# issue «Parola della domenica: non pubblicata entro le 7» (label automazione +
+# fonte-rotta) e il run diventa rosso, così arriva anche l'email; la issue si chiude
+# da sola al primo controllo in cui la Parola di oggi risulta pubblicata.
+# Nasce il 22/11/2026: il 15/11 e il 22/11 GitHub ha saltato tutti i giri della
+# finestra 4:47-7:00 di parola-domenica.yml, quelli fuori orario finivano in verde
+# senza pubblicare e nessuno se n'è accorto fino alla domanda di Alessandro.
+# Gira poche volte al giorno (orari diversi, perché GitHub può saltarne qualcuno) e
+# finisce subito nei giorni senza Parola o prima delle 7.
+on:
+  schedule:
+    - cron: "11 6 * * *"
+    - cron: "41 7 * * *"
+    - cron: "23 9 * * *"
+    - cron: "53 11 * * *"
+  workflow_run:
+    workflows: ["Parola della domenica e delle feste (social)"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: controllo-parola
+  cancel-in-progress: false
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TITOLO_ISSUE: "Parola della domenica: non pubblicata entro le 7"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+
+      - name: Oggi c'è la Parola, ed è uscita?
+        id: check
+        run: |
+          OGGI=$(TZ=Europe/Rome date +%F)
+          HM=$((10#$(TZ=Europe/Rome date +%H%M)))
+          RC=0; GIORNO=$(python3 scripts/parola-domenica/calendario.py oggi "$OGGI") || RC=$?
+          echo "$GIORNO"
+          if [ "$RC" -eq 2 ] && [ -f ".github/social/parola/$OGGI.json" ]; then RC=0; fi
+          if [ "$RC" -ne 0 ]; then echo "Oggi niente Parola: nessun controllo."; exit 0; fi
+          if [ "$HM" -lt 700 ]; then echo "Non sono ancora le 7: si controlla più tardi."; exit 0; fi
+          STATO=$(OGGI="$OGGI" python3 - <<'PY'
+          import json, os
+          voce = json.load(open(".github/social/pubblicati.json", encoding="utf-8")).get(f"parola-{os.environ['OGGI']}", {})
+          mancano = [r for r in ("facebook", "instagram") if r not in voce]
+          print("ok" if not mancano else "manca:" + ",".join(mancano))
+          PY
+          )
+          echo "Parola del $OGGI: $STATO"
+          echo "stato=$STATO" >> "$GITHUB_OUTPUT"
+          echo "oggi=$OGGI" >> "$GITHUB_OUTPUT"
+
+      - name: Issue di segnalazione (si chiude da sola)
+        if: steps.check.outputs.stato != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATO: ${{ steps.check.outputs.stato }}
+          OGGI: ${{ steps.check.outputs.oggi }}
+        run: |
+          R="$GITHUB_REPOSITORY"
+          NUM=$(gh api "repos/$R/issues?state=open&labels=fonte-rotta&per_page=100" \
+            --jq ".[] | select(.title == \"$TITOLO_ISSUE\") | .number" | head -1)
+          if [ "$STATO" = "ok" ]; then
+            if [ -n "$NUM" ]; then
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: la Parola del $OGGI risulta pubblicata su Facebook e Instagram (registro .github/social/pubblicati.json). La chiudo."
+              gh api -X PATCH "repos/$R/issues/$NUM" -f state=closed -f state_reason=completed >/dev/null
+              echo "Issue #$NUM chiusa."
+            fi
+            exit 0
+          fi
+          RETI="${STATO#manca:}"
+          CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s' \
+            "Alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y') la Parola di oggi ($OGGI) non risulta pubblicata su: $RETI." \
+            "Da guardare: i giri di «Parola della domenica e delle feste (social)» fra le 4:47 e le 7:00 (se nessuno è partito, GitHub li ha saltati e non è partito nemmeno l'avvio esterno delle 4:52, se attivo; se un giro è partito, il passo «Pubblica sui social»)." \
+            "Dopo le 7 la Parola non si pubblica più (regola del 18/10/2026): la issue serve a trovare la causa prima della prossima domenica o festa. Si chiude da sola il prossimo giorno della Parola in cui il post esce. Procedura: docs/parola-della-domenica.md." \
+            "Run: $GITHUB_SERVER_URL/$R/actions/runs/$GITHUB_RUN_ID")
+          if [ -z "$NUM" ]; then
+            gh api -X POST "repos/$R/issues" -f title="$TITOLO_ISSUE" -f body="$CORPO" \
+              -f "labels[]=automazione" -f "labels[]=fonte-rotta" --jq '"Aperta la issue #\(.number)"'
+          else
+            # un solo commento al giorno
+            ULTIMO=$(gh api "repos/$R/issues/$NUM/comments?per_page=100" --jq '.[-1].body // ""')
+            if printf '%s' "$ULTIMO" | grep -q "($OGGI)"; then
+              echo "Issue #$NUM già aggiornata per oggi."
+            else
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="$CORPO" >/dev/null
+              echo "Commento aggiunto alla issue #$NUM."
+            fi
+          fi
+          echo "::error::La Parola del $OGGI non è uscita entro le 7 su: $RETI"
+          exit 1

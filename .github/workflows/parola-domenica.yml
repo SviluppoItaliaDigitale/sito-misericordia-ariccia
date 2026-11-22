@@ -18,6 +18,11 @@ name: Parola della domenica e delle feste (social)
 # girano ogni notte e coprono ora legale e ora solare; il passo «Orario» tiene
 # solo quelli che cadono tra le 0:00 e le 7:00 italiane di un giorno della Parola
 # (negli altri giorni il giro finisce subito).
+# Dal 22/11/2026 i giri della finestra 4:47-7:00 partono anche da fuori: GitHub ha
+# saltato tutti quelli della finestra il 15/11 e il 22/11 e la Parola non è uscita.
+# L'avvio esterno alle 4:52 usa esterno=true (chi lo fa: docs/parola-della-domenica.md);
+# alle 7 controllo-parola.yml
+# apre la issue se la Parola di oggi non è nel registro.
 # Procedura completa: docs/parola-della-domenica.md
 on:
   schedule:
@@ -35,6 +40,14 @@ on:
         description: "Solo prova (mostra cosa pubblicherebbe)"
         type: boolean
         default: true
+      fuori_orario:
+        description: "Solo su richiesta espressa di Alessandro: pubblica la Parola di OGGI anche dopo le 7:00 (togliere anche «prova»)"
+        type: boolean
+        default: false
+      esterno:
+        description: "Avvio programmato da fuori (si comporta come i cron: pubblica davvero solo nel giorno e nell'orario della Parola, negli altri casi finisce subito)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -55,6 +68,8 @@ jobs:
         env:
           EVENTO: ${{ github.event_name }}
           PROVA: ${{ inputs.prova }}
+          ESTERNO: ${{ inputs.esterno }}
+          FUORI_ORARIO: ${{ inputs.fuori_orario }}
           DATA: ${{ inputs.data }}
         run: |
           HM=$((10#$(TZ=Europe/Rome date +%H%M)))    # es. 447 = 4:47
@@ -69,6 +84,8 @@ jobs:
             echo "::warning::calendario.json non copre oggi: lanciare «calendario.py aggiorna»"
             [ -f ".github/social/parola/$OGGI.json" ] && RC=0
           fi
+          # L'avvio esterno (esterno=true) vale come un giro programmato.
+          if [ "$ESTERNO" = "true" ]; then EVENTO=schedule; echo "esterno=1" >> "$GITHUB_OUTPUT"; fi
           if [ "$EVENTO" = "schedule" ]; then
             if [ "$RC" -ne 0 ] || [ "$HM" -ge 650 ]; then
               echo "salta=1" >> "$GITHUB_OUTPUT"; echo "Oggi niente Parola, o fuori dalla finestra 0:00-6:50 (entro le 7:00 la Parola deve essere uscita): niente da fare."
@@ -81,7 +98,10 @@ jobs:
             # Avvio manuale: la prova va sempre; la pubblicazione vera solo per il giorno
             # della Parola di oggi e prima delle 7:00 (dopo iniziano le Messe).
             if [ "$PROVA" != "true" ]; then
-              if [ "$RC" -ne 0 ] || [ "$HM" -ge 650 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
+              # fuori_orario: eccezione chiesta da Alessandro per un giorno saltato (22/11/2026),
+              # solo per la Parola di oggi.
+              TARDI=0; [ "$HM" -ge 650 ] && [ "$FUORI_ORARIO" != "true" ] && TARDI=1
+              if [ "$RC" -ne 0 ] || [ "$TARDI" -eq 1 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
                 echo "::error::La Parola si pubblica solo nel suo giorno (domenica o festa del calendario) entro le 7:00: l'ultimo avvio utile è alle 6:50 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
                 exit 1
               fi
@@ -110,9 +130,9 @@ jobs:
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
-          DRY_RUN: ${{ inputs.prova && '1' || '' }}
+          DRY_RUN: ${{ (inputs.prova && !inputs.esterno) && '1' || '' }}
           DATA: ${{ inputs.data }}
-          PAROLA_ENTRO: "07:00"   # lo script ricontrolla l'ora prima di ogni social
+          PAROLA_ENTRO: ${{ inputs.fuori_orario && '' || '07:00' }}   # lo script ricontrolla l'ora prima di ogni social (non con fuori_orario)
         run: python3 scripts/pubblica_social.py --parola $DATA
 
       - name: Salva il registro dei post social
