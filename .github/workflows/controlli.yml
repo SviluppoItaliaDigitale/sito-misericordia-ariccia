@@ -138,6 +138,13 @@ jobs:
           python3 scripts/controlli/prova_canali.py --autotest
           python3 scripts/controlli/prova_canali.py
 
+      # Video e copertine rifatti prendono un nome nuovo (dal 22/11/2026): restano in cache un mese con lo stesso nome.
+      - name: Video sostituiti con lo stesso nome
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 scripts/controlli/prova_media_sostituiti.py --autotest
+          python3 scripts/controlli/prova_media_sostituiti.py --da-git HEAD^1
+
       - name: Esito
         if: steps.controlli.outputs.esito != 'ok'
         run: |

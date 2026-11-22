@@ -6,7 +6,7 @@ canale: "approfondimenti"
 slug: "dae-com-e-fatto"
 description: "Un video in 3D apre un defibrillatore pezzo per pezzo: le piastre con i sensori, l'altoparlante, il piccolo computer che analizza il ritmo, la memoria, la batteria e il pulsante della scarica."
 immagine: "/img/news/2026-11-22-dae-com-e-fatto-grafica.jpg"
-social_video: "/video/dae-com-e-fatto.mp4"
+social_video: "/video/dae-com-e-fatto-dentro.mp4"
 social_video_copertina: 16
 social_testo: "Che cosa c'è dentro un defibrillatore? Lo apriamo in 3D, pezzo per pezzo: le due piastre adesive con i sensori, l'altoparlante che ti guida, il piccolo computer che analizza il ritmo del cuore e decide se serve una scarica, la memoria, la batteria. Quando il DAE analizza e prima della scarica, nessuno deve toccare la persona. 📞 In ogni emergenza chiama il 112. Usarlo si impara sul manichino: corsi della Misericordia di Ariccia, 328 8105399. È un DAE generico disegnato, non di una marca: uno schema, non in scala. Musica: «Morning» di Kevin MacLeod (incompetech.com), licenza CC BY 4.0. Voce sintetica: modello distribuito con licenza Coqui Public Model License (huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt)."
 social_alt: "Grafica della Misericordia di Ariccia: un defibrillatore disegnato in 3D, aperto e scomposto, con il coperchio alzato e la scheda elettronica verde in vista. Scritta: «Il defibrillatore: com'è fatto dentro»."
@@ -30,7 +30,7 @@ italianoSemplice: |
 
 Lo vediamo appeso nelle palestre, nelle stazioni, nelle farmacie: una valigetta con un cuore e un fulmine. Ma che cosa c'è dentro un **defibrillatore**? In questo video **in tre dimensioni** lo apriamo pezzo per pezzo, per capire com'è fatto e perché funziona così. È un DAE **generico**, disegnato da noi: non è di una marca e non è in scala.
 
-{{< video src="video/dae-com-e-fatto.mp4" poster="img/video/dae-com-e-fatto.jpg" titolo="Il defibrillatore: com'è fatto dentro" durata="PT1M22S" descrizione="Video in 3D: un defibrillatore generico si apre e si scompone, con le piastre, l'altoparlante, il computer che analizza il ritmo del cuore, la memoria, la batteria e il pulsante della scarica." data="2026-11-22" didascalia="Il video dura poco più di un minuto, con voce narrante e sottotitoli. Musica: «Morning» di Kevin MacLeod ([incompetech.com](https://incompetech.com)), licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Il defibrillatore è disegnato: è uno schema, non un modello reale e non in scala." >}}
+{{< video src="video/dae-com-e-fatto-dentro.mp4" poster="img/video/dae-com-e-fatto-dentro.jpg" titolo="Il defibrillatore: com'è fatto dentro" durata="PT1M22S" descrizione="Video in 3D: un defibrillatore generico si apre e si scompone, con le piastre, l'altoparlante, il computer che analizza il ritmo del cuore, la memoria, la batteria e il pulsante della scarica." data="2026-11-22" didascalia="Il video dura poco più di un minuto, con voce narrante e sottotitoli. Musica: «Morning» di Kevin MacLeod ([incompetech.com](https://incompetech.com)), licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it). Voce sintetica: modello distribuito con licenza [Coqui Public Model License](https://huggingface.co/coqui/XTTS-v2/blob/main/LICENSE.txt). Il defibrillatore è disegnato: è uno schema, non un modello reale e non in scala." >}}
 
 ## Un apparecchio piccolo, a batteria
 
