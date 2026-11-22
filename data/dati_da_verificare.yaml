@@ -2381,7 +2381,7 @@ dati:
   - "content/news/2026-11-22-dae-com-e-fatto.md"
   - "scripts/video-3d-dae/dae-3d.src.html"
   - "scripts/video-3d-dae/BOZZA.md"
-  - "static/video/dae-com-e-fatto.vtt"
+  - "static/video/dae-com-e-fatto-dentro.vtt"
   fonte: "https://www.nhlbi.nih.gov/health/defibrillators/how-do-defibrillators-work"
   tipo: "sanita"
   delicato: true

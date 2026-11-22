@@ -69,7 +69,7 @@ Prima lettura dell'agente `medico-emergenza`, tre correzioni, tutte fatte:
   nei primi piani). Controlli del render: nessun problema in 2424 fotogrammi; controllo `?prova=entro` sulle schede.
 - Mix: musica «Morning» (Kevin MacLeod, CC BY 4.0), fruscio ai cambi di scena e colpo della scarica generati qui;
   -14 LUFS, voce sopra il fondo 23,7 dB.
-- News `content/news/2026-11-22-dae-com-e-fatto.md`, video `static/video/dae-com-e-fatto.mp4` con `.vtt`.
+- News `content/news/2026-11-22-dae-com-e-fatto.md`, video `static/video/dae-com-e-fatto-dentro.mp4` con `.vtt`.
 
 ## Voce rifatta (22/11/2026, dopo l'ascolto di Alessandro)
 Dopo la pubblicazione Alessandro ha sentito «chesto», «scaricà» e il secondo «passo» con l'accento sbagliato. Frasi
