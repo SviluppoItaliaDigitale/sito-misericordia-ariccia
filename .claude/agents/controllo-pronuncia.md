@@ -31,6 +31,7 @@ Alessandro, 20/11/2026: «Fai di questo una regola generale. Quello di chiedere 
    - per i nomi propri cerca il DiPI, che ha anche molti toponimi (Ariccia: /aˈriʧʧa/, verificato il 20/11/2026), e in mancanza la pronuncia locale verificata.
 6. Rilancia lo script finché NON NEL DiPI contiene solo parole piane senza e/o ambigue e INCERTE è vuota o motivata.
 7. Dopo la sintesi, se Alessandro o un riconoscitore vocale segnala una parola sbagliata, la parola diventa una riga del dizionario, verificata sul DiPI, con fonte e data. Rifai solo le frasi che la contengono (`VOCE_SENZA_DIPI=1` per non toccare le altre già approvate).
+7b. **Dopo la sintesi, misura (21/11/2026).** Con il venv della voce: `strumenti/voce-riserva/misura_vocali.py FILE.wav PAROLA` (F1/F2 della vocale accentata: «o» chiusa F1 sotto 470 Hz, aperta sopra 520) e `misura_prosodia.py FILE.wav` (tono finale: «sale» se risale; vocale finale «lunga» sopra 250 ms o 1,8 volte la media). Una grafia si sceglie misurando più varianti (nel caso «bocca», «bócca» dava F1 547 Hz, aperta, e «bocca» piana 410 Hz, chiusa: Damien legge male l'accento acuto su alcune parole). Per ogni riga si generano 6 riprese e si sceglie quella con esito OK e trascrizione fedele; la vocale finale lunga si accorcia tagliando il sustain con una dissolvenza.
 
 ## Che cosa non fai
 - Non registri la voce e non scegli le riprese: lo fanno chi produce il video e la skill colonna-sonora.
