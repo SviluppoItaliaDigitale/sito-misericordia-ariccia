@@ -44,6 +44,10 @@ VIETATE = [
     r"indicazione (è )?complet\w*", r"divieto esplicito", r"\bviene precisat\w*", r"numeri (altissim|enorm|impression|pazzesc)\w*",
     # Dal 21/11/2026 (prevenzione-stagionale, ritirata dopo la pubblicazione): regole lette ad alta voce.
     r"la regola dice", r"precisare la regola",
+    # Dal 22/11/2026 (servizi-sociali, generazione 2): il motto del piè di pagina («nella tradizione
+    # delle Misericordie, al fianco del prossimo dal 1244») attribuito alla Misericordia di Ariccia,
+    # nata nel 1994. Il motto non si adatta e non si legge nelle puntate.
+    r"fianco del prossimo",
 ]
 # Dal 21/11/2026 (puntate ritirate al ricontrollo): parole che le fonti precisano sempre.
 # Se la fonte ha la forma completa e la trascrizione dice la parola senza, è un errore:
