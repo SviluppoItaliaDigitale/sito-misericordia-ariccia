@@ -132,7 +132,9 @@ jobs:
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           DRY_RUN: ${{ (inputs.prova && !inputs.esterno) && '1' || '' }}
           DATA: ${{ inputs.data }}
-          PAROLA_ENTRO: ${{ inputs.fuori_orario && '' || '07:00' }}   # lo script ricontrolla l'ora prima di ogni social (non con fuori_orario)
+          # lo script ricontrolla l'ora prima di ogni social; con fuori_orario il limite è la fine
+          # del giorno (una stringa vuota qui non va: per le espressioni di GitHub vale «falso»)
+          PAROLA_ENTRO: ${{ inputs.fuori_orario && '24:00' || '07:00' }}
         run: python3 scripts/pubblica_social.py --parola $DATA
 
       - name: Salva il registro dei post social
