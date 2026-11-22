@@ -1,0 +1,43 @@
+{
+  "data": "2026-11-29",
+  "titolo": "La Parola della domenica",
+  "giorno_liturgico": "I Domenica di Avvento",
+  "opera": null,
+  "pagine": [
+    {
+      "lettura": "Prima lettura",
+      "fonte_lettura": "Dal libro del profeta Isaia",
+      "riferimento": "Is 64,7",
+      "versetto": "Ma, Signore, tu sei nostro padre; noi siamo argilla e tu colui che ci plasma, tutti noi siamo opera delle tue mani.",
+      "evidenza": "noi siamo argilla e tu colui che ci plasma"
+    },
+    {
+      "lettura": "Seconda lettura",
+      "fonte_lettura": "Dalla prima lettera di san Paolo apostolo ai Corinzi",
+      "riferimento": "1Cor 1,9",
+      "versetto": "Degno di fede è Dio, dal quale siete stati chiamati alla comunione con il Figlio suo Gesù Cristo, Signore nostro!",
+      "evidenza": "alla comunione con il Figlio suo"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Marco",
+      "riferimento": "Mc 13,33",
+      "versetto": "Fate attenzione, vegliate, perché non sapete quando è il momento.",
+      "evidenza": "Fate attenzione, vegliate"
+    },
+    {
+      "lettura": "Vangelo",
+      "fonte_lettura": "Dal Vangelo secondo Marco",
+      "riferimento": "Mc 13,35-37",
+      "versetto": "Vegliate dunque: voi non sapete quando il padrone di casa ritornerà, se alla sera o a mezzanotte o al canto del gallo o al mattino. Quello che dico a voi, lo dico a tutti: vegliate!",
+      "evidenza": "Quello che dico a voi, lo dico a tutti: vegliate!"
+    }
+  ],
+  "parole_papi": {
+    "testo": "È importante rimanere vigili, perché uno sbaglio della vita è perdersi in mille cose e non accorgersi di Dio. (…) Vegliare è attendere questo, è non lasciarsi sopraffare dallo scoraggiamento, e questo si chiama vivere nella speranza. Come prima di nascere siamo stati attesi da chi ci amava, ora siamo attesi dall’Amore in persona.",
+    "fonte": "Papa Francesco, - Omelia nella Santa Messa con i nuovi cardinali, 29 novembre 2020"
+  },
+  "testo_social": "Comincia l'Avvento e il Vangelo ci dà una parola sola: vegliate. Non per paura, ma perché siamo attesi da un Padre che ci plasma come l'argilla. Vegliare è restare attenti a chi passa accanto a noi, a chi ha bisogno di una mano. È quello che proviamo a fare ogni giorno con il nostro servizio. Buona domenica e buon cammino d'Avvento!",
+  "preparata_da": "Alessandro Cuollo, 2026-11-22",
+  "traduzione": "CEI 2008 (chiesacattolica.it)"
+}
