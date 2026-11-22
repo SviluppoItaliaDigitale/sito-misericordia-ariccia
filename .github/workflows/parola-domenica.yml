@@ -41,7 +41,7 @@ on:
         type: boolean
         default: true
       fuori_orario:
-        description: "Solo su richiesta espressa di Alessandro: pubblica la Parola di OGGI anche dopo le 7:00 (togliere anche «prova»)"
+        description: "Solo su richiesta espressa di Alessandro: pubblica la Parola di oggi (o del giorno in «data», per recuperarne una saltata) anche dopo le 7:00 (togliere anche «prova»)"
         type: boolean
         default: false
       esterno:
@@ -101,7 +101,11 @@ jobs:
               # fuori_orario: eccezione chiesta da Alessandro per un giorno saltato (22/11/2026),
               # solo per la Parola di oggi.
               TARDI=0; [ "$HM" -ge 650 ] && [ "$FUORI_ORARIO" != "true" ] && TARDI=1
-              if [ "$RC" -ne 0 ] || [ "$TARDI" -eq 1 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
+              # con fuori_orario si può indicare anche un giorno passato (recupero di una Parola
+              # saltata, su richiesta di Alessandro: il 15/11/2026 recuperato il 22/11/2026)
+              ALTRO=0; [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ] && ALTRO=1
+              if [ "$FUORI_ORARIO" = "true" ] && [ "$ALTRO" -eq 1 ] && [ -f ".github/social/parola/$DATA.json" ]; then ALTRO=0; RC=0; fi
+              if [ "$RC" -ne 0 ] || [ "$TARDI" -eq 1 ] || [ "$ALTRO" -eq 1 ]; then
                 echo "::error::La Parola si pubblica solo nel suo giorno (domenica o festa del calendario) entro le 7:00: l'ultimo avvio utile è alle 6:50 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
                 exit 1
               fi
