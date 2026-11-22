@@ -40,6 +40,10 @@ on:
         description: "Solo prova (mostra cosa pubblicherebbe)"
         type: boolean
         default: true
+      fuori_orario:
+        description: "Solo su richiesta espressa di Alessandro: pubblica la Parola di OGGI anche dopo le 7:00 (togliere anche «prova»)"
+        type: boolean
+        default: false
       esterno:
         description: "Avvio programmato da fuori (si comporta come i cron: pubblica davvero solo nel giorno e nell'orario della Parola, negli altri casi finisce subito)"
         type: boolean
@@ -65,6 +69,7 @@ jobs:
           EVENTO: ${{ github.event_name }}
           PROVA: ${{ inputs.prova }}
           ESTERNO: ${{ inputs.esterno }}
+          FUORI_ORARIO: ${{ inputs.fuori_orario }}
           DATA: ${{ inputs.data }}
         run: |
           HM=$((10#$(TZ=Europe/Rome date +%H%M)))    # es. 447 = 4:47
@@ -93,7 +98,10 @@ jobs:
             # Avvio manuale: la prova va sempre; la pubblicazione vera solo per il giorno
             # della Parola di oggi e prima delle 7:00 (dopo iniziano le Messe).
             if [ "$PROVA" != "true" ]; then
-              if [ "$RC" -ne 0 ] || [ "$HM" -ge 650 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
+              # fuori_orario: eccezione chiesta da Alessandro per un giorno saltato (22/11/2026),
+              # solo per la Parola di oggi.
+              TARDI=0; [ "$HM" -ge 650 ] && [ "$FUORI_ORARIO" != "true" ] && TARDI=1
+              if [ "$RC" -ne 0 ] || [ "$TARDI" -eq 1 ] || { [ -n "$DATA" ] && [ "$DATA" != "$OGGI" ]; }; then
                 echo "::error::La Parola si pubblica solo nel suo giorno (domenica o festa del calendario) entro le 7:00: l'ultimo avvio utile è alle 6:50 (regola del 18/10/2026). Ora: $(TZ=Europe/Rome date '+%A %H:%M')."
                 exit 1
               fi
@@ -124,7 +132,7 @@ jobs:
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
           DRY_RUN: ${{ (inputs.prova && !inputs.esterno) && '1' || '' }}
           DATA: ${{ inputs.data }}
-          PAROLA_ENTRO: "07:00"   # lo script ricontrolla l'ora prima di ogni social
+          PAROLA_ENTRO: ${{ inputs.fuori_orario && '' || '07:00' }}   # lo script ricontrolla l'ora prima di ogni social (non con fuori_orario)
         run: python3 scripts/pubblica_social.py --parola $DATA
 
       - name: Salva il registro dei post social
