@@ -239,11 +239,11 @@ puntate:
   - content/servizi/servizi-sociali.md
   parole: []
   stato: scartata
-  motivo: '22/11/2026, seconda generazione: «la Misericordia di Ariccia … si trova al
-    fianco del prossimo dal 1244» (la pagina lo dice della tradizione delle Misericordie;
-    Ariccia è attiva dal 1994) e «tutte le cose quotidiane», che la pagina non dice. La
-    prima citava il 5x1000 con un codice fiscale sbagliato e diceva a che cosa sono «pensati»
-    i servizi.'
+  motivo: '22/11/2026, seconda generazione: «la Misericordia di Ariccia … si trova
+    al fianco del prossimo dal 1244» (la pagina lo dice della tradizione delle Misericordie;
+    Ariccia è attiva dal 1994) e «tutte le cose quotidiane», che la pagina non dice.
+    La prima citava il 5x1000 con un codice fiscale sbagliato e diceva a che cosa
+    sono «pensati» i servizi.'
 - id: kit-animali
   tema: kit-prevenzione
   titolo: Gli animali domestici in emergenza
@@ -262,7 +262,28 @@ puntate:
   parole: []
   stato: scartata
   motivo: '22/11/2026, seconda generazione: presenta l''arciconfraternita di San Giovanni
-    Decollato a Roma e il Pio Monte della Misericordia di Napoli come «espansione» delle
-    Misericordie, senza la cautela della pagina («non fanno parte del nostro movimento»).
-    La prima diceva Volterra «nata nel 1290» senza «la tradizione la fa risalire» e il 1291,
-    chiamava museo l''oratorio e toglieva «secondo la Misericordia di Siena».'
+    Decollato a Roma e il Pio Monte della Misericordia di Napoli come «espansione»
+    delle Misericordie, senza la cautela della pagina («non fanno parte del nostro
+    movimento»). La prima diceva Volterra «nata nel 1290» senza «la tradizione la
+    fa risalire» e il 1291, chiamava museo l''oratorio e toglieva «secondo la Misericordia
+    di Siena».'
+- id: soffocamento-lattante
+  tema: primo-soccorso
+  titolo: 'Soffocamento nel lattante: che cosa fare'
+  fonti:
+  - content/news/2026-11-20-primo-soccorso-soffocamento-lattante.md
+  parole: []
+  stato: programmata
+  file: content/podcast/2026-11-23-soffocamento-lattante.md
+  data: '2026-11-23'
+  social_data: '2026-12-19'
+- id: avvelenamento-incidente-stradale
+  tema: primo-soccorso
+  titolo: 'Avvelenamento e incidente stradale: che cosa fare'
+  fonti:
+  - content/news/2026-11-03-primo-soccorso-avvelenamento.md
+  - content/news/2026-11-13-primo-soccorso-incidente-stradale.md
+  parole:
+  - avvelenamento
+  - incidente stradale
+  stato: da-fare

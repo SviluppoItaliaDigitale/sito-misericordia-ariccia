@@ -33,6 +33,8 @@ VIETATE = [
     r"\brigoros\w*", r"fa (davvero |proprio )?la differenza", r"\bsbirci\w*", r"\bimpuls[oi]\b",
     # Dal 20/11/2026 (trasporti-sanitari, generazione 1): «avviso vitale», «il 112, detto 112».
     r"\bvital[ei]\b", r"\bdetto (il |l')?(112|uno)",
+    # Dal 23/11/2026 (soffocamento-lattante, generazione 1): «un argomento estremamente pratico».
+    r"\bestremamente\b",
     # Dal 20/11/2026 (opere-di-misericordia, generazione 1): «seguendo il testo».
     r"\b(seguendo|secondo|come dice) il testo\b",
     # Dal 20/11/2026 (diventa-volontario, generazione 1): chiusa morale e giudizi delle voci.
