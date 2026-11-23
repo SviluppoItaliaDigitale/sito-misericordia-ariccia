@@ -4,6 +4,7 @@ titoloSeo: "Rianimazione nel bambino: cosa fare passo passo (linee guida ERC/IRC
 date: 2026-11-24
 canale: "approfondimenti"
 slug: "primo-soccorso-rianimazione-bambino"
+controllo_editoriale: "2026-11-23"
 in_evidenza_fino: "2026-12-04"
 description: "Cinque soffi, due pollici o una mano, 30 compressioni e 2 soffi, il defibrillatore anche nei bambini, e la simulazione a tempo delle compressioni."
 immagine: "/img/news/primo-soccorso-rianimazione-bambino-grafica.jpg"

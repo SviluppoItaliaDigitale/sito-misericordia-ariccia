@@ -6,7 +6,7 @@ canale: "misericordia"
 slug: "accanto-a-chi-deve-curarsi"
 description: "Dialisi, ritorno a casa dopo un ricovero, visite in carrozzina: dietro ogni viaggio ci sono i volontari della Misericordia di Ariccia. Entra in squadra: WhatsApp 348 4068657."
 immagine: "/img/news/2026-11-26-accanto-a-chi-deve-curarsi-grafica.jpg"
-controllo_editoriale: "2026-11-01"
+controllo_editoriale: "2026-11-23"
 social_video: "/video/squadra-trasporti.mp4"
 social_video_copertina: 1
 social_testo: |-

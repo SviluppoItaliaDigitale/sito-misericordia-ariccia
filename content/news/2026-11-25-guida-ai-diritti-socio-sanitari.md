@@ -4,6 +4,7 @@ titoloSeo: "Guida ai diritti socio-sanitari ad Ariccia e nei Castelli Romani | M
 date: 2026-11-25
 canale: "informazioni"
 slug: "guida-ai-diritti-socio-sanitari"
+controllo_editoriale: "2026-11-23"
 description: "La guida della Misericordia di Ariccia ai diritti socio-sanitari: la nuova procedura INPS per l'invalidità nella provincia di Roma, Legge 104, trasporto per la dialisi, pass disabili, esenzioni ticket, ausili, assistenza a casa, caregiver e amministratore di sostegno."
 immagine: "/img/news/guida-diritti-grafica.jpg"
 social_testo: "📋 Lo sapevi che dal 1° marzo 2026, nella provincia di Roma, per avviare il riconoscimento dell'invalidità basta il certificato del medico inviato all'INPS, senza domanda separata? E che nel Lazio chi fa la dialisi ha diritto a un trasporto garantito dall'ASL? Ogni giorno, nei nostri trasporti, incontriamo famiglie che non sapevano di avere un diritto. Per questo abbiamo scritto una guida semplice: invalidità, Legge 104, trasporti, pass auto, esenzioni ticket, ausili, assistenza a casa, caregiver, amministratore di sostegno. Con le fonti ufficiali e a chi rivolgersi ad Ariccia e nei Castelli Romani."
