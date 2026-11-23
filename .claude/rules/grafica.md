@@ -35,5 +35,8 @@ Ogni grafica, slide o documento grafico porta il nome dell'ente ben leggibile e 
 ## Limiti che restano
 Accessibilità (contrasto, titoli, tastiera, `prefers-reduced-motion`), prestazioni e brand ufficiali vengono prima dell'originalità. Niente dati, foto o testimonianze inventati: segnaposto evidenti dove mancano.
 
+## Rifare una pagina che sembra fatta con l'AI (dal 22/11/2026)
+Prima l'elenco di ogni segno della lista qui sopra, con il punto dove si trova; poi la direzione in una riga, presa dalla realtà; poi le correzioni a passate, in quest'ordine: spaziature, colore, icone, testi, caratteri, impaginazione, dettagli, immagini, movimento. Se la pagina va già bene si dice e si fanno solo piccoli ritocchi. Animazioni: `landing-premium`, § Motion.
+
 ## Controllo prima di consegnare
 «Se tolgo logo e testi, si capisce di chi è? Sembra uscito da un generatore?». Due o più segni dell'elenco senza ragione di brand: correggi; indica in una riga la direzione scelta. Nessuna foto a colori portata in bianco e nero fuori dal lutto; nome dell'ente leggibile e cornice lungo i bordi.
