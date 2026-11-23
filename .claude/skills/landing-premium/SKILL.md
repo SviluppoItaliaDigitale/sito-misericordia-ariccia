@@ -64,7 +64,9 @@ di questa skill, per qualunque realtà (note e future):
 - **MAI** proporre o implementare PWA, Service Worker, offline-first, web app
   installabili — in nessuna forma, nemmeno come suggerimento futuro.
 - **Vanilla JS only.** Niente framework (React/Vue/ecc.). Three.js è ammesso
-  in quanto libreria.
+  in quanto libreria; per le animazioni dell'interfaccia (comparse, scroll,
+  transizioni) è ammessa **Motion** in JavaScript semplice (`references/tecniche.md`
+  § «Animazioni con Motion»), mai i suoi componenti React.
 - Pagine **autonome**: nessuna modifica al CSS della navbar Bootstrap Italia,
   nessuna dipendenza dal tema Hugo. Se la pagina entra nel repo Hugo, va come
   layout/pagina standalone.
@@ -92,6 +94,9 @@ di questa skill, per qualunque realtà (note e future):
   capitoli leggibile); `<noscript>` con il contenuto essenziale.
 - Un solo file, nessun asset obbligatorio esterno oltre a Google Fonts e
   cdnjs (Three.js r128: unica CDN garantita anche negli artifact Claude).
+  Unica eccezione: Motion, che non è su cdnjs, da jsDelivr con la versione
+  fissata (`motion@14.10.1`); la pagina deve restare leggibile e completa anche
+  se Motion non si carica (le animazioni sono un di più).
 
 ## Riferimenti
 

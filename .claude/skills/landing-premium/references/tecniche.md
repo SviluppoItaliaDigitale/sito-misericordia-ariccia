@@ -175,3 +175,31 @@ y = Math.min(Math.max(y,84),innerHeight-94);
 Stile: puntino colore brand + linea, box testo con **sfondo opaco scuro**,
 testo bianco, bordo chiaro, ombra. Mai sfondo semitrasparente sopra scene
 chiare. Attive solo nel range del capitolo pertinente.
+
+## Animazioni con Motion (dal 22/11/2026)
+
+Per comparse, animazioni legate allo scroll e piccole transizioni dell'interfaccia,
+dove Three.js sarebbe sproporzionato. Motion, di Motion B.V. (motion.dev), licenza MIT,
+versione 14.10.1 (6/11/2026), nella build in JavaScript semplice che espone `window.Motion`.
+Provata il 22/11/2026 in Chromium: `animate`, `scroll` e `inView` funzionano.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/motion@14.10.1/dist/motion.js" defer></script>
+<script defer>
+addEventListener('DOMContentLoaded', () => {
+  if (!window.Motion) return;                       // senza Motion la pagina resta com'è
+  const ridotto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const { animate, inView, scroll } = Motion;
+  inView('.capitolo', el => {                       // comparsa una volta sola
+    animate(el, { opacity: [0, 1], y: ridotto ? 0 : [24, 0] },
+            { duration: ridotto ? 0 : 0.6, ease: 'easeOut' });
+  });
+  if (!ridotto) scroll(animate('.barra', { scaleX: [0, 1] }));  // barra di avanzamento
+});
+</script>
+```
+
+- Il contenuto è visibile anche senza JavaScript: si anima solo ciò che il CSS mostra già.
+- Con `prefers-reduced-motion` niente spostamenti, solo comparse immediate.
+- Una libreria di animazioni per pagina: Motion oppure Anime.js, mai entrambe.
+
