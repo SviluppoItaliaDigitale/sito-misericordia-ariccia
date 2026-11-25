@@ -28,7 +28,11 @@ esce un post dedicato, solo sui social (Facebook e Instagram), senza pagina sul 
 Il workflow `giornate.yml` pubblica la scheda di oggi, se c'è, con `scripts/pubblica_social.py --giornata`, al
 primo giro utile fra le 8:00 e le 21:59 italiane: un giro ogni ora e uno alla fine di una pubblicazione del
 sito («Pubblica su Aruba (LIVE)») partita da un'unione o avviata a mano, quando la grafica è appena andata
-online. Il registro è
+online. GitHub però avvia i giri a orario molto meno spesso di quanto è scritto: in questo repository
+«Sito raggiungibile», che ha un giro ogni ora, è partito 69 volte in venti giorni (5-25/11/2026), tre o
+quattro al giorno; dal 15 al 24/11 almeno uno al giorno è caduto fra le 8:00 e le 21:59, e in otto giorni su dieci il
+primo è partito fra le 12:40 e le 16:15. Senza una pubblicazione del sito al mattino, quindi, il post esce di solito nel primo pomeriggio; per farlo
+uscire prima si avvia il giro a mano. Il registro è
 `.github/social/pubblicati.json` (voce `giornata-AAAA-MM-GG`); i giri dopo quello riuscito non fanno nulla.
 Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno stesso, il post parte dopo il
 deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
