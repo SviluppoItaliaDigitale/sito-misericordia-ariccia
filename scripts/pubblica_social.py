@@ -535,6 +535,45 @@ def salva_registro(reg):
     REGISTRO.write_text(json.dumps(reg, indent=2, ensure_ascii=False, sort_keys=True) + "\n", encoding="utf-8")
 
 
+# ---------------------------------------------------------------- conferma online
+
+def conferma_online(rete, pid):
+    """Chiede a Meta se il post appena registrato esiste davvero ed è pubblico, e ne restituisce l'indirizzo.
+    Solleva RuntimeError se Meta non lo conferma (post non pubblicato, oggetto che non si legge, indirizzo
+    assente). Dal 25/11/2026 (Alessandro: «Se hai programmato deve uscire! Riprova finché non lo vedi
+    online»): un identificativo nel registro dice che Meta ha accettato la richiesta, non che il post si vede.
+    Limite: la conferma è quella di Meta con le nostre credenziali; non è la vista di un visitatore anonimo."""
+    if rete == "facebook":
+        d = graph_get(pid, {"fields": "id,is_published,permalink_url"})
+        if d.get("is_published") is False:
+            raise RuntimeError(f"Facebook dice che il post {pid} non è pubblicato")
+        link = d.get("permalink_url") or ""
+        if link.startswith("/"):
+            link = "https://www.facebook.com" + link
+    else:
+        link = graph_get(pid, {"fields": "id,permalink"}).get("permalink") or ""
+    if not link.startswith("https://"):
+        raise RuntimeError(f"{rete}: Meta non ha dato l'indirizzo pubblico del post {pid}")
+    return link
+
+
+def conferma_e_registra(reg, chiave, rete):
+    """Conferma online il post di `rete` registrato sotto `chiave` e scrive l'indirizzo nel registro
+    (voce «<rete>_online»). Restituisce True se è confermato (ora o in un giro precedente)."""
+    voce = reg.get(chiave, {})
+    if voce.get(f"{rete}_online"):
+        return True
+    try:
+        link = conferma_online(rete, voce[rete])
+    except Exception as e:  # noqa: BLE001
+        print(f"{rete}: pubblicata ma NON confermata online — {e}", file=sys.stderr)
+        return False
+    voce[f"{rete}_online"] = link
+    salva_registro(reg)
+    print(f"{rete}: confermata online → {link}")
+    return True
+
+
 # ---------------------------------------------------------------- Parola della domenica
 
 SITO = "https://www.misericordia-ariccia.it"
@@ -788,6 +827,12 @@ def pubblica_giornata(giorno=None):
     for rete in ("facebook", "instagram"):
         if rete in voce:
             print(f"{rete}: già pubblicata ({voce[rete]})")
+            # Già nel registro: resta da confermare che si veda online, se nessun giro l'ha ancora fatto.
+            if prova:
+                if not voce.get(f"{rete}_online"):
+                    print(f"{rete}: (prova) chiederebbe a Meta la conferma che il post è online")
+            elif not conferma_e_registra(reg, chiave, rete):
+                errori += 1
             continue
         if prova:
             print(f"{rete}: pubblicherebbe {immagine} con il testo →\n" + "\n".join("   " + r for r in testo.splitlines()))
@@ -804,7 +849,25 @@ def pubblica_giornata(giorno=None):
         except Exception as e:  # noqa: BLE001
             errori += 1
             print(f"{rete}: ERRORE — {e}", file=sys.stderr)
+            continue
+        if not conferma_e_registra(reg, chiave, rete):
+            errori += 1
     return 1 if errori else 0
+
+
+def giornata_finche_online(giorno=None):
+    """Pubblica la giornata e, se qualcosa non riesce o non è confermato online, riprova nello stesso giro:
+    GIORNATA_TENTATIVI volte (1 se non indicato), con GIORNATA_PAUSA secondi fra una e l'altra (300). Ciò che è
+    già nel registro non si pubblica due volte: i tentativi dopo il primo fanno solo quello che manca."""
+    tentativi = max(1, int(os.environ.get("GIORNATA_TENTATIVI", "1")))
+    pausa = max(0, int(os.environ.get("GIORNATA_PAUSA", "300")))
+    for n in range(1, tentativi + 1):
+        esito = pubblica_giornata(giorno)
+        if esito == 0 or DRY_RUN or n == tentativi:
+            return esito
+        print(f"Tentativo {n} di {tentativi} non riuscito: si riprova fra {pausa} secondi.", file=sys.stderr)
+        time.sleep(pausa)
+    return esito
 
 
 # ---------------------------------------------------------------- main
@@ -812,7 +875,7 @@ def pubblica_giornata(giorno=None):
 def main():
     if "--giornata" in sys.argv:
         resto = [a for a in sys.argv[1:] if a != "--giornata"]
-        return pubblica_giornata(resto[0] if resto else None)
+        return giornata_finche_online(resto[0] if resto else None)
     if "--parola" in sys.argv:
         resto = [a for a in sys.argv[1:] if a != "--parola"]
         return pubblica_parola(resto[0] if resto else None)

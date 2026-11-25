@@ -32,7 +32,7 @@ online. GitHub però avvia i giri a orario molto meno spesso di quanto è scritt
 «Sito raggiungibile», che ha un giro ogni ora, è partito 69 volte in venti giorni (5-25/11/2026), tre o
 quattro al giorno; dal 15 al 24/11 almeno uno al giorno è caduto fra le 8:00 e le 21:59, e in otto giorni su dieci il
 primo è partito fra le 12:40 e le 16:15. Senza una pubblicazione del sito al mattino, quindi, il post esce di solito nel primo pomeriggio; per farlo
-uscire prima si avvia il giro a mano. Il registro è
+uscire prima si avvia il giro a mano. **Avvio da fuori alle 8:35, 12:35 e 17:35 (dal 25/11/2026, deciso da Alessandro)**: tre volte al giorno l'operazione pianificata «Giornate: avvio delle 8:35, 12:35 e 17:35» (`trig_011mnrsAPp1mgqBguQbsoLaC`) chiede alla sessione cloud dedicata che avvia già la Parola (`session_011hTVxN3SGTswDA7EnR9XgP`) di avviare `giornate.yml` con `esterno=true` e `prova=false`. L'avvio esterno vale come un giro a orario: pubblica solo se oggi c'è una scheda e si è fra le 8:00 e le 21:59, altrimenti finisce subito in verde. Se la sessione dedicata viene archiviata l'avvio si ferma: restano i giri di GitHub e il controllo di mezzogiorno. Il registro è
 `.github/social/pubblicati.json` (voce `giornata-AAAA-MM-GG`); i giri dopo quello riuscito non fanno nulla.
 Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno stesso, il post parte dopo il
 deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
@@ -44,6 +44,24 @@ mano: Run workflow con `data` = `AAAA-MM-GG-<nome>` e `prova` tolta. I giri auto
 solo la scheda `AAAA-MM-GG.json`. Quel giorno la metà in bianco e nero del volto è stata chiesta da Alessandro
 come parte del messaggio: resta un'eccezione, le foto in bianco e nero sono solo per il lutto. Un'immagine che
 non è una foto vera si indica come «immagine illustrativa», nell'articolo, nel post e nei crediti fotografici.
+
+**Un post programmato deve uscire (regola di Alessandro del 25/11/2026: «Non deve mai più accadere! Se hai
+programmato deve uscire! Riprova finché non lo vedi online»).** Un post delle giornate è uscito solo quando Meta
+conferma che è online. Dopo la pubblicazione `pubblica_social.py` chiede a Meta il post appena creato (Facebook:
+`is_published` e `permalink_url`; Instagram: `permalink`) e scrive l'indirizzo nel registro, voci
+`facebook_online` e `instagram_online`. Se la pubblicazione o la conferma non riescono, lo stesso giro riprova
+fino a 6 volte, ogni 5 minuti (`GIORNATA_TENTATIVI`, `GIORNATA_PAUSA` in `giornate.yml`), e poi finisce in rosso;
+i giri successivi (ogni ora, dopo le pubblicazioni del sito, e i tre avvii da fuori) continuano da dove si è
+arrivati. Ciò che è già nel registro non si pubblica una seconda volta: si chiede solo la conferma. Dal
+26/11/2026 il controllo di mezzogiorno segnala anche un post «non confermato online». Limite: la conferma è
+quella di Meta con le credenziali della pagina, non la vista di un visitatore anonimo (se l'app Meta tornasse in
+modalità Sviluppo, Meta confermerebbe lo stesso: vedi `CLAUDE.md`, § «3. Social»). Prova senza rete:
+`scripts/controlli/prova_giornate_online.py`, su ogni PR.
+
+**Schede non uscite: restano come base (decisione di Alessandro del 25/11/2026).** I post del 15/11/2026
+(Giornata mondiale dei poveri) e del 20/11/2026 (diritti dell'infanzia) non si pubblicano in ritardo: schede e
+grafiche restano in `.github/social/giornate/` e in `static/img/giornate/` e si riusano l'anno prossimo e per
+ricorrenze simili, aggiornando date, tema dell'anno e fonti.
 
 **Controllo (dal 25/11/2026).** `controllo-giornate.yml` gira dopo ogni giro delle giornate e alcune volte al
 giorno, con `scripts/controlli/controlla_giornate.py`: da mezzogiorno il post di oggi deve essere nel registro
@@ -62,7 +80,7 @@ Le date si verificano sulla fonte (ONU, Santa Sede, Ministeri) prima di preparar
 | Data | Giornata | Fonte | Stato |
 |---|---|---|---|
 | 2/11/2026 | Commemorazione dei defunti | calendario liturgico | pubblicato |
-| 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
-| 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
+| 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | non pubblicato: giro partito fuori orario (vedi «Controllo»); scheda e grafica restano come base per il prossimo anno |
+| 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | non pubblicato: giro partito fuori orario (vedi «Controllo»); scheda e grafica restano come base per il prossimo anno |
 | 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne, con l'articolo [25 novembre, non sei sola](../content/news/2026-11-25-violenza-contro-le-donne.md) | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pubblicato alle 8:10, avviato a mano dopo il deploy; secondo post «Perché?» (scheda `2026-11-25-perche.json`), avviato a mano |
 | 3/12/2026 | Giornata internazionale delle persone con disabilità (tema ONU 2026 non ancora pubblicato al 2/11/2026: non citato) | [ONU](https://www.un.org/en/observances/day-of-persons-with-disabilities) | pronto |

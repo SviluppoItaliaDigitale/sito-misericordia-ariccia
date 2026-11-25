@@ -154,12 +154,18 @@ Procedura: `docs/parola-della-domenica.md`.
 Per ogni ricorrenza o giornata importante esce un post su Facebook e Instagram, come fa la Confederazione:
 scheda in `.github/social/giornate/AAAA-MM-GG.json`, grafica con il modello nazionale `post-giornata`,
 workflow `giornate.yml`. Dal 25/11/2026 il giro pubblica al primo avvio utile fra le 8:00 e le 21:59 (un giro
-ogni ora e uno dopo le pubblicazioni del sito partite da un'unione o avviate a mano) e `controllo-giornate.yml` apre la issue «Giornate e
+ogni ora, uno dopo le pubblicazioni del sito partite da un'unione o avviate a mano e, dallo stesso giorno, tre avviati da fuori alle 8:35, 12:35 e 17:35, `esterno=true`: dettagli in `docs/giornate.md`) e `controllo-giornate.yml` apre la issue «Giornate e
 ricorrenze: post non pubblicato» se a mezzogiorno il post di oggi manca. I post del 15/11 e del 20/11/2026
 non erano mai usciti: GitHub avviava il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva
 in verde. Se per la giornata Alessandro chiede anche un articolo (25/11/2026: violenza contro le donne), la
 grafica è una sola, con una foto se la chiede, e l'articolo ha `social: false`, così il post è uno solo; un secondo post nello stesso giorno esce solo se
 lo chiede lui (25/11/2026, grafica «Perché?»).
+🔴 **Un post programmato deve uscire** (Alessandro, 25/11/2026: «Non deve mai più accadere! Se hai programmato
+deve uscire! Riprova finché non lo vedi online»): un post delle giornate conta come uscito solo quando Meta
+conferma che è online (voci `facebook_online` e `instagram_online` del registro); lo script riprova nello stesso
+giro fino a 6 volte e i giri dopo continuano, senza mai pubblicare due volte. Chi programma un post, in sessione,
+controlla il giorno dell'uscita che sia online e, se manca, lo fa partire. I post del 15/11 e del 20/11/2026 non
+si pubblicano in ritardo: restano come base per l'anno prossimo e per ricorrenze simili.
 Procedura: `docs/giornate.md`.
 
 ## Sedi: quale indirizzo usare (dal 18/11/2026, regola definitiva del 21/11/2026)

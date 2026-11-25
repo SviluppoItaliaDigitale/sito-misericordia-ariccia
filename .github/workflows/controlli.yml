@@ -128,6 +128,11 @@ jobs:
       - name: Prova del controllo delle giornate
         run: python3 scripts/controlli/controlla_giornate.py --autotest
 
+      # Conferma online dei post delle giornate (dal 25/11/2026): con Meta finto, lo script registra il post solo
+      # una volta, chiede la conferma che è online, la riprova nello stesso giro e non pubblica mai due volte.
+      - name: Prova della conferma online delle giornate
+        run: python3 scripts/controlli/prova_giornate_online.py
+
       # Materiali per le scuole (dal 18/11/2026): ogni PDF elencato esiste, ha firma e cornice e l'anteprima,
       # le slide hanno il PowerPoint, nessun file orfano, nessun sorgente senza PDF.
       # La sede legale solo in atti, privacy e trasparenza, mai nei contenuti operativi (dal 18/11/2026).
