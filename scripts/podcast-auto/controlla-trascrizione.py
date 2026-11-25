@@ -50,6 +50,10 @@ VIETATE = [
     # delle Misericordie, al fianco del prossimo dal 1244») attribuito alla Misericordia di Ariccia,
     # nata nel 1994. Il motto non si adatta e non si legge nelle puntate.
     r"fianco del prossimo",
+    # Dal 25/11/2026 (avvelenamento-incidente-stradale, generazione 1): «ci sono dei divieti da
+    # rispettare nell'ordine esatto», regola delle istruzioni letta ad alta voce e obbligo d'ordine
+    # che le schede non contengono; «questo per l'ingestione», precisazione che la scheda non fa.
+    r"ordine esatto", r"divieti da rispettare", r"questo per l['’ ]?ingestione",
 ]
 # Dal 21/11/2026 (puntate ritirate al ricontrollo): parole che le fonti precisano sempre.
 # Se la fonte ha la forma completa e la trascrizione dice la parola senza, è un errore:

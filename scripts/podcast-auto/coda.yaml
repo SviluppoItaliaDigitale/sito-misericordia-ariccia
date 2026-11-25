@@ -287,3 +287,9 @@ puntate:
   - avvelenamento
   - incidente stradale
   stato: da-fare
+  nota: '25/11/2026, prima generazione non pubblicata: «ci sono dei divieti da rispettare
+    nell''ordine esatto» (regola delle istruzioni letta ad alta voce, obbligo d''ordine
+    che le schede non contengono) e «questo per l''ingestione», che la scheda non
+    dice. Il resto coincideva con le schede. La seconda generazione non è partita:
+    Chrome non rispondeva più. Al prossimo giro è la seconda: se sbaglia, la voce
+    va in scartata.'
