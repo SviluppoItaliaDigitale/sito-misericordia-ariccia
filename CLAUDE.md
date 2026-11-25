@@ -149,6 +149,18 @@ ogni notte all'1:55 se la scheda di oggi manca: scheda in
 `scripts/parola-domenica/`. Dal 22/11/2026, dopo due domeniche saltate perché GitHub non aveva avviato nessun giro fra le 4:47 e le 7, il workflow parte anche da fuori alle 4:52 (`esterno=true`: operazione pianificata «Parola: avvio delle 4:52» e sessione cloud dedicata, dettagli in `docs/parola-della-domenica.md`) e alle 7 `controllo-parola.yml` apre la issue «Parola della domenica: non pubblicata entro le 7» se il post manca.
 Procedura: `docs/parola-della-domenica.md`.
 
+## Giornate e ricorrenze sui social (dal 2/11/2026)
+
+Per ogni ricorrenza o giornata importante esce un post su Facebook e Instagram, come fa la Confederazione:
+scheda in `.github/social/giornate/AAAA-MM-GG.json`, grafica con il modello nazionale `post-giornata`,
+workflow `giornate.yml`. Dal 25/11/2026 il giro pubblica al primo avvio utile fra le 8:00 e le 21:59 (un giro
+ogni ora e uno dopo ogni pubblicazione del sito) e `controllo-giornate.yml` apre la issue «Giornate e
+ricorrenze: post non pubblicato» se a mezzogiorno il post di oggi manca. I post del 15/11 e del 20/11/2026
+non erano mai usciti: GitHub avviava il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva
+in verde. Se per la giornata Alessandro chiede anche un articolo (25/11/2026: violenza contro le donne), la
+grafica è una sola, con una foto se la chiede, e l'articolo ha `social: false`, così il post è uno solo.
+Procedura: `docs/giornate.md`.
+
 ## Sedi: quale indirizzo usare (dal 18/11/2026, regola definitiva del 21/11/2026)
 
 Istruzione di Alessandro del 21/11/2026, «una volta per tutte»: tre sedi, ognuna con il suo uso.

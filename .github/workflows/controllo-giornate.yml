@@ -1,0 +1,92 @@
+name: Controllo giornate e ricorrenze (post usciti)
+
+# Nei giorni che hanno una scheda in .github/social/giornate/ controlla che il post sia uscito davvero:
+# da mezzogiorno, ora italiana, il registro .github/social/pubblicati.json deve avere la voce
+# «giornata-AAAA-MM-GG» con Facebook e Instagram; lo stesso per le schede dei tre giorni prima.
+# Se manca, apre o aggiorna la issue «Giornate e ricorrenze: post non pubblicato» (label automazione +
+# fonte-rotta) e il run diventa rosso, così arriva anche l'email; la issue si chiude da sola al primo
+# controllo in cui non manca più nulla.
+# Nasce il 25/11/2026: i post del 15/11 (Giornata dei poveri) e del 20/11 (infanzia) non sono mai usciti.
+# GitHub aveva avviato «Giornate e ricorrenze (social)» una sola volta al giorno, nel pomeriggio, fuori dalla
+# finestra 8-12; il giro finiva in verde senza pubblicare e nessuno se n'è accorto.
+# Gira dopo ogni giro delle giornate e alcune volte al giorno (orari diversi, perché GitHub può saltarne).
+# Script: scripts/controlli/controlla_giornate.py (prova: --autotest). Procedura: docs/giornate.md
+on:
+  schedule:
+    - cron: "17 11 * * *"
+    - cron: "47 13 * * *"
+    - cron: "23 16 * * *"
+    - cron: "53 19 * * *"
+  workflow_run:
+    workflows: ["Giornate e ricorrenze (social)"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: controllo-giornate
+  cancel-in-progress: false
+
+jobs:
+  controlla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TITOLO_ISSUE: "Giornate e ricorrenze: post non pubblicato"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          # Bastano le schede, il registro e il controllo: il sito intero pesa più di un gigabyte.
+          sparse-checkout: |
+            .github/social
+            scripts/controlli/controlla_giornate.py
+          sparse-checkout-cone-mode: false
+
+      - name: Prova del controllo
+        run: python3 scripts/controlli/controlla_giornate.py --autotest
+
+      - name: I post delle giornate sono usciti?
+        id: check
+        run: |
+          RC=0; python3 scripts/controlli/controlla_giornate.py > esito.txt || RC=$?
+          cat esito.txt
+          # Senza la riga «stato=…» il controllo non ha letto schede o registro: giro rosso, nessuna issue.
+          if ! head -1 esito.txt | grep -q '^stato='; then
+            echo "::error::Il controllo delle giornate non ha dato un esito (uscita $RC)."; exit 1
+          fi
+          echo "stato=$(head -1 esito.txt | sed 's/^stato=//')" >> "$GITHUB_OUTPUT"
+
+      - name: Issue di segnalazione (si chiude da sola)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATO: ${{ steps.check.outputs.stato }}
+        run: |
+          R="$GITHUB_REPOSITORY"
+          NUM=$(gh api "repos/$R/issues?state=open&labels=fonte-rotta&per_page=100" \
+            --jq ".[] | select(.title == \"$TITOLO_ISSUE\") | .number" | head -1)
+          if [ "$STATO" = "ok" ]; then
+            if [ -n "$NUM" ]; then
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: i post delle giornate di oggi e dei tre giorni prima risultano pubblicati su Facebook e Instagram (registro .github/social/pubblicati.json). La chiudo."
+              gh api -X PATCH "repos/$R/issues/$NUM" -f state=closed -f state_reason=completed >/dev/null
+              echo "Issue #$NUM chiusa."
+            fi
+            exit 0
+          fi
+          CORPO=$(printf '%s\n\n%s\n\n%s\n\n%s\n\n%s' \
+            "Alle $(TZ=Europe/Rome date '+%H:%M del %d/%m/%Y') questi post delle giornate non risultano pubblicati:" \
+            "$(tail -n +2 esito.txt)" \
+            "Da guardare: i giri di «Giornate e ricorrenze (social)» di oggi (se nessuno è partito fra le 8 e le 22, GitHub li ha saltati) e il loro registro; la grafica della scheda deve essere online (serve il deploy)." \
+            "Il workflow riprova da solo ogni ora fino alle 22 e dopo ogni pubblicazione del sito. Per il post di oggi: Actions → «Giornate e ricorrenze (social)» → Run workflow con «prova» tolta. Un post di un giorno passato non si recupera da solo: decide Alessandro se farlo uscire in ritardo (stesso comando, con la data) o lasciarlo." \
+            "La issue si chiude da sola quando non manca più nulla; i giorni passati escono dal controllo dopo tre giorni.")
+          if [ -n "$NUM" ]; then
+            gh api -X PATCH "repos/$R/issues/$NUM" -f body="$CORPO" >/dev/null
+            echo "Issue #$NUM aggiornata."
+          else
+            gh api -X POST "repos/$R/issues" -f title="$TITOLO_ISSUE" -f body="$CORPO" -f "labels[]=automazione" -f "labels[]=fonte-rotta" --jq '.number' | sed 's/^/Issue aperta: #/'
+          fi
+          exit 1

@@ -123,6 +123,11 @@ jobs:
       - name: Prova del calendario della Parola
         run: python3 scripts/controlli/prova_calendario_parola.py
 
+      # Post delle giornate e delle ricorrenze (dal 25/11/2026): prova del controllo che apre la issue quando
+      # la scheda di oggi, o di uno dei tre giorni prima, non è nel registro dei post pubblicati.
+      - name: Prova del controllo delle giornate
+        run: python3 scripts/controlli/controlla_giornate.py --autotest
+
       # Materiali per le scuole (dal 18/11/2026): ogni PDF elencato esiste, ha firma e cornice e l'anteprima,
       # le slide hanno il PowerPoint, nessun file orfano, nessun sorgente senza PDF.
       # La sede legale solo in atti, privacy e trasparenza, mai nei contenuti operativi (dal 18/11/2026).
