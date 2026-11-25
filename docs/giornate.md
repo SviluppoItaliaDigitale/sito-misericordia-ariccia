@@ -38,6 +38,13 @@ Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno s
 deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
 pubblicherebbe e con `prova` tolta per pubblicare (anche fuori orario, o un altro giorno con `data`).
 
+**Secondo post nello stesso giorno.** Se Alessandro chiede un'altra grafica per la stessa giornata (25/11/2026:
+il volto diviso a metà con la scritta «Perché?»), la scheda si chiama `AAAA-MM-GG-<nome>.json` e si pubblica a
+mano: Run workflow con `data` = `AAAA-MM-GG-<nome>` e `prova` tolta. I giri automatici e il controllo guardano
+solo la scheda `AAAA-MM-GG.json`. Quel giorno la metà in bianco e nero del volto è stata chiesta da Alessandro
+come parte del messaggio: resta un'eccezione, le foto in bianco e nero sono solo per il lutto. Un'immagine che
+non è una foto vera si indica come «immagine illustrativa», nell'articolo, nel post e nei crediti fotografici.
+
 **Controllo (dal 25/11/2026).** `controllo-giornate.yml` gira dopo ogni giro delle giornate e alcune volte al
 giorno, con `scripts/controlli/controlla_giornate.py`: da mezzogiorno il post di oggi deve essere nel registro
 con Facebook e Instagram, e così quelli dei tre giorni prima. Se manca, apre o aggiorna la issue «Giornate e
@@ -57,5 +64,5 @@ Le date si verificano sulla fonte (ONU, Santa Sede, Ministeri) prima di preparar
 | 2/11/2026 | Commemorazione dei defunti | calendario liturgico | pubblicato |
 | 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
 | 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
-| 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne, con l'articolo [25 novembre, non sei sola](../content/news/2026-11-25-violenza-contro-le-donne.md) | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pubblicato alle 8:10, avviato a mano dopo il deploy |
+| 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne, con l'articolo [25 novembre, non sei sola](../content/news/2026-11-25-violenza-contro-le-donne.md) | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pubblicato alle 8:10, avviato a mano dopo il deploy; secondo post «Perché?» (scheda `2026-11-25-perche.json`), avviato a mano |
 | 3/12/2026 | Giornata internazionale delle persone con disabilità (tema ONU 2026 non ancora pubblicato al 2/11/2026: non citato) | [ONU](https://www.un.org/en/observances/day-of-persons-with-disabilities) | pronto |
