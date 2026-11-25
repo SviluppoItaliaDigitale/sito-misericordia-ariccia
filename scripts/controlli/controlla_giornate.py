@@ -4,7 +4,11 @@
 Legge le schede .github/social/giornate/AAAA-MM-GG.json e il registro .github/social/pubblicati.json:
   - la scheda di oggi deve essere nel registro (voce «giornata-AAAA-MM-GG», con Facebook e Instagram)
     da mezzogiorno in poi, ora italiana;
-  - le schede dei tre giorni prima devono esserci tutte.
+  - le schede dei tre giorni prima devono esserci tutte;
+  - dal 26/11/2026 ogni post deve avere anche la conferma di Meta che è online (voci «facebook_online» e
+    «instagram_online», scritte da pubblica_social.py): un identificativo nel registro dice che Meta ha
+    accettato la richiesta, non che il post si vede (Alessandro, 25/11/2026: «Se hai programmato deve uscire!
+    Riprova finché non lo vedi online»).
 Nasce il 25/11/2026: i post del 15/11 (Giornata dei poveri) e del 20/11 (infanzia) non sono mai usciti,
 perché GitHub aveva avviato il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva in verde.
 
@@ -28,6 +32,7 @@ import zoneinfo
 RETI = ("facebook", "instagram")
 GIORNI_INDIETRO = 3
 DA_QUANDO = 1200  # ora italiana (HHMM) da cui la scheda di oggi deve essere uscita
+CONFERMA_DAL = dt.date(2026, 11, 26)  # dalle schede di questo giorno serve anche la conferma online
 
 
 class Illeggibile(Exception):
@@ -46,7 +51,8 @@ def leggi_registro(radice):
 
 
 def mancanti(radice, oggi, ora):
-    """Elenco di (giorno, reti che mancano) per oggi (da mezzogiorno) e per i tre giorni prima."""
+    """Elenco di (giorno, reti che mancano) per oggi (da mezzogiorno) e per i tre giorni prima. Una rete
+    pubblicata ma senza conferma online compare come «<rete> (non confermato online)»."""
     cartella = pathlib.Path(radice) / ".github/social/giornate"
     if not cartella.is_dir():
         raise Illeggibile("la cartella delle schede .github/social/giornate non c'è")
@@ -62,6 +68,8 @@ def mancanti(radice, oggi, ora):
         if not isinstance(voce, dict):
             raise Illeggibile(f"nel registro la voce giornata-{giorno.isoformat()} ha un formato inatteso ({type(voce).__name__})")
         manca = [r for r in RETI if r not in voce]
+        if giorno >= CONFERMA_DAL:
+            manca += [f"{r} (non confermato online)" for r in RETI if r in voce and not voce.get(f"{r}_online")]
         if manca:
             fuori.append((giorno.isoformat(), manca))
     return fuori
@@ -103,6 +111,22 @@ def autotest():
         # il guasto vero: scheda del 20/11 mai uscita, vista il 21/11
         avuto = mancanti(r, dt.date(2026, 11, 21), 900); casi += 1
         assert avuto == [("2026-11-20", ["facebook", "instagram"])], avuto
+
+        # dal 26/11/2026 serve anche la conferma online di ogni rete
+        domani = dt.date(2026, 11, 26)
+        scrivi(["2026-11-26"], {"giornata-2026-11-26": piena})
+        avuto = mancanti(r, domani, 1500); casi += 1
+        assert avuto == [("2026-11-26", ["facebook (non confermato online)", "instagram (non confermato online)"])], avuto
+        scrivi(["2026-11-26"], {"giornata-2026-11-26": {**piena, "facebook_online": "https://www.facebook.com/x"}})
+        avuto = mancanti(r, domani, 1500); casi += 1
+        assert avuto == [("2026-11-26", ["instagram (non confermato online)"])], avuto
+        scrivi(["2026-11-26"], {"giornata-2026-11-26": {"facebook": "1", "facebook_online": "https://www.facebook.com/x"}})
+        avuto = mancanti(r, domani, 1500); casi += 1
+        assert avuto == [("2026-11-26", ["instagram"])], avuto
+        scrivi(["2026-11-26"], {"giornata-2026-11-26": {**piena, "facebook_online": "https://www.facebook.com/x",
+                                                        "instagram_online": "https://www.instagram.com/p/x/"}})
+        avuto = mancanti(r, domani, 1500); casi += 1
+        assert avuto == [], avuto
 
         # schede o registro non leggibili: il controllo lo dice, non tace e non dà «ok»
         def illeggibile(prepara, nome):
@@ -154,9 +178,13 @@ def main():
     if not fuori:
         print("stato=ok")
         return 0
-    print("stato=manca:" + ";".join(f"{g}({','.join(m)})" for g, m in fuori))
+    print("stato=manca:" + ";".join(f"{g}({','.join(x.replace(' (non confermato online)', '-non-confermato') for x in m)})"
+                                    for g, m in fuori))
     for g, m in fuori:
         print(f"- {g}: non risulta su {' e '.join(m)}")
+    if any("non confermato" in x for _, m in fuori for x in m):
+        print("- «non confermato online»: il post è nel registro ma Meta non ha ancora confermato che si vede; "
+              "il prossimo giro di «Giornate e ricorrenze (social)» richiede la conferma senza ripubblicare")
     return 1
 
 
