@@ -13,7 +13,7 @@ The numbers to save in your phone and stick on the fridge. You can also **print 
 
 - **112 — Single Emergency Number** (free, 24 hours a day): ambulance, police, fire brigade. In any emergency, call 112 first.
 - **116117 — Non-urgent medical care** (free, 24 hours a day, active across Lazio since 24 August 2026): out-of-hours doctor service (formerly *guardia medica*) and health advice in situations that are not an emergency.
-- **1522 — Anti-violence and stalking helpline** (free, 24 hours a day, also via chat): for women who are victims of violence.
+- **1522 — Anti-violence and stalking helpline** (free, 24 hours a day, also via chat): for women experiencing violence. In Ariccia there is the «Piccoli Passi» anti-violence centre, at via delle Cerquette 2: [379 1677172](tel:+393791677172).
 - **114 — Child emergency line** (free, 24 hours a day): to report situations putting children and teenagers at risk.
 - **803 555 — Lazio Region Civil Protection operations room** (freephone): for civil protection emergencies across the region.
 
