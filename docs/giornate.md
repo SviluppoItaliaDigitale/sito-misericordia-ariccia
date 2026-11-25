@@ -32,7 +32,7 @@ online. GitHub però avvia i giri a orario molto meno spesso di quanto è scritt
 «Sito raggiungibile», che ha un giro ogni ora, è partito 69 volte in venti giorni (5-25/11/2026), tre o
 quattro al giorno; dal 15 al 24/11 almeno uno al giorno è caduto fra le 8:00 e le 21:59, e in otto giorni su dieci il
 primo è partito fra le 12:40 e le 16:15. Senza una pubblicazione del sito al mattino, quindi, il post esce di solito nel primo pomeriggio; per farlo
-uscire prima si avvia il giro a mano. Il registro è
+uscire prima si avvia il giro a mano. **Avvio da fuori alle 8:35 (dal 25/11/2026, deciso da Alessandro)**: ogni mattina l'operazione pianificata «Giornate: avvio delle 8:35» (`trig_011mnrsAPp1mgqBguQbsoLaC`) chiede alla sessione cloud dedicata che avvia già la Parola (`session_011hTVxN3SGTswDA7EnR9XgP`) di avviare `giornate.yml` con `esterno=true` e `prova=false`. L'avvio esterno vale come un giro a orario: pubblica solo se oggi c'è una scheda e si è fra le 8:00 e le 21:59, altrimenti finisce subito in verde. Se la sessione dedicata viene archiviata l'avvio si ferma: restano i giri di GitHub e il controllo di mezzogiorno. Il registro è
 `.github/social/pubblicati.json` (voce `giornata-AAAA-MM-GG`); i giri dopo quello riuscito non fanno nulla.
 Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno stesso, il post parte dopo il
 deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa

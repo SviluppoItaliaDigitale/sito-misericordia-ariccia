@@ -17,6 +17,9 @@ name: Giornate e ricorrenze (social)
 # nel pomeriggio, che finiva in verde senza pubblicare. Così i post del 15/11 e del 20/11 non sono mai
 # usciti. Ora un giro in ritardo pubblica lo stesso, e controllo-giornate.yml apre una issue se a
 # mezzogiorno il post di oggi manca ancora.
+# Dal 25/11/2026 un giro parte anche da fuori ogni mattina alle 8:35 italiane, con esterno=true (chi lo
+# fa: docs/giornate.md): si comporta come un giro a orario, quindi pubblica solo se oggi c'è una scheda
+# e si è nella finestra, e negli altri casi finisce subito in verde.
 # Procedura: docs/giornate.md
 on:
   schedule:
@@ -34,6 +37,10 @@ on:
         description: "Solo prova (mostra cosa pubblicherebbe)"
         type: boolean
         default: true
+      esterno:
+        description: "Avvio programmato da fuori (si comporta come i giri a orario: pubblica solo la scheda di oggi, fra le 8:00 e le 21:59)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -60,7 +67,10 @@ jobs:
         id: ora
         env:
           EVENTO: ${{ github.event_name }}
+          ESTERNO: ${{ inputs.esterno }}
         run: |
+          # L'avvio esterno (esterno=true) vale come un giro a orario.
+          if [ "$ESTERNO" = "true" ]; then EVENTO=schedule; fi
           H=$((10#$(TZ=Europe/Rome date +%H)))
           OGGI=$(TZ=Europe/Rome date +%F)
           echo "Ora italiana: $(TZ=Europe/Rome date '+%A %d/%m %H:%M')"
@@ -77,8 +87,9 @@ jobs:
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
           META_IG_USER_ID: ${{ secrets.META_IG_USER_ID }}
-          DRY_RUN: ${{ inputs.prova && '1' || '' }}
-          DATA: ${{ inputs.data }}
+          DRY_RUN: ${{ (inputs.prova && !inputs.esterno) && '1' || '' }}
+          # con l'avvio esterno il giorno è sempre oggi
+          DATA: ${{ !inputs.esterno && inputs.data || '' }}
         run: python3 scripts/pubblica_social.py --giornata $DATA
 
       - name: Salva il registro dei post social
