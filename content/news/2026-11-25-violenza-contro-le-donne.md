@@ -6,7 +6,7 @@ canale: "informazioni"
 slug: "violenza-contro-le-donne-a-chi-chiedere-aiuto"
 controllo_editoriale: "2026-11-25"
 description: "25 novembre, Giornata contro la violenza sulle donne: il 1522, il 112, il centro antiviolenza di Ariccia, gli altri servizi dei Castelli Romani e i dati di ISTAT, Regione Lazio e Procura di Velletri."
-immagine: "/img/news/2026-11-25-violenza-contro-le-donne-grafica.jpg"
+immagine: "/img/news/2026-11-25-violenza-contro-le-donne-perche-grafica.jpg"
 social: false
 italianoSemplice: |
   **Oggi, 25 novembre, è la Giornata contro la violenza sulle donne.**
@@ -20,7 +20,7 @@ italianoSemplice: |
   Ad Ariccia c'è un centro antiviolenza. Il numero è **379 1677172**.
 ---
 
-![Grafica della Giornata internazionale contro la violenza sulle donne: una panchina rossa in un parco, con la scritta «Non sei sola: chiedere aiuto si può. Chiama il 1522: è gratuito, giorno e notte. Se il pericolo è immediato, chiama il 112»](/img/news/2026-11-25-violenza-contro-le-donne-grafica.jpg)
+![Grafica della Giornata internazionale contro la violenza sulle donne: il volto di una giovane donna in primo piano, diviso a metà; a sinistra sorride, a colori; a destra è triste, in bianco e nero, con un livido sotto l'occhio. Scritte: «Perché? La violenza non ha scuse. Se la subisci, chiama il 1522: è gratuito, giorno e notte»](/img/news/2026-11-25-violenza-contro-le-donne-perche-grafica.jpg)
 
 Oggi, **25 novembre**, è la **Giornata internazionale per l'eliminazione della violenza contro le donne**. A chi la subisce vogliamo dire due cose: **non sei sola** e **chiedere aiuto si può**, anche qui vicino. In questa pagina trovi i numeri da chiamare, i luoghi a cui rivolgerti ai Castelli Romani e i dati che dicono quanto il problema riguarda il nostro territorio.
 
@@ -70,7 +70,9 @@ Questi numeri contano i procedimenti, non le persone, e non tutte le vittime di 
 
 ## Perché il 25 novembre
 
-La data ricorda le sorelle Mirabal, tre attiviste politiche della Repubblica Dominicana uccise nel 1960 per ordine di Rafael Trujillo, che allora governava il Paese. Le Nazioni Unite ne hanno fatto una giornata internazionale con la risoluzione 54/134. La panchina rossa della nostra grafica è un simbolo della lotta contro i femminicidi: ce n'è una anche nel Giardino degli Aranci del Senato.
+La data ricorda le sorelle Mirabal, tre attiviste politiche della Repubblica Dominicana uccise nel 1960 per ordine di Rafael Trujillo, che allora governava il Paese. Le Nazioni Unite ne hanno fatto una giornata internazionale con la risoluzione 54/134. La panchina rossa, qui sotto nella nostra seconda grafica, è un simbolo della lotta contro i femminicidi: ce n'è una anche nel Giardino degli Aranci del Senato.
+
+![Grafica della Giornata internazionale contro la violenza sulle donne: una panchina rossa in un parco, con la scritta «Non sei sola: chiedere aiuto si può. Chiama il 1522: è gratuito, giorno e notte. Se il pericolo è immediato, chiama il 112»](/img/news/2026-11-25-violenza-contro-le-donne-grafica.jpg)
 
 ## La nostra parte
 
@@ -90,4 +92,4 @@ Abbiamo letto tutte le fonti il 25 novembre 2026.
 - **Senato della Repubblica**: [la panchina rossa nel Giardino degli Aranci](https://www.senato.it/presidente/foto-video/giornata-internazionale-leliminazione-della-violenza-contro-le-donne).
 - **Gazzetta Ufficiale**: [decreto del Presidente del Consiglio dei ministri del 24 novembre 2017](https://www.gazzettaufficiale.it/eli/id/2018/01/30/18A00520/sg), linee guida per il soccorso e l'assistenza alle donne vittime di violenza.
 
-*La foto della grafica è un'immagine di repertorio (Adobe Stock n. 432215626).*
+*Il volto diviso a metà è un'immagine illustrativa, realizzata con elaborazione digitale: non ritrae una persona reale. La foto della panchina rossa è un'immagine di repertorio (Adobe Stock n. 432215626).*

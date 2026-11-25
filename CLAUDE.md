@@ -158,7 +158,8 @@ ogni ora e uno dopo le pubblicazioni del sito partite da un'unione o avviate a m
 ricorrenze: post non pubblicato» se a mezzogiorno il post di oggi manca. I post del 15/11 e del 20/11/2026
 non erano mai usciti: GitHub avviava il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva
 in verde. Se per la giornata Alessandro chiede anche un articolo (25/11/2026: violenza contro le donne), la
-grafica è una sola, con una foto se la chiede, e l'articolo ha `social: false`, così il post è uno solo.
+grafica è una sola, con una foto se la chiede, e l'articolo ha `social: false`, così il post è uno solo; un secondo post nello stesso giorno esce solo se
+lo chiede lui (25/11/2026, grafica «Perché?»).
 Procedura: `docs/giornate.md`.
 
 ## Sedi: quale indirizzo usare (dal 18/11/2026, regola definitiva del 21/11/2026)
