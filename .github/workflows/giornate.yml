@@ -5,8 +5,9 @@ name: Giornate e ricorrenze (social)
 # .github/social/giornate/AAAA-MM-GG.json (testo, immagine, alt, hashtag) e la grafica, fatta con il
 # modello nazionale post-giornata, in static/img/giornate/ (già online col deploy).
 # Pubblica la scheda di oggi, se c'è e non è nel registro, al primo giro utile dalle 8:00 alle 21:59
-# italiane: un giro ogni ora (GitHub non garantisce gli orari) e uno dopo ogni pubblicazione del sito,
-# quando la grafica è appena andata online. I giri dopo quello riuscito non fanno nulla.
+# italiane: un giro ogni ora (GitHub non garantisce gli orari) e uno alla fine di una pubblicazione del
+# sito partita da un'unione o avviata a mano, quando la grafica è appena andata online. I giri dopo quello
+# riuscito non fanno nulla.
 # Fino al 25/11/2026 la finestra era 8:00-11:59 con quattro giri: GitHub ne avviava uno solo al giorno,
 # nel pomeriggio, che finiva in verde senza pubblicare. Così i post del 15/11 e del 20/11 non sono mai
 # usciti. Ora un giro in ritardo pubblica lo stesso, e controllo-giornate.yml apre una issue se a

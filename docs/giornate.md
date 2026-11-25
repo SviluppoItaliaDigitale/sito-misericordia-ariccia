@@ -26,11 +26,12 @@ esce un post dedicato, solo sui social (Facebook e Instagram), senza pagina sul 
 ## Pubblicazione
 
 Il workflow `giornate.yml` pubblica la scheda di oggi, se c'è, con `scripts/pubblica_social.py --giornata`, al
-primo giro utile fra le 8:00 e le 21:59 italiane: un giro ogni ora e uno dopo ogni pubblicazione del sito
-(«Pubblica su Aruba (LIVE)»), quando la grafica è appena andata online. Il registro è
+primo giro utile fra le 8:00 e le 21:59 italiane: un giro ogni ora e uno alla fine di una pubblicazione del
+sito («Pubblica su Aruba (LIVE)») partita da un'unione o avviata a mano, quando la grafica è appena andata
+online. Il registro è
 `.github/social/pubblicati.json` (voce `giornata-AAAA-MM-GG`); i giri dopo quello riuscito non fanno nulla.
 Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno stesso, il post parte dopo il
-deploy. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
+deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
 pubblicherebbe e con `prova` tolta per pubblicare (anche fuori orario, o un altro giorno con `data`).
 
 **Controllo (dal 25/11/2026).** `controllo-giornate.yml` gira dopo ogni giro delle giornate e alcune volte al

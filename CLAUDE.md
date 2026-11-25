@@ -154,7 +154,7 @@ Procedura: `docs/parola-della-domenica.md`.
 Per ogni ricorrenza o giornata importante esce un post su Facebook e Instagram, come fa la Confederazione:
 scheda in `.github/social/giornate/AAAA-MM-GG.json`, grafica con il modello nazionale `post-giornata`,
 workflow `giornate.yml`. Dal 25/11/2026 il giro pubblica al primo avvio utile fra le 8:00 e le 21:59 (un giro
-ogni ora e uno dopo ogni pubblicazione del sito) e `controllo-giornate.yml` apre la issue «Giornate e
+ogni ora e uno dopo le pubblicazioni del sito partite da un'unione o avviate a mano) e `controllo-giornate.yml` apre la issue «Giornate e
 ricorrenze: post non pubblicato» se a mezzogiorno il post di oggi manca. I post del 15/11 e del 20/11/2026
 non erano mai usciti: GitHub avviava il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva
 in verde. Se per la giornata Alessandro chiede anche un articolo (25/11/2026: violenza contro le donne), la

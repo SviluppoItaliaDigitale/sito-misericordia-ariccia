@@ -93,7 +93,7 @@ jobs:
                 "Alle $ADESSO questi post delle giornate non risultano pubblicati:" \
                 "$(tail -n +2 esito.txt)" \
                 "Da guardare: i giri di «Giornate e ricorrenze (social)» di oggi (se nessuno è partito fra le 8 e le 22, GitHub li ha saltati) e il loro registro; la grafica della scheda deve essere online (serve il deploy)." \
-                "Il workflow riprova da solo ogni ora fino alle 22 e dopo ogni pubblicazione del sito. Per il post di oggi: Actions → «Giornate e ricorrenze (social)» → Run workflow con «prova» tolta. Un post di un giorno passato non si recupera da solo: decide Alessandro se farlo uscire in ritardo (stesso comando, con la data) o lasciarlo." \
+                "Il workflow riprova da solo ogni ora fino alle 22 e dopo le pubblicazioni del sito partite da un'unione o avviate a mano. Per il post di oggi: Actions → «Giornate e ricorrenze (social)» → Run workflow con «prova» tolta. Un post di un giorno passato non si recupera da solo: decide Alessandro se farlo uscire in ritardo (stesso comando, con la data) o lasciarlo." \
                 "La issue si chiude da sola quando non manca più nulla; i giorni passati escono dal controllo dopo tre giorni.") ;;
           esac
           if [ -n "$NUM" ]; then
