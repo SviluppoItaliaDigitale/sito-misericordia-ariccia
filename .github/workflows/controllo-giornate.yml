@@ -71,7 +71,7 @@ jobs:
             --jq ".[] | select(.title == \"$TITOLO_ISSUE\") | .number" | head -1)
           if [ "$STATO" = "ok" ]; then
             if [ -n "$NUM" ]; then
-              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: i post delle giornate di oggi e dei tre giorni prima risultano pubblicati su Facebook e Instagram (registro .github/social/pubblicati.json). La chiudo."
+              gh api -X POST "repos/$R/issues/$NUM/comments" -f body="Rientrato: per oggi e per i tre giorni prima non c'è più nessun post in sospeso (registro .github/social/pubblicati.json). La chiudo. Un post saltato più di tre giorni fa esce dal controllo anche se non è stato recuperato: quali erano resta scritto qui sopra."
               gh api -X PATCH "repos/$R/issues/$NUM" -f state=closed -f state_reason=completed >/dev/null
               echo "Issue #$NUM chiusa."
             fi
