@@ -25,10 +25,28 @@ esce un post dedicato, solo sui social (Facebook e Instagram), senza pagina sul 
 
 ## Pubblicazione
 
-Il workflow `giornate.yml` pubblica ogni mattina alle 8:31 italiane (riserva 9:31 e 10:31) la scheda di oggi,
-se c'è, con `scripts/pubblica_social.py --giornata`; il registro è `.github/social/pubblicati.json`
-(voce `giornata-AAAA-MM-GG`). Scheda e grafica vanno su `main` almeno il giorno prima, così il deploy mette
-online l'immagine. Prova a mano: Actions → «Giornate e ricorrenze (social)» → `prova` = sì.
+Il workflow `giornate.yml` pubblica la scheda di oggi, se c'è, con `scripts/pubblica_social.py --giornata`, al
+primo giro utile fra le 8:00 e le 21:59 italiane: un giro ogni ora e uno alla fine di una pubblicazione del
+sito («Pubblica su Aruba (LIVE)») partita da un'unione o avviata a mano, quando la grafica è appena andata
+online. GitHub però avvia i giri a orario molto meno spesso di quanto è scritto: in questo repository
+«Sito raggiungibile», che ha un giro ogni ora, è partito 69 volte in venti giorni (5-25/11/2026), tre o
+quattro al giorno; dal 15 al 24/11 almeno uno al giorno è caduto fra le 8:00 e le 21:59, e in otto giorni su dieci il
+primo è partito fra le 12:40 e le 16:15. Senza una pubblicazione del sito al mattino, quindi, il post esce di solito nel primo pomeriggio; per farlo
+uscire prima si avvia il giro a mano. Il registro è
+`.github/social/pubblicati.json` (voce `giornata-AAAA-MM-GG`); i giri dopo quello riuscito non fanno nulla.
+Scheda e grafica vanno su `main` almeno il giorno prima; se arrivano il giorno stesso, il post parte dopo il
+deploy o, al più tardi, al giro dell'ora dopo. A mano: Actions → «Giornate e ricorrenze (social)» → Run workflow, con `prova` = sì per vedere che cosa
+pubblicherebbe e con `prova` tolta per pubblicare (anche fuori orario, o un altro giorno con `data`).
+
+**Controllo (dal 25/11/2026).** `controllo-giornate.yml` gira dopo ogni giro delle giornate e alcune volte al
+giorno, con `scripts/controlli/controlla_giornate.py`: da mezzogiorno il post di oggi deve essere nel registro
+con Facebook e Instagram, e così quelli dei tre giorni prima. Se manca, apre o aggiorna la issue «Giornate e
+ricorrenze: post non pubblicato» (`automazione` + `fonte-rotta`) e il run diventa rosso; la issue si chiude da
+sola. Fa lo stesso se non riesce a leggere le schede o il registro (file mancante, JSON rotto, formato
+cambiato): la issue dice che cosa non si legge, perché finché il controllo non legge non si sa se i post sono
+usciti. Nasce dai post del 15/11 e del 20/11/2026, mai usciti: la finestra era 8:00-11:59, GitHub avviava un solo
+giro al giorno, nel pomeriggio, e quel giro finiva in verde senza pubblicare. Un post di un giorno passato non
+si recupera da solo: decide Alessandro se farlo uscire in ritardo.
 
 ## Calendario
 
@@ -37,7 +55,7 @@ Le date si verificano sulla fonte (ONU, Santa Sede, Ministeri) prima di preparar
 | Data | Giornata | Fonte | Stato |
 |---|---|---|---|
 | 2/11/2026 | Commemorazione dei defunti | calendario liturgico | pubblicato |
-| 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | pronto |
-| 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | pronto |
-| 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne, con l'articolo [25 novembre, non sei sola](../content/news/2026-11-25-violenza-contro-le-donne.md) | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pronto |
+| 15/11/2026 | X Giornata mondiale dei poveri («Il Signore è il rifugio del povero») | [Santa Sede, messaggio di Papa Leone XIV del 13/6/2026](https://www.vatican.va/content/leo-xiv/it/messages/poor/documents/20260613-messaggio-giornata-poveri.html) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
+| 20/11/2026 | Giornata internazionale per i diritti dell'infanzia e dell'adolescenza | [minori.gov.it, la Convenzione ONU](https://www.minori.gov.it/it/print/6972); [ONU, World Children's Day](https://www.un.org/en/observances/world-childrens-day) | non pubblicato: giro partito fuori orario (vedi «Controllo») |
+| 25/11/2026 | Giornata internazionale per l'eliminazione della violenza contro le donne, con l'articolo [25 novembre, non sei sola](../content/news/2026-11-25-violenza-contro-le-donne.md) | [ONU](https://www.un.org/en/observances/ending-violence-against-women-day) | pubblicato alle 8:10, avviato a mano dopo il deploy |
 | 3/12/2026 | Giornata internazionale delle persone con disabilità (tema ONU 2026 non ancora pubblicato al 2/11/2026: non citato) | [ONU](https://www.un.org/en/observances/day-of-persons-with-disabilities) | pronto |
