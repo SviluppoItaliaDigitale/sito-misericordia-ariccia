@@ -37,7 +37,9 @@ pubblicherebbe e con `prova` tolta per pubblicare (anche fuori orario, o un altr
 giorno, con `scripts/controlli/controlla_giornate.py`: da mezzogiorno il post di oggi deve essere nel registro
 con Facebook e Instagram, e così quelli dei tre giorni prima. Se manca, apre o aggiorna la issue «Giornate e
 ricorrenze: post non pubblicato» (`automazione` + `fonte-rotta`) e il run diventa rosso; la issue si chiude da
-sola. Nasce dai post del 15/11 e del 20/11/2026, mai usciti: la finestra era 8:00-11:59, GitHub avviava un solo
+sola. Fa lo stesso se non riesce a leggere le schede o il registro (file mancante, JSON rotto, formato
+cambiato): la issue dice che cosa non si legge, perché finché il controllo non legge non si sa se i post sono
+usciti. Nasce dai post del 15/11 e del 20/11/2026, mai usciti: la finestra era 8:00-11:59, GitHub avviava un solo
 giro al giorno, nel pomeriggio, e quel giro finiva in verde senza pubblicare. Un post di un giorno passato non
 si recupera da solo: decide Alessandro se farlo uscire in ritardo.
 

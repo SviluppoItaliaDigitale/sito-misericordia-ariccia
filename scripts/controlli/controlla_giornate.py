@@ -8,9 +8,15 @@ Legge le schede .github/social/giornate/AAAA-MM-GG.json e il registro .github/so
 Nasce il 25/11/2026: i post del 15/11 (Giornata dei poveri) e del 20/11 (infanzia) non sono mai usciti,
 perché GitHub aveva avviato il giro nel pomeriggio, fuori dalla finestra 8-12, e il giro chiudeva in verde.
 
-Uso:  controlla_giornate.py [--oggi AAAA-MM-GG] [--ora HHMM] [--radice CARTELLA]   esce 0 (a posto) o 1 (manca)
+Se non riesce a leggere le schede o il registro (file mancante, JSON rotto, formato cambiato) non tace:
+lo dice con «stato=illeggibile:…», così il workflow apre la issue anche per questo (regola dei guasti:
+un controllo che non legge la sua fonte non chiude in verde e apre la sua issue).
+
+Uso:  controlla_giornate.py [--oggi AAAA-MM-GG] [--ora HHMM] [--radice CARTELLA]
+      esce 0 (a posto), 1 (manca un post) o 2 (schede o registro non leggibili)
       controlla_giornate.py --autotest
-Stampa una riga «stato=ok» oppure «stato=manca:…» e, se serve, l'elenco in chiaro per la issue.
+Stampa una riga «stato=ok», «stato=manca:…» oppure «stato=illeggibile:…» e, sotto, l'elenco in chiaro
+per la issue.
 """
 import datetime as dt
 import json
@@ -24,10 +30,27 @@ GIORNI_INDIETRO = 3
 DA_QUANDO = 1200  # ora italiana (HHMM) da cui la scheda di oggi deve essere uscita
 
 
+class Illeggibile(Exception):
+    """Le schede o il registro non si leggono: il controllo non può dire se i post sono usciti."""
+
+
+def leggi_registro(radice):
+    file = pathlib.Path(radice) / ".github/social/pubblicati.json"
+    try:
+        registro = json.loads(file.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        raise Illeggibile(f"il registro {file.name} non si legge ({type(e).__name__})") from e
+    if not isinstance(registro, dict):
+        raise Illeggibile(f"il registro {file.name} ha un formato inatteso ({type(registro).__name__} invece di un oggetto)")
+    return registro
+
+
 def mancanti(radice, oggi, ora):
     """Elenco di (giorno, reti che mancano) per oggi (da mezzogiorno) e per i tre giorni prima."""
     cartella = pathlib.Path(radice) / ".github/social/giornate"
-    registro = json.loads((pathlib.Path(radice) / ".github/social/pubblicati.json").read_text(encoding="utf-8"))
+    if not cartella.is_dir():
+        raise Illeggibile("la cartella delle schede .github/social/giornate non c'è")
+    registro = leggi_registro(radice)
     fuori = []
     for indietro in range(GIORNI_INDIETRO, -1, -1):
         giorno = oggi - dt.timedelta(days=indietro)
@@ -36,6 +59,8 @@ def mancanti(radice, oggi, ora):
         if indietro == 0 and ora < DA_QUANDO:
             continue
         voce = registro.get(f"giornata-{giorno.isoformat()}", {})
+        if not isinstance(voce, dict):
+            raise Illeggibile(f"nel registro la voce giornata-{giorno.isoformat()} ha un formato inatteso ({type(voce).__name__})")
         manca = [r for r in RETI if r not in voce]
         if manca:
             fuori.append((giorno.isoformat(), manca))
@@ -78,6 +103,33 @@ def autotest():
         # il guasto vero: scheda del 20/11 mai uscita, vista il 21/11
         avuto = mancanti(r, dt.date(2026, 11, 21), 900); casi += 1
         assert avuto == [("2026-11-20", ["facebook", "instagram"])], avuto
+
+        # schede o registro non leggibili: il controllo lo dice, non tace e non dà «ok»
+        def illeggibile(prepara, nome):
+            nonlocal casi
+            scrivi(["2026-11-25"], {"giornata-2026-11-25": piena})
+            prepara()
+            try:
+                avuto = mancanti(r, oggi, 1500)
+            except Illeggibile:
+                casi += 1
+                return
+            raise AssertionError(f"{nome}: atteso «illeggibile», avuto {avuto}")
+
+        illeggibile(lambda: reg.write_text("[]", encoding="utf-8"), "registro che è un elenco")
+        illeggibile(lambda: reg.write_text("{ rotto", encoding="utf-8"), "registro con JSON rotto")
+        illeggibile(lambda: reg.unlink(), "registro mancante")
+        illeggibile(lambda: reg.write_text(json.dumps({"giornata-2026-11-25": "fatto"}), encoding="utf-8"), "voce che non è un oggetto")
+
+    with tempfile.TemporaryDirectory() as t:  # cartella delle schede sparita
+        (pathlib.Path(t) / ".github/social").mkdir(parents=True)
+        (pathlib.Path(t) / ".github/social/pubblicati.json").write_text("{}", encoding="utf-8")
+        try:
+            mancanti(t, oggi, 1500)
+        except Illeggibile:
+            casi += 1
+        else:
+            raise AssertionError("cartella delle schede mancante: atteso «illeggibile»")
     print(f"Autotest del controllo delle giornate: {casi} casi su {casi} come atteso.")
     return 0
 
@@ -93,7 +145,12 @@ def main():
     adesso = dt.datetime.now(zoneinfo.ZoneInfo("Europe/Rome"))
     oggi = dt.date.fromisoformat(valore("--oggi", adesso.date().isoformat()))
     ora = int(valore("--ora", adesso.strftime("%H%M")))
-    fuori = mancanti(valore("--radice", pathlib.Path(__file__).resolve().parents[2]), oggi, ora)
+    try:
+        fuori = mancanti(valore("--radice", pathlib.Path(__file__).resolve().parents[2]), oggi, ora)
+    except Illeggibile as e:
+        print(f"stato=illeggibile:{e}")
+        print(f"- {e}")
+        return 2
     if not fuori:
         print("stato=ok")
         return 0
