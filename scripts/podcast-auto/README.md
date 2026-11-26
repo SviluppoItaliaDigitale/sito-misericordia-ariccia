@@ -61,19 +61,9 @@ piedi (schede, generazioni, ricevitore). Questo giro prende con `flock` il blocc
 `~/.cache/podcast-chrome.lock` e lo tiene per tutto il giro; se è occupato esce e riprova all'ora
 successiva.
 
-**Da fare nel repository della Protezione Civile** (non toccato da qui): il suo
-`scripts/podcast-auto/giro-automatico.sh` usa solo il proprio blocco `~/podcast-lavoro/.giro.lock`.
-Va aggiunto, subito dopo, lo stesso blocco comune:
-
-```bash
-mkdir -p "$HOME/.cache"
-exec 8>"$HOME/.cache/podcast-chrome.lock"
-flock -n 8 || { echo "Chrome è occupato da un altro giro del podcast." >>"$LOG"; exit 0; }
-```
-
-Finché non c'è, i due giri si evitano solo per l'orario sfalsato (minuto 11 e minuto 31) e perché
-ognuno parte una volta al giorno: un giro della Misericordia ancora in corso al minuto 31 non
-ferma quello della Protezione Civile.
+Dal 26/11/2026 lo prende anche il giro della Protezione Civile (`sito-pc-genzano`, PR #2072): i due
+giri vanno in fila e quello che trova Chrome occupato scrive «Chrome è occupato da un altro giro del
+podcast.» nel suo log e riprova all'ora successiva.
 
 ## Il giro, passo per passo
 
