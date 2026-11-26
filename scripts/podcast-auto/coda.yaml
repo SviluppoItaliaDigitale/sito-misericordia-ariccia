@@ -286,10 +286,9 @@ puntate:
   parole:
   - avvelenamento
   - incidente stradale
-  stato: da-fare
-  nota: '25/11/2026, prima generazione non pubblicata: «ci sono dei divieti da rispettare
-    nell''ordine esatto» (regola delle istruzioni letta ad alta voce, obbligo d''ordine
-    che le schede non contengono) e «questo per l''ingestione», che la scheda non
-    dice. Il resto coincideva con le schede. La seconda generazione non è partita:
-    Chrome non rispondeva più. Al prossimo giro è la seconda: se sbaglia, la voce
-    va in scartata.'
+  stato: scartata
+  motivo: '26/11/2026, seconda generazione: «E se le condizioni di un ferito peggiorano?»
+    prima di «se un ferito non risponde e non respira normalmente», cioè dice a quale
+    caso si riferisce il passo, e la scheda non lo dice; «la prima cosa» e «quando
+    chiami» aggiunti ai passi. Il resto coincideva con le schede. La prima (25/11/2026)
+    diceva «ci sono dei divieti da rispettare nell''ordine esatto» e «questo per l''ingestione».'
