@@ -13,7 +13,7 @@ Fatto il 20/11/2026 con la skill `video-3d` (schema `render(t)`, impaginazione c
 ## Anatomia vera
 Corpo, cuore (camere, valvole, coronarie), arterie e vene, polmoni, gabbia toracica, colonna e cervello vengono
 dall'atlante **BodyParts3D** (© The Database Center for Life Science, licenza CC BY 4.0, modelli ricavati da
-risonanze di una persona vera): <https://dbarchive.biosciencedbc.jp/en/bodyparts3d/>.
+risonanze di una persona vera): <https://dbarchive.biosciencedbc.jp/en/bodyparts3d/desc.html>.
 `anatomia.py` scarica l'atlante (circa 200 MB, solo la prima volta), raggruppa le parti, toglie dai vasi i volumi
 del fegato, divide la parete dei ventricoli fra destro e sinistro, completa con un tubo morbido i tratti del collo
 che l'atlante non ha (carotide comune → carotide interna, succlavia → vertebrale), calcola per ogni punto dei vasi la
