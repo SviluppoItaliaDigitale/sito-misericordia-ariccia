@@ -25,7 +25,7 @@ dei colpi e delle spinte.
 ## Anatomia
 Pelle, trachea e bronchi, esofago, stomaco, lingua, palato molle, mandibola, osso ioide, polmoni, diaframma, gabbia
 toracica, colonna, scapole, clavicole e cranio vengono dall'atlante **BodyParts3D** (© The Database Center for Life
-Science, licenza CC BY 4.0): <https://dbarchive.biosciencedbc.jp/en/bodyparts3d/>. Epiglottide e cartilagini della
+Science, licenza CC BY 4.0): <https://dbarchive.biosciencedbc.jp/en/bodyparts3d/desc.html>. Epiglottide e cartilagini della
 laringe (tiroide, cricoide) stanno solo nell'albero IS-A dell'atlante (file FJ2770, FJ2808, FJ2769).
 Sono disegnati qui, e coperti dalla nota «schema»: il boccone, la gola (faringe, che l'atlante non ha: tubo
 trasparente dietro la lingua), l'aria, i segni gialli sul corpo e i disegni a pittogramma dei gesti.

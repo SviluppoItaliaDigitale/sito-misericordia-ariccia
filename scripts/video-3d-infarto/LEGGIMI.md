@@ -25,7 +25,7 @@ Grafica nazionale in ogni fotogramma: fascia blu con filo giallo e stemma, firma
 
 ## Anatomia vera e parti disegnate
 Corpo, cuore e vasi vengono dall'atlante **BodyParts3D** (© The Database Center for Life Science, licenza CC BY 4.0):
-<https://dbarchive.biosciencedbc.jp/en/bodyparts3d/>, preparato da `scripts/video-3d-rcp/anatomia.py`.
+<https://dbarchive.biosciencedbc.jp/en/bodyparts3d/desc.html>, preparato da `scripts/video-3d-rcp/anatomia.py`.
 `anatomia_infarto.py` aggiunge le linee centrali delle tre coronarie (dall'origine sull'aorta), il punto del blocco
 (al 30% della discendente anteriore) e, per ogni vertice delle pareti dei ventricoli, quanto dipende dal tratto a valle
 (zona che si scurisce). **Placca, coagulo e globuli rossi nella coronaria non sono nell'atlante: sono disegnati** come
